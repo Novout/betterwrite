@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :is(h1, h2, h3, h4, h5, h6, a, p, span, la, ul, button) {
+    @apply text-black dark:text-gray-200;
+  }
+
+  a {
+    @apply no-underline;
+  }
+}
+
+@layer components {
+  .wb-base {
+    @apply bg-gray-200 dark:bg-gray-800 w-full h-screen;
+  }
+
+  .wb-title {
+    @apply text-4xl opacity-70 hover:text-gray-700 dark:hover:text-white cursor-default;
+  }
+}
+
+@layer utilities {
+}
