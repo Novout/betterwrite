@@ -10,6 +10,7 @@
         py-2
         font-medium
         text-left
+        rounded-none
         dark:border-none
         text-black
         dark:text-gray-500 dark:hover:text-gray-200

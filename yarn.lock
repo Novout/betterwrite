@@ -1623,7 +1623,7 @@ lodash.truncate@^4.4.2:
   resolved "https://registry.yarnpkg.com/lodash.truncate/-/lodash.truncate-4.4.2.tgz#5a350da0b1113b837ecfffd5812cbe58d6eae193"
   integrity sha1-WjUNoLERO4N+z//VgSy+WNbq4ZM=
 
-lodash@^4.17.20, lodash@^4.17.21:
+lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -2260,6 +2260,13 @@ table@^6.0.9:
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
+
+tailwindcss-typography@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-typography/-/tailwindcss-typography-3.1.0.tgz#b60690d97a53b0d94eab286cd02f68d6d30e2d3d"
+  integrity sha512-uqovHMt9orPs1kl2U+bidlcO25tmUGJjjluQdI67yRnOy/IlqKe6tYcHHAsQPhehlk3r11/T3CE7Uc0PSUJcNg==
+  dependencies:
+    lodash "^4.17.15"
 
 tailwindcss@^2.2.15:
   version "2.2.15"

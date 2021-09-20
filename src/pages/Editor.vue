@@ -9,7 +9,7 @@
         md:w-60
         bg-white
         dark:bg-gray-700
-        border-r border-black
+        border-r border-gray-300
         dark:border-gray-700
       "
     >

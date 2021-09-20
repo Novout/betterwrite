@@ -4,7 +4,7 @@
     @mouseenter="hover = true"
     @mouseout="hover = false"
   >
-    <HeroIcon v-if="hover" class="text-gray-200 h-4 w-4 opacity-20">
+    <HeroIcon v-if="hover" class="text-black dark:text-gray-200 h-4 w-4 opacity-30">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -16,7 +16,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon v-if="hover" class="text-gray-200 h-4 w-4 opacity-20">
+    <HeroIcon v-if="hover" class="text-black dark:text-gray-200 h-4 w-4 opacity-30">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -35,6 +35,7 @@
     <p
       class="w-full break-all"
       :class="[
+        props.type === 'paragraph' ? 'indent-15' : '',
         props.type === 'paragraph'
           ? store.state.editor.styles.show.paragraph.fontSize
           : '',
@@ -48,6 +49,7 @@
           ? store.state.editor.styles.show.paragraph.fontWeight
           : '',
 
+        props.type === 'heading-one' ? 'indent-15 pb-3' : '',
         props.type === 'heading-one'
           ? store.state.editor.styles.show.heading.one.fontSize
           : '',
@@ -61,6 +63,7 @@
           ? store.state.editor.styles.show.heading.one.fontWeight
           : '',
 
+        props.type === 'heading-two' ? 'indent-15 pb-2 pt-8' : '',
         props.type === 'heading-two'
           ? store.state.editor.styles.show.heading.two.fontSize
           : '',
@@ -74,6 +77,7 @@
           ? store.state.editor.styles.show.heading.two.fontWeight
           : '',
 
+        props.type === 'heading-three' ? 'indent-15 pb-1 pt-5' : '',
         props.type === 'heading-three'
           ? store.state.editor.styles.show.heading.three.fontSize
           : '',
