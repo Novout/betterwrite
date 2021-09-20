@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  :is(h1, h2, h3, h4, h5, h6, a, p, span, la, ul, button) {
-    @apply text-black dark:text-gray-200;
-  }
-
   a {
     @apply no-underline;
+  }
+
+  textarea {
+    @apply border-none overflow-auto outline-none shadow-none resize-none bg-transparent;
   }
 }
 

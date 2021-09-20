@@ -9,6 +9,8 @@ module.exports = {
     "@vue/typescript/recommended"
   ],
   rules: {
-    "vue/no-unused-vars": 2,
+    "vue/no-unused-vars": 0,
+    "vue/no-mutating-props": 0,
+    "no-undef": 0
   },
 };
