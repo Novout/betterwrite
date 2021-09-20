@@ -1,7 +1,7 @@
 export interface EditorState {
-  styles: EditorStateStyles;
-  contentRaw: EditorStateContentRaw;
-  contentShow: EditorStateContentShow;
+  styles: EditorStateStyles
+  contentRaw: EditorStateContentRaw
+  contentShow: EditorStateContentShow
 }
 
 export interface EditorStateStyles {
@@ -9,15 +9,11 @@ export interface EditorStateStyles {
 }
 
 export interface EditorStateInput {
-  fontFamily: string;
-  fontSize: string;
-  fontColor: string;
+  fontFamily: string
+  fontSize: string
+  fontColor: string
 }
 
-export interface EditorStateContentRaw {
+export interface EditorStateContentRaw {}
 
-}
-
-export interface EditorStateContentShow {
-
-}
+export interface EditorStateContentShow {}

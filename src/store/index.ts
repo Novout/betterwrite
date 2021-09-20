@@ -5,6 +5,6 @@ import editor from '@/store/module/editor'
 export default createStore({
   modules: {
     context,
-    editor
+    editor,
   },
 })

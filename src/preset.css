@@ -11,14 +11,15 @@
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active  {
+input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 @-webkit-keyframes autofill {
-  0%,100% {
-      color: #666;
-      background: transparent;
+  0%,
+  100% {
+    color: #666;
+    background: transparent;
   }
 }
 
