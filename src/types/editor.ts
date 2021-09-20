@@ -1,19 +1,18 @@
 export interface EditorState {
   styles: EditorStateStyles
-  contentRaw: EditorStateContentRaw
-  contentShow: EditorStateContentShow
 }
 
 export interface EditorStateStyles {
   input: EditorStateInput
+  show: EditorStateShow
 }
-
 export interface EditorStateInput {
   fontFamily: string
   fontSize: string
   fontColor: string
 }
 
-export interface EditorStateContentRaw {}
-
-export interface EditorStateContentShow {}
+export interface EditorStateShow {
+  fontFamily: string
+  fontColor: string
+}

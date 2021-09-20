@@ -16,6 +16,10 @@
   .wb-title {
     @apply text-4xl opacity-70 hover:text-gray-700 dark:hover:text-white cursor-default;
   }
+
+  .wb-text {
+    @apply text-black dark:text-gray-200;
+  }
 }
 
 @layer utilities {

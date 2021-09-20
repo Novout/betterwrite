@@ -16,14 +16,21 @@
         w-11/12
         md:h-editor
         h-screen
-        md:p-5
-        p-0
         bg-gray-700
         overflow-y-auto
         rounded-sm
         shadow-lg
       "
     >
+      <EditorHeader />
+      <TextShow
+        v-for="page in store.state.context.page"
+        :id="page.type + '-' + page.id"
+        :key="page.id"
+        :type="page.type"
+      >
+        {{ page.raw }}
+      </TextShow>
       <TextInput v-model="entry" @enter="enterListener" />
     </div>
   </div>
@@ -31,10 +38,16 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue'
+  import { useStore } from 'vuex'
+  import { ContextStatePageContent } from '@/types/context'
+
+  const store = useStore()
 
   const entry = ref('')
 
-  const enterListener = () => {
+  const enterListener = (content: ContextStatePageContent) => {
+    store.commit('context/addInPage', content)
+
     entry.value = ''
   }
 </script>

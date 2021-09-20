@@ -1,8 +1,8 @@
 <template>
   <section
+    class="flex justify-center items-center w-full transition-all"
     @mouseenter="hover = true"
     @mouseout="hover = false"
-    class="flex justify-center items-center w-full transition-all"
   >
     <input
       v-model="cmp"
@@ -14,15 +14,16 @@
         store.state.editor.styles.input.fontColor,
       ]"
       type="text"
+      :placeholder="t('editor.text.inputCode')"
       @input.prevent="handler"
       @keypress.enter="enterHandler"
-      :placeholder="t('editor.text.inputCode')"
     />
   </section>
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { ContextStatePageContent } from '@/types/context'
+  import { ref, computed, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
 
@@ -36,6 +37,8 @@
   const emit = defineEmits(['update:modelValue', 'submit', 'enter'])
 
   const hover = ref(false)
+  const type = ref('paragraph')
+
   const cmp = computed({
     get() {
       return props.modelValue
@@ -45,10 +48,41 @@
     },
   })
 
-  const enterHandler = () => {
-    emit('enter')
-  }
+  watch(cmp, (_cmp: string) => {
+    if (_cmp.startsWith('/p')) {
+      type.value = 'paragraph'
+      cmp.value = ''
+      return
+    }
 
+    if (_cmp.startsWith('/h1')) {
+      type.value = 'heading-one'
+      cmp.value = ''
+      return
+    }
+
+    if (_cmp.startsWith('/h2')) {
+      type.value = 'heading-two'
+      cmp.value = ''
+      return
+    }
+
+    if (_cmp.startsWith('/h3')) {
+      type.value = 'heading-three'
+      cmp.value = ''
+      return
+    }
+  })
+
+  const enterHandler = () => {
+    const content = {
+      id: store.state.context.entity,
+      type: type.value,
+      raw: props.modelValue,
+    } as ContextStatePageContent
+
+    emit('enter', content)
+  }
   const handler = () => {
     emit('submit')
   }

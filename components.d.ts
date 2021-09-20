@@ -8,6 +8,7 @@ declare module 'vue' {
     DisclosureButton: typeof import('@headlessui/vue')['DisclosureButton']
     DisclosurePanel: typeof import('@headlessui/vue')['DisclosurePanel']
     EditorBase: typeof import('E:/dev/projects/write-better/src/components/editor/EditorBase.vue')['default']
+    EditorHeader: typeof import('E:/dev/projects/write-better/src/components/editor/EditorHeader.vue')['default']
     HeroIcon: typeof import('E:/dev/projects/write-better/src/components/utils/HeroIcon.vue')['default']
     LangSwitcher: typeof import('E:/dev/projects/write-better/src/components/utils/LangSwitcher.vue')['default']
     Popover: typeof import("@headlessui/vue")["Popover"];
