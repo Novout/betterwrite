@@ -7,7 +7,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format",
-    "format": "prettier src/**/*.{vue,ts} --write"
+    "format": "prettier src/**/*.{vue,css,ts} --write"
   },
   "dependencies": {
     "@headlessui/vue": "^1.4.1",
