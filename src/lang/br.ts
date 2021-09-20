@@ -4,5 +4,11 @@ export default {
     text: {
       inputCode: 'Digite / para comandos.',
     },
+    aside: {
+      configuration: {
+        title: 'Configuração',
+        dark: 'Modo Escuro',
+      },
+    },
   },
 }

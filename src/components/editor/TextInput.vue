@@ -8,7 +8,9 @@
       v-model="cmp"
       class="flex-1 rounded-none border-none shadow-2xl p-1"
       :class="[
-        hover ? 'bg-gray-800 bg-opacity-90' : 'bg-gray-800 bg-opacity-96',
+        hover
+          ? 'dark:bg-gray-800 bg-gray-200 bg-opacity-90'
+          : 'dark:bg-gray-700 bg-gray-100',
         store.state.editor.styles.input.fontSize,
         store.state.editor.styles.input.fontFamily,
         store.state.editor.styles.input.fontColor,

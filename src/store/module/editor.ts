@@ -41,9 +41,15 @@ export default {
           },
         },
       },
-      content: {},
+      configuration: {
+        dark: true,
+      },
     } as EditorState),
-  mutations: {},
+  mutations: {
+    switchTheme(state: any, dark: boolean) {
+      state.configuration.dark = dark
+    },
+  },
   actions: {},
   getters: {},
 }

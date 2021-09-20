@@ -4,6 +4,9 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AsideBar: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideBar.vue')['default']
+    AsideBarItem: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideBarItem.vue')['default']
+    AsideGraph: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideGraph.vue')['default']
     Disclosure: typeof import('@headlessui/vue')['Disclosure']
     DisclosureButton: typeof import('@headlessui/vue')['DisclosureButton']
     DisclosurePanel: typeof import('@headlessui/vue')['DisclosurePanel']
@@ -15,6 +18,8 @@ declare module 'vue' {
     PopoverButton: typeof import("@headlessui/vue")["PopoverButton"];
     PopoverPanel: typeof import("@headlessui/vue")["PopoverPanel"];
     Switch: typeof import('@headlessui/vue')['Switch']
+    SwitchGroup: typeof import('@headlessui/vue')['SwitchGroup']
+    SwitchLabel: typeof import('@headlessui/vue')['SwitchLabel']
     TextInput: typeof import('E:/dev/projects/write-better/src/components/editor/TextInput.vue')['default']
     TextShow: typeof import('E:/dev/projects/write-better/src/components/editor/TextShow.vue')['default']
   }

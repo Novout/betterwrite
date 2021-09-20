@@ -1,6 +1,6 @@
 module.exports = {
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-  darkMode: "media",
+  darkMode: "class",
   theme: {
     fontFamily: {
      'raleway': ['Raleway', 'ui-sans-serif', 'system-ui'],

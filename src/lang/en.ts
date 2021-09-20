@@ -4,5 +4,11 @@ export default {
     text: {
       inputCode: 'insert / for commands.',
     },
+    aside: {
+      configuration: {
+        title: 'Configuration',
+        dark: 'Dark Mode',
+      },
+    },
   },
 }

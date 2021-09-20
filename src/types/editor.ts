@@ -1,5 +1,10 @@
 export interface EditorState {
   styles: EditorStateStyles
+  configuration: EditorStateConfiguration
+}
+
+export interface EditorStateConfiguration {
+  dark: boolean
 }
 
 export interface EditorStateStyles {
