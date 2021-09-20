@@ -6,9 +6,9 @@
   >
     <input
       v-model="cmp"
-      class="flex-1 border-none shadow-2xl p-1"
+      class="flex-1 rounded-none border-none shadow-2xl p-1"
       :class="[
-        hover ? 'bg-gray-800 bg-opacity-10' : 'bg-transparent',
+        hover ? 'bg-gray-800 bg-opacity-90' : 'bg-gray-800 bg-opacity-96',
         store.state.editor.styles.input.fontSize,
         store.state.editor.styles.input.fontFamily,
         store.state.editor.styles.input.fontColor,
@@ -80,6 +80,8 @@
       type: type.value,
       raw: props.modelValue,
     } as ContextStatePageContent
+
+    type.value = 'paragraph'
 
     emit('enter', content)
   }

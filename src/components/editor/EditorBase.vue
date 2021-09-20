@@ -12,25 +12,25 @@
     "
   >
     <div
-      class="
-        w-11/12
-        md:h-editor
-        h-screen
-        bg-gray-700
-        overflow-y-auto
-        rounded-sm
-        shadow-lg
+      class="w-8/12 h-editor bg-gray-700"
+      style="
+        box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+          rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
       "
     >
-      <EditorHeader />
-      <TextShow
-        v-for="page in store.state.context.page"
-        :id="page.type + '-' + page.id"
-        :key="page.id"
-        :type="page.type"
+      <section
+        id="edit"
+        class="flex flex-col w-full overflow-y-auto max-h-editor"
       >
-        {{ page.raw }}
-      </TextShow>
+        <TextShow
+          v-for="page in store.state.context.page"
+          :id="page.type + '-' + page.id"
+          :key="page.id"
+          :type="page.type"
+        >
+          {{ page.raw }}
+        </TextShow>
+      </section>
       <TextInput v-model="entry" @enter="enterListener" />
     </div>
   </div>
@@ -47,6 +47,11 @@
 
   const enterListener = (content: ContextStatePageContent) => {
     store.commit('context/addInPage', content)
+
+    setTimeout(() => {
+      const scr = document.querySelector('#edit')
+      ;(scr as HTMLElement).scrollTop = (scr as HTMLElement).scrollHeight
+    }, 0)
 
     entry.value = ''
   }

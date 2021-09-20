@@ -7,8 +7,14 @@ module.exports = {
     },
     extend: {
       height: theme => ({
-        "editor": "95vh",
+        "editor": "75vh",
       }),
+      maxHeight: theme => ({
+        "editor": "75vh"
+      }),
+      minHeight: theme => ({
+        "editor": "75vh"
+      })
     },
   },
   variants: ["hover", "focus", "active", "dark", "responsive"],

@@ -33,7 +33,7 @@
       </svg>
     </HeroIcon>
     <p
-      class="w-full"
+      class="w-full break-all"
       :class="[
         props.type === 'paragraph'
           ? store.state.editor.styles.show.paragraph.fontSize

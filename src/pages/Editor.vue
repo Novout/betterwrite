@@ -1,6 +1,6 @@
 <template>
-  <section class="wb-base flex">
-    <aside class="w-60 border-2">test</aside>
+  <section class="wb-base flex flex-col md:flex-row">
+    <aside class="fixed md:relative h-screen w-20 md:w-60 border-2">test</aside>
     <main class="flex-1">
       <EditorBase />
     </main>
