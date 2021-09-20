@@ -1,3 +1,3 @@
 export default {
-  hello: "mundo",
-};
+  hello: 'mundo',
+}

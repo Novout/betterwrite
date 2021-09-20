@@ -1,18 +1,18 @@
-import { createApp } from "vue";
+import { createApp } from 'vue'
 
-import router from "./router";
-import store from "./store";
-import i18n from "./lang";
+import router from './router'
+import store from './store'
+import i18n from './lang'
 
-import App from "./App.vue";
+import App from './App.vue'
 
-import "./tailwind.css";
-import "./preset.css";
+import './tailwind.css'
+import './preset.css'
 
-const app = createApp(App);
+const app = createApp(App)
 
-app.use(router);
-app.use(store);
-app.use(i18n);
+app.use(router)
+app.use(store)
+app.use(i18n)
 
-app.mount("#app");
+app.mount('#app')
