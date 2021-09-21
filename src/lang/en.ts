@@ -1,10 +1,9 @@
 export default {
-  hello: 'world',
   editor: {
     text: {
       placeholder: {
-        base: 'Dê uma olhada nos comandos por texto na barra lateral.',
-        paragraph: 'Parágrafo',
+        base: 'Take a look at the text commands in the sidebar.',
+        paragraph: 'Paragraph',
         headingone: 'H1',
         headingtwo: 'H2',
         headingthree: 'H3',
@@ -14,9 +13,13 @@ export default {
       configuration: {
         title: 'Settings',
         dark: 'Dark Mode',
+        lang: 'PT-BR / EN-US',
       },
       project: {
         title: 'Project',
+      },
+      commands: {
+        title: 'Commands',
       },
     },
   },

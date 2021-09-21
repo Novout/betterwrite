@@ -17,7 +17,7 @@
       </HeroIcon>
     </template>
     <SwitchGroup>
-      <div class="flex items-center">
+      <div class="flex items-center w-full justify-between">
         <SwitchLabel
           class="mr-4 text-black dark:text-gray-300 font-bold text-xs"
           >{{ t('editor.aside.configuration.dark') }}</SwitchLabel
@@ -50,7 +50,60 @@
           />
         </Switch>
       </div>
+      <div class="flex items-center w-full justify-between pt-3">
+        <SwitchLabel
+          class="mr-4 text-black dark:text-gray-300 font-bold text-xs"
+          >{{ t('editor.aside.configuration.lang') }}</SwitchLabel
+        >
+        <Switch
+          v-model="lang"
+          :class="lang ? 'bg-gray-900' : 'bg-gray-500'"
+          class="
+            relative
+            inline-flex
+            items-center
+            h-6
+            transition-colors
+            rounded-full
+            w-11
+            focus:outline-none
+          "
+        >
+          <span
+            :class="lang ? 'translate-x-6' : 'translate-x-1'"
+            class="
+              inline-block
+              w-4
+              h-4
+              transition-transform
+              transform
+              bg-white
+              rounded-full
+            "
+          />
+        </Switch>
+      </div>
     </SwitchGroup>
+  </AsideBarItem>
+  <AsideBarItem :title="t('editor.aside.commands.title')">
+    <template #icon>
+      <HeroIcon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+          />
+        </svg>
+      </HeroIcon>
+    </template>
   </AsideBarItem>
   <AsideBarItem :title="t('editor.aside.project.title')">
     <template #icon>
@@ -77,7 +130,7 @@
   import { useStore } from 'vuex'
 
   const store = useStore()
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
 
   const dark = ref(store.state.editor.configuration.dark)
   watch(dark, (_dark: boolean) => {
@@ -87,5 +140,12 @@
       ? (document.querySelector('html') as HTMLElement).classList.add('dark')
       : (document.querySelector('html') as HTMLElement).classList.remove('dark')
     _dark ? (localStorage.theme = 'dark') : localStorage.removeItem('theme')
+  })
+
+  const lang = ref(locale.value === 'en' ? true : false)
+  watch(lang, (_lang: boolean) => {
+    localStorage.setItem('lang', _lang ? 'en' : 'br')
+
+    _lang ? (locale.value = 'en') : (locale.value = 'br')
   })
 </script>
