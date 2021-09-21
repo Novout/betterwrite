@@ -3,13 +3,14 @@
     class="flex w-full hover:shadow-winset dark:hover:shadow-binset"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
-    @click.prevent="edit = true"
   >
     <TextShowPopover v-if="hover && !edit" :position="position" />
     <p
+      @click.prevent="edit = true"
       class="w-full break-all"
       :class="[
-        props.type === 'paragraph' ? 'text-justify indent-15' : '',
+        props.type === 'paragraph' && !edit ? 'indent-15' : '',
+        props.type === 'paragraph' ? 'text-justify' : '',
         props.type === 'paragraph'
           ? store.state.editor.styles.show.paragraph.fontSize
           : '',
@@ -51,7 +52,7 @@
           ? store.state.editor.styles.show.heading.two.fontWeight
           : '',
 
-        props.type === 'heading-three' ? 'text-center indent-15 pb-2 pt-5' : '',
+        props.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
         props.type === 'heading-three'
           ? store.state.editor.styles.show.heading.three.fontSize
           : '',
@@ -70,8 +71,9 @@
       <input
         v-else
         id="editInput"
-        class="w-full bg-transparent"
-        @keypress.enter="edit = false"
+        class="w-full bg-transparent p-2"
+        v-model="data"
+        @keypress.enter="onUpdateContent"
       />
     </p>
   </section>
@@ -82,19 +84,40 @@
   import { useStore } from 'vuex'
 
   const props = defineProps({
-    type: String,
-    position: Number,
-    raw: String,
+    type: {
+      required: true,
+      type: String
+    },
+    position: {
+      required: true,
+      type: Number
+    },
+    raw: {
+      required: true,
+      type: String
+    },
   })
 
   const store = useStore()
 
   const hover = ref(false)
   const edit = ref(false)
+  const data = ref('')
 
   watch(edit, async (_edit) => {
     await nextTick
-    if (_edit)
-      (document.querySelector('#editInput') as HTMLInputElement).focus()
+    if (_edit) {
+      const input = (document.querySelector('#editInput') as HTMLInputElement);
+
+      input.focus()
+
+      data.value = props.raw
+    }
   })
+
+  const onUpdateContent = () => {
+    store.commit('context/updateInPage', { raw: data.value, id: props.position })
+
+    edit.value = false
+  }
 </script>

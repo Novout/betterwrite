@@ -13,6 +13,15 @@ export default {
       state.totalEntityCreated++
       state.page.push(content)
     },
+    updateInPage(state: any, obj: Record<any, any>) {
+      const content = state.page.find(
+        (content: ContextStatePageContent) => content.id === obj.id
+      )
+
+      const index = state.page.indexOf(content)
+      
+      state.page[index].raw = obj.raw
+    },
     removeInPage(state: any, id: number) {
       state.page = state.page.filter(
         (entity: ContextStatePageContent) => entity.id !== id
