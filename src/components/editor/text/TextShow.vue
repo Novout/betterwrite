@@ -6,9 +6,9 @@
   >
     <TextShowPopover v-if="hover" :position="position" />
     <p
-      class="w-full break-all text-justify"
+      class="w-full break-all"
       :class="[
-        props.type === 'paragraph' ? 'indent-15' : '',
+        props.type === 'paragraph' ? 'text-justify indent-15' : '',
         props.type === 'paragraph'
           ? store.state.editor.styles.show.paragraph.fontSize
           : '',
@@ -36,7 +36,7 @@
           ? store.state.editor.styles.show.heading.one.fontWeight
           : '',
 
-        props.type === 'heading-two' ? 'indent-15 pb-3 pt-8' : '',
+        props.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
         props.type === 'heading-two'
           ? store.state.editor.styles.show.heading.two.fontSize
           : '',
@@ -50,7 +50,7 @@
           ? store.state.editor.styles.show.heading.two.fontWeight
           : '',
 
-        props.type === 'heading-three' ? 'indent-15 pb-2 pt-5' : '',
+        props.type === 'heading-three' ? 'text-center indent-15 pb-2 pt-5' : '',
         props.type === 'heading-three'
           ? store.state.editor.styles.show.heading.three.fontSize
           : '',

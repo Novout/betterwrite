@@ -30,9 +30,6 @@ export default {
       let sIndex
       obj.direction === 'up' ? (sIndex = index - 1) : (sIndex = index + 1)
 
-      console.log('o nvoo index', sIndex)
-      console.log('tamanho do array', state.page.length)
-
       if (
         (sIndex < 0 && obj.direction === 'up') ||
         (sIndex >= state.page.length && obj.direction === 'down')
