@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
   import { ContextStatePageContent } from '@/types/context'
+  import { useFormat } from '@/use/format'
   import { ref, computed, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
@@ -88,7 +89,11 @@
       id: store.state.context.totalEntityCreated,
       type: type.value,
       raw: props.modelValue,
+      createdAt: useFormat().actually(),
+      updatedAt: useFormat().actually(),
     } as ContextStatePageContent
+
+    console.log(content)
 
     type.value = 'paragraph'
     input.value.placeholder = t('editor.text.placeholder.paragraph')

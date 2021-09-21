@@ -1,5 +1,4 @@
 import { ContextState, ContextStatePageContent } from '@/types/context'
-import { objectToString } from '@vue/shared'
 
 export default {
   namespaced: true,

@@ -8,4 +8,6 @@ export interface ContextStatePageContent {
   id: number
   type: string
   raw: string
+  createdAt: string
+  updatedAt: string
 }
