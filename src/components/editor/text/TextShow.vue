@@ -2,36 +2,9 @@
   <section
     class="flex w-full"
     @mouseenter="hover = true"
-    @mouseout="hover = false"
+    @mouseleave="hover = false"
   >
-    <HeroIcon v-if="hover" class="text-black dark:text-gray-200 h-4 w-4 opacity-30">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-4 w-4"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-      >
-        <path
-          d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"
-        />
-      </svg>
-    </HeroIcon>
-    <HeroIcon v-if="hover" class="text-black dark:text-gray-200 h-4 w-4 opacity-30">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-4 w-4"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-        />
-      </svg>
-    </HeroIcon>
+    <TextShowPopover v-if="hover" :position="position" />
     <p
       class="w-full break-all"
       :class="[
@@ -49,7 +22,7 @@
           ? store.state.editor.styles.show.paragraph.fontWeight
           : '',
 
-        props.type === 'heading-one' ? 'indent-15 pb-3' : '',
+        props.type === 'heading-one' ? 'indent-15 pb-10' : '',
         props.type === 'heading-one'
           ? store.state.editor.styles.show.heading.one.fontSize
           : '',
@@ -63,7 +36,7 @@
           ? store.state.editor.styles.show.heading.one.fontWeight
           : '',
 
-        props.type === 'heading-two' ? 'indent-15 pb-2 pt-8' : '',
+        props.type === 'heading-two' ? 'indent-15 pb-3 pt-8' : '',
         props.type === 'heading-two'
           ? store.state.editor.styles.show.heading.two.fontSize
           : '',
@@ -77,7 +50,7 @@
           ? store.state.editor.styles.show.heading.two.fontWeight
           : '',
 
-        props.type === 'heading-three' ? 'indent-15 pb-1 pt-5' : '',
+        props.type === 'heading-three' ? 'indent-15 pb-2 pt-5' : '',
         props.type === 'heading-three'
           ? store.state.editor.styles.show.heading.three.fontSize
           : '',
@@ -103,6 +76,7 @@
 
   const props = defineProps({
     type: String,
+    position: Number,
   })
 
   const store = useStore()

@@ -27,6 +27,7 @@
           :id="page.type + '-' + page.id"
           :key="page.id"
           :type="page.type"
+          :position="page.id"
         >
           {{ page.raw }}
         </TextShow>

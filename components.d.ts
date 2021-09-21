@@ -20,8 +20,9 @@ declare module 'vue' {
     Switch: typeof import('@headlessui/vue')['Switch']
     SwitchGroup: typeof import('@headlessui/vue')['SwitchGroup']
     SwitchLabel: typeof import('@headlessui/vue')['SwitchLabel']
-    TextInput: typeof import('E:/dev/projects/write-better/src/components/editor/TextInput.vue')['default']
-    TextShow: typeof import('E:/dev/projects/write-better/src/components/editor/TextShow.vue')['default']
+    TextInput: typeof import('E:/dev/projects/write-better/src/components/editor/text/TextInput.vue')['default']
+    TextShow: typeof import('E:/dev/projects/write-better/src/components/editor/text/TextShow.vue')['default']
+    TextShowPopover: typeof import('E:/dev/projects/write-better/src/components/editor/text/TextShowPopover.vue')['default']
   }
 }
 

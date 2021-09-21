@@ -78,7 +78,8 @@
 
   const enterHandler = () => {
     const content = {
-      id: store.state.context.entity,
+      // TODO: Hash id
+      id: store.state.context.totalEntityCreated,
       type: type.value,
       raw: props.modelValue,
     } as ContextStatePageContent
