@@ -50,7 +50,7 @@
       <AsideBar />
       <AsideGraph />
     </aside>
-    <main class="flex-1">
+    <main class="flex-1 bg-wb-image dark:bg-wb-image-dark">
       <EditorBase />
     </main>
   </section>

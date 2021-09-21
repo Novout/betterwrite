@@ -20,6 +20,10 @@
   .wb-text {
     @apply text-black dark:text-gray-200;
   }
+
+  .wb-background-color {
+    @apply bg-gray-100 dark:bg-gray-700;
+  }
 }
 
 @layer utilities {
