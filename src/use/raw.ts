@@ -2,11 +2,15 @@ import { ContextStatePageContent } from '@/types/context'
 
 export const useRaw = () => {
   const convert = (page: ContextStatePageContent) => {
-    let final: string = ''
+    let final = ''
     let _italic = false
     let _bold = false
 
-    for (var i = 0; i < page.raw.length; i++) {
+    console.log(page.type)
+
+    if (page.type !== 'paragraph') return page.raw
+
+    for (let i = 0; i < page.raw.length; i++) {
       const letter = page.raw.charAt(i)
 
       if (letter === '*' && !_italic) {
@@ -25,8 +29,6 @@ export const useRaw = () => {
         final += letter
       }
     }
-
-    console.log(final)
 
     return final
   }
