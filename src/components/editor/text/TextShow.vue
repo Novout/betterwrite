@@ -6,7 +6,7 @@
   >
     <TextShowPopover v-if="hover" :position="position" />
     <p
-      class="w-full break-all"
+      class="w-full break-all text-justify"
       :class="[
         props.type === 'paragraph' ? 'indent-15' : '',
         props.type === 'paragraph'
