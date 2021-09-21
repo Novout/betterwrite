@@ -1,6 +1,7 @@
 <template>
   <section
-    class="w-full hover:shadow-winset dark:hover:shadow-binset"
+    class="w-full"
+    :class="edit ? 'shadow-winset dark:shadow-binset' : ''"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
@@ -188,7 +189,7 @@
   }
 
   const onEdit = () => {
-    height.value = (show.value as any).offsetHeight + 'px'
+    if (!edit.value) height.value = (show.value as any).offsetHeight + 'px'
 
     edit.value = true
   }
