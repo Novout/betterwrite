@@ -147,5 +147,9 @@
     localStorage.setItem('lang', _lang ? 'en' : 'br')
 
     _lang ? (locale.value = 'en') : (locale.value = 'br')
+
+    _lang
+      ? ((document.querySelector('html') as HTMLElement).lang = 'en-US')
+      : ((document.querySelector('html') as HTMLElement).lang = 'pt-BR')
   })
 </script>

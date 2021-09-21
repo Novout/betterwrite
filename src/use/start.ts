@@ -16,6 +16,10 @@ const langSet = (store: any) => {
   const lang = localStorage.getItem('lang')
 
   lang === 'br' ? (locale.value = 'br') : (locale.value = 'en')
+
+  lang === 'br'
+    ? ((document.querySelector('html') as HTMLElement).lang = 'pt-BR')
+    : ((document.querySelector('html') as HTMLElement).lang = 'en-US')
 }
 
 export const useStart = () => {
