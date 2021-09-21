@@ -6,8 +6,11 @@ export default {
     },
     aside: {
       configuration: {
-        title: 'Configuration',
+        title: 'Settings',
         dark: 'Dark Mode',
+      },
+      project: {
+        title: 'Project',
       },
     },
   },

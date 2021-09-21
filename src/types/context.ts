@@ -1,4 +1,6 @@
 export interface ContextState {
+  id: number
+  totalEntityCreated: number
   page: Array<ContextStatePageContent>
 }
 

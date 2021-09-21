@@ -5,6 +5,7 @@ export default {
   namespaced: true,
   state: () =>
     ({
+      id: 0,
       totalEntityCreated: 0,
       page: [],
     } as ContextState),
@@ -19,7 +20,7 @@ export default {
       )
 
       const index = state.page.indexOf(content)
-      
+
       state.page[index].raw = obj.raw
     },
     removeInPage(state: any, id: number) {

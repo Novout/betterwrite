@@ -6,7 +6,6 @@
   >
     <TextShowPopover v-if="hover && !edit" :position="position" />
     <p
-      @click.prevent="edit = true"
       class="w-full break-all"
       :class="[
         props.type === 'paragraph' && !edit ? 'indent-15' : '',
@@ -66,13 +65,14 @@
           ? store.state.editor.styles.show.heading.three.fontWeight
           : '',
       ]"
+      @click.prevent="edit = true"
     >
       <slot v-if="!edit" />
       <input
         v-else
         id="editInput"
-        class="w-full bg-transparent p-2"
         v-model="data"
+        class="w-full bg-transparent p-2"
         @keypress.enter="onUpdateContent"
       />
     </p>
@@ -86,15 +86,15 @@
   const props = defineProps({
     type: {
       required: true,
-      type: String
+      type: String,
     },
     position: {
       required: true,
-      type: Number
+      type: Number,
     },
     raw: {
       required: true,
-      type: String
+      type: String,
     },
   })
 
@@ -107,7 +107,7 @@
   watch(edit, async (_edit) => {
     await nextTick
     if (_edit) {
-      const input = (document.querySelector('#editInput') as HTMLInputElement);
+      const input = document.querySelector('#editInput') as HTMLInputElement
 
       input.focus()
 
@@ -116,7 +116,10 @@
   })
 
   const onUpdateContent = () => {
-    store.commit('context/updateInPage', { raw: data.value, id: props.position })
+    store.commit('context/updateInPage', {
+      raw: data.value,
+      id: props.position,
+    })
 
     edit.value = false
   }

@@ -9,6 +9,9 @@ export default {
         title: 'Configuração',
         dark: 'Modo Escuro',
       },
+      project: {
+        title: 'Projeto',
+      },
     },
   },
 }
