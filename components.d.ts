@@ -5,6 +5,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     AsideBar: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideBar.vue')['default']
+    AsideBarCommands: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideBarCommands.vue')['default']
     AsideBarItem: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideBarItem.vue')['default']
     AsideGraph: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideGraph.vue')['default']
     Disclosure: typeof import('@headlessui/vue')['Disclosure']

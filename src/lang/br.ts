@@ -20,6 +20,38 @@ export default {
       },
       commands: {
         title: 'Comandos',
+        contents: [
+          {
+            tag: 'P',
+            title: 'Parágrafo',
+            description: '/p texto aqui',
+          },
+          {
+            tag: 'B',
+            title: 'Negrito',
+            description: '&texto aqui&',
+          },
+          {
+            tag: 'I',
+            title: 'Itálico',
+            description: '*texto aqui*',
+          },
+          {
+            tag: 'H1',
+            title: 'Heading 1',
+            description: '/h1 texto aqui',
+          },
+          {
+            tag: 'H2',
+            title: 'Heading 2',
+            description: '/h2 texto aqui',
+          },
+          {
+            tag: 'H3',
+            title: 'Heading 3',
+            description: '/h3 texto aqui',
+          },
+        ],
       },
     },
   },

@@ -104,6 +104,64 @@
         </svg>
       </HeroIcon>
     </template>
+    <AsideBarCommands
+      :title="t('editor.aside.commands.contents[0].title')"
+      :description="t('editor.aside.commands.contents[0].description')"
+    >
+      <template #exib>
+        <p class="text-xl">{{ t('editor.aside.commands.contents[0].tag') }}</p>
+      </template>
+    </AsideBarCommands>
+    <AsideBarCommands
+      :title="t('editor.aside.commands.contents[1].title')"
+      :description="t('editor.aside.commands.contents[1].description')"
+    >
+      <template #exib>
+        <p class="font-bold text-xl">
+          {{ t('editor.aside.commands.contents[1].tag') }}
+        </p>
+      </template>
+    </AsideBarCommands>
+    <AsideBarCommands
+      :title="t('editor.aside.commands.contents[2].title')"
+      :description="t('editor.aside.commands.contents[2].description')"
+    >
+      <template #exib>
+        <p class="font-italic text-xl">
+          {{ t('editor.aside.commands.contents[2].tag') }}
+        </p>
+      </template>
+    </AsideBarCommands>
+    <AsideBarCommands
+      :title="t('editor.aside.commands.contents[3].title')"
+      :description="t('editor.aside.commands.contents[3].description')"
+    >
+      <template #exib>
+        <p class="font-bold text-xl">
+          {{ t('editor.aside.commands.contents[3].tag') }}
+        </p>
+      </template>
+    </AsideBarCommands>
+    <AsideBarCommands
+      :title="t('editor.aside.commands.contents[4].title')"
+      :description="t('editor.aside.commands.contents[4].description')"
+    >
+      <template #exib>
+        <p class="font-bold text-xl">
+          {{ t('editor.aside.commands.contents[4].tag') }}
+        </p>
+      </template>
+    </AsideBarCommands>
+    <AsideBarCommands
+      :title="t('editor.aside.commands.contents[5].title')"
+      :description="t('editor.aside.commands.contents[5].description')"
+    >
+      <template #exib>
+        <p class="font-bold text-xl">
+          {{ t('editor.aside.commands.contents[5].tag') }}
+        </p>
+      </template>
+    </AsideBarCommands>
   </AsideBarItem>
   <AsideBarItem :title="t('editor.aside.project.title')">
     <template #icon>
