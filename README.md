@@ -4,13 +4,13 @@ A online (and offline desktop in future) editor for creative writers.
 
 ## Tasks for v0.1.0
 
-- [ ] Initial Page Entry-Text
-- [ ] Aside Graph-Tree
-- [ ] Simple Parser Style-Raw
+- [X] Initial Page Entry-Text
+- [X] Simple Parser Style-Raw
 - [ ] Final Text Defines
 - [ ] Grammar Corrections
-- [ ] PDF Generator
-- [ ] Themes
+- [ ] Project Control Pages
+- [ ] Aside Graph-Tree
+- [ ] PDF Generator + Customization
 
 ## Setup
 
