@@ -20,4 +20,40 @@ export interface EditorStateInput {
 export interface EditorStateShow {
   fontFamily: string
   fontColor: string
+  paragraph: EditorStateShowParagraph
+  heading: EditorStateShowHeading
+}
+
+export interface EditorStateShowParagraph {
+  fontFamily: string
+  fontColor: string
+  fontSize: string
+  fontWeight: string
+}
+
+export interface EditorStateShowHeading {
+  one: EditorStateShowHeadingOne
+  two: EditorStateShowHeadingTwo
+  three: EditorStateShowHeadingThree
+}
+
+export interface EditorStateShowHeadingOne {
+  fontFamily: string
+  fontColor: string
+  fontSize: string
+  fontWeight: string
+}
+
+export interface EditorStateShowHeadingTwo {
+  fontFamily: string
+  fontColor: string
+  fontSize: string
+  fontWeight: string
+}
+
+export interface EditorStateShowHeadingThree {
+  fontFamily: string
+  fontColor: string
+  fontSize: string
+  fontWeight: string
 }

@@ -22,7 +22,7 @@
           ? store.state.editor.styles.show.paragraph.fontWeight
           : '',
 
-        props.type === 'heading-one' ? 'indent-15 pb-10 pt-10' : '',
+        props.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
         props.type === 'heading-one'
           ? store.state.editor.styles.show.heading.one.fontSize
           : '',
