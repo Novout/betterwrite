@@ -5,6 +5,7 @@
     @mouseout="hover = false"
   >
     <input
+      ref="input"
       v-model="cmp"
       class="flex-1 rounded-none border-none shadow-2xl p-1"
       :class="[
@@ -16,7 +17,7 @@
         store.state.editor.styles.input.fontColor,
       ]"
       type="text"
-      :placeholder="t('editor.text.inputCode')"
+      :placeholder="t('editor.text.placeholder.base')"
       @input.prevent="handler"
       @keypress.enter="enterHandler"
     />
@@ -40,6 +41,7 @@
 
   const hover = ref(false)
   const type = ref('paragraph')
+  const input = ref(null as any)
 
   const cmp = computed({
     get() {
@@ -54,24 +56,28 @@
     if (_cmp.startsWith('/p')) {
       type.value = 'paragraph'
       cmp.value = ''
+      input.value.placeholder = t('editor.text.placeholder.paragraph')
       return
     }
 
     if (_cmp.startsWith('/h1')) {
       type.value = 'heading-one'
       cmp.value = ''
+      input.value.placeholder = t('editor.text.placeholder.headingone')
       return
     }
 
     if (_cmp.startsWith('/h2')) {
       type.value = 'heading-two'
       cmp.value = ''
+      input.value.placeholder = t('editor.text.placeholder.headingtwo')
       return
     }
 
     if (_cmp.startsWith('/h3')) {
       type.value = 'heading-three'
       cmp.value = ''
+      input.value.placeholder = t('editor.text.placeholder.headingthree')
       return
     }
   })
@@ -85,6 +91,7 @@
     } as ContextStatePageContent
 
     type.value = 'paragraph'
+    input.value.placeholder = t('editor.text.placeholder.paragraph')
 
     emit('enter', content)
   }

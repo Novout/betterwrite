@@ -6,8 +6,6 @@ export const useRaw = () => {
     let _italic = false
     let _bold = false
 
-    console.log(page.type)
-
     if (page.type !== 'paragraph') return page.raw
 
     for (let i = 0; i < page.raw.length; i++) {
