@@ -26,12 +26,8 @@
           v-for="page in store.state.context.page"
           :id="page.type + '-' + page.id"
           :key="page.id"
-          :type="page.type"
-          :position="page.id"
-          :raw="page.raw"
-        >
-          {{ page.raw }}
-        </TextShow>
+          :page="page"
+        />
       </section>
       <TextInput v-model="entry" @enter="enterListener" />
     </div>
