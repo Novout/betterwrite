@@ -39,8 +39,12 @@
         fixed
         md:relative
         h-screen
+        max-h-screen
+        overflow-y-auto
         w-auto
-        md:w-60
+        md:w-40
+        lg:w-50
+        xl:w-60
         bg-white
         dark:bg-gray-700
         border-r border-gray-300
