@@ -3,8 +3,9 @@
     class="flex w-full hover:shadow-winset dark:hover:shadow-binset"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
+    @click.prevent="edit = true"
   >
-    <TextShowPopover v-if="hover" :position="position" />
+    <TextShowPopover v-if="hover && !edit" :position="position" />
     <p
       class="w-full break-all"
       :class="[
@@ -65,21 +66,35 @@
           : '',
       ]"
     >
-      <slot />
+      <slot v-if="!edit" />
+      <input
+        v-else
+        id="editInput"
+        class="w-full bg-transparent"
+        @keypress.enter="edit = false"
+      />
     </p>
   </section>
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref, watch, nextTick } from 'vue'
   import { useStore } from 'vuex'
 
   const props = defineProps({
     type: String,
     position: Number,
+    raw: String,
   })
 
   const store = useStore()
 
   const hover = ref(false)
+  const edit = ref(false)
+
+  watch(edit, async (_edit) => {
+    await nextTick
+    if (_edit)
+      (document.querySelector('#editInput') as HTMLInputElement).focus()
+  })
 </script>

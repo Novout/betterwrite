@@ -28,6 +28,7 @@
           :key="page.id"
           :type="page.type"
           :position="page.id"
+          :raw="page.raw"
         >
           {{ page.raw }}
         </TextShow>
