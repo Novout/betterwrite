@@ -20,7 +20,7 @@
     >
       <section
         id="edit"
-        class="flex flex-col w-full overflow-y-auto max-h-editor"
+        class="flex flex-col w-full overflow-y-auto max-h-editor px-14"
       >
         <TextShow
           v-for="page in store.state.context.page"

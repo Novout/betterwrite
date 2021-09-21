@@ -5,7 +5,7 @@
     @mouseleave="hover = false"
   >
     <TextShowPopover v-if="hover && !edit" :position="props.page.id" />
-    <div class="w-full break-all" @click.prevent="edit = true">
+    <div class="w-full" @click.prevent="edit = true">
       <p
         v-if="!edit"
         class="overflow-hidden"
