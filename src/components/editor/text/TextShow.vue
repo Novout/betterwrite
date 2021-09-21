@@ -1,13 +1,14 @@
 <template>
   <section
-    class="flex w-full hover:shadow-winset dark:hover:shadow-binset"
+    class="w-full hover:shadow-winset dark:hover:shadow-binset"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
     <TextShowPopover v-if="hover && !edit" :position="props.page.id" />
-    <div class="w-full" @click.prevent="edit = true">
+    <div class="w-full" @click.prevent="onEdit">
       <p
         v-if="!edit"
+        ref="show"
         class="overflow-hidden"
         :class="[
           props.page.type === 'paragraph' && !edit ? 'indent-15' : '',
@@ -69,11 +70,77 @@
         ]"
         v-html="useRaw().convert(props.page as any)"
       />
-      <input
+      <textarea
         v-else
         id="editInput"
         v-model="data"
-        class="w-full bg-transparent p-2 dark:text-gray-100 text-black"
+        :class="[
+          props.page.type === 'paragraph' ? 'text-justify indent-15' : '',
+          props.page.type === 'paragraph'
+            ? store.state.editor.styles.show.paragraph.fontSize
+            : '',
+          props.page.type === 'paragraph'
+            ? store.state.editor.styles.show.paragraph.fontFamily
+            : '',
+          props.page.type === 'paragraph'
+            ? store.state.editor.styles.show.paragraph.fontColor
+            : '',
+          props.page.type === 'paragraph'
+            ? store.state.editor.styles.show.paragraph.fontWeight
+            : '',
+
+          props.page.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
+          props.page.type === 'heading-one'
+            ? store.state.editor.styles.show.heading.one.fontSize
+            : '',
+          props.page.type === 'heading-one'
+            ? store.state.editor.styles.show.heading.one.fontFamily
+            : '',
+          props.page.type === 'heading-one'
+            ? store.state.editor.styles.show.heading.one.fontColor
+            : '',
+          props.page.type === 'heading-one'
+            ? store.state.editor.styles.show.heading.one.fontWeight
+            : '',
+
+          props.page.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
+          props.page.type === 'heading-two'
+            ? store.state.editor.styles.show.heading.two.fontSize
+            : '',
+          props.page.type === 'heading-two'
+            ? store.state.editor.styles.show.heading.two.fontFamily
+            : '',
+          props.page.type === 'heading-two'
+            ? store.state.editor.styles.show.heading.two.fontColor
+            : '',
+          props.page.type === 'heading-two'
+            ? store.state.editor.styles.show.heading.two.fontWeight
+            : '',
+
+          props.page.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
+          props.page.type === 'heading-three'
+            ? store.state.editor.styles.show.heading.three.fontSize
+            : '',
+          props.page.type === 'heading-three'
+            ? store.state.editor.styles.show.heading.three.fontFamily
+            : '',
+          props.page.type === 'heading-three'
+            ? store.state.editor.styles.show.heading.three.fontColor
+            : '',
+          props.page.type === 'heading-three'
+            ? store.state.editor.styles.show.heading.three.fontWeight
+            : '',
+        ]"
+        class="
+          w-full
+          text-xs
+          bg-transparent
+          dark:text-gray-100
+          text-black
+          resize-none
+          overflow-hidden
+        "
+        :style="{ height }"
         @keypress.enter="onUpdateContent"
       />
     </div>
@@ -97,6 +164,8 @@
   const hover = ref(false)
   const edit = ref(false)
   const data = ref('')
+  const show = ref(null)
+  const height = ref('0px')
 
   watch(edit, async (_edit) => {
     await nextTick
@@ -116,5 +185,11 @@
     })
 
     edit.value = false
+  }
+
+  const onEdit = () => {
+    height.value = (show.value as any).offsetHeight + 'px'
+
+    edit.value = true
   }
 </script>

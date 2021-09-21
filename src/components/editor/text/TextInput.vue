@@ -93,8 +93,6 @@
       updatedAt: useFormat().actually(),
     } as ContextStatePageContent
 
-    console.log(content)
-
     type.value = 'paragraph'
     input.value.placeholder = t('editor.text.placeholder.paragraph')
 
