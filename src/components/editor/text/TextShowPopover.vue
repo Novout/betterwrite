@@ -2,7 +2,7 @@
   <section
     class="
       flex
-      relative
+      absolute
       justify-start
       items-start
       transition-all
