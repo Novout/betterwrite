@@ -22,7 +22,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="h-4 w-4">
+    <HeroIcon class="h-4 w-4" @click="onUpEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -36,7 +36,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="h-4 w-4">
+    <HeroIcon class="h-4 w-4" @click="onDownEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -80,5 +80,19 @@
 
   const onDeleteEntity = () => {
     store.commit('context/removeInPage', props.position)
+  }
+
+  const onUpEntity = () => {
+    store.commit('context/switchInPage', {
+      id: props.position,
+      direction: 'up',
+    })
+  }
+
+  const onDownEntity = () => {
+    store.commit('context/switchInPage', {
+      id: props.position,
+      direction: 'down',
+    })
   }
 </script>

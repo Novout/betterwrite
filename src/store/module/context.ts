@@ -1,4 +1,5 @@
 import { ContextState, ContextStatePageContent } from '@/types/context'
+import { objectToString } from '@vue/shared'
 
 export default {
   namespaced: true,
@@ -16,6 +17,31 @@ export default {
       state.page = state.page.filter(
         (entity: ContextStatePageContent) => entity.id !== id
       )
+    },
+    switchInPage(state: any, obj: Record<any, any>) {
+      const content = state.page.find(
+        (content: ContextStatePageContent) => content.id === obj.id
+      )
+
+      if (!content) return
+
+      const index = state.page.indexOf(content)
+
+      let sIndex
+      obj.direction === 'up' ? (sIndex = index - 1) : (sIndex = index + 1)
+
+      console.log('o nvoo index', sIndex)
+      console.log('tamanho do array', state.page.length)
+
+      if (
+        (sIndex < 0 && obj.direction === 'up') ||
+        (sIndex >= state.page.length && obj.direction === 'down')
+      )
+        return
+
+      const temp = state.page[index]
+      state.page[index] = state.page[sIndex]
+      state.page[sIndex] = temp
     },
   },
   actions: {},

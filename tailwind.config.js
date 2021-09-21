@@ -14,6 +14,10 @@ module.exports = {
       }),
       minHeight: theme => ({
         "editor": "75vh"
+      }),
+      boxShadow: theme => ({
+        "binset": `inset 0 0 10px rgba(255, 255, 255, 0.1)`,
+        "winset": `inset 0 0 10px rgba(0, 0, 0, 0.1)`
       })
     },
     textIndent: {

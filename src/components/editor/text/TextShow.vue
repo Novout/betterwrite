@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex w-full"
+    class="flex w-full hover:shadow-winset dark:hover:shadow-binset"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
@@ -22,7 +22,7 @@
           ? store.state.editor.styles.show.paragraph.fontWeight
           : '',
 
-        props.type === 'heading-one' ? 'indent-15 pb-10' : '',
+        props.type === 'heading-one' ? 'indent-15 pb-10 pt-10' : '',
         props.type === 'heading-one'
           ? store.state.editor.styles.show.heading.one.fontSize
           : '',
