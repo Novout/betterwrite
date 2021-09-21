@@ -1,6 +1,6 @@
-# Write Better (WIP)
+# Better Write (WIP)
 
-A online (and offline desktop in future) editor for creative writers.
+A editor for creative writers.
 
 ## Tasks for v0.1.0
 
