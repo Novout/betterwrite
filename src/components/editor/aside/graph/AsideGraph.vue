@@ -1,9 +1,10 @@
 <template>
   <div class="flex flex-col mt-5 w-full p-1 wb-text">
     <p>{{ t('editor.aside.graph.actuallyPage') }}</p>
-    <div v-for="entity in store.state.context.page" :key="entity.id">
+    <div v-for="entity in store.state.context.page" :id="entity.id" :key="entity.id">
       <div
         v-if="entity.type === 'heading-one'"
+        id:
         class="border-l border-black dark:border-gray-500 ml-1"
       >
         <p class="text-tiny ml-2 font-bold truncate cursor-pointer py-2">
@@ -11,7 +12,7 @@
         </p>
       </div>
       <div
-        v-if="entity.type === 'heading-two'"
+        v-else-if="entity.type === 'heading-two'"
         class="flex items-end border-l border-black dark:border-gray-500 ml-1"
       >
         <div
@@ -20,7 +21,7 @@
         <p class="text-sm ml-2 truncate cursor-pointer">{{ entity.raw }}</p>
       </div>
       <div
-        v-if="entity.type === 'heading-three'"
+        v-else-if="entity.type === 'heading-three'"
         class="flex items-end border-l border-black dark:border-gray-500 ml-1"
       >
         <div
