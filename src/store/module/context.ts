@@ -7,54 +7,54 @@ export default {
       id: 0,
       totalEntityCreated: 0,
       onlyHeadingOne: false,
-      page: [],
+      entity: [],
     } as ContextState),
   mutations: {
     load(state: any, content: ContextState) {
       state.id = content.id
       state.totalEntityCreated = content.totalEntityCreated
       state.onlyHeadingOne = content.onlyHeadingOne
-      state.page = content.page
+      state.entity = content.entity
     },
     addInPage(state: any, content: ContextStatePageContent) {
       state.totalEntityCreated++
-      state.page.push(content)
+      state.entity.push(content)
     },
     updateInPage(state: any, obj: Record<any, any>) {
-      const content = state.page.find(
+      const content = state.entity.find(
         (content: ContextStatePageContent) => content.id === obj.id
       )
 
-      const index = state.page.indexOf(content)
+      const index = state.entity.indexOf(content)
 
-      state.page[index].raw = obj.raw
+      state.entity[index].raw = obj.raw
     },
     removeInPage(state: any, id: number) {
-      state.page = state.page.filter(
+      state.entity = state.entity.filter(
         (entity: ContextStatePageContent) => entity.id !== id
       )
     },
     switchInPage(state: any, obj: Record<any, any>) {
-      const content = state.page.find(
+      const content = state.entity.find(
         (content: ContextStatePageContent) => content.id === obj.id
       )
 
       if (!content) return
 
-      const index = state.page.indexOf(content)
+      const index = state.entity.indexOf(content)
 
       let sIndex
       obj.direction === 'up' ? (sIndex = index - 1) : (sIndex = index + 1)
 
       if (
         (sIndex < 0 && obj.direction === 'up') ||
-        (sIndex >= state.page.length && obj.direction === 'down')
+        (sIndex >= state.entity.length && obj.direction === 'down')
       )
         return
 
-      const temp = state.page[index]
-      state.page[index] = state.page[sIndex]
-      state.page[sIndex] = temp
+      const temp = state.entity[index]
+      state.entity[index] = state.entity[sIndex]
+      state.entity[sIndex] = temp
     },
   },
   actions: {},

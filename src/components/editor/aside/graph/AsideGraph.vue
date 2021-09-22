@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col mt-5 w-full p-1 wb-text">
     <p>{{ t('editor.aside.graph.projectPages') }}</p>
-    <div v-for="entity in store.state.context.page" :id="`graph-${entity.id}`" :key="entity.id" @click="useScroll().to(`#${entity.type + '-' + entity.id}`)">
+    <div v-for="entity in store.state.context.entity" :id="`graph-${entity.id}`" :key="entity.id" @click="useScroll().to(`#${entity.type + '-' + entity.id}`)">
       <div
         v-if="entity.type === 'heading-one'"
         id:

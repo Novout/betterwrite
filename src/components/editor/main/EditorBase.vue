@@ -16,10 +16,10 @@
       >
         <transition-group name="list" tag="p">
           <TextShow
-            v-for="page in store.state.context.page"
-            :id="page.type + '-' + page.id"
-            :key="page.id"
-            :page="page"
+            v-for="entity in store.state.context.entity"
+            :id="entity.type + '-' + entity.id"
+            :key="entity.id"
+            :entity="entity"
           />
         </transition-group>
       </section>

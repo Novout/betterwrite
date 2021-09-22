@@ -5,6 +5,7 @@ export interface EditorState {
 
 export interface EditorStateConfiguration {
   dark: boolean
+  lang?: boolean
 }
 
 export interface EditorStateStyles {

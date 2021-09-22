@@ -7,8 +7,8 @@
   >
     <TextShowPopover
       v-if="hover && !edit"
-      :type="props.page.type"
-      :position="props.page.id"
+      :type="props.entity.type"
+      :position="props.entity.id"
     />
     <div class="w-full" @click.prevent="onEdit">
       <p
@@ -16,123 +16,123 @@
         ref="show"
         class="overflow-hidden w-full"
         :class="[
-          props.page.type === 'paragraph' && !edit ? 'indent-15' : '',
-          props.page.type === 'paragraph' ? 'text-justify' : '',
-          props.page.type === 'paragraph'
+          props.entity.type === 'paragraph' && !edit ? 'indent-15' : '',
+          props.entity.type === 'paragraph' ? 'text-justify' : '',
+          props.entity.type === 'paragraph'
             ? store.state.editor.styles.show.paragraph.fontSize
             : '',
-          props.page.type === 'paragraph'
+          props.entity.type === 'paragraph'
             ? store.state.editor.styles.show.paragraph.fontFamily
             : '',
-          props.page.type === 'paragraph'
+          props.entity.type === 'paragraph'
             ? store.state.editor.styles.show.paragraph.fontColor
             : '',
-          props.page.type === 'paragraph'
+          props.entity.type === 'paragraph'
             ? store.state.editor.styles.show.paragraph.fontWeight
             : '',
 
-          props.page.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
-          props.page.type === 'heading-one'
+          props.entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
+          props.entity.type === 'heading-one'
             ? store.state.editor.styles.show.heading.one.fontSize
             : '',
-          props.page.type === 'heading-one'
+          props.entity.type === 'heading-one'
             ? store.state.editor.styles.show.heading.one.fontFamily
             : '',
-          props.page.type === 'heading-one'
+          props.entity.type === 'heading-one'
             ? store.state.editor.styles.show.heading.one.fontColor
             : '',
-          props.page.type === 'heading-one'
+          props.entity.type === 'heading-one'
             ? store.state.editor.styles.show.heading.one.fontWeight
             : '',
 
-          props.page.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
-          props.page.type === 'heading-two'
+          props.entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
+          props.entity.type === 'heading-two'
             ? store.state.editor.styles.show.heading.two.fontSize
             : '',
-          props.page.type === 'heading-two'
+          props.entity.type === 'heading-two'
             ? store.state.editor.styles.show.heading.two.fontFamily
             : '',
-          props.page.type === 'heading-two'
+          props.entity.type === 'heading-two'
             ? store.state.editor.styles.show.heading.two.fontColor
             : '',
-          props.page.type === 'heading-two'
+          props.entity.type === 'heading-two'
             ? store.state.editor.styles.show.heading.two.fontWeight
             : '',
 
-          props.page.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
-          props.page.type === 'heading-three'
+          props.entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
+          props.entity.type === 'heading-three'
             ? store.state.editor.styles.show.heading.three.fontSize
             : '',
-          props.page.type === 'heading-three'
+          props.entity.type === 'heading-three'
             ? store.state.editor.styles.show.heading.three.fontFamily
             : '',
-          props.page.type === 'heading-three'
+          props.entity.type === 'heading-three'
             ? store.state.editor.styles.show.heading.three.fontColor
             : '',
-          props.page.type === 'heading-three'
+          props.entity.type === 'heading-three'
             ? store.state.editor.styles.show.heading.three.fontWeight
             : '',
         ]"
-        v-html="useRaw().convert(props.page as any)"
+        v-html="useRaw().convert(props.entity as any)"
       />
       <textarea
         v-else
         id="editInput"
         v-model="data"
         :class="[
-          props.page.type === 'paragraph' ? 'text-justify indent-15' : '',
-          props.page.type === 'paragraph'
+          props.entity.type === 'paragraph' ? 'text-justify indent-15' : '',
+          props.entity.type === 'paragraph'
             ? store.state.editor.styles.show.paragraph.fontSize
             : '',
-          props.page.type === 'paragraph'
+          props.entity.type === 'paragraph'
             ? store.state.editor.styles.show.paragraph.fontFamily
             : '',
-          props.page.type === 'paragraph'
+          props.entity.type === 'paragraph'
             ? store.state.editor.styles.show.paragraph.fontColor
             : '',
-          props.page.type === 'paragraph'
+          props.entity.type === 'paragraph'
             ? store.state.editor.styles.show.paragraph.fontWeight
             : '',
 
-          props.page.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
-          props.page.type === 'heading-one'
+          props.entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
+          props.entity.type === 'heading-one'
             ? store.state.editor.styles.show.heading.one.fontSize
             : '',
-          props.page.type === 'heading-one'
+          props.entity.type === 'heading-one'
             ? store.state.editor.styles.show.heading.one.fontFamily
             : '',
-          props.page.type === 'heading-one'
+          props.entity.type === 'heading-one'
             ? store.state.editor.styles.show.heading.one.fontColor
             : '',
-          props.page.type === 'heading-one'
+          props.entity.type === 'heading-one'
             ? store.state.editor.styles.show.heading.one.fontWeight
             : '',
 
-          props.page.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
-          props.page.type === 'heading-two'
+          props.entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
+          props.entity.type === 'heading-two'
             ? store.state.editor.styles.show.heading.two.fontSize
             : '',
-          props.page.type === 'heading-two'
+          props.entity.type === 'heading-two'
             ? store.state.editor.styles.show.heading.two.fontFamily
             : '',
-          props.page.type === 'heading-two'
+          props.entity.type === 'heading-two'
             ? store.state.editor.styles.show.heading.two.fontColor
             : '',
-          props.page.type === 'heading-two'
+          props.entity.type === 'heading-two'
             ? store.state.editor.styles.show.heading.two.fontWeight
             : '',
 
-          props.page.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
-          props.page.type === 'heading-three'
+          props.entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
+          props.entity.type === 'heading-three'
             ? store.state.editor.styles.show.heading.three.fontSize
             : '',
-          props.page.type === 'heading-three'
+          props.entity.type === 'heading-three'
             ? store.state.editor.styles.show.heading.three.fontFamily
             : '',
-          props.page.type === 'heading-three'
+          props.entity.type === 'heading-three'
             ? store.state.editor.styles.show.heading.three.fontColor
             : '',
-          props.page.type === 'heading-three'
+          props.entity.type === 'heading-three'
             ? store.state.editor.styles.show.heading.three.fontWeight
             : '',
         ]"
@@ -158,7 +158,7 @@
   import { useRaw } from '@/use/raw'
 
   const props = defineProps({
-    page: {
+    entity: {
       required: true,
       type: Object,
     },
@@ -179,14 +179,14 @@
 
       input.focus()
 
-      data.value = props.page.raw
+      data.value = props.entity.raw
     }
   })
 
   const onUpdateContent = async () => {
     store.commit('context/updateInPage', {
       raw: data.value,
-      id: props.page.id,
+      id: props.entity.id,
     })
     await nextTick
     store.commit('project/updatePage', store.state.context)

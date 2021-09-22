@@ -28,7 +28,7 @@ export default {
         id: 0,
         totalEntityCreated: 2,
         onlyHeadingOne: true,
-        page: [
+        entity: [
           {
             id: 0,
             type: 'heading-one',

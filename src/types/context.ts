@@ -2,7 +2,7 @@ export interface ContextState {
   id: number
   totalEntityCreated: number
   onlyHeadingOne: boolean
-  page: Array<ContextStatePageContent>
+  entity: Array<ContextStatePageContent>
 }
 
 export interface ContextStatePageContent {
