@@ -9,6 +9,11 @@ export default {
       page: [],
     } as ContextState),
   mutations: {
+    load(state: any, content: ContextState) {
+      state.id = content.id
+      state.totalEntityCreated = content.totalEntityCreated
+      state.page = content.page
+    },
     addInPage(state: any, content: ContextStatePageContent) {
       state.totalEntityCreated++
       state.page.push(content)

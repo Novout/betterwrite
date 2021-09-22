@@ -12,9 +12,9 @@
         class="flex flex-col w-full overflow-y-auto max-h-editor px-14"
       >
         <TextShow
-          v-for="page in store.state.context.page"
+          v-for="(page, index) in store.state.context.page"
           :id="page.type + '-' + page.id"
-          :key="page.id"
+          :key="index"
           :page="page"
         />
       </section>
