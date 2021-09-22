@@ -19,6 +19,9 @@ export default {
       state.name = useText().kebab(payload.name)
       state.version = payload.version
       state.totalPagesCreated++
+      state.main = {}
+      state.summary = {}
+      state.pages = []
 
       const init = {
         id: 0,
