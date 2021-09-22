@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
   import { ContextStatePageContent } from '@/types/context'
+  import { useEntity } from '@/use/entity'
   import { useFormat } from '@/use/format'
   import { ref, computed, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
@@ -54,14 +55,14 @@
   })
 
   watch(cmp, (_cmp: string) => {
-    if (_cmp.startsWith('/p')) {
+    if (useEntity().entry(_cmp, 'p')) {
       type.value = 'paragraph'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.paragraph')
       return
     }
 
-    if (_cmp.startsWith('/h1')) {
+    if (useEntity().entry(_cmp, 'h1')) {
       if (store.state.context.onlyHeadingOne && type.value) return
 
       type.value = 'heading-one'
@@ -70,14 +71,14 @@
       return
     }
 
-    if (_cmp.startsWith('/h2')) {
+    if (useEntity().entry(_cmp, 'h2')) {
       type.value = 'heading-two'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.headingtwo')
       return
     }
 
-    if (_cmp.startsWith('/h3')) {
+    if (useEntity().entry(_cmp, 'h3')) {
       type.value = 'heading-three'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.headingthree')
