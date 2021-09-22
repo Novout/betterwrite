@@ -7,6 +7,9 @@
           rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
       "
     >
+      <EditorBaseBlocked
+        v-if="store.state.project.name === '__NOT_CREATED__'"
+      />
       <section
         id="edit"
         class="flex flex-col w-full overflow-y-auto max-h-editor px-14"
@@ -18,7 +21,11 @@
           :page="page"
         />
       </section>
-      <TextInput v-model="entry" @enter="enterListener" />
+      <TextInput
+        v-if="store.state.project.name !== '__NOT_CREATED__'"
+        v-model="entry"
+        @enter="enterListener"
+      />
     </div>
   </div>
 </template>

@@ -1,12 +1,13 @@
 import { ProjectState } from '@/types/project'
 import { useText } from '@/use/text'
+import { version } from 'vue-demi'
 import { useFormat } from '../../use/format'
 
 export default {
   namespaced: true,
   state: () =>
     ({
-      name: 'foo',
+      name: '__NOT_CREATED__',
       version: '0.1.0',
       totalPagesCreated: 0,
       main: {},
@@ -26,14 +27,14 @@ export default {
           {
             id: 0,
             type: 'heading-one',
-            raw: 'Untitled',
+            raw: payload.name,
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
           },
           {
             id: 1,
             type: 'paragraph',
-            raw: 'Untitled',
+            raw: 'v' + payload.version,
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
           },

@@ -17,6 +17,7 @@ export default {
       },
       project: {
         title: 'Projeto',
+        blocked: 'Crie ou carregue um projeto!!!',
         new: {
           title: 'Novo Projeto',
           name: 'Nome',

@@ -17,6 +17,7 @@ export default {
       },
       project: {
         title: 'Project',
+        blocked: 'Create or load a project!!!',
         new: {
           title: 'New Project',
           name: 'Name',
