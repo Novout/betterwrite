@@ -1,11 +1,15 @@
 <template>
   <section
-    class="w-full"
+    class="w-full flex"
     :class="edit ? 'shadow-winset dark:shadow-binset' : ''"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
-    <TextShowPopover v-if="hover && !edit" :position="props.page.id" />
+    <TextShowPopover
+      v-if="hover && !edit"
+      :type="props.page.type"
+      :position="props.page.id"
+    />
     <div class="w-full" @click.prevent="onEdit">
       <p
         v-if="!edit"
