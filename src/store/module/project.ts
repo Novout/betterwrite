@@ -2,6 +2,7 @@ import { ProjectState } from '@/types/project'
 import { useText } from '@/use/text'
 import { version } from 'vue-demi'
 import { useFormat } from '../../use/format'
+import { ContextState } from '../../types/context'
 
 export default {
   namespaced: true,
@@ -24,9 +25,10 @@ export default {
       state.summary = {}
       state.pages = []
 
-      const init = {
+      const init: ContextState = {
         id: 0,
         totalEntityCreated: 2,
+        onlyHeadingOne: true,
         page: [
           {
             id: 0,

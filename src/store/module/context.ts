@@ -6,12 +6,14 @@ export default {
     ({
       id: 0,
       totalEntityCreated: 0,
+      onlyHeadingOne: false,
       page: [],
     } as ContextState),
   mutations: {
     load(state: any, content: ContextState) {
       state.id = content.id
       state.totalEntityCreated = content.totalEntityCreated
+      state.onlyHeadingOne = content.onlyHeadingOne
       state.page = content.page
     },
     addInPage(state: any, content: ContextStatePageContent) {

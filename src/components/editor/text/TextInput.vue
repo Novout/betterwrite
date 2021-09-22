@@ -62,6 +62,8 @@
     }
 
     if (_cmp.startsWith('/h1')) {
+      if (store.state.context.onlyHeadingOne && type.value) return
+
       type.value = 'heading-one'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.headingone')
