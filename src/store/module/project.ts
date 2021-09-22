@@ -13,6 +13,7 @@ export default {
       main: {},
       summary: {},
       pages: [],
+      pageLoaded: 0,
     } as ProjectState),
   mutations: {
     create(state: any, payload: Record<any, any>) {
@@ -44,6 +45,7 @@ export default {
         ],
       }
 
+      state.pageLoaded = init.id
       state.pages.push(init)
     },
   },

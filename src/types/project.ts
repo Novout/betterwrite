@@ -7,4 +7,5 @@ export interface ProjectState {
   main: Record<any, any>
   summary: Record<any, any>
   pages: Array<ContextState>
+  pageLoaded: number
 }

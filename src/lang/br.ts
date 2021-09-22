@@ -24,7 +24,7 @@ export default {
           version: 'Versão',
           confirm: 'Criar',
           content: {
-            name: 'Um Incrível Texto',
+            name: 'Um Novo Projeto Incrível',
             version: '0.1.0',
           },
         },

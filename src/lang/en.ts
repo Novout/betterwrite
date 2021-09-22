@@ -24,7 +24,7 @@ export default {
           version: 'Version',
           confirm: 'Create',
           content: {
-            name: 'Nice Text',
+            name: 'Nice New Project',
             version: '0.1.0',
           },
         },
