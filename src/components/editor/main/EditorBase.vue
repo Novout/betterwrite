@@ -14,12 +14,14 @@
         id="edit"
         class="flex flex-col w-full overflow-y-auto max-h-editor px-14"
       >
-        <TextShow
-          v-for="(page, index) in store.state.context.page"
-          :id="page.type + '-' + page.id"
-          :key="index"
-          :page="page"
-        />
+        <transition-group name="list" tag="p">
+          <TextShow
+            v-for="page in store.state.context.page"
+            :id="page.type + '-' + page.id"
+            :key="page.id"
+            :page="page"
+          />
+        </transition-group>
       </section>
       <TextInput
         v-if="store.state.project.name !== '__NOT_CREATED__'"
@@ -50,3 +52,17 @@
     entry.value = ''
   }
 </script>
+
+<style scoped>
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 200ms;
+  }
+  .list-enter,
+  .list-leave-to {
+    opacity: 0;
+  }
+  .list-move {
+    transition: transform 300ms;
+  }
+</style>
