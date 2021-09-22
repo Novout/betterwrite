@@ -10,6 +10,10 @@ export default {
       },
     },
     aside: {
+      graph: {
+        actuallyPage: 'Página Atual',
+        projectPages: 'Projeto',
+      },
       configuration: {
         title: 'Settings',
         dark: 'Dark Mode',
