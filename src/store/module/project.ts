@@ -8,6 +8,7 @@ export default {
   state: () =>
     ({
       name: '__NOT_CREATED__',
+      nameRaw: '__NOT_CREATED__',
       version: '0.1.0',
       totalPagesCreated: 0,
       main: {},
@@ -18,6 +19,7 @@ export default {
   mutations: {
     create(state: any, payload: Record<any, any>) {
       state.name = useText().kebab(payload.name)
+      state.nameRaw = payload.name
       state.version = payload.version
       state.totalPagesCreated++
       state.main = {}

@@ -1,6 +1,8 @@
 <template>
   <div class="flex flex-col mt-5 w-full p-1 wb-text">
-    <p>{{ t('editor.aside.graph.projectPages') }}</p>
+    <p v-if="store.state.project.name !== '__NOT_CREATED__'">
+      {{ store.state.project.nameRaw }}
+    </p>
     <div
       v-for="entity in store.state.context.entity"
       :id="`graph-${entity.id}`"
