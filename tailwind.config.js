@@ -6,8 +6,8 @@ module.exports = {
      'raleway': ['Raleway', 'ui-sans-serif', 'system-ui'],
     },
     fontSize: {
-      '3xs': '.25rem',
-      '2xs': '.50rem',
+      '3xs': '.35rem',
+      '2xs': '.60rem',
       'xs': '.75rem',
       'sm': '.875rem',
       'tiny': '.875rem',

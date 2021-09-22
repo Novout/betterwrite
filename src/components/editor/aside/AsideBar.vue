@@ -174,16 +174,6 @@
       </template>
     </AsideBarCommands>
     <AsideBarCommands
-      :title="t('editor.aside.commands.contents[3].title')"
-      :description="t('editor.aside.commands.contents[3].description')"
-    >
-      <template #exib>
-        <p class="font-bold text-xl">
-          {{ t('editor.aside.commands.contents[3].tag') }}
-        </p>
-      </template>
-    </AsideBarCommands>
-    <AsideBarCommands
       :title="t('editor.aside.commands.contents[4].title')"
       :description="t('editor.aside.commands.contents[4].description')"
     >

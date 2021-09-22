@@ -1,7 +1,7 @@
 <template>
   <button
     class="
-      text-xs
+      text-2xs
       w-full
       p-2
       font-bold
@@ -10,6 +10,7 @@
       border-black
       dark:border-gray-300
       rounded-none
+      flex
     "
     @click="onCreateNewPage"
   >

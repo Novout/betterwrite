@@ -62,15 +62,6 @@
       return
     }
 
-    if (useEntity().entry(_cmp, 'h1')) {
-      if (store.state.context.onlyHeadingOne && type.value) return
-
-      type.value = 'heading-one'
-      cmp.value = ''
-      input.value.placeholder = t('editor.text.placeholder.headingone')
-      return
-    }
-
     if (useEntity().entry(_cmp, 'h2')) {
       type.value = 'heading-two'
       cmp.value = ''
