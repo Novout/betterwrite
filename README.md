@@ -6,9 +6,9 @@ A editor for creative writers.
 
 - [X] Initial Page Entry-Text
 - [X] Simple Parser Style-Raw
-- [ ] Final Text Defines
+- [X] Final Text Defines
 - [ ] Grammar Corrections
-- [ ] Project Control Pages
+- [X] Project Control Pages
 - [ ] Aside Graph-Tree
 - [ ] PDF Generator + Customization
 
