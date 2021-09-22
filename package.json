@@ -19,6 +19,7 @@
     "tailwindcss": "^2.2.15",
     "tailwindcss-typography": "^3.1.0",
     "vue": "^3.2.6",
+    "vue-final-modal": "^3.4.1",
     "vue-i18n": "^9.1.7",
     "vue-router": "4",
     "vuex": "^4.0.2"

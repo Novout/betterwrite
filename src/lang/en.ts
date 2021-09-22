@@ -17,6 +17,16 @@ export default {
       },
       project: {
         title: 'Project',
+        new: {
+          title: 'New Project',
+          name: 'Name',
+          version: 'Version',
+          confirm: 'Create',
+          content: {
+            name: 'Nice Text',
+            version: '0.1.0',
+          },
+        },
       },
       commands: {
         title: 'Commands',

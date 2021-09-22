@@ -179,6 +179,7 @@
         </svg>
       </HeroIcon>
     </template>
+    <AsideProjectNew />
   </AsideBarItem>
 </template>
 

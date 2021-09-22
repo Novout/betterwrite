@@ -8,6 +8,8 @@ declare module 'vue' {
     AsideBarCommands: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideBarCommands.vue')['default']
     AsideBarItem: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideBarItem.vue')['default']
     AsideGraph: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideGraph.vue')['default']
+    AsideModal: typeof import('E:/dev/projects/write-better/src/components/editor/aside/project/AsideModal.vue')['default']
+    AsideProjectNew: typeof import('E:/dev/projects/write-better/src/components/editor/aside/project/AsideProjectNew.vue')['default']
     Disclosure: typeof import('@headlessui/vue')['Disclosure']
     DisclosureButton: typeof import('@headlessui/vue')['DisclosureButton']
     DisclosurePanel: typeof import('@headlessui/vue')['DisclosurePanel']
@@ -15,15 +17,17 @@ declare module 'vue' {
     EditorHeader: typeof import('E:/dev/projects/write-better/src/components/editor/EditorHeader.vue')['default']
     HeroIcon: typeof import('E:/dev/projects/write-better/src/components/utils/HeroIcon.vue')['default']
     LangSwitcher: typeof import('E:/dev/projects/write-better/src/components/utils/LangSwitcher.vue')['default']
-    Popover: typeof import("@headlessui/vue")["Popover"];
-    PopoverButton: typeof import("@headlessui/vue")["PopoverButton"];
-    PopoverPanel: typeof import("@headlessui/vue")["PopoverPanel"];
+    Popover: typeof import('@headlessui/vue')['Popover']
+    PopoverButton: typeof import('@headlessui/vue')['PopoverButton']
+    PopoverPanel: typeof import('@headlessui/vue')['PopoverPanel']
     Switch: typeof import('@headlessui/vue')['Switch']
     SwitchGroup: typeof import('@headlessui/vue')['SwitchGroup']
     SwitchLabel: typeof import('@headlessui/vue')['SwitchLabel']
     TextInput: typeof import('E:/dev/projects/write-better/src/components/editor/text/TextInput.vue')['default']
     TextShow: typeof import('E:/dev/projects/write-better/src/components/editor/text/TextShow.vue')['default']
     TextShowPopover: typeof import('E:/dev/projects/write-better/src/components/editor/text/TextShowPopover.vue')['default']
+    VTailwindModal: typeof import('E:/dev/projects/write-better/src/components/utils/VTailwindModal.vue')['default']
+    WBModal: typeof import('E:/dev/projects/write-better/src/components/utils/WBModal.vue')['default']
   }
 }
 

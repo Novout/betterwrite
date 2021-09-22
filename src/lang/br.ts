@@ -17,6 +17,16 @@ export default {
       },
       project: {
         title: 'Projeto',
+        new: {
+          title: 'Novo Projeto',
+          name: 'Nome',
+          version: 'Versão',
+          confirm: 'Criar',
+          content: {
+            name: 'Um Incrível Texto',
+            version: '0.1.0',
+          },
+        },
       },
       commands: {
         title: 'Comandos',

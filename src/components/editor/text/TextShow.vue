@@ -10,7 +10,7 @@
       <p
         v-if="!edit"
         ref="show"
-        class="overflow-hidden"
+        class="overflow-hidden w-full"
         :class="[
           props.page.type === 'paragraph' && !edit ? 'indent-15' : '',
           props.page.type === 'paragraph' ? 'text-justify' : '',
