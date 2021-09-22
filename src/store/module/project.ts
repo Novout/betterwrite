@@ -1,7 +1,8 @@
 import { ProjectState } from '@/types/project'
 import { useText } from '@/use/text'
 import { useFormat } from '@/use/format'
-import { ContextState } from '@/types/context'
+import { ContextState, ContextStatePageContent } from '@/types/context'
+import { useI18n } from 'vue-i18n'
 
 export default {
   namespaced: true,
@@ -66,13 +67,13 @@ export default {
 
       const init: ContextState = {
         id: state.totalPagesCreated,
-        totalEntityCreated: 0,
+        totalEntityCreated: 2,
         onlyHeadingOne: false,
         entity: [
           {
             id: 0,
             type: 'heading-one',
-            raw: state.nameRaw,
+            raw: 'Untitled',
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
           },
@@ -88,6 +89,17 @@ export default {
 
       state.pageLoaded = init.id
       state.pages.push(init)
+    },
+    deletePage(state: any, context: ContextState) {
+      const content = state.pages.find(
+        (content: ContextStatePageContent) => content.id === context.id
+      )
+
+      if (!content) return
+
+      const index = state.pages.indexOf(content)
+
+      state.pages.splice(index, 1)
     },
   },
   actions: {},

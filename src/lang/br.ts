@@ -35,6 +35,7 @@ export default {
           confirm: 'Criar',
           content: {
             name: 'Um Novo Projeto Incrível',
+            nameNew: 'Sem Título',
             version: '0.1.0',
           },
         },

@@ -43,7 +43,6 @@ export default {
 
       const index = state.entity.indexOf(content)
 
-      state.totalEntityCreated--
       state.entity.splice(index, 1)
     },
     switchInPage(state: any, obj: Record<any, any>) {

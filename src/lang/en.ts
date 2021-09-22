@@ -35,6 +35,7 @@ export default {
           confirm: 'Create',
           content: {
             name: 'Nice New Project',
+            nameNew: 'Untitled',
             version: '0.1.0',
           },
         },

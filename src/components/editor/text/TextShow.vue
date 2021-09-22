@@ -11,7 +11,7 @@
       :position="props.entity.id"
     />
     <div class="w-full" @click.prevent="onEdit">
-      <p
+      <div
         v-if="!edit"
         ref="show"
         class="overflow-hidden w-full"
