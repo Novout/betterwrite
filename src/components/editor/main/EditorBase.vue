@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { ref, nextTick } from 'vue'
   import { useStore } from 'vuex'
   import { ContextStatePageContent } from '@/types/context'
 
@@ -41,8 +41,11 @@
 
   const entry = ref('')
 
-  const enterListener = (content: ContextStatePageContent) => {
+  const enterListener = async (content: ContextStatePageContent) => {
     store.commit('context/addInPage', content)
+    await nextTick
+    console.log(store.state.context)
+    store.commit('project/updatePage', store.state.context)
 
     setTimeout(() => {
       const scr = document.querySelector('#edit')

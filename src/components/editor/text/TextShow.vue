@@ -183,11 +183,13 @@
     }
   })
 
-  const onUpdateContent = () => {
+  const onUpdateContent = async () => {
     store.commit('context/updateInPage', {
       raw: data.value,
       id: props.page.id,
     })
+    await nextTick
+    store.commit('project/updatePage', store.state.context)
 
     edit.value = false
   }

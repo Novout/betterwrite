@@ -5,9 +5,10 @@
 declare module 'vue' {
   export interface GlobalComponents {
     AsideBar: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideBar.vue')['default']
-    AsideBarCommands: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideBarCommands.vue')['default']
+    AsideBarCommands: typeof import('E:/dev/projects/write-better/src/components/editor/aside/commands/AsideBarCommands.vue')['default']
     AsideBarItem: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideBarItem.vue')['default']
-    AsideGraph: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideGraph.vue')['default']
+    AsideGraph: typeof import('E:/dev/projects/write-better/src/components/editor/aside/graph/AsideGraph.vue')['default']
+    AsideGraphDefine: typeof import('E:/dev/projects/write-better/src/components/editor/aside/graph/AsideGraphDefine.vue')['default']
     AsideModal: typeof import('E:/dev/projects/write-better/src/components/editor/aside/project/AsideModal.vue')['default']
     AsideProjectNew: typeof import('E:/dev/projects/write-better/src/components/editor/aside/project/AsideProjectNew.vue')['default']
     Disclosure: typeof import('@headlessui/vue')['Disclosure']

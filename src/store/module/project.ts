@@ -1,6 +1,5 @@
 import { ProjectState } from '@/types/project'
 import { useText } from '@/use/text'
-import { version } from 'vue-demi'
 import { useFormat } from '../../use/format'
 import { ContextState } from '../../types/context'
 
@@ -49,6 +48,15 @@ export default {
 
       state.pageLoaded = init.id
       state.pages.push(init)
+    },
+    updatePage(state: any, context: ContextState) {
+      const _context = state.pages.find(
+        (_context: ContextState) => _context.id === context.id
+      )
+
+      const index = state.pages.indexOf(_context)
+
+      state.pages[index] = context
     },
   },
   actions: {},
