@@ -6,6 +6,7 @@
   outline: 0;
   font-family: 'Raleway';
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 input:-webkit-autofill,

@@ -36,6 +36,7 @@
   import { ref, nextTick } from 'vue'
   import { useStore } from 'vuex'
   import { ContextStatePageContent } from '@/types/context'
+  import { useScroll } from '@/use/scroll'
 
   const store = useStore()
 
@@ -44,13 +45,9 @@
   const enterListener = async (content: ContextStatePageContent) => {
     store.commit('context/addInPage', content)
     await nextTick
-    console.log(store.state.context)
     store.commit('project/updatePage', store.state.context)
 
-    setTimeout(() => {
-      const scr = document.querySelector('#edit')
-      ;(scr as HTMLElement).scrollTop = (scr as HTMLElement).scrollHeight
-    }, 0)
+    useScroll().force('#edit')
 
     entry.value = ''
   }
