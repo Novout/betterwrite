@@ -12,7 +12,7 @@
   >
     <div
       v-if="props.type === 'heading-two' || props.type === 'heading-three'"
-      :class="[props.type === 'heading-two' ? 'w-12' : 'w-6']"
+      :class="[props.type === 'heading-two' ? 'w-6' : 'w-12']"
       class="border-b mb-2 h-1 border-black dark:border-gray-500"
     ></div>
     <p

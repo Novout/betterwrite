@@ -23,6 +23,11 @@ export default {
       project: {
         title: 'Projeto',
         blocked: 'Crie ou carregue um projeto!!!',
+        page: {
+          new: {
+            title: 'Novo Capítulo',
+          },
+        },
         new: {
           title: 'Novo Projeto',
           name: 'Nome',

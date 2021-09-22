@@ -1,4 +1,5 @@
 import { ContextState, ContextStatePageContent } from '@/types/context'
+import { useFormat } from '@/use/format'
 
 export default {
   namespaced: true,
@@ -25,14 +26,25 @@ export default {
         (content: ContextStatePageContent) => content.id === obj.id
       )
 
+      if (!content) return
+
       const index = state.entity.indexOf(content)
+
+      obj.updatedAt = useFormat().actually()
 
       state.entity[index].raw = obj.raw
     },
     removeInPage(state: any, id: number) {
-      state.entity = state.entity.filter(
-        (entity: ContextStatePageContent) => entity.id !== id
+      const content = state.entity.find(
+        (content: ContextStatePageContent) => content.id === id
       )
+
+      if (!content) return
+
+      const index = state.entity.indexOf(content)
+
+      state.totalEntityCreated--
+      state.entity.splice(index, 1)
     },
     switchInPage(state: any, obj: Record<any, any>) {
       const content = state.entity.find(
@@ -52,8 +64,12 @@ export default {
       )
         return
 
+      const target = state.entity[sIndex]
+
+      if (target.type === 'heading-one') return
+
       const temp = state.entity[index]
-      state.entity[index] = state.entity[sIndex]
+      state.entity[index] = target
       state.entity[sIndex] = temp
     },
   },

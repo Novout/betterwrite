@@ -221,6 +221,7 @@
       </HeroIcon>
     </template>
     <AsideProjectNew />
+    <AsidePageNew />
   </AsideBarItem>
 </template>
 

@@ -23,6 +23,11 @@ export default {
       project: {
         title: 'Project',
         blocked: 'Create or load a project!!!',
+        page: {
+          new: {
+            title: 'New Page',
+          },
+        },
         new: {
           title: 'New Project',
           name: 'Name',

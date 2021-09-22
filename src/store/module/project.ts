@@ -1,7 +1,7 @@
 import { ProjectState } from '@/types/project'
 import { useText } from '@/use/text'
-import { useFormat } from '../../use/format'
-import { ContextState } from '../../types/context'
+import { useFormat } from '@/use/format'
+import { ContextState } from '@/types/context'
 
 export default {
   namespaced: true,
@@ -21,13 +21,13 @@ export default {
       state.name = useText().kebab(payload.name)
       state.nameRaw = payload.name
       state.version = payload.version
-      state.totalPagesCreated++
+      state.totalPagesCreated = 1
       state.main = {}
       state.summary = {}
       state.pages = []
 
       const init: ContextState = {
-        id: 0,
+        id: state.totalPagesCreated,
         totalEntityCreated: 2,
         onlyHeadingOne: true,
         entity: [
@@ -52,13 +52,27 @@ export default {
       state.pages.push(init)
     },
     updatePage(state: any, context: ContextState) {
+      /*
       const _context = state.pages.find(
         (_context: ContextState) => _context.id === context.id
       )
-
+      
       const index = state.pages.indexOf(_context)
-
       state.pages[index] = context
+      */
+    },
+    newPage(state: any) {
+      state.totalPagesCreated++
+
+      const init: ContextState = {
+        id: state.totalPagesCreated,
+        totalEntityCreated: 0,
+        onlyHeadingOne: false,
+        entity: [],
+      }
+
+      state.pageLoaded = init.id
+      state.pages.push(init)
     },
   },
   actions: {},

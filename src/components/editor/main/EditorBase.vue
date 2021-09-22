@@ -54,6 +54,7 @@
   const enterListener = async (content: ContextStatePageContent) => {
     store.commit('context/addInPage', content)
     await nextTick
+
     store.commit('project/updatePage', store.state.context)
 
     useScroll().force('#edit')

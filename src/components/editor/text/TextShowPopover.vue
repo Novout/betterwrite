@@ -88,6 +88,7 @@
 </template>
 
 <script setup lang="ts">
+  import { nextTick } from 'vue'
   import { useStore } from 'vuex'
 
   const store = useStore()
@@ -97,7 +98,7 @@
     type: String,
   })
 
-  const onDeleteEntity = () => {
+  const onDeleteEntity = async () => {
     if (props.type === 'heading-one') store.state.context.onlyHeadingOne = false
     store.commit('context/removeInPage', props.position)
   }

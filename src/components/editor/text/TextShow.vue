@@ -6,7 +6,7 @@
     @mouseleave="hover = false"
   >
     <TextShowPopover
-      v-if="hover && !edit"
+      v-if="hover && !edit && props.entity.type !== 'heading-one'"
       :type="props.entity.type"
       :position="props.entity.id"
     />
@@ -188,8 +188,6 @@
       raw: data.value,
       id: props.entity.id,
     })
-    await nextTick
-    store.commit('project/updatePage', store.state.context)
 
     edit.value = false
   }
