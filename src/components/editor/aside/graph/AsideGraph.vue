@@ -15,10 +15,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
   import { useScroll } from '@/use/scroll'
 
   const store = useStore()
-  const { t } = useI18n()
 </script>

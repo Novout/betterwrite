@@ -18,6 +18,7 @@ export default {
         title: 'Settings',
         dark: 'Dark Mode',
         lang: 'PT-BR / EN-US',
+        draggable: 'Draggable',
       },
       project: {
         title: 'Project',

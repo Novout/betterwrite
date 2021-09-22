@@ -43,6 +43,7 @@ export default {
       },
       configuration: {
         dark: true,
+        draggable: false,
       },
     } as EditorState),
   mutations: {

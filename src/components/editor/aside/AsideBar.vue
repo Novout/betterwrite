@@ -83,6 +83,47 @@
           />
         </Switch>
       </div>
+      <div class="flex items-center w-full justify-between pt-3">
+        <SwitchLabel
+          class="mr-4 text-black dark:text-gray-300 font-bold text-xs"
+          >{{ t('editor.aside.configuration.draggable') }}</SwitchLabel
+        >
+        <Switch
+          v-model="store.state.editor.configuration.draggable"
+          :class="
+            store.state.editor.configuration.draggable
+              ? 'bg-gray-900'
+              : 'bg-gray-500'
+          "
+          class="
+            relative
+            inline-flex
+            items-center
+            h-6
+            transition-colors
+            rounded-full
+            w-11
+            focus:outline-none
+          "
+        >
+          <span
+            :class="
+              store.state.editor.configuration.draggable
+                ? 'translate-x-6'
+                : 'translate-x-1'
+            "
+            class="
+              inline-block
+              w-4
+              h-4
+              transition-transform
+              transform
+              bg-white
+              rounded-full
+            "
+          />
+        </Switch>
+      </div>
     </SwitchGroup>
   </AsideBarItem>
   <AsideBarItem :title="t('editor.aside.commands.title')">

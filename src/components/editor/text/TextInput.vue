@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex justify-center items-center w-full transition-all"
+    class="flex justify-center items-center w-full"
     @mouseenter="hover = true"
     @mouseout="hover = false"
   >
