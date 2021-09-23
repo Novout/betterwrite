@@ -45,8 +45,11 @@ export default defineConfig({
       'vue-i18n',
       'vue-final-modal',
       'vue-toastification',
-      '@headlessui/vue',
+      '@vuelidade/core',
+      '@vuelidade/validators',
       '@vueuse/core',
+      '@headlessui/vue',
+      'labelmake'
     ],
     exclude: [
       'vue-demi',
