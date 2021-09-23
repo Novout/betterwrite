@@ -1,4 +1,4 @@
-import { useStore } from 'vuex'
+import { Store, useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import { Callback } from '@/types/utils'
 
@@ -11,7 +11,7 @@ const mode: Callback<void> = () => {
   }
 }
 
-const darkSet = (store: any) => {
+const darkSet: Callback<Store<any>, void> = (store: Store<any>) => {
   const dark = localStorage.getItem('theme')
 
   dark
@@ -21,7 +21,7 @@ const darkSet = (store: any) => {
   store.commit('editor/switchTheme', dark ? true : false)
 }
 
-const langSet = (store: any) => {
+const langSet: Callback<Store<any>, void> = (store: Store<any>) => {
   const { locale } = useI18n()
   const lang = localStorage.getItem('lang')
 
@@ -32,7 +32,7 @@ const langSet = (store: any) => {
     : ((document.querySelector('html') as HTMLElement).lang = 'en-US')
 }
 
-export const useStart = () => {
+export const useStart: Callback<void> = () => {
   const store = useStore()
 
   const init = () => {

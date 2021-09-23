@@ -1,6 +1,7 @@
 import { ContextStatePageContent } from '@/types/context'
+import { Callback } from '@/types/utils'
 
-export const useRaw = () => {
+export const useRaw: Callback<any> = () => {
   const convert = (page: ContextStatePageContent) => {
     let final = ''
     let _italic = false
