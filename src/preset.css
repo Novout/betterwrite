@@ -28,18 +28,30 @@ input:-webkit-autofill {
   -webkit-animation-fill-mode: both;
 }
 
+:root {
+  --scr-track: #f1f1f1;
+  --scr-thumb: #888;
+  --scr-thumb-hover: #555;
+}
+
+.dark {
+  --scr-track: #222;
+  --scr-thumb: #888;
+  --scr-thumb-hover: #555;
+}
+
 *::-webkit-scrollbar {
   width: 6px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--src-track);
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--scr-thumb);
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--scr-thumb-hover);
 }
