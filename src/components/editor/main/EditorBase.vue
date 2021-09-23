@@ -48,7 +48,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, nextTick } from 'vue'
+  import { ref } from 'vue'
   import { useStore } from 'vuex'
   import { useDraggable } from '@vueuse/core'
   import { ContextStatePageContent } from '@/types/context'
@@ -63,9 +63,6 @@
 
   const enterListener = async (content: ContextStatePageContent) => {
     store.commit('context/addInPage', content)
-    await nextTick
-
-    store.commit('project/updatePage', store.state.context)
 
     useScroll().force('#edit')
 

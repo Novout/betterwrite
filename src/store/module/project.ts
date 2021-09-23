@@ -52,16 +52,6 @@ export default {
       state.pageLoaded = init.id
       state.pages.push(init)
     },
-    updatePage(state: any, context: ContextState) {
-      /*
-      const _context = state.pages.find(
-        (_context: ContextState) => _context.id === context.id
-      )
-      
-      const index = state.pages.indexOf(_context)
-      state.pages[index] = context
-      */
-    },
     newPage(state: any) {
       state.totalPagesCreated++
 
