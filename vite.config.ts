@@ -7,6 +7,7 @@ import vueI18n from "@intlify/vite-plugin-vue-i18n";
 import eslintPlugin from "vite-plugin-eslint";
 
 export default defineConfig({
+  base: '/better-write/',
   plugins: [
     vue(),
     Components({
