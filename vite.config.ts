@@ -8,6 +8,7 @@ import eslintPlugin from "vite-plugin-eslint";
 
 export default defineConfig({
   base: '/better-write/',
+
   plugins: [
     vue(),
     Components({
@@ -19,12 +20,14 @@ export default defineConfig({
     }),
     eslintPlugin(),
   ],
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "vue-i18n": "vue-i18n/dist/vue-i18n.esm-bundler.js",
     },
   },
+
   server: {
     fs: {
       strict: false,
@@ -32,5 +35,16 @@ export default defineConfig({
     hmr: {
       overlay: false
     }
+  },
+
+  optimizeDeps: {
+    include: [
+      'vue',
+      'vue-router',
+      '@vueuse/core',
+    ],
+    exclude: [
+      'vue-demi',
+    ],
   },
 });

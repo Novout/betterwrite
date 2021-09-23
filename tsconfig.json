@@ -10,7 +10,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "types": ["@intlify/vite-plugin-vue-i18n/client"],
+    "types": ["@intlify/vite-plugin-vue-i18n/client", "vite/client"],
     "paths": {
       "@/*": ["src/*"]
     },
