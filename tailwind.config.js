@@ -31,6 +31,9 @@ module.exports = {
       '7xl': '6rem',
      },
     extend: {
+      top: theme => ({
+        'top-0.75': '0.2rem'
+      }),
       height: theme => ({
         "editor": "75vh",
       }),
