@@ -2,23 +2,17 @@
   <section
     class="
       flex
-      relative
       justify-start
       items-start
       transition-all
+      absolute
       text-black
       dark:text-gray-500
     "
     :class="[
-      props.type === 'heading-one'
-        ? 'justify-center items-center'
-        : 'justify-start items-start',
-      props.type === 'heading-two'
-        ? 'justify-center items-end pb-4'
-        : 'justify-start items-start',
-      props.type === 'heading-three'
-        ? 'justify-center items-end pb-3'
-        : 'justify-start items-start',
+      props.type === 'paragraph' ? 'top-1' : '',
+      props.type === 'heading-two' ? 'top-12' : '',
+      props.type === 'heading-three' ? 'top-8' : '',
     ]"
   >
     <HeroIcon class="h-4 w-4 hover:text-gray-400 dark:hover:text-gray-900">

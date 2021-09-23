@@ -1,6 +1,6 @@
 <template>
   <section
-    class="w-full flex"
+    class="w-full relative"
     :class="edit ? 'shadow-winset dark:shadow-binset' : ''"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
@@ -10,7 +10,7 @@
       :type="props.entity.type"
       :position="props.entity.id"
     />
-    <div class="w-full" @click.prevent="onEdit">
+    <div @click.prevent="onEdit">
       <div
         v-if="!edit"
         ref="show"
