@@ -41,6 +41,10 @@ export default defineConfig({
     include: [
       'vue',
       'vue-router',
+      'vuex',
+      'vue-i18n',
+      'vue-final-modal',
+      '@headlessui/vue',
       '@vueuse/core',
     ],
     exclude: [
