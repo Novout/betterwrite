@@ -20,14 +20,13 @@
   import { useStore } from 'vuex'
   import { useScroll } from '@/use/scroll'
   import { ContextState } from '@/types/context'
+  import { nextTick } from 'vue'
 
   const store = useStore()
 
-  const onClick = (go: string, page: ContextState, type: string) => {
-    if (type === 'heading-one') {
-      store.commit('context/load', page)
-    }
-
-    // useScroll().to(go)
+  const onClick = async (go: string, page: ContextState, type: string) => {
+    if (store.state.context.id !== page.id) store.commit('context/load', page)
+    await nextTick
+    useScroll().to(go)
   }
 </script>

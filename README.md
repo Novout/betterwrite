@@ -8,8 +8,12 @@ A editor for creative writers.
 - [X] Simple Parser Style-Raw
 - [X] Final Text Defines
 - [ ] Grammar Corrections
+
+### Project
+
 - [X] Project Control Pages
 - [X] Aside Graph-Tree
+- [ ] Graph Control-Click
 
 ### PDF
 

@@ -12,11 +12,8 @@
           rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
       "
     >
-      <div class="flex w-full justify-end items-center">
-        <HeroIcon
-          class="relative wb-icon inline-flex"
-          @click.prevent="onDeletePage"
-        >
+      <div class="absolute">
+        <HeroIcon class="wb-icon inline-flex" @click.prevent="onDeletePage">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4"
