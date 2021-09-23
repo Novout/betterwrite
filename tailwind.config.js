@@ -1,9 +1,18 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     fontFamily: {
      'raleway': ['Raleway', 'ui-sans-serif', 'system-ui'],
+    },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+      gray: colors.coolGray,
     },
     fontSize: {
       '3xs': '.35rem',
