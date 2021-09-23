@@ -2634,6 +2634,11 @@ vue-router@4:
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.14"
 
+vue-toastification@^2.0.0-rc.1:
+  version "2.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/vue-toastification/-/vue-toastification-2.0.0-rc.1.tgz#6a994c19635a493eec0ee290e84a966e07c709d2"
+  integrity sha512-hjauv/FyesNZdwcr5m1SCyvu1JmlB+Ts5bTptDLDmsYYlj6Oqv8NYakiElpCF+Abwkn9J/AChh6FwkTL1HOb7Q==
+
 vue-tsc@^0.2.2:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-0.2.3.tgz#12bf48e3c9b1e553d31aad0c641722d5d15841d8"

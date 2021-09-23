@@ -44,6 +44,7 @@ export default defineConfig({
       'vuex',
       'vue-i18n',
       'vue-final-modal',
+      'vue-toastification',
       '@headlessui/vue',
       '@vueuse/core',
     ],
