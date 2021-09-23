@@ -18,8 +18,9 @@
       ]"
       type="text"
       :placeholder="t('editor.text.placeholder.base')"
-      @input.prevent="handler"
+      @input="handler"
       @keypress.enter="enterHandler"
+      @paste="pasteHandler"
     />
   </section>
 </template>
@@ -28,6 +29,7 @@
   import { ContextStatePageContent } from '@/types/context'
   import { useEntity } from '@/use/entity'
   import { useFormat } from '@/use/format'
+  import { useInput } from '@/use/input'
   import { ref, computed, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
@@ -39,11 +41,12 @@
     modelValue: String,
   })
 
-  const emit = defineEmits(['update:modelValue', 'submit', 'enter'])
+  const emit = defineEmits(['update:modelValue', 'submit', 'enter', 'reset'])
 
-  const hover = ref(false)
-  const type = ref('paragraph')
+  const hover = ref<boolean>(false)
+  const type = ref<string>('paragraph')
   const input = ref(null as any)
+  const paste = ref<boolean>(false)
 
   const cmp = computed({
     get() {
@@ -55,6 +58,12 @@
   })
 
   watch(cmp, (_cmp: string) => {
+    if (paste.value) {
+      cmp.value = ''
+
+      paste.value = false
+    }
+
     if (useEntity().entry(_cmp, 'p')) {
       type.value = 'paragraph'
       cmp.value = ''
@@ -79,7 +88,6 @@
 
   const enterHandler = () => {
     const content = {
-      // TODO: Hash id
       id: store.state.context.totalEntityCreated,
       type: type.value,
       raw: props.modelValue,
@@ -92,7 +100,27 @@
 
     emit('enter', content)
   }
+
   const handler = () => {
     emit('submit')
+  }
+
+  const pasteHandler = (event: any) => {
+    paste.value = true
+    emit('reset')
+
+    const data = useInput().pasteText(event)
+
+    data.forEach((raw: string) => {
+      const content = {
+        id: store.state.context.totalEntityCreated,
+        type: 'paragraph',
+        raw,
+        createdAt: useFormat().actually(),
+        updatedAt: useFormat().actually(),
+      } as ContextStatePageContent
+
+      emit('enter', content)
+    })
   }
 </script>

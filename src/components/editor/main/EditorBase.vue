@@ -49,6 +49,7 @@
         v-if="store.state.project.name !== '__NOT_CREATED__'"
         v-model="entry"
         @enter="enterListener"
+        @reset="resetListener"
       />
     </div>
   </div>
@@ -76,6 +77,10 @@
 
     useScroll().force('#edit')
 
+    resetListener()
+  }
+
+  const resetListener = () => {
     entry.value = ''
   }
 

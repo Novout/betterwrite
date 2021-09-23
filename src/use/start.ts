@@ -1,5 +1,15 @@
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
+import { Callback } from '@/types/utils'
+
+const mode: Callback<void> = () => {
+  if (import.meta.env.MODE !== 'production') {
+    console.log = () => {}
+    console.warn = () => {}
+    console.info = () => {}
+    console.debug = () => {}
+  }
+}
 
 const darkSet = (store: any) => {
   const dark = localStorage.getItem('theme')
@@ -26,6 +36,7 @@ export const useStart = () => {
   const store = useStore()
 
   const init = () => {
+    mode()
     darkSet(store)
     langSet(store)
   }

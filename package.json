@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview",
+    "serve": "rm -rf ./dist && yarn build && vite preview",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format",
     "format": "prettier src/**/*.{vue,css,ts} --write"
   },
