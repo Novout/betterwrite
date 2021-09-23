@@ -17,6 +17,7 @@ declare module 'vue' {
     DisclosurePanel: typeof import('@headlessui/vue')['DisclosurePanel']
     EditorBase: typeof import('E:/dev/projects/write-better/src/components/editor/main/EditorBase.vue')['default']
     EditorBaseBlocked: typeof import('E:/dev/projects/write-better/src/components/editor/main/EditorBaseBlocked.vue')['default']
+    EditorBaseHeader: typeof import('E:/dev/projects/write-better/src/components/editor/main/EditorBaseHeader.vue')['default']
     HeroIcon: typeof import('E:/dev/projects/write-better/src/components/utils/HeroIcon.vue')['default']
     Switch: typeof import('@headlessui/vue')['Switch']
     SwitchGroup: typeof import('@headlessui/vue')['SwitchGroup']

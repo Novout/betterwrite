@@ -12,29 +12,21 @@
           rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
       "
     >
-      <div class="absolute">
-        <HeroIcon class="wb-icon inline-flex" @click.prevent="onDeletePage">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
-            <path
-              fill-rule="evenodd"
-              d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </HeroIcon>
-      </div>
+      <EditorBaseHeader />
       <EditorBaseBlocked
         v-if="store.state.project.name === '__NOT_CREATED__'"
       />
       <section
         id="edit"
-        class="flex flex-col w-full overflow-y-auto max-h-editor px-14"
+        class="
+          flex flex-col
+          w-full
+          overflow-y-auto
+          max-h-editor
+          px-14
+          bg-gray-100
+          dark:bg-gray-700
+        "
       >
         <transition-group name="list" tag="p">
           <TextShow
@@ -82,15 +74,6 @@
 
   const resetListener = () => {
     entry.value = ''
-  }
-
-  const onDeletePage = async () => {
-    if (store.state.project.pages.length <= 1) return
-
-    store.commit('project/deletePage', store.state.context)
-    await nextTick
-
-    store.commit('context/load', store.state.project.pages[0])
   }
 </script>
 
