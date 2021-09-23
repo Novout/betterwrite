@@ -7,8 +7,7 @@
   >
     <TextShowPopover
       v-if="hover && !edit && props.entity.type !== 'heading-one'"
-      :type="props.entity.type"
-      :position="props.entity.id"
+      :entity="props.entity"
     />
     <div @click.prevent="onEdit">
       <div

@@ -10,9 +10,9 @@
       dark:text-gray-500
     "
     :class="[
-      props.type === 'paragraph' ? 'top-1' : '',
-      props.type === 'heading-two' ? 'top-12' : '',
-      props.type === 'heading-three' ? 'top-8' : '',
+      props.entity.type === 'paragraph' ? 'top-1' : '',
+      props.entity.type === 'heading-two' ? 'top-12' : '',
+      props.entity.type === 'heading-three' ? 'top-8' : '',
     ]"
   >
     <HeroIcon class="h-4 w-4 hover:text-gray-400 dark:hover:text-gray-900">
@@ -82,31 +82,30 @@
 </template>
 
 <script setup lang="ts">
-  import { nextTick } from 'vue'
   import { useStore } from 'vuex'
 
   const store = useStore()
 
   const props = defineProps({
-    position: Number,
-    type: String,
+    entity: Object as any,
   })
 
   const onDeleteEntity = async () => {
-    if (props.type === 'heading-one') store.state.context.onlyHeadingOne = false
-    store.commit('context/removeInPage', props.position)
+    if (props.entity.type === 'heading-one')
+      store.state.context.onlyHeadingOne = false
+    store.commit('context/removeInPage', props.entity)
   }
 
   const onUpEntity = () => {
     store.commit('context/switchInPage', {
-      id: props.position,
+      entity: props.entity,
       direction: 'up',
     })
   }
 
   const onDownEntity = () => {
     store.commit('context/switchInPage', {
-      id: props.position,
+      entity: props.entity,
       direction: 'down',
     })
   }

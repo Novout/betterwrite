@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { Callback } from '@/types/utils'
 
 const mode: Callback<void> = () => {
-  if (import.meta.env.MODE !== 'production') {
+  if (import.meta.env.MODE === 'production') {
     console.log = () => {}
     console.warn = () => {}
     console.info = () => {}

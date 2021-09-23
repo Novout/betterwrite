@@ -34,25 +34,17 @@ export default {
 
       state.entity[index].raw = obj.raw
     },
-    removeInPage(state: any, id: number) {
-      const content = state.entity.find(
-        (content: ContextStatePageContent) => content.id === id
-      )
+    removeInPage(state: any, entity: ContextStatePageContent) {
+      const index = state.entity.indexOf(entity)
 
-      if (!content) return
-
-      const index = state.entity.indexOf(content)
+      if (index === -1 || !index) return
 
       state.entity.splice(index, 1)
     },
     switchInPage(state: any, obj: Record<any, any>) {
-      const content = state.entity.find(
-        (content: ContextStatePageContent) => content.id === obj.id
-      )
+      const index = state.entity.indexOf(obj.entity)
 
-      if (!content) return
-
-      const index = state.entity.indexOf(content)
+      if (index === -1 || !index) return
 
       let sIndex
       obj.direction === 'up' ? (sIndex = index - 1) : (sIndex = index + 1)
