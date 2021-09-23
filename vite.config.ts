@@ -16,7 +16,7 @@ export default defineConfig({
       resolvers: [HeadlessUiResolver()],
     }),
     vueI18n({
-      include: path.resolve(__dirname, "./src/locales/**"),
+      include: path.resolve(__dirname, "./src/lang/**"),
     }),
     eslintPlugin(),
   ],
