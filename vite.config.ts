@@ -45,8 +45,6 @@ export default defineConfig({
       'vue-i18n',
       'vue-final-modal',
       'vue-toastification',
-      '@vuelidade/core',
-      '@vuelidade/validators',
       '@vueuse/core',
       '@headlessui/vue',
       'labelmake'
