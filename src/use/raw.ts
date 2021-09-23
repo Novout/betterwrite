@@ -13,13 +13,13 @@ export const useRaw = () => {
 
       if (letter === '*' && !_italic) {
         _italic = true
-        final += '<span class="italic">'
+        final += '<span class="italic text-xs">'
       } else if (letter === '*' && _italic) {
         final += '</span>'
         _italic = false
       } else if (letter === '&' && !_bold) {
         _bold = true
-        final += '<span class="font-bold">'
+        final += '<span class="font-bold text-xs">'
       } else if (letter === '&' && _bold) {
         final += '</span>'
         _bold = false
