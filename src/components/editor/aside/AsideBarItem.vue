@@ -19,7 +19,7 @@
       "
     >
       <slot class="h-5 w-5" name="icon" />
-      <span class="text-sm hidden md:inline">{{ props.title }}</span>
+      <span class="hidden text-base md:inline">{{ props.title }}</span>
       <HeroIcon
         :class="open ? 'transform rotate-180' : ''"
         class="w-3 h-3 hidden md:inline"
