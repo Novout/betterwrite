@@ -16,15 +16,18 @@
       </HeroIcon>
     </template>
     <AsideProjectNew />
-    <AsidePageNew v-if="store.state.project.name !== '__NOT_CREATED__'" />
-    <AsideLine v-if="store.state.project.name !== '__NOT_CREATED__'" />
-    <AsideGeneratePDF v-if="store.state.project.name !== '__NOT_CREATED__'" />
+    <AsidePageNew v-if="store.state.project.name !== useEnv().projectEmpty()" />
+    <AsideLine v-if="store.state.project.name !== useEnv().projectEmpty()" />
+    <AsideGeneratePDF
+      v-if="store.state.project.name !== useEnv().projectEmpty()"
+    />
   </AsideBarItem>
 </template>
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
+  import { useEnv } from '@/use/env'
 
   const store = useStore()
   const { t } = useI18n()

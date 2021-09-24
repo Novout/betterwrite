@@ -76,6 +76,7 @@
 
     useScroll().force('#edit')
 
+    console.log(useEnv().projectEmpty())
     resetListener()
   }
 
