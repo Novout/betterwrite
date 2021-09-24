@@ -6,9 +6,6 @@ import { usePDF } from './pdf'
 const mode: Callback<void> = () => {
   if (import.meta.env.MODE === 'production') {
     console.log = () => {}
-    console.warn = () => {}
-    console.info = () => {}
-    console.debug = () => {}
   }
 }
 
