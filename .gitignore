@@ -7,3 +7,4 @@ dist-ssr
 .vscode
 components.d.ts
 TODO.md
+yarn-error.log

@@ -17,7 +17,6 @@
     "autoprefixer": "^10.3.4",
     "date-fns": "^2.24.0",
     "pdfmake": "^0.2.2",
-    "pdfmake-unicode": "^0.0.1",
     "postcss": "^8.3.6",
     "tailwindcss": "^2.2.15",
     "tailwindcss-typography": "^3.1.0",
