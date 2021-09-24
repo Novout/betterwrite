@@ -7,6 +7,11 @@
   font-family: 'Raleway';
 }
 
+#app {
+  min-height: 100vh;
+  width: 100%;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
