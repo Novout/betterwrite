@@ -31,7 +31,6 @@
   import { useEntity } from '@/use/entity'
   import { useFormat } from '@/use/format'
   import { useInput } from '@/use/input'
-  import { useUtils } from '@/use/utils'
   import { ref, computed, watch, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
@@ -68,6 +67,12 @@
       cmp.value = ''
 
       paste.value = false
+    }
+
+    if (_cmp.startsWith('/') && _cmp.length <= 2) {
+      store.commit('absolute/commands')
+    } else if (store.state.absolute.commands) {
+      store.commit('absolute/commands')
     }
 
     if (useEntity().entry(_cmp, 'p')) {
