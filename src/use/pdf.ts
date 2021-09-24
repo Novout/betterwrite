@@ -94,7 +94,7 @@ export const usePDF: Callback<any> = () => {
       return arr
     }
 
-    return { content, contentBreak }
+    return { content }
   }
 
   const create: Callback<any> = (store: Store<any>): Promise<void> => {
