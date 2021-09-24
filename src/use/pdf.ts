@@ -2,7 +2,7 @@ import { Callback } from '@/types/utils'
 import { Store } from 'vuex'
 import { useToast } from 'vue-toastification'
 import * as pdfMake from 'pdfmake/build/pdfmake'
-import pdfFonts from '@/pdfmake/plugin/pdfmake-unicode'
+import fonts from '@/makepdf/local-fonts'
 
 import { GenerateParagraphOptions } from '@/types/pdf'
 import { ContextState, ContextStatePageContent } from '@/types/context'
@@ -11,7 +11,25 @@ export const usePDF: Callback<any> = () => {
   const toast = useToast()
 
   const init: Callback<any> = () => {
-    ;(<any>pdfMake).vfs = pdfFonts
+    ;(<any>pdfMake).vfs = fonts
+
+    pdfMake.fonts = {
+      Roboto: {
+        normal:
+          'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf',
+        bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Medium.ttf',
+        italics:
+          'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Italic.ttf',
+        bolditalics:
+          'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-MediumItalic.ttf',
+      },
+      Raleway: {
+        normal: 'Raleway-Regular.ttf',
+        bold: 'Raleway-Medium.ttf',
+        italics: 'Raleway-Italic.ttf',
+        bolditalics: 'Raleway-MediumItalic.ttf',
+      },
+    }
   }
 
   const generate: Callback<any> = () => {
@@ -48,7 +66,7 @@ export const usePDF: Callback<any> = () => {
         let _text = ''
 
         for (let i = 0; i < options.indent; i++) {
-          _text += '\u200B\t'
+          _text += '   '
         }
 
         _text += raw
@@ -58,7 +76,7 @@ export const usePDF: Callback<any> = () => {
         text = ''
 
         for (let i = 0; i < options.indent; i++) {
-          text += '\u200B\t'
+          text += '   '
         }
 
         text += raw
@@ -67,6 +85,7 @@ export const usePDF: Callback<any> = () => {
       return {
         text,
         style: 'paragraph',
+        preserveLeadingSpaces: true,
       }
     }
 
@@ -130,9 +149,10 @@ export const usePDF: Callback<any> = () => {
                 fontSize: 10,
                 alignment: 'justify',
               },
-              defaultStyle: {
-                fontSize: 12,
-              },
+            },
+            defaultStyle: {
+              fontSize: 12,
+              font: 'Raleway',
             },
             pageBreakBefore: function (
               currentNode: any,
