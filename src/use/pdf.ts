@@ -66,30 +66,6 @@ export const usePDF: Callback<any> = () => {
       }
     }
 
-    const contentBreak = (
-      currentNode: any,
-      followingNodesOnPage: any,
-      nodesOnNextPage: any,
-      previousNodesOnPage: any
-    ) => {
-      //check if signature part is completely on the last page, add pagebreak if not
-      if (
-        currentNode.id === 'signature' &&
-        (currentNode.pageNumbers.length != 1 ||
-          currentNode.pageNumbers[0] != currentNode.pages)
-      ) {
-        return true
-      }
-      //check if last paragraph is entirely on a single page, add pagebreak if not
-      else if (
-        currentNode.id === 'closingParagraph' &&
-        currentNode.pageNumbers.length != 1
-      ) {
-        return true
-      }
-      return false
-    }
-
     const content = (store: Store<any>): Array<any> => {
       const pages: Array<ContextState> = store.state.project.pages
       console.log(pages)
