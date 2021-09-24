@@ -6,6 +6,7 @@ import fonts from '@/makepdf/local-fonts'
 
 import { GenerateParagraphOptions } from '@/types/pdf'
 import { ContextState, ContextStatePageContent } from '@/types/context'
+import { useRaw } from './raw'
 
 export const usePDF: Callback<any> = () => {
   const toast = useToast()
@@ -60,6 +61,7 @@ export const usePDF: Callback<any> = () => {
 
     const paragraph = (raw: string, options: GenerateParagraphOptions) => {
       let text
+      let arr
 
       if (options.stack) {
         text = []
@@ -71,7 +73,9 @@ export const usePDF: Callback<any> = () => {
 
         _text += raw
 
-        text.push(_text)
+        const arr = useRaw().pdfConvert(_text)
+
+        text.push(arr)
       } else {
         text = ''
 
@@ -80,10 +84,12 @@ export const usePDF: Callback<any> = () => {
         }
 
         text += raw
+
+        arr = useRaw().pdfConvert(text)
       }
 
       return {
-        text,
+        text: arr,
         style: 'paragraph',
         preserveLeadingSpaces: true,
       }
