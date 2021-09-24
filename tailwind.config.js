@@ -36,12 +36,15 @@ module.exports = {
       }),
       height: theme => ({
         "editor": "75vh",
+        "editor-mobile": "90vh"
       }),
       maxHeight: theme => ({
-        "editor": "75vh"
+        "editor": "75vh",
+        "editor-mobile": "90vh"
       }),
       minHeight: theme => ({
-        "editor": "75vh"
+        "editor": "75vh",
+        "editor-mobile": "90vh"
       }),
       backgroundColor: theme => ({
         "black-opacity": 'rgba(0,0,0, 0.1)',

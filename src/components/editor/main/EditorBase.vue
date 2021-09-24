@@ -1,8 +1,15 @@
 <template>
-  <div class="md:px-20 sm:px-0 px-0 h-screen flex items-center">
+  <div class="md:px-20 px-2 h-screen flex items-center">
     <div
       ref="main"
-      class="md:w-8/12 w-full h-editor bg-gray-100 dark:bg-gray-700"
+      class="
+        md:w-8/12
+        w-full
+        h-editor-mobile
+        md:h-editor
+        bg-gray-100
+        dark:bg-gray-700
+      "
       :class="[
         store.state.editor.configuration.draggable ? 'fixed' : 'inline-block',
       ]"
