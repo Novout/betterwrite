@@ -61,7 +61,7 @@
 
   const { style } = useDraggable(main, { initialValue: { x: 100, y: 20 } })
 
-  const enterListener = async (content: ContextStatePageContent) => {
+  const enterListener = (content: ContextStatePageContent) => {
     store.commit('context/addInPage', content)
 
     useScroll().force('#edit')

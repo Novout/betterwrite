@@ -27,7 +27,7 @@ declare module 'vue' {
     TextInput: typeof import('E:/dev/projects/write-better/src/components/editor/text/TextInput.vue')['default']
     TextShow: typeof import('E:/dev/projects/write-better/src/components/editor/text/TextShow.vue')['default']
     TextShowPopover: typeof import('E:/dev/projects/write-better/src/components/editor/text/TextShowPopover.vue')['default']
-    WBModal: typeof import('E:/dev/projects/write-better/src/components/utils/WBModal.vue')['default']
+    WBModal: typeof import('E:/dev/projects/write-better/src/components/material/WBModal.vue')['default']
   }
 }
 

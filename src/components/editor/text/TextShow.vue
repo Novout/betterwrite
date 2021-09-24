@@ -182,7 +182,7 @@
     }
   })
 
-  const onUpdateContent = async () => {
+  const onUpdateContent = () => {
     store.commit('context/updateInPage', {
       raw: data.value,
       id: props.entity.id,
