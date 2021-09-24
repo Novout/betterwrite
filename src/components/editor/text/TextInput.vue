@@ -5,6 +5,7 @@
     @mouseout="hover = false"
   >
     <input
+      id="main-input-define"
       ref="input"
       v-model="cmp"
       class="flex-1 rounded-none border-none shadow-2xl p-1"
@@ -30,7 +31,7 @@
   import { useEntity } from '@/use/entity'
   import { useFormat } from '@/use/format'
   import { useInput } from '@/use/input'
-  import { ref, computed, watch } from 'vue'
+  import { ref, computed, watch, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
 
@@ -47,6 +48,10 @@
   const type = ref<string>('paragraph')
   const input = ref(null as any)
   const paste = ref<boolean>(false)
+
+  onMounted(() => {
+    useInput().prevent(input.value)
+  })
 
   const cmp = computed({
     get() {

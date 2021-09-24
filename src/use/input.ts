@@ -7,5 +7,12 @@ export const useInput: Callback<any> = () => {
     return arr.filter((data: string) => data !== '')
   }
 
-  return { pasteText }
+  const prevent = (input: HTMLInputElement) => {
+    input.addEventListener('keydown', (event: Event) => {
+      // TODO: Edge and IE11 insert in a / event
+      // event.stopPropagation()
+    })
+  }
+
+  return { pasteText, prevent }
 }

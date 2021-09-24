@@ -72,7 +72,6 @@ export const usePDF: Callback<any> = () => {
 
     const content = (store: Store<any>): Array<any> => {
       const pages: Array<ContextState> = store.state.project.pages
-      console.log(pages)
       const arr: Array<any> = []
 
       pages.forEach((page: ContextState) => {
@@ -92,8 +91,6 @@ export const usePDF: Callback<any> = () => {
           arr.push(_raw)
         })
       })
-
-      console.log(arr)
 
       return arr
     }
