@@ -48,8 +48,6 @@
       bg-white
       z-aside
       dark:bg-gray-700
-      border-r border-gray-300
-      dark:border-gray-700
     "
   >
     <AsideBar />
