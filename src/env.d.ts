@@ -7,3 +7,5 @@ declare module '*.vue' {
   export default component
 }
 declare module '@heroicons/vue'
+declare module 'pdfmake/build/pdfmake'
+declare module 'pdfmake/build/vfs_fonts'

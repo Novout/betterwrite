@@ -17,7 +17,7 @@ A editor for creative writers.
 
 ### PDF
 
-- [ ] Generator
+- [X] Generator
 - [ ] Page Types
 - [ ] Customization
 

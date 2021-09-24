@@ -212,6 +212,7 @@
     </template>
     <AsideProjectNew />
     <AsidePageNew v-if="store.state.project.name !== '__NOT_CREATED__'" />
+    <AsidePDF v-if="store.state.project.name !== '__NOT_CREATED__'" />
   </AsideBarItem>
 </template>
 

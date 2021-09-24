@@ -11,6 +11,8 @@ declare module 'vue' {
     AsideGraphItem: typeof import('E:/dev/projects/write-better/src/components/editor/aside/graph/AsideGraphItem.vue')['default']
     AsideModal: typeof import('E:/dev/projects/write-better/src/components/editor/aside/AsideModal.vue')['default']
     AsidePageNew: typeof import('E:/dev/projects/write-better/src/components/editor/aside/page/AsidePageNew.vue')['default']
+    AsidePDF: typeof import('E:/dev/projects/write-better/src/components/editor/aside/pdf/AsidePDF.vue')['default']
+    AsidePDFNew: typeof import('E:/dev/projects/write-better/src/components/editor/aside/pdf/AsidePDFNew.vue')['default']
     AsideProjectNew: typeof import('E:/dev/projects/write-better/src/components/editor/aside/project/AsideProjectNew.vue')['default']
     Disclosure: typeof import('@headlessui/vue')['Disclosure']
     DisclosureButton: typeof import('@headlessui/vue')['DisclosureButton']

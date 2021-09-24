@@ -14,7 +14,7 @@ export default {
       totalPagesCreated: 0,
       main: {},
       summary: {},
-      pages: [],
+      pages: [] as Array<ContextState>,
       pageLoaded: 0,
     } as ProjectState),
   mutations: {

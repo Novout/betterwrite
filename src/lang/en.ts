@@ -40,6 +40,9 @@ export default {
           },
         },
       },
+      pdf: {
+        title: 'PDF',
+      },
       commands: {
         title: 'Commands',
         contents: [
