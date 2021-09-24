@@ -21,6 +21,9 @@ export default {
       state.totalEntityCreated++
       state.entity.push(content)
     },
+    addInPageWithPaste(state: any, content: ContextStatePageContent) {
+      // force nextTick for id append...
+    },
     updateInPage(state: any, obj: Record<any, any>) {
       const content = state.entity.find(
         (content: ContextStatePageContent) => content.id === obj.id

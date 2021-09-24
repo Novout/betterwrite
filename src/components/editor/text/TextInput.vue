@@ -31,6 +31,7 @@
   import { useEntity } from '@/use/entity'
   import { useFormat } from '@/use/format'
   import { useInput } from '@/use/input'
+  import { useUtils } from '@/use/utils'
   import { ref, computed, watch, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
@@ -116,7 +117,7 @@
 
     const data = useInput().pasteText(event)
 
-    data.forEach((raw: string) => {
+    data.forEach(async (raw: string) => {
       const content = {
         id: store.state.context.totalEntityCreated,
         type: 'paragraph',
@@ -125,7 +126,9 @@
         updatedAt: useFormat().actually(),
       } as ContextStatePageContent
 
-      emit('enter', content)
+      store.commit('context/addInPageWithPaste', content)
+
+      await emit('enter', content)
     })
   }
 </script>

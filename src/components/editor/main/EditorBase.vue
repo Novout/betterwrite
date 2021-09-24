@@ -31,7 +31,7 @@
         <transition-group name="list" tag="p">
           <TextShow
             v-for="entity in store.state.context.entity"
-            :id="entity.type + '-' + entity.id"
+            :id="id(entity)"
             :key="entity.id"
             :entity="entity"
           />
@@ -71,6 +71,10 @@
 
   const resetListener = () => {
     entry.value = ''
+  }
+
+  const id = (entity: ContextStatePageContent) => {
+    if (!entity.external) return entity.type + '-' + entity.id
   }
 </script>
 

@@ -11,4 +11,5 @@ export interface ContextStatePageContent {
   raw: string
   createdAt: string
   updatedAt: string
+  external?: Array<any>
 }
