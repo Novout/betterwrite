@@ -2,7 +2,7 @@ export default {
   editor: {
     text: {
       placeholder: {
-        base: `Insira '/' para exibir a lista de comandos.`,
+        base: `Insert '/' to display a list of commands.`,
         paragraph: 'Paragraph',
         headingone: 'H1',
         headingtwo: 'H2',

@@ -30,6 +30,12 @@ export const usePDF: Callback<any> = () => {
         italics: 'Raleway-Italic.ttf',
         bolditalics: 'Raleway-MediumItalic.ttf',
       },
+      Poppins: {
+        normal: 'Raleway-Regular.ttf',
+        bold: 'Raleway-Medium.ttf',
+        italics: 'Raleway-Italic.ttf',
+        bolditalics: 'Raleway-MediumItalic.ttf',
+      },
     }
   }
 
