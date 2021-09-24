@@ -43,6 +43,10 @@ module.exports = {
       minHeight: theme => ({
         "editor": "75vh"
       }),
+      backgroundColor: theme => ({
+        "black-opacity": 'rgba(0,0,0, 0.1)',
+        "white-opacity": 'rgba(255,255,255, 0.1)'
+      }),
       boxShadow: theme => ({
         "binset": `inset 0 0 10px rgba(255, 255, 255, 0.1)`,
         "winset": `inset 0 0 10px rgba(0, 0, 0, 0.1)`,

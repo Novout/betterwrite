@@ -11,6 +11,7 @@
       dark:bg-gray-700
       p-2
       rounded
+      shadow-2xl
     "
   >
     <EditorAbsoluteCommands

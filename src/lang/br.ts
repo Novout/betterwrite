@@ -41,7 +41,7 @@ export default {
         },
       },
       pdf: {
-        title: 'PDF',
+        title: 'Gerar PDF',
       },
       commands: {
         title: 'Comandos',

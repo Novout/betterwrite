@@ -6,18 +6,7 @@
   </WBModal>
 
   <button
-    class="
-      text-2xs
-      w-full
-      p-2
-      font-bold
-      dark:text-gray-300
-      hover:border-b
-      border-black
-      dark:border-gray-300
-      rounded-none
-      flex
-    "
+    class="wb-aside-button hover:bg-black-opacity dark:hover:bg-white-opacity"
     @click="show = true"
   >
     {{ props.button }}

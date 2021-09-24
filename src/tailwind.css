@@ -28,6 +28,10 @@
   .wb-background-color {
     @apply bg-gray-100 dark:bg-gray-700;
   }
+
+  .wb-aside-button {
+    @apply text-2xs ml-2 transition w-full font-bold dark:text-gray-300 rounded-none flex;
+  }
 }
 
 @layer utilities {

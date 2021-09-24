@@ -40,9 +40,7 @@
         </svg>
       </HeroIcon>
     </DisclosureButton>
-    <DisclosurePanel
-      class="flex flex-col w-full px-2 pt-2 pb-2 items-center justify-between"
-    >
+    <DisclosurePanel class="flex flex-col w-full items-center justify-between">
       <slot />
     </DisclosurePanel>
   </Disclosure>
