@@ -5,10 +5,7 @@
     <slot></slot>
   </WBModal>
 
-  <button
-    class="wb-aside-button hover:bg-black-opacity dark:hover:bg-white-opacity"
-    @click="show = true"
-  >
+  <button class="wb-aside-button" @click="show = true">
     {{ props.button }}
   </button>
 </template>

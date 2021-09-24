@@ -1,8 +1,5 @@
 <template>
-  <button
-    class="wb-aside-button hover:bg-black-opacity dark:hover:bg-white-opacity"
-    @click="onGeneratePDF"
-  >
+  <button class="wb-aside-button" @click="onGeneratePDF">
     {{ t('editor.aside.pdf.title') }}
   </button>
 </template>

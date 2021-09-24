@@ -1,8 +1,5 @@
 <template>
-  <button
-    class="wb-aside-button hover:bg-black-opacity dark:hover:bg-white-opacity"
-    @click="onCreateNewPage"
-  >
+  <button class="wb-aside-button" @click="onCreateNewPage">
     {{ t('editor.aside.project.page.new.title') }}
   </button>
 </template>

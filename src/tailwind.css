@@ -30,7 +30,7 @@
   }
 
   .wb-aside-button {
-    @apply text-2xs ml-2 transition w-full font-bold dark:text-gray-300 rounded-none flex;
+    @apply text-2xs ml-2 transition w-full font-bold dark:text-gray-300 rounded-none flex active:bg-gray-700 dark:active:bg-gray-100 hover:bg-black-opacity dark:hover:bg-white-opacity;
   }
 }
 

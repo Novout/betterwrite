@@ -19,7 +19,14 @@
     <SwitchGroup>
       <div class="flex items-center w-full justify-between">
         <SwitchLabel
-          class="mr-4 text-black dark:text-gray-300 font-bold text-xs"
+          class="
+            mr-4
+            text-black
+            dark:text-gray-300
+            transition
+            font-bold
+            text-xs
+          "
           >{{ t('editor.aside.configuration.dark') }}</SwitchLabel
         >
         <Switch
@@ -52,7 +59,14 @@
       </div>
       <div class="flex items-center w-full justify-between pt-3">
         <SwitchLabel
-          class="mr-4 text-black dark:text-gray-300 font-bold text-xs"
+          class="
+            mr-4
+            text-black
+            dark:text-gray-300
+            transition
+            font-bold
+            text-xs
+          "
           >{{ t('editor.aside.configuration.lang') }}</SwitchLabel
         >
         <Switch
@@ -85,7 +99,14 @@
       </div>
       <div class="flex items-center w-full justify-between pt-3">
         <SwitchLabel
-          class="mr-4 text-black dark:text-gray-300 font-bold text-xs"
+          class="
+            mr-4
+            text-black
+            dark:text-gray-300
+            transition
+            font-bold
+            text-xs
+          "
           >{{ t('editor.aside.configuration.draggable') }}</SwitchLabel
         >
         <Switch
