@@ -261,10 +261,30 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
   integrity sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==
 
+"@types/node@*":
+  version "16.9.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.9.6.tgz#040a64d7faf9e5d9e940357125f0963012e66f04"
+  integrity sha512-YHUZhBOMTM3mjFkXVcK+WwAcYmyhe1wL4lfqNtzI0b3qAy7yuSetnM7QJazgE5PFmgVTNGiLOgRFfJMqW7XpSQ==
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
+
+"@types/pdfkit@*":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@types/pdfkit/-/pdfkit-0.11.2.tgz#32ac956ccf27349f66ab77fbb4e5be3399508814"
+  integrity sha512-4FS1b4ZqSdE4vrHIxpiaPbOIvELlssavpknaRRrdrRH7IgRvO6nbGeI3PEiC7vJSDfxQ8GBZwGVybqgUX4oqww==
+  dependencies:
+    "@types/node" "*"
+
+"@types/pdfmake@^0.1.18":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/@types/pdfmake/-/pdfmake-0.1.18.tgz#1c23ff16df8a8ec6256cbadb8e1cbf7bed53fadd"
+  integrity sha512-RwKeBlDXm13p3/hyS0/pDZpC+078yp+liR+8PEq1TnvKfI6qlnI2ht7zJC+xgbw9kZAExnNKA/2fZedByxghiA==
+  dependencies:
+    "@types/node" "*"
+    "@types/pdfkit" "*"
 
 "@typescript-eslint/eslint-plugin@^4.31.1":
   version "4.31.1"
@@ -1715,7 +1735,7 @@ htmlparser2@^6.1.0:
     domutils "^2.5.2"
     entities "^2.0.0"
 
-iconv-lite@^0.6.3:
+iconv-lite@^0.6.2, iconv-lite@^0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.3.tgz#a52f80bf38da1952eb5c681790719871a1a72501"
   integrity sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==
@@ -2257,7 +2277,7 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
-pdfkit@>=0.8.1:
+pdfkit@>=0.8.1, pdfkit@^0.12.0:
   version "0.12.3"
   resolved "https://registry.yarnpkg.com/pdfkit/-/pdfkit-0.12.3.tgz#527da4a4bad9a6b456a6939037d63d5ff9306302"
   integrity sha512-+qDLgm2yq6WOKcxTb43lDeo3EtMIDQs0CK1RNqhHC9iT6u0KOmgwAClkYh9xFw2ATbmUZzt4f7KMwDCOfPDluA==
@@ -2266,6 +2286,24 @@ pdfkit@>=0.8.1:
     fontkit "^1.8.1"
     linebreak "^1.0.2"
     png-js "^1.0.0"
+
+pdfmake-unicode@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/pdfmake-unicode/-/pdfmake-unicode-0.0.1.tgz#72a6b27f19cd3478dbd85bf027a00fa2ee7c1c74"
+  integrity sha1-cqayfxnNNHjb2FvwJ6APou58HHQ=
+  dependencies:
+    pdfmake "^0.1.27"
+
+pdfmake@^0.1.27:
+  version "0.1.72"
+  resolved "https://registry.yarnpkg.com/pdfmake/-/pdfmake-0.1.72.tgz#b5ef0057e40e7a22b23a19aaf0be35ada902a3bf"
+  integrity sha512-xZrPS+Safjf1I8ZYtMoXX83E6C6Pd1zFwa168yNTeeJWHclqf1z9DoYajjlY2uviN7gGyxwVZeou39uSk1oh1g==
+  dependencies:
+    iconv-lite "^0.6.2"
+    linebreak "^1.0.2"
+    pdfkit "^0.12.0"
+    svg-to-pdfkit "^0.1.8"
+    xmldoc "^1.1.2"
 
 pdfmake@^0.2.2:
   version "0.2.2"

@@ -1,8 +1,8 @@
-import pdfMake from 'pdfmake/build/pdfmake'
-import pdfFonts from 'pdfmake/build/vfs_fonts'
 import { Callback } from '@/types/utils'
 import { Store } from 'vuex'
 import { useToast } from 'vue-toastification'
+import * as pdfMake from 'pdfmake/build/pdfmake'
+import pdfFonts from '@/pdfmake/plugin/pdfmake-unicode'
 
 import { GenerateParagraphOptions } from '@/types/pdf'
 import { ContextState, ContextStatePageContent } from '@/types/context'
@@ -11,7 +11,7 @@ export const usePDF: Callback<any> = () => {
   const toast = useToast()
 
   const init: Callback<any> = () => {
-    pdfMake.vfs = pdfFonts.pdfMake.vfs
+    ;(<any>pdfMake).vfs = pdfFonts
   }
 
   const generate: Callback<any> = () => {
@@ -100,7 +100,7 @@ export const usePDF: Callback<any> = () => {
           let _raw = {}
 
           if ((entity as any).type === 'paragraph') {
-            _raw = paragraph((entity as any).raw, { stack: false, indent: 5 })
+            _raw = paragraph((entity as any).raw, { stack: false, indent: 4 })
           } else if ((entity as any).type === 'heading-one') {
             _raw = headingOne((entity as any).raw)
           } else if ((entity as any).type === 'heading-two') {
@@ -150,7 +150,29 @@ export const usePDF: Callback<any> = () => {
                 alignment: 'justify',
               },
             },
-            pageBreakBefore: generate().contentBreak(),
+            pageBreakBefore: function (
+              currentNode: any,
+              followingNodesOnPage: any,
+              nodesOnNextPage: any,
+              previousNodesOnPage: any
+            ) {
+              //check if signature part is completely on the last page, add pagebreak if not
+              if (
+                currentNode.id === 'signature' &&
+                (currentNode.pageNumbers.length != 1 ||
+                  currentNode.pageNumbers[0] != currentNode.pages)
+              ) {
+                return true
+              }
+              //check if last paragraph is entirely on a single page, add pagebreak if not
+              else if (
+                currentNode.id === 'closingParagraph' &&
+                currentNode.pageNumbers.length != 1
+              ) {
+                return true
+              }
+              return false
+            },
           })
           .download(`${store.state.project.nameRaw}.pdf`)
       )

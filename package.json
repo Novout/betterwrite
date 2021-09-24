@@ -17,6 +17,7 @@
     "autoprefixer": "^10.3.4",
     "date-fns": "^2.24.0",
     "pdfmake": "^0.2.2",
+    "pdfmake-unicode": "^0.0.1",
     "postcss": "^8.3.6",
     "tailwindcss": "^2.2.15",
     "tailwindcss-typography": "^3.1.0",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^2.4.0",
+    "@types/pdfmake": "^0.1.18",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
     "@vitejs/plugin-vue": "^1.6.1",
