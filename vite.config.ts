@@ -45,7 +45,7 @@ export default defineConfig({
       'vue-toastification',
       '@vueuse/core',
       '@headlessui/vue',
-      'labelmake'
+      'pdfmake'
     ],
     exclude: [
       'vue-demi',
