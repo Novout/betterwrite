@@ -1,18 +1,22 @@
 <template>
-  <div class="flex flex-col mt-5 w-full p-1 wb-text">
+  <div class="flex flex-col mt-5 w-full wb-text">
     <p v-if="store.state.project.name !== '__NOT_CREATED__'">
       {{ store.state.project.nameRaw }}
     </p>
-    <div v-for="(page, index) in store.state.project.pages" :key="index">
-      <div
-        v-for="entity in page.entity"
-        :id="`graph-${page.id}-${entity.id}`"
-        :key="`graph-${page.id}-${entity.id}`"
-        @click="onClick(`#${entity.type + '-' + entity.id}`, page, entity.type)"
-      >
-        <AsideGraphItem :raw="entity.raw" :type="entity.type" />
+    <transition-group name="list" tag="div">
+      <div v-for="(page, index) in store.state.project.pages" :key="index">
+        <div
+          v-for="entity in page.entity"
+          :id="`graph-${page.id}-${entity.id}`"
+          :key="`graph-${page.id}-${entity.id}`"
+          @click="
+            onClick(`#${entity.type + '-' + entity.id}`, page, entity.type)
+          "
+        >
+          <AsideGraphItem :raw="entity.raw" :type="entity.type" />
+        </div>
       </div>
-    </div>
+    </transition-group>
   </div>
 </template>
 

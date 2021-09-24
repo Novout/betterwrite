@@ -55,3 +55,15 @@ input:-webkit-autofill {
 *::-webkit-scrollbar-thumb:hover {
   background: var(--scr-thumb-hover);
 }
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 200ms;
+}
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+}
+.list-move {
+  transition: transform 300ms;
+}

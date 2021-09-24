@@ -1,6 +1,14 @@
 <template>
   <div
     v-if="props.type !== 'paragraph'"
+    class="
+      dark:hover:bg-gray-800
+      hover:bg-gray-200
+      active:bg-gray-700
+      dark:active:bg-black
+      cursor-pointer
+      transition
+    "
     :class="[
       props.type === 'heading-one'
         ? 'border-l border-black dark:border-gray-500 ml-1'
@@ -16,7 +24,7 @@
       class="border-b mb-2 h-1 border-black dark:border-gray-500"
     ></div>
     <p
-      class="ml-2 truncate cursor-pointer"
+      class="ml-2 truncate"
       :class="[
         props.type === 'heading-one' ? 'text-tiny py-2 font-bold' : '',
         props.type === 'heading-two' ? 'text-sm' : '',

@@ -77,17 +77,3 @@
     if (!entity.external) return entity.type + '-' + entity.id
   }
 </script>
-
-<style scoped>
-  .list-enter-active,
-  .list-leave-active {
-    transition: all 200ms;
-  }
-  .list-enter,
-  .list-leave-to {
-    opacity: 0;
-  }
-  .list-move {
-    transition: transform 300ms;
-  }
-</style>
