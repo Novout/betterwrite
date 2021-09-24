@@ -18,6 +18,7 @@ export const usePDF: Callback<any> = () => {
     const headingOne = (raw: string) => {
       return {
         text: raw,
+        margin: [0, 45],
         pageBreak: 'before',
         style: 'heading-one',
       }
@@ -26,6 +27,7 @@ export const usePDF: Callback<any> = () => {
     const headingTwo = (raw: string) => {
       return {
         text: raw,
+        margin: [0, 25],
         style: 'heading-two',
       }
     }
@@ -33,6 +35,7 @@ export const usePDF: Callback<any> = () => {
     const headingThree = (raw: string) => {
       return {
         text: raw,
+        margin: [0, 15],
         style: 'heading-three',
       }
     }
@@ -114,17 +117,24 @@ export const usePDF: Callback<any> = () => {
             content: generate().content(store),
             styles: {
               'heading-three': {
-                fontSize: 14,
+                fontSize: 20,
+                alignment: 'left',
               },
               'heading-two': {
-                fontSize: 16,
+                fontSize: 24,
+                alignment: 'center',
               },
               'heading-one': {
-                fontSize: 18,
+                fontSize: 30,
+                alignment: 'center',
+                bold: true,
               },
               paragraph: {
                 fontSize: 10,
                 alignment: 'justify',
+              },
+              defaultStyle: {
+                fontSize: 12,
               },
             },
             pageBreakBefore: function (
