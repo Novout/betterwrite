@@ -28,7 +28,7 @@
           dark:bg-gray-700
         "
       >
-        <transition-group name="list" tag="p">
+        <transition-group name="list" tag="div">
           <TextShow
             v-for="entity in store.state.context.entity"
             :id="id(entity)"
