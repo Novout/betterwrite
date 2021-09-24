@@ -19,9 +19,11 @@
           rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
       "
     >
-      <EditorBaseHeader v-if="store.state.project.name !== '__NOT_CREATED__'" />
+      <EditorBaseHeader
+        v-if="store.state.project.name !== useEnv().projectEmpty()"
+      />
       <EditorBaseBlocked
-        v-if="store.state.project.name === '__NOT_CREATED__'"
+        v-if="store.state.project.name === useEnv().projectEmpty()"
       />
       <section
         id="edit"
@@ -45,7 +47,7 @@
         </transition-group>
       </section>
       <TextInput
-        v-if="store.state.project.name !== '__NOT_CREATED__'"
+        v-if="store.state.project.name !== useEnv().projectEmpty()"
         v-model="entry"
         @enter="enterListener"
         @reset="resetListener"
@@ -60,6 +62,7 @@
   import { useDraggable } from '@vueuse/core'
   import { ContextStatePageContent } from '@/types/context'
   import { useScroll } from '@/use/scroll'
+  import { useEnv } from '@/use/env'
 
   const store = useStore()
 

@@ -1,11 +1,13 @@
+import { Callback } from '@/types/utils'
 import { nextTick } from 'vue'
 import { useStore } from 'vuex'
 
-export const usePage = () => {
+export const usePage: Callback<any> = () => {
   const store = useStore()
 
   const onCreatePage = async () => {
     store.commit('project/newPage')
+    await nextTick
 
     const arr = store.state.project.pages
     const obj = arr[arr.length - 1]

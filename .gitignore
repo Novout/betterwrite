@@ -8,3 +8,4 @@ dist-ssr
 components.d.ts
 TODO.md
 yarn-error.log
+.env
