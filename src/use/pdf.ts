@@ -18,6 +18,7 @@ export const usePDF: Callback<any> = () => {
     const headingOne = (raw: string) => {
       return {
         text: raw,
+        pageBreak: 'before',
         style: 'heading-one',
       }
     }
@@ -113,7 +114,7 @@ export const usePDF: Callback<any> = () => {
             content: generate().content(store),
             styles: {
               'heading-three': {
-                fontSize: 15,
+                fontSize: 14,
               },
               'heading-two': {
                 fontSize: 16,
