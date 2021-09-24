@@ -1,22 +1,15 @@
 <template>
-  <button class="wb-aside-button" @click="onCreateNewPage">
+  <InjectButtonInstance
+    class="wb-aside-button"
+    @click.prevent="usePage().onCreatePage"
+  >
     {{ t('editor.aside.project.page.new.title') }}
-  </button>
+  </InjectButtonInstance>
 </template>
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
+  import { usePage } from '@/use/page'
 
-  const store = useStore()
   const { t } = useI18n()
-
-  const onCreateNewPage = async () => {
-    store.commit('project/newPage')
-
-    const arr = store.state.project.pages
-    const obj = arr[arr.length - 1]
-
-    store.commit('context/load', obj)
-  }
 </script>

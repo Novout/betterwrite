@@ -19,7 +19,7 @@
           rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
       "
     >
-      <EditorBaseHeader />
+      <EditorBaseHeader v-if="store.state.project.name !== '__NOT_CREATED__'" />
       <EditorBaseBlocked
         v-if="store.state.project.name === '__NOT_CREATED__'"
       />
