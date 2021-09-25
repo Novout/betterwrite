@@ -44,7 +44,7 @@
         md:w-40
         lg:w-50
         xl:w-60
-        bg-white
+        bg-gray-100
         z-aside
         dark:bg-gray-700
       "
