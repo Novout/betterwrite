@@ -11,12 +11,7 @@
 
   const store = useStore()
 
-  const onSaveProject = () => {
-    useLocalStorage().setProject({
-      project: store.state.project,
-      editor: store.state.editor,
-    })
-  }
+  const { onSaveProject } = useLocalStorage(store)
 
   const { t } = useI18n()
 </script>

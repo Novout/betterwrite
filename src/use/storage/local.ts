@@ -1,8 +1,9 @@
 import { ProjectObject } from '@/types/project'
 import { Callback } from '@/types/utils'
+import { Store, useStore } from 'vuex'
 import { useEnv } from '../env'
 
-export const useLocalStorage: Callback<any> = () => {
+export const useLocalStorage: Callback<any> = (store: Store<any>) => {
   const set = (obj: ProjectObject, name: string) => {
     localStorage.setItem(useEnv().projectLocalStorage(), JSON.stringify(obj))
   }
@@ -19,5 +20,12 @@ export const useLocalStorage: Callback<any> = () => {
     return get(useEnv().projectLocalStorage())
   }
 
-  return { set, get, setProject, getProject }
+  const onSaveProject = () => {
+    useLocalStorage().setProject({
+      project: store.state.project,
+      editor: store.state.editor,
+    })
+  }
+
+  return { set, get, setProject, getProject, onSaveProject }
 }
