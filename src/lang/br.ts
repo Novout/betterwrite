@@ -22,6 +22,12 @@ export default {
       },
       project: {
         title: 'Projeto',
+        save: {
+          title: 'Salvar Projeto',
+        },
+        load: {
+          title: 'Carregar Projeto',
+        },
         blocked: 'Crie ou carregue um projeto!!!',
         page: {
           new: {

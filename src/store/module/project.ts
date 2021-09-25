@@ -2,7 +2,6 @@ import { ProjectState } from '@/types/project'
 import { useText } from '@/use/text'
 import { useFormat } from '@/use/format'
 import { ContextState, ContextStatePageContent } from '@/types/context'
-import { useI18n } from 'vue-i18n'
 
 export default {
   namespaced: true,
@@ -18,6 +17,16 @@ export default {
       pageLoaded: 0,
     } as ProjectState),
   mutations: {
+    load(state: any, payload: ProjectState) {
+      state.name = payload.name
+      state.nameRaw = payload.nameRaw
+      state.version = payload.version
+      state.totalPagesCreated = payload.totalPagesCreated
+      state.main = payload.main
+      state.summary = payload.summary
+      state.pages = payload.pages
+      state.pageLoaded = payload.pageLoaded
+    },
     create(state: any, payload: Record<any, any>) {
       state.name = useText().kebab(payload.name)
       state.nameRaw = payload.name

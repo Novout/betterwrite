@@ -22,6 +22,12 @@ export default {
       },
       project: {
         title: 'Project',
+        save: {
+          title: 'Save Project',
+        },
+        load: {
+          title: 'Load Project',
+        },
         blocked: 'Create or load a project!!!',
         page: {
           new: {

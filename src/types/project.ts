@@ -1,4 +1,5 @@
 import { ContextState } from '@/types/context'
+import { EditorState } from './editor'
 
 export interface ProjectState {
   name: string
@@ -9,4 +10,9 @@ export interface ProjectState {
   summary: Record<any, any>
   pages: Array<ContextState>
   pageLoaded: number
+}
+
+export interface ProjectObject {
+  project: ProjectState
+  editor: EditorState
 }
