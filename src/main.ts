@@ -24,4 +24,4 @@ app.use(Toast, {
   maxToasts: 3,
 })
 
-app.mount('#app')
+router.isReady().then(() => app.mount('#app'))
