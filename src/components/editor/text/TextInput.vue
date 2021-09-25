@@ -21,7 +21,7 @@
       :placeholder="t('editor.text.placeholder.base')"
       @input="handler"
       @keypress.enter="enterHandler"
-      @paste="pasteHandler"
+      @paste.prevent="pasteHandler"
     />
   </section>
 </template>

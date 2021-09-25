@@ -12,8 +12,10 @@ export const usePDF: Callback<any> = () => {
   const toast = useToast()
 
   const init: Callback<any> = () => {
+    // @ts-ignore
     ;(<any>pdfMake).vfs = fonts
 
+    // @ts-ignore
     pdfMake.fonts = {
       Roboto: {
         normal:

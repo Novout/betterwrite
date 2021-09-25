@@ -145,7 +145,7 @@
           overflow-hidden
         "
         :style="{ height }"
-        @keypress.enter="onUpdateContent"
+        @keydown.enter.prevent="onUpdateContent"
       />
     </div>
   </section>
