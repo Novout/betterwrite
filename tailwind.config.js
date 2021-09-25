@@ -48,7 +48,8 @@ module.exports = {
       }),
       backgroundColor: theme => ({
         "black-opacity": 'rgba(0,0,0, 0.1)',
-        "white-opacity": 'rgba(255,255,255, 0.1)'
+        "white-opacity": 'rgba(255,255,255, 0.1)',
+        "modal": 'rgba(0,0,0, 0.6)'
       }),
       boxShadow: theme => ({
         "binset": `inset 0 0 10px rgba(255, 255, 255, 0.1)`,

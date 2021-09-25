@@ -11,6 +11,9 @@ export default {
     commands(state: any) {
       state.commands = !state.commands
     },
+    load(state: any, b: boolean) {
+      state.load = b
+    },
   },
   actions: {},
   getters: {},
