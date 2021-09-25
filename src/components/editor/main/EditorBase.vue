@@ -37,7 +37,7 @@
           dark:bg-gray-700
         "
       >
-        <transition-group name="list" tag="div">
+        <transition-group name="list" tag="div" appear>
           <TextShow
             v-for="entity in store.state.context.entity"
             :id="id(entity)"

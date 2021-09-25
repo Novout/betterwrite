@@ -43,9 +43,13 @@
         </svg>
       </HeroIcon>
     </DisclosureButton>
-    <DisclosurePanel class="flex flex-col w-full items-center justify-between">
-      <slot />
-    </DisclosurePanel>
+    <transition name="fade" appear>
+      <DisclosurePanel
+        class="flex flex-col w-full items-center justify-between"
+      >
+        <slot />
+      </DisclosurePanel>
+    </transition>
   </Disclosure>
 </template>
 
