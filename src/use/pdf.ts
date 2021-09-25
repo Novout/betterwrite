@@ -31,10 +31,10 @@ export const usePDF: Callback<any> = () => {
         bolditalics: 'Raleway-MediumItalic.ttf',
       },
       Poppins: {
-        normal: 'Raleway-Regular.ttf',
-        bold: 'Raleway-Medium.ttf',
-        italics: 'Raleway-Italic.ttf',
-        bolditalics: 'Raleway-MediumItalic.ttf',
+        normal: 'Poppins-Regular.ttf',
+        bold: 'Poppins-Medium.ttf',
+        italics: 'Poppins-Italic.ttf',
+        bolditalics: 'Poppins-MediumItalic.ttf',
       },
     }
   }
@@ -164,7 +164,7 @@ export const usePDF: Callback<any> = () => {
             },
             defaultStyle: {
               fontSize: 12,
-              font: 'Raleway',
+              font: 'Poppins',
             },
             pageBreakBefore: function (
               currentNode: any,
