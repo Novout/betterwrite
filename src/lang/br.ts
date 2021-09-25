@@ -23,7 +23,7 @@ export default {
       project: {
         title: 'Projeto',
         save: {
-          title: 'Salvar Local',
+          title: 'Salvar Localmente',
         },
         load: {
           title: 'Carregar Local',
