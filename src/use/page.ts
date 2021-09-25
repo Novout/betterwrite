@@ -21,7 +21,10 @@ export const usePage: Callback<any> = () => {
     store.commit('project/deletePage', store.state.context)
     await nextTick
 
-    store.commit('context/load', store.state.project.pages[store.state.project.pages.length - 1])
+    store.commit(
+      'context/load',
+      store.state.project.pages[store.state.project.pages.length - 1]
+    )
   }
 
   return { onCreatePage, onDeletePage }

@@ -5,6 +5,7 @@ export default {
   state: () =>
     ({
       commands: false,
+      load: false,
     } as AbsoluteState),
   mutations: {
     commands(state: any) {
