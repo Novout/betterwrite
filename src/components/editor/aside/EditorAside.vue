@@ -1,5 +1,6 @@
 <template>
   <HeroIcon
+    id="__GSAP__aside__button"
     class="
       absolute
       flex
@@ -30,27 +31,28 @@
       />
     </svg>
   </HeroIcon>
-  <aside
-    v-if="open"
-    :class="!open ? 'left-32 md:-left-40 lg:-left-50 xl:-left-60' : ''"
-    class="
-      fixed
-      md:relative
-      h-screen
-      max-h-screen
-      overflow-y-auto
-      w-32
-      md:w-40
-      lg:w-50
-      xl:w-60
-      bg-white
-      z-aside
-      dark:bg-gray-700
-    "
-  >
-    <AsideBar />
-    <AsideGraph />
-  </aside>
+  <transition name="fade" mode="out-in" appear>
+    <aside
+      v-if="open"
+      class="
+        fixed
+        md:relative
+        h-screen
+        max-h-screen
+        overflow-y-auto
+        w-32
+        md:w-40
+        lg:w-50
+        xl:w-60
+        bg-white
+        z-aside
+        dark:bg-gray-700
+      "
+    >
+      <AsideBar />
+      <AsideGraph />
+    </aside>
+  </transition>
 </template>
 
 <script lang="ts" setup>

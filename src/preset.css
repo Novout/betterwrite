@@ -28,7 +28,7 @@ input:-webkit-autofill:active {
 }
 
 input:-webkit-autofill {
-  -webkit-animation-delay: 1s; /* Safari support - any positive time runs instantly */
+  -webkit-animation-delay: 1s;
   -webkit-animation-name: autofill;
   -webkit-animation-fill-mode: both;
 }
@@ -65,10 +65,18 @@ input:-webkit-autofill {
 .list-leave-active {
   transition: all 200ms;
 }
-.list-enter,
+.list-enter-from,
 .list-leave-to {
   opacity: 0;
 }
 .list-move {
   transition: transform 300ms;
+}
+
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
