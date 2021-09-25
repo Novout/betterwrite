@@ -23,10 +23,10 @@ export default {
       project: {
         title: 'Projeto',
         save: {
-          title: 'Salvar Projeto',
+          title: 'Salvar Local',
         },
         load: {
-          title: 'Carregar Projeto',
+          title: 'Carregar Local',
         },
         blocked: 'Crie ou carregue um projeto!!!',
         page: {
