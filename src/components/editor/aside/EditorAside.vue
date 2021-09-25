@@ -10,10 +10,10 @@
       dark:text-gray-500 dark:hover:text-gray-200
       bg-gray-200
       dark:bg-gray-800
-      rounded-none
+      rounded-br 
     "
     :class="
-      open ? 'transform rotate-90 left-32 md:left-40 lg:left-50 xl:left-60' : ''
+      open ? 'left-32 md:left-40 lg:left-50 xl:left-60' : ''
     "
     @click="open = !open"
   >
