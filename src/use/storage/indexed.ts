@@ -20,7 +20,6 @@ export const useIndexedDB: Callback<any> = () => {
     }
 
     db.onsuccess = (event: any) => {}
-
     ;(db as any).onupgradeneeded((event: any) => {
       const database = event.target.result
 

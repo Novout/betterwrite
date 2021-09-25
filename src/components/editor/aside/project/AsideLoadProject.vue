@@ -15,6 +15,8 @@
   const onSaveProject = async () => {
     const context = useLocalStorage().getProject()
 
+    if (!context) return
+
     store.commit('project/load', context.project)
     await nextTick
 
