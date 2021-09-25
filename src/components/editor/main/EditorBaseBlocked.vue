@@ -1,6 +1,8 @@
 <template>
   <div class="z-50 flex justify-center items-center w-full h-editor">
-    <p class="wb-text font-bold">{{ t('editor.aside.project.blocked') }}</p>
+    <p class="wb-text font-bold text-base md:text-xl lg:text-2xl">
+      {{ t('editor.aside.project.blocked') }}
+    </p>
   </div>
 </template>
 
