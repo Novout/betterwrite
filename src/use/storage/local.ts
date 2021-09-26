@@ -1,6 +1,6 @@
 import { ProjectObject } from '@/types/project'
 import { Callback } from '@/types/utils'
-import { Store, useStore } from 'vuex'
+import { Store } from 'vuex'
 import { useEnv } from '../env'
 
 export const useLocalStorage: Callback<any> = (store: Store<any>) => {
@@ -21,6 +21,8 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
   }
 
   const onSaveProject = () => {
+    if (store.state.project.name === useEnv().projectEmpty()) return
+
     useLocalStorage().setProject({
       project: store.state.project,
       editor: store.state.editor,

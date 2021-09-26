@@ -7,6 +7,7 @@ declare module '*.vue' {
   export default component
 }
 declare module '@heroicons/vue'
+declare module 'keyboardjs'
 declare module 'pdfmake-unicode'
 declare module 'pdfmake/build/pdfmake'
 declare module 'pdfmake/build/vfs_fonts'

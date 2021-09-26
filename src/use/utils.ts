@@ -5,5 +5,10 @@ export const useUtils: Callback<any> = () => {
     return new Promise((resolve) => setTimeout(resolve, time))
   }
 
-  return { delay }
+  const prevent = (e: Event) => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
+  return { delay, prevent }
 }
