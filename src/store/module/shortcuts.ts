@@ -6,6 +6,7 @@ export default {
   state: () =>
     ({
       localSaveProject: useDefines().shortcuts('localSaveProject'),
+      localLoadProject: useDefines().shortcuts('localLoadProject'),
     } as ShortcutsState),
   mutations: {},
   actions: {},

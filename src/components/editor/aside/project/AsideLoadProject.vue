@@ -2,6 +2,7 @@
   <AsideText
     class="wb-aside-button"
     :text="t('editor.aside.project.load.title')"
+    :shortcuts="store.state.shortcuts.localLoadProject[0]"
     @click.prevent="onLoadProject"
   >
   </AsideText>

@@ -1,8 +1,5 @@
 export default {
   editor: {
-    shortcuts: {
-      localSaveProject: 'Ctrl + S',
-    },
     text: {
       placeholder: {
         base: `Insira '/' para exibir a lista de comandos.`,

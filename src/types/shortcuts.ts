@@ -1,3 +1,4 @@
 export interface ShortcutsState {
-  localSaveProject: string
+  localSaveProject: Array<string>
+  localLoadProject: Array<string>
 }

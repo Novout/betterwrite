@@ -1,7 +1,7 @@
 <template>
   <AsideText
     :text="t('editor.aside.project.save.title')"
-    :shortcuts="t('editor.shortcuts.localSaveProject')"
+    :shortcuts="store.state.shortcuts.localSaveProject[0]"
     @click.prevent="onSaveProject"
   >
   </AsideText>
