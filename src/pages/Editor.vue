@@ -6,3 +6,12 @@
     </main>
   </section>
 </template>
+
+<script setup lang="ts">
+  import { useKeyboard } from '@/use/keyboard'
+  import { onUnmounted } from 'vue'
+
+  onUnmounted(() => {
+    useKeyboard().destroy()
+  })
+</script>

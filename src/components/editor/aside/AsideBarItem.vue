@@ -8,9 +8,6 @@
         w-full
         py-1
         px-1
-        md:px-2
-        lg:px-4
-        md:py-2
         font-medium
         text-left
         rounded-none
@@ -22,7 +19,7 @@
       "
     >
       <slot class="h-5 w-5" name="icon" />
-      <span class="text-xs md:text-base">{{ props.title }}</span>
+      <span class="text-base">{{ props.title }}</span>
       <HeroIcon
         :class="open ? 'transform rotate-180' : ''"
         class="w-3 h-3 hidden md:inline"

@@ -1,7 +1,10 @@
 <template>
-  <InjectButtonInstance class="wb-aside-button" @click.prevent="onSaveProject">
-    {{ t('editor.aside.project.load.title') }}
-  </InjectButtonInstance>
+  <AsideText
+    class="wb-aside-button"
+    :text="t('editor.aside.project.load.title')"
+    @click.prevent="onLoadProject"
+  >
+  </AsideText>
 </template>
 
 <script setup lang="ts">
@@ -12,7 +15,7 @@
 
   const store = useStore()
 
-  const onSaveProject = async () => {
+  const onLoadProject = async () => {
     const context = useLocalStorage().getProject()
 
     if (!context) return

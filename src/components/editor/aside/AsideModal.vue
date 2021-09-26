@@ -5,9 +5,7 @@
     <slot></slot>
   </WBModal>
 
-  <button class="wb-aside-button" @click="show = true">
-    {{ props.button }}
-  </button>
+  <AsideText :text="props.button" @click="show = true"></AsideText>
 </template>
 
 <script setup lang="ts">

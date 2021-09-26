@@ -3,7 +3,6 @@
     id="__GSAP__aside__button"
     class="
       absolute
-      flex
       justify-center
       items-center
       z-aside-open
@@ -13,7 +12,7 @@
       dark:bg-gray-800
       rounded-br
     "
-    :class="open ? 'left-32 md:left-40 lg:left-50 xl:left-60' : ''"
+    :class="open ? 'left-60' : ''"
     @click="open = !open"
   >
     <svg
@@ -40,15 +39,14 @@
         h-screen
         max-h-screen
         overflow-y-auto
-        w-32
-        md:w-40
-        lg:w-50
-        xl:w-60
+        w-full
+        sm:w-60
         bg-gray-100
         z-aside
         dark:bg-gray-700
       "
     >
+      <AsideClose @close="open = false" />
       <AsideBar />
       <AsideGraph />
     </aside>

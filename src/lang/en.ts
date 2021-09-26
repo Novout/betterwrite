@@ -1,5 +1,8 @@
 export default {
   editor: {
+    shortcuts: {
+      localSaveProject: 'Ctrl + S',
+    },
     text: {
       placeholder: {
         base: `Insert '/' to display a list of commands.`,
@@ -31,7 +34,7 @@ export default {
         blocked: 'Create or load a project!!!',
         page: {
           new: {
-            title: 'New Page',
+            title: 'New Chapter',
           },
         },
         new: {

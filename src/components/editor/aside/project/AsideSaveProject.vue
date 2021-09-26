@@ -1,7 +1,10 @@
 <template>
-  <InjectButtonInstance class="wb-aside-button" @click.prevent="onSaveProject">
-    {{ t('editor.aside.project.save.title') }}
-  </InjectButtonInstance>
+  <AsideText
+    :text="t('editor.aside.project.save.title')"
+    :shortcuts="t('editor.shortcuts.localSaveProject')"
+    @click.prevent="onSaveProject"
+  >
+  </AsideText>
 </template>
 
 <script setup lang="ts">

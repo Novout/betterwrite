@@ -8,7 +8,13 @@ export const useKeyboard: Callback<any> = () => {
   const store = useStore()
 
   const init: Callback<void> = () => {
+    keyboard.resume()
+
     save()
+  }
+
+  const destroy = () => {
+    keyboard.pause()
   }
 
   const save = () => {
@@ -19,5 +25,5 @@ export const useKeyboard: Callback<any> = () => {
     })
   }
 
-  return { init }
+  return { init, destroy }
 }
