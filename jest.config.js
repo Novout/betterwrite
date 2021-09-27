@@ -5,6 +5,6 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     '**/use/*.ts',
-    '!**/node_modules/**',
+    '!**/node_modules/**'
   ],
 };
