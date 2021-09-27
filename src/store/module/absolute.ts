@@ -9,7 +9,7 @@ export default {
       modal: {
         newProject: false,
       },
-      aside: true,
+      aside: false,
     } as AbsoluteState),
   mutations: {
     commands(state: any) {
@@ -22,7 +22,7 @@ export default {
       state.modal.newProject = b
     },
     switchAside(state: any, b: boolean) {
-      state.modal.aside = b
+      state.aside = b
     },
   },
   actions: {},

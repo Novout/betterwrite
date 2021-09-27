@@ -13,7 +13,7 @@
       rounded-br
     "
     :class="open ? 'left-60' : ''"
-    @click="store.commit('absolute/switchAside', !open.value)"
+    @click="store.commit('absolute/switchAside', !open)"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@
         dark:bg-gray-700
       "
     >
-      <AsideClose @close="store.commit('absolute/switchAside', false)" />
+      <AsideClose @close="onClose" />
       <AsideBar />
       <AsideGraph />
     </aside>
@@ -59,4 +59,8 @@
 
   const store = useStore()
   const open = computed(() => store.state.absolute.aside)
+
+  const onClose = () => {
+    store.commit('absolute/switchAside', false)
+  }
 </script>
