@@ -9,7 +9,7 @@ export default {
       modal: {
         newProject: false,
       },
-      aside: false,
+      aside: true,
     } as AbsoluteState),
   mutations: {
     commands(state: any) {
