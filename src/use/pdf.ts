@@ -7,6 +7,7 @@ import fonts from '@/makepdf/local-fonts'
 import { GenerateParagraphOptions } from '@/types/pdf'
 import { ContextState, ContextStatePageContent } from '@/types/context'
 import { useRaw } from './raw'
+import { nextTick } from 'vue'
 
 export const usePDF: Callback<any> = () => {
   const toast = useToast()
@@ -197,5 +198,20 @@ export const usePDF: Callback<any> = () => {
     })
   }
 
-  return { init, create }
+  const external = (store: Store<any>) => {
+    const onGeneratePDF = async () => {
+      store.commit('absolute/load', true)
+
+      await nextTick
+      usePDF()
+        .create(store)
+        .then(() => {
+          store.commit('absolute/load', false)
+        })
+    }
+
+    return { onGeneratePDF }
+  }
+
+  return { init, create, external }
 }

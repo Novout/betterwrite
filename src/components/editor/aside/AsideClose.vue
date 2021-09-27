@@ -19,7 +19,5 @@
 </template>
 
 <script setup lang="ts">
-  import { defineEmits } from 'vue'
-
   defineEmits(['close'])
 </script>

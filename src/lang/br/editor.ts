@@ -32,6 +32,9 @@ export default {
         new: {
           title: 'Novo Capítulo',
         },
+        delete: {
+          title: 'Deletar Capítulo',
+        },
       },
       new: {
         title: 'Novo Projeto',

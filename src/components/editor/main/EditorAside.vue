@@ -13,7 +13,7 @@
       rounded-br
     "
     :class="open ? 'left-60' : ''"
-    @click="open = !open"
+    @click="store.commit('absolute/switchAside', !open.value)"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@
         dark:bg-gray-700
       "
     >
-      <AsideClose @close="open = false" />
+      <AsideClose @close="store.commit('absolute/switchAside', false)" />
       <AsideBar />
       <AsideGraph />
     </aside>
@@ -54,7 +54,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
 
-  const open = ref(true)
+  const store = useStore()
+  const open = computed(() => store.state.absolute.aside)
 </script>

@@ -16,6 +16,9 @@
       </HeroIcon>
     </template>
     <AsideProjectNew />
+    <AsidePageDelete
+      v-if="store.state.project.name !== useEnv().projectEmpty()"
+    />
     <AsidePageNew v-if="store.state.project.name !== useEnv().projectEmpty()" />
     <AsideLine v-if="store.state.project.name !== useEnv().projectEmpty()" />
     <AsideLoadProject />

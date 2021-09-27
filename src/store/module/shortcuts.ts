@@ -7,6 +7,10 @@ export default {
     ({
       localSaveProject: useDefines().shortcuts('localSaveProject'),
       localLoadProject: useDefines().shortcuts('localLoadProject'),
+      newProject: useDefines().shortcuts('newProject'),
+      newChapter: useDefines().shortcuts('newChapter'),
+      deleteChapter: useDefines().shortcuts('deleteChapter'),
+      generatePDF: useDefines().shortcuts('generatePDF'),
     } as ShortcutsState),
   mutations: {},
   actions: {},

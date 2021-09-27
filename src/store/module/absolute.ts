@@ -6,6 +6,10 @@ export default {
     ({
       commands: false,
       load: false,
+      modal: {
+        newProject: false,
+      },
+      aside: true,
     } as AbsoluteState),
   mutations: {
     commands(state: any) {
@@ -13,6 +17,12 @@ export default {
     },
     load(state: any, b: boolean) {
       state.load = b
+    },
+    switchProjectModal(state: any, b: boolean) {
+      state.modal.newProject = b
+    },
+    switchAside(state: any, b: boolean) {
+      state.modal.aside = b
     },
   },
   actions: {},

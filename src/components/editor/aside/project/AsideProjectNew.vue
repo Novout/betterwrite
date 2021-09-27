@@ -4,6 +4,7 @@
     :button="t('editor.aside.project.new.title')"
     :confirm="t('editor.aside.project.new.confirm')"
     :complete="onCreateProject"
+    :shortcut="store.state.shortcuts.newProject[0]"
   >
     <div class="w-full flex flex-col">
       <div class="flex flex-col pt-3">
@@ -37,7 +38,8 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, nextTick } from 'vue'
+  import { useProject } from '@/use/project'
+  import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
 
@@ -48,8 +50,9 @@
   const version = ref(t('editor.aside.project.new.content.version'))
 
   const onCreateProject = async () => {
-    store.commit('project/create', { name: name.value, version: version.value })
-    await nextTick
-    store.commit('context/load', store.state.project.pages[0])
+    useProject(store).onCreateProject({
+      name: name.value,
+      version: version.value,
+    })
   }
 </script>

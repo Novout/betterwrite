@@ -4,7 +4,7 @@
   >
     <HeroIcon
       class="wb-icon inline-flex"
-      @click.prevent="usePage().onCreatePage"
+      @click.prevent="usePage(store).onCreatePage"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
     </HeroIcon>
     <HeroIcon
       class="wb-icon inline-flex"
-      @click.prevent="usePage().onDeletePage"
+      @click.prevent="usePage(store).onDeletePage"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -42,4 +42,7 @@
 
 <script setup lang="ts">
   import { usePage } from '@/use/page'
+  import { useStore } from 'vuex'
+
+  const store = useStore()
 </script>

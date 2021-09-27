@@ -5,6 +5,10 @@ export const useDefines: Callback<any> = () => {
     return {
       localSaveProject: ['CTRL + S', 'ctrl > s'],
       localLoadProject: ['CTRL + L', 'ctrl > l'],
+      newProject: ['CTRL + Shift + Q', 'ctrl > shift > q'],
+      newChapter: ['CTRL + Q', 'ctrl > q'],
+      deleteChapter: ['CTRL + D', 'ctrl > d'],
+      generatePDF: ['CTRL + G', 'ctrl > g'],
     }[k]
   }
 
