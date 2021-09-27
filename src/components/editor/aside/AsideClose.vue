@@ -1,6 +1,15 @@
 <template>
   <InjectButtonInstance
-    class="sm:hidden flex justify-end items-center transform rotate-45 wb-text"
+    class="
+      sm:hidden
+      flex
+      justify-end
+      items-center
+      transform
+      rotate-45
+      text-black
+      dark:text-gray-500
+    "
     @click="$emit('close')"
   >
     <svg
