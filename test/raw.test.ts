@@ -11,7 +11,7 @@ describe('Raw', () => {
   it('should not convert unnecessary paragraph', () => {
     const entity = {
       id: 0,
-      type: 'heading-one',
+      type: 'paragraph',
       raw: 'Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
