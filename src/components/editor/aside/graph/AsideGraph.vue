@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mt-5 w-full wb-text">
+  <div class="flex px-2 flex-col mt-5 w-full wb-text">
     <p v-if="store.state.project.name !== '__NOT_CREATED__'">
       {{ store.state.project.nameRaw }}
     </p>
