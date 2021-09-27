@@ -5,6 +5,7 @@ import { useLocalStorage } from './storage/local'
 import { useUtils } from './utils'
 import { usePage } from './page'
 import { usePDF } from './pdf'
+import { useEntity } from './entity'
 
 export const useKeyboard: Callback<any> = () => {
   const store = useStore()
@@ -16,6 +17,7 @@ export const useKeyboard: Callback<any> = () => {
     newChapter()
     deleteChapter()
     generatePDF()
+    switcherRawText()
   }
 
   const destroy = () => {
@@ -71,6 +73,17 @@ export const useKeyboard: Callback<any> = () => {
       useUtils().prevent(e)
 
       usePDF().external(store).onGeneratePDF()
+    })
+  }
+
+  const switcherRawText = () => {
+    keyboard.bind(store.state.shortcuts.switcherRawText[1], (e: Event) => {
+      useUtils().prevent(e)
+
+      store.commit(
+        'absolute/switchShortcutSwitcher',
+        !store.state.absolute.shortcuts.switcher
+      )
     })
   }
 

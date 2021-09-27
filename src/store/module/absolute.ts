@@ -11,7 +11,7 @@ export default {
       },
       aside: true,
       shortcuts: {
-        switcher: true,
+        switcher: false,
       },
     } as AbsoluteState),
   mutations: {
@@ -26,6 +26,9 @@ export default {
     },
     switchAside(state: any, b: boolean) {
       state.aside = b
+    },
+    switchShortcutSwitcher(state: any, b: boolean) {
+      state.shortcuts.switcher = b
     },
   },
   actions: {},
