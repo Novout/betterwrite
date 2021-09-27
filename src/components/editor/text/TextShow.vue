@@ -17,59 +17,47 @@
         :class="[
           props.entity.type === 'paragraph' && !edit ? 'indent-15' : '',
           props.entity.type === 'paragraph' ? 'text-justify' : '',
-          props.entity.type === 'paragraph'
-            ? store.state.editor.styles.show.paragraph.fontSize
-            : '',
-          props.entity.type === 'paragraph'
-            ? store.state.editor.styles.show.paragraph.fontFamily
-            : '',
-          props.entity.type === 'paragraph'
-            ? store.state.editor.styles.show.paragraph.fontColor
-            : '',
-          props.entity.type === 'paragraph'
-            ? store.state.editor.styles.show.paragraph.fontWeight
-            : '',
+          props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
+          props.entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
+          props.entity.type === 'paragraph' ? style.paragraph.fontColor : '',
+          props.entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
 
           props.entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
+          props.entity.type === 'heading-one' ? style.heading.one.fontSize : '',
           props.entity.type === 'heading-one'
-            ? store.state.editor.styles.show.heading.one.fontSize
+            ? style.heading.one.fontFamily
             : '',
           props.entity.type === 'heading-one'
-            ? store.state.editor.styles.show.heading.one.fontFamily
+            ? style.heading.one.fontColor
             : '',
           props.entity.type === 'heading-one'
-            ? store.state.editor.styles.show.heading.one.fontColor
-            : '',
-          props.entity.type === 'heading-one'
-            ? store.state.editor.styles.show.heading.one.fontWeight
+            ? style.heading.one.fontWeight
             : '',
 
           props.entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
+          props.entity.type === 'heading-two' ? style.heading.two.fontSize : '',
           props.entity.type === 'heading-two'
-            ? store.state.editor.styles.show.heading.two.fontSize
+            ? style.heading.two.fontFamily
             : '',
           props.entity.type === 'heading-two'
-            ? store.state.editor.styles.show.heading.two.fontFamily
+            ? style.heading.two.fontColor
             : '',
           props.entity.type === 'heading-two'
-            ? store.state.editor.styles.show.heading.two.fontColor
-            : '',
-          props.entity.type === 'heading-two'
-            ? store.state.editor.styles.show.heading.two.fontWeight
+            ? style.heading.two.fontWeight
             : '',
 
           props.entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
           props.entity.type === 'heading-three'
-            ? store.state.editor.styles.show.heading.three.fontSize
+            ? style.heading.three.fontSize
             : '',
           props.entity.type === 'heading-three'
-            ? store.state.editor.styles.show.heading.three.fontFamily
+            ? style.heading.three.fontFamily
             : '',
           props.entity.type === 'heading-three'
-            ? store.state.editor.styles.show.heading.three.fontColor
+            ? style.heading.three.fontColor
             : '',
           props.entity.type === 'heading-three'
-            ? store.state.editor.styles.show.heading.three.fontWeight
+            ? style.heading.three.fontWeight
             : '',
         ]"
         v-html="useRaw().convert(props.entity as any)"
@@ -80,59 +68,47 @@
         v-model="data"
         :class="[
           props.entity.type === 'paragraph' ? 'text-justify indent-15' : '',
-          props.entity.type === 'paragraph'
-            ? store.state.editor.styles.show.paragraph.fontSize
-            : '',
-          props.entity.type === 'paragraph'
-            ? store.state.editor.styles.show.paragraph.fontFamily
-            : '',
-          props.entity.type === 'paragraph'
-            ? store.state.editor.styles.show.paragraph.fontColor
-            : '',
-          props.entity.type === 'paragraph'
-            ? store.state.editor.styles.show.paragraph.fontWeight
-            : '',
+          props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
+          props.entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
+          props.entity.type === 'paragraph' ? style.paragraph.fontColor : '',
+          props.entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
 
           props.entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
+          props.entity.type === 'heading-one' ? style.heading.one.fontSize : '',
           props.entity.type === 'heading-one'
-            ? store.state.editor.styles.show.heading.one.fontSize
+            ? style.heading.one.fontFamily
             : '',
           props.entity.type === 'heading-one'
-            ? store.state.editor.styles.show.heading.one.fontFamily
+            ? style.heading.one.fontColor
             : '',
           props.entity.type === 'heading-one'
-            ? store.state.editor.styles.show.heading.one.fontColor
-            : '',
-          props.entity.type === 'heading-one'
-            ? store.state.editor.styles.show.heading.one.fontWeight
+            ? style.heading.one.fontWeight
             : '',
 
           props.entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
+          props.entity.type === 'heading-two' ? style.heading.two.fontSize : '',
           props.entity.type === 'heading-two'
-            ? store.state.editor.styles.show.heading.two.fontSize
+            ? style.heading.two.fontFamily
             : '',
           props.entity.type === 'heading-two'
-            ? store.state.editor.styles.show.heading.two.fontFamily
+            ? style.heading.two.fontColor
             : '',
           props.entity.type === 'heading-two'
-            ? store.state.editor.styles.show.heading.two.fontColor
-            : '',
-          props.entity.type === 'heading-two'
-            ? store.state.editor.styles.show.heading.two.fontWeight
+            ? style.heading.two.fontWeight
             : '',
 
           props.entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
           props.entity.type === 'heading-three'
-            ? store.state.editor.styles.show.heading.three.fontSize
+            ? style.heading.three.fontSize
             : '',
           props.entity.type === 'heading-three'
-            ? store.state.editor.styles.show.heading.three.fontFamily
+            ? style.heading.three.fontFamily
             : '',
           props.entity.type === 'heading-three'
-            ? store.state.editor.styles.show.heading.three.fontColor
+            ? style.heading.three.fontColor
             : '',
           props.entity.type === 'heading-three'
-            ? store.state.editor.styles.show.heading.three.fontWeight
+            ? style.heading.three.fontWeight
             : '',
         ]"
         class="
@@ -152,7 +128,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, nextTick } from 'vue'
+  import { ref, watch, nextTick, computed } from 'vue'
   import { useStore } from 'vuex'
   import { useRaw } from '@/use/raw'
 
@@ -170,6 +146,7 @@
   const data = ref('')
   const show = ref(null)
   const height = ref('0px')
+  const style = computed(() => store.state.editor.styles.show)
 
   watch(edit, async (_edit) => {
     await nextTick

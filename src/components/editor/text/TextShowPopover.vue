@@ -91,8 +91,6 @@
   })
 
   const onDeleteEntity = async () => {
-    if (props.entity.type === 'heading-one')
-      store.state.context.onlyHeadingOne = false
     store.commit('context/removeInPage', props.entity)
   }
 
