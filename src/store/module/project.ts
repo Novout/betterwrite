@@ -39,7 +39,6 @@ export default {
       const init: ContextState = {
         id: state.totalPagesCreated,
         totalEntityCreated: 2,
-        onlyHeadingOne: true,
         entity: [
           {
             id: 0,
@@ -67,7 +66,6 @@ export default {
       const init: ContextState = {
         id: state.totalPagesCreated,
         totalEntityCreated: 2,
-        onlyHeadingOne: false,
         entity: [
           {
             id: 0,
