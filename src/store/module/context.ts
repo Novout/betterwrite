@@ -67,7 +67,9 @@ export default {
     switchEntityRaw(state: any, obj: Record<string, any>) {
       const index = state.entity.indexOf(obj.entity)
 
-      state.entity[index].raw = obj.raw
+      const r = state.entity[index].raw.replaceAll(obj.match, obj.raw)
+
+      state.entity[index].raw = r
     },
   },
   actions: {},

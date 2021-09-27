@@ -10,13 +10,35 @@ export const useEntity: Callback<any> = () => {
     )
   }
 
-  const switcherText = (store: Store<any>, input: string, output: string) => {
+  const switcherText = (
+    store: Store<any>,
+    { entry, output, equal }: Record<any, any>
+  ) => {
     const arr = store.state.context.entity
 
+    // TODO: Deletar em caso de output vazio
+    if (!entry || !output) return
+
     arr.forEach((e: ContextStatePageContent) => {
-      if (e.raw.includes(input)) {
-        store.commit('context/switchEntityRaw', { entity: e, raw: output })
-      }
+      const text = e.raw.split(' ')
+
+      console.log(text)
+
+      text.forEach((t: string) => {
+        if (equal && t === entry) {
+          store.commit('context/switchEntityRaw', {
+            entity: e,
+            match: t,
+            raw: output,
+          })
+        } else if (!equal && t.includes(entry)) {
+          store.commit('context/switchEntityRaw', {
+            entity: e,
+            match: entry,
+            raw: output,
+          })
+        }
+      })
     })
   }
 
