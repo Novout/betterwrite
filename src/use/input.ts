@@ -14,5 +14,12 @@ export const useInput: Callback<any> = () => {
     })
   }
 
-  return { pasteText, prevent }
+  const getScrollHeight = (el: any) => {
+    let savedValue = el.value
+    el.value = ''
+    el._baseScrollHeight = el.scrollHeight
+    el.value = savedValue
+  }
+
+  return { pasteText, prevent, getScrollHeight }
 }

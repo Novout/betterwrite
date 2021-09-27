@@ -45,19 +45,19 @@
             :entity="entity"
           />
         </transition-group>
+        <EditorTextInput
+          v-if="store.state.project.name !== useEnv().projectEmpty()"
+          v-model="entry"
+          @enter="enterListener"
+          @reset="resetListener"
+        />
       </section>
-      <EditorTextInput
-        v-if="store.state.project.name !== useEnv().projectEmpty()"
-        v-model="entry"
-        @enter="enterListener"
-        @reset="resetListener"
-      />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { ref, nextTick } from 'vue'
   import { useStore } from 'vuex'
   import { useDraggable } from '@vueuse/core'
   import { ContextStatePageContent } from '@/types/context'
@@ -71,8 +71,10 @@
 
   const { style } = useDraggable(main, { initialValue: { x: 100, y: 20 } })
 
-  const enterListener = (content: ContextStatePageContent) => {
+  const enterListener = async (content: ContextStatePageContent) => {
     store.commit('context/addInPage', content)
+
+    await nextTick()
 
     useScroll().force('#edit')
 

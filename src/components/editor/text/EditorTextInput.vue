@@ -1,27 +1,34 @@
 <template>
   <section
-    class="flex justify-center items-center w-full"
+    class="flex justify-center items-center w-full relative"
     @mouseenter="hover = true"
     @mouseout="hover = false"
   >
-    <input
+    <textarea
       id="main-input-define"
       ref="input"
       v-model="cmp"
-      class="flex-1 rounded-none border-none shadow-2xl p-1"
+      data-min-rows="1"
+      class="
+        resize-none
+        indent-15
+        overflow-hidden
+        w-full
+        rounded-none
+        border-none
+        dark:bg-gray-700
+        bg-gray-100
+      "
+      :style="{ minHeight: '50px' }"
       :class="[
-        hover
-          ? 'dark:bg-gray-800 bg-gray-200 bg-opacity-90'
-          : 'dark:bg-gray-700 bg-gray-100',
         store.state.editor.styles.input.fontSize,
         store.state.editor.styles.input.fontFamily,
         store.state.editor.styles.input.fontColor,
       ]"
-      type="text"
       :placeholder="t('editor.text.placeholder.base')"
-      @input="handler"
-      @keypress.enter="enterHandler"
-      @paste.prevent="pasteHandler"
+      @input="onExpandableTextareaInput"
+      @keypress.enter.prevent="enterHandler"
+      @paste="pasteHandler"
     />
   </section>
 </template>
@@ -117,6 +124,8 @@
   }
 
   const pasteHandler = (event: any) => {
+    if (cmp.value !== '') return
+
     paste.value = true
     emit('reset')
 
@@ -135,5 +144,18 @@
 
       await emit('enter', content)
     })
+  }
+
+  const onExpandableTextareaInput = () => {
+    const _ = useInput()
+    let minRows = input.value.getAttribute('data-min-rows') | 0,
+      rows;
+    !input.value._baseScrollHeight && _.getScrollHeight(input.value)
+
+    input.value.rows = minRows
+    rows = Math.ceil(
+      (input.value.scrollHeight - input.value._baseScrollHeight) / 16
+    )
+    input.value.rows = minRows + rows
   }
 </script>
