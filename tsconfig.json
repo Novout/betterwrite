@@ -10,12 +10,12 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "types": ["@intlify/vite-plugin-vue-i18n/client", "vite/client"],
+    "types": ["@intlify/vite-plugin-vue-i18n/client", "vite/client", "jest"],
     "paths": {
       "@/*": ["src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules", "/pdfmake.js$/"]
+  "exclude": ["node_modules", "/pdfmake.js$/", "**/*.test.ts"]
 }
