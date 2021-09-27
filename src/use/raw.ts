@@ -1,6 +1,30 @@
 import { ContextStatePageContent } from '@/types/context'
 import { Callback } from '@/types/utils'
 
+const bold: Callback<any> = () => {
+  const open = () => {
+    return '<span class="font-bold text-xs">'
+  }
+
+  const close = () => {
+    return '</span>'
+  }
+
+  return { open, close }
+}
+
+const italic: Callback<any> = () => {
+  const open = () => {
+    return '<span class="italic text-xs">'
+  }
+
+  const close = () => {
+    return '</span>'
+  }
+
+  return { open, close }
+}
+
 export const useRaw: Callback<any> = () => {
   const convert = (page: ContextStatePageContent) => {
     let final = ''
@@ -14,15 +38,15 @@ export const useRaw: Callback<any> = () => {
 
       if (letter === '*' && !_italic) {
         _italic = true
-        final += '<span class="italic text-xs">'
+        final += italic().open()
       } else if (letter === '*' && _italic) {
-        final += '</span>'
+        final += italic().close()
         _italic = false
       } else if (letter === '&' && !_bold) {
         _bold = true
-        final += '<span class="font-bold text-xs">'
+        final += bold().open()
       } else if (letter === '&' && _bold) {
-        final += '</span>'
+        final += bold().close()
         _bold = false
       } else {
         final += letter
