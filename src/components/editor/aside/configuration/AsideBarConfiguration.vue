@@ -17,7 +17,7 @@
       </HeroIcon>
     </template>
     <SwitchGroup>
-      <div class="flex items-center w-full justify-between">
+      <div class="flex px-2 items-center w-full justify-between">
         <SwitchLabel
           class="
             mr-4
@@ -57,7 +57,7 @@
           />
         </Switch>
       </div>
-      <div class="flex items-center w-full justify-between pt-3">
+      <div class="flex px-2 items-center w-full justify-between pt-3">
         <SwitchLabel
           class="
             mr-4
@@ -97,7 +97,7 @@
           />
         </Switch>
       </div>
-      <div class="flex items-center w-full justify-between pt-3">
+      <div class="flex px-2 items-center w-full justify-between pt-3">
         <SwitchLabel
           class="
             mr-4
