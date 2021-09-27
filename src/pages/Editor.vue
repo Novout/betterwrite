@@ -9,9 +9,14 @@
 
 <script setup lang="ts">
   import { useKeyboard } from '@/use/keyboard'
+  import { useLocalStorage } from '@/use/storage/local'
   import { onUnmounted } from 'vue'
+  import { useStore } from 'vuex'
+
+  const store = useStore()
 
   useKeyboard().init()
+  useLocalStorage().onAutoSave(60, store)
 
   onUnmounted(() => {
     useKeyboard().destroy()

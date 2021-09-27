@@ -30,6 +30,17 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
     })
   }
 
+  const onAutoSave = (time: number, _: Store<any>) => {
+    setInterval(() => {
+      if (_.state.project.name === useEnv().projectEmpty()) return
+
+      useLocalStorage().setProject({
+        project: _.state.project,
+        editor: _.state.editor,
+      })
+    }, parseInt(`${time}000`))
+  }
+
   const onLoadProject = async () => {
     const context = useLocalStorage().getProject()
 
@@ -41,5 +52,13 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
     store.commit('context/load', store.state.project.pages[0])
   }
 
-  return { set, get, setProject, getProject, onSaveProject, onLoadProject }
+  return {
+    set,
+    get,
+    setProject,
+    getProject,
+    onSaveProject,
+    onLoadProject,
+    onAutoSave,
+  }
 }
