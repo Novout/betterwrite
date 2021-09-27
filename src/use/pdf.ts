@@ -8,6 +8,7 @@ import { GenerateParagraphOptions } from '@/types/pdf'
 import { ContextState, ContextStatePageContent } from '@/types/context'
 import { useRaw } from './raw'
 import { nextTick } from 'vue'
+import { useEnv } from './env'
 
 export const usePDF: Callback<any> = () => {
   const toast = useToast()
@@ -200,6 +201,8 @@ export const usePDF: Callback<any> = () => {
 
   const external = (store: Store<any>) => {
     const onGeneratePDF = async () => {
+      if (useEnv().isEmptyProject(store.state.project.name)) return
+
       store.commit('absolute/load', true)
 
       await nextTick

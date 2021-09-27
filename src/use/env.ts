@@ -9,5 +9,9 @@ export const useEnv: Callback<any> = () => {
     return import.meta.env.VITE_LOCAL_STORAGE as string
   }
 
-  return { projectEmpty, projectLocalStorage }
+  const isEmptyProject = (name: string) => {
+    return name === useEnv().projectEmpty()
+  }
+
+  return { projectEmpty, projectLocalStorage, isEmptyProject }
 }
