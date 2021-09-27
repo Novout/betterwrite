@@ -17,6 +17,7 @@ module.exports = {
     "vue/no-parsing-error": 0,
     "@typescript-eslint/no-empty-function": 0,
     "no-undef": 0,
-    "no-constant-condition": 0
+    "no-constant-condition": 0,
+    "no-import-assign": 0
   },
 };

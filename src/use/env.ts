@@ -13,5 +13,9 @@ export const useEnv: Callback<any> = () => {
     return name === useEnv().projectEmpty()
   }
 
-  return { projectEmpty, projectLocalStorage, isEmptyProject }
+  const production = () => {
+    return import.meta.env.MODE === 'production'
+  }
+
+  return { projectEmpty, projectLocalStorage, isEmptyProject, production }
 }
