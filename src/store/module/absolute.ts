@@ -10,6 +10,9 @@ export default {
         newProject: false,
       },
       aside: true,
+      shortcuts: {
+        switcher: true,
+      },
     } as AbsoluteState),
   mutations: {
     commands(state: any) {

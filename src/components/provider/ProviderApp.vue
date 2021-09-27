@@ -1,5 +1,6 @@
 <template>
   <EditorCommands v-if="store.state.absolute.commands" />
+  <EditorShortcutsSwitcher v-if="store.state.absolute.shortcuts.switcher" />
   <ProviderLoad v-if="store.state.absolute.load" />
 </template>
 

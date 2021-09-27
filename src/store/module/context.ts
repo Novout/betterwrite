@@ -64,6 +64,11 @@ export default {
       state.entity[index] = target
       state.entity[sIndex] = temp
     },
+    switchEntityRaw(state: any, obj: Record<string, any>) {
+      const index = state.entity.indexOf(obj.entity)
+
+      state.entity[index].raw = obj.raw
+    },
   },
   actions: {},
   getters: {},
