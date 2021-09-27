@@ -2,7 +2,6 @@ import { Store, useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import { Callback } from '@/types/utils'
 import { usePDF } from './pdf'
-import { useKeyboard } from './keyboard'
 
 const mode: Callback<void> = () => {
   if (import.meta.env.MODE === 'production') {
@@ -39,7 +38,6 @@ export const useStart: Callback<void> = () => {
     darkSet(store)
     langSet(store)
     usePDF().init()
-    useKeyboard().init()
   }
 
   return { init }

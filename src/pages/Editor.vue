@@ -11,6 +11,8 @@
   import { useKeyboard } from '@/use/keyboard'
   import { onUnmounted } from 'vue'
 
+  useKeyboard().init()
+
   onUnmounted(() => {
     useKeyboard().destroy()
   })
