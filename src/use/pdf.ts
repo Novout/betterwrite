@@ -14,36 +14,32 @@ export const usePDF: Callback<any> = () => {
   const toast = useToast()
 
   const init: Callback<any> = () => {
-    if (useEnv().production()) {
-      /*
-      // @ts-ignore
-      ;(<any>pdfMake).vfs = fonts
+    // @ts-ignore
+    ;(<any>pdfMake).vfs = fonts
 
-      // @ts-ignore
-      pdfMake.fonts = {
-        Roboto: {
-          normal:
-            'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf',
-          bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Medium.ttf',
-          italics:
-            'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Italic.ttf',
-          bolditalics:
-            'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-MediumItalic.ttf',
-        },
-        Raleway: {
-          normal: 'Raleway-Regular.ttf',
-          bold: 'Raleway-Medium.ttf',
-          italics: 'Raleway-Italic.ttf',
-          bolditalics: 'Raleway-MediumItalic.ttf',
-        },
-        Poppins: {
-          normal: 'Poppins-Regular.ttf',
-          bold: 'Poppins-Medium.ttf',
-          italics: 'Poppins-Italic.ttf',
-          bolditalics: 'Poppins-MediumItalic.ttf',
-        },
-      }]
-      */
+    // @ts-ignore
+    pdfMake.fonts = {
+      Roboto: {
+        normal:
+          'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf',
+        bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Medium.ttf',
+        italics:
+          'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Italic.ttf',
+        bolditalics:
+          'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-MediumItalic.ttf',
+      },
+      Raleway: {
+        normal: 'Raleway-Regular.ttf',
+        bold: 'Raleway-Medium.ttf',
+        italics: 'Raleway-Italic.ttf',
+        bolditalics: 'Raleway-MediumItalic.ttf',
+      },
+      Poppins: {
+        normal: 'Poppins-Regular.ttf',
+        bold: 'Poppins-Medium.ttf',
+        italics: 'Poppins-Italic.ttf',
+        bolditalics: 'Poppins-MediumItalic.ttf',
+      },
     }
   }
 
