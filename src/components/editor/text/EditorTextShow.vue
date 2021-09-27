@@ -60,11 +60,11 @@
             ? style.heading.three.fontWeight
             : '',
         ]"
-        v-html="useRaw().convert(props.entity as ContextStatePageContent)"
+        v-html="useRaw().convert(props.entity as any)"
       />
       <textarea
         v-else
-        id="editInput"
+        ref="input"
         v-model="data"
         :class="[
           props.entity.type === 'paragraph' ? 'text-justify indent-15' : '',
@@ -131,7 +131,6 @@
   import { ref, watch, nextTick, computed } from 'vue'
   import { useStore } from 'vuex'
   import { useRaw } from '@/use/raw'
-  import { ContextStatePageContent } from '@/types/context'
 
   const props = defineProps({
     entity: {
@@ -146,15 +145,14 @@
   const edit = ref(false)
   const data = ref('')
   const show = ref(null)
+  const input = ref<HTMLElement | null>(null)
   const height = ref('0px')
   const style = computed(() => store.state.editor.styles.show)
 
   watch(edit, async (_edit) => {
     await nextTick
     if (_edit) {
-      const input = document.querySelector('#editInput') as HTMLInputElement
-
-      input.focus()
+      input.value?.focus()
 
       data.value = props.entity.raw
     }
