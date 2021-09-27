@@ -5,7 +5,7 @@
 import { useFormat } from '../src/use/format';
 import { useRaw } from '../src/use/raw';
 
-describe('Factory.Sprite', () => {
+describe('Raw', () => {
   beforeEach(() => {});
 
   it('should not convert unnecessary paragraph', () => {
