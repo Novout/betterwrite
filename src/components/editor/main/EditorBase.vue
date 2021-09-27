@@ -38,7 +38,7 @@
         "
       >
         <transition-group name="list" tag="div" appear>
-          <TextShow
+          <EditorTextShow
             v-for="entity in store.state.context.entity"
             :id="id(entity)"
             :key="entity.id"
@@ -46,7 +46,7 @@
           />
         </transition-group>
       </section>
-      <TextInput
+      <EditorTextInput
         v-if="store.state.project.name !== useEnv().projectEmpty()"
         v-model="entry"
         @enter="enterListener"

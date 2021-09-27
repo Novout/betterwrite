@@ -5,7 +5,7 @@
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
-    <TextShowPopover
+    <EditorTextShowPopover
       v-if="hover && !edit && props.entity.type !== 'heading-one'"
       :entity="props.entity"
     />
@@ -60,7 +60,7 @@
             ? style.heading.three.fontWeight
             : '',
         ]"
-        v-html="useRaw().convert(props.entity as any)"
+        v-html="useRaw().convert(props.entity as ContextStatePageContent)"
       />
       <textarea
         v-else
@@ -131,6 +131,7 @@
   import { ref, watch, nextTick, computed } from 'vue'
   import { useStore } from 'vuex'
   import { useRaw } from '@/use/raw'
+  import { ContextStatePageContent } from '@/types/context'
 
   const props = defineProps({
     entity: {
