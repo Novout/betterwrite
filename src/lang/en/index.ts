@@ -1,5 +1,5 @@
-import editor from './editor';
+import editor from './editor'
 
 export default {
-  editor
+  editor,
 }

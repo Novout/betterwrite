@@ -12,19 +12,11 @@
   import { useI18n } from 'vue-i18n'
   import { useLocalStorage } from '@/use/storage/local'
   import { useStore } from 'vuex'
-  import { nextTick } from 'vue'
 
   const store = useStore()
 
-  const onLoadProject = async () => {
-    const context = useLocalStorage().getProject()
-
-    if (!context) return
-
-    store.commit('project/load', context.project)
-    await nextTick
-
-    store.commit('context/load', store.state.project.pages[0])
+  const onLoadProject = () => {
+    useLocalStorage(store).onLoadProject()
   }
 
   const { t } = useI18n()

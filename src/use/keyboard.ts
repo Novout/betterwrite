@@ -33,14 +33,7 @@ export const useKeyboard: Callback<any> = () => {
       async (e: Event) => {
         useUtils().prevent(e)
 
-        const context = useLocalStorage().getProject()
-
-        if (!context) return
-
-        store.commit('project/load', context.project)
-        await nextTick
-
-        store.commit('context/load', store.state.project.pages[0])
+        useLocalStorage(store).onLoadProject()
       }
     )
   }

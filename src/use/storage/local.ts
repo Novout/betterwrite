@@ -2,6 +2,7 @@ import { ProjectObject } from '@/types/project'
 import { Callback } from '@/types/utils'
 import { Store } from 'vuex'
 import { useEnv } from '../env'
+import { nextTick } from 'vue'
 
 export const useLocalStorage: Callback<any> = (store: Store<any>) => {
   const set = (obj: ProjectObject, name: string) => {
@@ -29,5 +30,16 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
     })
   }
 
-  return { set, get, setProject, getProject, onSaveProject }
+  const onLoadProject = async () => {
+    const context = useLocalStorage().getProject()
+
+    if (!context) return
+
+    store.commit('project/load', context.project)
+    await nextTick
+
+    store.commit('context/load', store.state.project.pages[0])
+  }
+
+  return { set, get, setProject, getProject, onSaveProject, onLoadProject }
 }
