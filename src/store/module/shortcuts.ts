@@ -13,6 +13,7 @@ export default {
       generatePDF: useDefines().shortcuts('generatePDF'),
       switcherRawText: useDefines().shortcuts('switcherRawText'),
       logger: useDefines().shortcuts('logger'),
+      configurationPDF: useDefines().shortcuts('configurationPDF'),
     } as ShortcutsState),
   mutations: {},
   actions: {},

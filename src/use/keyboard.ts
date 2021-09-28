@@ -18,6 +18,7 @@ export const useKeyboard: Callback<any> = () => {
     generatePDF()
     switcherRawText()
     logger()
+    configurationPDF()
   }
 
   const destroy = () => {
@@ -92,6 +93,17 @@ export const useKeyboard: Callback<any> = () => {
       useUtils().prevent(e)
 
       store.commit('absolute/switchLogger', !store.state.absolute.logger)
+    })
+  }
+
+  const configurationPDF = () => {
+    keyboard.bind(store.state.shortcuts.configurationPDF[1], (e: Event) => {
+      useUtils().prevent(e)
+
+      store.commit(
+        'absolute/switchPdfConfiguration',
+        !store.state.absolute.pdf.configuration
+      )
     })
   }
 

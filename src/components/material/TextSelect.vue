@@ -1,6 +1,6 @@
 <template>
   <Listbox v-model="cmp" class="w-auto">
-    <div class="relative mt-1">
+    <div class="relative">
       <ListboxButton
         class="
           relative
@@ -11,9 +11,8 @@
           text-left
           bg-gray-200
           dark:bg-gray-600
-          rounded-lg
           shadow-md
-          cursor-default
+          cursor-pointer
           focus:outline-none
           focus-visible:ring-2
           focus-visible:ring-opacity-75
@@ -83,8 +82,7 @@
           >
             <li
               :class="[
-                active ? 'text-amber-900 bg-amber-100' : 'text-gray-900',
-                'cursor-default select-none relative py-2 pl-10 pr-4',
+                'cursor-pointer hover:bg-gray-500 dark:hover:bg-gray-800 select-none relative py-2 pl-10 pr-4',
               ]"
             >
               <span

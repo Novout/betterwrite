@@ -15,7 +15,7 @@ export default {
       },
       logger: false,
       pdf: {
-        configuration: true,
+        configuration: false,
       },
     } as AbsoluteState),
   mutations: {
@@ -36,6 +36,9 @@ export default {
     },
     switchLogger(state: any, b: boolean) {
       state.logger = b
+    },
+    switchPdfConfiguration(state: any, b: boolean) {
+      state.pdf.configuration = b
     },
   },
   actions: {},

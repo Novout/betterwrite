@@ -13,6 +13,7 @@ export default {
       paragraph: {
         font: 'Font',
       },
+      save: 'Save',
     },
   },
   aside: {
