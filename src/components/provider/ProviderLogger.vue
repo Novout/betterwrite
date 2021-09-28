@@ -17,7 +17,7 @@
       overflow-auto
     "
   >
-    <LoggerItem v-for="(log, index) in logger" :hey="index" :log="log" />
+    <LoggerItem v-for="(log, index) in logger" :key="index" :log="log" />
   </div>
 </template>
 
