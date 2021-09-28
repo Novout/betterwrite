@@ -13,6 +13,7 @@ export default {
       shortcuts: {
         switcher: false,
       },
+      logger: false,
     } as AbsoluteState),
   mutations: {
     commands(state: any) {
@@ -29,6 +30,9 @@ export default {
     },
     switchShortcutSwitcher(state: any, b: boolean) {
       state.shortcuts.switcher = b
+    },
+    switchLogger(state: any, b: boolean) {
+      state.logger = b
     },
   },
   actions: {},

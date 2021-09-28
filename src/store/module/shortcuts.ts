@@ -12,6 +12,7 @@ export default {
       deleteChapter: useDefines().shortcuts('deleteChapter'),
       generatePDF: useDefines().shortcuts('generatePDF'),
       switcherRawText: useDefines().shortcuts('switcherRawText'),
+      logger: useDefines().shortcuts('logger'),
     } as ShortcutsState),
   mutations: {},
   actions: {},

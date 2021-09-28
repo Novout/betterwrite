@@ -80,3 +80,16 @@ input:-webkit-autofill {
 .fade-leave-to {
   opacity: 0;
 }
+
+.logger-log {
+  background-color: #a7ffe5;
+}
+.logger-warn {
+  background-color: #ffc684;
+}
+.logger-error {
+  background-color: #ff8987;
+}
+.logger-info {
+  background-color: #6793ff;
+}
