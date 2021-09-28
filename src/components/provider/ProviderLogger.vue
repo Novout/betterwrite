@@ -9,7 +9,7 @@
       duration-700
       w-96
       bg-white
-      dark:bg-gray-700
+      dark:bg-gray-800
       transition
       flex flex-col
       z-max
