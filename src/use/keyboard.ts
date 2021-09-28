@@ -21,7 +21,7 @@ export const useKeyboard: Callback<any> = () => {
   }
 
   const destroy = () => {
-    keyboard.pause()
+    keyboard.stop()
   }
 
   const saveLocal = () => {
