@@ -4,6 +4,7 @@ import editor from '@/store/module/editor'
 import project from '@/store/module/project'
 import absolute from '@/store/module/absolute'
 import shortcuts from '@/store/module/shortcuts'
+import logger from '@/store/module/logger'
 
 export default createStore({
   modules: {
@@ -12,5 +13,6 @@ export default createStore({
     project,
     absolute,
     shortcuts,
+    logger,
   },
 })

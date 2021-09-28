@@ -58,6 +58,7 @@
 
   onMounted(() => {
     useInput().prevent(input.value)
+    console.log('oieee')
   })
 
   const cmp = computed({
