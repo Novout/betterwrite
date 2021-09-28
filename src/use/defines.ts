@@ -14,7 +14,16 @@ export const useDefines: Callback<any> = () => {
     }[k]
   }
 
+  const pdf: Callback<any> = () => {
+    const fontFamily = (): Array<string> => {
+      return ['Poppins', 'Raleway']
+    }
+
+    return { fontFamily }
+  }
+
   return {
     shortcuts,
+    pdf,
   }
 }

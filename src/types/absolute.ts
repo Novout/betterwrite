@@ -1,7 +1,8 @@
 export interface AbsoluteState {
   commands: boolean
   load: boolean
-  modal: Record<string, any>
-  shortcuts: Record<string, any>
+  modal: Record<string, boolean>
+  shortcuts: Record<string, boolean>
   logger: boolean
+  pdf: Record<string, boolean>
 }

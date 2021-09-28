@@ -14,6 +14,9 @@ export default {
         switcher: false,
       },
       logger: false,
+      pdf: {
+        configuration: true,
+      },
     } as AbsoluteState),
   mutations: {
     commands(state: any) {

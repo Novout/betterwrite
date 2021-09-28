@@ -8,6 +8,13 @@ export default {
       headingthree: 'H3',
     },
   },
+  pdf: {
+    custom: {
+      paragraph: {
+        font: 'Font',
+      },
+    },
+  },
   aside: {
     graph: {
       actuallyPage: 'Página Atual',

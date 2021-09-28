@@ -5,6 +5,7 @@ import project from '@/store/module/project'
 import absolute from '@/store/module/absolute'
 import shortcuts from '@/store/module/shortcuts'
 import logger from '@/store/module/logger'
+import pdf from '@/store/module/pdf'
 
 export default createStore({
   modules: {
@@ -14,5 +15,6 @@ export default createStore({
     absolute,
     shortcuts,
     logger,
+    pdf,
   },
 })
