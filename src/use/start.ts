@@ -12,6 +12,7 @@ const global: Callback<Store<any>, void> = (store: Store<any>) => {
 
   console.log = function () {
     store.commit('logger/add', {
+      type: 'system',
       method: 'log',
       arguments,
       createdAt: useFormat().actually(),
@@ -21,6 +22,7 @@ const global: Callback<Store<any>, void> = (store: Store<any>) => {
 
   console.warn = function () {
     store.commit('logger/add', {
+      type: 'system',
       method: 'warn',
       arguments,
       createdAt: useFormat().actually(),
@@ -30,6 +32,7 @@ const global: Callback<Store<any>, void> = (store: Store<any>) => {
 
   console.error = function () {
     store.commit('logger/add', {
+      type: 'system',
       method: 'error',
       arguments,
       createdAt: useFormat().actually(),
@@ -39,6 +42,7 @@ const global: Callback<Store<any>, void> = (store: Store<any>) => {
 
   console.info = function () {
     store.commit('logger/add', {
+      type: 'system',
       method: 'info',
       arguments,
       createdAt: useFormat().actually(),
