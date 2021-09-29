@@ -1,9 +1,5 @@
 <template>
-  <section
-    class="flex justify-center items-center w-full relative"
-    @mouseenter="hover = true"
-    @mouseout="hover = false"
-  >
+  <section class="flex justify-center items-center w-full relative">
     <textarea
       id="main-input-define"
       ref="input"
@@ -51,7 +47,6 @@
 
   const emit = defineEmits(['update:modelValue', 'submit', 'enter', 'reset'])
 
-  const hover = ref<boolean>(false)
   const type = ref<string>('paragraph')
   const input = ref(null as any)
   const paste = ref<boolean>(false)
@@ -149,7 +144,7 @@
   const onExpandableTextareaInput = () => {
     const _ = useInput()
     let minRows = input.value.getAttribute('data-min-rows') | 0,
-      rows;
+      rows
     !input.value._baseScrollHeight && _.getScrollHeight(input.value)
 
     input.value.rows = minRows

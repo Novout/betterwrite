@@ -15,7 +15,10 @@
       props.entity.type === 'heading-three' ? 'top-8' : '',
     ]"
   >
-    <HeroIcon class="h-4 w-4 hover:text-gray-400 dark:hover:text-gray-900">
+    <HeroIcon
+      class="h-4 w-4 hover:text-gray-400 dark:hover:text-gray-900"
+      @click="onOptionsEntity"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -107,4 +110,6 @@
       direction: 'down',
     })
   }
+
+  const onOptionsEntity = () => {}
 </script>
