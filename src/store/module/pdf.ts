@@ -8,9 +8,9 @@ export default {
       styles: {
         paragraph: {
           font: useDefines().pdf().fontFamily()[0] as string,
-          fontSize: 12 as number,
-          lineHeight: 0 as number,
-          aligment: useDefines().pdf().aligment()[0] as
+          fontSize: 11 as number,
+          lineHeight: 1 as number,
+          alignment: useDefines().pdf().alignment()[3] as
             | 'left'
             | 'center'
             | 'right'
@@ -22,21 +22,22 @@ export default {
           decoration: useDefines().pdf().decoration()[0] as
             | 'underline'
             | 'lineThrough'
-            | 'overline',
+            | 'overline'
+            | undefined,
           decorationStyle: useDefines().pdf().decorationStyle()[0] as
             | 'dashed'
             | 'dotted'
             | 'double'
-            | 'wavy',
+            | undefined,
           decorationColor: '' as string,
         },
         headingOne: {
           font: useDefines().pdf().fontFamily()[0] as string,
-          fontSize: 12 as number,
+          fontSize: 26 as number,
           lineHeight: 0 as number,
           bold: true as boolean,
           italics: false as boolean,
-          aligment: useDefines().pdf().aligment()[0] as
+          alignment: useDefines().pdf().alignment()[1] as
             | 'left'
             | 'center'
             | 'right'
@@ -59,11 +60,11 @@ export default {
         },
         headingTwo: {
           font: useDefines().pdf().fontFamily()[0] as string,
-          fontSize: 12 as number,
+          fontSize: 20 as number,
           lineHeight: 0 as number,
           bold: true as boolean,
           italics: false as boolean,
-          aligment: useDefines().pdf().aligment()[0] as
+          alignment: useDefines().pdf().alignment()[1] as
             | 'left'
             | 'center'
             | 'right'
@@ -86,11 +87,11 @@ export default {
         },
         headingThree: {
           font: useDefines().pdf().fontFamily()[0] as string,
-          fontSize: 12 as number,
+          fontSize: 15 as number,
           lineHeight: 0 as number,
           bold: true as boolean,
           italics: false as boolean,
-          aligment: useDefines().pdf().aligment()[0] as
+          alignment: useDefines().pdf().alignment()[1] as
             | 'left'
             | 'center'
             | 'right'

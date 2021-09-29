@@ -44,11 +44,13 @@ export const usePDF: Callback<any> = () => {
   }
 
   const generate: Callback<any> = () => {
-    const headingOne = (raw: string) => {
+    const headingOne = (raw: string, store: Store<any>) => {
       return {
         text: raw,
         margin: [0, 45],
-        pageBreak: 'before',
+        pageBreak: store.state.pdf.styles.headingOne.breakPage
+          ? 'before'
+          : undefined,
         style: 'heading-one',
       }
     }
@@ -114,9 +116,9 @@ export const usePDF: Callback<any> = () => {
           let _raw = {}
 
           if ((entity as any).type === 'paragraph') {
-            _raw = paragraph((entity as any).raw, { stack: false, indent: 4 })
+            _raw = paragraph((entity as any).raw, { stack: false, indent: 2 })
           } else if ((entity as any).type === 'heading-one') {
-            _raw = headingOne((entity as any).raw)
+            _raw = headingOne((entity as any).raw, store)
           } else if ((entity as any).type === 'heading-two') {
             _raw = headingTwo((entity as any).raw)
           } else if ((entity as any).type === 'heading-three') {
@@ -130,7 +132,143 @@ export const usePDF: Callback<any> = () => {
       return arr
     }
 
-    return { content }
+    const styles = (store: Store<any>): Record<string, any> => {
+      const paragraph = () => {
+        let decorationStyle
+        let decoration
+
+        if (store.state.pdf.styles.paragraph.decorationStyle === 'none') {
+          decorationStyle = undefined
+        } else {
+          decorationStyle = store.state.pdf.styles.paragraph.decorationStyle
+        }
+
+        if (store.state.pdf.styles.paragraph.decoration === 'none') {
+          decoration = undefined
+        } else {
+          decoration = store.state.pdf.styles.paragraph.decoration
+        }
+
+        return {
+          font: store.state.pdf.styles.paragraph.font,
+          fontSize: store.state.pdf.styles.paragraph.fontSize,
+          lineHeight: store.state.pdf.styles.paragraph.lineHeight,
+          alignment: store.state.pdf.styles.paragraph.alignment,
+          characterSpacing: store.state.pdf.styles.paragraph.characterSpacing,
+          color: store.state.pdf.styles.paragraph.color,
+          background: store.state.pdf.styles.paragraph.background,
+          decoration: decoration,
+          decorationStyle: decorationStyle,
+          decorationColor: store.state.pdf.styles.paragraph.decorationColor,
+        }
+      }
+
+      const headingOne = () => {
+        let decorationStyle
+        let decoration
+
+        if (store.state.pdf.styles.paragraph.decorationStyle === 'none') {
+          decorationStyle = undefined
+        } else {
+          decorationStyle = store.state.pdf.styles.paragraph.decorationStyle
+        }
+
+        if (store.state.pdf.styles.paragraph.decoration === 'none') {
+          decoration = undefined
+        } else {
+          decoration = store.state.pdf.styles.paragraph.decoration
+        }
+
+        return {
+          font: store.state.pdf.styles.headingOne.font,
+          fontSize: store.state.pdf.styles.headingOne.fontSize,
+          lineHeight: store.state.pdf.styles.headingOne.lineHeight,
+          bold: store.state.pdf.styles.headingOne.bold,
+          italics: store.state.pdf.styles.headingOne.italics,
+          alignment: store.state.pdf.styles.headingOne.alignment,
+          characterSpacing: store.state.pdf.styles.headingOne.characterSpacing,
+          color: store.state.pdf.styles.headingOne.color,
+          background: store.state.pdf.styles.headingOne.background,
+          decoration: decoration,
+          decorationStyle: decorationStyle,
+          decorationColor: store.state.pdf.styles.headingOne.decorationColor,
+        }
+      }
+
+      const headingTwo = () => {
+        let decorationStyle
+        let decoration
+
+        if (store.state.pdf.styles.paragraph.decorationStyle === 'none') {
+          decorationStyle = undefined
+        } else {
+          decorationStyle = store.state.pdf.styles.paragraph.decorationStyle
+        }
+
+        if (store.state.pdf.styles.paragraph.decoration === 'none') {
+          decoration = undefined
+        } else {
+          decoration = store.state.pdf.styles.paragraph.decoration
+        }
+
+        return {
+          font: store.state.pdf.styles.headingTwo.font,
+          fontSize: store.state.pdf.styles.headingTwo.fontSize,
+          lineHeight: store.state.pdf.styles.headingTwo.lineHeight,
+          bold: store.state.pdf.styles.headingTwo.bold,
+          italics: store.state.pdf.styles.headingTwo.italics,
+          alignment: store.state.pdf.styles.headingTwo.alignment,
+          characterSpacing: store.state.pdf.styles.headingTwo.characterSpacing,
+          color: store.state.pdf.styles.headingTwo.color,
+          background: store.state.pdf.styles.headingTwo.background,
+          decoration: decoration,
+          decorationStyle: decorationStyle,
+          decorationColor: store.state.pdf.styles.headingTwo.decorationColor,
+        }
+      }
+
+      const headingThree = () => {
+        let decorationStyle
+        let decoration
+
+        if (store.state.pdf.styles.paragraph.decorationStyle === 'none') {
+          decorationStyle = undefined
+        } else {
+          decorationStyle = store.state.pdf.styles.paragraph.decorationStyle
+        }
+
+        if (store.state.pdf.styles.paragraph.decoration === 'none') {
+          decoration = undefined
+        } else {
+          decoration = store.state.pdf.styles.paragraph.decoration
+        }
+
+        return {
+          font: store.state.pdf.styles.headingThree.font,
+          fontSize: store.state.pdf.styles.headingThree.fontSize,
+          lineHeight: store.state.pdf.styles.headingThree.lineHeight,
+          bold: store.state.pdf.styles.headingThree.bold,
+          italics: store.state.pdf.styles.headingThree.italics,
+          alignment: store.state.pdf.styles.headingThree.alignment,
+          characterSpacing:
+            store.state.pdf.styles.headingThree.characterSpacing,
+          color: store.state.pdf.styles.headingThree.color,
+          background: store.state.pdf.styles.headingThree.background,
+          decoration: decoration,
+          decorationStyle: decorationStyle,
+          decorationColor: store.state.pdf.styles.headingThree.decorationColor,
+        }
+      }
+
+      return {
+        paragraph,
+        headingOne,
+        headingTwo,
+        headingThree,
+      }
+    }
+
+    return { content, styles }
   }
 
   const create: Callback<any> = (store: Store<any>): Promise<void> => {
@@ -139,7 +277,7 @@ export const usePDF: Callback<any> = () => {
         pdfMake
           .createPdf({
             pageSize: 'A5',
-            pageMargins: [60, 20, 60, 5],
+            pageMargins: [40, 20, 40, 5],
             info: {
               title: store.state.project.name,
               author: 'TODO',
@@ -148,27 +286,10 @@ export const usePDF: Callback<any> = () => {
             },
             content: generate().content(store),
             styles: {
-              'heading-three': {
-                fontSize: 20,
-                alignment: 'left',
-              },
-              'heading-two': {
-                fontSize: 24,
-                alignment: 'center',
-              },
-              'heading-one': {
-                fontSize: 30,
-                alignment: 'center',
-                bold: true,
-              },
-              paragraph: {
-                fontSize: 10,
-                alignment: 'justify',
-              },
-            },
-            defaultStyle: {
-              fontSize: 12,
-              font: 'Poppins',
+              'heading-three': generate().styles(store).headingThree(),
+              'heading-two': generate().styles(store).headingTwo(),
+              'heading-one': generate().styles(store).headingOne(),
+              paragraph: generate().styles(store).paragraph(),
             },
             pageBreakBefore: function (
               currentNode: any,

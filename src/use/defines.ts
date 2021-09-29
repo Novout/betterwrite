@@ -20,19 +20,19 @@ export const useDefines: Callback<any> = () => {
       return ['Roboto', 'Poppins', 'Raleway']
     }
 
-    const aligment = (): Array<string> => {
+    const alignment = (): Array<string> => {
       return ['left', 'center', 'right', 'justify']
     }
 
     const decoration = (): Array<string> => {
-      return ['underline', 'lineThrough', 'overline']
+      return ['none', 'underline', 'lineThrough', 'overline']
     }
 
     const decorationStyle = (): Array<string> => {
-      return ['dashed', 'dotted', 'double', 'wavy']
+      return ['none', 'dashed', 'dotted', 'double', 'wavy']
     }
 
-    return { fontFamily, aligment, decoration, decorationStyle }
+    return { fontFamily, alignment, decoration, decorationStyle }
   }
 
   return {

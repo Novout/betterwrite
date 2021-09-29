@@ -53,12 +53,12 @@
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.aligment')
+            t('editor.pdf.custom.generics.alignment')
           }}</label>
           <TextSelect
-            v-model="paragraph.aligment"
+            v-model="paragraph.alignment"
             class="flex-1"
-            :arr="useDefines().pdf().aligment()"
+            :arr="useDefines().pdf().alignment()"
           />
         </div>
         <div class="wb-input-container">
@@ -167,12 +167,12 @@
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.aligment')
+            t('editor.pdf.custom.generics.alignment')
           }}</label>
           <TextSelect
-            v-model="headingOne.aligment"
+            v-model="headingOne.alignment"
             class="flex-1"
-            :arr="useDefines().pdf().aligment()"
+            :arr="useDefines().pdf().alignment()"
           />
         </div>
         <div class="wb-input-container">
@@ -287,12 +287,12 @@
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.aligment')
+            t('editor.pdf.custom.generics.alignment')
           }}</label>
           <TextSelect
-            v-model="headingTwo.aligment"
+            v-model="headingTwo.alignment"
             class="flex-1"
-            :arr="useDefines().pdf().aligment()"
+            :arr="useDefines().pdf().alignment()"
           />
         </div>
         <div class="wb-input-container">
@@ -407,12 +407,12 @@
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.aligment')
+            t('editor.pdf.custom.generics.alignment')
           }}</label>
           <TextSelect
-            v-model="headingThree.aligment"
+            v-model="headingThree.alignment"
             class="flex-1"
-            :arr="useDefines().pdf().aligment()"
+            :arr="useDefines().pdf().alignment()"
           />
         </div>
         <div class="wb-input-container">
@@ -512,7 +512,7 @@
     font: _paragraph.value.font,
     fontSize: _paragraph.value.fontSize,
     lineHeight: _paragraph.value.lineHeight,
-    aligment: _paragraph.value.aligment,
+    alignment: _paragraph.value.alignment,
     characterSpacing: _paragraph.value.characterSpacing,
     color: _paragraph.value.color,
     background: _paragraph.value.background,
@@ -528,7 +528,7 @@
     lineHeight: _hone.value.lineHeight,
     bold: _hone.value.bold,
     italics: _hone.value.italics,
-    aligment: _hone.value.aligment,
+    alignment: _hone.value.alignment,
     characterSpacing: _hone.value.characterSpacing,
     color: _hone.value.color,
     background: _hone.value.background,
@@ -545,7 +545,7 @@
     lineHeight: _htwo.value.lineHeight,
     bold: _htwo.value.bold,
     italics: _htwo.value.italics,
-    aligment: _htwo.value.aligment,
+    alignment: _htwo.value.alignment,
     characterSpacing: _htwo.value.characterSpacing,
     color: _htwo.value.color,
     background: _htwo.value.background,
@@ -562,7 +562,7 @@
     lineHeight: _hthree.value.lineHeight,
     bold: _hthree.value.bold,
     italics: _hthree.value.italics,
-    aligment: _hthree.value.aligment,
+    alignment: _hthree.value.alignment,
     characterSpacing: _hthree.value.characterSpacing,
     color: _hthree.value.color,
     background: _hthree.value.background,

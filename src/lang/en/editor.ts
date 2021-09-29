@@ -22,7 +22,7 @@ export default {
         lineHeight: 'Line Height',
         bold: 'Bold',
         italics: 'Italic',
-        aligment: 'Aligment',
+        alignment: 'Alignment',
         characterSpacing: 'Character-Spacing',
         color: 'Text Color',
         background: 'Text Background' as string,

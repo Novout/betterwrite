@@ -22,7 +22,7 @@ export default {
         lineHeight: 'Altura da Linha',
         bold: 'Negrito',
         italics: 'Itálico',
-        aligment: 'Alinhamento',
+        alignment: 'Alinhamento',
         characterSpacing: 'Espaço de Caracteres',
         color: 'Cor do Texto',
         background: 'Cor do Fundo' as string,
