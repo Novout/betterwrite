@@ -10,8 +10,20 @@ export default {
   },
   pdf: {
     custom: {
-      paragraph: {
+      generics: {
         font: 'Font',
+        fontSize: 'Font Size',
+        lineHeight: 'Line Height',
+        bold: 'Bold',
+        italics: 'Italics',
+        aligment: 'Aligment',
+        characterSpacing: 'Character-Spacing',
+        color: 'Text Color',
+        background: 'Text Background' as string,
+        markerColor: 'Marker Color' as string,
+        decoration: 'Decoration',
+        decorationStyle: 'Decoration Style',
+        decorationColor: 'Decoration Color',
       },
       save: 'Save',
     },

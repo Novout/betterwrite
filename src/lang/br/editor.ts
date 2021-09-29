@@ -10,8 +10,20 @@ export default {
   },
   pdf: {
     custom: {
-      paragraph: {
-        font: 'Font',
+      generics: {
+        font: 'Fonte',
+        fontSize: 'Tamanho da Fonte',
+        lineHeight: 'Altura da Linha',
+        bold: 'Negrito',
+        italics: 'Itálico',
+        aligment: 'Alinhamento',
+        characterSpacing: 'Espaço de Caracteres',
+        color: 'Cor do Texto',
+        background: 'Cor do Fundo' as string,
+        markerColor: 'Cor da Marca' as string,
+        decoration: 'Decoração',
+        decorationStyle: 'Estilo da Decoração',
+        decorationColor: 'Cor da Decoração',
       },
       save: 'Salvar',
     },

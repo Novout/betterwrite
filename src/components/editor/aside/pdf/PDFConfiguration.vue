@@ -18,26 +18,10 @@
       <template #title>
         <h2 class="text-2xl font-bold font-poppins">Paragraph</h2>
       </template>
-      <div class="flexflex-row flex-wrap justify-between items-center my-3">
-        <div
-          class="
-            flex
-            w-52
-            items-center
-            justify-between
-            p-2
-            border
-            rounded-lg
-            border-gray-300
-            dark:border-gray-800
-            bg-gray-300
-            dark:bg-gray-800
-            shadow-lg
-            w-32
-          "
-        >
-          <label class="mx-2">{{
-            t('editor.pdf.custom.paragraph.font')
+      <div class="flex flex-row flex-wrap justify-between items-center my-3">
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.font')
           }}</label>
           <TextSelect
             v-model="paragraph.font"
@@ -45,10 +29,31 @@
             :arr="useDefines().pdf().fontFamily()"
           />
         </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.fontSize')
+          }}</label>
+          <TextNumber v-model="paragraph.fontSize" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.lineHeight')
+          }}</label>
+          <TextNumber v-model="paragraph.lineHeight" />
+        </div>
       </div>
     </PDFConfigurationSlot>
     <button
-      class="wb-text mt-5 ml-5 px-4 py-2 bg-gray-600 dark:bg-gray-600"
+      class="
+        wb-text
+        mt-5
+        ml-5
+        px-4
+        py-2
+        bg-gray-300
+        active:bg-gray-500
+        dark:bg-gray-600 dark:active:bg-gray-800
+      "
       @click.prevent="onSetConfiguration"
     >
       {{ t('editor.pdf.custom.save') }}
@@ -66,8 +71,8 @@
   const store = useStore()
 
   const paragraph = reactive({
-    font: 'Raleway' as string,
-    fontSize: '' as string,
+    font: useDefines().pdf().fontFamily()[0] as string,
+    fontSize: 12 as number,
     lineHeight: 0 as number,
     bold: false as boolean,
     italics: false as boolean,
