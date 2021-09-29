@@ -1,5 +1,31 @@
 <template>
-  <input ref="inp" v-model="cmp" type="checkbox" :class="css" />
+  <Switch
+    v-model="cmp"
+    :class="cmp ? 'bg-gray-900' : 'bg-gray-500'"
+    class="
+      relative
+      inline-flex
+      items-center
+      h-6
+      transition-colors
+      rounded-full
+      w-11
+      focus:outline-none
+    "
+  >
+    <span
+      :class="cmp ? 'translate-x-6' : 'translate-x-1'"
+      class="
+        inline-block
+        w-4
+        h-4
+        transition-transform
+        transform
+        bg-white
+        rounded-full
+      "
+    />
+  </Switch>
 </template>
 
 <script setup lang="ts">
