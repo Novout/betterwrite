@@ -34,7 +34,7 @@ export default {
         headingOne: {
           font: useDefines().pdf().fontFamily()[0] as string,
           fontSize: 26 as number,
-          lineHeight: 0 as number,
+          lineHeight: 1 as number,
           bold: true as boolean,
           italics: false as boolean,
           alignment: useDefines().pdf().alignment()[1] as
@@ -60,8 +60,8 @@ export default {
         },
         headingTwo: {
           font: useDefines().pdf().fontFamily()[0] as string,
-          fontSize: 20 as number,
-          lineHeight: 0 as number,
+          fontSize: 22 as number,
+          lineHeight: 1 as number,
           bold: true as boolean,
           italics: false as boolean,
           alignment: useDefines().pdf().alignment()[1] as
@@ -87,8 +87,8 @@ export default {
         },
         headingThree: {
           font: useDefines().pdf().fontFamily()[0] as string,
-          fontSize: 15 as number,
-          lineHeight: 0 as number,
+          fontSize: 16 as number,
+          lineHeight: 1 as number,
           bold: true as boolean,
           italics: false as boolean,
           alignment: useDefines().pdf().alignment()[1] as
