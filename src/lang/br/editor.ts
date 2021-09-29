@@ -12,6 +12,9 @@ export default {
     custom: {
       title: {
         paragraph: 'Parágrafo',
+        headingOne: 'Título Principal',
+        headingTwo: 'Título Secundário',
+        headingThree: 'Título Terciário',
       },
       generics: {
         font: 'Fonte',
@@ -27,6 +30,7 @@ export default {
         decoration: 'Decoração',
         decorationStyle: 'Estilo da Decoração',
         decorationColor: 'Cor da Decoração',
+        breakPage: 'Quebra de Página',
       },
       save: 'Salvar',
     },

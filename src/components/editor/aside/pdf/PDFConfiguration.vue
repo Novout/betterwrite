@@ -116,11 +116,371 @@
         </div>
       </div>
     </PDFConfigurationSlot>
+    <PDFConfigurationSlot>
+      <template #title>
+        <h2 class="text-2xl font-bold font-poppins">
+          {{ t('editor.pdf.custom.title.headingOne') }}
+        </h2>
+      </template>
+      <div
+        class="
+          flex flex-row flex-wrap
+          justify-between
+          items-center
+          my-3
+          overflow-x-hidden
+        "
+      >
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.font')
+          }}</label>
+          <TextSelect
+            v-model="headingOne.font"
+            class="flex-1"
+            :arr="useDefines().pdf().fontFamily()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.fontSize')
+          }}</label>
+          <TextNumber v-model="headingOne.fontSize" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.lineHeight')
+          }}</label>
+          <TextNumber v-model="headingOne.lineHeight" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.bold')
+          }}</label>
+          <TextBoolean v-model="headingOne.bold" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.italics')
+          }}</label>
+          <TextBoolean v-model="headingOne.italics" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.aligment')
+          }}</label>
+          <TextSelect
+            v-model="headingOne.aligment"
+            class="flex-1"
+            :arr="useDefines().pdf().aligment()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.characterSpacing')
+          }}</label>
+          <TextNumber v-model="headingOne.characterSpacing" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.color')
+          }}</label>
+          <TextInput
+            v-model="headingOne.color"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.background')
+          }}</label>
+          <TextInput
+            v-model="headingOne.background"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.markerColor')
+          }}</label>
+          <TextInput
+            v-model="headingOne.markerColor"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.decoration')
+          }}</label>
+          <TextSelect
+            v-model="headingOne.decoration"
+            class="flex-1"
+            :arr="useDefines().pdf().decoration()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.decorationStyle')
+          }}</label>
+          <TextSelect
+            v-model="headingOne.decorationStyle"
+            class="flex-1"
+            :arr="useDefines().pdf().decorationStyle()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.breakPage')
+          }}</label>
+          <TextBoolean v-model="headingOne.breakPage" />
+        </div>
+      </div>
+    </PDFConfigurationSlot>
+    <PDFConfigurationSlot>
+      <template #title>
+        <h2 class="text-2xl font-bold font-poppins">
+          {{ t('editor.pdf.custom.title.headingTwo') }}
+        </h2>
+      </template>
+      <div
+        class="
+          flex flex-row flex-wrap
+          justify-between
+          items-center
+          my-3
+          overflow-x-hidden
+        "
+      >
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.font')
+          }}</label>
+          <TextSelect
+            v-model="headingTwo.font"
+            class="flex-1"
+            :arr="useDefines().pdf().fontFamily()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.fontSize')
+          }}</label>
+          <TextNumber v-model="headingTwo.fontSize" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.lineHeight')
+          }}</label>
+          <TextNumber v-model="headingTwo.lineHeight" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.bold')
+          }}</label>
+          <TextBoolean v-model="headingTwo.bold" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.italics')
+          }}</label>
+          <TextBoolean v-model="headingTwo.italics" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.aligment')
+          }}</label>
+          <TextSelect
+            v-model="headingTwo.aligment"
+            class="flex-1"
+            :arr="useDefines().pdf().aligment()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.characterSpacing')
+          }}</label>
+          <TextNumber v-model="headingTwo.characterSpacing" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.color')
+          }}</label>
+          <TextInput
+            v-model="headingTwo.color"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.background')
+          }}</label>
+          <TextInput
+            v-model="headingTwo.background"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.markerColor')
+          }}</label>
+          <TextInput
+            v-model="headingTwo.markerColor"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.decoration')
+          }}</label>
+          <TextSelect
+            v-model="headingTwo.decoration"
+            class="flex-1"
+            :arr="useDefines().pdf().decoration()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.decorationStyle')
+          }}</label>
+          <TextSelect
+            v-model="headingTwo.decorationStyle"
+            class="flex-1"
+            :arr="useDefines().pdf().decorationStyle()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.breakPage')
+          }}</label>
+          <TextBoolean v-model="headingTwo.breakPage" />
+        </div>
+      </div>
+    </PDFConfigurationSlot>
+    <PDFConfigurationSlot>
+      <template #title>
+        <h2 class="text-2xl font-bold font-poppins">
+          {{ t('editor.pdf.custom.title.headingThree') }}
+        </h2>
+      </template>
+      <div
+        class="
+          flex flex-row flex-wrap
+          justify-between
+          items-center
+          my-3
+          overflow-x-hidden
+        "
+      >
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.font')
+          }}</label>
+          <TextSelect
+            v-model="headingThree.font"
+            class="flex-1"
+            :arr="useDefines().pdf().fontFamily()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.fontSize')
+          }}</label>
+          <TextNumber v-model="headingThree.fontSize" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.lineHeight')
+          }}</label>
+          <TextNumber v-model="headingThree.lineHeight" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.bold')
+          }}</label>
+          <TextBoolean v-model="headingThree.bold" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.italics')
+          }}</label>
+          <TextBoolean v-model="headingThree.italics" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.aligment')
+          }}</label>
+          <TextSelect
+            v-model="headingThree.aligment"
+            class="flex-1"
+            :arr="useDefines().pdf().aligment()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.characterSpacing')
+          }}</label>
+          <TextNumber v-model="headingThree.characterSpacing" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.color')
+          }}</label>
+          <TextInput
+            v-model="headingThree.color"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.background')
+          }}</label>
+          <TextInput
+            v-model="headingThree.background"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.markerColor')
+          }}</label>
+          <TextInput
+            v-model="headingThree.markerColor"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.decoration')
+          }}</label>
+          <TextSelect
+            v-model="headingThree.decoration"
+            class="flex-1"
+            :arr="useDefines().pdf().decoration()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.decorationStyle')
+          }}</label>
+          <TextSelect
+            v-model="headingThree.decorationStyle"
+            class="flex-1"
+            :arr="useDefines().pdf().decorationStyle()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.breakPage')
+          }}</label>
+          <TextBoolean v-model="headingThree.breakPage" />
+        </div>
+      </div>
+    </PDFConfigurationSlot>
     <button
       class="
+        relative
+        right-0
         wb-text
-        mt-5
-        ml-5
         px-4
         py-2
         bg-gray-300
@@ -168,9 +528,96 @@
     decorationColor: '' as string,
   })
 
+  const headingOne = reactive({
+    font: useDefines().pdf().fontFamily()[0] as string,
+    fontSize: 12 as number,
+    lineHeight: 0 as number,
+    bold: true as boolean,
+    italics: false as boolean,
+    aligment: useDefines().pdf().aligment()[0] as
+      | 'left'
+      | 'center'
+      | 'right'
+      | 'justify',
+    characterSpacing: 0 as number,
+    color: '#000000' as string,
+    background: '#ffffff' as string,
+    markerColor: '' as string,
+    decoration: useDefines().pdf().decoration()[0] as
+      | 'underline'
+      | 'lineThrough'
+      | 'overline',
+    decorationStyle: useDefines().pdf().decorationStyle()[0] as
+      | 'dashed'
+      | 'dotted'
+      | 'double'
+      | 'wavy',
+    decorationColor: '' as string,
+    breakPage: true as boolean,
+  })
+
+  const headingTwo = reactive({
+    font: useDefines().pdf().fontFamily()[0] as string,
+    fontSize: 12 as number,
+    lineHeight: 0 as number,
+    bold: true as boolean,
+    italics: false as boolean,
+    aligment: useDefines().pdf().aligment()[0] as
+      | 'left'
+      | 'center'
+      | 'right'
+      | 'justify',
+    characterSpacing: 0 as number,
+    color: '#000000' as string,
+    background: '#ffffff' as string,
+    markerColor: '' as string,
+    decoration: useDefines().pdf().decoration()[0] as
+      | 'underline'
+      | 'lineThrough'
+      | 'overline',
+    decorationStyle: useDefines().pdf().decorationStyle()[0] as
+      | 'dashed'
+      | 'dotted'
+      | 'double'
+      | 'wavy',
+    decorationColor: '' as string,
+    breakPage: false as boolean,
+  })
+
+  const headingThree = reactive({
+    font: useDefines().pdf().fontFamily()[0] as string,
+    fontSize: 12 as number,
+    lineHeight: 0 as number,
+    bold: true as boolean,
+    italics: false as boolean,
+    aligment: useDefines().pdf().aligment()[0] as
+      | 'left'
+      | 'center'
+      | 'right'
+      | 'justify',
+    characterSpacing: 0 as number,
+    color: '#000000' as string,
+    background: '#ffffff' as string,
+    markerColor: '' as string,
+    decoration: useDefines().pdf().decoration()[0] as
+      | 'underline'
+      | 'lineThrough'
+      | 'overline',
+    decorationStyle: useDefines().pdf().decorationStyle()[0] as
+      | 'dashed'
+      | 'dotted'
+      | 'double'
+      | 'wavy',
+    decorationColor: '' as string,
+    breakPage: false as boolean,
+  })
+
   const onSetConfiguration = async () => {
     store.commit('pdf/setStyles', {
       paragraph,
+      headingOne,
+      headingTwo,
+      headingThree,
     })
     await nextTick
 

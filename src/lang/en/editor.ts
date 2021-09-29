@@ -12,13 +12,16 @@ export default {
     custom: {
       title: {
         paragraph: 'Paragraph',
+        headingOne: 'Heading One',
+        headingTwo: 'Heading Two',
+        headingThree: 'Heading Three',
       },
       generics: {
         font: 'Font',
         fontSize: 'Font Size',
         lineHeight: 'Line Height',
         bold: 'Bold',
-        italics: 'Italics',
+        italics: 'Italic',
         aligment: 'Aligment',
         characterSpacing: 'Character-Spacing',
         color: 'Text Color',
@@ -27,6 +30,7 @@ export default {
         decoration: 'Decoration',
         decorationStyle: 'Decoration Style',
         decorationColor: 'Decoration Color',
+        breakPage: 'Break Page',
       },
       save: 'Save',
     },
