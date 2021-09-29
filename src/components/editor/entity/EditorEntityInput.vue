@@ -144,7 +144,7 @@
   const onExpandableTextareaInput = () => {
     const _ = useInput()
     let minRows = input.value.getAttribute('data-min-rows') | 0,
-      rows;
+      rows
     !input.value._baseScrollHeight && _.getScrollHeight(input.value)
 
     input.value.rows = minRows

@@ -5,7 +5,7 @@
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
-    <EditorTextShowPopover
+    <EditorEntityShowPopover
       v-if="hover && !edit && props.entity.type !== 'heading-one'"
       :entity="props.entity"
     />

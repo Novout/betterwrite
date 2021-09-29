@@ -38,14 +38,14 @@
         "
       >
         <transition-group name="list" tag="div" appear>
-          <EditorTextShow
+          <EditorEntityShow
             v-for="entity in store.state.context.entity"
             :id="id(entity)"
             :key="entity.id"
             :entity="entity"
           />
         </transition-group>
-        <EditorTextInput
+        <EditorEntityInput
           v-if="store.state.project.name !== useEnv().projectEmpty()"
           v-model="entry"
           @enter="enterListener"
