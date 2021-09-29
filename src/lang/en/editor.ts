@@ -10,6 +10,9 @@ export default {
   },
   pdf: {
     custom: {
+      title: {
+        paragraph: 'Paragraph',
+      },
       generics: {
         font: 'Font',
         fontSize: 'Font Size',

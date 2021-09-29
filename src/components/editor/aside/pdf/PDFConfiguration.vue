@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col justify-start items-start">
-    <HeroIcon class="absolute right-0 wb-icon" @click.prevent="onClose">
+  <div class="flex flex-col justify-start items-start p-5">
+    <HeroIcon class="absolute right-0 top-0 wb-icon" @click.prevent="onClose">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -16,9 +16,19 @@
     </HeroIcon>
     <PDFConfigurationSlot>
       <template #title>
-        <h2 class="text-2xl font-bold font-poppins">Paragraph</h2>
+        <h2 class="text-2xl font-bold font-poppins">
+          {{ t('editor.pdf.custom.title.paragraph') }}
+        </h2>
       </template>
-      <div class="flex flex-row flex-wrap justify-between items-center my-3">
+      <div
+        class="
+          flex flex-row flex-wrap
+          justify-between
+          items-center
+          my-3
+          overflow-x-hidden
+        "
+      >
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.font')
@@ -40,6 +50,69 @@
             t('editor.pdf.custom.generics.lineHeight')
           }}</label>
           <TextNumber v-model="paragraph.lineHeight" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.aligment')
+          }}</label>
+          <TextSelect
+            v-model="paragraph.aligment"
+            class="flex-1"
+            :arr="useDefines().pdf().aligment()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.characterSpacing')
+          }}</label>
+          <TextNumber v-model="paragraph.characterSpacing" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.color')
+          }}</label>
+          <TextInput
+            v-model="paragraph.color"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.background')
+          }}</label>
+          <TextInput
+            v-model="paragraph.background"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-1 text-xs">{{
+            t('editor.pdf.custom.generics.markerColor')
+          }}</label>
+          <TextInput
+            v-model="paragraph.markerColor"
+            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.decoration')
+          }}</label>
+          <TextSelect
+            v-model="paragraph.decoration"
+            class="flex-1"
+            :arr="useDefines().pdf().decoration()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.decorationStyle')
+          }}</label>
+          <TextSelect
+            v-model="paragraph.decorationStyle"
+            class="flex-1"
+            :arr="useDefines().pdf().decorationStyle()"
+          />
         </div>
       </div>
     </PDFConfigurationSlot>
@@ -74,15 +147,24 @@
     font: useDefines().pdf().fontFamily()[0] as string,
     fontSize: 12 as number,
     lineHeight: 0 as number,
-    bold: false as boolean,
-    italics: false as boolean,
-    aligment: '' as 'left' | 'center' | 'right' | 'justify',
+    aligment: useDefines().pdf().aligment()[0] as
+      | 'left'
+      | 'center'
+      | 'right'
+      | 'justify',
     characterSpacing: 0 as number,
-    color: '' as string,
-    background: '' as string,
+    color: '#000000' as string,
+    background: '#ffffff' as string,
     markerColor: '' as string,
-    decoration: '' as 'underline' | 'lineThrough' | 'overline',
-    decorationStyle: '' as 'dashed' | 'dotted' | 'double' | 'wavy',
+    decoration: useDefines().pdf().decoration()[0] as
+      | 'underline'
+      | 'lineThrough'
+      | 'overline',
+    decorationStyle: useDefines().pdf().decorationStyle()[0] as
+      | 'dashed'
+      | 'dotted'
+      | 'double'
+      | 'wavy',
     decorationColor: '' as string,
   })
 

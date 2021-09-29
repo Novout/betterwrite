@@ -17,10 +17,22 @@ export const useDefines: Callback<any> = () => {
 
   const pdf: Callback<any> = () => {
     const fontFamily = (): Array<string> => {
-      return ['Poppins', 'Raleway']
+      return ['Roboto', 'Poppins', 'Raleway']
     }
 
-    return { fontFamily }
+    const aligment = (): Array<string> => {
+      return ['left', 'center', 'right', 'justify']
+    }
+
+    const decoration = (): Array<string> => {
+      return ['underline', 'lineThrough', 'overline']
+    }
+
+    const decorationStyle = (): Array<string> => {
+      return ['dashed', 'dotted', 'double', 'wavy']
+    }
+
+    return { fontFamily, aligment, decoration, decorationStyle }
   }
 
   return {

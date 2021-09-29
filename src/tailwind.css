@@ -34,7 +34,7 @@
   }
 
   .wb-input-container {
-    @apply flex w-52 items-center justify-between p-2 mt-2 border rounded-lg border-gray-300 dark:border-gray-800 bg-gray-300 dark:bg-gray-800 shadow-lg;
+    @apply flex h-20 w-52 items-center justify-between p-2 mt-5 border rounded-lg border-gray-300 dark:border-gray-800 bg-gray-300 dark:bg-gray-800 shadow-lg;
   }
 }
 
