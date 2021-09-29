@@ -27,6 +27,9 @@
       v-if="store.state.project.name !== useEnv().projectEmpty()"
     />
     <AsideLine v-if="store.state.project.name !== useEnv().projectEmpty()" />
+    <AsideConfigurationPDF
+      v-if="store.state.project.name !== useEnv().projectEmpty()"
+    />
     <AsideGeneratePDF
       v-if="store.state.project.name !== useEnv().projectEmpty()"
     />

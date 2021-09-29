@@ -58,6 +58,7 @@ export default {
     },
     pdf: {
       title: 'Generate PDF',
+      configuration: 'Configure PDF',
     },
     commands: {
       title: 'Commands',
