@@ -17,29 +17,17 @@
     </template>
     <AsideProjectNew />
     <AsideLine />
-    <AsidePageNew v-if="store.state.project.name !== useEnv().projectEmpty()" />
-    <AsidePageDelete
-      v-if="store.state.project.name !== useEnv().projectEmpty()"
-    />
-    <AsideLine v-if="store.state.project.name !== useEnv().projectEmpty()" />
+    <AsidePageNew v-if="name !== useEnv().projectEmpty()" />
+    <AsidePageDelete v-if="name !== useEnv().projectEmpty()" />
+    <AsideLine v-if="name !== useEnv().projectEmpty()" />
     <AsideLoadProject />
-    <AsideSaveProject
-      v-if="store.state.project.name !== useEnv().projectEmpty()"
-    />
-    <AsideLine v-if="store.state.project.name !== useEnv().projectEmpty()" />
-    <AsideConfigurationPDF
-      v-if="store.state.project.name !== useEnv().projectEmpty()"
-    />
-    <AsideGeneratePDF
-      v-if="store.state.project.name !== useEnv().projectEmpty()"
-    />
-    <AsideLine v-if="store.state.project.name !== useEnv().projectEmpty()" />
-    <AsideAddonLogger
-      v-if="store.state.project.name !== useEnv().projectEmpty()"
-    />
-    <AsideAddonTextSwitcher
-      v-if="store.state.project.name !== useEnv().projectEmpty()"
-    />
+    <AsideSaveProject v-if="name !== useEnv().projectEmpty()" />
+    <AsideLine v-if="name !== useEnv().projectEmpty()" />
+    <AsideConfigurationPDF v-if="name !== useEnv().projectEmpty()" />
+    <AsideGeneratePDF v-if="name !== useEnv().projectEmpty()" />
+    <AsideLine v-if="name !== useEnv().projectEmpty()" />
+    <AsideAddonLogger v-if="name !== useEnv().projectEmpty()" />
+    <AsideAddonTextSwitcher v-if="name !== useEnv().projectEmpty()" />
   </AsideBarItem>
 </template>
 
@@ -47,7 +35,10 @@
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
   import { useEnv } from '@/use/env'
+  import { computed } from 'vue'
 
   const store = useStore()
   const { t } = useI18n()
+
+  const name = computed(() => store.state.project.name)
 </script>
