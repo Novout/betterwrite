@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col justify-start items-start p-5">
-    <HeroIcon class="absolute right-0 top-0 wb-icon" @click.prevent="onClose">
+    <HeroIcon
+      class="absolute right-0 top-0 wb-icon"
+      @click.prevent="onSetConfiguration"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -23,7 +26,7 @@
       <div
         class="
           flex flex-row flex-wrap
-          justify-between
+          justify-start
           items-center
           my-3
           overflow-x-hidden
@@ -71,28 +74,19 @@
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.color')
           }}</label>
-          <TextInput
-            v-model="paragraph.color"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="paragraph.color" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.background')
           }}</label>
-          <TextInput
-            v-model="paragraph.background"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="paragraph.background" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.markerColor')
           }}</label>
-          <TextInput
-            v-model="paragraph.markerColor"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="paragraph.markerColor" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
@@ -185,28 +179,19 @@
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.color')
           }}</label>
-          <TextInput
-            v-model="headingOne.color"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="headingOne.color" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.background')
           }}</label>
-          <TextInput
-            v-model="headingOne.background"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="headingOne.background" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.markerColor')
           }}</label>
-          <TextInput
-            v-model="headingOne.markerColor"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="headingOne.markerColor" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
@@ -305,28 +290,19 @@
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.color')
           }}</label>
-          <TextInput
-            v-model="headingTwo.color"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="headingTwo.color" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.background')
           }}</label>
-          <TextInput
-            v-model="headingTwo.background"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="headingTwo.background" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.markerColor')
           }}</label>
-          <TextInput
-            v-model="headingTwo.markerColor"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="headingTwo.markerColor" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
@@ -425,28 +401,19 @@
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.color')
           }}</label>
-          <TextInput
-            v-model="headingThree.color"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="headingThree.color" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.background')
           }}</label>
-          <TextInput
-            v-model="headingThree.background"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="headingThree.background" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.markerColor')
           }}</label>
-          <TextInput
-            v-model="headingThree.markerColor"
-            css="w-20 p-1 bg-gray-200 dark:bg-gray-600"
-          />
+          <TextColorPicker v-model="headingThree.markerColor" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
@@ -582,10 +549,6 @@
     })
     await nextTick
 
-    store.commit('absolute/switchPdfConfiguration', false)
-  }
-
-  const onClose = () => {
     store.commit('absolute/switchPdfConfiguration', false)
   }
 </script>

@@ -71,6 +71,7 @@
             ring-1 ring-black ring-opacity-5
             focus:outline-none
             sm:text-sm
+            z-max
           "
         >
           <ListboxOption
