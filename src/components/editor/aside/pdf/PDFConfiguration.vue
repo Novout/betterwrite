@@ -496,120 +496,81 @@
 
 <script setup lang="ts">
   import { useDefines } from '@/use/defines'
-  import { reactive, nextTick } from 'vue'
+  import { reactive, nextTick, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
 
   const { t } = useI18n()
   const store = useStore()
 
+  const _paragraph = computed(() => store.state.pdf.styles.paragraph)
+  const _hone = computed(() => store.state.pdf.styles.headingOne)
+  const _htwo = computed(() => store.state.pdf.styles.headingTwo)
+  const _hthree = computed(() => store.state.pdf.styles.headingThree)
+
   const paragraph = reactive({
-    font: useDefines().pdf().fontFamily()[0] as string,
-    fontSize: 12 as number,
-    lineHeight: 0 as number,
-    aligment: useDefines().pdf().aligment()[0] as
-      | 'left'
-      | 'center'
-      | 'right'
-      | 'justify',
-    characterSpacing: 0 as number,
-    color: '#000000' as string,
-    background: '#ffffff' as string,
-    markerColor: '' as string,
-    decoration: useDefines().pdf().decoration()[0] as
-      | 'underline'
-      | 'lineThrough'
-      | 'overline',
-    decorationStyle: useDefines().pdf().decorationStyle()[0] as
-      | 'dashed'
-      | 'dotted'
-      | 'double'
-      | 'wavy',
-    decorationColor: '' as string,
+    font: _paragraph.value.font,
+    fontSize: _paragraph.value.fontSize,
+    lineHeight: _paragraph.value.lineHeight,
+    aligment: _paragraph.value.aligment,
+    characterSpacing: _paragraph.value.characterSpacing,
+    color: _paragraph.value.color,
+    background: _paragraph.value.background,
+    markerColor: _paragraph.value.markerColor,
+    decoration: _paragraph.value.decoration,
+    decorationStyle: _paragraph.value.decorationStyle,
+    decorationColor: _paragraph.value.decorationColor,
   })
 
   const headingOne = reactive({
-    font: useDefines().pdf().fontFamily()[0] as string,
-    fontSize: 12 as number,
-    lineHeight: 0 as number,
-    bold: true as boolean,
-    italics: false as boolean,
-    aligment: useDefines().pdf().aligment()[0] as
-      | 'left'
-      | 'center'
-      | 'right'
-      | 'justify',
-    characterSpacing: 0 as number,
-    color: '#000000' as string,
-    background: '#ffffff' as string,
-    markerColor: '' as string,
-    decoration: useDefines().pdf().decoration()[0] as
-      | 'underline'
-      | 'lineThrough'
-      | 'overline',
-    decorationStyle: useDefines().pdf().decorationStyle()[0] as
-      | 'dashed'
-      | 'dotted'
-      | 'double'
-      | 'wavy',
-    decorationColor: '' as string,
-    breakPage: true as boolean,
+    font: _hone.value.font,
+    fontSize: _hone.value.fontSize,
+    lineHeight: _hone.value.lineHeight,
+    bold: _hone.value.bold,
+    italics: _hone.value.italics,
+    aligment: _hone.value.aligment,
+    characterSpacing: _hone.value.characterSpacing,
+    color: _hone.value.color,
+    background: _hone.value.background,
+    markerColor: _hone.value.markerColor,
+    decoration: _hone.value.decoration,
+    decorationStyle: _hone.value.decorationStyle,
+    decorationColor: _hone.value.decorationColor,
+    breakPage: _hone.value.breakPage,
   })
 
   const headingTwo = reactive({
-    font: useDefines().pdf().fontFamily()[0] as string,
-    fontSize: 12 as number,
-    lineHeight: 0 as number,
-    bold: true as boolean,
-    italics: false as boolean,
-    aligment: useDefines().pdf().aligment()[0] as
-      | 'left'
-      | 'center'
-      | 'right'
-      | 'justify',
-    characterSpacing: 0 as number,
-    color: '#000000' as string,
-    background: '#ffffff' as string,
-    markerColor: '' as string,
-    decoration: useDefines().pdf().decoration()[0] as
-      | 'underline'
-      | 'lineThrough'
-      | 'overline',
-    decorationStyle: useDefines().pdf().decorationStyle()[0] as
-      | 'dashed'
-      | 'dotted'
-      | 'double'
-      | 'wavy',
-    decorationColor: '' as string,
-    breakPage: false as boolean,
+    font: _htwo.value.font,
+    fontSize: _htwo.value.fontSize,
+    lineHeight: _htwo.value.lineHeight,
+    bold: _htwo.value.bold,
+    italics: _htwo.value.italics,
+    aligment: _htwo.value.aligment,
+    characterSpacing: _htwo.value.characterSpacing,
+    color: _htwo.value.color,
+    background: _htwo.value.background,
+    markerColor: _htwo.value.markerColor,
+    decoration: _htwo.value.decoration,
+    decorationStyle: _htwo.value.decorationStyle,
+    decorationColor: _htwo.value.decorationColor,
+    breakPage: _htwo.value.breakPage,
   })
 
   const headingThree = reactive({
-    font: useDefines().pdf().fontFamily()[0] as string,
-    fontSize: 12 as number,
-    lineHeight: 0 as number,
-    bold: true as boolean,
-    italics: false as boolean,
-    aligment: useDefines().pdf().aligment()[0] as
-      | 'left'
-      | 'center'
-      | 'right'
-      | 'justify',
-    characterSpacing: 0 as number,
-    color: '#000000' as string,
-    background: '#ffffff' as string,
-    markerColor: '' as string,
-    decoration: useDefines().pdf().decoration()[0] as
-      | 'underline'
-      | 'lineThrough'
-      | 'overline',
-    decorationStyle: useDefines().pdf().decorationStyle()[0] as
-      | 'dashed'
-      | 'dotted'
-      | 'double'
-      | 'wavy',
-    decorationColor: '' as string,
-    breakPage: false as boolean,
+    font: _hthree.value.font,
+    fontSize: _hthree.value.fontSize,
+    lineHeight: _hthree.value.lineHeight,
+    bold: _hthree.value.bold,
+    italics: _hthree.value.italics,
+    aligment: _hthree.value.aligment,
+    characterSpacing: _hthree.value.characterSpacing,
+    color: _hthree.value.color,
+    background: _hthree.value.background,
+    markerColor: _hthree.value.markerColor,
+    decoration: _hthree.value.decoration,
+    decorationStyle: _hthree.value.decorationStyle,
+    decorationColor: _hthree.value.decorationColor,
+    breakPage: _hthree.value.breakPage,
   })
 
   const onSetConfiguration = async () => {

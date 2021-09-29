@@ -4,5 +4,5 @@ export interface GenerateParagraphOptions {
 }
 
 export interface PDFState {
-  styles: Array<any>
+  styles: Record<string, any>
 }
