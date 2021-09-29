@@ -33,6 +33,13 @@
     <AsideGeneratePDF
       v-if="store.state.project.name !== useEnv().projectEmpty()"
     />
+    <AsideLine v-if="store.state.project.name !== useEnv().projectEmpty()" />
+    <AsideAddonLogger
+      v-if="store.state.project.name !== useEnv().projectEmpty()"
+    />
+    <AsideAddonTextSwitcher
+      v-if="store.state.project.name !== useEnv().projectEmpty()"
+    />
   </AsideBarItem>
 </template>
 

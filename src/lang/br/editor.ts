@@ -48,6 +48,14 @@ export default {
     },
     project: {
       title: 'Projeto',
+      addons: {
+        logger: {
+          title: 'Ações',
+        },
+        textSwitcher: {
+          title: 'Substituir Texto',
+        },
+      },
       save: {
         title: 'Salvar Simples',
       },
