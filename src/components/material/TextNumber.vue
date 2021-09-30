@@ -22,7 +22,7 @@
         />
       </svg>
     </HeroIcon>
-    <input ref="inp" v-model="cmp" class="w-4 bg-transparent" />
+    <input ref="inp" v-model="cmp" type="number" class="w-8 bg-transparent" />
     <HeroIcon
       class="
         bg-gray-200

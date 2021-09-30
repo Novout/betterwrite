@@ -47,6 +47,16 @@ input[type='color']::-webkit-color-swatch {
   border: none;
 }
 
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 :root {
   --scr-track: #f1f1f1;
   --scr-thumb: #888;
