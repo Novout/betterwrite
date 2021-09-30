@@ -16,8 +16,12 @@ export const useDefines: Callback<any> = () => {
   }
 
   const pdf: Callback<any> = () => {
+    const fixFonts = () => {
+      return ['EB Garamond', 'Cormorant Garamond']
+    }
+
     const fontFamily = (): Array<string> => {
-      return ['Roboto', 'Poppins', 'Raleway']
+      return ['Roboto']
     }
 
     const alignment = (): Array<string> => {
@@ -99,7 +103,14 @@ export const useDefines: Callback<any> = () => {
       return { pageSize, pageMargins, pageOrientation }
     }
 
-    return { fontFamily, alignment, decoration, decorationStyle, base }
+    return {
+      fontFamily,
+      alignment,
+      decoration,
+      decorationStyle,
+      base,
+      fixFonts,
+    }
   }
 
   return {
