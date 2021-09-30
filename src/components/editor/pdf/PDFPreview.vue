@@ -13,7 +13,7 @@
       />
     </svg>
   </HeroIcon>
-  <div ref="preview" class="w-1/2 h-1/2 p-2"></div>
+  <div ref="preview" class="w-1/2 h-1/2"></div>
 </template>
 
 <script setup lang="ts">
