@@ -62,6 +62,7 @@ module.exports = {
       }),
       zIndex: theme => ({
         "max": "9999",
+        "preview": "200",
         "aside": "100",
         "aside-open": "100"
       })

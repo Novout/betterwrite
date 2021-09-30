@@ -24,6 +24,7 @@
     <AsideSaveProject v-if="name !== useEnv().projectEmpty()" />
     <AsideLine v-if="name !== useEnv().projectEmpty()" />
     <AsideConfigurationPDF v-if="name !== useEnv().projectEmpty()" />
+    <AsidePreviewPDF v-if="name !== useEnv().projectEmpty()" />
     <AsideGeneratePDF v-if="name !== useEnv().projectEmpty()" />
     <AsideLine v-if="name !== useEnv().projectEmpty()" />
     <AsideAddonLogger v-if="name !== useEnv().projectEmpty()" />

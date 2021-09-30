@@ -1,6 +1,6 @@
 <template>
   <div
-    id="logger-absolute"
+    id="pdf-absolute"
     class="
       absolute
       top-1/2
@@ -21,12 +21,3 @@
     <PDFConfiguration />
   </div>
 </template>
-
-<script setup lang="ts">
-  import { useStore } from 'vuex'
-  import { computed } from 'vue'
-
-  const store = useStore()
-
-  const logger = computed(() => store.state.logger.content)
-</script>

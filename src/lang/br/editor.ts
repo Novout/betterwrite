@@ -98,6 +98,7 @@ export default {
     },
     pdf: {
       title: 'Gerar PDF',
+      preview: 'Simular PDF',
       configuration: 'Configurar PDF',
     },
     commands: {

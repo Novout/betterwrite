@@ -18,6 +18,7 @@ export const useKeyboard: Callback<any> = () => {
     generatePDF()
     switcherRawText()
     logger()
+    previewPDF()
     configurationPDF()
   }
 
@@ -93,6 +94,17 @@ export const useKeyboard: Callback<any> = () => {
       useUtils().prevent(e)
 
       store.commit('absolute/switchLogger', !store.state.absolute.logger)
+    })
+  }
+
+  const previewPDF = () => {
+    keyboard.bind(store.state.shortcuts.previewPDF[1], (e: Event) => {
+      useUtils().prevent(e)
+
+      store.commit(
+        'absolute/switchPdfPreview',
+        !store.state.absolute.pdf.preview
+      )
     })
   }
 

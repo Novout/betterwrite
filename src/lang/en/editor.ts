@@ -98,6 +98,7 @@ export default {
     },
     pdf: {
       title: 'Generate PDF',
+      preview: 'Preview PDF',
       configuration: 'Configure PDF',
     },
     commands: {

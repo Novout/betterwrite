@@ -16,6 +16,7 @@ export default {
       logger: false,
       pdf: {
         configuration: false,
+        preview: false,
       },
     } as AbsoluteState),
   mutations: {
@@ -39,6 +40,9 @@ export default {
     },
     switchPdfConfiguration(state: any, b: boolean) {
       state.pdf.configuration = b
+    },
+    switchPdfPreview(state: any, b: boolean) {
+      state.pdf.preview = b
     },
   },
   actions: {},

@@ -4,6 +4,7 @@ export interface ShortcutsState {
   newProject: Array<string>
   newChapter: Array<string>
   deleteChapter: Array<string>
+  previewPDF: Array<string>
   generatePDF: Array<string>
   logger: Array<string>
 }

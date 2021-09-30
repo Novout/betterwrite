@@ -9,7 +9,8 @@ export const useDefines: Callback<any> = () => {
       newChapter: ['CTRL + Q', 'ctrl > q'],
       deleteChapter: ['CTRL + D', 'ctrl > d'],
       configurationPDF: ['CTRL + Shift + G', 'ctrl > shift > g'],
-      generatePDF: ['CTRL + G', 'ctrl > g'],
+      previewPDF: ['CTRL + G', 'ctrl > g'],
+      generatePDF: ['CTRL + Shift + G', 'ctrl > shift > g'],
       switcherRawText: ['CTRL + H', 'ctrl > h'],
       logger: ['CTRL + L', 'ctrl > l'],
     }[k]

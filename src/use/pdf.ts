@@ -322,13 +322,81 @@ export const usePDF: Callback<any> = () => {
     })
   }
 
+  const preview: Callback<any> = (
+    store: Store<any>,
+    input: HTMLElement
+  ): void => {
+    const generator = pdfMake.createPdf({
+      pageSize: generate().base(store).pageSize,
+      pageOrientation: generate().base(store).pageOrientation,
+      pageMargins: {
+        left: generate().base(store).pageMargins[0],
+        top: generate().base(store).pageMargins[1],
+        right: generate().base(store).pageMargins[2],
+        bottom: generate().base(store).pageMargins[3],
+      },
+      info: {
+        title: store.state.project.name,
+        author: 'TODO',
+        subject: store.state.project.version,
+        keywords: '',
+      },
+      content: generate().content(store),
+      styles: {
+        'heading-three': generate().styles(store).headingThree(),
+        'heading-two': generate().styles(store).headingTwo(),
+        'heading-one': generate().styles(store).headingOne(),
+        paragraph: generate().styles(store).paragraph(),
+      },
+      pageBreakBefore: function (
+        currentNode: any,
+        followingNodesOnPage: any,
+        nodesOnNextPage: any,
+        previousNodesOnPage: any
+      ) {
+        //check if signature part is completely on the last page, add pagebreak if not
+        if (
+          currentNode.id === 'signature' &&
+          (currentNode.pageNumbers.length != 1 ||
+            currentNode.pageNumbers[0] != currentNode.pages)
+        ) {
+          return true
+        }
+        //check if last paragraph is entirely on a single page, add pagebreak if not
+        else if (
+          currentNode.id === 'closingParagraph' &&
+          currentNode.pageNumbers.length != 1
+        ) {
+          return true
+        }
+        return false
+      },
+    })
+
+    generator.getDataUrl((dataUrl: any) => {
+      const iframe = document.createElement('iframe')
+      iframe.src = dataUrl
+      iframe.style.width = '400px'
+      iframe.style.height = '500px'
+
+      let child = input.lastElementChild
+      while (child) {
+        input.removeChild(child)
+        child = input.lastElementChild
+      }
+
+      input.appendChild(iframe)
+
+      store.commit('absolute/load', false)
+    })
+  }
+
   const external = (store: Store<any>) => {
     const onGeneratePDF = async () => {
       if (useEnv().isEmptyProject(store.state.project.name)) return
 
       store.commit('absolute/load', true)
 
-      await nextTick
       usePDF()
         .create(store)
         .then(() => {
@@ -336,8 +404,16 @@ export const usePDF: Callback<any> = () => {
         })
     }
 
-    return { onGeneratePDF }
+    const onPreviewPDF = async (input: HTMLElement) => {
+      if (useEnv().isEmptyProject(store.state.project.name)) return
+
+      store.commit('absolute/load', true)
+
+      usePDF().preview(store, input)
+    }
+
+    return { onGeneratePDF, onPreviewPDF }
   }
 
-  return { init, create, external }
+  return { init, create, external, preview }
 }

@@ -1,13 +1,17 @@
 <template>
-  <EditorCommands v-if="store.state.absolute.commands" />
-  <EditorShortcutsSwitcher v-if="store.state.absolute.shortcuts.switcher" />
-  <ProviderLoad v-if="store.state.absolute.load" />
-  <ProviderLogger v-if="store.state.absolute.logger" />
-  <ProviderPDF v-if="store.state.absolute.pdf.configuration" />
+  <EditorCommands v-if="absolute.commands" />
+  <EditorShortcutsSwitcher v-if="absolute.shortcuts.switcher" />
+  <ProviderLoad v-if="absolute.load" />
+  <ProviderLogger v-if="absolute.logger" />
+  <ProviderPDFConfiguration v-if="absolute.pdf.configuration" />
+  <ProviderPDFPreview v-if="absolute.pdf.preview" />
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
   import { useStore } from 'vuex'
 
   const store = useStore()
+
+  const absolute = computed(() => store.state.absolute)
 </script>
