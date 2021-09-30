@@ -198,7 +198,7 @@
           <TextSelect
             v-model="headingOne.font"
             class="flex-1"
-            :arr="useDefines().pdf().fontFamily()"
+            :arr="fontFamily"
           />
         </div>
         <div class="wb-input-container">
@@ -309,7 +309,7 @@
           <TextSelect
             v-model="headingTwo.font"
             class="flex-1"
-            :arr="useDefines().pdf().fontFamily()"
+            :arr="fontFamily"
           />
         </div>
         <div class="wb-input-container">
@@ -420,7 +420,7 @@
           <TextSelect
             v-model="headingThree.font"
             class="flex-1"
-            :arr="useDefines().pdf().fontFamily()"
+            :arr="fontFamily"
           />
         </div>
         <div class="wb-input-container">

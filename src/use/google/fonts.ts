@@ -35,6 +35,8 @@ export const useFonts: Callback<any> = () => {
       names.push(obj.family)
     })
 
+    names.sort()
+
     return { normalize, names }
   }
 
