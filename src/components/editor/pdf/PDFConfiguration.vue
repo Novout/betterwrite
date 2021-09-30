@@ -100,6 +100,7 @@
             v-model="paragraph.font"
             class="flex-1"
             :arr="fontFamily"
+            :font="true"
           />
         </div>
         <div class="wb-input-container">
@@ -199,6 +200,7 @@
             v-model="headingOne.font"
             class="flex-1"
             :arr="fontFamily"
+            :font="true"
           />
         </div>
         <div class="wb-input-container">
@@ -310,6 +312,7 @@
             v-model="headingTwo.font"
             class="flex-1"
             :arr="fontFamily"
+            :font="true"
           />
         </div>
         <div class="wb-input-container">
@@ -421,6 +424,7 @@
             v-model="headingThree.font"
             class="flex-1"
             :arr="fontFamily"
+            :font="true"
           />
         </div>
         <div class="wb-input-container">

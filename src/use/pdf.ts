@@ -9,6 +9,7 @@ import { useRaw } from './raw'
 import { nextTick } from 'vue'
 import { useEnv } from './env'
 import { useFonts } from './google/fonts'
+import { useUtils } from './utils'
 
 export const usePDF: Callback<any> = () => {
   const toast = useToast()

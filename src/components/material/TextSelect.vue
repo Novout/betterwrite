@@ -62,9 +62,10 @@
             >
               <span
                 :class="[
-                  selected ? 'font-medium' : 'font-normal',
+                  selected ? 'font-bold' : 'font-normal',
                   'block truncate',
                 ]"
+                :style="{ fontFamily: font ? it as string : '' }"
                 >{{ it }}</span
               >
               <span
@@ -111,6 +112,11 @@
     arr: {
       required: false,
       type: Array,
+    },
+    font: {
+      required: false,
+      type: Boolean,
+      default: false,
     },
   })
 

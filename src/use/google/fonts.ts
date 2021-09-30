@@ -5,6 +5,31 @@ import { useEnv } from '../env'
 import { useDefines } from '../defines'
 
 export const useFonts: Callback<any> = () => {
+  const setGlobal = (vfs: Record<any, any>) => {
+    const _style = document.createElement('style')
+
+    Object.entries(vfs).forEach((font: Array<any>) => {
+      const key = font[0]
+      const content = font[1]
+      _style.appendChild(
+        document.createTextNode(
+          '\
+      @font-face {\
+          font-family: ' +
+            key +
+            ";\
+          src: url('" +
+            content.normal +
+            "');\
+      }\
+      "
+        )
+      )
+    })
+
+    document.head.appendChild(_style)
+  }
+
   const get = async () => {
     let normalize: Record<string, any> = {}
     const names: Array<string> = []
@@ -64,6 +89,8 @@ export const useFonts: Callback<any> = () => {
     })
 
     names.sort()
+
+    setGlobal(normalize)
 
     return { normalize, names }
   }
