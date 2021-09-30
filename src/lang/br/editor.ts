@@ -9,6 +9,18 @@ export default {
     },
   },
   pdf: {
+    base: {
+      title: 'Página',
+      pageSize: 'Tamanho',
+      pageOrientation: 'Orientação',
+      pageMargins: {
+        title: 'Margens',
+        left: 'Esquerda',
+        top: 'Cima',
+        right: 'Direita',
+        bottom: 'Baixo',
+      },
+    },
     custom: {
       title: {
         paragraph: 'Parágrafo',

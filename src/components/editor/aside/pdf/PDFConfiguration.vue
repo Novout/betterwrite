@@ -20,6 +20,66 @@
     <PDFConfigurationSlot>
       <template #title>
         <h2 class="text-2xl font-bold font-poppins">
+          {{ t('editor.pdf.base.title') }}
+        </h2>
+      </template>
+      <div
+        class="
+          flex flex-row flex-wrap
+          justify-start
+          items-center
+          my-3
+          overflow-x-hidden
+        "
+      >
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.base.pageSize')
+          }}</label>
+          <TextSelect
+            v-model="base.pageSize"
+            class="flex-1"
+            :arr="useDefines().pdf().base().pageSize()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.base.pageOrientation')
+          }}</label>
+          <TextSelect
+            v-model="base.pageOrientation"
+            class="flex-1"
+            :arr="useDefines().pdf().base().pageOrientation()"
+          />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.base.pageMargins.title')
+          }}</label>
+          <section class="flex justify-between w-full flex-row flex-wrap">
+            <section>
+              <label>{{ t('editor.pdf.base.pageMargins.left') }}</label>
+              <TextNumber v-model="basePageMargins.left" />
+            </section>
+            <section>
+              <label>{{ t('editor.pdf.base.pageMargins.top') }}</label>
+              <TextNumber v-model="basePageMargins.top" />
+            </section>
+            <section>
+              <label>{{ t('editor.pdf.base.pageMargins.right') }}</label>
+              <TextNumber v-model="basePageMargins.right" />
+            </section>
+            <section>
+              <label>{{ t('editor.pdf.base.pageMargins.bottom') }}</label>
+              <TextNumber v-model="basePageMargins.bottom" />
+            </section>
+          </section>
+        </div>
+      </div>
+    </PDFConfigurationSlot>
+    <PDFConfigurationSlot>
+      <template #title>
+        <h2 class="text-2xl font-bold font-poppins">
           {{ t('editor.pdf.custom.title.paragraph') }}
         </h2>
       </template>
@@ -470,10 +530,23 @@
   const { t } = useI18n()
   const store = useStore()
 
+  const _base = computed(() => store.state.pdf.styles.base)
   const _paragraph = computed(() => store.state.pdf.styles.paragraph)
   const _hone = computed(() => store.state.pdf.styles.headingOne)
   const _htwo = computed(() => store.state.pdf.styles.headingTwo)
   const _hthree = computed(() => store.state.pdf.styles.headingThree)
+
+  const base = reactive({
+    pageSize: _base.value.pageSize,
+    pageOrientation: _base.value.pageOrientation,
+  })
+
+  const basePageMargins = reactive({
+    left: _base.value.pageMargins.left,
+    top: _base.value.pageMargins.top,
+    right: _base.value.pageMargins.right,
+    bottom: _base.value.pageMargins.bottom,
+  })
 
   const paragraph = reactive({
     font: _paragraph.value.font,
@@ -542,6 +615,10 @@
 
   const onSetConfiguration = async () => {
     store.commit('pdf/setStyles', {
+      base: {
+        ...base,
+        pageMargins: basePageMargins,
+      },
       paragraph,
       headingOne,
       headingTwo,

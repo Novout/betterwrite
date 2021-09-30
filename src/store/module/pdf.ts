@@ -6,6 +6,19 @@ export default {
   state: () =>
     ({
       styles: {
+        base: {
+          pageSize: useDefines().pdf().base().pageSize()[0] as string,
+          pageOrientation: useDefines()
+            .pdf()
+            .base()
+            .pageOrientation()[0] as string,
+          pageMargins: {
+            left: useDefines().pdf().base().pageMargins()[0] as number,
+            top: useDefines().pdf().base().pageMargins()[1] as number,
+            right: useDefines().pdf().base().pageMargins()[2] as number,
+            bottom: useDefines().pdf().base().pageMargins()[3] as number,
+          },
+        },
         paragraph: {
           font: useDefines().pdf().fontFamily()[0] as string,
           fontSize: 11 as number,

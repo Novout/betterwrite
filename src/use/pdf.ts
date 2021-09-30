@@ -132,6 +132,19 @@ export const usePDF: Callback<any> = () => {
       return arr
     }
 
+    const base = (store: Store<any>): Record<string, any> => {
+      return {
+        pageSize: store.state.pdf.styles.base.pageSize,
+        pageOrientation: store.state.pdf.styles.base.pageOrientation,
+        pageMargins: [
+          store.state.pdf.styles.base.pageMargins.left,
+          store.state.pdf.styles.base.pageMargins.top,
+          store.state.pdf.styles.base.pageMargins.right,
+          store.state.pdf.styles.base.pageMargins.bottom,
+        ],
+      }
+    }
+
     const styles = (store: Store<any>): Record<string, any> => {
       const paragraph = () => {
         let decorationStyle
@@ -268,7 +281,7 @@ export const usePDF: Callback<any> = () => {
       }
     }
 
-    return { content, styles }
+    return { content, styles, base }
   }
 
   const create: Callback<any> = (store: Store<any>): Promise<void> => {
@@ -276,8 +289,14 @@ export const usePDF: Callback<any> = () => {
       resolve(
         pdfMake
           .createPdf({
-            pageSize: 'A5',
-            pageMargins: [40, 20, 40, 5],
+            pageSize: generate().base(store).pageSize,
+            pageOrientation: generate().base(store).pageOrientation,
+            pageMargins: {
+              left: generate().base(store).pageMargins[0],
+              top: generate().base(store).pageMargins[1],
+              right: generate().base(store).pageMargins[2],
+              bottom: generate().base(store).pageMargins[3],
+            },
             info: {
               title: store.state.project.name,
               author: 'TODO',
