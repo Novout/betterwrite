@@ -27,6 +27,8 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
     useLocalStorage().setProject({
       project: store.state.project,
       editor: store.state.editor,
+      logger: store.state.logger,
+      pdf: store.state.pdf,
     })
   }
 
@@ -37,6 +39,8 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
       useLocalStorage().setProject({
         project: _.state.project,
         editor: _.state.editor,
+        logger: _.state.logger,
+        pdf: _.state.pdf,
       })
     }, parseInt(`${time}000`))
   }
@@ -50,6 +54,10 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
     await nextTick
 
     store.commit('context/load', store.state.project.pages[0])
+    await nextTick
+
+    store.commit('logger/load', context.logger.content)
+    store.commit('pdf/load', context.pdf)
   }
 
   return {

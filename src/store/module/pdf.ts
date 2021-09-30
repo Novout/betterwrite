@@ -115,6 +115,9 @@ export default {
       },
     } as PDFState),
   mutations: {
+    load(state: any, payload: any) {
+      state.styles = payload.styles
+    },
     setStyles(state: any, payload: any) {
       state.styles = payload
     },
