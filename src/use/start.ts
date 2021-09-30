@@ -79,7 +79,7 @@ export const useStart: Callback<void> = () => {
     global(store)
     darkSet(store)
     langSet(store)
-    usePDF().init()
+    usePDF().init(store)
   }
 
   return { init }

@@ -127,12 +127,16 @@ export default {
           breakPage: false as boolean,
         },
       },
+      fonts: [],
     } as PDFState),
   mutations: {
-    load(state: any, payload: any) {
+    load(state: PDFState, payload: any) {
       state.styles = payload.styles
     },
-    setStyles(state: any, payload: any) {
+    loadFonts(state: PDFState, payload: Array<string>) {
+      state.fonts = payload
+    },
+    setStyles(state: PDFState, payload: any) {
       state.styles = payload
     },
   },

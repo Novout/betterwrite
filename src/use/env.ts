@@ -13,9 +13,21 @@ export const useEnv: Callback<any> = () => {
     return name === useEnv().projectEmpty()
   }
 
+  const maxFonts = () => {
+    return parseInt(
+      import.meta.env.VITE_GOOGLE_FONTS_MAX_FONTS as string
+    ) as number
+  }
+
   const production = () => {
     return import.meta.env.MODE === 'production'
   }
 
-  return { projectEmpty, projectLocalStorage, isEmptyProject, production }
+  return {
+    projectEmpty,
+    projectLocalStorage,
+    isEmptyProject,
+    maxFonts,
+    production,
+  }
 }

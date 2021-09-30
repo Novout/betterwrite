@@ -99,7 +99,7 @@
           <TextSelect
             v-model="paragraph.font"
             class="flex-1"
-            :arr="useDefines().pdf().fontFamily()"
+            :arr="fontFamily"
           />
         </div>
         <div class="wb-input-container">
@@ -541,6 +541,8 @@
   const _hone = computed(() => store.state.pdf.styles.headingOne)
   const _htwo = computed(() => store.state.pdf.styles.headingTwo)
   const _hthree = computed(() => store.state.pdf.styles.headingThree)
+
+  const fontFamily = computed(() => store.state.pdf.fonts)
 
   const base = reactive({
     pageSize: _base.value.pageSize,
