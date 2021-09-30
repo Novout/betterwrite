@@ -9,7 +9,6 @@
       -translate-x-1/2 -translate-y-1/2
       overflow-y-auto
       duration-700
-      md:w-1/2 md:h-1/2
       w-full
       h-screen
       bg-white
