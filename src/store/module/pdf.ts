@@ -28,6 +28,7 @@ export default {
             | 'center'
             | 'right'
             | 'justify',
+          indent: 3 as number,
           characterSpacing: 0 as number,
           color: '#000000' as string,
           background: '#ffffff' as string,

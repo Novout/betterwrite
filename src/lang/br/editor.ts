@@ -32,6 +32,7 @@ export default {
         font: 'Fonte',
         fontSize: 'Tamanho da Fonte',
         lineHeight: 'Altura da Linha',
+        indent: 'Indentação',
         bold: 'Negrito',
         italics: 'Itálico',
         alignment: 'Alinhamento',

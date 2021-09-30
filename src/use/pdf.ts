@@ -116,7 +116,10 @@ export const usePDF: Callback<any> = () => {
           let _raw = {}
 
           if ((entity as any).type === 'paragraph') {
-            _raw = paragraph((entity as any).raw, { stack: false, indent: 2 })
+            _raw = paragraph((entity as any).raw, {
+              stack: false,
+              indent: store.state.pdf.styles.paragraph.indent,
+            })
           } else if ((entity as any).type === 'heading-one') {
             _raw = headingOne((entity as any).raw, store)
           } else if ((entity as any).type === 'heading-two') {

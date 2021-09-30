@@ -126,6 +126,12 @@
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
+            t('editor.pdf.custom.generics.indent')
+          }}</label>
+          <TextNumber v-model="paragraph.indent" />
+        </div>
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.characterSpacing')
           }}</label>
           <TextNumber v-model="paragraph.characterSpacing" />
@@ -552,6 +558,7 @@
     font: _paragraph.value.font,
     fontSize: _paragraph.value.fontSize,
     lineHeight: _paragraph.value.lineHeight,
+    indent: _paragraph.value.indent,
     alignment: _paragraph.value.alignment,
     characterSpacing: _paragraph.value.characterSpacing,
     color: _paragraph.value.color,
