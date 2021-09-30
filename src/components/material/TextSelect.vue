@@ -1,9 +1,8 @@
 <template>
   <Listbox v-model="cmp" class="w-auto">
-    <div class="relative">
+    <div>
       <ListboxButton
         class="
-          relative
           w-full
           py-2
           pl-3
@@ -57,8 +56,7 @@
       >
         <ListboxOptions
           class="
-            absolute
-            w-full
+            fixed
             py-1
             mt-1
             overflow-auto
