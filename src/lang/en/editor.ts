@@ -15,14 +15,15 @@ export default {
       pageOrientation: 'Orientations',
       pageMargins: {
         title: 'Margins',
-        left: 'Esquerda',
-        top: 'Cima',
-        right: 'Direita',
-        bottom: 'Baixo',
+        left: 'Left',
+        top: 'Top',
+        right: 'Right',
+        bottom: 'Bottom',
       },
     },
     custom: {
       title: {
+        cover: 'Cover',
         paragraph: 'Paragraph',
         headingOne: 'Heading One',
         headingTwo: 'Heading Two',

@@ -20,6 +20,32 @@
     <PDFConfigurationSlot>
       <template #title>
         <h2 class="text-2xl font-bold font-poppins">
+          {{ t('editor.pdf.custom.title.cover') }}
+        </h2>
+      </template>
+      <div
+        class="
+          flex flex-row flex-wrap
+          justify-start
+          items-center
+          my-3
+          overflow-x-hidden
+        "
+      >
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{
+            t('editor.pdf.base.pageSize')
+          }}</label>
+          <InputFile
+            :title="t('generics.input.image')"
+            @load="onCoverImageLoad"
+          />
+        </div>
+      </div>
+    </PDFConfigurationSlot>
+    <PDFConfigurationSlot>
+      <template #title>
+        <h2 class="text-2xl font-bold font-poppins">
           {{ t('editor.pdf.base.title') }}
         </h2>
       </template>
@@ -630,6 +656,7 @@
     store.commit('pdf/setStyles', {
       base: {
         ...base,
+        background: _base.value.background,
         pageMargins: basePageMargins,
       },
       paragraph,
@@ -640,5 +667,9 @@
     await nextTick
 
     store.commit('absolute/switchPdfConfiguration', false)
+  }
+
+  const onCoverImageLoad = (e: any) => {
+    store.commit('pdf/setBackground', e)
   }
 </script>

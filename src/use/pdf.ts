@@ -105,7 +105,6 @@ export const usePDF: Callback<any> = () => {
       const pages: Array<ContextState> = store.state.project.pages
       const arr: Array<any> = []
 
-      // TODO: Resolve this
       const cover = frontCover(store)
       arr.push(cover)
 

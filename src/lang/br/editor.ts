@@ -23,6 +23,7 @@ export default {
     },
     custom: {
       title: {
+        cover: 'Capa',
         paragraph: 'Parágrafo',
         headingOne: 'Título Principal',
         headingTwo: 'Título Secundário',
