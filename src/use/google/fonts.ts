@@ -19,7 +19,7 @@ export const useFonts: Callback<any> = () => {
             key +
             ";\
           src: url('" +
-            content.normal +
+            content.normal.replaceAll('http', 'https') +
             "');\
       }\
       "
