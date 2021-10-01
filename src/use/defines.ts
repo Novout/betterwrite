@@ -153,7 +153,7 @@ export const useDefines: Callback<any> = () => {
       }
 
       const pageMargins = (): Array<number> => {
-        return [40, 5, 40, 5]
+        return [40, 5, 40, 20]
       }
 
       return { pageSize, pageMargins, pageOrientation, pageSizeFixes }

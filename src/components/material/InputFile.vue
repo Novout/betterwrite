@@ -10,9 +10,8 @@
       rounded
       cursor-pointer
       wb-text
-      bg-gray-300
+      bg-gray-200
       dark:bg-gray-600
-      block
     "
     >{{ props.title }}</label
   >

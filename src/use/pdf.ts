@@ -283,8 +283,8 @@ export const usePDF: Callback<any> = () => {
     return { content, styles, base }
   }
 
-  const create: Callback<any> = (store: Store<any>): void => {
-    const pdf = pdfMake.createPdf({
+  const doc = (store: Store<any>) => {
+    return {
       pageSize: generate().base(store).pageSize,
       pageOrientation: generate().base(store).pageOrientation,
       pageMargins: {
@@ -305,6 +305,21 @@ export const usePDF: Callback<any> = () => {
         'heading-two': generate().styles(store).headingTwo(),
         'heading-one': generate().styles(store).headingOne(),
         paragraph: generate().styles(store).paragraph(),
+      },
+      footer: function (
+        currentPage: number,
+        pageCount: number,
+        pageSize: number
+      ) {
+        return [
+          {
+            text:
+              currentPage > 2 ? currentPage.toString() + '/' + pageCount : '',
+            margin: [15, 0],
+            fontSize: 9,
+            alignment: currentPage % 2 ? 'left' : 'right',
+          },
+        ]
       },
       pageBreakBefore: function (
         currentNode: any,
@@ -329,7 +344,11 @@ export const usePDF: Callback<any> = () => {
         }
         return false
       },
-    })
+    }
+  }
+
+  const create: Callback<any> = (store: Store<any>): void => {
+    const pdf = pdfMake.createPdf(doc(store))
 
     pdf.download(`${store.state.project.nameRaw}.pdf`, () => {
       store.commit('absolute/load', false)
@@ -340,52 +359,7 @@ export const usePDF: Callback<any> = () => {
     store: Store<any>,
     input: HTMLElement
   ): void => {
-    const generator = pdfMake.createPdf({
-      pageSize: generate().base(store).pageSize,
-      pageOrientation: generate().base(store).pageOrientation,
-      pageMargins: {
-        left: generate().base(store).pageMargins[0],
-        top: generate().base(store).pageMargins[1],
-        right: generate().base(store).pageMargins[2],
-        bottom: generate().base(store).pageMargins[3],
-      },
-      info: {
-        title: store.state.project.name,
-        author: 'TODO',
-        subject: store.state.project.version,
-        keywords: '',
-      },
-      content: generate().content(store),
-      styles: {
-        'heading-three': generate().styles(store).headingThree(),
-        'heading-two': generate().styles(store).headingTwo(),
-        'heading-one': generate().styles(store).headingOne(),
-        paragraph: generate().styles(store).paragraph(),
-      },
-      pageBreakBefore: function (
-        currentNode: any,
-        followingNodesOnPage: any,
-        nodesOnNextPage: any,
-        previousNodesOnPage: any
-      ) {
-        //check if signature part is completely on the last page, add pagebreak if not
-        if (
-          currentNode.id === 'signature' &&
-          (currentNode.pageNumbers.length != 1 ||
-            currentNode.pageNumbers[0] != currentNode.pages)
-        ) {
-          return true
-        }
-        //check if last paragraph is entirely on a single page, add pagebreak if not
-        else if (
-          currentNode.id === 'closingParagraph' &&
-          currentNode.pageNumbers.length != 1
-        ) {
-          return true
-        }
-        return false
-      }
-    })
+    const generator = pdfMake.createPdf(doc(store))
 
     generator.getDataUrl((dataUrl: any) => {
       const iframe = document.createElement('iframe')
