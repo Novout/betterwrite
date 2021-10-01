@@ -15,10 +15,12 @@ export const usePDF: Callback<any> = () => {
   const init: Callback<any> = async (store: Store<any>) => {
     const { normalize, names } = await useFonts().get()
 
+    /*
     // @ts-ignore
     pdfMake.fonts = normalize
+    */
 
-    store.commit('pdf/loadFonts', names)
+    store.commit('pdf/loadFonts', { names, normalize })
   }
 
   const generate: Callback<any> = () => {
@@ -347,7 +349,27 @@ export const usePDF: Callback<any> = () => {
     }
   }
 
+  const setVfsFonts = (store: Store<any>) => {
+    const fonts: Array<string> = []
+    const set: Record<string, any> = {}
+
+    fonts.push(store.state.pdf.styles.paragraph.font)
+    fonts.push(store.state.pdf.styles.headingOne.font)
+    fonts.push(store.state.pdf.styles.headingTwo.font)
+    fonts.push(store.state.pdf.styles.headingThree.font)
+
+    const unique = fonts.filter((v, i, a) => a.indexOf(v) === i)
+
+    unique.forEach((s: string) => {
+      set[s] = store.state.pdf.normalize[s]
+    })
+
+    pdfMake.fonts = set
+  }
+
   const create: Callback<any> = (store: Store<any>): void => {
+    setVfsFonts(store)
+
     const pdf = pdfMake.createPdf(doc(store))
 
     pdf.download(`${store.state.project.nameRaw}.pdf`, () => {
@@ -359,6 +381,8 @@ export const usePDF: Callback<any> = () => {
     store: Store<any>,
     input: HTMLElement
   ): void => {
+    setVfsFonts(store)
+
     const generator = pdfMake.createPdf(doc(store))
 
     generator.getDataUrl((dataUrl: any) => {

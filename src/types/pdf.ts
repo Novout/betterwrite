@@ -6,4 +6,5 @@ export interface GenerateParagraphOptions {
 export interface PDFState {
   styles: Record<string, any>
   fonts: Array<string>
+  normalize: Record<string, any>
 }

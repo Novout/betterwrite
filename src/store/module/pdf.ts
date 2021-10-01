@@ -131,13 +131,15 @@ export default {
         },
       },
       fonts: [],
+      normalize: {},
     } as PDFState),
   mutations: {
     load(state: PDFState, payload: any) {
       state.styles = payload.styles
     },
-    loadFonts(state: PDFState, payload: Array<string>) {
-      state.fonts = payload
+    loadFonts(state: PDFState, payload: any) {
+      state.fonts = payload.names
+      state.normalize = payload.normalize
     },
     setStyles(state: PDFState, payload: any) {
       state.styles = payload
