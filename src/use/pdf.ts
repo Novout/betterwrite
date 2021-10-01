@@ -87,27 +87,69 @@ export const usePDF: Callback<any> = () => {
       }
     }
 
-    const frontCover = (store: Store<any>) => {
-      let _raw = {
-        image: store.state.pdf.styles.base.background.data,
-        pageBreak: 'after',
-        width: useDefines().pdf().base().pageSizeFixes()[
-          store.state.pdf.styles.base.pageSize
-        ][0],
-        height: useDefines().pdf().base().pageSizeFixes()[
-          store.state.pdf.styles.base.pageSize
-        ][1],
-      }
+    const frontCover = (store: Store<any>, arr: Array<any>) => {
+      if (store.state.pdf.styles.switcher.cover) {
+        if (!store.state.pdf.styles.base.background.data) return
 
-      return _raw
+        let _raw = {
+          image: store.state.pdf.styles.base.background.data,
+          pageBreak: 'after',
+          width: useDefines().pdf().base().pageSizeFixes()[
+            store.state.pdf.styles.base.pageSize
+          ][0],
+          height: useDefines().pdf().base().pageSizeFixes()[
+            store.state.pdf.styles.base.pageSize
+          ][1],
+        }
+
+        arr.push(_raw)
+      } else {
+        let _title = {
+          text: store.state.project.nameRaw,
+          fontSize: 42,
+          font: store.state.pdf.styles.headingOne.font,
+          alignment: 'center',
+          margin: [0, 50],
+        }
+
+        let _subject = {
+          text: store.state.project.subject,
+          fontSize: 11,
+          font: store.state.pdf.styles.paragraph.font,
+          margin: [10, 50, 10, 0],
+          alignment: 'center',
+        }
+
+        let _creator = {
+          text: store.state.project.creator,
+          fontSize: 11,
+          font: store.state.pdf.styles.paragraph.font,
+          margin: [10, 250, 10, 0],
+          alignment: 'left',
+          pageBreak: 'after',
+        }
+
+        /*
+        let _version = {
+          text: store.state.project.creator,
+          fontSize: 11,
+          font: store.state.pdf.styles.paragraph.font,
+          margin: [10, 10],
+          alignment: 'left',
+        }
+        */
+
+        arr.push(_title)
+        arr.push(_subject)
+        arr.push(_creator)
+      }
     }
 
     const content = (store: Store<any>): Array<any> => {
       const pages: Array<ContextState> = store.state.project.pages
       const arr: Array<any> = []
 
-      const cover = frontCover(store)
-      arr.push(cover)
+      frontCover(store, arr)
 
       pages.forEach((page: ContextState) => {
         page.entity.forEach((entity: ContextStatePageContent) => {
@@ -315,8 +357,7 @@ export const usePDF: Callback<any> = () => {
       ) {
         return [
           {
-            text:
-              currentPage > 2 ? currentPage.toString() + '/' + pageCount : '',
+            text: currentPage > 2 ? currentPage.toString() : '',
             margin: [15, 0],
             fontSize: 9,
             alignment: currentPage % 2 ? 'left' : 'right',

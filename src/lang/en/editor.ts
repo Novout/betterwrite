@@ -9,6 +9,9 @@ export default {
     },
   },
   pdf: {
+    cover: {
+      type: 'Image',
+    },
     base: {
       title: 'Page',
       pageSize: 'Size',
@@ -88,11 +91,16 @@ export default {
       new: {
         title: 'New Project',
         name: 'Name',
+        creator: 'Creator',
         version: 'Version',
+        subject: 'Subject',
         confirm: 'Create',
         content: {
-          name: 'Nice New Project',
+          name: 'New Project',
           nameNew: 'Untitled',
+          creator: 'Lorem Ipsum',
+          subject:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum molestie metus. Etiam in metus arcu. Ut at augue neque. Donec ac felis vel arcu gravida volutpat.',
           version: '0.1.0',
         },
       },

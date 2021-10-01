@@ -21,6 +21,32 @@
         />
       </div>
       <div class="flex flex-col pt-3">
+        <label>{{ t('editor.aside.project.new.creator') }}</label>
+        <input
+          v-model="creator"
+          class="
+            wp-shadow
+            bg-gray-200
+            focus:bg-gray-400
+            dark:bg-gray-600 dark:focus:bg-gray-800
+            p-1
+          "
+        />
+      </div>
+      <div class="flex flex-col pt-3">
+        <label>{{ t('editor.aside.project.new.subject') }}</label>
+        <input
+          v-model="subject"
+          class="
+            wp-shadow
+            bg-gray-200
+            focus:bg-gray-400
+            dark:bg-gray-600 dark:focus:bg-gray-800
+            p-1
+          "
+        />
+      </div>
+      <div class="flex flex-col pt-3">
         <label>{{ t('editor.aside.project.new.version') }}</label>
         <input
           v-model="version"
@@ -48,11 +74,15 @@
 
   const name = ref(t('editor.aside.project.new.content.name'))
   const version = ref(t('editor.aside.project.new.content.version'))
+  const creator = ref(t('editor.aside.project.new.content.creator'))
+  const subject = ref(t('editor.aside.project.new.content.subject'))
 
   const onCreateProject = async () => {
     useProject(store).onCreateProject({
       name: name.value,
       version: version.value,
+      creator: creator.value,
+      subject: subject.value,
     })
   }
 </script>

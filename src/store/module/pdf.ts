@@ -129,6 +129,9 @@ export default {
           decorationColor: '' as string,
           breakPage: false as boolean,
         },
+        switcher: {
+          cover: false,
+        },
       },
       fonts: [],
       normalize: {},

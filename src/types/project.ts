@@ -5,6 +5,8 @@ export interface ProjectState {
   name: string
   nameRaw: string
   version: string
+  creator: string
+  subject: string
   totalPagesCreated: number
   main: Record<any, any>
   summary: Record<any, any>

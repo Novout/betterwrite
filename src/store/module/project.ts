@@ -10,6 +10,8 @@ export default {
       name: '__NOT_CREATED__',
       nameRaw: '__NOT_CREATED__',
       version: '0.1.0',
+      creator: 'Untitled',
+      subject: 'Untitled',
       totalPagesCreated: 0,
       main: {},
       summary: {},
@@ -21,6 +23,8 @@ export default {
       state.name = payload.name
       state.nameRaw = payload.nameRaw
       state.version = payload.version
+      state.creator = payload.creator
+      state.subject = payload.subject
       state.totalPagesCreated = payload.totalPagesCreated
       state.main = payload.main
       state.summary = payload.summary
@@ -31,6 +35,8 @@ export default {
       state.name = useText().kebab(payload.name)
       state.nameRaw = payload.name
       state.version = payload.version
+      state.creator = payload.creator
+      state.subject = payload.subject
       state.totalPagesCreated = 1
       state.main = {}
       state.summary = {}

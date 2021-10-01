@@ -32,11 +32,13 @@
           overflow-x-hidden
         "
       >
-        <div class="wb-input-container">
+        <div class="wb-input-container justify-start">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.base.pageSize')
           }}</label>
+          <TextBoolean v-model="switcher.cover" />
           <InputFile
+            v-if="switcher.cover"
             :title="t('generics.input.image')"
             @load="onCoverImageLoad"
           />
@@ -572,6 +574,10 @@
   const _htwo = computed(() => store.state.pdf.styles.headingTwo)
   const _hthree = computed(() => store.state.pdf.styles.headingThree)
 
+  const switcher = reactive({
+    cover: store.state.pdf.styles.switcher.cover,
+  })
+
   const fontFamily = computed(() => store.state.pdf.fonts)
 
   const base = reactive({
@@ -663,6 +669,7 @@
       headingOne,
       headingTwo,
       headingThree,
+      switcher,
     })
     await nextTick
 
