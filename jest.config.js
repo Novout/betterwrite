@@ -4,7 +4,7 @@ module.exports = {
   setupFilesAfterEnv: ['./jest.setup.ts'],
   collectCoverage: true,
   collectCoverageFrom: [
-    '**/use/*.ts',
+    '**/use/raw.ts',
     '!**/node_modules/**'
   ],
 };

@@ -1,7 +1,7 @@
 import { ContextStatePageContent } from '@/types/context'
 import { Callback } from '@/types/utils'
 
-const bold: Callback<any> = () => {
+export const bold: Callback<any> = () => {
   const open = () => {
     return '<span class="font-bold text-xs">'
   }
@@ -13,7 +13,7 @@ const bold: Callback<any> = () => {
   return { open, close }
 }
 
-const italic: Callback<any> = () => {
+export const italic: Callback<any> = () => {
   const open = () => {
     return '<span class="italic text-xs">'
   }

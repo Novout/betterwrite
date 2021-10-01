@@ -33,9 +33,7 @@
         "
       >
         <div class="wb-input-container justify-start">
-          <label class="mx-2 text-xs">{{
-            t('editor.pdf.cover.type')
-          }}</label>
+          <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
           <TextBoolean v-model="switcher.cover" />
           <InputFile
             v-if="switcher.cover"
