@@ -1,7 +1,7 @@
 <template>
   <section
     class="w-full relative"
-    :class="edit ? 'shadow-winset dark:shadow-binset' : ''"
+    :class="edit ? 'shadow-winset dark:shadow-binset p-0 m-0' : ''"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
@@ -9,11 +9,11 @@
       v-if="hover && !edit && props.entity.type !== 'heading-one'"
       :entity="props.entity"
     />
-    <div @click.prevent="onEdit">
-      <div
+    <div
         v-if="!edit"
         ref="show"
         class="overflow-hidden w-full break-words"
+        @click.prevent="onEdit"
         :class="[
           props.entity.type === 'paragraph' && !edit ? 'indent-15' : '',
           props.entity.type === 'paragraph' ? 'text-justify' : '',
@@ -123,7 +123,6 @@
         :style="{ height }"
         @keypress.enter.prevent="onUpdateContent"
       />
-    </div>
   </section>
 </template>
 
