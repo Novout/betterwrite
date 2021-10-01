@@ -19,7 +19,7 @@ export const useFonts: Callback<any> = () => {
             key +
             ";\
           src: url('" +
-            content.normal.replaceAll('http', 'https') +
+            content.normal +
             "');\
       }\
       "
@@ -52,14 +52,16 @@ export const useFonts: Callback<any> = () => {
           if (!obj.files['regular']) return
 
           normalize[obj.family] = {
-            normal: obj.files['regular'],
+            normal: obj.files['regular'].replace('http', 'https'),
             italics: obj.files['italic']
-              ? obj.files['italic']
-              : obj.files['regular'],
-            bold: obj.files['700'] ? obj.files['700'] : obj.files['regular'],
+              ? obj.files['italic'].replace('http', 'https')
+              : obj.files['regular'].replace('http', 'https'),
+            bold: obj.files['700']
+              ? obj.files['700'].replace('http', 'https')
+              : obj.files['regular'].replace('http', 'https'),
             bolditalics: obj.files['700italic']
-              ? obj.files['700italic']
-              : obj.files['regular'],
+              ? obj.files['700italic'].replace('http', 'https')
+              : obj.files['regular'].replace('http', 'https'),
           }
 
           names.push(obj.family)
@@ -75,17 +77,19 @@ export const useFonts: Callback<any> = () => {
         return
 
       normalize[obj.family] = {
-        normal: obj.files['regular'],
+        normal: obj.files['regular'].replace('http', 'https'),
         italics: obj.files['italic']
-          ? obj.files['italic']
-          : obj.files['regular'],
-        bold: obj.files['700'] ? obj.files['700'] : obj.files['regular'],
+          ? obj.files['italic'].replace('http', 'https')
+          : obj.files['regular'].replace('http', 'https'),
+        bold: obj.files['700']
+          ? obj.files['700'].replace('http', 'https')
+          : obj.files['regular'].replace('http', 'https'),
         bolditalics: obj.files['700italic']
-          ? obj.files['700italic']
-          : obj.files['regular'],
+          ? obj.files['700italic'].replace('http', 'https')
+          : obj.files['regular'].replace('http', 'https'),
       }
 
-      // console.log(normalize[obj.family])
+      if (obj.family === 'Raleway') console.log(normalize[obj.family])
 
       names.push(obj.family)
     })
