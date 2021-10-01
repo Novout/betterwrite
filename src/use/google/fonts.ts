@@ -89,8 +89,6 @@ export const useFonts: Callback<any> = () => {
           : obj.files['regular'].replace('http', 'https'),
       }
 
-      if (obj.family === 'Raleway') console.log(normalize[obj.family])
-
       names.push(obj.family)
     })
 
