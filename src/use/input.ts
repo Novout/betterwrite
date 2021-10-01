@@ -2,9 +2,13 @@ import { Callback } from '@/types/utils'
 
 export const useInput: Callback<any> = () => {
   const pasteText = (event: any): Array<string> => {
-    const arr = event.clipboardData.getData('text').split('\n')
+    let arr: Array<string> = event.clipboardData.getData('text').split('\n')
 
-    return arr.filter((data: string) => data !== '')
+    arr = arr.filter((data: string) => data !== '')
+
+    arr = arr.map((data: string) => data.replace(/\s+/g, ' ').trim())
+
+    return arr
   }
 
   const prevent = (input: HTMLInputElement) => {

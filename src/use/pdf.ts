@@ -14,7 +14,7 @@ export const usePDF: Callback<any> = () => {
 
   const init: Callback<any> = async (store: Store<any>) => {
     const { normalize, names } = await useFonts().get()
-    
+
     store.commit('pdf/loadFonts', { names, normalize })
   }
 

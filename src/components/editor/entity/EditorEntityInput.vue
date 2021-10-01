@@ -127,10 +127,14 @@
     const data = useInput().pasteText(event)
 
     data.forEach(async (raw: string) => {
+      const normalize = raw.replace(/\s+/g, ' ').trim()
+
+      if(!normalize) return
+
       const content = {
         id: store.state.context.totalEntityCreated,
         type: 'paragraph',
-        raw,
+        raw: normalize,
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
       } as ContextStatePageContent
