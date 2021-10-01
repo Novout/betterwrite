@@ -7,6 +7,8 @@ import { ContextState, ContextStatePageContent } from '@/types/context'
 import { useRaw } from './raw'
 import { useEnv } from './env'
 import { useFonts } from './google/fonts'
+import { useDefines } from './defines'
+import store from '@/store'
 
 export const usePDF: Callback<any> = () => {
   const toast = useToast()
@@ -84,9 +86,28 @@ export const usePDF: Callback<any> = () => {
       }
     }
 
+    const frontCover = (store: Store<any>) => {
+      let _raw = {
+        image: store.state.pdf.styles.base.background.data,
+        pageBreak: 'after',
+        width: useDefines().pdf().base().pageSizeFixes()[
+          store.state.pdf.styles.base.pageSize
+        ][0],
+        height: useDefines().pdf().base().pageSizeFixes()[
+          store.state.pdf.styles.base.pageSize
+        ][1],
+      }
+
+      return _raw
+    }
+
     const content = (store: Store<any>): Array<any> => {
       const pages: Array<ContextState> = store.state.project.pages
       const arr: Array<any> = []
+
+      // TODO: Resolve this
+      const cover = frontCover(store)
+      arr.push(cover)
 
       pages.forEach((page: ContextState) => {
         page.entity.forEach((entity: ContextStatePageContent) => {

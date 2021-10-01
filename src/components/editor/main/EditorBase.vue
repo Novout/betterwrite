@@ -88,4 +88,8 @@
   const id = (entity: ContextStatePageContent) => {
     if (!entity.external) return entity.type + '-' + entity.id
   }
+
+  const onLoad = (e: string) => {
+    store.commit('pdf/setBackground', e)
+  }
 </script>

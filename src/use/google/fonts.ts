@@ -85,6 +85,8 @@ export const useFonts: Callback<any> = () => {
           : obj.files['regular'],
       }
 
+      // console.log(normalize[obj.family])
+
       names.push(obj.family)
     })
 

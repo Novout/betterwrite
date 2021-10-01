@@ -7,6 +7,9 @@ export default {
     ({
       styles: {
         base: {
+          background: {
+            data: '' as string,
+          },
           pageSize: useDefines().pdf().base().pageSize()[0] as string,
           pageOrientation: useDefines()
             .pdf()
@@ -138,6 +141,9 @@ export default {
     },
     setStyles(state: PDFState, payload: any) {
       state.styles = payload
+    },
+    setBackground(state: PDFState, payload: any) {
+      state.styles.base.background.data = payload
     },
   },
   actions: {},
