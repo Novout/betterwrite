@@ -5,7 +5,7 @@
 import { useFormat } from '../src/use/format';
 import { bold, italic, useRaw } from '../src/use/raw';
 
-describe('Raw - Editor Converter', () => {
+describe('Editor Converter', () => {
   beforeEach(() => {});
 
   it('should not convert unnecessary paragraph', () => {
@@ -207,7 +207,7 @@ describe('Raw - Editor Converter', () => {
   })
 })
 
-describe('Raw - PDF Converter', () => {
+describe('PDF Converter', () => {
   beforeEach(() => {});
 
   it('should create a simple entity without a object', () => {
