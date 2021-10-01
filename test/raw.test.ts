@@ -5,7 +5,7 @@
 import { useFormat } from '../src/use/format';
 import { bold, italic, useRaw } from '../src/use/raw';
 
-describe('Raw - Editor Convert', () => {
+describe('Raw - Editor Converter', () => {
   beforeEach(() => {});
 
   it('should not convert unnecessary paragraph', () => {
@@ -107,7 +107,7 @@ describe('Raw - Editor Convert', () => {
     expect(entity.raw).toEqual(raw);
   })
 
-  it('should correct bold convert', () => {
+  it('should correct italic convert', () => {
     const entity = {
       id: 0,
       type: 'paragraph',
@@ -204,5 +204,62 @@ describe('Raw - Editor Convert', () => {
     const raw = useRaw().convert(entity);
 
     expect(`Untitled ${bold().open()}test Untitled`).toEqual(raw);
+  })
+})
+
+describe('Raw - PDF Converter', () => {
+  beforeEach(() => {});
+
+  it('should create a simple entity without a object', () => {
+    const raw = useRaw().pdfConvert('Untitled');
+
+    expect(["Untitled"]).toEqual(raw);
+  })
+
+  it('should create a unique italic entity', () => {
+    const raw = useRaw().pdfConvert('Untitled *test* Untitled');
+
+    expect(["Untitled ",
+    {
+      text: 'test',
+      italics: true
+    },
+    " Untitled"
+  ]).toEqual(raw);
+  })
+
+  it('should create a unique bold entity', () => {
+    const raw = useRaw().pdfConvert('Untitled &test& Untitled');
+
+    expect(["Untitled ",
+    {
+      text: 'test',
+      bold: true
+    },
+    " Untitled"
+  ]).toEqual(raw);
+  })
+
+  it('should create a bold and italic entity', () => {
+    const raw = useRaw().pdfConvert('Untitled &test& *test* Untitled');
+
+    expect(["Untitled ",
+    {
+      text: 'test',
+      bold: true
+    },
+    " ",
+    {
+      text: 'test',
+      italics: true
+    },
+    " Untitled"
+  ]).toEqual(raw);
+  })
+
+  it('should not insert a broken entity', () => {
+    const raw = useRaw().pdfConvert('Untitled &test Untitled');
+
+    expect(["Untitled "]).toEqual(raw);
   })
 })
