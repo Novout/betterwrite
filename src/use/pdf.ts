@@ -8,7 +8,6 @@ import { useRaw } from './raw'
 import { useEnv } from './env'
 import { useFonts } from './google/fonts'
 import { useDefines } from './defines'
-import store from '@/store'
 
 export const usePDF: Callback<any> = () => {
   const toast = useToast()
@@ -385,7 +384,7 @@ export const usePDF: Callback<any> = () => {
           return true
         }
         return false
-      },
+      }
     })
 
     generator.getDataUrl((dataUrl: any) => {
