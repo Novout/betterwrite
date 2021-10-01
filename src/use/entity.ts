@@ -21,9 +21,7 @@ export const useEntity: Callback<any> = () => {
 
     arr.forEach((e: ContextStatePageContent) => {
       const text = e.raw.split(' ')
-
-      console.log(text)
-
+      
       text.forEach((t: string) => {
         if (equal && t === entry) {
           store.commit('context/switchEntityRaw', {
