@@ -43,7 +43,7 @@
         <transition-group name="list" tag="div" appear>
           <EditorEntityShow
             v-for="(entity, index) in store.state.context.entity"
-            :id="`entity-${index}`"
+            :id="`entity-${String(index)}`"
             :key="index"
             :entity="entity"
           />

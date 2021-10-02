@@ -9,7 +9,7 @@
           v-for="(entity, ind) in page.entity"
           :id="`graph-${page.id}-${entity.id}`"
           :key="`graph-${page.id}-${entity.id}`"
-          @click="onClick(`#entity-${ind}`, page, index)"
+          @click="onClick(`#entity-${String(ind)}`, page)"
         >
           <AsideGraphItem :raw="entity.raw" :type="entity.type" />
         </div>
@@ -26,13 +26,9 @@
 
   const store = useStore()
 
-  const onClick = async (
-    go: string,
-    page: ContextState,
-    id: string | number
-  ) => {
+  const onClick = async (go: string | symbol, page: ContextState) => {
     store.commit('context/load', page)
     await nextTick
-    useScroll().to(go)
+    useScroll().to(String(go))
   }
 </script>
