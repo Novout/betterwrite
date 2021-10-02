@@ -34,7 +34,11 @@
       project: store.state.project,
       editor: store.state.editor,
       logger: store.state.logger,
-      pdf: store.state.pdf,
+      pdf: {
+        styles: store.state.pdf.styles,
+        fonts: [],
+        normalize: {},
+      },
     }
 
     const blob = new Blob([JSON.stringify(obj)], { type: 'application/json' })

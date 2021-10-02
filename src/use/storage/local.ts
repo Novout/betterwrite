@@ -28,7 +28,11 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
       project: store.state.project,
       editor: store.state.editor,
       logger: store.state.logger,
-      pdf: store.state.pdf,
+      pdf: {
+        styles: store.state.pdf.styles,
+        fonts: [],
+        normalize: {},
+      },
     })
   }
 
@@ -40,7 +44,11 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
         project: _.state.project,
         editor: _.state.editor,
         logger: _.state.logger,
-        pdf: _.state.pdf,
+        pdf: {
+          styles: store.state.pdf.styles,
+          fonts: [],
+          normalize: {},
+        },
       })
     }, parseInt(`${time}000`))
   }
