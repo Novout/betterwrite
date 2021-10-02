@@ -20,7 +20,15 @@ export default {
     } as ProjectState),
   mutations: {
     load(state: ProjectState, payload: ProjectState) {
-      state = payload
+      state.name = payload.name
+      state.nameRaw = payload.name
+      state.version = payload.version
+      state.creator = payload.creator
+      state.subject = payload.subject
+      state.totalPagesCreated = payload.totalPagesCreated
+      state.main = payload.main
+      state.summary = payload.summary
+      state.pages = payload.pages
     },
     create(state: ProjectState, payload: Record<any, any>) {
       state.name = useText().kebab(payload.name)

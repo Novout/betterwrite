@@ -45,7 +45,7 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
         editor: _.state.editor,
         logger: _.state.logger,
         pdf: {
-          styles: store.state.pdf.styles,
+          styles: _.state.pdf.styles,
           fonts: [],
           normalize: {},
         },
