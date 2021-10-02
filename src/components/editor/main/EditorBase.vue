@@ -39,9 +39,9 @@
       >
         <transition-group name="list" tag="div" appear>
           <EditorEntityShow
-            v-for="entity in store.state.context.entity"
-            :id="id(entity)"
-            :key="entity.id"
+            v-for="(entity, index) in store.state.context.entity"
+            :id="`entity-${index}`"
+            :key="index"
             :entity="entity"
           />
         </transition-group>
@@ -83,13 +83,5 @@
 
   const resetListener = () => {
     entry.value = ''
-  }
-
-  const id = (entity: ContextStatePageContent) => {
-    if (!entity.external) return entity.type + '-' + entity.id
-  }
-
-  const onLoad = (e: string) => {
-    store.commit('pdf/setBackground', e)
   }
 </script>

@@ -6,12 +6,10 @@
     <transition-group name="list" tag="div">
       <div v-for="(page, index) in store.state.project.pages" :key="index">
         <div
-          v-for="entity in page.entity"
+          v-for="(entity, ind) in page.entity"
           :id="`graph-${page.id}-${entity.id}`"
           :key="`graph-${page.id}-${entity.id}`"
-          @click="
-            onClick(`#${entity.type + '-' + entity.id}`, page, entity.type)
-          "
+          @click="onClick(`#entity-${ind}`, page, index)"
         >
           <AsideGraphItem :raw="entity.raw" :type="entity.type" />
         </div>
@@ -28,8 +26,12 @@
 
   const store = useStore()
 
-  const onClick = async (go: string, page: ContextState, type: string) => {
-    if (store.state.context.id !== page.id) store.commit('context/load', page)
+  const onClick = async (
+    go: string,
+    page: ContextState,
+    id: string | number
+  ) => {
+    store.commit('context/load', page)
     await nextTick
     useScroll().to(go)
   }

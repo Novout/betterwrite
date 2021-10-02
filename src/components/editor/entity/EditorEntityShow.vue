@@ -103,7 +103,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, nextTick, computed } from 'vue'
+  import { ref, watch, nextTick, computed, useAttrs } from 'vue'
   import { useStore } from 'vuex'
   import { useRaw } from '@/use/raw'
 
@@ -124,6 +124,8 @@
   const height = ref('0px')
   const style = computed(() => store.state.editor.styles.show)
 
+  // const attrs = useAttrs()
+
   watch(edit, async (_edit) => {
     await nextTick
     if (_edit) {
@@ -135,8 +137,8 @@
 
   const onUpdateContent = () => {
     store.commit('context/updateInPage', {
+      entity: props.entity,
       raw: data.value,
-      id: props.entity.id,
     })
 
     edit.value = false
