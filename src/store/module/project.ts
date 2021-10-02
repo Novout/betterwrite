@@ -95,6 +95,17 @@ export default {
 
       state.pages.splice(index, 1)
     },
+    updatePage(state: ProjectState, page: ContextState) {
+      const _page = state.pages.find(
+        (content: ContextState) => content.id === page.id
+      )
+
+      if (!_page) return
+
+      const index = state.pages.indexOf(_page)
+
+      state.pages.splice(index, 1, page)
+    }
   },
   actions: {},
   getters: {},

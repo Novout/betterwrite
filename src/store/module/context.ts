@@ -17,6 +17,7 @@ export default {
     },
     addInPage(state: ContextState, content: ContextStatePageContent) {
       state.totalEntityCreated++
+      
       state.entity.push(content)
     },
     addInPageWithPaste(state: ContextState, content: ContextStatePageContent) {
