@@ -27,6 +27,7 @@
 <script setup lang="ts">
   import { useStore } from 'vuex'
   import { useI18n } from 'vue-i18n'
+  import { Dropbox } from 'dropbox'
 
   const store = useStore()
   const { t } = useI18n()
@@ -43,23 +44,29 @@
       },
     }
 
-    const blob = new Blob([JSON.stringify(obj)], { type: 'application/json' })
+    const dbx = new Dropbox({
+      accessToken:
+        'HSbp42Qs_CUAAAAAAAAAAaOLw44wXM3F7UAw0FneGyLahq_yS5jHFYFUIsCKxygY',
+    })
 
-    const options = {
-      success: function () {},
-      progress: function (progress: any) {
-        console.log(progress)
-      },
-      cancel: function () {},
-      error: function (errorMessage: any) {
-        console.log(errorMessage)
-      },
-    }
+    dbx
+      .filesUpload({
+        path: `/${store.state.project.name}.bw`,
+        contents: JSON.stringify(obj),
+      })
+      .catch((res: any) => {
+        console.error(res)
+      })
+      .then((res: any) => {
+        // console.log(res)
+      })
 
+    /*
     Dropbox.save(
       window.URL.createObjectURL(blob),
       `${store.state.project.name}.bw`,
       options
     )
+    */
   }
 </script>

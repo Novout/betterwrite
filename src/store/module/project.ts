@@ -21,7 +21,7 @@ export default {
   mutations: {
     load(state: ProjectState, payload: ProjectState) {
       state.name = payload.name
-      state.nameRaw = payload.name
+      state.nameRaw = payload.nameRaw
       state.version = payload.version
       state.creator = payload.creator
       state.subject = payload.subject

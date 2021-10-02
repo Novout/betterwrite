@@ -25,13 +25,37 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
+  import {
+    Dropbox as DBX,
+    DropboxResponse,
+    DropboxResponseError,
+  } from 'dropbox'
+  import { useStore } from 'vuex'
+  import { useDropbox } from '@/use/storage/dropbox'
 
   const { t } = useI18n()
+  const store = useStore()
 
   const onClick = () => {
     const options = {
       success: function (files: Array<any>) {
-        alert("Here's the file link: " + files[0].link)
+        const file = files[0]
+
+        const dbx = new DBX({
+          accessToken:
+            'HSbp42Qs_CUAAAAAAAAAAaOLw44wXM3F7UAw0FneGyLahq_yS5jHFYFUIsCKxygY',
+        })
+
+        dbx
+          .filesDownload({ path: file.id })
+          .then(async (data: DropboxResponse<any>) => {
+            const context = JSON.parse(await data.result.fileBlob.text())
+
+            useDropbox(store).onLoadProject(context)
+          })
+          .catch((err: DropboxResponseError<any>) => {
+            console.error(err)
+          })
       },
 
       cancel: function () {},
