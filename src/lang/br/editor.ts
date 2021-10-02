@@ -53,6 +53,14 @@ export default {
     },
   },
   aside: {
+    dropbox: {
+      save: 'Salvar Dropbox',
+      load: 'Carregar Dropbox',
+    },
+    drive: {
+      save: 'Salvar Google Drive',
+      load: 'Carregar Google Drive',
+    },
     graph: {
       actuallyPage: 'Página Atual',
       projectPages: 'Projeto',

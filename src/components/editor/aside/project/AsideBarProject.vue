@@ -23,6 +23,9 @@
     <AsideLoadProject />
     <AsideSaveProject v-if="name !== useEnv().projectEmpty()" />
     <AsideLine v-if="name !== useEnv().projectEmpty()" />
+    <AsideDropboxLoad v-if="name !== useEnv().projectEmpty()" />
+    <AsideDropboxSave v-if="name !== useEnv().projectEmpty()" />
+    <AsideLine v-if="name !== useEnv().projectEmpty()" />
     <AsideConfigurationPDF v-if="name !== useEnv().projectEmpty()" />
     <AsidePreviewPDF v-if="name !== useEnv().projectEmpty()" />
     <AsideGeneratePDF v-if="name !== useEnv().projectEmpty()" />
