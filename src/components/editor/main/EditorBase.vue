@@ -1,5 +1,8 @@
 <template>
-  <div class="md:px-20 px-2 h-screen flex items-center">
+  <div
+    class="md:px-20 px-2 h-screen flex items-center"
+    @click.prevent="onClickInEditor"
+  >
     <div
       ref="main"
       class="
@@ -83,5 +86,13 @@
 
   const resetListener = () => {
     entry.value = ''
+  }
+
+  const onClickInEditor = () => {
+    const input = document.getElementById('main-input-define')
+
+    if (!input) return
+
+    input.focus()
   }
 </script>

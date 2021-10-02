@@ -47,7 +47,7 @@
           ? style.heading.three.fontWeight
           : '',
       ]"
-      @click.prevent="onEdit"
+      @click="onEdit"
       v-html="useRaw().convert(props.entity as any)"
     />
     <textarea
@@ -104,7 +104,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, nextTick, computed, useAttrs } from 'vue'
+  import { ref, watch, nextTick, computed } from 'vue'
   import { useStore } from 'vuex'
   import { useRaw } from '@/use/raw'
 
@@ -125,8 +125,6 @@
   const height = ref('0px')
   const style = computed(() => store.state.editor.styles.show)
 
-  // const attrs = useAttrs()
-
   watch(edit, async (_edit) => {
     await nextTick
     if (_edit) {
@@ -145,7 +143,10 @@
     edit.value = false
   }
 
-  const onEdit = () => {
+  const onEdit = (e: any) => {
+    e.stopPropagation()
+    e.preventDefault()
+
     if (!edit.value) height.value = (show.value as any).offsetHeight + 'px'
 
     edit.value = true
