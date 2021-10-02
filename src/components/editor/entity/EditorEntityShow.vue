@@ -95,6 +95,7 @@
         text-black
         resize-none
         overflow-hidden
+        block
       "
       :style="{ height }"
       @keypress.enter.prevent="onUpdateContent"
