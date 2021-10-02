@@ -99,6 +99,7 @@
       "
       :style="{ height }"
       @keypress.enter.prevent="onUpdateContent"
+      @click="onStopEvents"
     />
   </section>
 </template>
@@ -143,12 +144,16 @@
     edit.value = false
   }
 
-  const onEdit = (e: any) => {
-    e.stopPropagation()
-    e.preventDefault()
+  const onEdit = (e: MouseEvent) => {
+    onStopEvents(e)
 
     if (!edit.value) height.value = (show.value as any).offsetHeight + 'px'
 
     edit.value = true
+  }
+
+  const onStopEvents = (e: MouseEvent) => {
+    e.stopPropagation()
+    e.preventDefault()
   }
 </script>
