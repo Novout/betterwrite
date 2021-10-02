@@ -1,7 +1,7 @@
 import { ProjectState } from '@/types/project'
 import { useText } from '@/use/text'
 import { useFormat } from '@/use/format'
-import { ContextState, ContextStatePageContent } from '@/types/context'
+import { ContextState } from '@/types/context'
 
 export default {
   namespaced: true,
