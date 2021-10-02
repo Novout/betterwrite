@@ -33,6 +33,7 @@
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^2.4.0",
     "@types/jest": "^27.0.2",
+    "@types/jsdom": "^16.2.13",
     "@types/pdfmake": "^0.1.18",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
