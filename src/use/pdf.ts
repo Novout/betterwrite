@@ -400,6 +400,7 @@ export const usePDF: Callback<any> = () => {
       set[s] = store.state.pdf.normalize[s]
     })
 
+    // @ts-ignore
     pdfMake.fonts = set
   }
 
