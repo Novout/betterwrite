@@ -10,119 +10,95 @@
       :entity="props.entity"
     />
     <div
-        v-if="!edit"
-        ref="show"
-        class="overflow-hidden w-full break-words"
-        @click.prevent="onEdit"
-        :class="[
-          props.entity.type === 'paragraph' && !edit ? 'indent-15' : '',
-          props.entity.type === 'paragraph' ? 'text-justify' : '',
-          props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
-          props.entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
-          props.entity.type === 'paragraph' ? style.paragraph.fontColor : '',
-          props.entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
+      v-if="!edit"
+      ref="show"
+      class="overflow-hidden w-full break-words"
+      :class="[
+        props.entity.type === 'paragraph' && !edit ? 'indent-15' : '',
+        props.entity.type === 'paragraph' ? 'text-justify' : '',
+        props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
+        props.entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
+        props.entity.type === 'paragraph' ? style.paragraph.fontColor : '',
+        props.entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
 
-          props.entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
-          props.entity.type === 'heading-one' ? style.heading.one.fontSize : '',
-          props.entity.type === 'heading-one'
-            ? style.heading.one.fontFamily
-            : '',
-          props.entity.type === 'heading-one'
-            ? style.heading.one.fontColor
-            : '',
-          props.entity.type === 'heading-one'
-            ? style.heading.one.fontWeight
-            : '',
+        props.entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
+        props.entity.type === 'heading-one' ? style.heading.one.fontSize : '',
+        props.entity.type === 'heading-one' ? style.heading.one.fontFamily : '',
+        props.entity.type === 'heading-one' ? style.heading.one.fontColor : '',
+        props.entity.type === 'heading-one' ? style.heading.one.fontWeight : '',
 
-          props.entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
-          props.entity.type === 'heading-two' ? style.heading.two.fontSize : '',
-          props.entity.type === 'heading-two'
-            ? style.heading.two.fontFamily
-            : '',
-          props.entity.type === 'heading-two'
-            ? style.heading.two.fontColor
-            : '',
-          props.entity.type === 'heading-two'
-            ? style.heading.two.fontWeight
-            : '',
+        props.entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
+        props.entity.type === 'heading-two' ? style.heading.two.fontSize : '',
+        props.entity.type === 'heading-two' ? style.heading.two.fontFamily : '',
+        props.entity.type === 'heading-two' ? style.heading.two.fontColor : '',
+        props.entity.type === 'heading-two' ? style.heading.two.fontWeight : '',
 
-          props.entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
-          props.entity.type === 'heading-three'
-            ? style.heading.three.fontSize
-            : '',
-          props.entity.type === 'heading-three'
-            ? style.heading.three.fontFamily
-            : '',
-          props.entity.type === 'heading-three'
-            ? style.heading.three.fontColor
-            : '',
-          props.entity.type === 'heading-three'
-            ? style.heading.three.fontWeight
-            : '',
-        ]"
-        v-html="useRaw().convert(props.entity as any)"
-      />
-      <textarea
-        v-else
-        ref="input"
-        v-model="data"
-        :class="[
-          props.entity.type === 'paragraph' ? 'text-justify indent-15' : '',
-          props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
-          props.entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
-          props.entity.type === 'paragraph' ? style.paragraph.fontColor : '',
-          props.entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
+        props.entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
+        props.entity.type === 'heading-three'
+          ? style.heading.three.fontSize
+          : '',
+        props.entity.type === 'heading-three'
+          ? style.heading.three.fontFamily
+          : '',
+        props.entity.type === 'heading-three'
+          ? style.heading.three.fontColor
+          : '',
+        props.entity.type === 'heading-three'
+          ? style.heading.three.fontWeight
+          : '',
+      ]"
+      @click.prevent="onEdit"
+      v-html="useRaw().convert(props.entity as any)"
+    />
+    <textarea
+      v-else
+      ref="input"
+      v-model="data"
+      :class="[
+        props.entity.type === 'paragraph' ? 'text-justify indent-15' : '',
+        props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
+        props.entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
+        props.entity.type === 'paragraph' ? style.paragraph.fontColor : '',
+        props.entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
 
-          props.entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
-          props.entity.type === 'heading-one' ? style.heading.one.fontSize : '',
-          props.entity.type === 'heading-one'
-            ? style.heading.one.fontFamily
-            : '',
-          props.entity.type === 'heading-one'
-            ? style.heading.one.fontColor
-            : '',
-          props.entity.type === 'heading-one'
-            ? style.heading.one.fontWeight
-            : '',
+        props.entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
+        props.entity.type === 'heading-one' ? style.heading.one.fontSize : '',
+        props.entity.type === 'heading-one' ? style.heading.one.fontFamily : '',
+        props.entity.type === 'heading-one' ? style.heading.one.fontColor : '',
+        props.entity.type === 'heading-one' ? style.heading.one.fontWeight : '',
 
-          props.entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
-          props.entity.type === 'heading-two' ? style.heading.two.fontSize : '',
-          props.entity.type === 'heading-two'
-            ? style.heading.two.fontFamily
-            : '',
-          props.entity.type === 'heading-two'
-            ? style.heading.two.fontColor
-            : '',
-          props.entity.type === 'heading-two'
-            ? style.heading.two.fontWeight
-            : '',
+        props.entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
+        props.entity.type === 'heading-two' ? style.heading.two.fontSize : '',
+        props.entity.type === 'heading-two' ? style.heading.two.fontFamily : '',
+        props.entity.type === 'heading-two' ? style.heading.two.fontColor : '',
+        props.entity.type === 'heading-two' ? style.heading.two.fontWeight : '',
 
-          props.entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
-          props.entity.type === 'heading-three'
-            ? style.heading.three.fontSize
-            : '',
-          props.entity.type === 'heading-three'
-            ? style.heading.three.fontFamily
-            : '',
-          props.entity.type === 'heading-three'
-            ? style.heading.three.fontColor
-            : '',
-          props.entity.type === 'heading-three'
-            ? style.heading.three.fontWeight
-            : '',
-        ]"
-        class="
-          w-full
-          text-xs
-          bg-transparent
-          dark:text-gray-100
-          text-black
-          resize-none
-          overflow-hidden
-        "
-        :style="{ height }"
-        @keypress.enter.prevent="onUpdateContent"
-      />
+        props.entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
+        props.entity.type === 'heading-three'
+          ? style.heading.three.fontSize
+          : '',
+        props.entity.type === 'heading-three'
+          ? style.heading.three.fontFamily
+          : '',
+        props.entity.type === 'heading-three'
+          ? style.heading.three.fontColor
+          : '',
+        props.entity.type === 'heading-three'
+          ? style.heading.three.fontWeight
+          : '',
+      ]"
+      class="
+        w-full
+        text-xs
+        bg-transparent
+        dark:text-gray-100
+        text-black
+        resize-none
+        overflow-hidden
+      "
+      :style="{ height }"
+      @keypress.enter.prevent="onUpdateContent"
+    />
   </section>
 </template>
 

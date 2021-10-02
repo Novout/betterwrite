@@ -10,19 +10,19 @@ export default {
       entity: [],
     } as ContextState),
   mutations: {
-    load(state: any, content: ContextState) {
+    load(state: ContextState, content: ContextState) {
       state.id = content.id
       state.totalEntityCreated = content.totalEntityCreated
       state.entity = content.entity
     },
-    addInPage(state: any, content: ContextStatePageContent) {
+    addInPage(state: ContextState, content: ContextStatePageContent) {
       state.totalEntityCreated++
       state.entity.push(content)
     },
-    addInPageWithPaste(state: any, content: ContextStatePageContent) {
+    addInPageWithPaste(state: ContextState, content: ContextStatePageContent) {
       // force nextTick for id append...
     },
-    updateInPage(state: any, obj: Record<any, any>) {
+    updateInPage(state: ContextState, obj: Record<any, any>) {
       const content = state.entity.find(
         (content: ContextStatePageContent) => content.id === obj.id
       )
@@ -35,14 +35,14 @@ export default {
 
       state.entity[index].raw = obj.raw
     },
-    removeInPage(state: any, entity: ContextStatePageContent) {
+    removeInPage(state: ContextState, entity: ContextStatePageContent) {
       const index = state.entity.indexOf(entity)
 
       if (index === -1 || !index) return
 
       state.entity.splice(index, 1)
     },
-    switchInPage(state: any, obj: Record<any, any>) {
+    switchInPage(state: ContextState, obj: Record<any, any>) {
       const index = state.entity.indexOf(obj.entity)
 
       if (index === -1 || !index) return
@@ -64,12 +64,25 @@ export default {
       state.entity[index] = target
       state.entity[sIndex] = temp
     },
-    switchEntityRaw(state: any, obj: Record<string, any>) {
+    switchEntityRaw(state: ContextState, obj: Record<string, any>) {
       const index = state.entity.indexOf(obj.entity)
 
       const r = state.entity[index].raw.replaceAll(obj.match, obj.raw)
 
       state.entity[index].raw = r
+    },
+    newInPage(state: ContextState, entity: ContextStatePageContent) {
+      const index = state.entity.indexOf(entity)
+
+      state.totalEntityCreated++
+
+      state.entity.splice(index, 0, {
+        id: state.totalEntityCreated,
+        type: 'paragraph',
+        raw: '-',
+        createdAt: useFormat().actually(),
+        updatedAt: useFormat().actually(),
+      } as ContextStatePageContent)
     },
   },
   actions: {},

@@ -15,10 +15,21 @@
       props.entity.type === 'heading-three' ? 'top-8' : '',
     ]"
   >
-    <HeroIcon
-      class="h-4 w-4 hover:text-gray-400 dark:hover:text-gray-900"
-      @click="onUpEntity"
-    >
+    <HeroIcon @click.prevent="onNewEntity">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4 wb-icon"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </HeroIcon>
+    <HeroIcon class="wb-icon" @click.prevent="onUpEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -32,10 +43,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon
-      class="h-4 w-4 hover:text-gray-400 dark:hover:text-gray-900"
-      @click="onDownEntity"
-    >
+    <HeroIcon class="wb-icon" @click.prevent="onDownEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -49,10 +57,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon
-      class="h-4 w-4 hover:text-gray-400 dark:hover:text-gray-900"
-      @click="onDeleteEntity"
-    >
+    <HeroIcon class="wb-icon" @click.prevent="onDeleteEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -96,5 +101,7 @@
     })
   }
 
-  const onOptionsEntity = () => {}
+  const onNewEntity = () => {
+    store.commit('context/newInPage', props.entity)
+  }
 </script>

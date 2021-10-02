@@ -19,19 +19,10 @@ export default {
       pageLoaded: 0,
     } as ProjectState),
   mutations: {
-    load(state: any, payload: ProjectState) {
-      state.name = payload.name
-      state.nameRaw = payload.nameRaw
-      state.version = payload.version
-      state.creator = payload.creator
-      state.subject = payload.subject
-      state.totalPagesCreated = payload.totalPagesCreated
-      state.main = payload.main
-      state.summary = payload.summary
-      state.pages = payload.pages
-      state.pageLoaded = payload.pageLoaded
+    load(state: ProjectState, payload: ProjectState) {
+      state = payload
     },
-    create(state: any, payload: Record<any, any>) {
+    create(state: ProjectState, payload: Record<any, any>) {
       state.name = useText().kebab(payload.name)
       state.nameRaw = payload.name
       state.version = payload.version
@@ -56,7 +47,7 @@ export default {
           {
             id: 1,
             type: 'paragraph',
-            raw: 'v' + payload.version,
+            raw: payload.subject,
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
           },
@@ -66,7 +57,7 @@ export default {
       state.pageLoaded = init.id
       state.pages.push(init)
     },
-    newPage(state: any) {
+    newPage(state: ProjectState) {
       state.totalPagesCreated++
 
       const init: ContextState = {
@@ -93,9 +84,9 @@ export default {
       state.pageLoaded = init.id
       state.pages.push(init)
     },
-    deletePage(state: any, context: ContextState) {
+    deletePage(state: ProjectState, context: ContextState) {
       const content = state.pages.find(
-        (content: ContextStatePageContent) => content.id === context.id
+        (content: ContextState) => content.id === context.id
       )
 
       if (!content) return
