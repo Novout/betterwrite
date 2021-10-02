@@ -3,6 +3,8 @@
     class="wb-aside-button"
     :text="t('editor.aside.dropbox.save')"
     :icon="true"
+    :beta="true"
+    :enable="true"
     @click.prevent="onClick"
   >
     <HeroIcon class="mr-2">
