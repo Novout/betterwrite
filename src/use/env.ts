@@ -1,6 +1,12 @@
 import { Callback } from '@/types/utils'
 
 export const useEnv: Callback<any> = () => {
+  const getCorrectLocalUrl = () => {
+    return import.meta.env.PROD
+      ? 'https://novout.github.io/better-write/'
+      : 'localhost:3000/better-write/'
+  }
+
   const projectEmpty = (): string => {
     return import.meta.env.VITE_PROJECT_EMPTY as string
   }
@@ -34,5 +40,6 @@ export const useEnv: Callback<any> = () => {
     isEmptyProject,
     maxFonts,
     production,
+    getCorrectLocalUrl,
   }
 }

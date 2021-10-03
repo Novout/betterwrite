@@ -7,7 +7,7 @@ declare module '*.vue' {
   export default component
 }
 
-declare var Dropbox: any;
+declare var Dropbox: any
 
 declare module '@heroicons/vue'
 declare module 'keyboardjs'
