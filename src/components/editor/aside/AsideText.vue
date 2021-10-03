@@ -10,7 +10,15 @@
     <p class="mr-2 text-2xs lg:text-2xs xl:text-xs">{{ props.shortcuts }}</p>
     <section
       v-if="props.beta"
-      class="bg-gray-300 text-3xs mr-2 dark:bg-gray-800 wb-text px-3 rounded-2xl"
+      class="
+        bg-gray-300
+        text-3xs
+        mr-2
+        dark:bg-gray-800
+        wb-text
+        px-3
+        rounded-2xl
+      "
     >
       BETA
     </section>

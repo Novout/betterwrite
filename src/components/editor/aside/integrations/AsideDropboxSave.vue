@@ -52,16 +52,24 @@
       accessToken: store.state.auth.dropbox.accessToken,
     })
 
+    const path = `/${store.state.project.name}.bw`
+
     dbx
       .filesUpload({
-        path: `/${store.state.project.name}.bw`,
+        path,
         contents: JSON.stringify(obj),
       })
-      .catch((res: any) => {
-        console.error(res)
-      })
-      .then((res: any) => {
-        // console.log(res)
+      .catch(() => {
+        dbx
+          .filesDeleteV2({
+            path,
+          })
+          .then(() => {
+            dbx.filesUpload({
+              path,
+              contents: JSON.stringify(obj),
+            })
+          })
       })
 
     /*

@@ -3,11 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { Callback } from '@/types/utils'
 import { usePDF } from './pdf'
 import { useFormat } from './format'
-import {
-  RouteComponent,
-  RouteLocationNormalizedLoaded,
-  useRoute,
-} from 'vue-router'
+import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
 
 const global: Callback<Store<any>, void> = (store: Store<any>) => {
   let _log = console.log,
