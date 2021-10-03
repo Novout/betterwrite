@@ -4,7 +4,7 @@ export const useEnv: Callback<any> = () => {
   const getCorrectLocalUrl = () => {
     return import.meta.env.PROD
       ? 'https://novout.github.io/better-write/'
-      : 'localhost:3000/better-write/'
+      : 'http://localhost:3000/better-write/'
   }
 
   const projectEmpty = (): string => {
