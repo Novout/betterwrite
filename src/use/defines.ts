@@ -12,6 +12,7 @@ export const useDefines: Callback<any> = () => {
       previewPDF: ['CTRL + Shift + G', 'ctrl > shift > g'],
       generatePDF: ['CTRL + Alt + G', 'ctrl > alt > g'],
       switcherRawText: ['CTRL + H', 'ctrl > h'],
+      finderRawText: ['CTRL + F', 'ctrl > f'],
       logger: ['CTRL + L', 'ctrl > l'],
     }[k]
   }

@@ -12,7 +12,7 @@ export default {
       aside: true,
       shortcuts: {
         switcher: false,
-        finder: true,
+        finder: false,
       },
       logger: false,
       pdf: {
@@ -24,34 +24,34 @@ export default {
       },
     } as AbsoluteState),
   mutations: {
-    commands(state: any) {
+    commands(state: AbsoluteState) {
       state.commands = !state.commands
     },
-    load(state: any, b: boolean) {
+    load(state: AbsoluteState, b: boolean) {
       state.load = b
     },
-    switchProjectModal(state: any, b: boolean) {
+    switchProjectModal(state: AbsoluteState, b: boolean) {
       state.modal.newProject = b
     },
-    switchAside(state: any, b: boolean) {
+    switchAside(state: AbsoluteState, b: boolean) {
       state.aside = b
     },
-    switchShortcutSwitcher(state: any, b: boolean) {
+    switchShortcutSwitcher(state: AbsoluteState, b: boolean) {
       state.shortcuts.switcher = b
     },
-    switchShortcutFinder(state: any, b: boolean) {
+    switchShortcutFinder(state: AbsoluteState, b: boolean) {
       state.shortcuts.finder = b
     },
-    switchLogger(state: any, b: boolean) {
+    switchLogger(state: AbsoluteState, b: boolean) {
       state.logger = b
     },
-    switchPdfConfiguration(state: any, b: boolean) {
+    switchPdfConfiguration(state: AbsoluteState, b: boolean) {
       state.pdf.configuration = b
     },
-    switchPdfPreview(state: any, b: boolean) {
+    switchPdfPreview(state: AbsoluteState, b: boolean) {
       state.pdf.preview = b
     },
-    switchAuthDropbox(state: any, b: boolean) {
+    switchAuthDropbox(state: AbsoluteState, b: boolean) {
       state.auth.dropbox = b
     },
   },
