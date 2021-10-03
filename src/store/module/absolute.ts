@@ -12,6 +12,7 @@ export default {
       aside: true,
       shortcuts: {
         switcher: false,
+        finder: true,
       },
       logger: false,
       pdf: {
@@ -37,6 +38,9 @@ export default {
     },
     switchShortcutSwitcher(state: any, b: boolean) {
       state.shortcuts.switcher = b
+    },
+    switchShortcutFinder(state: any, b: boolean) {
+      state.shortcuts.finder = b
     },
     switchLogger(state: any, b: boolean) {
       state.logger = b

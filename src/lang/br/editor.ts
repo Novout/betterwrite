@@ -9,6 +9,7 @@ export default {
       shortcuts: {
         switcherEntry: 'Entrada',
         switcherOutput: 'Saída',
+        finderEntry: 'Entrada',
       },
     },
   },
