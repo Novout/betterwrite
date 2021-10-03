@@ -59,7 +59,7 @@
           </HeroIcon>
         </div>
         <div>
-          <HeroIcon class="text-2xs wb-text" @click.prevent="onClose">
+          <HeroIcon class="text-2xs wb-icon" @click.prevent="onClose">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
