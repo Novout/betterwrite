@@ -23,8 +23,13 @@
     <AsideLoadProject />
     <AsideSaveProject v-if="name !== useEnv().projectEmpty()" />
     <AsideLine />
-    <AsideDropboxLoad />
-    <AsideDropboxSave v-if="name !== useEnv().projectEmpty()" />
+    <AsideDropboxCorrect />
+    <AsideDropboxLoad v-if="store.state.auth.dropbox.accessToken" />
+    <AsideDropboxSave
+      v-if="
+        name !== useEnv().projectEmpty() && store.state.auth.dropbox.accessToken
+      "
+    />
     <AsideLine v-if="name !== useEnv().projectEmpty()" />
     <AsideConfigurationPDF v-if="name !== useEnv().projectEmpty()" />
     <AsidePreviewPDF v-if="name !== useEnv().projectEmpty()" />

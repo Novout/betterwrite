@@ -54,8 +54,9 @@ export default {
   },
   aside: {
     dropbox: {
-      save: 'Salvar Dropbox',
-      load: 'Carregar Dropbox',
+      connect: 'Conectar',
+      save: 'Salvar',
+      load: 'Carregar',
     },
     drive: {
       save: 'Salvar Google Drive',

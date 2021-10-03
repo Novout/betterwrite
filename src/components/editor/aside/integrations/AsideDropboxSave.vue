@@ -34,10 +34,6 @@
 
   const onClick = () => {
     if (!store.state.auth.dropbox.accessToken) {
-      window.open(
-        `https://www.dropbox.com/oauth2/authorize?client_id=${useEnv().dropboxKey()}&response_type=token&redirect_uri=http://localhost:3000/better-write/&scope=account_info.read files.metadata.write files.metadata.read files.content.write files.content.read`,
-        '_self'
-      )
       return
     }
 
