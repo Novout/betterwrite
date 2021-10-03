@@ -5,4 +5,5 @@ export interface AbsoluteState {
   shortcuts: Record<string, boolean>
   logger: boolean
   pdf: Record<string, boolean>
+  auth: Record<string, boolean>
 }

@@ -32,20 +32,27 @@
   } from 'dropbox'
   import { useStore } from 'vuex'
   import { useDropbox } from '@/use/storage/dropbox'
+  import { useEnv } from '@/use/env'
 
   const { t } = useI18n()
   const store = useStore()
 
-  const onClick = () => {
+  const onClick = async () => {
+    if (!store.state.auth.dropbox.accessToken) {
+      window.open(
+        `https://www.dropbox.com/oauth2/authorize?client_id=${useEnv().dropboxKey()}&response_type=token&redirect_uri=http://localhost:3000/better-write/&scope=account_info.read files.metadata.write files.metadata.read files.content.write files.content.read`,
+        '_self'
+      )
+      return
+    }
+
     const options = {
       success: function (files: Array<any>) {
         const file = files[0]
 
         const dbx = new DBX({
-          accessToken:
-            'HSbp42Qs_CUAAAAAAAAAAaOLw44wXM3F7UAw0FneGyLahq_yS5jHFYFUIsCKxygY',
+          accessToken: store.state.auth.dropbox.accessToken,
         })
-
         dbx
           .filesDownload({ path: file.id })
           .then(async (data: DropboxResponse<any>) => {

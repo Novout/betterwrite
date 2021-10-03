@@ -6,6 +6,7 @@ import absolute from '@/store/module/absolute'
 import shortcuts from '@/store/module/shortcuts'
 import logger from '@/store/module/logger'
 import pdf from '@/store/module/pdf'
+import auth from '@/store/module/auth'
 
 export default createStore({
   modules: {
@@ -16,5 +17,6 @@ export default createStore({
     shortcuts,
     logger,
     pdf,
+    auth,
   },
 })

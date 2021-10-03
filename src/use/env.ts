@@ -13,6 +13,10 @@ export const useEnv: Callback<any> = () => {
     return name === useEnv().projectEmpty()
   }
 
+  const dropboxKey = () => {
+    return import.meta.env.VITE_DROPBOX_APP_KEY as string
+  }
+
   const maxFonts = () => {
     return parseInt(
       import.meta.env.VITE_GOOGLE_FONTS_MAX_FONTS as string
@@ -24,6 +28,7 @@ export const useEnv: Callback<any> = () => {
   }
 
   return {
+    dropboxKey,
     projectEmpty,
     projectLocalStorage,
     isEmptyProject,

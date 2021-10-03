@@ -3,6 +3,11 @@ import { useI18n } from 'vue-i18n'
 import { Callback } from '@/types/utils'
 import { usePDF } from './pdf'
 import { useFormat } from './format'
+import {
+  RouteComponent,
+  RouteLocationNormalizedLoaded,
+  useRoute,
+} from 'vue-router'
 
 const global: Callback<Store<any>, void> = (store: Store<any>) => {
   let _log = console.log,
@@ -51,6 +56,36 @@ const global: Callback<Store<any>, void> = (store: Store<any>) => {
   }
 }
 
+const auth = (store: Store<any>, route: RouteLocationNormalizedLoaded) => {
+  if (route.fullPath.includes('access_token')) {
+    let str = ''
+    let firstQuery = false
+    let finish = false
+
+    for (let i = 0; i < route.fullPath.length; i++) {
+      if (finish) {
+        store.commit('auth/setDropboxToken', str)
+
+        return
+      }
+      const letter = route.fullPath.charAt(i)
+
+      if (letter === '&') {
+        firstQuery = false
+        finish = true
+      }
+
+      if (firstQuery) {
+        str += letter
+      }
+
+      if (letter === '=') firstQuery = true
+    }
+
+    console.log(str)
+  }
+}
+
 const darkSet: Callback<Store<any>, void> = (store: Store<any>) => {
   const dark = localStorage.getItem('theme')
 
@@ -74,12 +109,14 @@ const langSet: Callback<Store<any>, void> = (store: Store<any>) => {
 
 export const useStart: Callback<void> = () => {
   const store = useStore()
+  const route = useRoute()
 
   const init = () => {
     global(store)
     darkSet(store)
     langSet(store)
     usePDF().init(store)
+    auth(store, route)
   }
 
   return { init }

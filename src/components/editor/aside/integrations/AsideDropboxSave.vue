@@ -33,6 +33,14 @@
   const { t } = useI18n()
 
   const onClick = () => {
+    if (!store.state.auth.dropbox.accessToken) {
+      window.open(
+        `https://www.dropbox.com/oauth2/authorize?client_id=${useEnv().dropboxKey()}&response_type=token&redirect_uri=http://localhost:3000/better-write/&scope=account_info.read files.metadata.write files.metadata.read files.content.write files.content.read`,
+        '_self'
+      )
+      return
+    }
+
     const obj = {
       project: store.state.project,
       editor: store.state.editor,
@@ -45,8 +53,7 @@
     }
 
     const dbx = new Dropbox({
-      accessToken:
-        'HSbp42Qs_CUAAAAAAAAAAaOLw44wXM3F7UAw0FneGyLahq_yS5jHFYFUIsCKxygY',
+      accessToken: store.state.auth.dropbox.accessToken,
     })
 
     dbx

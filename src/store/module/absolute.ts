@@ -18,6 +18,9 @@ export default {
         configuration: false,
         preview: false,
       },
+      auth: {
+        dropbox: false,
+      },
     } as AbsoluteState),
   mutations: {
     commands(state: any) {
@@ -43,6 +46,9 @@ export default {
     },
     switchPdfPreview(state: any, b: boolean) {
       state.pdf.preview = b
+    },
+    switchAuthDropbox(state: any, b: boolean) {
+      state.auth.dropbox = b
     },
   },
   actions: {},
