@@ -79,12 +79,12 @@
         ref="entry"
         v-model="state.entry"
         class="bg-transparent border border-gray-900 px-1 mb-1 wb-text"
-        placeholder="Entry"
+        :placeholder="t('editor.text.placeholder.shortcuts.switcherEntry')"
       />
       <input
         v-model="state.output"
         class="bg-transparent border border-gray-900 px-1 wb-text"
-        placeholder="Output"
+        :placeholder="t('editor.text.placeholder.shortcuts.switcherOutput')"
       />
     </div>
   </div>

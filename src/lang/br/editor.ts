@@ -6,6 +6,10 @@ export default {
       headingone: 'H1',
       headingtwo: 'H2',
       headingthree: 'H3',
+      shortcuts: {
+        switcherEntry: 'Entrada',
+        switcherOutput: 'Saída',
+      },
     },
   },
   pdf: {
@@ -42,8 +46,8 @@ export default {
         alignment: 'Alinhamento',
         characterSpacing: 'Espaço de Caracteres',
         color: 'Cor do Texto',
-        background: 'Cor do Fundo' as string,
-        markerColor: 'Cor da Marca' as string,
+        background: 'Cor do Fundo',
+        markerColor: 'Cor da Marca',
         decoration: 'Decoração',
         decorationStyle: 'Estilo da Decoração',
         decorationColor: 'Cor da Decoração',
