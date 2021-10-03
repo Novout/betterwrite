@@ -86,6 +86,9 @@ export default {
         textSwitcher: {
           title: 'Replace Text',
         },
+        textFinder: {
+          title: 'Find Text',
+        },
       },
       save: {
         title: 'Simple Save',

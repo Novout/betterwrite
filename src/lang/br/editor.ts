@@ -86,6 +86,9 @@ export default {
         textSwitcher: {
           title: 'Substituir Texto',
         },
+        textFinder: {
+          title: 'Encontrar Texto',
+        },
       },
       save: {
         title: 'Salvar Simples',
