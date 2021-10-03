@@ -50,11 +50,12 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, reactive, onMounted, computed } from 'vue'
+  import { ref, reactive, onMounted, computed, nextTick } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
   import { ContextState } from '@/types/context'
   import { ContextStatePageContent } from '@/types/context'
+  import { useScroll } from '@/use/scroll'
 
   const { t } = useI18n()
   const store = useStore()
@@ -82,7 +83,7 @@
 
         letters.forEach((letter: string) => {
           if (letter === state.entry) {
-            state.listOfLettersExists.push({ letter, entity })
+            state.listOfLettersExists.push({ letter, entity, page: context })
             state.maxLetterCounter++
           }
         })
@@ -91,9 +92,25 @@
 
     if (state.maxLetterCounter === 0) return
 
-    state.actuallyLetterRaw = state.listOfLettersExists[0].letter
-    state.actuallyLetterCounter =
-      state.listOfLettersExists.indexOf(state.listOfLettersExists[0]) + 1
+    onSearchGo(state.listOfLettersExists[0])
+  }
+
+  const onSearchGo = (object: Record<string, any>) => {
+    state.actuallyLetterRaw = object.letter
+    state.actuallyLetterCounter = state.listOfLettersExists.indexOf(object) + 1
+
+    const pageIndex = store.state.project.pages.indexOf(object.page)
+    const entityIndex = store.state.project.pages[pageIndex].entity.indexOf(
+      object.entity
+    )
+
+    onGo(`entity-${entityIndex}`, object.page)
+  }
+
+  const onGo = async (go: string | symbol, page: ContextState) => {
+    if (store.state.context.id !== page.id) store.commit('context/load', page)
+    await nextTick
+    useScroll().to(`#${String(go)}`)
   }
 
   const onClose = () => {
