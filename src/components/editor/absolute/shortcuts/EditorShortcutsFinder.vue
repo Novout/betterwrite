@@ -18,7 +18,7 @@
   >
     <div class="flex flex-col w-full">
       <div class="flex items-center justify-between w-full mb-1">
-        <div class="wb-text">
+        <div class="wb-text font-poppins">
           {{ state.actuallyLetterCounter }} / {{ state.maxLetterCounter }}
         </div>
         <div>
@@ -54,7 +54,7 @@
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
   import { ContextState } from '@/types/context'
-  import { ContextStatePageContent } from '../../../../types/context'
+  import { ContextStatePageContent } from '@/types/context'
 
   const { t } = useI18n()
   const store = useStore()
