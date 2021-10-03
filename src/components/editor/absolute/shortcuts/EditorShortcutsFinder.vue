@@ -18,8 +18,38 @@
   >
     <div class="flex flex-col w-full">
       <div class="flex items-center justify-between w-full mb-1">
-        <div class="wb-text font-poppins">
-          {{ state.actuallyLetterCounter }} / {{ state.maxLetterCounter }}
+        <div class="flex">
+          <div class="wb-text font-poppins">
+            {{ state.actuallyLetterCounter }} / {{ state.maxLetterCounter }}
+          </div>
+          <HeroIcon class="text-2xs ml-2 wb-icon" @click.prevent="onUp">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </HeroIcon>
+          <HeroIcon class="text-2xs wb-icon" @click.prevent="onDown">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </HeroIcon>
         </div>
         <div>
           <HeroIcon class="text-2xs wb-icon" @click.prevent="onClose">
@@ -44,6 +74,7 @@
         class="bg-transparent border border-gray-900 px-1 mb-1 wb-text"
         :placeholder="t('editor.text.placeholder.shortcuts.finderEntry')"
         @input="onFinder"
+        @keypress.enter.prevent="onUp"
       />
     </div>
   </div>
@@ -111,6 +142,28 @@
     if (store.state.context.id !== page.id) store.commit('context/load', page)
     await nextTick
     useScroll().to(`#${String(go)}`)
+  }
+
+  const onUp = () => {
+    if (state.actuallyLetterCounter >= state.maxLetterCounter) {
+      onSearchGo(state.listOfLettersExists[0])
+    } else {
+      const object = state.listOfLettersExists[state.actuallyLetterCounter]
+
+      onSearchGo(object)
+    }
+  }
+
+  const onDown = () => {
+    if (state.actuallyLetterCounter <= 1) {
+      onSearchGo(
+        state.listOfLettersExists[state.listOfLettersExists.length - 1]
+      )
+    } else {
+      const object = state.listOfLettersExists[state.actuallyLetterCounter - 1]
+
+      onSearchGo(object)
+    }
   }
 
   const onClose = () => {
