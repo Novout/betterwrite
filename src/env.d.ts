@@ -6,6 +6,9 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare var Dropbox: any;
+
 declare module '@heroicons/vue'
 declare module 'keyboardjs'
 declare module 'pdfmake-unicode'
