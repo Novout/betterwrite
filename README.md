@@ -1,29 +1,20 @@
-# Better Write (WIP)
+# Better Write
 
-A editor for creative writers.
+<p align="center">
+  <a href="https://novout.github.io/better-write/">
+    <img src="./.github/logo.png" alt="Logo" width="8%">
+  </a>
 
-## Tasks
-
-- [X] Initial Page Entry-Text
-- [X] Simple Parser Style-Raw
-- [X] Final Text Defines
-- [ ] Grammar Corrections
-
-### Project
-
-- [X] Project Control Pages
-- [X] Aside Graph-Tree
-- [ ] Graph Control-Click
-
-### PDF
-
-- [X] Generator
-- [ ] Page Types
-- [ ] Customization
+  <h3 align="center">A editor for creative writers.</h3>
+</p>
 
 ## Setup
 
-- Vue + Vite
-- TailwindCSS + HeadlessUI
+- Vue 3
+- Vite
+- TailwindCSS
+- HeadlessUI
 - Typescript
 - GrammarBOT
+- Dropbox SDK
+- Google Fonts API
