@@ -9,21 +9,21 @@
       -translate-x-1/2 -translate-y-1/2
       w-60
       bg-white
-      dark:bg-gray-700
+      dark:bg-gray-800
       p-2
       rounded
       transition
       shadow-2xl
     "
   >
-    <div class="flex flex-col w-60" @keypress.enter.prevent="onSwitcherAll">
+    <div class="flex flex-col w-full" @keypress.enter.prevent="onSwitcherAll">
       <div class="flex items-center justify-between w-full mb-1">
         <div>
           <HeroIcon
             :class="[
               state.equal ? 'border border-black dark:border-white' : '',
             ]"
-            class="text-2xs wb-text"
+            class="text-2xs wb-icon"
             @click.prevent="state.equal = !state.equal"
           >
             <svg
@@ -41,7 +41,7 @@
             </svg>
           </HeroIcon>
           <HeroIcon
-            class="text-2xs wb-text mx-1"
+            class="text-2xs wb-icon mx-1"
             @click.prevent="onSwitcherAll"
           >
             <svg
@@ -78,12 +78,12 @@
       <input
         ref="entry"
         v-model="state.entry"
-        class="bg-transparent border border-gray-800 mb-1 wb-text"
+        class="bg-transparent border border-gray-900 px-1 mb-1 wb-text"
         placeholder="Entry"
       />
       <input
         v-model="state.output"
-        class="bg-transparent border border-gray-800 wb-text"
+        class="bg-transparent border border-gray-900 px-1 wb-text"
         placeholder="Output"
       />
     </div>
