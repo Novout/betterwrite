@@ -74,7 +74,7 @@ input[type='number'] {
   --wb-text-selection: #e5e7eb;
 }
 
-// waiting for future support experimental features
+/* waiting for future support experimental features */
 
 *::grammar-error {
   background-color: #ff6261;
