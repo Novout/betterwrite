@@ -17,7 +17,7 @@
       props.entity.type === 'heading-three' ? 'top-8' : '',
     ]"
   >
-    <HeroIcon @click.prevent="onNewEntity">
+    <HeroIcon @click="onNewEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4 wb-icon"
@@ -31,7 +31,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon" @click.prevent="onUpEntity">
+    <HeroIcon class="wb-icon" @click="onUpEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -45,7 +45,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon" @click.prevent="onDownEntity">
+    <HeroIcon class="wb-icon" @click="onDownEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -59,7 +59,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon" @click.prevent="onDeleteEntity">
+    <HeroIcon class="wb-icon" @click="onDeleteEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -78,8 +78,6 @@
 
 <script setup lang="ts">
   import { useStore } from 'vuex'
-  import { nextTick } from 'vue'
-  import { useScroll } from '@/use/scroll'
 
   const store = useStore()
 
@@ -87,45 +85,38 @@
     entity: Object as any,
   })
 
-  const onForceScroll = async () => {
-    await nextTick
-
-    const index = store.state.context.entity.indexOf(props.entity)
-
-    if (!index || index === -1) return
-
-    setTimeout(() => {
-      useScroll().to(`#entity-${index - 1}`)
-    }, 1)
+  const onForceScroll = async (e: MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
   }
 
-  const onDeleteEntity = () => {
+  const onDeleteEntity = (e: MouseEvent) => {
+    onForceScroll(e)
+
     store.commit('context/removeInPage', props.entity)
-
-    onForceScroll()
   }
 
-  const onUpEntity = () => {
+  const onUpEntity = (e: MouseEvent) => {
+    onForceScroll(e)
+
     store.commit('context/switchInPage', {
       entity: props.entity,
       direction: 'up',
     })
-
-    onForceScroll()
   }
 
-  const onDownEntity = () => {
+  const onDownEntity = (e: MouseEvent) => {
+    onForceScroll(e)
+
     store.commit('context/switchInPage', {
       entity: props.entity,
       direction: 'down',
     })
-
-    onForceScroll()
   }
 
-  const onNewEntity = () => {
-    store.commit('context/newInPage', props.entity)
+  const onNewEntity = (e: MouseEvent) => {
+    onForceScroll(e)
 
-    onForceScroll()
+    store.commit('context/newInPage', props.entity)
   }
 </script>
