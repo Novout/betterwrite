@@ -1140,14 +1140,6 @@
   dependencies:
     vue-demi "^0.11.3"
 
-"@vueuse/core@6.4.1":
-  version "6.4.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-6.4.1.tgz#21416997a23bfb4924a5082ed6fa959027f80d04"
-  integrity sha512-FRFeEPVq77gcMZP0mCloJY+lyHJaUQmUMaPp5fBds3fs/BbkAt7HTMMizFKHWDVjbmA20vBOjmC9tTnfD+DdEA==
-  dependencies:
-    "@vueuse/shared" "6.4.1"
-    vue-demi "*"
-
 "@vueuse/core@6.5.3":
   version "6.5.3"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-6.5.3.tgz#15848eaccad18652df4cb4b6ccae7bd7921a0c7e"
@@ -1171,13 +1163,6 @@
     nprogress "^0.2.0"
     qrcode "^1.4.4"
     universal-cookie "^4.0.4"
-
-"@vueuse/shared@6.4.1":
-  version "6.4.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-6.4.1.tgz#5bc84be107cead84e11c21d2c57b1e9f2c376975"
-  integrity sha512-zsaYxxZwACQbMmGg+UBjPUVemi325sDdnnB0mn+PNizE0fVC57B+vbLgdj45NBmr6P4nw6a0Y2rMupebwDWsdw==
-  dependencies:
-    vue-demi "*"
 
 "@vueuse/shared@6.5.3":
   version "6.5.3"
