@@ -78,6 +78,8 @@
 
 <script setup lang="ts">
   import { useStore } from 'vuex'
+  import { nextTick } from 'vue'
+  import { useScroll } from '@/use/scroll'
 
   const store = useStore()
 
@@ -85,8 +87,22 @@
     entity: Object as any,
   })
 
-  const onDeleteEntity = async () => {
+  const onForceScroll = async () => {
+    await nextTick
+
+    const index = store.state.context.entity.indexOf(props.entity)
+
+    if (!index || index === -1) return
+
+    setTimeout(() => {
+      useScroll().to(`#entity-${index - 1}`)
+    }, 1)
+  }
+
+  const onDeleteEntity = () => {
     store.commit('context/removeInPage', props.entity)
+
+    onForceScroll()
   }
 
   const onUpEntity = () => {
@@ -94,6 +110,8 @@
       entity: props.entity,
       direction: 'up',
     })
+
+    onForceScroll()
   }
 
   const onDownEntity = () => {
@@ -101,9 +119,13 @@
       entity: props.entity,
       direction: 'down',
     })
+
+    onForceScroll()
   }
 
   const onNewEntity = () => {
     store.commit('context/newInPage', props.entity)
+
+    onForceScroll()
   }
 </script>
