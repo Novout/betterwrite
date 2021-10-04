@@ -62,12 +62,21 @@ input[type='number'] {
   --scr-track: #f1f1f1;
   --scr-thumb: #888;
   --scr-thumb-hover: #555;
+  --wb-selection: #9ca3af;
+  --wb-text-selection: #000;
 }
 
 .dark {
   --scr-track: #222;
   --scr-thumb: #888;
   --scr-thumb-hover: #555;
+  --wb-selection: #111827;
+  --wb-text-selection: #e5e7eb;
+}
+
+*::selection {
+  background: var(--wb-selection);
+  color: var(--wb-text-selection);
 }
 
 *::-webkit-scrollbar {
