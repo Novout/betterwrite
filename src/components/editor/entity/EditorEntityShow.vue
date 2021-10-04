@@ -46,6 +46,14 @@
         props.entity.type === 'heading-three'
           ? style.heading.three.fontWeight
           : '',
+
+        props.entity.type === 'page-break'
+          ? 'cursor-default my-4 border-b-8 border-gray-400 dark:border-gray-900'
+          : '',
+
+        props.entity.type === 'line-break'
+          ? 'cursor-default my-4 border-b-8 border-dashed border-gray-400 dark:border-gray-800'
+          : '',
       ]"
       @click="onEdit"
       v-html="useRaw().convert(props.entity as any)"
@@ -148,6 +156,12 @@
     onStopEvents(e)
 
     if (!edit.value) height.value = (show.value as any).offsetHeight + 'px'
+
+    if (
+      props.entity.type === 'page-break' ||
+      props.entity.type === 'line-break'
+    )
+      return
 
     edit.value = true
   }

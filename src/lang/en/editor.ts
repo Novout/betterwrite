@@ -160,6 +160,16 @@ export default {
           title: 'Heading 3',
           description: '/h3 text here',
         },
+        {
+          tag: 'BP',
+          title: 'Page Break',
+          description: '/bp',
+        },
+        {
+          tag: 'LB',
+          title: 'Line Break',
+          description: '/lb',
+        },
       ],
     },
   },

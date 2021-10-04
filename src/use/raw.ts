@@ -31,6 +31,8 @@ export const useRaw: Callback<any> = () => {
     let _italic = false
     let _bold = false
 
+    if (page.type === 'page-break' || page.type === 'line-break') return ''
+
     if (page.type !== 'paragraph') return page.raw
 
     for (let i = 0; i < page.raw.length; i++) {

@@ -1,6 +1,10 @@
 <template>
   <div
-    v-if="props.type !== 'paragraph'"
+    v-if="
+      props.type !== 'paragraph' &&
+      props.type !== 'page-break' &&
+      props.type !== 'line-break'
+    "
     class="
       dark:hover:bg-gray-800
       hover:bg-gray-200

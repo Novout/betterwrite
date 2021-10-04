@@ -64,6 +64,26 @@
         </p>
       </template>
     </EditorAbsoluteCommands>
+    <EditorAbsoluteCommands
+      :title="t('editor.aside.commands.contents[6].title')"
+      :description="t('editor.aside.commands.contents[6].description')"
+    >
+      <template #exib>
+        <p class="text-xl">
+          {{ t('editor.aside.commands.contents[6].tag') }}
+        </p>
+      </template>
+    </EditorAbsoluteCommands>
+    <EditorAbsoluteCommands
+      :title="t('editor.aside.commands.contents[7].title')"
+      :description="t('editor.aside.commands.contents[7].description')"
+    >
+      <template #exib>
+        <p class="text-xl">
+          {{ t('editor.aside.commands.contents[7].tag') }}
+        </p>
+      </template>
+    </EditorAbsoluteCommands>
   </div>
 </template>
 

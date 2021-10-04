@@ -160,6 +160,16 @@ export default {
           title: 'Heading 3',
           description: '/h3 texto aqui',
         },
+        {
+          tag: 'BP',
+          title: 'Quebra de Página',
+          description: '/bp',
+        },
+        {
+          tag: 'LB',
+          title: 'Quebra de Linha',
+          description: '/lb',
+        },
       ],
     },
   },

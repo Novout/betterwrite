@@ -97,6 +97,44 @@
       input.value.placeholder = t('editor.text.placeholder.headingthree')
       return
     }
+
+    if (useEntity().entry(_cmp, 'bp')) {
+      cmp.value = ''
+
+      const content = {
+        id: store.state.context.totalEntityCreated,
+        type: 'page-break',
+        raw: '__PAGE_BREAK__',
+        createdAt: useFormat().actually(),
+        updatedAt: useFormat().actually(),
+      } as ContextStatePageContent
+
+      type.value = 'paragraph'
+      input.value.placeholder = t('editor.text.placeholder.paragraph')
+
+      emit('enter', content)
+
+      return
+    }
+
+    if (useEntity().entry(_cmp, 'lb')) {
+      cmp.value = ''
+
+      const content = {
+        id: store.state.context.totalEntityCreated,
+        type: 'line-break',
+        raw: '__LINE_BREAK__',
+        createdAt: useFormat().actually(),
+        updatedAt: useFormat().actually(),
+      } as ContextStatePageContent
+
+      type.value = 'paragraph'
+      input.value.placeholder = t('editor.text.placeholder.paragraph')
+
+      emit('enter', content)
+
+      return
+    }
   })
 
   const enterHandler = () => {

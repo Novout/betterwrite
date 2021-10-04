@@ -82,6 +82,22 @@ export const usePDF: Callback<any> = () => {
       }
     }
 
+    const pageBreak = () => {
+      return {
+        text: '',
+        style: 'page-break',
+        pageBreak: 'after',
+      }
+    }
+
+    const lineBreak = () => {
+      return {
+        text: '',
+        margin: [0, 10],
+        style: 'line-break',
+      }
+    }
+
     const frontCover = (store: Store<any>, arr: Array<any>) => {
       if (store.state.pdf.styles.switcher.cover) {
         if (!store.state.pdf.styles.base.background.data) return
@@ -161,6 +177,10 @@ export const usePDF: Callback<any> = () => {
             _raw = headingTwo((entity as any).raw)
           } else if ((entity as any).type === 'heading-three') {
             _raw = headingThree((entity as any).raw)
+          } else if ((entity as any).type === 'page-break') {
+            _raw = pageBreak()
+          } else if ((entity as any).type === 'line-break') {
+            _raw = lineBreak()
           }
 
           arr.push(_raw)
