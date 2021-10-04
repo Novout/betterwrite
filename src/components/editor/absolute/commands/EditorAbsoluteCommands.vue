@@ -2,12 +2,12 @@
   <div
     class="
       flex
-      mt-2
+      mt-1
       justify-between
       items-center
       w-full
       p-1
-      border-2 border-black
+      border border-black
       dark:border-gray-600
       text-black
       dark:text-gray-300
@@ -17,7 +17,7 @@
     <slot name="exib" />
     <div class="flex flex-col items-start justify-start">
       <p>{{ props.title }}</p>
-      <p class="text-xs">{{ props.description }}</p>
+      <p class="text-2xs">{{ props.description }}</p>
     </div>
   </div>
 </template>
