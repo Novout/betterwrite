@@ -418,10 +418,10 @@ export const usePDF: Callback<any> = () => {
 
     unique.forEach((s: string) => {
       set[s] = store.state.pdf.normalize[s]
-    })
+    });
 
     // @ts-ignore
-    pdfMake.fonts = set
+    (<any>pdfMake).fonts = set
   }
 
   const create: Callback<any> = (store: Store<any>): void => {
