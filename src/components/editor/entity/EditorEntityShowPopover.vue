@@ -10,6 +10,8 @@
       dark:text-gray-500
     "
     :class="[
+      props.entity.type === 'page-break' ? 'top-3' : '',
+      props.entity.type === 'line-break' ? 'top-3' : '',
       props.entity.type === 'paragraph' ? 'top-0.5' : '',
       props.entity.type === 'heading-two' ? 'top-12' : '',
       props.entity.type === 'heading-three' ? 'top-8' : '',
