@@ -74,6 +74,23 @@ input[type='number'] {
   --wb-text-selection: #e5e7eb;
 }
 
+// waiting for future support experimental features
+
+*::grammar-error {
+  background-color: #ff6261;
+  color: black;
+}
+
+*::spelling-error {
+  background-color: #ffee91;
+  color: black;
+}
+
+*::target-text {
+  background-color: #54b1ff;
+  color: black;
+}
+
 *::selection {
   background: var(--wb-selection);
   color: var(--wb-text-selection);
