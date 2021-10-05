@@ -7,8 +7,8 @@
       <div v-for="(page, index) in store.state.project.pages" :key="index">
         <div
           v-for="(entity, ind) in page.entity"
-          :id="`graph-${page.id}-${entity.id}`"
-          :key="`graph-${page.id}-${entity.id}`"
+          :id="`graph-${page.id}-${String(ind)}`"
+          :key="`graph-${page.id}-${String(ind)}`"
           @click="onClick(`#entity-${String(ind)}`, page)"
         >
           <AsideGraphItem :raw="entity.raw" :type="entity.type" />

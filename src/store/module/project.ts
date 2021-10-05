@@ -108,6 +108,34 @@ export default {
 
       state.pages.splice(index, 1, page)
     },
+    switchPage(state: ProjectState, obj: Record<any, any>) {
+      const page = state.pages.filter(
+        (page: ContextState) => obj.page.id === page.id
+      )[0]
+
+      if (!page) return
+
+      const index = state.pages.indexOf(page)
+
+      if (index === -1) return
+
+      let sIndex
+      obj.direction === 'up' ? (sIndex = index - 1) : (sIndex = index + 1)
+
+      console.log(sIndex)
+
+      if (
+        (sIndex < 0 && obj.direction === 'up') ||
+        (sIndex >= state.pages.length && obj.direction === 'down')
+      )
+        return
+
+      const target = state.pages[sIndex]
+
+      const temp = state.pages[index]
+      state.pages[index] = target
+      state.pages[sIndex] = temp
+    },
   },
   actions: {},
   getters: {},
