@@ -38,6 +38,7 @@
           <InputFile
             v-if="switcher.cover"
             :title="t('generics.input.image')"
+            :src="store.state.pdf.styles.base.background.data"
             @load="onCoverImageLoad"
           />
         </div>

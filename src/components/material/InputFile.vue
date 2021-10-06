@@ -1,27 +1,46 @@
 <template>
-  <label
-    :for="`input-file-${props.title}`"
-    :class="width"
-    class="
-      flex
-      items-center
-      p-1
-      justify-center
-      rounded
-      cursor-pointer
-      wb-text
-      bg-gray-200
-      dark:bg-gray-600
-    "
-    >{{ props.title }}</label
-  >
-  <input
-    :id="`input-file-${props.title}`"
-    ref="inp"
-    class="opacity-0 absolute z-min"
-    type="file"
-    @change.prevent="onChange"
-  />
+  <section class="flex mx-2 h-8">
+    <img v-if="props.src" class="mx-1" :src="props.src" />
+    <section class="flex flex-row">
+      <label
+        :for="`input-file-${props.title}`"
+        :class="width"
+        class="
+          flex
+          items-center
+          p-1
+          justify-center
+          rounded
+          cursor-pointer
+          wb-text
+          border-2 border-gray-200
+          dark:border-gray-600
+        "
+      >
+        <HeroIcon class="wb-icon pointer-events-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </HeroIcon>
+      </label>
+      <input
+        :id="`input-file-${props.title}`"
+        ref="inp"
+        class="opacity-0 absolute z-min"
+        type="file"
+        @change.prevent="onChange"
+      />
+    </section>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -41,6 +60,10 @@
       required: false,
       type: String,
       default: 'w-32',
+    },
+    src: {
+      required: true,
+      type: String,
     },
   })
 
