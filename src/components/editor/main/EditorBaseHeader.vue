@@ -33,7 +33,9 @@
         />
       </svg>
     </HeroIcon>
-    <div class="w-1 h-4 mx-2 bg-gray-500 dark:bg-gray-500"></div>
+    <div
+      class="w-1 h-4 mx-3 border-r-2 border-gray-500 dark:border-gray-500"
+    ></div>
     <HeroIcon class="wb-icon" @click="onUpPage">
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -122,8 +122,6 @@ export default {
       let sIndex
       obj.direction === 'up' ? (sIndex = index - 1) : (sIndex = index + 1)
 
-      console.log(sIndex)
-
       if (
         (sIndex < 0 && obj.direction === 'up') ||
         (sIndex >= state.pages.length && obj.direction === 'down')
