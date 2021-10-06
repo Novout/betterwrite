@@ -20,7 +20,7 @@ app.use(i18n)
 app.use(vfmPlugin)
 app.use(Toast, {
   position: POSITION.TOP_CENTER,
-  timeout: 2000,
+  timeout: 4000,
   maxToasts: 3,
 })
 

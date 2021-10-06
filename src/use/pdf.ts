@@ -377,7 +377,7 @@ export const usePDF: Callback<any> = () => {
     return { content, styles, base }
   }
 
-  const doc = (store: Store<any>) => {
+  const doc = (store: Store<any>, options: Record<any, any>) => {
     return {
       pageSize: generate().base(store).pageSize,
       pageOrientation: generate().base(store).pageOrientation,
@@ -400,23 +400,25 @@ export const usePDF: Callback<any> = () => {
         'heading-one': generate().styles(store).headingOne(),
         paragraph: generate().styles(store).paragraph(),
       },
-      background: function (currentPage: number) {
-        return store.state.pdf.styles.switcher.main &&
-          store.state.pdf.styles.base.background.main &&
-          currentPage >= 3
-          ? [
-              {
-                image: store.state.pdf.styles.base.background.main,
-                width: useDefines().pdf().base().pageSizeFixes()[
-                  store.state.pdf.styles.base.pageSize
-                ][0],
-                height: useDefines().pdf().base().pageSizeFixes()[
-                  store.state.pdf.styles.base.pageSize
-                ][1],
-              },
-            ]
-          : undefined
-      },
+      background: options.final
+        ? function (currentPage: number) {
+            return currentPage >= 3 &&
+              store.state.pdf.styles.base.background.main &&
+              store.state.pdf.styles.switcher.main
+              ? [
+                  {
+                    image: store.state.pdf.styles.base.background.main,
+                    width: useDefines().pdf().base().pageSizeFixes()[
+                      store.state.pdf.styles.base.pageSize
+                    ][0],
+                    height: useDefines().pdf().base().pageSizeFixes()[
+                      store.state.pdf.styles.base.pageSize
+                    ][1],
+                  },
+                ]
+              : undefined
+          }
+        : undefined,
       footer: function (
         currentPage: number,
         pageCount: number,
@@ -479,7 +481,7 @@ export const usePDF: Callback<any> = () => {
   const create: Callback<any> = (store: Store<any>): void => {
     setVfsFonts(store)
 
-    const pdf = pdfMake.createPdf(doc(store))
+    const pdf = pdfMake.createPdf(doc(store, { final: true }))
 
     pdf.download(`${store.state.project.nameRaw}.pdf`, () => {
       store.commit('absolute/load', false)
@@ -492,7 +494,7 @@ export const usePDF: Callback<any> = () => {
   ): void => {
     setVfsFonts(store)
 
-    const generator = pdfMake.createPdf(doc(store))
+    const generator = pdfMake.createPdf(doc(store, { final: false }))
 
     generator.getDataUrl((dataUrl: any) => {
       const iframe = document.createElement('iframe')

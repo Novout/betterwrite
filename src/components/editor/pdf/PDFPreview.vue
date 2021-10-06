@@ -13,19 +13,25 @@
       />
     </svg>
   </HeroIcon>
-  <div ref="preview" class="w-1/2 h-1/2"></div>
+  <div ref="preview" class="h-1/2"></div>
 </template>
 
 <script setup lang="ts">
   import { usePDF } from '@/use/pdf'
   import { ref, onMounted } from 'vue'
   import { useStore } from 'vuex'
+  import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vue-toastification'
 
   const preview = ref<HTMLElement | null>(null)
   const store = useStore()
+  const { t } = useI18n()
+  const toast = useToast()
 
   onMounted(() => {
     usePDF().external(store).onPreviewPDF(preview.value)
+
+    toast.error(t('toast.pdf.previewProblems'))
   })
 
   const onClick = () => {
