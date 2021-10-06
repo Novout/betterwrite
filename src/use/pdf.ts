@@ -46,7 +46,11 @@ export const usePDF: Callback<any> = () => {
       }
     }
 
-    const paragraph = (raw: string, options: GenerateParagraphOptions) => {
+    const paragraph = (
+      raw: string,
+      options: GenerateParagraphOptions,
+      store: Store<any>
+    ) => {
       let text
       let arr
 
@@ -79,6 +83,12 @@ export const usePDF: Callback<any> = () => {
         text: arr,
         style: 'paragraph',
         preserveLeadingSpaces: true,
+        margin: [
+          generate().base(store).pageMargins[0],
+          0,
+          generate().base(store).pageMargins[2],
+          0,
+        ],
       }
     }
 
@@ -127,7 +137,12 @@ export const usePDF: Callback<any> = () => {
           text: store.state.project.subject,
           fontSize: 11,
           font: store.state.pdf.styles.paragraph.font,
-          margin: [10, 50, 10, 0],
+          margin: [
+            generate().base(store).pageMargins[0],
+            50,
+            generate().base(store).pageMargins[2],
+            0,
+          ],
           alignment: 'center',
         }
 
@@ -135,7 +150,12 @@ export const usePDF: Callback<any> = () => {
           text: store.state.project.creator,
           fontSize: 11,
           font: store.state.pdf.styles.paragraph.font,
-          margin: [10, 250, 10, 0],
+          margin: [
+            generate().base(store).pageMargins[0],
+            250,
+            generate().base(store).pageMargins[2],
+            0,
+          ],
           alignment: 'left',
           pageBreak: 'after',
         }
@@ -167,10 +187,14 @@ export const usePDF: Callback<any> = () => {
           let _raw = {}
 
           if ((entity as any).type === 'paragraph') {
-            _raw = paragraph((entity as any).raw, {
-              stack: false,
-              indent: store.state.pdf.styles.paragraph.indent,
-            })
+            _raw = paragraph(
+              (entity as any).raw,
+              {
+                stack: false,
+                indent: store.state.pdf.styles.paragraph.indent,
+              },
+              store
+            )
           } else if ((entity as any).type === 'heading-one') {
             _raw = headingOne((entity as any).raw, store)
           } else if ((entity as any).type === 'heading-two') {
@@ -347,9 +371,9 @@ export const usePDF: Callback<any> = () => {
       pageSize: generate().base(store).pageSize,
       pageOrientation: generate().base(store).pageOrientation,
       pageMargins: {
-        left: generate().base(store).pageMargins[0],
-        top: generate().base(store).pageMargins[1],
-        right: generate().base(store).pageMargins[2],
+        left: 0,
+        top: 0,
+        right: 0,
         bottom: generate().base(store).pageMargins[3],
       },
       info: {
