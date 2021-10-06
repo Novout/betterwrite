@@ -123,9 +123,9 @@ export default {
       },
     },
     pdf: {
-      title: 'Gerar PDF',
-      preview: 'Simular PDF',
-      configuration: 'Configurar PDF',
+      title: 'Gerar',
+      preview: 'Simular',
+      configuration: 'Configurar',
     },
     commands: {
       title: 'Comandos',

@@ -1,6 +1,13 @@
 <template>
   <div
-    class="flex justify-end items-center relative bg-white-opacity dark:bg-black-opacity"
+    class="
+      flex
+      justify-end
+      items-center
+      relative
+      bg-white-opacity
+      dark:bg-black-opacity
+    "
   >
     <HeroIcon class="wb-icon inline-flex" @click.prevent="onSwitcher">
       <svg

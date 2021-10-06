@@ -3,8 +3,10 @@
     class="wb-aside-button"
     :text="t('editor.aside.pdf.configuration')"
     :shortcuts="store.state.shortcuts.configurationPDF[0]"
+    :icon="true"
     @click.prevent="onConfiguration"
   >
+    <img width="20" class="mr-2" src="@/assets/editor/pdf.png" />
   </AsideText>
 </template>
 
