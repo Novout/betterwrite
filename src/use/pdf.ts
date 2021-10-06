@@ -22,7 +22,12 @@ export const usePDF: Callback<any> = () => {
     const headingOne = (raw: string, store: Store<any>) => {
       return {
         text: raw,
-        margin: [0, 45],
+        margin: [
+          generate().base(store).pageMargins[0],
+          45,
+          generate().base(store).pageMargins[2],
+          45,
+        ],
         pageBreak: store.state.pdf.styles.headingOne.breakPage
           ? 'before'
           : undefined,
@@ -30,18 +35,28 @@ export const usePDF: Callback<any> = () => {
       }
     }
 
-    const headingTwo = (raw: string) => {
+    const headingTwo = (raw: string, store: Store<any>) => {
       return {
         text: raw,
-        margin: [0, 25],
+        margin: [
+          generate().base(store).pageMargins[0],
+          25,
+          generate().base(store).pageMargins[2],
+          25,
+        ],
         style: 'heading-two',
       }
     }
 
-    const headingThree = (raw: string) => {
+    const headingThree = (raw: string, store: Store<any>) => {
       return {
         text: raw,
-        margin: [0, 15],
+        margin: [
+          generate().base(store).pageMargins[0],
+          15,
+          generate().base(store).pageMargins[2],
+          15,
+        ],
         style: 'heading-three',
       }
     }
@@ -198,9 +213,9 @@ export const usePDF: Callback<any> = () => {
           } else if ((entity as any).type === 'heading-one') {
             _raw = headingOne((entity as any).raw, store)
           } else if ((entity as any).type === 'heading-two') {
-            _raw = headingTwo((entity as any).raw)
+            _raw = headingTwo((entity as any).raw, store)
           } else if ((entity as any).type === 'heading-three') {
-            _raw = headingThree((entity as any).raw)
+            _raw = headingThree((entity as any).raw, store)
           } else if ((entity as any).type === 'page-break') {
             _raw = pageBreak()
           } else if ((entity as any).type === 'line-break') {
