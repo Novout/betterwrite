@@ -60,16 +60,16 @@ input[type='number'] {
 
 :root {
   --scr-track: #f1f1f1;
-  --scr-thumb: #888;
-  --scr-thumb-hover: #555;
+  --scr-thumb: rgba(0, 0, 0, 0.04);
+  --scr-thumb-hover: rgba(0, 0, 0, 0.1);
   --wb-selection: #9ca3af;
   --wb-text-selection: #000;
 }
 
 .dark {
   --scr-track: #222;
-  --scr-thumb: #888;
-  --scr-thumb-hover: #555;
+  --scr-thumb: rgba(255, 255, 255, 0.04);
+  --scr-thumb-hover: rgba(255, 255, 255, 0.1);
   --wb-selection: #111827;
   --wb-text-selection: #e5e7eb;
 }
@@ -97,7 +97,7 @@ input[type='number'] {
 }
 
 *::-webkit-scrollbar {
-  width: 6px;
+  width: 12px;
 }
 
 *::-webkit-scrollbar-track {
