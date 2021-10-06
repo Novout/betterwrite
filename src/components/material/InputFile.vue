@@ -3,7 +3,7 @@
     <img v-if="props.src" class="mx-1" :src="props.src" />
     <section class="flex flex-row">
       <label
-        :for="`input-file-${props.title}`"
+        :for="`input-file-${props.id}`"
         :class="width"
         class="
           flex
@@ -33,7 +33,7 @@
         </HeroIcon>
       </label>
       <input
-        :id="`input-file-${props.title}`"
+        :id="`input-file-${props.id}`"
         ref="inp"
         class="opacity-0 absolute z-min"
         type="file"
@@ -51,7 +51,7 @@
   const emit = defineEmits(['load', 'error'])
 
   const props = defineProps({
-    title: {
+    id: {
       required: false,
       type: String,
       default: 'Inserir Imagem',

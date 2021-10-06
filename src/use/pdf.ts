@@ -394,7 +394,7 @@ export const usePDF: Callback<any> = () => {
       info: {
         title: store.state.project.name,
         author: 'TODO',
-        subject: store.state.project.version,
+        subject: store.state.project.subject,
         keywords: '',
       },
       content: generate().content(store),
@@ -403,6 +403,23 @@ export const usePDF: Callback<any> = () => {
         'heading-two': generate().styles(store).headingTwo(),
         'heading-one': generate().styles(store).headingOne(),
         paragraph: generate().styles(store).paragraph(),
+      },
+      background: function (currentPage: number) {
+        return store.state.pdf.styles.switcher.main &&
+          store.state.pdf.styles.base.background.main &&
+          currentPage >= 3
+          ? [
+              {
+                image: store.state.pdf.styles.base.background.main,
+                width: useDefines().pdf().base().pageSizeFixes()[
+                  store.state.pdf.styles.base.pageSize
+                ][0],
+                height: useDefines().pdf().base().pageSizeFixes()[
+                  store.state.pdf.styles.base.pageSize
+                ][1],
+              },
+            ]
+          : undefined
       },
       footer: function (
         currentPage: number,

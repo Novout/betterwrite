@@ -37,8 +37,8 @@
           <TextBoolean v-model="switcher.cover" />
           <InputFile
             v-if="switcher.cover"
-            :title="t('generics.input.image')"
-            :src="store.state.pdf.styles.base.background.data"
+            id="cover-background"
+            :src="_base.background.data"
             @load="onCoverImageLoad"
           />
         </div>
@@ -59,6 +59,18 @@
           overflow-x-hidden
         "
       >
+        <div class="wb-input-container">
+          <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
+          <TextBoolean v-model="switcher.main" />
+          <InputFile
+            v-if="switcher.main"
+            id="main-background"
+            :title="t('generics.input.image')"
+            :src="_base.background.main"
+            @load="onMainImageLoad"
+          />
+        </div>
+
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.base.pageSize')
@@ -575,6 +587,7 @@
 
   const switcher = reactive({
     cover: store.state.pdf.styles.switcher.cover,
+    main: store.state.pdf.styles.switcher.main,
   })
 
   const fontFamily = computed(() => store.state.pdf.fonts)
@@ -676,6 +689,10 @@
   }
 
   const onCoverImageLoad = (e: any) => {
-    store.commit('pdf/setBackground', e)
+    store.commit('pdf/setCoverBackground', e)
+  }
+
+  const onMainImageLoad = (e: any) => {
+    store.commit('pdf/setMainBackground', e)
   }
 </script>
