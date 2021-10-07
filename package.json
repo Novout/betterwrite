@@ -21,6 +21,7 @@
     "date-fns": "2.24.0",
     "dropbox": "10.12.0",
     "keyboardjs": "2.6.4",
+    "mitt": "^3.0.0",
     "pdfmake": "0.2.2",
     "postcss": "8.3.6",
     "tailwindcss": "2.2.15",

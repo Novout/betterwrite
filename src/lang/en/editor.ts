@@ -173,8 +173,8 @@ export default {
         {
           tag: 'IM',
           title: 'Image',
-          description: '/im'
-        }
+          description: '/im',
+        },
       ],
     },
   },

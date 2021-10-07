@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import vfmPlugin from 'vue-final-modal'
 import Toast, { POSITION } from 'vue-toastification'
+import mitt from 'mitt'
 
 import router from './router'
 import store from './store'
@@ -13,6 +14,9 @@ import './tailwind.css'
 import 'vue-toastification/dist/index.css'
 
 const app = createApp(App)
+const emitter = mitt()
+
+app.config.globalProperties.emitter = emitter
 
 app.use(router)
 app.use(store)
