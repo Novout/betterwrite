@@ -87,14 +87,28 @@ export const useRaw: Callback<any> = () => {
     const final: Array<any> = []
 
     let str = ''
+
     let str_italic = ''
     let str_bold = ''
+    let str_link = ''
 
     let _italic = false
     let _bold = false
+    let _link = false
 
-    for (let i = 0; i < raw.length; i++) {
-      const letter = raw.charAt(i)
+    let _raw = raw
+    const over: Array<string> = []
+
+    raw.split(/[ ,]+/).forEach((word: string) => {
+      if (word.includes('http')) over.push(word)
+    })
+
+    over.forEach((word: string) => {
+      _raw = _raw.replace(word, `|${word}|`)
+    })
+
+    for (let i = 0; i < _raw.length; i++) {
+      const letter = _raw.charAt(i)
 
       if (letter === '*' && !_italic) {
         _italic = true
@@ -110,6 +124,21 @@ export const useRaw: Callback<any> = () => {
         _italic = false
       } else if (_italic) {
         str_italic += letter
+      } else if (letter === '|' && !_link) {
+        _link = true
+        final.push(str)
+        str = ''
+      } else if (letter === '|' && _link) {
+        const obj = {
+          text: str_link,
+          link: str_link,
+          decoration: 'underline',
+        }
+        final.push(obj)
+        str_link = ''
+        _link = false
+      } else if (_link) {
+        str_link += letter
       } else if (letter === '&' && !_bold) {
         _bold = true
         final.push(str)
@@ -126,7 +155,14 @@ export const useRaw: Callback<any> = () => {
         str_bold += letter
       }
 
-      if (!_bold && !_italic && letter !== '*' && letter !== '&') {
+      if (
+        !_bold &&
+        !_italic &&
+        !_link &&
+        letter !== '*' &&
+        letter !== '&' &&
+        letter !== '|'
+      ) {
         str += letter
         if (i + 1 >= raw.length) final.push(str)
       }
