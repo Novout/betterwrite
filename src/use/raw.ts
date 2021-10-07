@@ -25,6 +25,18 @@ export const italic: Callback<any> = () => {
   return { open, close }
 }
 
+export const link: Callback<any> = () => {
+  const open = (tag: string) => {
+    return `<a href="${tag}" target="_blank" class="underline text-xs">`
+  }
+
+  const close = () => {
+    return ' </a>'
+  }
+
+  return { open, close }
+}
+
 export const useRaw: Callback<any> = () => {
   const convert = (page: ContextStatePageContent) => {
     let final = ''
@@ -35,8 +47,21 @@ export const useRaw: Callback<any> = () => {
 
     if (page.type !== 'paragraph') return page.raw
 
-    for (let i = 0; i < page.raw.length; i++) {
-      const letter = page.raw.charAt(i)
+    const over: Array<string> = []
+
+    let _raw = page.raw
+
+    page.raw.split(/[ ,]+/).forEach((word: string) => {
+      console.log(word)
+      if (word.includes('http')) over.push(word)
+    })
+
+    over.forEach((word: string) => {
+      _raw = _raw.replace(word, `${link().open(word)}${word}${link().close()}`)
+    })
+
+    for (let i = 0; i < _raw.length; i++) {
+      const letter = _raw.charAt(i)
 
       if (letter === '*' && !_italic) {
         _italic = true
