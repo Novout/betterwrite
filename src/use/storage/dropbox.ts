@@ -1,8 +1,12 @@
 import { Store } from 'vuex'
 import { nextTick } from 'vue'
-import { ProjectState } from '../../types/project'
+import { useToast } from 'vue-toastification'
+import i18n from '@/lang'
 
 export const useDropbox = (store: Store<any>) => {
+  const toast = useToast()
+  const { t } = i18n.global
+
   const onLoadProject = async (context: any) => {
     if (!context) return
 
@@ -14,6 +18,8 @@ export const useDropbox = (store: Store<any>) => {
 
     store.commit('logger/load', context.logger.content)
     store.commit('pdf/load', context.pdf)
+
+    toast.success(t('toast.project.load'))
   }
 
   return { onLoadProject }

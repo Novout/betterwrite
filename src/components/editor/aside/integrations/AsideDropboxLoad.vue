@@ -32,10 +32,11 @@
   } from 'dropbox'
   import { useStore } from 'vuex'
   import { useDropbox } from '@/use/storage/dropbox'
-  import { useEnv } from '@/use/env'
+  import { useToast } from 'vue-toastification'
 
   const { t } = useI18n()
   const store = useStore()
+  const toast = useToast()
 
   const onClick = async () => {
     if (!store.state.auth.dropbox.accessToken) {
@@ -45,6 +46,8 @@
     const options = {
       success: function (files: Array<any>) {
         const file = files[0]
+
+        toast.info(t('toast.generics.load'))
 
         const dbx = new DBX({
           accessToken: store.state.auth.dropbox.accessToken,
@@ -57,7 +60,7 @@
             useDropbox(store).onLoadProject(context)
           })
           .catch((err: DropboxResponseError<any>) => {
-            console.error(err)
+            toast.error(t('toast.project.error'))
           })
       },
 

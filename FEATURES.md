@@ -19,7 +19,7 @@ Here will contain all the features that Better Write offers.
 ➖ - Auto Save
 ❌ - Cloud Auto Save
 ➖ - Logger for Users
-❌ - Alerts
+✅ - Alerts
 ✅ - Shortcuts
 
 ### Project

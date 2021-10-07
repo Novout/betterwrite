@@ -4,6 +4,8 @@ import { Callback } from '@/types/utils'
 import { usePDF } from './pdf'
 import { useFormat } from './format'
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
+import { useToast } from 'vue-toastification'
+import i18n from '@/lang'
 
 const global: Callback<Store<any>, void> = (store: Store<any>) => {
   let _log = console.log,
@@ -53,18 +55,24 @@ const global: Callback<Store<any>, void> = (store: Store<any>) => {
 }
 
 const auth = (store: Store<any>, route: RouteLocationNormalizedLoaded) => {
+  const toast = useToast()
+  const { t } = i18n.global
+
   if (route.fullPath.includes('access_token')) {
     let str = ''
     let firstQuery = false
     let finish = false
 
     for (let i = 0; i < route.fullPath.length; i++) {
+      const letter = route.fullPath.charAt(i)
+
       if (finish) {
         store.commit('auth/setDropboxToken', str)
 
+        toast.success(t('toast.dropbox.load'))
+
         return
       }
-      const letter = route.fullPath.charAt(i)
 
       if (letter === '&') {
         firstQuery = false
@@ -77,8 +85,6 @@ const auth = (store: Store<any>, route: RouteLocationNormalizedLoaded) => {
 
       if (letter === '=') firstQuery = true
     }
-
-    console.log(str)
   }
 }
 

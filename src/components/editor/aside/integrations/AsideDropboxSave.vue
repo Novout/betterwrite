@@ -26,11 +26,13 @@
 
 <script setup lang="ts">
   import { useStore } from 'vuex'
-  import { useI18n } from 'vue-i18n'
   import { Dropbox } from 'dropbox'
+  import { useToast } from 'vue-toastification'
+  import i18n from '@/lang'
 
   const store = useStore()
-  const { t } = useI18n()
+  const { t } = i18n.global
+  const toast = useToast()
 
   const onClick = () => {
     if (!store.state.auth.dropbox.accessToken) {
@@ -54,10 +56,15 @@
 
     const path = `/${store.state.project.name}.bw`
 
+    toast.info(t('toast.generics.load'))
+
     dbx
       .filesUpload({
         path,
         contents: JSON.stringify(obj),
+      })
+      .then(() => {
+        toast.success(t('toast.project.save'))
       })
       .catch(() => {
         dbx
@@ -65,10 +72,20 @@
             path,
           })
           .then(() => {
-            dbx.filesUpload({
-              path,
-              contents: JSON.stringify(obj),
-            })
+            dbx
+              .filesUpload({
+                path,
+                contents: JSON.stringify(obj),
+              })
+              .then(() => {
+                toast.success(t('toast.project.save'))
+              })
+              .catch(() => {
+                toast.error(t('toast.project.error'))
+              })
+          })
+          .catch(() => {
+            toast.error(t('toast.project.error'))
           })
       })
 

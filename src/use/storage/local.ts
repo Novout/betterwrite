@@ -1,10 +1,15 @@
 import { ProjectObject } from '@/types/project'
 import { Callback } from '@/types/utils'
 import { Store } from 'vuex'
-import { useEnv } from '../env'
+import { useToast } from 'vue-toastification'
 import { nextTick } from 'vue'
+import { useEnv } from '../env'
+import i18n from '@/lang'
 
 export const useLocalStorage: Callback<any> = (store: Store<any>) => {
+  const toast = useToast()
+  const { t } = i18n.global
+
   const set = (obj: ProjectObject, name: string) => {
     localStorage.setItem(useEnv().projectLocalStorage(), JSON.stringify(obj))
   }
@@ -34,6 +39,8 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
         normalize: {},
       },
     })
+
+    toast.success(t('toast.project.save'))
   }
 
   const onAutoSave = (time: number, _: Store<any>) => {
@@ -66,6 +73,8 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
 
     store.commit('logger/load', context.logger.content)
     store.commit('pdf/load', context.pdf)
+
+    toast.success(t('toast.project.load'))
   }
 
   return {

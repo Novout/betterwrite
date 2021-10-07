@@ -31,7 +31,7 @@
   onMounted(() => {
     usePDF().external(store).onPreviewPDF(preview.value)
 
-    toast.error(t('toast.pdf.previewProblems'))
+    toast.info(t('toast.pdf.previewProblems'))
   })
 
   const onClick = () => {

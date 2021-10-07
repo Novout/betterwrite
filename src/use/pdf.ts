@@ -8,9 +8,11 @@ import { useRaw } from './raw'
 import { useEnv } from './env'
 import { useFonts } from './google/fonts'
 import { useDefines } from './defines'
+import i18n from '@/lang'
 
 export const usePDF: Callback<any> = () => {
   const toast = useToast()
+  const { t } = i18n.global
 
   const init: Callback<any> = async (store: Store<any>) => {
     const { normalize, names } = await useFonts().get()
@@ -484,6 +486,8 @@ export const usePDF: Callback<any> = () => {
     const pdf = pdfMake.createPdf(doc(store, { final: true }))
 
     pdf.download(`${store.state.project.nameRaw}.pdf`, () => {
+      toast.success(t('toast.pdf.create'))
+
       store.commit('absolute/load', false)
     })
   }
@@ -517,6 +521,8 @@ export const usePDF: Callback<any> = () => {
   const external = (store: Store<any>) => {
     const onGeneratePDF = async () => {
       if (useEnv().isEmptyProject(store.state.project.name)) return
+
+      toast.info(t('toast.generics.load'))
 
       store.commit('absolute/load', true)
 

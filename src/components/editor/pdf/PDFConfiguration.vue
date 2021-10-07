@@ -575,8 +575,10 @@
   import { reactive, nextTick, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
+  import { useToast } from 'vue-toastification'
 
   const { t } = useI18n()
+  const toast = useToast()
   const store = useStore()
 
   const _base = computed(() => store.state.pdf.styles.base)
@@ -684,6 +686,8 @@
       switcher,
     })
     await nextTick
+
+    toast.success(t('toast.pdf.configuration.save'))
 
     store.commit('absolute/switchPdfConfiguration', false)
   }
