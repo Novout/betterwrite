@@ -170,6 +170,11 @@ export default {
           title: 'Quebra de Linha',
           description: '/lb',
         },
+        {
+          tag: 'IM',
+          title: 'Imagem',
+          description: '/im'
+        }
       ],
     },
   },

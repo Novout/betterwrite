@@ -170,6 +170,11 @@ export default {
           title: 'Line Break',
           description: '/lb',
         },
+        {
+          tag: 'IM',
+          title: 'Image',
+          description: '/im'
+        }
       ],
     },
   },
