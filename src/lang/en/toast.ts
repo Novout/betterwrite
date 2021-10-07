@@ -1,6 +1,7 @@
 export default {
   generics: {
     load: 'Wait a moment...',
+    error: 'An unexpected error occurred :(',
   },
   pdf: {
     configuration: {

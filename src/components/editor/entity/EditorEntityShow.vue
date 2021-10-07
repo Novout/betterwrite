@@ -159,7 +159,8 @@
 
     if (
       props.entity.type === 'page-break' ||
-      props.entity.type === 'line-break'
+      props.entity.type === 'line-break' ||
+      props.entity.type === 'image'
     )
       return
 

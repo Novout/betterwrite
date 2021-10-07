@@ -4,7 +4,14 @@ export interface ContextState {
 }
 
 export interface ContextStatePageContent {
-  type: string
+  type:
+    | 'paragraph'
+    | 'heading-one'
+    | 'heading-two'
+    | 'heading-three'
+    | 'page-break'
+    | 'line-break'
+    | 'image'
   raw: string
   createdAt: string
   updatedAt: string

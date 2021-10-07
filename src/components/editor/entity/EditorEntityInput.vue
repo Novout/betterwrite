@@ -40,7 +40,9 @@
   import { ref, computed, watch, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
+  import { useToast } from 'vue-toastification'
 
+  const toast = useToast()
   const store = useStore()
   const { t } = useI18n()
 
@@ -137,6 +139,40 @@
       emit('enter', content)
 
       return
+    }
+
+    if (useEntity().entry(_cmp, 'im')) {
+      cmp.value = ''
+
+      const _ = document.createElement('input')
+      _.type = 'file'
+      _.addEventListener('change', function() {
+        const file = (this.files as any)[0]
+
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+
+        reader.onload = function () {
+          const content = {
+            id: store.state.context.totalEntityCreated,
+            type: 'image',
+            raw: reader.result,
+            createdAt: useFormat().actually(),
+            updatedAt: useFormat().actually(),
+          } as ContextStatePageContent
+
+          type.value = 'paragraph'
+          input.value.placeholder = t('editor.text.placeholder.paragraph')
+
+          emit('enter', content)
+
+          return
+        }
+        reader.onerror = function (error) {
+          toast.error(t('toast.generics.error'))
+        }
+      })
+      _.click()
     }
   })
 

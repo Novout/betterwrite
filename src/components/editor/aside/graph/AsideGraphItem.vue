@@ -3,7 +3,8 @@
     v-if="
       props.type !== 'paragraph' &&
       props.type !== 'page-break' &&
-      props.type !== 'line-break'
+      props.type !== 'line-break' &&
+      props.type !== 'image'
     "
     class="
       dark:hover:bg-gray-800

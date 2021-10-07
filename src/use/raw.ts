@@ -37,6 +37,14 @@ export const link: Callback<any> = () => {
   return { open, close }
 }
 
+export const image: Callback<any> = () => {
+  const define = (tag: string) => {
+    return `<img src="${tag}" width="50%">`
+  }
+
+  return { define }
+}
+
 export const useRaw: Callback<any> = () => {
   const convert = (page: ContextStatePageContent) => {
     let final = ''
@@ -45,18 +53,24 @@ export const useRaw: Callback<any> = () => {
 
     if (page.type === 'page-break' || page.type === 'line-break') return ''
 
-    if (page.type !== 'paragraph') return page.raw
+    if (page.type !== 'paragraph' && page.type !== 'image') return page.raw
 
     const over: Array<string> = []
+    const img: Array<string> = []
 
     let _raw = page.raw
 
-    page.raw.split(/[ ,]+/).forEach((word: string) => {
+    page.raw.split(/[ ]+/).forEach((word: string) => {
       if (word.includes('http://') || word.includes('https://')) over.push(word)
+      if (word.includes('data:image/')) img.push(word)
     })
 
     over.forEach((word: string) => {
       _raw = _raw.replace(word, `${link().open(word)}${word}${link().close()}`)
+    })
+
+    img.forEach((img: string) => {
+      _raw = _raw.replace(img, `${image().define(img)}`)
     })
 
     for (let i = 0; i < _raw.length; i++) {
