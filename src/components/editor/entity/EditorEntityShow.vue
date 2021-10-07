@@ -117,7 +117,7 @@
   import { useStore } from 'vuex'
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
-  import { ContextStatePageContent } from '../../../types/context'
+  import { ContextStatePageContent } from '@/types/context'
 
   const props = defineProps({
     entity: {
