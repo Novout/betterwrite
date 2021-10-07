@@ -8,7 +8,8 @@
     "serve": "rm -rf ./dist && yarn build && vite preview",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format",
     "format": "prettier src/**/*.{vue,css,ts} --write",
-    "test": "jest"
+    "test": "jest",
+    "extract": "vue-i18n-extract report --vueFiles './src/**/*.?(js|vue)' --languageFiles './src/lang/*.?(json|yml|yaml|js)'"
   },
   "dependencies": {
     "@headlessui/vue": "1.4.1",
@@ -51,6 +52,7 @@
     "typescript": "4.4.3",
     "unplugin-vue-components": "0.15.6",
     "vite": "2.6.3",
+    "vue-i18n-extract": "^2.0.4",
     "vue-tsc": "0.3.0"
   }
 }
