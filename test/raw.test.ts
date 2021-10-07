@@ -3,7 +3,7 @@
  */
 
 import { useFormat } from '../src/use/format';
-import { bold, italic, useRaw } from '../src/use/raw';
+import { bold, italic, link, useRaw } from '../src/use/raw';
 
 describe('Editor Converter', () => {
   beforeEach(() => {});
@@ -62,6 +62,63 @@ describe('Editor Converter', () => {
     const raw = useRaw().convert(entity);
 
     expect(entity.raw).toEqual(raw);
+  })
+
+  // link
+  it('should not convert link in heading one', () => {
+    const entity = {
+      id: 0,
+      type: 'heading-one',
+      raw: 'Untitled http://test Untitled',
+      createdAt: useFormat().actually(),
+      updatedAt: useFormat().actually(),
+    };
+
+    const raw = useRaw().convert(entity);
+
+    expect(entity.raw).toEqual(raw);
+  })
+
+  it('should not convert link in heading one', () => {
+    const entity = {
+      id: 0,
+      type: 'heading-two',
+      raw: 'Untitled http://test Untitled',
+      createdAt: useFormat().actually(),
+      updatedAt: useFormat().actually(),
+    };
+
+    const raw = useRaw().convert(entity);
+
+    expect(entity.raw).toEqual(raw);
+  })
+
+  it('should not convert link in heading one', () => {
+    const entity = {
+      id: 0,
+      type: 'heading-three',
+      raw: 'Untitled http://test Untitled',
+      createdAt: useFormat().actually(),
+      updatedAt: useFormat().actually(),
+    };
+
+    const raw = useRaw().convert(entity);
+
+    expect(entity.raw).toEqual(raw);
+  })
+
+  it('should correct link convert', () => {
+    const entity = {
+      id: 0,
+      type: 'paragraph',
+      raw: 'Untitled http://test Untitled',
+      createdAt: useFormat().actually(),
+      updatedAt: useFormat().actually(),
+    };
+
+    const raw = useRaw().convert(entity);
+
+    expect(`Untitled ${link().open('http://test')}http://test${link().close()} Untitled`).toEqual(raw);
   })
 
   // italic
@@ -205,6 +262,35 @@ describe('Editor Converter', () => {
 
     expect(`Untitled ${bold().open()}test Untitled`).toEqual(raw);
   })
+
+  // utilities
+  it('should correct page break', () => {
+    const entity = {
+      id: 0,
+      type: 'page-break',
+      raw: '',
+      createdAt: useFormat().actually(),
+      updatedAt: useFormat().actually(),
+    };
+
+    const raw = useRaw().convert(entity);
+
+    expect('').toEqual(raw);
+  })
+
+  it('should correct line break', () => {
+    const entity = {
+      id: 0,
+      type: 'line-break',
+      raw: '',
+      createdAt: useFormat().actually(),
+      updatedAt: useFormat().actually(),
+    };
+
+    const raw = useRaw().convert(entity);
+
+    expect('').toEqual(raw);
+  })
 })
 
 describe('PDF Converter', () => {
@@ -261,5 +347,18 @@ describe('PDF Converter', () => {
     const raw = useRaw().pdfConvert('Untitled &test Untitled');
 
     expect(["Untitled "]).toEqual(raw);
+  })
+
+  it('should create a unique link entity', () => {
+    const raw = useRaw().pdfConvert('Untitled http://test Untitled');
+
+    expect(["Untitled ",
+    {
+      text: 'test',
+      link: 'http://test',
+      decoration: 'underline'
+    },
+    " Untitled"
+  ]).toEqual(raw);
   })
 })

@@ -52,8 +52,7 @@ export const useRaw: Callback<any> = () => {
     let _raw = page.raw
 
     page.raw.split(/[ ,]+/).forEach((word: string) => {
-      console.log(word)
-      if (word.includes('http')) over.push(word)
+      if (word.includes('http://') || word.includes('https://')) over.push(word)
     })
 
     over.forEach((word: string) => {
@@ -100,7 +99,7 @@ export const useRaw: Callback<any> = () => {
     const over: Array<string> = []
 
     raw.split(/[ ,]+/).forEach((word: string) => {
-      if (word.includes('http')) over.push(word)
+      if (word.includes('http://') || word.includes('https://')) over.push(word)
     })
 
     over.forEach((word: string) => {
@@ -130,7 +129,7 @@ export const useRaw: Callback<any> = () => {
         str = ''
       } else if (letter === '|' && _link) {
         const obj = {
-          text: str_link,
+          text: str_link.replace('http://', '').replace('https://', ''),
           link: str_link,
           decoration: 'underline',
         }
@@ -164,7 +163,10 @@ export const useRaw: Callback<any> = () => {
         letter !== '|'
       ) {
         str += letter
-        if (i + 1 >= raw.length) final.push(str)
+        if (i + 1 >= _raw.length) {
+          console.log(letter)
+          final.push(str)
+        }
       }
     }
 
