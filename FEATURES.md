@@ -47,7 +47,7 @@ Here will contain all the features that Better Write offers.
 - ✅ - Paragraph Italic
 - ✅ - Paragraph Links
 - ✅ - Heading's
-- ❌ - Image's
+- ➖ - Image's
 - ❌ - Emoji's
 - ✅ - Break Page
 - ✅ - Line Page

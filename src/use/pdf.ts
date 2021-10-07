@@ -125,6 +125,24 @@ export const usePDF: Callback<any> = () => {
       }
     }
 
+    const image = (raw: string, store: Store<any>) => {
+      return {
+        image: raw,
+        width:
+          useDefines().pdf().base().pageSizeFixes()[
+            store.state.pdf.styles.base.pageSize
+          ][0] -
+          generate().base(store).pageMargins[0] -
+          generate().base(store).pageMargins[2],
+        margin: [
+          generate().base(store).pageMargins[0],
+          10,
+          generate().base(store).pageMargins[2],
+          10,
+        ],
+      }
+    }
+
     const frontCover = (store: Store<any>, arr: Array<any>) => {
       if (store.state.pdf.styles.switcher.cover) {
         if (!store.state.pdf.styles.base.background.data) return
@@ -222,6 +240,8 @@ export const usePDF: Callback<any> = () => {
             _raw = pageBreak()
           } else if ((entity as any).type === 'line-break') {
             _raw = lineBreak()
+          } else if ((entity as any).type === 'image') {
+            _raw = image((entity as any).raw, store)
           }
 
           arr.push(_raw)
