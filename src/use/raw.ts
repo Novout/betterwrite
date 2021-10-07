@@ -164,7 +164,6 @@ export const useRaw: Callback<any> = () => {
       ) {
         str += letter
         if (i + 1 >= _raw.length) {
-          console.log(letter)
           final.push(str)
         }
       }
