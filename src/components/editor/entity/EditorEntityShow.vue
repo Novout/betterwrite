@@ -152,7 +152,10 @@
     emitter.on(
       'entity-close',
       (entity?: ContextStatePageContent, options?: Record<string, boolean>) => {
-        if (options && options.all) onUpdateContent()
+        if (options && options.all) {
+          onUpdateContent()
+          return
+        }
 
         const index = store.state.context.entity.indexOf(entity)
 
