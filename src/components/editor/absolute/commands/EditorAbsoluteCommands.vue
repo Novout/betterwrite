@@ -15,7 +15,7 @@
     "
   >
     <slot name="exib" />
-    <div class="flex flex-col items-start justify-start">
+    <div class="flex flex-col items-end justify-end">
       <p>{{ props.title }}</p>
       <p class="text-2xs">{{ props.description }}</p>
     </div>
