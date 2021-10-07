@@ -28,6 +28,7 @@
       @input="onExpandableTextareaInput"
       @keypress.enter.prevent="enterHandler"
       @paste="pasteHandler"
+      @focus="onSet"
     />
   </section>
 </template>
@@ -37,6 +38,7 @@
   import { useEntity } from '@/use/entity'
   import { useFormat } from '@/use/format'
   import { useInput } from '@/use/input'
+  import useEmitter from '@/use/emitter'
   import { ref, computed, watch, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
@@ -45,6 +47,7 @@
   const toast = useToast()
   const store = useStore()
   const { t } = useI18n()
+  const emitter = useEmitter()
 
   const props = defineProps({
     modelValue: String,
@@ -191,8 +194,8 @@
     emit('enter', content)
   }
 
-  const handler = () => {
-    emit('submit')
+  const onSet = () => {
+    emitter.emit('entity-close', {}, { all: true })
   }
 
   const pasteHandler = (event: any) => {

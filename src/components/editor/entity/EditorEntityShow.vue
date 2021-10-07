@@ -113,9 +113,11 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, nextTick, computed } from 'vue'
+  import { ref, watch, nextTick, computed, onMounted } from 'vue'
   import { useStore } from 'vuex'
   import { useRaw } from '@/use/raw'
+  import useEmitter from '@/use/emitter'
+  import { ContextStatePageContent } from '../../../types/context'
 
   const props = defineProps({
     entity: {
@@ -125,6 +127,7 @@
   })
 
   const store = useStore()
+  const emitter = useEmitter()
 
   const hover = ref(false)
   const edit = ref(false)
@@ -140,7 +143,24 @@
       input.value?.focus()
 
       data.value = props.entity.raw
+
+      emitter.emit('entity-close', props.entity)
     }
+  })
+
+  onMounted(() => {
+    emitter.on(
+      'entity-close',
+      (entity?: ContextStatePageContent, options?: Record<string, boolean>) => {
+        if (options && options.all) onUpdateContent()
+
+        const index = store.state.context.entity.indexOf(entity)
+
+        if (store.state.context.entity[index] === props.entity) return
+
+        if (edit.value) onUpdateContent()
+      }
+    )
   })
 
   const onUpdateContent = () => {
