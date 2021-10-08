@@ -496,7 +496,10 @@ export const usePDF: Callback<any> = () => {
       set[s] = store.state.pdf.normalize[s]
     })
 
-    // @ts-ignore
+    if (store.state.pdf.normalize['Roboto'])
+      set['Roboto'] = store.state.pdf.normalize['Roboto']
+
+      // @ts-ignore
     ;(<any>pdfMake).fonts = set
   }
 
