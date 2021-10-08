@@ -213,7 +213,7 @@
 
       const content = {
         id: store.state.context.totalEntityCreated,
-        type: 'paragraph',
+        type: type.value,
         raw: normalize,
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
