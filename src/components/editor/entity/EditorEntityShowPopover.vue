@@ -30,23 +30,33 @@
         dark:border-gray-700
       "
     >
-      <EditorEntityShowSelect @click="onNewEntity($event, 'paragraph')">
+      <EditorEntityShowSelect
+        @click.prevent.stop="onNewEntity($event, 'paragraph')"
+      >
         P
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect @click="onNewEntity($event, 'heading-two')">
+      <EditorEntityShowSelect
+        @click.prevent.stop="onNewEntity($event, 'heading-two')"
+      >
         H2
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect @click="onNewEntity($event, 'heading-three')">
+      <EditorEntityShowSelect
+        @click.prevent.stop="onNewEntity($event, 'heading-three')"
+      >
         H3
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect @click="onNewEntity($event, 'page-break')">
+      <EditorEntityShowSelect
+        @click.prevent.stop="onNewEntity($event, 'page-break')"
+      >
         BP
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect @click="onNewEntity($event, 'line-break')">
+      <EditorEntityShowSelect
+        @click.prevent.stop="onNewEntity($event, 'line-break')"
+      >
         LB
       </EditorEntityShowSelect>
     </section>
-    <HeroIcon @click="onNewEntityWrapper">
+    <HeroIcon @click.prevent.stop="onNewEntityWrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4 wb-icon"
@@ -75,23 +85,33 @@
         z-max
       "
     >
-      <EditorEntityShowSelect @click="onSwitchEntity($event, 'paragraph')">
+      <EditorEntityShowSelect
+        @click.prevent.stop="onSwitchEntity($event, 'paragraph')"
+      >
         P
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect @click="onSwitchEntity($event, 'heading-two')">
+      <EditorEntityShowSelect
+        @click.prevent.stop="onSwitchEntity($event, 'heading-two')"
+      >
         H2
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect @click="onSwitchEntity($event, 'heading-three')">
+      <EditorEntityShowSelect
+        @click.prevent.stop="onSwitchEntity($event, 'heading-three')"
+      >
         H3
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect @click="onSwitchEntity($event, 'page-break')">
+      <EditorEntityShowSelect
+        @click.prevent.stop="onSwitchEntity($event, 'page-break')"
+      >
         BP
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect @click="onSwitchEntity($event, 'line-break')">
+      <EditorEntityShowSelect
+        @click.prevent.stop="onSwitchEntity($event, 'line-break')"
+      >
         LB
       </EditorEntityShowSelect>
     </section>
-    <HeroIcon class="wb-icon" @click="onSwitcherEntityWrapper">
+    <HeroIcon class="wb-icon" @click.prevent.stop="onSwitcherEntityWrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -103,7 +123,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon" @click="onUpEntity">
+    <HeroIcon class="wb-icon" @click.prevent.stop="onUpEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -117,7 +137,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon" @click="onDownEntity">
+    <HeroIcon class="wb-icon" @click.prevent.stop="onDownEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -131,7 +151,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon" @click="onDeleteEntity">
+    <HeroIcon class="wb-icon" @click.prevent.stop="onDeleteEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4"
@@ -149,7 +169,6 @@
 </template>
 
 <script setup lang="ts">
-  import { useUtils } from '@/use/utils'
   import { reactive } from 'vue'
   import { useStore } from 'vuex'
 
@@ -165,14 +184,10 @@
   })
 
   const onDeleteEntity = (e: MouseEvent) => {
-    useUtils().prevent(e)
-
     store.commit('context/removeInPage', props.entity)
   }
 
   const onUpEntity = (e: MouseEvent) => {
-    useUtils().prevent(e)
-
     store.commit('context/switchInPage', {
       entity: props.entity,
       direction: 'up',
@@ -180,8 +195,6 @@
   }
 
   const onDownEntity = (e: MouseEvent) => {
-    useUtils().prevent(e)
-
     store.commit('context/switchInPage', {
       entity: props.entity,
       direction: 'down',
@@ -189,14 +202,10 @@
   }
 
   const onNewEntityWrapper = (e: MouseEvent) => {
-    useUtils().prevent(e)
-
     state.new = !state.new
   }
 
   const onNewEntity = (e: MouseEvent, type: string) => {
-    useUtils().prevent(e)
-
     store.commit('context/newInPage', {
       entity: props.entity,
       type,
@@ -206,14 +215,10 @@
   }
 
   const onSwitcherEntityWrapper = (e: MouseEvent) => {
-    useUtils().prevent(e)
-
     state.switcher = !state.switcher
   }
 
   const onSwitchEntity = (e: MouseEvent, type: string) => {
-    useUtils().prevent(e)
-
     store.commit('context/alterInPage', {
       entity: props.entity,
       type,
