@@ -77,6 +77,11 @@ export default {
       lang: 'PT-BR / EN-US',
       draggable: 'Arrastável',
     },
+    entity: {
+      delete: 'Deletar',
+      up: 'Cima',
+      down: 'Baixo',
+    },
     project: {
       title: 'Projeto',
       addons: {
