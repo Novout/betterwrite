@@ -1,11 +1,8 @@
 <template>
-  <div
-    class="md:px-20 px-2 h-screen flex items-center"
-    @click.prevent="onClickInEditor"
-  >
+  <div class="h-screen flex items-center" @click.prevent="onClickInEditor">
     <div
       ref="main"
-      class="w-full h-editor-mobile bg-gray-100 dark:bg-gray-700"
+      class="w-full h-screen bg-gray-100 dark:bg-gray-700"
       :class="[
         store.state.editor.configuration.draggable ? 'fixed' : 'inline-block',
       ]"
@@ -27,7 +24,7 @@
           flex flex-col
           w-full
           overflow-y-auto
-          max-h-editor
+          max-h-screen
           px-14
           bg-gray-100
           dark:bg-gray-700
