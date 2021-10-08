@@ -120,19 +120,14 @@
     entity: Object as any,
   })
 
-  const onForceScroll = async (e: MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-  }
-
   const onDeleteEntity = (e: MouseEvent) => {
-    onForceScroll(e)
+    useUtils().prevent(e)
 
     store.commit('context/removeInPage', props.entity)
   }
 
   const onUpEntity = (e: MouseEvent) => {
-    onForceScroll(e)
+    useUtils().prevent(e)
 
     store.commit('context/switchInPage', {
       entity: props.entity,
@@ -141,7 +136,7 @@
   }
 
   const onDownEntity = (e: MouseEvent) => {
-    onForceScroll(e)
+    useUtils().prevent(e)
 
     store.commit('context/switchInPage', {
       entity: props.entity,
@@ -156,7 +151,7 @@
   }
 
   const onNewEntity = (e: MouseEvent, type: string) => {
-    onForceScroll(e)
+    useUtils().prevent(e)
 
     store.commit('context/newInPage', {
       entity: props.entity,
