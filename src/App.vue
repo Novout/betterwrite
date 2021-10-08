@@ -1,6 +1,5 @@
 <template>
   <router-view></router-view>
-  <ProviderApp />
 </template>
 
 <script setup lang="ts">

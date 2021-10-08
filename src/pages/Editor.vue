@@ -5,6 +5,7 @@
       <EditorBase />
     </main>
   </section>
+  <ProviderApp />
 </template>
 
 <script setup lang="ts">
