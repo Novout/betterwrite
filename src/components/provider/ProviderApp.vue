@@ -1,7 +1,6 @@
 <template>
   <EditorShortcutsSwitcher v-if="absolute.shortcuts.switcher" />
   <EditorShortcutsFinder v-if="absolute.shortcuts.finder" />
-  <ProviderLoad v-if="absolute.load" />
   <ProviderLogger v-if="absolute.logger" />
   <ProviderPDFConfiguration v-if="absolute.pdf.configuration" />
   <ProviderPDFPreview v-if="absolute.pdf.preview" />
