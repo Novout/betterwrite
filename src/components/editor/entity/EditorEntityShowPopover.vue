@@ -60,6 +60,49 @@
         />
       </svg>
     </HeroIcon>
+    <section
+      v-if="state.switcher"
+      class="
+        absolute
+        rounded
+        bottom-4
+        left-4
+        wb-text
+        bg-gray-500
+        dark:bg-gray-800
+        border-gray-400
+        dark:border-gray-700
+        z-max
+      "
+    >
+      <EditorEntityShowSelect @click="onSwitchEntity($event, 'paragraph')">
+        P
+      </EditorEntityShowSelect>
+      <EditorEntityShowSelect @click="onSwitchEntity($event, 'heading-two')">
+        H2
+      </EditorEntityShowSelect>
+      <EditorEntityShowSelect @click="onSwitchEntity($event, 'heading-three')">
+        H3
+      </EditorEntityShowSelect>
+      <EditorEntityShowSelect @click="onSwitchEntity($event, 'page-break')">
+        BP
+      </EditorEntityShowSelect>
+      <EditorEntityShowSelect @click="onSwitchEntity($event, 'line-break')">
+        LB
+      </EditorEntityShowSelect>
+    </section>
+    <HeroIcon class="wb-icon" @click="onSwitcherEntityWrapper">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"
+        />
+      </svg>
+    </HeroIcon>
     <HeroIcon class="wb-icon" @click="onUpEntity">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +156,8 @@
   const store = useStore()
 
   const state = reactive({
-    new: false,
+    new: false as boolean,
+    switcher: false as boolean,
   })
 
   const props = defineProps({
@@ -157,5 +201,24 @@
       entity: props.entity,
       type,
     })
+
+    state.new = false
+  }
+
+  const onSwitcherEntityWrapper = (e: MouseEvent) => {
+    useUtils().prevent(e)
+
+    state.switcher = !state.switcher
+  }
+
+  const onSwitchEntity = (e: MouseEvent, type: string) => {
+    useUtils().prevent(e)
+
+    store.commit('context/alterInPage', {
+      entity: props.entity,
+      type,
+    })
+
+    state.switcher = false
   }
 </script>
