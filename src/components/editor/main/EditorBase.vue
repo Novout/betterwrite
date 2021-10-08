@@ -5,14 +5,7 @@
   >
     <div
       ref="main"
-      class="
-        md:w-8/12
-        w-full
-        h-editor-mobile
-        md:h-editor
-        bg-gray-100
-        dark:bg-gray-700
-      "
+      class="w-full h-editor-mobile bg-gray-100 dark:bg-gray-700"
       :class="[
         store.state.editor.configuration.draggable ? 'fixed' : 'inline-block',
       ]"
