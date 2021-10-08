@@ -61,11 +61,16 @@ export default {
 
       state.entity[index].raw = r
     },
-    newInPage(state: ContextState, entity: ContextStatePageContent) {
-      const index = state.entity.indexOf(entity)
+    newInPage(
+      state: ContextState,
+      payload: Record<string, ContextStatePageContent | string>
+    ) {
+      const index = state.entity.indexOf(
+        payload.entity as ContextStatePageContent
+      )
 
       state.entity.splice(index, 0, {
-        type: 'paragraph',
+        type: payload.type as string,
         raw: '-',
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),

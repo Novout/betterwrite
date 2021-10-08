@@ -17,7 +17,36 @@
       props.entity.type === 'heading-three' ? 'top-8' : '',
     ]"
   >
-    <HeroIcon @click="onNewEntity">
+    <section
+      v-if="state.new"
+      class="
+        absolute
+        rounded
+        bottom-4
+        wb-text
+        bg-gray-500
+        dark:bg-gray-800
+        border-gray-400
+        dark:border-gray-700
+      "
+    >
+      <EditorEntityShowSelect @click="onNewEntity($event, 'paragraph')">
+        P
+      </EditorEntityShowSelect>
+      <EditorEntityShowSelect @click="onNewEntity($event, 'heading-two')">
+        H2
+      </EditorEntityShowSelect>
+      <EditorEntityShowSelect @click="onNewEntity($event, 'heading-three')">
+        H3
+      </EditorEntityShowSelect>
+      <EditorEntityShowSelect @click="onNewEntity($event, 'page-break')">
+        BP
+      </EditorEntityShowSelect>
+      <EditorEntityShowSelect @click="onNewEntity($event, 'line-break')">
+        LB
+      </EditorEntityShowSelect>
+    </section>
+    <HeroIcon @click="onNewEntityWrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-4 w-4 wb-icon"
@@ -77,9 +106,15 @@
 </template>
 
 <script setup lang="ts">
+  import { useUtils } from '@/use/utils'
+  import { reactive } from 'vue'
   import { useStore } from 'vuex'
 
   const store = useStore()
+
+  const state = reactive({
+    new: false,
+  })
 
   const props = defineProps({
     entity: Object as any,
@@ -114,9 +149,18 @@
     })
   }
 
-  const onNewEntity = (e: MouseEvent) => {
+  const onNewEntityWrapper = (e: MouseEvent) => {
+    useUtils().prevent(e)
+
+    state.new = !state.new
+  }
+
+  const onNewEntity = (e: MouseEvent, type: string) => {
     onForceScroll(e)
 
-    store.commit('context/newInPage', props.entity)
+    store.commit('context/newInPage', {
+      entity: props.entity,
+      type,
+    })
   }
 </script>
