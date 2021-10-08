@@ -22,7 +22,7 @@
       class="
         absolute
         rounded
-        bottom-4
+        bottom-5
         wb-text
         bg-gray-500
         dark:bg-gray-800
@@ -30,36 +30,28 @@
         dark:border-gray-700
       "
     >
-      <EditorEntityShowSelect
-        @click.prevent.stop="onNewEntity($event, 'paragraph')"
-      >
+      <EditorEntityShowSelect @click.prevent.stop="onNewEntity('paragraph')">
         P
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect
-        @click.prevent.stop="onNewEntity($event, 'heading-two')"
-      >
+      <EditorEntityShowSelect @click.prevent.stop="onNewEntity('heading-two')">
         H2
       </EditorEntityShowSelect>
       <EditorEntityShowSelect
-        @click.prevent.stop="onNewEntity($event, 'heading-three')"
+        @click.prevent.stop="onNewEntity('heading-three')"
       >
         H3
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect
-        @click.prevent.stop="onNewEntity($event, 'page-break')"
-      >
+      <EditorEntityShowSelect @click.prevent.stop="onNewEntity('page-break')">
         BP
       </EditorEntityShowSelect>
-      <EditorEntityShowSelect
-        @click.prevent.stop="onNewEntity($event, 'line-break')"
-      >
+      <EditorEntityShowSelect @click.prevent.stop="onNewEntity('line-break')">
         LB
       </EditorEntityShowSelect>
     </section>
     <HeroIcon @click.prevent.stop="onNewEntityWrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-4 w-4 wb-icon"
+        class="h-5 w-5 wb-icon"
         viewBox="0 0 20 20"
         fill="currentColor"
       >
@@ -75,7 +67,7 @@
       class="
         absolute
         rounded
-        bottom-4
+        bottom-5
         left-4
         wb-text
         bg-gray-500
@@ -85,28 +77,26 @@
         z-max
       "
     >
-      <EditorEntityShowSelect
-        @click.prevent.stop="onSwitchEntity($event, 'paragraph')"
-      >
+      <EditorEntityShowSelect @click.prevent.stop="onSwitchEntity('paragraph')">
         P
       </EditorEntityShowSelect>
       <EditorEntityShowSelect
-        @click.prevent.stop="onSwitchEntity($event, 'heading-two')"
+        @click.prevent.stop="onSwitchEntity('heading-two')"
       >
         H2
       </EditorEntityShowSelect>
       <EditorEntityShowSelect
-        @click.prevent.stop="onSwitchEntity($event, 'heading-three')"
+        @click.prevent.stop="onSwitchEntity('heading-three')"
       >
         H3
       </EditorEntityShowSelect>
       <EditorEntityShowSelect
-        @click.prevent.stop="onSwitchEntity($event, 'page-break')"
+        @click.prevent.stop="onSwitchEntity('page-break')"
       >
         BP
       </EditorEntityShowSelect>
       <EditorEntityShowSelect
-        @click.prevent.stop="onSwitchEntity($event, 'line-break')"
+        @click.prevent.stop="onSwitchEntity('line-break')"
       >
         LB
       </EditorEntityShowSelect>
@@ -114,7 +104,7 @@
     <HeroIcon class="wb-icon" @click.prevent.stop="onSwitcherEntityWrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-4 w-4"
+        class="h-5 w-5"
         viewBox="0 0 20 20"
         fill="currentColor"
       >
@@ -123,45 +113,78 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon" @click.prevent.stop="onUpEntity">
+    <section
+      v-if="state.adjust"
+      class="
+        absolute
+        rounded
+        bottom-5
+        left-8
+        wb-text
+        bg-gray-500
+        dark:bg-gray-800
+        border-gray-400
+        dark:border-gray-700
+      "
+    >
+      <EditorEntityShowSelect @click.prevent.stop="onNewEntity('paragraph')">
+        <HeroIcon class="wb-icon" @click.prevent.stop="onUpEntity">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </HeroIcon>
+      </EditorEntityShowSelect>
+      <EditorEntityShowSelect>
+        <HeroIcon class="wb-icon" @click.prevent.stop="onDownEntity">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </HeroIcon>
+      </EditorEntityShowSelect>
+      <EditorEntityShowSelect>
+        <HeroIcon class="wb-icon" @click.prevent.stop="onDeleteEntity">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </HeroIcon>
+      </EditorEntityShowSelect>
+    </section>
+    <HeroIcon class="wb-icon" @click.prevent.stop="onAdjustEntityWrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-4 w-4"
+        class="h-5 w-5"
         viewBox="0 0 20 20"
         fill="currentColor"
       >
         <path
-          fill-rule="evenodd"
-          d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </HeroIcon>
-    <HeroIcon class="wb-icon" @click.prevent.stop="onDownEntity">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-4 w-4"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </HeroIcon>
-    <HeroIcon class="wb-icon" @click.prevent.stop="onDeleteEntity">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-4 w-4"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-          clip-rule="evenodd"
+          d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"
         />
       </svg>
     </HeroIcon>
@@ -177,6 +200,7 @@
   const state = reactive({
     new: false as boolean,
     switcher: false as boolean,
+    adjust: false as boolean,
   })
 
   const props = defineProps({
@@ -185,6 +209,8 @@
 
   const onDeleteEntity = (e: MouseEvent) => {
     store.commit('context/removeInPage', props.entity)
+
+    state.adjust = false
   }
 
   const onUpEntity = (e: MouseEvent) => {
@@ -192,6 +218,8 @@
       entity: props.entity,
       direction: 'up',
     })
+
+    state.adjust = false
   }
 
   const onDownEntity = (e: MouseEvent) => {
@@ -199,13 +227,23 @@
       entity: props.entity,
       direction: 'down',
     })
+
+    state.adjust = false
   }
 
-  const onNewEntityWrapper = (e: MouseEvent) => {
+  const onAdjustEntityWrapper = () => {
+    state.new = false
+    state.adjust = !state.adjust
+    state.switcher = false
+  }
+
+  const onNewEntityWrapper = () => {
     state.new = !state.new
+    state.switcher = false
+    state.adjust = false
   }
 
-  const onNewEntity = (e: MouseEvent, type: string) => {
+  const onNewEntity = (type: string) => {
     store.commit('context/newInPage', {
       entity: props.entity,
       type,
@@ -215,10 +253,12 @@
   }
 
   const onSwitcherEntityWrapper = (e: MouseEvent) => {
+    state.new = false
     state.switcher = !state.switcher
+    state.adjust = false
   }
 
-  const onSwitchEntity = (e: MouseEvent, type: string) => {
+  const onSwitchEntity = (type: string) => {
     store.commit('context/alterInPage', {
       entity: props.entity,
       type,
