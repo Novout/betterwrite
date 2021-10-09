@@ -48,7 +48,7 @@
         LB
       </EditorEntityShowSelect>
     </section>
-    <HeroIcon @click.prevent.stop="onNewEntityWrapper">
+    <HeroIcon @mouseenter.prevent.stop="onNewEntityWrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5 wb-icon"
@@ -101,7 +101,10 @@
         LB
       </EditorEntityShowSelect>
     </section>
-    <HeroIcon class="wb-icon" @click.prevent.stop="onSwitcherEntityWrapper">
+    <HeroIcon
+      class="wb-icon"
+      @mouseenter.prevent.stop="onSwitcherEntityWrapper"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
@@ -185,7 +188,7 @@
         <p>{{ t('editor.aside.entity.delete') }}</p>
       </EditorEntityShowSelect>
     </section>
-    <HeroIcon class="wb-icon" @click.prevent.stop="onAdjustEntityWrapper">
+    <HeroIcon class="wb-icon" @mouseenter.prevent.stop="onAdjustEntityWrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
