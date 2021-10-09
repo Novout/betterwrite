@@ -122,7 +122,7 @@
         absolute
         rounded
         bottom-5
-        left-8
+        left-10
         wb-text
         bg-gray-500
         dark:bg-gray-800
