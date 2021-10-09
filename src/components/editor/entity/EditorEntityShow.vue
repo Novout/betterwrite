@@ -104,6 +104,7 @@
         resize-none
         overflow-hidden
         block
+        break-words
       "
       :style="{ height }"
       @keypress.enter.prevent="onEnter"
