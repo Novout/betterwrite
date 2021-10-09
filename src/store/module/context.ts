@@ -76,6 +76,21 @@ export default {
         updatedAt: useFormat().actually(),
       } as ContextStatePageContent)
     },
+    newInPagePosEdit(
+      state: ContextState,
+      payload: Record<string, ContextStatePageContent | string>
+    ) {
+      const index = state.entity.indexOf(
+        payload.entity as ContextStatePageContent
+      )
+
+      state.entity.splice(index + 2, 0, {
+        type: payload.type as string,
+        raw: '-',
+        createdAt: useFormat().actually(),
+        updatedAt: useFormat().actually(),
+      } as ContextStatePageContent)
+    },
     alterInPage(
       state: ContextState,
       payload: Record<string, ContextStatePageContent | string>
