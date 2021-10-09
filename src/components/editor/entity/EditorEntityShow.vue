@@ -118,7 +118,6 @@
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
   import { ContextStatePageContent } from '@/types/context'
-  import { useUtils } from '@/use/utils'
 
   const props = defineProps({
     entity: {

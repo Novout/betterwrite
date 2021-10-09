@@ -12,11 +12,12 @@ import App from './App.vue'
 import './preset.css'
 import './tailwind.css'
 import 'vue-toastification/dist/index.css'
+import { VueEmitter } from './types/emitter'
 
 const app = createApp(App)
 const emitter = mitt()
 
-app.config.globalProperties.emitter = emitter
+app.config.globalProperties.emitter = emitter as VueEmitter
 
 app.use(router)
 app.use(store)
