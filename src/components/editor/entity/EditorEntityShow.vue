@@ -106,7 +106,7 @@
         block
       "
       :style="{ height }"
-      @keypress.enter.prevent="onUpdateContent"
+      @keypress.enter.prevent="onEnter"
       @click="onStopEvents"
     />
   </section>
@@ -118,6 +118,7 @@
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
   import { ContextStatePageContent } from '@/types/context'
+  import { useUtils } from '@/use/utils'
 
   const props = defineProps({
     entity: {
@@ -142,7 +143,9 @@
     if (_edit) {
       input.value?.focus()
 
-      data.value = props.entity.raw
+      props.entity.raw === '-'
+        ? (data.value = '')
+        : (data.value = props.entity.raw)
 
       emitter.emit('entity-close', props.entity)
     }
@@ -164,6 +167,20 @@
         if (edit.value) onUpdateContent()
       }
     )
+
+    emitter.on(
+      'entity-open',
+      async (
+        entity?: ContextStatePageContent,
+        options?: Record<string, boolean>
+      ) => {
+        const index = store.state.context.entity.indexOf(entity)
+
+        if (store.state.context.entity[index + 1] === props.entity) {
+          onEdit()
+        }
+      }
+    )
   })
 
   const onUpdateContent = () => {
@@ -175,10 +192,10 @@
     edit.value = false
   }
 
-  const onEdit = (e: MouseEvent) => {
+  const onEdit = (e?: MouseEvent) => {
     onStopEvents(e)
 
-    if (!edit.value) height.value = (show.value as any).offsetHeight + 'px'
+    if (!edit.value) height.value = (show.value as any)?.offsetHeight + 'px'
 
     if (
       props.entity.type === 'page-break' ||
@@ -190,8 +207,28 @@
     edit.value = true
   }
 
-  const onStopEvents = (e: MouseEvent) => {
-    e.stopPropagation()
-    e.preventDefault()
+  const onEnter = async () => {
+    onUpdateContent()
+
+    const index = store.state.context.entity.indexOf(props.entity)
+
+    if (index + 1 === store.state.context.entity.length) {
+      emitter.emit('entity-input-focus')
+      return
+    }
+
+    store.commit('context/newInPagePosEdit', {
+      entity: props.entity,
+      type: 'paragraph',
+    })
+
+    await nextTick
+
+    emitter.emit('entity-open', props.entity)
+  }
+
+  const onStopEvents = (e?: MouseEvent) => {
+    e?.stopPropagation()
+    e?.preventDefault()
   }
 </script>

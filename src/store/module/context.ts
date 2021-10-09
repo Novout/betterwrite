@@ -22,6 +22,8 @@ export default {
     updateInPage(state: ContextState, obj: Record<string, any>) {
       const index = state.entity.indexOf(obj.entity)
 
+      if (!obj.raw) return
+
       state.entity[index].raw = obj.raw
       state.entity[index].updatedAt = useFormat().actually()
     },
@@ -84,7 +86,7 @@ export default {
         payload.entity as ContextStatePageContent
       )
 
-      state.entity.splice(index + 2, 0, {
+      state.entity.splice(index + 1, 0, {
         type: payload.type as string,
         raw: '-',
         createdAt: useFormat().actually(),

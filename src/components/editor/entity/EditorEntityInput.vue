@@ -61,6 +61,10 @@
 
   onMounted(() => {
     useInput().prevent(input.value)
+
+    emitter.on('entity-input-focus', () => {
+      input.value?.focus()
+    })
   })
 
   const cmp = computed({
@@ -110,7 +114,6 @@
       cmp.value = ''
 
       const content = {
-        id: store.state.context.totalEntityCreated,
         type: 'page-break',
         raw: '__PAGE_BREAK__',
         createdAt: useFormat().actually(),
@@ -129,7 +132,6 @@
       cmp.value = ''
 
       const content = {
-        id: store.state.context.totalEntityCreated,
         type: 'line-break',
         raw: '__LINE_BREAK__',
         createdAt: useFormat().actually(),
@@ -157,7 +159,6 @@
 
         reader.onload = function () {
           const content = {
-            id: store.state.context.totalEntityCreated,
             type: 'image',
             raw: reader.result,
             createdAt: useFormat().actually(),
@@ -181,7 +182,6 @@
 
   const enterHandler = () => {
     const content = {
-      id: store.state.context.totalEntityCreated,
       type: type.value,
       raw: props.modelValue,
       createdAt: useFormat().actually(),
@@ -212,7 +212,6 @@
       if(!normalize) return
 
       const content = {
-        id: store.state.context.totalEntityCreated,
         type: type.value,
         raw: normalize,
         createdAt: useFormat().actually(),
