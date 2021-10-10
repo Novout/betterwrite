@@ -43,7 +43,6 @@
 <script lang="ts" setup>
   import { ref, nextTick } from 'vue'
   import { useStore } from 'vuex'
-  import { useDraggable } from '@vueuse/core'
   import { ContextStatePageContent } from '@/types/context'
   import { useScroll } from '@/use/scroll'
   import { useEnv } from '@/use/env'
