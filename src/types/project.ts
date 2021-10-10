@@ -17,4 +17,6 @@ export interface ProjectState {
 export interface ProjectObject {
   project: ProjectState
   editor: EditorState
+  logger: any
+  pdf: any
 }

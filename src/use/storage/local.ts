@@ -1,12 +1,11 @@
 import { ProjectObject } from '@/types/project'
-import { Callback } from '@/types/utils'
 import { Store } from 'vuex'
 import { useToast } from 'vue-toastification'
 import { nextTick } from 'vue'
 import { useEnv } from '../env'
 import i18n from '@/lang'
 
-export const useLocalStorage: Callback<any> = (store: Store<any>) => {
+export const useLocalStorage = (store: Store<any>) => {
   const toast = useToast()
   const { t } = i18n.global
 
@@ -29,7 +28,7 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
   const onSaveProject = () => {
     if (store.state.project.name === useEnv().projectEmpty()) return
 
-    useLocalStorage().setProject({
+    useLocalStorage(store).setProject({
       project: store.state.project,
       editor: store.state.editor,
       logger: store.state.logger,
@@ -47,7 +46,7 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
     setInterval(() => {
       if (_.state.project.name === useEnv().projectEmpty()) return
 
-      useLocalStorage().setProject({
+      useLocalStorage(store).setProject({
         project: _.state.project,
         editor: _.state.editor,
         logger: _.state.logger,
@@ -61,7 +60,7 @@ export const useLocalStorage: Callback<any> = (store: Store<any>) => {
   }
 
   const onLoadProject = async () => {
-    const context = useLocalStorage().getProject()
+    const context = useLocalStorage(store).getProject()
 
     if (!context) return
 

@@ -1,6 +1,4 @@
-import { Callback } from '@/types/utils'
-
-export const useScroll: Callback<any> = () => {
+export const useScroll = () => {
   const force = (tag: string) => {
     setTimeout(() => {
       const scr = document.querySelector(tag)

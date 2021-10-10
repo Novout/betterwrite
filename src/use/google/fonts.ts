@@ -1,10 +1,9 @@
 import axios from 'axios'
-import { Callback } from '@/types/utils'
 import { GoogleFont } from '@/types/google'
 import { useEnv } from '../env'
 import { useDefines } from '../defines'
 
-export const useFonts: Callback<any> = () => {
+export const useFonts = () => {
   const setGlobal = (vfs: Record<any, any>) => {
     const _style = document.createElement('style')
 

@@ -1,10 +1,9 @@
-import { Callback } from '@/types/utils'
 import { nextTick } from 'vue'
 import { useToast } from 'vue-toastification'
 import { Store } from 'vuex'
 import i18n from '@/lang'
 
-export const useProject: Callback<any> = (store: Store<any>) => {
+export const useProject = (store: Store<any>) => {
   const toast = useToast()
   const { t } = i18n.global
 

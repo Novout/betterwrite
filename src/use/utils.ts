@@ -1,6 +1,4 @@
-import { Callback } from '@/types/utils'
-
-export const useUtils: Callback<any> = () => {
+export const useUtils = () => {
   const delay = (time: number) => {
     return new Promise((resolve) => setTimeout(resolve, time))
   }

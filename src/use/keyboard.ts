@@ -7,7 +7,7 @@ import { usePage } from './page'
 import { usePDF } from './pdf'
 import { useEnv } from './env'
 
-export const useKeyboard: Callback<any> = () => {
+export const useKeyboard = () => {
   const store = useStore()
 
   const init: Callback<void> = () => {

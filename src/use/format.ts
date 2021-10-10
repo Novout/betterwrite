@@ -1,7 +1,6 @@
 import { format } from 'date-fns'
-import { Callback } from '@/types/utils'
 
-export const useFormat: Callback<any> = () => {
+export const useFormat = () => {
   const simple = (date: Date): string => {
     return format(date, 'yyyy-MM-dd:HH:mm:ss.OOOO')
   }

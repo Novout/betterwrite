@@ -1,8 +1,7 @@
-import { Callback } from '@/types/utils'
 import { ContextStatePageContent } from '@/types/context'
 import { Store } from 'vuex'
 
-export const useEntity: Callback<any> = () => {
+export const useEntity = () => {
   const entry = (input: string, target: string): boolean => {
     return (
       input.startsWith('/' + target) ||

@@ -3,7 +3,7 @@ import { nextTick } from 'vue'
 import { Store } from 'vuex'
 import { useEnv } from './env'
 
-export const usePage: Callback<any> = (store: Store<any>) => {
+export const usePage = (store: Store<any>) => {
   const onCreatePage = async () => {
     if (store.state.project.name === useEnv().projectEmpty()) return
 

@@ -10,7 +10,7 @@ import { useFonts } from './google/fonts'
 import { useDefines } from './defines'
 import i18n from '@/lang'
 
-export const usePDF: Callback<any> = () => {
+export const usePDF = () => {
   const toast = useToast()
   const { t } = i18n.global
 

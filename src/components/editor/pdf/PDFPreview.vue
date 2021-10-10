@@ -31,7 +31,9 @@
   const toast = useToast()
 
   onMounted(() => {
-    usePDF().external(store).onPreviewPDF(preview.value)
+    usePDF()
+      .external(store)
+      .onPreviewPDF(preview.value as HTMLElement)
 
     toast.warning(t('toast.pdf.previewProblems'))
   })

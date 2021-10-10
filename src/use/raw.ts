@@ -1,7 +1,7 @@
 import { ContextStatePageContent } from '@/types/context'
 import { Callback } from '@/types/utils'
 
-export const bold: Callback<any> = () => {
+export const bold = () => {
   const open = () => {
     return '<span class="font-bold text-xs">'
   }
@@ -13,7 +13,7 @@ export const bold: Callback<any> = () => {
   return { open, close }
 }
 
-export const italic: Callback<any> = () => {
+export const italic = () => {
   const open = () => {
     return '<span class="italic text-xs">'
   }
@@ -25,7 +25,7 @@ export const italic: Callback<any> = () => {
   return { open, close }
 }
 
-export const link: Callback<any> = () => {
+export const link = () => {
   const open = (tag: string) => {
     return `<a href="${tag}" target="_blank" class="underline text-xs">`
   }
@@ -37,7 +37,7 @@ export const link: Callback<any> = () => {
   return { open, close }
 }
 
-export const image: Callback<any> = () => {
+export const image = () => {
   const define = (tag: string) => {
     return `<img src="${tag}" width="50%">`
   }
@@ -45,7 +45,7 @@ export const image: Callback<any> = () => {
   return { define }
 }
 
-export const useRaw: Callback<any> = () => {
+export const useRaw = () => {
   const convert = (page: ContextStatePageContent) => {
     let final = ''
     let _italic = false

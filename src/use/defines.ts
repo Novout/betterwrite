@@ -1,6 +1,6 @@
 import { Callback } from '@/types/utils'
 
-export const useDefines: Callback<any> = () => {
+export const useDefines = () => {
   const shortcuts = (k: string) => {
     return {
       localSaveProject: ['CTRL + S', 'ctrl > s'],

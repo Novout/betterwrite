@@ -1,5 +1,3 @@
-import { Callback } from '@/types/utils'
-
 export const useInput = () => {
   const pasteText = (event: any): Array<string> => {
     let arr: Array<string> = event.clipboardData.getData('text').split('\n')

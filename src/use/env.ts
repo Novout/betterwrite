@@ -1,6 +1,4 @@
-import { Callback } from '@/types/utils'
-
-export const useEnv: Callback<any> = () => {
+export const useEnv = () => {
   const getCorrectLocalUrl = () => {
     return import.meta.env.PROD
       ? 'https://novout.github.io/better-write/'

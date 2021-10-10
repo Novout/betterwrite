@@ -7,7 +7,7 @@ import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import i18n from '@/lang'
 
-const global: Callback<Store<any>, void> = (store: Store<any>) => {
+const global = (store: Store<any>) => {
   let _log = console.log,
     _warn = console.warn,
     _error = console.error,
