@@ -15,7 +15,6 @@ Here will contain all the features that Better Write offers.
 
 - ✅ - Dark Theme
 - ➖ - i18n Locale
-- ✅ - Draggable Editor
 - ➖ - Auto Save
 - ❌ - Cloud Auto Save
 - ➖ - Logger for Users

@@ -8,6 +8,12 @@
   <h3 align="center">A editor for creative writers.</h3>
 </p>
 
+- ✅ Multipurpose
+- ✅ High Tracking
+- ✅ Graph Control
+- ✅ Plugin Friendly
+- ✅ Customizable PDF-Generator
+
 ## Setup
 
 - Vue 3
@@ -15,6 +21,6 @@
 - TailwindCSS
 - HeadlessUI
 - Typescript
-- GrammarBOT
+- PDFMake
 - Dropbox SDK
 - Google Fonts API
