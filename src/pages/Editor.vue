@@ -17,7 +17,7 @@
   const store = useStore()
 
   useKeyboard().init()
-  useLocalStorage().onAutoSave(60, store)
+  useLocalStorage(store).onAutoSave(60, store)
 
   onUnmounted(() => {
     useKeyboard().destroy()
