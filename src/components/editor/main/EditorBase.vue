@@ -5,11 +5,6 @@
     :class="[
       store.state.editor.configuration.draggable ? 'fixed' : 'inline-block',
     ]"
-    :style="style"
-    style="
-      box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
-        rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-    "
     @click.prevent="onClickInEditor"
   >
     <EditorBaseHeader
@@ -58,10 +53,6 @@
   const main = ref<HTMLElement | null>(null)
   const entry = ref<string>('')
 
-  const { style } = useDraggable(main as any, {
-    initialValue: { x: 100, y: 20 },
-  })
-
   const enterListener = async (content: ContextStatePageContent) => {
     store.commit('context/addInPage', content)
 
@@ -76,13 +67,5 @@
     entry.value = ''
   }
 
-  const onClickInEditor = () => {
-    /*
-    const input = document.getElementById('main-input-define')
-
-    if (!input) return
-
-    input.focus()
-    */
-  }
+  const onClickInEditor = () => {}
 </script>
