@@ -1,9 +1,10 @@
 <template>
   <section
-    class="w-full relative"
+    class="w-full relative px-14"
     :class="edit ? 'shadow-winset dark:shadow-binset p-0 m-0' : ''"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
+    @click="onClickInEntity"
   >
     <EditorEntityShowPopover
       v-if="hover && !edit && props.entity.type !== 'heading-one'"
@@ -228,6 +229,12 @@
     useScroll().to(`#entity-${index}`, 'center')
 
     emitter.emit('entity-open', props.entity)
+  }
+
+  const onClickInEntity = () => {
+    const index = store.state.context.entity.indexOf(props.entity)
+
+    useScroll().to(`#entity-${index}`, 'center')
   }
 
   const onStopEvents = (e?: MouseEvent) => {

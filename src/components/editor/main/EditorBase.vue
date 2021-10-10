@@ -25,7 +25,6 @@
         w-full
         overflow-y-auto
         max-h-screen
-        px-14
         bg-gray-100
         dark:bg-gray-700
       "
@@ -78,10 +77,12 @@
   }
 
   const onClickInEditor = () => {
+    /*
     const input = document.getElementById('main-input-define')
 
     if (!input) return
 
     input.focus()
+    */
   }
 </script>
