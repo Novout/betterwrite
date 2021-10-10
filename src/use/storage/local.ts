@@ -28,7 +28,7 @@ export const useLocalStorage = (store: Store<any>) => {
   const onSaveProject = () => {
     if (store.state.project.name === useEnv().projectEmpty()) return
 
-    useLocalStorage(store).setProject({
+    setProject({
       project: store.state.project,
       editor: store.state.editor,
       logger: store.state.logger,
@@ -46,7 +46,7 @@ export const useLocalStorage = (store: Store<any>) => {
     setInterval(() => {
       if (_.state.project.name === useEnv().projectEmpty()) return
 
-      useLocalStorage(store).setProject({
+      setProject({
         project: _.state.project,
         editor: _.state.editor,
         logger: _.state.logger,
