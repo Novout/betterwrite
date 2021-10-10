@@ -6,7 +6,7 @@ export const useScroll = () => {
     }, 0)
   }
 
-  const to = (tag: string, display: string) => {
+  const to = (tag: string, display?: string) => {
     if (display === 'center') {
       const scr = document.querySelector(tag)
       ;(scr as HTMLElement).scrollIntoView({
