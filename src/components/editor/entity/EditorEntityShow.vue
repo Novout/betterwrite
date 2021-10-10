@@ -109,6 +109,7 @@
       "
       :style="{ height }"
       @keypress.enter.prevent="onEnter"
+      @input="onInput"
       @click="onStopEvents"
     />
   </section>
@@ -121,6 +122,7 @@
   import useEmitter from '@/use/emitter'
   import { ContextStatePageContent } from '@/types/context'
   import { useScroll } from '@/use/scroll'
+  import { useInput } from '@/use/input'
 
   const props = defineProps({
     entity: {
@@ -240,5 +242,9 @@
   const onStopEvents = (e?: MouseEvent) => {
     e?.stopPropagation()
     e?.preventDefault()
+  }
+
+  const onInput = () => {
+    useInput().expandTextArea(input.value as HTMLTextAreaElement)
   }
 </script>

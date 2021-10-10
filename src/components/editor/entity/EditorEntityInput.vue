@@ -17,6 +17,7 @@
         border-none
         dark:bg-gray-700
         bg-gray-100
+        px-14
       "
       :style="{ minHeight: '50px' }"
       :class="[
@@ -25,7 +26,7 @@
         store.state.editor.styles.input.fontColor,
       ]"
       :placeholder="t('editor.text.placeholder.base')"
-      @input="onExpandableTextareaInput"
+      @input="onInput"
       @keypress.enter.prevent="enterHandler"
       @paste="pasteHandler"
       @focus="onSet"
@@ -227,16 +228,7 @@
     })
   }
 
-  const onExpandableTextareaInput = () => {
-    const _ = useInput()
-    let minRows = input.value.getAttribute('data-min-rows') | 0,
-      rows;
-    !input.value._baseScrollHeight && _.getScrollHeight(input.value)
-
-    input.value.rows = minRows
-    rows = Math.ceil(
-      (input.value.scrollHeight - input.value._baseScrollHeight) / 16
-    )
-    input.value.rows = minRows + rows
+  const onInput = () => {
+    useInput().expandTextArea(input.value)
   }
 </script>

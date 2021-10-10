@@ -1,6 +1,6 @@
 import { Callback } from '@/types/utils'
 
-export const useInput: Callback<any> = () => {
+export const useInput = () => {
   const pasteText = (event: any): Array<string> => {
     let arr: Array<string> = event.clipboardData.getData('text').split('\n')
 
@@ -25,5 +25,10 @@ export const useInput: Callback<any> = () => {
     el.value = savedValue
   }
 
-  return { pasteText, prevent, getScrollHeight }
+  const expandTextArea = (el: HTMLTextAreaElement): void => {
+    el.style.height = '5px'
+    el.style.height = el.scrollHeight + 'px'
+  }
+
+  return { pasteText, prevent, getScrollHeight, expandTextArea }
 }
