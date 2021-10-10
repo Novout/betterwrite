@@ -1,5 +1,4 @@
 import { ContextStatePageContent } from '@/types/context'
-import { Callback } from '@/types/utils'
 
 export const bold = () => {
   const open = () => {
