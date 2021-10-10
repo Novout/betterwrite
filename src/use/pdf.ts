@@ -525,9 +525,11 @@ export const usePDF = () => {
 
     generator.getDataUrl((dataUrl: any) => {
       const iframe = document.createElement('iframe')
+
       iframe.src = dataUrl
       iframe.style.width = '400px'
       iframe.style.height = '500px'
+      iframe.style.overflow = 'hidden'
 
       let child = input.lastElementChild
       while (child) {

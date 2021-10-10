@@ -14,7 +14,7 @@
         />
       </svg>
     </HeroIcon>
-    <div ref="preview" class="h-3/4"></div>
+    <div ref="preview" class="h-3/4 p-5"></div>
   </section>
 </template>
 
