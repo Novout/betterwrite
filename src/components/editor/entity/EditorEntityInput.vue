@@ -38,6 +38,7 @@
   import { useEntity } from '@/use/entity'
   import { useFormat } from '@/use/format'
   import { useInput } from '@/use/input'
+  import { useScroll } from '@/use/scroll'
   import useEmitter from '@/use/emitter'
   import { ref, computed, watch, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
@@ -64,6 +65,8 @@
 
     emitter.on('entity-input-focus', () => {
       input.value?.focus()
+
+      useScroll().force('#edit')
     })
   })
 
