@@ -119,6 +119,7 @@
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
   import { ContextStatePageContent } from '@/types/context'
+  import { useScroll } from '@/use/scroll'
 
   const props = defineProps({
     entity: {
@@ -223,6 +224,8 @@
     })
 
     await nextTick
+
+    useScroll().to(`#entity-${index}`, 'center')
 
     emitter.emit('entity-open', props.entity)
   }
