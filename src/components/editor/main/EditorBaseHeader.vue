@@ -9,7 +9,7 @@
       dark:bg-black-opacity
     "
   >
-    <HeroIcon class="wb-icon inline-flex" @click.prevent="onSwitcher">
+    <HeroIcon class="wb-icon inline-flex" @click.prevent.stop="onSwitcher">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
@@ -23,7 +23,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon inline-flex" @click.prevent="onFinder">
+    <HeroIcon class="wb-icon inline-flex" @click.prevent.stop="onFinder">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
@@ -43,7 +43,7 @@
     <div
       class="w-1 h-4 mx-3 border-r-2 border-gray-500 dark:border-gray-500"
     ></div>
-    <HeroIcon class="wb-icon" @click="onUpPage">
+    <HeroIcon class="wb-icon" @click.prevent.stop="onUpPage">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -57,7 +57,7 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon" @click="onDownPage">
+    <HeroIcon class="wb-icon" @click.prevent.stop="onDownPage">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -71,7 +71,10 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon inline-flex" @click="usePage(store).onCreatePage">
+    <HeroIcon
+      class="wb-icon inline-flex"
+      @click.prevent.stop="usePage(store).onCreatePage"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -85,7 +88,10 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon inline-flex" @click="usePage(store).onDeletePage">
+    <HeroIcon
+      class="wb-icon inline-flex"
+      @click.prevent.stop="usePage(store).onDeletePage"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -100,6 +106,25 @@
         />
       </svg>
     </HeroIcon>
+    <HeroIcon
+      class="wb-icon inline-flex"
+      @click.prevent.stop="useEditor().fullScreen"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+        />
+      </svg>
+    </HeroIcon>
   </div>
 </template>
 
@@ -107,12 +132,11 @@
   import { usePage } from '@/use/page'
   import { useStore } from 'vuex'
   import { useEvent } from '@/use/event'
+  import { useEditor } from '@/use/editor'
 
   const store = useStore()
 
   const onFinder = (e: MouseEvent) => {
-    useEvent().stopAll(e)
-
     store.commit(
       'absolute/switchShortcutFinder',
       !store.state.absolute.shortcuts.finder
@@ -120,8 +144,6 @@
   }
 
   const onSwitcher = (e: MouseEvent) => {
-    useEvent().stopAll(e)
-
     store.commit(
       'absolute/switchShortcutSwitcher',
       !store.state.absolute.shortcuts.switcher
@@ -129,8 +151,6 @@
   }
 
   const onUpPage = (e: MouseEvent) => {
-    useEvent().stopAll(e)
-
     store.commit('project/switchPage', {
       page: store.state.context,
       direction: 'up',
@@ -138,8 +158,6 @@
   }
 
   const onDownPage = (e: MouseEvent) => {
-    useEvent().stopAll(e)
-
     store.commit('project/switchPage', {
       page: store.state.context,
       direction: 'down',
