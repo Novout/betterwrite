@@ -138,7 +138,7 @@
   const edit = ref(false)
   const data = ref('')
   const show = ref(null)
-  const input = ref<HTMLElement | null>(null)
+  const input = ref<HTMLTextAreaElement | null>(null)
   const height = ref('0px')
   const style = computed(() => store.state.editor.styles.show)
 
