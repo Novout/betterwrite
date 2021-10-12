@@ -1,4 +1,7 @@
 export default {
+  window: {
+    confirmConfiguration: 'Do you want to quit saving the settings?',
+  },
   text: {
     placeholder: {
       base: `Insert '/' to display a list of commands.`,

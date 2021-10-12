@@ -673,21 +673,23 @@
   })
 
   const onSetConfiguration = async () => {
-    store.commit('pdf/setStyles', {
-      base: {
-        ...base,
-        background: _base.value.background,
-        pageMargins: basePageMargins,
-      },
-      paragraph,
-      headingOne,
-      headingTwo,
-      headingThree,
-      switcher,
-    })
-    await nextTick
+    if (window.confirm(t('editor.window.confirmConfiguration'))) {
+      store.commit('pdf/setStyles', {
+        base: {
+          ...base,
+          background: _base.value.background,
+          pageMargins: basePageMargins,
+        },
+        paragraph,
+        headingOne,
+        headingTwo,
+        headingThree,
+        switcher,
+      })
+      await nextTick
 
-    toast.success(t('toast.pdf.configuration.save'))
+      toast.success(t('toast.pdf.configuration.save'))
+    }
 
     store.commit('absolute/switchPdfConfiguration', false)
   }
