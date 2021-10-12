@@ -28,6 +28,7 @@
       :placeholder="t('editor.text.placeholder.base')"
       @input="onInput"
       @keypress.enter.prevent="enterHandler"
+      @keydown="keyboardHandler"
       @paste="pasteHandler"
       @focus="onSet"
     />
@@ -232,6 +233,12 @@
 
       await emit('enter', content)
     })
+  }
+
+  const keyboardHandler = ({ key }: KeyboardEvent) => {
+    if(key === 'ArrowUp') {
+      emitter.emit('entity-open-last')
+    }
   }
 
   const onInput = () => {

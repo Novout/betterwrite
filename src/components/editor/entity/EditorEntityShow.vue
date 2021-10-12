@@ -124,7 +124,6 @@
   import { ContextStatePageContent } from '@/types/context'
   import { useScroll } from '@/use/scroll'
   import { useInput } from '@/use/input'
-  import { useFormat } from '@/use/format'
 
   const props = defineProps({
     entity: {
@@ -176,7 +175,6 @@
 
     emitter.on('entity-open', async (payload?: Record<string, any>) => {
       const index = store.state.context.entity.indexOf(payload?.entity)
-      console.log(payload?.entity)
 
       if (
         payload?.up &&
@@ -189,6 +187,15 @@
         !payload?.up &&
         store.state.context.entity[index + 1] === props.entity
       ) {
+        onEdit()
+      }
+    })
+
+    emitter.on('entity-open-last', () => {
+      const length = store.state.context.entity.length
+      const entity = store.state.context.entity[length - 1]
+
+      if (entity === props.entity) {
         onEdit()
       }
     })
@@ -270,6 +277,9 @@
   }
 
   const generalHandler = async ({ key, ctrlKey }: KeyboardEvent) => {
+    const _input = input.value as HTMLTextAreaElement
+    const index = store.state.context.entity.indexOf(props.entity)
+
     if (ctrlKey) {
       if (key === 'ArrowUp') {
         store.commit('context/switchInPage', {
@@ -293,6 +303,31 @@
         await nextTick
 
         emitter.emit('entity-open', { entity: props.entity, up: false })
+      }
+    } else {
+      if (key === 'ArrowUp') {
+        if (_input.selectionStart === 0) {
+          if (index === 0) return
+
+          emitter.emit('entity-close', { all: true })
+
+          await nextTick
+
+          emitter.emit('entity-open', { entity: props.entity, up: true })
+        }
+      } else if (key === 'ArrowDown') {
+        if (_input.selectionStart === _input.textLength) {
+          if (index + 1 === store.state.context.entity.length) {
+            emitter.emit('entity-input-focus')
+            return
+          }
+
+          emitter.emit('entity-close', { all: true })
+
+          await nextTick
+
+          emitter.emit('entity-open', { entity: props.entity, up: false })
+        }
       }
     }
   }
