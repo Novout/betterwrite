@@ -88,7 +88,7 @@ export default {
 
       state.entity.splice(index + 1, 0, {
         type: payload.type as string,
-        raw: '-',
+        raw: payload.raw || '-',
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
       } as ContextStatePageContent)

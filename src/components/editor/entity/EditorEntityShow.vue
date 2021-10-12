@@ -123,6 +123,7 @@
   import { ContextStatePageContent } from '@/types/context'
   import { useScroll } from '@/use/scroll'
   import { useInput } from '@/use/input'
+  import { useFormat } from '@/use/format'
 
   const props = defineProps({
     entity: {
@@ -211,23 +212,59 @@
   }
 
   const onEnter = async () => {
-    onUpdateContent()
-
+    const _input = input.value as HTMLTextAreaElement
     const index = store.state.context.entity.indexOf(props.entity)
 
+    const posRaw = props.entity.raw.slice(_input.selectionStart)
+
     if (index + 1 === store.state.context.entity.length) {
+      if (_input.selectionStart === 0) {
+        data.value = ''
+      } else {
+        data.value = data.value.replace(posRaw, '')
+      }
+
       emitter.emit('entity-input-focus')
+      emitter.emit('entity-input-raw', posRaw)
       return
     }
 
-    store.commit('context/newInPagePosEdit', {
-      entity: props.entity,
-      type: 'paragraph',
-    })
+    const end =
+      _input.selectionEnd === _input.selectionStart &&
+      _input.textLength === _input.selectionEnd
+
+    if (end) {
+      store.commit('context/newInPagePosEdit', {
+        entity: props.entity,
+        type: 'paragraph',
+      })
+    } else {
+      if (_input.selectionStart === 0) {
+        console.log('here')
+        data.value = '-'
+      } else {
+        data.value = data.value.replace(posRaw, '')
+      }
+
+      store.commit('context/newInPagePosEdit', {
+        entity: props.entity,
+        type: 'paragraph',
+        raw: posRaw,
+      })
+    }
+
+    await nextTick
+
+    onUpdateContent()
 
     await nextTick
 
     useScroll().to(`#entity-${index}`, 'center')
+
+    if (end) {
+      emitter.emit('entity-open', props.entity)
+      return
+    }
 
     emitter.emit('entity-open', props.entity)
   }

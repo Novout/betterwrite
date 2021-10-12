@@ -69,6 +69,10 @@
 
       useScroll().force('#edit')
     })
+
+    emitter.on('entity-input-raw', (raw: string) => {
+      cmp.value = raw
+    })
   })
 
   const cmp = computed({
@@ -185,6 +189,8 @@
   })
 
   const enterHandler = () => {
+    if(!cmp.value) return
+
     const content = {
       type: type.value,
       raw: props.modelValue,
