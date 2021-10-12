@@ -240,7 +240,6 @@
       })
     } else {
       if (_input.selectionStart === 0) {
-        console.log('here')
         data.value = '-'
       } else {
         data.value = data.value.replace(posRaw, '')
