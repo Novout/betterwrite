@@ -110,14 +110,12 @@
 
     pages.value.forEach((context: ContextState) => {
       context.entity.forEach((entity: ContextStatePageContent) => {
-        const letters = entity.raw.split(' ')
+        if (!state.entry) return
 
-        letters.forEach((letter: string) => {
-          if (letter === state.entry) {
-            state.listOfLettersExists.push({ letter, entity, page: context })
-            state.maxLetterCounter++
-          }
-        })
+        if (entity.raw.includes(state.entry)) {
+          state.listOfLettersExists.push({ entity, page: context })
+          state.maxLetterCounter++
+        }
       })
     })
 
@@ -160,7 +158,7 @@
         state.listOfLettersExists[state.listOfLettersExists.length - 1]
       )
     } else {
-      const object = state.listOfLettersExists[state.actuallyLetterCounter - 1]
+      const object = state.listOfLettersExists[state.actuallyLetterCounter - 2]
 
       onSearchGo(object)
     }
