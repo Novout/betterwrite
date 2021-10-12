@@ -139,7 +139,7 @@
   const onGo = async (go: string | symbol, page: ContextState) => {
     if (store.state.context.id !== page.id) store.commit('context/load', page)
     await nextTick
-    useScroll().to(`#${String(go)}`)
+    useScroll().to(`#${String(go)}`, 'center')
   }
 
   const onUp = () => {
