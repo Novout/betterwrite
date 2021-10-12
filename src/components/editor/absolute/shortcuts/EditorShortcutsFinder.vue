@@ -20,9 +20,13 @@
       <div class="flex items-center justify-between w-full mb-1">
         <div class="flex">
           <div class="wb-text font-poppins">
-            {{ state.actuallyLetterCounter }} / {{ state.maxLetterCounter }}
+            {{ entity.fstate.actuallyLetterCounter }} /
+            {{ entity.fstate.maxLetterCounter }}
           </div>
-          <HeroIcon class="text-2xs ml-2 wb-icon" @click.prevent="onUp">
+          <HeroIcon
+            class="text-2xs ml-2 wb-icon"
+            @click.prevent="entity.finder().onUp"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -36,7 +40,10 @@
               />
             </svg>
           </HeroIcon>
-          <HeroIcon class="text-2xs wb-icon" @click.prevent="onDown">
+          <HeroIcon
+            class="text-2xs wb-icon"
+            @click.prevent="entity.finder().onDown"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -70,99 +77,27 @@
       </div>
       <input
         ref="search"
-        v-model="state.entry"
+        v-model="entity.fstate.entry"
         class="bg-transparent border border-gray-900 px-1 mb-1 wb-text"
         :placeholder="t('editor.text.placeholder.shortcuts.finderEntry')"
-        @input="onFinder"
-        @keypress.enter.prevent="onUp"
+        @input="entity.finder().onFinder"
+        @keypress.enter.prevent="entity.finder().onUp"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, reactive, onMounted, computed, nextTick } from 'vue'
+  import { ref, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
-  import { ContextState } from '@/types/context'
-  import { ContextStatePageContent } from '@/types/context'
-  import { useScroll } from '@/use/scroll'
+  import { useEntity } from '@/use/entity'
 
   const { t } = useI18n()
   const store = useStore()
+  const entity = useEntity()
 
-  const pages = computed(() => store.state.project.pages)
-
-  const state = reactive({
-    entry: '' as string,
-    actuallyLetterCounter: 0 as number,
-    actuallyLetterRaw: '' as string,
-    listOfLettersExists: [] as Array<Record<string, any>>,
-    maxLetterCounter: 0 as number,
-  })
   const search = ref<HTMLElement | null>(null)
-
-  const onFinder = () => {
-    state.listOfLettersExists = []
-    state.actuallyLetterCounter = 0
-    state.actuallyLetterRaw = ''
-    state.maxLetterCounter = 0
-
-    pages.value.forEach((context: ContextState) => {
-      context.entity.forEach((entity: ContextStatePageContent) => {
-        if (!state.entry) return
-
-        if (entity.raw.includes(state.entry)) {
-          state.listOfLettersExists.push({ entity, page: context })
-          state.maxLetterCounter++
-        }
-      })
-    })
-
-    if (state.maxLetterCounter === 0) return
-
-    onSearchGo(state.listOfLettersExists[0])
-  }
-
-  const onSearchGo = (object: Record<string, any>) => {
-    state.actuallyLetterRaw = object.letter
-    state.actuallyLetterCounter = state.listOfLettersExists.indexOf(object) + 1
-
-    const pageIndex = store.state.project.pages.indexOf(object.page)
-    const entityIndex = store.state.project.pages[pageIndex].entity.indexOf(
-      object.entity
-    )
-
-    onGo(`entity-${entityIndex}`, object.page)
-  }
-
-  const onGo = async (go: string | symbol, page: ContextState) => {
-    if (store.state.context.id !== page.id) store.commit('context/load', page)
-    await nextTick
-    useScroll().to(`#${String(go)}`, 'center')
-  }
-
-  const onUp = () => {
-    if (state.actuallyLetterCounter >= state.maxLetterCounter) {
-      onSearchGo(state.listOfLettersExists[0])
-    } else {
-      const object = state.listOfLettersExists[state.actuallyLetterCounter]
-
-      onSearchGo(object)
-    }
-  }
-
-  const onDown = () => {
-    if (state.actuallyLetterCounter <= 1) {
-      onSearchGo(
-        state.listOfLettersExists[state.listOfLettersExists.length - 1]
-      )
-    } else {
-      const object = state.listOfLettersExists[state.actuallyLetterCounter - 2]
-
-      onSearchGo(object)
-    }
-  }
 
   const onClose = () => {
     store.commit('absolute/switchShortcutFinder', false)

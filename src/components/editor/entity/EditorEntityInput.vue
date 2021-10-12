@@ -51,6 +51,7 @@
   const store = useStore()
   const { t } = useI18n()
   const emitter = useEmitter()
+  const entity = useEntity()
 
   const props = defineProps({
     modelValue: String,
@@ -98,28 +99,28 @@
       store.commit('absolute/commands')
     }
 
-    if (useEntity().entry(_cmp, 'p')) {
+    if (entity.utils().entry(_cmp, 'p')) {
       type.value = 'paragraph'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.paragraph')
       return
     }
 
-    if (useEntity().entry(_cmp, 'h2')) {
+    if (entity.utils().entry(_cmp, 'h2')) {
       type.value = 'heading-two'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.headingtwo')
       return
     }
 
-    if (useEntity().entry(_cmp, 'h3')) {
+    if (entity.utils().entry(_cmp, 'h3')) {
       type.value = 'heading-three'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.headingthree')
       return
     }
 
-    if (useEntity().entry(_cmp, 'bp')) {
+    if (entity.utils().entry(_cmp, 'bp')) {
       cmp.value = ''
 
       const content = {
@@ -137,7 +138,7 @@
       return
     }
 
-    if (useEntity().entry(_cmp, 'lb')) {
+    if (entity.utils().entry(_cmp, 'lb')) {
       cmp.value = ''
 
       const content = {
@@ -155,7 +156,7 @@
       return
     }
 
-    if (useEntity().entry(_cmp, 'im')) {
+    if (entity.utils().entry(_cmp, 'im')) {
       cmp.value = ''
 
       const _ = document.createElement('input')

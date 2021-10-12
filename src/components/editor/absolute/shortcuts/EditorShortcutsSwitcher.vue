@@ -98,6 +98,7 @@
 
   const { t } = useI18n()
   const store = useStore()
+  const entity = useEntity()
 
   const state = reactive({
     entry: '' as string,
@@ -107,7 +108,7 @@
   const entry = ref<HTMLElement | null>(null)
 
   const onSwitcherAll = () => {
-    useEntity().switcherText(store, {
+    entity.swapper().switcherText({
       entry: state.entry,
       output: state.output,
       equal: state.equal,
