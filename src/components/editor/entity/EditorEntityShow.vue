@@ -109,6 +109,7 @@
       "
       :style="{ height }"
       @keypress.enter.prevent="onEnter"
+      @keydown="generalHandler"
       @input="onChangeArea"
       @click="onClick"
     />
@@ -173,19 +174,24 @@
       }
     )
 
-    emitter.on(
-      'entity-open',
-      async (
-        entity?: ContextStatePageContent,
-        options?: Record<string, boolean>
-      ) => {
-        const index = store.state.context.entity.indexOf(entity)
+    emitter.on('entity-open', async (payload?: Record<string, any>) => {
+      const index = store.state.context.entity.indexOf(payload?.entity)
+      console.log(payload?.entity)
 
-        if (store.state.context.entity[index + 1] === props.entity) {
-          onEdit()
-        }
+      if (
+        payload?.up &&
+        store.state.context.entity[index - 1] === props.entity
+      ) {
+        onEdit()
       }
-    )
+
+      if (
+        !payload?.up &&
+        store.state.context.entity[index + 1] === props.entity
+      ) {
+        onEdit()
+      }
+    })
   })
 
   const onUpdateContent = () => {
@@ -260,12 +266,35 @@
 
     useScroll().to(`#entity-${index}`, 'center')
 
-    if (end) {
-      emitter.emit('entity-open', props.entity)
-      return
-    }
+    emitter.emit('entity-open', { entity: props.entity, up: false })
+  }
 
-    emitter.emit('entity-open', props.entity)
+  const generalHandler = async ({ key, ctrlKey }: KeyboardEvent) => {
+    if (ctrlKey) {
+      if (key === 'ArrowUp') {
+        store.commit('context/switchInPage', {
+          entity: props.entity,
+          direction: 'up',
+        })
+
+        emitter.emit('entity-close', { all: true })
+
+        await nextTick
+
+        emitter.emit('entity-open', { entity: props.entity, up: true })
+      } else if (key === 'ArrowDown') {
+        store.commit('context/switchInPage', {
+          entity: props.entity,
+          direction: 'down',
+        })
+
+        emitter.emit('entity-close', { all: true })
+
+        await nextTick
+
+        emitter.emit('entity-open', { entity: props.entity, up: false })
+      }
+    }
   }
 
   const onClickInEntity = () => {
