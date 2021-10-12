@@ -109,8 +109,8 @@
       "
       :style="{ height }"
       @keypress.enter.prevent="onEnter"
-      @input="onInput"
-      @click="onStopEvents"
+      @input="onChangeArea"
+      @click="onClick"
     />
   </section>
 </template>
@@ -198,8 +198,7 @@
 
   const onEdit = (e?: MouseEvent) => {
     onStopEvents(e)
-
-    if (!edit.value) height.value = (show.value as any)?.offsetHeight + 'px'
+    onChangeEdit()
 
     if (
       props.entity.type === 'page-break' ||
@@ -244,7 +243,18 @@
     e?.preventDefault()
   }
 
-  const onInput = () => {
+  const onChangeArea = () => {
     useInput().expandTextArea(input.value as HTMLTextAreaElement)
+
+    onChangeEdit()
+  }
+
+  const onChangeEdit = () => {
+    if (!edit.value) height.value = (show.value as any)?.offsetHeight + 'px'
+  }
+
+  const onClick = () => {
+    onStopEvents()
+    onChangeArea()
   }
 </script>
