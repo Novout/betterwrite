@@ -29,11 +29,10 @@
   const store = useStore()
   const { t } = useI18n()
   const toast = useToast()
+  const pdf = usePDF()
 
   onMounted(() => {
-    usePDF()
-      .external(store)
-      .onPreviewPDF(preview.value as HTMLElement)
+    pdf.external().onPreviewPDF(preview.value as HTMLElement)
 
     toast.warning(t('toast.pdf.previewProblems'))
   })

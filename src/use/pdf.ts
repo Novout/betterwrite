@@ -1,5 +1,5 @@
 import { Callback } from '@/types/utils'
-import { Store } from 'vuex'
+import { useStore } from 'vuex'
 import { useToast } from 'vue-toastification'
 import * as pdfMake from 'pdfmake/build/pdfmake'
 import { GenerateParagraphOptions } from '@/types/pdf'
@@ -11,23 +11,24 @@ import { useDefines } from './defines'
 import i18n from '@/lang'
 
 export const usePDF = () => {
+  const store = useStore()
   const toast = useToast()
   const { t } = i18n.global
 
-  const init: Callback<any> = async (store: Store<any>) => {
+  const init: Callback<any> = async () => {
     const { normalize, names } = await useFonts().get()
 
     store.commit('pdf/loadFonts', { names, normalize })
   }
 
   const generate: Callback<any> = () => {
-    const headingOne = (raw: string, store: Store<any>) => {
+    const headingOne = (raw: string) => {
       return {
         text: raw,
         margin: [
-          generate().base(store).pageMargins[0],
+          generate().base().pageMargins[0],
           45,
-          generate().base(store).pageMargins[2],
+          generate().base().pageMargins[2],
           45,
         ],
         pageBreak: store.state.pdf.styles.headingOne.breakPage
@@ -37,37 +38,33 @@ export const usePDF = () => {
       }
     }
 
-    const headingTwo = (raw: string, store: Store<any>) => {
+    const headingTwo = (raw: string) => {
       return {
         text: raw,
         margin: [
-          generate().base(store).pageMargins[0],
+          generate().base().pageMargins[0],
           25,
-          generate().base(store).pageMargins[2],
+          generate().base().pageMargins[2],
           25,
         ],
         style: 'heading-two',
       }
     }
 
-    const headingThree = (raw: string, store: Store<any>) => {
+    const headingThree = (raw: string) => {
       return {
         text: raw,
         margin: [
-          generate().base(store).pageMargins[0],
+          generate().base().pageMargins[0],
           15,
-          generate().base(store).pageMargins[2],
+          generate().base().pageMargins[2],
           15,
         ],
         style: 'heading-three',
       }
     }
 
-    const paragraph = (
-      raw: string,
-      options: GenerateParagraphOptions,
-      store: Store<any>
-    ) => {
+    const paragraph = (raw: string, options: GenerateParagraphOptions) => {
       let text
       let arr
 
@@ -101,9 +98,9 @@ export const usePDF = () => {
         style: 'paragraph',
         preserveLeadingSpaces: true,
         margin: [
-          generate().base(store).pageMargins[0],
+          generate().base().pageMargins[0],
           0,
-          generate().base(store).pageMargins[2],
+          generate().base().pageMargins[2],
           0,
         ],
       }
@@ -125,25 +122,25 @@ export const usePDF = () => {
       }
     }
 
-    const image = (raw: string, store: Store<any>) => {
+    const image = (raw: string) => {
       return {
         image: raw,
         width:
           useDefines().pdf().base().pageSizeFixes()[
             store.state.pdf.styles.base.pageSize
           ][0] -
-          generate().base(store).pageMargins[0] -
-          generate().base(store).pageMargins[2],
+          generate().base().pageMargins[0] -
+          generate().base().pageMargins[2],
         margin: [
-          generate().base(store).pageMargins[0],
+          generate().base().pageMargins[0],
           10,
-          generate().base(store).pageMargins[2],
+          generate().base().pageMargins[2],
           10,
         ],
       }
     }
 
-    const frontCover = (store: Store<any>, arr: Array<any>) => {
+    const frontCover = (arr: Array<any>) => {
       if (store.state.pdf.styles.switcher.cover) {
         if (!store.state.pdf.styles.base.background.data) return
 
@@ -173,9 +170,9 @@ export const usePDF = () => {
           fontSize: 11,
           font: store.state.pdf.styles.paragraph.font,
           margin: [
-            generate().base(store).pageMargins[0],
+            generate().base().pageMargins[0],
             50,
-            generate().base(store).pageMargins[2],
+            generate().base().pageMargins[2],
             0,
           ],
           alignment: 'center',
@@ -186,9 +183,9 @@ export const usePDF = () => {
           fontSize: 11,
           font: store.state.pdf.styles.paragraph.font,
           margin: [
-            generate().base(store).pageMargins[0],
+            generate().base().pageMargins[0],
             250,
-            generate().base(store).pageMargins[2],
+            generate().base().pageMargins[2],
             0,
           ],
           alignment: 'left',
@@ -211,37 +208,33 @@ export const usePDF = () => {
       }
     }
 
-    const content = (store: Store<any>): Array<any> => {
+    const content = (): Array<any> => {
       const pages: Array<ContextState> = store.state.project.pages
       const arr: Array<any> = []
 
-      frontCover(store, arr)
+      frontCover(arr)
 
       pages.forEach((page: ContextState) => {
         page.entity.forEach((entity: ContextStatePageContent) => {
           let _raw = {}
 
           if ((entity as any).type === 'paragraph') {
-            _raw = paragraph(
-              (entity as any).raw,
-              {
-                stack: false,
-                indent: store.state.pdf.styles.paragraph.indent,
-              },
-              store
-            )
+            _raw = paragraph((entity as any).raw, {
+              stack: false,
+              indent: store.state.pdf.styles.paragraph.indent,
+            })
           } else if ((entity as any).type === 'heading-one') {
-            _raw = headingOne((entity as any).raw, store)
+            _raw = headingOne((entity as any).raw)
           } else if ((entity as any).type === 'heading-two') {
-            _raw = headingTwo((entity as any).raw, store)
+            _raw = headingTwo((entity as any).raw)
           } else if ((entity as any).type === 'heading-three') {
-            _raw = headingThree((entity as any).raw, store)
+            _raw = headingThree((entity as any).raw)
           } else if ((entity as any).type === 'page-break') {
             _raw = pageBreak()
           } else if ((entity as any).type === 'line-break') {
             _raw = lineBreak()
           } else if ((entity as any).type === 'image') {
-            _raw = image((entity as any).raw, store)
+            _raw = image((entity as any).raw)
           }
 
           arr.push(_raw)
@@ -251,7 +244,7 @@ export const usePDF = () => {
       return arr
     }
 
-    const base = (store: Store<any>): Record<string, any> => {
+    const base = (): Record<string, any> => {
       return {
         pageSize: store.state.pdf.styles.base.pageSize,
         pageOrientation: store.state.pdf.styles.base.pageOrientation,
@@ -264,7 +257,7 @@ export const usePDF = () => {
       }
     }
 
-    const styles = (store: Store<any>): Record<string, any> => {
+    const styles = (): Record<string, any> => {
       const paragraph = () => {
         let decorationStyle
         let decoration
@@ -399,7 +392,7 @@ export const usePDF = () => {
     return { content, styles, base }
   }
 
-  const doc = (store: Store<any>, options: Record<any, any>) => {
+  const doc = (options: Record<any, any>) => {
     return {
       pageSize: generate().base(store).pageSize,
       pageOrientation: generate().base(store).pageOrientation,
@@ -481,7 +474,7 @@ export const usePDF = () => {
     }
   }
 
-  const setVfsFonts = (store: Store<any>) => {
+  const setVfsFonts = () => {
     const fonts: Array<string> = []
     const set: Record<string, any> = {}
 
@@ -503,10 +496,10 @@ export const usePDF = () => {
     ;(<any>pdfMake).fonts = set
   }
 
-  const create: Callback<any> = (store: Store<any>): void => {
-    setVfsFonts(store)
+  const create = (): void => {
+    setVfsFonts()
 
-    const pdf = pdfMake.createPdf(doc(store, { final: true }))
+    const pdf = pdfMake.createPdf(doc({ final: true }))
 
     pdf.download(`${store.state.project.nameRaw}.pdf`, () => {
       toast.success(t('toast.pdf.create'))
@@ -515,13 +508,10 @@ export const usePDF = () => {
     })
   }
 
-  const preview: Callback<any> = (
-    store: Store<any>,
-    input: HTMLElement
-  ): void => {
-    setVfsFonts(store)
+  const preview = (input: HTMLElement): void => {
+    setVfsFonts()
 
-    const generator = pdfMake.createPdf(doc(store, { final: false }))
+    const generator = pdfMake.createPdf(doc({ final: false }))
 
     generator.getDataUrl((dataUrl: any) => {
       const iframe = document.createElement('iframe')
@@ -543,7 +533,7 @@ export const usePDF = () => {
     })
   }
 
-  const external = (store: Store<any>) => {
+  const external = () => {
     const onGeneratePDF = async () => {
       if (useEnv().isEmptyProject(store.state.project.name)) return
 
@@ -551,7 +541,7 @@ export const usePDF = () => {
 
       store.commit('absolute/load', true)
 
-      usePDF().create(store)
+      create()
     }
 
     const onPreviewPDF = async (input: HTMLElement) => {
@@ -559,7 +549,7 @@ export const usePDF = () => {
 
       store.commit('absolute/load', true)
 
-      usePDF().preview(store, input)
+      preview(input)
     }
 
     return { onGeneratePDF, onPreviewPDF }

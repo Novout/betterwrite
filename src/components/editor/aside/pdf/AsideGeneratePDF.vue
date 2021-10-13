@@ -4,7 +4,7 @@
     :text="t('editor.aside.pdf.title')"
     :shortcuts="store.state.shortcuts.generatePDF[0]"
     :icon="true"
-    @click.prevent="onGeneratePDF"
+    @click.prevent="pdf.external().onGeneratePDF"
   >
     <img width="20" class="mr-2" src="@/assets/editor/pdf.png" />
   </AsideText>
@@ -17,8 +17,5 @@
 
   const store = useStore()
   const { t } = useI18n()
-
-  const onGeneratePDF = async () => {
-    usePDF().external(store).onGeneratePDF()
-  }
+  const pdf = usePDF()
 </script>
