@@ -1,7 +1,14 @@
 <template>
   <div
     ref="main"
-    class="w-full overflow-hidden h-screen bg-gray-100 dark:bg-gray-700"
+    class="
+      w-full
+      flex flex-col
+      overflow-hidden
+      h-screen
+      bg-gray-100
+      dark:bg-gray-700
+    "
     :class="[
       store.state.editor.configuration.draggable ? 'fixed' : 'inline-block',
     ]"
@@ -18,8 +25,8 @@
       class="
         flex flex-col
         w-full
-        overflow-y-auto
         max-h-screen
+        overflow-y-auto
         bg-gray-100
         dark:bg-gray-700
       "

@@ -147,7 +147,7 @@
             </svg>
           </HeroIcon>
         </template>
-        <p>{{ t('editor.aside.props.entity.up') }}</p>
+        <p>{{ t('editor.aside.entity.up') }}</p>
       </EditorEntityShowSelect>
       <EditorEntityShowSelect @click.prevent.stop="onDownEntity">
         <template #icon>
@@ -166,7 +166,7 @@
             </svg>
           </HeroIcon>
         </template>
-        <p>{{ t('editor.aside.props.entity.down') }}</p>
+        <p>{{ t('editor.aside.entity.down') }}</p>
       </EditorEntityShowSelect>
       <EditorEntityShowSelect @click.prevent.stop="onDeleteEntity">
         <template #icon>
@@ -185,7 +185,7 @@
             </svg>
           </HeroIcon>
         </template>
-        <p>{{ t('editor.aside.props.entity.delete') }}</p>
+        <p>{{ t('editor.aside.entity.delete') }}</p>
       </EditorEntityShowSelect>
     </section>
     <HeroIcon class="wb-icon" @mouseenter.prevent.stop="onAdjustEntityWrapper">

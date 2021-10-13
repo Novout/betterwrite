@@ -1,10 +1,10 @@
 <template>
-  <div
+  <header
     class="
       flex
       justify-end
       items-center
-      relative
+      w-full
       bg-white-opacity
       dark:bg-black-opacity
     "
@@ -128,7 +128,7 @@
         />
       </svg>
     </HeroIcon>
-  </div>
+  </header>
 </template>
 
 <script setup lang="ts">

@@ -122,6 +122,9 @@
 
         props.entity.type === 'heading-two' ? 'text-center pb-3' : '',
         props.entity.type === 'heading-three' ? 'text-center pb-3' : '',
+
+        props.entity.type === 'page-break' ? 'pt-2' : '',
+        props.entity.type === 'line-break' ? 'pt-2' : '',
       ]"
     >
       <p>{{ update }}</p>
