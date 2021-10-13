@@ -73,7 +73,7 @@
     </HeroIcon>
     <HeroIcon
       class="wb-icon inline-flex"
-      @click.prevent.stop="usePage(store).onCreatePage"
+      @click.prevent.stop="page.onCreatePage"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@
     </HeroIcon>
     <HeroIcon
       class="wb-icon inline-flex"
-      @click.prevent.stop="usePage(store).onDeletePage"
+      @click.prevent.stop="page.onDeletePage"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -134,10 +134,10 @@
 <script setup lang="ts">
   import { usePage } from '@/use/page'
   import { useStore } from 'vuex'
-  import { useEvent } from '@/use/event'
   import { useEditor } from '@/use/editor'
 
   const store = useStore()
+  const page = usePage()
 
   const onFinder = (e: MouseEvent) => {
     store.commit(
