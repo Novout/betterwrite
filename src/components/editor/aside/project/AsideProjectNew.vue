@@ -71,6 +71,7 @@
 
   const { t } = useI18n()
   const store = useStore()
+  const project = useProject()
 
   const name = ref(t('editor.aside.project.new.content.name'))
   const version = ref(t('editor.aside.project.new.content.version'))
@@ -78,7 +79,7 @@
   const subject = ref(t('editor.aside.project.new.content.subject'))
 
   const onCreateProject = async () => {
-    useProject(store).onCreateProject({
+    project.create({
       name: name.value,
       version: version.value,
       creator: creator.value,

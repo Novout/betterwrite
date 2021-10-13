@@ -1,13 +1,14 @@
 import { nextTick } from 'vue'
 import { useToast } from 'vue-toastification'
-import { Store } from 'vuex'
+import { useStore } from 'vuex'
 import i18n from '@/lang'
 
-export const useProject = (store: Store<any>) => {
+export const useProject = () => {
   const toast = useToast()
+  const store = useStore()
   const { t } = i18n.global
 
-  const onCreateProject = async (project: Record<string, any>) => {
+  const create = async (project: Record<string, any>) => {
     store.commit('project/create', project)
     await nextTick
     store.commit('context/load', store.state.project.pages[0])
@@ -15,5 +16,5 @@ export const useProject = (store: Store<any>) => {
     toast.success(t('toast.project.create'))
   }
 
-  return { onCreateProject }
+  return { create }
 }

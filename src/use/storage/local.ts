@@ -1,11 +1,12 @@
 import { ProjectObject } from '@/types/project'
-import { Store } from 'vuex'
+import { useStore } from 'vuex'
 import { useToast } from 'vue-toastification'
 import { nextTick } from 'vue'
 import { useEnv } from '../env'
 import i18n from '@/lang'
 
-export const useLocalStorage = (store: Store<any>) => {
+export const useLocalStorage = () => {
+  const store = useStore()
   const toast = useToast()
   const { t } = i18n.global
 
@@ -42,16 +43,16 @@ export const useLocalStorage = (store: Store<any>) => {
     toast.success(t('toast.project.save'))
   }
 
-  const onAutoSave = (time: number, _: Store<any>) => {
+  const onAutoSave = (time: number) => {
     setInterval(() => {
-      if (_.state.project.name === useEnv().projectEmpty()) return
+      if (store.state.project.name === useEnv().projectEmpty()) return
 
       setProject({
-        project: _.state.project,
-        editor: _.state.editor,
-        logger: _.state.logger,
+        project: store.state.project,
+        editor: store.state.editor,
+        logger: store.state.logger,
         pdf: {
-          styles: _.state.pdf.styles,
+          styles: store.state.pdf.styles,
           fonts: [],
           normalize: {},
         },
@@ -60,7 +61,7 @@ export const useLocalStorage = (store: Store<any>) => {
   }
 
   const onLoadProject = async () => {
-    const context = useLocalStorage(store).getProject()
+    const context = getProject()
 
     if (!context) return
 

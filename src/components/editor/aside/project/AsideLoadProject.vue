@@ -3,7 +3,7 @@
     class="wb-aside-button"
     :text="t('editor.aside.project.load.title')"
     :shortcuts="store.state.shortcuts.localLoadProject[0]"
-    @click.prevent="onLoadProject"
+    @click.prevent="local.onLoadProject"
   >
   </AsideText>
 </template>
@@ -14,10 +14,7 @@
   import { useStore } from 'vuex'
 
   const store = useStore()
-
-  const onLoadProject = () => {
-    useLocalStorage(store).onLoadProject()
-  }
+  const local = useLocalStorage()
 
   const { t } = useI18n()
 </script>

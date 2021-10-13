@@ -9,6 +9,7 @@ import { useEnv } from './env'
 
 export const useKeyboard = () => {
   const store = useStore()
+  const local = useLocalStorage()
 
   const init: Callback<void> = () => {
     saveLocal()
@@ -34,7 +35,7 @@ export const useKeyboard = () => {
 
       if (store.state.project.name === useEnv().projectEmpty()) return
 
-      useLocalStorage(store).onSaveProject()
+      local.onSaveProject()
     })
   }
 
@@ -44,7 +45,7 @@ export const useKeyboard = () => {
       async (e: Event) => {
         useUtils().prevent(e)
 
-        useLocalStorage(store).onLoadProject()
+        local.onLoadProject()
       }
     )
   }

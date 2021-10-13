@@ -2,7 +2,7 @@
   <AsideText
     :text="t('editor.aside.project.save.title')"
     :shortcuts="store.state.shortcuts.localSaveProject[0]"
-    @click.prevent="onSaveProject"
+    @click.prevent="local.onSaveProject"
   >
   </AsideText>
 </template>
@@ -13,8 +13,7 @@
   import { useStore } from 'vuex'
 
   const store = useStore()
-
-  const { onSaveProject } = useLocalStorage(store)
+  const local = useLocalStorage()
 
   const { t } = useI18n()
 </script>

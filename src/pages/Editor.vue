@@ -12,14 +12,13 @@
   import { useKeyboard } from '@/use/keyboard'
   import { useLocalStorage } from '@/use/storage/local'
   import { onUnmounted } from 'vue'
-  import { useStore } from 'vuex'
 
-  const store = useStore()
+  const keyboard = useKeyboard()
 
-  useKeyboard().init()
-  useLocalStorage(store).onAutoSave(60, store)
+  keyboard.init()
+  useLocalStorage().onAutoSave(60)
 
   onUnmounted(() => {
-    useKeyboard().destroy()
+    keyboard.destroy()
   })
 </script>
