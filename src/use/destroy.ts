@@ -1,10 +1,11 @@
 import { Callback } from '@/types/utils'
 import { useLocalStorage } from './storage/local'
-import { Store } from 'vuex'
 
-export const useDestroy = (store: Store<any>) => {
+export const useDestroy = () => {
+  const local = useLocalStorage()
+
   const init: Callback<any> = () => {
-    useLocalStorage(store).onSaveProject()
+    local.onSaveProject()
   }
 
   return { init }
