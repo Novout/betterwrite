@@ -201,27 +201,21 @@
       </svg>
     </HeroIcon>
   </section>
-  <section class="absolute wb-icon right-14 bottom-0 pointer-events-none">
-    <p>{{ update }}</p>
-  </section>
 </template>
 
 <script setup lang="ts">
-  import { reactive, computed } from 'vue'
+  import { reactive } from 'vue'
   import { useStore } from 'vuex'
   import { useI18n } from 'vue-i18n'
-  import { useFormat } from '@/use/format'
 
   const store = useStore()
   const { t } = useI18n()
-  const format = useFormat()
 
   const state = reactive({
     new: false as boolean,
     switcher: false as boolean,
     adjust: false as boolean,
   })
-  const update = computed(() => format.lastTime(props.entity.updatedAt))
 
   const props = defineProps({
     entity: Object as any,
