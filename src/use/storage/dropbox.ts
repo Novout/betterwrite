@@ -41,7 +41,7 @@ export const useDropbox = () => {
       },
     }
 
-    const dbx = new Dropbox({
+    const dbx = new DBX({
       accessToken: store.state.auth.dropbox.accessToken,
     })
 

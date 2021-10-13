@@ -2,6 +2,7 @@ import { ProjectState } from '@/types/project'
 import { useText } from '@/use/text'
 import { useFormat } from '@/use/format'
 import { ContextState } from '@/types/context'
+import { ContextStatePageContent } from '../../types/context'
 
 export default {
   namespaced: true,
@@ -133,6 +134,14 @@ export default {
       const temp = state.pages[index]
       state.pages[index] = target
       state.pages[sIndex] = temp
+    },
+    resetDates(state: ProjectState) {
+      state.pages.forEach((page: ContextState) => {
+        page.entity.forEach((line: ContextStatePageContent) => {
+          line.createdAt = useFormat().actually()
+          line.updatedAt = useFormat().actually()
+        })
+      })
     },
   },
   actions: {},
