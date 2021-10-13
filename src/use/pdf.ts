@@ -8,12 +8,15 @@ import { useRaw } from './raw'
 import { useEnv } from './env'
 import { useFonts } from './google/fonts'
 import { useDefines } from './defines'
-import i18n from '@/lang'
+import useEmitter from './emitter'
+import { useI18n } from 'vue-i18n'
+import { nextTick } from 'vue'
 
 export const usePDF = () => {
   const store = useStore()
   const toast = useToast()
-  const { t } = i18n.global
+  const emitter = useEmitter()
+  const { t } = useI18n()
 
   const init: Callback<any> = async () => {
     const { normalize, names } = await useFonts().get()
@@ -513,8 +516,12 @@ export const usePDF = () => {
 
     const generator = pdfMake.createPdf(doc({ final: false }))
 
-    generator.getDataUrl((dataUrl: any) => {
+    generator.getDataUrl(async (dataUrl: any) => {
       const iframe = document.createElement('iframe')
+
+      emitter.emit('pdf-preview-exists')
+
+      await nextTick
 
       iframe.src = dataUrl
       iframe.style.width = '400px'

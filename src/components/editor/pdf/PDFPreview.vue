@@ -1,6 +1,6 @@
 <template>
   <section class="flex flex-col w-full">
-    <HeroIcon class="wb-icon w-7" @click.prevent="onClick">
+    <HeroIcon v-if="exists" class="wb-icon w-7" @click.prevent="onClick">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -14,7 +14,7 @@
         />
       </svg>
     </HeroIcon>
-    <div ref="preview" class="h-3/4 p-5"></div>
+    <div ref="preview" :class="[exists ? 'h-3/4 p-5' : '']"></div>
   </section>
 </template>
 
@@ -24,17 +24,24 @@
   import { useStore } from 'vuex'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
+  import useEmitter from '@/use/emitter'
 
   const preview = ref<HTMLElement | null>(null)
+  const exists = ref<boolean>(false)
   const store = useStore()
   const { t } = useI18n()
   const toast = useToast()
   const pdf = usePDF()
+  const emitter = useEmitter()
 
   onMounted(() => {
     pdf.external().onPreviewPDF(preview.value as HTMLElement)
 
     toast.warning(t('toast.pdf.previewProblems'))
+
+    emitter.on('pdf-preview-exists', () => {
+      exists.value = true
+    })
   })
 
   const onClick = () => {

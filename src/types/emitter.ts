@@ -4,6 +4,7 @@ export type VueEmitterName =
   | 'entity-close'
   | 'entity-input-raw'
   | 'entity-open-last'
+  | 'pdf-preview-exists'
 
 export interface VueEmitter {
   on: (name: VueEmitterName, callback: (...c: any) => any) => void
