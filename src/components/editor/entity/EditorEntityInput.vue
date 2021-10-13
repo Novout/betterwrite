@@ -52,6 +52,7 @@
   const { t } = useI18n()
   const emitter = useEmitter()
   const entity = useEntity()
+  const format = useFormat()
 
   const props = defineProps({
     modelValue: String,
@@ -126,8 +127,8 @@
       const content = {
         type: 'page-break',
         raw: '__PAGE_BREAK__',
-        createdAt: useFormat().actually(),
-        updatedAt: useFormat().actually(),
+        createdAt: format.actually(),
+        updatedAt: format.actually(),
       } as ContextStatePageContent
 
       type.value = 'paragraph'
@@ -144,8 +145,8 @@
       const content = {
         type: 'line-break',
         raw: '__LINE_BREAK__',
-        createdAt: useFormat().actually(),
-        updatedAt: useFormat().actually(),
+        createdAt: format.actually(),
+        updatedAt: format.actually(),
       } as ContextStatePageContent
 
       type.value = 'paragraph'
@@ -171,8 +172,8 @@
           const content = {
             type: 'image',
             raw: reader.result,
-            createdAt: useFormat().actually(),
-            updatedAt: useFormat().actually(),
+            createdAt: format.actually(),
+            updatedAt: format.actually(),
           } as ContextStatePageContent
 
           type.value = 'paragraph'
@@ -196,8 +197,8 @@
     const content = {
       type: type.value,
       raw: props.modelValue,
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
+      createdAt: format.actually(),
+      updatedAt: format.actually(),
     } as ContextStatePageContent
 
     type.value = 'paragraph'
@@ -226,8 +227,8 @@
       const content = {
         type: type.value,
         raw: normalize,
-        createdAt: useFormat().actually(),
-        updatedAt: useFormat().actually(),
+        createdAt: format.actually(),
+        updatedAt: format.actually(),
       } as ContextStatePageContent
 
       store.commit('context/addInPageWithPaste', content)

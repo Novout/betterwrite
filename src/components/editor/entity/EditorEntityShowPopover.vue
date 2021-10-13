@@ -147,7 +147,7 @@
             </svg>
           </HeroIcon>
         </template>
-        <p>{{ t('editor.aside.entity.up') }}</p>
+        <p>{{ t('editor.aside.props.entity.up') }}</p>
       </EditorEntityShowSelect>
       <EditorEntityShowSelect @click.prevent.stop="onDownEntity">
         <template #icon>
@@ -166,7 +166,7 @@
             </svg>
           </HeroIcon>
         </template>
-        <p>{{ t('editor.aside.entity.down') }}</p>
+        <p>{{ t('editor.aside.props.entity.down') }}</p>
       </EditorEntityShowSelect>
       <EditorEntityShowSelect @click.prevent.stop="onDeleteEntity">
         <template #icon>
@@ -185,7 +185,7 @@
             </svg>
           </HeroIcon>
         </template>
-        <p>{{ t('editor.aside.entity.delete') }}</p>
+        <p>{{ t('editor.aside.props.entity.delete') }}</p>
       </EditorEntityShowSelect>
     </section>
     <HeroIcon class="wb-icon" @mouseenter.prevent.stop="onAdjustEntityWrapper">
@@ -201,21 +201,27 @@
       </svg>
     </HeroIcon>
   </section>
+  <section class="absolute wb-icon right-14 bottom-0 pointer-events-none">
+    <p>{{ update }}</p>
+  </section>
 </template>
 
 <script setup lang="ts">
-  import { reactive } from 'vue'
+  import { reactive, computed } from 'vue'
   import { useStore } from 'vuex'
   import { useI18n } from 'vue-i18n'
+  import { useFormat } from '@/use/format'
 
   const store = useStore()
   const { t } = useI18n()
+  const format = useFormat()
 
   const state = reactive({
     new: false as boolean,
     switcher: false as boolean,
     adjust: false as boolean,
   })
+  const update = computed(() => format.lastTime(props.entity.updatedAt))
 
   const props = defineProps({
     entity: Object as any,
