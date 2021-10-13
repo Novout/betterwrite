@@ -10,6 +10,10 @@ import { useEnv } from './env'
 export const useKeyboard = () => {
   const store = useStore()
   const local = useLocalStorage()
+  const page = usePage()
+  const pdf = usePDF()
+  const env = useEnv()
+  const utils = useUtils()
 
   const init: Callback<void> = () => {
     saveLocal()
@@ -31,9 +35,9 @@ export const useKeyboard = () => {
 
   const saveLocal = () => {
     keyboard.bind(store.state.shortcuts.localSaveProject[1], (e: Event) => {
-      useUtils().prevent(e)
+      utils.prevent(e)
 
-      if (store.state.project.name === useEnv().projectEmpty()) return
+      if (store.state.project.name === env.projectEmpty()) return
 
       local.onSaveProject()
     })
@@ -43,7 +47,7 @@ export const useKeyboard = () => {
     keyboard.bind(
       store.state.shortcuts.localLoadProject[1],
       async (e: Event) => {
-        useUtils().prevent(e)
+        utils.prevent(e)
 
         local.onLoadProject()
       }
@@ -52,7 +56,7 @@ export const useKeyboard = () => {
 
   const newProject = () => {
     keyboard.bind(store.state.shortcuts.newProject[1], (e: Event) => {
-      useUtils().prevent(e)
+      utils.prevent(e)
       store.commit('absolute/switchAside', true)
 
       store.commit('absolute/switchProjectModal', true)
@@ -61,39 +65,39 @@ export const useKeyboard = () => {
 
   const newChapter = () => {
     keyboard.bind(store.state.shortcuts.newChapter[1], (e: Event) => {
-      useUtils().prevent(e)
+      utils.prevent(e)
 
-      if (store.state.project.name === useEnv().projectEmpty()) return
+      if (store.state.project.name === env.projectEmpty()) return
 
-      usePage(store).onCreatePage()
+      page.onCreatePage()
     })
   }
 
   const deleteChapter = () => {
     keyboard.bind(store.state.shortcuts.deleteChapter[1], (e: Event) => {
-      useUtils().prevent(e)
+      utils.prevent(e)
 
-      if (store.state.project.name === useEnv().projectEmpty()) return
+      if (store.state.project.name === env.projectEmpty()) return
 
-      usePage(store).onDeletePage()
+      page.onDeletePage()
     })
   }
 
   const generatePDF = () => {
     keyboard.bind(store.state.shortcuts.generatePDF[1], (e: Event) => {
-      useUtils().prevent(e)
+      utils.prevent(e)
 
-      if (store.state.project.name === useEnv().projectEmpty()) return
+      if (store.state.project.name === env.projectEmpty()) return
 
-      usePDF().external(store).onGeneratePDF()
+      pdf.external().onGeneratePDF()
     })
   }
 
   const switcherRawText = () => {
     keyboard.bind(store.state.shortcuts.switcherRawText[1], (e: Event) => {
-      useUtils().prevent(e)
+      utils.prevent(e)
 
-      if (store.state.project.name === useEnv().projectEmpty()) return
+      if (store.state.project.name === env.projectEmpty()) return
 
       store.commit(
         'absolute/switchShortcutSwitcher',
@@ -104,9 +108,9 @@ export const useKeyboard = () => {
 
   const finderRawText = () => {
     keyboard.bind(store.state.shortcuts.finderRawText[1], (e: Event) => {
-      useUtils().prevent(e)
+      utils.prevent(e)
 
-      if (store.state.project.name === useEnv().projectEmpty()) return
+      if (store.state.project.name === env.projectEmpty()) return
 
       store.commit(
         'absolute/switchShortcutFinder',
@@ -117,9 +121,9 @@ export const useKeyboard = () => {
 
   const logger = () => {
     keyboard.bind(store.state.shortcuts.logger[1], (e: Event) => {
-      useUtils().prevent(e)
+      utils.prevent(e)
 
-      if (store.state.project.name === useEnv().projectEmpty()) return
+      if (store.state.project.name === env.projectEmpty()) return
 
       store.commit('absolute/switchLogger', !store.state.absolute.logger)
     })
@@ -127,9 +131,9 @@ export const useKeyboard = () => {
 
   const previewPDF = () => {
     keyboard.bind(store.state.shortcuts.previewPDF[1], (e: Event) => {
-      useUtils().prevent(e)
+      utils.prevent(e)
 
-      if (store.state.project.name === useEnv().projectEmpty()) return
+      if (store.state.project.name === env.projectEmpty()) return
 
       store.commit(
         'absolute/switchPdfPreview',
@@ -140,9 +144,9 @@ export const useKeyboard = () => {
 
   const configurationPDF = () => {
     keyboard.bind(store.state.shortcuts.configurationPDF[1], (e: Event) => {
-      useUtils().prevent(e)
+      utils.prevent(e)
 
-      if (store.state.project.name === useEnv().projectEmpty()) return
+      if (store.state.project.name === env.projectEmpty()) return
 
       store.commit(
         'absolute/switchPdfConfiguration',

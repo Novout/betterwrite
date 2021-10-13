@@ -1,11 +1,13 @@
-import { Callback } from '@/types/utils'
 import { nextTick } from 'vue'
-import { Store } from 'vuex'
+import { useStore } from 'vuex'
 import { useEnv } from './env'
 
-export const usePage = (store: Store<any>) => {
+export const usePage = () => {
+  const store = useStore()
+  const env = useEnv()
+
   const onCreatePage = async () => {
-    if (store.state.project.name === useEnv().projectEmpty()) return
+    if (store.state.project.name === env.projectEmpty()) return
 
     store.commit('project/newPage')
     await nextTick
@@ -17,7 +19,7 @@ export const usePage = (store: Store<any>) => {
   }
 
   const onDeletePage = async () => {
-    if (store.state.project.name === useEnv().projectEmpty()) return
+    if (store.state.project.name === env.projectEmpty()) return
 
     if (store.state.project.pages.length <= 1) return
 
