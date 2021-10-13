@@ -5,7 +5,7 @@
     :icon="true"
     :beta="true"
     :enable="true"
-    @click.prevent="onClick"
+    @click.prevent="dropbox.save"
   >
     <HeroIcon class="mr-2">
       <svg
@@ -25,76 +25,9 @@
 </template>
 
 <script setup lang="ts">
-  import { useStore } from 'vuex'
-  import { Dropbox } from 'dropbox'
-  import { useToast } from 'vue-toastification'
   import i18n from '@/lang'
+  import { useDropbox } from '@/use/storage/dropbox'
 
-  const store = useStore()
   const { t } = i18n.global
-  const toast = useToast()
-
-  const onClick = () => {
-    if (!store.state.auth.dropbox.accessToken) {
-      return
-    }
-
-    const obj = {
-      project: store.state.project,
-      editor: store.state.editor,
-      logger: store.state.logger,
-      pdf: {
-        styles: store.state.pdf.styles,
-        fonts: [],
-        normalize: {},
-      },
-    }
-
-    const dbx = new Dropbox({
-      accessToken: store.state.auth.dropbox.accessToken,
-    })
-
-    const path = `/${store.state.project.name}.bw`
-
-    toast.info(t('toast.generics.load'))
-
-    dbx
-      .filesUpload({
-        path,
-        contents: JSON.stringify(obj),
-      })
-      .then(() => {
-        toast.success(t('toast.project.save'))
-      })
-      .catch(() => {
-        dbx
-          .filesDeleteV2({
-            path,
-          })
-          .then(() => {
-            dbx
-              .filesUpload({
-                path,
-                contents: JSON.stringify(obj),
-              })
-              .then(() => {
-                toast.success(t('toast.project.save'))
-              })
-              .catch(() => {
-                toast.error(t('toast.project.error'))
-              })
-          })
-          .catch(() => {
-            toast.error(t('toast.project.error'))
-          })
-      })
-
-    /*
-    Dropbox.save(
-      window.URL.createObjectURL(blob),
-      `${store.state.project.name}.bw`,
-      options
-    )
-    */
-  }
+  const dropbox = useDropbox()
 </script>

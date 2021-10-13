@@ -4,7 +4,7 @@
     :text="t('editor.aside.dropbox.load')"
     :icon="true"
     :beta="true"
-    @click.prevent="onClick"
+    @click.prevent="dropbox.load"
   >
     <HeroIcon class="mr-2">
       <svg
@@ -25,52 +25,10 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  import {
-    Dropbox as DBX,
-    DropboxResponse,
-    DropboxResponseError,
-  } from 'dropbox'
   import { useStore } from 'vuex'
   import { useDropbox } from '@/use/storage/dropbox'
   import { useToast } from 'vue-toastification'
 
   const { t } = useI18n()
-  const store = useStore()
-  const toast = useToast()
-
-  const onClick = async () => {
-    if (!store.state.auth.dropbox.accessToken) {
-      return
-    }
-
-    const options = {
-      success: function (files: Array<any>) {
-        const file = files[0]
-
-        toast.info(t('toast.generics.load'))
-
-        const dbx = new DBX({
-          accessToken: store.state.auth.dropbox.accessToken,
-        })
-        dbx
-          .filesDownload({ path: file.id })
-          .then(async (data: DropboxResponse<any>) => {
-            const context = JSON.parse(await data.result.fileBlob.text())
-
-            useDropbox(store).onLoadProject(context)
-          })
-          .catch((err: DropboxResponseError<any>) => {
-            toast.error(t('toast.project.error'))
-          })
-      },
-
-      cancel: function () {},
-      linkType: 'preview',
-      multiselect: false,
-      extensions: ['.bw'],
-      folderselect: false,
-    }
-
-    Dropbox.choose(options)
-  }
+  const dropbox = useDropbox()
 </script>

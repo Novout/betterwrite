@@ -5,7 +5,7 @@
     :icon="true"
     :beta="true"
     :enable="true"
-    @click.prevent="onClick"
+    @click.prevent="dropbox.connect"
   >
     <HeroIcon class="mr-2">
       <svg
@@ -25,15 +25,9 @@
 </template>
 
 <script setup lang="ts">
+  import { useDropbox } from '@/use/storage/dropbox'
   import { useI18n } from 'vue-i18n'
-  import { useEnv } from '@/use/env'
 
   const { t } = useI18n()
-
-  const onClick = () => {
-    window.open(
-      `https://www.dropbox.com/oauth2/authorize?client_id=${useEnv().dropboxKey()}&response_type=token&redirect_uri=${useEnv().getCorrectLocalUrl()}&scope=account_info.read files.metadata.write files.metadata.read files.content.write files.content.read`,
-      '_self'
-    )
-  }
+  const dropbox = useDropbox()
 </script>

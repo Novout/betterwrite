@@ -23,7 +23,7 @@
     <AsideLoadProject />
     <AsideSaveProject v-if="name !== useEnv().projectEmpty()" />
     <AsideLine />
-    <AsideDropboxCorrect />
+    <AsideDropboxConnect />
     <AsideDropboxLoad v-if="store.state.auth.dropbox.accessToken" />
     <AsideDropboxSave
       v-if="
