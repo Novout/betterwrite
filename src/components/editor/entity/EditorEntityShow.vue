@@ -253,12 +253,13 @@
     if (index + 1 === store.state.context.entity.length) {
       if (_input.selectionStart === 0) {
         data.value = ''
+        emitter.emit('entity-input-raw', '')
       } else {
         data.value = data.value.replace(posRaw, '')
+        emitter.emit('entity-input-raw', posRaw)
       }
 
       emitter.emit('entity-input-focus')
-      emitter.emit('entity-input-raw', posRaw)
       return
     }
 
