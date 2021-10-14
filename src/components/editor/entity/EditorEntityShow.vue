@@ -144,6 +144,10 @@
   import { useInput } from '@/use/input'
   import { useFormat } from '@/use/format'
   import { useEnv } from '@/use/env'
+  import { useEntity } from '@/use/entity'
+  import { useFactory } from '@/use/factory'
+  import { useToast } from 'vue-toastification'
+  import { useI18n } from 'vue-i18n'
 
   const props = defineProps({
     entity: {
@@ -153,9 +157,13 @@
   })
 
   const store = useStore()
+  const toast = useToast()
   const emitter = useEmitter()
   const format = useFormat()
   const env = useEnv()
+  const entity = useEntity()
+  const factory = useFactory()
+  const { t } = useI18n()
 
   const hover = ref(false)
   const edit = ref(false)
@@ -177,6 +185,26 @@
         : (data.value = props.entity.raw)
 
       emitter.emit('entity-close', props.entity)
+    }
+  })
+
+  watch(data, (_data: string) => {
+    if (entity.utils().entry(_data, 'im')) {
+      data.value = ''
+
+      factory.simulate().file(
+        (content: ContextStatePageContent) => {
+          edit.value = false
+
+          store.commit('context/newInExistentEntity', {
+            old: props.entity,
+            new: content,
+          })
+        },
+        (err: any) => {
+          toast.error(t('toast.generics.error'))
+        }
+      )
     }
   })
 

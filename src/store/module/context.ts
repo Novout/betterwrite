@@ -64,6 +64,20 @@ export default {
 
       state.entity[index].raw = r
     },
+    newInExistentEntity(
+      state: ContextState,
+      payload: Record<string, ContextStatePageContent>
+    ) {
+      const index = state.entity.indexOf(payload.old)
+
+      if (!index) return
+
+      state.entity[index].type = payload.new.type
+      state.entity[index].raw = payload.new.raw
+      state.entity[index].createdAt = payload.new.createdAt
+      state.entity[index].updatedAt = useFormat().actually()
+      state.entity[index].external = payload.new.external || {}
+    },
     newInPage(
       state: ContextState,
       payload: Record<string, ContextStatePageContent | string>
