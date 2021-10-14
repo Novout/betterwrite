@@ -1,5 +1,4 @@
 import { ContextStatePageContent } from '@/types/context'
-import { useEnv } from './env'
 
 export const bold = () => {
   const open = () => {
@@ -54,7 +53,7 @@ export const useRaw = () => {
     if (
       page.type === 'page-break' ||
       page.type === 'line-break' ||
-      page.raw === useEnv().emptyLine()
+      page.raw === '__EMPTY_LINE__'
     )
       return ''
 
