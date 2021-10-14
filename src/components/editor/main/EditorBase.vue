@@ -53,8 +53,10 @@
   import { ContextStatePageContent } from '@/types/context'
   import { useScroll } from '@/use/scroll'
   import { useEnv } from '@/use/env'
+  import useEmitter from '@/use/emitter'
 
   const store = useStore()
+  const emitter = useEmitter()
 
   const main = ref<HTMLElement | null>(null)
   const entry = ref<string>('')
@@ -73,5 +75,7 @@
     entry.value = ''
   }
 
-  const onClickInEditor = () => {}
+  const onClickInEditor = () => {
+    emitter.emit('entity-input-focus')
+  }
 </script>
