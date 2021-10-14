@@ -246,15 +246,6 @@
       return
 
     edit.value = true
-
-    if (options?.external) {
-      await nextTick
-
-      const _input = input.value as HTMLTextAreaElement
-
-      _input.selectionStart = 0
-      _input.selectionEnd = 0
-    }
   }
 
   const onEnter = async () => {
@@ -405,7 +396,7 @@
     if (!edit.value) height.value = (show.value as any)?.offsetHeight + 'px'
   }
 
-  const onClick = () => {
+  const onClick = async () => {
     onStopEvents()
     onChangeArea()
   }
