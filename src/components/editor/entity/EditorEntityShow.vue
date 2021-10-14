@@ -248,7 +248,7 @@
     const _input = input.value as HTMLTextAreaElement
     const index = store.state.context.entity.indexOf(props.entity)
 
-    const posRaw = props.entity.raw.slice(_input.selectionStart)
+    const posRaw = data.value.slice(_input.selectionStart)
 
     if (index + 1 === store.state.context.entity.length) {
       if (_input.selectionStart === 0) {
