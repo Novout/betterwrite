@@ -278,12 +278,12 @@
       })
     } else {
       if (_input.selectionStart === 0) {
-        data.value = env.emptyLine() as string
         store.commit('context/newInPagePosEdit', {
           entity: props.entity,
           type: 'paragraph',
-          raw: env.emptyLine(),
+          raw: data.value,
         })
+        data.value = env.emptyLine() as string
       } else {
         data.value = data.value.replace(posRaw, '')
         store.commit('context/newInPagePosEdit', {
