@@ -19,7 +19,7 @@
     </HeroIcon>
     <PDFConfigurationSlot>
       <template #title>
-        <h2 class="text-2xl font-bold font-poppins">
+        <h2 class="text-2xl ml-2 font-bold font-poppins">
           {{ t('editor.pdf.custom.title.cover') }}
         </h2>
       </template>
@@ -47,7 +47,7 @@
     </PDFConfigurationSlot>
     <PDFConfigurationSlot>
       <template #title>
-        <h2 class="text-2xl font-bold font-poppins">
+        <h2 class="text-2xl ml-2 font-bold font-poppins">
           {{ t('editor.pdf.base.title') }}
         </h2>
       </template>
@@ -120,7 +120,7 @@
     </PDFConfigurationSlot>
     <PDFConfigurationSlot>
       <template #title>
-        <h2 class="text-2xl font-bold font-poppins">
+        <h2 class="text-2xl ml-2 font-bold font-poppins">
           {{ t('editor.pdf.custom.title.paragraph') }}
         </h2>
       </template>
@@ -220,7 +220,7 @@
     </PDFConfigurationSlot>
     <PDFConfigurationSlot>
       <template #title>
-        <h2 class="text-2xl font-bold font-poppins">
+        <h2 class="text-2xl ml-2 font-bold font-poppins">
           {{ t('editor.pdf.custom.title.headingOne') }}
         </h2>
       </template>
@@ -332,7 +332,7 @@
     </PDFConfigurationSlot>
     <PDFConfigurationSlot>
       <template #title>
-        <h2 class="text-2xl font-bold font-poppins">
+        <h2 class="text-2xl ml-2 font-bold font-poppins">
           {{ t('editor.pdf.custom.title.headingTwo') }}
         </h2>
       </template>
@@ -444,7 +444,7 @@
     </PDFConfigurationSlot>
     <PDFConfigurationSlot>
       <template #title>
-        <h2 class="text-2xl font-bold font-poppins">
+        <h2 class="text-2xl ml-2 font-bold font-poppins">
           {{ t('editor.pdf.custom.title.headingThree') }}
         </h2>
       </template>
