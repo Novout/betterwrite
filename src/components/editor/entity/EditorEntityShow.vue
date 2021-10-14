@@ -325,7 +325,17 @@
         emitter.emit('entity-open', { entity: props.entity, up: false })
       }
     } else {
-      if (key === 'ArrowUp') {
+      if ((key === 'Delete' || key === 'Backspace') && data.value === '') {
+        emitter.emit('entity-close', { all: true })
+
+        await nextTick
+
+        emitter.emit('entity-open', { entity: props.entity, up: true })
+
+        await nextTick
+
+        store.commit('context/removeInPage', props.entity)
+      } else if (key === 'ArrowUp') {
         if (_input.selectionStart === 0) {
           if (index === 0) return
 
