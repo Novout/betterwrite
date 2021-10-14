@@ -46,6 +46,7 @@
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
   import { useToast } from 'vue-toastification'
+  import { useEnv } from '@/use/env'
 
   const toast = useToast()
   const store = useStore()
@@ -53,6 +54,7 @@
   const emitter = useEmitter()
   const entity = useEntity()
   const format = useFormat()
+  const env = useEnv()
 
   const props = defineProps({
     modelValue: String,
@@ -126,7 +128,7 @@
 
       const content = {
         type: 'page-break',
-        raw: '__PAGE_BREAK__',
+        raw: env.pageBreak(),
         createdAt: format.actually(),
         updatedAt: format.actually(),
       } as ContextStatePageContent
@@ -144,7 +146,7 @@
 
       const content = {
         type: 'line-break',
-        raw: '__LINE_BREAK__',
+        raw: env.lineBreak(),
         createdAt: format.actually(),
         updatedAt: format.actually(),
       } as ContextStatePageContent

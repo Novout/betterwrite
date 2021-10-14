@@ -32,7 +32,15 @@ export const useEnv = () => {
   }
 
   const emptyLine = () => {
-    return import.meta.env.VITE_EMPTY_LINE
+    return import.meta.env.VITE_EMPTY_LINE as string
+  }
+
+  const lineBreak = () => {
+    return import.meta.env.VITE_LINE_BREAK as string
+  }
+
+  const pageBreak = () => {
+    return import.meta.env.VITE_PAGE_BREAK as string
   }
 
   return {
@@ -44,5 +52,7 @@ export const useEnv = () => {
     production,
     getCorrectLocalUrl,
     emptyLine,
+    lineBreak,
+    pageBreak,
   }
 }
