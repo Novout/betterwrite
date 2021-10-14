@@ -47,6 +47,7 @@
   import { useStore } from 'vuex'
   import { useToast } from 'vue-toastification'
   import { useEnv } from '@/use/env'
+import { useFactory } from '@/use/factory'
 
   const toast = useToast()
   const store = useStore()
@@ -55,6 +56,7 @@
   const entity = useEntity()
   const format = useFormat()
   const env = useEnv()
+  const factory = useFactory()
 
   const props = defineProps({
     modelValue: String,
@@ -162,34 +164,16 @@
     if (entity.utils().entry(_cmp, 'im')) {
       cmp.value = ''
 
-      const _ = document.createElement('input')
-      _.type = 'file'
-      _.addEventListener('change', function() {
-        const file = (this.files as any)[0]
+      factory.simulate().file((content: ContextStatePageContent) => {
+        type.value = 'paragraph'
+        input.value.placeholder = t('editor.text.placeholder.paragraph')
 
-        const reader = new FileReader()
-        reader.readAsDataURL(file)
+        emit('enter', content)
 
-        reader.onload = function () {
-          const content = {
-            type: 'image',
-            raw: reader.result,
-            createdAt: format.actually(),
-            updatedAt: format.actually(),
-          } as ContextStatePageContent
-
-          type.value = 'paragraph'
-          input.value.placeholder = t('editor.text.placeholder.paragraph')
-
-          emit('enter', content)
-
-          return
-        }
-        reader.onerror = function (error) {
-          toast.error(t('toast.generics.error'))
-        }
+        return
+      }, (err: any) => {
+        toast.error(t('toast.generics.error'))
       })
-      _.click()
     }
   })
 
