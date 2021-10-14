@@ -155,6 +155,12 @@ export default {
     setCoverBackground(state: PDFState, payload: any) {
       state.styles.base.background.data = payload
     },
+    deleteMainBackground(state: PDFState) {
+      state.styles.base.background.main = ''
+    },
+    deleteCoverBackground(state: PDFState) {
+      state.styles.base.background.data = ''
+    },
   },
   actions: {},
   getters: {},

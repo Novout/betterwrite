@@ -40,6 +40,7 @@
             id="cover-background"
             :src="_base.background.data"
             @load="onCoverImageLoad"
+            @exclude="onDeleteCoverImage"
           />
         </div>
       </div>
@@ -68,6 +69,7 @@
             :title="t('generics.input.image')"
             :src="_base.background.main"
             @load="onMainImageLoad"
+            @exclude="onDeleteMainImage"
           />
         </div>
 
@@ -700,5 +702,13 @@
 
   const onMainImageLoad = (e: any) => {
     store.commit('pdf/setMainBackground', e)
+  }
+
+  const onDeleteCoverImage = () => {
+    store.commit('pdf/deleteCoverBackground')
+  }
+
+  const onDeleteMainImage = () => {
+    store.commit('pdf/deleteMainBackground')
   }
 </script>
