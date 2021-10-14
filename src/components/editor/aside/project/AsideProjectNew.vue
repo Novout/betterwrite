@@ -11,52 +11,28 @@
         <label>{{ t('editor.aside.project.new.name') }}</label>
         <input
           v-model="name"
-          class="
-            wp-shadow
-            bg-gray-200
-            focus:bg-gray-400
-            dark:bg-gray-600 dark:focus:bg-gray-800
-            p-1
-          "
+          class="shadow-winset dark:shadow-binset bg-transparent p-1"
         />
       </div>
       <div class="flex flex-col pt-3">
         <label>{{ t('editor.aside.project.new.creator') }}</label>
         <input
           v-model="creator"
-          class="
-            wp-shadow
-            bg-gray-200
-            focus:bg-gray-400
-            dark:bg-gray-600 dark:focus:bg-gray-800
-            p-1
-          "
+          class="shadow-winset dark:shadow-binset bg-transparent p-1"
         />
       </div>
       <div class="flex flex-col pt-3">
         <label>{{ t('editor.aside.project.new.subject') }}</label>
         <input
           v-model="subject"
-          class="
-            wp-shadow
-            bg-gray-200
-            focus:bg-gray-400
-            dark:bg-gray-600 dark:focus:bg-gray-800
-            p-1
-          "
+          class="shadow-winset dark:shadow-binset bg-transparent p-1"
         />
       </div>
       <div class="flex flex-col pt-3">
         <label>{{ t('editor.aside.project.new.version') }}</label>
         <input
           v-model="version"
-          class="
-            wp-shadow
-            bg-gray-200
-            focus:bg-gray-400
-            dark:bg-gray-600 dark:focus:bg-gray-800
-            p-1
-          "
+          class="shadow-winset dark:shadow-binset bg-transparent p-1"
         />
       </div>
     </div>
