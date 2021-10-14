@@ -56,9 +56,7 @@
           ? 'cursor-default my-4 border-b-8 border-dashed border-gray-400 dark:border-gray-800'
           : '',
 
-        props.entity.raw === env.emptyLine()
-          ? 'cursor-default py-4 bg-white-opacity dark:bg-black-opacity'
-          : '',
+        props.entity.raw === env.emptyLine() ? 'cursor-default py-2' : '',
       ]"
       @click="onEdit"
       v-html="useRaw().convert(props.entity as any)"
