@@ -296,12 +296,12 @@
     emitter.emit('entity-open', { entity: props.entity, up: false })
   }
 
-  const generalHandler = async ({ key, ctrlKey }: KeyboardEvent) => {
+  const generalHandler = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLTextAreaElement
     const index = store.state.context.entity.indexOf(props.entity)
 
-    if (ctrlKey) {
-      if (key === 'ArrowUp') {
+    if (e.ctrlKey) {
+      if (e.key === 'ArrowUp') {
         store.commit('context/switchInPage', {
           entity: props.entity,
           direction: 'up',
@@ -312,7 +312,7 @@
         await nextTick
 
         emitter.emit('entity-open', { entity: props.entity, up: true })
-      } else if (key === 'ArrowDown') {
+      } else if (e.key === 'ArrowDown') {
         store.commit('context/switchInPage', {
           entity: props.entity,
           direction: 'down',
@@ -325,7 +325,9 @@
         emitter.emit('entity-open', { entity: props.entity, up: false })
       }
     } else {
-      if ((key === 'Delete' || key === 'Backspace') && data.value === '') {
+      if ((e.key === 'Delete' || e.key === 'Backspace') && data.value === '') {
+        e.preventDefault()
+        e.stopPropagation()
         emitter.emit('entity-close', { all: true })
 
         await nextTick
@@ -335,7 +337,7 @@
         await nextTick
 
         store.commit('context/removeInPage', props.entity)
-      } else if (key === 'ArrowUp') {
+      } else if (e.key === 'ArrowUp') {
         if (_input.selectionStart === 0) {
           if (index === 0) return
 
@@ -345,7 +347,7 @@
 
           emitter.emit('entity-open', { entity: props.entity, up: true })
         }
-      } else if (key === 'ArrowDown') {
+      } else if (e.key === 'ArrowDown') {
         if (_input.selectionStart === _input.textLength) {
           if (index + 1 === store.state.context.entity.length) {
             emitter.emit('entity-input-focus')

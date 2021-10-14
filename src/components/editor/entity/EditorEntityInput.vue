@@ -237,9 +237,18 @@
     })
   }
 
-  const keyboardHandler = ({ key }: KeyboardEvent) => {
-    if(key === 'ArrowUp') {
+  const keyboardHandler = (e: KeyboardEvent) => {
+    if(e.key === 'ArrowUp') {
       emitter.emit('entity-open-last')
+      return
+    }
+
+    if((e.key === 'Delete' || e.key === 'Backspace') && cmp.value === '') {
+      e.preventDefault()
+      e.stopPropagation()
+      
+      emitter.emit('entity-open-last')
+      return
     }
   }
 
