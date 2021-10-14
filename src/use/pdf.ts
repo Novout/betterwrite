@@ -118,10 +118,10 @@ export const usePDF = () => {
       }
     }
 
-    const lineBreak = () => {
+    const lineBreak = (value = 10) => {
       return {
         text: '',
-        margin: [0, 10],
+        margin: [0, value],
         style: 'line-break',
       }
     }
@@ -222,7 +222,11 @@ export const usePDF = () => {
         page.entity.forEach((entity: ContextStatePageContent) => {
           let _raw = {}
 
-          if (entity.raw === env.emptyLine()) return
+          if (entity.raw === env.emptyLine()) {
+            _raw = lineBreak(5)
+            arr.push(_raw)
+            return
+          }
 
           if ((entity as any).type === 'paragraph') {
             _raw = paragraph((entity as any).raw, {
