@@ -234,7 +234,7 @@
     edit.value = false
   }
 
-  const onEdit = (e?: MouseEvent) => {
+  const onEdit = async (e?: MouseEvent, options?: Record<string, boolean>) => {
     onStopEvents(e)
     onChangeEdit()
 
@@ -246,6 +246,15 @@
       return
 
     edit.value = true
+
+    if (options?.external) {
+      await nextTick
+
+      const _input = input.value as HTMLTextAreaElement
+
+      _input.selectionStart = 0
+      _input.selectionEnd = 0
+    }
   }
 
   const onEnter = async () => {
@@ -378,7 +387,7 @@
 
     useScroll().to(`#entity-${index}`, 'center')
 
-    onEdit(e)
+    onEdit(e, { external: true })
   }
 
   const onStopEvents = (e?: MouseEvent) => {
