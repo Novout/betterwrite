@@ -16,6 +16,7 @@ export const usePDF = () => {
   const store = useStore()
   const toast = useToast()
   const emitter = useEmitter()
+  const env = useEnv()
   const { t } = useI18n()
 
   const init: Callback<any> = async () => {
@@ -221,6 +222,8 @@ export const usePDF = () => {
         page.entity.forEach((entity: ContextStatePageContent) => {
           let _raw = {}
 
+          if (entity.raw === env.emptyLine()) return
+
           if ((entity as any).type === 'paragraph') {
             _raw = paragraph((entity as any).raw, {
               stack: false,
@@ -397,13 +400,13 @@ export const usePDF = () => {
 
   const doc = (options: Record<any, any>) => {
     return {
-      pageSize: generate().base(store).pageSize,
-      pageOrientation: generate().base(store).pageOrientation,
+      pageSize: generate().base().pageSize,
+      pageOrientation: generate().base().pageOrientation,
       pageMargins: {
         left: 0,
         top: 0,
         right: 0,
-        bottom: generate().base(store).pageMargins[3],
+        bottom: generate().base().pageMargins[3],
       },
       info: {
         title: store.state.project.name,
@@ -411,12 +414,12 @@ export const usePDF = () => {
         subject: store.state.project.subject,
         keywords: '',
       },
-      content: generate().content(store),
+      content: generate().content(),
       styles: {
-        'heading-three': generate().styles(store).headingThree(),
-        'heading-two': generate().styles(store).headingTwo(),
-        'heading-one': generate().styles(store).headingOne(),
-        paragraph: generate().styles(store).paragraph(),
+        'heading-three': generate().styles().headingThree(),
+        'heading-two': generate().styles().headingTwo(),
+        'heading-one': generate().styles().headingOne(),
+        paragraph: generate().styles().paragraph(),
       },
       background: options.final
         ? function (currentPage: number) {

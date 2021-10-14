@@ -31,6 +31,10 @@ export const useEnv = () => {
     return import.meta.env.MODE === 'production'
   }
 
+  const emptyLine = () => {
+    return import.meta.env.VITE_EMPTY_LINE
+  }
+
   return {
     dropboxKey,
     projectEmpty,
@@ -39,5 +43,6 @@ export const useEnv = () => {
     maxFonts,
     production,
     getCorrectLocalUrl,
+    emptyLine,
   }
 }

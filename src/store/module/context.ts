@@ -1,4 +1,5 @@
 import { ContextState, ContextStatePageContent } from '@/types/context'
+import { useEnv } from '@/use/env'
 import { useFormat } from '@/use/format'
 
 export default {
@@ -73,7 +74,7 @@ export default {
 
       state.entity.splice(index, 0, {
         type: payload.type as string,
-        raw: '-',
+        raw: useEnv().emptyLine(),
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
       } as ContextStatePageContent)
@@ -88,7 +89,7 @@ export default {
 
       state.entity.splice(index + 1, 0, {
         type: payload.type as string,
-        raw: payload.raw || '-',
+        raw: payload.raw || useEnv().emptyLine(),
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
       } as ContextStatePageContent)

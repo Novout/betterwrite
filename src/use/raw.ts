@@ -1,4 +1,5 @@
 import { ContextStatePageContent } from '@/types/context'
+import { useEnv } from './env'
 
 export const bold = () => {
   const open = () => {
@@ -50,7 +51,12 @@ export const useRaw = () => {
     let _italic = false
     let _bold = false
 
-    if (page.type === 'page-break' || page.type === 'line-break') return ''
+    if (
+      page.type === 'page-break' ||
+      page.type === 'line-break' ||
+      page.raw === useEnv().emptyLine()
+    )
+      return ''
 
     if (page.type !== 'paragraph' && page.type !== 'image') return page.raw
 

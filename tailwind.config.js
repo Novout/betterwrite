@@ -47,7 +47,7 @@ module.exports = {
         "editor-mobile": "90vh"
       }),
       backgroundColor: theme => ({
-        "black-opacity": 'rgba(0,0,0, 0.1)',
+        "black-opacity": 'rgba(0,0,0, 0.15)',
         "white-opacity": 'rgba(255,255,255, 0.1)',
         "modal": 'rgba(0,0,0, 0.6)'
       }),

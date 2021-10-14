@@ -55,6 +55,10 @@
         props.entity.type === 'line-break'
           ? 'cursor-default my-4 border-b-8 border-dashed border-gray-400 dark:border-gray-800'
           : '',
+
+        props.entity.raw === env.emptyLine()
+          ? 'cursor-default py-4 bg-white-opacity dark:bg-black-opacity'
+          : '',
       ]"
       @click="onEdit"
       v-html="useRaw().convert(props.entity as any)"
@@ -141,6 +145,7 @@
   import { useScroll } from '@/use/scroll'
   import { useInput } from '@/use/input'
   import { useFormat } from '@/use/format'
+  import { useEnv } from '@/use/env'
 
   const props = defineProps({
     entity: {
@@ -152,6 +157,7 @@
   const store = useStore()
   const emitter = useEmitter()
   const format = useFormat()
+  const env = useEnv()
 
   const hover = ref(false)
   const edit = ref(false)
@@ -168,7 +174,7 @@
     if (_edit) {
       input.value?.focus()
 
-      props.entity.raw === '-'
+      props.entity.raw === env.emptyLine()
         ? (data.value = '')
         : (data.value = props.entity.raw)
 
@@ -274,16 +280,20 @@
       })
     } else {
       if (_input.selectionStart === 0) {
-        data.value = '-'
+        data.value = env.emptyLine() as string
+        store.commit('context/newInPagePosEdit', {
+          entity: props.entity,
+          type: 'paragraph',
+          raw: env.emptyLine(),
+        })
       } else {
         data.value = data.value.replace(posRaw, '')
+        store.commit('context/newInPagePosEdit', {
+          entity: props.entity,
+          type: 'paragraph',
+          raw: posRaw,
+        })
       }
-
-      store.commit('context/newInPagePosEdit', {
-        entity: props.entity,
-        type: 'paragraph',
-        raw: posRaw,
-      })
     }
 
     await nextTick
