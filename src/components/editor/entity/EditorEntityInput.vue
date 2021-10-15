@@ -31,6 +31,7 @@
       @keydown="keyboardHandler"
       @paste="pasteHandler"
       @focus="onSet"
+      @click.prevent.stop="onClick"
     />
   </section>
 </template>
@@ -47,7 +48,7 @@
   import { useStore } from 'vuex'
   import { useToast } from 'vue-toastification'
   import { useEnv } from '@/use/env'
-import { useFactory } from '@/use/factory'
+  import { useFactory } from '@/use/factory'
 
   const toast = useToast()
   const store = useStore()
@@ -240,5 +241,9 @@ import { useFactory } from '@/use/factory'
 
   const onInput = () => {
     useInput().expandTextArea(input.value)
+  }
+
+  const onClick = () => {
+    emitter.emit('entity-focus')
   }
 </script>

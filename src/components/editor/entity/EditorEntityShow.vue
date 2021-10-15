@@ -148,7 +148,10 @@
   const { t } = useI18n()
 
   const hover = ref(false)
+  const focus = ref(false)
   const edit = ref(false)
+  const keyboard = ref(false)
+
   const data = ref('')
   const show = ref(null)
   const input = ref<HTMLTextAreaElement | null>(null)
@@ -156,16 +159,27 @@
 
   const style = computed(() => store.state.editor.styles.show)
 
+  watch(hover, async (_hover) => {
+    keyboard.value = false
+
+    await nextTick
+    if (_hover) {
+      onEdit()
+    }
+  })
+
   watch(edit, async (_edit) => {
     await nextTick
     if (_edit) {
-      input.value?.focus()
+      if (!hover.value || keyboard.value) input.value?.focus()
 
       props.entity.raw === env.emptyLine()
         ? (data.value = '')
         : (data.value = props.entity.raw)
 
       emitter.emit('entity-close', props.entity)
+    } else {
+      focus.value = false
     }
   })
 
@@ -213,15 +227,22 @@
         payload?.up &&
         store.state.context.entity[index - 1] === props.entity
       ) {
-        onEdit()
+        onEdit(undefined, { keyboard: true })
       }
 
       if (
         !payload?.up &&
         store.state.context.entity[index + 1] === props.entity
       ) {
-        onEdit()
+        onEdit(undefined, { keyboard: true })
       }
+    })
+
+    emitter.on('entity-focus', () => {
+      if (document.activeElement === input.value) return
+
+      focus.value = false
+      edit.value = false
     })
 
     emitter.on('entity-open-last', () => {
@@ -240,7 +261,7 @@
       raw: data.value,
     })
 
-    edit.value = false
+    if (!focus.value) edit.value = false
   }
 
   const onEdit = async (e?: MouseEvent, options?: Record<string, boolean>) => {
@@ -253,6 +274,13 @@
       props.entity.type === 'image'
     )
       return
+
+    if (options?.keyboard) {
+      keyboard.value = true
+      emitter.emit('entity-focus')
+    }
+
+    await nextTick
 
     edit.value = true
   }
@@ -311,7 +339,11 @@
 
     useScroll().to(`#entity-${index}`, 'center')
 
-    emitter.emit('entity-open', { entity: props.entity, up: false })
+    emitter.emit('entity-open', {
+      entity: props.entity,
+      up: false,
+      keyboard: true,
+    })
   }
 
   const generalHandler = async (e: KeyboardEvent) => {
@@ -408,5 +440,10 @@
   const onClick = async () => {
     onStopEvents()
     onChangeArea()
+
+    focus.value = true
+    keyboard.value = false
+
+    emitter.emit('entity-focus')
   }
 </script>
