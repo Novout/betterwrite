@@ -155,15 +155,15 @@
   const { t } = useI18n()
   const raw = useRaw()
 
-  const hover = ref(false)
-  const focus = ref(false)
-  const edit = ref(false)
-  const keyboard = ref(false)
+  const hover = ref<boolean>(false)
+  const focus = ref<boolean>(false)
+  const edit = ref<boolean>(false)
+  const keyboard = ref<boolean>(false)
 
-  const data = ref('')
-  const show = ref(null)
+  const data = ref<string>('')
+  const show = ref<HTMLDivElement | null>(null)
   const input = ref<HTMLTextAreaElement | null>(null)
-  const height = ref('0px')
+  const height = ref<string>('0px')
 
   const style = computed(() => store.state.editor.styles.show)
 
