@@ -13,7 +13,7 @@
     <div
       v-if="!edit"
       ref="show"
-      class="overflow-hidden w-full break-words"
+      class="overflow-hidden w-full break-all"
       :class="[
         props.entity.type === 'paragraph' && !edit ? 'indent-15' : '',
         props.entity.type === 'paragraph' ? 'text-justify' : '',
