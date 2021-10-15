@@ -21,6 +21,11 @@ export const useFactory = () => {
         const reader = new FileReader()
         reader.readAsDataURL(file)
         reader.onload = function () {
+          if (!(reader.result as string).includes('data:image/')) {
+            error && error('bad file')
+            return
+          }
+
           const content = {
             type: 'image',
             raw: reader.result,

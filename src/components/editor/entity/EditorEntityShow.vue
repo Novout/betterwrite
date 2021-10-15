@@ -11,7 +11,10 @@
     @click="onClickInEntity"
   >
     <EditorEntityShowPopover
-      v-if="edit && props.entity.type !== 'heading-one'"
+      v-if="
+        (edit && props.entity.type !== 'heading-one') ||
+        (entity.utils().isFixed(_index) && hover)
+      "
       :entity="props.entity"
     />
     <div
@@ -160,6 +163,7 @@
   const edit = ref<boolean>(false)
   const keyboard = ref<boolean>(false)
 
+  const _index = ref<number>(store.state.context.entity.indexOf(props.entity))
   const data = ref<string>('')
   const show = ref<HTMLDivElement | null>(null)
   const input = ref<HTMLTextAreaElement | null>(null)
