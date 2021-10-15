@@ -23,7 +23,15 @@ export const useEntity = () => {
       )
     }
 
-    return { entry }
+    const isFixed = (index: number) => {
+      const type = store.state.context.entity[index].type
+
+      if (!type) return false
+
+      return type === 'page-break' || type === 'line-break' || type === 'image'
+    }
+
+    return { entry, isFixed }
   }
 
   const swapper = () => {

@@ -72,7 +72,7 @@ export default {
     ) {
       const index = state.entity.indexOf(payload.old)
 
-      if (!index) return
+      if (index === -1) return
 
       state.entity[index].type = payload.new.type
       state.entity[index].raw = payload.new.raw
@@ -87,6 +87,8 @@ export default {
       const index = state.entity.indexOf(
         payload.entity as ContextStatePageContent
       )
+
+      if (index === -1) return
 
       state.entity.splice(index, 0, {
         type: payload.type as string,
@@ -103,6 +105,8 @@ export default {
         payload.entity as ContextStatePageContent
       )
 
+      if (index === -1) return
+
       state.entity.splice(index + 1, 0, {
         type: payload.type as string,
         raw: payload.raw || useEnv().emptyLine(),
@@ -118,12 +122,24 @@ export default {
         payload.entity as ContextStatePageContent
       )
 
+      if (index === -1) return
+
       state.entity.splice(index, 1, {
         type: payload.type as string,
         raw: (payload.entity as ContextStatePageContent).raw,
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
       } as ContextStatePageContent)
+    },
+    insertRawInExistentEntity(
+      state: ContextState,
+      entity: ContextStatePageContent
+    ) {
+      const index = state.entity.indexOf(entity)
+
+      if (index === -1) return
+
+      state.entity[index - 1].raw = state.entity[index - 1].raw + entity.raw
     },
   },
   actions: {},

@@ -393,9 +393,33 @@
         await nextTick
 
         store.commit('context/removeInPage', props.entity)
+      } else if (
+        (e.key === 'Delete' || e.key === 'Backspace') &&
+        _input.selectionStart === 0
+      ) {
+        e.preventDefault()
+        e.stopPropagation()
+
+        if (entity.utils().isFixed(index - 1)) return
+
+        store.commit('context/insertRawInExistentEntity', props.entity)
+
+        await nextTick
+
+        emitter.emit('entity-close', { all: true })
+
+        await nextTick
+
+        emitter.emit('entity-open', { entity: props.entity, up: true })
+
+        await nextTick
+
+        store.commit('context/removeInPage', props.entity)
       } else if (e.key === 'ArrowUp') {
         if (_input.selectionStart === 0) {
           if (index === 0) return
+
+          if (entity.utils().isFixed(index - 1)) return
 
           emitter.emit('entity-close', { all: true })
 
@@ -409,6 +433,8 @@
             emitter.emit('entity-input-focus')
             return
           }
+
+          if (entity.utils().isFixed(index + 1)) return
 
           emitter.emit('entity-close', { all: true })
 
