@@ -2,11 +2,11 @@ import { ContextStatePageContent } from '@/types/context'
 
 export const bold = () => {
   const open = () => {
-    return '<span class="font-bold text-sm">'
+    return '<span class="font-bold text-sm"> '
   }
 
   const close = () => {
-    return '</span>'
+    return ' </span>'
   }
 
   return { open, close }
@@ -14,11 +14,11 @@ export const bold = () => {
 
 export const italic = () => {
   const open = () => {
-    return '<span class="italic text-sm">'
+    return '<span class="italic text-sm"> '
   }
 
   const close = () => {
-    return '</span>'
+    return ' </span>'
   }
 
   return { open, close }
@@ -30,7 +30,7 @@ export const link = () => {
   }
 
   const close = () => {
-    return ' </a>'
+    return '</a>'
   }
 
   return { open, close }
