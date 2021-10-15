@@ -45,26 +45,27 @@ export const image = () => {
 }
 
 export const useRaw = () => {
-  const convert = (page: ContextStatePageContent) => {
+  const convert = (entity: ContextStatePageContent) => {
     let final = ''
     let _italic = false
     let _bold = false
 
     if (
-      page.type === 'page-break' ||
-      page.type === 'line-break' ||
-      page.raw === '__EMPTY_LINE__'
+      entity.type === 'page-break' ||
+      entity.type === 'line-break' ||
+      entity.raw === '__EMPTY_LINE__'
     )
       return ''
 
-    if (page.type !== 'paragraph' && page.type !== 'image') return page.raw
+    if (entity.type !== 'paragraph' && entity.type !== 'image')
+      return entity.raw
 
     const over: Array<string> = []
     const img: Array<string> = []
 
-    let _raw = page.raw
+    let _raw = entity.raw
 
-    page.raw.split(/[ ]+/).forEach((word: string) => {
+    entity.raw.split(/[ ]+/).forEach((word: string) => {
       if (word.includes('http://') || word.includes('https://')) over.push(word)
       if (word.includes('data:image/')) img.push(word)
     })

@@ -7,12 +7,12 @@ export type EntityType =
   | 'line-break'
   | 'image'
 
-export interface ContextState {
+export type ContextState = {
   id: number
   entity: Array<ContextStatePageContent>
 }
 
-export interface ContextStatePageContent {
+export type ContextStatePageContent = {
   type: EntityType
   raw: string
   createdAt: string

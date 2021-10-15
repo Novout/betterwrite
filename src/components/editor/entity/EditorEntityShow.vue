@@ -66,7 +66,7 @@
         props.entity.raw === env.emptyLine() ? 'cursor-default py-2' : '',
       ]"
       @click="onEdit"
-      v-html="useRaw().convert(props.entity as any)"
+      v-html="raw.convert(props.entity)"
     />
     <textarea
       v-else
@@ -130,7 +130,6 @@
   import { useStore } from 'vuex'
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
-  import { ContextStatePageContent } from '@/types/context'
   import { useScroll } from '@/use/scroll'
   import { useInput } from '@/use/input'
   import { useEnv } from '@/use/env'
@@ -138,11 +137,12 @@
   import { useFactory } from '@/use/factory'
   import { useToast } from 'vue-toastification'
   import { useI18n } from 'vue-i18n'
+  import { ContextStatePageContent } from '@/types/context'
 
   const props = defineProps({
     entity: {
       required: true,
-      type: Object,
+      type: Object as () => ContextStatePageContent,
     },
   })
 
@@ -153,6 +153,7 @@
   const entity = useEntity()
   const factory = useFactory()
   const { t } = useI18n()
+  const raw = useRaw()
 
   const hover = ref(false)
   const focus = ref(false)
