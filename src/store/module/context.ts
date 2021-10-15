@@ -25,8 +25,10 @@ export default {
 
       if (!obj.raw || index === -1) return
 
-      state.entity[index].raw = obj.raw
-      state.entity[index].updatedAt = useFormat().actually()
+      if (obj.raw !== state.entity[index].raw) {
+        state.entity[index].raw = obj.raw
+        state.entity[index].updatedAt = useFormat().actually()
+      }
     },
     removeInPage(state: ContextState, entity: ContextStatePageContent) {
       const index = state.entity.indexOf(entity)
