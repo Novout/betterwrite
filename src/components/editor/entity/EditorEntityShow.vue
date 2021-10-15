@@ -7,7 +7,7 @@
     @click="onClickInEntity"
   >
     <EditorEntityShowPopover
-      v-if="(hover || edit) && props.entity.type !== 'heading-one'"
+      v-if="edit && props.entity.type !== 'heading-one'"
       :entity="props.entity"
     />
     <div
