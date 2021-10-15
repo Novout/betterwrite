@@ -7,7 +7,7 @@
     @click="onClickInEntity"
   >
     <EditorEntityShowPopover
-      v-if="hover && !edit && props.entity.type !== 'heading-one'"
+      v-if="(hover || edit) && props.entity.type !== 'heading-one'"
       :entity="props.entity"
     />
     <div
@@ -115,22 +115,6 @@
       @input="onChangeArea"
       @click="onClick"
     />
-    <section
-      class="absolute wb-icon right-14 bottom-0 pointer-events-none"
-      :class="[
-        props.entity.type === 'paragraph' ? 'text-justify indent-15' : '',
-
-        props.entity.type === 'heading-one' ? 'text-center pb-12' : '',
-
-        props.entity.type === 'heading-two' ? 'text-center pb-3' : '',
-        props.entity.type === 'heading-three' ? 'text-center pb-3' : '',
-
-        props.entity.type === 'page-break' ? 'pt-2' : '',
-        props.entity.type === 'line-break' ? 'pt-2' : '',
-      ]"
-    >
-      <p>{{ update }}</p>
-    </section>
   </section>
 </template>
 
@@ -142,7 +126,6 @@
   import { ContextStatePageContent } from '@/types/context'
   import { useScroll } from '@/use/scroll'
   import { useInput } from '@/use/input'
-  import { useFormat } from '@/use/format'
   import { useEnv } from '@/use/env'
   import { useEntity } from '@/use/entity'
   import { useFactory } from '@/use/factory'
@@ -159,7 +142,6 @@
   const store = useStore()
   const toast = useToast()
   const emitter = useEmitter()
-  const format = useFormat()
   const env = useEnv()
   const entity = useEntity()
   const factory = useFactory()
@@ -173,7 +155,6 @@
   const height = ref('0px')
 
   const style = computed(() => store.state.editor.styles.show)
-  const update = computed(() => format.lastTime(props.entity.updatedAt))
 
   watch(edit, async (_edit) => {
     await nextTick

@@ -201,14 +201,32 @@
       </svg>
     </HeroIcon>
   </section>
+  <section
+    class="absolute wb-icon right-14 bottom-0 pointer-events-none"
+    :class="[
+      props.entity.type === 'paragraph' ? 'text-justify indent-15' : '',
+
+      props.entity.type === 'heading-one' ? 'text-center pb-12' : '',
+
+      props.entity.type === 'heading-two' ? 'text-center pb-3' : '',
+      props.entity.type === 'heading-three' ? 'text-center pb-3' : '',
+
+      props.entity.type === 'page-break' ? 'pt-2' : '',
+      props.entity.type === 'line-break' ? 'pt-2' : '',
+    ]"
+  >
+    <p>{{ update }}</p>
+  </section>
 </template>
 
 <script setup lang="ts">
-  import { reactive } from 'vue'
+  import { reactive, computed } from 'vue'
   import { useStore } from 'vuex'
   import { useI18n } from 'vue-i18n'
+  import { useFormat } from '@/use/format'
 
   const store = useStore()
+  const format = useFormat()
   const { t } = useI18n()
 
   const state = reactive({
@@ -216,6 +234,7 @@
     switcher: false as boolean,
     adjust: false as boolean,
   })
+  const update = computed(() => format.lastTime(props.entity.updatedAt))
 
   const props = defineProps({
     entity: Object as any,
