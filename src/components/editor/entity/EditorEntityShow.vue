@@ -17,7 +17,7 @@
     <div
       v-if="!edit"
       ref="show"
-      class="overflow-hidden w-full break-all"
+      class="overflow-hidden w-full break-words"
       :class="[
         props.entity.type === 'paragraph' && !edit
           ? style.paragraph.indent
