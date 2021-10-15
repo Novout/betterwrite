@@ -66,6 +66,9 @@ module.exports = {
         "aside": "100",
         "aside-open": "100",
         "min": "-1"
+      }),
+      whiteSpace: theme => ({
+        "some-break": "break-spaces"
       })
     },
     textIndent: {

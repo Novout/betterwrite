@@ -18,6 +18,7 @@
       v-if="!edit"
       ref="show"
       class="overflow-hidden w-full break-words"
+      :style="{ whiteSpace: 'break-spaces' }"
       :class="[
         props.entity.type === 'paragraph' && !edit
           ? style.paragraph.indent
@@ -115,7 +116,7 @@
         block
         break-words
       "
-      :style="{ height }"
+      :style="{ height, whiteSpace: 'break-spaces' }"
       @keypress.enter.prevent="onEnter"
       @keydown="generalHandler"
       @input="onChangeArea"
