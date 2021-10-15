@@ -1,6 +1,6 @@
 {
   "name": "better-write",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "novout",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,11 @@
     "format": "prettier src/**/*.{vue,css,ts} --write",
     "test": "jest",
     "extract": "vue-i18n-extract report --vueFiles './src/**/*.?(js|vue)' --languageFiles './src/lang/*.?(json|yml|yaml|js)'",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
   },
   "dependencies": {
     "@headlessui/vue": "1.4.1",
@@ -47,17 +51,24 @@
     "@vitejs/plugin-vue": "1.9.3",
     "@vue/compiler-sfc": "3.2.20",
     "@vue/eslint-config-typescript": "7.0.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-vue": "7.18.0",
     "husky": "^7.0.2",
     "jest": "27.2.2",
     "prettier": "2.4.1",
+    "standard-version": "^9.3.1",
     "ts-jest": "27.0.5",
     "typescript": "4.4.3",
     "unplugin-vue-components": "0.15.6",
     "vite": "2.6.7",
     "vue-i18n-extract": "^2.0.4",
     "vue-tsc": "0.28.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
