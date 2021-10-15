@@ -11,12 +11,16 @@ export default {
           fontColor: 'text-black dark:text-gray-100',
         },
         show: {
+          entity: {
+            shadow: false,
+          },
           fontFamily: 'font-raleway',
           fontColor: 'text-black dark:text-gray-100',
           paragraph: {
+            indent: 'indent-15',
             fontFamily: 'font-raleway',
             fontColor: 'text-black dark:text-gray-100',
-            fontSize: 'text-xs',
+            fontSize: 'text-sm',
             fontWeight: 'font-normal',
           },
           heading: {

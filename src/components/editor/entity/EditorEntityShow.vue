@@ -1,7 +1,11 @@
 <template>
   <section
     class="w-full relative px-14"
-    :class="edit ? 'shadow-winset dark:shadow-binset p-0 m-0' : ''"
+    :class="
+      edit && style.entity.shadow
+        ? 'shadow-winset dark:shadow-binset p-0 m-0'
+        : ''
+    "
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     @click="onClickInEntity"
@@ -15,7 +19,9 @@
       ref="show"
       class="overflow-hidden w-full break-all"
       :class="[
-        props.entity.type === 'paragraph' && !edit ? 'indent-15' : '',
+        props.entity.type === 'paragraph' && !edit
+          ? style.paragraph.indent
+          : '',
         props.entity.type === 'paragraph' ? 'text-justify' : '',
         props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
         props.entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
