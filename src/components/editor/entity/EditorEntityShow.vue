@@ -163,7 +163,9 @@
   const edit = ref<boolean>(false)
   const keyboard = ref<boolean>(false)
 
-  const _index = ref<number>(store.state.context.entity.indexOf(props.entity))
+  const _index = computed(() =>
+    store.state.context.entity.indexOf(props.entity)
+  )
   const data = ref<string>('')
   const show = ref<HTMLDivElement | null>(null)
   const input = ref<HTMLTextAreaElement | null>(null)
@@ -299,11 +301,10 @@
 
   const onEnter = async () => {
     const _input = input.value as HTMLTextAreaElement
-    const index = store.state.context.entity.indexOf(props.entity)
 
     const posRaw = data.value.slice(_input.selectionStart)
 
-    if (index + 1 === store.state.context.entity.length) {
+    if (_index.value + 1 === store.state.context.entity.length) {
       if (_input.selectionStart === 0) {
         data.value = ''
         emitter.emit('entity-input-raw', '')
@@ -349,7 +350,7 @@
 
     await nextTick
 
-    useScroll().to(`#entity-${index}`, 'center')
+    useScroll().to(`#entity-${_index.value}`, 'center')
 
     emitter.emit('entity-open', {
       entity: props.entity,
@@ -360,7 +361,6 @@
 
   const generalHandler = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLTextAreaElement
-    const index = store.state.context.entity.indexOf(props.entity)
 
     if (e.ctrlKey) {
       if (e.key === 'ArrowUp') {
@@ -406,7 +406,7 @@
         e.preventDefault()
         e.stopPropagation()
 
-        if (entity.utils().isFixed(index - 1)) return
+        if (entity.utils().isFixed(_index.value - 1)) return
 
         store.commit('context/insertRawInExistentEntity', props.entity)
 
@@ -423,9 +423,9 @@
         store.commit('context/removeInPage', props.entity)
       } else if (e.key === 'ArrowUp') {
         if (_input.selectionStart === 0) {
-          if (index === 0) return
+          if (_index.value === 0) return
 
-          if (entity.utils().isFixed(index - 1)) return
+          if (entity.utils().isFixed(_index.value - 1)) return
 
           emitter.emit('entity-close', { all: true })
 
@@ -435,12 +435,12 @@
         }
       } else if (e.key === 'ArrowDown') {
         if (_input.selectionStart === _input.textLength) {
-          if (index + 1 === store.state.context.entity.length) {
+          if (_index.value + 1 === store.state.context.entity.length) {
             emitter.emit('entity-input-focus')
             return
           }
 
-          if (entity.utils().isFixed(index + 1)) return
+          if (entity.utils().isFixed(_index.value + 1)) return
 
           emitter.emit('entity-close', { all: true })
 
@@ -453,10 +453,6 @@
   }
 
   const onClickInEntity = (e: MouseEvent) => {
-    const index = store.state.context.entity.indexOf(props.entity)
-
-    // useScroll().to(`#entity-${index}`, 'center')
-
     onEdit(e, { external: true })
   }
 
