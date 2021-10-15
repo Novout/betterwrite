@@ -107,7 +107,7 @@
       ]"
       class="
         w-full
-        text-xs
+        text-sm
         bg-transparent
         dark:text-gray-100
         text-black

@@ -7,7 +7,7 @@ export default {
       styles: {
         input: {
           fontFamily: 'font-raleway',
-          fontSize: 'text-xs',
+          fontSize: 'text-sm',
           fontColor: 'text-black dark:text-gray-100',
         },
         show: {

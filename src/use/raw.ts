@@ -2,7 +2,7 @@ import { ContextStatePageContent } from '@/types/context'
 
 export const bold = () => {
   const open = () => {
-    return '<span class="font-bold text-xs">'
+    return '<span class="font-bold text-sm">'
   }
 
   const close = () => {
@@ -14,7 +14,7 @@ export const bold = () => {
 
 export const italic = () => {
   const open = () => {
-    return '<span class="italic text-xs">'
+    return '<span class="italic text-sm">'
   }
 
   const close = () => {
@@ -26,7 +26,7 @@ export const italic = () => {
 
 export const link = () => {
   const open = (tag: string) => {
-    return `<a href="${tag}" target="_blank" class="underline text-xs">`
+    return `<a href="${tag}" target="_blank" class="underline text-sm">`
   }
 
   const close = () => {
