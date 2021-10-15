@@ -267,7 +267,6 @@ describe('Editor Converter', () => {
   // utilities
   it('should correct page break', () => {
     const entity = {
-      id: 0,
       type: 'page-break',
       raw: '',
       createdAt: useFormat().actually(),
@@ -281,7 +280,6 @@ describe('Editor Converter', () => {
 
   it('should correct line break', () => {
     const entity = {
-      id: 0,
       type: 'line-break',
       raw: '',
       createdAt: useFormat().actually(),
@@ -291,6 +289,19 @@ describe('Editor Converter', () => {
     const raw = useRaw().convert(entity);
 
     expect('').toEqual(raw);
+  })
+
+  it('should correct image insert', () => {
+    const entity = {
+      type: 'image',
+      raw: 'data:image/base64...',
+      createdAt: useFormat().actually(),
+      updatedAt: useFormat().actually(),
+    }as ContextStatePageContent;
+
+    const raw = useRaw().convert(entity);
+
+    expect('<img src=\"data:image/base64...\" width=\"50%\">').toEqual(raw);
   })
 })
 
