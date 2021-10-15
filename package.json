@@ -59,10 +59,5 @@
     "vite": "2.6.7",
     "vue-i18n-extract": "^2.0.4",
     "vue-tsc": "0.28.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint && yarn commitlint --edit $1"
-    }
   }
 }
