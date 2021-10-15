@@ -16,6 +16,7 @@ export const useKeyboard = () => {
   const utils = useUtils()
 
   const init: Callback<void> = () => {
+    defaultPrevents()
     saveLocal()
     loadLocal()
     newProject()
@@ -31,6 +32,12 @@ export const useKeyboard = () => {
 
   const destroy = () => {
     keyboard.stop()
+  }
+
+  const defaultPrevents = () => {
+    keyboard.bind('ctrl > d', (e: Event) => {
+      utils.prevent(e)
+    })
   }
 
   const saveLocal = () => {

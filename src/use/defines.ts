@@ -7,7 +7,7 @@ export const useDefines = () => {
       localLoadProject: ['CTRL + P', 'ctrl > p'],
       newProject: ['CTRL + Shift + Q', 'ctrl > shift > q'],
       newChapter: ['CTRL + Q', 'ctrl > q'],
-      deleteChapter: ['CTRL + D', 'ctrl > d'],
+      deleteChapter: ['CTRL + Alt + D', 'ctrl > alt > d'],
       configurationPDF: ['CTRL + G', 'ctrl > g'],
       previewPDF: ['CTRL + Shift + G', 'ctrl > shift > g'],
       generatePDF: ['CTRL + Alt + G', 'ctrl > alt > g'],

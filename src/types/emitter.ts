@@ -5,6 +5,7 @@ export type VueEmitterName =
   | 'entity-focus'
   | 'entity-input-raw'
   | 'entity-open-last'
+  | 'entity-not-mutate'
   | 'pdf-preview-exists'
 
 export interface VueEmitter {

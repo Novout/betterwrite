@@ -267,6 +267,19 @@
         onEdit()
       }
     })
+
+    emitter.on('entity-not-mutate', async (entity: ContextStatePageContent) => {
+      const _id = store.state.context.entity.indexOf(entity)
+
+      focus.value = false
+      edit.value = false
+
+      await nextTick
+
+      if (store.state.context.entity[_id - 1] === props.entity) {
+        onEdit()
+      }
+    })
   })
 
   const onUpdateContent = () => {
@@ -363,7 +376,20 @@
     const _input = input.value as HTMLTextAreaElement
 
     if (e.ctrlKey) {
-      if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      e.stopPropagation()
+
+      if (e.key === 'd') {
+        emitter.emit('entity-not-mutate', props.entity)
+
+        await nextTick
+
+        store.commit('context/removeInPage', props.entity)
+      } else if (e.key === 'ArrowUp') {
+        emitter.emit('entity-not-mutate', props.entity)
+
+        await nextTick
+
         store.commit('context/switchInPage', {
           entity: props.entity,
           direction: 'up',
@@ -375,6 +401,10 @@
 
         emitter.emit('entity-open', { entity: props.entity, up: true })
       } else if (e.key === 'ArrowDown') {
+        emitter.emit('entity-not-mutate', props.entity)
+
+        await nextTick
+
         store.commit('context/switchInPage', {
           entity: props.entity,
           direction: 'down',
