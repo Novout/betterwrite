@@ -449,7 +449,7 @@
   const onClickInEntity = (e: MouseEvent) => {
     const index = store.state.context.entity.indexOf(props.entity)
 
-    useScroll().to(`#entity-${index}`, 'center')
+    // useScroll().to(`#entity-${index}`, 'center')
 
     onEdit(e, { external: true })
   }
