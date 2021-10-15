@@ -26,6 +26,7 @@ export interface EditorStateShow {
 }
 
 export interface EditorStateShowParagraph {
+  indent: string
   fontFamily: string
   fontColor: string
   fontSize: string
