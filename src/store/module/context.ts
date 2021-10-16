@@ -23,9 +23,12 @@ export default {
     updateInPage(state: ContextState, obj: Record<string, any>) {
       const index = state.entity.indexOf(obj.entity)
 
-      if (!obj.raw || index === -1) return
+      if (index === -1 || obj.raw === state.entity[index].raw) return
 
-      if (obj.raw !== state.entity[index].raw) {
+      if (obj.raw === '') {
+        state.entity[index].raw = useEnv().emptyLine()
+        state.entity[index].updatedAt = useFormat().actually()
+      } else if (obj.raw !== state.entity[index].raw) {
         state.entity[index].raw = obj.raw
         state.entity[index].updatedAt = useFormat().actually()
       }
