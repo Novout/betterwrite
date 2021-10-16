@@ -9,6 +9,7 @@ import pdf from '@/store/module/pdf'
 import auth from '@/store/module/auth'
 
 export default createStore({
+  strict: true,
   modules: {
     context,
     editor,
