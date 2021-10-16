@@ -3,9 +3,11 @@ import { ContextState } from '@/types/context'
 import { useScroll } from '@/use/scroll'
 import { useStore } from 'vuex'
 import { computed, reactive, nextTick } from 'vue'
+import { useEnv } from './env'
 
 export const useEntity = () => {
   const store = useStore()
+  const env = useEnv()
   const pages = computed(() => store.state.project.pages)
   const fstate = reactive({
     entry: '' as string,
@@ -23,12 +25,18 @@ export const useEntity = () => {
       )
     }
 
-    const isFixed = (index: number) => {
-      const type = store.state.context.entity[index].type
+    const isFixed = (index: number, options?: Record<string, boolean>) => {
+      const entity = store.state.context.entity[index]
 
-      if (!type) return false
+      if (!entity.type) return false
 
-      return type === 'page-break' || type === 'line-break' || type === 'image'
+      if (options?.emptyLine && entity.raw === env.emptyLine()) return true
+
+      return (
+        entity.type === 'page-break' ||
+        entity.type === 'line-break' ||
+        entity.type === 'image'
+      )
     }
 
     return { entry, isFixed }

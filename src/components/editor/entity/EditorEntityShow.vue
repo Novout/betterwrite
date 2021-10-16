@@ -241,14 +241,20 @@
         payload?.up &&
         store.state.context.entity[index - 1] === props.entity
       ) {
-        onEdit(undefined, { keyboard: true })
+        onEdit(undefined, {
+          keyboard: true,
+          selectionInitial: payload?.selectionInitial,
+        })
       }
 
       if (
         !payload?.up &&
         store.state.context.entity[index + 1] === props.entity
       ) {
-        onEdit(undefined, { keyboard: true })
+        onEdit(undefined, {
+          keyboard: true,
+          selectionInitial: payload?.selectionInitial,
+        })
       }
     })
 
@@ -310,6 +316,15 @@
     await nextTick
 
     edit.value = true
+
+    await nextTick
+
+    if (!input.value) return
+
+    if (options?.selectionInitial) {
+      input.value.selectionStart = 0
+      input.value.selectionEnd = 0
+    }
   }
 
   const onEnter = async () => {
@@ -420,6 +435,9 @@
       if ((e.key === 'Delete' || e.key === 'Backspace') && data.value === '') {
         e.preventDefault()
         e.stopPropagation()
+
+        if (entity.utils().isFixed(_index.value - 1)) return
+
         emitter.emit('entity-close', { all: true })
 
         await nextTick

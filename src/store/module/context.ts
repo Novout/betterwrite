@@ -139,7 +139,13 @@ export default {
 
       if (index === -1) return
 
-      state.entity[index - 1].raw = state.entity[index - 1].raw + entity.raw
+      const target = state.entity[index - 1]
+
+      if (target.raw === useEnv().emptyLine()) {
+        state.entity[index - 1].raw = entity.raw
+      } else {
+        state.entity[index - 1].raw = target.raw + entity.raw
+      }
     },
   },
   actions: {},
