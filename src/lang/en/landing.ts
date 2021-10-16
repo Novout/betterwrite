@@ -23,5 +23,10 @@ export default {
     raw: 'Write.',
     convert: 'Visualize.',
     pdf: 'Create.',
+    data: 'For more *information* about &Better Write& see https://github.com/Novout/better-write',
+  },
+  third: {
+    title: 'Stack.',
+    description: 'Check here all the technologies used to build Better Write.',
   },
 }

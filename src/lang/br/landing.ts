@@ -27,5 +27,11 @@ export default {
     raw: 'Escreva.',
     convert: 'Visualize.',
     pdf: 'Crie.',
+    data: 'Para mais *informações* sobre &Better Write& consulte https://github.com/Novout/better-write',
+  },
+  third: {
+    title: 'Stack.',
+    description:
+      'Confira aqui todas as tecnologias utilizadas para a construção do Better Write.',
   },
 }

@@ -27,13 +27,13 @@
         p-5
       "
     >
-      <div class="flex flex-col items-center w-80">
+      <div class="flex flex-col items-center w-80 shadow-wp-shadow">
         <p class="font-tiny text-lg md:text-2xl">
           {{ t('landing.second.raw') }}
         </p>
         <LandingSecondRaw v-model="data" class="bg-gray-100" />
       </div>
-      <div class="flex flex-col items-center w-80">
+      <div class="flex flex-col items-center w-80 shadow-wp-shadow">
         <p class="font-tiny text-lg md:text-2xl">
           {{ t('landing.second.convert') }}
         </p>
@@ -49,5 +49,5 @@
 
   const { t } = useI18n()
 
-  const data = ref('')
+  const data = ref(t('landing.second.data'))
 </script>
