@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/Novout/better-write/compare/v0.1.1...v0.1.2) (2021-10-16)
+
+
+### Bug Fixes
+
+* **entity:** empty line raw in delete paragraph ([6cac5f2](https://github.com/Novout/better-write/commits/6cac5f204f98612c9945cd6ad606aa0b7724cc78))
+
+
+### Structure
+
+* **vite:** exclude @vue/reacitivity in optimize ([f5652f4](https://github.com/Novout/better-write/commits/f5652f49c51b0bc6e254d3718f673674b805919f))
+
 ### 0.1.1 (2021-10-15)
 
 
