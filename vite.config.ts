@@ -49,6 +49,7 @@ export default defineConfig({
     ],
     exclude: [
       'vue-demi',
+      '@vue/reactivity'
     ],
   },
 });
