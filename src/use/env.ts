@@ -1,8 +1,8 @@
 export const useEnv = () => {
   const getCorrectLocalUrl = () => {
     return import.meta.env.PROD
-      ? 'https://novout.github.io/better-write/'
-      : 'http://localhost:3000/better-write/'
+      ? 'https://novout.github.io/better-write/editor'
+      : 'http://localhost:3000/better-write/editor'
   }
 
   const projectEmpty = (): string => {
