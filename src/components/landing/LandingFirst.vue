@@ -93,6 +93,44 @@
           </LandingItems>
         </ul>
       </div>
+      <div
+        class="flex items-center justify-between lg:w-5/12 xl:w-1/3 mt-20 pb-10"
+      >
+        <router-link
+          class="
+            font-bold
+            text-base
+            md:text-lg
+            px-2
+            py-2
+            md:px-5 md:py-5
+            rounded-full
+            bg-black-opacity
+            hover:bg-gray-900
+            text-gray-200
+          "
+          to="/editor"
+          >{{ t('landing.first.editor.website') }}</router-link
+        >
+        <a
+          class="
+            font-bold
+            text-base
+            md:text-lg
+            opacity-50
+            px-2
+            py-2
+            md:px-5 md:py-5
+            rounded-full
+            bg-black-opacity
+            hover:bg-gray-900
+            bg-gray-800
+            text-gray-200
+            pointer-events-none
+          "
+          >{{ t('landing.first.editor.desktop') }}</a
+        >
+      </div>
     </div>
   </section>
 </template>
