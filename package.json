@@ -1,6 +1,6 @@
 {
   "name": "better-write",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "novout",
   "scripts": {
     "dev": "vite",

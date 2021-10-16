@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/Novout/better-write/compare/v0.1.2...v0.1.3) (2021-10-16)
+
+
+### Features
+
+* **landing:** finish ([743fc2a](https://github.com/Novout/better-write/commits/743fc2ad7417d3762bffceb6649e485e55595985))
+* **landing:** first section ([eebc4c9](https://github.com/Novout/better-write/commits/eebc4c96713ec8db1a366c552cfb9f615c614f6e))
+* **landing:** fourth background ([3cc20f1](https://github.com/Novout/better-write/commits/3cc20f1975981897f1ce2cba25c6f334e54e1ae4))
+* **landing:** icons to editor ([3a60be7](https://github.com/Novout/better-write/commits/3a60be7227edb3e50020136c66457c401562b242))
+* **landing:** second section ([c5f27f7](https://github.com/Novout/better-write/commits/c5f27f7cd7d7cf1cfca0856fd66dd32afde5fe74))
+
+
+### Bug Fixes
+
+* **context:** update empty line ([96e38c6](https://github.com/Novout/better-write/commits/96e38c608d4c78180792976ed2b36377c399c3ee))
+
+
+### Structure
+
+* **vue:** vuex strict mode ([2c14a1b](https://github.com/Novout/better-write/commits/2c14a1be4ef9b3ccc477f05b996de587dc87b775))
+
 ### [0.1.2](https://github.com/Novout/better-write/compare/v0.1.1...v0.1.2) (2021-10-16)
 
 
