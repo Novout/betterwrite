@@ -1,5 +1,7 @@
 export default {
   first: {
+    title: 'Editor para escritores criativos.',
+    description: 'Crie como quiser, para o que quiser.',
     items: {
       dropbox: {
         title: 'Integração com Dropbox',
@@ -14,5 +16,12 @@ export default {
         description: '',
       },
     },
+  },
+  second: {
+    title: 'Praticidade.',
+    description: 'Observe a versão final de seu projeto a todo momento.',
+    raw: 'Escreva.',
+    convert: 'Visualize.',
+    pdf: 'Crie.',
   },
 }

@@ -1,5 +1,7 @@
 export default {
   first: {
+    title: 'Editor for creative writers.',
+    description: 'Create how you want, for what you want.',
     items: {
       dropbox: {
         title: 'Dropbox Integration',
@@ -14,5 +16,12 @@ export default {
         description: '',
       },
     },
+  },
+  second: {
+    title: 'Practicality.',
+    description: 'Watch the final version of your project at all times.',
+    raw: 'Write.',
+    convert: 'Visualize.',
+    pdf: 'Create.',
   },
 }
