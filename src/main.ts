@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createHead } from '@vueuse/head'
 import vfmPlugin from 'vue-final-modal'
 import Toast, { POSITION } from 'vue-toastification'
 import mitt from 'mitt'
@@ -15,10 +16,12 @@ import 'vue-toastification/dist/index.css'
 import { VueEmitter } from './types/emitter'
 
 const app = createApp(App)
-const emitter = mitt()
+const head = createHead()
 
+const emitter = mitt()
 app.config.globalProperties.emitter = emitter as VueEmitter
 
+app.use(head)
 app.use(router)
 app.use(store)
 app.use(i18n)
