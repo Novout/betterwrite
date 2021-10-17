@@ -141,6 +141,7 @@
   import { useToast } from 'vue-toastification'
   import { useI18n } from 'vue-i18n'
   import { ContextStatePageContent } from '@/types/context'
+  import { EntityShowEditOptions } from '@/types/entity'
 
   const props = defineProps({
     entity: {
@@ -298,7 +299,7 @@
     if (!focus.value) edit.value = false
   }
 
-  const onEdit = async (e?: MouseEvent, options?: Record<string, boolean>) => {
+  const onEdit = async (e?: MouseEvent, options?: EntityShowEditOptions) => {
     onStopEvents(e)
     onChangeEdit()
 
@@ -513,7 +514,7 @@
   }
 
   const onClickInEntity = (e: MouseEvent) => {
-    onEdit(e, { external: true })
+    onStopEvents(e)
   }
 
   const onStopEvents = (e?: MouseEvent) => {
