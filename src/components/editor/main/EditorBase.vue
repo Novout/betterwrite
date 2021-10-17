@@ -26,7 +26,7 @@
         flex flex-col
         w-full
         max-h-screen
-        overflow-y-auto
+        overflow-y-auto overflow-x-hidden
         bg-gray-100
         dark:bg-gray-700
       "

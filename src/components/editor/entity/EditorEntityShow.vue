@@ -1,11 +1,24 @@
 <template>
   <section
+    v-motion
     class="w-full relative px-14"
     :class="
       edit && style.entity.shadow
         ? 'shadow-winset dark:shadow-binset p-0 m-0'
         : ''
     "
+    :initial="{
+      x: 0,
+    }"
+    :enter="{
+      x: 10,
+    }"
+    :visible="{
+      x: 10,
+    }"
+    :leave="{
+      x: 0,
+    }"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     @click="onClickInEntity"
