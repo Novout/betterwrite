@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/Novout/better-write/compare/v0.1.5...v0.1.6) (2021-10-17)
+
+
+### Features
+
+* **editor:** entity show type ([67cad7a](https://github.com/Novout/better-write/commits/67cad7a75311c59ebb555233531982136d8e822d))
+* **editor:** scroll to entity in border click ([9050c9e](https://github.com/Novout/better-write/commits/9050c9e676f02373b995795c8581f43f2fbb4228))
+
+
+### Bug Fixes
+
+* **editor:** change area in target swap entitys ([1816f04](https://github.com/Novout/better-write/commits/1816f04d51661876269348dab92affd8ca03e8b6))
+* **editor:** entity performance in mutations ([e12523c](https://github.com/Novout/better-write/commits/e12523cf497776dac4a9b8594ae092be99aefb75))
+* **editor:** ignore external click ([63251e1](https://github.com/Novout/better-write/commits/63251e1fe3adb0eb82e575a9d3293d4cc2723aab))
+* **entity:** update container area after enter break line ([d8111e4](https://github.com/Novout/better-write/commits/d8111e4a613339cf0b20b10f02e7e77fcee4ce46))
+
 ### [0.1.5](https://github.com/Novout/better-write/compare/v0.1.4...v0.1.5) (2021-10-17)
 
 
