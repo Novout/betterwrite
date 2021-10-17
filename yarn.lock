@@ -1157,6 +1157,14 @@
     "@vueuse/shared" "6.5.3"
     vue-demi "*"
 
+"@vueuse/core@^6.5.3":
+  version "6.6.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-6.6.1.tgz#ccf61e1ee62bec2db6156efbb0ae635be3c32e4c"
+  integrity sha512-55RYUoZ/n20rgrs/rMAgtlnOAhp8w5ps4W/AxeNKPwpLqHx98FObOY3VfBvXabu8mZ1DeimP3zTCf2LVPdJTPA==
+  dependencies:
+    "@vueuse/shared" "6.6.1"
+    vue-demi "*"
+
 "@vueuse/head@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.6.0.tgz#5584b1f724327cfce941c42efec9e590f5799329"
@@ -1178,10 +1186,26 @@
     qrcode "^1.4.4"
     universal-cookie "^4.0.4"
 
+"@vueuse/motion@^2.0.0-beta.4":
+  version "2.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@vueuse/motion/-/motion-2.0.0-beta.4.tgz#08f9a151f29bc1539316c49000c67efea194498d"
+  integrity sha512-+4lnWz+KdaVmpeUwDyguTApzmjB+NzpxwBL/AcAMhVqp4G6rm8ywGSJaHGJG04uSNIQkJ6dUJx2zppnRxDSyrA==
+  dependencies:
+    "@vueuse/core" "^6.5.3"
+    popmotion "^10.0.1"
+    vue-demi "*"
+
 "@vueuse/shared@6.5.3":
   version "6.5.3"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-6.5.3.tgz#6503fa4bfbf45d0616bacedb8a4bd003f01da73b"
   integrity sha512-ChOKu3mECyZeqGJ/gHVm0CaHoZK5/TwNZr1ZM/aqH+RaRNQvC1qkLf1/8PBugzN3yRgC3BtZ/M1kLpGe/BFylw==
+  dependencies:
+    vue-demi "*"
+
+"@vueuse/shared@6.6.1":
+  version "6.6.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-6.6.1.tgz#7d9dd35ace8f6fff56d474a1b3b95d699d237328"
+  integrity sha512-wAqdcVCSCIWBKU9dgNqQwo3D+eD5ld0Ncfsh2i9Tss5Qt0OgijJ1cxjposrtS32kQCRpVGa0MwjD5kcdHWwykw==
   dependencies:
     vue-demi "*"
 
@@ -3046,6 +3070,13 @@ fraction.js@^4.1.1:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.1.1.tgz#ac4e520473dae67012d618aab91eda09bcb400ff"
   integrity sha512-MHOhvvxHTfRFpF1geTK9czMIZ6xclsEor2wkIGYYq+PxcQqT7vStJqjhe6S1TenZrMZzo+wlqOufBDVepUEgPg==
 
+framesync@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/framesync/-/framesync-6.0.0.tgz#e6ad8ec128d33291a03cc34e58365c41265a1dae"
+  integrity sha512-9iBw/uZ/5fDURdpLrgc/eoFXiX9HC3DeOSLtTL5lZSyX/vQb+kjEz9CPNTiTObfK5PKyGgIUTstU8PK9W6EvoA==
+  dependencies:
+    tslib "^2.1.0"
+
 fs-access@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/fs-access/-/fs-access-1.0.1.tgz#d6a87f262271cefebec30c553407fb995da8777a"
@@ -3277,6 +3308,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
+
+hey-listen@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/hey-listen/-/hey-listen-1.0.8.tgz#8e59561ff724908de1aa924ed6ecc84a56a9aa68"
+  integrity sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==
 
 hosted-git-info@^2.1.4:
   version "2.8.9"
@@ -4902,6 +4938,16 @@ pngjs@^3.3.0:
   resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.4.0.tgz#99ca7d725965fb655814eaf65f38f12bbdbf555f"
   integrity sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==
 
+popmotion@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-10.0.1.tgz#5be5b80112a1386b7f2a11d081a1ea3ca7508d8e"
+  integrity sha512-jmVmbXMAl/qrrogQXCMGFR8+F290J6gl9kKHSYzAKBRTHm7B1unadmEeLSXX7rGtzPxOfKVnWHA3t3m3CVnxqw==
+  dependencies:
+    framesync "6.0.0"
+    hey-listen "^1.0.8"
+    style-value-types "5.0.0"
+    tslib "^2.1.0"
+
 postcss-js@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/postcss-js/-/postcss-js-3.0.3.tgz#2f0bd370a2e8599d45439f6970403b5873abda33"
@@ -5731,6 +5777,14 @@ strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
 
+style-value-types@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-5.0.0.tgz#76c35f0e579843d523187989da866729411fc8ad"
+  integrity sha512-08yq36Ikn4kx4YU6RD7jWEv27v4V+PUsOGa4n/as8Et3CuODMJQ00ENeAVXAeydX4Z2j1XHZF1K2sX4mGl18fA==
+  dependencies:
+    hey-listen "^1.0.8"
+    tslib "^2.1.0"
+
 supports-color@^5.3.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
@@ -5964,6 +6018,11 @@ tslib@^1.8.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
+
+tslib@^2.1.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
+  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
 tsutils@^3.21.0:
   version "3.21.0"

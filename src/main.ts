@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'
+import { MotionPlugin as motion } from '@vueuse/motion'
 import vfmPlugin from 'vue-final-modal'
 import Toast, { POSITION } from 'vue-toastification'
 import mitt from 'mitt'
@@ -21,10 +22,11 @@ const head = createHead()
 const emitter = mitt()
 app.config.globalProperties.emitter = emitter as VueEmitter
 
-app.use(head)
 app.use(router)
 app.use(store)
 app.use(i18n)
+app.use(motion)
+app.use(head)
 app.use(vfmPlugin)
 app.use(Toast, {
   position: POSITION.TOP_CENTER,
