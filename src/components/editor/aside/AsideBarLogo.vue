@@ -16,6 +16,6 @@
   const router = useRouter()
 
   const onClick = () => {
-    router.push('/')
+    router.push('/landing')
   }
 </script>

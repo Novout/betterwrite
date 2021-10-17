@@ -109,7 +109,7 @@
             hover:bg-gray-900
             text-gray-200
           "
-          to="/editor"
+          to="/"
           >{{ t('landing.first.editor.website') }}</router-link
         >
         <a

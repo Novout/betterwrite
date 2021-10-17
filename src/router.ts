@@ -4,8 +4,8 @@ import Editor from '@/pages/Editor.vue'
 import ErrorPage from '@/pages/404.vue'
 
 const routes = [
-  { path: '/', component: Landing },
-  { path: '/editor', component: Editor },
+  { path: '/', component: Editor },
+  { path: '/landing', component: Landing },
   { path: '/:pathMatch(.*)*', component: ErrorPage },
 ]
 
