@@ -6,8 +6,6 @@ import { HeadlessUiResolver } from "unplugin-vue-components/resolvers";
 import vueI18n from "@intlify/vite-plugin-vue-i18n";
 
 export default defineConfig({
-  base: '/better-write/',
-
   plugins: [
     vue(),
     vueI18n({

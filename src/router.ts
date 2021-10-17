@@ -10,6 +10,6 @@ const routes = [
 ]
 
 export default createRouter({
-  history: createWebHistory('/better-write/'),
+  history: createWebHistory(),
   routes,
 })
