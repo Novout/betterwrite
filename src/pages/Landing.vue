@@ -20,3 +20,21 @@
     <LandingThird />
   </main>
 </template>
+
+<script setup lang="ts">
+  import { useHead } from '@vueuse/head'
+  import { useI18n } from 'vue-i18n'
+  import { computed } from 'vue'
+
+  const { t } = useI18n()
+
+  useHead({
+    title: computed(() => t('seo.landing.title')),
+    meta: [
+      {
+        name: `description`,
+        content: computed(() => t('seo.landing.description')),
+      },
+    ],
+  })
+</script>
