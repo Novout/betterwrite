@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/Novout/better-write/compare/v0.1.4...v0.1.5) (2021-10-17)
+
+
+### Features
+
+* **animation:** entity popover ([a77999a](https://github.com/Novout/better-write/commits/a77999ab9e84bb91dea3f4e780e10b800e0975f2))
+* **animation:** entity show appear ([3172301](https://github.com/Novout/better-write/commits/3172301bc0506e3a5eaae3f5d6f769f266f7203f))
+
+
+### Bug Fixes
+
+* **router:** redirect to /landing in initial visit ([b1c65b4](https://github.com/Novout/better-write/commits/b1c65b42472ba1e0ead1acc739d5a951b98d702e))
+* **spa:** editor in / route for auth redirects ([9f04350](https://github.com/Novout/better-write/commits/9f0435019ec249aa16f71862e468e3d13f5b02b5))
+
+
+### CI
+
+* remove gh-pages ([b7817d0](https://github.com/Novout/better-write/commits/b7817d0c83667d7ebee4c2e315b48642c505be0c))
+
+
+### Structure
+
+* **deps:** added @vueuse/motion ([e2d417b](https://github.com/Novout/better-write/commits/e2d417b1f57c1c667b4ae74a9d672a13035604ac))
+* **general:** some changes ([5f5d823](https://github.com/Novout/better-write/commits/5f5d823ae95a6cb05d06972eb99f9116e0c47e7a))
+* route matching in / ([a19cb66](https://github.com/Novout/better-write/commits/a19cb66003ac10a2cc5e6252705586130dda7753))
+
 ### [0.1.4](https://github.com/Novout/better-write/compare/v0.1.3...v0.1.4) (2021-10-17)
 
 
