@@ -49,7 +49,9 @@ export default defineConfig({
     ],
     exclude: [
       'vue-demi',
-      '@vue/reactivity'
+      '@vue/reactivity',
+      '@vueuse/motion',
+      '@vuseuse/head'
     ],
   },
 });

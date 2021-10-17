@@ -17,24 +17,6 @@
       props.entity.type === 'heading-two' ? 'top-12' : '',
       props.entity.type === 'heading-three' ? 'top-8' : '',
     ]"
-    :initial="{
-      opacity: 0,
-      x: -25,
-    }"
-    :enter="{
-      opacity: 1,
-      x: 0,
-      transition: {
-        x: {
-          duration: 75,
-          ease: 'easeIn',
-        },
-        opacity: {
-          duration: 75,
-          ease: 'easeIn',
-        },
-      },
-    }"
   >
     <section
       v-if="state.new"
@@ -242,21 +224,7 @@
       props.entity.type === 'line-break' ? 'pt-2' : '',
     ]"
   >
-    <p
-      v-motion
-      :initial="{
-        opacity: 0,
-      }"
-      :enter="{
-        opacity: 1,
-        transition: {
-          opacity: {
-            duration: 200,
-            ease: 'easeIn',
-          },
-        },
-      }"
-    >
+    <p>
       {{ update }}
     </p>
   </section>
