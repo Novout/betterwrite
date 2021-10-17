@@ -43,6 +43,10 @@ export const useEnv = () => {
     return import.meta.env.VITE_PAGE_BREAK as string
   }
 
+  const initialLoad = () => {
+    return import.meta.env.VITE_INITIAL_LOAD as string
+  }
+
   return {
     dropboxKey,
     projectEmpty,
@@ -54,5 +58,6 @@ export const useEnv = () => {
     emptyLine,
     lineBreak,
     pageBreak,
+    initialLoad,
   }
 }

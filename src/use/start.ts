@@ -1,17 +1,21 @@
-import { Store, useStore } from 'vuex'
+import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import { Callback } from '@/types/utils'
 import { usePDF } from './pdf'
 import { useFormat } from './format'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
+import { useEnv } from './env'
 import i18n from '@/lang'
 
 export const useStart: Callback<void> = () => {
   const store = useStore()
   const route = useRoute()
+  const router = useRouter()
   const toast = useToast()
   const pdf = usePDF()
+  const env = useEnv()
+  const format = useFormat()
   const { t } = i18n.global
 
   const global = () => {
@@ -25,7 +29,7 @@ export const useStart: Callback<void> = () => {
         type: 'system',
         method: 'log',
         arguments,
-        createdAt: useFormat().actually(),
+        createdAt: format.actually(),
       })
       return _log.apply(console, arguments as any)
     }
@@ -35,7 +39,7 @@ export const useStart: Callback<void> = () => {
         type: 'system',
         method: 'warn',
         arguments,
-        createdAt: useFormat().actually(),
+        createdAt: format.actually(),
       })
       return _warn.apply(console, arguments as any)
     }
@@ -45,7 +49,7 @@ export const useStart: Callback<void> = () => {
         type: 'system',
         method: 'error',
         arguments,
-        createdAt: useFormat().actually(),
+        createdAt: format.actually(),
       })
       return _error.apply(console, arguments as any)
     }
@@ -55,7 +59,7 @@ export const useStart: Callback<void> = () => {
         type: 'system',
         method: 'info',
         arguments,
-        createdAt: useFormat().actually(),
+        createdAt: format.actually(),
       })
       return _info.apply(console, arguments as any)
     }
@@ -113,7 +117,16 @@ export const useStart: Callback<void> = () => {
       : ((document.querySelector('html') as HTMLElement).lang = 'en-US')
   }
 
+  const initial = () => {
+    if (!localStorage.getItem(env.initialLoad())) {
+      localStorage.setItem(env.initialLoad(), env.initialLoad())
+
+      router.push('/landing')
+    }
+  }
+
   const init = () => {
+    initial()
     global()
     dark()
     lang()
