@@ -221,7 +221,7 @@
     emitter.on(
       'entity-close',
       (entity?: ContextStatePageContent, options?: Record<string, boolean>) => {
-        if (options && options.all) {
+        if (options?.all) {
           onUpdateContent()
           return
         }
@@ -244,6 +244,7 @@
         onEdit(undefined, {
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
+          switch: payload?.switch,
         })
       }
 
@@ -318,6 +319,10 @@
     edit.value = true
 
     await nextTick
+
+    if (options?.switch) {
+      onChangeArea()
+    }
 
     if (!input.value) return
 
@@ -413,7 +418,11 @@
 
         await nextTick
 
-        emitter.emit('entity-open', { entity: props.entity, up: true })
+        emitter.emit('entity-open', {
+          entity: props.entity,
+          up: true,
+          switch: true,
+        })
       } else if (e.key === 'ArrowDown') {
         emitter.emit('entity-not-mutate', props.entity)
 
@@ -428,7 +437,11 @@
 
         await nextTick
 
-        emitter.emit('entity-open', { entity: props.entity, up: false })
+        emitter.emit('entity-open', {
+          entity: props.entity,
+          up: false,
+          switch: true,
+        })
       }
     } else {
       if ((e.key === 'Delete' || e.key === 'Backspace') && data.value === '') {
