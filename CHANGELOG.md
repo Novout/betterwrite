@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/Novout/better-write/compare/v0.1.3...v0.1.4) (2021-10-17)
+
+
+### Features
+
+* **editor:** bw logo redirect to main route ([7719f50](https://github.com/Novout/better-write/commits/7719f50d5573285bf71e0eed7ad408017234630d))
+* **seo:** head route ([68020ab](https://github.com/Novout/better-write/commits/68020ab969e79de4779b0239dae6201d5db8bbac))
+
+
+### Structure
+
+* **deps:** added @vueuse/head ([d01e082](https://github.com/Novout/better-write/commits/d01e08227f62a146871a7a8cc8a28ecaea406439))
+
 ### [0.1.3](https://github.com/Novout/better-write/compare/v0.1.2...v0.1.3) (2021-10-16)
 
 
