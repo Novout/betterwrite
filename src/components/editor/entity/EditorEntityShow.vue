@@ -375,10 +375,9 @@
     await nextTick
 
     onUpdateContent()
+    onChangeArea()
 
     await nextTick
-
-    useScroll().to(`#entity-${_index.value}`, 'center')
 
     emitter.emit('entity-open', {
       entity: props.entity,
