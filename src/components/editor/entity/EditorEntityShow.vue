@@ -158,6 +158,7 @@
   const factory = useFactory()
   const { t } = useI18n()
   const raw = useRaw()
+  const scroll = useScroll()
 
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)
@@ -515,6 +516,8 @@
 
   const onClickInEntity = (e: MouseEvent) => {
     onStopEvents(e)
+
+    scroll.to(`#entity-${_index.value}`, 'center')
   }
 
   const onStopEvents = (e?: MouseEvent) => {
