@@ -1,6 +1,11 @@
-import { ContextState, ContextStatePageContent } from '@/types/context'
+import {
+  ContextState,
+  ContextStatePageContent,
+  EntityType,
+} from '@/types/context'
 import { useEnv } from '@/use/env'
 import { useFormat } from '@/use/format'
+import { useUtils } from '../../use/utils'
 
 export default {
   namespaced: true,
@@ -38,7 +43,9 @@ export default {
 
       if (index === -1 || !index) return
 
-      state.entity.splice(index, 1)
+      state.entity = state.entity.filter(
+        (item: ContextStatePageContent) => state.entity.indexOf(item) !== index
+      )
     },
     switchInPage(state: ContextState, obj: Record<any, any>) {
       const index = state.entity.indexOf(obj.entity)
@@ -93,12 +100,14 @@ export default {
 
       if (index === -1) return
 
-      state.entity.splice(index, 0, {
+      const entity = {
         type: payload.type as string,
         raw: useEnv().emptyLine(),
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
-      } as ContextStatePageContent)
+      } as ContextStatePageContent
+
+      state.entity = useUtils().array().insert(state.entity, index, entity)
     },
     newInPagePosEdit(
       state: ContextState,
@@ -110,16 +119,20 @@ export default {
 
       if (index === -1) return
 
-      state.entity.splice(index + 1, 0, {
+      const entity = {
         type: payload.type as string,
         raw: payload.raw || useEnv().emptyLine(),
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
-      } as ContextStatePageContent)
+      } as ContextStatePageContent
+
+      state.entity = useUtils()
+        .array()
+        .insert(state.entity, index + 1, entity)
     },
     alterInPage(
       state: ContextState,
-      payload: Record<string, ContextStatePageContent | string>
+      payload: Record<string, ContextStatePageContent | EntityType>
     ) {
       const index = state.entity.indexOf(
         payload.entity as ContextStatePageContent
@@ -127,12 +140,13 @@ export default {
 
       if (index === -1) return
 
-      state.entity.splice(index, 1, {
-        type: payload.type as string,
-        raw: (payload.entity as ContextStatePageContent).raw,
-        createdAt: useFormat().actually(),
-        updatedAt: useFormat().actually(),
-      } as ContextStatePageContent)
+      const entity = payload.entity as ContextStatePageContent
+
+      state.entity[index].type = payload.type as EntityType
+      state.entity[index].raw = entity.raw
+      state.entity[index].createdAt = useFormat().actually()
+      state.entity[index].updatedAt = useFormat().actually()
+      state.entity[index].external = entity.external || {}
     },
     insertRawInExistentEntity(
       state: ContextState,

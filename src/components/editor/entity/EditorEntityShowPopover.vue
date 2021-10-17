@@ -235,6 +235,7 @@
   import { useStore } from 'vuex'
   import { useI18n } from 'vue-i18n'
   import { useFormat } from '@/use/format'
+  import { EntityType } from '@/types/context'
 
   const store = useStore()
   const format = useFormat()
@@ -302,7 +303,7 @@
     state.adjust = false
   }
 
-  const onSwitchEntity = (type: string) => {
+  const onSwitchEntity = (type: EntityType) => {
     store.commit('context/alterInPage', {
       entity: props.entity,
       type,

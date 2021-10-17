@@ -8,5 +8,15 @@ export const useUtils = () => {
     e.stopPropagation()
   }
 
-  return { delay, prevent }
+  const array = () => {
+    const insert = (arr: Array<any>, index: number, ...newItems: any) => [
+      ...arr.slice(0, index),
+      ...newItems,
+      ...arr.slice(index),
+    ]
+
+    return { insert }
+  }
+
+  return { delay, prevent, array }
 }
