@@ -516,8 +516,6 @@
 
   const onClickInEntity = (e: MouseEvent) => {
     onStopEvents(e)
-
-    scroll.to(`#entity-${_index.value}`, 'center')
   }
 
   const onStopEvents = (e?: MouseEvent) => {
