@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/Novout/better-write/compare/v0.1.7...v0.3.0) (2021-10-18)
+
+
+### Features
+
+* **project:** animations in create ([2799e95](https://github.com/Novout/better-write/commits/2799e959e24b9b8d31a62dc2d512b0b2b29d03aa))
+* **project:** blank page contents ([8b27d1a](https://github.com/Novout/better-write/commits/8b27d1a12e4a24a2c3d5c6cbb31dd6536aee22f4))
+* **project:** not insert a heading one in blank template ([619b5fb](https://github.com/Novout/better-write/commits/619b5fb0c9c6047ef13123ae1e42d1f2d4841b41))
+* **project:** type definition ([05b4845](https://github.com/Novout/better-write/commits/05b4845902bcb763d8579dd48ac50e4d46665083))
+
+
+### Bug Fixes
+
+* **editor:** break line in initial focus position ([c12081f](https://github.com/Novout/better-write/commits/c12081f02cfee66673144070ce37bd3652594744))
+* **editor:** enter whitespace insert ([9580f89](https://github.com/Novout/better-write/commits/9580f8916d623ad1c4b6f4f6c2040b5c12618f71))
+* **editor:** minimal height entity ([f5504b3](https://github.com/Novout/better-write/commits/f5504b303950ac729041c703945152e31db0d0bf))
+* **project:** deprecated saves set a default creative type ([b627679](https://github.com/Novout/better-write/commits/b627679d13b452b6dd903e4899216f2d14ab53d9))
+* **project:** type description in initialize new project ([09a874f](https://github.com/Novout/better-write/commits/09a874f43a33aa0efc98d41a26afae2075435af1))
+
+
+### Refactor
+
+* **editor:** new aside and project create ([767927d](https://github.com/Novout/better-write/commits/767927d7be6b15ec19765294dbef8cdcc8c76afb))
+
+
+### Style
+
+* **project:** top padding in blank project ([4ecf5c4](https://github.com/Novout/better-write/commits/4ecf5c44c76251f7b0d9e00891e5f37528d3ae23))
+
+
+### Structure
+
+* stdversion problem ([b0f6f14](https://github.com/Novout/better-write/commits/b0f6f14384371ebe38d1dc1b2763317068172059))
+
 ### [0.1.7](https://github.com/Novout/better-write/compare/v0.1.6...v0.1.7) (2021-10-18)
 
 
