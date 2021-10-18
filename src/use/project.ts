@@ -16,5 +16,13 @@ export const useProject = () => {
     toast.success(t('toast.project.create'))
   }
 
-  return { create }
+  const isBlankProject = () => {
+    return store.state.project.type === 'blank'
+  }
+
+  const isCreativeProject = () => {
+    return store.state.project.type === 'creative'
+  }
+
+  return { create, isBlankProject, isCreativeProject }
 }

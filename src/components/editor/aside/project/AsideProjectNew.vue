@@ -73,7 +73,9 @@
   const subject = ref(t('editor.aside.project.new.content.subject'))
 
   const type = ref(t('editor.aside.project.new.types.blank.title'))
-  const typeDescription = ref(t('editor.aside.project.new.types.blank.description'))
+  const typeDescription = ref(
+    t('editor.aside.project.new.types.blank.description')
+  )
 
   const onTypeClick = (define: string) => {
     type.value = t(`editor.aside.project.new.types.${define}.title`)

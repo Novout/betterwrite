@@ -16,28 +16,30 @@
       </HeroIcon>
     </template>
     <AsideProjectNew />
-    <AsideLine />
-    <AsidePageNew v-if="name !== useEnv().projectEmpty()" />
-    <AsidePageDelete v-if="name !== useEnv().projectEmpty()" />
-    <AsideLine v-if="name !== useEnv().projectEmpty()" />
+    <AsideLine v-if="project.isCreativeProject()" />
+    <AsidePageNew
+      v-if="name !== env.projectEmpty() && project.isCreativeProject()"
+    />
+    <AsidePageDelete
+      v-if="name !== env.projectEmpty() && project.isCreativeProject()"
+    />
+    <AsideLine v-if="name !== env.projectEmpty()" />
     <AsideLoadProject />
-    <AsideSaveProject v-if="name !== useEnv().projectEmpty()" />
+    <AsideSaveProject v-if="name !== env.projectEmpty()" />
     <AsideLine />
     <AsideDropboxConnect />
     <AsideDropboxLoad v-if="store.state.auth.dropbox.accessToken" />
     <AsideDropboxSave
-      v-if="
-        name !== useEnv().projectEmpty() && store.state.auth.dropbox.accessToken
-      "
+      v-if="name !== env.projectEmpty() && store.state.auth.dropbox.accessToken"
     />
-    <AsideLine v-if="name !== useEnv().projectEmpty()" />
-    <AsideConfigurationPDF v-if="name !== useEnv().projectEmpty()" />
-    <AsidePreviewPDF v-if="name !== useEnv().projectEmpty()" />
-    <AsideGeneratePDF v-if="name !== useEnv().projectEmpty()" />
-    <AsideLine v-if="name !== useEnv().projectEmpty()" />
-    <AsideAddonLogger v-if="name !== useEnv().projectEmpty()" />
-    <AsideAddonTextFinder v-if="name !== useEnv().projectEmpty()" />
-    <AsideAddonTextSwitcher v-if="name !== useEnv().projectEmpty()" />
+    <AsideLine v-if="name !== env.projectEmpty()" />
+    <AsideConfigurationPDF v-if="name !== env.projectEmpty()" />
+    <AsidePreviewPDF v-if="name !== env.projectEmpty()" />
+    <AsideGeneratePDF v-if="name !== env.projectEmpty()" />
+    <AsideLine v-if="name !== env.projectEmpty()" />
+    <AsideAddonLogger v-if="name !== env.projectEmpty()" />
+    <AsideAddonTextFinder v-if="name !== env.projectEmpty()" />
+    <AsideAddonTextSwitcher v-if="name !== env.projectEmpty()" />
   </AsideBarItem>
 </template>
 
@@ -46,9 +48,12 @@
   import { useStore } from 'vuex'
   import { useEnv } from '@/use/env'
   import { computed } from 'vue'
+  import { useProject } from '@/use/project'
 
   const store = useStore()
   const { t } = useI18n()
+  const env = useEnv()
+  const project = useProject()
 
   const name = computed(() => store.state.project.name)
 </script>

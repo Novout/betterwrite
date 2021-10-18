@@ -43,7 +43,11 @@
     <div
       class="w-1 h-4 mx-3 border-r-2 border-gray-500 dark:border-gray-500"
     ></div>
-    <HeroIcon class="wb-icon" @click.prevent.stop="onUpPage">
+    <HeroIcon
+      v-if="project.isCreativeProject()"
+      class="wb-icon"
+      @click.prevent.stop="onUpPage"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -57,7 +61,11 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon" @click.prevent.stop="onDownPage">
+    <HeroIcon
+      v-if="project.isCreativeProject()"
+      class="wb-icon"
+      @click.prevent.stop="onDownPage"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -72,6 +80,7 @@
       </svg>
     </HeroIcon>
     <HeroIcon
+      v-if="project.isCreativeProject()"
       class="wb-icon inline-flex"
       @click.prevent.stop="page.onCreatePage"
     >
@@ -89,6 +98,7 @@
       </svg>
     </HeroIcon>
     <HeroIcon
+      v-if="project.isCreativeProject()"
       class="wb-icon inline-flex"
       @click.prevent.stop="page.onDeletePage"
     >
@@ -107,6 +117,7 @@
       </svg>
     </HeroIcon>
     <div
+      v-if="project.isCreativeProject()"
       class="w-1 h-4 mx-3 border-r-2 border-gray-500 dark:border-gray-500"
     ></div>
     <HeroIcon
@@ -135,9 +146,11 @@
   import { usePage } from '@/use/page'
   import { useStore } from 'vuex'
   import { useEditor } from '@/use/editor'
+  import { useProject } from '@/use/project'
 
   const store = useStore()
   const page = usePage()
+  const project = useProject()
 
   const onFinder = (e: MouseEvent) => {
     store.commit(

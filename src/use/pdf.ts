@@ -11,12 +11,14 @@ import { useDefines } from './defines'
 import useEmitter from './emitter'
 import { useI18n } from 'vue-i18n'
 import { nextTick } from 'vue'
+import { useProject } from './project'
 
 export const usePDF = () => {
   const store = useStore()
   const toast = useToast()
   const emitter = useEmitter()
   const env = useEnv()
+  const project = useProject()
   const { t } = useI18n()
 
   const init: Callback<any> = async () => {
@@ -35,9 +37,11 @@ export const usePDF = () => {
           generate().base().pageMargins[2],
           45,
         ],
-        pageBreak: store.state.pdf.styles.headingOne.breakPage
-          ? 'before'
-          : undefined,
+        pageBreak:
+          store.state.pdf.styles.headingOne.breakPage &&
+          !project.isBlankProject()
+            ? 'before'
+            : undefined,
         style: 'heading-one',
       }
     }
@@ -216,7 +220,7 @@ export const usePDF = () => {
       const pages: Array<ContextState> = store.state.project.pages
       const arr: Array<any> = []
 
-      frontCover(arr)
+      if (!project.isBlankProject()) frontCover(arr)
 
       pages.forEach((page: ContextState) => {
         page.entity.forEach((entity: ContextStatePageContent) => {

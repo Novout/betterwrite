@@ -6,6 +6,7 @@ import { useUtils } from './utils'
 import { usePage } from './page'
 import { usePDF } from './pdf'
 import { useEnv } from './env'
+import { useProject } from './project'
 
 export const useKeyboard = () => {
   const store = useStore()
@@ -14,6 +15,7 @@ export const useKeyboard = () => {
   const pdf = usePDF()
   const env = useEnv()
   const utils = useUtils()
+  const project = useProject()
 
   const init: Callback<void> = () => {
     defaultPrevents()
@@ -74,7 +76,11 @@ export const useKeyboard = () => {
     keyboard.bind(store.state.shortcuts.newChapter[1], (e: Event) => {
       utils.prevent(e)
 
-      if (store.state.project.name === env.projectEmpty()) return
+      if (
+        store.state.project.name === env.projectEmpty() ||
+        !project.isCreativeProject()
+      )
+        return
 
       page.onCreatePage()
     })
@@ -84,7 +90,11 @@ export const useKeyboard = () => {
     keyboard.bind(store.state.shortcuts.deleteChapter[1], (e: Event) => {
       utils.prevent(e)
 
-      if (store.state.project.name === env.projectEmpty()) return
+      if (
+        store.state.project.name === env.projectEmpty() ||
+        !project.isCreativeProject()
+      )
+        return
 
       page.onDeletePage()
     })
