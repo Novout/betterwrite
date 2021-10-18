@@ -265,6 +265,7 @@
         onEdit(undefined, {
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
+          switch: payload?.switch,
         })
       }
     })
@@ -338,18 +339,18 @@
       onChangeArea()
     }
 
-    if (!input.value) return
-
     if (options?.selectionInitial) {
-      input.value.selectionStart = 0
-      input.value.selectionEnd = 0
+      setTimeout(() => {
+        if (!input.value) return
+        input.value.selectionEnd = 0
+      }, 0)
     }
   }
 
   const onEnter = async () => {
     const _input = input.value as HTMLTextAreaElement
-
     const posRaw = data.value.slice(_input.selectionStart)
+    let initial = false
 
     if (_index.value + 1 === store.state.context.entity.length) {
       if (_input.selectionStart === 0) {
@@ -381,6 +382,7 @@
           raw: data.value,
         })
         data.value = env.emptyLine() as string
+        initial = true
       } else {
         data.value = data.value.replace(posRaw, '')
         store.commit('context/newInPagePosEdit', {
@@ -388,6 +390,7 @@
           type: 'paragraph',
           raw: posRaw,
         })
+        initial = true
       }
     }
 
@@ -402,6 +405,7 @@
       entity: props.entity,
       up: false,
       keyboard: true,
+      selectionInitial: initial,
     })
   }
 
