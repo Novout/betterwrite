@@ -295,11 +295,15 @@
     })
   })
 
-  const onUpdateContent = () => {
+  const onUpdateContent = async () => {
     store.commit('context/updateInPage', {
       entity: props.entity,
       raw: data.value,
     })
+
+    await nextTick
+
+    store.commit('project/updateContext', store.state.context)
 
     if (!focus.value) edit.value = false
   }
@@ -410,6 +414,10 @@
         await nextTick
 
         store.commit('context/removeInPage', props.entity)
+
+        await nextTick
+
+        store.commit('project/updateContext', store.state.context)
       } else if (e.key === 'ArrowUp') {
         emitter.emit('entity-not-mutate', props.entity)
 
@@ -465,6 +473,10 @@
         await nextTick
 
         store.commit('context/removeInPage', props.entity)
+
+        await nextTick
+
+        store.commit('project/updateContext', store.state.context)
       } else if (
         (e.key === 'Delete' || e.key === 'Backspace') &&
         _input.selectionStart === 0
@@ -487,6 +499,10 @@
         await nextTick
 
         store.commit('context/removeInPage', props.entity)
+
+        await nextTick
+
+        store.commit('project/updateContext', store.state.context)
       } else if (e.key === 'ArrowUp') {
         if (_input.selectionStart === 0) {
           if (_index.value === 0) return

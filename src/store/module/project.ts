@@ -143,6 +143,16 @@ export default {
         })
       })
     },
+    updateContext(state: ProjectState, context: ContextState) {
+      const _context = state.pages.filter(
+        (cont: ContextState) => cont.id === context.id
+      )
+      const index = state.pages.indexOf(_context[0])
+
+      if (index === -1) return
+
+      state.pages[index].entity = context.entity
+    },
   },
   actions: {},
   getters: {},
