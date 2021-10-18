@@ -10,7 +10,7 @@
 
 @layer components {
   .wb-base {
-    @apply bg-gray-200 dark:bg-gray-600 w-full h-screen;
+    @apply bg-gray-100 dark:bg-gray-700 w-full h-screen;
   }
 
   .wb-title {

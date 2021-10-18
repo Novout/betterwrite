@@ -1,14 +1,5 @@
 <template>
-  <header
-    class="
-      flex
-      justify-end
-      items-center
-      w-full
-      bg-white-opacity
-      dark:bg-black-opacity
-    "
-  >
+  <header class="flex justify-end items-center w-full bg-transparent">
     <HeroIcon class="wb-icon inline-flex" @click.prevent.stop="onSwitcher">
       <svg
         xmlns="http://www.w3.org/2000/svg"

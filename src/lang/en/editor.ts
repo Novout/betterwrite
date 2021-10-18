@@ -121,6 +121,7 @@ export default {
         subject: 'Subject',
         confirm: 'Create',
         type: 'Style',
+        create: 'Create',
         types: {
           blank: {
             title: 'Blank',

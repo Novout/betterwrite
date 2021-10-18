@@ -6,6 +6,9 @@ export default {
     ({
       commands: false,
       load: false,
+      project: {
+        new: false,
+      },
       modal: {
         newProject: false,
       },
@@ -29,6 +32,9 @@ export default {
     },
     load(state: AbsoluteState, b: boolean) {
       state.load = b
+    },
+    switchProjectCreate(state: AbsoluteState, b: boolean) {
+      state.project.new = b
     },
     switchProjectModal(state: AbsoluteState, b: boolean) {
       state.modal.newProject = b

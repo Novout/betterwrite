@@ -121,6 +121,7 @@ export default {
         version: 'Versão',
         confirm: 'Criar',
         type: 'Estilo',
+        create: 'Crie',
         types: {
           blank: {
             title: 'Em Branco',

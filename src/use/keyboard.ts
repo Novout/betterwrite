@@ -68,7 +68,10 @@ export const useKeyboard = () => {
       utils.prevent(e)
       store.commit('absolute/switchAside', true)
 
-      store.commit('absolute/switchProjectModal', true)
+      store.commit(
+        'absolute/switchProjectCreate',
+        !store.state.absolute.project.new
+      )
     })
   }
 
