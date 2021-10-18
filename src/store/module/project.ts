@@ -26,7 +26,7 @@ export default {
       state.nameRaw = payload.nameRaw
       state.version = payload.version
       state.creator = payload.creator
-      state.type = payload.type
+      state.type = payload.type || 'creative'
       state.subject = payload.subject
       state.totalPagesCreated = payload.totalPagesCreated
       state.main = payload.main
