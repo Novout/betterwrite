@@ -14,14 +14,11 @@
     ]"
     @click.prevent="onClickInEditor"
   >
-    <EditorBaseHeader
-      v-if="store.state.project.name !== useEnv().projectEmpty()"
-    />
-    <EditorBaseBlocked
-      v-if="store.state.project.name === useEnv().projectEmpty()"
-    />
+    <EditorBaseHeader v-if="store.state.project.name !== env.projectEmpty()" />
+    <EditorBaseBlocked v-if="store.state.project.name === env.projectEmpty()" />
     <section
       id="edit"
+      :class="[project.isBlankProject() ? 'pt-28' : '']"
       class="
         flex flex-col
         w-full
@@ -38,7 +35,7 @@
         :entity="entity"
       />
       <EditorEntityInput
-        v-if="store.state.project.name !== useEnv().projectEmpty()"
+        v-if="store.state.project.name !== env.projectEmpty()"
         v-model="entry"
         @enter="enterListener"
         @reset="resetListener"
@@ -54,9 +51,12 @@
   import { useScroll } from '@/use/scroll'
   import { useEnv } from '@/use/env'
   import useEmitter from '@/use/emitter'
+  import { useProject } from '@/use/project'
 
   const store = useStore()
   const emitter = useEmitter()
+  const project = useProject()
+  const env = useEnv()
 
   const main = ref<HTMLElement | null>(null)
   const entry = ref<string>('')
