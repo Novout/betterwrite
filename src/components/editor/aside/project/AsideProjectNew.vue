@@ -7,40 +7,112 @@
     :shortcut="store.state.shortcuts.newProject[0]"
   >
     <div class="w-96 h-96 flex flex-col overflow-y-auto">
-      <div class="flex flex-col pt-3">
+      <div
+        v-motion
+        class="flex flex-col pt-3"
+        :initial="{
+          opacity: 0,
+        }"
+        :enter="{
+          opacity: 1,
+          transition: {
+            delay: 700,
+          },
+        }"
+      >
         <label>{{ t('editor.aside.project.new.name') }}</label>
         <input
           v-model="name"
           class="shadow-winset dark:shadow-binset bg-transparent p-1"
         />
       </div>
-      <div class="flex flex-col pt-3">
+      <div
+        v-motion
+        class="flex flex-col pt-3"
+        :initial="{
+          opacity: 0,
+        }"
+        :enter="{
+          opacity: 1,
+          transition: {
+            delay: 750,
+          },
+        }"
+      >
         <label>{{ t('editor.aside.project.new.creator') }}</label>
         <input
           v-model="creator"
           class="shadow-winset dark:shadow-binset bg-transparent p-1"
         />
       </div>
-      <div class="flex flex-col pt-3">
+      <div
+        v-motion
+        class="flex flex-col pt-3"
+        :initial="{
+          opacity: 0,
+        }"
+        :enter="{
+          opacity: 1,
+          transition: {
+            delay: 800,
+          },
+        }"
+      >
         <label>{{ t('editor.aside.project.new.subject') }}</label>
         <input
           v-model="subject"
           class="shadow-winset dark:shadow-binset bg-transparent p-1"
         />
       </div>
-      <div class="flex flex-col pt-3">
+      <div
+        v-motion
+        class="flex flex-col pt-3"
+        :initial="{
+          opacity: 0,
+        }"
+        :enter="{
+          opacity: 1,
+          transition: {
+            delay: 850,
+          },
+        }"
+      >
         <label>{{ t('editor.aside.project.new.version') }}</label>
         <input
           v-model="version"
           class="shadow-winset dark:shadow-binset bg-transparent p-1"
         />
       </div>
-      <div class="flex flex-col pt-3">
+      <div
+        v-motion
+        class="flex flex-col pt-3"
+        :initial="{
+          opacity: 0,
+        }"
+        :enter="{
+          opacity: 1,
+          transition: {
+            delay: 900,
+          },
+        }"
+      >
         <label>{{ t('editor.aside.project.new.type') }}</label>
         <div class="break-words">
           {{ typeDescription }}
         </div>
-        <div class="flex flex-row flex-wrap items-center py-1 w-full">
+        <div
+          v-motion
+          class="flex flex-row flex-wrap items-center py-1 w-full"
+          :initial="{
+            opacity: 0,
+          }"
+          :enter="{
+            opacity: 1,
+            transition: {
+              delay: 950,
+            },
+          }"
+        >
           <AsideProjectNewType
             :is="type"
             :title="t('editor.aside.project.new.types.blank.title')"
