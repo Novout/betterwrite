@@ -204,6 +204,8 @@
   })
 
   watch(data, (_data: string) => {
+    if (_data === env.emptyLine()) data.value = ''
+
     if (entity.utils().entry(_data, 'im')) {
       data.value = ''
 
@@ -226,13 +228,15 @@
   onMounted(() => {
     emitter.on(
       'entity-close',
-      (entity?: ContextStatePageContent, options?: VueEmitterEntityClose) => {
+      (ent?: ContextStatePageContent, options?: VueEmitterEntityClose) => {
+        if (document.activeElement === input.value) return
+
         if (options?.all) {
           onUpdateContent()
           return
         }
 
-        const index = store.state.context.entity.indexOf(entity)
+        const index = store.state.context.entity.indexOf(ent)
 
         if (store.state.context.entity[index] === props.entity) return
 
