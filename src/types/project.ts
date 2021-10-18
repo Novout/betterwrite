@@ -7,6 +7,7 @@ export interface ProjectState {
   version: string
   creator: string
   subject: string
+  type: string
   totalPagesCreated: number
   main: Record<any, any>
   summary: Record<any, any>

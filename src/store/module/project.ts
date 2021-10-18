@@ -13,6 +13,7 @@ export default {
       version: '0.1.0',
       creator: 'Untitled',
       subject: 'Untitled',
+      type: 'creative',
       totalPagesCreated: 0,
       main: {},
       summary: {},
@@ -25,6 +26,7 @@ export default {
       state.nameRaw = payload.nameRaw
       state.version = payload.version
       state.creator = payload.creator
+      state.type = payload.type
       state.subject = payload.subject
       state.totalPagesCreated = payload.totalPagesCreated
       state.main = payload.main
@@ -37,6 +39,7 @@ export default {
       state.version = payload.version
       state.creator = payload.creator
       state.subject = payload.subject
+      state.type = payload.type
       state.totalPagesCreated = 1
       state.main = {}
       state.summary = {}

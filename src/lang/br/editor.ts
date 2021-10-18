@@ -120,6 +120,19 @@ export default {
         subject: 'Sobre',
         version: 'Versão',
         confirm: 'Criar',
+        type: 'Estilo',
+        types: {
+          blank: {
+            title: 'Em Branco',
+            description:
+              'Crie um projeto sem nenhum recurso adicional. Recomendado para anotações e projetos simples.',
+          },
+          creative: {
+            title: 'Criativo',
+            description:
+              'Crie um projeto com toda a estrutura necessária para a criação de livros.',
+          },
+        },
         content: {
           name: 'Novo Projeto',
           nameNew: 'Sem Título',

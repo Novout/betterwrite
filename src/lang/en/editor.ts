@@ -120,6 +120,19 @@ export default {
         version: 'Version',
         subject: 'Subject',
         confirm: 'Create',
+        type: 'Style',
+        types: {
+          blank: {
+            title: 'Blank',
+            description:
+              'Create a project without any additional features. Recommended for simple notes and projects.',
+          },
+          creative: {
+            title: 'Creative',
+            description:
+              'Create a project with all the structure needed to create books.',
+          },
+        },
         content: {
           name: 'New Project',
           nameNew: 'Untitled',

@@ -6,7 +6,7 @@
     :complete="onCreateProject"
     :shortcut="store.state.shortcuts.newProject[0]"
   >
-    <div class="w-full flex flex-col">
+    <div class="w-96 h-96 flex flex-col overflow-y-auto">
       <div class="flex flex-col pt-3">
         <label>{{ t('editor.aside.project.new.name') }}</label>
         <input
@@ -35,6 +35,24 @@
           class="shadow-winset dark:shadow-binset bg-transparent p-1"
         />
       </div>
+      <div class="flex flex-col pt-3">
+        <label>{{ t('editor.aside.project.new.type') }}</label>
+        <div class="break-words">
+          {{ typeDescription }}
+        </div>
+        <div class="flex flex-row flex-wrap items-center py-1 w-full">
+          <AsideProjectNewType
+            :is="type"
+            :title="t('editor.aside.project.new.types.blank.title')"
+            @click="onTypeClick('blank')"
+          />
+          <AsideProjectNewType
+            :is="type"
+            :title="t('editor.aside.project.new.types.creative.title')"
+            @click="onTypeClick('creative')"
+          />
+        </div>
+      </div>
     </div>
   </AsideModal>
 </template>
@@ -54,12 +72,31 @@
   const creator = ref(t('editor.aside.project.new.content.creator'))
   const subject = ref(t('editor.aside.project.new.content.subject'))
 
+  const type = ref(t('editor.aside.project.new.types.blank.title'))
+  const typeDescription = ref(t('editor.aside.project.new.types.blank.title'))
+
+  const onTypeClick = (define: string) => {
+    type.value = t(`editor.aside.project.new.types.${define}.title`)
+    typeDescription.value = t(
+      `editor.aside.project.new.types.${define}.description`
+    )
+  }
+
   const onCreateProject = async () => {
+    const _type =
+      {
+        Blank: 'blank',
+        'Em Branco': 'blank',
+        Creative: 'creative',
+        Criativo: 'creative',
+      }[type.value] || 'blank'
+
     project.create({
       name: name.value,
       version: version.value,
       creator: creator.value,
       subject: subject.value,
+      type: _type,
     })
   }
 </script>
