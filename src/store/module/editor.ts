@@ -12,7 +12,7 @@ export default {
         },
         show: {
           entity: {
-            shadow: true,
+            shadow: false,
           },
           fontFamily: 'font-raleway',
           fontColor: 'text-black dark:text-gray-100',
