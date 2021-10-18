@@ -17,88 +17,90 @@
       wb-text
     "
   >
-    <div
-      class="w-full md:w-96 h-screen md:h-96 flex flex-col overflow-y-auto p-5"
-    >
-      <div
-        v-motion
-        class="flex flex-col pt-3"
-        :initial="{
-          opacity: 0,
-        }"
-        :enter="{
-          opacity: 1,
-          transition: {
-            delay: 100,
-          },
-        }"
-      >
-        <label>{{ t('editor.aside.project.new.name') }}</label>
-        <input
-          v-model="name"
-          class="shadow-winset dark:shadow-binset bg-transparent p-1"
-        />
+    <div class="w-full h-screen md:h-96 flex flex-col overflow-y-auto p-5">
+      <div class="flex flex-row justify-between w-full p-2">
+        <div
+          v-motion
+          class="flex flex-col pt-3"
+          :initial="{
+            opacity: 0,
+          }"
+          :enter="{
+            opacity: 1,
+            transition: {
+              delay: 100,
+            },
+          }"
+        >
+          <label>{{ t('editor.aside.project.new.name') }}</label>
+          <input
+            v-model="name"
+            class="shadow-winset dark:shadow-binset bg-transparent p-1"
+          />
+        </div>
+        <div
+          v-motion
+          class="flex flex-col pt-3"
+          :initial="{
+            opacity: 0,
+          }"
+          :enter="{
+            opacity: 1,
+            transition: {
+              delay: 150,
+            },
+          }"
+        >
+          <label>{{ t('editor.aside.project.new.creator') }}</label>
+          <input
+            v-model="creator"
+            class="shadow-winset dark:shadow-binset bg-transparent p-1"
+          />
+        </div>
+      </div>
+      <div class="flex flex-row justify-between w-full p-2">
+        <div
+          v-motion
+          class="flex flex-col pt-3"
+          :initial="{
+            opacity: 0,
+          }"
+          :enter="{
+            opacity: 1,
+            transition: {
+              delay: 200,
+            },
+          }"
+        >
+          <label>{{ t('editor.aside.project.new.subject') }}</label>
+          <input
+            v-model="subject"
+            class="shadow-winset dark:shadow-binset bg-transparent p-1"
+          />
+        </div>
+        <div
+          v-motion
+          class="flex flex-col pt-3"
+          :initial="{
+            opacity: 0,
+          }"
+          :enter="{
+            opacity: 1,
+            transition: {
+              delay: 250,
+            },
+          }"
+        >
+          <label>{{ t('editor.aside.project.new.version') }}</label>
+          <input
+            v-model="version"
+            class="shadow-winset dark:shadow-binset bg-transparent p-1"
+          />
+        </div>
       </div>
       <div
         v-motion
-        class="flex flex-col pt-3"
-        :initial="{
-          opacity: 0,
-        }"
-        :enter="{
-          opacity: 1,
-          transition: {
-            delay: 150,
-          },
-        }"
-      >
-        <label>{{ t('editor.aside.project.new.creator') }}</label>
-        <input
-          v-model="creator"
-          class="shadow-winset dark:shadow-binset bg-transparent p-1"
-        />
-      </div>
-      <div
-        v-motion
-        class="flex flex-col pt-3"
-        :initial="{
-          opacity: 0,
-        }"
-        :enter="{
-          opacity: 1,
-          transition: {
-            delay: 200,
-          },
-        }"
-      >
-        <label>{{ t('editor.aside.project.new.subject') }}</label>
-        <input
-          v-model="subject"
-          class="shadow-winset dark:shadow-binset bg-transparent p-1"
-        />
-      </div>
-      <div
-        v-motion
-        class="flex flex-col pt-3"
-        :initial="{
-          opacity: 0,
-        }"
-        :enter="{
-          opacity: 1,
-          transition: {
-            delay: 250,
-          },
-        }"
-      >
-        <label>{{ t('editor.aside.project.new.version') }}</label>
-        <input
-          v-model="version"
-          class="shadow-winset dark:shadow-binset bg-transparent p-1"
-        />
-      </div>
-      <div
-        v-motion
-        class="flex flex-col pt-3"
+        class="flex flex-col p-3"
         :initial="{
           opacity: 0,
         }"
