@@ -142,6 +142,10 @@
   import { useI18n } from 'vue-i18n'
   import { ContextStatePageContent } from '@/types/context'
   import { EntityShowEditOptions } from '@/types/entity'
+  import {
+    VueEmitterEntityOpen,
+    VueEmitterEntityClose,
+  } from '../../../types/emitter'
 
   const props = defineProps({
     entity: {
@@ -222,7 +226,7 @@
   onMounted(() => {
     emitter.on(
       'entity-close',
-      (entity?: ContextStatePageContent, options?: Record<string, boolean>) => {
+      (entity?: ContextStatePageContent, options?: VueEmitterEntityClose) => {
         if (options?.all) {
           onUpdateContent()
           return
@@ -236,7 +240,7 @@
       }
     )
 
-    emitter.on('entity-open', async (payload?: Record<string, any>) => {
+    emitter.on('entity-open', async (payload?: VueEmitterEntityOpen) => {
       const index = store.state.context.entity.indexOf(payload?.entity)
 
       if (
@@ -530,7 +534,8 @@
   }
 
   const onChangeEdit = () => {
-    if (!edit.value) height.value = (show.value as any)?.offsetHeight + 'px'
+    if (!edit.value)
+      height.value = (show.value as HTMLDivElement)?.offsetHeight + 'px'
   }
 
   const onClick = async () => {

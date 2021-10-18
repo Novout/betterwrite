@@ -1,3 +1,15 @@
+import { ContextStatePageContent } from './context'
+export interface VueEmitterEntityClose {
+  all?: boolean
+}
+
+export interface VueEmitterEntityOpen {
+  entity?: ContextStatePageContent
+  up?: boolean
+  selectionInitial?: boolean
+  switch?: boolean
+}
+
 export type VueEmitterName =
   | 'entity-input-focus'
   | 'entity-open'
