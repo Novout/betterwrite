@@ -8,6 +8,8 @@
   <h3 align="center">A editor for creative writers.</h3>
 </p>
 
+> WARNING: Early stage of development and is not recommended for use in production.
+
 - ✅ Multipurpose
 - ✅ High Tracking
 - ✅ Graph Control
