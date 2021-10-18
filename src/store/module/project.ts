@@ -66,6 +66,33 @@ export default {
       state.pageLoaded = init.id
       state.pages.push(init)
     },
+    createBlank(state: ProjectState, payload: Record<any, any>) {
+      state.name = useText().kebab(payload.name)
+      state.nameRaw = payload.name
+      state.version = payload.version
+      state.creator = payload.creator
+      state.subject = payload.subject
+      state.type = payload.type
+      state.totalPagesCreated = 1
+      state.main = {}
+      state.summary = {}
+      state.pages = []
+
+      const init: ContextState = {
+        id: state.totalPagesCreated,
+        entity: [
+          {
+            type: 'paragraph',
+            raw: payload.subject,
+            createdAt: useFormat().actually(),
+            updatedAt: useFormat().actually(),
+          },
+        ],
+      }
+
+      state.pageLoaded = init.id
+      state.pages.push(init)
+    },
     newPage(state: ProjectState) {
       state.totalPagesCreated++
 

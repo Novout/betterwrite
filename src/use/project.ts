@@ -9,8 +9,12 @@ export const useProject = () => {
   const { t } = i18n.global
 
   const create = async (project: Record<string, any>) => {
-    store.commit('project/create', project)
+    project.type === 'blank'
+      ? store.commit('project/createBlank', project)
+      : store.commit('project/create', project)
+
     await nextTick
+
     store.commit('context/load', store.state.project.pages[0])
 
     toast.success(t('toast.project.create'))
