@@ -245,6 +245,9 @@ module.exports = {
       kerning: true,       
       textUnset: true,        
       componentPrefix: 'c-', 
-    })
+    }),
+    require("@tailwindcss/forms")({
+      strategy: 'class',
+    }),
   ],
 };
