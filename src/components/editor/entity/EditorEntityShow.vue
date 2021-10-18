@@ -21,7 +21,7 @@
       v-if="!edit"
       ref="show"
       class="overflow-hidden w-full break-words"
-      :style="{ whiteSpace: 'break-spaces' }"
+      :style="{ minHeight: '24px', whiteSpace: 'break-spaces' }"
       :class="[
         props.entity.type === 'paragraph' && !edit
           ? style.paragraph.indent
