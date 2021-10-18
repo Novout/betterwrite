@@ -113,7 +113,7 @@
     ></div>
     <HeroIcon
       class="wb-icon inline-flex"
-      @click.prevent.stop="useEditor().fullScreen"
+      @click.prevent.stop="editor.fullScreen"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -142,6 +142,7 @@
   const store = useStore()
   const page = usePage()
   const project = useProject()
+  const editor = useEditor()
 
   const onFinder = (e: MouseEvent) => {
     store.commit(
