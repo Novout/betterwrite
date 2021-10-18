@@ -206,6 +206,8 @@
   watch(data, (_data: string) => {
     if (_data === env.emptyLine()) data.value = ''
 
+    // data.value = data.value.replace(/\n/g, '')
+
     if (entity.utils().entry(_data, 'im')) {
       data.value = ''
 
