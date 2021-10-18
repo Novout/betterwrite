@@ -62,6 +62,6 @@
     "unplugin-vue-components": "0.15.6",
     "vite": "2.6.7",
     "vue-i18n-extract": "^2.0.4",
-    "vue-tsc": "0.28.3"
+    "vue-tsc": "0.28.7"
   }
 }
