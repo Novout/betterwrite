@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/Novout/better-write/compare/v0.1.6...v0.1.7) (2021-10-18)
+
+
+### Bug Fixes
+
+* **editor:** hover entity in a keyboard focus ([0691d03](https://github.com/Novout/better-write/commits/0691d0375ee70e40cd99ba789cd7570fc5aa5a6b))
+* **project:** save entity updates ([e6624e2](https://github.com/Novout/better-write/commits/e6624e2ffd16a920782c2f0ef110cfdc7d68a5f4))
+
+
+### Structure
+
+* **editor:** show types ([c61fb13](https://github.com/Novout/better-write/commits/c61fb13c31fb07274ac51e9f2c738663105c5e91))
+* readme alert ([99c7773](https://github.com/Novout/better-write/commits/99c77732417ce015b43cabfd2c9bb811ecfdfacd))
+
+
+### Style
+
+* **editor:** remove shadow ([986d605](https://github.com/Novout/better-write/commits/986d605f074e03c14c37e8936f76234c51609600))
+
 ### [0.1.6](https://github.com/Novout/better-write/compare/v0.1.5...v0.1.6) (2021-10-17)
 
 
