@@ -9,16 +9,32 @@
       -translate-x-1/2 -translate-y-1/2
       overflow-y-auto
       duration-700
-      bg-white
-      dark:bg-gray-800
+      bg-modal
       transition
-      flex flex-col
+      flex-col
       z-preview
       wb-text
       shadow-lg
+      w-full
+      h-screen
+      flex
+      justify-center
+      items-center
     "
   >
-    <div class="w-full h-screen md:h-1/2 flex flex-col overflow-y-auto p-5">
+    <div
+      class="
+        w-1/2
+        bg-gray-400
+        dark:bg-gray-800
+        h-screen
+        md:h-3/4
+        justify-evenly
+        flex flex-col
+        overflow-y-auto
+        p-5
+      "
+    >
       <div class="flex flex-row justify-between w-full p-2">
         <div
           v-motion
