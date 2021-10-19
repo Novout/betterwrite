@@ -1,7 +1,21 @@
 export interface EditorState {
   styles: EditorStateStyles
   configuration: EditorStateConfiguration
-  actives: Record<any, any>
+  actives: EditorStateActives
+}
+
+export interface EditorStateActives {
+  text: EditorStateActivesText
+}
+
+export interface EditorStateActivesText {
+  selection: EditorStateActivesTextSelection
+}
+
+export interface EditorStateActivesTextSelection {
+  end: number
+  start: number
+  content: string
 }
 
 export interface EditorStateConfiguration {
