@@ -113,7 +113,14 @@ export const useStart: Callback<void> = () => {
     if (!lang) return
 
     locale.value = lang
-    ;(document.querySelector('html') as HTMLElement).lang = lang
+
+    const iso =
+      {
+        en: 'en-US',
+        br: 'pt-BR',
+      }[lang] || 'en-US'
+
+    ;(document.querySelector('html') as HTMLElement).lang = iso
   }
 
   const initial = () => {
