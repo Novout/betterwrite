@@ -71,8 +71,11 @@
       @click="onEdit"
       v-html="raw.convert(props.entity)"
     />
+    <section v-if="commands" class="absolute z-max left-40 -top-60">
+      <EditorCommands />
+    </section>
     <textarea
-      v-else
+      v-if="edit"
       ref="input"
       v-model="data"
       :placeholder="t('editor.text.placeholder.base')"
@@ -143,6 +146,7 @@
   import { ContextStatePageContent } from '@/types/context'
   import { EntityShowEditOptions } from '@/types/entity'
   import { VueEmitterEntityOpen, VueEmitterEntityClose } from '@/types/emitter'
+  import { useScroll } from '@/use/scroll'
 
   const props = defineProps({
     entity: {
@@ -157,6 +161,7 @@
   const env = useEnv()
   const entity = useEntity()
   const factory = useFactory()
+  const scroll = useScroll()
   const { t } = useI18n()
   const raw = useRaw()
 
@@ -164,6 +169,7 @@
   const focus = ref<boolean>(false)
   const edit = ref<boolean>(false)
   const keyboard = ref<boolean>(false)
+  const commands = ref<boolean>(false)
 
   const _index = computed(() =>
     store.state.context.entity.indexOf(props.entity)
@@ -207,9 +213,10 @@
     data.value = data.value.replace(/\n/g, '')
 
     if (data.value.startsWith('/') && data.value.length <= 2) {
-      store.commit('absolute/commands')
-    } else if (store.state.absolute.commands) {
-      store.commit('absolute/commands')
+      scroll.to(`#entity-${_index.value}`, 'center')
+      commands.value = true
+    } else {
+      commands.value = false
     }
 
     if (entity.utils().entry(_data, 'h2')) {

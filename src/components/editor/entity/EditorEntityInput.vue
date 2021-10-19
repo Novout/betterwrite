@@ -1,5 +1,8 @@
 <template>
   <section class="flex justify-center items-center w-full relative">
+    <section class="absolute z-max left-40 -top-60">
+      <EditorCommands v-if="commands" />
+    </section>
     <textarea
       id="main-input-define"
       ref="input"
@@ -65,6 +68,7 @@
   const type = ref<string>('paragraph')
   const input = ref(null as any)
   const paste = ref<boolean>(false)
+  const commands = ref<boolean>(false)
 
   onMounted(() => {
     useInput().prevent(input.value)
@@ -97,9 +101,9 @@
     }
 
     if (_cmp.startsWith('/') && _cmp.length <= 2) {
-      store.commit('absolute/commands')
-    } else if (store.state.absolute.commands) {
-      store.commit('absolute/commands')
+      commands.value = true
+    } else {
+      commands.value = false
     }
 
     if (entity.utils().entry(_cmp, 'p')) {
