@@ -3,7 +3,8 @@
     v-if="
       props.type !== 'paragraph' &&
       props.type !== 'page-break' &&
-      props.type !== 'line-break'
+      props.type !== 'line-break' &&
+      props.raw !== env.emptyLine()
     "
     class="
       dark:hover:bg-gray-800
@@ -63,8 +64,12 @@
 </template>
 
 <script setup lang="ts">
+  import { useEnv } from '@/use/env'
+
   const props = defineProps({
     raw: String,
     type: String,
   })
+
+  const env = useEnv()
 </script>
