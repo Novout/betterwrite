@@ -489,26 +489,7 @@
         })
       }
     } else {
-      if ((e.key === 'Delete' || e.key === 'Backspace') && data.value === '') {
-        e.preventDefault()
-        e.stopPropagation()
-
-        if (entity.utils().isFixed(_index.value - 1)) return
-
-        emitter.emit('entity-close', { all: true })
-
-        await nextTick
-
-        emitter.emit('entity-open', { entity: props.entity, up: true })
-
-        await nextTick
-
-        // store.commit('context/removeInPage', props.entity)
-
-        await nextTick
-
-        store.commit('project/updateContext', store.state.context)
-      } else if (
+      if (
         (e.key === 'Delete' || e.key === 'Backspace') &&
         _input.selectionStart === 0
       ) {
@@ -519,15 +500,11 @@
 
         if (entity.utils().isFixed(_index.value - 1)) return
 
-        store.commit('context/insertRawInExistentEntity', props.entity)
+        if (data.value !== '') {
+          store.commit('context/insertRawInExistentEntity', props.entity)
+        }
 
-        await nextTick
-
-        emitter.emit('entity-close', { all: true })
-
-        await nextTick
-
-        emitter.emit('entity-open', { entity: props.entity, up: true })
+        emitter.emit('entity-not-mutate', props.entity)
 
         await nextTick
 
@@ -536,6 +513,10 @@
         await nextTick
 
         store.commit('project/updateContext', store.state.context)
+
+        await nextTick
+
+        emitter.emit('entity-open', { entity: props.entity, up: true })
       } else if (e.key === 'ArrowUp') {
         if (_input.selectionStart === 0) {
           if (props.entity.type === 'heading-one') return
