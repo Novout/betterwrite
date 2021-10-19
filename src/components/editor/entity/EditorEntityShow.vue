@@ -538,7 +538,7 @@
         store.commit('project/updateContext', store.state.context)
       } else if (e.key === 'ArrowUp') {
         if (_input.selectionStart === 0) {
-          if (_index.value === 0) return
+          if (props.entity.type === 'heading-one') return
 
           if (entity.utils().isFixed(_index.value - 1)) return
 

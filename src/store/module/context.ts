@@ -50,7 +50,7 @@ export default {
     switchInPage(state: ContextState, obj: Record<any, any>) {
       const index = state.entity.indexOf(obj.entity)
 
-      if (index === -1 || !index) return
+      if (index === -1) return
 
       let sIndex
       obj.direction === 'up' ? (sIndex = index - 1) : (sIndex = index + 1)
@@ -63,7 +63,8 @@ export default {
 
       const target = state.entity[sIndex]
 
-      if (target.type === 'heading-one') return
+      if (obj.entity.type === 'heading-one' || target.type === 'heading-one')
+        return
 
       const temp = state.entity[index]
       state.entity[index] = target
