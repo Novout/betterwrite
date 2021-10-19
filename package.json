@@ -62,7 +62,32 @@
     "typescript": "4.4.3",
     "unplugin-vue-components": "0.15.6",
     "vite": "2.6.10",
+    "vite-plugin-optimize-persist": "^0.1.0",
+    "vite-plugin-package-config": "^0.0.3",
     "vue-i18n-extract": "^2.0.4",
     "vue-tsc": "0.28.7"
+  },
+  "vite": {
+    "optimizeDeps": {
+      "include": [
+        "@headlessui/vue",
+        "@vue/reactivity",
+        "@vueuse/head",
+        "@vueuse/motion",
+        "axios",
+        "date-fns",
+        "date-fns/locale",
+        "dropbox",
+        "keyboardjs",
+        "mitt",
+        "pdfmake/build/pdfmake",
+        "vue",
+        "vue-final-modal",
+        "vue-i18n",
+        "vue-router",
+        "vue-toastification",
+        "vuex"
+      ]
+    }
   }
 }

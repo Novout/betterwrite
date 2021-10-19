@@ -6286,6 +6286,21 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
+vite-plugin-optimize-persist@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-optimize-persist/-/vite-plugin-optimize-persist-0.1.0.tgz#d4b18e36e9669f47d2a7c24ec438ef2820ab2589"
+  integrity sha512-9pVjHUDJCPq7H1OiaQU8olejOoh8Caf+YVEqaaPcIBRJ/ENym1DdQQD/RCc3GzxVkCTlUwVIihpLkg98am9sEQ==
+  dependencies:
+    debug "^4.3.2"
+    fs-extra "^10.0.0"
+
+vite-plugin-package-config@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/vite-plugin-package-config/-/vite-plugin-package-config-0.0.3.tgz#8667dbffffd3eafa0f697c386659d653f737b887"
+  integrity sha512-xneYdCd9fqmehemphnfyHJDE/IyiXe2rtg39lNcQq9jaA5oZCIBBTG+lLAaal3zIyABjKd7fp9oHG/Y+sq5Xlw==
+  dependencies:
+    debug "^4.3.2"
+
 vite@2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vite/-/vite-2.6.10.tgz#7a4f420c6e2c7d9062c7f9ce4578a817c72b3842"

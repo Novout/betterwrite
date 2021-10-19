@@ -506,7 +506,7 @@ export const usePDF = () => {
     if (store.state.pdf.normalize['Roboto'])
       set['Roboto'] = store.state.pdf.normalize['Roboto']
 
-      // @ts-ignore
+    // @ts-ignore
     ;(<any>pdfMake).fonts = set
   }
 

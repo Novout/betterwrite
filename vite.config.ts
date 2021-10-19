@@ -4,6 +4,9 @@ import vue from "@vitejs/plugin-vue";
 import Components from "unplugin-vue-components/vite";
 import { HeadlessUiResolver } from "unplugin-vue-components/resolvers";
 import vueI18n from "@intlify/vite-plugin-vue-i18n";
+import vitePersist from 'vite-plugin-optimize-persist'
+import vitePackageConfig from 'vite-plugin-package-config'
+
 
 export default defineConfig({
   plugins: [
@@ -15,7 +18,9 @@ export default defineConfig({
     Components({
       dts: true,
       resolvers: [HeadlessUiResolver()],
-    })
+    }),
+    vitePersist(),
+    vitePackageConfig()
   ],
 
   resolve: {
@@ -31,25 +36,5 @@ export default defineConfig({
     hmr: {
       overlay: false
     }
-  },
-
-  optimizeDeps: {
-    include: [
-      'vue',
-      'vue-router',
-      'vuex',
-      'vue-i18n',
-      'vue-final-modal',
-      'vue-toastification',
-      '@vueuse/core',
-      '@headlessui/vue',
-      'pdfmake'
-    ],
-    exclude: [
-      'vue-demi',
-      '@vue/reactivity',
-      '@vueuse/motion',
-      '@vuseuse/head'
-    ],
   },
 });
