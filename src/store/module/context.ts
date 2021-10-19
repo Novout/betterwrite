@@ -159,6 +159,8 @@ export default {
 
       const target = state.entity[index - 1]
 
+      if (entity.raw === useEnv().emptyLine()) return
+
       if (target.raw === useEnv().emptyLine()) {
         state.entity[index - 1].raw = entity.raw
       } else {

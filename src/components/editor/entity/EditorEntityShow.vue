@@ -503,7 +503,7 @@
 
         await nextTick
 
-        store.commit('context/removeInPage', props.entity)
+        // store.commit('context/removeInPage', props.entity)
 
         await nextTick
 
