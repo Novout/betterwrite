@@ -67,8 +67,14 @@
   import { useEnv } from '@/use/env'
 
   const props = defineProps({
-    raw: String,
-    type: String,
+    raw: {
+      required: true,
+      type: String,
+    },
+    type: {
+      required: true,
+      type: String,
+    },
   })
 
   const env = useEnv()
