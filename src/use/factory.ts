@@ -1,12 +1,40 @@
 import { useEnv } from './env'
-import { ContextStatePageContent } from '@/types/context'
+import { ContextStatePageContent, EntityType } from '@/types/context'
 import { useFormat } from './format'
 export const useFactory = () => {
   const env = useEnv()
   const format = useFormat()
 
   const entity = () => {
-    const create = () => {}
+    const create = (type: EntityType): ContextStatePageContent => {
+      if (type === 'line-break') {
+        return {
+          type,
+          raw: env.lineBreak(),
+          createdAt: format.actually(),
+          updatedAt: format.actually(),
+          external: {},
+        }
+      }
+
+      if (type === 'page-break') {
+        return {
+          type,
+          raw: env.pageBreak(),
+          createdAt: format.actually(),
+          updatedAt: format.actually(),
+          external: {},
+        }
+      }
+
+      return {
+        type,
+        raw: env.emptyLine(),
+        createdAt: format.actually(),
+        updatedAt: format.actually(),
+        external: {},
+      }
+    }
 
     return { create }
   }

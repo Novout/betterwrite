@@ -1,8 +1,5 @@
 <template>
   <section class="flex justify-center items-center w-full relative">
-    <section class="absolute z-max left-40 -top-60">
-      <EditorCommands v-if="store.state.absolute.commands" />
-    </section>
     <textarea
       id="main-input-define"
       ref="input"

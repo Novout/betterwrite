@@ -75,6 +75,7 @@
       v-else
       ref="input"
       v-model="data"
+      :placeholder="t('editor.text.placeholder.base')"
       :class="[
         props.entity.type === 'paragraph' ? 'text-justify indent-15' : '',
         props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
@@ -133,7 +134,6 @@
   import { useStore } from 'vuex'
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
-  import { useScroll } from '@/use/scroll'
   import { useInput } from '@/use/input'
   import { useEnv } from '@/use/env'
   import { useEntity } from '@/use/entity'
@@ -142,10 +142,7 @@
   import { useI18n } from 'vue-i18n'
   import { ContextStatePageContent } from '@/types/context'
   import { EntityShowEditOptions } from '@/types/entity'
-  import {
-    VueEmitterEntityOpen,
-    VueEmitterEntityClose,
-  } from '../../../types/emitter'
+  import { VueEmitterEntityOpen, VueEmitterEntityClose } from '@/types/emitter'
 
   const props = defineProps({
     entity: {
@@ -162,7 +159,6 @@
   const factory = useFactory()
   const { t } = useI18n()
   const raw = useRaw()
-  const scroll = useScroll()
 
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)
@@ -203,10 +199,62 @@
     }
   })
 
-  watch(data, (_data: string) => {
-    if (_data === env.emptyLine()) data.value = ''
+  watch(data, async (_data: string) => {
+    if (_data === env.emptyLine()) {
+      data.value = ''
+    }
 
     data.value = data.value.replace(/\n/g, '')
+
+    if (data.value.startsWith('/') && data.value.length <= 2) {
+      store.commit('absolute/commands')
+    } else if (store.state.absolute.commands) {
+      store.commit('absolute/commands')
+    }
+
+    if (entity.utils().entry(_data, 'h2')) {
+      data.value = ''
+
+      store.commit('context/newInExistentEntity', {
+        old: props.entity,
+        new: factory.entity().create('heading-two'),
+      })
+    }
+
+    if (entity.utils().entry(_data, 'h3')) {
+      data.value = ''
+
+      store.commit('context/newInExistentEntity', {
+        old: props.entity,
+        new: factory.entity().create('heading-three'),
+      })
+    }
+
+    if (entity.utils().entry(_data, 'bp')) {
+      data.value = ''
+
+      store.commit('context/newInExistentEntity', {
+        old: props.entity,
+        new: factory.entity().create('page-break'),
+      })
+
+      await nextTick
+
+      emitter.emit('entity-not-mutate', props.entity)
+    }
+
+    if (entity.utils().entry(_data, 'lb')) {
+      data.value = ''
+
+      store.commit('context/newInExistentEntity', {
+        old: props.entity,
+        new: factory.entity().create('line-break'),
+      })
+
+      await nextTick
+
+      emitter.emit('entity-not-mutate', props.entity)
+    }
 
     if (entity.utils().entry(_data, 'im')) {
       data.value = ''
