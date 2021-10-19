@@ -418,6 +418,22 @@
       e.preventDefault()
       e.stopPropagation()
 
+      // finder
+      if (e.key === 'f') {
+        store.commit(
+          'absolute/switchShortcutFinder',
+          !store.state.absolute.shortcuts.finder
+        )
+      }
+
+      // swapper
+      if (e.key === 'h') {
+        store.commit(
+          'absolute/switchShortcutSwitcher',
+          !store.state.absolute.shortcuts.switcher
+        )
+      }
+
       if (e.key === 'd') {
         emitter.emit('entity-not-mutate', props.entity)
 
@@ -548,7 +564,19 @@
     onStopEvents(e)
   }
 
-  const onStopEvents = (e?: MouseEvent) => {
+  const onStopEvents = (e?: Event) => {
+    const el = input.value as HTMLTextAreaElement
+
+    if (el) {
+      if (el.selectionEnd - el.selectionStart !== 0) {
+        store.commit('editor/setTextSelection', {
+          content: data.value.substring(el.selectionStart, el.selectionEnd),
+          end: el.selectionEnd,
+          start: el.selectionStart,
+        })
+      }
+    }
+
     e?.stopPropagation()
     e?.preventDefault()
   }

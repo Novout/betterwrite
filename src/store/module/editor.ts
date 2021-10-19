@@ -49,10 +49,24 @@ export default {
         dark: true,
         draggable: false,
       },
+      actives: {
+        text: {
+          selection: {
+            content: '',
+            end: 0,
+            start: 0,
+          },
+        },
+      },
     } as EditorState),
   mutations: {
     switchTheme(state: any, dark: boolean) {
       state.configuration.dark = dark
+    },
+    setTextSelection(state: EditorState, payload: any) {
+      state.actives.text.selection.content = payload.content
+      state.actives.text.selection.end = payload.end
+      state.actives.text.selection.start = payload.start
     },
   },
   actions: {},

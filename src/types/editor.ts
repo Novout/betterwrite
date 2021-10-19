@@ -1,6 +1,7 @@
 export interface EditorState {
   styles: EditorStateStyles
   configuration: EditorStateConfiguration
+  actives: Record<any, any>
 }
 
 export interface EditorStateConfiguration {

@@ -16,15 +16,20 @@
       shadow-2xl
     "
   >
-    <div class="flex flex-col w-full" @keypress.enter.prevent="onSwitcherAll">
+    <div
+      class="flex flex-col w-full"
+      @keypress.enter.prevent="entity.swapper().onSwitcherAll"
+    >
       <div class="flex items-center justify-between w-full mb-1">
         <div>
           <HeroIcon
             :class="[
-              state.equal ? 'border border-black dark:border-white' : '',
+              entity.sstate.equal
+                ? 'border border-black dark:border-white'
+                : '',
             ]"
             class="text-2xs wb-icon"
-            @click.prevent="state.equal = !state.equal"
+            @click.prevent="entity.sstate.equal = !entity.sstate.equal"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +47,7 @@
           </HeroIcon>
           <HeroIcon
             class="text-2xs wb-icon mx-1"
-            @click.prevent="onSwitcherAll"
+            @click.prevent="entity.swapper().onSwitcherAll"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -77,12 +82,12 @@
       </div>
       <input
         ref="entry"
-        v-model="state.entry"
+        v-model="entity.sstate.entry"
         class="bg-transparent border border-gray-900 px-1 mb-1 wb-text"
         :placeholder="t('editor.text.placeholder.shortcuts.switcherEntry')"
       />
       <input
-        v-model="state.output"
+        v-model="entity.sstate.output"
         class="bg-transparent border border-gray-900 px-1 wb-text"
         :placeholder="t('editor.text.placeholder.shortcuts.switcherOutput')"
       />
@@ -92,7 +97,7 @@
 
 <script setup lang="ts">
   import { useEntity } from '@/use/entity'
-  import { ref, reactive, onMounted } from 'vue'
+  import { onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from 'vuex'
 
@@ -100,26 +105,11 @@
   const store = useStore()
   const entity = useEntity()
 
-  const state = reactive({
-    entry: '' as string,
-    output: '' as string,
-    equal: true as boolean,
-  })
-  const entry = ref<HTMLElement | null>(null)
-
-  const onSwitcherAll = () => {
-    entity.swapper().switcherText({
-      entry: state.entry,
-      output: state.output,
-      equal: state.equal,
-    })
-  }
-
   const onClose = () => {
     store.commit('absolute/switchShortcutSwitcher', false)
   }
 
   onMounted(() => {
-    entry.value?.focus()
+    entity.sentry.value?.focus()
   })
 </script>

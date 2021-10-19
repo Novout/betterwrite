@@ -2,15 +2,32 @@ import { ContextStatePageContent } from '@/types/context'
 import { ContextState } from '@/types/context'
 import { useScroll } from '@/use/scroll'
 import { useStore } from 'vuex'
-import { computed, reactive, nextTick } from 'vue'
+import { computed, reactive, nextTick, watch, ref } from 'vue'
 import { useEnv } from './env'
 
 export const useEntity = () => {
   const store = useStore()
   const env = useEnv()
   const pages = computed(() => store.state.project.pages)
+
+  const selection = computed(
+    () => store.state.editor.actives.text.selection.content
+  )
+  watch(selection, (_content) => {
+    fstate.entry = _content
+    sstate.entry = _content
+
+    finder().onFinder()
+  })
+
+  const sstate = reactive({
+    entry: store.state.editor.actives.text.selection.content || ('' as string),
+    output: '' as string,
+    equal: true as boolean,
+  })
+  const sentry = ref<HTMLElement | null>(null)
   const fstate = reactive({
-    entry: '' as string,
+    entry: store.state.editor.actives.text.selection.content || ('' as string),
     actuallyLetterCounter: 0 as number,
     actuallyLetterRaw: '' as string,
     listOfLettersExists: [] as Array<Record<string, any>>,
@@ -70,7 +87,15 @@ export const useEntity = () => {
       })
     }
 
-    return { switcherText }
+    const onSwitcherAll = () => {
+      switcherText({
+        entry: sstate.entry,
+        output: sstate.output,
+        equal: sstate.equal,
+      })
+    }
+
+    return { switcherText, onSwitcherAll }
   }
 
   const finder = () => {
@@ -141,5 +166,5 @@ export const useEntity = () => {
     return { onFinder, onSearchGo, onGo, onUp, onDown }
   }
 
-  return { utils, swapper, finder, fstate }
+  return { utils, swapper, finder, fstate, sstate, sentry }
 }
