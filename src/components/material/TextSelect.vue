@@ -22,7 +22,9 @@
           sm:text-sm
         "
       >
-        <span class="block truncate">{{ cmp }}</span>
+        <span :class="[aside ? 'w-12' : '']" class="block truncate">{{
+          cmp
+        }}</span>
       </ListboxButton>
 
       <transition
@@ -46,6 +48,7 @@
             focus:outline-none
             sm:text-sm
             z-max
+            truncate
           "
         >
           <ListboxOption
@@ -57,12 +60,14 @@
           >
             <li
               :class="[
+                aside ? 'w-24' : '',
                 'cursor-pointer hover:bg-gray-500 dark:hover:bg-gray-800 select-none relative py-2 pl-10 pr-4',
               ]"
             >
               <span
                 :class="[
                   selected ? 'font-bold' : 'font-normal',
+                  aside ? 'w-24' : '',
                   'block truncate',
                 ]"
                 :style="{ fontFamily: font ? it as string : '' }"
@@ -78,6 +83,8 @@
                   items-center
                   pl-3
                   text-amber-600
+                  truncate
+                  w-10
                 "
               >
                 <svg
@@ -114,6 +121,11 @@
       type: Array,
     },
     font: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
+    aside: {
       required: false,
       type: Boolean,
       default: false,

@@ -26,26 +26,15 @@
         items-center
         w-full
         px-2
+        py-1
       "
     >
       <p>{{ t('editor.aside.configuration.lang') }}</p>
-      <select
+      <TextSelect
         v-model="lang"
-        class="
-          form-select
-          w-20
-          wb-text
-          bg-transparent bg-none
-          border-none
-          focus:border-none
-          active:border-none
-        "
-      >
-        <option class="dark:bg-gray-700" value="Português do Brasil">
-          Português do Brasil
-        </option>
-        <option class="dark:bg-gray-700" value="English">English</option>
-      </select>
+        :aside="true"
+        :arr="['Português do Brasil', 'English']"
+      />
     </div>
     <SwitchGroup>
       <div class="flex px-2 items-center w-full justify-between">
