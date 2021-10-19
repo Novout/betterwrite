@@ -24,6 +24,8 @@ export const useInput = () => {
   }
 
   const expandTextArea = (el: HTMLTextAreaElement): void => {
+    if (!el) return
+
     el.style.height = '5px'
     el.style.height = el.scrollHeight + 'px'
   }

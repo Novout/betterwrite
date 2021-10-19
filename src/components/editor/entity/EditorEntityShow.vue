@@ -243,6 +243,8 @@
         if (store.state.context.entity[index] === props.entity) return
 
         if (edit.value) onUpdateContent()
+
+        onChangeArea()
       }
     )
 
