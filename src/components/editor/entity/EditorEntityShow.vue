@@ -513,6 +513,8 @@
         e.preventDefault()
         e.stopPropagation()
 
+        if (_index.value <= 1) return
+
         if (entity.utils().isFixed(_index.value - 1)) return
 
         store.commit('context/insertRawInExistentEntity', props.entity)
