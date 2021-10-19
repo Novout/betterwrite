@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/Novout/better-write/compare/v0.3.0...v0.3.1) (2021-10-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency date-fns to v2.25.0 ([56a065c](https://github.com/Novout/better-write/commits/56a065c37d84dd33cf5fbb5746ae853f86441508))
+* **editor:** header inject hook ([7fec857](https://github.com/Novout/better-write/commits/7fec857993c90eb8e0867c949ab17b5df1eb8c15))
+* **editor:** whitespaces in overflow keys ([68e91bb](https://github.com/Novout/better-write/commits/68e91bbcdcef7f306fe7d128a9ce138bed1733cf))
+
+
+### Structure
+
+* **deps:** added @tailwindcss/forms ([efd9665](https://github.com/Novout/better-write/commits/efd966510d86595298c2eaeb79681dc94e699bae))
+* **deps:** update dependency jest to v27.3.0 ([e9683ed](https://github.com/Novout/better-write/commits/e9683eda20578c01bb96a0c97d69cdfd3b9f6464))
+* **deps:** update dependency vue-tsc to v0.28.7 ([016dfd2](https://github.com/Novout/better-write/commits/016dfd258fd92419597a623402b9e0b9a749877b))
+* **deps:** update typescript-eslint monorepo to v5 ([922fa3a](https://github.com/Novout/better-write/commits/922fa3aa8db4204e0a901ed35ce7f3290e2793fa))
+
+
+### Refactor
+
+* **editor:** support other languages ([94b5ac8](https://github.com/Novout/better-write/commits/94b5ac8c02882ae365ad5d9942813b3ba4379742))
+* **project:** create project rows ([1a6538f](https://github.com/Novout/better-write/commits/1a6538f21a26db70c90077e005bb2eb2c5757a89))
+
+
+### Style
+
+* **editor:** aside language select ([768803a](https://github.com/Novout/better-write/commits/768803ad8c3c458353381cc22252726abef80b55))
+
 ## [0.3.0](https://github.com/Novout/better-write/compare/v0.1.7...v0.3.0) (2021-10-18)
 
 
