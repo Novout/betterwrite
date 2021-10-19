@@ -41,7 +41,7 @@ export default {
     removeInPage(state: ContextState, entity: ContextStatePageContent) {
       const index = state.entity.indexOf(entity)
 
-      if (index === -1 || !index) return
+      if (index === -1 || entity.type === 'heading-one') return
 
       state.entity = state.entity.filter(
         (item: ContextStatePageContent) => state.entity.indexOf(item) !== index
