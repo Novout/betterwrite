@@ -77,7 +77,7 @@ export default {
     configuration: {
       title: 'Settings',
       dark: 'Dark Mode',
-      lang: 'PT-BR / EN-US',
+      lang: 'Language',
       draggable: 'Draggable',
     },
     entity: {

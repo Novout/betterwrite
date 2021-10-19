@@ -77,7 +77,7 @@ export default {
     configuration: {
       title: 'Configuração',
       dark: 'Modo Escuro',
-      lang: 'PT-BR / EN-US',
+      lang: 'Linguagem',
       draggable: 'Arrastável',
     },
     entity: {

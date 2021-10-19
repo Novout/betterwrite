@@ -16,6 +16,37 @@
         </svg>
       </HeroIcon>
     </template>
+    <div
+      class="
+        flex
+        font-bold
+        text-xs text-black
+        dark:text-gray-300
+        justify-between
+        items-center
+        w-full
+        px-2
+      "
+    >
+      <p>{{ t('editor.aside.configuration.lang') }}</p>
+      <select
+        v-model="lang"
+        class="
+          form-select
+          w-20
+          wb-text
+          bg-transparent bg-none
+          border-none
+          focus:border-none
+          active:border-none
+        "
+      >
+        <option class="dark:bg-gray-700" value="Português do Brasil">
+          Português do Brasil
+        </option>
+        <option class="dark:bg-gray-700" value="English">English</option>
+      </select>
+    </div>
     <SwitchGroup>
       <div class="flex px-2 items-center w-full justify-between">
         <SwitchLabel
@@ -57,46 +88,6 @@
           />
         </Switch>
       </div>
-      <div class="flex px-2 items-center w-full justify-between pt-3">
-        <SwitchLabel
-          class="
-            mr-4
-            text-black
-            dark:text-gray-300
-            transition
-            font-bold
-            text-xs
-          "
-          >{{ t('editor.aside.configuration.lang') }}</SwitchLabel
-        >
-        <Switch
-          v-model="lang"
-          :class="lang ? 'bg-gray-900' : 'bg-gray-500'"
-          class="
-            relative
-            inline-flex
-            items-center
-            h-6
-            transition-colors
-            rounded-full
-            w-11
-            focus:outline-none
-          "
-        >
-          <span
-            :class="lang ? 'translate-x-6' : 'translate-x-1'"
-            class="
-              inline-block
-              w-4
-              h-4
-              transition-transform
-              transform
-              bg-white
-              rounded-full
-            "
-          />
-        </Switch>
-      </div>
     </SwitchGroup>
   </AsideBarItem>
 </template>
@@ -119,14 +110,33 @@
     _dark ? (localStorage.theme = 'dark') : localStorage.removeItem('theme')
   })
 
-  const lang = ref(locale.value === 'en' ? true : false)
-  watch(lang, (_lang: boolean) => {
-    localStorage.setItem('lang', _lang ? 'en' : 'br')
+  const convert = (iso: string) => {
+    return (
+      {
+        br: 'Português do Brasil',
+        en: 'English',
+      }[iso] || 'en'
+    )
+  }
 
-    _lang ? (locale.value = 'en') : (locale.value = 'br')
+  const lang = ref(convert(localStorage.getItem('lang') || 'en'))
 
-    _lang
-      ? ((document.querySelector('html') as HTMLElement).lang = 'en-US')
-      : ((document.querySelector('html') as HTMLElement).lang = 'pt-BR')
+  watch(lang, (_lang: string) => {
+    const set =
+      {
+        'Português do Brasil': 'br',
+        English: 'en',
+      }[_lang] || 'en'
+
+    localStorage.setItem('lang', set)
+    locale.value = set
+
+    const iso =
+      {
+        en: 'en-US',
+        br: 'pt-BR',
+      }[set] || 'en-US'
+
+    ;(document.querySelector('html') as HTMLElement).lang = iso
   })
 </script>

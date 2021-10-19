@@ -110,11 +110,10 @@ export const useStart: Callback<void> = () => {
     const { locale } = useI18n()
     const lang = localStorage.getItem('lang')
 
-    lang === 'br' ? (locale.value = 'br') : (locale.value = 'en')
+    if (!lang) return
 
-    lang === 'br'
-      ? ((document.querySelector('html') as HTMLElement).lang = 'pt-BR')
-      : ((document.querySelector('html') as HTMLElement).lang = 'en-US')
+    locale.value = lang
+    ;(document.querySelector('html') as HTMLElement).lang = lang
   }
 
   const initial = () => {
