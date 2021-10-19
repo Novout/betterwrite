@@ -15,13 +15,14 @@
       flex flex-col
       z-preview
       wb-text
+      shadow-lg
     "
   >
-    <div class="w-full h-screen md:h-96 flex flex-col overflow-y-auto p-5">
+    <div class="w-full h-screen md:h-1/2 flex flex-col overflow-y-auto p-5">
       <div class="flex flex-row justify-between w-full p-2">
         <div
           v-motion
-          class="flex flex-col pt-3"
+          class="flex flex-col p-3"
           :initial="{
             opacity: 0,
           }"
@@ -32,15 +33,14 @@
             },
           }"
         >
-          <label>{{ t('editor.aside.project.new.name') }}</label>
-          <input
-            v-model="name"
-            class="shadow-winset dark:shadow-binset bg-transparent p-1"
-          />
+          <label class="font-bold">{{
+            t('editor.aside.project.new.name')
+          }}</label>
+          <input v-model="name" class="shadow-xl bg-transparent p-1" />
         </div>
         <div
           v-motion
-          class="flex flex-col pt-3"
+          class="flex flex-col p-3"
           :initial="{
             opacity: 0,
           }"
@@ -51,17 +51,16 @@
             },
           }"
         >
-          <label>{{ t('editor.aside.project.new.creator') }}</label>
-          <input
-            v-model="creator"
-            class="shadow-winset dark:shadow-binset bg-transparent p-1"
-          />
+          <label class="font-bold">{{
+            t('editor.aside.project.new.creator')
+          }}</label>
+          <input v-model="creator" class="shadow-xl bg-transparent p-1" />
         </div>
       </div>
       <div class="flex flex-row justify-between w-full p-2">
         <div
           v-motion
-          class="flex flex-col pt-3"
+          class="flex flex-col p-3"
           :initial="{
             opacity: 0,
           }"
@@ -72,15 +71,14 @@
             },
           }"
         >
-          <label>{{ t('editor.aside.project.new.subject') }}</label>
-          <input
-            v-model="subject"
-            class="shadow-winset dark:shadow-binset bg-transparent p-1"
-          />
+          <label class="font-bold">{{
+            t('editor.aside.project.new.subject')
+          }}</label>
+          <input v-model="subject" class="shadow-xl bg-transparent p-1" />
         </div>
         <div
           v-motion
-          class="flex flex-col pt-3"
+          class="flex flex-col p-3"
           :initial="{
             opacity: 0,
           }"
@@ -91,16 +89,15 @@
             },
           }"
         >
-          <label>{{ t('editor.aside.project.new.version') }}</label>
-          <input
-            v-model="version"
-            class="shadow-winset dark:shadow-binset bg-transparent p-1"
-          />
+          <label class="font-bold">{{
+            t('editor.aside.project.new.version')
+          }}</label>
+          <input v-model="version" class="shadow-xl bg-transparent p-1" />
         </div>
       </div>
       <div
         v-motion
-        class="flex flex-col p-3"
+        class="flex flex-col px-5 py-2 shadow-xl"
         :initial="{
           opacity: 0,
         }"
@@ -111,8 +108,10 @@
           },
         }"
       >
-        <label>{{ t('editor.aside.project.new.type') }}</label>
-        <div class="break-words">
+        <label class="font-bold">{{
+          t('editor.aside.project.new.type')
+        }}</label>
+        <div class="break-words w-96 py-1">
           {{ typeDescription }}
         </div>
         <div
@@ -128,12 +127,12 @@
             },
           }"
         >
-          <AsideProjectNewType
+          <AbsoluteProjectNewType
             :is="type"
             :title="t('editor.aside.project.new.types.blank.title')"
             @click="onTypeClick('blank')"
           />
-          <AsideProjectNewType
+          <AbsoluteProjectNewType
             :is="type"
             :title="t('editor.aside.project.new.types.creative.title')"
             @click="onTypeClick('creative')"

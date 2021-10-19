@@ -4,7 +4,7 @@
     :class="[
       props.title !== props.is
         ? 'bg-gray-200 dark:bg-gray-600'
-        : 'bg-gray-400 dark:bg-gray-900',
+        : 'bg-gray-400 dark:bg-gray-900 shadow-xl',
     ]"
   >
     {{ props.title }}
