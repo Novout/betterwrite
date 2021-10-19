@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://github.com/Novout/better-write/compare/v0.3.3...v0.3.4) (2021-10-19)
+
+
+### Bug Fixes
+
+* **editor:** change area in all close elements ([e906822](https://github.com/Novout/better-write/commits/e9068227abbf210c57d427c4b25cc76e4e26c97a))
+* **editor:** continue essentials events ([c1fd476](https://github.com/Novout/better-write/commits/c1fd4760cee02ba1ef565dd92aa551f4963a97d4))
+* **editor:** not remove last element in delete key ([a3812e5](https://github.com/Novout/better-write/commits/a3812e55247a8fa509d012d86aa47061e2f44ae7))
+* **editor:** remove first entity in blank project ([d2b47a5](https://github.com/Novout/better-write/commits/d2b47a5bf92d4130871be3dde7aaf6ffa334949e))
+* **editor:** switch heading one ([b8d5db9](https://github.com/Novout/better-write/commits/b8d5db994fedf5aad2d4a90f09e638548546d281))
+
 ### [0.3.3](https://github.com/Novout/better-write/compare/v0.3.2...v0.3.3) (2021-10-19)
 
 
