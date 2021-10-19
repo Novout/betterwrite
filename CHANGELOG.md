@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.5](https://github.com/Novout/better-write/compare/v0.3.4...v0.3.5) (2021-10-19)
+
+
+### Features
+
+* **editor:** inline insert commands ([5d3177a](https://github.com/Novout/better-write/commits/5d3177abdee4a7c855926ce2b0da526ebd2267a4))
+
+
+### Bug Fixes
+
+* **editor:** commands appear ([6ccea0f](https://github.com/Novout/better-write/commits/6ccea0f5e630a9fdcddbdf1204e0f80b1dc9f130))
+* **editor:** empty line in throw error ([78306da](https://github.com/Novout/better-write/commits/78306dac08aee7f5bc97339e860cc50fdead6c82))
+* **editor:** graph empty line ([28317af](https://github.com/Novout/better-write/commits/28317af30006ac392726c95cf2c5e4e3a71c9bf5))
+* **editor:** mutate in whitespace updates ([b82113d](https://github.com/Novout/better-write/commits/b82113dc900bc28362eeacb0dea86ec40d70848a))
+* **editor:** v-cloak in logo ([2403dfb](https://github.com/Novout/better-write/commits/2403dfb13b75da905ae240285c4d8c612cf7b52f))
+
+
+### Style
+
+* **editor:** project create modal background ([7a44dc3](https://github.com/Novout/better-write/commits/7a44dc3b1acb1a26a9e5ae7f5594b09c931a60e3))
+
+
+### Structure
+
+* **types:** prop types ([29c5126](https://github.com/Novout/better-write/commits/29c51267555161e7c7a7becf023e8c23ff8adf75))
+
 ### [0.3.4](https://github.com/Novout/better-write/compare/v0.3.3...v0.3.4) (2021-10-19)
 
 
