@@ -415,8 +415,11 @@
     const _input = input.value as HTMLTextAreaElement
 
     if (e.ctrlKey) {
-      e.preventDefault()
-      e.stopPropagation()
+      // generics
+      if (e.key !== 'c' && e.key !== 'f' && e.key !== 'a' && e.key !== 'v') {
+        e.preventDefault()
+        e.stopPropagation()
+      }
 
       // finder
       if (e.key === 'f') {
