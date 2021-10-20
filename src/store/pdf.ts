@@ -67,7 +67,8 @@ export const usePDFStore = defineStore('pdf', {
           decoration: useDefines().pdf().decoration()[0] as
             | 'underline'
             | 'lineThrough'
-            | 'overline',
+            | 'overline'
+            | undefined,
           decorationStyle: useDefines().pdf().decorationStyle()[0] as
             | 'dashed'
             | 'dotted'
@@ -150,16 +151,16 @@ export const usePDFStore = defineStore('pdf', {
     setStyles(payload: any) {
       this.styles = payload
     },
-    setMainBackground(this: PDFState, payload: any) {
+    setMainBackground(payload: any) {
       this.styles.base.background.main = payload
     },
-    setCoverBackground(this: PDFState, payload: any) {
+    setCoverBackground(payload: any) {
       this.styles.base.background.data = payload
     },
-    deleteMainBackground(this: PDFState) {
+    deleteMainBackground() {
       this.styles.base.background.main = ''
     },
-    deleteCoverBackground(this: PDFState) {
+    deleteCoverBackground() {
       this.styles.base.background.data = ''
     },
   },
