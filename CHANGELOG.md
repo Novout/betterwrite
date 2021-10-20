@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://github.com/Novout/better-write/compare/v0.3.6...v0.3.7) (2021-10-20)
+
+
+### Bug Fixes
+
+* **integration:** dropbox connect ([6785293](https://github.com/Novout/better-write/commits/6785293299fceaf1837ee2878d7757ddbeb0d901))
+
+
+### Structure
+
+* **pubsub:** pdf exclude actions ([cf3197a](https://github.com/Novout/better-write/commits/cf3197a3d636c96489be65eea0fb634a9c4d2928))
+
 ### [0.3.6](https://github.com/Novout/better-write/compare/v0.3.5...v0.3.6) (2021-10-20)
 
 
