@@ -26,7 +26,7 @@ function createWindow () {
       enableRemoteModule: false,
       webSecurity: true,
       nodeIntegration: true
-    },
+    }
   })
   
   mainWindow.webContents.openDevTools()
@@ -34,7 +34,7 @@ function createWindow () {
   mainWindow.loadURL(WinURL)
   mainWindow.on('close', function (event: any) {
     if (!willQuitApp) {
-      event.preventDefault()
+      // event.preventDefault()
       // mainWindow?.hide()
     }
   })
