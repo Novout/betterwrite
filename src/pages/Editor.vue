@@ -5,7 +5,7 @@
       <EditorBase />
     </main>
   </section>
-  <ProviderApp />
+  <ProviderEditor />
 </template>
 
 <script setup lang="ts">
@@ -26,6 +26,7 @@
   const { t } = useI18n()
 
   keyboard.init()
+
   useLocalStorage().onAutoSave(60)
 
   onUnmounted(() => {
