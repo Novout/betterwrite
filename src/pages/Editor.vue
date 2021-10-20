@@ -15,7 +15,6 @@
   import { useHead } from '@vueuse/head'
   import { computed, onUnmounted } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useRouter } from 'vue-router'
   import { useStore } from 'vuex'
 
   const store = useStore()

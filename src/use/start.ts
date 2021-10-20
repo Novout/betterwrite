@@ -7,6 +7,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import { useEnv } from './env'
 import i18n from '@/lang'
+import isElectron from 'is-electron'
 
 export const useStart: Callback<void> = () => {
   const store = useStore()
@@ -132,10 +133,13 @@ export const useStart: Callback<void> = () => {
   }
 
   const init = () => {
-    initial()
-    global()
     dark()
     lang()
+
+    if (isElectron()) return
+
+    initial()
+    global()
     auth()
     pdf.init()
   }

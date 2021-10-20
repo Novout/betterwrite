@@ -1,4 +1,4 @@
-import path from "path";
+import { resolve } from "path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import Components from "unplugin-vue-components/vite";
@@ -7,12 +7,12 @@ import vueI18n from "@intlify/vite-plugin-vue-i18n";
 import vitePersist from 'vite-plugin-optimize-persist'
 import vitePackageConfig from 'vite-plugin-package-config'
 
-
 export default defineConfig({
+  base: './',
   plugins: [
     vue(),
     vueI18n({
-      include: path.resolve(__dirname, "./src/lang/**"),
+      include: resolve(__dirname, "./src/lang/**"),
       runtimeOnly: false
     }),
     Components({
@@ -22,10 +22,13 @@ export default defineConfig({
     vitePersist(),
     vitePackageConfig()
   ],
-
+  build: {
+    outDir: resolve(__dirname, 'dist/render'),
+    emptyOutDir: true
+  },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": resolve(__dirname, "./src"),
     },
   },
 

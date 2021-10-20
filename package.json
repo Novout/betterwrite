@@ -2,8 +2,13 @@
   "name": "better-write",
   "version": "0.3.5",
   "author": "novout",
+  "description": "A editor for creative writers.",
+  "main": "dist/main/index.js",
   "scripts": {
     "dev": "vite",
+    "desktop:dev": "cross-env NODE_ENV=development electron-dev-runner desktop/index.ts --vite",
+    "desktop:start": "cross-env NODE_ENV=development electron dist/main/index.js",
+    "desktop:build": "cross-env NODE_ENV=production tsc desktop/index.ts --moduleResolution Node --removeComments -t esnext --outDir dist/main && yarn build && electron-builder",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "rm -rf ./dist && yarn build && vite preview",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format",
@@ -14,7 +19,9 @@
     "release:initial": "standard-version -- --first-release",
     "release:minor": "standard-version --release-as minor",
     "release:patch": "standard-version --release-as patch",
-    "release:major": "standard-version --release-as major"
+    "release:major": "standard-version --release-as major",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
     "@headlessui/vue": "1.4.1",
@@ -28,6 +35,7 @@
     "autoprefixer": "10.3.4",
     "date-fns": "2.25.0",
     "dropbox": "10.12.0",
+    "is-electron": "^2.2.0",
     "keyboardjs": "2.6.4",
     "mitt": "^3.0.0",
     "pdfmake": "0.2.2",
@@ -39,7 +47,7 @@
     "vue-i18n": "9.1.7",
     "vue-router": "4.0.11",
     "vue-toastification": "2.0.0-rc.1",
-    "vuex": "4.0.2"
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "2.4.0",
@@ -52,6 +60,10 @@
     "@vitejs/plugin-vue": "1.9.3",
     "@vue/compiler-sfc": "3.2.20",
     "@vue/eslint-config-typescript": "7.0.0",
+    "cross-env": "^7.0.3",
+    "electron": "^13.1.7",
+    "electron-builder": "^22.11.7",
+    "electron-dev-runner": "^1.0.1",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-vue": "7.18.0",
@@ -78,6 +90,7 @@
         "date-fns",
         "date-fns/locale",
         "dropbox",
+        "is-electron",
         "keyboardjs",
         "mitt",
         "pdfmake/build/pdfmake",
@@ -89,5 +102,18 @@
         "vuex"
       ]
     }
+  },
+  "build": {
+    "appId": "com.https://better-write.vercel.app.bw",
+    "productName": "Better Write",
+    "directories": {
+      "output": "build/dist"
+    },
+    "copyright": "Copyright © 2021 ${author}",
+    "files": [
+      "dist/**/*",
+      "package.json",
+      "components.d.ts"
+    ]
   }
 }

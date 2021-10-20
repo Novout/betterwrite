@@ -90,6 +90,13 @@ Here will contain all the features that Better Write offers.
 - ➖ - Dropbox Integration
 - ❌ - Notion Integration
 
+### Desktop
+
+- ➖ - Basic Features
+- ➖ - Save/Load
+- ❌ - Integrations
+- ✅ - Shortcuts and Alerts
+
 ## Landing
 
 - ❌ - Not exists at moment.

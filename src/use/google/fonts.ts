@@ -2,6 +2,7 @@ import axios from 'axios'
 import { GoogleFont } from '@/types/google'
 import { useEnv } from '../env'
 import { useDefines } from '../defines'
+import isElectron from 'is-electron'
 
 export const useFonts = () => {
   const setGlobal = (vfs: Record<any, any>) => {
@@ -30,6 +31,13 @@ export const useFonts = () => {
   }
 
   const get = async () => {
+    if (isElectron()) {
+      const normalize = {}
+      const names: Array<any> = []
+
+      return { normalize, names }
+    }
+
     let normalize: Record<string, any> = {}
     const names: Array<string> = []
 
