@@ -26,9 +26,10 @@
   import useEmitter from '@/use/emitter'
   import { useAbsoluteStore } from '@/store/absolute'
 
+  const ABSOLUTE = useAbsoluteStore()
+
   const preview = ref<HTMLElement | null>(null)
   const exists = ref<boolean>(false)
-  const absoluteStore = useAbsoluteStore()
   const { t } = useI18n()
   const toast = useToast()
   const pdf = usePDF()
@@ -45,6 +46,6 @@
   })
 
   const onClick = () => {
-    absoluteStore.switchPdfPreview(false)
+    ABSOLUTE.switchPdfPreview(false)
   }
 </script>

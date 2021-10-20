@@ -181,9 +181,10 @@
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
+  const ABSOLUTE = useAbsoluteStore()
+  const PROJECT = useProject()
+
   const { t } = useI18n()
-  const absoluteStore = useAbsoluteStore()
-  const project = useProject()
 
   const name = ref(t('editor.aside.project.new.content.name'))
   const version = ref(t('editor.aside.project.new.content.version'))
@@ -211,7 +212,7 @@
         Criativo: 'creative',
       }[type.value] || 'blank'
 
-    project.create({
+    PROJECT.create({
       name: name.value,
       version: version.value,
       creator: creator.value,
@@ -219,6 +220,6 @@
       type: _type,
     })
 
-    absoluteStore.switchProjectCreate(false)
+    ABSOLUTE.switchProjectCreate(false)
   }
 </script>

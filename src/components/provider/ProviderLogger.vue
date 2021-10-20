@@ -18,7 +18,7 @@
     "
   >
     <LoggerItem
-      v-for="(log, index) in logger.content"
+      v-for="(log, index) in LOGGER.content"
       :key="index"
       :log="log"
     />
@@ -28,5 +28,5 @@
 <script setup lang="ts">
   import { useLoggerStore } from '@/store/logger'
 
-  const logger = useLoggerStore()
+  const LOGGER = useLoggerStore()
 </script>
