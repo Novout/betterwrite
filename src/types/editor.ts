@@ -21,6 +21,7 @@ export interface EditorStateActivesTextSelection {
 export interface EditorStateConfiguration {
   dark: boolean
   lang?: boolean
+  draggable: boolean
 }
 
 export interface EditorStateStyles {
@@ -34,10 +35,15 @@ export interface EditorStateInput {
 }
 
 export interface EditorStateShow {
+  entity: EditorStateShowEntity
   fontFamily: string
   fontColor: string
   paragraph: EditorStateShowParagraph
   heading: EditorStateShowHeading
+}
+
+export interface EditorStateShowEntity {
+  shadow: boolean
 }
 
 export interface EditorStateShowParagraph {

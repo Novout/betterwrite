@@ -90,17 +90,18 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
   import { useEntity } from '@/use/entity'
+  import { useAbsoluteStore } from '@/store/absolute'
+
+  const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
-  const store = useStore()
   const entity = useEntity()
 
   const search = ref<HTMLElement | null>(null)
 
   const onClose = () => {
-    store.commit('absolute/switchShortcutFinder', false)
+    ABSOLUTE.shortcuts.finder = false
   }
 
   onMounted(() => {

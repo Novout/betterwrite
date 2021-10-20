@@ -1,13 +1,13 @@
-import { ProjectState } from '@/types/project'
-import { useText } from '@/use/text'
-import { useFormat } from '@/use/format'
+import { defineStore } from 'pinia'
 import { ContextState } from '@/types/context'
-import { ContextStatePageContent } from '../../types/context'
+import { ProjectState } from '@/types/project'
+import { useFormat } from '@/use/format'
+import { useText } from '../use/text'
+import { ContextStatePageContent } from '../types/context'
 
-export default {
-  namespaced: true,
-  state: () =>
-    ({
+export const useProjectStore = defineStore('project', {
+  state: (): ProjectState => {
+    return {
       name: '__NOT_CREATED__',
       nameRaw: '__NOT_CREATED__',
       version: '0.1.0',
@@ -19,34 +19,35 @@ export default {
       summary: {},
       pages: [] as Array<ContextState>,
       pageLoaded: 0,
-    } as ProjectState),
-  mutations: {
-    load(state: ProjectState, payload: ProjectState) {
-      state.name = payload.name
-      state.nameRaw = payload.nameRaw
-      state.version = payload.version
-      state.creator = payload.creator
-      state.type = payload.type || 'creative'
-      state.subject = payload.subject
-      state.totalPagesCreated = payload.totalPagesCreated
-      state.main = payload.main
-      state.summary = payload.summary
-      state.pages = payload.pages
+    }
+  },
+  actions: {
+    load(payload: ProjectState) {
+      this.name = payload.name
+      this.nameRaw = payload.nameRaw
+      this.version = payload.version
+      this.creator = payload.creator
+      this.type = payload.type || 'creative'
+      this.subject = payload.subject
+      this.totalPagesCreated = payload.totalPagesCreated
+      this.main = payload.main
+      this.summary = payload.summary
+      this.pages = payload.pages
     },
-    create(state: ProjectState, payload: Record<any, any>) {
-      state.name = useText().kebab(payload.name)
-      state.nameRaw = payload.name
-      state.version = payload.version
-      state.creator = payload.creator
-      state.subject = payload.subject
-      state.type = payload.type
-      state.totalPagesCreated = 1
-      state.main = {}
-      state.summary = {}
-      state.pages = []
+    create(payload: Record<any, any>) {
+      this.name = useText().kebab(payload.name)
+      this.nameRaw = payload.name
+      this.version = payload.version
+      this.creator = payload.creator
+      this.subject = payload.subject
+      this.type = payload.type
+      this.totalPagesCreated = 1
+      this.main = {}
+      this.summary = {}
+      this.pages = []
 
       const init: ContextState = {
-        id: state.totalPagesCreated,
+        id: this.totalPagesCreated,
         entity: [
           {
             type: 'heading-one',
@@ -63,23 +64,23 @@ export default {
         ],
       }
 
-      state.pageLoaded = init.id
-      state.pages.push(init)
+      this.pageLoaded = init.id
+      this.pages.push(init)
     },
-    createBlank(state: ProjectState, payload: Record<any, any>) {
-      state.name = useText().kebab(payload.name)
-      state.nameRaw = payload.name
-      state.version = payload.version
-      state.creator = payload.creator
-      state.subject = payload.subject
-      state.type = payload.type
-      state.totalPagesCreated = 1
-      state.main = {}
-      state.summary = {}
-      state.pages = []
+    createBlank(payload: Record<any, any>) {
+      this.name = useText().kebab(payload.name)
+      this.nameRaw = payload.name
+      this.version = payload.version
+      this.creator = payload.creator
+      this.subject = payload.subject
+      this.type = payload.type
+      this.totalPagesCreated = 1
+      this.main = {}
+      this.summary = {}
+      this.pages = []
 
       const init: ContextState = {
-        id: state.totalPagesCreated,
+        id: this.totalPagesCreated,
         entity: [
           {
             type: 'paragraph',
@@ -90,14 +91,14 @@ export default {
         ],
       }
 
-      state.pageLoaded = init.id
-      state.pages.push(init)
+      this.pageLoaded = init.id
+      this.pages.push(init)
     },
-    newPage(state: ProjectState) {
-      state.totalPagesCreated++
+    newPage() {
+      this.totalPagesCreated++
 
       const init: ContextState = {
-        id: state.totalPagesCreated,
+        id: this.totalPagesCreated,
         entity: [
           {
             type: 'heading-one',
@@ -114,39 +115,39 @@ export default {
         ],
       }
 
-      state.pageLoaded = init.id
-      state.pages.push(init)
+      this.pageLoaded = init.id
+      this.pages.push(init)
     },
-    deletePage(state: ProjectState, context: ContextState) {
-      const content = state.pages.find(
+    deletePage(context: ContextState) {
+      const content = this.pages.find(
         (content: ContextState) => content.id === context.id
       )
 
       if (!content) return
 
-      const index = state.pages.indexOf(content)
+      const index = this.pages.indexOf(content)
 
-      state.pages.splice(index, 1)
+      this.pages.splice(index, 1)
     },
-    updatePage(state: ProjectState, page: ContextState) {
-      const _page = state.pages.find(
+    updatePage(page: ContextState) {
+      const _page = this.pages.find(
         (content: ContextState) => content.id === page.id
       )
 
       if (!_page) return
 
-      const index = state.pages.indexOf(_page)
+      const index = this.pages.indexOf(_page)
 
-      state.pages.splice(index, 1, page)
+      this.pages.splice(index, 1, page)
     },
-    switchPage(state: ProjectState, obj: Record<any, any>) {
-      const page = state.pages.filter(
+    switchPage(obj: Record<any, any>) {
+      const page = this.pages.filter(
         (page: ContextState) => obj.page.id === page.id
       )[0]
 
       if (!page) return
 
-      const index = state.pages.indexOf(page)
+      const index = this.pages.indexOf(page)
 
       if (index === -1) return
 
@@ -155,35 +156,33 @@ export default {
 
       if (
         (sIndex < 0 && obj.direction === 'up') ||
-        (sIndex >= state.pages.length && obj.direction === 'down')
+        (sIndex >= this.pages.length && obj.direction === 'down')
       )
         return
 
-      const target = state.pages[sIndex]
+      const target = this.pages[sIndex]
 
-      const temp = state.pages[index]
-      state.pages[index] = target
-      state.pages[sIndex] = temp
+      const temp = this.pages[index]
+      this.pages[index] = target
+      this.pages[sIndex] = temp
     },
-    resetDates(state: ProjectState) {
-      state.pages.forEach((page: ContextState) => {
+    resetDates() {
+      this.pages.forEach((page: ContextState) => {
         page.entity.forEach((line: ContextStatePageContent) => {
           line.createdAt = useFormat().actually()
           line.updatedAt = useFormat().actually()
         })
       })
     },
-    updateContext(state: ProjectState, context: ContextState) {
-      const _context = state.pages.filter(
+    updateContext(context: ContextState) {
+      const _context = this.pages.filter(
         (cont: ContextState) => cont.id === context.id
       )
-      const index = state.pages.indexOf(_context[0])
+      const index = this.pages.indexOf(_context[0])
 
       if (index === -1) return
 
-      state.pages[index].entity = context.entity
+      this.pages[index].entity = context.entity
     },
   },
-  actions: {},
-  getters: {},
-}
+})

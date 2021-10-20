@@ -2,7 +2,7 @@
   <AsideText
     class="wb-aside-button"
     :text="t('editor.aside.pdf.title')"
-    :shortcuts="store.state.shortcuts.generatePDF[0]"
+    :shortcuts="SHORTCUTS.generatePDF[0]"
     :icon="true"
     @click.prevent="pdf.external().onGeneratePDF"
   >
@@ -13,9 +13,10 @@
 <script setup lang="ts">
   import { usePDF } from '@/use/pdf'
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
+  import { useShortcutsStore } from '@/store/shortcuts'
 
-  const store = useStore()
+  const SHORTCUTS = useShortcutsStore()
+
   const { t } = useI18n()
   const pdf = usePDF()
 </script>

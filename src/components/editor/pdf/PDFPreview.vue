@@ -21,14 +21,14 @@
 <script setup lang="ts">
   import { usePDF } from '@/use/pdf'
   import { ref, onMounted } from 'vue'
-  import { useStore } from 'vuex'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
   import useEmitter from '@/use/emitter'
+  import { useAbsoluteStore } from '@/store/absolute'
 
   const preview = ref<HTMLElement | null>(null)
   const exists = ref<boolean>(false)
-  const store = useStore()
+  const absoluteStore = useAbsoluteStore()
   const { t } = useI18n()
   const toast = useToast()
   const pdf = usePDF()
@@ -45,6 +45,6 @@
   })
 
   const onClick = () => {
-    store.commit('absolute/switchPdfPreview', false)
+    absoluteStore.switchPdfPreview(false)
   }
 </script>

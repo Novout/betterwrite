@@ -134,7 +134,6 @@
 
 <script setup lang="ts">
   import { ref, watch, nextTick, computed, onMounted } from 'vue'
-  import { useStore } from 'vuex'
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
   import { useInput } from '@/use/input'
@@ -147,6 +146,10 @@
   import { EntityShowEditOptions } from '@/types/entity'
   import { VueEmitterEntityOpen, VueEmitterEntityClose } from '@/types/emitter'
   import { useScroll } from '@/use/scroll'
+  import { useContextStore } from '@/store/context'
+  import { useProjectStore } from '@/store/project'
+  import { useEditorStore } from '@/store/editor'
+  import { useAbsoluteStore } from '@/store/absolute'
 
   const props = defineProps({
     entity: {
@@ -155,7 +158,11 @@
     },
   })
 
-  const store = useStore()
+  const CONTEXT = useContextStore()
+  const PROJECT = useProjectStore()
+  const EDITOR = useEditorStore()
+  const ABSOLUTE = useAbsoluteStore()
+
   const toast = useToast()
   const emitter = useEmitter()
   const env = useEnv()
@@ -171,15 +178,13 @@
   const keyboard = ref<boolean>(false)
   const commands = ref<boolean>(false)
 
-  const _index = computed(() =>
-    store.state.context.entity.indexOf(props.entity)
-  )
   const data = ref<string>('')
   const show = ref<HTMLDivElement | null>(null)
   const input = ref<HTMLTextAreaElement | null>(null)
   const height = ref<string>('0px')
 
-  const style = computed(() => store.state.editor.styles.show)
+  const style = computed(() => EDITOR.styles.show)
+  const _index = computed(() => CONTEXT.entity.indexOf(props.entity))
 
   watch(hover, async (_hover) => {
     keyboard.value = false
@@ -222,7 +227,7 @@
     if (entity.utils().entry(_data, 'h2')) {
       data.value = ''
 
-      store.commit('context/newInExistentEntity', {
+      CONTEXT.newInExistentEntity({
         old: props.entity,
         new: factory.entity().create('heading-two'),
       })
@@ -231,7 +236,7 @@
     if (entity.utils().entry(_data, 'h3')) {
       data.value = ''
 
-      store.commit('context/newInExistentEntity', {
+      CONTEXT.newInExistentEntity({
         old: props.entity,
         new: factory.entity().create('heading-three'),
       })
@@ -240,9 +245,9 @@
     if (entity.utils().entry(_data, 'bp')) {
       data.value = ''
 
-      store.commit('context/newInExistentEntity', {
+      CONTEXT.newInExistentEntity({
         old: props.entity,
-        new: factory.entity().create('page-break'),
+        new: factory.entity().create('heading-three'),
       })
 
       await nextTick
@@ -253,7 +258,7 @@
     if (entity.utils().entry(_data, 'lb')) {
       data.value = ''
 
-      store.commit('context/newInExistentEntity', {
+      CONTEXT.newInExistentEntity({
         old: props.entity,
         new: factory.entity().create('line-break'),
       })
@@ -270,7 +275,7 @@
         (content: ContextStatePageContent) => {
           edit.value = false
 
-          store.commit('context/newInExistentEntity', {
+          CONTEXT.newInExistentEntity({
             old: props.entity,
             new: content,
           })
@@ -293,9 +298,11 @@
           return
         }
 
-        const index = store.state.context.entity.indexOf(ent)
+        if (!ent) return
 
-        if (store.state.context.entity[index] === props.entity) return
+        const index = CONTEXT.entity.indexOf(ent)
+
+        if (CONTEXT.entity[index] === props.entity) return
 
         if (edit.value) onUpdateContent()
 
@@ -303,13 +310,10 @@
       }
     )
 
-    emitter.on('entity-open', async (payload?: VueEmitterEntityOpen) => {
-      const index = store.state.context.entity.indexOf(payload?.entity)
+    emitter.on('entity-open', async (payload: VueEmitterEntityOpen) => {
+      const index = CONTEXT.entity.indexOf(payload.entity)
 
-      if (
-        payload?.up &&
-        store.state.context.entity[index - 1] === props.entity
-      ) {
+      if (payload?.up && CONTEXT.entity[index - 1] === props.entity) {
         onEdit(undefined, {
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
@@ -317,10 +321,7 @@
         })
       }
 
-      if (
-        !payload?.up &&
-        store.state.context.entity[index + 1] === props.entity
-      ) {
+      if (!payload?.up && CONTEXT.entity[index + 1] === props.entity) {
         onEdit(undefined, {
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
@@ -337,8 +338,8 @@
     })
 
     emitter.on('entity-open-last', () => {
-      const length = store.state.context.entity.length
-      const entity = store.state.context.entity[length - 1]
+      const length = CONTEXT.entity.length
+      const entity = CONTEXT.entity[length - 1]
 
       if (entity === props.entity) {
         onEdit()
@@ -346,28 +347,28 @@
     })
 
     emitter.on('entity-not-mutate', async (entity: ContextStatePageContent) => {
-      const _id = store.state.context.entity.indexOf(entity)
+      const _id = CONTEXT.entity.indexOf(entity)
 
       focus.value = false
       edit.value = false
 
       await nextTick
 
-      if (store.state.context.entity[_id - 1] === props.entity) {
+      if (CONTEXT.entity[_id - 1] === props.entity) {
         onEdit()
       }
     })
   })
 
   const onUpdateContent = async () => {
-    store.commit('context/updateInPage', {
+    CONTEXT.updateInPage({
       entity: props.entity,
       raw: data.value,
     })
 
     await nextTick
 
-    store.commit('project/updateContext', store.state.context)
+    PROJECT.updateContext(CONTEXT.$state)
 
     if (!focus.value) edit.value = false
   }
@@ -411,7 +412,7 @@
     const posRaw = data.value.slice(_input.selectionStart)
     let initial = false
 
-    if (_index.value + 1 === store.state.context.entity.length) {
+    if (_index.value + 1 === CONTEXT.entity.length) {
       if (_input.selectionStart === 0) {
         data.value = ''
         emitter.emit('entity-input-raw', '')
@@ -429,26 +430,30 @@
       _input.textLength === _input.selectionEnd
 
     if (end) {
-      store.commit('context/newInPagePosEdit', {
+      CONTEXT.newInPagePosEdit({
         entity: props.entity,
         type: 'paragraph',
       })
     } else {
       if (_input.selectionStart === 0) {
-        store.commit('context/newInPagePosEdit', {
+        CONTEXT.newInPagePosEdit({
           entity: props.entity,
           type: 'paragraph',
           raw: data.value,
         })
+
         data.value = env.emptyLine() as string
+
         initial = true
       } else {
         data.value = data.value.replace(posRaw, '')
-        store.commit('context/newInPagePosEdit', {
+
+        CONTEXT.newInPagePosEdit({
           entity: props.entity,
           type: 'paragraph',
           raw: posRaw,
         })
+
         initial = true
       }
     }
@@ -480,18 +485,12 @@
 
       // finder
       if (e.key === 'f') {
-        store.commit(
-          'absolute/switchShortcutFinder',
-          !store.state.absolute.shortcuts.finder
-        )
+        ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.finder
       }
 
       // swapper
       if (e.key === 'h') {
-        store.commit(
-          'absolute/switchShortcutSwitcher',
-          !store.state.absolute.shortcuts.switcher
-        )
+        ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.switcher
       }
 
       if (e.key === 'd') {
@@ -499,17 +498,17 @@
 
         await nextTick
 
-        store.commit('context/removeInPage', props.entity)
+        CONTEXT.removeInPage(props.entity)
 
         await nextTick
 
-        store.commit('project/updateContext', store.state.context)
+        PROJECT.updateContext(CONTEXT.$state)
       } else if (e.key === 'ArrowUp') {
         emitter.emit('entity-not-mutate', props.entity)
 
         await nextTick
 
-        store.commit('context/switchInPage', {
+        CONTEXT.switchInPage({
           entity: props.entity,
           direction: 'up',
         })
@@ -528,7 +527,7 @@
 
         await nextTick
 
-        store.commit('context/switchInPage', {
+        CONTEXT.switchInPage({
           entity: props.entity,
           direction: 'down',
         })
@@ -556,18 +555,18 @@
         if (entity.utils().isFixed(_index.value - 1)) return
 
         if (data.value !== '') {
-          store.commit('context/insertRawInExistentEntity', props.entity)
+          CONTEXT.insertRawInExistentEntity(props.entity)
         }
 
         emitter.emit('entity-not-mutate', props.entity)
 
         await nextTick
 
-        store.commit('context/removeInPage', props.entity)
+        CONTEXT.removeInPage(props.entity)
 
         await nextTick
 
-        store.commit('project/updateContext', store.state.context)
+        PROJECT.updateContext(CONTEXT.$state)
 
         await nextTick
 
@@ -586,7 +585,7 @@
         }
       } else if (e.key === 'ArrowDown') {
         if (_input.selectionStart === _input.textLength) {
-          if (_index.value + 1 === store.state.context.entity.length) {
+          if (_index.value + 1 === CONTEXT.entity.length) {
             emitter.emit('entity-input-focus')
             return
           }
@@ -612,7 +611,7 @@
 
     if (el) {
       if (el.selectionEnd - el.selectionStart !== 0) {
-        store.commit('editor/setTextSelection', {
+        EDITOR.setTextSelection({
           content: data.value.substring(el.selectionStart, el.selectionEnd),
           end: el.selectionEnd,
           start: el.selectionStart,

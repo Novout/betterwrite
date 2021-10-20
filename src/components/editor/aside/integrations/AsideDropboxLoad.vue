@@ -25,9 +25,7 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
   import { useDropbox } from '@/use/storage/dropbox'
-  import { useToast } from 'vue-toastification'
 
   const { t } = useI18n()
   const dropbox = useDropbox()

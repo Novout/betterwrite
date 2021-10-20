@@ -99,14 +99,15 @@
   import { useEntity } from '@/use/entity'
   import { onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
+  import { useAbsoluteStore } from '@/store/absolute'
+
+  const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
-  const store = useStore()
   const entity = useEntity()
 
   const onClose = () => {
-    store.commit('absolute/switchShortcutSwitcher', false)
+    ABSOLUTE.shortcuts.switcher = false
   }
 
   onMounted(() => {

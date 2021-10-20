@@ -1,51 +1,65 @@
-import { useStore } from 'vuex'
 import { nextTick } from 'vue'
 import { useToast } from 'vue-toastification'
 import { Dropbox as DBX, DropboxResponse, DropboxResponseError } from 'dropbox'
 import { useEnv } from '@/use/env'
+import { useProjectStore } from '@/store/project'
+import { useEditorStore } from '@/store/editor'
+import { useLoggerStore } from '@/store/logger'
+import { usePDFStore } from '@/store/pdf'
+import { useContextStore } from '@/store/context'
 import i18n from '@/lang'
+import { useAuthStore } from '@/store/auth'
 
 export const useDropbox = () => {
+  const CONTEXT = useContextStore()
+  const PROJECT = useProjectStore()
+  const EDITOR = useEditorStore()
+  const AUTH = useAuthStore()
+  const LOGGER = useLoggerStore()
+  const PDF = usePDFStore()
+
   const toast = useToast()
-  const store = useStore()
   const { t } = i18n.global
 
   const loadContext = async (context: any) => {
     if (!context) return
 
-    store.commit('project/load', context.project)
+    PROJECT.load(context.project)
+
     await nextTick
 
-    store.commit('context/load', store.state.project.pages[0])
+    CONTEXT.load(PROJECT.pages[0])
+
     await nextTick
 
-    store.commit('logger/load', context.logger.content)
-    store.commit('pdf/load', context.pdf)
+    LOGGER.load(context.logger.content)
+
+    PDF.load(context.pdf)
 
     toast.success(t('toast.project.load'))
   }
 
   const save = () => {
-    if (!store.state.auth.dropbox.accessToken) {
+    if (!AUTH.dropbox.accessToken) {
       return
     }
 
     const obj = {
-      project: store.state.project,
-      editor: store.state.editor,
-      logger: store.state.logger,
+      project: PROJECT.$state,
+      editor: EDITOR.$state,
+      logger: LOGGER.$state,
       pdf: {
-        styles: store.state.pdf.styles,
+        styles: PDF.styles,
         fonts: [],
         normalize: {},
       },
     }
 
     const dbx = new DBX({
-      accessToken: store.state.auth.dropbox.accessToken,
+      accessToken: AUTH.dropbox.accessToken,
     })
 
-    const path = `/${store.state.project.name}.bw`
+    const path = `/${PROJECT.name}.bw`
 
     toast.info(t('toast.generics.load'))
 
@@ -82,7 +96,7 @@ export const useDropbox = () => {
   }
 
   const load = async () => {
-    if (!store.state.auth.dropbox.accessToken) {
+    if (!AUTH.dropbox.accessToken) {
       return
     }
 
@@ -93,7 +107,7 @@ export const useDropbox = () => {
         toast.info(t('toast.generics.load'))
 
         const dbx = new DBX({
-          accessToken: store.state.auth.dropbox.accessToken,
+          accessToken: AUTH.dropbox.accessToken as string,
         })
         dbx
           .filesDownload({ path: file.id })

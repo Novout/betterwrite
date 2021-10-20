@@ -9,13 +9,11 @@
       bg-gray-100
       dark:bg-gray-700
     "
-    :class="[
-      store.state.editor.configuration.draggable ? 'fixed' : 'inline-block',
-    ]"
+    :class="[EDITOR.configuration.draggable ? 'fixed' : 'inline-block']"
     @click.prevent="onClickInEditor"
   >
-    <EditorBaseHeader v-if="store.state.project.name !== env.projectEmpty()" />
-    <EditorBaseBlocked v-if="store.state.project.name === env.projectEmpty()" />
+    <EditorBaseHeader v-if="PROJECT.name !== env.projectEmpty()" />
+    <EditorBaseBlocked v-if="PROJECT.name === env.projectEmpty()" />
     <section
       id="edit"
       :class="[project.isBlankProject() ? 'pt-28' : '']"
@@ -29,13 +27,13 @@
       "
     >
       <EditorEntityShow
-        v-for="(entity, index) in store.state.context.entity"
+        v-for="(entity, index) in CONTEXT.entity"
         :id="`entity-${String(index)}`"
         :key="index"
         :entity="entity"
       />
       <EditorEntityInput
-        v-if="store.state.project.name !== env.projectEmpty()"
+        v-if="PROJECT.name !== env.projectEmpty()"
         v-model="entry"
         @enter="enterListener"
         @reset="resetListener"
@@ -46,14 +44,19 @@
 
 <script lang="ts" setup>
   import { ref, nextTick } from 'vue'
-  import { useStore } from 'vuex'
   import { ContextStatePageContent } from '@/types/context'
   import { useScroll } from '@/use/scroll'
   import { useEnv } from '@/use/env'
   import useEmitter from '@/use/emitter'
   import { useProject } from '@/use/project'
+  import { useContextStore } from '@/store/context'
+  import { useProjectStore } from '@/store/project'
+  import { useEditorStore } from '@/store/editor'
 
-  const store = useStore()
+  const CONTEXT = useContextStore()
+  const PROJECT = useProjectStore()
+  const EDITOR = useEditorStore()
+
   const emitter = useEmitter()
   const project = useProject()
   const env = useEnv()
@@ -62,7 +65,7 @@
   const entry = ref<string>('')
 
   const enterListener = async (content: ContextStatePageContent) => {
-    store.commit('context/addInPage', content)
+    CONTEXT.addInPage(content)
 
     await nextTick()
 

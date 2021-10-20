@@ -1,35 +1,37 @@
 import { nextTick } from 'vue'
-import { useStore } from 'vuex'
 import { useEnv } from './env'
+import { useProjectStore } from '@/store/project'
+import { useContextStore } from '@/store/context'
 
 export const usePage = () => {
-  const store = useStore()
+  const PROJECT = useProjectStore()
+  const CONTEXT = useContextStore()
+
   const env = useEnv()
 
   const onCreatePage = async () => {
-    if (store.state.project.name === env.projectEmpty()) return
+    if (PROJECT.name === env.projectEmpty()) return
 
-    store.commit('project/newPage')
+    PROJECT.newPage()
+
     await nextTick
 
-    const arr = store.state.project.pages
+    const arr = PROJECT.pages
     const obj = arr[arr.length - 1]
 
-    store.commit('context/load', obj)
+    CONTEXT.load(obj)
   }
 
   const onDeletePage = async () => {
-    if (store.state.project.name === env.projectEmpty()) return
+    if (PROJECT.name === env.projectEmpty()) return
 
-    if (store.state.project.pages.length <= 1) return
+    if (PROJECT.pages.length <= 1) return
 
-    store.commit('project/deletePage', store.state.context)
+    PROJECT.deletePage(CONTEXT.$state)
+
     await nextTick
 
-    store.commit(
-      'context/load',
-      store.state.project.pages[store.state.project.pages.length - 1]
-    )
+    CONTEXT.load(PROJECT.pages[PROJECT.pages.length - 1])
   }
 
   return { onCreatePage, onDeletePage }

@@ -1,5 +1,4 @@
 import { Callback } from '@/types/utils'
-import { useStore } from 'vuex'
 import { useToast } from 'vue-toastification'
 import * as pdfMake from 'pdfmake/build/pdfmake'
 import { GenerateParagraphOptions } from '@/types/pdf'
@@ -12,9 +11,15 @@ import useEmitter from './emitter'
 import { useI18n } from 'vue-i18n'
 import { nextTick } from 'vue'
 import { useProject } from './project'
+import { useProjectStore } from '@/store/project'
+import { usePDFStore } from '@/store/pdf'
+import { useAbsoluteStore } from '@/store/absolute'
 
 export const usePDF = () => {
-  const store = useStore()
+  const ABSOLUTE = useAbsoluteStore()
+  const PROJECT = useProjectStore()
+  const PDF = usePDFStore()
+
   const toast = useToast()
   const emitter = useEmitter()
   const env = useEnv()
@@ -24,7 +29,7 @@ export const usePDF = () => {
   const init: Callback<any> = async () => {
     const { normalize, names } = await useFonts().get()
 
-    store.commit('pdf/loadFonts', { names, normalize })
+    PDF.loadFonts({ names, normalize })
   }
 
   const generate: Callback<any> = () => {
@@ -38,8 +43,7 @@ export const usePDF = () => {
           45,
         ],
         pageBreak:
-          store.state.pdf.styles.headingOne.breakPage &&
-          !project.isBlankProject()
+          PDF.styles.headingOne.breakPage && !project.isBlankProject()
             ? 'before'
             : undefined,
         style: 'heading-one',
@@ -135,7 +139,7 @@ export const usePDF = () => {
         image: raw,
         width:
           useDefines().pdf().base().pageSizeFixes()[
-            store.state.pdf.styles.base.pageSize
+            PDF.styles.base.pageSize
           ][0] -
           generate().base().pageMargins[0] -
           generate().base().pageMargins[2],
@@ -149,34 +153,34 @@ export const usePDF = () => {
     }
 
     const frontCover = (arr: Array<any>) => {
-      if (store.state.pdf.styles.switcher.cover) {
-        if (!store.state.pdf.styles.base.background.data) return
+      if (PDF.styles.switcher.cover) {
+        if (!PDF.styles.base.background.data) return
 
         let _raw = {
-          image: store.state.pdf.styles.base.background.data,
+          image: PDF.styles.base.background.data,
           pageBreak: 'after',
           width: useDefines().pdf().base().pageSizeFixes()[
-            store.state.pdf.styles.base.pageSize
+            PDF.styles.base.pageSize
           ][0],
           height: useDefines().pdf().base().pageSizeFixes()[
-            store.state.pdf.styles.base.pageSize
+            PDF.styles.base.pageSize
           ][1],
         }
 
         arr.push(_raw)
       } else {
         let _title = {
-          text: store.state.project.nameRaw,
+          text: PROJECT.nameRaw,
           fontSize: 42,
-          font: store.state.pdf.styles.headingOne.font,
+          font: PDF.styles.headingOne.font,
           alignment: 'center',
           margin: [0, 50],
         }
 
         let _subject = {
-          text: store.state.project.subject,
+          text: PROJECT.subject,
           fontSize: 11,
-          font: store.state.pdf.styles.paragraph.font,
+          font: PDF.styles.paragraph.font,
           margin: [
             generate().base().pageMargins[0],
             50,
@@ -187,9 +191,9 @@ export const usePDF = () => {
         }
 
         let _creator = {
-          text: store.state.project.creator,
+          text: PROJECT.creator,
           fontSize: 11,
-          font: store.state.pdf.styles.paragraph.font,
+          font: PDF.styles.paragraph.font,
           margin: [
             generate().base().pageMargins[0],
             250,
@@ -202,9 +206,9 @@ export const usePDF = () => {
 
         /*
         let _version = {
-          text: store.state.project.creator,
+          text: PROJECT.creator,
           fontSize: 11,
-          font: store.state.pdf.styles.paragraph.font,
+          font: PDF.styles.paragraph.font,
           margin: [10, 10],
           alignment: 'left',
         }
@@ -217,7 +221,7 @@ export const usePDF = () => {
     }
 
     const content = (): Array<any> => {
-      const pages: Array<ContextState> = store.state.project.pages
+      const pages: Array<ContextState> = PROJECT.pages
       const arr: Array<any> = []
 
       if (!project.isBlankProject()) frontCover(arr)
@@ -235,7 +239,7 @@ export const usePDF = () => {
           if ((entity as any).type === 'paragraph') {
             _raw = paragraph((entity as any).raw, {
               stack: false,
-              indent: store.state.pdf.styles.paragraph.indent,
+              indent: PDF.styles.paragraph.indent,
             })
           } else if ((entity as any).type === 'heading-one') {
             _raw = headingOne((entity as any).raw)
@@ -260,13 +264,13 @@ export const usePDF = () => {
 
     const base = (): Record<string, any> => {
       return {
-        pageSize: store.state.pdf.styles.base.pageSize,
-        pageOrientation: store.state.pdf.styles.base.pageOrientation,
+        pageSize: PDF.styles.base.pageSize,
+        pageOrientation: PDF.styles.base.pageOrientation,
         pageMargins: [
-          store.state.pdf.styles.base.pageMargins.left,
-          store.state.pdf.styles.base.pageMargins.top,
-          store.state.pdf.styles.base.pageMargins.right,
-          store.state.pdf.styles.base.pageMargins.bottom,
+          PDF.styles.base.pageMargins.left,
+          PDF.styles.base.pageMargins.top,
+          PDF.styles.base.pageMargins.right,
+          PDF.styles.base.pageMargins.bottom,
         ],
       }
     }
@@ -276,28 +280,28 @@ export const usePDF = () => {
         let decorationStyle
         let decoration
 
-        if (store.state.pdf.styles.paragraph.decorationStyle === 'none') {
+        if (PDF.styles.paragraph.decorationStyle === 'none') {
           decorationStyle = undefined
         } else {
-          decorationStyle = store.state.pdf.styles.paragraph.decorationStyle
+          decorationStyle = PDF.styles.paragraph.decorationStyle
         }
 
-        if (store.state.pdf.styles.paragraph.decoration === 'none') {
+        if (PDF.styles.paragraph.decoration === 'none') {
           decoration = undefined
         } else {
-          decoration = store.state.pdf.styles.paragraph.decoration
+          decoration = PDF.styles.paragraph.decoration
         }
 
         return {
-          font: store.state.pdf.styles.paragraph.font,
-          fontSize: store.state.pdf.styles.paragraph.fontSize,
-          lineHeight: store.state.pdf.styles.paragraph.lineHeight,
-          alignment: store.state.pdf.styles.paragraph.alignment,
-          characterSpacing: store.state.pdf.styles.paragraph.characterSpacing,
-          color: store.state.pdf.styles.paragraph.color,
+          font: PDF.styles.paragraph.font,
+          fontSize: PDF.styles.paragraph.fontSize,
+          lineHeight: PDF.styles.paragraph.lineHeight,
+          alignment: PDF.styles.paragraph.alignment,
+          characterSpacing: PDF.styles.paragraph.characterSpacing,
+          color: PDF.styles.paragraph.color,
           decoration: decoration,
           decorationStyle: decorationStyle,
-          decorationColor: store.state.pdf.styles.paragraph.decorationColor,
+          decorationColor: PDF.styles.paragraph.decorationColor,
         }
       }
 
@@ -305,30 +309,30 @@ export const usePDF = () => {
         let decorationStyle
         let decoration
 
-        if (store.state.pdf.styles.paragraph.decorationStyle === 'none') {
+        if (PDF.styles.paragraph.decorationStyle === 'none') {
           decorationStyle = undefined
         } else {
-          decorationStyle = store.state.pdf.styles.paragraph.decorationStyle
+          decorationStyle = PDF.styles.paragraph.decorationStyle
         }
 
-        if (store.state.pdf.styles.paragraph.decoration === 'none') {
+        if (PDF.styles.paragraph.decoration === 'none') {
           decoration = undefined
         } else {
-          decoration = store.state.pdf.styles.paragraph.decoration
+          decoration = PDF.styles.paragraph.decoration
         }
 
         return {
-          font: store.state.pdf.styles.headingOne.font,
-          fontSize: store.state.pdf.styles.headingOne.fontSize,
-          lineHeight: store.state.pdf.styles.headingOne.lineHeight,
-          bold: store.state.pdf.styles.headingOne.bold,
-          italics: store.state.pdf.styles.headingOne.italics,
-          alignment: store.state.pdf.styles.headingOne.alignment,
-          characterSpacing: store.state.pdf.styles.headingOne.characterSpacing,
-          color: store.state.pdf.styles.headingOne.color,
+          font: PDF.styles.headingOne.font,
+          fontSize: PDF.styles.headingOne.fontSize,
+          lineHeight: PDF.styles.headingOne.lineHeight,
+          bold: PDF.styles.headingOne.bold,
+          italics: PDF.styles.headingOne.italics,
+          alignment: PDF.styles.headingOne.alignment,
+          characterSpacing: PDF.styles.headingOne.characterSpacing,
+          color: PDF.styles.headingOne.color,
           decoration: decoration,
           decorationStyle: decorationStyle,
-          decorationColor: store.state.pdf.styles.headingOne.decorationColor,
+          decorationColor: PDF.styles.headingOne.decorationColor,
         }
       }
 
@@ -336,30 +340,30 @@ export const usePDF = () => {
         let decorationStyle
         let decoration
 
-        if (store.state.pdf.styles.paragraph.decorationStyle === 'none') {
+        if (PDF.styles.paragraph.decorationStyle === 'none') {
           decorationStyle = undefined
         } else {
-          decorationStyle = store.state.pdf.styles.paragraph.decorationStyle
+          decorationStyle = PDF.styles.paragraph.decorationStyle
         }
 
-        if (store.state.pdf.styles.paragraph.decoration === 'none') {
+        if (PDF.styles.paragraph.decoration === 'none') {
           decoration = undefined
         } else {
-          decoration = store.state.pdf.styles.paragraph.decoration
+          decoration = PDF.styles.paragraph.decoration
         }
 
         return {
-          font: store.state.pdf.styles.headingTwo.font,
-          fontSize: store.state.pdf.styles.headingTwo.fontSize,
-          lineHeight: store.state.pdf.styles.headingTwo.lineHeight,
-          bold: store.state.pdf.styles.headingTwo.bold,
-          italics: store.state.pdf.styles.headingTwo.italics,
-          alignment: store.state.pdf.styles.headingTwo.alignment,
-          characterSpacing: store.state.pdf.styles.headingTwo.characterSpacing,
-          color: store.state.pdf.styles.headingTwo.color,
+          font: PDF.styles.headingTwo.font,
+          fontSize: PDF.styles.headingTwo.fontSize,
+          lineHeight: PDF.styles.headingTwo.lineHeight,
+          bold: PDF.styles.headingTwo.bold,
+          italics: PDF.styles.headingTwo.italics,
+          alignment: PDF.styles.headingTwo.alignment,
+          characterSpacing: PDF.styles.headingTwo.characterSpacing,
+          color: PDF.styles.headingTwo.color,
           decoration: decoration,
           decorationStyle: decorationStyle,
-          decorationColor: store.state.pdf.styles.headingTwo.decorationColor,
+          decorationColor: PDF.styles.headingTwo.decorationColor,
         }
       }
 
@@ -367,31 +371,30 @@ export const usePDF = () => {
         let decorationStyle
         let decoration
 
-        if (store.state.pdf.styles.paragraph.decorationStyle === 'none') {
+        if (PDF.styles.paragraph.decorationStyle === 'none') {
           decorationStyle = undefined
         } else {
-          decorationStyle = store.state.pdf.styles.paragraph.decorationStyle
+          decorationStyle = PDF.styles.paragraph.decorationStyle
         }
 
-        if (store.state.pdf.styles.paragraph.decoration === 'none') {
+        if (PDF.styles.paragraph.decoration === 'none') {
           decoration = undefined
         } else {
-          decoration = store.state.pdf.styles.paragraph.decoration
+          decoration = PDF.styles.paragraph.decoration
         }
 
         return {
-          font: store.state.pdf.styles.headingThree.font,
-          fontSize: store.state.pdf.styles.headingThree.fontSize,
-          lineHeight: store.state.pdf.styles.headingThree.lineHeight,
-          bold: store.state.pdf.styles.headingThree.bold,
-          italics: store.state.pdf.styles.headingThree.italics,
-          alignment: store.state.pdf.styles.headingThree.alignment,
-          characterSpacing:
-            store.state.pdf.styles.headingThree.characterSpacing,
-          color: store.state.pdf.styles.headingThree.color,
+          font: PDF.styles.headingThree.font,
+          fontSize: PDF.styles.headingThree.fontSize,
+          lineHeight: PDF.styles.headingThree.lineHeight,
+          bold: PDF.styles.headingThree.bold,
+          italics: PDF.styles.headingThree.italics,
+          alignment: PDF.styles.headingThree.alignment,
+          characterSpacing: PDF.styles.headingThree.characterSpacing,
+          color: PDF.styles.headingThree.color,
           decoration: decoration,
           decorationStyle: decorationStyle,
-          decorationColor: store.state.pdf.styles.headingThree.decorationColor,
+          decorationColor: PDF.styles.headingThree.decorationColor,
         }
       }
 
@@ -417,9 +420,9 @@ export const usePDF = () => {
         bottom: generate().base().pageMargins[3],
       },
       info: {
-        title: store.state.project.name,
+        title: PROJECT.name,
         author: 'TODO',
-        subject: store.state.project.subject,
+        subject: PROJECT.subject,
         keywords: '',
       },
       content: generate().content(),
@@ -432,16 +435,16 @@ export const usePDF = () => {
       background: options.final
         ? function (currentPage: number) {
             return currentPage >= 3 &&
-              store.state.pdf.styles.base.background.main &&
-              store.state.pdf.styles.switcher.main
+              PDF.styles.base.background.main &&
+              PDF.styles.switcher.main
               ? [
                   {
-                    image: store.state.pdf.styles.base.background.main,
+                    image: PDF.styles.base.background.main,
                     width: useDefines().pdf().base().pageSizeFixes()[
-                      store.state.pdf.styles.base.pageSize
+                      PDF.styles.base.pageSize
                     ][0],
                     height: useDefines().pdf().base().pageSizeFixes()[
-                      store.state.pdf.styles.base.pageSize
+                      PDF.styles.base.pageSize
                     ][1],
                   },
                 ]
@@ -492,19 +495,18 @@ export const usePDF = () => {
     const fonts: Array<string> = []
     const set: Record<string, any> = {}
 
-    fonts.push(store.state.pdf.styles.paragraph.font)
-    fonts.push(store.state.pdf.styles.headingOne.font)
-    fonts.push(store.state.pdf.styles.headingTwo.font)
-    fonts.push(store.state.pdf.styles.headingThree.font)
+    fonts.push(PDF.styles.paragraph.font)
+    fonts.push(PDF.styles.headingOne.font)
+    fonts.push(PDF.styles.headingTwo.font)
+    fonts.push(PDF.styles.headingThree.font)
 
     const unique = fonts.filter((v, i, a) => a.indexOf(v) === i)
 
     unique.forEach((s: string) => {
-      set[s] = store.state.pdf.normalize[s]
+      set[s] = PDF.normalize[s]
     })
 
-    if (store.state.pdf.normalize['Roboto'])
-      set['Roboto'] = store.state.pdf.normalize['Roboto']
+    if (PDF.normalize['Roboto']) set['Roboto'] = PDF.normalize['Roboto']
 
     // @ts-ignore
     // ;(<any>pdfMake).fonts = set
@@ -515,10 +517,10 @@ export const usePDF = () => {
 
     const pdf = pdfMake.createPdf(doc({ final: true }))
 
-    pdf.download(`${store.state.project.nameRaw}.pdf`, () => {
+    pdf.download(`${PROJECT.nameRaw}.pdf`, () => {
       toast.success(t('toast.pdf.create'))
 
-      store.commit('absolute/load', false)
+      ABSOLUTE.load = false
     })
   }
 
@@ -547,25 +549,25 @@ export const usePDF = () => {
 
       input.appendChild(iframe)
 
-      store.commit('absolute/load', false)
+      ABSOLUTE.load = false
     })
   }
 
   const external = () => {
     const onGeneratePDF = async () => {
-      if (useEnv().isEmptyProject(store.state.project.name)) return
+      if (useEnv().isEmptyProject(PROJECT.name)) return
 
       toast.info(t('toast.generics.load'))
 
-      store.commit('absolute/load', true)
+      ABSOLUTE.load = true
 
       create()
     }
 
     const onPreviewPDF = async (input: HTMLElement) => {
-      if (useEnv().isEmptyProject(store.state.project.name)) return
+      if (useEnv().isEmptyProject(PROJECT.name)) return
 
-      store.commit('absolute/load', true)
+      ABSOLUTE.load = true
 
       preview(input)
     }

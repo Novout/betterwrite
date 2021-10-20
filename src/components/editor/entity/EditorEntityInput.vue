@@ -21,9 +21,9 @@
       "
       :style="{ minHeight: '50px' }"
       :class="[
-        store.state.editor.styles.input.fontSize,
-        store.state.editor.styles.input.fontFamily,
-        store.state.editor.styles.input.fontColor,
+        EDITOR.styles.input.fontSize,
+        EDITOR.styles.input.fontFamily,
+        EDITOR.styles.input.fontColor,
       ]"
       :placeholder="t('editor.text.placeholder.base')"
       @input="onInput"
@@ -45,19 +45,22 @@
   import useEmitter from '@/use/emitter'
   import { ref, computed, watch, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
   import { useToast } from 'vue-toastification'
   import { useEnv } from '@/use/env'
   import { useFactory } from '@/use/factory'
+  import { useEditorStore } from '@/store/editor'
+  import { useContextStore } from '@/store/context'
 
   const toast = useToast()
-  const store = useStore()
   const { t } = useI18n()
   const emitter = useEmitter()
   const entity = useEntity()
   const format = useFormat()
   const env = useEnv()
   const factory = useFactory()
+
+  const EDITOR = useEditorStore()
+  const CONTEXT = useContextStore()
 
   const props = defineProps({
     modelValue: String,
@@ -219,7 +222,7 @@
         updatedAt: format.actually(),
       } as ContextStatePageContent
 
-      store.commit('context/addInPageWithPaste', content)
+      CONTEXT.addInPageWithPaste(content)
 
       await emit('enter', content)
     })

@@ -1,18 +1,22 @@
 import { ContextStatePageContent } from '@/types/context'
 import { ContextState } from '@/types/context'
 import { useScroll } from '@/use/scroll'
-import { useStore } from 'vuex'
 import { computed, reactive, nextTick, watch, ref } from 'vue'
 import { useEnv } from './env'
+import { useProjectStore } from '@/store/project'
+import { useEditorStore } from '@/store/editor'
+import { useContextStore } from '@/store/context'
 
 export const useEntity = () => {
-  const store = useStore()
-  const env = useEnv()
-  const pages = computed(() => store.state.project.pages)
+  const PROJECT = useProjectStore()
+  const EDITOR = useEditorStore()
+  const CONTEXT = useContextStore()
 
-  const selection = computed(
-    () => store.state.editor.actives.text.selection.content
-  )
+  const env = useEnv()
+  const pages = computed(() => PROJECT.pages)
+
+  const selection = computed(() => EDITOR.actives.text.selection.content)
+
   watch(selection, (_content) => {
     fstate.entry = _content
     sstate.entry = _content
@@ -21,13 +25,13 @@ export const useEntity = () => {
   })
 
   const sstate = reactive({
-    entry: store.state.editor.actives.text.selection.content || ('' as string),
+    entry: EDITOR.actives.text.selection.content || ('' as string),
     output: '' as string,
     equal: true as boolean,
   })
   const sentry = ref<HTMLElement | null>(null)
   const fstate = reactive({
-    entry: store.state.editor.actives.text.selection.content || ('' as string),
+    entry: EDITOR.actives.text.selection.content || ('' as string),
     actuallyLetterCounter: 0 as number,
     actuallyLetterRaw: '' as string,
     listOfLettersExists: [] as Array<Record<string, any>>,
@@ -43,7 +47,7 @@ export const useEntity = () => {
     }
 
     const isFixed = (index: number, options?: Record<string, boolean>) => {
-      const entity = store.state.context.entity[index]
+      const entity = CONTEXT.entity[index]
 
       if (!entity.type) return false
 
@@ -61,7 +65,7 @@ export const useEntity = () => {
 
   const swapper = () => {
     const switcherText = ({ entry, output, equal }: Record<any, any>) => {
-      const arr = store.state.context.entity
+      const arr = CONTEXT.entity
 
       // TODO: Deletar em caso de output vazio
       if (!entry || !output) return
@@ -71,13 +75,13 @@ export const useEntity = () => {
 
         text.forEach((t: string) => {
           if (equal && t === entry) {
-            store.commit('context/switchEntityRaw', {
+            CONTEXT.switchEntityRaw({
               entity: e,
               match: t,
               raw: output,
             })
           } else if (!equal && t.includes(entry)) {
-            store.commit('context/switchEntityRaw', {
+            CONTEXT.switchEntityRaw({
               entity: e,
               match: entry,
               raw: output,
@@ -126,16 +130,14 @@ export const useEntity = () => {
       fstate.actuallyLetterCounter =
         fstate.listOfLettersExists.indexOf(object) + 1
 
-      const pageIndex = store.state.project.pages.indexOf(object.page)
-      const entityIndex = store.state.project.pages[pageIndex].entity.indexOf(
-        object.entity
-      )
+      const pageIndex = PROJECT.pages.indexOf(object.page)
+      const entityIndex = PROJECT.pages[pageIndex].entity.indexOf(object.entity)
 
       onGo(`entity-${entityIndex}`, object.page)
     }
 
     const onGo = async (go: string | symbol, page: ContextState) => {
-      if (store.state.context.id !== page.id) store.commit('context/load', page)
+      if (CONTEXT.id !== page.id) CONTEXT.load(page)
       await nextTick
       useScroll().to(`#${String(go)}`, 'center')
     }

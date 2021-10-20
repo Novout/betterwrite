@@ -8,10 +8,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { useStore } from 'vuex'
+  import { useAbsoluteStore } from '@/store/absolute'
 
-  const store = useStore()
-
-  const absolute = computed(() => store.state.absolute)
+  const absolute = useAbsoluteStore()
 </script>

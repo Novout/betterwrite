@@ -232,12 +232,13 @@
 
 <script setup lang="ts">
   import { reactive, computed } from 'vue'
-  import { useStore } from 'vuex'
   import { useI18n } from 'vue-i18n'
   import { useFormat } from '@/use/format'
   import { EntityType } from '@/types/context'
+  import { useContextStore } from '@/store/context'
 
-  const store = useStore()
+  const CONTEXT = useContextStore()
+
   const format = useFormat()
   const { t } = useI18n()
 
@@ -253,13 +254,13 @@
   })
 
   const onDeleteEntity = (e: MouseEvent) => {
-    store.commit('context/removeInPage', props.entity)
+    CONTEXT.removeInPage(props.entity)
 
     state.adjust = false
   }
 
   const onUpEntity = (e: MouseEvent) => {
-    store.commit('context/switchInPage', {
+    CONTEXT.switchInPage({
       entity: props.entity,
       direction: 'up',
     })
@@ -268,7 +269,7 @@
   }
 
   const onDownEntity = (e: MouseEvent) => {
-    store.commit('context/switchInPage', {
+    CONTEXT.switchInPage({
       entity: props.entity,
       direction: 'down',
     })
@@ -289,7 +290,7 @@
   }
 
   const onNewEntity = (type: string) => {
-    store.commit('context/newInPage', {
+    CONTEXT.newInPage({
       entity: props.entity,
       type,
     })
@@ -304,7 +305,7 @@
   }
 
   const onSwitchEntity = (type: EntityType) => {
-    store.commit('context/alterInPage', {
+    CONTEXT.alterInPage({
       entity: props.entity,
       type,
     })

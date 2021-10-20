@@ -2,7 +2,6 @@ import axios from 'axios'
 import { GoogleFont } from '@/types/google'
 import { useEnv } from '../env'
 import { useDefines } from '../defines'
-import isElectron from 'is-electron'
 
 export const useFonts = () => {
   const setGlobal = (vfs: Record<any, any>) => {

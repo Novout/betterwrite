@@ -1,10 +1,10 @@
 <template>
   <div class="flex px-2 flex-col mt-5 w-full wb-text">
-    <p v-if="!env.isEmptyProject(project.name)">
-      {{ project.nameRaw }}
+    <p v-if="!env.isEmptyProject(PROJECT.name)">
+      {{ PROJECT.nameRaw }}
     </p>
     <transition-group name="list" tag="div">
-      <div v-for="(page, index) in project.pages" :key="index">
+      <div v-for="(page, index) in PROJECT.pages" :key="index">
         <div
           v-for="(entity, ind) in page.entity"
           :id="`graph-${page.id}-${String(ind)}`"
@@ -19,14 +19,12 @@
 </template>
 
 <script setup lang="ts">
+  import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useGraph } from '@/use/graph'
-  import { computed } from '@vue/reactivity'
-  import { useStore } from 'vuex'
+
+  const PROJECT = useProjectStore()
 
   const graph = useGraph()
   const env = useEnv()
-
-  const store = useStore()
-  const project = computed(() => store.state.project)
 </script>

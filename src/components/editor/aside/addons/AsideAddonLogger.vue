@@ -2,7 +2,7 @@
   <AsideText
     class="wb-aside-button"
     :text="t('editor.aside.project.addons.logger.title')"
-    :shortcuts="store.state.shortcuts.logger[0]"
+    :shortcuts="SHORTCUTS.logger[0]"
     @click.prevent="onClick"
   >
   </AsideText>
@@ -10,12 +10,15 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
+  import { useAbsoluteStore } from '@/store/absolute'
+  import { useShortcutsStore } from '@/store/shortcuts'
 
-  const store = useStore()
+  const SHORTCUTS = useShortcutsStore()
+  const ABSOLUTE = useAbsoluteStore()
+
   const { t } = useI18n()
 
   const onClick = () => {
-    store.commit('absolute/switchLogger', !store.state.absolute.logger)
+    ABSOLUTE.logger = !ABSOLUTE.logger
   }
 </script>

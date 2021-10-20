@@ -9,15 +9,18 @@
 </template>
 
 <script setup lang="ts">
+  import { useContextStore } from '@/store/context'
+  import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useKeyboard } from '@/use/keyboard'
   import { useLocalStorage } from '@/use/storage/local'
   import { useHead } from '@vueuse/head'
   import { computed, onUnmounted } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
 
-  const store = useStore()
+  const projectStore = useProjectStore()
+  const contextStore = useContextStore()
+
   const keyboard = useKeyboard()
   const env = useEnv()
   const { t } = useI18n()
@@ -29,16 +32,13 @@
     keyboard.destroy()
   })
 
-  const project = computed(() => store.state.project.nameRaw)
-  const heading = computed(() => store.state.context.entity)
-
   const title = computed(() => t('seo.editor.title'))
   const description = computed(() => t('seo.editor.description'))
 
   const _title = computed(() =>
-    project.value === env.projectEmpty()
+    projectStore.nameRaw === env.projectEmpty()
       ? title.value
-      : project.value + ' - ' + heading.value[0]?.raw
+      : projectStore.nameRaw + ' - ' + contextStore.entity[0]?.raw
   )
 
   useHead({

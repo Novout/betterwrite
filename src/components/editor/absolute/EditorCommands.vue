@@ -98,8 +98,6 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
 
   const { t } = useI18n()
-  const store = useStore()
 </script>

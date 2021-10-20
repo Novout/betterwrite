@@ -82,16 +82,17 @@
 </template>
 
 <script setup lang="ts">
+  import { useEditorStore } from '@/store/editor'
   import { ref, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
 
-  const store = useStore()
+  const EDITOR = useEditorStore()
+
   const { t, locale } = useI18n()
 
-  const dark = ref(store.state.editor.configuration.dark)
+  const dark = ref(EDITOR.configuration.dark)
   watch(dark, (_dark: boolean) => {
-    store.commit('editor/switchTheme', _dark)
+    EDITOR.configuration.dark = _dark
 
     _dark
       ? (document.querySelector('html') as HTMLElement).classList.add('dark')

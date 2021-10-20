@@ -1,8 +1,8 @@
 <template>
   <HeroIcon
     class="absolute justify-center items-center z-aside-open wb-icon rounded-br"
-    :class="open ? 'left-60' : ''"
-    @click="store.commit('absolute/switchAside', !open)"
+    :class="ABSOLUTE.aside ? 'left-60' : ''"
+    @click="ABSOLUTE.aside = !ABSOLUTE.aside"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   </HeroIcon>
   <transition @leave="(el, done) => motions.aside.leave(done)">
     <aside
-      v-if="open"
+      v-if="ABSOLUTE.aside"
       v-motion="'aside'"
       class="
         fixed
@@ -54,15 +54,14 @@
 </template>
 
 <script lang="ts" setup>
+  import { useAbsoluteStore } from '@/store/absolute'
   import { useMotions } from '@vueuse/motion'
-  import { computed } from 'vue'
-  import { useStore } from 'vuex'
 
-  const store = useStore()
+  const ABSOLUTE = useAbsoluteStore()
+
   const motions = useMotions()
-  const open = computed(() => store.state.absolute.aside)
 
   const onClose = () => {
-    store.commit('absolute/switchAside', false)
+    ABSOLUTE.aside = false
   }
 </script>

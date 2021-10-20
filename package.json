@@ -45,6 +45,7 @@
     "keyboardjs": "2.6.4",
     "mitt": "^3.0.0",
     "pdfmake": "0.2.2",
+    "pinia": "^2.0.0-rc.14",
     "postcss": "8.3.6",
     "tailwindcss": "2.2.15",
     "tailwindcss-typography": "3.1.0",
@@ -52,8 +53,7 @@
     "vue-final-modal": "3.4.1",
     "vue-i18n": "9.1.7",
     "vue-router": "4.0.11",
-    "vue-toastification": "2.0.0-rc.5",
-    "vuex": "^4.0.2"
+    "vue-toastification": "2.0.0-rc.5"
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "2.4.0",
@@ -102,12 +102,12 @@
         "mitt",
         "node-fetch",
         "pdfmake/build/pdfmake",
+        "pinia",
         "vue",
         "vue-final-modal",
         "vue-i18n",
         "vue-router",
-        "vue-toastification",
-        "vuex"
+        "vue-toastification"
       ]
     }
   },

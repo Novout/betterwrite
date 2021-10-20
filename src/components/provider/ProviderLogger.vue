@@ -17,15 +17,16 @@
       overflow-auto
     "
   >
-    <LoggerItem v-for="(log, index) in logger" :key="index" :log="log" />
+    <LoggerItem
+      v-for="(log, index) in logger.content"
+      :key="index"
+      :log="log"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-  import { useStore } from 'vuex'
-  import { computed } from 'vue'
+  import { useLoggerStore } from '@/store/logger'
 
-  const store = useStore()
-
-  const logger = computed(() => store.state.logger.content)
+  const logger = useLoggerStore()
 </script>

@@ -1,10 +1,10 @@
 import { PDFState } from '@/types/pdf'
-import { useDefines } from '@/use/defines'
+import { defineStore } from 'pinia'
+import { useDefines } from '../use/defines'
 
-export default {
-  namespaced: true,
-  state: () =>
-    ({
+export const usePDFStore = defineStore('pdf', {
+  state: (): PDFState => {
+    return {
       styles: {
         base: {
           background: {
@@ -137,31 +137,30 @@ export default {
       },
       fonts: [],
       normalize: {},
-    } as PDFState),
-  mutations: {
-    load(state: PDFState, payload: any) {
-      state.styles = payload.styles
+    }
+  },
+  actions: {
+    load(payload: any) {
+      this.styles = payload.styles
     },
-    loadFonts(state: PDFState, payload: any) {
-      state.fonts = payload.names
-      state.normalize = payload.normalize
+    loadFonts(payload: any) {
+      this.fonts = payload.names
+      this.normalize = payload.normalize
     },
-    setStyles(state: PDFState, payload: any) {
-      state.styles = payload
+    setStyles(payload: any) {
+      this.styles = payload
     },
-    setMainBackground(state: PDFState, payload: any) {
-      state.styles.base.background.main = payload
+    setMainBackground(this: PDFState, payload: any) {
+      this.styles.base.background.main = payload
     },
-    setCoverBackground(state: PDFState, payload: any) {
-      state.styles.base.background.data = payload
+    setCoverBackground(this: PDFState, payload: any) {
+      this.styles.base.background.data = payload
     },
-    deleteMainBackground(state: PDFState) {
-      state.styles.base.background.main = ''
+    deleteMainBackground(this: PDFState) {
+      this.styles.base.background.main = ''
     },
-    deleteCoverBackground(state: PDFState) {
-      state.styles.base.background.data = ''
+    deleteCoverBackground(this: PDFState) {
+      this.styles.base.background.data = ''
     },
   },
-  actions: {},
-  getters: {},
-}
+})

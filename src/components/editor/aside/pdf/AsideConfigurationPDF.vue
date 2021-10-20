@@ -2,7 +2,7 @@
   <AsideText
     class="wb-aside-button"
     :text="t('editor.aside.pdf.configuration')"
-    :shortcuts="store.state.shortcuts.configurationPDF[0]"
+    :shortcuts="SHORTCUTS.configurationPDF[0]"
     :icon="true"
     @click.prevent="onConfiguration"
   >
@@ -11,13 +11,16 @@
 </template>
 
 <script setup lang="ts">
+  import { useAbsoluteStore } from '@/store/absolute'
+  import { useShortcutsStore } from '@/store/shortcuts'
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
 
-  const store = useStore()
+  const SHORTCUTS = useShortcutsStore()
+  const ABSOLUTE = useAbsoluteStore()
+
   const { t } = useI18n()
 
   const onConfiguration = () => {
-    store.commit('absolute/switchPdfConfiguration', true)
+    ABSOLUTE.pdf.configuration = true
   }
 </script>

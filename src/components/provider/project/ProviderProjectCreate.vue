@@ -176,13 +176,13 @@
 </template>
 
 <script setup lang="ts">
+  import { useAbsoluteStore } from '@/store/absolute'
   import { useProject } from '@/use/project'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
 
   const { t } = useI18n()
-  const store = useStore()
+  const absoluteStore = useAbsoluteStore()
   const project = useProject()
 
   const name = ref(t('editor.aside.project.new.content.name'))
@@ -219,6 +219,6 @@
       type: _type,
     })
 
-    store.commit('absolute/switchProjectCreate', false)
+    absoluteStore.switchProjectCreate(false)
   }
 </script>

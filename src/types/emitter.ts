@@ -4,7 +4,7 @@ export interface VueEmitterEntityClose {
 }
 
 export interface VueEmitterEntityOpen {
-  entity?: ContextStatePageContent
+  entity: ContextStatePageContent
   up?: boolean
   selectionInitial?: boolean
   switch?: boolean

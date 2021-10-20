@@ -2,7 +2,7 @@
   <AsideText
     class="wb-aside-button"
     :text="t('editor.aside.project.load.title')"
-    :shortcuts="store.state.shortcuts.localLoadProject[0]"
+    :shortcuts="SHORTCUTS.localLoadProject[0]"
     @click.prevent="local.onLoadProject"
   >
   </AsideText>
@@ -11,9 +11,9 @@
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
   import { useLocalStorage } from '@/use/storage/local'
-  import { useStore } from 'vuex'
+  import { useShortcutsStore } from '@/store/shortcuts'
 
-  const store = useStore()
+  const SHORTCUTS = useShortcutsStore()
   const local = useLocalStorage()
 
   const { t } = useI18n()

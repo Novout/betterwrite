@@ -573,28 +573,30 @@
 </template>
 
 <script setup lang="ts">
+  import { useAbsoluteStore } from '@/store/absolute'
+  import { usePDFStore } from '@/store/pdf'
   import { useDefines } from '@/use/defines'
   import { reactive, nextTick, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
   import { useToast } from 'vue-toastification'
 
   const { t } = useI18n()
   const toast = useToast()
-  const store = useStore()
+  const PDF = usePDFStore()
+  const ABSOLUTE = useAbsoluteStore()
 
-  const _base = computed(() => store.state.pdf.styles.base)
-  const _paragraph = computed(() => store.state.pdf.styles.paragraph)
-  const _hone = computed(() => store.state.pdf.styles.headingOne)
-  const _htwo = computed(() => store.state.pdf.styles.headingTwo)
-  const _hthree = computed(() => store.state.pdf.styles.headingThree)
+  const _base = computed(() => PDF.styles.base)
+  const _paragraph = computed(() => PDF.styles.paragraph)
+  const _hone = computed(() => PDF.styles.headingOne)
+  const _htwo = computed(() => PDF.styles.headingTwo)
+  const _hthree = computed(() => PDF.styles.headingThree)
 
   const switcher = reactive({
-    cover: store.state.pdf.styles.switcher.cover,
-    main: store.state.pdf.styles.switcher.main,
+    cover: PDF.styles.switcher.cover,
+    main: PDF.styles.switcher.main,
   })
 
-  const fontFamily = computed(() => store.state.pdf.fonts)
+  const fontFamily = computed(() => PDF.fonts)
 
   const base = reactive({
     pageSize: _base.value.pageSize,
@@ -676,7 +678,7 @@
 
   const onSetConfiguration = async () => {
     if (window.confirm(t('editor.window.confirmConfiguration'))) {
-      store.commit('pdf/setStyles', {
+      PDF.setStyles({
         base: {
           ...base,
           background: _base.value.background,
@@ -688,27 +690,28 @@
         headingThree,
         switcher,
       })
+
       await nextTick
 
       toast.success(t('toast.pdf.configuration.save'))
     }
 
-    store.commit('absolute/switchPdfConfiguration', false)
+    ABSOLUTE.switchPdfConfiguration(false)
   }
 
   const onCoverImageLoad = (e: any) => {
-    store.commit('pdf/setCoverBackground', e)
+    PDF.setCoverBackground(e)
   }
 
   const onMainImageLoad = (e: any) => {
-    store.commit('pdf/setMainBackground', e)
+    PDF.setMainBackground(e)
   }
 
   const onDeleteCoverImage = () => {
-    store.commit('pdf/deleteCoverBackground')
+    PDF.deleteCoverBackground()
   }
 
   const onDeleteMainImage = () => {
-    store.commit('pdf/deleteMainBackground')
+    PDF.deleteMainBackground()
   }
 </script>

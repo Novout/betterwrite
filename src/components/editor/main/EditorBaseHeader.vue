@@ -135,39 +135,38 @@
 
 <script setup lang="ts">
   import { usePage } from '@/use/page'
-  import { useStore } from 'vuex'
   import { useEditor } from '@/use/editor'
   import { useProject } from '@/use/project'
+  import { useAbsoluteStore } from '@/store/absolute'
+  import { useProjectStore } from '@/store/project'
+  import { useContextStore } from '@/store/context'
 
-  const store = useStore()
+  const ABSOLUTE = useAbsoluteStore()
+  const PROJECT = useProjectStore()
+  const CONTEXT = useContextStore()
+
   const page = usePage()
   const project = useProject()
   const editor = useEditor()
 
   const onFinder = (e: MouseEvent) => {
-    store.commit(
-      'absolute/switchShortcutFinder',
-      !store.state.absolute.shortcuts.finder
-    )
+    ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.finder
   }
 
   const onSwitcher = (e: MouseEvent) => {
-    store.commit(
-      'absolute/switchShortcutSwitcher',
-      !store.state.absolute.shortcuts.switcher
-    )
+    ABSOLUTE.shortcuts.switcher = !ABSOLUTE.shortcuts.switcher
   }
 
   const onUpPage = (e: MouseEvent) => {
-    store.commit('project/switchPage', {
-      page: store.state.context,
+    PROJECT.switchPage({
+      page: CONTEXT.$state,
       direction: 'up',
     })
   }
 
   const onDownPage = (e: MouseEvent) => {
-    store.commit('project/switchPage', {
-      page: store.state.context,
+    PROJECT.switchPage({
+      page: CONTEXT.$state,
       direction: 'down',
     })
   }

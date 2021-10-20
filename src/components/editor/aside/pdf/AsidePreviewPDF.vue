@@ -2,7 +2,7 @@
   <AsideText
     class="wb-aside-button"
     :text="t('editor.aside.pdf.preview')"
-    :shortcuts="store.state.shortcuts.previewPDF[0]"
+    :shortcuts="SHORTCUTS.previewPDF[0]"
     :icon="true"
     @click.prevent="onPreviewPDF"
   >
@@ -11,13 +11,16 @@
 </template>
 
 <script setup lang="ts">
+  import { useAbsoluteStore } from '@/store/absolute'
+  import { useShortcutsStore } from '@/store/shortcuts'
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
 
-  const store = useStore()
+  const ABSOLUTE = useAbsoluteStore()
+  const SHORTCUTS = useShortcutsStore()
+
   const { t } = useI18n()
 
   const onPreviewPDF = async () => {
-    store.commit('absolute/switchPdfPreview', true)
+    ABSOLUTE.pdf.preview = true
   }
 </script>

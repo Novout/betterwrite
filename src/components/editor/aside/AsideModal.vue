@@ -17,15 +17,15 @@
 </template>
 
 <script setup lang="ts">
+  import { useAbsoluteStore } from '@/store/absolute'
   import { computed } from 'vue'
-  import { useStore } from 'vuex'
 
-  const store = useStore()
+  const ABSOLUTE = useAbsoluteStore()
 
-  const show = computed(() => store.state.absolute.modal.newProject)
+  const show = computed(() => ABSOLUTE.modal.newProject)
 
   const onShowModal = () => {
-    store.commit('absolute/switchProjectModal', true)
+    ABSOLUTE.modal.newProject = !ABSOLUTE.modal.newProject
   }
 
   const props = defineProps({
@@ -54,6 +54,6 @@
   const onComplete = () => {
     props.complete()
 
-    store.commit('absolute/switchProjectModal', false)
+    ABSOLUTE.modal.newProject = false
   }
 </script>

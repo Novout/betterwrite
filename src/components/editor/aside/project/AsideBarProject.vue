@@ -28,9 +28,9 @@
     <AsideSaveProject v-if="name !== env.projectEmpty()" />
     <AsideLine v-if="!electron" />
     <AsideDropboxConnect v-if="!electron" />
-    <AsideDropboxLoad v-if="store.state.auth.dropbox.accessToken" />
+    <AsideDropboxLoad v-if="AUTH.dropbox.accessToken" />
     <AsideDropboxSave
-      v-if="name !== env.projectEmpty() && store.state.auth.dropbox.accessToken"
+      v-if="name !== env.projectEmpty() && AUTH.dropbox.accessToken"
     />
     <AsideLine v-if="name !== env.projectEmpty()" />
     <AsideConfigurationPDF v-if="name !== env.projectEmpty()" />
@@ -45,17 +45,24 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  import { useStore } from 'vuex'
   import { useEnv } from '@/use/env'
   import { ref, computed } from 'vue'
   import { useProject } from '@/use/project'
   import isElectron from 'is-electron'
+  import { useProjectStore } from '@/store/project'
+  import { useContextStore } from '@/store/context'
+  import { useEditorStore } from '@/store/editor'
+  import { useAuthStore } from '@/store/auth'
 
-  const store = useStore()
+  const PROJECT = useProjectStore()
+  const CONTEXT = useContextStore()
+  const EDITOR = useEditorStore()
+  const AUTH = useAuthStore()
+
   const { t } = useI18n()
   const env = useEnv()
   const project = useProject()
 
-  const name = computed(() => store.state.project.name)
+  const name = computed(() => PROJECT.name)
   const electron = ref<boolean>(isElectron())
 </script>

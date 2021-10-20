@@ -1,9 +1,9 @@
-import { EditorState } from '@/types/editor'
+import { defineStore } from 'pinia'
+import { EditorState } from '../types/editor'
 
-export default {
-  namespaced: true,
-  state: () =>
-    ({
+export const useEditorStore = defineStore('editor', {
+  state: (): EditorState => {
+    return {
       styles: {
         input: {
           fontFamily: 'font-raleway',
@@ -58,17 +58,16 @@ export default {
           },
         },
       },
-    } as EditorState),
-  mutations: {
-    switchTheme(state: any, dark: boolean) {
-      state.configuration.dark = dark
+    }
+  },
+  actions: {
+    switchTheme(dark: boolean) {
+      this.configuration.dark = dark
     },
-    setTextSelection(state: EditorState, payload: any) {
-      state.actives.text.selection.content = payload.content
-      state.actives.text.selection.end = payload.end
-      state.actives.text.selection.start = payload.start
+    setTextSelection(payload: any) {
+      this.actives.text.selection.content = payload.content
+      this.actives.text.selection.end = payload.end
+      this.actives.text.selection.start = payload.start
     },
   },
-  actions: {},
-  getters: {},
-}
+})
