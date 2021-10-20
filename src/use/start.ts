@@ -8,6 +8,7 @@ import { useToast } from 'vue-toastification'
 import { useEnv } from './env'
 import i18n from '@/lang'
 import isElectron from 'is-electron'
+import { useUtils } from './utils'
 
 export const useStart: Callback<void> = () => {
   const store = useStore()
@@ -17,6 +18,7 @@ export const useStart: Callback<void> = () => {
   const pdf = usePDF()
   const env = useEnv()
   const format = useFormat()
+  const utils = useUtils()
   const { t } = i18n.global
 
   const global = () => {
@@ -135,13 +137,12 @@ export const useStart: Callback<void> = () => {
   const init = () => {
     dark()
     lang()
-
-    if (isElectron()) return
-
-    initial()
-    global()
     auth()
     pdf.init()
+    initial()
+
+    if (isElectron()) return
+    global()
   }
 
   return { init }

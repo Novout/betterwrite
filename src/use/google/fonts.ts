@@ -31,13 +31,6 @@ export const useFonts = () => {
   }
 
   const get = async () => {
-    if (isElectron()) {
-      const normalize = {}
-      const names: Array<any> = []
-
-      return { normalize, names }
-    }
-
     let normalize: Record<string, any> = {}
     const names: Array<string> = []
 

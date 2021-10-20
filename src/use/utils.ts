@@ -18,5 +18,11 @@ export const useUtils = () => {
     return { insert }
   }
 
-  return { delay, prevent, array }
+  const join = (parts: any, sep?: any): string => {
+    var separator = sep || '/'
+    var replace = new RegExp(separator + '{1,}', 'g')
+    return parts.join(separator).replace(replace, separator)
+  }
+
+  return { delay, prevent, array, join }
 }

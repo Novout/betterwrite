@@ -24,7 +24,7 @@ function createWindow () {
     webPreferences: {
       contextIsolation: false,
       enableRemoteModule: false,
-      webSecurity: true,
+      webSecurity: false,
       nodeIntegration: true
     }
   })
@@ -45,6 +45,21 @@ function createWindow () {
   mainWindow.once('ready-to-show', () => {
     mainWindow?.show()
   })
+
+  /*
+  mainWindow.webContents.on('will-navigate', function (event: any, newUrl: string) {
+    console.log(newUrl);
+    // More complex code to handle tokens goes here
+  });
+
+  mainWindow.webContents.on('did-get-redirect-request', function(
+    event: any,
+    oldUrl: string,
+    newUrl: string
+  ) {
+    console.log(newUrl);
+  });
+  */
 }
 
 

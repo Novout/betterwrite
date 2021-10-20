@@ -16,6 +16,7 @@
     "desktop:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn desktop:set\"",
     "desktop:start": "cross-env NODE_ENV=development electron dist/main/index.js",
     "desktop:build": "cross-env NODE_ENV=production tsc desktop/index.ts --moduleResolution Node --removeComments -t esnext --outDir dist/main && yarn build && electron-builder",
+    "desktop:view": "yarn desktop:build && yarn desktop:dev",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format",
     "format": "prettier src/**/*.{vue,css,ts} --write",
     "test": "jest",
