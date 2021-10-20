@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.8](https://github.com/Novout/better-write/compare/v0.3.7...v0.3.8) (2021-10-20)
+
+
+### Features
+
+* **desktop:** logo ([acbf222](https://github.com/Novout/better-write/commits/acbf22297714f97e8f78af050bdd51b34fc54c94))
+
+
+### Bug Fixes
+
+* **editor:** teleport providers to body ([1da6d2a](https://github.com/Novout/better-write/commits/1da6d2a43f6615fc85e65a009ea612ee0a6da148))
+
+
+### Structure
+
+* **editor:** providers path ([4b021e8](https://github.com/Novout/better-write/commits/4b021e8275f804e5856d88917130db73993f69ec))
+* **google:** google search code ([11f8484](https://github.com/Novout/better-write/commits/11f84846dee5b646d513f2d70e0587a561a82b4d))
+
 ### [0.3.7](https://github.com/Novout/better-write/compare/v0.3.6...v0.3.7) (2021-10-20)
 
 
