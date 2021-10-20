@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.6](https://github.com/Novout/better-write/compare/v0.3.5...v0.3.6) (2021-10-20)
+
+
+### Features
+
+* **desktop:** initial desktop electron ([cde7d76](https://github.com/Novout/better-write/commits/cde7d76f8da4b6d6153e5d9d620c59832b5cdbed))
+
+
+### Bug Fixes
+
+* **deps:** update dependency dropbox to v10.13.0 ([041d08d](https://github.com/Novout/better-write/commits/041d08d0978124358f119ed5c2afe7f09057afcd))
+* **deps:** update dependency vue-toastification to v2.0.0-rc.5 ([3224e44](https://github.com/Novout/better-write/commits/3224e4410ce30a199552a1ee04b12d4a77836b5a))
+* **desktop:** google api calls ([aecade1](https://github.com/Novout/better-write/commits/aecade1eff88cb1e3619d9df582638187476f26b))
+
+
+### Refactor
+
+* **pubsub:** correct appointments ([5579ab0](https://github.com/Novout/better-write/commits/5579ab02866c94e16aecb32c54bf2ee921117b91))
+* vuex to pinia ([7d3cf65](https://github.com/Novout/better-write/commits/7d3cf65106b85ee1c8ba731e8933b2ef65fdedc3))
+
+
+### Structure
+
+* **deps:** added vite-optimize-deps ([0db5a34](https://github.com/Novout/better-write/commits/0db5a345d4c5351911f33e8f6e0bbadfabc9bfeb))
+* **deps:** electron 15 ([4b8a74e](https://github.com/Novout/better-write/commits/4b8a74e62f8ffcfcf5072e80ef2a1db929209e5c))
+* **deps:** update dependency jest to v27.3.1 ([1719d0f](https://github.com/Novout/better-write/commits/1719d0f0b63384655a61f5ea36dbdbbbf260e573))
+* **deps:** update dependency standard-version to v9.3.2 ([c3fb064](https://github.com/Novout/better-write/commits/c3fb06455b135c34b0a954cbba4f90b708d112be))
+* **deps:** update dependency unplugin-vue-components to v0.16.0 ([f4619e7](https://github.com/Novout/better-write/commits/f4619e7a87b74cf823feb792cafad17a30b966ce))
+* **desktop:** dev electron ([bda44c2](https://github.com/Novout/better-write/commits/bda44c233724f963ca430d8a6679198494aaa333))
+* **desktop:** remove dropbox support ([ed9e296](https://github.com/Novout/better-write/commits/ed9e2961e6ff326655af4f5aa17cb8c286dc278c))
+* **package:** author set ([cf1e78b](https://github.com/Novout/better-write/commits/cf1e78bfb2e6d1496d20ceb6be7ab933febc9fca))
+* **package:** typo ([3b32fcd](https://github.com/Novout/better-write/commits/3b32fcdfc07dc234a3d7bd3fee46ccede54e483a))
+* **pubsub:** pdf types ([a8fccbb](https://github.com/Novout/better-write/commits/a8fccbb1102ff19898d7c59eade215dfff28800c))
+
 ### [0.3.5](https://github.com/Novout/better-write/compare/v0.3.4...v0.3.5) (2021-10-19)
 
 
