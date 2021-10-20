@@ -80,6 +80,7 @@ export const useStart: Callback<void> = () => {
       let str = ''
       let firstQuery = false
       let finish = false
+      let intersection = 0
 
       for (let i = 0; i < route.fullPath.length; i++) {
         const letter = route.fullPath.charAt(i)
@@ -92,7 +93,7 @@ export const useStart: Callback<void> = () => {
           return
         }
 
-        if (letter === '&') {
+        if (letter === '&' && intersection === 2) {
           firstQuery = false
           finish = true
         }
@@ -101,7 +102,11 @@ export const useStart: Callback<void> = () => {
           str += letter
         }
 
-        if (letter === '=') firstQuery = true
+        if (letter === '=') intersection++
+
+        if (letter === '=' && intersection === 2) {
+          firstQuery = true
+        }
       }
     }
   }
