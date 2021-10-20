@@ -1,11 +1,33 @@
+export interface AbsoluteStateProject {
+  new: boolean
+}
+
+export interface AbsoluteStateModal {
+  newProject: boolean
+}
+
+export interface AbsoluteStateShortcuts {
+  switcher: boolean
+  finder: boolean
+}
+
+export interface AbsoluteStatePDF {
+  configuration: boolean
+  preview: boolean
+}
+
+export interface AbsoluteStateAuth {
+  dropbox: boolean
+}
+
 export interface AbsoluteState {
   commands: boolean
-  project: Record<string, boolean>
+  project: AbsoluteStateProject
   load: boolean
   aside: boolean
-  modal: Record<string, boolean>
-  shortcuts: Record<string, boolean>
+  modal: AbsoluteStateModal
+  shortcuts: AbsoluteStateShortcuts
   logger: boolean
-  pdf: Record<string, boolean>
-  auth: Record<string, boolean>
+  pdf: AbsoluteStatePDF
+  auth: AbsoluteStateAuth
 }

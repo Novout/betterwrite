@@ -50,13 +50,9 @@
   import { useProject } from '@/use/project'
   import isElectron from 'is-electron'
   import { useProjectStore } from '@/store/project'
-  import { useContextStore } from '@/store/context'
-  import { useEditorStore } from '@/store/editor'
   import { useAuthStore } from '@/store/auth'
 
   const PROJECT = useProjectStore()
-  const CONTEXT = useContextStore()
-  const EDITOR = useEditorStore()
   const AUTH = useAuthStore()
 
   const { t } = useI18n()

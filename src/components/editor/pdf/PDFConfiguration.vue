@@ -696,7 +696,7 @@
       toast.success(t('toast.pdf.configuration.save'))
     }
 
-    ABSOLUTE.switchPdfConfiguration(false)
+    ABSOLUTE.pdf.configuration = false
   }
 
   const onCoverImageLoad = (e: any) => {

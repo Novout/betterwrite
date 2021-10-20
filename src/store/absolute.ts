@@ -27,33 +27,4 @@ export const useAbsoluteStore = defineStore('absolute', {
       load: false,
     }
   },
-  actions: {
-    switchProjectCreate(b: boolean) {
-      this.project.new = b
-    },
-    switchProjectModal(b: boolean) {
-      this.modal.newProject = b
-    },
-    switchAside(b: boolean) {
-      this.aside = b
-    },
-    switchShortcutSwitcher(b: boolean) {
-      this.shortcuts.switcher = b
-    },
-    switchShortcutFinder(b: boolean) {
-      this.shortcuts.finder = b
-    },
-    switchLogger(b: boolean) {
-      this.logger = b
-    },
-    switchPdfConfiguration(b: boolean) {
-      this.pdf.configuration = b
-    },
-    switchPdfPreview(b: boolean) {
-      this.pdf.preview = b
-    },
-    switchAuthDropbox(b: boolean) {
-      this.auth.dropbox = b
-    },
-  },
 })

@@ -46,6 +46,6 @@
   })
 
   const onClick = () => {
-    ABSOLUTE.switchPdfPreview(false)
+    ABSOLUTE.pdf.preview = false
   }
 </script>

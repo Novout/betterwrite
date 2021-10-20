@@ -220,6 +220,6 @@
       type: _type,
     })
 
-    ABSOLUTE.switchProjectCreate(false)
+    ABSOLUTE.project.new = false
   }
 </script>
