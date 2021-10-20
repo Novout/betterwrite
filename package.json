@@ -1,7 +1,11 @@
 {
   "name": "better-write",
   "version": "0.3.5",
-  "author": "novout",
+  "author": {
+    "name": "Giovane Cardoso",
+    "email": "novout@hotmail.com",
+    "url": "https://github.com/Novout"
+  },
   "description": "A editor for creative writers.",
   "main": "dist/main/index.js",
   "scripts": {
