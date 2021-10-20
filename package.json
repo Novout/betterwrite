@@ -34,7 +34,7 @@
     "@vueuse/motion": "^2.0.0-beta.4",
     "autoprefixer": "10.3.4",
     "date-fns": "2.25.0",
-    "dropbox": "10.12.0",
+    "dropbox": "10.13.0",
     "is-electron": "^2.2.0",
     "keyboardjs": "2.6.4",
     "mitt": "^3.0.0",
