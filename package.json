@@ -6,11 +6,12 @@
   "main": "dist/main/index.js",
   "scripts": {
     "dev": "vite",
-    "desktop:dev": "cross-env NODE_ENV=development electron-dev-runner desktop/index.ts --vite",
-    "desktop:start": "cross-env NODE_ENV=development electron dist/main/index.js",
-    "desktop:build": "cross-env NODE_ENV=production tsc desktop/index.ts --moduleResolution Node --removeComments -t esnext --outDir dist/main && yarn build && electron-builder",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "rm -rf ./dist && yarn build && vite preview",
+    "desktop:set": "wait-on tcp:3000 && cross-env IS_DEV=true electron . --watch",
+    "desktop:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn desktop:set\"",
+    "desktop:start": "cross-env NODE_ENV=development electron dist/main/index.js",
+    "desktop:build": "cross-env NODE_ENV=production tsc desktop/index.ts --moduleResolution Node --removeComments -t esnext --outDir dist/main && yarn build && electron-builder",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format",
     "format": "prettier src/**/*.{vue,css,ts} --write",
     "test": "jest",
@@ -53,13 +54,13 @@
     "@intlify/vite-plugin-vue-i18n": "2.4.0",
     "@types/jest": "27.0.2",
     "@types/jsdom": "16.2.13",
-    "@types/node-fetch": "3.0.3",
     "@types/pdfmake": "0.1.19",
     "@typescript-eslint/eslint-plugin": "5.1.0",
     "@typescript-eslint/parser": "5.1.0",
     "@vitejs/plugin-vue": "1.9.3",
     "@vue/compiler-sfc": "3.2.20",
     "@vue/eslint-config-typescript": "7.0.0",
+    "concurrently": "^6.3.0",
     "cross-env": "^7.0.3",
     "electron": "^13.1.7",
     "electron-builder": "^22.11.7",
@@ -77,7 +78,8 @@
     "vite-plugin-optimize-persist": "^0.1.0",
     "vite-plugin-package-config": "^0.0.3",
     "vue-i18n-extract": "^2.0.4",
-    "vue-tsc": "0.28.7"
+    "vue-tsc": "0.28.7",
+    "wait-on": "^6.0.0"
   },
   "vite": {
     "optimizeDeps": {
@@ -93,6 +95,7 @@
         "is-electron",
         "keyboardjs",
         "mitt",
+        "node-fetch",
         "pdfmake/build/pdfmake",
         "vue",
         "vue-final-modal",
