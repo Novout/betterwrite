@@ -79,7 +79,7 @@ export const useProjectStore = defineStore('project', {
       this.summary = {}
       this.pages = []
 
-      const init: ContextState = {
+      const context: ContextState = {
         id: this.totalPagesCreated,
         entities: [
           {
@@ -91,13 +91,13 @@ export const useProjectStore = defineStore('project', {
         ],
       }
 
-      this.pageLoaded = init.id
-      this.pages.push(init)
+      this.pageLoaded = context.id
+      this.pages.push(context)
     },
     newPage() {
       this.totalPagesCreated++
 
-      const init: ContextState = {
+      const context: ContextState = {
         id: this.totalPagesCreated,
         entities: [
           {
@@ -115,8 +115,8 @@ export const useProjectStore = defineStore('project', {
         ],
       }
 
-      this.pageLoaded = init.id
-      this.pages.push(init)
+      this.pageLoaded = context.id
+      this.pages.push(context)
     },
     deletePage(context: ContextState) {
       const content = this.pages.find(

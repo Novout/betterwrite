@@ -131,7 +131,9 @@ export const useEntity = () => {
         fstate.listOfLettersExists.indexOf(object) + 1
 
       const pageIndex = PROJECT.pages.indexOf(object.page)
-      const entityIndex = PROJECT.pages[pageIndex].entities.indexOf(object.entity)
+      const entityIndex = PROJECT.pages[pageIndex].entities.indexOf(
+        object.entity
+      )
 
       onGo(`entity-${entityIndex}`, object.page)
     }

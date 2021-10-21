@@ -18,8 +18,8 @@
   import { computed, onUnmounted } from 'vue'
   import { useI18n } from 'vue-i18n'
 
-  const projectStore = useProjectStore()
-  const contextStore = useContextStore()
+  const PROJECT = useProjectStore()
+  const CONTEXT = useContextStore()
 
   const keyboard = useKeyboard()
   const env = useEnv()
@@ -37,9 +37,9 @@
   const description = computed(() => t('seo.editor.description'))
 
   const _title = computed(() =>
-    projectStore.nameRaw === env.projectEmpty()
+    PROJECT.nameRaw === env.projectEmpty()
       ? title.value
-      : projectStore.nameRaw + ' - ' + contextStore.entities[0]?.raw
+      : PROJECT.nameRaw + ' - ' + CONTEXT.entities[0]?.raw || ''
   )
 
   useHead({
