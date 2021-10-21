@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.10](https://github.com/Novout/better-write/compare/v0.3.9...v0.3.10) (2021-10-21)
+
+
+### Bug Fixes
+
+* **editor:** click in external entity focus ([012ed15](https://github.com/Novout/better-write/commits/012ed15089b1722dcca3c952aac634cf2664390a))
+* **editor:** entity break in wrong payload set ([f70047e](https://github.com/Novout/better-write/commits/f70047ebdcd0412d13f6f5491757209c2802fa86))
+* **editor:** pdf set fonts ([6fe64a8](https://github.com/Novout/better-write/commits/6fe64a8f270408a43c94fb25248d04dfa637e727))
+
+
+### Refactor
+
+* **editor:** keyboard handler ([a706173](https://github.com/Novout/better-write/commits/a70617333cf893acaa11e3dbc669e90bc0ab7277))
+
+
+### Structure
+
+* **editor:** context types ([7463a48](https://github.com/Novout/better-write/commits/7463a48016c95b28b49fdb4c6d210f1db25410b1))
+* **editor:** entity name type ([3bfd10f](https://github.com/Novout/better-write/commits/3bfd10f27676a3467ff8603d99ff91c25a51a544))
+* **editor:** entity typo ([3a6e83e](https://github.com/Novout/better-write/commits/3a6e83eeb58ef1c65a875a08365dbf30428174e2))
+
 ### [0.3.9](https://github.com/Novout/better-write/compare/v0.3.8...v0.3.9) (2021-10-20)
 
 
