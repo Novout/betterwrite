@@ -602,8 +602,14 @@
     }
   }
 
-  const onClickInEntity = (e: MouseEvent) => {
+  const onClickInEntity = async (e: MouseEvent) => {
     onStopEvents(e)
+
+    edit.value = true
+
+    await nextTick
+
+    input.value?.focus()
   }
 
   const onStopEvents = (e?: Event) => {
