@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.11](https://github.com/Novout/better-write/compare/v0.3.10...v0.3.11) (2021-10-21)
+
+
+### Bug Fixes
+
+* **editor:** reset states not to interfere with other projects ([a382391](https://github.com/Novout/better-write/commits/a38239173646f2e15f0a8d2b5bf7d902b9f5d973))
+* **editor:** save entity before project ([2d02cf6](https://github.com/Novout/better-write/commits/2d02cf65240ccc3f1825e4d03d747ee5f5bd7ddf))
+* **editor:** save entity in swap ([3a578d9](https://github.com/Novout/better-write/commits/3a578d9312b9d94808d1b6a3e99873a22cf7601c))
+* **editor:** support old project versions ([64d3826](https://github.com/Novout/better-write/commits/64d38260f1ef5735763a5ffdf0bef87f9dfb88c3))
+
+
+### Test
+
+* new type entity ([c40b908](https://github.com/Novout/better-write/commits/c40b908e0cc372990882d81ef5cfbf74f07a46c1))
+
 ### [0.3.10](https://github.com/Novout/better-write/compare/v0.3.9...v0.3.10) (2021-10-21)
 
 
