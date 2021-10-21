@@ -9,6 +9,7 @@ import { usePDFStore } from '@/store/pdf'
 import { useContextStore } from '@/store/context'
 import i18n from '@/lang'
 import { useAuthStore } from '@/store/auth'
+import { Entity, ContextState } from '../../types/context'
 
 export const useDropbox = () => {
   const CONTEXT = useContextStore()
@@ -113,10 +114,18 @@ export const useDropbox = () => {
           .filesDownload({ path: file.id })
           .then(async (data: DropboxResponse<any>) => {
             const context = JSON.parse(await data.result.fileBlob.text())
+            // <= v0.3.10
+            if (context.project?.pages[0]?.entity) {
+              context.project?.pages.forEach((target: any) => {
+                target['entities'] = target['entity']
+                delete target['entity']
+              })
+            }
 
             loadContext(context)
           })
           .catch((err: DropboxResponseError<any>) => {
+            console.log(err)
             toast.error(t('toast.project.error'))
           })
       },

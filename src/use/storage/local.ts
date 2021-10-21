@@ -17,10 +17,11 @@ export const useLocalStorage = () => {
   const PDF = usePDFStore()
 
   const toast = useToast()
+  const env = useEnv()
   const { t } = i18n.global
 
   const set = (obj: ProjectObject, name: string) => {
-    localStorage.setItem(useEnv().projectLocalStorage(), JSON.stringify(obj))
+    localStorage.setItem(env.projectLocalStorage(), JSON.stringify(obj))
   }
 
   const get = (name: string) => {
@@ -28,15 +29,25 @@ export const useLocalStorage = () => {
   }
 
   const setProject = (obj: ProjectObject) => {
-    set(obj, useEnv().projectLocalStorage())
+    set(obj, env.projectLocalStorage())
   }
 
   const getProject = (): ProjectObject => {
-    return get(useEnv().projectLocalStorage())
+    const _ = get(env.projectLocalStorage())
+
+    // <= v0.3.10
+    if (_.project?.pages[0]?.entity) {
+      _.project?.pages.forEach((target: any) => {
+        target['entities'] = target['entity']
+        delete target['entity']
+      })
+    }
+
+    return _
   }
 
   const onSaveProject = () => {
-    if (PROJECT.name === useEnv().projectEmpty()) return
+    if (PROJECT.name === env.projectEmpty()) return
 
     setProject({
       project: PROJECT.$state,
@@ -54,7 +65,7 @@ export const useLocalStorage = () => {
 
   const onAutoSave = (time: number) => {
     setInterval(() => {
-      if (PROJECT.name === useEnv().projectEmpty()) return
+      if (PROJECT.name === env.projectEmpty()) return
 
       setProject({
         project: PROJECT.$state,
