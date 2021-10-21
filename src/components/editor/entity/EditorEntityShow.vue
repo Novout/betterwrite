@@ -476,6 +476,7 @@
   const generalHandler = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLTextAreaElement
 
+    // in ctrl press
     if (e.ctrlKey) {
       // generics
       if (e.key !== 'c' && e.key !== 'f' && e.key !== 'a' && e.key !== 'v') {
@@ -493,6 +494,7 @@
         ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.switcher
       }
 
+      // delete entity
       if (e.key === 'd') {
         emitter.emit('entity-not-mutate', props.entity)
 
@@ -504,6 +506,7 @@
 
         PROJECT.updateContext(CONTEXT.$state)
       } else if (e.key === 'ArrowUp') {
+        // to up
         emitter.emit('entity-not-mutate', props.entity)
 
         await nextTick
@@ -523,6 +526,7 @@
           switch: true,
         })
       } else if (e.key === 'ArrowDown') {
+        // to down
         emitter.emit('entity-not-mutate', props.entity)
 
         await nextTick
@@ -543,6 +547,7 @@
         })
       }
     } else {
+      // delete in empty raw or convert
       if (
         (e.key === 'Delete' || e.key === 'Backspace') &&
         _input.selectionStart === 0
@@ -572,6 +577,7 @@
 
         emitter.emit('entity-open', { entity: props.entity, up: true })
       } else if (e.key === 'ArrowUp') {
+        // swap top
         if (_input.selectionStart === 0) {
           if (props.entity.type === 'heading-one') return
 
@@ -584,6 +590,7 @@
           emitter.emit('entity-open', { entity: props.entity, up: true })
         }
       } else if (e.key === 'ArrowDown') {
+        // swap bottom
         if (_input.selectionStart === _input.textLength) {
           if (_index.value + 1 === CONTEXT.entity.length) {
             emitter.emit('entity-input-focus')
