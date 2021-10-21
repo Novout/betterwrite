@@ -18,6 +18,7 @@ export type VueEmitterName =
   | 'entity-input-raw'
   | 'entity-open-last'
   | 'entity-not-mutate'
+  | 'project-save'
   | 'pdf-preview-exists'
 
 export interface VueEmitter {

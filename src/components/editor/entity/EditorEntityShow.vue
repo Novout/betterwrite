@@ -358,6 +358,10 @@
         onEdit()
       }
     })
+
+    emitter.on('project-save', () => {
+      emitter.emit('entity-close', { all: true })
+    })
   })
 
   const onUpdateContent = async () => {

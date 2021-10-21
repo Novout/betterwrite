@@ -9,7 +9,7 @@ import { usePDFStore } from '@/store/pdf'
 import { useContextStore } from '@/store/context'
 import i18n from '@/lang'
 import { useAuthStore } from '@/store/auth'
-import { Entity, ContextState } from '../../types/context'
+import useEmitter from '@/use/emitter'
 
 export const useDropbox = () => {
   const CONTEXT = useContextStore()
@@ -20,6 +20,7 @@ export const useDropbox = () => {
   const PDF = usePDFStore()
 
   const toast = useToast()
+  const emitter = useEmitter()
   const { t } = i18n.global
 
   const loadContext = async (context: any) => {
@@ -40,10 +41,13 @@ export const useDropbox = () => {
     toast.success(t('toast.project.load'))
   }
 
-  const save = () => {
+  const save = async () => {
     if (!AUTH.dropbox.accessToken) {
       return
     }
+
+    emitter.emit('entity-close', { all: true })
+    await nextTick
 
     const obj = {
       project: PROJECT.$state,

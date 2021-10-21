@@ -8,6 +8,7 @@ import { useEditorStore } from '@/store/editor'
 import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
 import { useContextStore } from '@/store/context'
+import useEmitter from '@/use/emitter'
 
 export const useLocalStorage = () => {
   const CONTEXT = useContextStore()
@@ -18,6 +19,7 @@ export const useLocalStorage = () => {
 
   const toast = useToast()
   const env = useEnv()
+  const emitter = useEmitter()
   const { t } = i18n.global
 
   const set = (obj: ProjectObject, name: string) => {
@@ -46,8 +48,11 @@ export const useLocalStorage = () => {
     return _
   }
 
-  const onSaveProject = () => {
+  const onSaveProject = async () => {
     if (PROJECT.name === env.projectEmpty()) return
+
+    emitter.emit('project-save')
+    await nextTick
 
     setProject({
       project: PROJECT.$state,
