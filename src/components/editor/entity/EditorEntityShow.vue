@@ -125,7 +125,7 @@
       "
       :style="{ height, whiteSpace: 'break-spaces' }"
       @keypress.enter.prevent="onEnter"
-      @keydown="generalHandler"
+      @keydown="onKeyboard"
       @input="onChangeArea"
       @click="onClick"
     />
@@ -142,7 +142,7 @@
   import { useFactory } from '@/use/factory'
   import { useToast } from 'vue-toastification'
   import { useI18n } from 'vue-i18n'
-  import { ContextStatePageContent } from '@/types/context'
+  import { Entity } from '@/types/context'
   import { EntityShowEditOptions } from '@/types/entity'
   import { VueEmitterEntityOpen, VueEmitterEntityClose } from '@/types/emitter'
   import { useScroll } from '@/use/scroll'
@@ -154,7 +154,7 @@
   const props = defineProps({
     entity: {
       required: true,
-      type: Object as () => ContextStatePageContent,
+      type: Object as () => Entity,
     },
   })
 
@@ -272,7 +272,7 @@
       data.value = ''
 
       factory.simulate().file(
-        (content: ContextStatePageContent) => {
+        (content: Entity) => {
           edit.value = false
 
           CONTEXT.newInExistentEntity({
@@ -290,7 +290,7 @@
   onMounted(() => {
     emitter.on(
       'entity-close',
-      (ent?: ContextStatePageContent, options?: VueEmitterEntityClose) => {
+      (ent?: Entity, options?: VueEmitterEntityClose) => {
         if (document.activeElement === input.value) return
 
         if (options?.all) {
@@ -346,7 +346,7 @@
       }
     })
 
-    emitter.on('entity-not-mutate', async (entity: ContextStatePageContent) => {
+    emitter.on('entity-not-mutate', async (entity: Entity) => {
       const _id = CONTEXT.entity.indexOf(entity)
 
       focus.value = false
@@ -473,7 +473,7 @@
     })
   }
 
-  const generalHandler = async (e: KeyboardEvent) => {
+  const onKeyboard = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLTextAreaElement
 
     // in ctrl press

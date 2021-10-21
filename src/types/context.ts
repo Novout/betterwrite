@@ -9,10 +9,10 @@ export type EntityType =
 
 export type ContextState = {
   id: number
-  entity: Array<ContextStatePageContent>
+  entity: Array<Entity>
 }
 
-export type ContextStatePageContent = {
+export type Entity = {
   type: EntityType
   raw: string
   createdAt: string

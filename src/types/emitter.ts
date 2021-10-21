@@ -1,10 +1,10 @@
-import { ContextStatePageContent } from './context'
+import { Entity } from './context'
 export interface VueEmitterEntityClose {
   all?: boolean
 }
 
 export interface VueEmitterEntityOpen {
-  entity: ContextStatePageContent
+  entity: Entity
   up?: boolean
   selectionInitial?: boolean
   switch?: boolean

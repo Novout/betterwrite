@@ -2,7 +2,7 @@ import { Callback } from '@/types/utils'
 import { useToast } from 'vue-toastification'
 import * as pdfMake from 'pdfmake/build/pdfmake'
 import { GenerateParagraphOptions } from '@/types/pdf'
-import { ContextState, ContextStatePageContent } from '@/types/context'
+import { ContextState, Entity } from '@/types/context'
 import { useRaw } from './raw'
 import { useEnv } from './env'
 import { useFonts } from './google/fonts'
@@ -227,7 +227,7 @@ export const usePDF = () => {
       if (!project.isBlankProject()) frontCover(arr)
 
       pages.forEach((page: ContextState) => {
-        page.entity.forEach((entity: ContextStatePageContent) => {
+        page.entity.forEach((entity: Entity) => {
           let _raw = {}
 
           if (entity.raw === env.emptyLine()) {

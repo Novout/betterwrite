@@ -3,7 +3,7 @@ import { ContextState } from '@/types/context'
 import { ProjectState } from '@/types/project'
 import { useFormat } from '@/use/format'
 import { useText } from '../use/text'
-import { ContextStatePageContent } from '../types/context'
+import { Entity } from '../types/context'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -168,7 +168,7 @@ export const useProjectStore = defineStore('project', {
     },
     resetDates() {
       this.pages.forEach((page: ContextState) => {
-        page.entity.forEach((line: ContextStatePageContent) => {
+        page.entity.forEach((line: Entity) => {
           line.createdAt = useFormat().actually()
           line.updatedAt = useFormat().actually()
         })

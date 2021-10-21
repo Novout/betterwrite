@@ -1,4 +1,4 @@
-import { ContextStatePageContent } from '@/types/context'
+import { Entity } from '@/types/context'
 
 export const bold = () => {
   const open = () => {
@@ -93,7 +93,7 @@ export const useRaw = () => {
     return final
   }
 
-  const convert = (entity: ContextStatePageContent) => {
+  const convert = (entity: Entity) => {
     let final = ''
     let _italic = false
     let _bold = false

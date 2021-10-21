@@ -1,12 +1,12 @@
 import { useEnv } from './env'
-import { ContextStatePageContent, EntityType } from '@/types/context'
+import { Entity, EntityType } from '@/types/context'
 import { useFormat } from './format'
 export const useFactory = () => {
   const env = useEnv()
   const format = useFormat()
 
   const entity = () => {
-    const create = (type: EntityType): ContextStatePageContent => {
+    const create = (type: EntityType): Entity => {
       if (type === 'line-break') {
         return {
           type,
@@ -59,7 +59,7 @@ export const useFactory = () => {
             raw: reader.result,
             createdAt: format.actually(),
             updatedAt: format.actually(),
-          } as ContextStatePageContent
+          } as Entity
 
           load && load(content)
         }

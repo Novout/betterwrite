@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ContextStatePageContent } from '@/types/context'
+  import { Entity } from '@/types/context'
   import { useEntity } from '@/use/entity'
   import { useFormat } from '@/use/format'
   import { useInput } from '@/use/input'
@@ -138,7 +138,7 @@
         raw: env.pageBreak(),
         createdAt: format.actually(),
         updatedAt: format.actually(),
-      } as ContextStatePageContent
+      } as Entity
 
       type.value = 'paragraph'
       input.value.placeholder = t('editor.text.placeholder.paragraph')
@@ -156,7 +156,7 @@
         raw: env.lineBreak(),
         createdAt: format.actually(),
         updatedAt: format.actually(),
-      } as ContextStatePageContent
+      } as Entity
 
       type.value = 'paragraph'
       input.value.placeholder = t('editor.text.placeholder.paragraph')
@@ -169,7 +169,7 @@
     if (entity.utils().entry(_cmp, 'im')) {
       cmp.value = ''
 
-      factory.simulate().file((content: ContextStatePageContent) => {
+      factory.simulate().file((content: Entity) => {
         type.value = 'paragraph'
         input.value.placeholder = t('editor.text.placeholder.paragraph')
 
@@ -190,7 +190,7 @@
       raw: props.modelValue,
       createdAt: format.actually(),
       updatedAt: format.actually(),
-    } as ContextStatePageContent
+    } as Entity
 
     type.value = 'paragraph'
     input.value.placeholder = t('editor.text.placeholder.paragraph')
@@ -220,7 +220,7 @@
         raw: normalize,
         createdAt: format.actually(),
         updatedAt: format.actually(),
-      } as ContextStatePageContent
+      } as Entity
 
       CONTEXT.addInPageWithPaste(content)
 

@@ -1,4 +1,4 @@
-import { ContextStatePageContent } from '@/types/context'
+import { Entity } from '@/types/context'
 import { ContextState } from '@/types/context'
 import { useScroll } from '@/use/scroll'
 import { computed, reactive, nextTick, watch, ref } from 'vue'
@@ -70,7 +70,7 @@ export const useEntity = () => {
       // TODO: Deletar em caso de output vazio
       if (!entry || !output) return
 
-      arr.forEach((e: ContextStatePageContent) => {
+      arr.forEach((e: Entity) => {
         const text = e.raw.split(' ')
 
         text.forEach((t: string) => {
@@ -110,7 +110,7 @@ export const useEntity = () => {
       fstate.maxLetterCounter = 0
 
       pages.value.forEach((context: ContextState) => {
-        context.entity.forEach((entity: ContextStatePageContent) => {
+        context.entity.forEach((entity: Entity) => {
           if (!fstate.entry) return
 
           if (entity.raw.includes(fstate.entry)) {

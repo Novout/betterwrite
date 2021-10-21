@@ -1,9 +1,5 @@
 import { defineStore } from 'pinia'
-import {
-  ContextState,
-  ContextStatePageContent,
-  EntityType,
-} from '../types/context'
+import { ContextState, Entity, EntityType } from '../types/context'
 import { useEnv } from '../use/env'
 import { useFormat } from '../use/format'
 import { useUtils } from '../use/utils'
@@ -20,10 +16,10 @@ export const useContextStore = defineStore('context', {
       this.id = content.id
       this.entity = content.entity
     },
-    addInPage(content: ContextStatePageContent) {
+    addInPage(content: Entity) {
       this.entity.push(content)
     },
-    addInPageWithPaste(content: ContextStatePageContent) {
+    addInPageWithPaste(content: Entity) {
       // force nextTick for id append...
     },
     updateInPage(obj: Record<string, any>) {
@@ -39,13 +35,13 @@ export const useContextStore = defineStore('context', {
         this.entity[index].updatedAt = useFormat().actually()
       }
     },
-    removeInPage(entity: ContextStatePageContent) {
+    removeInPage(entity: Entity) {
       const index = this.entity.indexOf(entity)
 
       if (index === -1 || entity.type === 'heading-one') return
 
       this.entity = this.entity.filter(
-        (item: ContextStatePageContent) => this.entity.indexOf(item) !== index
+        (item: Entity) => this.entity.indexOf(item) !== index
       )
     },
     switchInPage(obj: Record<any, any>) {
@@ -78,10 +74,7 @@ export const useContextStore = defineStore('context', {
 
       this.entity[index].raw = r
     },
-    newInExistentEntity(
-      this: ContextState,
-      payload: Record<string, ContextStatePageContent>
-    ) {
+    newInExistentEntity(this: ContextState, payload: Record<string, Entity>) {
       const index = this.entity.indexOf(payload.old)
 
       if (index === -1) return
@@ -92,10 +85,8 @@ export const useContextStore = defineStore('context', {
       this.entity[index].updatedAt = useFormat().actually()
       this.entity[index].external = payload.new.external || {}
     },
-    newInPage(payload: Record<string, ContextStatePageContent | string>) {
-      const index = this.entity.indexOf(
-        payload.entity as ContextStatePageContent
-      )
+    newInPage(payload: Record<string, Entity | string>) {
+      const index = this.entity.indexOf(payload.entity as Entity)
 
       if (index === -1) return
 
@@ -104,16 +95,12 @@ export const useContextStore = defineStore('context', {
         raw: useEnv().emptyLine(),
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
-      } as ContextStatePageContent
+      } as Entity
 
       this.entity = useUtils().array().insert(this.entity, index, entity)
     },
-    newInPagePosEdit(
-      payload: Record<string, ContextStatePageContent | string>
-    ) {
-      const index = this.entity.indexOf(
-        payload.entity as ContextStatePageContent
-      )
+    newInPagePosEdit(payload: Record<string, Entity | string>) {
+      const index = this.entity.indexOf(payload.entity as Entity)
 
       if (index === -1) return
 
@@ -122,20 +109,18 @@ export const useContextStore = defineStore('context', {
         raw: payload.raw || useEnv().emptyLine(),
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
-      } as ContextStatePageContent
+      } as Entity
 
       this.entity = useUtils()
         .array()
         .insert(this.entity, index + 1, entity)
     },
-    alterInPage(payload: Record<string, ContextStatePageContent | EntityType>) {
-      const index = this.entity.indexOf(
-        payload.entity as ContextStatePageContent
-      )
+    alterInPage(payload: Record<string, Entity | EntityType>) {
+      const index = this.entity.indexOf(payload.entity as Entity)
 
       if (index === -1) return
 
-      const entity = payload.entity as ContextStatePageContent
+      const entity = payload.entity as Entity
 
       this.entity[index].type = payload.type as EntityType
       this.entity[index].raw = entity.raw
@@ -143,7 +128,7 @@ export const useContextStore = defineStore('context', {
       this.entity[index].updatedAt = useFormat().actually()
       this.entity[index].external = entity.external || {}
     },
-    insertRawInExistentEntity(entity: ContextStatePageContent) {
+    insertRawInExistentEntity(entity: Entity) {
       const index = this.entity.indexOf(entity)
 
       if (index === -1) return
