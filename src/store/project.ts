@@ -23,6 +23,8 @@ export const useProjectStore = defineStore('project', {
   },
   actions: {
     load(payload: ProjectState) {
+      this.$reset()
+
       this.name = payload.name
       this.nameRaw = payload.nameRaw
       this.version = payload.version
@@ -35,6 +37,8 @@ export const useProjectStore = defineStore('project', {
       this.pages = payload.pages
     },
     create(payload: Record<any, any>) {
+      this.$reset()
+
       this.name = useText().kebab(payload.name)
       this.nameRaw = payload.name
       this.version = payload.version
@@ -68,6 +72,8 @@ export const useProjectStore = defineStore('project', {
       this.pages.push(init)
     },
     createBlank(payload: Record<any, any>) {
+      this.$reset()
+
       this.name = useText().kebab(payload.name)
       this.nameRaw = payload.name
       this.version = payload.version
