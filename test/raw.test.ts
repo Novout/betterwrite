@@ -4,7 +4,7 @@
 
 import { useFormat } from '../src/use/format';
 import { bold, italic, link, useRaw } from '../src/use/raw';
-import { ContextStatePageContent } from '../src/types/context';
+import { Entity } from '../src/types/context';
 
 describe('Editor Converter', () => {
   beforeEach(() => {});
@@ -16,7 +16,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    } as ContextStatePageContent;
+    } as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -30,7 +30,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    } as ContextStatePageContent;
+    } as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -44,7 +44,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -58,7 +58,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -73,7 +73,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled http://test Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -87,7 +87,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled http://test Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -101,7 +101,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled http://test Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -115,7 +115,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled http://test Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -130,7 +130,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled *test* Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -144,7 +144,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled *test* Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -158,7 +158,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled *test* Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -172,7 +172,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled *test* Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -186,7 +186,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled *test Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -201,7 +201,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled &test& Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -215,7 +215,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled &test& Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -229,7 +229,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled &test& Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -243,7 +243,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled &test& Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -257,7 +257,7 @@ describe('Editor Converter', () => {
       raw: 'Untitled &test Untitled',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -271,7 +271,7 @@ describe('Editor Converter', () => {
       raw: '',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -284,7 +284,7 @@ describe('Editor Converter', () => {
       raw: '',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
@@ -297,7 +297,7 @@ describe('Editor Converter', () => {
       raw: 'data:image/base64...',
       createdAt: useFormat().actually(),
       updatedAt: useFormat().actually(),
-    }as ContextStatePageContent;
+    }as Entity;
 
     const raw = useRaw().convert(entity);
 
