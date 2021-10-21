@@ -507,6 +507,10 @@
         PROJECT.updateContext(CONTEXT.$state)
       } else if (e.key === 'ArrowUp') {
         // to up
+        onUpdateContent()
+
+        await nextTick
+
         emitter.emit('entity-not-mutate', props.entity)
 
         await nextTick
@@ -527,6 +531,10 @@
         })
       } else if (e.key === 'ArrowDown') {
         // to down
+        onUpdateContent()
+
+        await nextTick
+
         emitter.emit('entity-not-mutate', props.entity)
 
         await nextTick
