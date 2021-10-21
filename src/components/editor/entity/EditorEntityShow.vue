@@ -184,7 +184,7 @@
   const height = ref<string>('0px')
 
   const style = computed(() => EDITOR.styles.show)
-  const _index = computed(() => CONTEXT.entity.indexOf(props.entity))
+  const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
 
   watch(hover, async (_hover) => {
     keyboard.value = false
@@ -300,9 +300,9 @@
 
         if (!ent) return
 
-        const index = CONTEXT.entity.indexOf(ent)
+        const index = CONTEXT.entities.indexOf(ent)
 
-        if (CONTEXT.entity[index] === props.entity) return
+        if (CONTEXT.entities[index] === props.entity) return
 
         if (edit.value) onUpdateContent()
 
@@ -311,9 +311,9 @@
     )
 
     emitter.on('entity-open', async (payload: VueEmitterEntityOpen) => {
-      const index = CONTEXT.entity.indexOf(payload.entity)
+      const index = CONTEXT.entities.indexOf(payload.entity)
 
-      if (payload?.up && CONTEXT.entity[index - 1] === props.entity) {
+      if (payload?.up && CONTEXT.entities[index - 1] === props.entity) {
         onEdit(undefined, {
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
@@ -321,7 +321,7 @@
         })
       }
 
-      if (!payload?.up && CONTEXT.entity[index + 1] === props.entity) {
+      if (!payload?.up && CONTEXT.entities[index + 1] === props.entity) {
         onEdit(undefined, {
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
@@ -338,8 +338,8 @@
     })
 
     emitter.on('entity-open-last', () => {
-      const length = CONTEXT.entity.length
-      const entity = CONTEXT.entity[length - 1]
+      const length = CONTEXT.entities.length
+      const entity = CONTEXT.entities[length - 1]
 
       if (entity === props.entity) {
         onEdit()
@@ -347,14 +347,14 @@
     })
 
     emitter.on('entity-not-mutate', async (entity: Entity) => {
-      const _id = CONTEXT.entity.indexOf(entity)
+      const _id = CONTEXT.entities.indexOf(entity)
 
       focus.value = false
       edit.value = false
 
       await nextTick
 
-      if (CONTEXT.entity[_id - 1] === props.entity) {
+      if (CONTEXT.entities[_id - 1] === props.entity) {
         onEdit()
       }
     })
@@ -412,7 +412,7 @@
     const posRaw = data.value.slice(_input.selectionStart)
     let initial = false
 
-    if (_index.value + 1 === CONTEXT.entity.length) {
+    if (_index.value + 1 === CONTEXT.entities.length) {
       if (_input.selectionStart === 0) {
         data.value = ''
         emitter.emit('entity-input-raw', '')
@@ -592,7 +592,7 @@
       } else if (e.key === 'ArrowDown') {
         // swap bottom
         if (_input.selectionStart === _input.textLength) {
-          if (_index.value + 1 === CONTEXT.entity.length) {
+          if (_index.value + 1 === CONTEXT.entities.length) {
             emitter.emit('entity-input-focus')
             return
           }

@@ -27,10 +27,10 @@
       "
     >
       <EditorEntityShow
-        v-for="(entity, index) in CONTEXT.entity"
-        :id="`entity-${String(index)}`"
+        v-for="(entities, index) in CONTEXT.entities"
+        :id="`entities-${String(index)}`"
         :key="index"
-        :entity="entity"
+        :entities="entities"
       />
       <EditorEntityInput
         v-if="PROJECT.name !== env.projectEmpty()"

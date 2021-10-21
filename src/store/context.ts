@@ -8,44 +8,44 @@ export const useContextStore = defineStore('context', {
   state: (): ContextState => {
     return {
       id: 0,
-      entity: [],
+      entities: [],
     }
   },
   actions: {
     load(content: ContextState) {
       this.id = content.id
-      this.entity = content.entity
+      this.entities = content.entities
     },
     addInPage(content: Entity) {
-      this.entity.push(content)
+      this.entities.push(content)
     },
     addInPageWithPaste(content: Entity) {
       // force nextTick for id append...
     },
     updateInPage(obj: Record<string, any>) {
-      const index = this.entity.indexOf(obj.entity)
+      const index = this.entities.indexOf(obj.entities)
 
-      if (index === -1 || obj.raw === this.entity[index].raw) return
+      if (index === -1 || obj.raw === this.entities[index].raw) return
 
       if (obj.raw === '') {
-        this.entity[index].raw = useEnv().emptyLine()
-        this.entity[index].updatedAt = useFormat().actually()
-      } else if (obj.raw !== this.entity[index].raw) {
-        this.entity[index].raw = obj.raw
-        this.entity[index].updatedAt = useFormat().actually()
+        this.entities[index].raw = useEnv().emptyLine()
+        this.entities[index].updatedAt = useFormat().actually()
+      } else if (obj.raw !== this.entities[index].raw) {
+        this.entities[index].raw = obj.raw
+        this.entities[index].updatedAt = useFormat().actually()
       }
     },
-    removeInPage(entity: Entity) {
-      const index = this.entity.indexOf(entity)
+    removeInPage(entities: Entity) {
+      const index = this.entities.indexOf(entities)
 
-      if (index === -1 || entity.type === 'heading-one') return
+      if (index === -1 || entities.type === 'heading-one') return
 
-      this.entity = this.entity.filter(
-        (item: Entity) => this.entity.indexOf(item) !== index
+      this.entities = this.entities.filter(
+        (item: Entity) => this.entities.indexOf(item) !== index
       )
     },
     switchInPage(obj: Record<any, any>) {
-      const index = this.entity.indexOf(obj.entity)
+      const index = this.entities.indexOf(obj.entities)
 
       if (index === -1) return
 
@@ -54,93 +54,93 @@ export const useContextStore = defineStore('context', {
 
       if (
         (sIndex < 0 && obj.direction === 'up') ||
-        (sIndex >= this.entity.length && obj.direction === 'down')
+        (sIndex >= this.entities.length && obj.direction === 'down')
       )
         return
 
-      const target = this.entity[sIndex]
+      const target = this.entities[sIndex]
 
-      if (obj.entity.type === 'heading-one' || target.type === 'heading-one')
+      if (obj.entities.type === 'heading-one' || target.type === 'heading-one')
         return
 
-      const temp = this.entity[index]
-      this.entity[index] = target
-      this.entity[sIndex] = temp
+      const temp = this.entities[index]
+      this.entities[index] = target
+      this.entities[sIndex] = temp
     },
     switchEntityRaw(obj: Record<string, any>) {
-      const index = this.entity.indexOf(obj.entity)
+      const index = this.entities.indexOf(obj.entities)
 
-      const r = this.entity[index].raw.replaceAll(obj.match, obj.raw)
+      const r = this.entities[index].raw.replaceAll(obj.match, obj.raw)
 
-      this.entity[index].raw = r
+      this.entities[index].raw = r
     },
     newInExistentEntity(this: ContextState, payload: Record<string, Entity>) {
-      const index = this.entity.indexOf(payload.old)
+      const index = this.entities.indexOf(payload.old)
 
       if (index === -1) return
 
-      this.entity[index].type = payload.new.type
-      this.entity[index].raw = payload.new.raw
-      this.entity[index].createdAt = payload.new.createdAt
-      this.entity[index].updatedAt = useFormat().actually()
-      this.entity[index].external = payload.new.external || {}
+      this.entities[index].type = payload.new.type
+      this.entities[index].raw = payload.new.raw
+      this.entities[index].createdAt = payload.new.createdAt
+      this.entities[index].updatedAt = useFormat().actually()
+      this.entities[index].external = payload.new.external || {}
     },
     newInPage(payload: Record<string, Entity | string>) {
-      const index = this.entity.indexOf(payload.entity as Entity)
+      const index = this.entities.indexOf(payload.entities as Entity)
 
       if (index === -1) return
 
-      const entity = {
+      const entities = {
         type: payload.type as string,
         raw: useEnv().emptyLine(),
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
       } as Entity
 
-      this.entity = useUtils().array().insert(this.entity, index, entity)
+      this.entities = useUtils().array().insert(this.entities, index, entities)
     },
     newInPagePosEdit(payload: Record<string, Entity | string>) {
-      const index = this.entity.indexOf(payload.entity as Entity)
+      const index = this.entities.indexOf(payload.entities as Entity)
 
       if (index === -1) return
 
-      const entity = {
+      const entities = {
         type: payload.type as string,
         raw: payload.raw || useEnv().emptyLine(),
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
       } as Entity
 
-      this.entity = useUtils()
+      this.entities = useUtils()
         .array()
-        .insert(this.entity, index + 1, entity)
+        .insert(this.entities, index + 1, entities)
     },
     alterInPage(payload: Record<string, Entity | EntityType>) {
-      const index = this.entity.indexOf(payload.entity as Entity)
+      const index = this.entities.indexOf(payload.entities as Entity)
 
       if (index === -1) return
 
-      const entity = payload.entity as Entity
+      const entities = payload.entities as Entity
 
-      this.entity[index].type = payload.type as EntityType
-      this.entity[index].raw = entity.raw
-      this.entity[index].createdAt = useFormat().actually()
-      this.entity[index].updatedAt = useFormat().actually()
-      this.entity[index].external = entity.external || {}
+      this.entities[index].type = payload.type as EntityType
+      this.entities[index].raw = entities.raw
+      this.entities[index].createdAt = useFormat().actually()
+      this.entities[index].updatedAt = useFormat().actually()
+      this.entities[index].external = entities.external || {}
     },
-    insertRawInExistentEntity(entity: Entity) {
-      const index = this.entity.indexOf(entity)
+    insertRawInExistentEntity(entities: Entity) {
+      const index = this.entities.indexOf(entities)
 
       if (index === -1) return
 
-      const target = this.entity[index - 1]
+      const target = this.entities[index - 1]
 
-      if (entity.raw === useEnv().emptyLine()) return
+      if (entities.raw === useEnv().emptyLine()) return
 
       if (target.raw === useEnv().emptyLine()) {
-        this.entity[index - 1].raw = entity.raw
+        this.entities[index - 1].raw = entities.raw
       } else {
-        this.entity[index - 1].raw = target.raw + entity.raw
+        this.entities[index - 1].raw = target.raw + entities.raw
       }
     },
   },

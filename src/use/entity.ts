@@ -47,7 +47,7 @@ export const useEntity = () => {
     }
 
     const isFixed = (index: number, options?: Record<string, boolean>) => {
-      const entity = CONTEXT.entity[index]
+      const entity = CONTEXT.entities[index]
 
       if (!entity.type) return false
 
@@ -65,7 +65,7 @@ export const useEntity = () => {
 
   const swapper = () => {
     const switcherText = ({ entry, output, equal }: Record<any, any>) => {
-      const arr = CONTEXT.entity
+      const arr = CONTEXT.entities
 
       // TODO: Deletar em caso de output vazio
       if (!entry || !output) return
@@ -110,7 +110,7 @@ export const useEntity = () => {
       fstate.maxLetterCounter = 0
 
       pages.value.forEach((context: ContextState) => {
-        context.entity.forEach((entity: Entity) => {
+        context.entities.forEach((entity: Entity) => {
           if (!fstate.entry) return
 
           if (entity.raw.includes(fstate.entry)) {
@@ -131,7 +131,7 @@ export const useEntity = () => {
         fstate.listOfLettersExists.indexOf(object) + 1
 
       const pageIndex = PROJECT.pages.indexOf(object.page)
-      const entityIndex = PROJECT.pages[pageIndex].entity.indexOf(object.entity)
+      const entityIndex = PROJECT.pages[pageIndex].entities.indexOf(object.entity)
 
       onGo(`entity-${entityIndex}`, object.page)
     }

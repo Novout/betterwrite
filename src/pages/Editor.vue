@@ -39,7 +39,7 @@
   const _title = computed(() =>
     projectStore.nameRaw === env.projectEmpty()
       ? title.value
-      : projectStore.nameRaw + ' - ' + contextStore.entity[0]?.raw
+      : projectStore.nameRaw + ' - ' + contextStore.entities[0]?.raw
   )
 
   useHead({

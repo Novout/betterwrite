@@ -227,7 +227,7 @@ export const usePDF = () => {
       if (!project.isBlankProject()) frontCover(arr)
 
       pages.forEach((page: ContextState) => {
-        page.entity.forEach((entity: Entity) => {
+        page.entities.forEach((entity: Entity) => {
           let _raw = {}
 
           if (entity.raw === env.emptyLine()) {

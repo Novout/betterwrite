@@ -48,7 +48,7 @@ export const useProjectStore = defineStore('project', {
 
       const init: ContextState = {
         id: this.totalPagesCreated,
-        entity: [
+        entities: [
           {
             type: 'heading-one',
             raw: payload.name,
@@ -81,7 +81,7 @@ export const useProjectStore = defineStore('project', {
 
       const init: ContextState = {
         id: this.totalPagesCreated,
-        entity: [
+        entities: [
           {
             type: 'paragraph',
             raw: payload.subject,
@@ -99,7 +99,7 @@ export const useProjectStore = defineStore('project', {
 
       const init: ContextState = {
         id: this.totalPagesCreated,
-        entity: [
+        entities: [
           {
             type: 'heading-one',
             raw: 'Untitled',
@@ -168,7 +168,7 @@ export const useProjectStore = defineStore('project', {
     },
     resetDates() {
       this.pages.forEach((page: ContextState) => {
-        page.entity.forEach((line: Entity) => {
+        page.entities.forEach((line: Entity) => {
           line.createdAt = useFormat().actually()
           line.updatedAt = useFormat().actually()
         })
@@ -182,7 +182,7 @@ export const useProjectStore = defineStore('project', {
 
       if (index === -1) return
 
-      this.pages[index].entity = context.entity
+      this.pages[index].entities = context.entities
     },
   },
 })

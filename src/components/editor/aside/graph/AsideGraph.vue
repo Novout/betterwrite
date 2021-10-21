@@ -6,7 +6,7 @@
     <transition-group name="list" tag="div">
       <div v-for="(page, index) in PROJECT.pages" :key="index">
         <div
-          v-for="(entity, ind) in page.entity"
+          v-for="(entity, ind) in page.entities"
           :id="`graph-${page.id}-${String(ind)}`"
           :key="`graph-${page.id}-${String(ind)}`"
           @click="graph.load(`#entity-${String(ind)}`, page)"

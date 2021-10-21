@@ -9,7 +9,7 @@ export type EntityType =
 
 export type ContextState = {
   id: number
-  entity: Array<Entity>
+  entities: Array<Entity>
 }
 
 export type Entity = {
