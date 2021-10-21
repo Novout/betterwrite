@@ -144,3 +144,11 @@ input[type='number'] {
 .logger-info {
   background-color: #6793ff;
 }
+
+.drag {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}

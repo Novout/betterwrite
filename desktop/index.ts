@@ -15,7 +15,7 @@ protocol.registerSchemesAsPrivileged([
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    minWidth: 1140,
+    minWidth: 900,
     minHeight: 700,
     width: 1240,
     height: 700,
@@ -29,8 +29,7 @@ function createWindow () {
     },
     icon: join(__dirname, '../render/logo-desktop.png')
   })
-  
-  mainWindow.webContents.openDevTools()
+
   // and load the index.html of the app.
   mainWindow.loadURL(WinURL)
   mainWindow.on('close', function (event: any) {

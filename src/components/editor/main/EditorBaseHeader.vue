@@ -1,6 +1,9 @@
 <template>
-  <header class="flex justify-end items-center w-full bg-transparent">
-    <HeroIcon class="wb-icon inline-flex" @click.prevent.stop="onSwitcher">
+  <header class="flex justify-end items-center w-full bg-transparent drag">
+    <HeroIcon
+      class="wb-icon inline-flex no-drag"
+      @click.prevent.stop="onSwitcher"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
@@ -14,7 +17,10 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon class="wb-icon inline-flex" @click.prevent.stop="onFinder">
+    <HeroIcon
+      class="wb-icon inline-flex no-drag"
+      @click.prevent.stop="onFinder"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
@@ -32,11 +38,18 @@
       </svg>
     </HeroIcon>
     <div
-      class="w-1 h-4 mx-3 border-r-2 border-gray-500 dark:border-gray-500"
+      class="
+        w-1
+        h-4
+        mx-3
+        border-r-2 border-gray-500
+        dark:border-gray-500
+        no-drag
+      "
     ></div>
     <HeroIcon
       v-if="project.isCreativeProject()"
-      class="wb-icon"
+      class="wb-icon no-drag"
       @click.prevent.stop="onUpPage"
     >
       <svg
@@ -54,7 +67,7 @@
     </HeroIcon>
     <HeroIcon
       v-if="project.isCreativeProject()"
-      class="wb-icon"
+      class="wb-icon no-drag"
       @click.prevent.stop="onDownPage"
     >
       <svg
@@ -72,7 +85,7 @@
     </HeroIcon>
     <HeroIcon
       v-if="project.isCreativeProject()"
-      class="wb-icon inline-flex"
+      class="wb-icon inline-flex no-drag"
       @click.prevent.stop="page.onCreatePage"
     >
       <svg
@@ -90,7 +103,7 @@
     </HeroIcon>
     <HeroIcon
       v-if="project.isCreativeProject()"
-      class="wb-icon inline-flex"
+      class="wb-icon inline-flex no-drag"
       @click.prevent.stop="page.onDeletePage"
     >
       <svg
@@ -109,10 +122,17 @@
     </HeroIcon>
     <div
       v-if="project.isCreativeProject()"
-      class="w-1 h-4 mx-3 border-r-2 border-gray-500 dark:border-gray-500"
+      class="
+        w-1
+        h-4
+        mx-3
+        border-r-2 border-gray-500
+        dark:border-gray-500
+        no-drag
+      "
     ></div>
     <HeroIcon
-      class="wb-icon inline-flex"
+      class="wb-icon inline-flex no-drag"
       @click.prevent.stop="editor.fullScreen"
     >
       <svg
