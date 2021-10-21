@@ -222,8 +222,6 @@
         updatedAt: format.actually(),
       } as Entity
 
-      CONTEXT.addInPageWithPaste(content)
-
       await emit('enter', content)
     })
   }
