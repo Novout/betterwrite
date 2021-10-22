@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/Novout/better-write/compare/v0.3.15...v0.4.0) (2021-10-22)
+
+
+### Features
+
+* **desktop:** auto updater ([23e7872](https://github.com/Novout/better-write/commits/23e7872cae59ab334931ce44f707737c82c40f6e))
+* **desktop:** redirect_uri in desktop applications ([a6de947](https://github.com/Novout/better-write/commits/a6de94725b30dccc36d89c98509221bfda4a5d9c))
+
+
+### Bug Fixes
+
+* **desktop:** drag in aside toggle ([a339ed5](https://github.com/Novout/better-write/commits/a339ed53a0e7dc185c04b547d0afd213a7083838))
+* **desktop:** toggle aside ([f571494](https://github.com/Novout/better-write/commits/f5714947cecd519ed7016188f70d13922d628712))
+
+
+### Structure
+
+* **desktop:** priorize window render ([f54389a](https://github.com/Novout/better-write/commits/f54389ab3059c05e9a8815a45020cad9b7bd1603))
+* **md:** new features ([fa32532](https://github.com/Novout/better-write/commits/fa32532363817eea4ba5035632480d4d79ec4dbe))
+* **package:** typo ([b2c7a22](https://github.com/Novout/better-write/commits/b2c7a225ec5219ee1c5d0c0b2364dbb171872b2d))
+* **readme:** new site link ([6911a65](https://github.com/Novout/better-write/commits/6911a656e3031f8d4d407a6b9a582f1f1a223020))
+
 ### [0.3.15](https://github.com/Novout/better-write/compare/v0.3.14...v0.3.15) (2021-10-22)
 
 
