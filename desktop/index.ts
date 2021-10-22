@@ -43,8 +43,8 @@ function createWindow () {
     mainWindow = null
   })
   mainWindow.once('ready-to-show', () => {
-    autoUpdater.checkForUpdatesAndNotify()
     mainWindow?.show()
+    autoUpdater.checkForUpdatesAndNotify()
   })
 
   mainWindow.on('update-downloaded', () => {
