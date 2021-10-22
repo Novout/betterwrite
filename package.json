@@ -115,13 +115,28 @@
     "appId": "com.https://better-write.vercel.app.bw",
     "productName": "Better Write",
     "directories": {
+      "buildResources":"desktop/resources",
       "output": "build/dist"
+    },
+    "win":{
+      "target":[
+        "nsis",
+        "msi"
+      ]
+    },
+    "linux":{
+      "target":[
+        "deb",
+        "rpm",
+        "snap",
+        "AppImage"
+      ]
     },
     "copyright": "Copyright © 2021 ${author}",
     "files": [
+      "desktop/resources/**/*",
       "dist/**/*",
-      "package.json",
-      "components.d.ts"
+      "package.json"
     ]
   }
 }
