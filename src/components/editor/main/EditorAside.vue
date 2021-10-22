@@ -1,6 +1,14 @@
 <template>
   <HeroIcon
-    class="absolute justify-center items-center z-aside-open wb-icon rounded-br"
+    class="
+      absolute
+      justify-center
+      items-center
+      z-aside-open
+      wb-icon
+      rounded-br
+      no-drag
+    "
     :class="ABSOLUTE.aside ? 'left-60' : ''"
     @click="ABSOLUTE.aside = !ABSOLUTE.aside"
   >
