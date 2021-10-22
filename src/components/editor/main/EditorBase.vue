@@ -12,7 +12,7 @@
     :class="[EDITOR.configuration.draggable ? 'fixed' : 'inline-block']"
     @click.prevent="onClickInEditor"
   >
-    <EditorBaseHeader v-if="PROJECT.name !== env.projectEmpty()" />
+    <EditorBaseHeader />
     <EditorBaseBlocked v-if="PROJECT.name === env.projectEmpty()" />
     <section
       id="edit"

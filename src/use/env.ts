@@ -1,8 +1,8 @@
-import isElectron from "is-electron"
+import isElectron from 'is-electron'
 
 export const useEnv = () => {
   const getCorrectLocalUrl = () => {
-    if(isElectron()) {
+    if (isElectron()) {
       return window.location.href
     }
 
