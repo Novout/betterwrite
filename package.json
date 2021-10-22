@@ -13,6 +13,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "rm -rf ./dist && yarn build && vite preview",
+    "release": "electron-builder --publish always",
     "desktop:set": "wait-on tcp:3000 && electron . --watch",
     "desktop:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn desktop:set\"",
     "desktop:start": "cross-env NODE_ENV=development electron dist/main/index.js",
@@ -23,13 +24,13 @@
     "format": "prettier src/**/*.{vue,css,ts} --write",
     "test": "jest",
     "extract": "vue-i18n-extract report --vueFiles './src/**/*.?(js|vue)' --languageFiles './src/lang/*.?(json|yml|yaml|js)'",
-    "release": "standard-version",
     "release:initial": "standard-version -- --first-release",
     "release:minor": "standard-version --release-as minor",
     "release:patch": "standard-version --release-as patch",
     "release:major": "standard-version --release-as major",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
+    
   },
   "dependencies": {
     "@headlessui/vue": "1.4.1",
@@ -121,18 +122,21 @@
       "output": "build/dist"
     },
     "win": {
+      "publish": ["github"],
       "target": [
         "nsis",
         "msi"
       ]
     },
     "linux": {
+      "publish": ["github"],
       "target": [
         "deb",
         "rpm",
         "snap",
         "AppImage"
-      ]
+      ],
+      "category": "Development"
     },
     "copyright": "Copyright © 2021 ${author}",
     "files": [
