@@ -1,4 +1,4 @@
-name: Build/Release Desktop Application
+name: Desktop
 
 on:
   push:
