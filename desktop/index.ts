@@ -1,4 +1,5 @@
 const { app, BrowserWindow, protocol, globalShortcut } = require('electron')
+const { autoUpdater } = require('electron-updater')
 const { join } = require('path')
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -30,22 +31,25 @@ function createWindow () {
     icon: join(__dirname, '../render/logo-desktop.png')
   })
 
-  // and load the index.html of the app.
   mainWindow.loadURL(WinURL)
   mainWindow.on('close', function (event: any) {
-    if (!willQuitApp) {
-      // event.preventDefault()
-      // mainWindow?.hide()
+    if (!willQuitApp && !isDev) {
+      event.preventDefault()
+      mainWindow?.hide()
     }
   })
-  // Emitted when the window is closed.
+
   mainWindow.on('closed', function () {
     mainWindow = null
   })
   mainWindow.once('ready-to-show', () => {
+    autoUpdater.checkForUpdatesAndNotify()
     mainWindow?.show()
   })
 
+  mainWindow.on('update-downloaded', () => {
+    autoUpdater.quitAndInstall()
+  })
   /*
   mainWindow.webContents.on('will-navigate', function (event: any, newUrl: string) {
     console.log(newUrl);
