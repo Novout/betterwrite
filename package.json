@@ -13,7 +13,6 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "rm -rf ./dist && yarn build && vite preview",
-    "release": "electron-builder --publish always",
     "desktop:set": "wait-on tcp:3000 && electron . --watch",
     "desktop:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn desktop:set\"",
     "desktop:start": "cross-env NODE_ENV=development electron dist/main/index.js",
