@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.15](https://github.com/Novout/better-write/compare/v0.3.14...v0.3.15) (2021-10-22)
+
+
+### CI
+
+* args to desktop release ([4e36a88](https://github.com/Novout/better-write/commits/4e36a88a5a377796456097fc1149f9a3f7b4febb))
+
 ### [0.3.14](https://github.com/Novout/better-write/compare/v0.3.13...v0.3.14) (2021-10-22)
 
 
