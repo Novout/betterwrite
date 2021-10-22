@@ -4,7 +4,8 @@ Here will contain all the features that Better Write offers.
 
 ## Structure
 
-- ✅ - Deploy (actually gh-pages)
+- ✅ - Deploy Website
+- ✅ - Deploy Desktop
 - ➖ - Unit Tests
 - ❌ - e2e Tests
 - ❌ - Logger for Developers
@@ -14,7 +15,7 @@ Here will contain all the features that Better Write offers.
 ### Options
 
 - ✅ - Dark Theme
-- ➖ - i18n Locale
+- ✅ - i18n Locale
 - ➖ - Auto Save
 - ❌ - Cloud Auto Save
 - ➖ - Logger for Users
@@ -24,7 +25,7 @@ Here will contain all the features that Better Write offers.
 ### Project
 
 - ✅ - Create Project
-- ❌ - Change Project Name
+- ❌ - Change Project
 - ✅ - Save Project
 - ➖ - Delete Project
 - ✅ - Graph Aside Content
@@ -36,7 +37,7 @@ Here will contain all the features that Better Write offers.
 
 - ✅ - Create Page
 - ✅ - Delete Page
-- ➖ - Update Page
+- ✅ - Update Page
 - ✅ - Replace Position page
 
 ### Entity
@@ -61,7 +62,7 @@ Here will contain all the features that Better Write offers.
 
 - ✅ - Page Defines
 - ❌ - Security Defines
-- ➖ - Preview
+- ✅ - Preview
 - ✅ - Generate
 
 ##### Configurations
@@ -92,7 +93,7 @@ Here will contain all the features that Better Write offers.
 
 ### Desktop
 
-- ➖ - Basic Features
+- ✅ - Basic Features
 - ➖ - Save/Load
 - ❌ - Integrations
 - ✅ - Shortcuts and Alerts
