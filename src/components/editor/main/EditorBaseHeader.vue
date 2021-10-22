@@ -78,6 +78,7 @@
           dark:border-gray-500
           no-drag
         "
+        v-if="PROJECT.name !== env.projectEmpty()"
       ></div>
       <HeroIcon
         v-if="
