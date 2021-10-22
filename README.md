@@ -1,7 +1,7 @@
 # Better Write
 
 <p align="center">
-  <a href="https://novout.github.io/better-write/">
+  <a href="https://better-write.vercel.app/">
     <img src="./.github/logo.png" alt="Logo" width="8%">
   </a>
 
