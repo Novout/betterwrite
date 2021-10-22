@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.12](https://github.com/Novout/better-write/compare/v0.3.11...v0.3.12) (2021-10-22)
+
+
+### Features
+
+* **desktop:** draggable bar ([ce09d62](https://github.com/Novout/better-write/commits/ce09d62fa874461f1bd1253d720dc7de6f75b94c))
+* **desktop:** release application ([f8a0ac1](https://github.com/Novout/better-write/commits/f8a0ac1499f568ce7c1435dcb7f69c7940c391bc))
+
+
+### Structure
+
+* **desktop:** build icons in all platforms ([c19fd41](https://github.com/Novout/better-write/commits/c19fd41fa721872f21b28a8cf8fe44b2446d51ad))
+
 ### [0.3.11](https://github.com/Novout/better-write/compare/v0.3.10...v0.3.11) (2021-10-21)
 
 
