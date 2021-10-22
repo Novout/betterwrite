@@ -1,6 +1,6 @@
 {
   "name": "better-write",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "repository": "https://github.com/Novout/better-write",
   "author": {
     "name": "Giovane Cardoso",
@@ -30,7 +30,6 @@
     "release:major": "standard-version --release-as major",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
-    
   },
   "dependencies": {
     "@headlessui/vue": "1.4.1",
@@ -122,14 +121,18 @@
       "output": "build/dist"
     },
     "win": {
-      "publish": ["github"],
+      "publish": [
+        "github"
+      ],
       "target": [
         "nsis",
         "msi"
       ]
     },
     "linux": {
-      "publish": ["github"],
+      "publish": [
+        "github"
+      ],
       "target": [
         "deb",
         "rpm",
