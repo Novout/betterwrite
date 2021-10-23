@@ -656,6 +656,8 @@
   const onClickInEntity = async (e: MouseEvent) => {
     onStopEvents(e)
 
+    if (entity.utils().isFixed(_index.value)) return
+
     edit.value = true
 
     await nextTick
