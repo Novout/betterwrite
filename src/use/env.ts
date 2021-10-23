@@ -53,6 +53,10 @@ export const useEnv = () => {
     return import.meta.env.VITE_INITIAL_LOAD as string
   }
 
+  const packageVersion = () => {
+    return import.meta.env.PACKAGE_VERSION
+  }
+
   return {
     dropboxKey,
     projectEmpty,
@@ -65,5 +69,6 @@ export const useEnv = () => {
     lineBreak,
     pageBreak,
     initialLoad,
+    packageVersion,
   }
 }

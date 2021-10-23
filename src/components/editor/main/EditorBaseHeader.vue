@@ -70,6 +70,7 @@
         </svg>
       </HeroIcon>
       <div
+        v-if="PROJECT.name !== env.projectEmpty()"
         class="
           w-1
           h-4
@@ -78,7 +79,6 @@
           dark:border-gray-500
           no-drag
         "
-        v-if="PROJECT.name !== env.projectEmpty()"
       ></div>
       <HeroIcon
         v-if="

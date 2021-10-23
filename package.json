@@ -53,6 +53,7 @@
     "postcss": "8.3.6",
     "tailwindcss": "2.2.15",
     "tailwindcss-typography": "3.1.0",
+    "vite-plugin-package-version": "^1.0.2",
     "vue": "3.2.20",
     "vue-final-modal": "3.4.1",
     "vue-i18n": "9.1.7",

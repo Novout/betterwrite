@@ -108,16 +108,21 @@
             bg-black-opacity
             hover:bg-gray-900
             text-gray-200
+            flex flex-col
           "
           to="/"
-          >{{ t('landing.first.editor.website') }}</router-link
+          ><div>
+            {{ t('landing.first.editor.website') }}
+          </div>
+          <div class="text-xs">
+            {{ version }}
+          </div></router-link
         >
         <a
           class="
             font-bold
             text-base
             md:text-lg
-            opacity-50
             px-2
             py-2
             md:px-5 md:py-5
@@ -126,17 +131,40 @@
             hover:bg-gray-900
             bg-gray-800
             text-gray-200
-            pointer-events-none
+            flex flex-col
+            cursor-pointer
           "
-          >{{ t('landing.first.editor.desktop') }}</a
-        >
+          :href="desktopDownload"
+          target="_blank"
+          ><div>
+            {{ t('landing.first.editor.desktop') }}
+          </div>
+          <div class="flex text-xs">
+            {{ version }}
+            <img
+              class="ml-2"
+              width="15"
+              src="../../assets/landing/windows.svg"
+            />
+            <img class="ml-2" width="15" src="../../assets/landing/linux.png" />
+          </div>
+        </a>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+  import { useEnv } from '@/use/env'
+  import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const { t } = useI18n()
+  const env = useEnv()
+
+  const desktopDownload = computed(
+    () =>
+      `https://github.com/Novout/better-write/releases/tag/v${env.packageVersion()}`
+  )
+  const version = computed(() => `v${env.packageVersion()}`)
 </script>

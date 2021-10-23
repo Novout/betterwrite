@@ -5,7 +5,8 @@ import Components from "unplugin-vue-components/vite";
 import { HeadlessUiResolver } from "unplugin-vue-components/resolvers";
 import vueI18n from "@intlify/vite-plugin-vue-i18n";
 import vitePersist from 'vite-plugin-optimize-persist'
-import vitePackageConfig from 'vite-plugin-package-config'
+import vitePackageAccess from 'vite-plugin-package-config'
+import vitePackageVersion from 'vite-plugin-package-version'
 
 export default defineConfig({
   base: './',
@@ -20,7 +21,8 @@ export default defineConfig({
       resolvers: [HeadlessUiResolver()],
     }),
     vitePersist(),
-    vitePackageConfig()
+    vitePackageAccess(),
+    vitePackageVersion()
   ],
   build: {
     outDir: resolve(__dirname, 'dist/render'),
