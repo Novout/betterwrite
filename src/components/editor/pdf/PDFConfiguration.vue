@@ -17,7 +17,7 @@
         />
       </svg>
     </HeroIcon>
-    <PDFConfigurationSlot>
+    <PDFConfigurationSlot v-if="!project.isBlankProject()">
       <template #title>
         <h2 class="text-2xl ml-2 font-bold font-poppins">
           {{ t('editor.pdf.custom.title.cover') }}
@@ -218,7 +218,7 @@
         </div>
       </div>
     </PDFConfigurationSlot>
-    <PDFConfigurationSlot>
+    <PDFConfigurationSlot v-if="!project.isBlankProject()">
       <template #title>
         <h2 class="text-2xl ml-2 font-bold font-poppins">
           {{ t('editor.pdf.custom.title.headingOne') }}
@@ -575,15 +575,20 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { usePDFStore } from '@/store/pdf'
+  import { useProjectStore } from '@/store/project'
   import { useDefines } from '@/use/defines'
+  import { useProject } from '@/use/project'
   import { reactive, nextTick, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
 
+  const ABSOLUTE = useAbsoluteStore()
+  const PDF = usePDFStore()
+  const PROJECT = useProjectStore()
+
   const { t } = useI18n()
   const toast = useToast()
-  const PDF = usePDFStore()
-  const ABSOLUTE = useAbsoluteStore()
+  const project = useProject()
 
   const _base = computed(() => PDF.styles.base)
   const _paragraph = computed(() => PDF.styles.paragraph)
