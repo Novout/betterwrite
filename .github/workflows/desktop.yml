@@ -2,7 +2,7 @@ name: Desktop
 
 on:
   push:
-    branches: [ main, master, develop ]
+    branches: [ main ]
 
 jobs:
   release:
