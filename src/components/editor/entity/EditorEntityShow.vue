@@ -480,36 +480,11 @@
   const onKeyboard = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLTextAreaElement
 
-    // in ctrl press
-    if (e.ctrlKey) {
-      // generics
-      if (e.key !== 'c' && e.key !== 'f' && e.key !== 'a' && e.key !== 'v') {
-        e.preventDefault()
-        e.stopPropagation()
-      }
-
-      // finder
-      if (e.key === 'f') {
-        ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.finder
-      }
-
-      // swapper
-      if (e.key === 'h') {
-        ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.switcher
-      }
-
-      // delete entity
-      if (e.key === 'd') {
-        emitter.emit('entity-not-mutate', props.entity)
-
-        await nextTick
-
-        CONTEXT.removeInPage(props.entity)
-
-        await nextTick
-
-        PROJECT.updateContext(CONTEXT.$state)
-      } else if (e.key === 'ArrowUp') {
+    if (e.altKey) {
+      e.preventDefault()
+      e.stopPropagation()
+      
+      if (e.key === 'ArrowUp') {
         // to up
         onUpdateContent()
 
@@ -557,6 +532,40 @@
           up: false,
           switch: true,
         })
+      }
+
+      return
+    }
+
+    // in ctrl press
+    if (e.ctrlKey) {
+      // generics
+      if (e.key !== 'c' && e.key !== 'f' && e.key !== 'a' && e.key !== 'v') {
+        e.preventDefault()
+        e.stopPropagation()
+      }
+
+      // finder
+      if (e.key === 'f') {
+        ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.finder
+      }
+
+      // swapper
+      if (e.key === 'h') {
+        ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.switcher
+      }
+
+      // delete entity
+      if (e.key === 'd') {
+        emitter.emit('entity-not-mutate', props.entity)
+
+        await nextTick
+
+        CONTEXT.removeInPage(props.entity)
+
+        await nextTick
+
+        PROJECT.updateContext(CONTEXT.$state)
       }
     } else {
       // delete in empty raw or convert
