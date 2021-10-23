@@ -480,7 +480,7 @@
   const onKeyboard = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLTextAreaElement
 
-    if (e.altKey) {
+    if (e.shiftKey) {
       e.preventDefault()
       e.stopPropagation()
 
