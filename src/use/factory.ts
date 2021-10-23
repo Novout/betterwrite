@@ -1,6 +1,7 @@
 import { useEnv } from './env'
 import { Entity, EntityType } from '@/types/context'
 import { useFormat } from './format'
+
 export const useFactory = () => {
   const env = useEnv()
   const format = useFormat()
@@ -46,6 +47,8 @@ export const useFactory = () => {
       _.addEventListener('change', function () {
         const file = (this.files as any)[0]
 
+        if (!file) return
+
         const reader = new FileReader()
         reader.readAsDataURL(file)
         reader.onload = function () {
@@ -59,6 +62,16 @@ export const useFactory = () => {
             raw: reader.result,
             createdAt: format.actually(),
             updatedAt: format.actually(),
+            external: {
+              image: {
+                name: file.name,
+                size: {
+                  width: 100,
+                  height: 100,
+                },
+                alignment: 'full',
+              },
+            },
           } as Entity
 
           load && load(content)

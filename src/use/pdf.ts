@@ -14,6 +14,7 @@ import { useProject } from './project'
 import { useProjectStore } from '@/store/project'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
+import { EntityType } from '../types/context'
 
 export const usePDF = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -134,21 +135,30 @@ export const usePDF = () => {
       }
     }
 
-    const image = (raw: string) => {
-      return {
-        image: raw,
-        width:
-          useDefines().pdf().base().pageSizeFixes()[
-            PDF.styles.base.pageSize
-          ][0] -
-          generate().base().pageMargins[0] -
-          generate().base().pageMargins[2],
-        margin: [
-          generate().base().pageMargins[0],
-          10,
-          generate().base().pageMargins[2],
-          10,
-        ],
+    const image = (entity: Entity) => {
+      if (entity.external?.image?.alignment === 'full') {
+        return {
+          image: entity.raw,
+          width:
+            useDefines().pdf().base().pageSizeFixes()[
+              PDF.styles.base.pageSize
+            ][0] -
+            generate().base().pageMargins[0] -
+            generate().base().pageMargins[2],
+          margin: [
+            generate().base().pageMargins[0],
+            10,
+            generate().base().pageMargins[2],
+            10,
+          ],
+        }
+      } else {
+        return {
+          image: entity.raw,
+          width: entity.external?.image?.size.width,
+          height: entity.external?.image?.size.height,
+          alignment: entity.external?.image?.alignment,
+        }
       }
     }
 
@@ -241,18 +251,18 @@ export const usePDF = () => {
               stack: false,
               indent: PDF.styles.paragraph.indent,
             })
-          } else if ((entity as any).type === 'heading-one') {
-            _raw = headingOne((entity as any).raw)
-          } else if ((entity as any).type === 'heading-two') {
-            _raw = headingTwo((entity as any).raw)
-          } else if ((entity as any).type === 'heading-three') {
+          } else if (entity.type === 'heading-one') {
+            _raw = headingOne(entity.raw)
+          } else if (entity.type === 'heading-two') {
+            _raw = headingTwo(entity.raw)
+          } else if (entity.type === 'heading-three') {
             _raw = headingThree((entity as any).raw)
-          } else if ((entity as any).type === 'page-break') {
+          } else if (entity.type === 'page-break') {
             _raw = pageBreak()
-          } else if ((entity as any).type === 'line-break') {
+          } else if (entity.type === 'line-break') {
             _raw = lineBreak()
-          } else if ((entity as any).type === 'image') {
-            _raw = image((entity as any).raw)
+          } else if (entity.type === 'image') {
+            _raw = image(entity)
           }
 
           arr.push(_raw)

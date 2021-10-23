@@ -49,10 +49,25 @@ export type ContextState = {
   entities: Array<Entity>
 }
 
+export interface EntityExternal {
+  image?: EntityExternalImage
+}
+
+export interface EntityExternalImageSize {
+  width: number
+  height: number
+}
+
+export interface EntityExternalImage {
+  name: string
+  size: EntityExternalImageSize
+  alignment: 'left' | 'center' | 'right' | 'full'
+}
+
 export type Entity = {
   type: EntityType
   raw: string
   createdAt: string
   updatedAt: string
-  external?: Record<any, any>
+  external?: EntityExternal
 }

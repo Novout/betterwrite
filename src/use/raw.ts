@@ -36,14 +36,6 @@ export const link = () => {
   return { open, close }
 }
 
-export const image = () => {
-  const define = (tag: string) => {
-    return `<img src="${tag}" width="50%">`
-  }
-
-  return { define }
-}
-
 export const useRaw = () => {
   const landingConvert = (raw: string) => {
     let final = ''
@@ -51,7 +43,6 @@ export const useRaw = () => {
     let _bold = false
 
     const over: Array<string> = []
-    const img: Array<string> = []
 
     if (!raw) return ''
 
@@ -59,15 +50,10 @@ export const useRaw = () => {
 
     raw.split(/[ ]+/).forEach((word: string) => {
       if (word.includes('http://') || word.includes('https://')) over.push(word)
-      if (word.includes('data:image/')) img.push(word)
     })
 
     over.forEach((word: string) => {
       _raw = _raw.replace(word, `${link().open(word)}${word}${link().close()}`)
-    })
-
-    img.forEach((img: string) => {
-      _raw = _raw.replace(img, `${image().define(img)}`)
     })
 
     for (let i = 0; i < _raw.length; i++) {
@@ -105,25 +91,36 @@ export const useRaw = () => {
     )
       return ''
 
-    if (entity.type !== 'paragraph' && entity.type !== 'image')
-      return entity.raw
+    if (entity.type === 'image') {
+      return `<div class="flex wb-text text-xl items-center w-full justify-center py-5">
+          <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-7 w-7"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <p class="ml-1">${entity.external?.image?.name}</p>
+      </div>`
+    }
+
+    if (entity.type !== 'paragraph') return entity.raw
 
     const over: Array<string> = []
-    const img: Array<string> = []
 
     let _raw = entity.raw
 
     entity.raw.split(/[ ]+/).forEach((word: string) => {
       if (word.includes('http://') || word.includes('https://')) over.push(word)
-      if (word.includes('data:image/')) img.push(word)
     })
 
     over.forEach((word: string) => {
       _raw = _raw.replace(word, `${link().open(word)}${word}${link().close()}`)
-    })
-
-    img.forEach((img: string) => {
-      _raw = _raw.replace(img, `${image().define(img)}`)
     })
 
     for (let i = 0; i < _raw.length; i++) {
