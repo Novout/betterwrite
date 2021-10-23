@@ -211,6 +211,62 @@
         />
       </svg>
     </HeroIcon>
+    <section
+      v-if="state.image"
+      class="
+        flex flex-row
+        absolute
+        rounded
+        bottom-5
+        left-16
+        wb-text
+        p-3
+        bg-gray-500
+        dark:bg-gray-800
+        border-gray-400
+        dark:border-gray-700
+      "
+    >
+      <div
+        v-if="image.alignment !== 'full'"
+        class="mx-2 flex flex-col justify-center"
+      >
+        <label>{{ t('editor.pdf.custom.image.width') }}</label>
+        <TextNumber v-model="image.width" :step="25" />
+      </div>
+      <div
+        v-if="image.alignment !== 'full'"
+        class="mx-2 flex flex-col justify-center"
+      >
+        <label>{{ t('editor.pdf.custom.image.height') }}</label>
+        <TextNumber v-model="image.height" :step="25" />
+      </div>
+      <div class="mx-2 flex flex-col justify-center">
+        <label>{{ t('editor.pdf.custom.image.alignment') }}</label>
+        <TextSelect
+          v-model="image.alignment"
+          :arr="['full', 'left', 'center', 'right']"
+        />
+      </div>
+    </section>
+    <HeroIcon
+      v-if="props.entity.type === 'image'"
+      class="wb-icon ml-1"
+      @mouseenter.prevent.stop="onImageEntityWrapper"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </HeroIcon>
   </section>
   <section
     class="absolute wb-icon right-14 bottom-0 pointer-events-none"
@@ -233,11 +289,19 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive, computed } from 'vue'
+  import { reactive, computed, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useFormat } from '@/use/format'
   import { EntityType } from '@/types/context'
   import { useContextStore } from '@/store/context'
+  import { Entity } from '@/types/context'
+
+  const props = defineProps({
+    entity: {
+      required: true,
+      type: Object as () => Entity,
+    },
+  })
 
   const CONTEXT = useContextStore()
 
@@ -248,12 +312,27 @@
     new: false as boolean,
     switcher: false as boolean,
     adjust: false as boolean,
+    image: false as boolean,
   })
-  const update = computed(() => format.lastTime(props.entity.updatedAt))
 
-  const props = defineProps({
-    entity: Object as any,
+  const image = reactive({
+    height: props.entity.external?.image?.size.height,
+    width: props.entity.external?.image?.size.width,
+    alignment: props.entity.external?.image?.alignment,
   })
+
+  watch(image, () => {
+    const _index: number = CONTEXT.entities.indexOf(props.entity)
+
+    ;(CONTEXT.entities[_index] as any).external.image.alignment =
+      image.alignment as any
+    ;(CONTEXT.entities[_index] as any).external.image.size.height =
+      image.height as any
+    ;(CONTEXT.entities[_index] as any).external.image.size.width =
+      image.width as any
+  })
+
+  const update = computed(() => format.lastTime(props.entity.updatedAt))
 
   const onDeleteEntity = (e: MouseEvent) => {
     CONTEXT.removeInPage(props.entity)
@@ -283,12 +362,21 @@
     state.new = false
     state.adjust = !state.adjust
     state.switcher = false
+    state.image = false
+  }
+
+  const onImageEntityWrapper = () => {
+    state.new = false
+    state.adjust = false
+    state.switcher = false
+    state.image = !state.image
   }
 
   const onNewEntityWrapper = () => {
     state.new = !state.new
     state.switcher = false
     state.adjust = false
+    state.image = false
   }
 
   const onNewEntity = (type: string) => {
@@ -304,6 +392,7 @@
     state.new = false
     state.switcher = !state.switcher
     state.adjust = false
+    state.image = false
   }
 
   const onSwitchEntity = (type: EntityType) => {

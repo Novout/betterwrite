@@ -158,6 +158,12 @@ export const usePDF = () => {
           width: entity.external?.image?.size.width,
           height: entity.external?.image?.size.height,
           alignment: entity.external?.image?.alignment,
+          margin: [
+            generate().base().pageMargins[0],
+            10,
+            generate().base().pageMargins[2],
+            10,
+          ],
         }
       }
     }

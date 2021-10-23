@@ -33,6 +33,11 @@ export default {
       },
     },
     custom: {
+      image: {
+        height: 'Altura',
+        width: 'Largura',
+        alignment: 'Alinhamento',
+      },
       title: {
         cover: 'Capa',
         paragraph: 'Parágrafo',

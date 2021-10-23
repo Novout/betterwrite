@@ -7,7 +7,7 @@
         active:bg-gray-400
         dark:active:bg-gray-800
       "
-      @click.prevent="cmp--"
+      @click.prevent="onNegative"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@
         active:bg-gray-400
         dark:active:bg-gray-800
       "
-      @click.prevent="cmp++"
+      @click.prevent="onPositive"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { ref, computed, WritableComputedRef } from 'vue'
 
   const props = defineProps({
     modelValue: {
@@ -60,11 +60,24 @@
       required: false,
       type: String,
     },
+    step: {
+      required: false,
+      type: Number,
+      default: 1,
+    },
   })
+
+  const onNegative = () => {
+    cmp.value -= Number(props.step)
+  }
+
+  const onPositive = () => {
+    cmp.value += Number(props.step)
+  }
 
   const emit = defineEmits(['update:modelValue'])
   const inp = ref<HTMLElement | null>(null as any)
-  const cmp = computed({
+  const cmp: WritableComputedRef<number> = computed({
     get() {
       return props.modelValue
     },

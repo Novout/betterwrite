@@ -1,6 +1,6 @@
 <template>
   <section class="flex justify-center items-center w-full relative">
-    <section class="absolute z-max left-40 -top-60">
+    <section class="absolute z-50 left-40 -top-60">
       <EditorCommands v-if="commands" />
     </section>
     <textarea
