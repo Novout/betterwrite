@@ -159,9 +159,14 @@ export const usePDF = () => {
           height: entity.external?.image?.size.height,
           alignment: entity.external?.image?.alignment,
           margin: [
-            generate().base().pageMargins[0],
+            entity.external?.image?.alignment === 'center'
+              ? 0
+              : generate().base().pageMargins[0],
             10,
-            generate().base().pageMargins[2],
+            entity.external?.image?.alignment === 'right' ||
+            entity.external?.image?.alignment === 'center'
+              ? 0
+              : generate().base().pageMargins[2],
             10,
           ],
         }
