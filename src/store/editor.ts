@@ -27,19 +27,19 @@ export const useEditorStore = defineStore('editor', {
             one: {
               fontFamily: 'font-raleway',
               fontColor: 'text-black dark:text-gray-100',
-              fontSize: 'text-3xl',
+              fontSize: 'text-2xl',
               fontWeight: 'font-bold',
             },
             two: {
               fontFamily: 'font-raleway',
               fontColor: 'text-black dark:text-gray-100',
-              fontSize: 'text-2xl',
+              fontSize: 'text-xl',
               fontWeight: 'font-bold',
             },
             three: {
               fontFamily: 'font-raleway',
               fontColor: 'text-black dark:text-gray-100',
-              fontSize: 'text-xl',
+              fontSize: 'text-lg',
               fontWeight: 'font-semibold',
             },
           },
