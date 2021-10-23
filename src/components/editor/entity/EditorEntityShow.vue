@@ -483,7 +483,7 @@
     if (e.altKey) {
       e.preventDefault()
       e.stopPropagation()
-      
+
       if (e.key === 'ArrowUp') {
         // to up
         onUpdateContent()
@@ -566,6 +566,29 @@
         await nextTick
 
         PROJECT.updateContext(CONTEXT.$state)
+      }
+
+      // to entity initial
+      if (e.key === 'ArrowUp') {
+        emitter.emit('entity-close', { all: true })
+
+        await nextTick
+
+        emitter.emit('entity-open', {
+          entity: props.entity,
+          up: true,
+          selectionInitial: true,
+        })
+      } else if (e.key === 'ArrowDown') {
+        emitter.emit('entity-close', { all: true })
+
+        await nextTick
+
+        emitter.emit('entity-open', {
+          entity: props.entity,
+          up: false,
+          selectionInitial: true,
+        })
       }
     } else {
       // delete in empty raw or convert
