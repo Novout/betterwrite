@@ -21,6 +21,7 @@
     <section
       v-if="state.new"
       class="
+        flex
         absolute
         rounded
         bottom-5
@@ -66,6 +67,7 @@
     <section
       v-if="state.switcher"
       class="
+        flex
         absolute
         rounded
         bottom-5
