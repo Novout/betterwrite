@@ -133,16 +133,36 @@ input[type='number'] {
 }
 
 .logger-log {
-  background-color: #a7ffe5;
+  background-color: rgba(167, 255, 229, 1);
+  color: black;
+}
+.dark .logger-log {
+  background-color: rgba(167, 255, 229, 0.1);
+  color: rgb(167, 255, 229);
 }
 .logger-warn {
+  color: black;
   background-color: #ffc684;
+}
+.dark .logger-warn {
+  background-color: rgb(255, 198, 132, 0.1);
+  color: rgb(255, 198, 132);
 }
 .logger-error {
   background-color: #ff8987;
+  color: black;
+}
+.dark .logger-error {
+  background-color: rgb(255, 137, 135, 0.1);
+  color: rgb(255, 137, 135);
 }
 .logger-info {
   background-color: #6793ff;
+  color: black;
+}
+.dark .logger-info {
+  background-color: rgb(103, 147, 255, 0.1);
+  color: rgb(103, 147, 255);
 }
 
 .drag {

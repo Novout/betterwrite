@@ -1,6 +1,7 @@
 import { computed } from 'vue';
 <template>
   <p
+    v-once
     class="w-full p-1 break-all pointer-events-none"
     :class="[
       log.method === 'log' ? 'logger-log' : '',
