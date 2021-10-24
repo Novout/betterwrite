@@ -11,3 +11,14 @@ export const EntityInputInitial = (
     created && created(input)
   })
 }
+
+export const EntityInputLast = (
+  emitter: PluginEmitter,
+  content: PluginContentOn
+) => {
+  emitter.on('plugin-input-watch-last', (input: string) => {
+    const created = content[0]
+
+    created && created(input)
+  })
+}

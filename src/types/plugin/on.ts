@@ -1,2 +1,4 @@
 export type PluginCreated<T = void> = (...s: Array<any>) => T
-export type PluginContentOn = Array<PluginCreated>
+export interface PluginContentOn extends Array<PluginCreated> {
+  0: PluginCreated
+}
