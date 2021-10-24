@@ -142,8 +142,7 @@
   import { useFactory } from '@/use/factory'
   import { useToast } from 'vue-toastification'
   import { useI18n } from 'vue-i18n'
-  import { Entity } from '@/types/context'
-  import { EntityShowEditOptions } from '@/types/entity'
+  import { Entity, EntityShowEditOptions } from '@/types/context'
   import { VueEmitterEntityOpen, VueEmitterEntityClose } from '@/types/emitter'
   import { useScroll } from '@/use/scroll'
   import { useContextStore } from '@/store/context'
@@ -361,6 +360,10 @@
 
     emitter.on('project-save', () => {
       emitter.emit('entity-close', { all: true })
+    })
+
+    emitter.on('entity-force-close', () => {
+      onUpdateContent()
     })
   })
 

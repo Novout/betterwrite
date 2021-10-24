@@ -49,6 +49,12 @@ export type ContextState = {
   entities: Array<Entity>
 }
 
+export interface EntityShowEditOptions {
+  keyboard?: boolean
+  switch?: boolean
+  selectionInitial?: boolean
+}
+
 export interface EntityExternal {
   image?: EntityExternalImage
 }
