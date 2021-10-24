@@ -149,6 +149,7 @@
   import { useProjectStore } from '@/store/project'
   import { useEditorStore } from '@/store/editor'
   import { useAbsoluteStore } from '@/store/absolute'
+  import usePlugin from '@/use/plugin/core'
 
   const props = defineProps({
     entity: {
@@ -170,6 +171,7 @@
   const scroll = useScroll()
   const { t } = useI18n()
   const raw = useRaw()
+  const plugin = usePlugin()
 
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)
@@ -215,6 +217,11 @@
     }
 
     data.value = data.value.replace(/\n/g, '')
+
+    plugin.emit('plugin-input-watch-initial', {
+      data: _data.replace(props.entity.raw, ''),
+      index: _index.value,
+    })
 
     if (data.value.startsWith('/') && data.value.length <= 2) {
       scroll.to(`#entity-${_index.value}`, 'center')

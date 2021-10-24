@@ -99,7 +99,10 @@ import usePlugin from '@/use/plugin/core'
   })
 
   watch(cmp, (_cmp: string) => {
-    plugin.emit('plugin-input-watch-initial', _cmp)
+    plugin.emit('plugin-input-watch-initial', {
+      data: _cmp,
+      index: CONTEXT.entities.length
+    }) 
 
     if (paste.value) {
       cmp.value = ''

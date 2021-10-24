@@ -1,7 +1,7 @@
 export default {
   on: {
     entity: {
-      inputFirst: '{arguments} inserted into the editor',
+      inputFirst: '{arguments} inserted into the editor in item {index}',
     },
   },
 }

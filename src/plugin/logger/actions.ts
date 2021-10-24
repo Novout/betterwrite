@@ -3,6 +3,7 @@ import { PluginEntityInputInitial } from '../core/on'
 import { LoggerContent } from '@/types/logger'
 import { useFormat } from '@/use/format'
 import { useI18n } from 'vue-i18n'
+import { PluginContentOnEntityInputLastOptions } from '@/types/plugin/on'
 
 export const PluginLoggerActions = (
   emitter: PluginEmitter,
@@ -12,12 +13,13 @@ export const PluginLoggerActions = (
   const { t } = useI18n()
 
   PluginEntityInputInitial(emitter, [
-    (input: string) => {
+    (item: PluginContentOnEntityInputLastOptions) => {
       stores.LOGGER.add({
         type: 'actions',
         method: 'log',
         arguments: t('plugin.logger.on.entity.inputFirst', {
-          arguments: input,
+          arguments: item.data,
+          index: item.index,
         }),
         createdAt: format.actually(),
       } as LoggerContent)
