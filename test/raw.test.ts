@@ -290,19 +290,6 @@ describe('Editor Converter', () => {
 
     expect('').toEqual(raw);
   })
-
-  it('should correct image insert', () => {
-    const entity = {
-      type: 'image',
-      raw: 'data:image/base64...',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    }as Entity;
-
-    const raw = useRaw().convert(entity);
-
-    expect('<img src=\"data:image/base64...\" width=\"50%\">').toEqual(raw);
-  })
 })
 
 describe('PDF Converter', () => {
