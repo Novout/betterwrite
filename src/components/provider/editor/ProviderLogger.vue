@@ -1,6 +1,5 @@
 <template>
   <div
-    id="logger-absolute"
     class="
       absolute
       top-1/4
@@ -15,13 +14,17 @@
       z-max
       h-80
       overflow-auto
+      shadow-lg
     "
   >
-    <LoggerItem
-      v-for="(log, index) in LOGGER.content"
-      :key="index"
-      :log="log"
-    />
+    <LoggerHeader />
+    <div id="logger-absolute" class="flex flex-col overflow-y-auto">
+      <LoggerItem
+        v-for="(log, index) in LOGGER.content"
+        :key="index"
+        :log="log"
+      />
+    </div>
   </div>
 </template>
 
