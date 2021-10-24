@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/Novout/better-write/compare/v0.4.0...v0.4.1) (2021-10-24)
+
+
+### Features
+
+* **editor:** image set ([71b71a6](https://github.com/Novout/better-write/commits/71b71a6eead94052433e2a28b1a0ebd9ad07d770))
+* **editor:** image settings ([d62569b](https://github.com/Novout/better-write/commits/d62569b5eb8ea0eb8fc20a25b9670ce67b7851ed))
+* **editor:** to entity with ctrl arrow ([0965c94](https://github.com/Novout/better-write/commits/0965c94c3202510b9d7133bfe4542bdda7eaca82))
+* **landing:** links set ([b2d9fdb](https://github.com/Novout/better-write/commits/b2d9fdb28ae31efcf3392a8ebd469ea4d8f38911))
+
+
+### Bug Fixes
+
+* **editor:** fixed itens open in external click ([eb69ef8](https://github.com/Novout/better-write/commits/eb69ef816e9c3d4a9fbde93fcc25edefc316c697))
+* **editor:** font size in heading's ([f77931a](https://github.com/Novout/better-write/commits/f77931aa99a6e28e62fb01910b44986980641f81))
+* **editor:** header bar appear ([0c3f3fc](https://github.com/Novout/better-write/commits/0c3f3fcc6b3882e4e7e778226a792fd2c612b27d))
+* **editor:** reset hovers in fixed items ([959de37](https://github.com/Novout/better-write/commits/959de37269e62822e1308d163ae254830d7570a0))
+* **pdf:** configurations in blank project ([0f66e18](https://github.com/Novout/better-write/commits/0f66e18fb6748ed998db087afae3caeb0b933f75))
+* **pdf:** illegal import in dev mode ([b37d449](https://github.com/Novout/better-write/commits/b37d449be117e240508df3ef9387f9dd86ffec51))
+
+
+### CI
+
+* release electron only in the main ([f09df6c](https://github.com/Novout/better-write/commits/f09df6c205d2bede8db55215822671dec9946532))
+
+
+### Style
+
+* **aside:** image name ([8ddb635](https://github.com/Novout/better-write/commits/8ddb635dcad8d664b7fdcaf18c211ebe8a54938f))
+* **editor:** image popover alignment properties ([1a8df6b](https://github.com/Novout/better-write/commits/1a8df6baa9538c247b409b250b93d50f6fa83791))
+* **landing:** windows icon color ([842fa4d](https://github.com/Novout/better-write/commits/842fa4d1de9c54b7a84000e86e0e3f2280b9ecf9))
+
+
+### Structure
+
+* **editor:** alt to shift key in swapper ([f3a5313](https://github.com/Novout/better-write/commits/f3a5313d879e3cbb803b9a3e4ec920cda673e970))
+* **editor:** entity popover in horizontal ([48324ab](https://github.com/Novout/better-write/commits/48324abf128cf4798a36607fca89b267b193f192))
+* **editor:** swap ctrl to alt ([e4c9cba](https://github.com/Novout/better-write/commits/e4c9cbae5379e839e5397c934b1f9b709967562e))
+* **project:** bw base data access ([c8572ee](https://github.com/Novout/better-write/commits/c8572ee1d97e16e8106068e31609deb231afd32f))
+* **tailwind:** just-in-time mode ([92d4c51](https://github.com/Novout/better-write/commits/92d4c51ac479a17d0c18847ccba41d1783dde3ce))
+* type typos ([65a823a](https://github.com/Novout/better-write/commits/65a823aafd67570072302c27785cc1f3ae54e062))
+
 ## [0.4.0](https://github.com/Novout/better-write/compare/v0.3.15...v0.4.0) (2021-10-22)
 
 
