@@ -50,6 +50,7 @@
   import { useFactory } from '@/use/factory'
   import { useEditorStore } from '@/store/editor'
   import { useContextStore } from '@/store/context'
+import usePlugin from '@/use/plugin/core'
 
   const toast = useToast()
   const { t } = useI18n()
@@ -58,6 +59,7 @@
   const format = useFormat()
   const env = useEnv()
   const factory = useFactory()
+  const plugin = usePlugin()
 
   const EDITOR = useEditorStore()
   const CONTEXT = useContextStore()
@@ -97,6 +99,8 @@
   })
 
   watch(cmp, (_cmp: string) => {
+    plugin.emit('plugin-input-watch-initial', _cmp)
+
     if (paste.value) {
       cmp.value = ''
 
@@ -180,6 +184,8 @@
         toast.error(t('toast.generics.error'))
       })
     }
+
+    plugin.emit('plugin-input-watch-last', _cmp)
   })
 
   const enterHandler = () => {

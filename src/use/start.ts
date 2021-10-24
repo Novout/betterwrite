@@ -9,7 +9,10 @@ import i18n from '@/lang'
 import isElectron from 'is-electron'
 import { useLoggerStore } from '@/store/logger'
 import { useAuthStore } from '@/store/auth'
-import { useEditorStore } from '../store/editor'
+import { useEditorStore } from '@/store/editor'
+import { PluginRegister } from '@/plugin/core'
+import { LoggerPlugin } from '@/plugin/logger'
+import { Plugins } from '@/types/plugin/core'
 
 export const useStart: Callback<void> = () => {
   const LOGGER = useLoggerStore()
@@ -22,6 +25,7 @@ export const useStart: Callback<void> = () => {
   const pdf = usePDF()
   const env = useEnv()
   const format = useFormat()
+  const plugin = PluginRegister()
   const { t } = i18n.global
 
   const global = () => {
@@ -146,12 +150,13 @@ export const useStart: Callback<void> = () => {
     }
   }
 
-  const init = () => {
+  const init = (plugins?: Plugins) => {
     dark()
     lang()
     auth()
-    pdf.init()
     initial()
+    pdf.init()
+    plugin.start(plugins)
 
     if (isElectron()) return
     global()

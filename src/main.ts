@@ -1,11 +1,13 @@
 import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'
 import { createPinia } from 'pinia'
+import { PluginEmitter } from './types/plugin/core'
+import { VueEmitter } from './types/emitter'
+import { plugin as PluginBase } from './types/plugin/emitter'
 import { MotionPlugin as motion } from '@vueuse/motion'
 import vfmPlugin from 'vue-final-modal'
 import Toast, { POSITION } from 'vue-toastification'
 import mitt from 'mitt'
-import { VueEmitter } from './types/emitter'
 
 import router from './router'
 import i18n from './lang'
@@ -21,7 +23,10 @@ const head = createHead()
 const store = createPinia()
 
 const emitter = mitt()
+const plugin = PluginBase()
+
 app.config.globalProperties.emitter = emitter as VueEmitter
+app.config.globalProperties.plugin = plugin as PluginEmitter
 
 app.use(router)
 app.use(store)
