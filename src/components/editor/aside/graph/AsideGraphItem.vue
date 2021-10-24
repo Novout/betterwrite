@@ -1,10 +1,10 @@
 <template>
   <div
     v-if="
-      props.type !== 'paragraph' &&
-      props.type !== 'page-break' &&
-      props.type !== 'line-break' &&
-      props.raw !== env.emptyLine()
+      props.entity.type !== 'paragraph' &&
+      props.entity.type !== 'page-break' &&
+      props.entity.type !== 'line-break' &&
+      props.entity.raw !== env.emptyLine()
     "
     class="
       dark:hover:bg-gray-800
@@ -15,38 +15,39 @@
       transition
     "
     :class="[
-      props.type === 'heading-one'
+      props.entity.type === 'heading-one'
         ? 'border-l border-black dark:border-gray-500 ml-1'
         : '',
-      props.type === 'heading-two' || props.type === 'heading-three'
+      props.entity.type === 'heading-two' ||
+      props.entity.type === 'heading-three'
         ? 'flex items-end border-l border-black dark:border-gray-500 ml-1'
         : '',
-      props.type === 'image'
+      props.entity.type === 'image'
         ? 'flex items-end border-l border-black dark:border-gray-500 ml-1'
         : '',
     ]"
   >
     <div
       v-if="
-        props.type === 'heading-two' ||
-        props.type === 'heading-three' ||
-        props.type === 'image'
+        props.entity.type === 'heading-two' ||
+        props.entity.type === 'heading-three' ||
+        props.entity.type === 'image'
       "
-      :class="[props.type === 'heading-two' ? 'w-6' : 'w-12']"
+      :class="[props.entity.type === 'heading-two' ? 'w-6' : 'w-12']"
       class="border-b mb-2 h-1 border-black dark:border-gray-500"
     ></div>
     <p
-      v-if="props.type !== 'image'"
+      v-if="props.entity.type !== 'image'"
       class="ml-2 truncate"
       :class="[
-        props.type === 'heading-one' ? 'text-tiny py-2 font-bold' : '',
-        props.type === 'heading-two' ? 'text-sm' : '',
-        props.type === 'heading-three' ? 'text-xs' : '',
+        props.entity.type === 'heading-one' ? 'text-tiny py-2 font-bold' : '',
+        props.entity.type === 'heading-two' ? 'text-sm' : '',
+        props.entity.type === 'heading-three' ? 'text-xs' : '',
       ]"
     >
-      {{ props.raw }}
+      {{ props.entity.raw }}
     </p>
-    <HeroIcon v-else class="ml-2 wb-text">
+    <HeroIcon v-else class="ml-2 wb-text flex justify-start items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-7 w-7"
@@ -59,21 +60,21 @@
           clip-rule="evenodd"
         />
       </svg>
+      <p class="ml-1 text-left truncate w-32">
+        {{ props.entity.external?.image?.name }}
+      </p>
     </HeroIcon>
   </div>
 </template>
 
 <script setup lang="ts">
   import { useEnv } from '@/use/env'
+  import { Entity } from '@/types/context'
 
   const props = defineProps({
-    raw: {
+    entity: {
       required: true,
-      type: String,
-    },
-    type: {
-      required: true,
-      type: String,
+      type: Object as () => Entity,
     },
   })
 

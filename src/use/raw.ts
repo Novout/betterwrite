@@ -92,7 +92,7 @@ export const useRaw = () => {
       return ''
 
     if (entity.type === 'image') {
-      return `<div class="flex wb-text text-xl items-center w-full justify-center py-5">
+      return `<div class="flex wb-text text-xl items-end w-full justify-center py-5">
           <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-7 w-7"

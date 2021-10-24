@@ -11,7 +11,7 @@
           :key="`graph-${page.id}-${String(ind)}`"
           @click="graph.load(`#entity-${String(ind)}`, page)"
         >
-          <AsideGraphItem :raw="entity.raw" :type="entity.type" />
+          <AsideGraphItem :entity="entity" />
         </div>
       </div>
     </transition-group>
