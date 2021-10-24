@@ -19,6 +19,7 @@
   >
     <LoggerItem
       v-for="(log, index) in LOGGER.content"
+      v-once
       :key="index"
       :log="log"
     />

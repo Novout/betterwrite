@@ -38,7 +38,7 @@ export interface PluginStores {
   AUTH: PluginStore<'auth', AuthState>
   CONTEXT: PluginStore<'context', ContextState>
   EDITOR: PluginStore<'editor', EditorState>
-  LOGGER: PluginStore<'logger', LoggerState>
+  LOGGER: PluginStore<'logger', LoggerState, any, {}>
   PDF: PluginStore<'pdf', PDFState>
   PROJECT: PluginStore<'project', ProjectState>
   SHORTCUTS: PluginStore<'shortcuts', ShortcutsState>

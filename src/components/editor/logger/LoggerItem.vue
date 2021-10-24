@@ -16,11 +16,12 @@ import { computed } from 'vue';
 <script setup lang="ts">
   import { computed, watchEffect } from 'vue'
   import { useScroll } from '@/use/scroll'
+  import { LoggerContent } from '@/types/logger'
 
   const props = defineProps({
     log: {
       required: true,
-      type: Object,
+      type: Object as () => LoggerContent,
     },
   })
 
@@ -28,10 +29,20 @@ import { computed } from 'vue';
     useScroll().force('#logger-absolute')
   })
 
-  const render = computed(() =>
-    '[ ' + props.log.method.toUpperCase() + ' ]: ' + props.log.arguments !==
-    typeof String
-      ? props.log.arguments[0]
-      : props.log.arguments + ' | ' + props.log.createdAt
+  const type = (): string => {
+    if (typeof props.log.arguments === 'string') {
+      return props.log.arguments + ' | ' + props.log.createdAt
+    }
+
+    return props.log.arguments[0] + ' | ' + props.log.createdAt
+  }
+
+  const render = computed(
+    () =>
+      '[ ' +
+      props.log.method.toUpperCase() +
+      ' | ' +
+      props.log.type.toUpperCase() +
+      ` ]: ${type()}`
   )
 </script>
