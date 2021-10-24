@@ -2,17 +2,14 @@
   <div
     class="
       absolute
-      top-1/4
-      right-1/4
-      transform
-      duration-700
-      w-96
+      top-0
+      left-0
+      w-full
       bg-white
       dark:bg-gray-800
-      transition
       flex flex-col
       z-max
-      h-80
+      h-screen
       overflow-auto
       shadow-lg
     "

@@ -1,7 +1,8 @@
 export default {
   on: {
     entity: {
-      inputFirst: '{arguments} inserido no editor na {index} posição',
+      inputFirst: '<{arguments}> INSERIDO NO EDITOR NA {index} POSIÇÃO',
+      edit: 'POSIÇÃO {index} ATUALIZADO PARA <{arguments}>',
     },
   },
 }
