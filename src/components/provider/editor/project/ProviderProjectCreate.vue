@@ -25,7 +25,7 @@
     <div
       class="
         w-1/2
-        bg-gray-400
+        bg-gray-200
         dark:bg-gray-800
         h-screen
         md:h-3/4
@@ -157,7 +157,7 @@
       </div>
       <button
         v-motion
-        class="px-5 py-2 bg-gray-200 dark:bg-gray-700 mt-5"
+        class="px-5 py-2 bg-gray-300 dark:bg-gray-700 mt-5"
         :initial="{
           opacity: 0,
         }"
