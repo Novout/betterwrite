@@ -385,8 +385,10 @@
       props.entity.type === 'page-break' ||
       props.entity.type === 'line-break' ||
       props.entity.type === 'image'
-    )
+    ) {
+      emitter.emit('entity-close', { all: true })
       return
+    }
 
     if (options?.keyboard) {
       keyboard.value = true
