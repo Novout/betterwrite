@@ -15,6 +15,7 @@ export interface ProjectState {
   summary: Record<any, any>
   pages: Array<ContextState>
   pageLoaded: number
+  bw: ProjectStateBetterWrite
 }
 
 export interface ProjectObject {
@@ -22,4 +23,9 @@ export interface ProjectObject {
   editor: EditorState
   logger: LoggerState
   pdf: PDFState
+}
+
+export interface ProjectStateBetterWrite {
+  platform: 'web' | 'desktop' | 'app'
+  version: string
 }

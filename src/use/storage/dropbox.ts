@@ -10,6 +10,7 @@ import { useContextStore } from '@/store/context'
 import i18n from '@/lang'
 import { useAuthStore } from '@/store/auth'
 import useEmitter from '@/use/emitter'
+import isElectron from 'is-electron'
 
 export const useDropbox = () => {
   const CONTEXT = useContextStore()
@@ -21,6 +22,7 @@ export const useDropbox = () => {
 
   const toast = useToast()
   const emitter = useEmitter()
+  const env = useEnv()
   const { t } = i18n.global
 
   const loadContext = async (context: any) => {
@@ -126,10 +128,17 @@ export const useDropbox = () => {
               })
             }
 
+            // <= 0.4.0
+            if (!context.project.bw) {
+              context.project.bw = {
+                platform: isElectron() ? 'desktop' : 'web',
+                version: env.packageVersion(),
+              }
+            }
+
             loadContext(context)
           })
           .catch((err: DropboxResponseError<any>) => {
-            console.log(err)
             toast.error(t('toast.project.error'))
           })
       },

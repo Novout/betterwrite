@@ -9,6 +9,7 @@ import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
 import { useContextStore } from '@/store/context'
 import useEmitter from '@/use/emitter'
+import isElectron from 'is-electron'
 
 export const useLocalStorage = () => {
   const CONTEXT = useContextStore()
@@ -43,6 +44,14 @@ export const useLocalStorage = () => {
         target['entities'] = target['entity']
         delete target['entity']
       })
+    }
+
+    // <= 0.4.0
+    if (!_.project.bw) {
+      _.project.bw = {
+        platform: isElectron() ? 'desktop' : 'web',
+        version: env.packageVersion(),
+      }
     }
 
     return _

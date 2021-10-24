@@ -4,6 +4,8 @@ import { ProjectState } from '@/types/project'
 import { useFormat } from '@/use/format'
 import { useText } from '../use/text'
 import { Entity } from '../types/context'
+import isElectron from 'is-electron'
+import { useEnv } from '@/use/env'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -19,6 +21,10 @@ export const useProjectStore = defineStore('project', {
       summary: {},
       pages: [] as Array<ContextState>,
       pageLoaded: 0,
+      bw: {
+        version: '0.1.0',
+        platform: 'web',
+      },
     }
   },
   actions: {
@@ -35,6 +41,8 @@ export const useProjectStore = defineStore('project', {
       this.main = payload.main
       this.summary = payload.summary
       this.pages = payload.pages
+      this.bw.platform = payload.bw.platform
+      this.bw.version = payload.bw.version
     },
     create(payload: Record<any, any>) {
       this.$reset()
@@ -49,6 +57,8 @@ export const useProjectStore = defineStore('project', {
       this.main = {}
       this.summary = {}
       this.pages = []
+      this.bw.platform = isElectron() ? 'desktop' : 'web'
+      this.bw.version = useEnv().packageVersion() as string
 
       const init: ContextState = {
         id: this.totalPagesCreated,
@@ -84,6 +94,8 @@ export const useProjectStore = defineStore('project', {
       this.main = {}
       this.summary = {}
       this.pages = []
+      this.bw.platform = isElectron() ? 'desktop' : 'web'
+      this.bw.version = useEnv().packageVersion() as string
 
       const context: ContextState = {
         id: this.totalPagesCreated,
