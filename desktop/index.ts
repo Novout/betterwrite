@@ -32,38 +32,19 @@ function createWindow () {
   })
 
   mainWindow.loadURL(WinURL)
-  mainWindow.on('close', function (event: any) {
-    if (!willQuitApp && !isDev) {
-      event.preventDefault()
-      mainWindow?.hide()
-    }
-  })
-
   mainWindow.on('closed', function () {
     mainWindow = null
   })
+
   mainWindow.once('ready-to-show', () => {
     mainWindow?.show()
+    
     autoUpdater.checkForUpdatesAndNotify()
   })
 
   mainWindow.on('update-downloaded', () => {
     autoUpdater.quitAndInstall()
   })
-  /*
-  mainWindow.webContents.on('will-navigate', function (event: any, newUrl: string) {
-    console.log(newUrl);
-    // More complex code to handle tokens goes here
-  });
-
-  mainWindow.webContents.on('did-get-redirect-request', function(
-    event: any,
-    oldUrl: string,
-    newUrl: string
-  ) {
-    console.log(newUrl);
-  });
-  */
 }
 
 
