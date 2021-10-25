@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/Novout/better-write/compare/v0.4.1...v0.4.2) (2021-10-25)
+
+
+### Features
+
+* **logger:** clear button ([044b975](https://github.com/Novout/better-write/commits/044b97505b461957a2770093a5201b2fdab48b4c))
+* **logger:** contexts ([ad55b85](https://github.com/Novout/better-write/commits/ad55b85038a5fc5095c748ba2ca3672601a5fdde))
+* **logger:** entity basic sets ([4bdbec1](https://github.com/Novout/better-write/commits/4bdbec18aaeb7f74cef2f8716029c2453fa4538c))
+* **plugin:** base structure ([44a381a](https://github.com/Novout/better-write/commits/44a381ae8917b8935c512ebf745935778f3ec259))
+* **plugin:** last input on ([ae9831c](https://github.com/Novout/better-write/commits/ae9831c958498c91bfe24f92e1a3f2740a516d97))
+* **plugin:** logger view ([17ca0cb](https://github.com/Novout/better-write/commits/17ca0cb94dcd656e2e0e943e57b4ee37f1af01d3))
+* **plugin:** workflow ([465bb2d](https://github.com/Novout/better-write/commits/465bb2d36d8f4b4979c75b78c3f785623d014cce))
+
+
+### Test
+
+* remove deprecated test ([0a44d41](https://github.com/Novout/better-write/commits/0a44d4185fadc8260fed241ba2a80971bbf1c5e8))
+
+
+### CI
+
+* desktop releases depend tests ([b931934](https://github.com/Novout/better-write/commits/b9319348a0ccba6a37b6053cbd2a43f63c25d7f7))
+
+
+### Style
+
+* **editor:** create project white colors ([74983f3](https://github.com/Novout/better-write/commits/74983f318f491b42fd09fc75a313f98e8ae35cfb))
+* **editor:** logger header ([11587d0](https://github.com/Novout/better-write/commits/11587d07658b31743334dddf8fd03e1397ccdaf9))
+* **logger:** full size ([64a50ac](https://github.com/Novout/better-write/commits/64a50ac9693f9ada340c018c648a2cc50d03a36a))
+
+
+### Structure
+
+* **logger:** actions to editor type ([1c61694](https://github.com/Novout/better-write/commits/1c61694ba7198506f678d3c7a433b3f2a5aa29e6))
+
 ### [0.4.1](https://github.com/Novout/better-write/compare/v0.4.0...v0.4.1) (2021-10-24)
 
 
