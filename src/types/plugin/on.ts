@@ -3,7 +3,12 @@ export interface PluginContentOn extends Array<PluginCreated> {
   0: PluginCreated
 }
 
-export interface PluginContentOnEntityInputLastOptions {
+export interface PluginLoggerDefault {
   data: string
+  index: number
+}
+
+export interface PluginLoggerEntitySwapper {
+  direction: 'up' | 'down'
   index: number
 }

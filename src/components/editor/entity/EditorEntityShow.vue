@@ -500,50 +500,12 @@
         // to up
         onUpdateContent()
 
-        await nextTick
-
-        emitter.emit('entity-not-mutate', props.entity)
-
-        await nextTick
-
-        CONTEXT.switchInPage({
-          entity: props.entity,
-          direction: 'up',
-        })
-
-        emitter.emit('entity-close', { all: true })
-
-        await nextTick
-
-        emitter.emit('entity-open', {
-          entity: props.entity,
-          up: true,
-          switch: true,
-        })
+        entity.base().onUp(props.entity, _index.value)
       } else if (e.key === 'ArrowDown') {
         // to down
         onUpdateContent()
 
-        await nextTick
-
-        emitter.emit('entity-not-mutate', props.entity)
-
-        await nextTick
-
-        CONTEXT.switchInPage({
-          entity: props.entity,
-          direction: 'down',
-        })
-
-        emitter.emit('entity-close', { all: true })
-
-        await nextTick
-
-        emitter.emit('entity-open', {
-          entity: props.entity,
-          up: false,
-          switch: true,
-        })
+        entity.base().onDown(props.entity, _index.value)
       }
 
       return
@@ -569,38 +531,14 @@
 
       // delete entity
       if (e.key === 'd') {
-        emitter.emit('entity-not-mutate', props.entity)
-
-        await nextTick
-
-        CONTEXT.removeInPage(props.entity)
-
-        await nextTick
-
-        PROJECT.updateContext(CONTEXT.$state)
+        entity.base().onDelete(props.entity, _index.value)
       }
 
       // to entity initial
       if (e.key === 'ArrowUp') {
-        emitter.emit('entity-close', { all: true })
-
-        await nextTick
-
-        emitter.emit('entity-open', {
-          entity: props.entity,
-          up: true,
-          selectionInitial: true,
-        })
+        entity.base().onUpCursor(props.entity)
       } else if (e.key === 'ArrowDown') {
-        emitter.emit('entity-close', { all: true })
-
-        await nextTick
-
-        emitter.emit('entity-open', {
-          entity: props.entity,
-          up: false,
-          selectionInitial: true,
-        })
+        entity.base().onDownCursor(props.entity)
       }
     } else {
       // delete in empty raw or convert
@@ -611,6 +549,12 @@
         e.preventDefault()
         e.stopPropagation()
 
+        entity.base().onDeleteRaw({
+          index: _index.value,
+          data: data.value,
+          entity: props.entity,
+        })
+
         if (_index.value <= 1) return
 
         if (entity.utils().isFixed(_index.value - 1)) return
@@ -619,15 +563,7 @@
           CONTEXT.insertRawInExistentEntity(props.entity)
         }
 
-        emitter.emit('entity-not-mutate', props.entity)
-
-        await nextTick
-
-        CONTEXT.removeInPage(props.entity)
-
-        await nextTick
-
-        PROJECT.updateContext(CONTEXT.$state)
+        entity.base().onDelete(props.entity, _index.value)
 
         await nextTick
 

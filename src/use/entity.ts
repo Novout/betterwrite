@@ -6,6 +6,8 @@ import { useEnv } from './env'
 import { useProjectStore } from '@/store/project'
 import { useEditorStore } from '@/store/editor'
 import { useContextStore } from '@/store/context'
+import useEmitter from './emitter'
+import usePlugin from './plugin/core'
 
 export const useEntity = () => {
   const PROJECT = useProjectStore()
@@ -13,6 +15,8 @@ export const useEntity = () => {
   const CONTEXT = useContextStore()
 
   const env = useEnv()
+  const emitter = useEmitter()
+  const plugin = usePlugin()
   const pages = computed(() => PROJECT.pages)
 
   const selection = computed(() => EDITOR.actives.text.selection.content)
@@ -170,5 +174,112 @@ export const useEntity = () => {
     return { onFinder, onSearchGo, onGo, onUp, onDown }
   }
 
-  return { utils, swapper, finder, fstate, sstate, sentry }
+  const base = () => {
+    const onUp = async (entity: Entity, index: number) => {
+      await nextTick
+
+      emitter.emit('entity-not-mutate', entity)
+
+      await nextTick
+
+      CONTEXT.switchInPage({
+        entity,
+        direction: 'up',
+      })
+
+      if (index === 0) return
+
+      plugin.emit('plugin-entity-swap', {
+        direction: 'up',
+        index,
+      })
+    }
+
+    const onDown = async (entity: Entity, index: number) => {
+      await nextTick
+
+      emitter.emit('entity-not-mutate', entity)
+
+      await nextTick
+
+      CONTEXT.switchInPage({
+        entity,
+        direction: 'down',
+      })
+
+      emitter.emit('entity-close', { all: true })
+
+      await nextTick
+
+      emitter.emit('entity-open', {
+        entity,
+        up: false,
+        switch: true,
+      })
+
+      if (index === CONTEXT.entities.length - 1) return
+
+      plugin.emit('plugin-entity-swap', {
+        direction: 'down',
+        index,
+      })
+    }
+
+    const onUpCursor = async (entity: Entity) => {
+      emitter.emit('entity-close', { all: true })
+
+      await nextTick
+
+      emitter.emit('entity-open', {
+        entity: entity,
+        up: true,
+        selectionInitial: true,
+      })
+    }
+
+    const onDownCursor = async (entity: Entity) => {
+      emitter.emit('entity-close', { all: true })
+
+      await nextTick
+
+      emitter.emit('entity-open', {
+        entity,
+        up: false,
+        selectionInitial: true,
+      })
+    }
+
+    const onDelete = async (entity: Entity, index: number) => {
+      emitter.emit('entity-not-mutate', entity)
+
+      await nextTick
+
+      CONTEXT.removeInPage(entity)
+
+      await nextTick
+
+      PROJECT.updateContext(CONTEXT.$state)
+
+      plugin.emit('plugin-entity-delete', index)
+    }
+
+    const onDeleteRaw = async (payload: any) => {
+      if (payload.index <= 1) return
+
+      if (utils().isFixed(payload.index - 1)) return
+
+      if (payload.data !== '') {
+        CONTEXT.insertRawInExistentEntity(payload.entity)
+      }
+
+      onDelete(payload.entity, payload.index)
+
+      await nextTick
+
+      emitter.emit('entity-open', { entity: payload.entity, up: true })
+    }
+
+    return { onUp, onDown, onUpCursor, onDownCursor, onDelete, onDeleteRaw }
+  }
+  return { base, utils, swapper, finder, fstate, sstate, sentry }
 }

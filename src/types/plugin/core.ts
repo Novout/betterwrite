@@ -11,6 +11,8 @@ import { ShortcutsState } from '../shortcuts'
 export type PluginEmitterName =
   | 'plugin-input-watch-initial'
   | 'plugin-input-watch-last'
+  | 'plugin-entity-delete'
+  | 'plugin-entity-swap'
 export interface PluginEmitter {
   on: (name: PluginEmitterName, callback: (...c: any) => any) => void
   emit: (name: PluginEmitterName, ...c: any) => void
