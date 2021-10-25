@@ -56,3 +56,42 @@ export const PluginEntitySwapper = (
     created && created(index)
   })
 }
+
+export const PluginProjectPageNew = (
+  emitter: PluginEmitter,
+  content: PluginContentOn
+) => {
+  emitter.on('plugin-project-page-new', (index: number) => {
+    if (!index) return
+
+    const created = content[0]
+
+    created && created(index)
+  })
+}
+
+export const PluginProjectPageDelete = (
+  emitter: PluginEmitter,
+  content: PluginContentOn
+) => {
+  emitter.on('plugin-project-page-delete', (index: number) => {
+    if (!index) return
+
+    const created = content[0]
+
+    created && created(index)
+  })
+}
+
+export const PluginProjectPageSwap = (
+  emitter: PluginEmitter,
+  content: PluginContentOn
+) => {
+  emitter.on('plugin-project-page-swap', (item: PluginLoggerEntitySwapper) => {
+    if (item.index === -1) return
+
+    const created = content[0]
+
+    created && created(item)
+  })
+}

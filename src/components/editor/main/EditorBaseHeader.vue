@@ -85,7 +85,7 @@
           project.isCreativeProject() && PROJECT.name !== env.projectEmpty()
         "
         class="wb-icon no-drag"
-        @click.prevent.stop="onUpPage"
+        @click.prevent.stop="page.onUpPage"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@
           project.isCreativeProject() && PROJECT.name !== env.projectEmpty()
         "
         class="wb-icon no-drag"
-        @click.prevent.stop="onDownPage"
+        @click.prevent.stop="page.onDownPage"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -222,19 +222,5 @@
 
   const onSwitcher = (e: MouseEvent) => {
     ABSOLUTE.shortcuts.switcher = !ABSOLUTE.shortcuts.switcher
-  }
-
-  const onUpPage = (e: MouseEvent) => {
-    PROJECT.switchPage({
-      page: CONTEXT.$state,
-      direction: 'up',
-    })
-  }
-
-  const onDownPage = (e: MouseEvent) => {
-    PROJECT.switchPage({
-      page: CONTEXT.$state,
-      direction: 'down',
-    })
   }
 </script>

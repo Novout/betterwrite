@@ -13,6 +13,9 @@ export type PluginEmitterName =
   | 'plugin-input-watch-last'
   | 'plugin-entity-delete'
   | 'plugin-entity-swap'
+  | 'plugin-project-page-new'
+  | 'plugin-project-page-delete'
+  | 'plugin-project-page-swap'
 export interface PluginEmitter {
   on: (name: PluginEmitterName, callback: (...c: any) => any) => void
   emit: (name: PluginEmitterName, ...c: any) => void
