@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/Novout/better-write/compare/v0.4.4...v0.4.5) (2021-10-25)
+
+
+### Bug Fixes
+
+* **editor:** not mutate entities in swap ([708f920](https://github.com/Novout/better-write/commits/708f92090d03f523c8616361d61e276e59417cce))
+
+
+### Structure
+
+* **desktop:** hide mainframe ([86a6293](https://github.com/Novout/better-write/commits/86a62930ed89bbc1031c3deffa032181ac9ec7f9))
+
 ### [0.4.4](https://github.com/Novout/better-write/compare/v0.4.3...v0.4.4) (2021-10-25)
 
 
