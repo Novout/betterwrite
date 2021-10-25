@@ -648,6 +648,10 @@
     focus.value = true
     keyboard.value = false
 
+    emitter.emit('entity-force-close')
+
+    await nextTick
+
     emitter.emit('entity-focus')
   }
 </script>
