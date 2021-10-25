@@ -530,7 +530,7 @@
       }
 
       // delete entity
-      if (e.key === 'd') {
+      if (e.key === 'm') {
         entity.base().onDelete(props.entity, _index.value)
       }
 
@@ -648,7 +648,9 @@
     focus.value = true
     keyboard.value = false
 
-    emitter.emit('entity-force-close')
+    await nextTick
+
+    emitter.emit('entity-close', { all: true })
 
     await nextTick
 
