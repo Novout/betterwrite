@@ -2,6 +2,7 @@
   <transition @leave="(el, done) => motions.aside.leave(done)">
     <aside
       v-if="ABSOLUTE.aside"
+      id="editor-aside"
       v-motion="'aside'"
       class="
         fixed
