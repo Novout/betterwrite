@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.3](https://github.com/Novout/better-write/compare/v0.4.2...v0.4.3) (2021-10-25)
+
+
+### CI
+
+* remove depend ([18b1575](https://github.com/Novout/better-write/commits/18b15753b313abe3c13c64c1dafaaeb13bc389f9))
+
 ### [0.4.2](https://github.com/Novout/better-write/compare/v0.4.1...v0.4.2) (2021-10-25)
 
 
