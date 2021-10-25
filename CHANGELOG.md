@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/Novout/better-write/compare/v0.4.3...v0.4.4) (2021-10-25)
+
+
+### Features
+
+* **editor:** aside force scroll in a new or delete page ([013774b](https://github.com/Novout/better-write/commits/013774b5bfbdc36574973792080626edeec66a7d))
+* **logger:** page set ([e244e8b](https://github.com/Novout/better-write/commits/e244e8b92b5d6ea65bf82c3b6d6b05f0bf1a7f78))
+
+
+### Bug Fixes
+
+* **editor:** delete keyboard ([4433101](https://github.com/Novout/better-write/commits/4433101173c01841a5bb2a2bdd0c583507c38985))
+* **editor:** save entity in a new page ([91ff837](https://github.com/Novout/better-write/commits/91ff837027d19c6698df0cf3bcc25616d85f98b6))
+* **editor:** save open entity in a other context click ([bdd2191](https://github.com/Novout/better-write/commits/bdd2191f4662052477d3534a3fe497b1f072ca38))
+
 ### [0.4.3](https://github.com/Novout/better-write/compare/v0.4.2...v0.4.3) (2021-10-25)
 
 
