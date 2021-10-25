@@ -513,16 +513,19 @@
     const _input = input.value as HTMLTextAreaElement
 
     if (e.shiftKey) {
-      e.preventDefault()
-      e.stopPropagation()
-
       if (e.key === 'ArrowUp') {
         // to up
+        e.preventDefault()
+        e.stopPropagation()
+
         onUpdateContent()
 
         entity.base().onUp(props.entity, _index.value)
       } else if (e.key === 'ArrowDown') {
         // to down
+        e.preventDefault()
+        e.stopPropagation()
+        
         onUpdateContent()
 
         entity.base().onDown(props.entity, _index.value)
