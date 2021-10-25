@@ -22,7 +22,7 @@ export const PluginLoggerActions = (
   PluginEntityInputInitial(emitter, [
     (item: PluginLoggerDefault) => {
       stores.LOGGER.add({
-        type: 'actions',
+        type: 'editor',
         method: 'info',
         arguments: t('plugin.logger.on.entity.inputFirst', {
           arguments: item.data,
@@ -36,7 +36,7 @@ export const PluginLoggerActions = (
   PluginEntityDelete(emitter, [
     (index: number) => {
       stores.LOGGER.add({
-        type: 'actions',
+        type: 'editor',
         method: 'info',
         arguments: t('plugin.logger.on.entity.delete', {
           index,
@@ -49,7 +49,7 @@ export const PluginLoggerActions = (
   PluginEntitySwapper(emitter, [
     (item: PluginLoggerEntitySwapper) => {
       stores.LOGGER.add({
-        type: 'actions',
+        type: 'editor',
         method: 'info',
         arguments: t('plugin.logger.on.entity.swap', {
           index: item.index,

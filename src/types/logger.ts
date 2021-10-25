@@ -3,7 +3,7 @@ export interface LoggerState {
 }
 
 export interface LoggerContent {
-  type: 'system' | 'internal' | 'actions'
+  type: 'system' | 'internal' | 'editor'
   method: 'log' | 'warn' | 'error' | 'info'
   arguments: IArguments | string
   createdAt: string
