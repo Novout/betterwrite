@@ -365,12 +365,32 @@
       }
     })
 
+    emitter.on('entity-not-mutate-down', async (entity: Entity) => {
+      const _id = CONTEXT.entities.indexOf(entity)
+
+      focus.value = false
+      edit.value = false
+
+      await nextTick
+
+      if (CONTEXT.entities[_id + 1] === props.entity) {
+        onEdit()
+      }
+    })
+
     emitter.on('project-save', () => {
       emitter.emit('entity-close', { all: true })
     })
 
     emitter.on('entity-force-close', () => {
       onUpdateContent()
+    })
+
+    emitter.on('entity-update-area', () => {
+      if (document.activeElement === input.value) {
+        console.log('kekwww')
+        onChangeArea()
+      }
     })
   })
 
@@ -530,7 +550,7 @@
       }
 
       // delete entity
-      if (e.key === 'm') {
+      if (e.key === 'd') {
         entity.base().onDelete(props.entity, _index.value)
       }
 

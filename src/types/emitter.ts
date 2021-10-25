@@ -19,6 +19,8 @@ export type VueEmitterName =
   | 'entity-open-last'
   | 'entity-not-mutate'
   | 'entity-force-close'
+  | 'entity-update-area'
+  | 'entity-not-mutate-down'
   | 'project-save'
   | 'pdf-preview-exists'
 

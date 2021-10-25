@@ -198,23 +198,13 @@ export const useEntity = () => {
     const onDown = async (entity: Entity, index: number) => {
       await nextTick
 
-      emitter.emit('entity-not-mutate', entity)
+      emitter.emit('entity-not-mutate-down', entity)
 
       await nextTick
 
       CONTEXT.switchInPage({
         entity,
         direction: 'down',
-      })
-
-      emitter.emit('entity-close', { all: true })
-
-      await nextTick
-
-      emitter.emit('entity-open', {
-        entity,
-        up: false,
-        switch: true,
       })
 
       if (index === CONTEXT.entities.length - 1) return
