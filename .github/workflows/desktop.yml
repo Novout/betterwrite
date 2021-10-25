@@ -2,10 +2,7 @@ name: Desktop
 
 on:
   push:
-    workflows: ["Tests"]
     branches: [ main ]
-    types:
-      - completed
 
 jobs:
   release:
