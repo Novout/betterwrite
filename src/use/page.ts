@@ -4,6 +4,7 @@ import { useProjectStore } from '@/store/project'
 import { useContextStore } from '@/store/context'
 import usePlugin from './plugin/core'
 import { ContextState } from '@/types/context'
+import useEmitter from './emitter'
 
 export const usePage = () => {
   const PROJECT = useProjectStore()
@@ -11,6 +12,7 @@ export const usePage = () => {
 
   const env = useEnv()
   const plugin = usePlugin()
+  const emitter = useEmitter()
 
   const onCreatePage = async () => {
     if (PROJECT.name === env.projectEmpty()) return
@@ -21,6 +23,10 @@ export const usePage = () => {
 
     const arr = PROJECT.pages
     const obj = arr[arr.length - 1]
+
+    emitter.emit('entity-not-mutate')
+
+    await nextTick
 
     CONTEXT.load(obj)
 
@@ -38,6 +44,10 @@ export const usePage = () => {
     )
 
     PROJECT.deletePage(CONTEXT.$state)
+
+    await nextTick
+
+    emitter.emit('entity-not-mutate')
 
     await nextTick
 

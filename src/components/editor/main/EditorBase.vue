@@ -27,7 +27,7 @@
       "
     >
       <EditorEntityShow
-        v-for="(entity, index) in CONTEXT.entities"
+        v-for="(entity, index) in entities"
         :id="`entity-${String(index)}`"
         :key="index"
         :entity="entity"
@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, nextTick } from 'vue'
+  import { ref, nextTick, computed } from 'vue'
   import { Entity } from '@/types/context'
   import { useScroll } from '@/use/scroll'
   import { useEnv } from '@/use/env'
@@ -63,6 +63,8 @@
 
   const main = ref<HTMLElement | null>(null)
   const entry = ref<string>('')
+
+  const entities = computed(() => CONTEXT.entities)
 
   const enterListener = async (content: Entity) => {
     CONTEXT.addInPage(content)

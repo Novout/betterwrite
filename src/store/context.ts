@@ -24,8 +24,6 @@ export const useContextStore = defineStore('context', {
   },
   actions: {
     load(context: ContextState) {
-      this.$reset()
-
       this.id = context.id
       this.entities = context.entities
     },

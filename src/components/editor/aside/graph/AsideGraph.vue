@@ -3,18 +3,16 @@
     <p v-if="!env.isEmptyProject(PROJECT.name)">
       {{ PROJECT.nameRaw }}
     </p>
-    <transition-group name="list" tag="div">
-      <div v-for="(page, index) in PROJECT.pages" :key="index">
-        <div
-          v-for="(entity, ind) in page.entities"
-          :id="`graph-${page.id}-${String(ind)}`"
-          :key="`graph-${page.id}-${String(ind)}`"
-          @click="graph.load(`#entity-${String(ind)}`, page)"
-        >
-          <AsideGraphItem :entity="entity" />
-        </div>
+    <div v-for="(page, index) in PROJECT.pages" :key="index">
+      <div
+        v-for="(entity, ind) in page.entities"
+        :id="`graph-${page.id}-${String(ind)}`"
+        :key="`graph-${page.id}-${String(ind)}`"
+        @click="graph.load(`#entity-${String(ind)}`, page)"
+      >
+        <AsideGraphItem :entity="entity" />
       </div>
-    </transition-group>
+    </div>
   </div>
 </template>
 
