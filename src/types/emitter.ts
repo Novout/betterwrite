@@ -12,6 +12,7 @@ export interface VueEmitterEntityOpen {
 
 export type VueEmitterName =
   | 'entity-input-focus'
+  | 'entity-input-force-enter'
   | 'entity-open'
   | 'entity-close'
   | 'entity-focus'

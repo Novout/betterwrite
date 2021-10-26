@@ -13,9 +13,11 @@ export const useGraph = () => {
   const load = async (go: string | symbol, page: ContextState) => {
     // close open entities contents
     emitter.emit('entity-edit-save')
+    // force last input in emit content
+    emitter.emit('entity-input-force-enter')
+    await nextTick
     // close all entities for not breaking same index in next page
     emitter.emit('entity-edit-reset')
-    // TODO: Save entity before called context
     await nextTick
     // load page target
     CONTEXT.load(page)

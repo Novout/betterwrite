@@ -87,6 +87,10 @@ import usePlugin from '@/use/plugin/core'
     emitter.on('entity-input-raw', (raw: string) => {
       cmp.value = raw
     })
+
+    emitter.on('entity-input-force-enter', () => {
+      enterHandler()
+    })
   })
 
   const cmp = computed({
