@@ -525,7 +525,7 @@
         // to down
         e.preventDefault()
         e.stopPropagation()
-        
+
         onUpdateContent()
 
         entity.base().onDown(props.entity, _index.value)
@@ -537,7 +537,13 @@
     // in ctrl press
     if (e.ctrlKey) {
       // generics
-      if (e.key !== 'c' && e.key !== 'f' && e.key !== 'a' && e.key !== 'v') {
+      if (
+        e.key !== 'c' &&
+        e.key !== 'f' &&
+        e.key !== 'a' &&
+        e.key !== 'v' &&
+        e.key !== 'm'
+      ) {
         e.preventDefault()
         e.stopPropagation()
       }
@@ -553,7 +559,7 @@
       }
 
       // delete entity
-      if (e.key === 'd') {
+      if (e.key === 'm') {
         entity.base().onDelete(props.entity, _index.value)
       }
 
