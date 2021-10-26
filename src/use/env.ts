@@ -57,6 +57,10 @@ export const useEnv = () => {
     return import.meta.env.PACKAGE_VERSION
   }
 
+  const isDev = () => {
+    return import.meta.env.DEV
+  }
+
   return {
     dropboxKey,
     projectEmpty,
@@ -70,5 +74,6 @@ export const useEnv = () => {
     pageBreak,
     initialLoad,
     packageVersion,
+    isDev,
   }
 }

@@ -6,12 +6,10 @@ import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import { useEnv } from './env'
 import i18n from '@/lang'
-import isElectron from 'is-electron'
 import { useLoggerStore } from '@/store/logger'
 import { useAuthStore } from '@/store/auth'
 import { useEditorStore } from '@/store/editor'
 import { PluginRegister } from '@/plugin/core'
-import { LoggerPlugin } from '@/plugin/logger'
 import { Plugins } from '@/types/plugin/core'
 
 export const useStart: Callback<void> = () => {
@@ -158,8 +156,7 @@ export const useStart: Callback<void> = () => {
     pdf.init()
     plugin.start(plugins)
 
-    if (isElectron()) return
-    global()
+    if (!env.isDev()) global()
   }
 
   return { init }
