@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.6](https://github.com/Novout/better-write/compare/v0.4.5...v0.4.6) (2021-10-26)
+
+
+### Bug Fixes
+
+* **editor:** m key to delete entity ([cb75a78](https://github.com/Novout/better-write/commits/cb75a7855a4477ca6accba1f7d253660f87b209c))
+* **editor:** prevent only in keys ([2cf18cf](https://github.com/Novout/better-write/commits/2cf18cf5a2f40a9b7e5c8d383bc2a0777e7a23e1))
+
 ### [0.4.5](https://github.com/Novout/better-write/compare/v0.4.4...v0.4.5) (2021-10-25)
 
 
