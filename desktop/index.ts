@@ -14,7 +14,7 @@ protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ])
 
-function createWindow () {
+const createWindow = () => {
   mainWindow = new BrowserWindow({
     minWidth: 900,
     minHeight: 700,
@@ -50,12 +50,6 @@ function createWindow () {
 
 app.on('ready', createWindow)
 
-app.on("ready", () => {
-  globalShortcut.register("CmdOrCtrl+D", () => {
-    mainWindow.webContents.openDevTools();
-  });
-});
-
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
     app.quit()
@@ -69,4 +63,5 @@ app.on('activate', () => {
     mainWindow.show()
   }
 })
+
 app.on('before-quit', () => willQuitApp = true)
