@@ -25,6 +25,7 @@ export const useKeyboard = () => {
   const project = useProject()
 
   const init: Callback<void> = () => {
+    forceDefault()
     saveLocal()
     loadLocal()
     newProject()
@@ -40,6 +41,15 @@ export const useKeyboard = () => {
 
   const destroy = () => {
     keyboard.stop()
+  }
+
+  const forceDefault = () => {
+    window.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key === 'd') {
+        e.preventDefault()
+        e.stopPropagation()
+      }
+    })
   }
 
   const saveLocal = () => {

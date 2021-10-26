@@ -564,7 +564,8 @@
         e.key !== 'f' &&
         e.key !== 'a' &&
         e.key !== 'v' &&
-        e.key !== 'm'
+        e.key !== 'm' &&
+        e.key !== 'd'
       ) {
         e.preventDefault()
         e.stopPropagation()
@@ -581,7 +582,7 @@
       }
 
       // delete entity
-      if (e.key === 'm') {
+      if (e.key === 'd') {
         entity.base().onDelete(props.entity, _index.value)
       }
 
