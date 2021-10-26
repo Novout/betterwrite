@@ -172,6 +172,7 @@
   const { t } = useI18n()
   const raw = useRaw()
   const plugin = usePlugin()
+  const area = useInput()
 
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)
@@ -186,6 +187,10 @@
 
   const style = computed(() => EDITOR.styles.show)
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
+
+  setInterval(() => {
+    if (edit.value) area.expandTextArea(input.value as HTMLTextAreaElement)
+  }, 1000 / 60)
 
   watch(hover, async (_hover) => {
     keyboard.value = false
