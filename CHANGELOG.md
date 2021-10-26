@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.7](https://github.com/Novout/better-write/compare/v0.4.6...v0.4.7) (2021-10-26)
+
+
+### Bug Fixes
+
+* **created:** global wrapper in dev mode ([e80b694](https://github.com/Novout/better-write/commits/e80b694c4fc7cf8b2c92f33b7f8be20f89005cde))
+* **editor:** arrow affected by cursor position ([b85f93f](https://github.com/Novout/better-write/commits/b85f93fce77944b5c7e9383435127737f59e5397))
+* **editor:** ctrld for delete entity and prevent all ([63dbe01](https://github.com/Novout/better-write/commits/63dbe015bdb5db08d04fe7e3a38e89343c02665e))
+* **editor:** insert paragraph and bp command ([b7ac119](https://github.com/Novout/better-write/commits/b7ac1190e7355c1b5d5e3cd0c8e14983bd124514))
+* **editor:** load pages in edit contents ([36ce103](https://github.com/Novout/better-write/commits/36ce103a86b502537613858994ff978c45070e9b))
+* **editor:** remove line in next index ([2c19f63](https://github.com/Novout/better-write/commits/2c19f63fe503920af01c8fb223ac5d43fbd45dcd))
+* **editor:** update area in a event tick ([af32588](https://github.com/Novout/better-write/commits/af32588ccdb2ed1f3688c738ff8ae46004ef2171))
+
+
+### Structure
+
+* **desktop:** remove shortcuts ([8432065](https://github.com/Novout/better-write/commits/843206507bef122e07802d29f4ec154467f9e7ad))
+* **md:** new features ([c0d2514](https://github.com/Novout/better-write/commits/c0d2514f23a8a5ace71a3ebfb2e083f994fc7d85))
+
 ### [0.4.6](https://github.com/Novout/better-write/compare/v0.4.5...v0.4.6) (2021-10-26)
 
 
