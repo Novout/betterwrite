@@ -388,8 +388,21 @@
 
     emitter.on('entity-update-area', () => {
       if (document.activeElement === input.value) {
-        console.log('kekwww')
         onChangeArea()
+      }
+    })
+
+    emitter.on('entity-edit-reset', () => {
+      edit.value = false
+      focus.value = false
+      keyboard.value = false
+    })
+
+    emitter.on('entity-edit-save', async () => {
+      if (edit.value) {
+        edit.value = false
+        await nextTick
+        onUpdateContent()
       }
     })
   })
