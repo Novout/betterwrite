@@ -230,6 +230,15 @@
       commands.value = false
     }
 
+    if (entity.utils().entry(_data, 'p')) {
+      data.value = ''
+
+      CONTEXT.newInExistentEntity({
+        old: props.entity,
+        new: factory.entity().create('paragraph'),
+      })
+    }
+
     if (entity.utils().entry(_data, 'h2')) {
       data.value = ''
 
@@ -253,7 +262,7 @@
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
-        new: factory.entity().create('heading-three'),
+        new: factory.entity().create('page-break'),
       })
 
       await nextTick
