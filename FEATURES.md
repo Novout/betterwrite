@@ -47,7 +47,7 @@ Here will contain all the features that Better Write offers.
 - ✅ - Paragraph Italic
 - ✅ - Paragraph Links
 - ✅ - Heading's
-- ➖ - Image's
+- ✅ - Image's
 - ❌ - Emoji's
 - ✅ - Break Page
 - ✅ - Line Page
@@ -94,13 +94,14 @@ Here will contain all the features that Better Write offers.
 ### Desktop
 
 - ✅ - Basic Features
-- ➖ - Save/Load
+- ✅ - Save/Load
 - ❌ - Integrations
 - ✅ - Shortcuts and Alerts
 
 ## Landing
 
-- ❌ - Not exists at moment.
+- ✅ - Basic Content
+- ➖ - Playground
 
 ## Support
 
