@@ -591,64 +591,67 @@
       } else if (e.key === 'ArrowDown') {
         entity.base().onDownCursor(props.entity)
       }
-    } else {
-      // delete in empty raw or convert
-      if (
-        (e.key === 'Delete' || e.key === 'Backspace') &&
-        _input.selectionStart === 0 &&
-        _input.selectionEnd === 0
-      ) {
-        e.preventDefault()
-        e.stopPropagation()
 
-        entity.base().onDeleteRaw({
-          index: _index.value,
-          data: data.value,
-          entity: props.entity,
-        })
+      return
+    }
+    // delete in empty raw or convert
+    if (
+      (e.key === 'Delete' || e.key === 'Backspace') &&
+      _input.selectionStart === 0 &&
+      _input.selectionEnd === 0
+    ) {
+      e.preventDefault()
+      e.stopPropagation()
 
-        if (_index.value <= 1) return
+      entity.base().onDeleteRaw({
+        index: _index.value,
+        data: data.value,
+        entity: props.entity,
+      })
 
-        if (entity.utils().isFixed(_index.value - 1)) return
+      if (_index.value <= 1) return
 
-        if (data.value !== '') {
-          CONTEXT.insertRawInExistentEntity(props.entity)
-        }
+      if (entity.utils().isFixed(_index.value - 1)) return
 
-        entity.base().onDelete(props.entity, _index.value)
+      if (data.value !== '') {
+        CONTEXT.insertRawInExistentEntity(props.entity)
+      }
+
+      entity.base().onDelete(props.entity, _index.value)
+
+      await nextTick
+
+      emitter.emit('entity-open', { entity: props.entity, up: true })
+    } else if (e.key === 'ArrowUp') {
+      // to top
+      if (_input.selectionStart === 0) {
+        if (
+          props.entity.type === 'heading-one' ||
+          entity.utils().isFixed(_index.value - 1)
+        )
+          return
+
+        emitter.emit('entity-edit-save')
 
         await nextTick
 
         emitter.emit('entity-open', { entity: props.entity, up: true })
-      } else if (e.key === 'ArrowUp') {
-        // swap top
-        if (_input.selectionStart === 0) {
-          if (props.entity.type === 'heading-one') return
-
-          if (entity.utils().isFixed(_index.value - 1)) return
-
-          emitter.emit('entity-close', { all: true })
-
-          await nextTick
-
-          emitter.emit('entity-open', { entity: props.entity, up: true })
+      }
+    } else if (e.key === 'ArrowDown') {
+      // to bottom
+      if (_input.selectionStart === _input.textLength) {
+        if (_index.value + 1 === CONTEXT.entities.length) {
+          emitter.emit('entity-input-focus')
+          return
         }
-      } else if (e.key === 'ArrowDown') {
-        // swap bottom
-        if (_input.selectionStart === _input.textLength) {
-          if (_index.value + 1 === CONTEXT.entities.length) {
-            emitter.emit('entity-input-focus')
-            return
-          }
 
-          if (entity.utils().isFixed(_index.value + 1)) return
+        if (entity.utils().isFixed(_index.value + 1)) return
 
-          emitter.emit('entity-close', { all: true })
+        emitter.emit('entity-edit-save')
 
-          await nextTick
+        await nextTick
 
-          emitter.emit('entity-open', { entity: props.entity, up: false })
-        }
+        emitter.emit('entity-open', { entity: props.entity, up: false })
       }
     }
   }
