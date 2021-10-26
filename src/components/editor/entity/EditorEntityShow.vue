@@ -595,7 +595,8 @@
       // delete in empty raw or convert
       if (
         (e.key === 'Delete' || e.key === 'Backspace') &&
-        _input.selectionStart === 0
+        _input.selectionStart === 0 &&
+        _input.selectionEnd === 0
       ) {
         e.preventDefault()
         e.stopPropagation()

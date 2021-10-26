@@ -254,7 +254,7 @@ export const useEntity = () => {
     }
 
     const onDeleteRaw = async (payload: any) => {
-      if (payload.index <= 1) return
+      if (payload.index <= 0) return
 
       if (utils().isFixed(payload.index - 1)) return
 
