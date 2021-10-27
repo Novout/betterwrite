@@ -34,6 +34,7 @@ export default {
   },
   window: {
     confirmConfiguration: 'Você quer sair salvando as configurações?',
+    confirmClearLogger: 'Você quer excluir todos os dados?',
   },
   text: {
     placeholder: {

@@ -14,6 +14,8 @@ export default {
     chapter: {
       new: 'New',
       delete: 'Delete',
+      up: 'Up',
+      down: 'Down',
     },
     dropbox: {
       connect: 'Connect',
@@ -32,6 +34,7 @@ export default {
   },
   window: {
     confirmConfiguration: 'Do you want to quit saving the settings?',
+    confirmClearLogger: 'Do you want to delete all data?',
   },
   text: {
     placeholder: {

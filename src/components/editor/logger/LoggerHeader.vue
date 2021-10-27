@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-end items-center w-full relative py-1">
-    <HeroIcon class="wb-icon" @click.prevent.stop="LOGGER.reset">
+    <HeroIcon class="wb-icon" @click.prevent.stop="onClear">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-7 w-7"
@@ -34,7 +34,16 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useLoggerStore } from '@/store/logger'
+  import { useI18n } from 'vue-i18n'
 
   const ABSOLUTE = useAbsoluteStore()
   const LOGGER = useLoggerStore()
+
+  const { t } = useI18n()
+
+  const onClear = () => {
+    if (window.confirm(t('editor.window.confirmClearLogger'))) {
+      LOGGER.reset()
+    }
+  }
 </script>
