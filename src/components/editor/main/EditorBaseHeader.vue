@@ -8,7 +8,7 @@
       w-full
       bg-transparent
       drag
-      z-max
+      z-50
     "
   >
     <div>
