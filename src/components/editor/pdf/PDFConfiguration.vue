@@ -34,7 +34,7 @@
       >
         <div class="wb-input-container justify-start">
           <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
-          <TextBoolean v-model="switcher.cover" />
+          <InputBoolean v-model="switcher.cover" />
           <InputFile
             v-if="switcher.cover"
             id="cover-background"
@@ -62,7 +62,7 @@
       >
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
-          <TextBoolean v-model="switcher.main" />
+          <InputBoolean v-model="switcher.main" />
           <InputFile
             v-if="switcher.main"
             id="main-background"
@@ -77,7 +77,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.base.pageSize')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="base.pageSize"
             class="flex-1"
             :arr="useDefines().pdf().base().pageSize()"
@@ -87,7 +87,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.base.pageOrientation')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="base.pageOrientation"
             class="flex-1"
             :arr="useDefines().pdf().base().pageOrientation()"
@@ -100,19 +100,19 @@
           <section class="flex justify-between w-full flex-row flex-wrap">
             <section>
               <label>{{ t('editor.pdf.base.pageMargins.left') }}</label>
-              <TextNumber v-model="basePageMargins.left" />
+              <InputNumber v-model="basePageMargins.left" />
             </section>
             <section>
               <label>{{ t('editor.pdf.base.pageMargins.top') }}</label>
-              <TextNumber v-model="basePageMargins.top" />
+              <InputNumber v-model="basePageMargins.top" />
             </section>
             <section>
               <label>{{ t('editor.pdf.base.pageMargins.right') }}</label>
-              <TextNumber v-model="basePageMargins.right" />
+              <InputNumber v-model="basePageMargins.right" />
             </section>
             <section>
               <label>{{ t('editor.pdf.base.pageMargins.bottom') }}</label>
-              <TextNumber v-model="basePageMargins.bottom" />
+              <InputNumber v-model="basePageMargins.bottom" />
             </section>
           </section>
         </div>
@@ -137,7 +137,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.font')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="paragraph.font"
             class="flex-1"
             :arr="fontFamily"
@@ -148,19 +148,19 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.fontSize')
           }}</label>
-          <TextNumber v-model="paragraph.fontSize" />
+          <InputNumber v-model="paragraph.fontSize" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.lineHeight')
           }}</label>
-          <TextNumber v-model="paragraph.lineHeight" />
+          <InputNumber v-model="paragraph.lineHeight" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.alignment')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="paragraph.alignment"
             class="flex-1"
             :arr="useDefines().pdf().alignment()"
@@ -170,37 +170,37 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.indent')
           }}</label>
-          <TextNumber v-model="paragraph.indent" />
+          <InputNumber v-model="paragraph.indent" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.characterSpacing')
           }}</label>
-          <TextNumber v-model="paragraph.characterSpacing" />
+          <InputNumber v-model="paragraph.characterSpacing" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.color')
           }}</label>
-          <TextColorPicker v-model="paragraph.color" />
+          <InputColorPicker v-model="paragraph.color" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.background')
           }}</label>
-          <TextColorPicker v-model="paragraph.background" />
+          <InputColorPicker v-model="paragraph.background" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.markerColor')
           }}</label>
-          <TextColorPicker v-model="paragraph.markerColor" />
+          <InputColorPicker v-model="paragraph.markerColor" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.decoration')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="paragraph.decoration"
             class="flex-1"
             :arr="useDefines().pdf().decoration()"
@@ -210,7 +210,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.decorationStyle')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="paragraph.decorationStyle"
             class="flex-1"
             :arr="useDefines().pdf().decorationStyle()"
@@ -237,7 +237,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.font')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingOne.font"
             class="flex-1"
             :arr="fontFamily"
@@ -248,31 +248,31 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.fontSize')
           }}</label>
-          <TextNumber v-model="headingOne.fontSize" />
+          <InputNumber v-model="headingOne.fontSize" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.lineHeight')
           }}</label>
-          <TextNumber v-model="headingOne.lineHeight" />
+          <InputNumber v-model="headingOne.lineHeight" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.bold')
           }}</label>
-          <TextBoolean v-model="headingOne.bold" />
+          <InputBoolean v-model="headingOne.bold" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.italics')
           }}</label>
-          <TextBoolean v-model="headingOne.italics" />
+          <InputBoolean v-model="headingOne.italics" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.alignment')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingOne.alignment"
             class="flex-1"
             :arr="useDefines().pdf().alignment()"
@@ -282,31 +282,31 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.characterSpacing')
           }}</label>
-          <TextNumber v-model="headingOne.characterSpacing" />
+          <InputNumber v-model="headingOne.characterSpacing" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.color')
           }}</label>
-          <TextColorPicker v-model="headingOne.color" />
+          <InputColorPicker v-model="headingOne.color" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.background')
           }}</label>
-          <TextColorPicker v-model="headingOne.background" />
+          <InputColorPicker v-model="headingOne.background" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.markerColor')
           }}</label>
-          <TextColorPicker v-model="headingOne.markerColor" />
+          <InputColorPicker v-model="headingOne.markerColor" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.decoration')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingOne.decoration"
             class="flex-1"
             :arr="useDefines().pdf().decoration()"
@@ -316,7 +316,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.decorationStyle')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingOne.decorationStyle"
             class="flex-1"
             :arr="useDefines().pdf().decorationStyle()"
@@ -326,7 +326,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.breakPage')
           }}</label>
-          <TextBoolean v-model="headingOne.breakPage" />
+          <InputBoolean v-model="headingOne.breakPage" />
         </div>
       </div>
     </PDFConfigurationSlot>
@@ -349,7 +349,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.font')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingTwo.font"
             class="flex-1"
             :arr="fontFamily"
@@ -360,31 +360,31 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.fontSize')
           }}</label>
-          <TextNumber v-model="headingTwo.fontSize" />
+          <InputNumber v-model="headingTwo.fontSize" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.lineHeight')
           }}</label>
-          <TextNumber v-model="headingTwo.lineHeight" />
+          <InputNumber v-model="headingTwo.lineHeight" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.bold')
           }}</label>
-          <TextBoolean v-model="headingTwo.bold" />
+          <InputBoolean v-model="headingTwo.bold" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.italics')
           }}</label>
-          <TextBoolean v-model="headingTwo.italics" />
+          <InputBoolean v-model="headingTwo.italics" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.alignment')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingTwo.alignment"
             class="flex-1"
             :arr="useDefines().pdf().alignment()"
@@ -394,31 +394,31 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.characterSpacing')
           }}</label>
-          <TextNumber v-model="headingTwo.characterSpacing" />
+          <InputNumber v-model="headingTwo.characterSpacing" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.color')
           }}</label>
-          <TextColorPicker v-model="headingTwo.color" />
+          <InputColorPicker v-model="headingTwo.color" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.background')
           }}</label>
-          <TextColorPicker v-model="headingTwo.background" />
+          <InputColorPicker v-model="headingTwo.background" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.markerColor')
           }}</label>
-          <TextColorPicker v-model="headingTwo.markerColor" />
+          <InputColorPicker v-model="headingTwo.markerColor" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.decoration')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingTwo.decoration"
             class="flex-1"
             :arr="useDefines().pdf().decoration()"
@@ -428,7 +428,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.decorationStyle')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingTwo.decorationStyle"
             class="flex-1"
             :arr="useDefines().pdf().decorationStyle()"
@@ -438,7 +438,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.breakPage')
           }}</label>
-          <TextBoolean v-model="headingTwo.breakPage" />
+          <InputBoolean v-model="headingTwo.breakPage" />
         </div>
       </div>
     </PDFConfigurationSlot>
@@ -461,7 +461,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.font')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingThree.font"
             class="flex-1"
             :arr="fontFamily"
@@ -472,31 +472,31 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.fontSize')
           }}</label>
-          <TextNumber v-model="headingThree.fontSize" />
+          <InputNumber v-model="headingThree.fontSize" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.lineHeight')
           }}</label>
-          <TextNumber v-model="headingThree.lineHeight" />
+          <InputNumber v-model="headingThree.lineHeight" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.bold')
           }}</label>
-          <TextBoolean v-model="headingThree.bold" />
+          <InputBoolean v-model="headingThree.bold" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.italics')
           }}</label>
-          <TextBoolean v-model="headingThree.italics" />
+          <InputBoolean v-model="headingThree.italics" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.alignment')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingThree.alignment"
             class="flex-1"
             :arr="useDefines().pdf().alignment()"
@@ -506,31 +506,31 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.characterSpacing')
           }}</label>
-          <TextNumber v-model="headingThree.characterSpacing" />
+          <InputNumber v-model="headingThree.characterSpacing" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.color')
           }}</label>
-          <TextColorPicker v-model="headingThree.color" />
+          <InputColorPicker v-model="headingThree.color" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.background')
           }}</label>
-          <TextColorPicker v-model="headingThree.background" />
+          <InputColorPicker v-model="headingThree.background" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.markerColor')
           }}</label>
-          <TextColorPicker v-model="headingThree.markerColor" />
+          <InputColorPicker v-model="headingThree.markerColor" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.decoration')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingThree.decoration"
             class="flex-1"
             :arr="useDefines().pdf().decoration()"
@@ -540,7 +540,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.decorationStyle')
           }}</label>
-          <TextSelect
+          <InputSelect
             v-model="headingThree.decorationStyle"
             class="flex-1"
             :arr="useDefines().pdf().decorationStyle()"
@@ -550,7 +550,7 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.breakPage')
           }}</label>
-          <TextBoolean v-model="headingThree.breakPage" />
+          <InputBoolean v-model="headingThree.breakPage" />
         </div>
       </div>
     </PDFConfigurationSlot>

@@ -234,7 +234,7 @@
         ]"
       >
         <label>{{ t('editor.pdf.custom.image.width') }}</label>
-        <TextNumber v-model="image.width" :step="25" />
+        <InputNumber v-model="image.width" :step="25" />
       </div>
       <div
         class="mx-2 flex flex-col justify-center"
@@ -243,7 +243,7 @@
         ]"
       >
         <label>{{ t('editor.pdf.custom.image.height') }}</label>
-        <TextNumber v-model="image.height" :step="25" />
+        <InputNumber v-model="image.height" :step="25" />
       </div>
       <div class="mx-2 flex flex-col justify-center">
         <label>{{ t('editor.pdf.custom.image.alignment') }}</label>
