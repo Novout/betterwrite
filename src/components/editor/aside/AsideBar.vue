@@ -1,4 +1,0 @@
-<template>
-  <AsideBarLogo />
-  <AsideBarProject />
-</template>

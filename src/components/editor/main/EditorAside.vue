@@ -27,8 +27,7 @@
         x: -240,
       }"
     >
-      <AsideClose @close="onClose" />
-      <AsideBar />
+      <AsideBarLogo />
       <AsideGraph />
     </aside>
   </transition>
