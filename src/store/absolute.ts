@@ -6,11 +6,12 @@ export const useAbsoluteStore = defineStore('absolute', {
     return {
       project: {
         new: false,
+        configuration: false,
       },
       modal: {
         newProject: false,
       },
-      aside: true,
+      aside: false,
       shortcuts: {
         switcher: false,
         finder: false,

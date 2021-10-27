@@ -96,6 +96,7 @@
       "include": [
         "@headlessui/vue",
         "@vue/reactivity",
+        "@vueuse/core",
         "@vueuse/head",
         "@vueuse/motion",
         "axios",

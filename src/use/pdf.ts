@@ -592,7 +592,11 @@ export const usePDF = () => {
       preview(input)
     }
 
-    return { onGeneratePDF, onPreviewPDF }
+    const onConfigurationPDF = () => {
+      ABSOLUTE.pdf.configuration = true
+    }
+
+    return { onGeneratePDF, onPreviewPDF, onConfigurationPDF }
   }
 
   return { init, create, external, preview }

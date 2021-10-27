@@ -11,6 +11,7 @@ import i18n from '@/lang'
 import { useAuthStore } from '@/store/auth'
 import useEmitter from '@/use/emitter'
 import isElectron from 'is-electron'
+import { useAbsoluteStore } from '@/store/absolute'
 
 export const useDropbox = () => {
   const CONTEXT = useContextStore()
@@ -19,6 +20,7 @@ export const useDropbox = () => {
   const AUTH = useAuthStore()
   const LOGGER = useLoggerStore()
   const PDF = usePDFStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const toast = useToast()
   const emitter = useEmitter()
@@ -135,6 +137,8 @@ export const useDropbox = () => {
                 version: env.packageVersion(),
               }
             }
+
+            ABSOLUTE.aside = true
 
             loadContext(context)
           })

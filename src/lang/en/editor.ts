@@ -1,4 +1,35 @@
 export default {
+  bar: {
+    pdf: {
+      preview: 'Preview',
+      generate: 'Generate',
+      configuration: 'Configure',
+    },
+    project: {
+      new: 'Novo',
+      configuration: 'Configure',
+      load: 'Load',
+      save: 'Save',
+    },
+    chapter: {
+      new: 'New',
+      delete: 'Delete',
+    },
+    dropbox: {
+      connect: 'Connect',
+      save: 'Save',
+      load: 'Load',
+    },
+    drive: {
+      save: 'Google Drive Save',
+      load: 'Google Drive Load',
+    },
+    assistants: {
+      actions: 'Actions',
+      finder: 'Text Search',
+      swapper: 'Text Swapper',
+    },
+  },
   window: {
     confirmConfiguration: 'Do you want to quit saving the settings?',
   },

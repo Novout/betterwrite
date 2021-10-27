@@ -10,6 +10,7 @@ import { usePDFStore } from '@/store/pdf'
 import { useContextStore } from '@/store/context'
 import useEmitter from '@/use/emitter'
 import isElectron from 'is-electron'
+import { useAbsoluteStore } from '@/store/absolute'
 
 export const useLocalStorage = () => {
   const CONTEXT = useContextStore()
@@ -17,6 +18,7 @@ export const useLocalStorage = () => {
   const EDITOR = useEditorStore()
   const LOGGER = useLoggerStore()
   const PDF = usePDFStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const toast = useToast()
   const env = useEnv()
@@ -110,6 +112,8 @@ export const useLocalStorage = () => {
     LOGGER.load(context.logger.content)
 
     PDF.load(context.pdf)
+
+    ABSOLUTE.aside = true
 
     toast.success(t('toast.project.load'))
   }

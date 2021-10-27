@@ -1,4 +1,37 @@
 export default {
+  bar: {
+    pdf: {
+      preview: 'Simular',
+      generate: 'Gerar',
+      configuration: 'Configurar',
+    },
+    project: {
+      new: 'Novo',
+      configuration: 'Configurar',
+      load: 'Carregar',
+      save: 'Salvar',
+    },
+    chapter: {
+      new: 'Novo',
+      delete: 'Deletar',
+      up: 'Cima',
+      down: 'Baixo',
+    },
+    dropbox: {
+      connect: 'Conectar',
+      save: 'Salvar',
+      load: 'Carregar',
+    },
+    drive: {
+      save: 'Salvar Google Drive',
+      load: 'Carregar Google Drive',
+    },
+    assistants: {
+      actions: 'Ações',
+      finder: 'Encontrar Texto',
+      swapper: 'Substituir Texto',
+    },
+  },
   window: {
     confirmConfiguration: 'Você quer sair salvando as configurações?',
   },
