@@ -6,6 +6,7 @@ import { useText } from '../use/text'
 import { Entity } from '../types/context'
 import isElectron from 'is-electron'
 import { useEnv } from '@/use/env'
+import { useLoggerStore } from './logger'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -45,6 +46,9 @@ export const useProjectStore = defineStore('project', {
       this.bw.version = payload.bw.version
     },
     create(payload: Record<any, any>) {
+      const logger = useLoggerStore()
+      logger.reset()
+
       this.$reset()
 
       this.name = useText().kebab(payload.name)
@@ -82,6 +86,9 @@ export const useProjectStore = defineStore('project', {
       this.pages.push(init)
     },
     createBlank(payload: Record<any, any>) {
+      const logger = useLoggerStore()
+      logger.reset()
+
       this.$reset()
 
       this.name = useText().kebab(payload.name)
