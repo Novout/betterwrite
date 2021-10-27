@@ -5,7 +5,7 @@
       rounded
       top-7
       flex flex-col
-      w-44
+      w-52
       z-50
       bg-gray-300
       dark:bg-gray-700

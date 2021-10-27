@@ -14,7 +14,7 @@
     "
     @click.prevent.stop="emit('action')"
   >
-    <p class="text-xs">{{ props.text }}</p>
+    <p class="text-sm">{{ props.text }}</p>
     <p
       class="
         font-tiny
