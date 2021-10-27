@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/Novout/better-write/compare/v0.4.7...v0.5.0) (2021-10-27)
+
+
+### Features
+
+* **editor:** new header bar ([df422da](https://github.com/Novout/better-write/commits/df422da53f2804225b3d45149d53f96d8d2d1d2b))
+* **editor:** preferences in header ([d65b1e7](https://github.com/Novout/better-write/commits/d65b1e78603e51d08a8f97c5cc1b4848d9d81628))
+* **logger:** confirm reset ([34ca35e](https://github.com/Novout/better-write/commits/34ca35e295f3ff907aaee7a50959f00f3c0c60b4))
+* **vite:** chunk split because a large pdfmake bundle ([9eaf6a6](https://github.com/Novout/better-write/commits/9eaf6a690b65d4c73cdb692eb520d408e92fa4bd))
+
+
+### Bug Fixes
+
+* **editor:** externals in blank template ([5c1000c](https://github.com/Novout/better-write/commits/5c1000ce3342b817691d2ca7b08c44db4a923559))
+* **editor:** graph save last input ([7dfd85c](https://github.com/Novout/better-write/commits/7dfd85cd2fde7550062db51065a9bc2c7dbe21fe))
+* **editor:** header itens overflow modals ([c006c2f](https://github.com/Novout/better-write/commits/c006c2f81afe33bdfb09c8abc09bf8ba57cd3e97))
+* **keyboard:** prevent default navigator keys ([ec2e06c](https://github.com/Novout/better-write/commits/ec2e06c851bd3ea631aefda69d8d494d341c721b))
+* **project:** normalize context items ([54d9b02](https://github.com/Novout/better-write/commits/54d9b027ca17b26c0e6ef7b0cdbcc4e4775a3be7))
+* **project:** reset logger in new project ([ed54a49](https://github.com/Novout/better-write/commits/ed54a49cd88b1e4d6fd4bcc333ef80c7c77a5cf6))
+
+
+### Style
+
+* **editor:** header font sizes ([8aa29a6](https://github.com/Novout/better-write/commits/8aa29a6571b63cb102878e6807a71e5b8fcc75bc))
+* **landing:** new colors in first and second section ([5a69d16](https://github.com/Novout/better-write/commits/5a69d165d0e3699f3873b45b85bd79508054e37a))
+
+
+### Structure
+
+* **components:** remove inexistent html ([d49dd31](https://github.com/Novout/better-write/commits/d49dd31a120ffef84ea412a7ef2f7e97efc69d5e))
+* **editor:** remove old components ([9bcd896](https://github.com/Novout/better-write/commits/9bcd8960a1919457cdd4801264613c72fc64196c))
+
+
+### Refactor
+
+* **material:** correct names and imports ([a61f29b](https://github.com/Novout/better-write/commits/a61f29b27e945232f622fd6d5ea1d1bb6e2998d4))
+
 ### [0.4.7](https://github.com/Novout/better-write/compare/v0.4.6...v0.4.7) (2021-10-26)
 
 
