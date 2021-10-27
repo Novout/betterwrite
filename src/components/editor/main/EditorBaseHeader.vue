@@ -212,12 +212,8 @@
           />
         </template>
       </EditorHeaderButton>
-      <!-- Logger -->
-      <EditorHeaderButton
-        v-if="
-          project.isCreativeProject() && PROJECT.name !== env.projectEmpty()
-        "
-      >
+      <!-- Externals -->
+      <EditorHeaderButton v-if="PROJECT.name !== env.projectEmpty()">
         <template #icon>
           <svg
             xmlns="http://www.w3.org/2000/svg"
