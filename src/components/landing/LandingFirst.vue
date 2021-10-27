@@ -107,6 +107,7 @@
             rounded-full
             bg-black-opacity
             hover:bg-gray-900
+            bg-gray-800
             text-gray-200
             flex flex-col
           "

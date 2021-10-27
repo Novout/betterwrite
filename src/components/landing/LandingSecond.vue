@@ -31,13 +31,13 @@
         <p class="font-tiny text-lg md:text-2xl">
           {{ t('landing.second.raw') }}
         </p>
-        <LandingSecondRaw v-model="data" class="bg-gray-100" />
+        <LandingSecondRaw v-model="data" />
       </div>
       <div class="flex flex-col items-center w-80 shadow-wp-shadow">
         <p class="font-tiny text-lg md:text-2xl">
           {{ t('landing.second.convert') }}
         </p>
-        <LandingSecondConvert class="bg-gray-100" :data="data" />
+        <LandingSecondConvert :data="data" />
       </div>
     </div>
   </section>
