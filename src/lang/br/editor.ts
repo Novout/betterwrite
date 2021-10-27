@@ -8,6 +8,7 @@ export default {
     project: {
       new: 'Novo',
       configuration: 'Configurar',
+      preferences: 'Preferências',
       load: 'Carregar',
       save: 'Salvar',
     },

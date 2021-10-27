@@ -62,20 +62,20 @@
           />
           <EditorHeaderItem
             v-if="PROJECT.name !== env.projectEmpty()"
-            :text="t('editor.bar.project.configuration')"
-            shortcut="CTRL + Alt + Q"
-            @action="ABSOLUTE.project.configuration = true"
+            :text="t('editor.bar.project.preferences')"
+            shortcut=""
+            @action="ABSOLUTE.project.preferences = true"
           />
           <EditorHeaderItem
             :divider="true"
             :text="t('editor.bar.project.load')"
-            shortcut="CTRL + Shift + Q"
+            shortcut="CTRL + P"
             @action="local.onLoadProject"
           />
           <EditorHeaderItem
             v-if="PROJECT.name !== env.projectEmpty()"
             :text="t('editor.bar.project.save')"
-            shortcut="CTRL + Alt + Q"
+            shortcut="CTRL + S"
             @action="local.onSaveProject"
           />
         </template>

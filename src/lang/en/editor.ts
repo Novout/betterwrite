@@ -10,6 +10,7 @@ export default {
       configuration: 'Configure',
       load: 'Load',
       save: 'Save',
+      preferences: 'Preferences',
     },
     chapter: {
       new: 'New',

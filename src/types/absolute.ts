@@ -1,6 +1,7 @@
 export interface AbsoluteStateProject {
   new: boolean
   configuration: boolean
+  preferences: boolean
 }
 
 export interface AbsoluteStateModal {
