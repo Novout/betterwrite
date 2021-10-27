@@ -45,7 +45,7 @@ export const useKeyboard = () => {
 
   const forceDefault = () => {
     window.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.key === 'd') {
+      if (e.ctrlKey || e.altKey) {
         e.preventDefault()
         e.stopPropagation()
       }
