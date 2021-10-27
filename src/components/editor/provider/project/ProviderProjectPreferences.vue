@@ -42,20 +42,16 @@
           dark:text-gray-300
           justify-between
           items-center
-          w-60
+          w-96
           px-2
           py-1
         "
       >
         <p>{{ t('editor.aside.configuration.lang') }}</p>
-        <TextSelect
-          v-model="lang"
-          :aside="true"
-          :arr="['Português do Brasil', 'English']"
-        />
+        <InputSelect v-model="lang" :arr="['Português do Brasil', 'English']" />
       </div>
       <SwitchGroup>
-        <div class="flex px-2 items-center w-60 justify-between">
+        <div class="flex px-2 items-center w-96 justify-between">
           <SwitchLabel
             class="
               mr-4
