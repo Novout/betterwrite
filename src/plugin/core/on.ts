@@ -74,12 +74,12 @@ export const PluginProjectPageDelete = (
   emitter: PluginEmitter,
   content: PluginContentOn
 ) => {
-  emitter.on('plugin-project-page-delete', (index: number) => {
-    if (!index) return
+  emitter.on('plugin-project-page-delete', (name: string) => {
+    if (!name) return
 
     const created = content[0]
 
-    created && created(index)
+    created && created(name)
   })
 }
 

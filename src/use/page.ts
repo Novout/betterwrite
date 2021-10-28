@@ -44,10 +44,7 @@ export const usePage = () => {
 
     if (PROJECT.pages.length <= 1) return
 
-    plugin.emit(
-      'plugin-project-page-delete',
-      utils().getPageIndex(CONTEXT.$state.id)
-    )
+    plugin.emit('plugin-project-page-delete', CONTEXT.entities[0].raw)
 
     PROJECT.deletePage(CONTEXT.$state)
 
