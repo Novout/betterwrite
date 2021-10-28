@@ -37,7 +37,7 @@
   const description = computed(() => t('seo.editor.description'))
 
   const _title = computed(() =>
-    PROJECT.nameRaw === env.projectEmpty()
+    PROJECT.nameRaw === env.projectEmpty() || !CONTEXT.entities[0]
       ? title.value
       : PROJECT.nameRaw + ' - ' + CONTEXT.entities[0]?.raw || ''
   )
