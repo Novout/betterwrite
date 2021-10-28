@@ -16,9 +16,9 @@ Here will contain all the features that Better Write offers.
 
 - ✅ - Dark Theme
 - ✅ - i18n Locale
-- ➖ - Auto Save
+- ✅ - Auto Save
 - ❌ - Cloud Auto Save
-- ➖ - Logger for Users
+- ✅ - Logger for Users
 - ✅ - Alerts
 - ✅ - Shortcuts
 
