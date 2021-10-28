@@ -11,6 +11,7 @@ export default {
       load: 'Load',
       save: 'Save',
       preferences: 'Preferences',
+      autosave: 'Auto Save (in minutes)',
     },
     chapter: {
       new: 'New',

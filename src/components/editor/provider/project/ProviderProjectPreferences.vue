@@ -42,7 +42,8 @@
           dark:text-gray-300
           justify-between
           items-center
-          w-96
+          w-full
+          md:w-1/2
           px-2
           py-1
         "
@@ -51,7 +52,7 @@
         <InputSelect v-model="lang" :arr="['Português do Brasil', 'English']" />
       </div>
       <SwitchGroup>
-        <div class="flex px-2 items-center w-96 justify-between">
+        <div class="flex px-2 items-center w-full md:w-1/2 justify-between">
           <SwitchLabel
             class="
               mr-4
@@ -92,22 +93,42 @@
           </Switch>
         </div>
       </SwitchGroup>
+      <div
+        class="
+          flex
+          font-bold
+          text-base text-black
+          dark:text-gray-300
+          justify-between
+          items-center
+          w-full
+          md:w-1/2
+          px-2
+          py-1
+        "
+      >
+        <p>{{ t('editor.aside.configuration.autosave') }}</p>
+        <InputSelect v-model="auto" :arr="[1, 2, 5, 15, 30, 'never']" />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { useEditorStore } from '@/store/editor'
-  import { ref, watch } from 'vue'
+  import { ref, watch, nextTick } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useLocalStorage } from '@/use/storage/local'
 
   const ABSOLUTE = useAbsoluteStore()
-
   const EDITOR = useEditorStore()
+
+  const local = useLocalStorage()
 
   const { t, locale } = useI18n()
 
+  const auto = ref(EDITOR.configuration.auto)
   const dark = ref(EDITOR.configuration.dark)
   watch(dark, (_dark: boolean) => {
     EDITOR.configuration.dark = _dark
@@ -116,6 +137,16 @@
       ? (document.querySelector('html') as HTMLElement).classList.add('dark')
       : (document.querySelector('html') as HTMLElement).classList.remove('dark')
     _dark ? (localStorage.theme = 'dark') : localStorage.removeItem('theme')
+  })
+
+  watch(auto, async (_auto) => {
+    EDITOR.setAutoSave(_auto)
+
+    await nextTick
+
+    local.onSaveProject().then(() => {
+      window.location.reload()
+    })
   })
 
   const convert = (iso: string) => {

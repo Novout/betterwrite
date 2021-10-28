@@ -114,7 +114,6 @@
   const props = defineProps({
     modelValue: {
       required: true,
-      type: String,
     },
     arr: {
       required: false,

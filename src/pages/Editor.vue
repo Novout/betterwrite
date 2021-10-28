@@ -24,10 +24,10 @@
   const keyboard = useKeyboard()
   const env = useEnv()
   const { t } = useI18n()
+  const local = useLocalStorage()
 
+  local.init()
   keyboard.init()
-
-  useLocalStorage().onAutoSave(60 * 10)
 
   onUnmounted(() => {
     keyboard.destroy()
@@ -39,7 +39,7 @@
   const _title = computed(() =>
     PROJECT.nameRaw === env.projectEmpty() || !CONTEXT.entities[0]
       ? title.value
-      : PROJECT.nameRaw + ' - ' + CONTEXT.entities[0]?.raw || ''
+      : PROJECT.nameRaw + ' - ' + CONTEXT.entities[0]?.raw
   )
 
   useHead({

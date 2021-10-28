@@ -119,6 +119,7 @@ export default {
       dark: 'Modo Escuro',
       lang: 'Linguagem',
       draggable: 'Arrastável',
+      autosave: 'Salvamento Automático (em minutos)',
     },
     entity: {
       delete: 'Deletar',

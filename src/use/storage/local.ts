@@ -81,7 +81,9 @@ export const useLocalStorage = () => {
     toast.success(t('toast.project.save'))
   }
 
-  const onAutoSave = (time: number) => {
+  const onAutoSave = (time: number | 'never') => {
+    if (time === 'never' || !time) return
+
     setInterval(() => {
       if (PROJECT.name === env.projectEmpty()) return
 
@@ -97,7 +99,7 @@ export const useLocalStorage = () => {
       })
 
       plugin.emit('plugin-auto-save')
-    }, parseInt(`${time}000`))
+    }, 1000 * 60 * time)
   }
 
   const onLoadProject = async () => {
@@ -115,11 +117,19 @@ export const useLocalStorage = () => {
 
     LOGGER.load(context.logger.content)
 
+    await nextTick
+
+    EDITOR.load(context.editor)
+
     PDF.load(context.pdf)
 
     ABSOLUTE.aside = true
 
     toast.success(t('toast.project.load'))
+  }
+
+  const init = () => {
+    onAutoSave(EDITOR.configuration.auto)
   }
 
   return {
@@ -130,5 +140,6 @@ export const useLocalStorage = () => {
     onSaveProject,
     onLoadProject,
     onAutoSave,
+    init,
   }
 }

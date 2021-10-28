@@ -22,6 +22,7 @@ export interface EditorStateConfiguration {
   dark: boolean
   lang?: boolean
   draggable: boolean
+  auto: number | 'never'
 }
 
 export interface EditorStateStyles {
