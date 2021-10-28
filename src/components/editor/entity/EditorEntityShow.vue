@@ -512,6 +512,11 @@
           raw: data.value,
         })
 
+        plugin.emit('plugin-entity-page-break', {
+          data: data.value,
+          index: _index.value + 1,
+        })
+
         data.value = env.emptyLine() as string
 
         initial = true
@@ -522,6 +527,11 @@
           entity: props.entity,
           type: 'paragraph',
           raw: posRaw,
+        })
+
+        plugin.emit('plugin-entity-page-break', {
+          data: posRaw,
+          index: _index.value + 1,
         })
 
         initial = true

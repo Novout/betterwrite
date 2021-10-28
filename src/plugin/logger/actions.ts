@@ -1,9 +1,5 @@
 import { PluginEmitter, PluginStores } from '@/types/plugin/core'
-import {
-  PluginEntityDelete,
-  PluginEntitySwapper,
-  PluginEntityCreate,
-} from '../core/on'
+import { entity, project, save } from '../core/on'
 import { LoggerContent } from '@/types/logger'
 import { useFormat } from '@/use/format'
 import { useI18n } from 'vue-i18n'
@@ -19,7 +15,7 @@ export const PluginLoggerActions = (
   const format = useFormat()
   const { t } = useI18n()
 
-  PluginEntityCreate(emitter, [
+  entity().PluginEntityCreate(emitter, [
     (obj: PluginLoggerDefault) => {
       stores.LOGGER.add({
         type: 'editor',
@@ -34,7 +30,7 @@ export const PluginLoggerActions = (
     () => {},
   ])
 
-  PluginEntityDelete(emitter, [
+  entity().PluginEntityDelete(emitter, [
     (index: number) => {
       stores.LOGGER.add({
         type: 'editor',
@@ -48,7 +44,7 @@ export const PluginLoggerActions = (
     () => {},
   ])
 
-  PluginEntitySwapper(emitter, [
+  entity().PluginEntitySwapper(emitter, [
     (item: PluginLoggerEntitySwapper) => {
       stores.LOGGER.add({
         type: 'editor',
@@ -56,6 +52,21 @@ export const PluginLoggerActions = (
         arguments: t('plugin.logger.on.entity.swap', {
           index: item.index,
           target: item.direction === 'up' ? --item.index : ++item.index,
+        }),
+        createdAt: format.actually(),
+      } as LoggerContent)
+    },
+    () => {},
+  ])
+
+  entity().PluginEntityPageBreak(emitter, [
+    (obj: PluginLoggerDefault) => {
+      stores.LOGGER.add({
+        type: 'editor',
+        method: 'info',
+        arguments: t('plugin.logger.on.entity.break', {
+          data: obj.data,
+          index: obj.index,
         }),
         createdAt: format.actually(),
       } as LoggerContent)

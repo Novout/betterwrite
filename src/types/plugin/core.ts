@@ -14,6 +14,7 @@ export type PluginEmitterName =
   | 'plugin-entity-create'
   | 'plugin-entity-delete'
   | 'plugin-entity-swap'
+  | 'plugin-entity-page-break'
   | 'plugin-project-page-new'
   | 'plugin-project-page-delete'
   | 'plugin-project-page-swap'

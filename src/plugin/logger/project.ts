@@ -1,11 +1,5 @@
 import { PluginEmitter, PluginStores } from '@/types/plugin/core'
-import {
-  PluginProjectPageNew,
-  PluginProjectPageDelete,
-  PluginProjectPageSwap,
-  PluginAutoSave,
-  PluginDropboxSave,
-} from '../core/on'
+import { project, save } from '../core/on'
 import { LoggerContent } from '@/types/logger'
 import { useFormat } from '@/use/format'
 import { useI18n } from 'vue-i18n'
@@ -20,7 +14,7 @@ export const PluginLoggerProject = (
   const format = useFormat()
   const { t } = useI18n()
 
-  PluginProjectPageNew(emitter, [
+  project().PluginProjectPageNew(emitter, [
     (index: number) => {
       stores.LOGGER.add({
         type: 'project',
@@ -34,7 +28,7 @@ export const PluginLoggerProject = (
     () => {},
   ])
 
-  PluginProjectPageDelete(emitter, [
+  project().PluginProjectPageDelete(emitter, [
     (index: number) => {
       stores.LOGGER.add({
         type: 'project',
@@ -48,7 +42,7 @@ export const PluginLoggerProject = (
     () => {},
   ])
 
-  PluginProjectPageSwap(emitter, [
+  project().PluginProjectPageSwap(emitter, [
     (item: PluginLoggerEntitySwapper) => {
       if (
         (item.direction === 'up' && item.index <= 0) ||
@@ -69,7 +63,7 @@ export const PluginLoggerProject = (
     () => {},
   ])
 
-  PluginAutoSave(emitter, [
+  save().PluginAutoSave(emitter, [
     () => {
       stores.LOGGER.add({
         type: 'project',
@@ -81,7 +75,7 @@ export const PluginLoggerProject = (
     () => {},
   ])
 
-  PluginDropboxSave(emitter, [
+  save().PluginDropboxSave(emitter, [
     () => {
       stores.LOGGER.add({
         type: 'project',

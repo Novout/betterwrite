@@ -27,7 +27,7 @@
 
   keyboard.init()
 
-  useLocalStorage().onAutoSave(60)
+  useLocalStorage().onAutoSave(60 * 10)
 
   onUnmounted(() => {
     keyboard.destroy()
