@@ -267,6 +267,8 @@ export const useEntity = () => {
       await nextTick
 
       emitter.emit('entity-open', { entity: payload.entity, up: true })
+
+      plugin.emit('plugin-entity-delete', payload.index)
     }
 
     return { onUp, onDown, onUpCursor, onDownCursor, onDelete, onDeleteRaw }
