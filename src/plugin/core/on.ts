@@ -3,6 +3,7 @@ import {
   PluginLoggerDefault,
   PluginLoggerEntitySwapper,
   PluginContentOn,
+  PluginCode,
 } from '@/types/plugin/on'
 
 export const PluginEntityInputInitial = (
@@ -57,6 +58,19 @@ export const PluginEntitySwapper = (
   })
 }
 
+export const PluginEntityCreate = (
+  emitter: PluginEmitter,
+  content: PluginContentOn
+) => {
+  emitter.on('plugin-entity-create', (obj: PluginLoggerDefault) => {
+    if (!obj) return
+
+    const created = content[0]
+
+    created && created(obj)
+  })
+}
+
 export const PluginProjectPageNew = (
   emitter: PluginEmitter,
   content: PluginContentOn
@@ -93,5 +107,29 @@ export const PluginProjectPageSwap = (
     const created = content[0]
 
     created && created(item)
+  })
+}
+
+export const PluginAutoSave = (
+  emitter: PluginEmitter,
+  content: PluginContentOn
+) => {
+  emitter.on('plugin-auto-save', () => {
+    const created = content[0]
+
+    created && created()
+  })
+}
+
+export const PluginDropboxSave = (
+  emitter: PluginEmitter,
+  content: PluginContentOn
+) => {
+  emitter.on('plugin-dropbox-save', (type: PluginCode) => {
+    const created = content[0]
+    const err = content[1]
+
+    if (type === 'success') created && created()
+    if (type === 'error') err && err()
   })
 }

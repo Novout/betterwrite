@@ -3,6 +3,8 @@ import {
   PluginProjectPageNew,
   PluginProjectPageDelete,
   PluginProjectPageSwap,
+  PluginAutoSave,
+  PluginDropboxSave,
 } from '../core/on'
 import { LoggerContent } from '@/types/logger'
 import { useFormat } from '@/use/format'
@@ -29,6 +31,7 @@ export const PluginLoggerProject = (
         createdAt: format.actually(),
       } as LoggerContent)
     },
+    () => {},
   ])
 
   PluginProjectPageDelete(emitter, [
@@ -42,6 +45,7 @@ export const PluginLoggerProject = (
         createdAt: format.actually(),
       } as LoggerContent)
     },
+    () => {},
   ])
 
   PluginProjectPageSwap(emitter, [
@@ -59,6 +63,38 @@ export const PluginLoggerProject = (
           index: item.index,
           target: item.direction === 'up' ? --item.index : ++item.index,
         }),
+        createdAt: format.actually(),
+      } as LoggerContent)
+    },
+    () => {},
+  ])
+
+  PluginAutoSave(emitter, [
+    () => {
+      stores.LOGGER.add({
+        type: 'project',
+        method: 'log',
+        arguments: t('plugin.logger.on.project.autosave'),
+        createdAt: format.actually(),
+      } as LoggerContent)
+    },
+    () => {},
+  ])
+
+  PluginDropboxSave(emitter, [
+    () => {
+      stores.LOGGER.add({
+        type: 'project',
+        method: 'log',
+        arguments: t('plugin.logger.on.dropbox.save.success'),
+        createdAt: format.actually(),
+      } as LoggerContent)
+    },
+    () => {
+      stores.LOGGER.add({
+        type: 'project',
+        method: 'error',
+        arguments: t('plugin.logger.on.dropbox.save.error'),
         createdAt: format.actually(),
       } as LoggerContent)
     },

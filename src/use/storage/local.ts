@@ -11,6 +11,7 @@ import { useContextStore } from '@/store/context'
 import useEmitter from '@/use/emitter'
 import isElectron from 'is-electron'
 import { useAbsoluteStore } from '@/store/absolute'
+import usePlugin from '../plugin/core'
 
 export const useLocalStorage = () => {
   const CONTEXT = useContextStore()
@@ -23,6 +24,7 @@ export const useLocalStorage = () => {
   const toast = useToast()
   const env = useEnv()
   const emitter = useEmitter()
+  const plugin = usePlugin()
   const { t } = i18n.global
 
   const set = (obj: ProjectObject, name: string) => {
@@ -93,6 +95,8 @@ export const useLocalStorage = () => {
           normalize: {},
         },
       })
+
+      plugin.emit('plugin-auto-save')
     }, parseInt(`${time}000`))
   }
 

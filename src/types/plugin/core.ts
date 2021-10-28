@@ -11,11 +11,14 @@ import { ShortcutsState } from '../shortcuts'
 export type PluginEmitterName =
   | 'plugin-input-watch-initial'
   | 'plugin-input-watch-last'
+  | 'plugin-entity-create'
   | 'plugin-entity-delete'
   | 'plugin-entity-swap'
   | 'plugin-project-page-new'
   | 'plugin-project-page-delete'
   | 'plugin-project-page-swap'
+  | 'plugin-auto-save'
+  | 'plugin-dropbox-save'
 export interface PluginEmitter {
   on: (name: PluginEmitterName, callback: (...c: any) => any) => void
   emit: (name: PluginEmitterName, ...c: any) => void
@@ -49,7 +52,12 @@ export interface PluginStores {
   SHORTCUTS: PluginStore<'shortcuts', ShortcutsState>
 }
 
+export interface PluginDefines {
+  name: string
+}
+
 export interface Plugin {
+  defines: PluginDefines
   init: (emitter: PluginEmitter, stores: PluginStores) => void
 }
 export type Plugins = Array<Plugin>

@@ -1,5 +1,9 @@
 import { PluginEmitter, PluginStores } from '@/types/plugin/core'
-import { PluginEntityDelete, PluginEntitySwapper } from '../core/on'
+import {
+  PluginEntityDelete,
+  PluginEntitySwapper,
+  PluginEntityCreate,
+} from '../core/on'
 import { LoggerContent } from '@/types/logger'
 import { useFormat } from '@/use/format'
 import { useI18n } from 'vue-i18n'
@@ -15,6 +19,21 @@ export const PluginLoggerActions = (
   const format = useFormat()
   const { t } = useI18n()
 
+  PluginEntityCreate(emitter, [
+    (obj: PluginLoggerDefault) => {
+      stores.LOGGER.add({
+        type: 'editor',
+        method: 'info',
+        arguments: t('plugin.logger.on.entity.create', {
+          data: obj.data,
+          index: obj.index,
+        }),
+        createdAt: format.actually(),
+      } as LoggerContent)
+    },
+    () => {},
+  ])
+
   PluginEntityDelete(emitter, [
     (index: number) => {
       stores.LOGGER.add({
@@ -26,6 +45,7 @@ export const PluginLoggerActions = (
         createdAt: format.actually(),
       } as LoggerContent)
     },
+    () => {},
   ])
 
   PluginEntitySwapper(emitter, [
@@ -40,5 +60,6 @@ export const PluginLoggerActions = (
         createdAt: format.actually(),
       } as LoggerContent)
     },
+    () => {},
   ])
 }

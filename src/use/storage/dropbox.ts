@@ -12,6 +12,7 @@ import { useAuthStore } from '@/store/auth'
 import useEmitter from '@/use/emitter'
 import isElectron from 'is-electron'
 import { useAbsoluteStore } from '@/store/absolute'
+import usePlugin from '../plugin/core'
 
 export const useDropbox = () => {
   const CONTEXT = useContextStore()
@@ -25,6 +26,7 @@ export const useDropbox = () => {
   const toast = useToast()
   const emitter = useEmitter()
   const env = useEnv()
+  const plugin = usePlugin()
   const { t } = i18n.global
 
   const loadContext = async (context: any) => {
@@ -79,6 +81,7 @@ export const useDropbox = () => {
       })
       .then(() => {
         toast.success(t('toast.project.save'))
+        plugin.emit('plugin-dropbox-save', 'success')
       })
       .catch(() => {
         dbx
@@ -93,13 +96,16 @@ export const useDropbox = () => {
               })
               .then(() => {
                 toast.success(t('toast.project.save'))
+                plugin.emit('plugin-dropbox-save', 'success')
               })
               .catch(() => {
                 toast.error(t('toast.project.error'))
+                plugin.emit('plugin-dropbox-save', 'error')
               })
           })
           .catch(() => {
             toast.error(t('toast.project.error'))
+            plugin.emit('plugin-dropbox-save', 'error')
           })
       })
   }

@@ -201,14 +201,14 @@
             @action="page.onDeletePage"
           />
           <EditorHeaderItem
-            :text="t('editor.bar.chapter.down')"
-            shortcut=""
-            @action="page.onDownPage"
-          />
-          <EditorHeaderItem
             :text="t('editor.bar.chapter.up')"
             shortcut=""
             @action="page.onUpPage"
+          />
+          <EditorHeaderItem
+            :text="t('editor.bar.chapter.down')"
+            shortcut=""
+            @action="page.onDownPage"
           />
         </template>
       </EditorHeaderButton>

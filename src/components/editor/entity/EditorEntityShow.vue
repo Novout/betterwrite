@@ -417,6 +417,13 @@
         edit.value = false
         await nextTick
         onUpdateContent()
+
+        if (data.value !== props.entity.raw && data.value) {
+          plugin.emit('plugin-entity-create', {
+            data: data.value,
+            index: _index.value,
+          })
+        }
       }
     })
   })

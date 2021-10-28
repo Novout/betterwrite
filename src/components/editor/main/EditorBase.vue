@@ -52,6 +52,7 @@
   import { useContextStore } from '@/store/context'
   import { useProjectStore } from '@/store/project'
   import { useEditorStore } from '@/store/editor'
+  import usePlugin from '@/use/plugin/core'
 
   const CONTEXT = useContextStore()
   const PROJECT = useProjectStore()
@@ -59,6 +60,7 @@
 
   const emitter = useEmitter()
   const project = useProject()
+  const plugin = usePlugin()
   const env = useEnv()
 
   const main = ref<HTMLElement | null>(null)
@@ -69,11 +71,18 @@
   const enterListener = async (content: Entity) => {
     CONTEXT.addInPage(content)
 
-    await nextTick()
+    await nextTick
 
     useScroll().force('#edit')
 
     resetListener()
+
+    await nextTick
+
+    plugin.emit('plugin-entity-create', {
+      data: content.raw,
+      index: CONTEXT.entities.indexOf(content),
+    })
   }
 
   const resetListener = () => {
