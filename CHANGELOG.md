@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/Novout/better-write/compare/v0.5.1...v0.5.2) (2021-10-28)
+
+
+### Features
+
+* **logger:** break page action ([8b8208e](https://github.com/Novout/better-write/commits/8b8208ea0173a035d4d70b1f9cb043058880477b))
+* **logger:** general contents ([5c810d5](https://github.com/Novout/better-write/commits/5c810d5370b085551448df5f918d8e6625600ec7))
+* **project:** auto save option ([fb99df9](https://github.com/Novout/better-write/commits/fb99df9c3c59334032afe9f5d84f070dd59cba44))
+
+
+### Bug Fixes
+
+* **logger:** delete entity in raw content ([69898d0](https://github.com/Novout/better-write/commits/69898d038670424fce64c3cab5542642171315d3))
+* **seo:** title in empty blank project ([a3ad0a4](https://github.com/Novout/better-write/commits/a3ad0a40bb9908092b999ca31380d56dee8ec4a0))
+
+
+### Refactor
+
+* **editor:** preferences sizes ([facd68b](https://github.com/Novout/better-write/commits/facd68ba13ed675810d06bd528d1e8a34b466853))
+* **project:** plugin name page ([9131907](https://github.com/Novout/better-write/commits/91319075eccd70629fff740ac36f703815e24a1d))
+
+
+### Structure
+
+* new features ([e06820e](https://github.com/Novout/better-write/commits/e06820ed300352b32e1ad50ff3a2f20d3f02ec4f))
+
 ### [0.5.1](https://github.com/Novout/better-write/compare/v0.5.0...v0.5.1) (2021-10-27)
 
 ## [0.5.0](https://github.com/Novout/better-write/compare/v0.4.7...v0.5.0) (2021-10-27)
