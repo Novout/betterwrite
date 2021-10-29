@@ -21,4 +21,9 @@ export default {
       autosave: 'PROJECT AUTOMATICALLY SAVED SUCCESSFUL!',
     },
   },
+  normalize: {
+    image: 'IMAGE',
+    pageBreak: 'PAGE BREAK',
+    lineBreak: 'LINE BREAK',
+  },
 }

@@ -8,6 +8,7 @@ import { useEditorStore } from '@/store/editor'
 import { useContextStore } from '@/store/context'
 import useEmitter from './emitter'
 import usePlugin from './plugin/core'
+import { useI18n } from 'vue-i18n'
 
 export const useEntity = () => {
   const PROJECT = useProjectStore()
@@ -17,6 +18,7 @@ export const useEntity = () => {
   const env = useEnv()
   const emitter = useEmitter()
   const plugin = usePlugin()
+  const { t } = useI18n()
   const pages = computed(() => PROJECT.pages)
 
   const selection = computed(() => EDITOR.actives.text.selection.content)
@@ -43,6 +45,22 @@ export const useEntity = () => {
   })
 
   const utils = () => {
+    const isLink = (raw: string) => {
+      return raw.match('^(http|https)://')
+    }
+
+    const isImageCommand = (raw: string) => {
+      return raw.includes('data:image')
+    }
+
+    const isPageBreak = (raw: string) => {
+      return raw === env.pageBreak()
+    }
+
+    const isLineBreak = (raw: string) => {
+      return raw === env.lineBreak()
+    }
+
     const entry = (input: string, target: string): boolean => {
       return (
         input.startsWith('/' + target) ||
@@ -64,7 +82,23 @@ export const useEntity = () => {
       )
     }
 
-    return { entry, isFixed }
+    const getNamesByTheContent = (raw: string) => {
+      if (isImageCommand(raw)) return t('plugin.logger.normalize.image')
+      if (isLineBreak(raw)) return t('plugin.logger.normalize.lineBreak')
+      if (isPageBreak(raw)) return t('plugin.logger.normalize.pageBreak')
+
+      return raw
+    }
+
+    return {
+      entry,
+      isFixed,
+      getNamesByTheContent,
+      isLink,
+      isImageCommand,
+      isPageBreak,
+      isLineBreak,
+    }
   }
 
   const swapper = () => {

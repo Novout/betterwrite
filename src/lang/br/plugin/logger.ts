@@ -21,4 +21,9 @@ export default {
       autosave: 'PROJETO SALVO AUTOMATICAMENTE COM SUCESSO!',
     },
   },
+  normalize: {
+    image: 'IMAGEM',
+    pageBreak: 'QUEBRA DE PÁGINA',
+    lineBreak: 'QUEBRA DE LINHA',
+  },
 }

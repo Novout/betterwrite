@@ -7,12 +7,14 @@ import {
   PluginLoggerDefault,
   PluginLoggerEntitySwapper,
 } from '@/types/plugin/on'
+import { useEntity } from '@/use/entity'
 
 export const PluginLoggerActions = (
   emitter: PluginEmitter,
   stores: PluginStores
 ) => {
   const format = useFormat()
+  const ent = useEntity()
   const { t } = useI18n()
 
   entity().PluginEntityCreate(emitter, [
@@ -21,7 +23,7 @@ export const PluginLoggerActions = (
         type: 'editor',
         method: 'info',
         arguments: t('plugin.logger.on.entity.create', {
-          data: obj.data,
+          data: ent.utils().getNamesByTheContent(obj.data),
           index: obj.index,
         }),
         createdAt: format.actually(),
