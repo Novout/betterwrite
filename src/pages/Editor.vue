@@ -13,7 +13,6 @@
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useKeyboard } from '@/use/keyboard'
-  import { useLocalStorage } from '@/use/storage/local'
   import { useHead } from '@vueuse/head'
   import { computed, onUnmounted } from 'vue'
   import { useI18n } from 'vue-i18n'
@@ -24,9 +23,7 @@
   const keyboard = useKeyboard()
   const env = useEnv()
   const { t } = useI18n()
-  const local = useLocalStorage()
 
-  local.init()
   keyboard.init()
 
   onUnmounted(() => {

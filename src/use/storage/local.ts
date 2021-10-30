@@ -7,19 +7,15 @@ import { useProjectStore } from '@/store/project'
 import { useEditorStore } from '@/store/editor'
 import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
-import { useContextStore } from '@/store/context'
 import useEmitter from '@/use/emitter'
 import isElectron from 'is-electron'
-import { useAbsoluteStore } from '@/store/absolute'
 import usePlugin from '../plugin/core'
 
 export const useLocalStorage = () => {
-  const CONTEXT = useContextStore()
   const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
   const LOGGER = useLoggerStore()
   const PDF = usePDFStore()
-  const ABSOLUTE = useAbsoluteStore()
 
   const toast = useToast()
   const env = useEnv()
@@ -82,8 +78,10 @@ export const useLocalStorage = () => {
   }
 
   const onAutoSave = (time: number | 'never') => {
-    setInterval(() => {
-      if (PROJECT.name === env.projectEmpty() || time === 'never') return
+    if (time === 'never') return null
+
+    return setInterval(() => {
+      if (PROJECT.name === env.projectEmpty()) return
 
       setProject({
         project: PROJECT.$state,
@@ -97,37 +95,7 @@ export const useLocalStorage = () => {
       })
 
       plugin.emit('plugin-auto-save')
-    }, 1000 * 60 * (time === 'never' ? Infinity : time))
-  }
-
-  const onLoadProject = async () => {
-    const context = getProject()
-
-    if (!context) return
-
-    PROJECT.load(context.project)
-
-    await nextTick
-
-    CONTEXT.load(PROJECT.pages[0])
-
-    await nextTick
-
-    LOGGER.load(context.logger.content)
-
-    await nextTick
-
-    EDITOR.load(context.editor)
-
-    PDF.load(context.pdf)
-
-    ABSOLUTE.aside = true
-
-    toast.success(t('toast.project.load'))
-  }
-
-  const init = () => {
-    onAutoSave(EDITOR.configuration.auto)
+    }, 1000 * 60 * (time as number))
   }
 
   return {
@@ -136,8 +104,6 @@ export const useLocalStorage = () => {
     setProject,
     getProject,
     onSaveProject,
-    onLoadProject,
     onAutoSave,
-    init,
   }
 }

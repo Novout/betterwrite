@@ -13,6 +13,8 @@ import useEmitter from '@/use/emitter'
 import isElectron from 'is-electron'
 import { useAbsoluteStore } from '@/store/absolute'
 import usePlugin from '../plugin/core'
+import { useProject } from '../project'
+import { ProjectObject } from '../../types/project'
 
 export const useDropbox = () => {
   const CONTEXT = useContextStore()
@@ -27,24 +29,13 @@ export const useDropbox = () => {
   const emitter = useEmitter()
   const env = useEnv()
   const plugin = usePlugin()
+  const project = useProject()
   const { t } = i18n.global
 
-  const loadContext = async (context: any) => {
+  const loadContext = async (context: ProjectObject) => {
     if (!context) return
 
-    PROJECT.load(context.project)
-
-    await nextTick
-
-    CONTEXT.load(PROJECT.pages[0])
-
-    await nextTick
-
-    LOGGER.load(context.logger.content)
-
-    PDF.load(context.pdf)
-
-    toast.success(t('toast.project.load'))
+    project.onLoadProject(context)
   }
 
   const save = async () => {

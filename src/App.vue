@@ -9,8 +9,6 @@
   import { useDestroy } from '@/use/destroy'
   import { LoggerPlugin } from './plugin/logger'
 
-  const { t } = useI18n()
-
   const start = useStart()
   const destroy = useDestroy()
 

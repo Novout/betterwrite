@@ -70,7 +70,7 @@
             :divider="true"
             :text="t('editor.bar.project.load')"
             shortcut="CTRL + P"
-            @action="local.onLoadProject"
+            @action="project.onLoadProject"
           />
           <EditorHeaderItem
             v-if="PROJECT.name !== env.projectEmpty()"

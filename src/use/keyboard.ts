@@ -66,7 +66,7 @@ export const useKeyboard = () => {
     keyboard.bind(SHORTCUTS.localLoadProject[1], async (e: Event) => {
       utils.prevent(e)
 
-      local.onLoadProject()
+      project.onLoadProject()
     })
   }
 

@@ -48,7 +48,7 @@ export const useEditorStore = defineStore('editor', {
       configuration: {
         dark: true,
         draggable: false,
-        auto: 'never',
+        auto: 5,
       },
       actives: {
         text: {
