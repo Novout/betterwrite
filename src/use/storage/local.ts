@@ -82,10 +82,8 @@ export const useLocalStorage = () => {
   }
 
   const onAutoSave = (time: number | 'never') => {
-    if (time === 'never' || !time) return
-
     setInterval(() => {
-      if (PROJECT.name === env.projectEmpty()) return
+      if (PROJECT.name === env.projectEmpty() || time === 'never') return
 
       setProject({
         project: PROJECT.$state,
@@ -99,7 +97,7 @@ export const useLocalStorage = () => {
       })
 
       plugin.emit('plugin-auto-save')
-    }, 1000 * 60 * time)
+    }, 1000 * 60 * (time === 'never' ? Infinity : time))
   }
 
   const onLoadProject = async () => {
