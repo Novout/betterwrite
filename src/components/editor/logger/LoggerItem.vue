@@ -1,4 +1,3 @@
-import { computed } from 'vue';
 <template>
   <p
     v-once
