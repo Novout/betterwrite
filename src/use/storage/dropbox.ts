@@ -15,6 +15,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import usePlugin from '../plugin/core'
 import { useProject } from '../project'
 import { ProjectObject } from '../../types/project'
+import { useStorage } from './storage'
 
 export const useDropbox = () => {
   const CONTEXT = useContextStore()
@@ -28,6 +29,7 @@ export const useDropbox = () => {
   const toast = useToast()
   const emitter = useEmitter()
   const env = useEnv()
+  const storage = useStorage()
   const plugin = usePlugin()
   const project = useProject()
   const { t } = i18n.global
@@ -118,22 +120,9 @@ export const useDropbox = () => {
         dbx
           .filesDownload({ path: file.id })
           .then(async (data: DropboxResponse<any>) => {
-            const context = JSON.parse(await data.result.fileBlob.text())
-            // <= v0.3.10
-            if (context.project?.pages[0]?.entity) {
-              context.project?.pages.forEach((target: any) => {
-                target['entities'] = target['entity']
-                delete target['entity']
-              })
-            }
-
-            // <= 0.4.0
-            if (!context.project.bw) {
-              context.project.bw = {
-                platform: isElectron() ? 'desktop' : 'web',
-                version: env.packageVersion(),
-              }
-            }
+            let context = storage.support(
+              JSON.parse(await data.result.fileBlob.text())
+            )
 
             ABSOLUTE.aside = true
 

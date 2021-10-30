@@ -8,9 +8,8 @@ import { useEditorStore } from '@/store/editor'
 import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
 import useEmitter from '@/use/emitter'
-import isElectron from 'is-electron'
 import usePlugin from '../plugin/core'
-
+import { useStorage } from './storage'
 export const useLocalStorage = () => {
   const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
@@ -20,6 +19,7 @@ export const useLocalStorage = () => {
   const toast = useToast()
   const env = useEnv()
   const emitter = useEmitter()
+  const storage = useStorage()
   const plugin = usePlugin()
   const { t } = i18n.global
 
@@ -36,25 +36,7 @@ export const useLocalStorage = () => {
   }
 
   const getProject = (): ProjectObject => {
-    const _ = get(env.projectLocalStorage())
-
-    // <= v0.3.10
-    if (_.project?.pages[0]?.entity) {
-      _.project?.pages.forEach((target: any) => {
-        target['entities'] = target['entity']
-        delete target['entity']
-      })
-    }
-
-    // <= 0.4.0
-    if (!_.project.bw) {
-      _.project.bw = {
-        platform: isElectron() ? 'desktop' : 'web',
-        version: env.packageVersion(),
-      }
-    }
-
-    return _
+    return storage.support(get(env.projectLocalStorage()))
   }
 
   const onSaveProject = async () => {
