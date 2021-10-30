@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.3](https://github.com/Novout/better-write/compare/v0.5.2...v0.5.3) (2021-10-30)
+
+
+### Bug Fixes
+
+* **editor:** auto save in initial call ([4a68130](https://github.com/Novout/better-write/commits/4a6813000ef4019f07ffadb5ba6aa44181e64dfd))
+* **editor:** auto save set interval ([d7ee35c](https://github.com/Novout/better-write/commits/d7ee35c10b0ac4c37931a0ae604e75b6cc09446a))
+* **logger:** convert fixed items ([c2342df](https://github.com/Novout/better-write/commits/c2342df5cf672b2d081b465f27b6072b7fb4afc3))
+
 ### [0.5.2](https://github.com/Novout/better-write/compare/v0.5.1...v0.5.2) (2021-10-28)
 
 
