@@ -33,7 +33,7 @@ export const useLocalStorage = () => {
     return storage.support(get(env.projectLocalStorage()))
   }
 
-  const onSaveProject = async () => {
+  const onSaveProject = async (event: boolean = true) => {
     if (PROJECT.name === env.projectEmpty()) return
 
     emitter.emit('project-save')
@@ -41,16 +41,14 @@ export const useLocalStorage = () => {
 
     setProject(storage.getProjectObject())
 
-    toast.success(t('toast.project.save'))
+    if (event) toast.success(t('toast.project.save'))
   }
 
   const onAutoSave = (time: number | 'never') => {
     if (time === 'never') return null
 
     return setInterval(() => {
-      if (PROJECT.name === env.projectEmpty()) return
-
-      setProject(storage.getProjectObject())
+      onSaveProject(false)
 
       plugin.emit('plugin-auto-save')
     }, 1000 * 60 * (time as number))

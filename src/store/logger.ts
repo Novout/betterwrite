@@ -15,8 +15,8 @@ export const useLoggerStore = defineStore('logger', {
     reset() {
       this.content = []
     },
-    load(arr: Array<LoggerContent>) {
-      this.content = arr
+    load(all: LoggerState) {
+      this.content = all.content
     },
   },
 })

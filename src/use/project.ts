@@ -64,7 +64,7 @@ export const useProject = () => {
 
     await nextTick
 
-    LOGGER.load(context.logger.content)
+    LOGGER.load(context.logger)
 
     await nextTick
 
