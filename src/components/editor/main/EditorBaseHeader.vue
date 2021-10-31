@@ -81,7 +81,7 @@
         </template>
       </EditorHeaderButton>
       <!-- DROPBOX -->
-      <EditorHeaderButton>
+      <EditorHeaderButton v-if="!isElectron()">
         <template #icon>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -281,17 +281,16 @@
   import { useProject } from '@/use/project'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useProjectStore } from '@/store/project'
-  import { useContextStore } from '@/store/context'
   import { useEnv } from '@/use/env'
   import { usePDF } from '@/use/pdf'
   import { useI18n } from 'vue-i18n'
   import { useLocalStorage } from '@/use/storage/local'
   import { useDropbox } from '@/use/storage/dropbox'
   import { useAuthStore } from '@/store/auth'
+  import isElectron from 'is-electron'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
-  const CONTEXT = useContextStore()
   const AUTH = useAuthStore()
 
   const page = usePage()
@@ -302,12 +301,4 @@
   const local = useLocalStorage()
   const dropbox = useDropbox()
   const { t } = useI18n()
-
-  const onFinder = (e: MouseEvent) => {
-    ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.finder
-  }
-
-  const onSwitcher = (e: MouseEvent) => {
-    ABSOLUTE.shortcuts.switcher = !ABSOLUTE.shortcuts.switcher
-  }
 </script>

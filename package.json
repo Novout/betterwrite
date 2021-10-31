@@ -118,7 +118,7 @@
     }
   },
   "build": {
-    "appId": "com.https://better-write.vercel.app.bw",
+    "appId": "com.betterwrite.app",
     "productName": "Better Write",
     "directories": {
       "buildResources": "desktop/resources",

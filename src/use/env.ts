@@ -3,7 +3,7 @@ import isElectron from 'is-electron'
 export const useEnv = () => {
   const getCorrectLocalUrl = () => {
     if (isElectron()) {
-      return window.location.href
+      return 'https://app.betterwrite.com/'
     }
 
     return import.meta.env.PROD
