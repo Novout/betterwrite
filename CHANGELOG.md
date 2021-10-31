@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.7](https://github.com/Novout/better-write/compare/v0.5.6...v0.5.7) (2021-10-31)
+
+
+### Features
+
+* **editor:** load local project in initial mounted call ([eec154f](https://github.com/Novout/better-write/commits/eec154f566974ce4e9d89ec3948414a5a450073b))
+* **logger:** alter page ([cc1a79f](https://github.com/Novout/better-write/commits/cc1a79fdd410f83aa34190055de2f519ea5bcc00))
+
+
+### Bug Fixes
+
+* **editor:** load in correct set stores ([ee0637d](https://github.com/Novout/better-write/commits/ee0637d19621139129ed954a8598f4211c27d423))
+* **storage:** local name key ([981b046](https://github.com/Novout/better-write/commits/981b046b033d3e6c56dc9b770a7930a0f8459515))
+
+
+### Refactor
+
+* **storage:** project object ([e61bea2](https://github.com/Novout/better-write/commits/e61bea2e9f8e4eb60673f6c0193ddb04c267d031))
+
+
+### Structure
+
+* **desktop:** force icon ([9ffa5fe](https://github.com/Novout/better-write/commits/9ffa5fe4c2812fdcbeaa207051dbab3a39944053))
+* hook typos ([5a0ddb6](https://github.com/Novout/better-write/commits/5a0ddb602fe1771ef0106faf7c352d72ec95a063))
+
 ### [0.5.6](https://github.com/Novout/better-write/compare/v0.5.5...v0.5.6) (2021-10-31)
 
 
