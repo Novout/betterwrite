@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.5](https://github.com/Novout/better-write/compare/v0.5.4...v0.5.5) (2021-10-31)
+
+
+### Features
+
+* **desktop:** correct register app package ([ea90633](https://github.com/Novout/better-write/commits/ea906333310998908abdfa4ed12015ef6595b7a3))
+
 ### [0.5.4](https://github.com/Novout/better-write/compare/v0.5.3...v0.5.4) (2021-10-31)
 
 
