@@ -299,6 +299,7 @@
   import { EntityType } from '@/types/context'
   import { useContextStore } from '@/store/context'
   import { Entity } from '@/types/context'
+  import usePlugin from '@/use/plugin/core'
 
   const props = defineProps({
     entity: {
@@ -310,6 +311,7 @@
   const CONTEXT = useContextStore()
 
   const format = useFormat()
+  const plugin = usePlugin()
   const { t } = useI18n()
 
   const state = reactive({
@@ -389,6 +391,11 @@
       type,
     })
 
+    plugin.emit('plugin-entity-create', {
+      data: props.entity.raw,
+      index: CONTEXT.entities.indexOf(props.entity),
+    })
+
     state.new = false
   }
 
@@ -403,6 +410,11 @@
     CONTEXT.alterInPage({
       entity: props.entity,
       type,
+    })
+
+    plugin.emit('plugin-entity-alter-in-page', {
+      data: t(`editor.entity.${type}`).toUpperCase(),
+      index: CONTEXT.entities.indexOf(props.entity),
     })
 
     state.switcher = false

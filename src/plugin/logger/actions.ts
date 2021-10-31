@@ -75,4 +75,19 @@ export const PluginLoggerActions = (
     },
     () => {},
   ])
+
+  entity().PluginAlterInPage(emitter, [
+    (obj: PluginLoggerDefault) => {
+      stores.LOGGER.add({
+        type: 'editor',
+        method: 'info',
+        arguments: t('plugin.logger.on.entity.alter', {
+          data: obj.data,
+          index: obj.index,
+        }),
+        createdAt: format.actually(),
+      } as LoggerContent)
+    },
+    () => {},
+  ])
 }

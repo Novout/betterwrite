@@ -1,4 +1,13 @@
 export default {
+  entity: {
+    paragraph: 'Paragraph',
+    'heading-one': 'Heading 1',
+    'heading-two': 'Heading 2',
+    'heading-three': 'Heading 3',
+    'page-break': 'Page Break',
+    'line-break': 'Line Break',
+    image: 'Image',
+  },
   bar: {
     pdf: {
       preview: 'Preview',

@@ -85,6 +85,19 @@ export const entity = () => {
     })
   }
 
+  const PluginAlterInPage = (
+    emitter: PluginEmitter,
+    content: PluginContentOn
+  ) => {
+    emitter.on('plugin-entity-alter-in-page', (obj: PluginLoggerDefault) => {
+      if (!obj) return
+
+      const created = content[0]
+
+      created && created(obj)
+    })
+  }
+
   return {
     PluginEntityCreate,
     PluginEntityDelete,
@@ -92,6 +105,7 @@ export const entity = () => {
     PluginEntityInputLast,
     PluginEntitySwapper,
     PluginEntityPageBreak,
+    PluginAlterInPage,
   }
 }
 

@@ -13,6 +13,7 @@ export default {
       delete: 'A POSIÇÃO <{index}>  FOI DELETADA!',
       swap: 'POSIÇÃO <{index}>  TROCADA COM A POSIÇÃO <{target}>.',
       break: '<{data}> ENVIADO PARA A POSIÇÃO <{index}>.',
+      alter: 'A POSIÇÃO <{index}> MUDOU O ESTILO PARA <{data}>',
     },
     project: {
       new: 'PÁGINA DE NÚMERO <{index}>  CRIADA!',
