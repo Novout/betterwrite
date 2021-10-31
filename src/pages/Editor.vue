@@ -13,8 +13,9 @@
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useKeyboard } from '@/use/keyboard'
+  import { useProject } from '@/use/project'
   import { useHead } from '@vueuse/head'
-  import { computed, onUnmounted } from 'vue'
+  import { computed, onMounted, onUnmounted } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const PROJECT = useProjectStore()
@@ -22,9 +23,14 @@
 
   const keyboard = useKeyboard()
   const env = useEnv()
+  const project = useProject()
   const { t } = useI18n()
 
   keyboard.init()
+
+  onMounted(() => {
+    project.onLoadProject()
+  })
 
   onUnmounted(() => {
     keyboard.destroy()
