@@ -45,16 +45,7 @@ export const useLocalStorage = () => {
     emitter.emit('project-save')
     await nextTick
 
-    setProject({
-      project: PROJECT.$state,
-      editor: EDITOR.$state,
-      logger: LOGGER.$state,
-      pdf: {
-        styles: PDF.styles,
-        fonts: [],
-        normalize: {},
-      },
-    })
+    setProject(storage.getProjectObject())
 
     toast.success(t('toast.project.save'))
   }
@@ -65,16 +56,7 @@ export const useLocalStorage = () => {
     return setInterval(() => {
       if (PROJECT.name === env.projectEmpty()) return
 
-      setProject({
-        project: PROJECT.$state,
-        editor: EDITOR.$state,
-        logger: LOGGER.$state,
-        pdf: {
-          styles: PDF.styles,
-          fonts: [],
-          normalize: {},
-        },
-      })
+      setProject(storage.getProjectObject())
 
       plugin.emit('plugin-auto-save')
     }, 1000 * 60 * (time as number))

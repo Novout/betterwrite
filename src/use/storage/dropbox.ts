@@ -48,17 +48,6 @@ export const useDropbox = () => {
     emitter.emit('entity-close', { all: true })
     await nextTick
 
-    const obj = {
-      project: PROJECT.$state,
-      editor: EDITOR.$state,
-      logger: LOGGER.$state,
-      pdf: {
-        styles: PDF.styles,
-        fonts: [],
-        normalize: {},
-      },
-    }
-
     const dbx = new DBX({
       accessToken: AUTH.dropbox.accessToken,
     })
@@ -70,7 +59,7 @@ export const useDropbox = () => {
     dbx
       .filesUpload({
         path,
-        contents: JSON.stringify(obj),
+        contents: JSON.stringify(storage.getProjectObject()),
       })
       .then(() => {
         toast.success(t('toast.project.save'))
@@ -85,7 +74,7 @@ export const useDropbox = () => {
             dbx
               .filesUpload({
                 path,
-                contents: JSON.stringify(obj),
+                contents: JSON.stringify(storage.getProjectObject()),
               })
               .then(() => {
                 toast.success(t('toast.project.save'))

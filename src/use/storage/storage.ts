@@ -1,6 +1,17 @@
 import isElectron from 'is-electron'
 import { useEnv } from '../env'
+import { useProjectStore } from '@/store/project'
+import { useEditorStore } from '@/store/editor'
+import { useLoggerStore } from '@/store/logger'
+import { usePDFStore } from '@/store/pdf'
+import { ProjectObject } from '@/types/project'
+
 export const useStorage = () => {
+  const PROJECT = useProjectStore()
+  const EDITOR = useEditorStore()
+  const LOGGER = useLoggerStore()
+  const PDF = usePDFStore()
+
   const env = useEnv()
 
   const support = (project: any) => {
@@ -29,5 +40,18 @@ export const useStorage = () => {
     return _
   }
 
-  return { support }
+  const getProjectObject = (): ProjectObject => {
+    return {
+      project: PROJECT.$state,
+      editor: EDITOR.$state,
+      logger: LOGGER.$state,
+      pdf: {
+        styles: PDF.styles,
+        fonts: [],
+        normalize: {},
+      },
+    }
+  }
+
+  return { support, getProjectObject }
 }
