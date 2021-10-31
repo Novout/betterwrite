@@ -4,17 +4,11 @@ import { nextTick } from 'vue'
 import { useEnv } from '../env'
 import i18n from '@/lang'
 import { useProjectStore } from '@/store/project'
-import { useEditorStore } from '@/store/editor'
-import { useLoggerStore } from '@/store/logger'
-import { usePDFStore } from '@/store/pdf'
 import useEmitter from '@/use/emitter'
 import usePlugin from '../plugin/core'
 import { useStorage } from './storage'
 export const useLocalStorage = () => {
   const PROJECT = useProjectStore()
-  const EDITOR = useEditorStore()
-  const LOGGER = useLoggerStore()
-  const PDF = usePDFStore()
 
   const toast = useToast()
   const env = useEnv()

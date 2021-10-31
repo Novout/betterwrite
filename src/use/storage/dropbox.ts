@@ -3,32 +3,22 @@ import { useToast } from 'vue-toastification'
 import { Dropbox as DBX, DropboxResponse, DropboxResponseError } from 'dropbox'
 import { useEnv } from '@/use/env'
 import { useProjectStore } from '@/store/project'
-import { useEditorStore } from '@/store/editor'
-import { useLoggerStore } from '@/store/logger'
-import { usePDFStore } from '@/store/pdf'
-import { useContextStore } from '@/store/context'
 import i18n from '@/lang'
 import { useAuthStore } from '@/store/auth'
 import useEmitter from '@/use/emitter'
-import isElectron from 'is-electron'
 import { useAbsoluteStore } from '@/store/absolute'
 import usePlugin from '../plugin/core'
 import { useProject } from '../project'
-import { ProjectObject } from '../../types/project'
+import { ProjectObject } from '@/types/project'
 import { useStorage } from './storage'
 
 export const useDropbox = () => {
-  const CONTEXT = useContextStore()
   const PROJECT = useProjectStore()
-  const EDITOR = useEditorStore()
   const AUTH = useAuthStore()
-  const LOGGER = useLoggerStore()
-  const PDF = usePDFStore()
   const ABSOLUTE = useAbsoluteStore()
 
   const toast = useToast()
   const emitter = useEmitter()
-  const env = useEnv()
   const storage = useStorage()
   const plugin = usePlugin()
   const project = useProject()
