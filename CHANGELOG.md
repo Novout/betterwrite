@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.4](https://github.com/Novout/better-write/compare/v0.5.3...v0.5.4) (2021-10-31)
+
+
+### Features
+
+* **editor:** support v0.5.3 ([c1af89a](https://github.com/Novout/better-write/commits/c1af89ac5b1f9376e47ba9fdde162ecd0f3a85ac))
+
+
+### Bug Fixes
+
+* **desktop:** drag bar ignoring items ([339037b](https://github.com/Novout/better-write/commits/339037baf3f42771476b4661d8cc2f5ff13ba7c7))
+* **editor:** save sequence ([cd73202](https://github.com/Novout/better-write/commits/cd7320260f7b8c3007443e1ec2c0bb678dde9b3c))
+
+
+### Structure
+
+* component typo ([2e79140](https://github.com/Novout/better-write/commits/2e79140eb19b58d8687e9fab9e16abfd1ae8c321))
+
+
+### Refactor
+
+* **desktop:** auto-updater implements] ([4d73a18](https://github.com/Novout/better-write/commits/4d73a18165aa5a9b27e1adc59399fd5610220455))
+
 ### [0.5.3](https://github.com/Novout/better-write/compare/v0.5.2...v0.5.3) (2021-10-30)
 
 

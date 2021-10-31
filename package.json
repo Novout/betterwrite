@@ -1,6 +1,6 @@
 {
   "name": "better-write",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "repository": "https://github.com/Novout/better-write",
   "author": {
     "name": "Giovane Cardoso",
@@ -124,11 +124,13 @@
       "buildResources": "desktop/resources",
       "output": "build/dist"
     },
-    "publish": [{
-      "provider": "github",
-      "owner": "Novout",
-      "repo": "better-write"
-    }],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Novout",
+        "repo": "better-write"
+      }
+    ],
     "win": {
       "target": [
         "nsis",
