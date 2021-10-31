@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.6](https://github.com/Novout/better-write/compare/v0.5.5...v0.5.6) (2021-10-31)
+
+
+### Structure
+
+* **desktop:** builder windows options ([7b83857](https://github.com/Novout/better-write/commits/7b8385700a042822cac7f734b642d6bcc09746ee))
+* **desktop:** correct size icons ([f830381](https://github.com/Novout/better-write/commits/f830381b85db1d119749bfbb3f13e5dc86120d47))
+
 ### [0.5.5](https://github.com/Novout/better-write/compare/v0.5.4...v0.5.5) (2021-10-31)
 
 
