@@ -1,6 +1,7 @@
 const { app, BrowserWindow, protocol, globalShortcut } = require('electron')
 const { autoUpdater } = require('electron-updater')
 const { join } = require('path')
+const log = require('electron-log')
 
 const isDev = process.env.NODE_ENV === 'development'
 const WinURL = isDev
@@ -13,6 +14,11 @@ let willQuitApp = false
 protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ])
+
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = 'info';
+
+log.info('App starting...');
 
 const createWindow = () => {
   mainWindow = new BrowserWindow({
@@ -37,16 +43,17 @@ const createWindow = () => {
   })
 
   mainWindow.once('ready-to-show', () => {
-    mainWindow?.show()
-    
-    autoUpdater.checkForUpdatesAndNotify()
-  })
+    log.info('App rendering...');
 
-  mainWindow.on('update-downloaded', () => {
-    autoUpdater.quitAndInstall()
+    mainWindow?.show()
   })
+  
+  autoUpdater.checkForUpdatesAndNotify()
 }
 
+autoUpdater.on('update-downloaded', () => {
+  autoUpdater.quitAndInstall()
+})
 
 app.on('ready', createWindow)
 

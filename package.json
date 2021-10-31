@@ -124,19 +124,18 @@
       "buildResources": "desktop/resources",
       "output": "build/dist"
     },
+    "publish": [{
+      "provider": "github",
+      "owner": "Novout",
+      "repo": "better-write"
+    }],
     "win": {
-      "publish": [
-        "github"
-      ],
       "target": [
         "nsis",
         "msi"
       ]
     },
     "linux": {
-      "publish": [
-        "github"
-      ],
       "target": [
         "deb",
         "rpm",
