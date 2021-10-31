@@ -33,8 +33,7 @@ const createWindow = () => {
       enableRemoteModule: false,
       webSecurity: false,
       nodeIntegration: true
-    },
-    icon: join(__dirname, '../render/logo-desktop.png')
+    }
   })
 
   mainWindow.loadURL(WinURL)
