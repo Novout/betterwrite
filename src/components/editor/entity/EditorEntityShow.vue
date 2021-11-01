@@ -580,18 +580,6 @@
 
     // in ctrl press
     if (e.ctrlKey) {
-      // generics
-      if (
-        e.key !== 'c' &&
-        e.key !== 'f' &&
-        e.key !== 'a' &&
-        e.key !== 'v' &&
-        e.key !== 'm' &&
-        e.key !== 'd'
-      ) {
-        e.preventDefault()
-        e.stopPropagation()
-      }
 
       // finder
       if (e.key === 'f') {
