@@ -580,7 +580,6 @@
 
     // in ctrl press
     if (e.ctrlKey) {
-
       // finder
       if (e.key === 'f') {
         ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.finder

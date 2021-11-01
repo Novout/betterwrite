@@ -8,6 +8,32 @@ export default {
         swap: 'Trocar de Posição',
         to: 'Ir Para Posição Seguinte',
       },
+      global: {
+        title: 'Geral',
+        project: {
+          title: 'Projeto',
+          save: 'Salvar',
+          load: 'Carregar',
+          new: 'Novo',
+          chapter: {
+            title: 'Capítulo',
+            new: 'Novo',
+            delete: 'Deletar',
+          },
+          helpers: {
+            title: 'Auxiliares',
+            switcher: 'Trocar Texto',
+            finder: 'Encontrar Texto',
+            logger: 'Ações',
+          },
+          pdf: {
+            title: 'PDF',
+            generate: 'Criar',
+            configuration: 'Configuração',
+            preview: 'Visualização',
+          },
+        },
+      },
     },
   },
   entity: {

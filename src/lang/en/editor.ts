@@ -8,6 +8,32 @@ export default {
         swap: 'Change Position',
         to: 'Go To Next Position',
       },
+      global: {
+        title: 'Global',
+        project: {
+          title: 'Project',
+          save: 'Save',
+          load: 'Load',
+          new: 'New',
+          chapter: {
+            title: 'Chapter',
+            new: 'New',
+            delete: 'Delete',
+          },
+          helpers: {
+            title: 'Helpers',
+            switcher: 'Change Text',
+            finder: 'Find Text',
+            logger: 'Actions',
+          },
+          pdf: {
+            title: 'PDF',
+            generate: 'Generate',
+            configuration: 'Configuration',
+            preview: 'Preview',
+          },
+        },
+      },
     },
   },
   entity: {
