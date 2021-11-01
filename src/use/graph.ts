@@ -59,7 +59,7 @@ export const useGraph = () => {
       if (!start) return
       // load page target
       CONTEXT.load(start)
-      
+
       utils().mobile()
     })
   }

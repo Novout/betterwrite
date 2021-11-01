@@ -2,6 +2,8 @@ export const useScroll = () => {
   const force = (tag: string) => {
     setTimeout(() => {
       const scr = document.querySelector(tag)
+
+      if (!scr) return
       ;(scr as HTMLElement).scrollTop = (scr as HTMLElement).scrollHeight
     }, 0)
   }
