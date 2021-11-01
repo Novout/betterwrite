@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/Novout/better-write/compare/v0.5.7...v0.6.0) (2021-11-01)
+
+
+### Features
+
+* **editor:** global preferences ([22d50b6](https://github.com/Novout/better-write/commits/22d50b681fe880ff9c7f3e955c30628058b163ae))
+* **editor:** preferences hotkeys ([8ce1311](https://github.com/Novout/better-write/commits/8ce13114962d73ccebeeb5ed7ef3044f92b3473e))
+* **graph:** load last page project ([b58109d](https://github.com/Novout/better-write/commits/b58109da43cf3cf72980f227eedc3b5348a3a46a))
+* **project:** save project in close ([4a8a3dd](https://github.com/Novout/better-write/commits/4a8a3dd4f29c6391b42cd71a105c8c8c677874df))
+
+
+### Bug Fixes
+
+* **aside:** mobile close effect ([b713093](https://github.com/Novout/better-write/commits/b71309333b58a7a0eb8a060ef4db42325eab0312))
+* **desktop:** build linux ([8b4f71d](https://github.com/Novout/better-write/commits/8b4f71dd920a477665f5b0f4b283e24c545a8a7f))
+* **editor:** alter entity not exclude content ([191382a](https://github.com/Novout/better-write/commits/191382aaae6d3612eaa0bf4f064e98f8d6d503b1))
+* **editor:** close popover in mouseout ([e9c0e8f](https://github.com/Novout/better-write/commits/e9c0e8f1fd86bce1d913d1867ff59bbe4197f180))
+* **editor:** necessary events ([6fb8a50](https://github.com/Novout/better-write/commits/6fb8a5019ff410f60af5dd1390bd9c3d679b2abb))
+* **editor:** scroll in initial contexts ([0b3c128](https://github.com/Novout/better-write/commits/0b3c128f8f2aa340ebcfd4391bb364262a775564))
+* **graph:** mobile sets ([31fab2a](https://github.com/Novout/better-write/commits/31fab2a514964ebabdf1dba448f539bf191ad90d))
+* **graph:** name project to reset context ([a7663e1](https://github.com/Novout/better-write/commits/a7663e151997fff1a33086bf597c445c1238e35e))
+* **project:** correct normalize save methods ([a4c399a](https://github.com/Novout/better-write/commits/a4c399ae22c1c7b78cdeb0758e2fbe7a25547b19))
+* **seo:** title in fixed items ([ff275c8](https://github.com/Novout/better-write/commits/ff275c85c368f08e0cc4fde3e7e77b1563f2faac))
+
+
+### Style
+
+* **editor:** preferences hotkeys item ([f6ad486](https://github.com/Novout/better-write/commits/f6ad4862fc186dd1381655fd2c98015d318f12b7))
+
+
+### Structure
+
+* **deps:** update packages ([b1573a7](https://github.com/Novout/better-write/commits/b1573a7fa451dc37d167b61ad432c4f0b80a795e))
+* **desktop:** web security ([0991fb2](https://github.com/Novout/better-write/commits/0991fb21bd2b88228251be372f3659d6de15b5d4))
+* **editor:** remove prevents in editor keyboard ([3bcc6fa](https://github.com/Novout/better-write/commits/3bcc6fa867e16316f36988594fa9acc508c68b54))
+* **pdf:** default font in paragraph ([07badf6](https://github.com/Novout/better-write/commits/07badf659cad213b964a487a13eee57d8872431e))
+
 ### [0.5.7](https://github.com/Novout/better-write/compare/v0.5.6...v0.5.7) (2021-10-31)
 
 
