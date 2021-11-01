@@ -1,5 +1,5 @@
 <template>
-  <transition @leave="(el, done) => motions.aside.leave(done)">
+  <transition>
     <aside
       v-if="ABSOLUTE.aside"
       id="editor-aside"
@@ -35,13 +35,6 @@
 
 <script lang="ts" setup>
   import { useAbsoluteStore } from '@/store/absolute'
-  import { useMotions } from '@vueuse/motion'
 
   const ABSOLUTE = useAbsoluteStore()
-
-  const motions = useMotions()
-
-  const onClose = () => {
-    ABSOLUTE.aside = false
-  }
 </script>
