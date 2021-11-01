@@ -29,9 +29,8 @@ const createWindow = () => {
     center: true,
     titleBarStyle: 'hidden',
     webPreferences: {
-      contextIsolation: false,
       enableRemoteModule: false,
-      webSecurity: false,
+      webSecurity: true,
       nodeIntegration: true
     }
   })
