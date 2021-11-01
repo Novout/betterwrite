@@ -11,6 +11,7 @@ import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
 import { ProjectObject } from '@/types/project'
 import { ContextState } from '@/types/context'
+import { useStorage } from './storage/storage'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -21,7 +22,7 @@ export const useProject = () => {
   const ABSOLUTE = useAbsoluteStore()
 
   const toast = useToast()
-  const emitter = useEmitter()
+  const storage = useStorage()
   const local = useLocalStorage()
   const { t } = i18n.global
 
@@ -36,7 +37,7 @@ export const useProject = () => {
   }
 
   const create = (project: Record<string, any>) => {
-    normalize().then(async () => {
+    storage.normalize().then(async () => {
       project.type === 'blank'
         ? PROJECT.createBlank(project)
         : PROJECT.create(project)
@@ -94,19 +95,6 @@ export const useProject = () => {
     return PROJECT.type === 'creative'
   }
 
-  const normalize = async () => {
-    // close open entities contents
-    emitter.emit('entity-edit-save')
-    // force last input in emit content
-    emitter.emit('entity-input-force-enter')
-
-    await nextTick
-    // close all entities for not breaking same index in next page
-    emitter.emit('entity-edit-reset')
-
-    await nextTick
-  }
-
   return {
     init,
     destroy,
@@ -114,6 +102,5 @@ export const useProject = () => {
     onLoadProject,
     isBlankProject,
     isCreativeProject,
-    normalize,
   }
 }

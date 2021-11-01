@@ -30,13 +30,10 @@ export const useDropbox = () => {
     project.onLoadProject(context)
   }
 
-  const save = async () => {
+  const save = () => {
     if (!AUTH.dropbox.accessToken) {
       return
     }
-
-    emitter.emit('entity-close', { all: true })
-    await nextTick
 
     const dbx = new DBX({
       accessToken: AUTH.dropbox.accessToken,
@@ -46,40 +43,42 @@ export const useDropbox = () => {
 
     toast.info(t('toast.generics.load'))
 
-    dbx
-      .filesUpload({
-        path,
-        contents: JSON.stringify(storage.getProjectObject()),
-      })
-      .then(() => {
-        toast.success(t('toast.project.save'))
-        plugin.emit('plugin-dropbox-save', 'success')
-      })
-      .catch(() => {
-        dbx
-          .filesDeleteV2({
-            path,
-          })
-          .then(() => {
-            dbx
-              .filesUpload({
-                path,
-                contents: JSON.stringify(storage.getProjectObject()),
-              })
-              .then(() => {
-                toast.success(t('toast.project.save'))
-                plugin.emit('plugin-dropbox-save', 'success')
-              })
-              .catch(() => {
-                toast.error(t('toast.project.error'))
-                plugin.emit('plugin-dropbox-save', 'error')
-              })
-          })
-          .catch(() => {
-            toast.error(t('toast.project.error'))
-            plugin.emit('plugin-dropbox-save', 'error')
-          })
-      })
+    storage.normalize().then(() => {
+      dbx
+        .filesUpload({
+          path,
+          contents: JSON.stringify(storage.getProjectObject()),
+        })
+        .then(() => {
+          toast.success(t('toast.project.save'))
+          plugin.emit('plugin-dropbox-save', 'success')
+        })
+        .catch(() => {
+          dbx
+            .filesDeleteV2({
+              path,
+            })
+            .then(() => {
+              dbx
+                .filesUpload({
+                  path,
+                  contents: JSON.stringify(storage.getProjectObject()),
+                })
+                .then(() => {
+                  toast.success(t('toast.project.save'))
+                  plugin.emit('plugin-dropbox-save', 'success')
+                })
+                .catch(() => {
+                  toast.error(t('toast.project.error'))
+                  plugin.emit('plugin-dropbox-save', 'error')
+                })
+            })
+            .catch(() => {
+              toast.error(t('toast.project.error'))
+              plugin.emit('plugin-dropbox-save', 'error')
+            })
+        })
+    })
   }
 
   const load = async () => {

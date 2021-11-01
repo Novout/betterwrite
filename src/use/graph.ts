@@ -2,11 +2,11 @@ import { ContextState } from '@/types/context'
 import { nextTick } from 'vue'
 import { useScroll } from './scroll'
 import { useContextStore } from '@/store/context'
-import { useProject } from './project'
 import { useBreakpoints, breakpointsTailwind } from '@vueuse/core'
 import { useAbsoluteStore } from '@/store/absolute'
 import { useProjectStore } from '@/store/project'
 import { ID } from '../types/utils'
+import { useStorage } from './storage/storage'
 
 export const useGraph = () => {
   const CONTEXT = useContextStore()
@@ -14,7 +14,7 @@ export const useGraph = () => {
   const PROJECT = useProjectStore()
 
   const scroll = useScroll()
-  const project = useProject()
+  const storage = useStorage()
   const breakpoints = useBreakpoints(breakpointsTailwind)
 
   const utils = () => {
@@ -26,7 +26,7 @@ export const useGraph = () => {
   }
 
   const load = async (go: ID, page: ContextState) => {
-    project.normalize().then(async () => {
+    storage.normalize().then(async () => {
       // load page target
       CONTEXT.load(page)
 
@@ -58,7 +58,7 @@ export const useGraph = () => {
   }
 
   const base = () => {
-    project.normalize().then(async () => {
+    storage.normalize().then(async () => {
       // get initial page
       const start = PROJECT.pages[0]
       if (!start) return

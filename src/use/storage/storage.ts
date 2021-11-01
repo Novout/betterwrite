@@ -5,6 +5,8 @@ import { useEditorStore } from '@/store/editor'
 import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
 import { ProjectObject } from '@/types/project'
+import { nextTick } from 'vue'
+import useEmitter from '../emitter'
 
 export const useStorage = () => {
   const PROJECT = useProjectStore()
@@ -13,6 +15,7 @@ export const useStorage = () => {
   const PDF = usePDFStore()
 
   const env = useEnv()
+  const emitter = useEmitter()
 
   const support = (project: any) => {
     let _ = project
@@ -53,5 +56,18 @@ export const useStorage = () => {
     }
   }
 
-  return { support, getProjectObject }
+  const normalize = async () => {
+    // close open entities contents
+    emitter.emit('entity-edit-save')
+    // force last input in emit content
+    emitter.emit('entity-input-force-enter')
+
+    await nextTick
+    // close all entities for not breaking same index in next page
+    emitter.emit('entity-edit-reset')
+
+    await nextTick
+  }
+
+  return { support, getProjectObject, normalize }
 }

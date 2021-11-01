@@ -36,12 +36,17 @@ export const useLocalStorage = () => {
   const onSaveProject = async (event: boolean = true) => {
     if (PROJECT.name === env.projectEmpty()) return
 
-    emitter.emit('project-save')
-    await nextTick
+    if (event) {
+      storage.normalize().then(() => {
+        setProject(storage.getProjectObject())
+
+        toast.success(t('toast.project.save'))
+      })
+
+      return
+    }
 
     setProject(storage.getProjectObject())
-
-    if (event) toast.success(t('toast.project.save'))
   }
 
   const onAutoSave = (time: number | 'never') => {
