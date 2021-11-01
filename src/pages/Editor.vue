@@ -11,6 +11,7 @@
 <script setup lang="ts">
   import { useContextStore } from '@/store/context'
   import { useProjectStore } from '@/store/project'
+  import { useEntity } from '@/use/entity'
   import { useEnv } from '@/use/env'
   import { useKeyboard } from '@/use/keyboard'
   import { useProject } from '@/use/project'
@@ -24,6 +25,7 @@
   const keyboard = useKeyboard()
   const env = useEnv()
   const project = useProject()
+  const entity = useEntity()
   const { t } = useI18n()
 
   keyboard.init()
@@ -40,7 +42,9 @@
   const description = computed(() => t('seo.editor.description'))
 
   const _title = computed(() =>
-    PROJECT.nameRaw === env.projectEmpty() || !CONTEXT.entities[0]
+    PROJECT.nameRaw === env.projectEmpty() ||
+    !CONTEXT.entities[0] ||
+    entity.utils().isFixed(0)
       ? title.value
       : PROJECT.nameRaw + ' - ' + CONTEXT.entities[0]?.raw
   )

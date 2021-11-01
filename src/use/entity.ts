@@ -71,7 +71,7 @@ export const useEntity = () => {
     const isFixed = (index: number, options?: Record<string, boolean>) => {
       const entity = CONTEXT.entities[index]
 
-      if (!entity.type) return false
+      if (!entity) return false
 
       if (options?.emptyLine && entity.raw === env.emptyLine()) return true
 
