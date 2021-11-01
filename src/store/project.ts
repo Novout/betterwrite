@@ -22,7 +22,7 @@ export const useProjectStore = defineStore('project', {
       main: {},
       summary: {},
       pages: [] as Array<ContextState>,
-      pageLoaded: 0,
+      pageLoaded: 1,
       bw: {
         version: '0.1.0',
         platform: 'web',

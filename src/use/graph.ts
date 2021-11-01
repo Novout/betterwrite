@@ -6,6 +6,7 @@ import { useProject } from './project'
 import { useBreakpoints, breakpointsTailwind } from '@vueuse/core'
 import { useAbsoluteStore } from '@/store/absolute'
 import { useProjectStore } from '@/store/project'
+import { ID } from '../types/utils'
 
 export const useGraph = () => {
   const CONTEXT = useContextStore()
@@ -24,28 +25,32 @@ export const useGraph = () => {
     return { mobile }
   }
 
-  const load = async (go: string | number | symbol, page: ContextState) => {
+  const load = async (go: ID, page: ContextState) => {
     project.normalize().then(async () => {
       // load page target
       CONTEXT.load(page)
+
+      PROJECT.pageLoaded = page.id
       await nextTick
       // force scroll to element clicked in aside graph
       scroll.to(String(go))
     })
   }
 
-  const to = (ind: string | number | symbol, page: ContextState) => {
+  const to = (ind: ID, page: ContextState) => {
     load(`#entity-${String(ind)}`, page)
+
+    PROJECT.pageLoaded = page.id
 
     utils().mobile()
   }
 
   const normalize = () => {
-    const id = (page: ContextState, ind: string | number | symbol) => {
+    const id = (page: ContextState, ind: ID) => {
       return `graph-${page.id}-${String(ind)}`
     }
 
-    const key = (page: ContextState, ind: string | number | symbol) => {
+    const key = (page: ContextState, ind: ID) => {
       return `graph-${page.id}-${String(ind)}`
     }
 
@@ -59,6 +64,8 @@ export const useGraph = () => {
       if (!start) return
       // load page target
       CONTEXT.load(start)
+
+      PROJECT.pageLoaded = 0
 
       utils().mobile()
     })

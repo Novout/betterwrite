@@ -14,6 +14,7 @@ import {
 import { useEnv } from '../use/env'
 import { useFormat } from '../use/format'
 import { useUtils } from '../use/utils'
+import { useProjectStore } from './project'
 
 export const useContextStore = defineStore('context', {
   state: (): ContextState => {
@@ -23,8 +24,16 @@ export const useContextStore = defineStore('context', {
     }
   },
   actions: {
-    load(context: ContextState) {
+    load(context?: ContextState) {
+      const project = useProjectStore()
+
+      if (!context) {
+        context = project.pages[0]
+      }
+
       this.id = context.id
+      project.pageLoaded = context.id
+
       this.entities = context.entities
     },
     addInPage(entity: Entity) {

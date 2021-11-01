@@ -10,6 +10,7 @@ import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
 import { ProjectObject } from '@/types/project'
+import { ContextState } from '@/types/context'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -60,7 +61,11 @@ export const useProject = () => {
 
     await nextTick
 
-    CONTEXT.load(PROJECT.pages[0])
+    CONTEXT.load(
+      PROJECT.pages.filter(
+        (page: ContextState) => page.id === context?.project.pageLoaded
+      )[0]
+    )
 
     await nextTick
 
