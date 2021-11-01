@@ -1,4 +1,15 @@
 export default {
+  preferences: {
+    shortcuts: {
+      title: 'Hotkeys',
+      editor: {
+        title: 'Text Editor',
+        delete: 'Delete',
+        swap: 'Change Position',
+        to: 'Go To Next Position',
+      },
+    },
+  },
   entity: {
     paragraph: 'Paragraph',
     'heading-one': 'Heading 1',
@@ -129,6 +140,7 @@ export default {
       dark: 'Dark Mode',
       lang: 'Language',
       draggable: 'Draggable',
+      autosave: 'Auto Save (in minutes)',
     },
     entity: {
       delete: 'Delete',

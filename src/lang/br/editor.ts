@@ -1,4 +1,15 @@
 export default {
+  preferences: {
+    shortcuts: {
+      title: 'Teclas de Atalho',
+      editor: {
+        title: 'Editor de Texto',
+        delete: 'Deletar',
+        swap: 'Trocar de Posição',
+        to: 'Ir Para Posição Seguinte',
+      },
+    },
+  },
   entity: {
     paragraph: 'Parágrafo',
     'heading-one': 'Título 1',
