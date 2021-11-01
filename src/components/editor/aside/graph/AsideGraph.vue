@@ -1,6 +1,18 @@
 <template>
   <div class="flex px-2 flex-col mt-5 w-full wb-text">
-    <p v-if="!env.isEmptyProject(PROJECT.name)">
+    <p
+      v-if="!env.isEmptyProject(PROJECT.name)"
+      class="
+        cursor-pointer
+        font-bold
+        dark:hover:bg-gray-800
+        hover:bg-gray-200
+        active:bg-gray-700
+        dark:active:bg-black
+        transition
+      "
+      @click="graph.base()"
+    >
       {{ PROJECT.nameRaw }}
     </p>
     <div v-for="(page, index) in PROJECT.pages" :key="index">
