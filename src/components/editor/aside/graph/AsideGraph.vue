@@ -6,9 +6,9 @@
     <div v-for="(page, index) in PROJECT.pages" :key="index">
       <div
         v-for="(entity, ind) in page.entities"
-        :id="`graph-${page.id}-${String(ind)}`"
-        :key="`graph-${page.id}-${String(ind)}`"
-        @click="graph.load(`#entity-${String(ind)}`, page)"
+        :id="graph.normalize().id(page, ind)"
+        :key="graph.normalize().key(page, ind)"
+        @click="graph.to(ind, page)"
       >
         <AsideGraphItem :entity="entity" />
       </div>
