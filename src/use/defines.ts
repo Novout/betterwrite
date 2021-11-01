@@ -23,7 +23,7 @@ export const useDefines = () => {
     }
 
     const fontFamily = (): Array<string> => {
-      return ['Roboto']
+      return ['Roboto', 'EB Garamond']
     }
 
     const alignment = (): Array<string> => {

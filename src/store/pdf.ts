@@ -24,8 +24,8 @@ export const usePDFStore = defineStore('pdf', {
           },
         },
         paragraph: {
-          font: useDefines().pdf().fontFamily()[0] as string,
-          fontSize: 11 as number,
+          font: useDefines().pdf().fontFamily()[1] as string,
+          fontSize: 12 as number,
           lineHeight: 1 as number,
           alignment: useDefines().pdf().alignment()[3] as
             | 'left'
