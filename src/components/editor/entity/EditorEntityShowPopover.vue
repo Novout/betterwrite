@@ -294,7 +294,7 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive, computed, watch, onMounted } from 'vue'
+  import { reactive, computed, watch, onMounted, nextTick } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useFormat } from '@/use/format'
   import { EntityType } from '@/types/context'
@@ -401,11 +401,15 @@
     state.image = false
   }
 
-  const onNewEntity = (type: string) => {
+  const onNewEntity = async (type: string) => {
     CONTEXT.newInPage({
       entity: props.entity,
       type,
     })
+
+    await nextTick
+
+    emitter.emit('entity-edit-reset')
 
     plugin.emit('plugin-entity-create', {
       data: props.entity.raw,
@@ -422,11 +426,15 @@
     state.image = false
   }
 
-  const onSwitchEntity = (type: EntityType) => {
+  const onSwitchEntity = async (type: EntityType) => {
     CONTEXT.alterInPage({
       entity: props.entity,
       type,
     })
+
+    await nextTick
+
+    emitter.emit('entity-edit-reset')
 
     plugin.emit('plugin-entity-alter-in-page', {
       data: t(`editor.entity.${type}`).toUpperCase(),

@@ -414,6 +414,10 @@
       keyboard.value = false
     })
 
+    emitter.on('entity-edit-open', () => {
+      edit.value = true
+    })
+
     emitter.on('entity-edit-save', async () => {
       if (edit.value) {
         edit.value = false
