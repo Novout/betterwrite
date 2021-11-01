@@ -195,6 +195,8 @@
   watch(hover, async (_hover) => {
     keyboard.value = false
 
+    emitter.emit('entity-hover', _hover)
+
     await nextTick
     if (_hover) {
       onEdit()

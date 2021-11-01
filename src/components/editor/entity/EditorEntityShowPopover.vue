@@ -31,6 +31,7 @@
         border-gray-400
         dark:border-gray-700
       "
+      @mouseleave="onReset"
     >
       <EditorEntityShowSelect @click.prevent.stop="onNewEntity('paragraph')">
         P
@@ -293,13 +294,14 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive, computed, watch } from 'vue'
+  import { reactive, computed, watch, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useFormat } from '@/use/format'
   import { EntityType } from '@/types/context'
   import { useContextStore } from '@/store/context'
   import { Entity } from '@/types/context'
   import usePlugin from '@/use/plugin/core'
+  import useEmitter from '@/use/emitter'
 
   const props = defineProps({
     entity: {
@@ -312,6 +314,7 @@
 
   const format = useFormat()
   const plugin = usePlugin()
+  const emitter = useEmitter()
   const { t } = useI18n()
 
   const state = reactive({
@@ -325,6 +328,12 @@
     height: props.entity.external?.image?.size.height,
     width: props.entity.external?.image?.size.width,
     alignment: props.entity.external?.image?.alignment,
+  })
+
+  onMounted(() => {
+    emitter.on('entity-hover', (hover: boolean) => {
+      if (!hover) onReset()
+    })
   })
 
   watch(image, () => {
@@ -380,6 +389,13 @@
 
   const onNewEntityWrapper = () => {
     state.new = !state.new
+    state.switcher = false
+    state.adjust = false
+    state.image = false
+  }
+
+  const onReset = () => {
+    state.new = false
     state.switcher = false
     state.adjust = false
     state.image = false
