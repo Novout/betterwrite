@@ -55,7 +55,7 @@
     "tailwindcss-typography": "3.1.0",
     "vite-plugin-package-version": "^1.0.2",
     "vue": "3.2.20",
-    "vue-final-modal": "3.4.1",
+    "vue-final-modal": "3.4.3",
     "vue-i18n": "9.1.9",
     "vue-router": "4.0.12",
     "vue-toastification": "2.0.0-rc.5"

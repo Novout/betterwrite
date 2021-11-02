@@ -7812,10 +7812,10 @@ vue-eslint-parser@^7.0.0, vue-eslint-parser@^7.10.0:
     lodash "^4.17.21"
     semver "^6.3.0"
 
-vue-final-modal@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/vue-final-modal/-/vue-final-modal-3.4.1.tgz#b6d105393ac951ea1ebe5e3a1b7d10e52e88d101"
-  integrity sha512-bbzTAubGPWUzTSMn7ozK7uCHhFm8qixp7QjnJ9CiVu3vyOr+dCVqwQvQeJU+SfsOxn5NLqBNHeHzCt/KvoEtbA==
+vue-final-modal@3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/vue-final-modal/-/vue-final-modal-3.4.3.tgz#8fdf56da8a03cdf9e54bcaeb8293a93f88758915"
+  integrity sha512-sp6M09oXGcRM3d3Jr80UywWx4C9I18nH/549fgNrs8qbCcw+DJc8QSUFkJ91lqWndGQ1q5rYen4i4IIrpHPVYA==
 
 vue-i18n-extract@^2.0.4:
   version "2.0.4"
