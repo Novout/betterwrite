@@ -162,15 +162,17 @@ export const useContextStore = defineStore('context', {
       }
     },
     newInPaste(entities: Entities, initial: Entity) {
-      const start = this.entities.indexOf(initial)
+      return new Promise((res) => {
+        const start = this.entities.indexOf(initial)
 
-      entities.reverse().forEach((entity: Entity) => {
-        this.entities = useUtils()
-          .array()
-          .insert(this.entities, start + 1, entity)
+        entities.reverse().forEach((entity: Entity) => {
+          this.entities = useUtils()
+            .array()
+            .insert(this.entities, start + 1, entity)
+        })
+
+        res(this.removeInPage(initial))
       })
-
-      this.removeInPage(initial)
     },
   },
 })

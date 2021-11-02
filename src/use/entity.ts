@@ -242,16 +242,14 @@ export const useEntity = () => {
       })
 
       storage.normalize().then(async () => {
-        await CONTEXT.newInPaste(entities, entity)
+        CONTEXT.newInPaste(entities, entity).then(() => {
+          const position = index + entities.length - 1
+
+          emitter.emit('entity-scroll-by-index', position)
+
+          emitter.emit('entity-open-by-index', position)
+        })
       })
-
-      await nextTick
-
-      const position = index + entities.length - 1
-
-      emitter.emit('entity-scroll-by-index', position)
-
-      emitter.emit('entity-open-by-index', position)
     }
 
     const onUp = async (entity: Entity, index: number) => {
