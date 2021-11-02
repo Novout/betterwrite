@@ -14,11 +14,13 @@ import { useFormat } from './format'
 import { useFactory } from './factory'
 import { Entities } from '../types/context'
 import { useStorage } from './storage/storage'
+import { useAbsoluteStore } from '@/store/absolute'
 
 export const useEntity = () => {
   const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
   const CONTEXT = useContextStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const env = useEnv()
   const emitter = useEmitter()
@@ -186,6 +188,8 @@ export const useEntity = () => {
     }
 
     const onGo = async (go: string | symbol, page: ContextState) => {
+      if (!ABSOLUTE.shortcuts.finder && !ABSOLUTE.shortcuts.switcher) return
+
       if (CONTEXT.id !== page.id) CONTEXT.load(page)
       await nextTick
       useScroll().to(`#${String(go)}`, 'center')

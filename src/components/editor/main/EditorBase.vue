@@ -10,7 +10,6 @@
       dark:bg-gray-700
     "
     :class="[EDITOR.configuration.draggable ? 'fixed' : 'inline-block']"
-    @click.prevent="onClickInEditor"
   >
     <EditorBaseHeader />
     <EditorBaseBlocked v-if="PROJECT.name === env.projectEmpty()" />
@@ -87,9 +86,5 @@
 
   const resetListener = () => {
     entry.value = ''
-  }
-
-  const onClickInEditor = () => {
-    emitter.emit('entity-input-focus')
   }
 </script>
