@@ -62,7 +62,7 @@ input[type='number'] {
   --scr-track: #f1f1f1;
   --scr-thumb: rgba(0, 0, 0, 0.04);
   --scr-thumb-hover: rgba(0, 0, 0, 0.1);
-  --wb-selection: #9ca3af;
+  --wb-selection: rgba(0, 0, 0, 0.1);
   --wb-text-selection: #000;
 }
 
@@ -70,7 +70,7 @@ input[type='number'] {
   --scr-track: #222;
   --scr-thumb: rgba(255, 255, 255, 0.04);
   --scr-thumb-hover: rgba(255, 255, 255, 0.1);
-  --wb-selection: #111827;
+  --wb-selection: rgba(0, 0, 0, 0.2);
   --wb-text-selection: #e5e7eb;
 }
 
