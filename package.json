@@ -61,7 +61,7 @@
     "vue-toastification": "2.0.0-rc.5"
   },
   "devDependencies": {
-    "@intlify/vite-plugin-vue-i18n": "2.4.0",
+    "@intlify/vite-plugin-vue-i18n": "2.5.0",
     "@types/jest": "27.0.2",
     "@types/jsdom": "16.2.13",
     "@types/pdfmake": "0.1.19",
