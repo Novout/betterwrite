@@ -9,6 +9,11 @@ import { useContextStore } from '@/store/context'
 import useEmitter from './emitter'
 import usePlugin from './plugin/core'
 import { useI18n } from 'vue-i18n'
+import { useInput } from './input'
+import { useFormat } from './format'
+import { useFactory } from './factory'
+import { Entities } from '../types/context'
+import { useStorage } from './storage/storage'
 
 export const useEntity = () => {
   const PROJECT = useProjectStore()
@@ -19,8 +24,12 @@ export const useEntity = () => {
   const emitter = useEmitter()
   const plugin = usePlugin()
   const { t } = useI18n()
-  const pages = computed(() => PROJECT.pages)
+  const input = useInput()
+  const format = useFormat()
+  const storage = useStorage()
+  const factory = useFactory()
 
+  const pages = computed(() => PROJECT.pages)
   const selection = computed(() => EDITOR.actives.text.selection.content)
 
   watch(selection, (_content) => {
@@ -209,6 +218,42 @@ export const useEntity = () => {
   }
 
   const base = () => {
+    const onPaste = async (entity: Entity, value: string, event: any) => {
+      if (value !== '') return
+
+      event.preventDefault()
+      event.stopPropagation()
+
+      const data = input.pasteText(event)
+      const entities: Entities = []
+
+      const index = CONTEXT.entities.indexOf(entity)
+
+      data.forEach(async (raw: string) => {
+        const normalize = raw.replace(/\s+/g, ' ').trim()
+
+        if (normalize) {
+          const content = factory.entity().create(entity.type)
+
+          content.raw = normalize
+
+          entities.push(content)
+        }
+      })
+
+      storage.normalize().then(async () => {
+        await CONTEXT.newInPaste(entities, entity)
+      })
+
+      await nextTick
+
+      const position = index + entities.length - 1
+
+      emitter.emit('entity-scroll-by-index', position)
+
+      emitter.emit('entity-open-by-index', position)
+    }
+
     const onUp = async (entity: Entity, index: number) => {
       await nextTick
 
@@ -314,6 +359,7 @@ export const useEntity = () => {
     }
 
     return {
+      onPaste,
       onUp,
       onDown,
       onUpCursor,

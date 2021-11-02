@@ -128,6 +128,7 @@
       @keydown="onKeyboard"
       @input="onChangeArea"
       @click="onClick"
+      @paste="entity.base().onPaste(props.entity, data, $event)"
     />
   </section>
 </template>
@@ -151,6 +152,7 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import usePlugin from '@/use/plugin/core'
   import { useUtils } from '@/use/utils'
+  import { ID } from '@/types/utils'
 
   const props = defineProps({
     entity: {
@@ -351,6 +353,20 @@
           selectionInitial: payload?.selectionInitial,
           switch: payload?.switch,
         })
+      }
+    })
+
+    emitter.on('entity-open-by-index', (index: ID<number>) => {
+      if (CONTEXT.entities[index] === props.entity) {
+        onEdit()
+        return
+      }
+    })
+
+    emitter.on('entity-scroll-by-index', async (index: ID<number>) => {
+      if (CONTEXT.entities[index] === props.entity) {
+        await nextTick
+        scroll.to(`#entity-${index}`, 'center')
       }
     })
 

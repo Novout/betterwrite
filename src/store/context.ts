@@ -15,6 +15,7 @@ import { useEnv } from '../use/env'
 import { useFormat } from '../use/format'
 import { useUtils } from '../use/utils'
 import { useProjectStore } from './project'
+import { Entities } from '../types/context'
 
 export const useContextStore = defineStore('context', {
   state: (): ContextState => {
@@ -159,6 +160,17 @@ export const useContextStore = defineStore('context', {
       } else {
         this.entities[index - 1].raw = target.raw + entity.raw
       }
+    },
+    newInPaste(entities: Entities, initial: Entity) {
+      const start = this.entities.indexOf(initial)
+
+      entities.reverse().forEach((entity: Entity) => {
+        this.entities = useUtils()
+          .array()
+          .insert(this.entities, start + 1, entity)
+      })
+
+      this.removeInPage(initial)
     },
   },
 })

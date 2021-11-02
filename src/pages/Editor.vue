@@ -38,8 +38,10 @@
     project.onLoadProject()
   })
 
-  window.onbeforeunload = function () {
-    if (router.currentRoute.value.path === '/') local.onSaveProject()
+  if (!env.isDev()) {
+    window.onbeforeunload = function () {
+      if (router.currentRoute.value.path === '/') local.onSaveProject()
+    }
   }
 
   onUnmounted(() => {

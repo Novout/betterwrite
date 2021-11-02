@@ -14,6 +14,8 @@ export type VueEmitterName =
   | 'entity-input-focus'
   | 'entity-input-force-enter'
   | 'entity-open'
+  | 'entity-open-by-index'
+  | 'entity-scroll-by-index'
   | 'entity-close'
   | 'entity-focus'
   | 'entity-input-raw'

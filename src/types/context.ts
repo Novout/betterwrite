@@ -77,3 +77,5 @@ export type Entity = {
   updatedAt: string
   external?: EntityExternal
 }
+
+export type Entities = Array<Entity>
