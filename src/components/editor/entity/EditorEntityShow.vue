@@ -150,6 +150,7 @@
   import { useEditorStore } from '@/store/editor'
   import { useAbsoluteStore } from '@/store/absolute'
   import usePlugin from '@/use/plugin/core'
+  import { useUtils } from '@/use/utils'
 
   const props = defineProps({
     entity: {
@@ -173,6 +174,7 @@
   const raw = useRaw()
   const plugin = usePlugin()
   const area = useInput()
+  const utils = useUtils()
 
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)
@@ -599,6 +601,52 @@
       // delete entity
       if (e.key === 'd') {
         entity.base().onDelete(props.entity, _index.value)
+      }
+
+      // italic entity
+      if (e.key === 'i') {
+        const content = entity
+          .base()
+          .onItalicRaw(utils.text().getSelection(data.value, _input))
+
+        const start = _input.selectionStart
+        const end = _input.selectionEnd
+
+        data.value =
+          data.value.slice(0, start) +
+          content +
+          data.value.slice(start + content.length - 2)
+
+        await nextTick
+
+        if (content === '**') {
+          _input.setSelectionRange(start + 1, start + 1)
+        } else {
+          _input.setSelectionRange(end + 2, end + 2)
+        }
+      }
+
+      // bold entity
+      if (e.key === 'b') {
+        const content = entity
+          .base()
+          .onBoldRaw(utils.text().getSelection(data.value, _input))
+
+        const start = _input.selectionStart
+        const end = _input.selectionEnd
+
+        data.value =
+          data.value.slice(0, start) +
+          content +
+          data.value.slice(start + content.length - 2)
+
+        await nextTick
+
+        if (content === '&&') {
+          _input.setSelectionRange(start + 1, start + 1)
+        } else {
+          _input.setSelectionRange(end + 2, end + 2)
+        }
       }
 
       // to entity initial

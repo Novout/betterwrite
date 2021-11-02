@@ -24,5 +24,13 @@ export const useUtils = () => {
     return parts.join(separator).replace(replace, separator)
   }
 
-  return { delay, prevent, array, join }
+  const text = () => {
+    const getSelection = (data: string, input: HTMLTextAreaElement) => {
+      return data.substring(input.selectionStart, input.selectionEnd)
+    }
+
+    return { getSelection }
+  }
+
+  return { delay, prevent, array, join, text }
 }

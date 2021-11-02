@@ -18,6 +18,14 @@
         {{ t('editor.preferences.shortcuts.editor.title') }}
       </h3>
       <PreferencesKeyboardItem
+        :title="t('editor.preferences.shortcuts.editor.italic')"
+        shortcut="CTRL + I"
+      />
+      <PreferencesKeyboardItem
+        :title="t('editor.preferences.shortcuts.editor.bold')"
+        shortcut="CTRL + B"
+      />
+      <PreferencesKeyboardItem
         :title="t('editor.preferences.shortcuts.editor.delete')"
         shortcut="CTRL + D"
       />

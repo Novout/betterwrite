@@ -305,7 +305,24 @@ export const useEntity = () => {
       plugin.emit('plugin-entity-delete', payload.index)
     }
 
-    return { onUp, onDown, onUpCursor, onDownCursor, onDelete, onDeleteRaw }
+    const onBoldRaw = (selection: string) => {
+      return '&' + selection + '&'
+    }
+
+    const onItalicRaw = (selection: string) => {
+      return '*' + selection + '*'
+    }
+
+    return {
+      onUp,
+      onDown,
+      onUpCursor,
+      onDownCursor,
+      onDelete,
+      onDeleteRaw,
+      onBoldRaw,
+      onItalicRaw,
+    }
   }
   return { base, utils, swapper, finder, fstate, sstate, sentry }
 }

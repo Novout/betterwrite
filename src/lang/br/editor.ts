@@ -4,6 +4,8 @@ export default {
       title: 'Teclas de Atalho',
       editor: {
         title: 'Editor de Texto',
+        italic: 'Adicionar Itálico',
+        bold: 'Adicionar Negrito',
         delete: 'Deletar',
         swap: 'Trocar de Posição',
         to: 'Ir Para Posição Seguinte',

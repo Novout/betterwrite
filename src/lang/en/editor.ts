@@ -4,6 +4,8 @@ export default {
       title: 'Hotkeys',
       editor: {
         title: 'Text Editor',
+        italic: 'Add Italic',
+        bold: 'Add Bold',
         delete: 'Delete',
         swap: 'Change Position',
         to: 'Go To Next Position',
