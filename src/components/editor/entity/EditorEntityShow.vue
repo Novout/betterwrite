@@ -701,6 +701,10 @@
 
       await nextTick
 
+      emitter.emit('entity-edit-reset')
+
+      await nextTick
+
       emitter.emit('entity-open', { entity: props.entity, up: true })
     } else if (e.key === 'ArrowUp') {
       // to top
