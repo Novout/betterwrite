@@ -49,7 +49,8 @@ export const useKeyboard = () => {
         (e.ctrlKey || e.altKey) &&
         e.key !== 'c' &&
         e.key !== 'a' &&
-        e.key !== 'v'
+        e.key !== 'v' &&
+        e.key !== 'z'
       ) {
         e.preventDefault()
         e.stopPropagation()
