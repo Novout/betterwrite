@@ -50,7 +50,7 @@
   import { useFactory } from '@/use/factory'
   import { useEditorStore } from '@/store/editor'
   import { useContextStore } from '@/store/context'
-import usePlugin from '@/use/plugin/core'
+  import usePlugin from '@/use/plugin/core'
 
   const toast = useToast()
   const { t } = useI18n()
@@ -216,6 +216,7 @@ import usePlugin from '@/use/plugin/core'
   }
 
   const pasteHandler = (event: any) => {
+    let _plugin_quantity = 0
     if (cmp.value !== '') return
 
     paste.value = true
@@ -235,7 +236,14 @@ import usePlugin from '@/use/plugin/core'
         updatedAt: format.actually(),
       } as Entity
 
+      _plugin_quantity++
+
       await emit('enter', content)
+    })
+
+    plugin.emit('plugin-entity-paste-in-page', {
+      index: CONTEXT.entities.length,
+      quantity: _plugin_quantity
     })
   }
 

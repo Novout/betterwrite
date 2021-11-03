@@ -6,6 +6,7 @@ import { useI18n } from 'vue-i18n'
 import {
   PluginLoggerDefault,
   PluginLoggerEntitySwapper,
+  PluginLoggerPaste,
 } from '@/types/plugin/on'
 import { useEntity } from '@/use/entity'
 
@@ -83,6 +84,21 @@ export const PluginLoggerActions = (
         method: 'info',
         arguments: t('plugin.logger.on.entity.alter', {
           data: obj.data,
+          index: obj.index,
+        }),
+        createdAt: format.actually(),
+      } as LoggerContent)
+    },
+    () => {},
+  ])
+
+  entity().PluginPasteInPage(emitter, [
+    (obj: PluginLoggerPaste) => {
+      stores.LOGGER.add({
+        type: 'editor',
+        method: 'info',
+        arguments: t('plugin.logger.on.entity.paste', {
+          quantity: obj.quantity,
           index: obj.index,
         }),
         createdAt: format.actually(),

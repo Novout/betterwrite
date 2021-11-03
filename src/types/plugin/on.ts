@@ -11,6 +11,11 @@ export interface PluginLoggerDefault {
   index: number
 }
 
+export interface PluginLoggerPaste {
+  quantity: number
+  index: number
+}
+
 export interface PluginLoggerEntitySwapper {
   direction: 'up' | 'down'
   index: number

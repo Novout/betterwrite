@@ -14,6 +14,8 @@ export default {
       swap: 'POSIÇÃO <{index}>  TROCADA COM A POSIÇÃO <{target}>.',
       break: '<{data}> ENVIADO PARA A POSIÇÃO <{index}>.',
       alter: 'A POSIÇÃO <{index}> MUDOU O ESTILO PARA <{data}>',
+      paste:
+        'A PARTIR DA POSIÇÃO <{index}> FOI ADICIONADO <{quantity}> ITEM(S)',
     },
     project: {
       new: 'PÁGINA DE NÚMERO <{index}>  CRIADA!',

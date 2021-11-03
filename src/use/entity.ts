@@ -252,6 +252,11 @@ export const useEntity = () => {
           emitter.emit('entity-scroll-by-index', position)
 
           emitter.emit('entity-open-by-index', position)
+
+          plugin.emit('plugin-entity-paste-in-page', {
+            index,
+            quantity: entities.length,
+          })
         })
       })
     }

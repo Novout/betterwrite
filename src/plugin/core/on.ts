@@ -4,6 +4,7 @@ import {
   PluginLoggerEntitySwapper,
   PluginContentOn,
   PluginCode,
+  PluginLoggerPaste,
 } from '@/types/plugin/on'
 
 export const entity = () => {
@@ -98,6 +99,19 @@ export const entity = () => {
     })
   }
 
+  const PluginPasteInPage = (
+    emitter: PluginEmitter,
+    content: PluginContentOn
+  ) => {
+    emitter.on('plugin-entity-paste-in-page', (obj: PluginLoggerPaste) => {
+      if (!obj) return
+
+      const created = content[0]
+
+      created && created(obj)
+    })
+  }
+
   return {
     PluginEntityCreate,
     PluginEntityDelete,
@@ -105,6 +119,7 @@ export const entity = () => {
     PluginEntityInputLast,
     PluginEntitySwapper,
     PluginEntityPageBreak,
+    PluginPasteInPage,
     PluginAlterInPage,
   }
 }

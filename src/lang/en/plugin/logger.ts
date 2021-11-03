@@ -14,6 +14,7 @@ export default {
       swap: 'POSITION <{index}>  EXCHANGED WITH POSITION {destination}.',
       break: '<{data}> SENT TO POSITION <{index}>.',
       alter: 'THE POSITION <{index}> HAS STYLE CHANGED TO <{data}>',
+      paste: 'FROM THE POSITION <{index}> IT WAS ADDED <{quantity}> ITEM(S)',
     },
     project: {
       new: 'PAGE NUMBER <{index}> CREATED!',

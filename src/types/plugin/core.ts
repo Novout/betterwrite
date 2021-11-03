@@ -15,10 +15,11 @@ export type PluginEmitterName =
   | 'plugin-entity-delete'
   | 'plugin-entity-swap'
   | 'plugin-entity-page-break'
+  | 'plugin-entity-alter-in-page'
+  | 'plugin-entity-paste-in-page'
   | 'plugin-project-page-new'
   | 'plugin-project-page-delete'
   | 'plugin-project-page-swap'
-  | 'plugin-entity-alter-in-page'
   | 'plugin-auto-save'
   | 'plugin-dropbox-save'
 export interface PluginEmitter {
