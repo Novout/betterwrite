@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.1](https://github.com/Novout/better-write/compare/v0.6.0...v0.6.1) (2021-11-03)
+
+
+### Features
+
+* **editor:** italic and bolt insert direcly in show entity ([c4c158a](https://github.com/Novout/better-write/commits/c4c158a166b3e3a9b250a1cfe8b6c00411f1c824))
+* **editor:** paste in show entities ([69b0ca0](https://github.com/Novout/better-write/commits/69b0ca0b368a3a2d92b8af087f985ffcb2008673))
+* **logger:** paste event ([898fa9d](https://github.com/Novout/better-write/commits/898fa9d9d3c08e510c4c84735157b818629fc01b))
+
+
+### Bug Fixes
+
+* **editor:** click in selection force scroll ([0f5e03e](https://github.com/Novout/better-write/commits/0f5e03ef05550cbb46f1e1c1d9fea90e46fc218f))
+* **editor:** paste promise in render content ([ee7c157](https://github.com/Novout/better-write/commits/ee7c15725934f1a65fc8d02b698c936e4988fc47))
+
+
+### Style
+
+* **editor:** selection color ([82140bf](https://github.com/Novout/better-write/commits/82140bf0bf24ebb5257de71d8f7224a42ac67de9))
+
 ## [0.6.0](https://github.com/Novout/better-write/compare/v0.5.7...v0.6.0) (2021-11-01)
 
 
