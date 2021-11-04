@@ -27,8 +27,8 @@
       @keypress.enter.prevent="onEnter"
       @keydown="onKeyboard"
       @click="onClick"
-      v-html="raw.v2().purge().editor(props.entity)"
       @paste="entity.base().onPaste(props.entity, data, $event)"
+      v-html="raw.v2().purge().editor(props.entity)"
     />
   </section>
 </template>
@@ -115,12 +115,18 @@
     }
   })
 
+  const setData = (val: string) => {
+    const _input = input.value as HTMLDivElement
+
+    data.value = val
+    _input.innerText = val
+  }
+
   watch(data, async (_data: string) => {
     const _input = input.value as HTMLDivElement
 
     if (_data === env.emptyLine()) {
-      data.value = ''
-      _input.innerText = data.value
+      setData('')
     }
 
     data.value = data.value.replace(/\n/g, '')
@@ -138,8 +144,7 @@
     }
 
     if (entity.utils().entry(_data, 'p')) {
-      data.value = ''
-      _input.innerText = data.value
+      setData('')
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
@@ -148,8 +153,7 @@
     }
 
     if (entity.utils().entry(_data, 'h2')) {
-      data.value = ''
-      _input.innerText = data.value
+      setData('')
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
@@ -158,8 +162,7 @@
     }
 
     if (entity.utils().entry(_data, 'h3')) {
-      data.value = ''
-      _input.innerText = data.value
+      setData('')
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
@@ -168,8 +171,7 @@
     }
 
     if (entity.utils().entry(_data, 'bp')) {
-      data.value = ''
-      _input.innerText = data.value
+      setData('')
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
@@ -178,12 +180,11 @@
 
       await nextTick
 
-      emitter.emit('entity-not-mutate', props.entity)
+      emitter.emit('entity-not-mutate-down', props.entity)
     }
 
     if (entity.utils().entry(_data, 'lb')) {
-      data.value = ''
-      _input.innerText = data.value
+      setData('')
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
@@ -192,21 +193,24 @@
 
       await nextTick
 
-      emitter.emit('entity-not-mutate', props.entity)
+      emitter.emit('entity-not-mutate-down', props.entity)
     }
 
     if (entity.utils().entry(_data, 'im')) {
-      data.value = ''
-      _input.innerText = data.value
+      setData('')
 
       factory.simulate().file(
-        (content: Entity) => {
+        async (content: Entity) => {
           edit.value = false
 
           CONTEXT.newInExistentEntity({
             old: props.entity,
             new: content,
           })
+
+          await nextTick
+
+          emitter.emit('entity-not-mutate-down', props.entity)
         },
         (err: any) => {
           toast.error(t('toast.generics.error'))
