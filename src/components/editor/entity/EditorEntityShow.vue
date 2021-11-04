@@ -2,30 +2,29 @@
   <section
     class="w-full relative px-14"
     :class="
-      edit && style.entity.shadow
-        ? 'shadow-winset dark:shadow-binset p-0 m-0'
-        : ''
+      style.entity.shadow ? 'shadow-winset dark:shadow-binset p-0 m-0' : ''
     "
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     @click="onClickInEntity"
   >
     <EditorEntityShowPopover
-      v-if="
-        (edit && props.entity.type !== 'heading-one') ||
-        (entity.utils().isFixed(_index) && hover)
-      "
+      v-if="hover && props.entity.type !== 'heading-one'"
       :entity="props.entity"
     />
+    <section v-if="commands" class="absolute z-max left-40 -top-60">
+      <EditorCommands />
+    </section>
     <div
-      v-if="!edit"
-      ref="show"
-      class="overflow-hidden w-full break-words"
+      ref="input"
+      :contenteditable="!entity.utils().isFixed(_index)"
+      :data-content-editable-leaf="!entity.utils().isFixed(_index)"
+      :spellcheck="true"
+      :placeholder="t('editor.text.placeholder.base')"
       :style="{ minHeight: '24px', whiteSpace: 'break-spaces' }"
+      class="overflow-hidden w-full text-sm bg-transparent break-words"
       :class="[
-        props.entity.type === 'paragraph' && !edit
-          ? style.paragraph.indent
-          : '',
+        props.entity.type === 'paragraph' ? style.paragraph.indent : '',
         props.entity.type === 'paragraph' ? 'text-justify' : '',
         props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
         props.entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
@@ -65,70 +64,13 @@
         props.entity.type === 'line-break'
           ? 'cursor-default my-4 border-b-8 border-dashed border-gray-400 dark:border-gray-800'
           : '',
-
-        props.entity.raw === env.emptyLine() ? 'cursor-default py-2' : '',
       ]"
-      @click="onEdit"
-      v-html="raw.convert(props.entity)"
-    />
-    <section v-if="commands" class="absolute z-max left-40 -top-60">
-      <EditorCommands />
-    </section>
-    <textarea
-      v-if="edit"
-      ref="input"
-      v-model="data"
-      :placeholder="t('editor.text.placeholder.base')"
-      :class="[
-        props.entity.type === 'paragraph' ? 'text-justify indent-15' : '',
-        props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
-        props.entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
-        props.entity.type === 'paragraph' ? style.paragraph.fontColor : '',
-        props.entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
-
-        props.entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
-        props.entity.type === 'heading-one' ? style.heading.one.fontSize : '',
-        props.entity.type === 'heading-one' ? style.heading.one.fontFamily : '',
-        props.entity.type === 'heading-one' ? style.heading.one.fontColor : '',
-        props.entity.type === 'heading-one' ? style.heading.one.fontWeight : '',
-
-        props.entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
-        props.entity.type === 'heading-two' ? style.heading.two.fontSize : '',
-        props.entity.type === 'heading-two' ? style.heading.two.fontFamily : '',
-        props.entity.type === 'heading-two' ? style.heading.two.fontColor : '',
-        props.entity.type === 'heading-two' ? style.heading.two.fontWeight : '',
-
-        props.entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
-        props.entity.type === 'heading-three'
-          ? style.heading.three.fontSize
-          : '',
-        props.entity.type === 'heading-three'
-          ? style.heading.three.fontFamily
-          : '',
-        props.entity.type === 'heading-three'
-          ? style.heading.three.fontColor
-          : '',
-        props.entity.type === 'heading-three'
-          ? style.heading.three.fontWeight
-          : '',
-      ]"
-      class="
-        w-full
-        text-sm
-        bg-transparent
-        dark:text-gray-100
-        text-black
-        resize-none
-        overflow-hidden
-        block
-        break-words
-      "
-      :style="{ height, whiteSpace: 'break-spaces' }"
+      @input="onInput"
       @keypress.enter.prevent="onEnter"
       @keydown="onKeyboard"
-      @input="onChangeArea"
       @click="onClick"
       @paste="entity.base().onPaste(props.entity, data, $event)"
+      v-html="raw.v2().purge().editor(props.entity)"
     />
   </section>
 </template>
@@ -137,7 +79,6 @@
   import { ref, watch, nextTick, computed, onMounted } from 'vue'
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
-  import { useInput } from '@/use/input'
   import { useEnv } from '@/use/env'
   import { useEntity } from '@/use/entity'
   import { useFactory } from '@/use/factory'
@@ -175,7 +116,6 @@
   const { t } = useI18n()
   const raw = useRaw()
   const plugin = usePlugin()
-  const area = useInput()
   const utils = useUtils()
 
   const hover = ref<boolean>(false)
@@ -185,16 +125,10 @@
   const commands = ref<boolean>(false)
 
   const data = ref<string>('')
-  const show = ref<HTMLDivElement | null>(null)
-  const input = ref<HTMLTextAreaElement | null>(null)
-  const height = ref<string>('0px')
+  const input = ref<HTMLDivElement | null>(null)
 
   const style = computed(() => EDITOR.styles.show)
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
-
-  setInterval(() => {
-    if (edit.value) area.expandTextArea(input.value as HTMLTextAreaElement)
-  }, 1000 / 60)
 
   watch(hover, async (_hover) => {
     keyboard.value = false
@@ -223,8 +157,11 @@
   })
 
   watch(data, async (_data: string) => {
+    const _input = input.value as HTMLDivElement
+
     if (_data === env.emptyLine()) {
       data.value = ''
+      _input.innerText = data.value
     }
 
     data.value = data.value.replace(/\n/g, '')
@@ -243,6 +180,7 @@
 
     if (entity.utils().entry(_data, 'p')) {
       data.value = ''
+      _input.innerText = data.value
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
@@ -252,6 +190,7 @@
 
     if (entity.utils().entry(_data, 'h2')) {
       data.value = ''
+      _input.innerText = data.value
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
@@ -261,6 +200,7 @@
 
     if (entity.utils().entry(_data, 'h3')) {
       data.value = ''
+      _input.innerText = data.value
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
@@ -270,6 +210,7 @@
 
     if (entity.utils().entry(_data, 'bp')) {
       data.value = ''
+      _input.innerText = data.value
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
@@ -283,6 +224,7 @@
 
     if (entity.utils().entry(_data, 'lb')) {
       data.value = ''
+      _input.innerText = data.value
 
       CONTEXT.newInExistentEntity({
         old: props.entity,
@@ -296,6 +238,7 @@
 
     if (entity.utils().entry(_data, 'im')) {
       data.value = ''
+      _input.innerText = data.value
 
       factory.simulate().file(
         (content: Entity) => {
@@ -331,8 +274,6 @@
         if (CONTEXT.entities[index] === props.entity) return
 
         if (edit.value) onUpdateContent()
-
-        onChangeArea()
       }
     )
 
@@ -420,11 +361,7 @@
       onUpdateContent()
     })
 
-    emitter.on('entity-update-area', () => {
-      if (document.activeElement === input.value) {
-        onChangeArea()
-      }
-    })
+    emitter.on('entity-update-area', () => {})
 
     emitter.on('entity-edit-reset', () => {
       edit.value = false
@@ -467,7 +404,6 @@
 
   const onEdit = async (e?: MouseEvent, options?: EntityShowEditOptions) => {
     onStopEvents(e)
-    onChangeEdit()
 
     if (
       props.entity.type === 'page-break' ||
@@ -488,26 +424,21 @@
     edit.value = true
 
     await nextTick
-
-    if (options?.switch) {
-      onChangeArea()
-    }
-
-    if (options?.selectionInitial) {
-      setTimeout(() => {
-        if (!input.value) return
-        input.value.selectionEnd = 0
-      }, 0)
-    }
   }
 
   const onEnter = async () => {
-    const _input = input.value as HTMLTextAreaElement
-    const posRaw = data.value.slice(_input.selectionStart)
+    const _input = input.value as HTMLDivElement
+
+    const position = raw.v2().caret().index(_input)
+    const end = raw.v2().caret().end(_input)
+    const start = raw.v2().caret().start(_input)
+
+    const posRaw = data.value.slice(position)
+
     let initial = false
 
     if (_index.value + 1 === CONTEXT.entities.length) {
-      if (_input.selectionStart === 0) {
+      if (start) {
         data.value = ''
         emitter.emit('entity-input-raw', '')
       } else {
@@ -519,17 +450,13 @@
       return
     }
 
-    const end =
-      _input.selectionEnd === _input.selectionStart &&
-      _input.textLength === _input.selectionEnd
-
     if (end) {
       CONTEXT.newInPagePosEdit({
         entity: props.entity,
         type: 'paragraph',
       })
     } else {
-      if (_input.selectionStart === 0) {
+      if (start) {
         CONTEXT.newInPagePosEdit({
           entity: props.entity,
           type: 'paragraph',
@@ -565,7 +492,6 @@
     await nextTick
 
     onUpdateContent()
-    onChangeArea()
 
     await nextTick
 
@@ -578,7 +504,12 @@
   }
 
   const onKeyboard = async (e: KeyboardEvent) => {
-    const _input = input.value as HTMLTextAreaElement
+    const _input = input.value as HTMLDivElement
+
+    const position = raw.v2().caret().index(_input)
+    const end = raw.v2().caret().end(_input)
+    const start = raw.v2().caret().start(_input)
+    const empty = raw.v2().caret().empty(_input)
 
     if (e.shiftKey) {
       if (e.key === 'ArrowUp') {
@@ -621,6 +552,7 @@
 
       // italic entity
       if (e.key === 'i') {
+        /*
         const content = entity
           .base()
           .onItalicRaw(utils.text().getSelection(data.value, _input))
@@ -629,9 +561,9 @@
         const end = _input.selectionEnd
 
         data.value =
-          data.value.slice(0, start) +
+          data.value.slice(0, position) +
           content +
-          data.value.slice(start + content.length - 2)
+          data.value.slice(position + content.length - 2)
 
         await nextTick
 
@@ -640,10 +572,12 @@
         } else {
           _input.setSelectionRange(end + 2, end + 2)
         }
+        */
       }
 
       // bold entity
       if (e.key === 'b') {
+        /*
         const content = entity
           .base()
           .onBoldRaw(utils.text().getSelection(data.value, _input))
@@ -663,6 +597,7 @@
         } else {
           _input.setSelectionRange(end + 2, end + 2)
         }
+        */
       }
 
       // to entity initial
@@ -675,11 +610,7 @@
       return
     }
     // delete in empty raw or convert
-    if (
-      (e.key === 'Delete' || e.key === 'Backspace') &&
-      _input.selectionStart === 0 &&
-      _input.selectionEnd === 0
-    ) {
+    if ((e.key === 'Delete' || e.key === 'Backspace') && start) {
       e.preventDefault()
       e.stopPropagation()
 
@@ -708,7 +639,7 @@
       emitter.emit('entity-open', { entity: props.entity, up: true })
     } else if (e.key === 'ArrowUp') {
       // to top
-      if (_input.selectionStart === 0) {
+      if (start) {
         if (
           props.entity.type === 'heading-one' ||
           entity.utils().isFixed(_index.value - 1)
@@ -723,7 +654,7 @@
       }
     } else if (e.key === 'ArrowDown') {
       // to bottom
-      if (_input.selectionStart === _input.textLength) {
+      if (end) {
         if (_index.value + 1 === CONTEXT.entities.length) {
           emitter.emit('entity-input-focus')
           return
@@ -753,36 +684,12 @@
   }
 
   const onStopEvents = (e?: Event) => {
-    const el = input.value as HTMLTextAreaElement
-
-    if (el) {
-      if (el.selectionEnd - el.selectionStart !== 0) {
-        EDITOR.setTextSelection({
-          content: data.value.substring(el.selectionStart, el.selectionEnd),
-          end: el.selectionEnd,
-          start: el.selectionStart,
-        })
-      }
-    }
-
     e?.stopPropagation()
     e?.preventDefault()
   }
 
-  const onChangeArea = () => {
-    useInput().expandTextArea(input.value as HTMLTextAreaElement)
-
-    onChangeEdit()
-  }
-
-  const onChangeEdit = () => {
-    if (!edit.value)
-      height.value = (show.value as HTMLDivElement)?.offsetHeight + 'px'
-  }
-
   const onClick = async () => {
     onStopEvents()
-    onChangeArea()
 
     focus.value = true
     keyboard.value = false
@@ -794,5 +701,9 @@
     await nextTick
 
     emitter.emit('entity-focus')
+  }
+
+  const onInput = (e: any) => {
+    data.value = e.target.innerText
   }
 </script>

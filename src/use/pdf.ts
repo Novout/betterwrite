@@ -91,7 +91,7 @@ export const usePDF = () => {
 
         _text += raw
 
-        const arr = useRaw().pdfConvert(_text)
+        const arr = useRaw().v2().purge().pdf(_text)
 
         text.push(arr)
       } else {
@@ -103,7 +103,7 @@ export const usePDF = () => {
 
         text += raw
 
-        arr = useRaw().pdfConvert(text)
+        arr = useRaw().v2().purge().pdf(text)
       }
 
       return {
