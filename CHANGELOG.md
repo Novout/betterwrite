@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.2](https://github.com/Novout/better-write/compare/v0.6.1...v0.6.2) (2021-11-03)
+
+
+### Bug Fixes
+
+* **editor:** ctrl z ignore ([4104cd5](https://github.com/Novout/better-write/commits/4104cd5e393b24507300e91089da29f61d71e27a))
+* **editor:** delete raw not mutation in switch true ([d61eeb4](https://github.com/Novout/better-write/commits/d61eeb4cf6cfbda4686ae6b8c4d0fe44696bea33))
+* **editor:** italic and bold remove whitespace ([c1609bc](https://github.com/Novout/better-write/commits/c1609bc17a46a777baba84e453c605fa4b8db8ea))
+* **editor:** utilities commands in last input ([4ac0076](https://github.com/Novout/better-write/commits/4ac0076f993429f44ba020cef18ad564e063bca0))
+
 ### [0.6.1](https://github.com/Novout/better-write/compare/v0.6.0...v0.6.1) (2021-11-03)
 
 
