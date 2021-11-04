@@ -24,26 +24,6 @@
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
-      :title="t('editor.aside.commands.contents[1].title')"
-      :description="t('editor.aside.commands.contents[1].description')"
-    >
-      <template #exib>
-        <p class="font-bold text-xl">
-          {{ t('editor.aside.commands.contents[1].tag') }}
-        </p>
-      </template>
-    </EditorAbsoluteCommands>
-    <EditorAbsoluteCommands
-      :title="t('editor.aside.commands.contents[2].title')"
-      :description="t('editor.aside.commands.contents[2].description')"
-    >
-      <template #exib>
-        <p class="font-italic text-xl">
-          {{ t('editor.aside.commands.contents[2].tag') }}
-        </p>
-      </template>
-    </EditorAbsoluteCommands>
-    <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[4].title')"
       :description="t('editor.aside.commands.contents[4].description')"
     >
