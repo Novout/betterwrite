@@ -17,60 +17,18 @@
     </section>
     <div
       ref="input"
-      :contenteditable="!entity.utils().isFixed(_index)"
-      :data-content-editable-leaf="!entity.utils().isFixed(_index)"
+      :contenteditable="editable"
+      :data-content-editable-leaf="editable"
       :spellcheck="true"
       :placeholder="t('editor.text.placeholder.base')"
       :style="{ minHeight: '24px', whiteSpace: 'break-spaces' }"
-      class="overflow-hidden w-full text-sm bg-transparent break-words"
-      :class="[
-        props.entity.type === 'paragraph' ? style.paragraph.indent : '',
-        props.entity.type === 'paragraph' ? 'text-justify' : '',
-        props.entity.type === 'paragraph' ? style.paragraph.fontSize : '',
-        props.entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
-        props.entity.type === 'paragraph' ? style.paragraph.fontColor : '',
-        props.entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
-
-        props.entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
-        props.entity.type === 'heading-one' ? style.heading.one.fontSize : '',
-        props.entity.type === 'heading-one' ? style.heading.one.fontFamily : '',
-        props.entity.type === 'heading-one' ? style.heading.one.fontColor : '',
-        props.entity.type === 'heading-one' ? style.heading.one.fontWeight : '',
-
-        props.entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
-        props.entity.type === 'heading-two' ? style.heading.two.fontSize : '',
-        props.entity.type === 'heading-two' ? style.heading.two.fontFamily : '',
-        props.entity.type === 'heading-two' ? style.heading.two.fontColor : '',
-        props.entity.type === 'heading-two' ? style.heading.two.fontWeight : '',
-
-        props.entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
-        props.entity.type === 'heading-three'
-          ? style.heading.three.fontSize
-          : '',
-        props.entity.type === 'heading-three'
-          ? style.heading.three.fontFamily
-          : '',
-        props.entity.type === 'heading-three'
-          ? style.heading.three.fontColor
-          : '',
-        props.entity.type === 'heading-three'
-          ? style.heading.three.fontWeight
-          : '',
-
-        props.entity.type === 'page-break'
-          ? 'cursor-default my-4 border-b-8 border-gray-400 dark:border-gray-900'
-          : '',
-
-        props.entity.type === 'line-break'
-          ? 'cursor-default my-4 border-b-8 border-dashed border-gray-400 dark:border-gray-800'
-          : '',
-      ]"
+      :class="raw.v2().style(props.entity, style)"
       @input="onInput"
       @keypress.enter.prevent="onEnter"
       @keydown="onKeyboard"
       @click="onClick"
-      @paste="entity.base().onPaste(props.entity, data, $event)"
       v-html="raw.v2().purge().editor(props.entity)"
+      @paste="entity.base().onPaste(props.entity, data, $event)"
     />
   </section>
 </template>
@@ -129,6 +87,7 @@
 
   const style = computed(() => EDITOR.styles.show)
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
+  const editable = computed(() => !entity.utils().isFixed(_index.value))
 
   watch(hover, async (_hover) => {
     keyboard.value = false

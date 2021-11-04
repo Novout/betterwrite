@@ -237,6 +237,44 @@ export const useRaw = () => {
   }
 
   const v2 = () => {
+    const style = (entity: Entity, style: any) => {
+      return [
+        'overflow-hidden w-full text-sm bg-transparent break-words',
+        entity.type === 'paragraph' ? style.paragraph.indent : '',
+        entity.type === 'paragraph' ? 'text-justify' : '',
+        entity.type === 'paragraph' ? style.paragraph.fontSize : '',
+        entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
+        entity.type === 'paragraph' ? style.paragraph.fontColor : '',
+        entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
+
+        entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
+        entity.type === 'heading-one' ? style.heading.one.fontSize : '',
+        entity.type === 'heading-one' ? style.heading.one.fontFamily : '',
+        entity.type === 'heading-one' ? style.heading.one.fontColor : '',
+        entity.type === 'heading-one' ? style.heading.one.fontWeight : '',
+
+        entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
+        entity.type === 'heading-two' ? style.heading.two.fontSize : '',
+        entity.type === 'heading-two' ? style.heading.two.fontFamily : '',
+        entity.type === 'heading-two' ? style.heading.two.fontColor : '',
+        entity.type === 'heading-two' ? style.heading.two.fontWeight : '',
+
+        entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
+        entity.type === 'heading-three' ? style.heading.three.fontSize : '',
+        entity.type === 'heading-three' ? style.heading.three.fontFamily : '',
+        entity.type === 'heading-three' ? style.heading.three.fontColor : '',
+        entity.type === 'heading-three' ? style.heading.three.fontWeight : '',
+
+        entity.type === 'page-break'
+          ? 'cursor-default my-4 border-b-8 border-gray-400 dark:border-gray-900'
+          : '',
+
+        entity.type === 'line-break'
+          ? 'cursor-default my-4 border-b-8 border-dashed border-gray-400 dark:border-gray-800'
+          : '',
+      ]
+    }
+
     const make = () => {
       const image = (entity: Entity) => {
         return `<div class="flex wb-text text-xl items-end w-full justify-center py-5">
@@ -407,7 +445,7 @@ export const useRaw = () => {
       return { editor, pdf }
     }
 
-    return { caret, purge, make }
+    return { caret, purge, make, style }
   }
 
   return { convert, landingConvert, pdfConvert, v2 }
