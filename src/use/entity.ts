@@ -117,23 +117,27 @@ export const useEntity = () => {
       const arr = CONTEXT.entities
 
       // TODO: Deletar em caso de output vazio
-      if (!entry || !output) return
+      if (!entry) return
 
       arr.forEach((e: Entity) => {
         const text = e.raw.split(' ')
 
         text.forEach((t: string) => {
           if (equal && t === entry) {
-            CONTEXT.switchEntityRaw({
-              entity: e,
-              match: t,
-              raw: output,
+            storage.normalize().then(() => {
+              CONTEXT.switchEntityRaw({
+                entity: e,
+                match: t,
+                raw: output,
+              })
             })
           } else if (!equal && t.includes(entry)) {
-            CONTEXT.switchEntityRaw({
-              entity: e,
-              match: entry,
-              raw: output,
+            storage.normalize().then(() => {
+              CONTEXT.switchEntityRaw({
+                entity: e,
+                match: entry,
+                raw: output,
+              })
             })
           }
         })
