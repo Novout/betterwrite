@@ -15,6 +15,7 @@ import { useProjectStore } from '@/store/project'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
 import { EntityType } from '../types/context'
+import { useStorage } from './storage/storage'
 
 export const usePDF = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -25,6 +26,7 @@ export const usePDF = () => {
   const emitter = useEmitter()
   const env = useEnv()
   const project = useProject()
+  const storage = useStorage()
   const { t } = useI18n()
 
   const init: Callback<any> = async () => {
@@ -581,7 +583,9 @@ export const usePDF = () => {
 
       ABSOLUTE.load = true
 
-      create()
+      storage.normalize().then(() => {
+        create()
+      })
     }
 
     const onPreviewPDF = async (input: HTMLElement) => {
@@ -589,7 +593,9 @@ export const usePDF = () => {
 
       ABSOLUTE.load = true
 
-      preview(input)
+      storage.normalize().then(() => {
+        preview(input)
+      })
     }
 
     const onConfigurationPDF = () => {
