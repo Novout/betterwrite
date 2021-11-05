@@ -18,7 +18,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     } as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -32,7 +32,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     } as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -46,7 +46,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -60,7 +60,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -75,7 +75,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -89,7 +89,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -103,7 +103,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -117,7 +117,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(`Untitled ${link().open('http://test')}http://test${link().close()} Untitled`).toEqual(raw);
   })
@@ -132,7 +132,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -146,7 +146,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -160,7 +160,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -174,7 +174,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(`Untitled ${italic().open()}test${italic().close()} Untitled`).toEqual(raw);
   })
@@ -188,7 +188,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(`Untitled ${italic().open()}test Untitled`).toEqual(raw);
   })
@@ -203,7 +203,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -217,7 +217,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -231,7 +231,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(entity.raw).toEqual(raw);
   })
@@ -245,7 +245,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(`Untitled ${bold().open()}test${bold().close()} Untitled`).toEqual(raw);
   })
@@ -259,7 +259,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect(`Untitled ${bold().open()}test Untitled`).toEqual(raw);
   })
@@ -273,7 +273,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect('').toEqual(raw);
   })
@@ -286,7 +286,7 @@ describe('Editor Converter', () => {
       updatedAt: useFormat().actually(),
     }as Entity;
 
-    const raw = useRaw().convert(entity);
+    const raw = useRaw().v1().convert(entity);
 
     expect('').toEqual(raw);
   })
@@ -296,13 +296,13 @@ describe('PDF Converter', () => {
   beforeEach(() => {});
 
   it('should create a simple entity without a object', () => {
-    const raw = useRaw().pdfConvert('Untitled');
+    const raw = useRaw().v1().pdfConvert('Untitled');
 
     expect(["Untitled"]).toEqual(raw);
   })
 
   it('should create a unique italic entity', () => {
-    const raw = useRaw().pdfConvert('Untitled *test* Untitled');
+    const raw = useRaw().v1().pdfConvert('Untitled *test* Untitled');
 
     expect(["Untitled ",
     {
@@ -314,7 +314,7 @@ describe('PDF Converter', () => {
   })
 
   it('should create a unique bold entity', () => {
-    const raw = useRaw().pdfConvert('Untitled &test& Untitled');
+    const raw = useRaw().v1().pdfConvert('Untitled &test& Untitled');
 
     expect(["Untitled ",
     {
@@ -326,7 +326,7 @@ describe('PDF Converter', () => {
   })
 
   it('should create a bold and italic entity', () => {
-    const raw = useRaw().pdfConvert('Untitled &test& *test* Untitled');
+    const raw = useRaw().v1().pdfConvert('Untitled &test& *test* Untitled');
 
     expect(["Untitled ",
     {
@@ -343,13 +343,13 @@ describe('PDF Converter', () => {
   })
 
   it('should not insert a broken entity', () => {
-    const raw = useRaw().pdfConvert('Untitled &test Untitled');
+    const raw = useRaw().v1().pdfConvert('Untitled &test Untitled');
 
     expect(["Untitled "]).toEqual(raw);
   })
 
   it('should create a unique link entity', () => {
-    const raw = useRaw().pdfConvert('Untitled http://test Untitled');
+    const raw = useRaw().v1().pdfConvert('Untitled http://test Untitled');
 
     expect(["Untitled ",
     {

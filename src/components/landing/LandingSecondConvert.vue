@@ -1,7 +1,7 @@
 <template>
   <div
     class="w-full h-96 p-1 overflow-y-auto break-all"
-    v-html="raw.landingConvert(props.data)"
+    v-html="raw.v1().landingConvert(props.data)"
   />
 </template>
 
