@@ -34,7 +34,14 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, nextTick, computed, onMounted } from 'vue'
+  import {
+    ref,
+    watch,
+    nextTick,
+    computed,
+    onMounted,
+    getCurrentInstance,
+  } from 'vue'
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
   import { useEnv } from '@/use/env'
@@ -87,7 +94,7 @@
 
   const style = computed(() => EDITOR.styles.show)
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
-  const editable = computed(() => !entity.utils().isFixed(_index.value))
+  const editable = ref(!entity.utils().isFixed(_index.value))
 
   watch(hover, async (_hover) => {
     keyboard.value = false
@@ -469,6 +476,7 @@
   const onKeyboard = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLDivElement
 
+    const value = raw.v2().caret().value(_input)
     const position = raw.v2().caret().index(_input)
     const end = raw.v2().caret().end(_input)
     const start = raw.v2().caret().start(_input)
@@ -515,52 +523,38 @@
 
       // italic entity
       if (e.key === 'i') {
-        /*
-        const content = entity
-          .base()
-          .onItalicRaw(utils.text().getSelection(data.value, _input))
+        if (!value) return
 
-        const start = _input.selectionStart
-        const end = _input.selectionEnd
+        const content = raw.v2().make().italic(value)
 
-        data.value =
-          data.value.slice(0, position) +
+        const set =
+          data.value.slice(0, position - value.length) +
           content +
-          data.value.slice(position + content.length - 2)
+          data.value.slice(position)
+
+        setData(set)
 
         await nextTick
 
-        if (content === '**') {
-          _input.setSelectionRange(start + 1, start + 1)
-        } else {
-          _input.setSelectionRange(end + 2, end + 2)
-        }
-        */
+        emitter.emit('entity-edit-save')
       }
 
       // bold entity
       if (e.key === 'b') {
-        /*
-        const content = entity
-          .base()
-          .onBoldRaw(utils.text().getSelection(data.value, _input))
+        if (!value) return
 
-        const start = _input.selectionStart
-        const end = _input.selectionEnd
+        const content = raw.v2().make().bold(value)
 
-        data.value =
-          data.value.slice(0, start) +
+        const set =
+          data.value.slice(0, position - value.length) +
           content +
-          data.value.slice(start + content.length - 2)
+          data.value.slice(position)
+
+        setData(set)
 
         await nextTick
 
-        if (content === '&&') {
-          _input.setSelectionRange(start + 1, start + 1)
-        } else {
-          _input.setSelectionRange(end + 2, end + 2)
-        }
-        */
+        emitter.emit('entity-edit-save')
       }
 
       // to entity initial

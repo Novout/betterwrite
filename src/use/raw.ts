@@ -237,6 +237,42 @@ export const useRaw = () => {
   }
 
   const v2 = () => {
+    const html = () => {
+      const bold = () => {
+        const open = () => {
+          return '<span class="font-bold text-sm">'
+        }
+
+        const close = () => {
+          return '</span>'
+        }
+
+        const length = () => {
+          return open().length + close().length
+        }
+
+        return { open, close, length }
+      }
+
+      const italic = () => {
+        const open = () => {
+          return '<span class="italic text-sm">'
+        }
+
+        const close = () => {
+          return '</span>'
+        }
+
+        const length = () => {
+          return open().length + close().length
+        }
+
+        return { open, close, length }
+      }
+
+      return { italic, bold }
+    }
+
     const style = (entity: Entity, style: any) => {
       return [
         'overflow-hidden w-full text-sm bg-transparent break-words',
@@ -294,14 +330,25 @@ export const useRaw = () => {
         </div>`
       }
 
-      return { image }
+      const italic = (content: string) => {
+        return html().italic().open() + content + html().italic().close()
+      }
+
+      const bold = (content: string) => {
+        return html().bold().open() + content + html().bold().close()
+      }
+
+      return { image, italic, bold }
     }
 
     const caret = () => {
+      const isSupported = () => {
+        return typeof window.getSelection !== 'undefined'
+      }
+
       const index = (el: Element) => {
         let position = 0
-        const isSupported = typeof window.getSelection !== 'undefined'
-        if (isSupported) {
+        if (isSupported()) {
           const selection = window.getSelection()
 
           if (!selection) return -1
@@ -330,7 +377,11 @@ export const useRaw = () => {
         return start(el) && el.innerText.length === 0
       }
 
-      return { index, end, start, empty }
+      const value = (el: HTMLDivElement): string => {
+        return (window.getSelection() as any)?.toString()
+      }
+
+      return { html, index, end, start, empty, value }
     }
 
     const purge = () => {
@@ -354,90 +405,9 @@ export const useRaw = () => {
       const pdf = (raw: string): Array<any> => {
         const final: Array<any> = []
 
-        let str = ''
+        const rest = raw.split(new RegExp(/<[^<>]+>/g)).join()
 
-        let str_italic = ''
-        let str_bold = ''
-        let str_link = ''
-
-        let _italic = false
-        let _bold = false
-        let _link = false
-
-        let _raw = raw
-        const over: Array<string> = []
-
-        raw.split(/[ ,]+/).forEach((word: string) => {
-          if (word.includes('http://') || word.includes('https://'))
-            over.push(word)
-        })
-
-        over.forEach((word: string) => {
-          _raw = _raw.replace(word, `|${word}|`)
-        })
-
-        for (let i = 0; i < _raw.length; i++) {
-          const letter = _raw.charAt(i)
-
-          if (letter === '*' && !_italic) {
-            _italic = true
-            final.push(str)
-            str = ''
-          } else if (letter === '*' && _italic) {
-            const obj = {
-              text: str_italic,
-              italics: true,
-            }
-            final.push(obj)
-            str_italic = ''
-            _italic = false
-          } else if (_italic) {
-            str_italic += letter
-          } else if (letter === '|' && !_link) {
-            _link = true
-            final.push(str)
-            str = ''
-          } else if (letter === '|' && _link) {
-            const obj = {
-              text: str_link.replace('http://', '').replace('https://', ''),
-              link: str_link,
-              decoration: 'underline',
-            }
-            final.push(obj)
-            str_link = ''
-            _link = false
-          } else if (_link) {
-            str_link += letter
-          } else if (letter === '&' && !_bold) {
-            _bold = true
-            final.push(str)
-            str = ''
-          } else if (letter === '&' && _bold) {
-            const obj = {
-              text: str_bold,
-              bold: true,
-            }
-            final.push(obj)
-            str_bold = ''
-            _bold = false
-          } else if (_bold) {
-            str_bold += letter
-          }
-
-          if (
-            !_bold &&
-            !_italic &&
-            !_link &&
-            letter !== '*' &&
-            letter !== '&' &&
-            letter !== '|'
-          ) {
-            str += letter
-            if (i + 1 >= _raw.length) {
-              final.push(str)
-            }
-          }
-        }
+        final.push(rest)
 
         return final
       }
@@ -445,7 +415,7 @@ export const useRaw = () => {
       return { editor, pdf }
     }
 
-    return { caret, purge, make, style }
+    return { html, caret, purge, make, style }
   }
 
   return { convert, landingConvert, pdfConvert, v2 }
