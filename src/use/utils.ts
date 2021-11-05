@@ -32,5 +32,19 @@ export const useUtils = () => {
     return { getSelection }
   }
 
-  return { delay, prevent, array, join, text }
+  const regex = () => {
+    const links = () => {
+      return new RegExp(
+        /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi
+      )
+    }
+
+    const htmlTags = () => {
+      return new RegExp(/(<[^<>]+>)/g)
+    }
+
+    return { links, htmlTags }
+  }
+
+  return { delay, prevent, array, join, text, regex }
 }

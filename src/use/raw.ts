@@ -1,4 +1,5 @@
 import { Entity } from '@/types/context'
+import { useUtils } from './utils'
 
 export const bold = () => {
   const open = () => {
@@ -404,10 +405,68 @@ export const useRaw = () => {
 
       const pdf = (raw: string): Array<any> => {
         const final: Array<any> = []
+        let set: false | 'bold' | 'italic' = false
 
-        const rest = raw.split(new RegExp(/<[^<>]+>/g)).join()
+        const rest = raw.split(useUtils().regex().htmlTags())
 
-        final.push(rest)
+        rest.forEach((content: string) => {
+          // italic
+          if (set === 'italic') {
+            final.push({
+              text: content,
+              italics: true,
+            })
+            set = false
+            return
+          }
+
+          if (content === html().italic().open()) {
+            set = 'italic'
+            return
+          }
+
+          if (set === 'bold') {
+            final.push({
+              text: content,
+              bold: true,
+            })
+            set = false
+            return
+          }
+
+          // bold
+          if (content === html().bold().open()) {
+            set = 'bold'
+            return
+          }
+
+          if (
+            content === html().italic().close() ||
+            content === html().bold().close()
+          )
+            return
+
+          // http
+          if (content.match(useUtils().regex().links())) {
+            const fin = raw.split(useUtils().regex().links())
+
+            fin.forEach((str: string) => {
+              if (str.match(useUtils().regex().links())) {
+                final.push({
+                  text: str.replace('http://', '').replace('https://', ''),
+                  link: str,
+                  decoration: 'underline',
+                })
+              } else {
+                final.push(str)
+              }
+            })
+
+            return
+          }
+
+          final.push(content)
+        })
 
         return final
       }
