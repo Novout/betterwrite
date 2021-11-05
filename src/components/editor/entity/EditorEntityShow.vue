@@ -523,7 +523,7 @@
 
       // italic entity
       if (e.key === 'i') {
-        if (!value) return
+        if (!value || props.entity.type !== 'paragraph') return
 
         const content = raw.v2().make().italic(value)
 
@@ -541,7 +541,7 @@
 
       // bold entity
       if (e.key === 'b') {
-        if (!value) return
+        if (!value || props.entity.type !== 'paragraph') return
 
         const content = raw.v2().make().bold(value)
 
