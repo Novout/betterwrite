@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/Novout/better-write/compare/v0.6.2...v0.7.0) (2021-11-06)
+
+
+### Features
+
+* **editor:** italic and bold insert by selection ([0559a56](https://github.com/Novout/better-write/commits/0559a567835d82ea7c375c8ae1475284862bff4f))
+
+
+### Bug Fixes
+
+* **editor:** editable in fixed items ([e18873c](https://github.com/Novout/better-write/commits/e18873c6c645f2d049c9002fbb045b9d8286052f))
+* **editor:** inserts in cursor correct position ([e2fb21f](https://github.com/Novout/better-write/commits/e2fb21ff5f47dcbd04bb9556dd80e779b35634e8))
+* **editor:** italic and bold in internal mutate ([06f8f7b](https://github.com/Novout/better-write/commits/06f8f7bf9fd6372e25f33c1a898d36e1fa677131))
+* **editor:** italic and bold inline supports only paragraph ([104aa82](https://github.com/Novout/better-write/commits/104aa82600599fd43441ad5314a00c7fa8f0bf5b))
+* **editor:** remove italic and bold ([71178ff](https://github.com/Novout/better-write/commits/71178ffcdfe2c65fa7a95bb2563693604692f2b3))
+* **editor:** swapper correct affect ([037aaed](https://github.com/Novout/better-write/commits/037aaed880182703c200394dc52c4126c1558256))
+* **editor:** to next entity in fixed items insert ([29bbd92](https://github.com/Novout/better-write/commits/29bbd920c92f358ed8910f2254378ac55decf641))
+* **pdf:** normalize for pdf use ([fd8d71c](https://github.com/Novout/better-write/commits/fd8d71ca1e8ba142e4324feba58773658215c3b0))
+
+
+### Refactor
+
+* **commands:** remove italic and bold ([cffa57f](https://github.com/Novout/better-write/commits/cffa57f83ef382475d6fb4ada623c7e5f15a1544))
+* **editor:** entity styles ([c876a96](https://github.com/Novout/better-write/commits/c876a962bc622a04f8c5363e8038da4e3620cd4e))
+* **editor:** v2 entity initial implement ([96c3bb2](https://github.com/Novout/better-write/commits/96c3bb2e824dda5905049a50e0b899f579ab6513))
+* **pdf:** link binding ([0818e6b](https://github.com/Novout/better-write/commits/0818e6b75dbeeba55525404c87a50cb01df7dd8b))
+
+
+### Structure
+
+* **deps:** update packages ([05a1db0](https://github.com/Novout/better-write/commits/05a1db0907b5f6795594cc1974542617e31b6c55))
+* **editor:** remove editable tag ([45e7bf0](https://github.com/Novout/better-write/commits/45e7bf0d715c93eaed06634a613c5d01642c8110))
+* **raw:** set v1 in external callback ([c826329](https://github.com/Novout/better-write/commits/c826329aa33abfdf6bb1b885bc06683dd5ca6374))
+
 ### [0.6.2](https://github.com/Novout/better-write/compare/v0.6.1...v0.6.2) (2021-11-03)
 
 
