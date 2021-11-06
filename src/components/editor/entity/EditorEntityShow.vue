@@ -525,46 +525,28 @@
       if (e.key === 'i') {
         if (!value || props.entity.type !== 'paragraph') return
 
-        /*
-
-        const content = raw.v2().make().italic(value)
-
-        const set =
-          data.value.slice(0, position - value.length) +
-          content +
-          data.value.slice(position)
-
-        setData(set)
+        setData(
+          raw
+            .v2()
+            .apply({ existent: data.value, type: 'italic', input: _input })
+        )
 
         await nextTick
 
         emitter.emit('entity-edit-save')
-        */
-
-        data.value = raw.v2().apply({ existent: data.value, raw: value, type: 'italic' })
       }
 
       // bold entity
       if (e.key === 'b') {
         if (!value || props.entity.type !== 'paragraph') return
 
-        /*
-
-        const content = raw.v2().make().bold(value)
-
-        const set =
-          data.value.slice(0, position - value.length) +
-          content +
-          data.value.slice(position)
-
-        setData(set)
+        setData(
+          raw.v2().apply({ existent: data.value, type: 'bold', input: _input })
+        )
 
         await nextTick
 
         emitter.emit('entity-edit-save')
-        */
-
-       data.value = raw.v2().apply({ existent: data.value, raw: value, type: 'bold' })
       }
 
       // to entity initial
@@ -671,6 +653,6 @@
   }
 
   const onInput = (e: any) => {
-    data.value = e.target.innerText
+    data.value = e.target.innerHTML
   }
 </script>

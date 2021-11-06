@@ -1,5 +1,10 @@
 export interface V2RawApply {
-  raw: string
   existent: string
   type: 'bold' | 'italic'
+  input: HTMLDivElement
+}
+
+export interface V2RawSet {
+  content: string
+  type: 'simple' | 'bold' | 'italic' | 'bolditalic'
 }
