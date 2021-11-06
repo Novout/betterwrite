@@ -18,7 +18,6 @@
     <div
       ref="input"
       :contenteditable="editable"
-      :data-content-editable-leaf="editable"
       :spellcheck="true"
       :placeholder="t('editor.text.placeholder.base')"
       :style="{ minHeight: '24px', whiteSpace: 'break-spaces' }"
