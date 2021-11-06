@@ -40,7 +40,6 @@
     nextTick,
     computed,
     onMounted,
-    getCurrentInstance,
   } from 'vue'
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
@@ -57,7 +56,6 @@
   import { useEditorStore } from '@/store/editor'
   import { useAbsoluteStore } from '@/store/absolute'
   import usePlugin from '@/use/plugin/core'
-  import { useUtils } from '@/use/utils'
   import { ID } from '@/types/utils'
 
   const props = defineProps({
@@ -81,7 +79,6 @@
   const { t } = useI18n()
   const raw = useRaw()
   const plugin = usePlugin()
-  const utils = useUtils()
 
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)
@@ -94,7 +91,7 @@
 
   const style = computed(() => EDITOR.styles.show)
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
-  const editable = ref(!entity.utils().isFixed(_index.value))
+  const editable = computed(() => !entity.utils().isFixed(_index.value))
 
   watch(hover, async (_hover) => {
     keyboard.value = false
