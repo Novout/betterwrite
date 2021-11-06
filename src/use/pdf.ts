@@ -531,7 +531,7 @@ export const usePDF = () => {
 
     if (PDF.normalize['Roboto']) set['Roboto'] = PDF.normalize['Roboto']
 
-    pdfMake.fonts = set
+    (pdfMake as any).fonts = set
   }
 
   const create = (): void => {

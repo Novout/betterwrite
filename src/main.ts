@@ -5,7 +5,6 @@ import { PluginEmitter } from './types/plugin/core'
 import { VueEmitter } from './types/emitter'
 import { plugin as PluginBase } from './types/plugin/emitter'
 import { MotionPlugin as motion } from '@vueuse/motion'
-import vfmPlugin from 'vue-final-modal'
 import Toast, { POSITION } from 'vue-toastification'
 import mitt from 'mitt'
 
@@ -33,7 +32,6 @@ app.use(store)
 app.use(i18n)
 app.use(motion)
 app.use(head)
-app.use(vfmPlugin)
 app.use(Toast, {
   position: POSITION.TOP_CENTER,
   timeout: 4000,
