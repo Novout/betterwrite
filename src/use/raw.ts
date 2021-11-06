@@ -380,6 +380,11 @@ export const useRaw = () => {
         return position
       }
 
+      const set = (el: HTMLDivElement, offset: number, focus = true) => {
+        useUtils().cursor().setCurrentCursorPosition(offset, el)
+        if (focus) el.focus()
+      }
+
       const end = (el: HTMLDivElement) => {
         return index(el) === el.innerText.length
       }
@@ -407,7 +412,7 @@ export const useRaw = () => {
         }
       }
 
-      return { html, index, end, start, empty, value, object }
+      return { set, html, index, end, start, empty, value, object }
     }
 
     const validate = (arr: Array<string>): Array<V2RawSet> => {

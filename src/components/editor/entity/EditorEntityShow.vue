@@ -33,13 +33,7 @@
 </template>
 
 <script setup lang="ts">
-  import {
-    ref,
-    watch,
-    nextTick,
-    computed,
-    onMounted,
-  } from 'vue'
+  import { ref, watch, nextTick, computed, onMounted } from 'vue'
   import { useRaw } from '@/use/raw'
   import useEmitter from '@/use/emitter'
   import { useEnv } from '@/use/env'
@@ -56,6 +50,7 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import usePlugin from '@/use/plugin/core'
   import { ID } from '@/types/utils'
+  import { useUtils } from '../../../use/utils'
 
   const props = defineProps({
     entity: {
@@ -477,6 +472,7 @@
     const end = raw.v2().caret().end(_input)
     const start = raw.v2().caret().start(_input)
     const empty = raw.v2().caret().empty(_input)
+    const offset = useUtils().cursor().getCurrentCursorPosition(_input)
 
     if (e.shiftKey) {
       if (e.key === 'ArrowUp') {
@@ -529,7 +525,7 @@
 
         await nextTick
 
-        emitter.emit('entity-edit-save')
+        raw.v2().caret().set(_input, offset)
       }
 
       // bold entity
@@ -542,7 +538,7 @@
 
         await nextTick
 
-        emitter.emit('entity-edit-save')
+        raw.v2().caret().set(_input, offset)
       }
 
       // to entity initial
