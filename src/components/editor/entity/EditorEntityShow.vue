@@ -126,7 +126,7 @@
     const _input = input.value as HTMLDivElement
 
     data.value = val
-    _input.innerText = val
+    _input.innerHTML = val
   }
 
   watch(data, async (_data: string) => {
