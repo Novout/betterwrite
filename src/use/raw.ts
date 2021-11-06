@@ -471,7 +471,7 @@ export const useRaw = () => {
 
         const wrap = set.content.substring(initial, finish)
 
-        if (!wrap || wrap !== target.value) {
+        const not = () => {
           switch (set.type) {
             case 'italic':
               _ += make().italic(set.content)
@@ -485,6 +485,10 @@ export const useRaw = () => {
           }
 
           letterCount += set.content.length
+        }
+
+        if (!wrap || wrap !== target.value) {
+          not()
 
           return
         }
@@ -492,7 +496,10 @@ export const useRaw = () => {
         if (set.type !== 'simple') {
           if (target.value === set.content) {
             _ += set.content
+            return
           }
+
+          not()
 
           return
         }
