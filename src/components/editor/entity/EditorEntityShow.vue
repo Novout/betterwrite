@@ -79,6 +79,7 @@
   const edit = ref<boolean>(false)
   const keyboard = ref<boolean>(false)
   const commands = ref<boolean>(false)
+  const old_raw = ref<number>(props.entity.raw.length)
 
   const data = ref<string>('')
   const input = ref<HTMLDivElement | null>(null)
@@ -246,6 +247,7 @@
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
           switch: payload?.switch,
+          cursor: payload?.cursor,
         })
       }
 
@@ -254,6 +256,7 @@
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
           switch: payload?.switch,
+          cursor: payload?.cursor,
         })
       }
     })
@@ -385,6 +388,19 @@
     edit.value = true
 
     await nextTick
+
+    if (options?.cursor) {
+      // set cursor in max old content position
+      raw
+        .v2()
+        .caret()
+        .set(input.value as HTMLDivElement, old_raw.value)
+
+      // update old raw
+      old_raw.value = data.value.length
+
+      await nextTick
+    }
   }
 
   const onEnter = async () => {
@@ -577,7 +593,11 @@
 
       await nextTick
 
-      emitter.emit('entity-open', { entity: props.entity, up: true })
+      emitter.emit('entity-open', {
+        entity: props.entity,
+        up: true,
+        cursor: true,
+      })
     } else if (e.key === 'ArrowUp') {
       // to top
       if (start) {

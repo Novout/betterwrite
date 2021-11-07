@@ -53,6 +53,7 @@ export interface EntityShowEditOptions {
   keyboard?: boolean
   switch?: boolean
   selectionInitial?: boolean
+  cursor?: boolean
 }
 
 export interface EntityExternal {

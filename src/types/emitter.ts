@@ -8,6 +8,7 @@ export interface VueEmitterEntityOpen {
   up?: boolean
   selectionInitial?: boolean
   switch?: boolean
+  cursor?: boolean
 }
 
 export type VueEmitterName =
