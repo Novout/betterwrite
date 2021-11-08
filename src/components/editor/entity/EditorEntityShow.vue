@@ -247,7 +247,7 @@
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
           switch: payload?.switch,
-          cursor: payload?.cursor,
+          cursor: payload?.cursor
         })
       }
 
@@ -256,7 +256,7 @@
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
           switch: payload?.switch,
-          cursor: payload?.cursor,
+          cursor: payload?.cursor
         })
       }
     })
@@ -391,15 +391,10 @@
 
     if (options?.cursor) {
       // set cursor in max old content position
-      raw
-        .v2()
-        .caret()
-        .set(input.value as HTMLDivElement, old_raw.value)
+      raw.v2().caret().set(input.value as HTMLDivElement, old_raw.value)
 
       // update old raw
       old_raw.value = data.value.length
-
-      await nextTick
     }
   }
 
@@ -581,10 +576,6 @@
 
       if (entity.utils().isFixed(_index.value - 1)) return
 
-      if (data.value !== '') {
-        CONTEXT.insertRawInExistentEntity(props.entity)
-      }
-
       entity.base().onDelete(props.entity, _index.value)
 
       await nextTick
@@ -593,11 +584,7 @@
 
       await nextTick
 
-      emitter.emit('entity-open', {
-        entity: props.entity,
-        up: true,
-        cursor: true,
-      })
+      emitter.emit('entity-open', { entity: props.entity, up: true, cursor: true })
     } else if (e.key === 'ArrowUp') {
       // to top
       if (start) {
