@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/Novout/better-write/compare/v0.7.0...v0.7.1) (2021-11-08)
+
+
+### Features
+
+* **editor:** cursor in new delete entity ([6a8fe9b](https://github.com/Novout/better-write/commits/6a8fe9b4a0c81f4a33b0becac5c7e67e46fdbd38))
+* **editor:** finder and switcher dragabble ([1bb760f](https://github.com/Novout/better-write/commits/1bb760f656d887c32e34282483c32e72f295a0ed))
+
+
+### Bug Fixes
+
+* **editor:** absolute overflow in modal container ([14fcafa](https://github.com/Novout/better-write/commits/14fcafaccb52210f40f96538346055ab3a07d038))
+* **editor:** delete entity duplicate raw ([320c604](https://github.com/Novout/better-write/commits/320c6049a09cdde62ab0c66a9a67729a37d9c005))
+
 ## [0.7.0](https://github.com/Novout/better-write/compare/v0.6.2...v0.7.0) (2021-11-06)
 
 
