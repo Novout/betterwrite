@@ -136,5 +136,12 @@ export const useUtils = () => {
     return { setCurrentCursorPosition, getCurrentCursorPosition }
   }
 
-  return { delay, prevent, array, join, text, regex, cursor }
+  const position = (el: HTMLElement) => {
+    return {
+      x: window.innerWidth / 2 + el.offsetWidth / 2,
+      y: window.innerHeight / 2 + el.offsetHeight / 2,
+    }
+  }
+
+  return { position, delay, prevent, array, join, text, regex, cursor }
 }

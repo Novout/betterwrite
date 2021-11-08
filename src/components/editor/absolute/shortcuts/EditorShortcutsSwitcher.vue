@@ -1,26 +1,14 @@
 <template>
   <div
-    class="
-      absolute
-      top-1/2
-      left-1/2
-      transform
-      duration-700
-      -translate-x-1/2 -translate-y-1/2
-      w-60
-      bg-white
-      dark:bg-gray-800
-      p-2
-      rounded
-      transition
-      shadow-2xl
-    "
+    ref="switcher"
+    class="fixed w-60 bg-white dark:bg-gray-800 p-2 rounded shadow-2xl"
+    :style="style"
   >
     <div
       class="flex flex-col w-full"
       @keypress.enter.prevent="entity.swapper().onSwitcherAll"
     >
-      <div class="flex items-center justify-between w-full mb-1">
+      <div class="flex items-center justify-between w-full mb-1 cursor-pointer">
         <div>
           <HeroIcon
             :class="[
@@ -97,20 +85,28 @@
 
 <script setup lang="ts">
   import { useEntity } from '@/use/entity'
-  import { onMounted } from 'vue'
+  import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useDraggable } from '@vueuse/core'
 
   const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
   const entity = useEntity()
 
+  const switcher = ref<HTMLElement | null>(null)
+  const entry = ref<HTMLElement | null>(null)
+
+  const { style } = useDraggable(switcher as any, {
+    initialValue: { x: window.innerWidth / 2, y: window.innerHeight / 2 },
+  })
+
   const onClose = () => {
     ABSOLUTE.shortcuts.switcher = false
   }
 
   onMounted(() => {
-    entity.sentry.value?.focus()
+    entry.value?.focus()
   })
 </script>

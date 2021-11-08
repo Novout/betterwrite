@@ -1,23 +1,11 @@
 <template>
   <div
-    class="
-      absolute
-      top-1/2
-      left-1/2
-      transform
-      duration-700
-      -translate-x-1/2 -translate-y-1/2
-      w-60
-      bg-white
-      dark:bg-gray-800
-      p-2
-      rounded
-      transition
-      shadow-2xl
-    "
+    ref="finder"
+    class="fixed w-60 bg-white dark:bg-gray-800 p-2 rounded shadow-2xl"
+    :style="style"
   >
     <div class="flex flex-col w-full">
-      <div class="flex items-center justify-between w-full mb-1">
+      <div class="flex items-center justify-between w-full mb-1 cursor-pointer">
         <div class="flex">
           <div class="wb-text font-poppins">
             {{ entity.fstate.actuallyLetterCounter }} /
@@ -92,13 +80,21 @@
   import { useI18n } from 'vue-i18n'
   import { useEntity } from '@/use/entity'
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useDraggable } from '@vueuse/core'
+  import { useUtils } from '@/use/utils'
 
   const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
   const entity = useEntity()
+  const utils = useUtils()
 
+  const finder = ref<HTMLElement | null>(null)
   const search = ref<HTMLElement | null>(null)
+
+  const { style } = useDraggable(finder as any, {
+    initialValue: { x: window.innerWidth / 2, y: window.innerHeight / 2 },
+  })
 
   const onClose = () => {
     ABSOLUTE.shortcuts.finder = false
