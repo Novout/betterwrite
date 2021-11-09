@@ -1,0 +1,129 @@
+<template>
+  <PDFConfigurationSlot>
+    <template #title>
+      <h2 class="text-2xl ml-2 font-bold font-poppins">
+        {{ t('editor.pdf.custom.title.headingThree') }}
+      </h2>
+    </template>
+    <div
+      class="
+        flex flex-row flex-wrap
+        justify-between
+        items-center
+        my-3
+        overflow-x-hidden
+      "
+    >
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.custom.generics.font')
+        }}</label>
+        <InputSelect
+          v-model="pdf.headingThree.font"
+          class="flex-1"
+          :arr="fontFamily"
+          :font="true"
+        />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.custom.generics.fontSize')
+        }}</label>
+        <InputNumber v-model="pdf.headingThree.fontSize" />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.custom.generics.lineHeight')
+        }}</label>
+        <InputNumber v-model="pdf.headingThree.lineHeight" />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.custom.generics.bold')
+        }}</label>
+        <InputBoolean v-model="pdf.headingThree.bold" />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.custom.generics.italics')
+        }}</label>
+        <InputBoolean v-model="pdf.headingThree.italics" />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.custom.generics.alignment')
+        }}</label>
+        <InputSelect
+          v-model="pdf.headingThree.alignment"
+          class="flex-1"
+          :arr="useDefines().pdf().alignment()"
+        />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.custom.generics.characterSpacing')
+        }}</label>
+        <InputNumber v-model="pdf.headingThree.characterSpacing" />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-1 text-xs">{{
+          t('editor.pdf.custom.generics.color')
+        }}</label>
+        <InputColorPicker v-model="pdf.headingThree.color" />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-1 text-xs">{{
+          t('editor.pdf.custom.generics.background')
+        }}</label>
+        <InputColorPicker v-model="pdf.headingThree.background" />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-1 text-xs">{{
+          t('editor.pdf.custom.generics.markerColor')
+        }}</label>
+        <InputColorPicker v-model="pdf.headingThree.markerColor" />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.custom.generics.decoration')
+        }}</label>
+        <InputSelect
+          v-model="pdf.headingThree.decoration"
+          class="flex-1"
+          :arr="useDefines().pdf().decoration()"
+        />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.custom.generics.decorationStyle')
+        }}</label>
+        <InputSelect
+          v-model="pdf.headingThree.decorationStyle"
+          class="flex-1"
+          :arr="useDefines().pdf().decorationStyle()"
+        />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.custom.generics.breakPage')
+        }}</label>
+        <InputBoolean v-model="pdf.headingThree.breakPage" />
+      </div>
+    </div>
+  </PDFConfigurationSlot>
+</template>
+
+<script setup lang="ts">
+  import { usePDFStore } from '@/store/pdf'
+  import { useDefines } from '@/use/defines'
+  import { computed } from 'vue'
+  import { useI18n } from 'vue-i18n'
+
+  const PDF = usePDFStore()
+
+  const { t } = useI18n()
+
+  const pdf = computed(() => PDF.styles)
+
+  const fontFamily = computed(() => PDF.fonts)
+</script>

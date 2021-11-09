@@ -1,0 +1,99 @@
+<template>
+  <PDFConfigurationSlot>
+    <template #title>
+      <h2 class="text-2xl ml-2 font-bold font-poppins">
+        {{ t('editor.pdf.base.title') }}
+      </h2>
+    </template>
+    <div
+      class="
+        flex flex-row flex-wrap
+        justify-start
+        items-center
+        my-3
+        overflow-x-hidden
+      "
+    >
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
+        <InputBoolean v-model="switcher.main" />
+        <InputFile
+          v-if="switcher.main"
+          id="main-background"
+          :title="t('generics.input.image')"
+          :src="pdf.base.background.main"
+          @load="onMainImageLoad"
+          @exclude="onDeleteMainImage"
+        />
+      </div>
+
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{ t('editor.pdf.base.pageSize') }}</label>
+        <InputSelect
+          v-model="pdf.base.pageSize"
+          class="flex-1"
+          :arr="useDefines().pdf().base().pageSize()"
+        />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.base.pageOrientation')
+        }}</label>
+        <InputSelect
+          v-model="pdf.base.pageOrientation"
+          class="flex-1"
+          :arr="useDefines().pdf().base().pageOrientation()"
+        />
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.base.pageMargins.title')
+        }}</label>
+        <section class="flex justify-between w-full flex-row flex-wrap">
+          <section>
+            <label>{{ t('editor.pdf.base.pageMargins.left') }}</label>
+            <InputNumber v-model="pdf.base.pageMargins.left" />
+          </section>
+          <section>
+            <label>{{ t('editor.pdf.base.pageMargins.top') }}</label>
+            <InputNumber v-model="pdf.base.pageMargins.top" />
+          </section>
+          <section>
+            <label>{{ t('editor.pdf.base.pageMargins.right') }}</label>
+            <InputNumber v-model="pdf.base.pageMargins.right" />
+          </section>
+          <section>
+            <label>{{ t('editor.pdf.base.pageMargins.bottom') }}</label>
+            <InputNumber v-model="pdf.base.pageMargins.bottom" />
+          </section>
+        </section>
+      </div>
+    </div>
+  </PDFConfigurationSlot>
+</template>
+
+<script setup lang="ts">
+  import { usePDFStore } from '@/store/pdf'
+  import { useDefines } from '@/use/defines'
+  import { reactive, computed } from 'vue'
+  import { useI18n } from 'vue-i18n'
+
+  const PDF = usePDFStore()
+
+  const { t } = useI18n()
+
+  const pdf = computed(() => PDF.styles)
+
+  const switcher = reactive({
+    cover: PDF.styles.switcher.cover,
+    main: PDF.styles.switcher.main,
+  })
+
+  const onMainImageLoad = (e: any) => {
+    PDF.setMainBackground(e)
+  }
+
+  const onDeleteMainImage = () => {
+    PDF.deleteMainBackground()
+  }
+</script>
