@@ -104,7 +104,9 @@ export const useDropbox = () => {
 
             ABSOLUTE.aside = true
 
-            loadContext(context)
+            storage.normalize().then(() => {
+              loadContext(context)
+            })
           })
           .catch((err: DropboxResponseError<any>) => {
             toast.error(t('toast.project.error'))

@@ -100,6 +100,65 @@
             <label>{{ t('editor.pdf.base.footer.size') }}</label>
             <InputNumber v-model="pdf.base.footer.textSize" />
           </section>
+          <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.footer.fontFamily') }}</label>
+            <InputSelect
+              v-model="pdf.base.footer.fontFamily"
+              class="flex-1"
+              :arr="PDF.fonts"
+              :font="true"
+            />
+          </section>
+        </section>
+      </div>
+      <div class="wb-input-container">
+        <section
+          class="flex justify-start items-center w-full flex-row flex-wrap"
+        >
+          <section class="flex items-center">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.base.header.title')
+            }}</label>
+            <InputBoolean v-model="pdf.switcher.header" />
+          </section>
+          <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.header.start') }}</label>
+            <InputNumber v-model="pdf.base.header.start" />
+          </section>
+          <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.header.content') }}</label>
+            <InputText
+              v-model="pdf.base.header.content"
+              class="bg-transparent shadow-lg"
+            />
+          </section>
+          <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.header.type') }}</label>
+            <InputSelect
+              v-model="pdf.base.header.textType"
+              :arr="['simple', 'counter']"
+            />
+          </section>
+          <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.header.alignment') }}</label>
+            <InputSelect
+              v-model="pdf.base.header.alignment"
+              :arr="['default', 'left', 'center', 'right']"
+            />
+          </section>
+          <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.header.size') }}</label>
+            <InputNumber v-model="pdf.base.header.textSize" />
+          </section>
+          <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.header.fontFamily') }}</label>
+            <InputSelect
+              v-model="pdf.base.header.fontFamily"
+              class="flex-1"
+              :arr="PDF.fonts"
+              :font="true"
+            />
+          </section>
         </section>
       </div>
     </div>

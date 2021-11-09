@@ -8,6 +8,7 @@ import isElectron from 'is-electron'
 import { useEnv } from '@/use/env'
 import { useLoggerStore } from './logger'
 import { useEditorStore } from './editor'
+import { usePDFStore } from './pdf'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -33,8 +34,10 @@ export const useProjectStore = defineStore('project', {
     load(payload: ProjectState) {
       const logger = useLoggerStore()
       const editor = useEditorStore()
+      const pdf = usePDFStore()
 
       editor.$reset()
+      pdf.resetStyles()
       logger.reset()
       this.$reset()
 
@@ -54,8 +57,10 @@ export const useProjectStore = defineStore('project', {
     create(payload: Record<any, any>) {
       const logger = useLoggerStore()
       const editor = useEditorStore()
+      const pdf = usePDFStore()
 
       editor.$reset()
+      pdf.resetStyles()
       logger.reset()
       this.$reset()
 
@@ -96,10 +101,11 @@ export const useProjectStore = defineStore('project', {
     createBlank(payload: Record<any, any>) {
       const logger = useLoggerStore()
       const editor = useEditorStore()
+      const pdf = usePDFStore()
 
       editor.$reset()
+      pdf.resetStyles()
       logger.reset()
-
       this.$reset()
 
       this.name = useText().kebab(payload.name)

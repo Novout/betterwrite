@@ -121,6 +121,17 @@ export default {
         alignment: 'Alinhamento',
         size: 'Tamanho',
         type: 'Estilo',
+        fontFamily: 'Fonte',
+      },
+      header: {
+        title: 'Cabeçalho',
+        content: 'Conteúdo',
+        exists: 'Habilitar',
+        start: 'Início',
+        alignment: 'Alinhamento',
+        size: 'Tamanho',
+        type: 'Estilo',
+        fontFamily: 'Fonte',
       },
     },
     custom: {

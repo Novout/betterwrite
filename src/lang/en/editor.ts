@@ -122,6 +122,17 @@ export default {
         alignment: 'Alignment',
         size: 'Size',
         type: 'Style',
+        fontFamily: 'Font',
+      },
+      header: {
+        title: 'Footer',
+        content: 'Content',
+        exists: 'On',
+        start: 'Initial',
+        alignment: 'Alignment',
+        size: 'Size',
+        type: 'Style',
+        fontFamily: 'Font',
       },
     },
     custom: {

@@ -7,6 +7,7 @@ import { usePDFStore } from '@/store/pdf'
 import { ProjectObject } from '@/types/project'
 import { nextTick } from 'vue'
 import useEmitter from '../emitter'
+import { useDefines } from '../defines'
 
 export const useStorage = () => {
   const PROJECT = useProjectStore()
@@ -16,6 +17,7 @@ export const useStorage = () => {
 
   const env = useEnv()
   const emitter = useEmitter()
+  const defines = useDefines()
 
   const support = (project: any) => {
     let _ = project
@@ -40,20 +42,36 @@ export const useStorage = () => {
       _.editor.configuration.auto = 5
     }
 
-    // <= 0.7.2
-    if (!_.pdf.styles.base.footer.alignment) {
+    // <= 0.8.0
+    if (!_.pdf.styles.base.footer) {
       _.pdf.styles.base.footer = {
         start: 3,
         alignment: 'default',
         textType: 'simple',
         textSize: 9,
+        fontFamily: defines.pdf().fontFamily()[1],
       }
     }
-
     if (!_.pdf.styles.switcher.footer) {
       _.pdf.styles.switcher = {
         ..._.pdf.styles.switcher,
         footer: true,
+      }
+    }
+    if (!_.pdf.styles.base.header) {
+      _.pdf.styles.base.header = {
+        start: 3,
+        content: _.project.nameRaw,
+        alignment: 'center',
+        textType: 'simple',
+        textSize: 12,
+        fontFamily: defines.pdf().fontFamily()[1],
+      }
+    }
+    if (!_.pdf.styles.switcher.header) {
+      _.pdf.styles.switcher = {
+        ..._.pdf.styles.switcher,
+        header: false,
       }
     }
 

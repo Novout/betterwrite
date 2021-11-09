@@ -471,6 +471,43 @@ export const usePDF = () => {
       return { alignment, text }
     }
 
+    const header = () => {
+      PDF.styles.base.header.content
+      const text = (
+        currentPage: number,
+        pageCount: number,
+        pageSize: number
+      ) => {
+        return currentPage >= PDF.styles.base.header.start
+          ? PDF.styles.base.header.content
+          : ''
+      }
+
+      const alignment = (
+        currentPage: number,
+        pageCount: number,
+        pageSize: number
+      ) => {
+        if (PDF.styles.base.header.alignment === 'default') {
+          return currentPage % 2 ? 'left' : 'right'
+        }
+
+        if (PDF.styles.base.header.alignment === 'center') {
+          return 'center'
+        }
+
+        if (PDF.styles.base.header.alignment === 'left') {
+          return 'left'
+        }
+
+        if (PDF.styles.base.header.alignment === 'right') {
+          return 'right'
+        }
+      }
+
+      return { alignment, text }
+    }
+
     return {
       pageSize: generate().base().pageSize,
       pageOrientation: generate().base().pageOrientation,
@@ -519,7 +556,21 @@ export const usePDF = () => {
                 text: footer().text(currentPage, pageCount, pageSize),
                 margin: [15, 0],
                 fontSize: PDF.styles.base.footer.textSize,
+                font: PDF.styles.base.footer.fontFamily,
                 alignment: footer().alignment(currentPage, pageCount, pageSize),
+              },
+            ]
+          }
+        : undefined,
+      header: PDF.styles.switcher.header
+        ? function (currentPage: number, pageCount: number, pageSize: any) {
+            return [
+              {
+                text: header().text(currentPage, pageCount, pageSize),
+                fontSize: PDF.styles.base.header.textSize,
+                font: PDF.styles.base.header.fontFamily,
+                decoration: 'underline',
+                alignment: header().alignment(currentPage, pageCount, pageSize),
               },
             ]
           }
@@ -558,6 +609,8 @@ export const usePDF = () => {
     fonts.push(PDF.styles.headingOne.font)
     fonts.push(PDF.styles.headingTwo.font)
     fonts.push(PDF.styles.headingThree.font)
+    fonts.push(PDF.styles.base.header.fontFamily)
+    fonts.push(PDF.styles.base.footer.fontFamily)
 
     const unique = fonts.filter((v, i, a) => a.indexOf(v) === i)
 

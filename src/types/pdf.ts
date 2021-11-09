@@ -25,6 +25,7 @@ export interface PDFStateStylesBaseMargins {
 }
 
 export interface PDFStateStylesBase {
+  header: PDFStateStylesBaseHeader
   footer: PDFStateStylesBaseFooter
   background: PDFStateStylesBaseBackground
   pageSize: string
@@ -32,11 +33,21 @@ export interface PDFStateStylesBase {
   pageMargins: PDFStateStylesBaseMargins
 }
 
+export interface PDFStateStylesBaseHeader {
+  start: number
+  content: string
+  alignment: 'default' | 'left' | 'center' | 'right'
+  textSize: number
+  textType: 'simple' | 'counter'
+  fontFamily: string
+}
+
 export interface PDFStateStylesBaseFooter {
   start: number
   alignment: 'default' | 'left' | 'center' | 'right'
   textSize: number
   textType: 'simple' | 'counter'
+  fontFamily: string
 }
 
 export interface PDFStateStylesParagraph {
@@ -75,6 +86,7 @@ export interface PDFStateStylesSwitcher {
   cover: boolean
   main: boolean
   footer: boolean
+  header: boolean
 }
 
 export interface PDFState {
