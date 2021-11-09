@@ -34,6 +34,9 @@ export interface PDFStateStylesBase {
 
 export interface PDFStateStylesBaseFooter {
   start: number
+  alignment: 'default' | 'left' | 'center' | 'right'
+  textSize: number
+  textType: 'simple' | 'counter'
 }
 
 export interface PDFStateStylesParagraph {

@@ -69,20 +69,36 @@
         </section>
       </div>
       <div class="wb-input-container">
-        <label class="mx-2 text-xs">{{
-          t('editor.pdf.base.footer.title')
-        }}</label>
         <section
-          class="flex justify-between items-center w-full flex-row flex-wrap"
+          class="flex justify-start items-center w-full flex-row flex-wrap"
         >
-          <InputBoolean v-model="pdf.switcher.footer" />
-          <section
-            :class="[
-              !pdf.switcher.footer ? 'wb-disabled' : '',
-            ]"
-          >
+          <section class="flex items-center">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.base.footer.title')
+            }}</label>
+            <InputBoolean v-model="pdf.switcher.footer" />
+          </section>
+          <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
             <label>{{ t('editor.pdf.base.footer.start') }}</label>
             <InputNumber v-model="pdf.base.footer.start" />
+          </section>
+          <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.footer.alignment') }}</label>
+            <InputCarousel
+              v-model="pdf.base.footer.alignment"
+              :arr="['default', 'left', 'center', 'right']"
+            />
+          </section>
+          <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.footer.size') }}</label>
+            <InputNumber v-model="pdf.base.footer.textSize" />
+          </section>
+          <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.footer.type') }}</label>
+            <InputCarousel
+              v-model="pdf.base.footer.textType"
+              :arr="['simple', 'counter']"
+            />
           </section>
         </section>
       </div>

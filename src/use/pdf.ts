@@ -433,6 +433,44 @@ export const usePDF = () => {
   }
 
   const doc = (options: Record<any, any>) => {
+    const footer = () => {
+      const text = (
+        currentPage: number,
+        pageCount: number,
+        pageSize: number
+      ) => {
+        return currentPage >= PDF.styles.base.footer.start
+          ? PDF.styles.base.footer.textType === 'simple'
+            ? currentPage.toString()
+            : `${currentPage.toString()}/${pageCount}`
+          : ''
+      }
+
+      const alignment = (
+        currentPage: number,
+        pageCount: number,
+        pageSize: number
+      ) => {
+        if (PDF.styles.base.footer.alignment === 'default') {
+          return currentPage % 2 ? 'left' : 'right'
+        }
+
+        if (PDF.styles.base.footer.alignment === 'center') {
+          return 'center'
+        }
+
+        if (PDF.styles.base.footer.alignment === 'left') {
+          return 'left'
+        }
+
+        if (PDF.styles.base.footer.alignment === 'right') {
+          return 'right'
+        }
+      }
+
+      return { alignment, text }
+    }
+
     return {
       pageSize: generate().base().pageSize,
       pageOrientation: generate().base().pageOrientation,
@@ -478,13 +516,10 @@ export const usePDF = () => {
         ? function (currentPage: number, pageCount: number, pageSize: number) {
             return [
               {
-                text:
-                  currentPage >= PDF.styles.base.footer.start
-                    ? currentPage.toString()
-                    : '',
+                text: footer().text(currentPage, pageCount, pageSize),
                 margin: [15, 0],
-                fontSize: 9,
-                alignment: currentPage % 2 ? 'left' : 'right',
+                fontSize: PDF.styles.base.footer.textSize,
+                alignment: footer().alignment(currentPage, pageCount, pageSize),
               },
             ]
           }

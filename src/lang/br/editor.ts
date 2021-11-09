@@ -118,6 +118,9 @@ export default {
         title: 'Rodapé',
         exists: 'Habilitar',
         start: 'Início',
+        alignment: 'Alinhamento',
+        size: 'Tamanho',
+        type: 'Estilo',
       },
     },
     custom: {

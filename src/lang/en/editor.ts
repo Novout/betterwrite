@@ -119,6 +119,9 @@ export default {
         title: 'Footer',
         exists: 'On',
         start: 'Initial',
+        alignment: 'Alignment',
+        size: 'Size',
+        type: 'Style',
       },
     },
     custom: {

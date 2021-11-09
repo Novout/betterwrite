@@ -41,9 +41,12 @@ export const useStorage = () => {
     }
 
     // <= 0.7.2
-    if (!_.pdf.styles.base.footer) {
+    if (!_.pdf.styles.base.footer.alignment) {
       _.pdf.styles.base.footer = {
         start: 3,
+        alignment: 'default',
+        textType: 'simple',
+        textSize: 9,
       }
     }
 

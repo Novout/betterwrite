@@ -24,6 +24,9 @@ export const usePDFStore = defineStore('pdf', {
           },
           footer: {
             start: 3,
+            alignment: 'default',
+            textSize: 9,
+            textType: 'simple',
           },
         },
         paragraph: {
