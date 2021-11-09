@@ -83,8 +83,15 @@
             <InputNumber v-model="pdf.base.footer.start" />
           </section>
           <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.footer.type') }}</label>
+            <InputSelect
+              v-model="pdf.base.footer.textType"
+              :arr="['simple', 'counter']"
+            />
+          </section>
+          <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
             <label>{{ t('editor.pdf.base.footer.alignment') }}</label>
-            <InputCarousel
+            <InputSelect
               v-model="pdf.base.footer.alignment"
               :arr="['default', 'left', 'center', 'right']"
             />
@@ -92,13 +99,6 @@
           <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
             <label>{{ t('editor.pdf.base.footer.size') }}</label>
             <InputNumber v-model="pdf.base.footer.textSize" />
-          </section>
-          <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
-            <label>{{ t('editor.pdf.base.footer.type') }}</label>
-            <InputCarousel
-              v-model="pdf.base.footer.textType"
-              :arr="['simple', 'counter']"
-            />
           </section>
         </section>
       </div>
