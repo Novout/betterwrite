@@ -115,6 +115,11 @@ export default {
         right: 'Right',
         bottom: 'Bottom',
       },
+      footer: {
+        title: 'Footer',
+        exists: 'On',
+        start: 'Initial',
+      },
     },
     custom: {
       image: {

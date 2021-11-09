@@ -474,20 +474,21 @@ export const usePDF = () => {
               : undefined
           }
         : undefined,
-      footer: function (
-        currentPage: number,
-        pageCount: number,
-        pageSize: number
-      ) {
-        return [
-          {
-            text: currentPage > 2 ? currentPage.toString() : '',
-            margin: [15, 0],
-            fontSize: 9,
-            alignment: currentPage % 2 ? 'left' : 'right',
-          },
-        ]
-      },
+      footer: PDF.styles.switcher.footer
+        ? function (currentPage: number, pageCount: number, pageSize: number) {
+            return [
+              {
+                text:
+                  currentPage >= PDF.styles.base.footer.start
+                    ? currentPage.toString()
+                    : '',
+                margin: [15, 0],
+                fontSize: 9,
+                alignment: currentPage % 2 ? 'left' : 'right',
+              },
+            ]
+          }
+        : undefined,
       pageBreakBefore: function (
         currentNode: any,
         followingNodesOnPage: any,

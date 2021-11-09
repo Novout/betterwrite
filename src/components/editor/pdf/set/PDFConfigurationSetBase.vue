@@ -16,9 +16,9 @@
     >
       <div class="wb-input-container">
         <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
-        <InputBoolean v-model="switcher.main" />
+        <InputBoolean v-model="PDF.styles.switcher.main" />
         <InputFile
-          v-if="switcher.main"
+          v-if="PDF.styles.switcher.main"
           id="main-background"
           :title="t('generics.input.image')"
           :src="pdf.base.background.main"
@@ -68,6 +68,24 @@
           </section>
         </section>
       </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
+          t('editor.pdf.base.footer.title')
+        }}</label>
+        <section
+          class="flex justify-between items-center w-full flex-row flex-wrap"
+        >
+          <InputBoolean v-model="pdf.switcher.footer" />
+          <section
+            :class="[
+              !pdf.switcher.footer ? 'wb-disabled' : '',
+            ]"
+          >
+            <label>{{ t('editor.pdf.base.footer.start') }}</label>
+            <InputNumber v-model="pdf.base.footer.start" />
+          </section>
+        </section>
+      </div>
     </div>
   </PDFConfigurationSlot>
 </template>
@@ -75,7 +93,7 @@
 <script setup lang="ts">
   import { usePDFStore } from '@/store/pdf'
   import { useDefines } from '@/use/defines'
-  import { reactive, computed } from 'vue'
+  import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const PDF = usePDFStore()
@@ -83,11 +101,6 @@
   const { t } = useI18n()
 
   const pdf = computed(() => PDF.styles)
-
-  const switcher = reactive({
-    cover: PDF.styles.switcher.cover,
-    main: PDF.styles.switcher.main,
-  })
 
   const onMainImageLoad = (e: any) => {
     PDF.setMainBackground(e)

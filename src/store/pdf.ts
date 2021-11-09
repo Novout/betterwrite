@@ -22,6 +22,9 @@ export const usePDFStore = defineStore('pdf', {
             right: useDefines().pdf().base().pageMargins()[2] as number,
             bottom: useDefines().pdf().base().pageMargins()[3] as number,
           },
+          footer: {
+            start: 3,
+          },
         },
         paragraph: {
           font: useDefines().pdf().fontFamily()[1] as string,
@@ -134,6 +137,7 @@ export const usePDFStore = defineStore('pdf', {
         switcher: {
           cover: false,
           main: false,
+          footer: true,
         },
       },
       fonts: [],

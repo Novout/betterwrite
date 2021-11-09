@@ -40,6 +40,20 @@ export const useStorage = () => {
       _.editor.configuration.auto = 5
     }
 
+    // <= 0.7.2
+    if (!_.pdf.styles.base.footer) {
+      _.pdf.styles.base.footer = {
+        start: 3,
+      }
+    }
+
+    if (!_.pdf.styles.switcher.footer) {
+      _.pdf.styles.switcher = {
+        ..._.pdf.styles.switcher,
+        footer: true,
+      }
+    }
+
     return _
   }
 

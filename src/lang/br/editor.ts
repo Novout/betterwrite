@@ -114,6 +114,11 @@ export default {
         right: 'Direita',
         bottom: 'Baixo',
       },
+      footer: {
+        title: 'Rodapé',
+        exists: 'Habilitar',
+        start: 'Início',
+      },
     },
     custom: {
       image: {

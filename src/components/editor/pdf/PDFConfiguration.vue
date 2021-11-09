@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col justify-start items-start p-5">
-    <PDFConfigurationSetHeader />
+    <PDFConfigurationHeader />
     <PDFConfigurationSetCover />
     <PDFConfigurationSetBase />
     <PDFConfigurationSetParagraph />
