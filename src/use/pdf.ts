@@ -476,7 +476,7 @@ export const usePDF = () => {
       pageOrientation: generate().base().pageOrientation,
       pageMargins: {
         left: 0,
-        top: 0,
+        top: generate().base().pageMargins[1],
         right: 0,
         bottom: generate().base().pageMargins[3],
       },

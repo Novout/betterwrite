@@ -154,7 +154,7 @@ export const useDefines = () => {
       }
 
       const pageMargins = (): Array<number> => {
-        return [40, 5, 40, 20]
+        return [40, 20, 40, 20]
       }
 
       return { pageSize, pageMargins, pageOrientation, pageSizeFixes }
