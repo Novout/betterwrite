@@ -1,4 +1,4 @@
-/* default source */
+/* BW Light Theme */
 .betterwrite-light {
   --theme-transparent: transparent;
   --theme-black: #000000;
@@ -21,6 +21,8 @@
   --theme-text-1: #000000;
   --theme-text-2: #111111;
   --theme-text-3: #1F2937;
+  --theme-icon: #111111;
+  --theme-icon-hover: #D1D5DB;
   --theme-text-commands-1: #111111;
   --theme-text-active: #111827;
   --theme-grammar-error: #ff6261;
@@ -33,6 +35,7 @@
   --wb-text-selection: #000;
 }
 
+/* BW Dark Theme */
 .betterwrite-dark {
   --theme-transparent: transparent;
   --theme-black: #000000;
@@ -55,6 +58,8 @@
   --theme-text-1: #E5E7EB;
   --theme-text-2: #D1D5DB;
   --theme-text-3: #4B5563;
+  --theme-icon: #D1D5DB;
+  --theme-icon-hover: #4B5563;
   --theme-text-commands-1: #E5E7EB;
   --theme-text-active: #FFFFFF;
   --theme-grammar-error: #ff6261;

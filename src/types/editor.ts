@@ -1,4 +1,4 @@
-export type BetterWriteThemes = 'betterwrite-light' | 'betterwrite-dark'
+export type BetterWriteThemes = 'BetterWrite - Light' | 'BetterWrite - Dark'
 
 export interface EditorState {
   styles: EditorStateStyles

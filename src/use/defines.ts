@@ -1,3 +1,4 @@
+import { BetterWriteThemes } from '@/types/editor'
 import { Callback } from '@/types/utils'
 
 export const useDefines = () => {
@@ -170,8 +171,8 @@ export const useDefines = () => {
     }
   }
 
-  const themes = () => {
-    return ['betterwrite-light', 'betterwrite-dark']
+  const themes = (): Array<BetterWriteThemes> => {
+    return ['BetterWrite - Light', 'BetterWrite - Dark']
   }
 
   return {

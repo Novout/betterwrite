@@ -18,7 +18,7 @@
         font-tiny
         rounded-full
         px-1
-        text-3xs text-white
+        text-3xs text-theme-text-1
         bg-theme-background-1
       "
     >

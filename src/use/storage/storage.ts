@@ -88,6 +88,12 @@ export const useStorage = () => {
         summary: true,
       }
     }
+    if (!_.editor.configuration.theme) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        theme: useDefines().themes()[1],
+      }
+    }
 
     return _
   }

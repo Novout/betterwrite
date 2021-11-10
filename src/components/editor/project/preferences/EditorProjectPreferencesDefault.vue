@@ -34,41 +34,24 @@
       <p>{{ t('editor.aside.configuration.lang') }}</p>
       <InputSelect v-model="lang" :arr="['Português do Brasil', 'English']" />
     </div>
-    <SwitchGroup>
-      <div class="flex px-2 items-center w-full justify-between">
-        <SwitchLabel
-          class="mr-4 text-theme-text-1 transition font-bold text-base"
-          >{{ t('editor.aside.configuration.dark') }}</SwitchLabel
-        >
-        <Switch
-          v-model="dark"
-          :class="dark ? 'bg-theme-background-1' : 'bg-theme-background-4'"
-          class="
-            relative
-            inline-flex
-            items-center
-            h-6
-            transition-colors
-            rounded-full
-            w-11
-            focus:outline-none
-          "
-        >
-          <span
-            :class="dark ? 'translate-x-6' : 'translate-x-1'"
-            class="
-              inline-block
-              w-4
-              h-4
-              transition-transform
-              transform
-              bg-white
-              rounded-full
-            "
-          />
-        </Switch>
-      </div>
-    </SwitchGroup>
+    <div
+      class="
+        flex
+        font-bold
+        text-base text-theme-text-1
+        justify-between
+        items-center
+        w-full
+        px-2
+        py-1
+      "
+    >
+      <p>{{ t('editor.aside.configuration.dark') }}</p>
+      <InputSelect
+        v-model="EDITOR.configuration.theme"
+        :arr="useDefines().themes()"
+      />
+    </div>
     <div
       class="
         flex
@@ -86,13 +69,14 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
   import { useEditorStore } from '@/store/editor'
-  import { ref, watch, nextTick } from 'vue'
+  import { ref, watch, nextTick, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useLocalStorage } from '@/use/storage/local'
+  import { useDefines } from '@/use/defines'
+  import { ThemeNormalize } from '@/plugin/theme/utils'
 
   const ABSOLUTE = useAbsoluteStore()
   const EDITOR = useEditorStore()
@@ -102,15 +86,7 @@
   const { t, locale } = useI18n()
 
   const auto = ref(EDITOR.configuration.auto)
-  const dark = ref(EDITOR.configuration.dark)
-  watch(dark, (_dark: boolean) => {
-    EDITOR.configuration.dark = _dark
-
-    _dark
-      ? (document.querySelector('html') as HTMLElement).classList.add('dark')
-      : (document.querySelector('html') as HTMLElement).classList.remove('dark')
-    _dark ? (localStorage.theme = 'dark') : localStorage.removeItem('theme')
-  })
+  const theme = computed(() => EDITOR.configuration.theme)
 
   watch(auto, async (_auto) => {
     EDITOR.setAutoSave(_auto)
@@ -120,6 +96,13 @@
     local.onSaveProject().then(() => {
       window.location.reload()
     })
+  })
+
+  watch(theme, (_theme) => {
+    const value = ThemeNormalize(_theme)
+
+    document.body.removeAttribute('class')
+    document.body.classList.add(value)
   })
 
   const convert = (iso: string) => {

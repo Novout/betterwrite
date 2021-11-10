@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { EditorState } from '../types/editor'
+import { useDefines } from '../use/defines'
 
 export const useEditorStore = defineStore('editor', {
   state: (): EditorState => {
@@ -46,7 +47,7 @@ export const useEditorStore = defineStore('editor', {
         },
       },
       configuration: {
-        theme: 'betterwrite-dark',
+        theme: useDefines().themes()[1],
         draggable: false,
         auto: 15,
       },

@@ -25,6 +25,8 @@ module.exports = {
       'theme-text-1': 'var(--theme-text-1)',
       'theme-text-2': 'var(--theme-text-2)',
       'theme-text-3': 'var(--theme-text-3)',
+      'theme-icon': 'var(--theme-icon)',
+      'theme-icon-hover': 'var(--theme-icon-hover)',
       'theme-text-commands-1': 'var(--theme-text-commands-1)',
       'theme-grammar-error': 'var(--theme-grammar-error)',
       'theme-spelling-error': 'var(--theme-spelling-error)',
