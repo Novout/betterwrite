@@ -48,7 +48,7 @@
     "is-electron": "^2.2.0",
     "keyboardjs": "2.6.4",
     "mitt": "^3.0.0",
-    "pdfmake": "0.2.2",
+    "pdfmake": "0.2.4",
     "pinia": "^2.0.0-rc.14",
     "postcss": "8.3.11",
     "tailwindcss": "2.2.19",
