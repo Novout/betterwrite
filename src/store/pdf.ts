@@ -7,6 +7,11 @@ export const usePDFStore = defineStore('pdf', {
     return {
       styles: {
         base: {
+          summary: {
+            type: 'default',
+            fontFamily: useDefines().pdf().fontFamily()[1],
+            fontSize: 20,
+          },
           background: {
             data: '' as string,
             main: '' as string,
@@ -151,6 +156,7 @@ export const usePDFStore = defineStore('pdf', {
           main: false,
           footer: true,
           header: false,
+          summary: true,
         },
       },
       fonts: [],
@@ -161,6 +167,11 @@ export const usePDFStore = defineStore('pdf', {
     resetStyles() {
       this.styles = {
         base: {
+          summary: {
+            type: 'default',
+            fontFamily: useDefines().pdf().fontFamily()[1],
+            fontSize: 20,
+          },
           background: {
             data: '' as string,
             main: '' as string,
@@ -305,6 +316,7 @@ export const usePDFStore = defineStore('pdf', {
           main: false,
           footer: true,
           header: false,
+          summary: true,
         },
       }
     },

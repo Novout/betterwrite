@@ -74,6 +74,20 @@ export const useStorage = () => {
         header: false,
       }
     }
+    if (!_.pdf.styles.base.summary) {
+      _.pdf.styles.base.summary = {
+        exists: true,
+        type: 'default',
+        fontFamily: useDefines().pdf().fontFamily()[1],
+        fontSize: 20,
+      }
+    }
+    if (!_.pdf.styles.switcher.summary) {
+      _.pdf.styles.switcher = {
+        ..._.pdf.styles.switcher,
+        summary: true,
+      }
+    }
 
     return _
   }

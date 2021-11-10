@@ -50,6 +50,9 @@ export const usePDF = () => {
             ? 'before'
             : undefined,
         style: 'heading-one',
+        tocItem:
+          PDF.styles.switcher.summary &&
+          PDF.styles.base.summary.type === 'default',
       }
     }
 
@@ -63,6 +66,10 @@ export const usePDF = () => {
           25,
         ],
         style: 'heading-two',
+        tocItem:
+          PDF.styles.switcher.summary &&
+          project.isBlankProject() &&
+          PDF.styles.base.summary.type === 'default',
       }
     }
 
@@ -243,11 +250,33 @@ export const usePDF = () => {
       }
     }
 
+    const summary = (arr: Array<any>) => {
+      if (PDF.styles.switcher.summary) {
+        let _raw = {
+          toc: {
+            title: {
+              text: PROJECT.nameRaw,
+              font: PDF.styles.base.summary.fontFamily,
+              fontSize: PDF.styles.base.summary.fontSize,
+            },
+          },
+          pageBreak: 'before',
+          alignment: 'center',
+          style: 'summary-default',
+        }
+
+        arr.push(_raw)
+      }
+    }
+
     const content = (): Array<any> => {
       const pages: Array<ContextState> = PROJECT.pages
       const arr: Array<any> = []
 
-      if (!project.isBlankProject()) frontCover(arr)
+      if (project.isCreativeProject()) {
+        frontCover(arr)
+        summary(arr)
+      }
 
       pages.forEach((page: ContextState) => {
         page.entities.forEach((entity: Entity) => {
@@ -421,11 +450,23 @@ export const usePDF = () => {
         }
       }
 
+      const summaryDefault = () => {
+        return {
+          margin: [
+            generate().base().pageMargins[0],
+            30,
+            generate().base().pageMargins[2],
+            30,
+          ],
+        }
+      }
+
       return {
         paragraph,
         headingOne,
         headingTwo,
         headingThree,
+        summaryDefault,
       }
     }
 
@@ -528,6 +569,7 @@ export const usePDF = () => {
         'heading-three': generate().styles().headingThree(),
         'heading-two': generate().styles().headingTwo(),
         'heading-one': generate().styles().headingOne(),
+        'summary-default': generate().styles().summaryDefault(),
         paragraph: generate().styles().paragraph(),
       },
       background: options.final
@@ -611,6 +653,7 @@ export const usePDF = () => {
     fonts.push(PDF.styles.headingThree.font)
     fonts.push(PDF.styles.base.header.fontFamily)
     fonts.push(PDF.styles.base.footer.fontFamily)
+    fonts.push(PDF.styles.base.summary.fontFamily)
 
     const unique = fonts.filter((v, i, a) => a.indexOf(v) === i)
 

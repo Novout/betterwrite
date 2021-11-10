@@ -133,6 +133,12 @@ export default {
         type: 'Estilo',
         fontFamily: 'Fonte',
       },
+      summary: {
+        title: 'Sumário',
+        type: 'Estilo',
+        fontSize: 'Tamanho',
+        fontFamily: 'Fonte',
+      },
     },
     custom: {
       image: {

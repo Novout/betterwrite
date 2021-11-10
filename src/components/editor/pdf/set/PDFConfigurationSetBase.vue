@@ -161,6 +161,35 @@
           </section>
         </section>
       </div>
+      <div class="wb-input-container">
+        <section
+          class="flex justify-start items-center w-full flex-row flex-wrap"
+        >
+          <section class="flex items-center">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.base.summary.title')
+            }}</label>
+            <InputBoolean v-model="pdf.switcher.summary" />
+          </section>
+          <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.summary.type') }}</label>
+            <InputSelect v-model="pdf.base.summary.type" :arr="['default']" />
+          </section>
+          <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.summary.fontSize') }}</label>
+            <InputNumber v-model="pdf.base.summary.fontSize" />
+          </section>
+          <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.summary.fontFamily') }}</label>
+            <InputSelect
+              v-model="pdf.base.summary.fontFamily"
+              class="flex-1"
+              :arr="PDF.fonts"
+              :font="true"
+            />
+          </section>
+        </section>
+      </div>
     </div>
   </PDFConfigurationSlot>
 </template>

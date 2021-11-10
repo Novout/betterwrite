@@ -25,12 +25,19 @@ export interface PDFStateStylesBaseMargins {
 }
 
 export interface PDFStateStylesBase {
+  summary: PDFStateStylesBaseSummary
   header: PDFStateStylesBaseHeader
   footer: PDFStateStylesBaseFooter
   background: PDFStateStylesBaseBackground
   pageSize: string
   pageOrientation: string
   pageMargins: PDFStateStylesBaseMargins
+}
+
+export interface PDFStateStylesBaseSummary {
+  fontFamily: string
+  fontSize: number
+  type: 'default'
 }
 
 export interface PDFStateStylesBaseHeader {
@@ -87,6 +94,7 @@ export interface PDFStateStylesSwitcher {
   main: boolean
   footer: boolean
   header: boolean
+  summary: boolean
 }
 
 export interface PDFState {
