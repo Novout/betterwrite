@@ -1,14 +1,7 @@
 <template>
   <div
     ref="main"
-    class="
-      w-full
-      flex flex-col
-      overflow-hidden
-      h-screen
-      bg-gray-100
-      dark:bg-gray-700
-    "
+    class="w-full flex flex-col overflow-hidden h-screen bg-theme-background-1"
     :class="[EDITOR.configuration.draggable ? 'fixed' : 'inline-block']"
   >
     <EditorBaseHeader />

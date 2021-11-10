@@ -8,9 +8,8 @@
     "
     class="
       bg-theme-background-aside-item
-      active:bg-theme-background-aside-item-active
+      hover:bg-theme-background-aside-item-active
       cursor-pointer
-      transition
     "
     :class="[
       props.entity.type === 'heading-one'

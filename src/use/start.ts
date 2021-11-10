@@ -113,16 +113,6 @@ export const useStart: Callback<void> = () => {
     }
   }
 
-  const dark = () => {
-    const dark = localStorage.getItem('theme')
-
-    dark
-      ? (document.querySelector('html') as HTMLElement).classList.add('dark')
-      : (document.querySelector('html') as HTMLElement).classList.remove('dark')
-
-    EDITOR.configuration.dark = !!dark
-  }
-
   const lang = () => {
     const { locale } = useI18n()
     const lang = localStorage.getItem('lang')
@@ -149,7 +139,6 @@ export const useStart: Callback<void> = () => {
   }
 
   const init = (plugins?: Plugins) => {
-    dark()
     lang()
     auth()
     initial()

@@ -1,3 +1,5 @@
+export type BetterWriteThemes = 'betterwrite-light' | 'betterwrite-dark'
+
 export interface EditorState {
   styles: EditorStateStyles
   configuration: EditorStateConfiguration
@@ -19,7 +21,7 @@ export interface EditorStateActivesTextSelection {
 }
 
 export interface EditorStateConfiguration {
-  dark: boolean
+  theme: BetterWriteThemes
   lang?: boolean
   draggable: boolean
   auto: number | 'never'

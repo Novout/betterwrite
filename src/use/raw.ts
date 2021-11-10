@@ -290,7 +290,7 @@ export const useRaw = () => {
 
     const style = (entity: Entity, style: any) => {
       return [
-        'overflow-hidden w-full text-sm bg-transparent break-words',
+        'overflow-hidden w-full text-sm bg-transparent break-words text-theme-text-1',
         entity.type === 'paragraph' ? style.paragraph.indent : '',
         entity.type === 'paragraph' ? 'text-justify' : '',
         entity.type === 'paragraph' ? style.paragraph.fontSize : '',
@@ -317,11 +317,11 @@ export const useRaw = () => {
         entity.type === 'heading-three' ? style.heading.three.fontWeight : '',
 
         entity.type === 'page-break'
-          ? 'cursor-default my-4 border-b-8 border-gray-400 dark:border-gray-900'
+          ? 'cursor-default my-4 border-b-8 border-theme-border-1'
           : '',
 
         entity.type === 'line-break'
-          ? 'cursor-default my-4 border-b-8 border-dashed border-gray-400 dark:border-gray-800'
+          ? 'cursor-default my-4 border-b-8 border-dashed border-theme-border-1'
           : '',
       ]
     }

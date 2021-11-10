@@ -46,7 +46,7 @@ export const useEditorStore = defineStore('editor', {
         },
       },
       configuration: {
-        dark: true,
+        theme: 'betterwrite-dark',
         draggable: false,
         auto: 15,
       },
@@ -66,9 +66,6 @@ export const useEditorStore = defineStore('editor', {
       this.styles = content.styles
       this.configuration = content.configuration
       this.actives = content.actives
-    },
-    switchTheme(dark: boolean) {
-      this.configuration.dark = dark
     },
     setTextSelection(payload: any) {
       this.actives.text.selection.content = payload.content

@@ -170,8 +170,13 @@ export const useDefines = () => {
     }
   }
 
+  const themes = () => {
+    return ['betterwrite-light', 'betterwrite-dark']
+  }
+
   return {
     shortcuts,
     pdf,
+    themes,
   }
 }

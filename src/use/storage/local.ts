@@ -17,7 +17,7 @@ export const useLocalStorage = () => {
   const plugin = usePlugin()
   const { t } = i18n.global
 
-  const set = (obj: ProjectObject, name: string) => {
+  const set = (obj: any, name: string) => {
     localStorage.setItem(name, JSON.stringify(obj))
   }
 
