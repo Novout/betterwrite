@@ -7,23 +7,21 @@
       props.entity.raw !== env.emptyLine()
     "
     class="
-      dark:hover:bg-gray-800
-      hover:bg-gray-200
-      active:bg-gray-700
-      dark:active:bg-black
+      bg-theme-background-aside-item
+      active:bg-theme-background-aside-item-active
       cursor-pointer
       transition
     "
     :class="[
       props.entity.type === 'heading-one'
-        ? 'border-l border-black dark:border-gray-500 ml-1'
+        ? 'border-l border-theme-border-aside-1 ml-1'
         : '',
       props.entity.type === 'heading-two' ||
       props.entity.type === 'heading-three'
-        ? 'flex items-end border-l border-black dark:border-gray-500 ml-1'
+        ? 'flex items-end border-l border-theme-border-aside-1 ml-1'
         : '',
       props.entity.type === 'image'
-        ? 'flex items-end border-l border-black dark:border-gray-500 ml-1'
+        ? 'flex items-end border-l border-theme-border-aside-1 ml-1'
         : '',
     ]"
   >
@@ -34,7 +32,7 @@
         props.entity.type === 'image'
       "
       :class="[props.entity.type === 'heading-two' ? 'w-6' : 'w-12']"
-      class="border-b mb-2 h-1 border-black dark:border-gray-500"
+      class="border-b mb-2 h-1 border-theme-border-aside-1"
     ></div>
     <p
       v-if="props.entity.type !== 'image'"

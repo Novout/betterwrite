@@ -2,7 +2,7 @@
   <div class="fixed left-0 top-0 w-full h-screen bg-modal z-max">
     <div
       ref="finder"
-      class="fixed w-60 bg-white dark:bg-gray-800 p-2 rounded shadow-2xl"
+      class="fixed w-60 bg-theme-background-absolute-1 p-2 rounded shadow-2xl"
       :style="style"
     >
       <div class="flex flex-col w-full">
@@ -69,7 +69,13 @@
         <input
           ref="search"
           v-model="entity.fstate.entry"
-          class="bg-transparent border border-gray-900 px-1 mb-1 wb-text"
+          class="
+            bg-transparent
+            border border-theme-border-absolute-2
+            px-1
+            mb-1
+            wb-text
+          "
           :placeholder="t('editor.text.placeholder.shortcuts.finderEntry')"
           @input="entity.finder().onFinder"
           @keypress.enter.prevent="entity.finder().onUp"

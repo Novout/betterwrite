@@ -7,10 +7,8 @@
       items-center
       w-full
       p-1
-      border border-black
-      dark:border-gray-600
-      text-black
-      dark:text-gray-300
+      border border-theme-border-commands-1
+      text-theme-text-commands-1
       rounded
     "
   >

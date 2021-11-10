@@ -6,8 +6,7 @@
       w-60
       h-60
       overflow-y-auto
-      bg-white
-      dark:bg-gray-700
+      bg-theme-background-1
       p-2
       rounded
       transition

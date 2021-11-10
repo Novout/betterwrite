@@ -13,8 +13,7 @@
           rounded
           cursor-pointer
           wb-text
-          border-2 border-gray-200
-          dark:border-gray-600
+          border-2 border-theme-background-4
         "
       >
         <HeroIcon class="wb-icon pointer-events-none">

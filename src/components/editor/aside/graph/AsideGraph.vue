@@ -2,15 +2,7 @@
   <div class="flex px-2 flex-col mt-5 w-full wb-text">
     <p
       v-if="!env.isEmptyProject(PROJECT.name)"
-      class="
-        cursor-pointer
-        font-bold
-        dark:hover:bg-gray-800
-        hover:bg-gray-200
-        active:bg-gray-700
-        dark:active:bg-black
-        transition
-      "
+      class="cursor-pointer font-bold"
       @click="graph.base()"
     >
       {{ PROJECT.nameRaw }}

@@ -1,12 +1,7 @@
 <template>
   <div class="flex flex-row items-center justify-center wb-text p-1 shadow-lg">
     <HeroIcon
-      class="
-        bg-gray-200
-        dark:bg-gray-500
-        active:bg-gray-400
-        dark:active:bg-gray-800
-      "
+      class="bg-theme-background-4 active:bg-theme-background-2"
       @click.prevent="onNegative"
     >
       <svg
@@ -26,15 +21,10 @@
       ref="inp"
       v-model="cmp"
       type="text"
-      class="bg-transparent text-center pointer-events-none w-14"
+      class="bg-theme-transparent text-center pointer-events-none w-14"
     />
     <HeroIcon
-      class="
-        bg-gray-200
-        dark:bg-gray-500
-        active:bg-gray-400
-        dark:active:bg-gray-800
-      "
+      class="bg-theme-background-4 active:bg-theme-background-2"
       @click.prevent="onPositive"
     >
       <svg

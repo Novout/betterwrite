@@ -1,6 +1,14 @@
 <template>
   <header
-    class="flex py-1 justify-start items-center w-full bg-transparent z-50"
+    class="
+      flex
+      py-1
+      justify-start
+      items-center
+      w-full
+      bg-theme-transparent
+      z-50
+    "
   >
     <div>
       <HeroIcon

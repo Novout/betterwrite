@@ -10,31 +10,31 @@
 
 @layer components {
   .wb-base {
-    @apply bg-gray-100 dark:bg-gray-700 w-full h-screen;
+    @apply bg-theme-background-1 w-full h-screen;
   }
 
   .wb-title {
-    @apply text-4xl opacity-70 hover:text-gray-700 dark:hover:text-white cursor-default;
+    @apply text-4xl opacity-70 hover:text-theme-text-3 cursor-default;
   }
 
   .wb-text {
-    @apply text-black dark:text-gray-200;
+    @apply text-theme-text-1;
   }
 
   .wb-icon {
-    @apply text-black dark:text-gray-500 hover:text-gray-600 dark:hover:text-white active:text-white dark:active:text-black;
+    @apply text-theme-text-2 hover:text-theme-text-3 active:text-theme-text-active;
   }
 
   .wb-background-color {
-    @apply bg-gray-100 dark:bg-gray-700;
+    @apply bg-theme-background-1;
   }
 
   .wb-aside-button {
-    @apply text-2xs pl-2 transition w-full font-bold dark:text-gray-300 rounded-none flex active:bg-gray-700 dark:active:bg-black hover:bg-black-opacity dark:hover:bg-gray-800;
+    @apply text-2xs pl-2 transition w-full font-bold text-theme-text-2 rounded-none flex;
   }
 
   .wb-input-container {
-    @apply flex flex-1 h-auto w-auto items-center justify-between p-5 mx-2 mt-5 border rounded-lg border-gray-300 dark:border-gray-800 bg-gray-300 dark:bg-gray-800 shadow-lg;
+    @apply flex flex-1 h-auto w-auto items-center justify-between p-5 mx-2 mt-5 border rounded-lg border-theme-border-1 bg-theme-background-2 shadow-lg;
   }
 
   .wb-disabled {

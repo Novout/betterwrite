@@ -11,8 +11,7 @@
       duration-700
       w-full
       h-screen
-      bg-white
-      dark:bg-gray-800
+      bg-theme-background-1
       transition
       flex flex-col
       z-max

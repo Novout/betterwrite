@@ -4,8 +4,7 @@
       absolute
       top-0
       left-0
-      bg-gray-300
-      dark:bg-gray-700
+      bg-theme-background-1
       flex flex-col
       h-screen
       w-full

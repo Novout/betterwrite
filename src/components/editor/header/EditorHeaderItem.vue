@@ -6,10 +6,8 @@
       justify-between
       items-center
       w-full
-      bg-white-opacity
-      dark:bg-black-opacity
-      hover:bg-gray-500 hover:text-white
-      dark:hover:bg-gray-900
+      bg-theme-background-opacity-1
+      hover:bg-theme-background-2
       cursor-pointer
     "
     @click.prevent.stop="emit('action')"
@@ -21,8 +19,7 @@
         rounded-full
         px-1
         text-3xs text-white
-        bg-gray-500
-        dark:bg-gray-900
+        bg-theme-background-1
       "
     >
       {{ props.shortcut }}

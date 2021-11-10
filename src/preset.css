@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;700&display=swap');
+@import url('./theme.css');
 
 * {
   margin: 0;
@@ -58,36 +59,20 @@ input[type='number'] {
   text-align: center;
 }
 
-:root {
-  --scr-track: #f1f1f1;
-  --scr-thumb: rgba(0, 0, 0, 0.04);
-  --scr-thumb-hover: rgba(0, 0, 0, 0.1);
-  --wb-selection: rgba(0, 0, 0, 0.1);
-  --wb-text-selection: #000;
-}
-
-.dark {
-  --scr-track: #222;
-  --scr-thumb: rgba(255, 255, 255, 0.04);
-  --scr-thumb-hover: rgba(255, 255, 255, 0.1);
-  --wb-selection: rgba(0, 0, 0, 0.2);
-  --wb-text-selection: #e5e7eb;
-}
-
 /* waiting for future support experimental features */
 
 *::grammar-error {
-  background-color: #ff6261;
+  background-color: var(--theme-grammar-error);
   color: black;
 }
 
 *::spelling-error {
-  background-color: #ffee91;
+  background-color: var(--theme-spelling-error);
   color: black;
 }
 
 *::target-text {
-  background-color: #54b1ff;
+  background-color: var(--theme-target-text);
   color: black;
 }
 

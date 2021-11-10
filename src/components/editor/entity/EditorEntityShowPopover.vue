@@ -7,8 +7,7 @@
       items-start
       transition-all
       absolute
-      text-black
-      dark:text-gray-500
+      text-theme-text-1
     "
     :class="[
       props.entity.type === 'page-break' ? 'top-3' : '',
@@ -26,10 +25,8 @@
         rounded
         bottom-5
         wb-text
-        bg-gray-500
-        dark:bg-gray-800
-        border-gray-400
-        dark:border-gray-700
+        bg-theme-background-2
+        border-theme-border-1
       "
       @mouseleave="onReset"
     >
@@ -74,10 +71,8 @@
         bottom-5
         left-4
         wb-text
-        bg-gray-500
-        dark:bg-gray-800
-        border-gray-400
-        dark:border-gray-700
+        bg-theme-background-2
+        border-theme-border-1
         z-max
       "
     >
@@ -128,10 +123,8 @@
         bottom-5
         left-10
         wb-text
-        bg-gray-500
-        dark:bg-gray-800
-        border-gray-400
-        dark:border-gray-700
+        bg-theme-background-2
+        border-theme-border-1
       "
     >
       <EditorEntityShowSelect @click.prevent.stop="onUpEntity">
@@ -222,10 +215,8 @@
         left-16
         wb-text
         p-3
-        bg-gray-500
-        dark:bg-gray-800
-        border-gray-400
-        dark:border-gray-700
+        bg-theme-background-2
+        border-theme-border-1
       "
     >
       <div

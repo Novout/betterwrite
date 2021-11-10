@@ -23,8 +23,7 @@
       class="
         flex
         font-bold
-        text-base text-black
-        dark:text-gray-300
+        text-base text-theme-text-1
         justify-between
         items-center
         w-full
@@ -38,19 +37,12 @@
     <SwitchGroup>
       <div class="flex px-2 items-center w-full justify-between">
         <SwitchLabel
-          class="
-            mr-4
-            text-black
-            dark:text-gray-300
-            transition
-            font-bold
-            text-base
-          "
+          class="mr-4 text-theme-text-1 transition font-bold text-base"
           >{{ t('editor.aside.configuration.dark') }}</SwitchLabel
         >
         <Switch
           v-model="dark"
-          :class="dark ? 'bg-gray-900' : 'bg-gray-500'"
+          :class="dark ? 'bg-theme-background-1' : 'bg-theme-background-4'"
           class="
             relative
             inline-flex
@@ -81,8 +73,7 @@
       class="
         flex
         font-bold
-        text-base text-black
-        dark:text-gray-300
+        text-base text-theme-text-1
         justify-between
         items-center
         w-full

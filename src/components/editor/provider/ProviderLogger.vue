@@ -5,8 +5,7 @@
       top-0
       left-0
       w-full
-      bg-white
-      dark:bg-gray-800
+      bg-theme-background-2
       flex flex-col
       z-max
       h-screen

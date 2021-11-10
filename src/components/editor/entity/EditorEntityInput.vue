@@ -15,8 +15,7 @@
         w-full
         rounded-none
         border-none
-        dark:bg-gray-700
-        bg-gray-100
+        bg-theme-background-1
         px-14
       "
       :style="{ minHeight: '50px' }"

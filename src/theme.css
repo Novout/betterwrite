@@ -1,0 +1,68 @@
+/* default source */
+:root {
+  --theme-transparent: transparent;
+  --theme-black: #000000;
+  --theme-white: #FFFFFF;
+  --theme-background-1: #F3F4F6;
+  --theme-background-2: #E5E7EB;
+  --theme-background-3: #D1D5DB;
+  --theme-background-4: #F3F4F6;
+  --theme-background-opacity-1: rgba(255,255,255, 0.1): 
+  --theme-background-aside: #F3F4F6;
+  --theme-background-aside-active: #D1D5DB;
+  --theme-background-aside-item: #F3F4F6;
+  --theme-background-aside-item-active: #D1D5DB;
+  --theme-background-absolute-1: #FFFFFF;
+  --theme-border-1: #D1D5DB;
+  --theme-border-aside-1: #000000;
+  --theme-border-absolute-1: #000000;
+  --theme-border-absolute-2: #111827;
+  --theme-border-commands-1: #000000;
+  --theme-text-1: #000000;
+  --theme-text-2: #111111;
+  --theme-text-3: #1F2937;
+  --theme-text-commands-1: #111111;
+  --theme-text-active: #111827;
+  --theme-grammar-error: #ff6261;
+  --theme-spelling-error: #ffee91;
+  --theme-target-text: #54b1ff;
+  --scr-track: #f1f1f1;
+  --scr-thumb: rgba(0, 0, 0, 0.04);
+  --scr-thumb-hover: rgba(0, 0, 0, 0.1);
+  --wb-selection: rgba(0, 0, 0, 0.1);
+  --wb-text-selection: #000;
+}
+
+.dark {
+  --theme-transparent:
+  --theme-black: #000000;
+  --theme-white: #FFFFFF;
+  --theme-background-1: #374151;
+  --theme-background-2: #1F2937;
+  --theme-background-3: #111827;
+  --theme-background-4: #6B7280;
+  --theme-background-opacity-1: rgba(0,0,0, 0.15): 
+  --theme-background-aside: #374151;
+  --theme-background-aside-active: #111827;
+  --theme-background-aside-item: #374151;
+  --theme-background-aside-item-active: #111827;
+  --theme-background-absolute-1: #1F2937;
+  --theme-border-1: #1F2937;
+  --theme-border-aside-1: #6B7280;
+  --theme-border-absolute-1: #FFFFFF;
+  --theme-border-absolute-2: #111827;
+  --theme-border-commands-1: #000000;
+  --theme-text-1: #E5E7EB;
+  --theme-text-2: #D1D5DB;
+  --theme-text-3: #4B5563;
+  --theme-text-commands-1: #E5E7EB;
+  --theme-text-active: #FFFFFF;
+  --theme-grammar-error: #ff6261;
+  --theme-spelling-error: #ffee91;
+  --theme-target-text: #54b1ff;
+  --scr-track: #222;
+  --scr-thumb: rgba(255, 255, 255, 0.04);
+  --scr-thumb-hover: rgba(255, 255, 255, 0.1);
+  --wb-selection: rgba(0, 0, 0, 0.2);
+  --wb-text-selection: #e5e7eb;
+}

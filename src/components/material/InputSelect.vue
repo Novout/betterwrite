@@ -8,8 +8,7 @@
           pl-3
           pr-10
           text-left
-          bg-gray-200
-          dark:bg-gray-600
+          bg-theme-background-4
           shadow-md
           cursor-pointer
           focus:outline-none
@@ -38,8 +37,7 @@
             py-1
             mt-1
             text-base
-            bg-gray-200
-            dark:bg-gray-600
+            bg-theme-background-4
             rounded-md
             shadow-lg
             max-h-60
@@ -60,7 +58,7 @@
             <li
               :class="[
                 aside ? 'w-24' : '',
-                'cursor-pointer hover:bg-gray-500 dark:hover:bg-gray-800 select-none relative py-2 pl-10 pr-4',
+                'cursor-pointer hover:bg-theme-background-2 select-none relative py-2 pl-10 pr-4',
               ]"
             >
               <span

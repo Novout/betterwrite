@@ -3,8 +3,8 @@
     class="px-4 py-2 m-1 wb-text cursor-pointer rounded-full"
     :class="[
       props.title !== props.is
-        ? 'bg-gray-200 dark:bg-gray-600'
-        : 'bg-gray-400 dark:bg-gray-900 shadow-xl',
+        ? 'bg-theme-background-2'
+        : 'bg-theme-background-3 shadow-xl',
     ]"
   >
     {{ props.title }}

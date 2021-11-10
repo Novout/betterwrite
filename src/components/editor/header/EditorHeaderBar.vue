@@ -7,8 +7,7 @@
       flex flex-col
       w-52
       z-50
-      bg-gray-300
-      dark:bg-gray-700
+      bg-theme-background-1
       wb-text
     "
   >

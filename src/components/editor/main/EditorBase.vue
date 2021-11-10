@@ -21,8 +21,7 @@
         w-full
         max-h-screen
         overflow-y-auto overflow-x-hidden
-        bg-gray-100
-        dark:bg-gray-700
+        bg-theme-background-1
       "
     >
       <EditorEntityShow

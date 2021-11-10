@@ -1,7 +1,7 @@
 <template>
   <Switch
     v-model="cmp"
-    :class="cmp ? 'bg-gray-900' : 'bg-gray-500'"
+    :class="cmp ? 'bg-theme-background-1' : 'bg-theme-background-4'"
     class="
       relative
       inline-flex

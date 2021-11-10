@@ -12,9 +12,8 @@
         overflow-y-auto
         w-full
         sm:w-60
-        bg-gray-100
+        bg-theme-background-1
         z-aside
-        dark:bg-gray-700
         shadow-lg
       "
       :initial="{

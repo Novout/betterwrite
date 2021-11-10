@@ -25,8 +25,7 @@
     <div
       class="
         w-1/2
-        bg-gray-200
-        dark:bg-gray-800
+        bg-theme-background-1
         h-screen
         md:h-3/4
         justify-evenly

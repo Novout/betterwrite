@@ -2,7 +2,7 @@
   <div class="fixed left-0 top-0 w-full h-screen bg-modal z-max">
     <div
       ref="switcher"
-      class="fixed w-60 bg-white dark:bg-gray-800 p-2 rounded shadow-2xl"
+      class="fixed w-60 bg-theme-background-absolute-1 p-2 rounded shadow-2xl"
       :style="style"
     >
       <div
@@ -16,7 +16,7 @@
             <HeroIcon
               :class="[
                 entity.sstate.equal
-                  ? 'border border-black dark:border-white'
+                  ? 'border border-theme-border-absolute-1'
                   : '',
               ]"
               class="text-2xs wb-icon"
@@ -74,12 +74,23 @@
         <input
           ref="entry"
           v-model="entity.sstate.entry"
-          class="bg-transparent border border-gray-900 px-1 mb-1 wb-text"
+          class="
+            bg-transparent
+            border border-theme-border-absolute-2
+            px-1
+            mb-1
+            wb-text
+          "
           :placeholder="t('editor.text.placeholder.shortcuts.switcherEntry')"
         />
         <input
           v-model="entity.sstate.output"
-          class="bg-transparent border border-gray-900 px-1 wb-text"
+          class="
+            bg-transparent
+            border border-theme-border-absolute-2
+            px-1
+            wb-text
+          "
           :placeholder="t('editor.text.placeholder.shortcuts.switcherOutput')"
         />
       </div>

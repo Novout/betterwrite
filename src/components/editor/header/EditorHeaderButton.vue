@@ -4,12 +4,7 @@
       :style="{
         backgroundColor: props.color !== 'none' ? props.color : 'none',
       }"
-      :class="[
-        value
-          ? 'text-gray-400 dark:text-white'
-          : 'text-black dark:text-gray-500',
-      ]"
-      class="inline-flex no-drag"
+      class="inline-flex no-drag wb-icon"
     >
       <slot name="icon" />
     </HeroIcon>
