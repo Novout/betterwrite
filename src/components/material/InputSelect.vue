@@ -37,18 +37,17 @@
             fixed
             py-1
             mt-1
-            overflow-auto
             text-base
             bg-gray-200
             dark:bg-gray-600
             rounded-md
             shadow-lg
             max-h-60
+            overflow-auto
             ring-1 ring-black ring-opacity-5
             focus:outline-none
             sm:text-sm
             z-max
-            truncate
           "
         >
           <ListboxOption
