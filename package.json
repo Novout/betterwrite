@@ -43,6 +43,7 @@
     "autoprefixer": "10.4.0",
     "date-fns": "2.25.0",
     "dropbox": "10.18.0",
+    "electron-dl": "^3.3.0",
     "electron-log": "^4.4.1",
     "electron-updater": "^4.3.9",
     "is-electron": "^2.2.0",

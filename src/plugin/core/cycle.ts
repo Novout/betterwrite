@@ -8,4 +8,3 @@ export const onAfterMounted = (cb: Callback<any>) => {
     }, 0)
   })
 }
-

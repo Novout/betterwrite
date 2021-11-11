@@ -1,3 +1,5 @@
+import electronDl from "electron-dl"
+
 const { app, BrowserWindow, protocol, globalShortcut } = require('electron')
 const { autoUpdater } = require('electron-updater')
 const { join } = require('path')
@@ -8,8 +10,9 @@ const WinURL = isDev
   ? `http://localhost:3000`
   : 'file://' + join(__dirname, '../render/index.html')
 
+electronDl();
+
 let mainWindow: any = null
-let willQuitApp = false
 
 protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
@@ -29,7 +32,6 @@ const createWindow = () => {
     center: true,
     titleBarStyle: 'hidden',
     webPreferences: {
-      enableRemoteModule: false,
       webSecurity: true,
       nodeIntegration: true
     }
@@ -68,5 +70,3 @@ app.on('activate', () => {
     mainWindow.show()
   }
 })
-
-app.on('before-quit', () => willQuitApp = true)
