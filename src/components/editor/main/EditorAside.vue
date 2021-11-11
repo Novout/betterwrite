@@ -12,7 +12,8 @@
         overflow-y-auto
         w-full
         sm:w-60
-        bg-theme-background-1
+        bg-theme-aside-background
+        text-theme-aside-graph-text
         z-aside
         shadow-lg
       "

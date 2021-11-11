@@ -1,7 +1,15 @@
 <template>
   <div
     v-cloak
-    class="flex justify-around sm:justify-between items-center w-full p-2"
+    class="
+      flex
+      bg-theme-aside-logo-background
+      justify-around
+      sm:justify-between
+      items-center
+      w-full
+      p-2
+    "
   >
     <img
       class="object-contain cursor-pointer"
@@ -9,7 +17,9 @@
       src="/logo.svg"
       @click.stop.prevent="onClick"
     />
-    <p class="wb-text font-bold text-3xl sm:text-xl">Better Write</p>
+    <p class="font-bold text-3xl sm:text-xl text-theme-aside-logo-text">
+      Better Write
+    </p>
   </div>
 </template>
 

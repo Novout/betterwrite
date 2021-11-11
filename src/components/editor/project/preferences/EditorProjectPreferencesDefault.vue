@@ -23,7 +23,7 @@
       class="
         flex
         font-bold
-        text-base text-theme-text-1
+        text-base text-theme-text-2
         justify-between
         items-center
         w-full
@@ -38,7 +38,7 @@
       class="
         flex
         font-bold
-        text-base text-theme-text-1
+        text-base text-theme-text-2
         justify-between
         items-center
         w-full
@@ -56,7 +56,7 @@
       class="
         flex
         font-bold
-        text-base text-theme-text-1
+        text-base text-theme-text-2
         justify-between
         items-center
         w-full

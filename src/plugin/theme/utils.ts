@@ -5,6 +5,7 @@ export const ThemeNormalize = (theme: BetterWriteThemes) => {
     {
       'BetterWrite - Light': 'betterwrite-light',
       'BetterWrite - Dark': 'betterwrite-dark',
+      Rise: 'rise',
     }[theme] || 'betterwrite-dark'
   )
 }

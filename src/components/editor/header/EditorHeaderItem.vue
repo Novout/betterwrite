@@ -7,7 +7,7 @@
       items-center
       w-full
       bg-theme-background-opacity-1
-      hover:bg-theme-background-2
+      hover:bg-theme-background-3
       cursor-pointer
     "
     @click.prevent.stop="emit('action')"

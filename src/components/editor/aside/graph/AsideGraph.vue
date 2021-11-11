@@ -1,5 +1,5 @@
 <template>
-  <div class="flex px-2 flex-col mt-5 w-full wb-text">
+  <div class="flex px-2 flex-col mt-5 w-full">
     <p
       v-if="!env.isEmptyProject(PROJECT.name)"
       class="cursor-pointer font-bold"

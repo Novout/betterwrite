@@ -13,14 +13,14 @@
     "
     :class="[
       props.entity.type === 'heading-one'
-        ? 'border-l border-theme-border-aside-1 ml-1'
+        ? 'border-l border-theme-aside-graph-lines ml-1'
         : '',
       props.entity.type === 'heading-two' ||
       props.entity.type === 'heading-three'
-        ? 'flex items-end border-l border-theme-border-aside-1 ml-1'
+        ? 'flex items-end border-l border-theme-aside-graph-lines ml-1'
         : '',
       props.entity.type === 'image'
-        ? 'flex items-end border-l border-theme-border-aside-1 ml-1'
+        ? 'flex items-end border-l border-theme-aside-graph-lines ml-1'
         : '',
     ]"
   >
@@ -31,7 +31,7 @@
         props.entity.type === 'image'
       "
       :class="[props.entity.type === 'heading-two' ? 'w-6' : 'w-12']"
-      class="border-b mb-2 h-1 border-theme-border-aside-1"
+      class="border-b mb-2 h-1 border-theme-aside-graph-lines"
     ></div>
     <p
       v-if="props.entity.type !== 'image'"
@@ -57,7 +57,7 @@
           clip-rule="evenodd"
         />
       </svg>
-      <p class="ml-1 text-left truncate w-32">
+      <p class="ml-1 text-left truncate w-32 text-theme-aside-graph-text">
         {{ props.entity.external?.image?.name }}
       </p>
     </HeroIcon>

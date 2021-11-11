@@ -3,10 +3,18 @@
     v-once
     class="w-full p-1 break-all pointer-events-none"
     :class="[
-      log.method === 'log' ? 'logger-log' : '',
-      log.method === 'warn' ? 'logger-warn' : '',
-      log.method === 'error' ? 'logger-error' : '',
-      log.method === 'info' ? 'logger-info' : '',
+      log.method === 'log'
+        ? 'bg-theme-logger-log-background text-theme-logger-log-text'
+        : '',
+      log.method === 'warn'
+        ? 'bg-theme-logger-warn-background text-theme-logger-warn-text'
+        : '',
+      log.method === 'error'
+        ? 'bg-theme-logger-error-background text-theme-logger-error-text'
+        : '',
+      log.method === 'info'
+        ? 'bg-theme-logger-info-background text-theme-logger-info-text'
+        : '',
     ]"
   >
     {{ render }}

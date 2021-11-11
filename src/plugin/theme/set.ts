@@ -1,8 +1,6 @@
 import { PluginStores } from '@/types/plugin/core'
 import { PluginEmitter } from '@/types/plugin/core'
 import { mounted } from '../core/cycle'
-import { useDefines } from '@/use/defines'
-import { useLocalStorage } from '@/use/storage/local'
 import { ThemeNormalize } from './utils'
 
 export const PluginThemeSet = (
@@ -10,13 +8,12 @@ export const PluginThemeSet = (
   stores: PluginStores
 ) => {
   mounted(() => {
-    const local = useLocalStorage()
-    const defines = useDefines()
+    setTimeout(() => {
+      const theme = stores.EDITOR.configuration.theme
 
-    const theme = stores.EDITOR.configuration.theme
+      const value = ThemeNormalize(theme)
 
-    const value = ThemeNormalize(theme)
-
-    document.body.classList.add(value)
+      document.body.classList.add(value)
+    }, 0)
   })
 }
