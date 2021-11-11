@@ -181,10 +181,10 @@ export const useContextStore = defineStore('context', {
         this.entities[index - 1].raw = target.raw + entity.raw
       }
     },
-    newInPaste(entities: Entities, initial: Entity) {
-      if (!initial || !initial.raw) return
+    newInPaste(entities: Entities, initial: Entity): Promise<any> {
+      return new Promise((res, rej) => {
+        if (!initial || !initial.raw) rej()
 
-      return new Promise((res) => {
         const start = this.entities.indexOf(initial)
 
         entities.reverse().forEach((entity: Entity) => {
