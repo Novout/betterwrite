@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/Novout/better-write/compare/v0.7.1...v0.8.0) (2021-11-11)
+
+
+### Features
+
+* **editor:** rise theme ([ab1ba72](https://github.com/Novout/better-write/commits/ab1ba72f478c4793bf4b9dc3c320c6edd440bf4c))
+* **editor:** switcher theme ([6a9566b](https://github.com/Novout/better-write/commits/6a9566b5c7c6b05b9ec6e8842c45c280c2b383cf))
+* **editor:** theme definitions ([e87757d](https://github.com/Novout/better-write/commits/e87757d22a96ee634d97784d562f971ba8cf4669))
+* **pdf:** default summary implements ([71a8d8a](https://github.com/Novout/better-write/commits/71a8d8ac04905f9fa85ade0d7fa480f6888abe1e))
+* **pdf:** footer implements ([2fa9dfe](https://github.com/Novout/better-write/commits/2fa9dfe11ca751d085f28d5c625e7c34cc42356a))
+* **pdf:** header implements ([98c8f6c](https://github.com/Novout/better-write/commits/98c8f6ca7a86a5d1c37d405a735f73e13bc9fb97))
+
+
+### Bug Fixes
+
+* **desktop:** correct electron-dl import ([2f35539](https://github.com/Novout/better-write/commits/2f355395da6b69a86ad98f27e0985dcdbe6656fa))
+* **editor:** graph truncate items ([141837f](https://github.com/Novout/better-write/commits/141837f78c4388b5159a4e21a3c2d00208403adb))
+* **editor:** not insert possible null entity ([d0bf0e2](https://github.com/Novout/better-write/commits/d0bf0e20f1e37ca5fb4b2bf0cfcda12632ad0edd))
+* **material:** select truncate in scroll ([18be21a](https://github.com/Novout/better-write/commits/18be21ac91d0a6f9ce76f8c9617fac01ae80777b))
+* **pdf:** top margin ([359838f](https://github.com/Novout/better-write/commits/359838fa97f76fd086c7e9d5a2d0ec5aad11c0dd))
+* **plugin:** hook in timeout ([2eb4860](https://github.com/Novout/better-write/commits/2eb48609c5d042c1cbf4d967d9ab254af0f7b49b))
+
+
+### Refactor
+
+* **editor:** tailwind dark to css variables ([8ec5e0a](https://github.com/Novout/better-write/commits/8ec5e0a5313f432a0fc7205d4da3f8a15b66d32d))
+* **pdf:** base footer set ([40c0bf6](https://github.com/Novout/better-write/commits/40c0bf60927769086b0204ec2980535edf930905))
+
+
+### Structure
+
+* **deps:** electron-dl ([788047a](https://github.com/Novout/better-write/commits/788047ab21193f40f42bc11cbb838b8c4e123255))
+* **deps:** update packages ([05aecb4](https://github.com/Novout/better-write/commits/05aecb45f50c48f2cbbf78b31929fee08fc9e13c))
+* **editor:** rise theme name ([d4f5a0f](https://github.com/Novout/better-write/commits/d4f5a0f063d01418a80ea2b17886e62cbffb99ac))
+* **pdf:** componentization items ([62f5548](https://github.com/Novout/better-write/commits/62f55483da756d30848eed8761e1fbc3e4712f72))
+* **pdf:** configuration carousel to select ([303dbbd](https://github.com/Novout/better-write/commits/303dbbd93c69362fd155a11eddbc561cec690efb))
+* **plugin:** after mounted hook ([a265739](https://github.com/Novout/better-write/commits/a265739c9ae4c2575a3865aafc52a892e68e0538))
+
 ### [0.7.1](https://github.com/Novout/better-write/compare/v0.7.0...v0.7.1) (2021-11-08)
 
 
