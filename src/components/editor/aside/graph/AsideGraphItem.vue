@@ -38,8 +38,8 @@
       class="ml-2 truncate"
       :class="[
         props.entity.type === 'heading-one' ? 'text-tiny py-2 font-bold' : '',
-        props.entity.type === 'heading-two' ? 'text-sm' : '',
-        props.entity.type === 'heading-three' ? 'text-xs' : '',
+        props.entity.type === 'heading-two' ? 'text-sm w-60' : '',
+        props.entity.type === 'heading-three' ? 'text-xs w-60' : '',
       ]"
     >
       {{ props.entity.raw }}
