@@ -1,9 +1,10 @@
-import electronDl from "electron-dl"
+
 
 const { app, BrowserWindow, protocol, globalShortcut } = require('electron')
 const { autoUpdater } = require('electron-updater')
 const { join } = require('path')
 const log = require('electron-log')
+const electronDl = require('electron-dl')
 
 const isDev = process.env.NODE_ENV === 'development'
 const WinURL = isDev
