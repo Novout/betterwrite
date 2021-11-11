@@ -172,7 +172,7 @@ export const useDefines = () => {
   }
 
   const themes = (): Array<BetterWriteThemes> => {
-    return ['BetterWrite - Light', 'BetterWrite - Dark', 'Rise']
+    return ['BetterWrite - Light', 'BetterWrite - Dark', 'BetterWrite - Rise']
   }
 
   return {
