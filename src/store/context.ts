@@ -38,9 +38,13 @@ export const useContextStore = defineStore('context', {
       this.entities = context.entities
     },
     addInPage(entity: Entity) {
+      if(!entity || !entity.raw) return
+
       this.entities.push(entity)
     },
     updateInPage({ entity, raw }: ContextActionsUpdateInPage) {
+      if(!entity || !entity.raw) return
+
       const index = this.entities.indexOf(entity)
 
       if (index === -1 || raw === this.entities[index].raw) return
@@ -54,6 +58,8 @@ export const useContextStore = defineStore('context', {
       }
     },
     removeInPage(entity: Entity) {
+      if(!entity || !entity.raw) return
+
       const index = this.entities.indexOf(entity)
 
       if (index === -1 || entity.type === 'heading-one') return
@@ -63,6 +69,8 @@ export const useContextStore = defineStore('context', {
       )
     },
     switchInPage({ entity, direction }: ContextActionSwitchInPage) {
+      if(!entity || !entity.raw) return
+
       const index = this.entities.indexOf(entity)
 
       if (index === -1) return
@@ -85,6 +93,8 @@ export const useContextStore = defineStore('context', {
       this.entities[sIndex] = temp
     },
     switchEntityRaw({ entity, match, raw }: ContextActionSwitchEntityRaw) {
+      if(!entity || !entity.raw) return
+
       const index = this.entities.indexOf(entity)
 
       const result = this.entities[index].raw.replaceAll(match, raw)
@@ -95,6 +105,8 @@ export const useContextStore = defineStore('context', {
       this: ContextState,
       payload: ContextActionNewInExistentEntity
     ) {
+      if(!payload.new || !payload.new.raw) return
+
       const index = this.entities.indexOf(payload.old)
 
       if (index === -1) return
@@ -106,6 +118,8 @@ export const useContextStore = defineStore('context', {
       this.entities[index].external = payload.new.external || {}
     },
     newInPage({ entity, type }: ContextActionNewInPage) {
+      if(!entity || !entity.raw) return
+
       const index = this.entities.indexOf(entity as Entity)
 
       if (index === -1) return
@@ -120,6 +134,8 @@ export const useContextStore = defineStore('context', {
       this.entities = useUtils().array().insert(this.entities, index, target)
     },
     newInPagePosEdit({ entity, raw, type }: ContextActionNewInPagePosEdit) {
+      if(!entity || !entity.raw) return
+
       const index = this.entities.indexOf(entity as Entity)
 
       if (index === -1) return
@@ -136,6 +152,8 @@ export const useContextStore = defineStore('context', {
         .insert(this.entities, index + 1, target)
     },
     alterInPage({ entity, type }: ContextActionAlterInPage) {
+      if(!entity || !entity.raw) return
+
       const index = this.entities.indexOf(entity as Entity)
 
       if (index === -1) return
@@ -147,6 +165,8 @@ export const useContextStore = defineStore('context', {
       this.entities[index].external = entity.external || {}
     },
     insertRawInExistentEntity(entity: Entity) {
+      if(!entity || !entity.raw) return
+
       const index = this.entities.indexOf(entity)
 
       if (index === -1) return
@@ -162,6 +182,8 @@ export const useContextStore = defineStore('context', {
       }
     },
     newInPaste(entities: Entities, initial: Entity) {
+      if(!initial || !initial.raw) return
+
       return new Promise((res) => {
         const start = this.entities.indexOf(initial)
 
