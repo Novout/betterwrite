@@ -1,8 +1,11 @@
 import { Callback } from '@/types/utils'
 import { onMounted } from 'vue'
 
-export const mounted = (cb: Callback<any>) => {
+export const onAfterMounted = (cb: Callback<any>) => {
   onMounted(() => {
-    cb && cb()
+    setInterval(() => {
+      cb && cb()
+    })
   })
 }
+
