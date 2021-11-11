@@ -3,9 +3,9 @@ import { onMounted } from 'vue'
 
 export const onAfterMounted = (cb: Callback<any>) => {
   onMounted(() => {
-    setInterval(() => {
+    setTimeout(() => {
       cb && cb()
-    })
+    }, 0)
   })
 }
 
