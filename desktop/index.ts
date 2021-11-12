@@ -34,7 +34,8 @@ const createWindow = () => {
     titleBarStyle: 'hidden',
     webPreferences: {
       webSecurity: true,
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false,
     }
   })
 
