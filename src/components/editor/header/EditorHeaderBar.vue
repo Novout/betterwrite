@@ -7,8 +7,9 @@
       flex flex-col
       w-52
       z-50
-      bg-theme-background-1
-      wb-text
+      text-theme-editor-header-list-text
+      hover:text-theme-editor-header-list-text-hover
+      active:text-theme-editor-header-list-text-active
     "
   >
     <slot />

@@ -6,7 +6,9 @@
       justify-start
       items-center
       w-full
-      bg-theme-transparent
+      bg-theme-editor-header-background
+      hover:bg-theme-editor-header-background-hover
+      active:bg-theme-editor-header-background-active
       z-50
     "
   >

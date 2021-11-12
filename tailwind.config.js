@@ -1,5 +1,6 @@
 const colors = require('tailwindcss/colors')
 
+/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
   mode: 'jit',
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
@@ -60,6 +61,21 @@ module.exports = {
       'theme-editor-input-text': 'var(--theme-editor-input-text)',
       'theme-editor-input-text-hover': 'var(--theme-editor-input-text-hover)',
       'theme-editor-input-text-active': 'var(--theme-editor-input-text-active)',
+      'theme-editor-header-background': 'var(--theme-editor-header-background)',
+      'theme-editor-header-background-hover': 'var(--theme-editor-header-background-hover)',
+      'theme-editor-header-background-active': 'var(--theme-editor-header-background-active)',
+      'theme-editor-header-list-background': 'var(--theme-editor-header-list-background)',
+      'theme-editor-header-list-background-hover': 'var(--theme-editor-header-list-background-hover)',
+      'theme-editor-header-list-background-active': 'var(--theme-editor-header-list-background-active)',
+      'theme-editor-header-list-text': 'var(--theme-editor-header-list-text)',
+      'theme-editor-header-list-text-hover': 'var(--theme-editor-header-list-text-hover)',
+      'theme-editor-header-list-text-active': 'var(--theme-editor-header-list-text-active)',
+      'theme-editor-header-list-shortcuts-background': 'var(--theme-editor-header-list-shortcuts-background)',
+      'theme-editor-header-list-shortcuts-background-hover': 'var(--theme-editor-header-list-shortcuts-background-hover)',
+      'theme-editor-header-list-shortcuts-background-active': 'var(--theme-editor-header-list-shortcuts-background-active)',
+      'theme-editor-header-list-shortcuts-text': 'var(--theme-editor-header-list-shortcuts-text)',
+      'theme-editor-header-list-shortcuts-text-hover': 'var(--theme-editor-header-list-shortcuts-text-hover)',
+      'theme-editor-header-list-shortcuts-text-active': 'var(--theme-editor-header-list-shortcuts-text-active)',
       'theme-text-1': 'var(--theme-text-1)',
       'theme-text-2': 'var(--theme-text-2)',
       'theme-text-3': 'var(--theme-text-3)',

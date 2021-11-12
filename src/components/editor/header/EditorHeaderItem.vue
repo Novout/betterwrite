@@ -6,9 +6,10 @@
       justify-between
       items-center
       w-full
-      bg-theme-background-opacity-1
-      hover:bg-theme-background-3
       cursor-pointer
+      bg-theme-editor-header-list-background
+      hover:bg-theme-editor-header-list-background-hover
+      active:bg-theme-editor-header-list-background-active
     "
     @click.prevent.stop="emit('action')"
   >
@@ -18,8 +19,13 @@
         font-tiny
         rounded-full
         px-1
-        text-3xs text-theme-text-1
-        bg-theme-background-1
+        text-3xs
+        bg-theme-editor-header-list-shortcuts-background
+        hover:bg-theme-editor-header-list-shortcuts-background-hover
+        active:bg-theme-editor-header-list-shortcuts-background-active
+        text-theme-editor-header-list-shortcuts-text
+        hover:text-theme-editor-header-list-shortcuts-text-hover
+        active:text-theme-editor-header-list-shortcuts-text-active
       "
     >
       {{ props.shortcut }}
