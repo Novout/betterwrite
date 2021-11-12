@@ -156,7 +156,7 @@
       </div>
       <button
         v-motion
-        class="px-5 py-2 bg-gray-300 dark:bg-gray-700 mt-5"
+        class="px-5 py-2 text-theme-text-1 bg-theme-background-2 mt-5"
         :initial="{
           opacity: 0,
         }"

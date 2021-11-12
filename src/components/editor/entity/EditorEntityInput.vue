@@ -16,6 +16,7 @@
         rounded-none
         border-none
         bg-theme-background-1
+        text-theme-text-1
         px-14
       "
       :style="{ minHeight: '50px' }"
