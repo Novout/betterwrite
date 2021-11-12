@@ -290,38 +290,46 @@ export const useRaw = () => {
 
     const style = (entity: Entity, style: any) => {
       return [
-        'overflow-hidden w-full text-sm bg-transparent break-words text-theme-text-1',
+        'overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+        entity.type === 'paragraph'
+          ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
+          : '',
         entity.type === 'paragraph' ? style.paragraph.indent : '',
-        entity.type === 'paragraph' ? 'text-justify' : '',
         entity.type === 'paragraph' ? style.paragraph.fontSize : '',
         entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
         entity.type === 'paragraph' ? style.paragraph.fontColor : '',
         entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
 
-        entity.type === 'heading-one' ? 'text-center pb-10 pt-10' : '',
+        entity.type === 'heading-one'
+          ? 'text-center pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'
+          : '',
         entity.type === 'heading-one' ? style.heading.one.fontSize : '',
         entity.type === 'heading-one' ? style.heading.one.fontFamily : '',
         entity.type === 'heading-one' ? style.heading.one.fontColor : '',
         entity.type === 'heading-one' ? style.heading.one.fontWeight : '',
 
-        entity.type === 'heading-two' ? 'text-center pb-3 pt-8' : '',
+        entity.type === 'heading-two'
+          ? 'text-center pb-3 pt-8 text-theme-editor-entity-heading-two hover:text-theme-editor-entity-heading-two-hover active:text-theme-editor-entity-heading-two-active'
+          : '',
         entity.type === 'heading-two' ? style.heading.two.fontSize : '',
         entity.type === 'heading-two' ? style.heading.two.fontFamily : '',
         entity.type === 'heading-two' ? style.heading.two.fontColor : '',
         entity.type === 'heading-two' ? style.heading.two.fontWeight : '',
 
-        entity.type === 'heading-three' ? 'text-center pb-2 pt-5' : '',
+        entity.type === 'heading-three'
+          ? 'text-center pb-2 pt-5 text-theme-editor-entity-heading-three hover:text-theme-editor-entity-heading-three-hover active:text-theme-editor-entity-heading-three-active'
+          : '',
         entity.type === 'heading-three' ? style.heading.three.fontSize : '',
         entity.type === 'heading-three' ? style.heading.three.fontFamily : '',
         entity.type === 'heading-three' ? style.heading.three.fontColor : '',
         entity.type === 'heading-three' ? style.heading.three.fontWeight : '',
 
         entity.type === 'page-break'
-          ? 'cursor-default my-4 border-b-8 border-theme-border-1'
+          ? 'cursor-default my-4 border-b-8 border-theme-border-1 border-theme-editor-entity-page'
           : '',
 
         entity.type === 'line-break'
-          ? 'cursor-default my-4 border-b-8 border-dashed border-theme-border-1'
+          ? 'cursor-default my-4 border-b-8 border-dashed border-theme-editor-entity-line'
           : '',
       ]
     }

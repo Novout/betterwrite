@@ -1,7 +1,15 @@
 <template>
   <div
     ref="main"
-    class="w-full flex flex-col overflow-hidden h-screen bg-theme-background-1"
+    class="
+      w-full
+      flex flex-col
+      overflow-hidden
+      h-screen
+      bg-theme-editor-background
+      hover:bg-theme-editor-background-hover
+      active:bg-theme-editor-background-active
+    "
     :class="[EDITOR.configuration.draggable ? 'fixed' : 'inline-block']"
   >
     <EditorBaseHeader />
@@ -14,7 +22,6 @@
         w-full
         max-h-screen
         overflow-y-auto overflow-x-hidden
-        bg-theme-background-1
       "
     >
       <EditorEntityShow
