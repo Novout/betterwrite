@@ -88,10 +88,16 @@
   })
 
   const onChange = () => {
+    const reader = new FileReader()
     const file = (inp.value as any).files[0]
 
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
+    if (file.name.includes('svg')) {
+      reader.readAsText(file)
+    } else {
+      reader.readAsDataURL(file)
+    }
+
+    reader.readAsText(file)
     reader.onload = function () {
       if (utils.support().images(reader)) return
 

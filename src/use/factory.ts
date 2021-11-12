@@ -52,7 +52,13 @@ export const useFactory = () => {
         if (!file) return
 
         const reader = new FileReader()
-        reader.readAsDataURL(file)
+
+        if (file.name.includes('svg')) {
+          reader.readAsText(file)
+        } else {
+          reader.readAsDataURL(file)
+        }
+
         reader.onload = function () {
           if (utils.support().images(reader)) {
             error && error('bad file')

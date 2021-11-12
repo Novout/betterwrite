@@ -146,6 +146,24 @@ export const usePDF = () => {
 
     const image = (entity: Entity) => {
       if (entity.external?.image?.alignment === 'full') {
+        if (entity.raw.includes('svg')) {
+          return {
+            svg: entity.raw,
+            width:
+              useDefines().pdf().base().pageSizeFixes()[
+                PDF.styles.base.pageSize
+              ][0] -
+              generate().base().pageMargins[0] -
+              generate().base().pageMargins[2],
+            margin: [
+              generate().base().pageMargins[0],
+              10,
+              generate().base().pageMargins[2],
+              10,
+            ],
+          }
+        }
+
         return {
           image: entity.raw,
           width:
@@ -162,6 +180,26 @@ export const usePDF = () => {
           ],
         }
       } else {
+        if (entity.raw.includes('svg')) {
+          return {
+            svg: entity.raw,
+            width: entity.external?.image?.size.width,
+            height: entity.external?.image?.size.height,
+            alignment: entity.external?.image?.alignment,
+            margin: [
+              entity.external?.image?.alignment === 'center'
+                ? 0
+                : generate().base().pageMargins[0] / 2,
+              10,
+              entity.external?.image?.alignment === 'right' ||
+              entity.external?.image?.alignment === 'center'
+                ? 0
+                : generate().base().pageMargins[2] / 2,
+              10,
+            ],
+          }
+        }
+
         return {
           image: entity.raw,
           width: entity.external?.image?.size.width,

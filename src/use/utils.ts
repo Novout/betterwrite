@@ -146,8 +146,8 @@ export const useUtils = () => {
   const support = () => {
     const images = (reader: any) => {
       return (
-        !(reader.result as string).includes('data:image/') ||
-        (reader.result as string).includes('svg')
+        !(reader.result as string).includes('data:image/') &&
+        !(reader.result as string).includes('svg')
       )
     }
 
