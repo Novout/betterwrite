@@ -13,7 +13,8 @@
         w-full
         sm:w-60
         bg-theme-aside-background
-        text-theme-aside-graph-text
+        hover:bg-theme-aside-background-hover
+        active:bg-theme-aside-background-active
         z-aside
         shadow-lg
       "
