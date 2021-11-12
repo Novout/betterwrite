@@ -143,5 +143,16 @@ export const useUtils = () => {
     }
   }
 
-  return { position, delay, prevent, array, join, text, regex, cursor }
+  const support = () => {
+    const images = (reader: any) => {
+      return (
+        !(reader.result as string).includes('data:image/') ||
+        (reader.result as string).includes('svg')
+      )
+    }
+
+    return { images }
+  }
+
+  return { position, delay, prevent, array, join, text, regex, cursor, support }
 }

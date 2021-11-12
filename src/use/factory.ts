@@ -1,10 +1,12 @@
 import { useEnv } from './env'
 import { Entity, EntityType } from '@/types/context'
 import { useFormat } from './format'
+import { useUtils } from './utils'
 
 export const useFactory = () => {
   const env = useEnv()
   const format = useFormat()
+  const utils = useUtils()
 
   const entity = () => {
     const create = (type: EntityType): Entity => {
@@ -52,7 +54,7 @@ export const useFactory = () => {
         const reader = new FileReader()
         reader.readAsDataURL(file)
         reader.onload = function () {
-          if (!(reader.result as string).includes('data:image/')) {
+          if (utils.support().images(reader)) {
             error && error('bad file')
             return
           }

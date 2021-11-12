@@ -61,7 +61,10 @@
 </template>
 
 <script setup lang="ts">
+  import { useUtils } from '@/use/utils'
   import { ref } from 'vue'
+
+  const utils = useUtils()
 
   const inp = ref<HTMLElement | null>(null as any)
 
@@ -90,6 +93,8 @@
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onload = function () {
+      if (utils.support().images(reader)) return
+
       emit('load', reader.result)
     }
     reader.onerror = function (error) {
