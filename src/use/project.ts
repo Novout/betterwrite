@@ -58,6 +58,8 @@ export const useProject = () => {
   const onLoadProject = async (context?: ProjectObject) => {
     if (!context) context = local.getProject()
 
+    if (!context) return
+
     PROJECT.load(context.project)
 
     await nextTick

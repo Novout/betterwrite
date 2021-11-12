@@ -20,6 +20,8 @@ export const useStorage = () => {
   const defines = useDefines()
 
   const support = (project: any) => {
+    if (!project) return
+
     let _ = project
     // <= v0.3.10
     if (_.project?.pages[0]?.entity) {
