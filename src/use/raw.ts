@@ -255,7 +255,7 @@ export const useRaw = () => {
     const html = () => {
       const bold = () => {
         const open = () => {
-          return '<span class="font-bold text-sm">'
+          return '<span class="font-bold text-sm text-theme-editor-bold-text hover:text-theme-editor-bold-text-hover active:text-theme-editor-bold-text-active">'
         }
 
         const close = () => {
@@ -271,7 +271,7 @@ export const useRaw = () => {
 
       const italic = () => {
         const open = () => {
-          return '<span class="italic text-sm">'
+          return '<span class="italic text-sm text-theme-editor-italic-text hover:text-theme-editor-italic-text-hover active:text-theme-editor-italic-text-active">'
         }
 
         const close = () => {

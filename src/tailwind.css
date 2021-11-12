@@ -22,7 +22,7 @@
   }
 
   .wb-icon {
-    @apply text-theme-icon hover:text-theme-icon-hover active:text-theme-text-active;
+    @apply text-theme-icon hover:text-theme-icon-hover active:text-theme-icon-active;
   }
 
   .wb-background-color {
