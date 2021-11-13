@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0-beta.2](https://github.com/Novout/better-write/compare/v0.9.0-beta.1...v0.9.0-beta.2) (2021-11-13)
+
+
+### Features
+
+* **editor:** theme new logos ([f4f076b](https://github.com/Novout/better-write/commits/f4f076b18309c3709feb39e7246ae16de14b0644))
+
+
+### Structure
+
+* **components:** linter correct rules ([3abba7e](https://github.com/Novout/better-write/commits/3abba7ed456eb12e3217751097475c161d378de5))
+* **editor:** theme new properties ([84b83c7](https://github.com/Novout/better-write/commits/84b83c7abf2ec2ac6e5e4de1ee9b0c452528b54c))
+
 ## [0.9.0-beta.1](https://github.com/Novout/better-write/compare/v0.9.0-beta.0...v0.9.0-beta.1) (2021-11-13)
 
 
