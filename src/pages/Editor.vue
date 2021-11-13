@@ -9,7 +9,10 @@
 </template>
 
 <script setup lang="ts">
+  import { setTheme } from '@/plugin/theme/external'
+import { ThemeNormalize } from '@/plugin/theme/utils'
   import { useContextStore } from '@/store/context'
+  import { useEditorStore } from '@/store/editor'
   import { useProjectStore } from '@/store/project'
   import { useEntity } from '@/use/entity'
   import { useEnv } from '@/use/env'
@@ -23,6 +26,7 @@
 
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
+  const EDITOR = useEditorStore()
 
   const keyboard = useKeyboard()
   const env = useEnv()
@@ -37,6 +41,8 @@
   onMounted(() => {
     project.onLoadProject()
   })
+
+  setTheme()
 
   if (!env.isDev()) {
     window.onbeforeunload = function () {

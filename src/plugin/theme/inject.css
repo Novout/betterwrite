@@ -1,3 +1,12 @@
+/* for other routes */
+:root {
+  --scr-track: #d1d5db;
+  --scr-thumb: #1f2937;
+  --scr-thumb-hover: #777;
+  --wb-selection: rgba(0, 0, 0, 0.1);
+  --wb-text-selection: #000;
+}
+
 /* BW Light Theme */
 .betterwrite-light {
   --theme-transparent: transparent;

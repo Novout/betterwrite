@@ -700,7 +700,7 @@ export const usePDF = () => {
     })
 
     if (PDF.normalize['Roboto']) set['Roboto'] = PDF.normalize['Roboto']
-    // ;(pdfMake as any).fonts = set
+    ;(pdfMake as any).fonts = set
   }
 
   const create = (): void => {

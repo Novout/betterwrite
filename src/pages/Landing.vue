@@ -24,9 +24,13 @@
 <script setup lang="ts">
   import { useHead } from '@vueuse/head'
   import { useI18n } from 'vue-i18n'
-  import { computed } from 'vue'
+  import { computed, onMounted } from 'vue'
 
   const { t } = useI18n()
+
+  onMounted(() => {
+    document.body.removeAttribute('class')
+  })
 
   useHead({
     title: computed(() => t('seo.landing.title')),

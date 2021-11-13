@@ -24,11 +24,15 @@
 </template>
 
 <script setup lang="ts">
+  import { useLocalStorage } from '@/use/storage/local'
   import { useRouter } from 'vue-router'
 
   const router = useRouter()
+  const local = useLocalStorage()
 
   const onClick = () => {
-    router.push('/landing')
+    local.onSaveProject().then(() => {
+      router.push('/landing')
+    })
   }
 </script>
