@@ -12,6 +12,7 @@
         items-center
         my-3
         overflow-x-hidden
+        gap-5
       "
     >
       <div class="wb-input-container">
@@ -49,7 +50,7 @@
         <label class="mx-2 text-xs">{{
           t('editor.pdf.base.pageMargins.title')
         }}</label>
-        <section class="flex justify-between w-full flex-row flex-wrap">
+        <section class="flex justify-between w-full flex-row flex-wrap gap-2">
           <section>
             <label>{{ t('editor.pdf.base.pageMargins.left') }}</label>
             <InputNumber v-model="pdf.base.pageMargins.left" />
@@ -70,7 +71,14 @@
       </div>
       <div class="wb-input-container">
         <section
-          class="flex justify-start items-center w-full flex-row flex-wrap"
+          class="
+            flex
+            justify-center
+            items-center
+            w-full
+            flex-row flex-wrap
+            gap-5
+          "
         >
           <section class="flex items-center">
             <label class="mx-2 text-xs">{{
@@ -113,7 +121,14 @@
       </div>
       <div class="wb-input-container">
         <section
-          class="flex justify-start items-center w-full flex-row flex-wrap"
+          class="
+            flex
+            justify-center
+            items-center
+            w-full
+            flex-row flex-wrap
+            gap-5
+          "
         >
           <section class="flex items-center">
             <label class="mx-2 text-xs">{{
@@ -163,7 +178,14 @@
       </div>
       <div class="wb-input-container">
         <section
-          class="flex justify-start items-center w-full flex-row flex-wrap"
+          class="
+            flex
+            justify-center
+            items-center
+            w-full
+            flex-row flex-wrap
+            gap-5
+          "
         >
           <section class="flex items-center">
             <label class="mx-2 text-xs">{{
