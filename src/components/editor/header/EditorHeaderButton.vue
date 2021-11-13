@@ -18,7 +18,7 @@
 <script setup lang="ts">
   import { useToggle } from '@vueuse/core'
 
-  const [value, toggle] = useToggle()
+  const [value] = useToggle()
 
   const props = defineProps({
     color: {

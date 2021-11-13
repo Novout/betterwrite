@@ -194,7 +194,7 @@ import { useUtils } from '@/use/utils'
         emit('enter', content)
 
         return
-      }, (err: any) => {
+      }, () => {
         toast.error(t('toast.generics.error'))
       })
     }

@@ -82,7 +82,6 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
-  import { useI18n } from 'vue-i18n'
   import isElectron from 'is-electron'
 
   const ABSOLUTE = useAbsoluteStore()
@@ -90,5 +89,4 @@
 
   const editor = useEditor()
   const env = useEnv()
-  const { t } = useI18n()
 </script>

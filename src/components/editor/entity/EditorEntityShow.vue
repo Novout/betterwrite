@@ -122,8 +122,6 @@
   }
 
   watch(data, async (_data: string) => {
-    const _input = input.value as HTMLDivElement
-
     if (_data === env.emptyLine()) {
       setData('')
     }
@@ -211,7 +209,7 @@
 
           emitter.emit('entity-not-mutate-down', props.entity)
         },
-        (err: any) => {
+        () => {
           toast.error(t('toast.generics.error'))
         }
       )
@@ -482,10 +480,10 @@
     const _input = input.value as HTMLDivElement
 
     const value = raw.v2().caret().value(_input)
-    const position = raw.v2().caret().index(_input)
+    // const position = raw.v2().caret().index(_input)
     const end = raw.v2().caret().end(_input)
     const start = raw.v2().caret().start(_input)
-    const empty = raw.v2().caret().empty(_input)
+    // const empty = raw.v2().caret().empty(_input)
     const offset = useUtils().cursor().getCurrentCursorPosition(_input)
 
     if (e.shiftKey) {

@@ -342,13 +342,13 @@
 
   const update = computed(() => format.lastTime(props.entity.updatedAt))
 
-  const onDeleteEntity = (e: MouseEvent) => {
+  const onDeleteEntity = () => {
     CONTEXT.removeInPage(props.entity)
 
     state.adjust = false
   }
 
-  const onUpEntity = (e: MouseEvent) => {
+  const onUpEntity = () => {
     CONTEXT.switchInPage({
       entity: props.entity,
       direction: 'up',
@@ -357,7 +357,7 @@
     state.adjust = false
   }
 
-  const onDownEntity = (e: MouseEvent) => {
+  const onDownEntity = () => {
     CONTEXT.switchInPage({
       entity: props.entity,
       direction: 'down',
@@ -412,7 +412,7 @@
     state.new = false
   }
 
-  const onSwitcherEntityWrapper = (e: MouseEvent) => {
+  const onSwitcherEntityWrapper = () => {
     state.new = false
     state.switcher = !state.switcher
     state.adjust = false

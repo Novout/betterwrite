@@ -17,7 +17,7 @@
   })
 
   const emit = defineEmits(['update:modelValue'])
-  const inp = ref<HTMLElement | null>(null as any)
+  const inp = ref<HTMLElement | null>(null)
   const cmp = computed({
     get() {
       return props.modelValue

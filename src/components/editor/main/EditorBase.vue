@@ -45,7 +45,6 @@
   import { Entity } from '@/types/context'
   import { useScroll } from '@/use/scroll'
   import { useEnv } from '@/use/env'
-  import useEmitter from '@/use/emitter'
   import { useProject } from '@/use/project'
   import { useContextStore } from '@/store/context'
   import { useProjectStore } from '@/store/project'
@@ -56,7 +55,6 @@
   const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
 
-  const emitter = useEmitter()
   const project = useProject()
   const plugin = usePlugin()
   const env = useEnv()

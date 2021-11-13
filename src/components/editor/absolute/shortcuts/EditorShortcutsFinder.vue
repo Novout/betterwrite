@@ -91,13 +91,11 @@
   import { useEntity } from '@/use/entity'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useDraggable } from '@vueuse/core'
-  import { useUtils } from '@/use/utils'
 
   const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
   const entity = useEntity()
-  const utils = useUtils()
 
   const finder = ref<HTMLElement | null>(null)
   const search = ref<HTMLElement | null>(null)
