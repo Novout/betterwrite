@@ -15,7 +15,13 @@
         w-full
         rounded-none
         border-none
-        bg-theme-editor-input-background hover:bg-theme-editor-input-background-hover active:bg-theme-editor-input-background-active text-theme-editor-input-text hover:theme-editor-input-text-hover active:theme-editor-input-text-active
+        bg-theme-editor-input-background 
+        hover:bg-theme-editor-input-background-hover 
+        active:bg-theme-editor-input-background-active 
+        text-theme-editor-input-text 
+        placeholder-theme-editor-input-placeholder
+        hover:theme-editor-input-text-hover 
+        active:theme-editor-input-text-active
         px-14
       "
       :style="{ minHeight: '50px' }"

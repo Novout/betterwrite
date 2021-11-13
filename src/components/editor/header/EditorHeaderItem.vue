@@ -7,6 +7,9 @@
       items-center
       w-full
       cursor-pointer
+      text-theme-editor-header-list-text
+      hover:text-theme-editor-header-list-text-hover
+      active:text-theme-editor-header-list-text-active
       bg-theme-editor-header-list-background
       hover:bg-theme-editor-header-list-background-hover
       active:bg-theme-editor-header-list-background-active
@@ -23,9 +26,6 @@
         bg-theme-editor-header-list-shortcuts-background
         hover:bg-theme-editor-header-list-shortcuts-background-hover
         active:bg-theme-editor-header-list-shortcuts-background-active
-        text-theme-editor-header-list-shortcuts-text
-        hover:text-theme-editor-header-list-shortcuts-text-hover
-        active:text-theme-editor-header-list-shortcuts-text-active
       "
     >
       {{ props.shortcut }}

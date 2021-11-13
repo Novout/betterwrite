@@ -2,6 +2,8 @@ export type BetterWriteThemes =
   | 'BetterWrite - Light'
   | 'BetterWrite - Dark'
   | 'BetterWrite - Rise'
+  | 'BetterWrite - Ascend'
+  | 'BetterWrite - Harmonic'
 
 export interface EditorState {
   styles: EditorStateStyles
