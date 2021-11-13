@@ -24,8 +24,7 @@
         absolute
         rounded
         bottom-5
-        wb-text
-        bg-theme-background-2
+        bg-theme-editor-entity-popover-background
         border-theme-border-1
       "
       @mouseleave="onReset"
@@ -70,8 +69,7 @@
         rounded
         bottom-5
         left-4
-        wb-text
-        bg-theme-background-2
+        bg-theme-editor-entity-popover-background
         border-theme-border-1
         z-max
       "
@@ -122,8 +120,10 @@
         rounded
         bottom-5
         left-10
-        wb-text
-        bg-theme-background-2
+        text-theme-editor-entity-popover-text
+        hover:text-theme-editor-entity-popover-text-hover
+        active:text-theme-editor-entity-popover-text-active
+        bg-theme-editor-entity-popover-background
         border-theme-border-1
       "
     >
@@ -213,9 +213,11 @@
         rounded
         bottom-5
         left-16
-        wb-text
         p-3
-        bg-theme-background-2
+        text-theme-editor-entity-popover-text
+        hover:text-theme-editor-entity-popover-text-hover
+        active:text-theme-editor-entity-popover-text-active
+        bg-theme-editor-entity-popover-background
         border-theme-border-1
       "
     >

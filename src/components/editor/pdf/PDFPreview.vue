@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-col w-full">
+  <section class="flex flex-col w-full bg-theme-editor-pdf-preview-background">
     <HeroIcon v-if="exists" class="wb-icon w-7" @click.prevent="onClick">
       <svg
         xmlns="http://www.w3.org/2000/svg"

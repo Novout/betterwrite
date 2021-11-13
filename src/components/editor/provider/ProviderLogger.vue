@@ -5,7 +5,7 @@
       top-0
       left-0
       w-full
-      bg-theme-background-2
+      bg-theme-logger-background
       flex flex-col
       z-max
       h-screen
