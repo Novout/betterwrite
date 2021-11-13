@@ -27,7 +27,7 @@
     "release:initial": "standard-version --first-release",
     "release:minor": "standard-version --release-as minor",
     "release:alpha:minor": "standard-version --release-as minor --prerelease alpha",
-    "release:beta:minor": "standard-version--release-as minor --prerelease beta",
+    "release:beta:minor": "standard-version --release-as minor --prerelease beta",
     "release:patch": "standard-version --release-as patch",
     "release:alpha:patch": "standard-version --release-as patch --prerelease alpha",
     "release:beta:patch": "standard-version --release-as patch --prerelease beta",
