@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0-beta.0](https://github.com/Novout/better-write/compare/v0.8.0...v0.9.0-beta.0) (2021-11-13)
+
+
+### Features
+
+* **desktop:** close and maximize buttons ([afc4ee4](https://github.com/Novout/better-write/commits/afc4ee47a6836f8c74cc2cf49a966abdff1f0068))
+* **pdf:** support svg files ([2ee8080](https://github.com/Novout/better-write/commits/2ee8080c0f4f2de37347f4968762dcf8ddbae0fd))
+
+
+### Bug Fixes
+
+* **editor:** header preferences ([f27ace6](https://github.com/Novout/better-write/commits/f27ace6298ae7479e861d5f9b1ddd9ae5231c96e))
+* **editor:** push routes ([7f3d801](https://github.com/Novout/better-write/commits/7f3d801c409cae28073036fc3620e550f5249feb))
+* **editor:** some style typos ([d22bdbc](https://github.com/Novout/better-write/commits/d22bdbc60c9c7ec1c56103fe91b4f656a6f5cbde))
+* **editor:** stores reset in new projects ([e701567](https://github.com/Novout/better-write/commits/e701567959d50b756b731488c0320f5a2f5e9704))
+* **editor:** theme in empty project ([7e9ca09](https://github.com/Novout/better-write/commits/7e9ca09097d1cc48c1fc779e4314f9870be4c1c5))
+
+
+### Style
+
+* **editor:** header theme sets ([ed81105](https://github.com/Novout/better-write/commits/ed81105b7631e3533c4e64ef679a721814c4a1b7))
+* **editor:** improvements in theme settings ([9534f09](https://github.com/Novout/better-write/commits/9534f094ad47242599f16476f42893ba0f32c036))
+* **editor:** themes aside defines ([e66bd07](https://github.com/Novout/better-write/commits/e66bd07a7daf74867c3dd643a133ff2c8ee11a28))
+* **pdf:** configuration gaps ([52e8d10](https://github.com/Novout/better-write/commits/52e8d106efd37e8ce33c75787b8ecb5369dbdedd))
+
+
+### Refactor
+
+* **project:** new with contents ([90a05c6](https://github.com/Novout/better-write/commits/90a05c60fd3bccc77cbd78f0d4364938af0b3816))
+
+
+### Structure
+
+* **deps:** pin dependencies ([b87e449](https://github.com/Novout/better-write/commits/b87e4490dc56d7fc7509dd9358d564b37527a691))
+* **editor:** header componentization ([d0304e4](https://github.com/Novout/better-write/commits/d0304e427e37e378818fab82abde890c6efa70ee))
+* **editor:** theme new features ([f9082e3](https://github.com/Novout/better-write/commits/f9082e3a6f20a44fa05e14a3c19b8360b4c83fef))
+* **package:** commands ([87edd1a](https://github.com/Novout/better-write/commits/87edd1aeef2bff44a2aba269ec0da2647c0166af))
+* **package:** release alpha and major specs ([840b064](https://github.com/Novout/better-write/commits/840b064a1928e769f1cdca2c2d2f740bfd3df231))
+* **package:** standard version commands ([8d46fef](https://github.com/Novout/better-write/commits/8d46fefdbc381335a6a9a34d14c316f72778575e))
+* **package:** typo ([73f3834](https://github.com/Novout/better-write/commits/73f38344a807ca1c8ef6942e714ad1a3b299546b))
+* **pdf:** not support svg inline ([b0e6526](https://github.com/Novout/better-write/commits/b0e65264baf85b7d8aca31e059a364e5fc587fa4))
+
 ## [0.8.0](https://github.com/Novout/better-write/compare/v0.7.1...v0.8.0) (2021-11-11)
 
 
