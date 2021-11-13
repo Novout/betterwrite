@@ -14,7 +14,7 @@
     <img
       class="object-contain cursor-pointer"
       width="60"
-      src="/logo.svg"
+      :src="path"
       @click.stop.prevent="onClick"
     />
     <p class="font-bold text-3xl sm:text-xl text-theme-aside-logo-text">
@@ -26,9 +26,26 @@
 <script setup lang="ts">
   import { useLocalStorage } from '@/use/storage/local'
   import { useRouter } from 'vue-router'
+  import { useEditorStore } from '@/store/editor'
+  import { computed, watch, ref } from 'vue'
+  import { setEditorLogo } from '@/plugin/theme/external'
+  import { onAfterMounted } from '@/plugin/core/cycle'
+
+  const EDITOR = useEditorStore()
 
   const router = useRouter()
   const local = useLocalStorage()
+
+  const path = ref(`/logo_default.svg`)
+  const theme = computed(() => EDITOR.configuration.theme)
+
+  onAfterMounted(() => {
+    path.value = setEditorLogo(theme.value)
+  })
+
+  watch(theme, (_theme) => {
+    path.value = setEditorLogo(_theme)
+  })
 
   const onClick = () => {
     local.onSaveProject().then(() => {

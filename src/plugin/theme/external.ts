@@ -4,6 +4,7 @@ import { ThemeNormalize } from './utils'
 import { useProjectStore } from '@/store/project'
 import { useEnv } from '@/use/env'
 import { useDefines } from '../../use/defines'
+import { BetterWriteThemes } from '@/types/editor'
 
 export const setTheme = () => {
   onAfterMounted(() => {
@@ -26,4 +27,29 @@ export const setThemeInvokate = () => {
 
   document.body.removeAttribute('class')
   document.body.classList.add(value)
+}
+
+export const setEditorLogo = (theme: BetterWriteThemes) => {
+  let logo = ''
+
+  switch (theme) {
+    case 'BetterWrite - Dark':
+    case 'BetterWrite - Light':
+      logo = '/logo_default.svg'
+      break
+    case 'BetterWrite - Rise':
+      logo = '/logo_rise.svg'
+      break
+    case 'BetterWrite - Harmonic':
+      logo = '/logo_harmonic.svg'
+      break
+    case 'BetterWrite - Ascend':
+      logo = '/logo_ascend.svg'
+      break
+    default:
+      logo = '/logo_default.svg'
+      break
+  }
+
+  return logo
 }
