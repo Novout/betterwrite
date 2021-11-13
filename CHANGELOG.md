@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0-beta.1](https://github.com/Novout/better-write/compare/v0.9.0-beta.0...v0.9.0-beta.1) (2021-11-13)
+
+
+### Features
+
+* **editor:** ascend theme ([9b97bec](https://github.com/Novout/better-write/commits/9b97bec1583aec7e56b716448109f8b7f77b8248))
+* **editor:** harmonic theme ([89f54c3](https://github.com/Novout/better-write/commits/89f54c3b21a77730642086813f56719c47abffbb))
+
+
+### Structure
+
+* **deps:** update packages ([dece918](https://github.com/Novout/better-write/commits/dece918871d633d636d684990a669e27c3c5ab4b))
+
 ## [0.9.0-beta.0](https://github.com/Novout/better-write/compare/v0.8.0...v0.9.0-beta.0) (2021-11-13)
 
 
