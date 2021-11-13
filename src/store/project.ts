@@ -9,6 +9,8 @@ import { useEnv } from '@/use/env'
 import { useLoggerStore } from './logger'
 import { useEditorStore } from './editor'
 import { usePDFStore } from './pdf'
+import { useAbsoluteStore } from './absolute'
+import { useShortcutsStore } from './shortcuts'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -35,7 +37,11 @@ export const useProjectStore = defineStore('project', {
       const logger = useLoggerStore()
       const editor = useEditorStore()
       const pdf = usePDFStore()
+      const absolute = useAbsoluteStore()
+      const shortcuts = useShortcutsStore()
 
+      absolute.$reset()
+      shortcuts.$reset()
       editor.$reset()
       pdf.resetStyles()
       logger.reset()
@@ -58,7 +64,11 @@ export const useProjectStore = defineStore('project', {
       const logger = useLoggerStore()
       const editor = useEditorStore()
       const pdf = usePDFStore()
+      const absolute = useAbsoluteStore()
+      const shortcuts = useShortcutsStore()
 
+      absolute.$reset()
+      shortcuts.$reset()
       editor.$reset()
       pdf.resetStyles()
       logger.reset()
@@ -102,7 +112,11 @@ export const useProjectStore = defineStore('project', {
       const logger = useLoggerStore()
       const editor = useEditorStore()
       const pdf = usePDFStore()
+      const absolute = useAbsoluteStore()
+      const shortcuts = useShortcutsStore()
 
+      absolute.$reset()
+      shortcuts.$reset()
       editor.$reset()
       pdf.resetStyles()
       logger.reset()

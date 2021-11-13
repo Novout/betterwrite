@@ -12,6 +12,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { ProjectObject } from '@/types/project'
 import { ContextState } from '@/types/context'
 import { useStorage } from './storage/storage'
+import { setThemeInvokate } from '@/plugin/theme/external'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -51,6 +52,12 @@ export const useProject = () => {
       destroy()
       init()
 
+      await nextTick
+
+      setThemeInvokate()
+
+      await nextTick
+
       toast.success(t('toast.project.create'))
     })
   }
@@ -83,6 +90,12 @@ export const useProject = () => {
     await nextTick
 
     init()
+
+    await nextTick
+
+    setThemeInvokate()
+
+    await nextTick
 
     ABSOLUTE.aside = true
 
