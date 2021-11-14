@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0-beta.3](https://github.com/Novout/better-write/compare/v0.9.0-beta.2...v0.9.0-beta.3) (2021-11-14)
+
+
+### Features
+
+* **editor:** updated time entity option ([2999ab1](https://github.com/Novout/better-write/commits/2999ab1399817f8f6c6b8828a148be24572ec4e2))
+
+
+### Bug Fixes
+
+* **editor:** aside in mobile break ([2103e47](https://github.com/Novout/better-write/commits/2103e47bbffa161c3cd6bb20ba943a24fa2199b3))
+* **editor:** convert image to other entity type ([7365ce0](https://github.com/Novout/better-write/commits/7365ce03d2273f77f473774357ee7c13c378e2d2))
+
+
+### Structure
+
+* **editor:** theme extras ([dfcb060](https://github.com/Novout/better-write/commits/dfcb060627368f388b05d939c840a0c628774ec2))
+* **editor:** theme pdf properties ([30d2a92](https://github.com/Novout/better-write/commits/30d2a924db2f4f9dc4f41391af9e57ee5078ad81))
+* **store:** typo ([ac0517a](https://github.com/Novout/better-write/commits/ac0517a9477c6e443ba02bba1252e3726db01b02))
+
+
+### Style
+
+* **editor:** popover correct in fixed items ([7ccc4a5](https://github.com/Novout/better-write/commits/7ccc4a53f5bbd61bec641f7a9566843d8b0070b3))
+
 ## [0.9.0-beta.2](https://github.com/Novout/better-write/compare/v0.9.0-beta.1...v0.9.0-beta.2) (2021-11-13)
 
 
