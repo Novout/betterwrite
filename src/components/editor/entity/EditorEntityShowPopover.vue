@@ -15,6 +15,8 @@
       props.entity.type === 'paragraph' ? 'top-0.5' : '',
       props.entity.type === 'heading-two' ? 'top-12' : '',
       props.entity.type === 'heading-three' ? 'top-8' : '',
+      props.entity.type === 'line-break' ? '-top-0.5' : '',
+      props.entity.type === 'page-break' ? '-top-0.5' : '',
     ]"
   >
     <section
@@ -277,8 +279,8 @@
       props.entity.type === 'heading-two' ? 'text-center pb-3' : '',
       props.entity.type === 'heading-three' ? 'text-center pb-3' : '',
 
-      props.entity.type === 'page-break' ? 'pt-2' : '',
-      props.entity.type === 'line-break' ? 'pt-2' : '',
+      props.entity.type === 'page-break' ? '-top-0.5' : '',
+      props.entity.type === 'line-break' ? '-top-0.5' : '',
     ]"
   >
     <p>

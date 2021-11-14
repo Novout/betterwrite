@@ -511,7 +511,7 @@
   --theme-editor-pdf-configuration-container-background: #242222;
   --theme-editor-pdf-configuration-container-background-hover: #242222;
   --theme-editor-pdf-configuration-container-background-active: #242222;
-  --theme-editor-material-border: #fa8373;
+  --theme-editor-material-border: transparent;
   --theme-editor-material-background: #514646;
   --theme-editor-material-background-hover: #514646;
   --theme-editor-material-background-active: #514646;
