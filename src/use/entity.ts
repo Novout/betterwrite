@@ -1,4 +1,4 @@
-import { Entity } from '@/types/context'
+import { Entity, EntityType } from '@/types/context'
 import { ContextState } from '@/types/context'
 import { useScroll } from '@/use/scroll'
 import { computed, reactive, nextTick, watch, ref } from 'vue'
@@ -101,6 +101,15 @@ export const useEntity = () => {
       return raw
     }
 
+    const isText = (type: EntityType) => {
+      return (
+        type === 'paragraph' ||
+        type === 'heading-one' ||
+        type === 'heading-two' ||
+        type === 'heading-three'
+      )
+    }
+
     return {
       entry,
       isFixed,
@@ -109,6 +118,7 @@ export const useEntity = () => {
       isImageCommand,
       isPageBreak,
       isLineBreak,
+      isText,
     }
   }
 

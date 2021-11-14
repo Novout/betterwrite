@@ -16,6 +16,7 @@ import { useFormat } from '../use/format'
 import { useUtils } from '../use/utils'
 import { useProjectStore } from './project'
 import { Entities } from '../types/context'
+import { useEntity } from '../use/entity'
 
 export const useContextStore = defineStore('context', {
   state: (): ContextState => {
@@ -158,8 +159,14 @@ export const useContextStore = defineStore('context', {
 
       if (index === -1) return
 
+      let raw = entity.raw
+
+      if (entity.type === 'image') {
+        raw = useEnv().emptyLine() // reset base64
+      }
+
       this.entities[index].type = type as EntityType
-      this.entities[index].raw = entity.raw
+      this.entities[index].raw = raw
       this.entities[index].createdAt = useFormat().actually()
       this.entities[index].updatedAt = useFormat().actually()
       this.entities[index].external = entity.external || {}
