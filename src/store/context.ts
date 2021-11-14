@@ -16,7 +16,6 @@ import { useFormat } from '../use/format'
 import { useUtils } from '../use/utils'
 import { useProjectStore } from './project'
 import { Entities } from '../types/context'
-import { useEntity } from '../use/entity'
 
 export const useContextStore = defineStore('context', {
   state: (): ContextState => {
