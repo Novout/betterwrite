@@ -87,7 +87,7 @@
   --theme-editor-header-list-shortcuts-background-hover: #d1d5db;
   --theme-editor-header-list-shortcuts-background-active: #d1d5db;
   --theme-editor-pdf-preview-background: #d1d5db;
-  --theme-editor-pdf-configuration-border: none;
+  --theme-editor-pdf-configuration-border: #f3f4f6;
   --theme-editor-pdf-configuration-background: #f3f4f6;
   --theme-editor-pdf-configuration-background-hover: #f3f4f6;
   --theme-editor-pdf-configuration-background-active: #f3f4f6;
@@ -216,11 +216,11 @@
   --theme-editor-input-text-hover: #e5e7eb;
   --theme-editor-input-text-active: #e5e7eb;
   --theme-editor-input-placeholder: #e5e7eb;
-  --theme-editor-header-background: none;
-  --theme-editor-header-background-hover: none;
-  --theme-editor-header-background-active: none;
-  --theme-editor-header-list-background: none;
-  --theme-editor-header-list-background-hover: black;
+  --theme-editor-header-background: #374151;
+  --theme-editor-header-background-hover: #374151;
+  --theme-editor-header-background-active: #374151;
+  --theme-editor-header-list-background: #374151;
+  --theme-editor-header-list-background-hover: #1f2937;
   --theme-editor-header-list-background-active: #1f2937;
   --theme-editor-header-list-text: #e5e7eb;
   --theme-editor-header-list-text-hover: #e5e7eb;
@@ -353,7 +353,7 @@
   --theme-editor-header-background: none;
   --theme-editor-header-background-hover: none;
   --theme-editor-header-background-active: none;
-  --theme-editor-header-list-background: none;
+  --theme-editor-header-list-background: #2f3357;
   --theme-editor-header-list-background-hover: #2f3357;
   --theme-editor-header-list-background-active: #2f3357;
   --theme-editor-header-list-text: #e5e7eb;
@@ -491,7 +491,7 @@
   --theme-editor-header-background: none;
   --theme-editor-header-background-hover: none;
   --theme-editor-header-background-active: none;
-  --theme-editor-header-list-background: none;
+  --theme-editor-header-list-background: #242222;
   --theme-editor-header-list-background-hover: #323030;
   --theme-editor-header-list-background-active: #323030;
   --theme-editor-header-list-text: #fa8373;
@@ -629,7 +629,7 @@
   --theme-editor-header-background: none;
   --theme-editor-header-background-hover: none;
   --theme-editor-header-background-active: none;
-  --theme-editor-header-list-background: none;
+  --theme-editor-header-list-background: #b6ceeb;
   --theme-editor-header-list-background-hover: #deedff;
   --theme-editor-header-list-background-active: #deedff;
   --theme-editor-header-list-text: #111111;
