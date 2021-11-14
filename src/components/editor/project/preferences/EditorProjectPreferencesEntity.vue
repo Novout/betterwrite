@@ -24,9 +24,7 @@
 <script setup lang="ts">
   import { useEditorStore } from '@/store/editor'
   import { useI18n } from 'vue-i18n'
-  import { useAbsoluteStore } from '@/store/absolute'
 
-  const ABSOLUTE = useAbsoluteStore()
   const EDITOR = useEditorStore()
 
   const { t } = useI18n()

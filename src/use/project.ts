@@ -3,7 +3,6 @@ import { useToast } from 'vue-toastification'
 import i18n from '@/lang'
 import { useProjectStore } from '@/store/project'
 import { useContextStore } from '@/store/context'
-import useEmitter from './emitter'
 import { useLocalStorage } from './storage/local'
 import { useEditorStore } from '@/store/editor'
 import { useLoggerStore } from '@/store/logger'
@@ -13,6 +12,7 @@ import { ProjectObject } from '@/types/project'
 import { ContextState } from '@/types/context'
 import { useStorage } from './storage/storage'
 import { setThemeInvokate } from '@/plugin/theme/external'
+import { ProjectState } from '../types/project'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -37,11 +37,9 @@ export const useProject = () => {
     clearInterval(timer as NodeJS.Timer)
   }
 
-  const create = (project: Record<string, any>) => {
+  const create = (project: ProjectState) => {
     storage.normalize().then(async () => {
-      project.type === 'blank'
-        ? PROJECT.createBlank(project)
-        : PROJECT.create(project)
+      PROJECT.create(project)
 
       await nextTick
 

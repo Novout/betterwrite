@@ -4,6 +4,8 @@ import { LoggerState } from './logger'
 import { PDFState } from './pdf'
 import { ID } from './utils'
 
+export type ProjectType = 'creative' | 'blank'
+
 export interface ProjectState {
   name: string
   nameRaw: string

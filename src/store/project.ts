@@ -11,6 +11,8 @@ import { useEditorStore } from './editor'
 import { usePDFStore } from './pdf'
 import { useAbsoluteStore } from './absolute'
 import { useShortcutsStore } from './shortcuts'
+import { useGlobalStore } from './global'
+import { usePopulate } from '../use/populate'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -34,18 +36,8 @@ export const useProjectStore = defineStore('project', {
   },
   actions: {
     load(payload: ProjectState) {
-      const logger = useLoggerStore()
-      const editor = useEditorStore()
-      const pdf = usePDFStore()
-      const absolute = useAbsoluteStore()
-      const shortcuts = useShortcutsStore()
-
-      absolute.$reset()
-      shortcuts.$reset()
-      editor.$reset()
-      pdf.resetStyles()
-      logger.reset()
-      this.$reset()
+      const global = useGlobalStore()
+      global.reset()
 
       this.name = payload.name
       this.nameRaw = payload.nameRaw
@@ -60,95 +52,11 @@ export const useProjectStore = defineStore('project', {
       this.bw.platform = payload.bw.platform
       this.bw.version = payload.bw.version
     },
-    create(payload: Record<any, any>) {
-      const logger = useLoggerStore()
-      const editor = useEditorStore()
-      const pdf = usePDFStore()
-      const absolute = useAbsoluteStore()
-      const shortcuts = useShortcutsStore()
+    create(payload: ProjectState) {
+      const global = useGlobalStore()
+      global.reset()
 
-      absolute.$reset()
-      shortcuts.$reset()
-      editor.$reset()
-      pdf.resetStyles()
-      logger.reset()
-      this.$reset()
-
-      this.name = useText().kebab(payload.name)
-      this.nameRaw = payload.name
-      this.version = payload.version
-      this.creator = payload.creator
-      this.subject = payload.subject
-      this.type = payload.type
-      this.totalPagesCreated = 1
-      this.main = {}
-      this.summary = {}
-      this.pages = []
-      this.bw.platform = isElectron() ? 'desktop' : 'web'
-      this.bw.version = useEnv().packageVersion() as string
-
-      const init: ContextState = {
-        id: this.totalPagesCreated,
-        entities: [
-          {
-            type: 'heading-one',
-            raw: payload.name,
-            createdAt: useFormat().actually(),
-            updatedAt: useFormat().actually(),
-          },
-          {
-            type: 'paragraph',
-            raw: payload.subject,
-            createdAt: useFormat().actually(),
-            updatedAt: useFormat().actually(),
-          },
-        ],
-      }
-
-      this.pageLoaded = init.id
-      this.pages.push(init)
-    },
-    createBlank(payload: Record<any, any>) {
-      const logger = useLoggerStore()
-      const editor = useEditorStore()
-      const pdf = usePDFStore()
-      const absolute = useAbsoluteStore()
-      const shortcuts = useShortcutsStore()
-
-      absolute.$reset()
-      shortcuts.$reset()
-      editor.$reset()
-      pdf.resetStyles()
-      logger.reset()
-      this.$reset()
-
-      this.name = useText().kebab(payload.name)
-      this.nameRaw = payload.name
-      this.version = payload.version
-      this.creator = payload.creator
-      this.subject = payload.subject
-      this.type = payload.type
-      this.totalPagesCreated = 1
-      this.main = {}
-      this.summary = {}
-      this.pages = []
-      this.bw.platform = isElectron() ? 'desktop' : 'web'
-      this.bw.version = useEnv().packageVersion() as string
-
-      const context: ContextState = {
-        id: this.totalPagesCreated,
-        entities: [
-          {
-            type: 'paragraph',
-            raw: payload.subject,
-            createdAt: useFormat().actually(),
-            updatedAt: useFormat().actually(),
-          },
-        ],
-      }
-
-      this.pageLoaded = context.id
-      this.pages.push(context)
+      this.$state = usePopulate().entities(payload)
     },
     newPage() {
       this.totalPagesCreated++
