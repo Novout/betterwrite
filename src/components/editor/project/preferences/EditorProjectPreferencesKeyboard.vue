@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full p-1 my-8 overflow-y-auto">
+  <div class="flex flex-col w-full min-h-screen p-1 my-8">
     <h3 class="text-2xl font-bold text-theme-text-2">
       {{ t('editor.preferences.shortcuts.title') }}
     </h3>

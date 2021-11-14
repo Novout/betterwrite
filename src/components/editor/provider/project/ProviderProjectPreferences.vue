@@ -10,10 +10,13 @@
       w-full
       z-max
       px-2
+      py-5
       md:px-20
+      overflow-y-auto
     "
   >
     <EditorProjectPreferencesDefault />
+    <EditorProjectPreferencesEntity />
     <EditorProjectPreferencesKeyboard />
   </div>
 </template>

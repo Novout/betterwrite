@@ -267,6 +267,7 @@
     </HeroIcon>
   </section>
   <section
+    v-if="EDITOR.configuration.entity.updateTime"
     class="absolute wb-icon right-14 bottom-0 pointer-events-none"
     :class="[
       props.entity.type === 'paragraph' ? 'text-justify indent-15' : '',
@@ -295,6 +296,7 @@
   import { Entity } from '@/types/context'
   import usePlugin from '@/use/plugin/core'
   import useEmitter from '@/use/emitter'
+  import { useEditorStore } from '@/store/editor'
 
   const props = defineProps({
     entity: {
@@ -304,6 +306,7 @@
   })
 
   const CONTEXT = useContextStore()
+  const EDITOR = useEditorStore()
 
   const format = useFormat()
   const plugin = usePlugin()

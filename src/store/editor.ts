@@ -50,6 +50,9 @@ export const useEditorStore = defineStore('editor', {
         theme: useDefines().themes()[1],
         draggable: false,
         auto: 15,
+        entity: {
+          updateTime: true,
+        },
       },
       actives: {
         text: {

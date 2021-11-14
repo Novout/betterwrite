@@ -97,6 +97,13 @@ export const useStorage = () => {
       }
     }
 
+    // <= 0.9.0
+    if (!_.editor.configuration.entity) {
+      _.editor.configuration.entity = {
+        updateTime: true,
+      }
+    }
+
     return _
   }
 

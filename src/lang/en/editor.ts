@@ -194,6 +194,10 @@ export default {
       lang: 'Language',
       draggable: 'Draggable',
       autosave: 'Auto Save (in minutes)',
+      entity: {
+        title: 'Editor',
+        updateTime: 'Updated Time',
+      },
     },
     entity: {
       delete: 'Delete',

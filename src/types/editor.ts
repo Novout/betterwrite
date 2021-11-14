@@ -25,11 +25,16 @@ export interface EditorStateActivesTextSelection {
   content: string
 }
 
+export interface EditorStateConfigurationEntity {
+  updateTime: boolean
+}
+
 export interface EditorStateConfiguration {
   theme: BetterWriteThemes
   lang?: boolean
   draggable: boolean
   auto: number | 'never'
+  entity: EditorStateConfigurationEntity
 }
 
 export interface EditorStateStyles {
