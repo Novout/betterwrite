@@ -11,6 +11,7 @@
       rounded-full
       w-11
       focus:outline-none
+      shadow-xl
     "
   >
     <span

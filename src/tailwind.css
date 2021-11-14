@@ -34,7 +34,7 @@
   }
 
   .wb-input-container {
-    @apply flex flex-1 h-auto w-auto items-center justify-between p-5 mx-2 mt-5 border rounded-lg border-theme-border-1 bg-theme-background-2 shadow-lg;
+    @apply flex flex-1 h-auto w-auto items-center justify-between p-5 mx-2 mt-5 border rounded-lg border-theme-editor-material-border bg-theme-editor-material-background hover:bg-theme-editor-material-background-hover active:bg-theme-editor-material-background-active text-theme-editor-material-text hover:text-theme-editor-material-text-hover active:text-theme-editor-material-text-active shadow-lg;
   }
 
   .wb-disabled {

@@ -62,7 +62,7 @@
           clip-rule="evenodd"
         />
       </svg>
-      <p class="ml-1 text-left truncate w-32 text-theme-aside-graph-text">
+      <p class="ml-1 text-left truncate w-32">
         {{ props.entity.external?.image?.name }}
       </p>
     </HeroIcon>

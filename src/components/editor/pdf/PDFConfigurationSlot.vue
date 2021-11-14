@@ -4,16 +4,25 @@
       flex flex-col
       border
       rounded
-      border-theme-border-1
       p-2
       my-3
-      bg-theme-background-1
-      wb-text
+      border-theme-editor-pdf-configuration-border
+      bg-theme-editor-pdf-configuration-container-background
+      hover:bg-theme-editor-pdf-configuration-container-background-hover
+      active:bg-theme-editor-pdf-configuration-container-background-active
       w-full
       shadow-lg
     "
   >
-    <slot name="title"></slot>
+    <div
+      class="
+        text-theme-editor-pdf-configuration-container-text
+        hover:text-theme-editor-pdf-configuration-container-text-hover
+        active:text-theme-editor-pdf-configuration-container-text-active
+      "
+    >
+      <slot name="title"></slot>
+    </div>
     <slot></slot>
   </div>
 </template>
