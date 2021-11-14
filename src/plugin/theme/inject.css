@@ -332,8 +332,8 @@
   --theme-editor-entity-page: #535c99;
   --theme-editor-entity-line: #535c99;
   --theme-editor-entity-popover-text: #e1e1e1;
-  --theme-editor-entity-popover-text-hover: #161829;
-  --theme-editor-entity-popover-text-active: #161829;
+  --theme-editor-entity-popover-text-hover: #e1e1e1;
+  --theme-editor-entity-popover-text-active: #e1e1e1;
   --theme-editor-entity-popover-background: #2f3357;
   --theme-editor-entity-popover-background-hover: #535c99;
   --theme-editor-entity-popover-background-active: #535c99;
@@ -363,7 +363,7 @@
   --theme-editor-header-list-shortcuts-background-hover: none;
   --theme-editor-header-list-shortcuts-background-active: #d1d5db;
   --theme-editor-pdf-preview-background: #2f3357;
-  --theme-editor-pdf-configuration-border: none;
+  --theme-editor-pdf-configuration-border: transparent;
   --theme-editor-pdf-configuration-background: #2f3357;
   --theme-editor-pdf-configuration-background-hover: #2f3357;
   --theme-editor-pdf-configuration-background-active: #2f3357;
