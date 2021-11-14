@@ -56,7 +56,7 @@ export const useProjectStore = defineStore('project', {
       const global = useGlobalStore()
       global.reset()
 
-      this.$state = usePopulate().entities(payload)
+      this.$state = usePopulate().project(payload)
     },
     newPage() {
       this.totalPagesCreated++

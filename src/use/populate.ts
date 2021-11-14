@@ -5,7 +5,7 @@ import { useEnv } from './env'
 import { useFormat } from './format'
 
 export const usePopulate = () => {
-  const entities = (project: ProjectState): ProjectState => {
+  const project = (project: ProjectState): ProjectState => {
     return {
       creative: {
         name: useText().kebab(project.name),
@@ -74,5 +74,5 @@ export const usePopulate = () => {
     }[project.type] as ProjectState
   }
 
-  return { entities }
+  return { project }
 }
