@@ -2,7 +2,19 @@
   <div class="fixed left-0 top-0 w-full h-screen bg-modal z-max">
     <div
       ref="finder"
-      class="fixed w-60 bg-theme-background-absolute-1 p-2 rounded shadow-2xl"
+      class="
+        fixed
+        w-60
+        text-theme-editor-extras-finder-text
+        hover:text-theme-editor-extras-finder-text-hover
+        active:text-theme-editor-extras-finder-text-active
+        bg-theme-editor-extras-finder-background
+        hover:bg-theme-editor-extras-finder-background-hover
+        active:bg-theme-editor-extras-finder-background-active
+        p-2
+        rounded
+        shadow-2xl
+      "
       :style="style"
     >
       <div class="flex flex-col w-full">
@@ -10,7 +22,7 @@
           class="flex items-center justify-between w-full mb-1 cursor-pointer"
         >
           <div class="flex">
-            <div class="wb-text font-poppins">
+            <div class="font-poppins">
               {{ entity.fstate.actuallyLetterCounter }} /
               {{ entity.fstate.maxLetterCounter }}
             </div>
@@ -71,10 +83,10 @@
           v-model="entity.fstate.entry"
           class="
             bg-transparent
-            border border-theme-border-absolute-2
+            border border-theme-editor-extras-finder-border
             px-1
             mb-1
-            wb-text
+            placeholder-theme-editor-extras-finder-text
           "
           :placeholder="t('editor.text.placeholder.shortcuts.finderEntry')"
           @input="entity.finder().onFinder"

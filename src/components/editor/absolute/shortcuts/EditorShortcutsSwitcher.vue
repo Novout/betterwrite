@@ -2,7 +2,19 @@
   <div class="fixed left-0 top-0 w-full h-screen bg-modal z-max">
     <div
       ref="switcher"
-      class="fixed w-60 bg-theme-background-absolute-1 p-2 rounded shadow-2xl"
+      class="
+        fixed
+        w-60
+        text-theme-editor-extras-switcher-text
+        hover:text-theme-editor-extras-switcher-text-hover
+        active:text-theme-editor-extras-switcher-text-active
+        bg-theme-editor-extras-switcher-background
+        hover:bg-theme-editor-extras-switcher-background-hover
+        active:bg-theme-editor-extras-switcher-background-active
+        p-2
+        rounded
+        shadow-2xl
+      "
       :style="style"
     >
       <div
@@ -16,7 +28,7 @@
             <HeroIcon
               :class="[
                 entity.sstate.equal
-                  ? 'border border-theme-border-absolute-1'
+                  ? 'border border-theme-editor-extras-switcher-border'
                   : '',
               ]"
               class="text-2xs wb-icon"
@@ -76,10 +88,10 @@
           v-model="entity.sstate.entry"
           class="
             bg-transparent
-            border border-theme-border-absolute-2
+            border border-theme-editor-extras-switcher-border
             px-1
             mb-1
-            wb-text
+            placeholder-theme-editor-extras-switcher-text
           "
           :placeholder="t('editor.text.placeholder.shortcuts.switcherEntry')"
         />
@@ -87,9 +99,9 @@
           v-model="entity.sstate.output"
           class="
             bg-transparent
-            border border-theme-border-absolute-2
+            border border-theme-editor-extras-switcher-border
             px-1
-            wb-text
+            placeholder-theme-editor-extras-switcher-text
           "
           :placeholder="t('editor.text.placeholder.shortcuts.switcherOutput')"
         />
