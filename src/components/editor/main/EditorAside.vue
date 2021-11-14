@@ -11,7 +11,7 @@
         max-h-screen
         overflow-y-auto
         w-full
-        sm:w-60
+        md:w-60
         bg-theme-aside-background
         hover:bg-theme-aside-background-hover
         active:bg-theme-aside-background-active
