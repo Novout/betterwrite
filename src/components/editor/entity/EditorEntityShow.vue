@@ -1,6 +1,6 @@
 <template>
   <section
-    class="w-full relative px-14"
+    class="w-full relative px-2 md:px-14"
     :class="
       style.entity.shadow ? 'shadow-winset dark:shadow-binset p-0 m-0' : ''
     "

@@ -24,7 +24,8 @@
   >
     <div
       class="
-        w-1/2
+        w-full
+        md:w-1/2
         bg-theme-background-1
         h-screen
         md:h-3/4
@@ -50,10 +51,10 @@
           </svg>
         </HeroIcon>
       </div>
-      <div class="flex flex-row justify-between w-full p-2">
+      <div class="flex flex-row flex-wrap justify-between w-full p-2">
         <div
           v-motion
-          class="flex flex-col p-3"
+          class="flex flex-1 flex-col p-3"
           :initial="{
             opacity: 0,
           }"
@@ -71,7 +72,7 @@
         </div>
         <div
           v-motion
-          class="flex flex-col p-3"
+          class="flex flex-1 flex-col p-3"
           :initial="{
             opacity: 0,
           }"
@@ -88,10 +89,10 @@
           <input v-model="creator" class="shadow-xl bg-transparent p-1" />
         </div>
       </div>
-      <div class="flex flex-row justify-between w-full p-2">
+      <div class="flex flex-row flex-wrap justify-between w-full p-2">
         <div
           v-motion
-          class="flex flex-col p-3"
+          class="flex flex-1 flex-col p-3"
           :initial="{
             opacity: 0,
           }"
@@ -109,7 +110,7 @@
         </div>
         <div
           v-motion
-          class="flex flex-col p-3"
+          class="flex flex-1 flex-col p-3"
           :initial="{
             opacity: 0,
           }"
@@ -233,7 +234,7 @@
       creator: creator.value,
       subject: subject.value,
       type: _type,
-    })
+    } as any)
 
     ABSOLUTE.project.new = false
   }
