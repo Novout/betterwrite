@@ -26,12 +26,6 @@
     <template #bar>
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
-        :text="t('editor.bar.project.configuration')"
-        shortcut=""
-        @action="ABSOLUTE.project.configuration = true"
-      />
-      <EditorHeaderItem
-        v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.preferences')"
         shortcut=""
         @action="ABSOLUTE.project.preferences = true"

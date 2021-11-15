@@ -4,7 +4,6 @@
     <EditorShortcutsFinder v-else-if="ABSOLUTE.shortcuts.finder" />
     <ProviderLogger v-else-if="ABSOLUTE.logger" />
     <ProviderProjectCreate v-else-if="ABSOLUTE.project.new" />
-    <ProviderProjectConfiguration v-else-if="ABSOLUTE.project.configuration" />
     <ProviderProjectPreferences v-else-if="ABSOLUTE.project.preferences" />
     <ProviderPDFConfiguration v-else-if="ABSOLUTE.pdf.configuration" />
     <ProviderPDFPreview v-else-if="ABSOLUTE.pdf.preview" />
