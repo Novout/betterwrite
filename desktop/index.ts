@@ -35,7 +35,7 @@ const createWindow = () => {
     webPreferences: {
       webSecurity: true,
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: true,
     }
   })
 
