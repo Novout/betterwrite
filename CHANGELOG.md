@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0-beta.4](https://github.com/Novout/better-write/compare/v0.9.0-beta.3...v0.9.0-beta.4) (2021-11-15)
+
+
+### Features
+
+* **editor:** configuration absolute ([7cfa359](https://github.com/Novout/better-write/commits/7cfa359bb011ec2d5ad8d345f3dc1ad574206712))
+* **editor:** configuration author ([d0e7a5a](https://github.com/Novout/better-write/commits/d0e7a5a0fb83a2aac8c58d85aeeb1eefc36cd2f5))
+
+
+### Bug Fixes
+
+* **editor:** breakpoints in correct harmony ([6699b42](https://github.com/Novout/better-write/commits/6699b424b2a2bcffd6b3102ce93536ba35e15bbd))
+* **pdf:** font in summary ([1edebbf](https://github.com/Novout/better-write/commits/1edebbf31027babda4f1fc632830e1cd61419137))
+
+
+### Refactor
+
+* **editor:** project create logic ([d6e322d](https://github.com/Novout/better-write/commits/d6e322db18add26d341be6fce26763a100abef98))
+
+
+### Style
+
+* **editor:** header themes new color set ([1a62cab](https://github.com/Novout/better-write/commits/1a62cab50d7f543550247bf4c779d49bd022540c))
+* **editor:** mobile correct flex break ([6601dee](https://github.com/Novout/better-write/commits/6601dee0bfb67a720fafc94ea7b9831131ceef34))
+* **editor:** rise theme correct hovers ([00f4d44](https://github.com/Novout/better-write/commits/00f4d44427551499f10a3b320c2eb6af653d0738))
+* **editor:** theme ascend new editor text color ([ede5b72](https://github.com/Novout/better-write/commits/ede5b72779c7dac2caf626aae0a61001c4fbd42c))
+
+
+### Structure
+
+* **editor:** populate name ([186cdc6](https://github.com/Novout/better-write/commits/186cdc6be68b1cc7c0fcc8985c0fd0cfc8488629))
+* **editor:** preferences to a unique page ([0b8fab0](https://github.com/Novout/better-write/commits/0b8fab05ba6197ff85c486150bd75bc5c2bac468))
+
 ## [0.9.0-beta.3](https://github.com/Novout/better-write/compare/v0.9.0-beta.2...v0.9.0-beta.3) (2021-11-14)
 
 
