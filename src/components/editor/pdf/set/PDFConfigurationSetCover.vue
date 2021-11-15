@@ -1,9 +1,12 @@
 <template>
   <PDFConfigurationSlot v-if="!project.isBlankProject()">
     <template #title>
-      <h2 class="text-2xl ml-2 font-bold font-poppins">
-        {{ t('editor.pdf.custom.title.cover') }}
-      </h2>
+      <section class="flex gap-2">
+        <h2 class="text-2xl ml-2 font-bold font-poppins">
+          {{ t('editor.pdf.custom.title.cover') }}
+        </h2>
+        <TooltipIcon :tooltip="t('editor.pdf.cover.tooltip')" />
+      </section>
     </template>
     <div
       class="

@@ -1,9 +1,12 @@
 <template>
   <PDFConfigurationSlot>
     <template #title>
-      <h2 class="text-2xl ml-2 font-bold font-poppins">
-        {{ t('editor.pdf.base.title') }}
-      </h2>
+      <section class="flex gap-2">
+        <h2 class="text-2xl ml-2 font-bold font-poppins">
+          {{ t('editor.pdf.base.title') }}
+        </h2>
+        <TooltipIcon :tooltip="t('editor.pdf.base.tooltip')" />
+      </section>
     </template>
     <div
       class="

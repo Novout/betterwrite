@@ -120,9 +120,13 @@ export default {
   },
   pdf: {
     cover: {
+      tooltip:
+        'Até o momento, a capa inserida com imagem possui problemas com a margem superior, definida em Página. Recomendamos deixar a margem superior em 0 caso deseja utilizar o recurso da capa com imagem.',
       type: 'Imagem',
     },
     base: {
+      tooltip:
+        'Os recursos da página podem mudar drasticamente até a versão v1.x do BetterWrite.',
       title: 'Página',
       pageSize: 'Tamanho',
       pageOrientation: 'Orientação',

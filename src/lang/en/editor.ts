@@ -121,9 +121,13 @@ export default {
   },
   pdf: {
     cover: {
+      tooltip:
+        ' So far, the cover inserted with image has problems with the top margin, defined in Page. We recommend leaving the top margin at 0 if you want to use the cover with image feature.',
       type: 'Image',
     },
     base: {
+      tooltip:
+        'Page features can change drastically up to v1.x version of BetterWrite.',
       title: 'Page',
       pageSize: 'Size',
       pageOrientation: 'Orientations',
