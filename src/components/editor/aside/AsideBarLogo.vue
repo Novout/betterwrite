@@ -5,7 +5,7 @@
       flex
       bg-theme-aside-logo-background
       justify-around
-      sm:justify-between
+      md:justify-between
       items-center
       w-full
       p-2
@@ -17,7 +17,7 @@
       :src="path"
       @click.stop.prevent="onClick"
     />
-    <p class="font-bold text-3xl sm:text-xl text-theme-aside-logo-text">
+    <p class="font-bold text-3xl md:text-xl text-theme-aside-logo-text">
       Better Write
     </p>
   </div>

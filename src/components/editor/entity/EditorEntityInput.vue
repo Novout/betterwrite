@@ -22,7 +22,7 @@
         placeholder-theme-editor-input-placeholder
         hover:theme-editor-input-text-hover 
         active:theme-editor-input-text-active
-        px-2 md:px-14
+        px-4 md:px-14
       "
       :style="{ minHeight: '50px' }"
       :class="[
