@@ -34,7 +34,14 @@ app.use(store)
 app.use(i18n)
 app.use(motion)
 app.use(head)
-app.use(tooltip)
+app.use(tooltip, {
+  themes: {
+    'better-write': {
+      $extend: 'tooltip',
+      $resetCss: true,
+    },
+  },
+})
 app.use(toast, {
   position: POSITION.TOP_CENTER,
   timeout: 4000,

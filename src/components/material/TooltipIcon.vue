@@ -1,5 +1,11 @@
 <template>
-  <HeroIcon v-tooltip.top-start="props.tooltip" class="wb-icon">
+  <HeroIcon
+    v-tooltip.top-start="{
+      content: props.tooltip,
+      theme: 'better-write',
+    }"
+    class="wb-icon"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"

@@ -118,6 +118,9 @@
   --theme-editor-extras-finder-text-hover: #111111;
   --theme-editor-extras-finder-text-active: #111111;
   --theme-editor-extras-finder-border: #1f2937;
+  --theme-editor-tooltip-background: #d1d5db;
+  --theme-editor-tooltip-text: #111111;
+  --theme-editor-tooltip-border: none;
   --theme-text-1: #000000;
   --theme-text-2: #111111;
   --theme-text-3: #1f2937;
@@ -260,6 +263,9 @@
   --theme-editor-extras-finder-text-hover: #e5e7eb;
   --theme-editor-extras-finder-text-active: #e5e7eb;
   --theme-editor-extras-finder-border: #1f2937;
+  --theme-editor-tooltip-background: #1f2937;
+  --theme-editor-tooltip-text: #e5e7eb;
+  --theme-editor-tooltip-border: none;
   --theme-text-1: #e5e7eb;
   --theme-text-2: #d1d5db;
   --theme-text-3: #4b5563;
@@ -394,6 +400,9 @@
   --theme-editor-extras-finder-text-hover: #e1e1e1;
   --theme-editor-extras-finder-text-active: #e1e1e1;
   --theme-editor-extras-finder-border: #8ab6ff;
+  --theme-editor-tooltip-background: #2f3357;
+  --theme-editor-tooltip-text: #e1e1e1;
+  --theme-editor-tooltip-border: none;
   --theme-text-1: #e1e1e1;
   --theme-text-2: #d1d5db;
   --theme-text-3: #ffffff;
@@ -532,6 +541,9 @@
   --theme-editor-extras-finder-text-hover: #fa8373;
   --theme-editor-extras-finder-text-active: #fa8373;
   --theme-editor-extras-finder-border: #242222;
+  --theme-editor-tooltip-background: #514646;
+  --theme-editor-tooltip-text: #fa8373;
+  --theme-editor-tooltip-border: none;
   --theme-text-1: #faa59e;
   --theme-text-2: #faa59e;
   --theme-text-3: #faa59e;
@@ -670,6 +682,9 @@
   --theme-editor-extras-finder-text-hover: #111111;
   --theme-editor-extras-finder-text-active: #111111;
   --theme-editor-extras-finder-border: #6a819e;
+  --theme-editor-tooltip-background: #6a819e;
+  --theme-editor-tooltip-text: #e5e7eb;
+  --theme-editor-tooltip-border: none;
   --theme-text-1: #111111;
   --theme-text-2: #111111;
   --theme-text-3: #111111;
@@ -695,4 +710,18 @@
   --scr-thumb-hover: rgba(255, 255, 255, 0.1);
   --wb-selection: rgba(255, 255, 255, 0.2);
   --wb-text-selection: #333333;
+}
+
+/* lib's integration */
+
+.v-popper--theme-better-write {
+  color: var(--theme-editor-tooltip-text);
+  background: var(--theme-editor-tooltip-background);
+  border: 1px solid var(--theme-editor-tooltip-border);
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+}
+
+.v-popper--theme-better-write .v-popper__arrow {
+  border-color: var(--theme-editor-tooltip-text);
 }
