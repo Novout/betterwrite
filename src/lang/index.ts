@@ -4,8 +4,8 @@ import en from './en'
 
 export default createI18n({
   legacy: false,
-  locale: 'br',
-  fallbackLocale: 'br',
+  locale: 'en',
+  fallbackLocale: 'en',
   locales: [
     {
       name: 'Português',
