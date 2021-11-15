@@ -119,6 +119,37 @@ export default {
     },
   },
   pdf: {
+    project: {
+      title: 'Documento',
+      encryption: {
+        title: 'Criptografia',
+        user: 'Senha do Usuário',
+        owner: 'Senha do Dono',
+      },
+      permissions: {
+        title: 'Permissões',
+        printing: 'Impressão',
+        modifying: 'Modificar',
+        copying: 'Copiar',
+        annotating: 'Anotar',
+        fillingForms: 'Assinar / Preencher',
+        contentAccessibility: 'Acessibilidade de Conteúdo',
+        documentAssembly: 'Montagem',
+      },
+      tooltip: {
+        title:
+          'As opções a seguir interferem no acesso do usuário ao PDF. Só interfira na configuração padrão se achar necessário.',
+        permissions: {
+          printing: 'Impressão',
+          modifying: 'Modificar',
+          copying: 'Copiar',
+          annotating: 'Anotar',
+          fillingForms: 'Assinar / Preencher',
+          contentAccessibility: 'Acessibilidade de Conteúdo',
+          documentAssembly: 'Montagem',
+        },
+      },
+    },
     cover: {
       tooltip:
         'Até o momento, a capa inserida com imagem possui problemas com a margem superior, definida em Página. Recomendamos deixar a margem superior em 0 caso deseja utilizar o recurso da capa com imagem.',

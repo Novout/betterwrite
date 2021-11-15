@@ -95,6 +95,7 @@ export interface PDFStateStylesSwitcher {
   footer: boolean
   header: boolean
   summary: boolean
+  encryption: boolean
 }
 
 export interface PDFState {

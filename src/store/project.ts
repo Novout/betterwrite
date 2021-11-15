@@ -2,15 +2,7 @@ import { defineStore } from 'pinia'
 import { ContextState } from '@/types/context'
 import { ProjectState } from '@/types/project'
 import { useFormat } from '@/use/format'
-import { useText } from '../use/text'
 import { Entity } from '../types/context'
-import isElectron from 'is-electron'
-import { useEnv } from '@/use/env'
-import { useLoggerStore } from './logger'
-import { useEditorStore } from './editor'
-import { usePDFStore } from './pdf'
-import { useAbsoluteStore } from './absolute'
-import { useShortcutsStore } from './shortcuts'
 import { useGlobalStore } from './global'
 import { usePopulate } from '../use/populate'
 
@@ -30,6 +22,21 @@ export const useProjectStore = defineStore('project', {
       summary: {},
       pages: [] as Array<ContextState>,
       pageLoaded: 1,
+      pdf: {
+        encryption: {
+          userPassword: '',
+          ownerPassword: '',
+        },
+        permissions: {
+          printing: 'highResolution',
+          modifying: false,
+          copying: false,
+          annotating: true,
+          fillingForms: true,
+          contentAccessibility: true,
+          documentAssembly: true,
+        },
+      },
       bw: {
         version: '0.1.0',
         platform: 'web',

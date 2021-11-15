@@ -21,6 +21,27 @@ export interface ProjectState {
   pages: Array<ContextState>
   pageLoaded: number
   bw: ProjectStateBetterWrite
+  pdf: ProjectStatePDF
+}
+
+export interface ProjectStatePDF {
+  encryption: ProjectStatePDFEncryption
+  permissions: ProjectStatePDFPermissions
+}
+
+export interface ProjectStatePDFEncryption {
+  userPassword: string
+  ownerPassword: string
+}
+
+export interface ProjectStatePDFPermissions {
+  printing: 'highResolution' | 'lowResolution'
+  modifying: boolean
+  copying: boolean
+  annotating: boolean
+  fillingForms: boolean
+  contentAccessibility: boolean
+  documentAssembly: boolean
 }
 
 export interface ProjectObject {

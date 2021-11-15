@@ -120,6 +120,36 @@ export default {
     },
   },
   pdf: {
+    project: {
+      title: 'Document',
+      encryption: {
+        title: 'Encryption',
+        user: 'User Password',
+        owner: 'Owner Password',
+      },
+      permissions: {
+        title: 'Permissions',
+        printing: 'Print',
+        modifying: 'Modify',
+        copying: 'Copy',
+        annotating: 'Write',
+        fillingForms: 'Subscribe / Fill in',
+        contentAccessibility: 'Content Accessibility',
+        documentAssembly: 'Mounting',
+      },
+      tooltip: {
+        title: `The following options interfere with the user's access to the PDF. Only interfere with the default configuration if you feel it is necessary.`,
+        permissions: {
+          printing: 'Print',
+          modifying: 'Modify',
+          copying: 'Copy',
+          annotating: 'Write',
+          fillingForms: 'Subscribe / Fill in',
+          contentAccessibility: 'Content Accessibility',
+          documentAssembly: 'Mounting',
+        },
+      },
+    },
     cover: {
       tooltip:
         ' So far, the cover inserted with image has problems with the top margin, defined in Page. We recommend leaving the top margin at 0 if you want to use the cover with image feature.',

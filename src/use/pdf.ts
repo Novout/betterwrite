@@ -513,6 +513,25 @@ export const usePDF = () => {
   }
 
   const doc = (options: Record<any, any>) => {
+    const encrypt = () => {
+      return PDF.styles.switcher.encryption
+        ? {
+            userPassword: PROJECT.pdf.encryption.userPassword,
+            ownerPassword: PROJECT.pdf.encryption.ownerPassword,
+            permissions: {
+              printing: PROJECT.pdf.permissions.printing,
+              modifying: PROJECT.pdf.permissions.modifying,
+              copying: PROJECT.pdf.permissions.copying,
+              annotating: PROJECT.pdf.permissions.annotating,
+              fillingForms: PROJECT.pdf.permissions.fillingForms,
+              contentAccessibility:
+                PROJECT.pdf.permissions.contentAccessibility,
+              documentAssembly: PROJECT.pdf.permissions.documentAssembly,
+            },
+          }
+        : {}
+    }
+
     const footer = () => {
       const text = (
         currentPage: number,
@@ -548,7 +567,7 @@ export const usePDF = () => {
         }
       }
 
-      return { alignment, text }
+      return { document, alignment, text }
     }
 
     const header = () => {
@@ -589,6 +608,7 @@ export const usePDF = () => {
     }
 
     return {
+      ...encrypt(),
       pageSize: generate().base().pageSize,
       pageOrientation: generate().base().pageOrientation,
       pageMargins: {

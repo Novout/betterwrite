@@ -115,6 +115,29 @@ export const useStorage = () => {
         keywords: 'Untitled',
       }
     }
+    if (!_.project.pdf) {
+      _.project.pdf = {
+        encryption: {
+          userPassword: '',
+          ownerPassword: '',
+        },
+        permissions: {
+          printing: 'highResolution',
+          modifying: false,
+          copying: false,
+          annotating: true,
+          fillingForms: true,
+          contentAccessibility: true,
+          documentAssembly: true,
+        },
+      }
+    }
+    if (!_.pdf.styles.switcher.encryption) {
+      _.pdf.styles.encryption = {
+        ..._.pdf.styles.encryption,
+        encryption: false,
+      }
+    }
 
     return _
   }

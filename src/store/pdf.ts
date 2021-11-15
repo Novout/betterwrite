@@ -157,6 +157,7 @@ export const usePDFStore = defineStore('pdf', {
           footer: true,
           header: false,
           summary: true,
+          encryption: false,
         },
       },
       fonts: [],
@@ -317,6 +318,7 @@ export const usePDFStore = defineStore('pdf', {
           footer: true,
           header: false,
           summary: true,
+          encryption: false,
         },
       }
     },
