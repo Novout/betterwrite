@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0-beta.5](https://github.com/Novout/better-write/compare/v0.9.0-beta.4...v0.9.0-beta.5) (2021-11-15)
+
+
+### Features
+
+* **editor:** info document ([6d63241](https://github.com/Novout/better-write/commits/6d632411855302a3d74fc19e999d1474bef35d4a))
+
+
+### Bug Fixes
+
+* **desktop:** not necessary no context isolation ([b1dd716](https://github.com/Novout/better-write/commits/b1dd716ff1649bb70d6e15b2c8924216cd924d0e))
+
+
+### CI
+
+* tests in all push's and pull requests ([23f5d7d](https://github.com/Novout/better-write/commits/23f5d7dfab08bb089f583d6b1e5669247dd5109d))
+
+
+### Style
+
+* **editor:** tooltip theme integration ([b28a852](https://github.com/Novout/better-write/commits/b28a8520ecdf237ba17fb250a3d45c94fdba234b))
+
 ## [0.9.0-beta.4](https://github.com/Novout/better-write/compare/v0.9.0-beta.3...v0.9.0-beta.4) (2021-11-15)
 
 
