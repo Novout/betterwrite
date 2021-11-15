@@ -2,6 +2,7 @@ export default {
   project: {
     configuration: {
       title: 'Project Configurations',
+      creator: 'Author',
       name: 'Name',
       subject: 'Subject',
     },

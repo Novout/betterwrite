@@ -46,7 +46,7 @@
   }
 
   .wb-configuration {
-    @apply flex gap-5 font-bold text-base text-theme-text-2 justify-between items-center w-full px-2 py-1;
+    @apply flex gap-5 font-bold text-base text-theme-text-2 justify-between items-center w-full px-2 py-2;
   }
 
   .wb-configuration-input-text {

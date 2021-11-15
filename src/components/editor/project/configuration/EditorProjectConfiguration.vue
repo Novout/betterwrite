@@ -24,6 +24,13 @@
         {{ t('editor.project.configuration.title') }}
       </h3>
       <div class="wb-configuration">
+        <p>{{ t('editor.project.configuration.creator') }}</p>
+        <InputText
+          v-model="PROJECT.creator"
+          class="wb-configuration-input-text"
+        />
+      </div>
+      <div class="wb-configuration">
         <p>{{ t('editor.project.configuration.name') }}</p>
         <InputText
           v-model="PROJECT.nameRaw"
