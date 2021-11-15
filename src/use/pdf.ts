@@ -300,6 +300,7 @@ export const usePDF = () => {
           },
           pageBreak: 'before',
           alignment: 'center',
+          font: PDF.styles.base.summary.fontFamily,
           style: 'summary-default',
         }
 
