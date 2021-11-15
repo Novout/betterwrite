@@ -144,7 +144,7 @@
             <label>{{ t('editor.pdf.base.header.content') }}</label>
             <InputText
               v-model="pdf.base.header.content"
-              class="bg-transparent shadow-lg"
+              class="shadow-lg bg-theme-editor-material-background"
             />
           </section>
           <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">

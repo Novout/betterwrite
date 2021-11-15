@@ -1,4 +1,11 @@
 export default {
+  project: {
+    configuration: {
+      title: 'Project Configurations',
+      name: 'Name',
+      subject: 'Subject',
+    },
+  },
   preferences: {
     shortcuts: {
       title: 'Hotkeys',

@@ -19,51 +19,18 @@
     </HeroIcon>
   </div>
   <div class="flex flex-col justify-end w-full lg:w-1/2 wb-text shadow-lg">
-    <div
-      class="
-        flex
-        font-bold
-        text-base text-theme-text-2
-        justify-between
-        items-center
-        w-full
-        px-2
-        py-1
-      "
-    >
+    <div class="wb-configuration">
       <p>{{ t('editor.aside.configuration.lang') }}</p>
       <InputSelect v-model="lang" :arr="['Português do Brasil', 'English']" />
     </div>
-    <div
-      class="
-        flex
-        font-bold
-        text-base text-theme-text-2
-        justify-between
-        items-center
-        w-full
-        px-2
-        py-1
-      "
-    >
+    <div class="wb-configuration">
       <p>{{ t('editor.aside.configuration.dark') }}</p>
       <InputSelect
         v-model="EDITOR.configuration.theme"
         :arr="useDefines().themes()"
       />
     </div>
-    <div
-      class="
-        flex
-        font-bold
-        text-base text-theme-text-2
-        justify-between
-        items-center
-        w-full
-        px-2
-        py-1
-      "
-    >
+    <div class="wb-configuration">
       <p>{{ t('editor.aside.configuration.autosave') }}</p>
       <InputSelect v-model="auto" :arr="[1, 2, 5, 15, 30, 'never']" />
     </div>
