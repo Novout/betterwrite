@@ -5,6 +5,17 @@ export default {
       creator: 'Autor',
       name: 'Nome',
       subject: 'Descrição',
+      producer: 'Produtor',
+      keywords: 'Palavras-Chave',
+      tooltip: {
+        base: 'Estes campos são utilizados pela aplicação para a exportação de documentos e geração de conteúdo quando for necessário. Em suma, preencha os campos corretamente.',
+        creator:
+          'Nome / Organização Responsável pela Criação / Escrita do Documento',
+        name: 'Nome do Documento',
+        subject: 'Assunto do Documento',
+        producer: 'Produtor / Publicador do Documento',
+        keywords: 'Palavras-Chave do Documento',
+      },
     },
   },
   preferences: {

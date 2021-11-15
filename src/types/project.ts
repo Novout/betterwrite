@@ -11,6 +11,8 @@ export interface ProjectState {
   nameRaw: string
   version: string
   creator: string
+  producer: string
+  keywords: string
   subject: string
   type: string
   totalPagesCreated: number

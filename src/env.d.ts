@@ -17,3 +17,4 @@ declare module 'pdfmake/build/pdfmake' {
   export = pdfMake
 }
 declare module 'node-fetch'
+declare module 'v-tooltip'

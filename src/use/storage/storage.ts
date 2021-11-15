@@ -103,6 +103,18 @@ export const useStorage = () => {
         updateTime: true,
       }
     }
+    if (!_.project.producer) {
+      _.project = {
+        ..._.project,
+        producer: 'Untitled',
+      }
+    }
+    if (!_.project.keywords) {
+      _.project = {
+        ..._.project,
+        keywords: 'Untitled',
+      }
+    }
 
     return _
   }

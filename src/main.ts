@@ -5,7 +5,8 @@ import { PluginEmitter } from './types/plugin/core'
 import { VueEmitter } from './types/emitter'
 import { plugin as PluginBase } from './types/plugin/emitter'
 import { MotionPlugin as motion } from '@vueuse/motion'
-import Toast, { POSITION } from 'vue-toastification'
+import tooltip from 'v-tooltip'
+import toast, { POSITION } from 'vue-toastification'
 import mitt from 'mitt'
 
 import router from './router'
@@ -15,6 +16,7 @@ import App from './App.vue'
 
 import './preset.css'
 import './tailwind.css'
+import 'v-tooltip/dist/v-tooltip.css'
 import 'vue-toastification/dist/index.css'
 
 const app = createApp(App)
@@ -32,7 +34,8 @@ app.use(store)
 app.use(i18n)
 app.use(motion)
 app.use(head)
-app.use(Toast, {
+app.use(tooltip)
+app.use(toast, {
   position: POSITION.TOP_CENTER,
   timeout: 4000,
   maxToasts: 3,

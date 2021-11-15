@@ -21,6 +21,8 @@ export const useProjectStore = defineStore('project', {
       nameRaw: '__NOT_CREATED__',
       version: '0.1.0',
       creator: 'Untitled',
+      producer: 'Untitled',
+      keywords: 'Untitled',
       subject: 'Untitled',
       type: 'creative',
       totalPagesCreated: 0,

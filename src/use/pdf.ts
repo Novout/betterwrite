@@ -599,9 +599,10 @@ export const usePDF = () => {
       },
       info: {
         title: PROJECT.name,
-        author: 'TODO',
+        author: PROJECT.creator,
         subject: PROJECT.subject,
-        keywords: '',
+        producer: PROJECT.producer,
+        keywords: PROJECT.keywords,
       },
       content: generate().content(),
       styles: {
