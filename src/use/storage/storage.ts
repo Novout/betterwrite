@@ -132,9 +132,10 @@ export const useStorage = () => {
         },
       }
     }
+
     if (!_.pdf.styles.switcher.encryption) {
-      _.pdf.styles.encryption = {
-        ..._.pdf.styles.encryption,
+      _.pdf.styles.switcher = {
+        ..._.pdf.styles.switcher,
         encryption: false,
       }
     }
