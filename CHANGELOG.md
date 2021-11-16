@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0-beta.6](https://github.com/Novout/better-write/compare/v0.9.0-beta.5...v0.9.0-beta.6) (2021-11-16)
+
+
+### Features
+
+* **pdf:** encryption settings ([d38dd0a](https://github.com/Novout/better-write/commits/d38dd0a950fdeb48b8979a0531260e261fe7f2a1))
+* **pdf:** tooltips added ([88b57ce](https://github.com/Novout/better-write/commits/88b57ce68a83b319d70456948b325acc24d7a5d5))
+* pwa basic integration ([20d6166](https://github.com/Novout/better-write/commits/20d61660463b566c8b008691c4f8cd7dbc47477a))
+
+
+### Structure
+
+* **deps:** update packages ([35ebc5c](https://github.com/Novout/better-write/commits/35ebc5c774331abc6f94d603303fc7286c446a4b))
+* **i18n:** fallback en ([08cf325](https://github.com/Novout/better-write/commits/08cf3253617f0507143c803d6bd1e2ca91047d44))
+* **pdf:** doc generator return data ([74c5a46](https://github.com/Novout/better-write/commits/74c5a46c15caa55a68a0715aaa5142e235846ba0))
+
+
+### Style
+
+* **editor:** pdf configuration remove transparency in switchers ([79a76f7](https://github.com/Novout/better-write/commits/79a76f7416f83b2157d711b93f8842461a04a2c1))
+
 ## [0.9.0-beta.5](https://github.com/Novout/better-write/compare/v0.9.0-beta.4...v0.9.0-beta.5) (2021-11-15)
 
 
