@@ -1,4 +1,2 @@
 User-agent: *
-Disallow: /404
-
-Sitemap: https://novout.github.io/better-write/sitemap.xml
+Allow: /

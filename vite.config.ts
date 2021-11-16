@@ -1,7 +1,7 @@
 import { resolve } from "path"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
-import Components from "unplugin-vue-components/vite"
+import vueGlobalComponent  from "unplugin-vue-components/vite"
 import { HeadlessUiResolver } from "unplugin-vue-components/resolvers"
 import vueI18n from "@intlify/vite-plugin-vue-i18n"
 import { VitePWA as vitePWA } from 'vite-plugin-pwa'
@@ -12,20 +12,39 @@ import vitePackageVersion from 'vite-plugin-package-version'
 export default defineConfig({
   base: './',
   plugins: [
-    Components({
-      dts: true,
-      resolvers: [HeadlessUiResolver()],
-    }),
     vue(),
     vueI18n({
       include: resolve(__dirname, "./src/lang/**"),
       runtimeOnly: false
     }),
+    vueGlobalComponent({
+      dts: true,
+      resolvers: [HeadlessUiResolver()],
+    }),
     vitePersist(),
     vitePackageAccess(),
     vitePackageVersion(),
     vitePWA({
-      base: '/'
+      base: '/',
+      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],  
+      manifest: {
+        name: 'Better Write',
+        short_name: 'BW',
+        description: 'A editor for creative writers.',
+        theme_color: '#d1d5d8',
+        icons: [
+          {
+            src: 'android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          }
+        ]
+      }
     })
   ],
   build: {
