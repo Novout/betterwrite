@@ -26,6 +26,7 @@ export default defineConfig({
     vitePackageVersion(),
     vitePWA({
       base: '/',
+      registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],  
       manifest: {
         name: 'Better Write',
@@ -44,7 +45,10 @@ export default defineConfig({
             type: 'image/png',
           }
         ]
-      }
+      },
+      workbox: {
+        sourcemap: true  
+      } 
     })
   ],
   build: {
