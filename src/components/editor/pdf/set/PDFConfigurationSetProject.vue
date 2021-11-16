@@ -48,10 +48,7 @@
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{ t('editor.pdf.project.permissions.modifying') }}</label>
-          <InputBoolean
-            v-model="PROJECT.pdf.permissions.modifying"
-            class="bg-theme-transparent shadow-lg"
-          />
+          <InputBoolean v-model="PROJECT.pdf.permissions.modifying" />
         </section>
       </div>
       <div class="wb-input-container">
@@ -59,10 +56,7 @@
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{ t('editor.pdf.project.permissions.copying') }}</label>
-          <InputBoolean
-            v-model="PROJECT.pdf.permissions.copying"
-            class="bg-theme-transparent shadow-lg"
-          />
+          <InputBoolean v-model="PROJECT.pdf.permissions.copying" />
         </section>
       </div>
       <div class="wb-input-container">
@@ -70,10 +64,7 @@
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{ t('editor.pdf.project.permissions.annotating') }}</label>
-          <InputBoolean
-            v-model="PROJECT.pdf.permissions.annotating"
-            class="bg-theme-transparent shadow-lg"
-          />
+          <InputBoolean v-model="PROJECT.pdf.permissions.annotating" />
         </section>
       </div>
       <div class="wb-input-container">
@@ -81,10 +72,7 @@
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{ t('editor.pdf.project.permissions.fillingForms') }}</label>
-          <InputBoolean
-            v-model="PROJECT.pdf.permissions.fillingForms"
-            class="bg-theme-transparent shadow-lg"
-          />
+          <InputBoolean v-model="PROJECT.pdf.permissions.fillingForms" />
         </section>
       </div>
       <div class="wb-input-container">
@@ -96,7 +84,6 @@
           }}</label>
           <InputBoolean
             v-model="PROJECT.pdf.permissions.contentAccessibility"
-            class="bg-theme-transparent shadow-lg"
           />
         </section>
       </div>
@@ -107,10 +94,7 @@
           <label>{{
             t('editor.pdf.project.permissions.documentAssembly')
           }}</label>
-          <InputBoolean
-            v-model="PROJECT.pdf.permissions.documentAssembly"
-            class="bg-theme-transparent shadow-lg"
-          />
+          <InputBoolean v-model="PROJECT.pdf.permissions.documentAssembly" />
         </section>
       </div>
     </section>
