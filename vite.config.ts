@@ -1,9 +1,10 @@
-import { resolve } from "path";
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import Components from "unplugin-vue-components/vite";
-import { HeadlessUiResolver } from "unplugin-vue-components/resolvers";
-import vueI18n from "@intlify/vite-plugin-vue-i18n";
+import { resolve } from "path"
+import { defineConfig } from "vite"
+import vue from "@vitejs/plugin-vue"
+import Components from "unplugin-vue-components/vite"
+import { HeadlessUiResolver } from "unplugin-vue-components/resolvers"
+import vueI18n from "@intlify/vite-plugin-vue-i18n"
+import { VitePWA as vitePWA } from 'vite-plugin-pwa'
 import vitePersist from 'vite-plugin-optimize-persist'
 import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
@@ -11,18 +12,21 @@ import vitePackageVersion from 'vite-plugin-package-version'
 export default defineConfig({
   base: './',
   plugins: [
+    Components({
+      dts: true,
+      resolvers: [HeadlessUiResolver()],
+    }),
     vue(),
     vueI18n({
       include: resolve(__dirname, "./src/lang/**"),
       runtimeOnly: false
     }),
-    Components({
-      dts: true,
-      resolvers: [HeadlessUiResolver()],
-    }),
     vitePersist(),
     vitePackageAccess(),
-    vitePackageVersion()
+    vitePackageVersion(),
+    vitePWA({
+      base: '/'
+    })
   ],
   build: {
     outDir: resolve(__dirname, 'dist/render'),
@@ -43,7 +47,6 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"),
     },
   },
-
   server: {
     fs: {
       strict: false,

@@ -89,6 +89,7 @@
       </div>
       <div class="wb-input-container">
         <section
+          class="ml-2"
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{

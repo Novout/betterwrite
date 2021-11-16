@@ -372,4 +372,12 @@ export default {
       ],
     },
   },
+  pwa: {
+    prompt: {
+      offlineReady: 'Aplicativo pronto para funcionar offline!',
+      newContent: 'Novo conteúdo disponível, clique no botão recarregar para atualizar.',
+      reload: 'Atualizar',
+      close: 'Fechar',
+    },
+  },
 }

@@ -372,4 +372,12 @@ export default {
       ],
     },
   },
+  pwa: {
+    prompt: {
+      offlineReady: 'App ready to work offline',
+      newContent: 'New content available, click on reload button to update.',
+      reload: 'Reload',
+      close: 'Close',
+    },
+  },
 }

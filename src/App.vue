@@ -1,5 +1,6 @@
 <template>
   <router-view></router-view>
+  <PWAPrompt />
 </template>
 
 <script setup lang="ts">
