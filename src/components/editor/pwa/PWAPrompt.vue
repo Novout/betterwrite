@@ -16,10 +16,7 @@
     "
     role="alert"
   >
-    <HeroIcon
-      class="absolute right-0 top-0 wb-icon"
-      @click.prevent="close"
-    >
+    <HeroIcon class="absolute right-0 top-0 wb-icon" @click.prevent="close">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -57,13 +54,9 @@
 
   const { t } = useI18n()
 
-  const {
-    offlineReady,
-    needRefresh,
-    updateServiceWorker,
-  } = useRegisterSW()
+  const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW()
 
-  const close = async() => {
+  const close = async () => {
     offlineReady.value = false
     needRefresh.value = false
   }

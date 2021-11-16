@@ -45,38 +45,55 @@
       </div>
       <div class="wb-input-container">
         <section
+          class="flex items-center"
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{ t('editor.pdf.project.permissions.modifying') }}</label>
-          <InputBoolean v-model="PROJECT.pdf.permissions.modifying" />
+          <InputBoolean
+            v-model="PROJECT.pdf.permissions.modifying"
+            class="ml-2"
+          />
         </section>
       </div>
       <div class="wb-input-container">
         <section
+          class="flex items-center"
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{ t('editor.pdf.project.permissions.copying') }}</label>
-          <InputBoolean v-model="PROJECT.pdf.permissions.copying" />
+          <InputBoolean
+            v-model="PROJECT.pdf.permissions.copying"
+            class="ml-2"
+          />
         </section>
       </div>
       <div class="wb-input-container">
         <section
+          class="flex items-center"
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{ t('editor.pdf.project.permissions.annotating') }}</label>
-          <InputBoolean v-model="PROJECT.pdf.permissions.annotating" />
+          <InputBoolean
+            v-model="PROJECT.pdf.permissions.annotating"
+            class="ml-2"
+          />
         </section>
       </div>
       <div class="wb-input-container">
         <section
+          class="flex items-center"
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{ t('editor.pdf.project.permissions.fillingForms') }}</label>
-          <InputBoolean v-model="PROJECT.pdf.permissions.fillingForms" />
+          <InputBoolean
+            v-model="PROJECT.pdf.permissions.fillingForms"
+            class="ml-2"
+          />
         </section>
       </div>
       <div class="wb-input-container">
         <section
+          class="flex items-center"
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{
@@ -84,18 +101,22 @@
           }}</label>
           <InputBoolean
             v-model="PROJECT.pdf.permissions.contentAccessibility"
+            class="ml-2"
           />
         </section>
       </div>
       <div class="wb-input-container">
         <section
-          class="ml-2"
+          class="flex items-center"
           :class="[!PDF.styles.switcher.encryption ? 'wb-disabled' : '']"
         >
           <label>{{
             t('editor.pdf.project.permissions.documentAssembly')
           }}</label>
-          <InputBoolean v-model="PROJECT.pdf.permissions.documentAssembly" />
+          <InputBoolean
+            v-model="PROJECT.pdf.permissions.documentAssembly"
+            class="ml-2"
+          />
         </section>
       </div>
     </section>
