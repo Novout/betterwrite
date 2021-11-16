@@ -71,13 +71,10 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  import { useAbsoluteStore } from '@/store/absolute'
   import { useProjectStore } from '@/store/project'
   import { watch, computed } from 'vue'
   import { useText } from '@/use/text'
-  import tooltip from 'v-tooltip'
 
-  const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
 
   const { t } = useI18n()

@@ -14,7 +14,6 @@ import { useProject } from './project'
 import { useProjectStore } from '@/store/project'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
-import { EntityType } from '../types/context'
 import { useStorage } from './storage/storage'
 
 export const usePDF = () => {
@@ -532,6 +531,44 @@ export const usePDF = () => {
         : {}
     }
 
+    const page = () => {
+      return {
+        pageSize: generate().base().pageSize,
+        pageOrientation: generate().base().pageOrientation,
+        pageMargins: {
+          left: 0,
+          top: generate().base().pageMargins[1],
+          right: 0,
+          bottom: generate().base().pageMargins[3],
+        },
+      }
+    }
+
+    const info = () => {
+      return {
+        info: {
+          title: PROJECT.name,
+          author: PROJECT.creator,
+          subject: PROJECT.subject,
+          producer: PROJECT.producer,
+          keywords: PROJECT.keywords,
+        },
+      }
+    }
+
+    const content = () => {
+      return {
+        content: generate().content(),
+        styles: {
+          'heading-three': generate().styles().headingThree(),
+          'heading-two': generate().styles().headingTwo(),
+          'heading-one': generate().styles().headingOne(),
+          'summary-default': generate().styles().summaryDefault(),
+          paragraph: generate().styles().paragraph(),
+        },
+      }
+    }
+
     const footer = () => {
       const text = (
         currentPage: number,
@@ -607,99 +644,94 @@ export const usePDF = () => {
       return { alignment, text }
     }
 
+    const addons = () => {
+      return {
+        background: options.final
+          ? function (currentPage: number) {
+              return currentPage >= 3 &&
+                PDF.styles.base.background.main &&
+                PDF.styles.switcher.main
+                ? [
+                    {
+                      image: PDF.styles.base.background.main,
+                      width: useDefines().pdf().base().pageSizeFixes()[
+                        PDF.styles.base.pageSize
+                      ][0],
+                      height: useDefines().pdf().base().pageSizeFixes()[
+                        PDF.styles.base.pageSize
+                      ][1],
+                    },
+                  ]
+                : undefined
+            }
+          : undefined,
+        footer: PDF.styles.switcher.footer
+          ? function (
+              currentPage: number,
+              pageCount: number,
+              pageSize: number
+            ) {
+              return [
+                {
+                  text: footer().text(currentPage, pageCount, pageSize),
+                  margin: [15, 0],
+                  fontSize: PDF.styles.base.footer.textSize,
+                  font: PDF.styles.base.footer.fontFamily,
+                  alignment: footer().alignment(
+                    currentPage,
+                    pageCount,
+                    pageSize
+                  ),
+                },
+              ]
+            }
+          : undefined,
+        header: PDF.styles.switcher.header
+          ? function (currentPage: number, pageCount: number, pageSize: any) {
+              return [
+                {
+                  text: header().text(currentPage, pageCount, pageSize),
+                  fontSize: PDF.styles.base.header.textSize,
+                  font: PDF.styles.base.header.fontFamily,
+                  decoration: 'underline',
+                  alignment: header().alignment(
+                    currentPage,
+                    pageCount,
+                    pageSize
+                  ),
+                },
+              ]
+            }
+          : undefined,
+        pageBreakBefore: function (
+          currentNode: any,
+          followingNodesOnPage: any,
+          nodesOnNextPage: any,
+          previousNodesOnPage: any
+        ) {
+          if (
+            currentNode.id === 'signature' &&
+            (currentNode.pageNumbers.length != 1 ||
+              currentNode.pageNumbers[0] != currentNode.pages)
+          ) {
+            return true
+          } else if (
+            currentNode.id === 'closingParagraph' &&
+            currentNode.pageNumbers.length != 1
+          ) {
+            return true
+          }
+          return false
+        },
+      }
+    }
+
     return {
       ...encrypt(),
-      pageSize: generate().base().pageSize,
-      pageOrientation: generate().base().pageOrientation,
-      pageMargins: {
-        left: 0,
-        top: generate().base().pageMargins[1],
-        right: 0,
-        bottom: generate().base().pageMargins[3],
-      },
-      info: {
-        title: PROJECT.name,
-        author: PROJECT.creator,
-        subject: PROJECT.subject,
-        producer: PROJECT.producer,
-        keywords: PROJECT.keywords,
-      },
-      content: generate().content(),
-      styles: {
-        'heading-three': generate().styles().headingThree(),
-        'heading-two': generate().styles().headingTwo(),
-        'heading-one': generate().styles().headingOne(),
-        'summary-default': generate().styles().summaryDefault(),
-        paragraph: generate().styles().paragraph(),
-      },
-      background: options.final
-        ? function (currentPage: number) {
-            return currentPage >= 3 &&
-              PDF.styles.base.background.main &&
-              PDF.styles.switcher.main
-              ? [
-                  {
-                    image: PDF.styles.base.background.main,
-                    width: useDefines().pdf().base().pageSizeFixes()[
-                      PDF.styles.base.pageSize
-                    ][0],
-                    height: useDefines().pdf().base().pageSizeFixes()[
-                      PDF.styles.base.pageSize
-                    ][1],
-                  },
-                ]
-              : undefined
-          }
-        : undefined,
-      footer: PDF.styles.switcher.footer
-        ? function (currentPage: number, pageCount: number, pageSize: number) {
-            return [
-              {
-                text: footer().text(currentPage, pageCount, pageSize),
-                margin: [15, 0],
-                fontSize: PDF.styles.base.footer.textSize,
-                font: PDF.styles.base.footer.fontFamily,
-                alignment: footer().alignment(currentPage, pageCount, pageSize),
-              },
-            ]
-          }
-        : undefined,
-      header: PDF.styles.switcher.header
-        ? function (currentPage: number, pageCount: number, pageSize: any) {
-            return [
-              {
-                text: header().text(currentPage, pageCount, pageSize),
-                fontSize: PDF.styles.base.header.textSize,
-                font: PDF.styles.base.header.fontFamily,
-                decoration: 'underline',
-                alignment: header().alignment(currentPage, pageCount, pageSize),
-              },
-            ]
-          }
-        : undefined,
-      pageBreakBefore: function (
-        currentNode: any,
-        followingNodesOnPage: any,
-        nodesOnNextPage: any,
-        previousNodesOnPage: any
-      ) {
-        //check if signature part is completely on the last page, add pagebreak if not
-        if (
-          currentNode.id === 'signature' &&
-          (currentNode.pageNumbers.length != 1 ||
-            currentNode.pageNumbers[0] != currentNode.pages)
-        ) {
-          return true
-        }
-        //check if last paragraph is entirely on a single page, add pagebreak if not
-        else if (
-          currentNode.id === 'closingParagraph' &&
-          currentNode.pageNumbers.length != 1
-        ) {
-          return true
-        }
-        return false
-      },
+      ...page(),
+      ...info(),
+      ...content(),
+      ...addons(),
     }
   }
 
