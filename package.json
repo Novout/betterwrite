@@ -79,7 +79,7 @@
     "@typescript-eslint/parser": "5.3.1",
     "@vitejs/plugin-vue": "1.9.4",
     "@vue/compiler-sfc": "3.2.21",
-    "@vue/eslint-config-typescript": "9.0.1",
+    "@vue/eslint-config-typescript": "9.1.0",
     "concurrently": "6.4.0",
     "cross-env": "7.0.3",
     "electron": "15.3.1",
