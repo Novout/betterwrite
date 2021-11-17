@@ -25,7 +25,7 @@ export const useKeyboard = () => {
   const project = useProject()
 
   const init: Callback<void> = () => {
-    forceDefault()
+    normalize()
     saveLocal()
     loadLocal()
     newProject()
@@ -43,14 +43,16 @@ export const useKeyboard = () => {
     keyboard.stop()
   }
 
-  const forceDefault = () => {
+  const normalize = () => {
     window.addEventListener('keydown', (e: KeyboardEvent) => {
       if (
         (e.ctrlKey || e.altKey) &&
         e.key !== 'c' &&
         e.key !== 'a' &&
         e.key !== 'v' &&
-        e.key !== 'z'
+        e.key !== 'z' &&
+        e.key !== 'x' &&
+        e.key !== 'y'
       ) {
         e.preventDefault()
         e.stopPropagation()
