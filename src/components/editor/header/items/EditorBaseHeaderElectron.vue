@@ -52,13 +52,40 @@
         ></path>
       </svg>
     </HeroIcon>
+    <HeroIcon
+      v-if="update"
+      :class="[
+        !update
+          ? 'wb-icon no-drag mb-2 ml-1'
+          : 'text-theme-editor-electron-update-text hover:theme-editor-electron-update-text-hover active:theme-editor-electron-update-text-active no-drag cursor-pointer mb-2 ml-1',
+      ]"
+      @click.prevent.stop="onUpdate"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        width="24"
+        height="24"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7l7-7z"
+          fill="currentColor"
+        ></path>
+      </svg>
+    </HeroIcon>
   </div>
 </template>
 
 <script setup lang="ts">
   import { useEditor } from '@/use/editor'
+  import { ref } from 'vue'
 
   const editor = useEditor()
+  const update = ref<boolean>(false)
 
   const onClose = () => {
     window.close()
@@ -67,4 +94,12 @@
   const onMaximize = () => {
     editor.fullScreen()
   }
+
+  const onUpdate = () => {
+    window.ipcRenderer.send('update-application')
+  }
+
+  window.ipcRenderer.receive('update-downloaded', () => {
+    update.value = true
+  })
 </script>

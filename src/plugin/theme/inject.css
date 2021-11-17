@@ -134,6 +134,9 @@
   --theme-editor-tooltip-background: #d1d5db;
   --theme-editor-tooltip-text: #111111;
   --theme-editor-tooltip-border: none;
+  --theme-editor-electron-update-text: #d1d5db;
+  --theme-editor-electron-update-text-hover: #d1d5db;
+  --theme-editor-electron-update-text-active: #d1d5db;
   --theme-text-1: #000000;
   --theme-text-2: #111111;
   --theme-text-3: #1f2937;
@@ -292,6 +295,9 @@
   --theme-editor-tooltip-background: #1f2937;
   --theme-editor-tooltip-text: #e5e7eb;
   --theme-editor-tooltip-border: none;
+  --theme-editor-electron-update-text: #1f2937;
+  --theme-editor-electron-update-text-hover: #1f2937;
+  --theme-editor-electron-update-text-active: #1f2937;
   --theme-text-1: #e5e7eb;
   --theme-text-2: #d1d5db;
   --theme-text-3: #4b5563;
@@ -442,6 +448,9 @@
   --theme-editor-tooltip-background: #2f3357;
   --theme-editor-tooltip-text: #e1e1e1;
   --theme-editor-tooltip-border: none;
+  --theme-editor-electron-update-text: #e1e1e1;
+  --theme-editor-electron-update-text-hover: #e1e1e1;
+  --theme-editor-electron-update-text-active: #e1e1e1;
   --theme-text-1: #e1e1e1;
   --theme-text-2: #d1d5db;
   --theme-text-3: #ffffff;
@@ -595,6 +604,9 @@
   --theme-editor-tooltip-background: #514646;
   --theme-editor-tooltip-text: #fa8373;
   --theme-editor-tooltip-border: none;
+  --theme-editor-electron-update-text: #faa59e;
+  --theme-editor-electron-update-text-hover: #faa59e;
+  --theme-editor-electron-update-text-active: #faa59e;
   --theme-text-1: #faa59e;
   --theme-text-2: #faa59e;
   --theme-text-3: #faa59e;
@@ -749,6 +761,9 @@
   --theme-editor-tooltip-background: #6a819e;
   --theme-editor-tooltip-text: #e5e7eb;
   --theme-editor-tooltip-border: none;
+  --theme-editor-electron-update-text: #6a819e;
+  --theme-editor-electron-update-text-hover: #6a819e;
+  --theme-editor-electron-update-text-active: #6a819e;
   --theme-text-1: #111111;
   --theme-text-2: #111111;
   --theme-text-3: #111111;

@@ -6,6 +6,8 @@ import { useEnv } from '@/use/env'
 import { useDefines } from '@/use/defines'
 import { BetterWriteThemes } from '@/types/editor'
 import { useFavicon, usePreferredColorScheme } from '@vueuse/core'
+import isElectron from 'is-electron'
+import { useUtils } from '@/use/utils'
 
 export const setTheme = () => {
   onAfterMounted(() => {
@@ -49,25 +51,28 @@ export const setDefaultColorTheme = (): BetterWriteThemes => {
 
 export const setContentTheme = (theme: string) => {
   const favicon = useFavicon()
+  const utils = useUtils()
 
-  // custom favicon
-  switch (theme) {
-    case 'betterwrite-light':
-    case 'betterwrite-dark':
-      favicon.value = '/logo_default.svg'
-      break
-    case 'betterwrite-rise':
-      favicon.value = '/logo_rise.svg'
-      break
-    case 'betterwrite-harmonic':
-      favicon.value = '/logo_harmonic.svg'
-      break
-    case 'betterwrite-ascend':
-      favicon.value = '/logo_ascend.svg'
-      break
-    default:
-      favicon.value = '/logo_default.svg'
-      break
+  if (!isElectron()) {
+    // custom favicon
+    switch (theme) {
+      case 'betterwrite-light':
+      case 'betterwrite-dark':
+        favicon.value = utils.path().resolve('logo_default.svg')
+        break
+      case 'betterwrite-rise':
+        favicon.value = utils.path().resolve('logo_rise.svg')
+        break
+      case 'betterwrite-harmonic':
+        favicon.value = utils.path().resolve('logo_harmonic.svg')
+        break
+      case 'betterwrite-ascend':
+        favicon.value = utils.path().resolve('logo_ascend.svg')
+        break
+      default:
+        favicon.value = utils.path().resolve('logo_default.svg')
+        break
+    }
   }
 
   // body class for css variables
@@ -76,24 +81,26 @@ export const setContentTheme = (theme: string) => {
 }
 
 export const setEditorLogo = (theme: BetterWriteThemes) => {
+  const utils = useUtils()
+
   let logo = ''
 
   switch (theme) {
     case 'BetterWrite - Dark':
     case 'BetterWrite - Light':
-      logo = '/logo_default.svg'
+      logo = utils.path().resolve('logo_default.svg')
       break
     case 'BetterWrite - Rise':
-      logo = '/logo_rise.svg'
+      logo = utils.path().resolve('logo_rise.svg')
       break
     case 'BetterWrite - Harmonic':
-      logo = '/logo_harmonic.svg'
+      logo = utils.path().resolve('logo_harmonic.svg')
       break
     case 'BetterWrite - Ascend':
-      logo = '/logo_ascend.svg'
+      logo = utils.path().resolve('logo_ascend.svg')
       break
     default:
-      logo = '/logo_default.svg'
+      logo = utils.path().resolve('logo_default.svg')
       break
   }
 

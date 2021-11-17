@@ -1,3 +1,4 @@
+import isElectron from 'is-electron'
 export const useUtils = () => {
   const delay = (time: number) => {
     return new Promise((resolve) => setTimeout(resolve, time))
@@ -154,5 +155,24 @@ export const useUtils = () => {
     return { images }
   }
 
-  return { position, delay, prevent, array, join, text, regex, cursor, support }
+  const path = () => {
+    const resolve = (content: string) => {
+      return isElectron() ? content : `/${content}`
+    }
+
+    return { resolve }
+  }
+
+  return {
+    position,
+    delay,
+    prevent,
+    array,
+    join,
+    text,
+    regex,
+    cursor,
+    support,
+    path,
+  }
 }

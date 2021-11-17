@@ -30,13 +30,16 @@
   import { computed, watch, ref } from 'vue'
   import { setEditorLogo } from '@/plugin/theme/external'
   import { onAfterMounted } from '@/plugin/core/cycle'
+  import { useUtils } from '@/use/utils'
+  import isElectron from 'is-electron'
 
   const EDITOR = useEditorStore()
 
   const router = useRouter()
   const local = useLocalStorage()
+  const utils = useUtils()
 
-  const path = ref(`/logo_default.svg`)
+  const path = ref(utils.path().resolve('logo_default.svg'))
   const theme = computed(() => EDITOR.configuration.theme)
 
   onAfterMounted(() => {
@@ -49,7 +52,7 @@
 
   const onClick = () => {
     local.onSaveProject().then(() => {
-      router.push('/landing')
+      if (!isElectron()) router.push('/landing')
     })
   }
 </script>

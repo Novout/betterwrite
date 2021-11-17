@@ -1,6 +1,6 @@
 
 
-const { app, BrowserWindow, protocol, globalShortcut } = require('electron')
+const { app, BrowserWindow, protocol, ipcMain } = require('electron')
 const { autoUpdater } = require('electron-updater')
 const { join } = require('path')
 const log = require('electron-log')
@@ -15,13 +15,13 @@ electronDl();
 
 let mainWindow: any = null
 
+// set protocols and headers
 protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ])
 
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
-
 log.info('App starting...');
 
 const createWindow = () => {
@@ -34,9 +34,10 @@ const createWindow = () => {
     titleBarStyle: 'hidden',
     webPreferences: {
       webSecurity: true,
-      nodeIntegration: true,
+      nodeIntegration: false,
       contextIsolation: true,
-    }
+      preload: join(__dirname, 'expose.js')
+    },
   })
 
   mainWindow.loadURL(WinURL)
@@ -49,15 +50,29 @@ const createWindow = () => {
 
     mainWindow?.show()
   })
+
+  mainWindow.webContents.openDevTools()
   
   autoUpdater.checkForUpdatesAndNotify()
 }
 
-autoUpdater.on('update-downloaded', () => {
+ipcMain.on('update-application', () => {
+  log.info('Updating application...');
   autoUpdater.quitAndInstall()
 })
 
-app.on('ready', createWindow)
+ipcMain.on('channel-for-test', (event: any, arg: any) => {
+  log.info(`test result: ${arg}`);
+})
+
+autoUpdater.on('update-downloaded', () => {
+  log.info('BetterWrite Update is Downloaded!');
+  mainWindow.webContents.send('update-downloaded', true)
+})
+
+app.on('ready', () => {
+  createWindow()
+})
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
