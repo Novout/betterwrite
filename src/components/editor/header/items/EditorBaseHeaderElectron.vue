@@ -1,6 +1,41 @@
 <template>
   <div class="flex items-center w-auto">
     <HeroIcon
+      v-if="update"
+      v-tooltip.bottom-end="{
+        content: t('desktop.update.tooltip'),
+        shown,
+        theme: 'better-write',
+      }"
+      class="
+        wb-icon
+        text-theme-editor-electron-update-text
+        hover:theme-editor-electron-update-text-hover
+        active:theme-editor-electron-update-text-active
+        no-drag
+        cursor-pointer
+        mb-2
+        ml-1'
+      "
+      @click.prevent.stop="onUpdate"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        width="24"
+        height="24"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7l7-7z"
+          fill="currentColor"
+        ></path>
+      </svg>
+    </HeroIcon>
+    <HeroIcon
       class="wb-icon no-drag cursor-pointer mb-2"
       @click.prevent.stop="onMaximize"
     >
@@ -52,50 +87,18 @@
         ></path>
       </svg>
     </HeroIcon>
-    <HeroIcon
-      v-if="update"
-      v-tooltip.bottom-end="{
-        content: t('desktop.update.tooltip'),
-        theme: 'better-write',
-      }"
-      class="
-        wb-icon
-        text-theme-editor-electron-update-text
-        hover:theme-editor-electron-update-text-hover
-        active:theme-editor-electron-update-text-active
-        no-drag
-        cursor-pointer
-        mb-2
-        ml-1'
-      "
-      @click.prevent.stop="onUpdate"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        aria-hidden="true"
-        role="img"
-        width="24"
-        height="24"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7l7-7z"
-          fill="currentColor"
-        ></path>
-      </svg>
-    </HeroIcon>
   </div>
 </template>
 
 <script setup lang="ts">
   import { useEditor } from '@/use/editor'
-  import { ref } from 'vue'
+  import isElectron from 'is-electron'
+  import { ref, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const editor = useEditor()
   const update = ref<boolean>(false)
+  const shown = ref<boolean>(true)
 
   const { t } = useI18n()
 
@@ -111,7 +114,16 @@
     window.ipcRenderer.send('update-application')
   }
 
-  window.ipcRenderer.receive('update-downloaded', () => {
-    update.value = true
+  if (isElectron()) {
+    // (if) for dev tests
+    window.ipcRenderer.receive('update-downloaded', () => {
+      update.value = true
+    })
+  }
+
+  onMounted(() => {
+    setTimeout(() => {
+      shown.value = false
+    }, 5000)
   })
 </script>
