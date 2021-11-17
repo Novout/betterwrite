@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.1](https://github.com/Novout/better-write/compare/v0.9.0...v0.9.1) (2021-11-17)
+
+
+### Features
+
+* **desktop:** updater tooltip ([df7ace2](https://github.com/Novout/better-write/commits/df7ace2eedb7475cf4aec665110be0e8a7cee9a1))
+* **editor:** pdf progress bar ([3a8d250](https://github.com/Novout/better-write/commits/3a8d250e733680ad63f2f7b4fabbeddd5a7fb6bf))
+
+
+### Structure
+
+* **desktop:** remove dev tools in all builds ([bf59b8c](https://github.com/Novout/better-write/commits/bf59b8c703354a1a55d92082e16830102cdfc44d))
+
 ## [0.9.0](https://github.com/Novout/better-write/compare/v0.9.0-beta.6...v0.9.0) (2021-11-17)
 
 
