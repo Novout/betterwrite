@@ -15,6 +15,7 @@ import { useProjectStore } from '@/store/project'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
 import { useStorage } from './storage/storage'
+import { useNProgress } from '@vueuse/integrations'
 
 export const usePDF = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -26,6 +27,7 @@ export const usePDF = () => {
   const env = useEnv()
   const project = useProject()
   const storage = useStorage()
+  const { isLoading } = useNProgress()
   const { t } = useI18n()
 
   const init: Callback<any> = async () => {
@@ -764,8 +766,10 @@ export const usePDF = () => {
 
     pdf.download(`${PROJECT.nameRaw}.pdf`, () => {
       toast.success(t('toast.pdf.create'))
-
+      
       ABSOLUTE.load = false
+
+      isLoading.value = false
     })
   }
 
@@ -795,6 +799,8 @@ export const usePDF = () => {
       input.appendChild(iframe)
 
       ABSOLUTE.load = false
+
+      isLoading.value = false
     })
   }
 
@@ -805,6 +811,7 @@ export const usePDF = () => {
       toast.info(t('toast.generics.load'))
 
       ABSOLUTE.load = true
+      isLoading.value = true
 
       storage.normalize().then(() => {
         create()
@@ -815,6 +822,7 @@ export const usePDF = () => {
       if (useEnv().isEmptyProject(PROJECT.name)) return
 
       ABSOLUTE.load = true
+      isLoading.value = true
 
       storage.normalize().then(() => {
         preview(input)
