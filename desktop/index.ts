@@ -50,8 +50,6 @@ const createWindow = () => {
 
     mainWindow?.show()
   })
-
-  mainWindow.webContents.openDevTools()
   
   autoUpdater.checkForUpdatesAndNotify()
 }
