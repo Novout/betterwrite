@@ -16,6 +16,10 @@ export default {
         description: '',
       },
     },
+    editor: {
+      website: 'Online Editor',
+      desktop: 'Desktop Editor',
+    },
   },
   second: {
     title: 'Practicality.',
