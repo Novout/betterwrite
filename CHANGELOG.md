@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/Novout/better-write/compare/v0.9.0-beta.6...v0.9.0) (2021-11-17)
+
+
+### Features
+
+* **editor:** aside touch close ([40ffccf](https://github.com/Novout/better-write/commits/40ffccfa49f57cacfabe497b7d22e4cddb09121c))
+* **editor:** custom favicon theme ([29407de](https://github.com/Novout/better-write/commits/29407de99e83705f0a545a2c50791bc921de488f))
+* **editor:** detect system preferred color scheme ([c7d3303](https://github.com/Novout/better-write/commits/c7d33030b1f0f4e02fa9e49e102ab5b0afff81b5))
+* **editor:** paragraph comment popover ([4a3cfa4](https://github.com/Novout/better-write/commits/4a3cfa456b227d5d93f28d7e3536c9b948f9bbce))
+* **editor:** progress bar ([2bcf60a](https://github.com/Novout/better-write/commits/2bcf60a3a52a6cddc3fc76a20e1446ddd168175c))
+* **electron:** updater button ([86502b4](https://github.com/Novout/better-write/commits/86502b4ab41dd82c3d70dfaaaace20529ef62fda))
+
+
+### Bug Fixes
+
+* **editor:** correct normalize shortcuts ([c8eb20b](https://github.com/Novout/better-write/commits/c8eb20ba51f4fb459100d0aeb8b6e934405ee38f))
+* **lang:** en landing typo ([75d049e](https://github.com/Novout/better-write/commits/75d049e4c158389763dd479ed22a550d3bd5cd07))
+* **storage:** support actives entity ([f46b433](https://github.com/Novout/better-write/commits/f46b433db72671c169ba526e18dfa8648b5671e6))
+
+
+### Style
+
+* **editor:** ascend graph line ([e9ed888](https://github.com/Novout/better-write/commits/e9ed8880b385f03a4318092b0f973dd5c75bc3e7))
+* **pdf:** configuration switcher margin-left ([65490cf](https://github.com/Novout/better-write/commits/65490cf65663633702809be7bf590ffd694aa3f7))
+
+
+### Structure
+
+* **deps:** @vueuse/electron package ([08e2d65](https://github.com/Novout/better-write/commits/08e2d65c583bdef27a17872f4760b5119c2138a8))
+* **md:** new features ([4871415](https://github.com/Novout/better-write/commits/48714156fed5d4511642f7be27201d44b99fa670))
+* **pdf:** populate styles ([e1f0f18](https://github.com/Novout/better-write/commits/e1f0f184dab3b9d2835f85042becb9039133f0ff))
+* **vite:** pwa generate sourcemap ([1529af0](https://github.com/Novout/better-write/commits/1529af0a447a14e7861723566846e62c2241a881))
+* **vite:** pwa manifest settings ([764a97f](https://github.com/Novout/better-write/commits/764a97ff95fd3768d945bf0f019a5626b1880c9d))
+
 ## [0.9.0-beta.6](https://github.com/Novout/better-write/compare/v0.9.0-beta.5...v0.9.0-beta.6) (2021-11-16)
 
 
