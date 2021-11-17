@@ -22,7 +22,7 @@
     "desktop:main": "cross-env NODE_ENV=production tsc desktop/index.ts desktop/expose.ts --moduleResolution Node --removeComments -t esnext --outDir dist/main",
     "desktop:release": "yarn desktop:main && yarn build",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format",
-    "format": "prettier src/**/*.{vue,css,ts} --write",
+    "format": "prettier desktop/**/*.ts src/**/*.{vue,css,ts} --write",
     "test": "jest",
     "extract": "vue-i18n-extract report --vueFiles './src/**/*.?(js|vue)' --languageFiles './src/lang/*.?(json|yml|yaml|js)'",
     "release:initial": "standard-version --first-release",
