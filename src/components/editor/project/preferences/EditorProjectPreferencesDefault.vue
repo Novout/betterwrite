@@ -44,6 +44,7 @@
   import { useLocalStorage } from '@/use/storage/local'
   import { useDefines } from '@/use/defines'
   import { ThemeNormalize } from '@/plugin/theme/utils'
+  import { setContentTheme } from '@/plugin/theme/external'
 
   const ABSOLUTE = useAbsoluteStore()
   const EDITOR = useEditorStore()
@@ -68,8 +69,7 @@
   watch(theme, (_theme) => {
     const value = ThemeNormalize(_theme)
 
-    document.body.removeAttribute('class')
-    document.body.classList.add(value)
+    setContentTheme(value)
   })
 
   const convert = (iso: string) => {

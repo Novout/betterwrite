@@ -5,7 +5,7 @@ import { useProjectStore } from '@/store/project'
 import { useEnv } from '@/use/env'
 import { useDefines } from '@/use/defines'
 import { BetterWriteThemes } from '@/types/editor'
-import { ColorSchemeType, usePreferredColorScheme } from '@vueuse/core'
+import { useFavicon, usePreferredColorScheme } from '@vueuse/core'
 
 export const setTheme = () => {
   onAfterMounted(() => {
@@ -25,8 +25,7 @@ export const setThemeInvokate = () => {
 
   const value = ThemeNormalize(theme)
 
-  document.body.removeAttribute('class')
-  document.body.classList.add(value)
+  setContentTheme(value)
 }
 
 export const setDefaultColorTheme = (): BetterWriteThemes => {
@@ -46,6 +45,34 @@ export const setDefaultColorTheme = (): BetterWriteThemes => {
   }
 
   return _color
+}
+
+export const setContentTheme = (theme: string) => {
+  const favicon = useFavicon()
+
+  // custom favicon
+  switch (theme) {
+    case 'betterwrite-light':
+    case 'betterwrite-dark':
+      favicon.value = '/logo_default.svg'
+      break
+    case 'betterwrite-rise':
+      favicon.value = '/logo_rise.svg'
+      break
+    case 'betterwrite-harmonic':
+      favicon.value = '/logo_harmonic.svg'
+      break
+    case 'betterwrite-ascend':
+      favicon.value = '/logo_ascend.svg'
+      break
+    default:
+      favicon.value = '/logo_default.svg'
+      break
+  }
+
+  // body class for css variables
+  document.body.removeAttribute('class')
+  document.body.classList.add(theme)
 }
 
 export const setEditorLogo = (theme: BetterWriteThemes) => {

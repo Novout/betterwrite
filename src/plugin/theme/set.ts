@@ -1,6 +1,7 @@
 import { PluginStores } from '@/types/plugin/core'
 import { PluginEmitter } from '@/types/plugin/core'
 import { onAfterMounted } from '../core/cycle'
+import { setContentTheme } from './external'
 import { ThemeNormalize } from './utils'
 
 export const PluginThemeSet = (
@@ -12,6 +13,6 @@ export const PluginThemeSet = (
 
     const value = ThemeNormalize(theme)
 
-    document.body.classList.add(value)
+    setContentTheme(value)
   })
 }
