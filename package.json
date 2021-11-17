@@ -110,6 +110,7 @@
         "@vue/reactivity",
         "@vueuse/core",
         "@vueuse/head",
+        "@vueuse/integrations",
         "@vueuse/motion",
         "axios",
         "date-fns",

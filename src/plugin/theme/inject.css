@@ -137,6 +137,8 @@
   --theme-editor-electron-update-text: #d1d5db;
   --theme-editor-electron-update-text-hover: #d1d5db;
   --theme-editor-electron-update-text-active: #d1d5db;
+  --theme-editor-nprogress-background: #111111;
+  --theme-editor-nprogress-height: 3px;
   --theme-text-1: #000000;
   --theme-text-2: #111111;
   --theme-text-3: #1f2937;
@@ -151,12 +153,12 @@
   --theme-logger-background: #f3f4f6;
   --theme-logger-log-text: black;
   --theme-logger-log-background: rgba(167, 255, 229, 1);
-  --theme-logger-warn-text: #ffc684;
-  --theme-logger-warn-background: black;
-  --theme-logger-error-text: #ff8987;
-  --theme-logger-error-background: black;
-  --theme-logger-info-text: #6793ff;
-  --theme-logger-info-background: black;
+  --theme-logger-warn-text: black;
+  --theme-logger-warn-background: #ffc684;
+  --theme-logger-error-text: black;
+  --theme-logger-error-background: #ff8987;
+  --theme-logger-info-text: black;
+  --theme-logger-info-background: #6793ff;
   --scr-track: #f1f1f1;
   --scr-thumb: rgba(0, 0, 0, 0.04);
   --scr-thumb-hover: rgba(0, 0, 0, 0.1);
@@ -298,6 +300,8 @@
   --theme-editor-electron-update-text: #1f2937;
   --theme-editor-electron-update-text-hover: #1f2937;
   --theme-editor-electron-update-text-active: #1f2937;
+  --theme-editor-nprogress-background: #e5e7eb;
+  --theme-editor-nprogress-height: 2px;
   --theme-text-1: #e5e7eb;
   --theme-text-2: #d1d5db;
   --theme-text-3: #4b5563;
@@ -451,6 +455,8 @@
   --theme-editor-electron-update-text: #e1e1e1;
   --theme-editor-electron-update-text-hover: #e1e1e1;
   --theme-editor-electron-update-text-active: #e1e1e1;
+  --theme-editor-nprogress-background: #e1e1e1;
+  --theme-editor-nprogress-height: 2px;
   --theme-text-1: #e1e1e1;
   --theme-text-2: #d1d5db;
   --theme-text-3: #ffffff;
@@ -607,6 +613,8 @@
   --theme-editor-electron-update-text: #faa59e;
   --theme-editor-electron-update-text-hover: #faa59e;
   --theme-editor-electron-update-text-active: #faa59e;
+  --theme-editor-nprogress-background: #faa59e;
+  --theme-editor-nprogress-height: 2px;
   --theme-text-1: #faa59e;
   --theme-text-2: #faa59e;
   --theme-text-3: #faa59e;
@@ -764,6 +772,8 @@
   --theme-editor-electron-update-text: #6a819e;
   --theme-editor-electron-update-text-hover: #6a819e;
   --theme-editor-electron-update-text-active: #6a819e;
+  --theme-editor-nprogress-background: #6a819e;
+  --theme-editor-nprogress-height: 3px;
   --theme-text-1: #111111;
   --theme-text-2: #111111;
   --theme-text-3: #111111;
@@ -793,6 +803,8 @@
 
 /* lib's integration */
 
+/* v-tooltip */
+
 .v-popper--theme-better-write {
   color: var(--theme-editor-tooltip-text);
   background: var(--theme-editor-tooltip-background);
@@ -803,4 +815,65 @@
 
 .v-popper--theme-better-write .v-popper__arrow {
   border-color: var(--theme-editor-tooltip-text);
+}
+
+/* nprogress */
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: var(--theme-editor-nprogress-background);
+
+  position: fixed;
+  z-index: 999999999;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: var(--theme-editor-nprogress-height);
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px var(--theme-editor-nprogress-background),
+    0 0 5px var(--theme-editor-nprogress-background);
+  opacity: 1;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes nprogress-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

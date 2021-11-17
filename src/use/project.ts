@@ -13,6 +13,7 @@ import { ContextState } from '@/types/context'
 import { useStorage } from './storage/storage'
 import { setThemeInvokate } from '@/plugin/theme/external'
 import { ProjectState } from '../types/project'
+import { useNProgress } from '@vueuse/integrations'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -25,6 +26,7 @@ export const useProject = () => {
   const toast = useToast()
   const storage = useStorage()
   const local = useLocalStorage()
+  const { isLoading } = useNProgress()
   const { t } = i18n.global
 
   let timer: NodeJS.Timer | null
@@ -65,6 +67,8 @@ export const useProject = () => {
 
     if (!context) return
 
+    isLoading.value = true
+
     PROJECT.load(context.project)
 
     await nextTick
@@ -98,6 +102,8 @@ export const useProject = () => {
     ABSOLUTE.aside = true
 
     toast.success(t('toast.project.load'))
+
+    isLoading.value = false
   }
 
   const isBlankProject = () => {

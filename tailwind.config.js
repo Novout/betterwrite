@@ -137,6 +137,8 @@ module.exports = {
       'theme-editor-electron-update-text': 'var(--theme-editor-electron-update-text)',
       'theme-editor-electron-update-text-hover': 'var(--theme-editor-electron-update-text-hover)',
       'theme-editor-electron-update-text-active': 'var(--theme-editor-electron-update-text-active)',
+      'theme-editor-nprogress-background': 'var(--theme-editor-nprogress-background)',
+      'theme-editor-nprogress-height': 'var(--theme-editor-nprogress-height)',
       'theme-text-1': 'var(--theme-text-1)',
       'theme-text-2': 'var(--theme-text-2)',
       'theme-text-3': 'var(--theme-text-3)',

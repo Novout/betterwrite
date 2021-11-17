@@ -7,6 +7,7 @@ import { useProjectStore } from '@/store/project'
 import useEmitter from '@/use/emitter'
 import usePlugin from '../plugin/core'
 import { useStorage } from './storage'
+import { useNProgress } from '@vueuse/integrations'
 export const useLocalStorage = () => {
   const PROJECT = useProjectStore()
 
@@ -15,6 +16,7 @@ export const useLocalStorage = () => {
   const emitter = useEmitter()
   const storage = useStorage()
   const plugin = usePlugin()
+  const { isLoading } = useNProgress()
   const { t } = i18n.global
 
   const set = (obj: any, name: string) => {
@@ -37,11 +39,17 @@ export const useLocalStorage = () => {
     if (PROJECT.name === env.projectEmpty()) return
 
     if (event) {
-      storage.normalize().then(() => {
-        setProject(storage.getProjectObject())
+      isLoading.value = true
+      storage
+        .normalize()
+        .then(() => {
+          setProject(storage.getProjectObject())
 
-        toast.success(t('toast.project.save'))
-      })
+          toast.success(t('toast.project.save'))
+        })
+        .finally(() => {
+          isLoading.value = false
+        })
 
       return
     }

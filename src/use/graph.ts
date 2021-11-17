@@ -7,6 +7,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useProjectStore } from '@/store/project'
 import { ID } from '../types/utils'
 import { useStorage } from './storage/storage'
+import { useNProgress } from '@vueuse/integrations'
 
 export const useGraph = () => {
   const CONTEXT = useContextStore()
@@ -15,6 +16,7 @@ export const useGraph = () => {
 
   const scroll = useScroll()
   const storage = useStorage()
+  const { isLoading } = useNProgress()
   const breakpoints = useBreakpoints(breakpointsTailwind)
 
   const utils = () => {
@@ -26,15 +28,21 @@ export const useGraph = () => {
   }
 
   const load = async (go: ID, page: ContextState) => {
-    storage.normalize().then(async () => {
-      // load page target
-      CONTEXT.load(page)
+    isLoading.value = true
+    storage
+      .normalize()
+      .then(async () => {
+        // load page target
+        CONTEXT.load(page)
 
-      PROJECT.pageLoaded = page.id
-      await nextTick
-      // force scroll to element clicked in aside graph
-      scroll.to(String(go))
-    })
+        PROJECT.pageLoaded = page.id
+        await nextTick
+        // force scroll to element clicked in aside graph
+        scroll.to(String(go))
+      })
+      .finally(() => {
+        isLoading.value = false
+      })
   }
 
   const to = (ind: ID, page: ContextState) => {

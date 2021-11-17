@@ -11,6 +11,7 @@ import usePlugin from '../plugin/core'
 import { useProject } from '../project'
 import { ProjectObject } from '@/types/project'
 import { useStorage } from './storage'
+import { useNProgress } from '@vueuse/integrations'
 
 export const useDropbox = () => {
   const PROJECT = useProjectStore()
@@ -22,6 +23,7 @@ export const useDropbox = () => {
   const storage = useStorage()
   const plugin = usePlugin()
   const project = useProject()
+  const { isLoading } = useNProgress()
   const { t } = i18n.global
 
   const loadContext = async (context: ProjectObject) => {
@@ -44,6 +46,8 @@ export const useDropbox = () => {
     toast.info(t('toast.generics.load'))
 
     storage.normalize().then(() => {
+      isLoading.value = true
+
       dbx
         .filesUpload({
           path,
@@ -52,6 +56,8 @@ export const useDropbox = () => {
         .then(() => {
           toast.success(t('toast.project.save'))
           plugin.emit('plugin-dropbox-save', 'success')
+
+          isLoading.value = false
         })
         .catch(() => {
           dbx
@@ -67,15 +73,18 @@ export const useDropbox = () => {
                 .then(() => {
                   toast.success(t('toast.project.save'))
                   plugin.emit('plugin-dropbox-save', 'success')
+                  isLoading.value = false
                 })
                 .catch(() => {
                   toast.error(t('toast.project.error'))
                   plugin.emit('plugin-dropbox-save', 'error')
+                  isLoading.value = false
                 })
             })
             .catch(() => {
               toast.error(t('toast.project.error'))
               plugin.emit('plugin-dropbox-save', 'error')
+              isLoading.value = false
             })
         })
     })
@@ -95,6 +104,9 @@ export const useDropbox = () => {
         const dbx = new DBX({
           accessToken: AUTH.dropbox.accessToken as string,
         })
+
+        isLoading.value = true
+
         dbx
           .filesDownload({ path: file.id })
           .then(async (data: DropboxResponse<any>) => {
