@@ -8,14 +8,12 @@ import { useEnv } from './env'
 import i18n from '@/lang'
 import { useLoggerStore } from '@/store/logger'
 import { useAuthStore } from '@/store/auth'
-import { useEditorStore } from '@/store/editor'
 import { PluginRegister } from '@/plugin/core'
 import { Plugins } from '@/types/plugin/core'
 
 export const useStart: Callback<void> = () => {
   const LOGGER = useLoggerStore()
   const AUTH = useAuthStore()
-  const EDITOR = useEditorStore()
 
   const route = useRoute()
   const router = useRouter()

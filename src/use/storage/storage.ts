@@ -139,9 +139,9 @@ export const useStorage = () => {
         encryption: false,
       }
     }
-    if(!_.editor.actives.entity) {
+    if (!_.editor.actives.entity) {
       _.editor.actives.entity = {
-        index: 0
+        index: 0,
       }
     }
     _.project?.pages.forEach((target: any) => {
