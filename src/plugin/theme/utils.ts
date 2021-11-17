@@ -1,4 +1,5 @@
 import { BetterWriteThemes } from '@/types/editor'
+import { setDefaultColorTheme } from './external'
 
 export const ThemeNormalize = (theme: BetterWriteThemes) => {
   return (
@@ -8,6 +9,6 @@ export const ThemeNormalize = (theme: BetterWriteThemes) => {
       'BetterWrite - Rise': 'betterwrite-rise',
       'BetterWrite - Ascend': 'betterwrite-ascend',
       'BetterWrite - Harmonic': 'betterwrite-harmonic',
-    }[theme] || 'betterwrite-dark'
+    }[theme] || setDefaultColorTheme()
   )
 }

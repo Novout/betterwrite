@@ -3,8 +3,9 @@ import { onAfterMounted } from '../core/cycle'
 import { ThemeNormalize } from './utils'
 import { useProjectStore } from '@/store/project'
 import { useEnv } from '@/use/env'
-import { useDefines } from '../../use/defines'
+import { useDefines } from '@/use/defines'
 import { BetterWriteThemes } from '@/types/editor'
+import { ColorSchemeType, usePreferredColorScheme } from '@vueuse/core'
 
 export const setTheme = () => {
   onAfterMounted(() => {
@@ -17,16 +18,34 @@ export const setThemeInvokate = () => {
   const PROJECT = useProjectStore()
 
   const env = useEnv()
-  const defines = useDefines()
 
   let theme = EDITOR.configuration.theme
 
-  if (PROJECT.name === env.projectEmpty()) theme = defines.themes()[1]
+  if (PROJECT.name === env.projectEmpty()) theme = setDefaultColorTheme()
 
   const value = ThemeNormalize(theme)
 
   document.body.removeAttribute('class')
   document.body.classList.add(value)
+}
+
+export const setDefaultColorTheme = (): BetterWriteThemes => {
+  const defines = useDefines()
+  const color = usePreferredColorScheme()
+
+  let _color = defines.themes()[1] // for any case, dark theme
+
+  switch (color.value) {
+    case 'light':
+      _color = defines.themes()[0] // white theme
+      break
+    case 'dark':
+    case 'no-preference':
+      _color = defines.themes()[1] // dark theme
+      break
+  }
+
+  return _color
 }
 
 export const setEditorLogo = (theme: BetterWriteThemes) => {
