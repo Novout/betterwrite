@@ -35,7 +35,13 @@ export const useFactory = () => {
         raw: env.emptyLine(),
         createdAt: format.actually(),
         updatedAt: format.actually(),
-        external: {},
+        external: {
+          comment: {
+            raw: '',
+            updatedAt: format.actually(),
+            createdAt: format.actually(),
+          },
+        },
       }
     }
 

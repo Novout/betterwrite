@@ -8,6 +8,7 @@ import { ProjectObject } from '@/types/project'
 import { nextTick } from 'vue'
 import useEmitter from '../emitter'
 import { useDefines } from '../defines'
+import { useFormat } from '../format'
 
 export const useStorage = () => {
   const PROJECT = useProjectStore()
@@ -132,13 +133,29 @@ export const useStorage = () => {
         },
       }
     }
-
     if (!_.pdf.styles.switcher.encryption) {
       _.pdf.styles.switcher = {
         ..._.pdf.styles.switcher,
         encryption: false,
       }
     }
+
+    _.project?.pages.forEach((target: any) => {
+      if (
+        target['entities'].type === 'paragraph' &&
+        !target['entities'].external &&
+        !target['entities'].external.comment
+      )
+        return
+
+      target['entities'].external = {
+        comment: {
+          raw: '',
+          updatedAt: useFormat().actually(),
+          createdAt: useFormat().actually(),
+        },
+      }
+    })
 
     return _
   }
@@ -161,11 +178,14 @@ export const useStorage = () => {
     emitter.emit('entity-edit-save')
     // force last input in emit content
     emitter.emit('entity-input-force-enter')
+    // force entity paragraph comment a save / close comment modal
+    emitter.emit('entity-external-comment-save')
 
     await nextTick
     // close all entities for not breaking same index in next page
     emitter.emit('entity-edit-reset')
 
+    // for lose ticket ms
     await nextTick
   }
 

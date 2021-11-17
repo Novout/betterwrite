@@ -11,8 +11,13 @@ export interface EditorState {
   actives: EditorStateActives
 }
 
+export interface EditorStateActivesEntity {
+  index: number
+}
+
 export interface EditorStateActives {
   text: EditorStateActivesText
+  entity: EditorStateActivesEntity
 }
 
 export interface EditorStateActivesText {

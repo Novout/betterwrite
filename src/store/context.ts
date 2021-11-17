@@ -57,6 +57,37 @@ export const useContextStore = defineStore('context', {
         this.entities[index].updatedAt = useFormat().actually()
       }
     },
+    updateCommentInPage({ entity, raw }: ContextActionsUpdateInPage) {
+      if (!entity || !entity.raw) return
+
+      const index = this.entities.indexOf(entity)
+
+      if (index === -1 || raw === this.entities[index].external?.comment?.raw)
+        return
+
+      if (
+        !this.entities[index].external ||
+        !this.entities[index].external?.comment
+      ) {
+        this.entities[index].external = {
+          comment: {
+            raw,
+            createdAt: useFormat().actually(),
+            updatedAt: useFormat().actually(),
+          },
+        }
+
+        return
+      }
+
+      // @ts-ignore
+      if (this.entities[index].external.comment.raw !== raw) {
+        // @ts-ignore
+        this.entities[index].external.comment.raw = raw
+        // @ts-ignore
+        this.entities[index].external.comment.updatedAt = useFormat().actually()
+      }
+    },
     removeInPage(entity: Entity) {
       if (!entity || !entity.raw) return
 

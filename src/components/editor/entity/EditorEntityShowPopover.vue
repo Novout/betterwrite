@@ -267,6 +267,29 @@
         />
       </svg>
     </HeroIcon>
+    <HeroIcon
+      v-if="props.entity.type === 'paragraph'"
+      class="wb-icon ml-0.5"
+      @mouseenter.prevent.stop="onCommentEntityWrapper"
+      @click.prevent.stop="onClickComment"
+    >
+      <svg
+        class="h-5 w-5"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        width="32"
+        height="32"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4l-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+          fill="currentColor"
+        ></path>
+      </svg>
+    </HeroIcon>
   </section>
   <section
     v-if="EDITOR.configuration.entity.updateTime"
@@ -299,6 +322,8 @@
   import usePlugin from '@/use/plugin/core'
   import useEmitter from '@/use/emitter'
   import { useEditorStore } from '@/store/editor'
+  import { useAbsoluteStore } from '@/store/absolute'
+  import { useEntity } from '@/use/entity'
 
   const props = defineProps({
     entity: {
@@ -309,10 +334,12 @@
 
   const CONTEXT = useContextStore()
   const EDITOR = useEditorStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const format = useFormat()
   const plugin = usePlugin()
   const emitter = useEmitter()
+  const entity = useEntity()
   const { t } = useI18n()
 
   const state = reactive({
@@ -320,6 +347,7 @@
     switcher: false as boolean,
     adjust: false as boolean,
     image: false as boolean,
+    comment: false as boolean,
   })
 
   const image = reactive({
@@ -390,6 +418,20 @@
     state.switcher = false
     state.adjust = false
     state.image = false
+  }
+
+  const onCommentEntityWrapper = () => {
+    state.comment = !state.comment
+    state.new = false
+    state.switcher = false
+    state.adjust = false
+    state.image = false
+  }
+
+  const onClickComment = () => {
+    EDITOR.actives.entity.index = entity.utils().getIndex(props.entity)
+
+    ABSOLUTE.entity.comment = true
   }
 
   const onReset = () => {

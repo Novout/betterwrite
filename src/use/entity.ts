@@ -101,6 +101,10 @@ export const useEntity = () => {
       return raw
     }
 
+    const getIndex = (entity: Entity) => {
+      return CONTEXT.entities.indexOf(entity)
+    }
+
     const isText = (type: EntityType) => {
       return (
         type === 'paragraph' ||
@@ -114,6 +118,7 @@ export const useEntity = () => {
       entry,
       isFixed,
       getNamesByTheContent,
+      getIndex,
       isLink,
       isImageCommand,
       isPageBreak,

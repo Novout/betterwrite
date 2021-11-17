@@ -29,6 +29,7 @@ export type VueEmitterName =
   | 'entity-edit-save'
   | 'entity-edit-open'
   | 'entity-hover'
+  | 'entity-external-comment-save'
   | 'project-save'
   | 'pdf-preview-exists'
 

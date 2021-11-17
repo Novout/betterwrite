@@ -55,6 +55,9 @@ export const useEditorStore = defineStore('editor', {
         },
       },
       actives: {
+        entity: {
+          index: 0,
+        },
         text: {
           selection: {
             content: '',

@@ -22,6 +22,10 @@ export interface AbsoluteStateAuth {
   dropbox: boolean
 }
 
+export interface AbsoluteStateEntity {
+  comment: boolean
+}
+
 export interface AbsoluteState {
   commands: boolean
   project: AbsoluteStateProject
@@ -32,4 +36,5 @@ export interface AbsoluteState {
   logger: boolean
   pdf: AbsoluteStatePDF
   auth: AbsoluteStateAuth
+  entity: AbsoluteStateEntity
 }

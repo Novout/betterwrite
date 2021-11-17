@@ -56,8 +56,15 @@ export interface EntityShowEditOptions {
   cursor?: boolean
 }
 
+export interface EntityExternalComment {
+  raw: string
+  updatedAt: string
+  createdAt: string
+}
+
 export interface EntityExternal {
   image?: EntityExternalImage
+  comment?: EntityExternalComment
 }
 
 export interface EntityExternalImageSize {

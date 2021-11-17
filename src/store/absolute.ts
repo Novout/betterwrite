@@ -27,6 +27,9 @@ export const useAbsoluteStore = defineStore('absolute', {
       },
       commands: false,
       load: false,
+      entity: {
+        comment: false,
+      },
     }
   },
 })
