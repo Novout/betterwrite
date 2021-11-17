@@ -14,7 +14,7 @@ Here will contain all the features that Better Write offers.
 
 ### Options
 
-- ✅ - Dark Theme
+- ✅ - Custom Themes
 - ✅ - i18n Locale
 - ✅ - Auto Save
 - ❌ - Cloud Auto Save
@@ -25,7 +25,7 @@ Here will contain all the features that Better Write offers.
 ### Project
 
 - ✅ - Create Project
-- ❌ - Change Project
+- ✅ - Change Project
 - ✅ - Save Project
 - ➖ - Delete Project
 - ✅ - Graph Aside Content
@@ -51,7 +51,6 @@ Here will contain all the features that Better Write offers.
 - ❌ - Emoji's
 - ✅ - Break Page
 - ✅ - Line Page
-- ➖ - Helper Container
 - ➖ - Finder Text
 - ➖ - Replace Text
 - ✅ - Navigator Grammar
@@ -61,7 +60,7 @@ Here will contain all the features that Better Write offers.
 ### PDF
 
 - ✅ - Page Defines
-- ❌ - Security Defines
+- ✅ - Security Defines
 - ✅ - Preview
 - ✅ - Generate
 
@@ -69,7 +68,7 @@ Here will contain all the features that Better Write offers.
 
 - ➖ - Simple Cover
 - ✅ - Image Cover
-- ❌ - Simple Summary
+- ✅ - Simple Summary
 - ❌ - Define Summary
 - ❌ - Dynamic Summary
 - ✅ - Background Image
@@ -80,8 +79,8 @@ Here will contain all the features that Better Write offers.
 - ➖ - Paragraph Links
 - ✅ - Heading's
 - ❌ - Custom Entity
-- ➖ - Footer
-- ❌ - Header
+- ✅ - Footer
+- ✅ - Header
 
 ### Externals
 
