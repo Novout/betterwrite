@@ -54,11 +54,20 @@
     </HeroIcon>
     <HeroIcon
       v-if="update"
-      :class="[
-        !update
-          ? 'wb-icon no-drag mb-2 ml-1'
-          : 'text-theme-editor-electron-update-text hover:theme-editor-electron-update-text-hover active:theme-editor-electron-update-text-active no-drag cursor-pointer mb-2 ml-1',
-      ]"
+      v-tooltip.bottom-end="{
+        content: t('desktop.update.tooltip'),
+        theme: 'better-write',
+      }"
+      class="
+        wb-icon
+        text-theme-editor-electron-update-text
+        hover:theme-editor-electron-update-text-hover
+        active:theme-editor-electron-update-text-active
+        no-drag
+        cursor-pointer
+        mb-2
+        ml-1'
+      "
       @click.prevent.stop="onUpdate"
     >
       <svg
@@ -83,9 +92,12 @@
 <script setup lang="ts">
   import { useEditor } from '@/use/editor'
   import { ref } from 'vue'
+  import { useI18n } from 'vue-i18n'
 
   const editor = useEditor()
   const update = ref<boolean>(false)
+
+  const { t } = useI18n()
 
   const onClose = () => {
     window.close()

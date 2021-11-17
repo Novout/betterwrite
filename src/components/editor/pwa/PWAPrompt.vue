@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="offlineReady || needRefresh"
+    v-if="offlineReady && needRefresh"
     class="
       fixed
       top-0

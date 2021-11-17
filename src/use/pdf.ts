@@ -766,7 +766,7 @@ export const usePDF = () => {
 
     pdf.download(`${PROJECT.nameRaw}.pdf`, () => {
       toast.success(t('toast.pdf.create'))
-      
+
       ABSOLUTE.load = false
 
       isLoading.value = false
