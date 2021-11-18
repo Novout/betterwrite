@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.2](https://github.com/Novout/better-write/compare/v0.9.1...v0.9.2) (2021-11-18)
+
+
+### Features
+
+* **desktop:** check for updates frequently ([dfef8be](https://github.com/Novout/better-write/commits/dfef8beb91b0abd1ae84413bc7f1ed3238f43dd6))
+* **desktop:** updater countdown tooltip ([1c85011](https://github.com/Novout/better-write/commits/1c850117863406589a3c9ef765319304cb2b9c7e))
+* **editor:** normalize vhtml tags ([1c91cb6](https://github.com/Novout/better-write/commits/1c91cb66dd395c1ea37cb42f4720e31f85f64670))
+
+
+### Bug Fixes
+
+* **desktop:** update correct timeout in shown tooltip ([87a6eab](https://github.com/Novout/better-write/commits/87a6eab699753ac0cb065589d2d1e798e75ffbc0))
+
+
+### Style
+
+* **editor:** theme addons ([39728af](https://github.com/Novout/better-write/commits/39728af364b1817cf31dd0f30073ed57fbed3933))
+
+
+### Test
+
+* raw v2 html and image ([e78288e](https://github.com/Novout/better-write/commits/e78288e64d6c6ac484116c639da735dbfcce4c84))
+
 ### [0.9.1](https://github.com/Novout/better-write/compare/v0.9.0...v0.9.1) (2021-11-17)
 
 
