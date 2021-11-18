@@ -1,5 +1,5 @@
 import { Entity } from '@/types/context'
-import { V2RawApply, V2RawSet } from '@/types/raw'
+import { V2RawApply, V2RawNormalizeType, V2RawSet } from '@/types/raw'
 import { useUtils } from './utils'
 
 export const bold = () => {
@@ -546,9 +546,9 @@ export const useRaw = () => {
           return make().image(entity)
         }
 
-        if (entity.type !== 'paragraph') return entity.raw
+        // if (entity.type !== 'paragraph') return entity.raw
 
-        return entity.raw
+        return normalize(entity.raw, 'editor')
       }
 
       const pdf = (raw: string): Array<any> => {
@@ -622,7 +622,36 @@ export const useRaw = () => {
       return { apply, editor, pdf }
     }
 
-    return { html, caret, apply, validate, purge, make, style }
+    const normalize = (
+      content: string,
+      type: V2RawNormalizeType = 'simple'
+    ) => {
+      const BWTags = (str: string) => {
+        return str
+          .replaceAll(html().bold().open(), '')
+          .replaceAll(html().bold().close(), '')
+          .replaceAll(html().italic().open(), '')
+          .replaceAll(html().italic().close(), '')
+      }
+
+      const EditorTags = (str: string) => {
+        return str.replaceAll(/<(?!\/?span(?=>|\s?.*>))\/?.*?>/g, '')
+      }
+
+      const All = (str: string) => {
+        return str.replaceAll(/<\/?[^>]+(>|$)/g, '')
+      }
+
+      if (type === 'simple') {
+        return BWTags(content)
+      } else if (type === 'editor') {
+        return EditorTags(content)
+      } else if (type === 'full') {
+        return All(content)
+      }
+    }
+
+    return { html, caret, apply, validate, purge, make, style, normalize }
   }
 
   return { v1, v2 }

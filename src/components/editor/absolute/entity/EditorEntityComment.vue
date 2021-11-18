@@ -29,7 +29,7 @@
             active:text-theme-editor-external-comment-title-active
           "
         >
-          {{ entity.raw }}
+          {{ raw.v2().normalize(entity.raw) }}
         </h2>
         <HeroIcon class="text-2xs wb-icon" @click.prevent="onClose">
           <svg
@@ -82,6 +82,7 @@
   import { useEnv } from '@/use/env'
   import { useProjectStore } from '@/store/project'
   import useEmitter from '@/use/emitter'
+  import { useRaw } from '@/use/raw'
 
   const ABSOLUTE = useAbsoluteStore()
   const CONTEXT = useContextStore()
@@ -90,6 +91,7 @@
 
   const env = useEnv()
   const emitter = useEmitter()
+  const raw = useRaw()
 
   const onTextArea = ref<boolean>(false)
 
