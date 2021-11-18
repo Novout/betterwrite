@@ -1,0 +1,13 @@
+/* v-tooltip */
+
+.v-popper--theme-better-write {
+  color: var(--theme-editor-tooltip-text);
+  background: var(--theme-editor-tooltip-background);
+  border: 1px solid var(--theme-editor-tooltip-border);
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+}
+
+.v-popper--theme-better-write .v-popper__arrow {
+  border-color: var(--theme-editor-tooltip-text);
+}

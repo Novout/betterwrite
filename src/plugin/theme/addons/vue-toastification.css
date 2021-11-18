@@ -1,0 +1,47 @@
+.Vue-Toastification__toast--default {
+  background-color: var(--theme-toast-default-background) !important;
+  color: var(--theme-toast-default-text) !important;
+}
+.Vue-Toastification__toast--info {
+  background-color: var(--theme-toast-info-background) !important;
+  color: var(--theme-toast-info-text) !important;
+}
+.Vue-Toastification__toast--success {
+  background-color: var(--theme-toast-success-background) !important;
+  color: var(--theme-toast-success-text) !important;
+}
+.Vue-Toastification__toast--error {
+  background-color: var(--theme-toast-error-background) !important;
+  color: var(--theme-toast-error-text) !important;
+}
+.Vue-Toastification__toast--warning {
+  background-color: var(--theme-toast-warning-background) !important;
+  color: var(--theme-toast-warning-text) !important;
+}
+.Vue-Toastification__close-button {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  background: transparent;
+  outline: none;
+  border: none;
+  padding: 0;
+  padding-left: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  align-items: center;
+  color: var(--theme-toast-default-close) !important;
+  opacity: 0.3;
+  transition: visibility 0s, opacity 0.2s linear;
+}
+.Vue-Toastification__progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  z-index: 10000;
+  background-color: var(--theme-toast-default-progress) !important;
+  transform-origin: left;
+  animation: scale-x-frames linear 1 forwards;
+}
