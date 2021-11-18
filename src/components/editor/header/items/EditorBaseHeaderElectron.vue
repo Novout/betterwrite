@@ -93,7 +93,7 @@
 <script setup lang="ts">
   import { useEditor } from '@/use/editor'
   import isElectron from 'is-electron'
-  import { ref, onMounted } from 'vue'
+  import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const editor = useEditor()
@@ -118,12 +118,11 @@
     // (if) for dev tests
     window.ipcRenderer.receive('update-downloaded', () => {
       update.value = true
+      shown.value = true
+
+      setTimeout(() => {
+        shown.value = false
+      }, 5000)
     })
   }
-
-  onMounted(() => {
-    setTimeout(() => {
-      shown.value = false
-    }, 5000)
-  })
 </script>
