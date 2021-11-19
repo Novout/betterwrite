@@ -2252,6 +2252,14 @@
     "@vueuse/shared" "6.9.1"
     vue-demi "*"
 
+"@vueuse/core@6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-6.9.2.tgz#76b16d01f33cf367dd1a2d7f2e31d106443ceb8a"
+  integrity sha512-FRwl4ccSFuHZBHLGgS9TMv/+Dd6XFaL4o9nph2qtgQIV+z29RBFokw08XjHfykiENRzB01MjYHJ7iRUnsIFQXg==
+  dependencies:
+    "@vueuse/shared" "6.9.2"
+    vue-demi "*"
+
 "@vueuse/core@^6.5.3":
   version "6.6.1"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-6.6.1.tgz#ccf61e1ee62bec2db6156efbb0ae635be3c32e4c"
@@ -2265,13 +2273,13 @@
   resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.6.0.tgz#5584b1f724327cfce941c42efec9e590f5799329"
   integrity sha512-fi7ZjkMpEAUtTT6iR5wgL2HkX1+3zbrmbpcwU//RgJIWEr5b42jk8E9yOheaC2dYAAHzelAllVpX0pDmhcTXuw==
 
-"@vueuse/integrations@6.9.1":
-  version "6.9.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-6.9.1.tgz#7c25735bd40458b64d5608dc471df708e09d8f93"
-  integrity sha512-9bpVWCkFMpTqFfQDVs1YCPvrTTa0EZ6vyrhYNhOynh+TN16xnZjbsHDfBMhtbLN2dPMk63tfkHuB/5wVdsw5DA==
+"@vueuse/integrations@6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-6.9.2.tgz#b729ff1cd453db0fe5b312364f182d673e2425b4"
+  integrity sha512-YZNG8WXVV1s6eW9xwoBqwsiqLDVH8o1V+fEaM1nZyCUcaSWyBTgcjuRbFuiJ/U0T9v+mkUVkIwDuRRXWZdUblw==
   dependencies:
-    "@vueuse/core" "6.9.1"
-    "@vueuse/shared" "6.9.1"
+    "@vueuse/core" "6.9.2"
+    "@vueuse/shared" "6.9.2"
     vue-demi "*"
   optionalDependencies:
     axios "^0.23.0"
@@ -2303,6 +2311,13 @@
   version "6.9.1"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-6.9.1.tgz#b5ac81da7cc5846a35dbc71ce7dfd4a78506a0d7"
   integrity sha512-nQh+ayxkeCKUU9MZjyQpE7KfOb18e/QOHolOE2ZK5dpoHzCZK7MSXzgDtvb9omGkgK0mjXlLSJsVdGhG+QW7Aw==
+  dependencies:
+    vue-demi "*"
+
+"@vueuse/shared@6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-6.9.2.tgz#97e4369fa7262ebc96fe1d6e210268f30b037005"
+  integrity sha512-lAiMh6XROs0kSKVd0Yb/6GKoQMxC1fYrFDi6opvQWISPtcqRNluRrQxLUZ3WTI78ovtoKRLktjhkFAtydcfFDg==
   dependencies:
     vue-demi "*"
 
