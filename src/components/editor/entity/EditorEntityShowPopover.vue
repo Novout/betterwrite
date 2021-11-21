@@ -267,29 +267,53 @@
         />
       </svg>
     </HeroIcon>
-    <HeroIcon
-      v-if="props.entity.type === 'paragraph'"
-      class="wb-icon ml-0.5"
-      @mouseenter.prevent.stop="onCommentEntityWrapper"
-      @click.prevent.stop="onClickComment"
-    >
-      <svg
-        class="h-5 w-5"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        aria-hidden="true"
-        role="img"
-        width="32"
-        height="32"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 24 24"
+    <section v-if="props.entity.type === 'paragraph'">
+      <HeroIcon
+        v-if="
+          props.entity.external?.comment?.raw === '' ||
+          !props.entity.external?.comment?.raw
+        "
+        class="wb-icon ml-0.5"
+        @mouseenter.prevent.stop="onCommentEntityWrapper"
+        @click.prevent.stop="onClickComment"
       >
-        <path
-          d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4l-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
-          fill="currentColor"
-        ></path>
-      </svg>
-    </HeroIcon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          class="h-5 w-5"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29H12m1-6v3.08L16.08 17H21V7H7v10h6M3 15H1V3a2 2 0 0 1 2-2h16v2H3v12m6-6h10v2H9V9m0 4h8v2H9v-2z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </HeroIcon>
+      <HeroIcon
+        v-else
+        class="wb-icon ml-0.5"
+        @mouseenter.prevent.stop="onCommentEntityWrapper"
+        @click.prevent.stop="onClickComment"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          class="h-5 w-5"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M3 15H1V3a2 2 0 0 1 2-2h16v2H3v12m9 8a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29H12M9 9v2h10V9H9m0 4v2h8v-2H9z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </HeroIcon>
+    </section>
   </section>
   <section
     v-if="EDITOR.configuration.entity.updateTime"
