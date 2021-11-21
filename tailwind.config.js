@@ -108,6 +108,8 @@ module.exports = {
       'theme-editor-material-text': 'var(--theme-editor-material-text)',
       'theme-editor-material-text-hover': 'var(--theme-editor-material-text-hover)',
       'theme-editor-material-text-active': 'var(--theme-editor-material-text-active)',
+      'theme-editor-material-boolean-background': 'var(--theme-editor-material-boolean-background)',
+      'theme-editor-material-boolean-rounded-background': 'var(--theme-editor-material-boolean-rounded-background)',
       'theme-editor-extras-switcher-background': 'var(--theme-editor-extras-switcher-background)',
       'theme-editor-extras-switcher-background-hover': 'var(--theme-editor-extras-switcher-background-hover)',
       'theme-editor-extras-switcher-background-active': 'var(--theme-editor-extras-switcher-background-active)',

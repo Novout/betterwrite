@@ -98,6 +98,8 @@
   --theme-editor-material-text: #e1e1e1;
   --theme-editor-material-text-hover: #e1e1e1;
   --theme-editor-material-text-active: #e1e1e1;
+  --theme-editor-material-boolean-background: #8ab6ff;
+  --theme-editor-material-boolean-rounded-background: #373d66;
   --theme-editor-extras-switcher-background: #2f3357;
   --theme-editor-extras-switcher-background-hover: #2f3357;
   --theme-editor-extras-switcher-background-active: #2f3357;
