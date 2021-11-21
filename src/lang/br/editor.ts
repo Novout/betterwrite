@@ -246,6 +246,7 @@ export default {
       dark: 'Modo Escuro',
       lang: 'Linguagem',
       draggable: 'Arrastável',
+      bars: 'Barras Laterias',
       autosave: 'Salvamento Automático (em minutos)',
       entity: {
         title: 'Editor',

@@ -26,6 +26,9 @@
   --theme-aside-graph-background: none;
   --theme-aside-graph-background-hover: #2f3357;
   --theme-aside-graph-background-active: #161829;
+  --theme-editor-full-background: #2f3357;
+  --theme-editor-full-background-hover: #2f3357;
+  --theme-editor-full-background-active: #2f3357;
   --theme-editor-background: #373d66;
   --theme-editor-background-hover: #373d66;
   --theme-editor-background-active: #373d66;

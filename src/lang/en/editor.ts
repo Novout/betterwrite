@@ -246,6 +246,7 @@ export default {
       dark: 'Dark Mode',
       lang: 'Language',
       draggable: 'Draggable',
+      bars: 'Sidebars',
       autosave: 'Auto Save (in minutes)',
       entity: {
         title: 'Editor',

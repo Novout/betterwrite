@@ -30,6 +30,9 @@
   --theme-aside-graph-background: none;
   --theme-aside-graph-background-hover: #1f2937;
   --theme-aside-graph-background-active: #111827;
+  --theme-editor-full-background: #1f2937;
+  --theme-editor-full-background-hover: #1f2937;
+  --theme-editor-full-background-active: #1f2937;
   --theme-editor-background: #374151;
   --theme-editor-background-hover: #374151;
   --theme-editor-background-active: #374151;

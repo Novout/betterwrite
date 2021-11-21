@@ -7,6 +7,10 @@
       <p>{{ t('editor.aside.configuration.entity.updateTime') }}</p>
       <InputBoolean v-model="EDITOR.configuration.entity.updateTime" />
     </div>
+    <div class="wb-configuration">
+      <p>{{ t('editor.aside.configuration.bars') }}</p>
+      <InputBoolean v-model="EDITOR.configuration.bars" />
+    </div>
   </div>
 </template>
 

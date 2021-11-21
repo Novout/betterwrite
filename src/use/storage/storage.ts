@@ -161,6 +161,13 @@ export const useStorage = () => {
       }
     })
 
+    // <= 0.9.2
+    if (!_.editor.configuration.entity) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        bars: false,
+      }
+    }
     return _
   }
 
