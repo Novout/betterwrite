@@ -6,7 +6,8 @@ module.exports = {
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-     'raleway': ['Raleway', 'ui-sans-serif', 'system-ui'],
+      'poppins': ['Poppins', 'ui-sans-serif', 'system-ui'],
+      'raleway': ['Raleway', 'ui-sans-serif', 'system-ui'],
     },
     colors: {
       'theme-transparent': 'var(--theme-transparent)',

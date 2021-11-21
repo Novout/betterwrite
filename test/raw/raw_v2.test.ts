@@ -367,7 +367,7 @@ describe('Raw v2 - Make', () => {
 
   it('should create image', () => {
     const file_name = 'foo.png'
-    
+
     expect(
       make.image({
         type: 'image',
@@ -379,9 +379,9 @@ describe('Raw v2 - Make', () => {
             name: file_name,
             size: {
               width: 0,
-              height: 0
+              height: 0,
             },
-            alignment: 'full'
+            alignment: 'full',
           },
         },
       })

@@ -17,7 +17,7 @@
       :src="path"
       @click.stop.prevent="onClick"
     />
-    <p class="font-bold text-3xl md:text-xl text-theme-aside-logo-text">
+    <p class="font-raleway text-3xl md:text-xl text-theme-aside-logo-text">
       Better Write
     </p>
   </div>
