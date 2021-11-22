@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.3](https://github.com/Novout/better-write/compare/v0.9.2...v0.9.3) (2021-11-22)
+
+
+### Features
+
+* **editor:** sidebar option ([6a6f05f](https://github.com/Novout/better-write/commits/6a6f05f45421669796a9cea56ffc09716c1fb026))
+
+
+### Bug Fixes
+
+* **editor:** absolute items in correct width position center ([585f911](https://github.com/Novout/better-write/commits/585f911e7f0165dd94ff7e1d597dfa5047b394fe))
+* **editor:** aside graph in full width mobile items ([89cd4f1](https://github.com/Novout/better-write/commits/89cd4f13baf7c71aad0b7709fdce06cd9a1354cf))
+
+
+### Structure
+
+* **editor:** local fonts for offline font support ([3740ff4](https://github.com/Novout/better-write/commits/3740ff41259c46fa5ab93791bd160dbd37ba9d67))
+
+
+### Style
+
+* **editor:** comments icon ([7b8c294](https://github.com/Novout/better-write/commits/7b8c294acfb071d249d2e4c7c6635ec42c874157))
+* **theme:** input switcher specify colors ([c7d2426](https://github.com/Novout/better-write/commits/c7d2426e3e0e83fde62a672909efbdb74b20f842))
+
 ### [0.9.2](https://github.com/Novout/better-write/compare/v0.9.1...v0.9.2) (2021-11-18)
 
 
