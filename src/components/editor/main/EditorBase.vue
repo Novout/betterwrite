@@ -53,13 +53,11 @@
   import { useContextStore } from '@/store/context'
   import { useProjectStore } from '@/store/project'
   import { useEditorStore } from '@/store/editor'
-  import { useAbsoluteStore } from '@/store/absolute'
   import usePlugin from '@/use/plugin/core'
 
   const CONTEXT = useContextStore()
   const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
-  const ABSOLUTE = useAbsoluteStore()
 
   const project = useProject()
   const plugin = usePlugin()
