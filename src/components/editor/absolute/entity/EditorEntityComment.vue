@@ -102,7 +102,7 @@
   const input = ref(entity.external?.comment?.raw || '')
 
   const { style } = useDraggable(comment as any, {
-    initialValue: { x: window.innerWidth / 2, y: window.innerHeight / 3 },
+    initialValue: { x: window.innerWidth / 2 - 192, y: window.innerHeight / 3 },
     onStart() {
       if (onTextArea.value) return false
     },

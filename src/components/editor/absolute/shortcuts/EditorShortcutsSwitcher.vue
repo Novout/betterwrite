@@ -126,7 +126,7 @@
   const entry = ref<HTMLElement | null>(null)
 
   const { style } = useDraggable(switcher as any, {
-    initialValue: { x: window.innerWidth / 2, y: window.innerHeight / 2 },
+    initialValue: { x: window.innerWidth / 2 - 120, y: window.innerHeight / 2 },
   })
 
   const onClose = () => {
