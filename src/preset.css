@@ -1,15 +1,5 @@
 @import url('./plugin/theme/inject.css');
 
-@font-face {
-  font-family: 'Poppins';
-  src: url('./Poppins.ttf');
-}
-
-@font-face {
-  font-family: 'Raleway';
-  src: url('./Raleway.ttf');
-}
-
 * {
   margin: 0;
   padding: 0;
