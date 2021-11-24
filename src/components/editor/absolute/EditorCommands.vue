@@ -1,5 +1,15 @@
 <template>
   <div
+    v-motion
+    :initial="{ opacity: 0, y: 50 }"
+    :enter="{
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0,
+        duration: 150,
+      },
+    }"
     class="
       transform
       duration-700
@@ -11,7 +21,6 @@
       rounded
       transition
       shadow-2xl
-      infinite-scroll
     "
   >
     <EditorAbsoluteCommands
