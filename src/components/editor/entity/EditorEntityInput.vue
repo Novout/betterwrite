@@ -30,7 +30,7 @@
         EDITOR.styles.input.fontFamily,
         EDITOR.styles.input.fontColor,
       ]"
-      :placeholder="t('editor.text.placeholder.base')"
+      :placeholder="t('editor.text.placeholder.base', { prefix: EDITOR.configuration.commands.prefix })"
       @input="onInput"
       @keypress.enter.prevent="enterHandler"
       @keydown="onKeyboard"
@@ -121,34 +121,34 @@ import { useUtils } from '@/use/utils'
       paste.value = false
     }
 
-    if (_cmp.startsWith('/') && _cmp.length <= 2) {
+    if (_cmp.startsWith(EDITOR.configuration.commands.prefix) && _cmp.length <= 2) {
       commands.value = true
     } else {
       commands.value = false
     }
 
-    if (entity.utils().entry(_cmp, 'p')) {
+    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.paragraph.prefix)) {
       type.value = 'paragraph'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.paragraph')
       return
     }
 
-    if (entity.utils().entry(_cmp, 'h2')) {
+    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.headingTwo.prefix)) {
       type.value = 'heading-two'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.headingtwo')
       return
     }
 
-    if (entity.utils().entry(_cmp, 'h3')) {
+    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.headingThree.prefix)) {
       type.value = 'heading-three'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.headingthree')
       return
     }
 
-    if (entity.utils().entry(_cmp, 'bp')) {
+    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.pageBreak.prefix)) {
       cmp.value = ''
 
       const content = {
@@ -166,7 +166,7 @@ import { useUtils } from '@/use/utils'
       return
     }
 
-    if (entity.utils().entry(_cmp, 'lb')) {
+    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.lineBreak.prefix)) {
       cmp.value = ''
 
       const content = {
@@ -184,7 +184,7 @@ import { useUtils } from '@/use/utils'
       return
     }
 
-    if (entity.utils().entry(_cmp, 'im')) {
+    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.image.prefix)) {
       cmp.value = ''
 
       factory.simulate().file((content: Entity) => {
@@ -199,9 +199,11 @@ import { useUtils } from '@/use/utils'
       })
     }
 
-    if (_cmp.includes('/d')) {
-      const offset = _cmp.indexOf('/d') + 2
-      const sub = _cmp.replace('/d', '— ')
+    const dialogue = EDITOR.configuration.commands.prefix + EDITOR.configuration.commands.dialogue.prefix
+
+    if (_cmp.includes(dialogue)) {
+      const offset = _cmp.indexOf(dialogue) + dialogue.length
+      const sub = _cmp.replace(dialogue, EDITOR.configuration.commands.dialogue.value)
 
       input.value.setSelectionRange(offset, offset)
 

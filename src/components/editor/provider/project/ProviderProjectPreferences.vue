@@ -3,6 +3,7 @@
     <EditorProjectPreferencesDefault />
     <EditorProjectPreferencesConfiguration />
     <EditorProjectPreferencesEntity />
+    <EditorProjectPreferencesCommands />
     <EditorProjectPreferencesKeyboard />
   </div>
 </template>

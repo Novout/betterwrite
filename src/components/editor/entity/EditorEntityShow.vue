@@ -133,14 +133,21 @@
       index: _index.value,
     })
 
-    if (data.value.startsWith('/') && data.value.length <= 2) {
+    if (
+      data.value.startsWith(EDITOR.configuration.commands.prefix) &&
+      data.value.length <= 2
+    ) {
       scroll.to(`#entity-${_index.value}`, 'center')
       commands.value = true
     } else {
       commands.value = false
     }
 
-    if (entity.utils().entry(_data, 'p')) {
+    if (
+      entity
+        .utils()
+        .entry(_data, EDITOR.configuration.commands.paragraph.prefix)
+    ) {
       setData('')
 
       CONTEXT.newInExistentEntity({
@@ -149,7 +156,11 @@
       })
     }
 
-    if (entity.utils().entry(_data, 'h2')) {
+    if (
+      entity
+        .utils()
+        .entry(_data, EDITOR.configuration.commands.headingTwo.prefix)
+    ) {
       setData('')
 
       CONTEXT.newInExistentEntity({
@@ -158,7 +169,11 @@
       })
     }
 
-    if (entity.utils().entry(_data, 'h3')) {
+    if (
+      entity
+        .utils()
+        .entry(_data, EDITOR.configuration.commands.headingThree.prefix)
+    ) {
       setData('')
 
       CONTEXT.newInExistentEntity({
@@ -167,7 +182,11 @@
       })
     }
 
-    if (entity.utils().entry(_data, 'bp')) {
+    if (
+      entity
+        .utils()
+        .entry(_data, EDITOR.configuration.commands.pageBreak.prefix)
+    ) {
       setData('')
 
       CONTEXT.newInExistentEntity({
@@ -180,7 +199,11 @@
       emitter.emit('entity-not-mutate-down', props.entity)
     }
 
-    if (entity.utils().entry(_data, 'lb')) {
+    if (
+      entity
+        .utils()
+        .entry(_data, EDITOR.configuration.commands.lineBreak.prefix)
+    ) {
       setData('')
 
       CONTEXT.newInExistentEntity({
@@ -193,7 +216,9 @@
       emitter.emit('entity-not-mutate-down', props.entity)
     }
 
-    if (entity.utils().entry(_data, 'im')) {
+    if (
+      entity.utils().entry(_data, EDITOR.configuration.commands.image.prefix)
+    ) {
       setData('')
 
       factory.simulate().file(
@@ -215,9 +240,16 @@
       )
     }
 
-    if (_data.includes('/d')) {
-      const offset = _data.indexOf('/d') + 2
-      const sub = _data.replace('/d', '— ')
+    const dialogue =
+      EDITOR.configuration.commands.prefix +
+      EDITOR.configuration.commands.dialogue.prefix
+
+    if (_data.includes(dialogue)) {
+      const offset = _data.indexOf(dialogue) + dialogue.length
+      const sub = _data.replace(
+        dialogue,
+        EDITOR.configuration.commands.dialogue.value
+      )
 
       setData(sub)
 

@@ -107,7 +107,7 @@ export default {
   },
   text: {
     placeholder: {
-      base: `Insert '/' to display a list of commands.`,
+      base: `Insert '{prefix}' to display a list of commands.`,
       paragraph: 'Paragraph',
       headingone: 'H1',
       headingtwo: 'H2',
@@ -324,6 +324,7 @@ export default {
     },
     commands: {
       title: 'Commands',
+      prefix: 'Prefix',
       contents: [
         {
           tag: 'P',
