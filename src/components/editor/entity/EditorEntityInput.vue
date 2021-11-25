@@ -199,6 +199,16 @@ import { useUtils } from '@/use/utils'
       })
     }
 
+    if (_cmp.includes('/d')) {
+      const offset = _cmp.indexOf('/d') + 2
+      const sub = _cmp.replace('/d', '— ')
+
+      input.value.setSelectionRange(offset, offset)
+
+      // cmp.value = sub
+      return
+    }
+
     plugin.emit('plugin-input-watch-last', _cmp)
   })
 
@@ -320,7 +330,7 @@ import { useUtils } from '@/use/utils'
   }
 
   const onInput = () => {
-    useInput().expandTextArea(input.value)
+    
   }
 
   const onClick = () => {

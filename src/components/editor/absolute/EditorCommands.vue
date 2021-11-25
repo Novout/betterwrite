@@ -27,58 +27,193 @@
       :title="t('editor.aside.commands.contents[0].title')"
       :description="t('editor.aside.commands.contents[0].description')"
     >
-      <template #exib>
-        <p class="text-xl">{{ t('editor.aside.commands.contents[0].tag') }}</p>
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="26"
+          height="26"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M13 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4h-2v6H9V4h4m0 6a2 2 0 0 0 2-2a2 2 0 0 0-2-2h-2v4h2z"
+            fill="currentColor"
+          ></path>
+        </svg>
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[4].title')"
       :description="t('editor.aside.commands.contents[4].description')"
     >
-      <template #exib>
-        <p class="font-bold text-xl">
-          {{ t('editor.aside.commands.contents[4].tag') }}
-        </p>
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="26"
+          height="26"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <g fill="none">
+            <path
+              d="M10 4v7H4V4H2v16h2v-7h6v7h2V4h-2z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M22 11.75C22 9.679 20.21 8 18 8s-4 1.679-4 3.75h2.133l.007-.144C16.218 10.707 17.02 10 18 10c1.03 0 1.867.784 1.867 1.75c0 .439-.173.841-.459 1.148L14 18.444V20h8v-2h-4.497l3.516-3.79l.158-.18A3.59 3.59 0 0 0 22 11.75z"
+              fill="currentColor"
+            ></path>
+          </g>
+        </svg>
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[5].title')"
       :description="t('editor.aside.commands.contents[5].description')"
     >
-      <template #exib>
-        <p class="font-bold text-xl">
-          {{ t('editor.aside.commands.contents[5].tag') }}
-        </p>
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="26"
+          height="26"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <g fill="none">
+            <path
+              d="M10 4v7H4V4H2v16h2v-7h6v7h2V4h-2z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M21.729 10l.002-2H14.5v2h4.378l-3.176 3.283l1.407 1.515c.256-.118.546-.186.854-.186c1.04 0 1.884.768 1.884 1.714c0 .947-.844 1.715-1.884 1.715c-.917 0-1.681-.597-1.849-1.386L14 17.029C14.36 18.722 15.998 20 17.963 20C20.193 20 22 18.355 22 16.326c0-1.691-1.256-3.117-2.968-3.543L21.73 10z"
+              fill="currentColor"
+            ></path>
+          </g>
+        </svg>
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[6].title')"
       :description="t('editor.aside.commands.contents[6].description')"
     >
-      <template #exib>
-        <p class="text-xl">
-          {{ t('editor.aside.commands.contents[6].tag') }}
-        </p>
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="26"
+          height="26"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <g fill="none">
+            <path
+              d="M2.5 12a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5A.75.75 0 0 1 2.5 12z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M6.5 12a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5A.75.75 0 0 1 6.5 12z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M10.5 12a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M14.5 12a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M18.5 12a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M5 2a1 1 0 0 0-1 1v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a1 1 0 0 0-1-1H5z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M19 22a1 1 0 0 0 1-1v-4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4a1 1 0 0 0 1 1h14z"
+              fill="currentColor"
+            ></path>
+          </g>
+        </svg>
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[7].title')"
       :description="t('editor.aside.commands.contents[7].description')"
     >
-      <template #exib>
-        <p class="text-xl">
-          {{ t('editor.aside.commands.contents[7].tag') }}
-        </p>
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="23"
+          height="23"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 16 16"
+        >
+          <g fill="currentColor">
+            <path
+              d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V9H2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zM2 12h12v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2zM.5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H.5z"
+            ></path>
+          </g>
+        </svg>
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[8].title')"
       :description="t('editor.aside.commands.contents[8].description')"
     >
-      <template #exib>
-        <p class="text-xl">
-          {{ t('editor.aside.commands.contents[8].tag') }}
-        </p>
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="26"
+          height="26"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M13 9h5.5L13 3.5V9M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m0 18h12v-8l-4 4l-2-2l-6 6M8 9a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </template>
+    </EditorAbsoluteCommands>
+    <EditorAbsoluteCommands
+      :title="t('editor.aside.commands.contents[9].title')"
+      :description="t('editor.aside.commands.contents[9].description')"
+    >
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="26"
+          height="26"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 750 850"
+        >
+          <path
+            d="M185 448h325v163q0 19-13 32t-34 14H185L69 750v-93H46q-19 0-32-14T0 611V309q0-19 14-33t32-13h139v185zM695 8q20 0 33 13t13 34v301q0 19-13 32t-33 14h-23v93l-116-93H232V55q0-20 13-34t33-13h417z"
+            fill="currentColor"
+          ></path>
+        </svg>
       </template>
     </EditorAbsoluteCommands>
   </div>

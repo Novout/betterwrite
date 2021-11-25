@@ -50,7 +50,7 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import usePlugin from '@/use/plugin/core'
   import { ID } from '@/types/utils'
-  import { useUtils } from '../../../use/utils'
+  import { useUtils } from '@/use/utils'
 
   const props = defineProps({
     entity: {
@@ -213,6 +213,18 @@
           toast.error(t('toast.generics.error'))
         }
       )
+    }
+
+    if (_data.includes('/d')) {
+      const offset = _data.indexOf('/d') + 2
+      const sub = _data.replace('/d', '— ')
+
+      setData(sub)
+
+      raw
+        .v2()
+        .caret()
+        .set(input.value as HTMLDivElement, offset, true)
     }
   })
 

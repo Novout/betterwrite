@@ -370,6 +370,11 @@ export default {
           title: 'Imagem',
           description: '/im',
         },
+        {
+          tag: 'D',
+          title: 'Diálogo',
+          description: '/d',
+        },
       ],
     },
   },
