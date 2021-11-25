@@ -759,47 +759,49 @@ export const usePDF = () => {
     ;(pdfMake as any).fonts = set
   }
 
-  const create = (): void => {
+  const create = () => {
     setVfsFonts()
 
     const pdf = pdfMake.createPdf(doc({ final: true }))
 
-    pdf.download(`${PROJECT.nameRaw}.pdf`, () => {
-      toast.success(t('toast.pdf.create'))
-
+    new Promise((res) => {
+      pdf.download(`${PROJECT.nameRaw}.pdf`, () => {
+        res(toast.success(t('toast.pdf.create')))
+      })
+    }).finally(() => {
       ABSOLUTE.load = false
-
       isLoading.value = false
     })
   }
 
-  const preview = (input: HTMLElement): void => {
+  const preview = (input: HTMLElement) => {
     setVfsFonts()
 
-    const generator = pdfMake.createPdf(doc({ final: false }))
+    new Promise((res) => {
+      const generator = pdfMake.createPdf(doc({ final: false }))
 
-    generator.getDataUrl(async (dataUrl: any) => {
-      const iframe = document.createElement('iframe')
+      generator.getDataUrl(async (dataUrl: any) => {
+        const iframe = document.createElement('iframe')
 
-      emitter.emit('pdf-preview-exists')
+        emitter.emit('pdf-preview-exists')
 
-      await nextTick
+        await nextTick
 
-      iframe.src = dataUrl
-      iframe.style.width = '400px'
-      iframe.style.height = '500px'
-      iframe.style.overflow = 'hidden'
+        iframe.src = dataUrl
+        iframe.style.width = '400px'
+        iframe.style.height = '500px'
+        iframe.style.overflow = 'hidden'
 
-      let child = input.lastElementChild
-      while (child) {
-        input.removeChild(child)
-        child = input.lastElementChild
-      }
+        let child = input.lastElementChild
+        while (child) {
+          input.removeChild(child)
+          child = input.lastElementChild
+        }
 
-      input.appendChild(iframe)
-
+        res(input.appendChild(iframe))
+      })
+    }).finally(() => {
       ABSOLUTE.load = false
-
       isLoading.value = false
     })
   }
