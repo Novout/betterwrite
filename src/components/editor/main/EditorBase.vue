@@ -28,13 +28,13 @@
         overflow-y-auto overflow-x-hidden
       "
     >
-      <EditorEntityShow
+      <EditorEntityDefaultShow
         v-for="(entity, index) in entities"
         :id="`entity-${String(index)}`"
         :key="index"
         :entity="entity"
       />
-      <EditorEntityInput
+      <EditorEntityDefaultInput
         v-if="PROJECT.name !== env.projectEmpty()"
         v-model="entry"
         @enter="enterListener"

@@ -1,5 +1,6 @@
 import { Entity } from '@/types/context'
 import { V2RawApply, V2RawNormalizeType, V2RawSet } from '@/types/raw'
+import { useClipboard } from '@vueuse/core'
 import { useUtils } from './utils'
 
 export const bold = () => {
@@ -651,7 +652,23 @@ export const useRaw = () => {
       }
     }
 
-    return { html, caret, apply, validate, purge, make, style, normalize }
+    const copy = () => {
+      navigator.clipboard.readText().then((value: string) => {
+        useClipboard().copy(value)
+      })
+    }
+
+    return {
+      html,
+      caret,
+      apply,
+      validate,
+      purge,
+      make,
+      style,
+      normalize,
+      copy,
+    }
   }
 
   return { v1, v2 }

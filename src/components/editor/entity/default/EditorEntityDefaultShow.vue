@@ -8,7 +8,7 @@
     @mouseleave="hover = false"
     @click="onClickInEntity"
   >
-    <EditorEntityShowPopover
+    <EditorEntityDefaultShowPopover
       v-if="hover && props.entity.type !== 'heading-one'"
       :entity="props.entity"
     />
@@ -27,6 +27,7 @@
       @keydown="onKeyboard"
       @click="onClick"
       @paste="entity.base().onPaste(props.entity, data, $event)"
+      @copy="raw.v2().copy()"
       v-html="raw.v2().purge().editor(props.entity)"
     />
   </section>

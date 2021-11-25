@@ -15,14 +15,15 @@
         w-full
         rounded-none
         border-none
-        bg-theme-editor-input-background 
-        hover:bg-theme-editor-input-background-hover 
-        active:bg-theme-editor-input-background-active 
-        text-theme-editor-input-text 
+        bg-theme-editor-input-background
+        hover:bg-theme-editor-input-background-hover
+        active:bg-theme-editor-input-background-active
+        text-theme-editor-input-text
         placeholder-theme-editor-input-placeholder
-        hover:theme-editor-input-text-hover 
+        hover:theme-editor-input-text-hover
         active:theme-editor-input-text-active
-        px-4 md:px-14
+        px-4
+        md:px-14
       "
       :style="{ minHeight: '50px' }"
       :class="[
@@ -30,7 +31,11 @@
         EDITOR.styles.input.fontFamily,
         EDITOR.styles.input.fontColor,
       ]"
-      :placeholder="t('editor.text.placeholder.base', { prefix: EDITOR.configuration.commands.prefix })"
+      :placeholder="
+        t('editor.text.placeholder.base', {
+          prefix: EDITOR.configuration.commands.prefix,
+        })
+      "
       @input="onInput"
       @keypress.enter.prevent="enterHandler"
       @keydown="onKeyboard"
@@ -48,7 +53,7 @@
   import { useInput } from '@/use/input'
   import { useScroll } from '@/use/scroll'
   import useEmitter from '@/use/emitter'
-  import { ref, computed, watch, onMounted, nextTick } from 'vue';
+  import { ref, computed, watch, onMounted, nextTick } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
   import { useEnv } from '@/use/env'
@@ -56,7 +61,7 @@
   import { useEditorStore } from '@/store/editor'
   import { useContextStore } from '@/store/context'
   import usePlugin from '@/use/plugin/core'
-import { useUtils } from '@/use/utils'
+  import { useUtils } from '@/use/utils'
 
   const toast = useToast()
   const { t } = useI18n()
@@ -112,8 +117,8 @@ import { useUtils } from '@/use/utils'
   watch(cmp, (_cmp: string) => {
     plugin.emit('plugin-input-watch-initial', {
       data: _cmp,
-      index: CONTEXT.entities.length
-    }) 
+      index: CONTEXT.entities.length,
+    })
 
     if (paste.value) {
       cmp.value = ''
@@ -121,34 +126,49 @@ import { useUtils } from '@/use/utils'
       paste.value = false
     }
 
-    if (_cmp.startsWith(EDITOR.configuration.commands.prefix) && _cmp.length <= 2) {
+    if (
+      _cmp.startsWith(EDITOR.configuration.commands.prefix) &&
+      _cmp.length <= 2
+    ) {
       commands.value = true
     } else {
       commands.value = false
     }
 
-    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.paragraph.prefix)) {
+    if (
+      entity.utils().entry(_cmp, EDITOR.configuration.commands.paragraph.prefix)
+    ) {
       type.value = 'paragraph'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.paragraph')
       return
     }
 
-    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.headingTwo.prefix)) {
+    if (
+      entity
+        .utils()
+        .entry(_cmp, EDITOR.configuration.commands.headingTwo.prefix)
+    ) {
       type.value = 'heading-two'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.headingtwo')
       return
     }
 
-    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.headingThree.prefix)) {
+    if (
+      entity
+        .utils()
+        .entry(_cmp, EDITOR.configuration.commands.headingThree.prefix)
+    ) {
       type.value = 'heading-three'
       cmp.value = ''
       input.value.placeholder = t('editor.text.placeholder.headingthree')
       return
     }
 
-    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.pageBreak.prefix)) {
+    if (
+      entity.utils().entry(_cmp, EDITOR.configuration.commands.pageBreak.prefix)
+    ) {
       cmp.value = ''
 
       const content = {
@@ -166,7 +186,9 @@ import { useUtils } from '@/use/utils'
       return
     }
 
-    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.lineBreak.prefix)) {
+    if (
+      entity.utils().entry(_cmp, EDITOR.configuration.commands.lineBreak.prefix)
+    ) {
       cmp.value = ''
 
       const content = {
@@ -184,26 +206,36 @@ import { useUtils } from '@/use/utils'
       return
     }
 
-    if (entity.utils().entry(_cmp, EDITOR.configuration.commands.image.prefix)) {
+    if (
+      entity.utils().entry(_cmp, EDITOR.configuration.commands.image.prefix)
+    ) {
       cmp.value = ''
 
-      factory.simulate().file((content: Entity) => {
-        type.value = 'paragraph'
-        input.value.placeholder = t('editor.text.placeholder.paragraph')
+      factory.simulate().file(
+        (content: Entity) => {
+          type.value = 'paragraph'
+          input.value.placeholder = t('editor.text.placeholder.paragraph')
 
-        emit('enter', content)
+          emit('enter', content)
 
-        return
-      }, () => {
-        toast.error(t('toast.generics.error'))
-      })
+          return
+        },
+        () => {
+          toast.error(t('toast.generics.error'))
+        }
+      )
     }
 
-    const dialogue = EDITOR.configuration.commands.prefix + EDITOR.configuration.commands.dialogue.prefix
+    const dialogue =
+      EDITOR.configuration.commands.prefix +
+      EDITOR.configuration.commands.dialogue.prefix
 
     if (_cmp.includes(dialogue)) {
       const offset = _cmp.indexOf(dialogue) + dialogue.length
-      const sub = _cmp.replace(dialogue, EDITOR.configuration.commands.dialogue.value)
+      const sub = _cmp.replace(
+        dialogue,
+        EDITOR.configuration.commands.dialogue.value
+      )
 
       input.value.setSelectionRange(offset, offset)
 
@@ -215,7 +247,7 @@ import { useUtils } from '@/use/utils'
   })
 
   const enterHandler = () => {
-    if(!cmp.value) return
+    if (!cmp.value) return
 
     const content = {
       type: type.value,
@@ -246,7 +278,7 @@ import { useUtils } from '@/use/utils'
     data.forEach(async (raw: string) => {
       const normalize = raw.replace(/\s+/g, ' ').trim()
 
-      if(!normalize) return
+      if (!normalize) return
 
       const content = {
         type: type.value,
@@ -262,12 +294,12 @@ import { useUtils } from '@/use/utils'
 
     plugin.emit('plugin-entity-paste-in-page', {
       index: CONTEXT.entities.length,
-      quantity: _plugin_quantity
+      quantity: _plugin_quantity,
     })
   }
 
   const onKeyboard = async (e: KeyboardEvent) => {
-    if(e.ctrlKey) {
+    if (e.ctrlKey) {
       // italic entity
       if (e.key === 'i') {
         const content = entity
@@ -317,23 +349,21 @@ import { useUtils } from '@/use/utils'
       return
     }
 
-    if(e.key === 'ArrowUp') {
+    if (e.key === 'ArrowUp') {
       emitter.emit('entity-open-last')
       return
     }
 
-    if((e.key === 'Delete' || e.key === 'Backspace') && cmp.value === '') {
+    if ((e.key === 'Delete' || e.key === 'Backspace') && cmp.value === '') {
       e.preventDefault()
       e.stopPropagation()
-      
+
       emitter.emit('entity-open-last')
       return
     }
   }
 
-  const onInput = () => {
-    
-  }
+  const onInput = () => {}
 
   const onClick = () => {
     emitter.emit('entity-focus')
