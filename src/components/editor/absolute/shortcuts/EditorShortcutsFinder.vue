@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed left-0 top-0 w-full h-screen bg-modal z-max">
+  <Modal @close="onClose">
     <div
       ref="finder"
       class="
@@ -94,7 +94,7 @@
         />
       </div>
     </div>
-  </div>
+  </Modal>
 </template>
 
 <script setup lang="ts">
@@ -102,7 +102,7 @@
   import { useI18n } from 'vue-i18n'
   import { useEntity } from '@/use/entity'
   import { useAbsoluteStore } from '@/store/absolute'
-  import { useDraggable } from '@vueuse/core'
+  import { MaybeElementRef, onClickOutside, useDraggable } from '@vueuse/core'
 
   const ABSOLUTE = useAbsoluteStore()
 
@@ -122,5 +122,9 @@
 
   onMounted(() => {
     search.value?.focus()
+  })
+
+  onClickOutside(finder as MaybeElementRef, () => {
+    onClose()
   })
 </script>

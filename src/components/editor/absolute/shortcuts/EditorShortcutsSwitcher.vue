@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed left-0 top-0 w-full h-screen bg-modal z-max">
+  <Modal @close="onClose">
     <div
       ref="switcher"
       class="
@@ -107,7 +107,7 @@
         />
       </div>
     </div>
-  </div>
+  </Modal>
 </template>
 
 <script setup lang="ts">
@@ -115,7 +115,7 @@
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useAbsoluteStore } from '@/store/absolute'
-  import { useDraggable } from '@vueuse/core'
+  import { MaybeElementRef, onClickOutside, useDraggable } from '@vueuse/core'
 
   const ABSOLUTE = useAbsoluteStore()
 
@@ -135,5 +135,9 @@
 
   onMounted(() => {
     entry.value?.focus()
+  })
+
+  onClickOutside(switcher as MaybeElementRef, () => {
+    onClose()
   })
 </script>
