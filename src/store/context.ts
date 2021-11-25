@@ -118,6 +118,11 @@ export const useContextStore = defineStore('context', {
       const target = this.entities[sIndex]
 
       if (entity.type === 'heading-one' || target.type === 'heading-one') return
+      if (
+        entity.raw === useEnv().emptyLine() ||
+        target.raw === useEnv().emptyLine()
+      )
+        return
 
       const temp = this.entities[index]
       this.entities[index] = target
