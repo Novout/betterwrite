@@ -54,6 +54,31 @@ export const useEditorStore = defineStore('editor', {
         entity: {
           updateTime: true,
         },
+        commands: {
+          prefix: '/',
+          paragraph: {
+            prefix: 'p',
+          },
+          headingTwo: {
+            prefix: 'h2',
+          },
+          headingThree: {
+            prefix: 'h3',
+          },
+          pageBreak: {
+            prefix: 'bp',
+          },
+          lineBreak: {
+            prefix: 'lb',
+          },
+          image: {
+            prefix: 'im',
+          },
+          dialogue: {
+            prefix: 'd',
+            value: '— ',
+          },
+        },
       },
       actives: {
         entity: {

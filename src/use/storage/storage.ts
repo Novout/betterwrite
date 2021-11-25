@@ -168,6 +168,39 @@ export const useStorage = () => {
         bars: false,
       }
     }
+
+    // <= 0.9.3
+    if (!_.editor.configuration.commands) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        commands: {
+          prefix: '/',
+          paragraph: {
+            prefix: 'p',
+          },
+          headingTwo: {
+            prefix: 'h2',
+          },
+          headingThree: {
+            prefix: 'h3',
+          },
+          pageBreak: {
+            prefix: 'bp',
+          },
+          lineBreak: {
+            prefix: 'lb',
+          },
+          image: {
+            prefix: 'im',
+          },
+          dialogue: {
+            prefix: 'd',
+            value: '— ',
+          },
+        },
+      }
+    }
+
     return _
   }
 

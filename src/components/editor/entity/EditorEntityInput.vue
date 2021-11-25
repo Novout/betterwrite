@@ -205,7 +205,7 @@ import { useUtils } from '@/use/utils'
 
       input.value.setSelectionRange(offset, offset)
 
-      // cmp.value = sub
+      cmp.value = sub
       return
     }
 

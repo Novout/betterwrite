@@ -328,7 +328,7 @@ export default {
         {
           tag: 'P',
           title: 'Paragraph',
-          description: '/p text here',
+          description: '{prefix} text here',
         },
         {
           tag: 'B',
@@ -343,37 +343,37 @@ export default {
         {
           tag: 'H1',
           title: 'Heading 1',
-          description: '/h1 text here',
+          description: '{prefix} text here',
         },
         {
           tag: 'H2',
           title: 'Heading 2',
-          description: '/h2 text here',
+          description: '{prefix} text here',
         },
         {
           tag: 'H3',
           title: 'Heading 3',
-          description: '/h3 text here',
+          description: '{prefix} text here',
         },
         {
           tag: 'BP',
           title: 'Page Break',
-          description: '/bp',
+          description: '{prefix}',
         },
         {
           tag: 'LB',
           title: 'Line Break',
-          description: '/lb',
+          description: '{prefix}',
         },
         {
           tag: 'IM',
           title: 'Image',
-          description: '/im',
+          description: '{prefix}',
         },
         {
           tag: 'D',
           title: 'Dialogue',
-          description: '/d',
+          description: '{prefix}   {value}',
         },
       ],
     },

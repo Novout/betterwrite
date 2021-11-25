@@ -25,7 +25,11 @@
   >
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[0].title')"
-      :description="t('editor.aside.commands.contents[0].description')"
+      :description="
+        t('editor.aside.commands.contents[0].description', {
+          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.paragraph.prefix}`,
+        })
+      "
     >
       <template #icon>
         <svg
@@ -47,7 +51,11 @@
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[4].title')"
-      :description="t('editor.aside.commands.contents[4].description')"
+      :description="
+        t('editor.aside.commands.contents[4].description', {
+          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.headingTwo.prefix}`,
+        })
+      "
     >
       <template #icon>
         <svg
@@ -75,7 +83,11 @@
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[5].title')"
-      :description="t('editor.aside.commands.contents[5].description')"
+      :description="
+        t('editor.aside.commands.contents[5].description', {
+          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.lineBreak.prefix}`,
+        })
+      "
     >
       <template #icon>
         <svg
@@ -103,7 +115,11 @@
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[6].title')"
-      :description="t('editor.aside.commands.contents[6].description')"
+      :description="
+        t('editor.aside.commands.contents[6].description', {
+          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.pageBreak.prefix}`,
+        })
+      "
     >
       <template #icon>
         <svg
@@ -151,7 +167,11 @@
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[7].title')"
-      :description="t('editor.aside.commands.contents[7].description')"
+      :description="
+        t('editor.aside.commands.contents[7].description', {
+          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.lineBreak.prefix}`,
+        })
+      "
     >
       <template #icon>
         <svg
@@ -174,7 +194,11 @@
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[8].title')"
-      :description="t('editor.aside.commands.contents[8].description')"
+      :description="
+        t('editor.aside.commands.contents[8].description', {
+          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.image.prefix}`,
+        })
+      "
     >
       <template #icon>
         <svg
@@ -196,7 +220,12 @@
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[9].title')"
-      :description="t('editor.aside.commands.contents[9].description')"
+      :description="
+        t('editor.aside.commands.contents[9].description', {
+          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.dialogue.prefix}`,
+          value: EDITOR.configuration.commands.dialogue.value,
+        })
+      "
     >
       <template #icon>
         <svg
@@ -220,7 +249,10 @@
 </template>
 
 <script setup lang="ts">
+  import { useEditorStore } from '@/store/editor'
   import { useI18n } from 'vue-i18n'
+
+  const EDITOR = useEditorStore()
 
   const { t } = useI18n()
 </script>

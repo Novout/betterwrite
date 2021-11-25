@@ -34,6 +34,32 @@ export interface EditorStateConfigurationEntity {
   updateTime: boolean
 }
 
+export interface EditorStateConfigurationCommands {
+  prefix: string
+  paragraph: {
+    prefix: string
+  }
+  headingTwo: {
+    prefix: string
+  }
+  headingThree: {
+    prefix: string
+  }
+  pageBreak: {
+    prefix: string
+  }
+  lineBreak: {
+    prefix: string
+  }
+  image: {
+    prefix: string
+  }
+  dialogue: {
+    prefix: string
+    value: string
+  }
+}
+
 export interface EditorStateConfiguration {
   theme: BetterWriteThemes
   lang?: boolean
@@ -41,6 +67,7 @@ export interface EditorStateConfiguration {
   bars: boolean
   auto: number | 'never'
   entity: EditorStateConfigurationEntity
+  commands: EditorStateConfigurationCommands
 }
 
 export interface EditorStateStyles {

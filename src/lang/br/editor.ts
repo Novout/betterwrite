@@ -328,7 +328,7 @@ export default {
         {
           tag: 'P',
           title: 'Parágrafo',
-          description: '/p texto aqui',
+          description: '{prefix} texto aqui',
         },
         {
           tag: 'B',
@@ -342,38 +342,38 @@ export default {
         },
         {
           tag: 'H1',
-          title: 'Heading 1',
-          description: '/h1 texto aqui',
+          title: 'Cabeçalho 1',
+          description: '{prefix} texto aqui',
         },
         {
           tag: 'H2',
-          title: 'Heading 2',
-          description: '/h2 texto aqui',
+          title: 'Cabeçalho 2',
+          description: '{prefix} texto aqui',
         },
         {
           tag: 'H3',
-          title: 'Heading 3',
-          description: '/h3 texto aqui',
+          title: 'Cabeçalho 3',
+          description: '{prefix} texto aqui',
         },
         {
           tag: 'BP',
           title: 'Quebra de Página',
-          description: '/bp',
+          description: '{prefix}',
         },
         {
           tag: 'LB',
           title: 'Quebra de Linha',
-          description: '/lb',
+          description: '{prefix}',
         },
         {
           tag: 'IM',
           title: 'Imagem',
-          description: '/im',
+          description: '{prefix}',
         },
         {
           tag: 'D',
           title: 'Diálogo',
-          description: '/d',
+          description: '{prefix}   {value}',
         },
       ],
     },
