@@ -62,6 +62,7 @@
   import { useContextStore } from '@/store/context'
   import usePlugin from '@/use/plugin/core'
   import { useUtils } from '@/use/utils'
+  import { onStartTyping } from '@vueuse/core'
 
   const toast = useToast()
   const { t } = useI18n()
@@ -86,6 +87,10 @@
   const input = ref(null as any)
   const paste = ref<boolean>(false)
   const commands = ref<boolean>(false)
+
+  onStartTyping(() => {
+    if (!input.value.active) input.value.focus()
+  })
 
   onMounted(() => {
     useInput().prevent(input.value)

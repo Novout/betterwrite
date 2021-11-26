@@ -78,7 +78,6 @@
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)
   const edit = ref<boolean>(false)
-  const keyboard = ref<boolean>(false)
   const commands = ref<boolean>(false)
   const old_raw = ref<number>(props.entity.raw.length)
 
@@ -90,8 +89,6 @@
   const editable = computed(() => !entity.utils().isFixed(_index.value))
 
   watch(hover, async (_hover) => {
-    keyboard.value = false
-
     emitter.emit('entity-hover', _hover)
 
     await nextTick
@@ -103,7 +100,7 @@
   watch(edit, async (_edit) => {
     await nextTick
     if (_edit) {
-      if (!hover.value || keyboard.value) input.value?.focus()
+      if (!hover.value) input.value?.focus()
 
       props.entity.raw === env.emptyLine()
         ? (data.value = '')
@@ -373,7 +370,6 @@
     emitter.on('entity-edit-reset', () => {
       edit.value = false
       focus.value = false
-      keyboard.value = false
     })
 
     emitter.on('entity-edit-open', () => {
@@ -422,7 +418,6 @@
     }
 
     if (options?.keyboard) {
-      keyboard.value = true
       emitter.emit('entity-focus')
     }
 
@@ -455,10 +450,11 @@
 
     let initial = false
 
+    // actually entity is last
     if (_index.value + 1 === CONTEXT.entities.length) {
       if (start) {
+        emitter.emit('entity-input-raw', data.value)
         data.value = ''
-        emitter.emit('entity-input-raw', '')
       } else {
         data.value = data.value.replace(posRaw, '')
         emitter.emit('entity-input-raw', posRaw)
@@ -690,7 +686,6 @@
     onStopEvents()
 
     focus.value = true
-    keyboard.value = false
 
     await nextTick
 
