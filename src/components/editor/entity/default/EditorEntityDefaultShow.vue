@@ -283,9 +283,12 @@
     )
 
     emitter.on('entity-open', async (payload: VueEmitterEntityOpen) => {
+      keyboard.value = false
       const index = CONTEXT.entities.indexOf(payload.entity)
 
       if (payload?.up && CONTEXT.entities[index - 1] === props.entity) {
+        if (payload.keyboard) keyboard.value = true
+
         onEdit(undefined, {
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
@@ -295,6 +298,8 @@
       }
 
       if (!payload?.up && CONTEXT.entities[index + 1] === props.entity) {
+        if (payload.keyboard) keyboard.value = true
+
         onEdit(undefined, {
           keyboard: true,
           selectionInitial: payload?.selectionInitial,
@@ -640,6 +645,7 @@
         entity: props.entity,
         up: true,
         cursor: true,
+        keyboard: true,
       })
     } else if (e.key === 'ArrowUp') {
       // to top
