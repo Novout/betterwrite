@@ -373,8 +373,9 @@ export default {
         },
         {
           tag: 'D',
-          title: 'Diálogo',
+          title: 'Diálogo - Prefixo',
           description: '{prefix}   {value}',
+          value: 'Diálogo - Valor',
         },
       ],
     },
