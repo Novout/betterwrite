@@ -45,7 +45,7 @@
     "@tailwindcss/forms": "0.3.4",
     "@vuelidate/core": "2.0.0-alpha.32",
     "@vuelidate/validators": "2.0.0-alpha.25",
-    "@vueuse/core": "6.9.1",
+    "@vueuse/core": "7.1.2",
     "@vueuse/head": "0.6.0",
     "@vueuse/integrations": "6.9.1",
     "@vueuse/motion": "2.0.0-beta.4",
