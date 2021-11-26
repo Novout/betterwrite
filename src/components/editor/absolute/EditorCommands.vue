@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="target"
     v-motion
     :initial="{ opacity: 0, y: 50 }"
     :enter="{
@@ -11,6 +12,7 @@
       },
     }"
     class="
+      relative
       transform
       duration-700
       w-60
@@ -22,6 +24,7 @@
       transition
       shadow-2xl
     "
+    :class="[visible ? '' : 'top-60']"
   >
     <EditorAbsoluteCommands
       :title="t('editor.aside.commands.contents[0].title')"
@@ -250,9 +253,28 @@
 
 <script setup lang="ts">
   import { useEditorStore } from '@/store/editor'
+  import { useIntersectionObserver } from '@vueuse/core'
   import { useI18n } from 'vue-i18n'
+  import { ref } from 'vue'
 
   const EDITOR = useEditorStore()
 
   const { t } = useI18n()
+
+  const target = ref<any>(null)
+  const visible = ref<boolean>(true)
+  const block = ref<boolean>(false)
+
+  useIntersectionObserver(
+    target,
+    ([{ isIntersecting }]) => {
+      if (block.value) return
+
+      visible.value = isIntersecting
+      block.value = true
+    },
+    {
+      threshold: 1,
+    }
+  )
 </script>

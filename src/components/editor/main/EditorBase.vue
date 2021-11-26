@@ -24,7 +24,7 @@
       class="
         flex flex-col
         w-full
-        max-h-screen
+        min-h-editor
         overflow-y-auto overflow-x-hidden
       "
     >
