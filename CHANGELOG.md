@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.5](https://github.com/Novout/better-write/compare/v0.9.4...v0.9.5) (2021-11-26)
+
+
+### Features
+
+* **logger:** create empty line ([f278fdf](https://github.com/Novout/better-write/commits/f278fdf734095cc23ce1e92c6de60886520ce66e))
+
+
+### Bug Fixes
+
+* **editor:** break lines and focus in inline texts ([acbef39](https://github.com/Novout/better-write/commits/acbef3927886102e37964270e55e759bf88fc6da))
+* **editor:** commands in prefix length ([b3283da](https://github.com/Novout/better-write/commits/b3283daaa8bec60143b8cca304883524c17b8568))
+* **editor:** commands visible in top ([a44228b](https://github.com/Novout/better-write/commits/a44228bbaee51044520ef5854fee419c11f95e2c))
+* **editor:** correct keyboard in to empty lines ([1cf853c](https://github.com/Novout/better-write/commits/1cf853c6fc647d5dd477fc965ca5ffd4586b1872))
+* **editor:** correct keyboard tracking for focus in emitter ([dd9d63e](https://github.com/Novout/better-write/commits/dd9d63eb08a01322838d2a59480dc488704ec1f4))
+* **editor:** shortcuts in caps lock ([aff5a17](https://github.com/Novout/better-write/commits/aff5a1719bba9a4f77dac07de8024288a2c06023))
+* **seo:** title in empty line ([aaa4efa](https://github.com/Novout/better-write/commits/aaa4efaa5092662f3ed0e3aaa4a40d1829ccb18e))
+
+
+### Style
+
+* **editor:** header correct margins ([4b8f1c5](https://github.com/Novout/better-write/commits/4b8f1c5c1873afc4db30abb09eaa66acd6785d2d))
+* **theme:** dark theme toasts ([5dd5179](https://github.com/Novout/better-write/commits/5dd5179bb9ec6acf87d7f89f2d2a4778ba45c80c))
+
+
+### Structure
+
+* **components:** render editor ([ae6066c](https://github.com/Novout/better-write/commits/ae6066c239532259482eee96d2a3f2f809c9c332))
+* **deps:** upgrade packages ([b4e0250](https://github.com/Novout/better-write/commits/b4e0250cf9202d12907216e4b8f371103d80698c))
+* **lang:** typo ([cb831dd](https://github.com/Novout/better-write/commits/cb831dd458e84e9c41d6796bd1934a563348bf2e))
+
 ### [0.9.4](https://github.com/Novout/better-write/compare/v0.9.3...v0.9.4) (2021-11-26)
 
 
