@@ -136,7 +136,7 @@
 
     if (
       data.value.startsWith(EDITOR.configuration.commands.prefix) &&
-      data.value.length <= 2
+      data.value.length <= EDITOR.configuration.commands.prefix.length + 1
     ) {
       scroll.to(`#entity-${_index.value}`, 'center')
       commands.value = true

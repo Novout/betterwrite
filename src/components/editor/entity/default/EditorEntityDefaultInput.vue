@@ -133,7 +133,7 @@
 
     if (
       _cmp.startsWith(EDITOR.configuration.commands.prefix) &&
-      _cmp.length <= 2
+      _cmp.length <= EDITOR.configuration.commands.prefix.length + 1
     ) {
       commands.value = true
     } else {
@@ -305,52 +305,7 @@
 
   const onKeyboard = async (e: KeyboardEvent) => {
     if (e.ctrlKey) {
-      // italic entity
-      if (e.key === 'i') {
-        const content = entity
-          .base()
-          .onItalicRaw(utils.text().getSelection(cmp.value, input.value))
-
-        const start = input.value.selectionStart
-        const end = input.value.selectionEnd
-
-        cmp.value =
-          cmp.value.slice(0, start) +
-          content +
-          cmp.value.slice(start + content.length - 2)
-
-        await nextTick
-
-        if (content === '**') {
-          input.value.setSelectionRange(start + 1, start + 1)
-        } else {
-          input.value.setSelectionRange(end + 2, end + 2)
-        }
-      }
-
-      // bold entity
-      if (e.key === 'b') {
-        const content = entity
-          .base()
-          .onBoldRaw(utils.text().getSelection(cmp.value, input.value))
-
-        const start = input.value.selectionStart
-        const end = input.value.selectionEnd
-
-        cmp.value =
-          cmp.value.slice(0, start) +
-          content +
-          cmp.value.slice(start + content.length - 2)
-
-        await nextTick
-
-        if (content === '&&') {
-          input.value.setSelectionRange(start + 1, start + 1)
-        } else {
-          input.value.setSelectionRange(end + 2, end + 2)
-        }
-      }
-
+      // future vhtml implement
       return
     }
 
