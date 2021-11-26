@@ -9,6 +9,7 @@ export default {
     entity: {
       inputFirst: '<{arguments}> INSERTED IN <{index}>  POSITION.',
       create: '<{data}> HAS BEEN INSERTED IN THE <{index}> POSITION.',
+      createEmpty: 'NEW LINE HAS BEEN ADDED IN <{index}>!',
       edit: 'POSITION <{index}>  UPDATED TO <{arguments}>.',
       delete: 'POSITION <{index}>  HAS BEEN DELETED!',
       swap: 'POSITION <{index}>  EXCHANGED WITH POSITION {destination}.',

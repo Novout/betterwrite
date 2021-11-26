@@ -8,6 +8,7 @@ export default {
     },
     entity: {
       inputFirst: '<{arguments}> INSERIDO NA <{index}> POSIÇÃO.',
+      createEmpty: 'NOVA LINHA FOI ADICIONADA EM <{index}>!',
       create: '<{data}> FOI INSERIDO NA <{index}> POSIÇÃO.',
       edit: 'POSIÇÃO <{index}>  ATUALIZADO PARA <{arguments}>.',
       delete: 'A POSIÇÃO <{index}>  FOI DELETADA!',

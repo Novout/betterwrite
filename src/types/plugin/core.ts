@@ -12,6 +12,7 @@ export type PluginEmitterName =
   | 'plugin-input-watch-initial'
   | 'plugin-input-watch-last'
   | 'plugin-entity-create'
+  | 'plugin-entity-create-empty'
   | 'plugin-entity-delete'
   | 'plugin-entity-swap'
   | 'plugin-entity-page-break'

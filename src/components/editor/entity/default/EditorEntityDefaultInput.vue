@@ -53,7 +53,7 @@
   import { useInput } from '@/use/input'
   import { useScroll } from '@/use/scroll'
   import useEmitter from '@/use/emitter'
-  import { ref, computed, watch, onMounted, nextTick } from 'vue'
+  import { ref, computed, watch, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
   import { useEnv } from '@/use/env'
@@ -61,7 +61,6 @@
   import { useEditorStore } from '@/store/editor'
   import { useContextStore } from '@/store/context'
   import usePlugin from '@/use/plugin/core'
-  import { useUtils } from '@/use/utils'
   import { onStartTyping } from '@vueuse/core'
 
   const toast = useToast()
@@ -72,8 +71,6 @@
   const env = useEnv()
   const factory = useFactory()
   const plugin = usePlugin()
-  const utils = useUtils()
-
   const EDITOR = useEditorStore()
   const CONTEXT = useContextStore()
 

@@ -1,4 +1,5 @@
 import { PluginEmitter } from '@/types/plugin/core'
+import { ID } from '../../types/utils'
 import {
   PluginLoggerDefault,
   PluginLoggerEntitySwapper,
@@ -73,6 +74,19 @@ export const entity = () => {
     })
   }
 
+  const PluginEntityCreateEmpty = (
+    emitter: PluginEmitter,
+    content: PluginContentOn
+  ) => {
+    emitter.on('plugin-entity-create-empty', (index: ID<number>) => {
+      if (!index) return
+
+      const created = content[0]
+
+      created && created(index)
+    })
+  }
+
   const PluginEntityPageBreak = (
     emitter: PluginEmitter,
     content: PluginContentOn
@@ -114,6 +128,7 @@ export const entity = () => {
 
   return {
     PluginEntityCreate,
+    PluginEntityCreateEmpty,
     PluginEntityDelete,
     PluginEntityInputInitial,
     PluginEntityInputLast,

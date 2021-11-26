@@ -9,6 +9,7 @@ import {
   PluginLoggerPaste,
 } from '@/types/plugin/on'
 import { useEntity } from '@/use/entity'
+import { ID } from '@/types/utils'
 
 export const PluginLoggerActions = (
   emitter: PluginEmitter,
@@ -26,6 +27,20 @@ export const PluginLoggerActions = (
         arguments: t('plugin.logger.on.entity.create', {
           data: ent.utils().getNamesByTheContent(obj.data),
           index: obj.index,
+        }),
+        createdAt: format.actually(),
+      } as LoggerContent)
+    },
+    () => {},
+  ])
+
+  entity().PluginEntityCreateEmpty(emitter, [
+    (index: ID<number>) => {
+      stores.LOGGER.add({
+        type: 'editor',
+        method: 'info',
+        arguments: t('plugin.logger.on.entity.createEmpty', {
+          index,
         }),
         createdAt: format.actually(),
       } as LoggerContent)

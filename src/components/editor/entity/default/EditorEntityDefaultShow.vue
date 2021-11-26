@@ -477,6 +477,8 @@
         entity: props.entity,
         type: 'paragraph',
       })
+
+      plugin.emit('plugin-entity-create-empty', _index.value + 1)
     } else {
       if (start) {
         CONTEXT.newInPagePosEdit({
@@ -504,7 +506,7 @@
 
         plugin.emit('plugin-entity-page-break', {
           data: posRaw,
-          index: _index.value + 1,
+          index: _index.value,
         })
 
         initial = true
