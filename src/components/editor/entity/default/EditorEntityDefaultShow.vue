@@ -552,22 +552,22 @@
     // in ctrl press
     if (e.ctrlKey) {
       // finder
-      if (e.key === 'f') {
+      if (e.key === 'f' || e.key === 'F') {
         ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.finder
       }
 
       // swapper
-      if (e.key === 'h') {
+      if (e.key === 'h' || e.key === 'H') {
         ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.switcher
       }
 
       // delete entity
-      if (e.key === 'd') {
+      if (e.key === 'd' || e.key === 'D') {
         entity.base().onDelete(props.entity, _index.value)
       }
 
       // italic entity
-      if (e.key === 'i') {
+      if (e.key === 'i' || e.key === 'I') {
         if (!value || props.entity.type !== 'paragraph') return
 
         setData(
@@ -582,7 +582,7 @@
       }
 
       // bold entity
-      if (e.key === 'b') {
+      if (e.key === 'b' || e.key === 'B') {
         if (!value || props.entity.type !== 'paragraph') return
 
         setData(

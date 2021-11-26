@@ -102,7 +102,7 @@
     })
 
     emitter.on('entity-input-raw', (raw: string) => {
-      cmp.value = raw
+      cmp.value = raw + cmp.value
     })
 
     emitter.on('entity-input-force-enter', () => {
