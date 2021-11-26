@@ -1,8 +1,3 @@
-export interface GenerateParagraphOptions {
-  stack: boolean
-  indent: number
-}
-
 export interface PDFStateStyles {
   base: PDFStateStylesBase
   paragraph: PDFStateStylesParagraph

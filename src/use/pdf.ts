@@ -1,7 +1,6 @@
 import { Callback } from '@/types/utils'
 import { useToast } from 'vue-toastification'
 import * as pdfMake from 'pdfmake/build/pdfmake'
-import { GenerateParagraphOptions } from '@/types/pdf'
 import { ContextState, Entity } from '@/types/context'
 import { useRaw } from './raw'
 import { useEnv } from './env'
@@ -87,37 +86,18 @@ export const usePDF = () => {
       }
     }
 
-    const paragraph = (raw: string, options: GenerateParagraphOptions) => {
-      let text
-      let arr
+    const paragraph = (raw: string) => {
+      let indent = ''
 
-      if (options.stack) {
-        text = []
-        let _text = ''
-
-        for (let i = 0; i < options.indent; i++) {
-          _text += '   '
-        }
-
-        _text += raw
-
-        const arr = useRaw().v2().purge().pdf(_text)
-
-        text.push(arr)
-      } else {
-        text = ''
-
-        for (let i = 0; i < options.indent; i++) {
-          text += '   '
-        }
-
-        text += raw
-
-        arr = useRaw().v2().purge().pdf(text)
+      for (let i = 0; i < PDF.styles.paragraph.indent; i++) {
+        indent += '\t'
       }
 
       return {
-        text: arr,
+        text: useRaw()
+          .v2()
+          .purge()
+          .pdf(indent + raw),
         style: 'paragraph',
         preserveLeadingSpaces: true,
         margin: [
@@ -329,10 +309,7 @@ export const usePDF = () => {
           }
 
           if ((entity as any).type === 'paragraph') {
-            _raw = paragraph((entity as any).raw, {
-              stack: false,
-              indent: PDF.styles.paragraph.indent,
-            })
+            _raw = paragraph(entity.raw)
           } else if (entity.type === 'heading-one') {
             _raw = headingOne(entity.raw)
           } else if (entity.type === 'heading-two') {
