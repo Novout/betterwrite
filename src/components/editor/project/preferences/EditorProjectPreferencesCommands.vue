@@ -53,7 +53,7 @@
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[9].title') }}</p>
+      <p>{{ t('editor.aside.commands.contents[9].prefix') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.dialogue.prefix"
         class="wb-configuration-input-text"
