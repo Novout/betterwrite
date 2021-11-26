@@ -60,7 +60,7 @@
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[9].value') }}</p>
+      <p>{{ t('editor.aside.commands.contents[9].content') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.dialogue.value"
         class="wb-configuration-input-text"
