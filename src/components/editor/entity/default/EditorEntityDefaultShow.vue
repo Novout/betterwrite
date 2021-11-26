@@ -83,6 +83,7 @@
 
   const data = ref<string>('')
   const input = ref<HTMLDivElement | null>(null)
+  const keyboard = ref<boolean>(false)
 
   const style = computed(() => EDITOR.styles.show)
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
@@ -94,13 +95,15 @@
     await nextTick
     if (_hover) {
       onEdit()
+    } else {
+      keyboard.value = false
     }
   })
 
   watch(edit, async (_edit) => {
     await nextTick
     if (_edit) {
-      if (!hover.value) input.value?.focus()
+      if (!hover.value || keyboard.value) input.value?.focus()
 
       props.entity.raw === env.emptyLine()
         ? (data.value = '')
@@ -336,10 +339,13 @@
 
       focus.value = false
       edit.value = false
+      keyboard.value = false
 
       await nextTick
 
       if (CONTEXT.entities[_id - 1] === props.entity) {
+        keyboard.value = true
+
         onEdit()
       }
     })
@@ -349,10 +355,12 @@
 
       focus.value = false
       edit.value = false
+      keyboard.value = false
 
       await nextTick
 
       if (CONTEXT.entities[_id + 1] === props.entity) {
+        keyboard.value = true
         onEdit()
       }
     })
@@ -454,9 +462,9 @@
     if (_index.value + 1 === CONTEXT.entities.length) {
       if (start) {
         emitter.emit('entity-input-raw', data.value)
-        data.value = ''
+        setData('')
       } else {
-        data.value = data.value.replace(posRaw, '')
+        setData(data.value.replace(posRaw, ''))
         emitter.emit('entity-input-raw', posRaw)
       }
 
@@ -482,11 +490,11 @@
           index: _index.value + 1,
         })
 
-        data.value = env.emptyLine() as string
+        setData(env.emptyLine() as string)
 
         initial = true
       } else {
-        data.value = data.value.replace(posRaw, '')
+        setData(data.value.replace(posRaw, ''))
 
         CONTEXT.newInPagePosEdit({
           entity: props.entity,
