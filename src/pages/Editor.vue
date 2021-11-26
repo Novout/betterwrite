@@ -66,6 +66,7 @@
   const _title = computed(() =>
     PROJECT.nameRaw === env.projectEmpty() ||
     !CONTEXT.entities[0] ||
+    CONTEXT.entities[0].raw === env.emptyLine() ||
     entity.utils().isFixed(0)
       ? title.value
       : PROJECT.nameRaw + ' - ' + CONTEXT.entities[0]?.raw
