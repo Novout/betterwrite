@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.4](https://github.com/Novout/better-write/compare/v0.9.3...v0.9.4) (2021-11-26)
+
+
+### Features
+
+* **editor:** commands appear animation ([892db3d](https://github.com/Novout/better-write/commits/892db3d813674f932c82450dad0d4e390c9aae56))
+* **editor:** commands dialogue ([5d12538](https://github.com/Novout/better-write/commits/5d125389d1e688e9158e47d7375e0bd3e98d7172))
+* **editor:** commands dynamic prefixs ([94a968f](https://github.com/Novout/better-write/commits/94a968f3f4cea7e5c7b55ff939e8f9c35a125398))
+* **editor:** commands preferences ([f7574b7](https://github.com/Novout/better-write/commits/f7574b7f185351987cc20a20118b2bbbd15f5caf))
+* **editor:** dialogue value modification ([74f8bcd](https://github.com/Novout/better-write/commits/74f8bcdb599cee0a2a7c58bdb07e8e0173dc4210))
+
+
+### Bug Fixes
+
+* **editor:** copy without html ([d660b2c](https://github.com/Novout/better-write/commits/d660b2c939cf2a8ffa7e8cfa3857e1572bf9d3e8))
+* **editor:** switch entities in empty lines ([99f73f1](https://github.com/Novout/better-write/commits/99f73f11e9b2a2f61bb6194e7c17ec2e80cf8d23))
+* **lang:** null property in commands ([329e384](https://github.com/Novout/better-write/commits/329e384e5fc05599d9a0d30abe20d494e110b9f5))
+* **pdf:** promise finally nprogress ([800ed42](https://github.com/Novout/better-write/commits/800ed42a3be6767c5b8c79840e684331a5950901))
+
+
+### Structure
+
+* **components:** modal implements ([d49b337](https://github.com/Novout/better-write/commits/d49b337e718a29a82fdc2b69c3b5a3f1be080dd0))
+* **load:** css only request http ([a5867a9](https://github.com/Novout/better-write/commits/a5867a915099ee52db9d604205715c295abd8845))
+
+
+### Refactor
+
+* **pdf:** paragraph transform ([b158821](https://github.com/Novout/better-write/commits/b1588218fb7e5be36313403af237c69c16a83de8))
+
 ### [0.9.3](https://github.com/Novout/better-write/compare/v0.9.2...v0.9.3) (2021-11-22)
 
 
