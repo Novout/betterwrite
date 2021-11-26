@@ -2,14 +2,14 @@
   <header
     class="
       flex
-      py-1
       justify-start
-      items-center
+      items-start
       w-full
       bg-theme-editor-header-background
       hover:bg-theme-editor-header-background-hover
       active:bg-theme-editor-header-background-active
       z-50
+      pt-0.5
     "
   >
     <div>
@@ -53,26 +53,28 @@
       <EditorBaseHeaderExternals />
     </div>
     <div class="flex-1 w-full"></div>
-    <EditorBaseHeaderElectron v-if="isElectron()" />
-    <div
-      v-if="PROJECT.name !== env.projectEmpty() && !isElectron()"
-      class="wb-icon no-drag cursor-pointer mb-2"
-      @click.prevent.stop="editor.fullScreen"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
+    <div class="flex flex-row items-center">
+      <EditorBaseHeaderElectron v-if="isElectron()" />
+      <div
+        v-if="PROJECT.name !== env.projectEmpty() && !isElectron()"
+        class="wb-icon no-drag cursor-pointer"
+        @click.prevent.stop="editor.fullScreen"
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-        />
-      </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+          />
+        </svg>
+      </div>
     </div>
   </header>
 </template>

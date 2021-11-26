@@ -8,14 +8,12 @@
         theme: 'better-write',
       }"
       class="
-        wb-icon
         text-theme-editor-electron-update-text
         hover:theme-editor-electron-update-text-hover
         active:theme-editor-electron-update-text-active
         no-drag
         cursor-pointer
-        mb-2
-        ml-1'
+        mt-0.5
       "
       @click.prevent.stop="onUpdate"
     >
@@ -24,10 +22,10 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         aria-hidden="true"
         role="img"
-        width="24"
-        height="24"
+        width="26"
+        height="26"
         preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 24 24"
+        viewBox="0 0 26 26"
       >
         <path
           d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7l7-7z"
@@ -36,7 +34,7 @@
       </svg>
     </HeroIcon>
     <HeroIcon
-      class="wb-icon no-drag cursor-pointer mb-2"
+      class="wb-icon no-drag cursor-pointer"
       @click.prevent.stop="onMaximize"
     >
       <svg
@@ -68,7 +66,7 @@
       </svg>
     </HeroIcon>
     <HeroIcon
-      class="wb-icon no-drag cursor-pointer mb-2 ml-1"
+      class="wb-icon no-drag cursor-pointer ml-1"
       @click.prevent.stop="onClose"
     >
       <svg
