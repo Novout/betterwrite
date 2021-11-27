@@ -548,15 +548,11 @@
         e.preventDefault()
         e.stopPropagation()
 
-        onUpdateContent()
-
         entity.base().onUp(props.entity, _index.value)
       } else if (e.key === 'ArrowDown') {
         // to down
         e.preventDefault()
         e.stopPropagation()
-
-        onUpdateContent()
 
         entity.base().onDown(props.entity, _index.value)
       }
@@ -660,7 +656,11 @@
 
         await nextTick
 
-        emitter.emit('entity-open', { entity: props.entity, up: true })
+        emitter.emit('entity-open', {
+          entity: props.entity,
+          up: true,
+          keyboard: true,
+        })
       }
     } else if (e.key === 'ArrowDown') {
       // to bottom
@@ -676,7 +676,11 @@
 
         await nextTick
 
-        emitter.emit('entity-open', { entity: props.entity, up: false })
+        emitter.emit('entity-open', {
+          entity: props.entity,
+          up: false,
+          keyboard: true,
+        })
       }
     }
   }

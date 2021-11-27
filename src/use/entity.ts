@@ -329,6 +329,7 @@ export const useEntity = () => {
         entity: entity,
         up: true,
         selectionInitial: true,
+        keyboard: true,
       })
     }
 
@@ -341,6 +342,7 @@ export const useEntity = () => {
         entity,
         up: false,
         selectionInitial: true,
+        keyboard: true,
       })
     }
 
@@ -371,7 +373,11 @@ export const useEntity = () => {
 
       await nextTick
 
-      emitter.emit('entity-open', { entity: payload.entity, up: true })
+      emitter.emit('entity-open', {
+        entity: payload.entity,
+        up: true,
+        keyboard: true,
+      })
 
       plugin.emit('plugin-entity-delete', payload.index)
     }
