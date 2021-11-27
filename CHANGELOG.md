@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.6](https://github.com/Novout/better-write/compare/v0.9.5...v0.9.6) (2021-11-27)
+
+
+### Bug Fixes
+
+* **editor:** correct keyboard in delete and arrow keys ([7b8ace7](https://github.com/Novout/better-write/commits/7b8ace7f25f2715e523646ba8ba782d7a0b0f997))
+* **editor:** propagations in entity keyboard ([0cb4e78](https://github.com/Novout/better-write/commits/0cb4e78975c2a4f6b4320c11bc6f586edda3ae99))
+* **pdf:** build images and supported extensions default empty ([d6aa96f](https://github.com/Novout/better-write/commits/d6aa96fd25911b45e86b05cb40423341f61a9bfd))
+
+
+### Style
+
+* **editor:** entity popover icons ([3c93051](https://github.com/Novout/better-write/commits/3c93051fb7749ae5da53eaa98e3c4f4c26d14998))
+
 ### [0.9.5](https://github.com/Novout/better-write/compare/v0.9.4...v0.9.5) (2021-11-26)
 
 
