@@ -564,22 +564,34 @@
     if (e.ctrlKey) {
       // finder
       if (e.key === 'f' || e.key === 'F') {
-        ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.finder
+        e.preventDefault()
+        e.stopPropagation()
+
+        ABSOLUTE.shortcuts.finder = true
       }
 
       // swapper
       if (e.key === 'h' || e.key === 'H') {
-        ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.switcher
+        e.preventDefault()
+        e.stopPropagation()
+
+        ABSOLUTE.shortcuts.switcher = true
       }
 
       // delete entity
       if (e.key === 'd' || e.key === 'D') {
+        e.preventDefault()
+        e.stopPropagation()
+
         entity.base().onDelete(props.entity, _index.value)
       }
 
       // italic entity
       if (e.key === 'i' || e.key === 'I') {
         if (!value || props.entity.type !== 'paragraph') return
+
+        e.preventDefault()
+        e.stopPropagation()
 
         setData(
           raw
@@ -596,6 +608,9 @@
       if (e.key === 'b' || e.key === 'B') {
         if (!value || props.entity.type !== 'paragraph') return
 
+        e.preventDefault()
+        e.stopPropagation()
+
         setData(
           raw.v2().apply({ existent: data.value, type: 'bold', input: _input })
         )
@@ -607,8 +622,14 @@
 
       // to entity initial
       if (e.key === 'ArrowUp') {
+        e.preventDefault()
+        e.stopPropagation()
+
         entity.base().onUpCursor(props.entity)
       } else if (e.key === 'ArrowDown') {
+        e.preventDefault()
+        e.stopPropagation()
+
         entity.base().onDownCursor(props.entity)
       }
 
