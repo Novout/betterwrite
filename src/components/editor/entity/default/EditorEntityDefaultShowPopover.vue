@@ -25,36 +25,124 @@
         flex
         absolute
         rounded
-        bottom-5
         bg-theme-editor-entity-popover-background
         border-theme-border-1
       "
+      :class="[
+        props.entity.type === 'line-break' ||
+        props.entity.type === 'page-break' ||
+        props.entity.type === 'image'
+          ? 'bottom-4'
+          : 'bottom-6',
+      ]"
       @mouseleave="onReset"
     >
       <EditorEntityDefaultShowSelect
         @click.prevent.stop="onNewEntity('paragraph')"
       >
-        P
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M13 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4h-2v6H9V4h4m0 6a2 2 0 0 0 2-2a2 2 0 0 0-2-2h-2v4h2z"
+            fill="currentColor"
+          ></path>
+        </svg>
       </EditorEntityDefaultShowSelect>
       <EditorEntityDefaultShowSelect
         @click.prevent.stop="onNewEntity('heading-two')"
       >
-        H2
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <g fill="none">
+            <path
+              d="M10 4v7H4V4H2v16h2v-7h6v7h2V4h-2z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M22 11.75C22 9.679 20.21 8 18 8s-4 1.679-4 3.75h2.133l.007-.144C16.218 10.707 17.02 10 18 10c1.03 0 1.867.784 1.867 1.75c0 .439-.173.841-.459 1.148L14 18.444V20h8v-2h-4.497l3.516-3.79l.158-.18A3.59 3.59 0 0 0 22 11.75z"
+              fill="currentColor"
+            ></path>
+          </g>
+        </svg>
       </EditorEntityDefaultShowSelect>
       <EditorEntityDefaultShowSelect
         @click.prevent.stop="onNewEntity('heading-three')"
       >
-        H3
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <g fill="none">
+            <path
+              d="M10 4v7H4V4H2v16h2v-7h6v7h2V4h-2z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M21.729 10l.002-2H14.5v2h4.378l-3.176 3.283l1.407 1.515c.256-.118.546-.186.854-.186c1.04 0 1.884.768 1.884 1.714c0 .947-.844 1.715-1.884 1.715c-.917 0-1.681-.597-1.849-1.386L14 17.029C14.36 18.722 15.998 20 17.963 20C20.193 20 22 18.355 22 16.326c0-1.691-1.256-3.117-2.968-3.543L21.73 10z"
+              fill="currentColor"
+            ></path>
+          </g>
+        </svg>
       </EditorEntityDefaultShowSelect>
       <EditorEntityDefaultShowSelect
         @click.prevent.stop="onNewEntity('page-break')"
       >
-        BP
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M0 8h2v1H0zm3 0h3v1H3zm4 0h2v1H7zm3 0h3v1h-3zm4 0h2v1h-2zm-.25-8L14 7H2l.25-7h.5L3 6h10l.25-6zM2.25 16L2 10h12l-.25 6h-.5L13 11H3l-.25 5z"
+            fill="currentColor"
+          ></path>
+        </svg>
       </EditorEntityDefaultShowSelect>
       <EditorEntityDefaultShowSelect
         @click.prevent.stop="onNewEntity('line-break')"
       >
-        LB
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M4 17h16v5H4zm16-9l-6-6H4.01L4 11h16V8zm-7 1V3.5L18.5 9H13zm-4 4h6v2H9zm8 0h6v2h-6zM1 13h6v2H1z"
+            fill="currentColor"
+          ></path>
+        </svg>
       </EditorEntityDefaultShowSelect>
     </section>
     <HeroIcon @mouseenter.prevent.stop="onNewEntityWrapper">
@@ -77,37 +165,125 @@
         flex
         absolute
         rounded
-        bottom-5
-        left-4
+        left-5
         bg-theme-editor-entity-popover-background
         border-theme-border-1
         z-max
       "
+      :class="[
+        props.entity.type === 'line-break' ||
+        props.entity.type === 'page-break' ||
+        props.entity.type === 'image'
+          ? 'bottom-4'
+          : 'bottom-6',
+      ]"
     >
       <EditorEntityDefaultShowSelect
         @click.prevent.stop="onSwitchEntity('paragraph')"
       >
-        P
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M13 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4h-2v6H9V4h4m0 6a2 2 0 0 0 2-2a2 2 0 0 0-2-2h-2v4h2z"
+            fill="currentColor"
+          ></path>
+        </svg>
       </EditorEntityDefaultShowSelect>
       <EditorEntityDefaultShowSelect
         @click.prevent.stop="onSwitchEntity('heading-two')"
       >
-        H2
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <g fill="none">
+            <path
+              d="M10 4v7H4V4H2v16h2v-7h6v7h2V4h-2z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M22 11.75C22 9.679 20.21 8 18 8s-4 1.679-4 3.75h2.133l.007-.144C16.218 10.707 17.02 10 18 10c1.03 0 1.867.784 1.867 1.75c0 .439-.173.841-.459 1.148L14 18.444V20h8v-2h-4.497l3.516-3.79l.158-.18A3.59 3.59 0 0 0 22 11.75z"
+              fill="currentColor"
+            ></path>
+          </g>
+        </svg>
       </EditorEntityDefaultShowSelect>
       <EditorEntityDefaultShowSelect
         @click.prevent.stop="onSwitchEntity('heading-three')"
       >
-        H3
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <g fill="none">
+            <path
+              d="M10 4v7H4V4H2v16h2v-7h6v7h2V4h-2z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M21.729 10l.002-2H14.5v2h4.378l-3.176 3.283l1.407 1.515c.256-.118.546-.186.854-.186c1.04 0 1.884.768 1.884 1.714c0 .947-.844 1.715-1.884 1.715c-.917 0-1.681-.597-1.849-1.386L14 17.029C14.36 18.722 15.998 20 17.963 20C20.193 20 22 18.355 22 16.326c0-1.691-1.256-3.117-2.968-3.543L21.73 10z"
+              fill="currentColor"
+            ></path>
+          </g>
+        </svg>
       </EditorEntityDefaultShowSelect>
       <EditorEntityDefaultShowSelect
         @click.prevent.stop="onSwitchEntity('page-break')"
       >
-        BP
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M0 8h2v1H0zm3 0h3v1H3zm4 0h2v1H7zm3 0h3v1h-3zm4 0h2v1h-2zm-.25-8L14 7H2l.25-7h.5L3 6h10l.25-6zM2.25 16L2 10h12l-.25 6h-.5L13 11H3l-.25 5z"
+            fill="currentColor"
+          ></path>
+        </svg>
       </EditorEntityDefaultShowSelect>
       <EditorEntityDefaultShowSelect
         @click.prevent.stop="onSwitchEntity('line-break')"
       >
-        LB
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M4 17h16v5H4zm16-9l-6-6H4.01L4 11h16V8zm-7 1V3.5L18.5 9H13zm-4 4h6v2H9zm8 0h6v2h-6zM1 13h6v2H1z"
+            fill="currentColor"
+          ></path>
+        </svg>
       </EditorEntityDefaultShowSelect>
     </section>
     <HeroIcon
