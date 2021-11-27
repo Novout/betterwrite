@@ -60,7 +60,7 @@
     "mitt": "3.0.0",
     "pdfmake": "0.2.4",
     "pinia": "2.0.4",
-    "postcss": "8.3.11",
+    "postcss": "8.4.4",
     "tailwindcss": "2.2.19",
     "tailwindcss-typography": "3.1.0",
     "v-tooltip": "4.0.0-beta.2",
