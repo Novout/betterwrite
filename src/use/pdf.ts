@@ -127,7 +127,7 @@ export const usePDF = () => {
 
     const image = (entity: Entity) => {
       if (entity.external?.image?.alignment === 'full') {
-        if (entity.raw.includes('svg')) {
+        if (entity.external.image.name.includes('svg')) {
           return {
             svg: entity.raw,
             width:
@@ -161,7 +161,7 @@ export const usePDF = () => {
           ],
         }
       } else {
-        if (entity.raw.includes('svg')) {
+        if (entity.external?.image?.name.includes('svg')) {
           return {
             svg: entity.raw,
             width: entity.external?.image?.size.width,

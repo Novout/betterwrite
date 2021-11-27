@@ -337,6 +337,12 @@ export const useRaw = () => {
 
     const make = () => {
       const image = (entity: Entity) => {
+        if (!support().images(entity.external?.image?.name as string)) {
+          return `<div class="flex wb-text text-xl items-end w-full justify-center py-5">
+          <svg id="unsupported-extension-image" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="h-7 w-7" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><g stroke-width="1.5" fill="none"><path d="M12 8v4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 16.01l.01-.011" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 3H4v3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 11v2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 11v2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 3h5v3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 21H4v-3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 21h5v-3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+          </div>`
+        }
+
         return `<div class="flex wb-text text-xl items-end w-full justify-center py-5">
             <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -658,6 +664,19 @@ export const useRaw = () => {
       })
     }
 
+    const support = () => {
+      const images = (file: string) => {
+        return (
+          file.includes('svg') ||
+          file.includes('png') ||
+          file.includes('jpeg') ||
+          file.includes('jpg')
+        )
+      }
+
+      return { images }
+    }
+
     return {
       html,
       caret,
@@ -668,6 +687,7 @@ export const useRaw = () => {
       style,
       normalize,
       copy,
+      support,
     }
   }
 

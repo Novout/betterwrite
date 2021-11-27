@@ -387,4 +387,27 @@ describe('Raw v2 - Make', () => {
       })
     ).toContain(file_name)
   })
+
+  it('should not create image because unsupported extension', () => {
+    const file_name = 'foo.bw'
+
+    expect(
+      make.image({
+        type: 'image',
+        raw: 'dsaKDSADaskASHDGYasdahbdasnASD...',
+        createdAt: format.actually(),
+        updatedAt: format.actually(),
+        external: {
+          image: {
+            name: file_name,
+            size: {
+              width: 0,
+              height: 0,
+            },
+            alignment: 'full',
+          },
+        },
+      })
+    ).toContain('id="unsupported-extension-image"')
+  })
 })
