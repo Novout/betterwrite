@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.7](https://github.com/Novout/better-write/compare/v0.9.6...v0.9.7) (2021-11-29)
+
+
+### Features
+
+* **editor:** validade entity updates ([85a01c8](https://github.com/Novout/better-write/commits/85a01c87e2c94c31f065c6e1caf08ba9ac3dce7b))
+* **pdf:** dynamic margins in paragraph's and heading's ([dbd4b50](https://github.com/Novout/better-write/commits/dbd4b50b9e66f6866ab362dbd49b6eb7c32b978e))
+
+
+### Bug Fixes
+
+* **editor:** popover event focus alterate entity ([5c4d37c](https://github.com/Novout/better-write/commits/5c4d37ceffbd650f24ca80ccde8ca15891f6b66a))
+* **editor:** storage normalize in finder ([5fe2895](https://github.com/Novout/better-write/commits/5fe28957297c01bd469c848065d8c406196fea26))
+
+
+### Structure
+
+* **pdf:** remove decorations ([df329da](https://github.com/Novout/better-write/commits/df329daa9c9c0bcba3899020a53b27e414c56abe))
+
 ### [0.9.6](https://github.com/Novout/better-write/compare/v0.9.5...v0.9.6) (2021-11-27)
 
 
