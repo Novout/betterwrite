@@ -96,32 +96,6 @@
         }}</label>
         <InputColorPicker v-model="pdf.headingThree.markerColor" />
       </div>
-      <div class="wb-input-container">
-        <label class="mx-2 text-xs">{{
-          t('editor.pdf.custom.generics.decoration')
-        }}</label>
-        <InputSelect
-          v-model="pdf.headingThree.decoration"
-          class="flex-1"
-          :arr="useDefines().pdf().decoration()"
-        />
-      </div>
-      <div class="wb-input-container">
-        <label class="mx-2 text-xs">{{
-          t('editor.pdf.custom.generics.decorationStyle')
-        }}</label>
-        <InputSelect
-          v-model="pdf.headingThree.decorationStyle"
-          class="flex-1"
-          :arr="useDefines().pdf().decorationStyle()"
-        />
-      </div>
-      <div class="wb-input-container">
-        <label class="mx-2 text-xs">{{
-          t('editor.pdf.custom.generics.breakPage')
-        }}</label>
-        <InputBoolean v-model="pdf.headingThree.breakPage" />
-      </div>
     </div>
   </PDFConfigurationSlot>
 </template>

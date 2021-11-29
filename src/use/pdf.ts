@@ -346,21 +346,6 @@ export const usePDF = () => {
 
     const styles = (): Record<string, any> => {
       const paragraph = () => {
-        let decorationStyle
-        let decoration
-
-        if (PDF.styles.paragraph.decorationStyle === 'none') {
-          decorationStyle = undefined
-        } else {
-          decorationStyle = PDF.styles.paragraph.decorationStyle
-        }
-
-        if (PDF.styles.paragraph.decoration === 'none') {
-          decoration = undefined
-        } else {
-          decoration = PDF.styles.paragraph.decoration
-        }
-
         return {
           font: PDF.styles.paragraph.font,
           fontSize: PDF.styles.paragraph.fontSize,
@@ -368,8 +353,6 @@ export const usePDF = () => {
           alignment: PDF.styles.paragraph.alignment,
           characterSpacing: PDF.styles.paragraph.characterSpacing,
           color: PDF.styles.paragraph.color,
-          decoration: decoration,
-          decorationStyle: decorationStyle,
           decorationColor: PDF.styles.paragraph.decorationColor,
         }
       }

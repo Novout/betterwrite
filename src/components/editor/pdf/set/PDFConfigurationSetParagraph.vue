@@ -90,26 +90,6 @@
         }}</label>
         <InputColorPicker v-model="pdf.paragraph.markerColor" />
       </div>
-      <div class="wb-input-container">
-        <label class="mx-2 text-xs">{{
-          t('editor.pdf.custom.generics.decoration')
-        }}</label>
-        <InputSelect
-          v-model="pdf.paragraph.decoration"
-          class="flex-1"
-          :arr="useDefines().pdf().decoration()"
-        />
-      </div>
-      <div class="wb-input-container">
-        <label class="mx-2 text-xs">{{
-          t('editor.pdf.custom.generics.decorationStyle')
-        }}</label>
-        <InputSelect
-          v-model="pdf.paragraph.decorationStyle"
-          class="flex-1"
-          :arr="useDefines().pdf().decorationStyle()"
-        />
-      </div>
     </div>
   </PDFConfigurationSlot>
 </template>
