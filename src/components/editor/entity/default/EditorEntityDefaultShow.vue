@@ -375,10 +375,6 @@
       emitter.emit('entity-close', { all: true })
     })
 
-    emitter.on('entity-force-close', () => {
-      onUpdateContent()
-    })
-
     emitter.on('entity-update-area', () => {})
 
     emitter.on('entity-edit-reset', () => {
@@ -394,6 +390,7 @@
       if (edit.value) {
         edit.value = false
         await nextTick
+
         onUpdateContent()
 
         if (data.value !== props.entity.raw && data.value) {
@@ -407,6 +404,8 @@
   })
 
   const onUpdateContent = async () => {
+    if (props.entity.raw === data.value) return
+
     CONTEXT.updateInPage({
       entity: props.entity,
       raw: data.value,
