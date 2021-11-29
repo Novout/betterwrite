@@ -203,7 +203,9 @@ export const useEntity = () => {
         object.entity
       )
 
-      onGo(`entity-${entityIndex}`, object.page)
+      storage.normalize().then(() => {
+        onGo(`entity-${entityIndex}`, object.page)
+      })
     }
 
     const onGo = async (go: string | symbol, page: ContextState) => {
