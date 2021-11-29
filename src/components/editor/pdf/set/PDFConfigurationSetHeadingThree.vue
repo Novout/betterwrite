@@ -33,6 +33,19 @@
       </div>
       <div class="wb-input-container">
         <label class="mx-2 text-xs">{{
+          t('editor.pdf.base.pageMargins.title')
+        }}</label>
+        <section>
+          <label>{{ t('editor.pdf.base.pageMargins.top') }}</label>
+          <InputNumber v-model="pdf.headingThree.margin.top" />
+        </section>
+        <section>
+          <label>{{ t('editor.pdf.base.pageMargins.bottom') }}</label>
+          <InputNumber v-model="pdf.headingThree.margin.bottom" />
+        </section>
+      </div>
+      <div class="wb-input-container">
+        <label class="mx-2 text-xs">{{
           t('editor.pdf.custom.generics.lineHeight')
         }}</label>
         <InputNumber v-model="pdf.headingThree.lineHeight" />

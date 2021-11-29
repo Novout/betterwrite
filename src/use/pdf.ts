@@ -41,9 +41,9 @@ export const usePDF = () => {
         text: raw,
         margin: [
           generate().base().pageMargins[0],
-          45,
+          PDF.styles.headingOne.margin.top,
           generate().base().pageMargins[2],
-          45,
+          PDF.styles.headingOne.margin.bottom,
         ],
         pageBreak:
           PDF.styles.headingOne.breakPage && !project.isBlankProject()
@@ -61,9 +61,9 @@ export const usePDF = () => {
         text: raw,
         margin: [
           generate().base().pageMargins[0],
-          25,
+          PDF.styles.headingTwo.margin.top,
           generate().base().pageMargins[2],
-          25,
+          PDF.styles.headingTwo.margin.bottom,
         ],
         style: 'heading-two',
         tocItem:
@@ -78,9 +78,9 @@ export const usePDF = () => {
         text: raw,
         margin: [
           generate().base().pageMargins[0],
-          15,
+          PDF.styles.headingThree.margin.top,
           generate().base().pageMargins[2],
-          15,
+          PDF.styles.headingThree.margin.bottom,
         ],
         style: 'heading-three',
       }
@@ -102,9 +102,9 @@ export const usePDF = () => {
         preserveLeadingSpaces: true,
         margin: [
           generate().base().pageMargins[0],
-          0,
+          PDF.styles.paragraph.margin.top,
           generate().base().pageMargins[2],
-          0,
+          PDF.styles.paragraph.margin.bottom,
         ],
       }
     }
@@ -375,21 +375,6 @@ export const usePDF = () => {
       }
 
       const headingOne = () => {
-        let decorationStyle
-        let decoration
-
-        if (PDF.styles.paragraph.decorationStyle === 'none') {
-          decorationStyle = undefined
-        } else {
-          decorationStyle = PDF.styles.paragraph.decorationStyle
-        }
-
-        if (PDF.styles.paragraph.decoration === 'none') {
-          decoration = undefined
-        } else {
-          decoration = PDF.styles.paragraph.decoration
-        }
-
         return {
           font: PDF.styles.headingOne.font,
           fontSize: PDF.styles.headingOne.fontSize,
@@ -399,28 +384,11 @@ export const usePDF = () => {
           alignment: PDF.styles.headingOne.alignment,
           characterSpacing: PDF.styles.headingOne.characterSpacing,
           color: PDF.styles.headingOne.color,
-          decoration: decoration,
-          decorationStyle: decorationStyle,
           decorationColor: PDF.styles.headingOne.decorationColor,
         }
       }
 
       const headingTwo = () => {
-        let decorationStyle
-        let decoration
-
-        if (PDF.styles.paragraph.decorationStyle === 'none') {
-          decorationStyle = undefined
-        } else {
-          decorationStyle = PDF.styles.paragraph.decorationStyle
-        }
-
-        if (PDF.styles.paragraph.decoration === 'none') {
-          decoration = undefined
-        } else {
-          decoration = PDF.styles.paragraph.decoration
-        }
-
         return {
           font: PDF.styles.headingTwo.font,
           fontSize: PDF.styles.headingTwo.fontSize,
@@ -430,28 +398,11 @@ export const usePDF = () => {
           alignment: PDF.styles.headingTwo.alignment,
           characterSpacing: PDF.styles.headingTwo.characterSpacing,
           color: PDF.styles.headingTwo.color,
-          decoration: decoration,
-          decorationStyle: decorationStyle,
           decorationColor: PDF.styles.headingTwo.decorationColor,
         }
       }
 
       const headingThree = () => {
-        let decorationStyle
-        let decoration
-
-        if (PDF.styles.paragraph.decorationStyle === 'none') {
-          decorationStyle = undefined
-        } else {
-          decorationStyle = PDF.styles.paragraph.decorationStyle
-        }
-
-        if (PDF.styles.paragraph.decoration === 'none') {
-          decoration = undefined
-        } else {
-          decoration = PDF.styles.paragraph.decoration
-        }
-
         return {
           font: PDF.styles.headingThree.font,
           fontSize: PDF.styles.headingThree.fontSize,
@@ -461,8 +412,6 @@ export const usePDF = () => {
           alignment: PDF.styles.headingThree.alignment,
           characterSpacing: PDF.styles.headingThree.characterSpacing,
           color: PDF.styles.headingThree.color,
-          decoration: decoration,
-          decorationStyle: decorationStyle,
           decorationColor: PDF.styles.headingThree.decorationColor,
         }
       }

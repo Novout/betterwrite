@@ -145,6 +145,10 @@ export const usePopulate = () => {
             | 'double'
             | undefined,
           decorationColor: '' as string,
+          margin: {
+            top: 0 as number,
+            bottom: 0 as number,
+          },
         },
         headingOne: {
           font: useDefines().pdf().fontFamily()[0] as string,
@@ -173,6 +177,10 @@ export const usePopulate = () => {
             | 'wavy',
           decorationColor: '' as string,
           breakPage: true as boolean,
+          margin: {
+            top: 45 as number,
+            bottom: 45 as number,
+          },
         },
         headingTwo: {
           font: useDefines().pdf().fontFamily()[0] as string,
@@ -200,6 +208,10 @@ export const usePopulate = () => {
             | 'wavy',
           decorationColor: '' as string,
           breakPage: false as boolean,
+          margin: {
+            top: 25 as number,
+            bottom: 25 as number,
+          },
         },
         headingThree: {
           font: useDefines().pdf().fontFamily()[0] as string,
@@ -227,6 +239,10 @@ export const usePopulate = () => {
             | 'wavy',
           decorationColor: '' as string,
           breakPage: false as boolean,
+          margin: {
+            top: 15 as number,
+            bottom: 15 as number,
+          },
         },
         switcher: {
           cover: false,

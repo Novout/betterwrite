@@ -201,6 +201,26 @@ export const useStorage = () => {
       }
     }
 
+    // <= 0.9.7
+    if (!_.pdf.styles.paragraph.margin) {
+      _.pdf.styles.paragraph.margin = {
+        top: 0,
+        bottom: 0,
+      }
+      _.pdf.styles.headingOne.margin = {
+        top: 45,
+        bottom: 45,
+      }
+      _.pdf.styles.headingTwo.margin = {
+        top: 25,
+        bottom: 25,
+      }
+      _.pdf.styles.headingThree.margin = {
+        top: 15,
+        bottom: 15,
+      }
+    }
+
     return _
   }
 

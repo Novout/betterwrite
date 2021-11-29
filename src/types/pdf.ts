@@ -65,6 +65,10 @@ export interface PDFStateStylesParagraph {
   decoration: 'underline' | 'lineThrough' | 'overline' | 'none' | undefined
   decorationStyle: 'dashed' | 'dotted' | 'double' | 'none' | undefined
   decorationColor: string
+  margin: {
+    top: number
+    bottom: number
+  }
 }
 
 export interface PDFStateStylesHeading {
@@ -82,6 +86,10 @@ export interface PDFStateStylesHeading {
   decorationStyle: 'dashed' | 'dotted' | 'double' | 'wavy' | undefined
   decorationColor: string
   breakPage: boolean
+  margin: {
+    top: number
+    bottom: number
+  }
 }
 
 export interface PDFStateStylesSwitcher {
