@@ -534,11 +534,16 @@
   import { useEditorStore } from '@/store/editor'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useEntity } from '@/use/entity'
+  import { useRaw } from '@/use/raw'
 
   const props = defineProps({
     entity: {
       required: true,
       type: Object as () => Entity,
+    },
+    input: {
+      required: true,
+      type: Object as () => HTMLInputElement,
     },
   })
 
@@ -550,6 +555,7 @@
   const plugin = usePlugin()
   const emitter = useEmitter()
   const entity = useEntity()
+  const raw = useRaw()
   const { t } = useI18n()
 
   const state = reactive({
@@ -667,6 +673,9 @@
     })
 
     state.new = false
+
+    props.input.focus()
+    raw.v2().caret().set(props.input, props.entity.raw.length)
   }
 
   const onSwitcherEntityWrapper = () => {
@@ -692,5 +701,8 @@
     })
 
     state.switcher = false
+
+    props.input.focus()
+    raw.v2().caret().set(props.input, props.entity.raw.length)
   }
 </script>

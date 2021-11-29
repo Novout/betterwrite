@@ -11,6 +11,7 @@
     <EditorEntityDefaultShowPopover
       v-if="hover && props.entity.type !== 'heading-one'"
       :entity="props.entity"
+      :input="input"
     />
     <section v-if="commands" class="absolute z-max left-40 -top-60">
       <EditorCommands />
