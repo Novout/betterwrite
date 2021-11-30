@@ -204,6 +204,12 @@
 
       await nextTick
 
+      CONTEXT.newInPagePosEdit({
+        entity: props.entity,
+        type: 'paragraph',
+        raw: data.value,
+      })
+
       emitter.emit('entity-not-mutate-down', props.entity)
     }
 
@@ -220,6 +226,12 @@
       })
 
       await nextTick
+
+      CONTEXT.newInPagePosEdit({
+        entity: props.entity,
+        type: 'paragraph',
+        raw: data.value,
+      })
 
       emitter.emit('entity-not-mutate-down', props.entity)
     }
@@ -239,6 +251,12 @@
           })
 
           await nextTick
+
+          CONTEXT.newInPagePosEdit({
+            entity: props.entity,
+            type: 'paragraph',
+            raw: data.value,
+          })
 
           emitter.emit('entity-not-mutate-down', props.entity)
         },
