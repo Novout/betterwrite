@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.8](https://github.com/Novout/better-write/compare/v0.9.7...v0.9.8) (2021-11-30)
+
+
+### Features
+
+* **editor:** placeholder input editable ([3be6852](https://github.com/Novout/better-write/commits/3be685238f591929147fb8ec594ab347d2c1e9f9))
+
+
+### Bug Fixes
+
+* **editor:** clean raw in not fixed items ([9fb076b](https://github.com/Novout/better-write/commits/9fb076b3ec25c7aefb872b7ee05cb787a0ef6f01))
+* **editor:** delete entity overflow sequence ([ee5e3b7](https://github.com/Novout/better-write/commits/ee5e3b7e7e2a174a63cc15a9109dba4788ef17b1))
+* **editor:** new line in fixed items insert ([ac4535a](https://github.com/Novout/better-write/commits/ac4535a9a7d3fd22113b4863d049021543688f84))
+
+
+### Refactor
+
+* **editor:** unique input element ([47f50a6](https://github.com/Novout/better-write/commits/47f50a6cc5a9a3fe881d847fa8c027cec84a04a0))
+
 ### [0.9.7](https://github.com/Novout/better-write/compare/v0.9.6...v0.9.7) (2021-11-29)
 
 
