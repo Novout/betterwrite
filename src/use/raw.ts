@@ -291,7 +291,7 @@ export const useRaw = () => {
 
     const style = (entity: Entity, style: any) => {
       return [
-        'overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+        'editable overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
         entity.type === 'paragraph'
           ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
           : '',

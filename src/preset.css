@@ -123,3 +123,8 @@ input[type='number'] {
 .no-drag {
   -webkit-app-region: no-drag;
 }
+
+.editable:empty:before {
+  content: attr(data-placeholder);
+  opacity: 0.5;
+}

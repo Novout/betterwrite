@@ -4,7 +4,7 @@
     :class="[project.isBlankProject() ? 'pt-28' : '']"
     class="flex flex-col w-full min-h-editor overflow-y-auto overflow-x-hidden"
   >
-    <EditorEntityDefautInput
+    <EditorEntityDefaultInput
       v-for="(entity, index) in entities"
       :id="`entity-${String(index)}`"
       :key="index"

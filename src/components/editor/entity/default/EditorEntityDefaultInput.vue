@@ -8,7 +8,7 @@
     @mouseleave="hover = false"
     @click="onClickInEntity"
   >
-    <EditorEntityDefautInputPopover
+    <EditorEntityDefaultInputPopover
       v-if="hover && props.entity.type !== 'heading-one'"
       :entity="props.entity"
       :input="input"
@@ -20,7 +20,13 @@
       ref="input"
       :contenteditable="editable"
       :spellcheck="true"
-      :placeholder="t('editor.text.placeholder.base')"
+      :data-placeholder="
+        entity.utils().isFixed(_index)
+          ? ''
+          : t('editor.text.placeholder.base', {
+              prefix: EDITOR.configuration.commands.prefix,
+            })
+      "
       :style="{ minHeight: '24px', whiteSpace: 'break-spaces' }"
       :class="raw.v2().style(props.entity, style)"
       @input="onInput"
