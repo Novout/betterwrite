@@ -358,11 +358,11 @@ export const useEntity = () => {
     }
 
     const onDelete = async (entity: Entity, index: number) => {
-      emitter.emit('entity-not-mutate', entity)
+      CONTEXT.removeInPage(entity)
 
       await nextTick
 
-      CONTEXT.removeInPage(entity)
+      emitter.emit('entity-not-mutate', entity)
 
       await nextTick
 
