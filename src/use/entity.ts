@@ -114,6 +114,14 @@ export const useEntity = () => {
       )
     }
 
+    const isFixedRaw = (raw: string) => {
+      return (
+        raw === env.emptyLine() ||
+        raw === env.pageBreak() ||
+        raw === env.lineBreak()
+      )
+    }
+
     return {
       entry,
       isFixed,
@@ -124,6 +132,7 @@ export const useEntity = () => {
       isPageBreak,
       isLineBreak,
       isText,
+      isFixedRaw,
     }
   }
 

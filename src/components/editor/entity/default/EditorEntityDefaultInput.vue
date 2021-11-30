@@ -112,7 +112,7 @@
     if (_edit) {
       if (!hover.value || keyboard.value) input.value?.focus()
 
-      props.entity.raw === env.emptyLine()
+      entity.utils().isFixedRaw(props.entity.raw)
         ? (data.value = '')
         : (data.value = props.entity.raw)
 
