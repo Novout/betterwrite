@@ -93,7 +93,12 @@ export const useContextStore = defineStore('context', {
 
       const index = this.entities.indexOf(entity)
 
-      if (index === -1 || entity.type === 'heading-one') return
+      if (
+        index === -1 ||
+        entity.type === 'heading-one' ||
+        this.entities.length <= 1
+      )
+        return
 
       this.entities = this.entities.filter(
         (item: Entity) => this.entities.indexOf(item) !== index

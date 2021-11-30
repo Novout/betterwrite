@@ -8,7 +8,7 @@
     @mouseleave="hover = false"
     @click="onClickInEntity"
   >
-    <EditorEntityDefaultShowPopover
+    <EditorEntityDefautInputPopover
       v-if="hover && props.entity.type !== 'heading-one'"
       :entity="props.entity"
       :input="input"
@@ -462,20 +462,6 @@
     const posRaw = data.value.slice(position)
 
     let initial = false
-
-    // actually entity is last
-    if (_index.value + 1 === CONTEXT.entities.length) {
-      if (start) {
-        emitter.emit('entity-input-raw', data.value)
-        setData('')
-      } else {
-        setData(data.value.replace(posRaw, ''))
-        emitter.emit('entity-input-raw', posRaw)
-      }
-
-      emitter.emit('entity-input-focus')
-      return
-    }
 
     if (end) {
       CONTEXT.newInPagePosEdit({

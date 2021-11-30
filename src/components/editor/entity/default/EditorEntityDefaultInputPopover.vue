@@ -37,7 +37,7 @@
       ]"
       @mouseleave="onReset"
     >
-      <EditorEntityDefaultShowSelect
+      <EditorEntityDefautInputSelect
         @click.prevent.stop="onNewEntity('paragraph')"
       >
         <svg
@@ -55,8 +55,8 @@
             fill="currentColor"
           ></path>
         </svg>
-      </EditorEntityDefaultShowSelect>
-      <EditorEntityDefaultShowSelect
+      </EditorEntityDefautInputSelect>
+      <EditorEntityDefautInputSelect
         @click.prevent.stop="onNewEntity('heading-two')"
       >
         <svg
@@ -80,8 +80,8 @@
             ></path>
           </g>
         </svg>
-      </EditorEntityDefaultShowSelect>
-      <EditorEntityDefaultShowSelect
+      </EditorEntityDefautInputSelect>
+      <EditorEntityDefautInputSelect
         @click.prevent.stop="onNewEntity('heading-three')"
       >
         <svg
@@ -105,8 +105,8 @@
             ></path>
           </g>
         </svg>
-      </EditorEntityDefaultShowSelect>
-      <EditorEntityDefaultShowSelect
+      </EditorEntityDefautInputSelect>
+      <EditorEntityDefautInputSelect
         @click.prevent.stop="onNewEntity('page-break')"
       >
         <svg
@@ -124,8 +124,8 @@
             fill="currentColor"
           ></path>
         </svg>
-      </EditorEntityDefaultShowSelect>
-      <EditorEntityDefaultShowSelect
+      </EditorEntityDefautInputSelect>
+      <EditorEntityDefautInputSelect
         @click.prevent.stop="onNewEntity('line-break')"
       >
         <svg
@@ -143,7 +143,7 @@
             fill="currentColor"
           ></path>
         </svg>
-      </EditorEntityDefaultShowSelect>
+      </EditorEntityDefautInputSelect>
     </section>
     <HeroIcon @mouseenter.prevent.stop="onNewEntityWrapper">
       <svg
@@ -178,7 +178,7 @@
           : 'bottom-6',
       ]"
     >
-      <EditorEntityDefaultShowSelect
+      <EditorEntityDefautInputSelect
         @click.prevent.stop="onSwitchEntity('paragraph')"
       >
         <svg
@@ -196,8 +196,8 @@
             fill="currentColor"
           ></path>
         </svg>
-      </EditorEntityDefaultShowSelect>
-      <EditorEntityDefaultShowSelect
+      </EditorEntityDefautInputSelect>
+      <EditorEntityDefautInputSelect
         @click.prevent.stop="onSwitchEntity('heading-two')"
       >
         <svg
@@ -221,8 +221,8 @@
             ></path>
           </g>
         </svg>
-      </EditorEntityDefaultShowSelect>
-      <EditorEntityDefaultShowSelect
+      </EditorEntityDefautInputSelect>
+      <EditorEntityDefautInputSelect
         @click.prevent.stop="onSwitchEntity('heading-three')"
       >
         <svg
@@ -246,8 +246,8 @@
             ></path>
           </g>
         </svg>
-      </EditorEntityDefaultShowSelect>
-      <EditorEntityDefaultShowSelect
+      </EditorEntityDefautInputSelect>
+      <EditorEntityDefautInputSelect
         @click.prevent.stop="onSwitchEntity('page-break')"
       >
         <svg
@@ -265,8 +265,8 @@
             fill="currentColor"
           ></path>
         </svg>
-      </EditorEntityDefaultShowSelect>
-      <EditorEntityDefaultShowSelect
+      </EditorEntityDefautInputSelect>
+      <EditorEntityDefautInputSelect
         @click.prevent.stop="onSwitchEntity('line-break')"
       >
         <svg
@@ -284,7 +284,7 @@
             fill="currentColor"
           ></path>
         </svg>
-      </EditorEntityDefaultShowSelect>
+      </EditorEntityDefautInputSelect>
     </section>
     <HeroIcon
       class="wb-icon"
@@ -315,7 +315,7 @@
         border-theme-border-1
       "
     >
-      <EditorEntityDefaultShowSelect @click.prevent.stop="onUpEntity">
+      <EditorEntityDefautInputSelect @click.prevent.stop="onUpEntity">
         <template #icon>
           <HeroIcon>
             <svg
@@ -333,8 +333,8 @@
           </HeroIcon>
         </template>
         <p>{{ t('editor.aside.entity.up') }}</p>
-      </EditorEntityDefaultShowSelect>
-      <EditorEntityDefaultShowSelect @click.prevent.stop="onDownEntity">
+      </EditorEntityDefautInputSelect>
+      <EditorEntityDefautInputSelect @click.prevent.stop="onDownEntity">
         <template #icon>
           <HeroIcon>
             <svg
@@ -352,8 +352,8 @@
           </HeroIcon>
         </template>
         <p>{{ t('editor.aside.entity.down') }}</p>
-      </EditorEntityDefaultShowSelect>
-      <EditorEntityDefaultShowSelect @click.prevent.stop="onDeleteEntity">
+      </EditorEntityDefautInputSelect>
+      <EditorEntityDefautInputSelect @click.prevent.stop="onDeleteEntity">
         <template #icon>
           <HeroIcon>
             <svg
@@ -371,7 +371,7 @@
           </HeroIcon>
         </template>
         <p>{{ t('editor.aside.entity.delete') }}</p>
-      </EditorEntityDefaultShowSelect>
+      </EditorEntityDefautInputSelect>
     </section>
     <HeroIcon
       v-if="
