@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.9](https://github.com/Novout/better-write/compare/v0.9.8...v0.9.9) (2021-11-30)
+
+
+### Test
+
+* **raw:** correct editable ([ff5604c](https://github.com/Novout/better-write/commits/ff5604c09d32b54c6ef8a3de324dad453c48e7c7))
+
+
+### Structure
+
+* **deps:** update packages ([6c36082](https://github.com/Novout/better-write/commits/6c360822d4d8c85de97858b02a1b68972c4b39a6))
+
 ### [0.9.8](https://github.com/Novout/better-write/compare/v0.9.7...v0.9.8) (2021-11-30)
 
 
