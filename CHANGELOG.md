@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.11](https://github.com/Novout/better-write/compare/v0.9.10...v0.9.11) (2021-12-01)
+
+
+### Style
+
+* **landing:** remove background ([b7a13cb](https://github.com/Novout/better-write/commits/b7a13cbcd0cc95799abace28f90a9e2801752f7d))
+
+
+### Structure
+
+* loading base component ([a977bba](https://github.com/Novout/better-write/commits/a977bba1e02142eae98b9d2f5a7d3ef91cfb0944))
+
 ### [0.9.10](https://github.com/Novout/better-write/compare/v0.9.9...v0.9.10) (2021-12-01)
 
 
