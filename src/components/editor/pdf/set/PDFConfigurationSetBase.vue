@@ -9,14 +9,7 @@
       </section>
     </template>
     <div
-      class="
-        flex flex-row flex-wrap
-        justify-start
-        items-center
-        my-3
-        overflow-x-hidden
-        gap-5
-      "
+      class="flex flex-row flex-wrap justify-start items-center my-3 overflow-x-hidden gap-5"
     >
       <div class="wb-input-container">
         <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
@@ -74,14 +67,7 @@
       </div>
       <div class="wb-input-container">
         <section
-          class="
-            flex
-            justify-center
-            items-center
-            w-full
-            flex-row flex-wrap
-            gap-5
-          "
+          class="flex justify-center items-center w-full flex-row flex-wrap gap-5"
         >
           <section class="flex items-center">
             <label class="mx-2 text-xs">{{
@@ -124,14 +110,7 @@
       </div>
       <div class="wb-input-container">
         <section
-          class="
-            flex
-            justify-center
-            items-center
-            w-full
-            flex-row flex-wrap
-            gap-5
-          "
+          class="flex justify-center items-center w-full flex-row flex-wrap gap-5"
         >
           <section class="flex items-center">
             <label class="mx-2 text-xs">{{
@@ -181,14 +160,7 @@
       </div>
       <div class="wb-input-container">
         <section
-          class="
-            flex
-            justify-center
-            items-center
-            w-full
-            flex-row flex-wrap
-            gap-5
-          "
+          class="flex justify-center items-center w-full flex-row flex-wrap gap-5"
         >
           <section class="flex items-center">
             <label class="mx-2 text-xs">{{

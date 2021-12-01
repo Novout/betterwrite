@@ -1,15 +1,6 @@
 <template>
   <li
-    class="
-      flex
-      items-start
-      w-full
-      justify-between
-      text-gray-300
-      bg-black-opacity
-      p-3
-      my-1
-    "
+    class="flex items-start w-full justify-between text-gray-300 bg-black-opacity p-3 my-1"
   >
     <HeroIcon class="mr-2 cursor-default">
       <slot name="icon"></slot>

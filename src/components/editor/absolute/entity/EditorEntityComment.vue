@@ -2,32 +2,13 @@
   <div class="fixed left-0 top-0 w-full h-screen bg-modal z-max">
     <div
       ref="comment"
-      class="
-        flex flex-col
-        fixed
-        w-96
-        bg-theme-editor-external-comment-background
-        hover:bg-theme-editor-external-comment-background-hover
-        active:bg-theme-editor-external-comment-background-active
-        px-5
-        py-2
-        h-40
-        rounded
-        shadow-2xl
-      "
+      class="flex flex-col fixed w-96 bg-theme-editor-external-comment-background hover:bg-theme-editor-external-comment-background-hover active:bg-theme-editor-external-comment-background-active px-5 py-2 h-40 rounded shadow-2xl"
       :style="style"
     >
       <div class="flex justify-between items-center cursor-pointer pb-2">
         <h2
           v-if="entity.raw !== env.emptyLine()"
-          class="
-            w-3/4
-            truncate
-            font-bold
-            text-lg text-theme-editor-external-comment-title
-            hover:text-theme-editor-external-comment-title-hover
-            active:text-theme-editor-external-comment-title-active
-          "
+          class="w-3/4 truncate font-bold text-lg text-theme-editor-external-comment-title hover:text-theme-editor-external-comment-title-hover active:text-theme-editor-external-comment-title-active"
         >
           {{ raw.v2().normalize(entity.raw) }}
         </h2>
@@ -50,20 +31,7 @@
         ref="search"
         contenteditable="true"
         spellcheck="true"
-        class="
-          flex-1
-          bg-theme-editor-external-comment-textarea-background
-          hover:bg-theme-editor-external-comment-background-textarea-hover
-          active:bg-theme-editor-external-comment-background-textarea-active
-          w-full
-          rounded-sm
-          p-2
-          overflow-y-auto overflow-x-hidden
-          border-theme-editor-external-comment-border
-          text-theme-editor-external-comment-text
-          hover:text-theme-editor-external-comment-text-hover
-          active:text-theme-editor-external-comment-text-active
-        "
+        class="flex-1 bg-theme-editor-external-comment-textarea-background hover:bg-theme-editor-external-comment-background-textarea-hover active:bg-theme-editor-external-comment-background-textarea-active w-full rounded-sm p-2 overflow-y-auto overflow-x-hidden border-theme-editor-external-comment-border text-theme-editor-external-comment-text hover:text-theme-editor-external-comment-text-hover active:text-theme-editor-external-comment-text-active"
         @input="onInput"
         @mouseenter="onTextArea = true"
         @mouseleave="onTextArea = false"

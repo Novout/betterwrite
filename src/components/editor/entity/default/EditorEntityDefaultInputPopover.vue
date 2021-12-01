@@ -1,14 +1,7 @@
 <template>
   <section
     v-motion
-    class="
-      flex
-      justify-start
-      items-start
-      transition-all
-      absolute
-      text-theme-text-1
-    "
+    class="flex justify-start items-start transition-all absolute text-theme-text-1"
     :class="[
       props.entity.type === 'page-break' ? 'top-3' : '',
       props.entity.type === 'line-break' ? 'top-3' : '',
@@ -21,13 +14,7 @@
   >
     <section
       v-if="state.new"
-      class="
-        flex
-        absolute
-        rounded
-        bg-theme-editor-entity-popover-background
-        border-theme-border-1
-      "
+      class="flex absolute rounded bg-theme-editor-entity-popover-background border-theme-border-1"
       :class="[
         props.entity.type === 'line-break' ||
         props.entity.type === 'page-break' ||
@@ -161,15 +148,7 @@
     </HeroIcon>
     <section
       v-if="state.switcher"
-      class="
-        flex
-        absolute
-        rounded
-        left-5
-        bg-theme-editor-entity-popover-background
-        border-theme-border-1
-        z-max
-      "
+      class="flex absolute rounded left-5 bg-theme-editor-entity-popover-background border-theme-border-1 z-max"
       :class="[
         props.entity.type === 'line-break' ||
         props.entity.type === 'page-break' ||
@@ -303,17 +282,7 @@
     </HeroIcon>
     <section
       v-if="state.adjust"
-      class="
-        absolute
-        rounded
-        bottom-5
-        left-10
-        text-theme-editor-entity-popover-text
-        hover:text-theme-editor-entity-popover-text-hover
-        active:text-theme-editor-entity-popover-text-active
-        bg-theme-editor-entity-popover-background
-        border-theme-border-1
-      "
+      class="absolute rounded bottom-5 left-10 text-theme-editor-entity-popover-text hover:text-theme-editor-entity-popover-text-hover active:text-theme-editor-entity-popover-text-active bg-theme-editor-entity-popover-background border-theme-border-1"
     >
       <EditorEntityDefaultInputSelect @click.prevent.stop="onUpEntity">
         <template #icon>
@@ -395,19 +364,7 @@
     </HeroIcon>
     <section
       v-if="state.image"
-      class="
-        flex flex-row
-        absolute
-        rounded
-        bottom-5
-        left-16
-        p-3
-        text-theme-editor-entity-popover-text
-        hover:text-theme-editor-entity-popover-text-hover
-        active:text-theme-editor-entity-popover-text-active
-        bg-theme-editor-entity-popover-background
-        border-theme-border-1
-      "
+      class="flex flex-row absolute rounded bottom-5 left-16 p-3 text-theme-editor-entity-popover-text hover:text-theme-editor-entity-popover-text-hover active:text-theme-editor-entity-popover-text-active bg-theme-editor-entity-popover-background border-theme-border-1"
     >
       <div
         class="mx-2 flex flex-col justify-center"

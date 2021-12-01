@@ -9,13 +9,7 @@
       </section>
     </template>
     <section
-      class="
-        flex flex-row flex-wrap
-        justify-between
-        items-center
-        my-3
-        overflow-x-hidden
-      "
+      class="flex flex-row flex-wrap justify-between items-center my-3 overflow-x-hidden"
     >
       <div class="wb-input-container flex flex-wrap">
         <section class="flex items-center mx-2">

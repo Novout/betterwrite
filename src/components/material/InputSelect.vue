@@ -2,24 +2,7 @@
   <Listbox v-model="cmp" class="w-auto">
     <div>
       <ListboxButton
-        class="
-          w-full
-          py-2
-          pl-3
-          pr-10
-          text-left
-          bg-theme-background-4
-          shadow-md
-          cursor-pointer
-          focus:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-opacity-75
-          focus-visible:ring-white
-          focus-visible:ring-offset-orange-300
-          focus-visible:ring-offset-2
-          focus-visible:border-indigo-500
-          sm:text-sm
-        "
+        class="w-full py-2 pl-3 pr-10 text-left bg-theme-background-4 shadow-md cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm"
       >
         <span :class="[aside ? 'w-12' : '']" class="block truncate">{{
           cmp
@@ -32,21 +15,7 @@
         leave-to-class="opacity-0"
       >
         <ListboxOptions
-          class="
-            fixed
-            py-1
-            mt-1
-            text-base
-            bg-theme-background-4
-            rounded-md
-            shadow-lg
-            max-h-60
-            overflow-auto
-            ring-1 ring-black ring-opacity-5
-            focus:outline-none
-            sm:text-sm
-            z-max
-          "
+          class="fixed py-1 mt-1 text-base bg-theme-background-4 rounded-md shadow-lg max-h-60 overflow-auto ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-max"
         >
           <ListboxOption
             v-for="(it, index) in props.arr"
@@ -72,17 +41,7 @@
               >
               <span
                 v-if="selected"
-                class="
-                  absolute
-                  inset-y-0
-                  left-0
-                  flex
-                  items-center
-                  pl-3
-                  text-amber-600
-                  truncate
-                  w-10
-                "
+                class="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600 truncate w-10"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

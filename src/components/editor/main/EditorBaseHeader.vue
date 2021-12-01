@@ -1,30 +1,11 @@
 <template>
   <header
-    class="
-      flex
-      justify-start
-      items-start
-      w-full
-      bg-theme-editor-header-background
-      hover:bg-theme-editor-header-background-hover
-      active:bg-theme-editor-header-background-active
-      z-50
-      pt-0.5
-    "
+    class="flex justify-start items-start w-full bg-theme-editor-header-background hover:bg-theme-editor-header-background-hover active:bg-theme-editor-header-background-active z-50 pt-0.5"
   >
     <div>
       <HeroIcon
         v-if="PROJECT.name !== env.projectEmpty()"
-        class="
-          relative
-          justify-center
-          items-center
-          z-aside-open
-          wb-icon
-          rounded-br
-          no-drag
-          mr-7
-        "
+        class="relative justify-center items-center z-aside-open wb-icon rounded-br no-drag mr-7"
         @click="ABSOLUTE.aside = !ABSOLUTE.aside"
       >
         <svg

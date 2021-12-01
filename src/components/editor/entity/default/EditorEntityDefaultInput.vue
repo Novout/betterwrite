@@ -27,7 +27,11 @@
               prefix: EDITOR.configuration.commands.prefix,
             })
       "
-      :style="{ minHeight: '24px', whiteSpace: 'break-spaces' }"
+      :style="{
+        minHeight: '24px',
+        whiteSpace: 'break-spaces',
+        paddingBottom: last ? '5rem' : '',
+      }"
       :class="raw.v2().style(props.entity, style)"
       @input="onInput"
       @keypress.enter.prevent="onEnter"
@@ -95,6 +99,7 @@
   const style = computed(() => EDITOR.styles.show)
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
   const editable = computed(() => !entity.utils().isFixed(_index.value))
+  const last = computed(() => _index.value === CONTEXT.entities.length - 1)
 
   watch(hover, async (_hover) => {
     emitter.emit('entity-hover', _hover)
@@ -111,6 +116,8 @@
     await nextTick
     if (_edit) {
       if (!hover.value || keyboard.value) input.value?.focus()
+
+      if (last.value) scroll.entity(_index.value, 'bottom')
 
       entity.utils().isFixedRaw(props.entity.raw)
         ? (data.value = '')
@@ -145,7 +152,7 @@
       data.value.startsWith(EDITOR.configuration.commands.prefix) &&
       data.value.length <= EDITOR.configuration.commands.prefix.length + 1
     ) {
-      // scroll.to(`#entity-${_index.value}`, 'center')
+      scroll.entity(_index.value, 'center')
       commands.value = true
     } else {
       commands.value = false
@@ -469,7 +476,7 @@
       raw
         .v2()
         .caret()
-        .set(input.value as HTMLDivElement, old_raw.value)
+        .set(input.value as HTMLDivElement, props.entity.raw.length)
 
       // update old raw
       old_raw.value = data.value.length

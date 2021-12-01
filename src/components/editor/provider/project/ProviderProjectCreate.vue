@@ -1,39 +1,10 @@
 <template>
   <div
     id="pdf-absolute"
-    class="
-      absolute
-      top-1/2
-      left-1/2
-      transform
-      -translate-x-1/2 -translate-y-1/2
-      overflow-y-auto
-      duration-700
-      bg-modal
-      transition
-      flex-col
-      z-preview
-      wb-text
-      shadow-lg
-      w-full
-      h-screen
-      flex
-      justify-center
-      items-center
-    "
+    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-y-auto duration-700 bg-modal transition flex-col z-preview wb-text shadow-lg w-full h-screen flex justify-center items-center"
   >
     <div
-      class="
-        w-full
-        md:w-1/2
-        bg-theme-background-1
-        h-screen
-        md:h-3/4
-        justify-between
-        flex flex-col
-        overflow-y-auto
-        p-5
-      "
+      class="w-full md:w-1/2 bg-theme-background-1 h-screen md:h-3/4 justify-between flex flex-col overflow-y-auto p-5"
     >
       <div class="flex w-full flex-row-reverse">
         <HeroIcon class="wb-icon" @click="ABSOLUTE.project.new = false">

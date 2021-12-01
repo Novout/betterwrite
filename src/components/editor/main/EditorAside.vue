@@ -4,20 +4,7 @@
     id="editor-aside"
     ref="aside"
     v-motion="'aside'"
-    class="
-      fixed
-      md:relative
-      h-screen
-      max-h-screen
-      overflow-y-auto
-      w-full
-      md:w-60
-      bg-theme-aside-background
-      hover:bg-theme-aside-background-hover
-      active:bg-theme-aside-background-active
-      z-aside
-      shadow-lg
-    "
+    class="fixed md:relative h-screen max-h-screen overflow-y-auto w-full md:w-60 bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active z-aside shadow-lg"
     :style="{ left, opacity }"
     :initial="{
       x: -240,

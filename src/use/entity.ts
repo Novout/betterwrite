@@ -358,11 +358,11 @@ export const useEntity = () => {
     }
 
     const onDelete = async (entity: Entity, index: number) => {
-      CONTEXT.removeInPage(entity)
+      emitter.emit('entity-not-mutate', entity)
 
       await nextTick
 
-      emitter.emit('entity-not-mutate', entity)
+      CONTEXT.removeInPage(entity)
 
       await nextTick
 
@@ -380,17 +380,11 @@ export const useEntity = () => {
         CONTEXT.insertRawInExistentEntity(payload.entity)
       }
 
+      await nextTick
+
       onDelete(payload.entity, payload.index)
 
       await nextTick
-
-      emitter.emit('entity-open', {
-        entity: payload.entity,
-        up: true,
-        keyboard: true,
-      })
-
-      plugin.emit('plugin-entity-delete', payload.index)
     }
 
     const onBoldRaw = (selection: string) => {

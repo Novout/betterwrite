@@ -9,13 +9,7 @@
       </section>
     </template>
     <div
-      class="
-        flex flex-row flex-wrap
-        justify-start
-        items-center
-        my-3
-        overflow-x-hidden
-      "
+      class="flex flex-row flex-wrap justify-start items-center my-3 overflow-x-hidden"
     >
       <div class="wb-input-container justify-start">
         <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>

@@ -7,14 +7,7 @@
         shown,
         theme: 'better-write',
       }"
-      class="
-        text-theme-editor-electron-update-text
-        hover:theme-editor-electron-update-text-hover
-        active:theme-editor-electron-update-text-active
-        no-drag
-        cursor-pointer
-        mt-0.5
-      "
+      class="text-theme-editor-electron-update-text hover:theme-editor-electron-update-text-hover active:theme-editor-electron-update-text-active no-drag cursor-pointer mt-0.5"
       @click.prevent.stop="onUpdate"
     >
       <svg

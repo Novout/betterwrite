@@ -1,16 +1,6 @@
 <template>
   <div
-    class="
-      flex
-      mt-1
-      justify-between
-      items-center
-      w-full
-      p-1
-      border border-theme-border-commands-1
-      text-theme-text-commands-1
-      rounded
-    "
+    class="flex mt-1 justify-between items-center w-full p-1 border border-theme-border-commands-1 text-theme-text-commands-1 rounded"
   >
     <HeroIcon class="text-sm">
       <slot name="icon" />

@@ -1,13 +1,6 @@
 <template>
   <section
-    class="
-      flex flex-col
-      justify-evenly
-      items-center
-      min-h-screen
-      w-full
-      bg-gray-900 bg-wb-landing-third
-    "
+    class="flex flex-col justify-evenly items-center min-h-screen w-full bg-gray-900 bg-wb-landing-third"
   >
     <section class="flex flex-col">
       <h2 class="font-bold text-xl md:text-3xl text-gray-300 py-10 text-center">
@@ -18,15 +11,7 @@
       </p>
     </section>
     <div
-      class="
-        flex flex-row
-        justify-center
-        md:justify-between
-        flex-wrap
-        mt-20
-        p-2
-        w-3/4
-      "
+      class="flex flex-row justify-center md:justify-between flex-wrap mt-20 p-2 w-3/4"
     >
       <LandingThirdCard title="Vue">
         <img class="bg-cover" src="../../assets/landing/vue.png" />

@@ -1,19 +1,7 @@
 <template>
   <div
     v-if="offlineReady && needRefresh"
-    class="
-      fixed
-      top-0
-      right-0
-      m-3
-      p-2
-      rounded-sm
-      shadow-lg
-      text-left
-      wb-text
-      bg-theme-background-2
-      z-max
-    "
+    class="fixed top-0 right-0 m-3 p-2 rounded-sm shadow-lg text-left wb-text bg-theme-background-2 z-max"
     role="alert"
   >
     <HeroIcon class="absolute right-0 top-0 wb-icon" @click.prevent="close">

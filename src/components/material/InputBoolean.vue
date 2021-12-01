@@ -8,17 +8,7 @@
         ? 'bg-theme-background-1'
         : 'bg-theme-background-4',
     ]"
-    class="
-      relative
-      inline-flex
-      items-center
-      h-6
-      transition-colors
-      rounded-full
-      w-11
-      focus:outline-none
-      shadow-xl
-    "
+    class="relative inline-flex items-center h-6 transition-colors rounded-full w-11 focus:outline-none shadow-xl"
   >
     <span
       :class="[

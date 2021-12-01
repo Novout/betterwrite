@@ -51,15 +51,7 @@
     </div>
     <div
       v-if="project.isCreativeProject()"
-      class="
-        dark:text-gray-300
-        text-black text-base
-        shadow-lg
-        w-full
-        lg:w-1/2
-        py-1
-        my-2
-      "
+      class="dark:text-gray-300 text-black text-base shadow-lg w-full lg:w-1/2 py-1 my-2"
     >
       <h3 class="text-lg my-1 font-bold text-theme-text-2">
         {{ t('editor.preferences.shortcuts.global.project.chapter.title') }}

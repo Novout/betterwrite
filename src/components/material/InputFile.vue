@@ -5,16 +5,7 @@
       <label
         :for="`input-file-${props.id}`"
         :class="width"
-        class="
-          flex
-          items-center
-          p-1
-          justify-center
-          rounded
-          cursor-pointer
-          wb-text
-          border-2 border-theme-background-4
-        "
+        class="flex items-center p-1 justify-center rounded cursor-pointer wb-text border-2 border-theme-background-4"
       >
         <HeroIcon class="wb-icon pointer-events-none">
           <svg

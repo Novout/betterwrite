@@ -2,19 +2,7 @@
   <Modal @close="onClose">
     <div
       ref="finder"
-      class="
-        fixed
-        w-60
-        text-theme-editor-extras-finder-text
-        hover:text-theme-editor-extras-finder-text-hover
-        active:text-theme-editor-extras-finder-text-active
-        bg-theme-editor-extras-finder-background
-        hover:bg-theme-editor-extras-finder-background-hover
-        active:bg-theme-editor-extras-finder-background-active
-        p-2
-        rounded
-        shadow-2xl
-      "
+      class="fixed w-60 text-theme-editor-extras-finder-text hover:text-theme-editor-extras-finder-text-hover active:text-theme-editor-extras-finder-text-active bg-theme-editor-extras-finder-background hover:bg-theme-editor-extras-finder-background-hover active:bg-theme-editor-extras-finder-background-active p-2 rounded shadow-2xl"
       :style="style"
     >
       <div class="flex flex-col w-full">
@@ -81,13 +69,7 @@
         <input
           ref="search"
           v-model="entity.fstate.entry"
-          class="
-            bg-transparent
-            border border-theme-editor-extras-finder-border
-            px-1
-            mb-1
-            placeholder-theme-editor-extras-finder-text
-          "
+          class="bg-transparent border border-theme-editor-extras-finder-border px-1 mb-1 placeholder-theme-editor-extras-finder-text"
           :placeholder="t('editor.text.placeholder.shortcuts.finderEntry')"
           @input="entity.finder().onFinder"
           @keypress.enter.prevent="entity.finder().onUp"

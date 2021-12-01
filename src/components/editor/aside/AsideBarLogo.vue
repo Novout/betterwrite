@@ -1,15 +1,7 @@
 <template>
   <div
     v-cloak
-    class="
-      flex
-      bg-theme-aside-logo-background
-      justify-around
-      md:justify-between
-      items-center
-      w-full
-      p-2
-    "
+    class="flex bg-theme-aside-logo-background justify-around md:justify-between items-center w-full p-2"
   >
     <img
       class="object-contain cursor-pointer"

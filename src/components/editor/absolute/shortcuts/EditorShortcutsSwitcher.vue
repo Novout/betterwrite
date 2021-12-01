@@ -2,19 +2,7 @@
   <Modal @close="onClose">
     <div
       ref="switcher"
-      class="
-        fixed
-        w-60
-        text-theme-editor-extras-switcher-text
-        hover:text-theme-editor-extras-switcher-text-hover
-        active:text-theme-editor-extras-switcher-text-active
-        bg-theme-editor-extras-switcher-background
-        hover:bg-theme-editor-extras-switcher-background-hover
-        active:bg-theme-editor-extras-switcher-background-active
-        p-2
-        rounded
-        shadow-2xl
-      "
+      class="fixed w-60 text-theme-editor-extras-switcher-text hover:text-theme-editor-extras-switcher-text-hover active:text-theme-editor-extras-switcher-text-active bg-theme-editor-extras-switcher-background hover:bg-theme-editor-extras-switcher-background-hover active:bg-theme-editor-extras-switcher-background-active p-2 rounded shadow-2xl"
       :style="style"
     >
       <div
@@ -86,23 +74,12 @@
         <input
           ref="entry"
           v-model="entity.sstate.entry"
-          class="
-            bg-transparent
-            border border-theme-editor-extras-switcher-border
-            px-1
-            mb-1
-            placeholder-theme-editor-extras-switcher-text
-          "
+          class="bg-transparent border border-theme-editor-extras-switcher-border px-1 mb-1 placeholder-theme-editor-extras-switcher-text"
           :placeholder="t('editor.text.placeholder.shortcuts.switcherEntry')"
         />
         <input
           v-model="entity.sstate.output"
-          class="
-            bg-transparent
-            border border-theme-editor-extras-switcher-border
-            px-1
-            placeholder-theme-editor-extras-switcher-text
-          "
+          class="bg-transparent border border-theme-editor-extras-switcher-border px-1 placeholder-theme-editor-extras-switcher-text"
           :placeholder="t('editor.text.placeholder.shortcuts.switcherOutput')"
         />
       </div>

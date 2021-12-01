@@ -2,13 +2,7 @@
   <div class="flex px-2 flex-col mt-5 w-full">
     <p
       v-if="!env.isEmptyProject(PROJECT.name)"
-      class="
-        cursor-pointer
-        font-bold
-        text-theme-aside-graph-text
-        hover:text-theme-aside-graph-text-hover
-        active:text-theme-aside-graph-text-active
-      "
+      class="cursor-pointer font-bold text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
       @click="graph.base()"
     >
       {{ PROJECT.nameRaw }}

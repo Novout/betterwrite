@@ -126,5 +126,5 @@ input[type='number'] {
 
 .editable:empty:before {
   content: attr(data-placeholder);
-  opacity: 0.5;
+  opacity: 0.75;
 }

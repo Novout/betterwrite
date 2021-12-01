@@ -1,43 +1,15 @@
 <template>
   <section class="min-h-screen w-full bg-gray-900 bg-wb-landing">
     <div
-      class="
-        flex flex-col
-        items-center
-        md:items-end
-        w-full
-        pt-24
-        pr-10
-        md:pr-40
-      "
+      class="flex flex-col items-center md:items-end w-full pt-24 pr-10 md:pr-40"
     >
       <h1
-        class="
-          font-bold
-          text-gray-300 text-xl
-          md:text-2xl
-          lg:text-3xl
-          xl:text-4xl
-          z-10
-          pointer-events-none
-          text-center
-        "
+        class="font-bold text-gray-300 text-xl md:text-2xl lg:text-3xl xl:text-4xl z-10 pointer-events-none text-center"
       >
         {{ t('landing.first.title') }}
       </h1>
       <p
-        class="
-          font-light
-          text-gray-300
-          mt-1
-          text-base
-          md:text-lg
-          lg:text-xl
-          xl:text-2xl
-          z-10
-          pointer-events-none
-          text-center
-        "
+        class="font-light text-gray-300 mt-1 text-base md:text-lg lg:text-xl xl:text-2xl z-10 pointer-events-none text-center"
       >
         {{ t('landing.first.description') }}
       </p>
@@ -97,20 +69,7 @@
         class="flex items-center justify-between lg:w-5/12 xl:w-1/3 mt-20 pb-10"
       >
         <router-link
-          class="
-            font-bold
-            text-base
-            md:text-lg
-            px-2
-            py-2
-            md:px-5 md:py-5
-            rounded-full
-            bg-black-opacity
-            hover:bg-gray-900
-            bg-gray-800
-            text-gray-200
-            flex flex-col
-          "
+          class="font-bold text-base md:text-lg px-2 py-2 md:px-5 md:py-5 rounded-full bg-black-opacity hover:bg-gray-900 bg-gray-800 text-gray-200 flex flex-col"
           to="/"
           ><div>
             {{ t('landing.first.editor.website') }}
@@ -120,21 +79,7 @@
           </div></router-link
         >
         <a
-          class="
-            font-bold
-            text-base
-            md:text-lg
-            px-2
-            py-2
-            md:px-5 md:py-5
-            rounded-full
-            bg-black-opacity
-            hover:bg-gray-900
-            bg-gray-800
-            text-gray-200
-            flex flex-col
-            cursor-pointer
-          "
+          class="font-bold text-base md:text-lg px-2 py-2 md:px-5 md:py-5 rounded-full bg-black-opacity hover:bg-gray-900 bg-gray-800 text-gray-200 flex flex-col cursor-pointer"
           :href="desktopDownload"
           target="_blank"
           ><div>
