@@ -4,9 +4,8 @@ import {
   createWebHistory,
 } from 'vue-router'
 import isElectron from 'is-electron'
-import Landing from '@/pages/Landing.vue'
 import Editor from '@/pages/Editor.vue'
-import ErrorPage from '@/pages/404.vue'
+import { defineAsyncComponent } from 'vue'
 
 const electronRoutes = [
   { path: '/', component: Editor },
@@ -14,9 +13,18 @@ const electronRoutes = [
 ]
 
 const webRoutes = [
-  { path: '/', component: Editor },
-  { path: '/landing', component: Landing },
-  { path: '/:pathMatch(.*)*', component: ErrorPage },
+  {
+    path: '/',
+    component: defineAsyncComponent(() => import('@/pages/Editor.vue')),
+  },
+  {
+    path: '/landing',
+    component: defineAsyncComponent(() => import('@/pages/Landing.vue')),
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: defineAsyncComponent(() => import('@/pages/404.vue')),
+  },
 ]
 
 export default createRouter({
