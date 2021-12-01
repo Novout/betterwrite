@@ -2,7 +2,7 @@
   <footer
     v-motion
     :initial="{ opacity: 0 }"
-    :enter="{ opacity: 1 }"
+    :enter="{ opacity: 1, transition: { delay: 300 } }"
     class="w-full text-gray-200 bg-black-opacity body-font"
   >
     <div

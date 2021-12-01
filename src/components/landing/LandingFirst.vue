@@ -5,13 +5,11 @@
     <div
       class="flex-1 container mx-auto flex px-5 py-24 md:flex-row flex-col items-center"
     >
-      <div
-        class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center"
-      >
+      <div class="lg:flex-grow w-full flex flex-col items-center text-center">
         <h1
           v-motion
           :initial="{ opacity: 0, y: -50 }"
-          :enter="{ opacity: 1, y: 0 }"
+          :enter="{ opacity: 1, y: 0, transition: { delay: 300 } }"
           class="title-font sm:text-4xl text-3xl mb-4"
         >
           {{ t('landing.first.title') }}
@@ -19,19 +17,19 @@
         <p
           v-motion
           :initial="{ opacity: 0, y: 50 }"
-          :enter="{ opacity: 1, y: 0 }"
-          class="mb-8 leading-relaxed text-lg"
+          :enter="{ opacity: 1, y: 0, transition: { delay: 300 } }"
+          class="mb-10 mt-2 leading-relaxed text-lg"
         >
           {{ t('landing.first.description') }}
         </p>
         <div
           v-motion
-          class="flex items-center justify-between lg:w-5/12 xl:w-1/3 mt-20 pb-10"
+          class="flex items-center justify-between lg:w-5/12 xl:w-1/3 mt-32"
           :initial="{ opacity: 0 }"
-          :enter="{ opacity: 1 }"
+          :enter="{ opacity: 1, transition: { delay: 300 } }"
         >
           <router-link
-            class="font-bold shadow-xl w-full text-base md:text-lg px-5 py-2 md:px-5 md:py-5 rounded-full border border-gray-800 bg-black-opacity text-gray-200 flex flex-col"
+            class="font-bold shadow-xl w-full text-base md:text-lg px-5 py-2 md:px-5 md:py-5 rounded-full border border-gray-800 bg-black-opacity hover:bg-gray-900 text-gray-200 flex flex-col"
             to="/"
             ><div>
               {{ t('landing.first.editor.website') }}
@@ -41,7 +39,7 @@
             </div></router-link
           >
           <a
-            class="font-bold shadow-xl ml-5 w-full text-base md:text-lg px-5 py-2 md:px-5 md:py-5 rounded-full border border-gray-800 bg-black-opacity text-gray-200 flex flex-col cursor-pointer"
+            class="font-bold items-center justify-center shadow-xl ml-5 w-full text-base md:text-lg px-5 py-2 md:px-5 md:py-5 rounded-full border border-gray-800 bg-black-opacity hover:bg-gray-900 text-gray-200 flex flex-col cursor-pointer"
             :href="desktopDownload"
             target="_blank"
             ><div>
@@ -86,14 +84,6 @@
             </div>
           </a>
         </div>
-      </div>
-      <div
-        v-motion
-        :initial="{ opacity: 0, x: 50 }"
-        :enter="{ opacity: 1, x: 0 }"
-        class="flex justify-center items-center w-3/4 md:w-1/2"
-      >
-        <img class="rounded" src="@/assets/landing/editor.png" />
       </div>
     </div>
     <LandingFooter />
