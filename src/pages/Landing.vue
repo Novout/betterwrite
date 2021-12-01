@@ -1,8 +1,6 @@
 <template>
   <main class="min-h-screen w-full landing overflow-x-hidden">
     <LandingFirst />
-    <LandingSecond />
-    <LandingThird />
   </main>
 </template>
 

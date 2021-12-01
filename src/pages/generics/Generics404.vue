@@ -1,6 +1,8 @@
 <template>
-  <main class="wb-base flex items-center justify-center flex-col md:flex-row">
-    <router-link to="/" class="text-3xl text-theme-text-2">404 :(</router-link>
+  <main
+    class="wb-base wb-text flex items-center justify-center flex-col md:flex-row"
+  >
+    <router-link to="/" class="text-3xl">404 :(</router-link>
   </main>
 </template>
 
