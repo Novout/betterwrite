@@ -3665,6 +3665,13 @@ debug@^2.6.8, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
+debug@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
+  integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
+  dependencies:
+    ms "2.1.2"
+
 decamelize-keys@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/decamelize-keys/-/decamelize-keys-1.1.0.tgz#d171a87933252807eb3cb61dc1c1445d078df2d9"
@@ -9011,12 +9018,12 @@ vite-plugin-optimize-persist@0.1.0:
     debug "^4.3.2"
     fs-extra "^10.0.0"
 
-vite-plugin-package-config@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/vite-plugin-package-config/-/vite-plugin-package-config-0.0.3.tgz#8667dbffffd3eafa0f697c386659d653f737b887"
-  integrity sha512-xneYdCd9fqmehemphnfyHJDE/IyiXe2rtg39lNcQq9jaA5oZCIBBTG+lLAaal3zIyABjKd7fp9oHG/Y+sq5Xlw==
+vite-plugin-package-config@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-package-config/-/vite-plugin-package-config-0.1.0.tgz#7faa68a47b1a4f30b5564d3ecd5ad3f085a0f929"
+  integrity sha512-cnj/PiugW8EJIaDaorSygKL85GqdLz/oLg031YD0/tF1wiGGz3jkrpkUvZauDqJmR7vpLGnP+zVxQvmXbXjIXQ==
   dependencies:
-    debug "^4.3.2"
+    debug "^4.3.3"
 
 vite-plugin-package-version@1.0.2:
   version "1.0.2"
