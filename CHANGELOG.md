@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.10](https://github.com/Novout/better-write/compare/v0.9.9...v0.9.10) (2021-12-01)
+
+
+### Refactor
+
+* complete landing rewrite ([e082ef7](https://github.com/Novout/better-write/commits/e082ef77fbbf4d84761706213a7bd81abe3e3cb1))
+
+
+### Structure
+
+* **deps:** update packages ([ef2a090](https://github.com/Novout/better-write/commits/ef2a090654066df095299638032198e41478d73c))
+* prettier default ([7188863](https://github.com/Novout/better-write/commits/718886318ca8a8a247249dd5ca2af20bd7da29fb))
+* **router:** async import routes in web pages ([7dc7a8c](https://github.com/Novout/better-write/commits/7dc7a8c77e565a0e6e73988b6da5834932923dde))
+
 ### [0.9.9](https://github.com/Novout/better-write/compare/v0.9.8...v0.9.9) (2021-11-30)
 
 
