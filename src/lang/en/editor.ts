@@ -73,7 +73,7 @@ export default {
       configuration: 'Configure',
     },
     project: {
-      new: 'Novo',
+      new: 'New',
       configuration: 'Configure',
       load: 'Load',
       save: 'Save',

@@ -41,52 +41,6 @@ export const link = () => {
 
 export const useRaw = () => {
   const v1 = () => {
-    const landingConvert = (raw: string) => {
-      let final = ''
-      let _italic = false
-      let _bold = false
-
-      const over: Array<string> = []
-
-      if (!raw) return ''
-
-      let _raw = raw
-
-      raw.split(/[ ]+/).forEach((word: string) => {
-        if (word.includes('http://') || word.includes('https://'))
-          over.push(word)
-      })
-
-      over.forEach((word: string) => {
-        _raw = _raw.replace(
-          word,
-          `${link().open(word)}${word}${link().close()}`
-        )
-      })
-
-      for (let i = 0; i < _raw.length; i++) {
-        const letter = _raw.charAt(i)
-
-        if (letter === '*' && !_italic) {
-          _italic = true
-          final += italic().open()
-        } else if (letter === '*' && _italic) {
-          final += italic().close()
-          _italic = false
-        } else if (letter === '&' && !_bold) {
-          _bold = true
-          final += bold().open()
-        } else if (letter === '&' && _bold) {
-          final += bold().close()
-          _bold = false
-        } else {
-          final += letter
-        }
-      }
-
-      return final
-    }
-
     const convert = (entity: Entity) => {
       let final = ''
       let _italic = false
@@ -249,7 +203,7 @@ export const useRaw = () => {
       return final
     }
 
-    return { convert, landingConvert, pdfConvert }
+    return { convert, pdfConvert }
   }
 
   const v2 = () => {
