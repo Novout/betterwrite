@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "3.2.1",
-    "@types/file-saver": "^2.0.4",
+    "@types/file-saver": "2.0.4",
     "@types/jest": "27.0.3",
     "@types/jsdom": "16.2.13",
     "@types/pdfmake": "0.1.19",

@@ -12,8 +12,14 @@ export const useDocx = () => {
   const { isLoading } = useNProgress()
 
   const create = () => {
-    const properties = () => {
+    const properties = (): docx.ISectionPropertiesOptions => {
       return {
+        page: {
+          pageNumbers: {
+            start: 1,
+            formatType: docx.NumberFormat.DECIMAL,
+          },
+        },
         type: docx.SectionType.NEXT_PAGE,
       }
     }
@@ -116,7 +122,7 @@ export const useDocx = () => {
 
       const pageBreak = () => {
         return new docx.Paragraph({
-          text: '',
+          text: '\t', // force detect valid paragraph
           pageBreakBefore: true,
         })
       }
@@ -131,6 +137,16 @@ export const useDocx = () => {
         })
       }
 
+      const image = (entity: Entity) => {
+        return new docx.ImageRun({
+          data: entity.raw,
+          transformation: {
+            width: entity.external?.image?.size.width as number,
+            height: entity.external?.image?.size.height as number,
+          },
+        })
+      }
+
       return {
         paragraph,
         headingOne,
@@ -138,6 +154,7 @@ export const useDocx = () => {
         headingThree,
         pageBreak,
         lineBreak,
+        image,
       }
     }
 
@@ -164,6 +181,9 @@ export const useDocx = () => {
               break
             case 'line-break':
               arr.push(entities().lineBreak())
+              break
+            case 'image':
+              arr.push(entities().image(entity))
               break
           }
         })
