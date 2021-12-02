@@ -28,8 +28,8 @@
     <div class="flex flex-row items-center">
       <EditorBaseHeaderConfigurations />
       <EditorBaseHeaderProject />
+      <EditorBaseHeaderCreate />
       <EditorBaseHeaderDropbox />
-      <EditorBaseHeaderPDF />
       <EditorBaseHeaderChapters />
       <EditorBaseHeaderExternals />
     </div>

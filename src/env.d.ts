@@ -37,3 +37,4 @@ declare module 'pdfmake/build/pdfmake' {
 }
 declare module 'node-fetch'
 declare module 'v-tooltip'
+declare module 'file-saver'
