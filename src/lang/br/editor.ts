@@ -74,6 +74,9 @@ export default {
       generate: 'Gerar',
       configuration: 'Configurar',
     },
+    docx: {
+      generate: 'Criar',
+    },
     project: {
       new: 'Novo',
       configuration: 'Configurar',

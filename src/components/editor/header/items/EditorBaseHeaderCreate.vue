@@ -90,7 +90,7 @@
       </EditorHeaderItem>
       <EditorHeaderItemDiv />
       <EditorHeaderItem
-        :text="t('editor.bar.pdf.generate')"
+        :text="t('editor.bar.docx.generate')"
         @action="docx.generate()"
       >
         <template #icon>

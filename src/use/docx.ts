@@ -137,16 +137,6 @@ export const useDocx = () => {
         })
       }
 
-      const image = (entity: Entity) => {
-        return new docx.ImageRun({
-          data: entity.raw,
-          transformation: {
-            width: entity.external?.image?.size.width as number,
-            height: entity.external?.image?.size.height as number,
-          },
-        })
-      }
-
       return {
         paragraph,
         headingOne,
@@ -154,7 +144,6 @@ export const useDocx = () => {
         headingThree,
         pageBreak,
         lineBreak,
-        image,
       }
     }
 
@@ -181,9 +170,6 @@ export const useDocx = () => {
               break
             case 'line-break':
               arr.push(entities().lineBreak())
-              break
-            case 'image':
-              arr.push(entities().image(entity))
               break
           }
         })

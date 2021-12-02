@@ -6,6 +6,7 @@ Here will contain all the features that Better Write offers.
 
 - ✅ - Deploy Website
 - ✅ - Deploy Desktop
+- ➖ - PWA
 - ➖ - Unit Tests
 - ❌ - e2e Tests
 - ❌ - Logger for Developers
@@ -30,7 +31,6 @@ Here will contain all the features that Better Write offers.
 - ➖ - Delete Project
 - ✅ - Graph Aside Content
 - ✅ - Graph Navigation
-- ❌ - Delete Pages and Entity's With Graph
 - ❌ - Customize Styles
 
 ### Pages
@@ -82,6 +82,30 @@ Here will contain all the features that Better Write offers.
 - ✅ - Footer
 - ✅ - Header
 
+### DOCX
+
+- ✅ - Page Defines
+- ❌ - Preview
+- ✅ - Generate
+
+##### Configurations
+
+- ❌ - Simple Cover
+- ❌ - Image Cover
+- ❌ - Simple Summary
+- ❌ - Define Summary
+- ❌ - Dynamic Summary
+- ❌ - Background Image
+- ✅ - Paragraph Default
+- ❌ - Paragraph Colors
+- ❌ - Paragraph Bold
+- ❌ - Paragraph Italic
+- ❌ - Paragraph Links
+- ✅ - Heading's
+- ❌ - Custom Entity
+- ➖ - Footer
+- ❌ - Header
+
 ### Externals
 
 - ✅ - Google Fonts API Integration
@@ -100,7 +124,6 @@ Here will contain all the features that Better Write offers.
 ## Landing
 
 - ✅ - Basic Content
-- ➖ - Playground
 
 ## Support
 
