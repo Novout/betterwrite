@@ -3,16 +3,35 @@ import { saveAs } from 'file-saver'
 import { useProjectStore } from '@/store/project'
 import { Entity } from '@/types/context'
 import { useEnv } from './env'
+import { useNProgress } from '@vueuse/integrations'
 
 export const useDocx = () => {
   const PROJECT = useProjectStore()
 
   const env = useEnv()
+  const { isLoading } = useNProgress()
 
   const create = () => {
     const properties = () => {
       return {
         type: docx.SectionType.NEXT_PAGE,
+      }
+    }
+
+    const footer = () => {
+      return {
+        default: new docx.Footer({
+          children: [
+            new docx.Paragraph({
+              alignment: docx.AlignmentType.CENTER,
+              children: [
+                new docx.TextRun({
+                  children: [docx.PageNumber.CURRENT],
+                }),
+              ],
+            }),
+          ],
+        }),
       }
     }
 
@@ -153,7 +172,7 @@ export const useDocx = () => {
       return arr
     }
 
-    return { properties, styles, entities, content }
+    return { properties, footer, styles, entities, content }
   }
 
   const doc = (): docx.File => {
@@ -168,15 +187,22 @@ export const useDocx = () => {
         {
           properties: create().properties(),
           children: create().content(),
+          footers: create().footer(),
         },
       ],
     })
   }
 
   const download = (doc: docx.File) => {
-    docx.Packer.toBlob(doc).then((blob) => {
-      saveAs(blob, PROJECT.nameRaw + '.docx')
-    })
+    isLoading.value = true
+
+    docx.Packer.toBlob(doc)
+      .then((blob) => {
+        saveAs(blob, PROJECT.nameRaw + '.docx')
+      })
+      .finally(() => {
+        isLoading.value = false
+      })
   }
 
   const generate = () => {
