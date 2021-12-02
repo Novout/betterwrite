@@ -122,8 +122,13 @@
 
   watch(edit, async (_edit) => {
     await nextTick
+
     if (_edit) {
-      if (!hover.value || keyboard.value) input.value?.focus()
+      if (!hover.value || keyboard.value)
+        raw
+          .v2()
+          .caret()
+          .set(input.value as any, input.value?.innerHTML.length as any)
 
       if (last.value) scroll.entity(_index.value, 'bottom')
 
@@ -386,13 +391,11 @@
     })
 
     emitter.on('entity-not-mutate', async (entity: Entity) => {
-      const _id = CONTEXT.entities.indexOf(entity)
-
-      focus.value = false
-      edit.value = false
-      keyboard.value = false
+      onReset()
 
       await nextTick
+
+      const _id = CONTEXT.entities.indexOf(entity)
 
       if (CONTEXT.entities[_id - 1] === props.entity) {
         keyboard.value = true
@@ -402,13 +405,11 @@
     })
 
     emitter.on('entity-not-mutate-down', async (entity: Entity) => {
-      const _id = CONTEXT.entities.indexOf(entity)
-
-      focus.value = false
-      edit.value = false
-      keyboard.value = false
+      onReset()
 
       await nextTick
+
+      const _id = CONTEXT.entities.indexOf(entity)
 
       if (CONTEXT.entities[_id + 1] === props.entity) {
         keyboard.value = true
@@ -418,17 +419,6 @@
 
     emitter.on('project-save', () => {
       emitter.emit('entity-close', { all: true })
-    })
-
-    emitter.on('entity-update-area', () => {})
-
-    emitter.on('entity-edit-reset', () => {
-      edit.value = false
-      focus.value = false
-    })
-
-    emitter.on('entity-edit-open', () => {
-      edit.value = true
     })
 
     emitter.on('entity-edit-save', async () => {
@@ -697,7 +687,7 @@
 
       await nextTick
 
-      emitter.emit('entity-edit-reset')
+      emitter.emit('entity-reset')
 
       await nextTick
 
