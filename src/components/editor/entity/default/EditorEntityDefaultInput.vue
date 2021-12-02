@@ -2,14 +2,15 @@
   <section
     class="w-full relative px-4 md:px-14"
     :class="
-      style.entity.shadow ? 'shadow-winset dark:shadow-binset p-0 m-0' : ''
+      (style.entity.shadow ? 'shadow-winset p-0 m-0' : '',
+      press ? 'cursor-pointer shadow-winset' : 'cursor-text')
     "
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     @click="onClickInEntity"
   >
     <EditorEntityDefaultInputPopover
-      v-if="hover && props.entity.type !== 'heading-one'"
+      v-if="hover && !press && props.entity.type !== 'heading-one'"
       :entity="props.entity"
       :input="input"
     />
@@ -18,7 +19,7 @@
     </section>
     <div
       ref="input"
-      :contenteditable="editable"
+      :contenteditable="!press && editable"
       :spellcheck="true"
       :data-placeholder="
         entity.utils().isFixed(_index)
@@ -63,6 +64,7 @@
   import usePlugin from '@/use/plugin/core'
   import { ID } from '@/types/utils'
   import { useUtils } from '@/use/utils'
+  import { useMagicKeys } from '@vueuse/core'
 
   const props = defineProps({
     entity: {
@@ -85,12 +87,14 @@
   const { t } = useI18n()
   const raw = useRaw()
   const plugin = usePlugin()
+  const { alt } = useMagicKeys()
 
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)
   const edit = ref<boolean>(false)
   const commands = ref<boolean>(false)
   const old_raw = ref<number>(props.entity.raw.length)
+  const press = ref<boolean>(false)
 
   const data = ref<string>('')
   const input = ref<HTMLDivElement | null>(null)
@@ -100,6 +104,10 @@
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
   const editable = computed(() => !entity.utils().isFixed(_index.value))
   const last = computed(() => _index.value === CONTEXT.entities.length - 1)
+
+  watch(alt, (_shift) => {
+    press.value = _shift
+  })
 
   watch(hover, async (_hover) => {
     emitter.emit('entity-hover', _hover)
@@ -294,6 +302,12 @@
   })
 
   onMounted(() => {
+    emitter.on('entity-reset', async () => {
+      await nextTick
+
+      onReset()
+    })
+
     emitter.on(
       'entity-close',
       (ent?: Entity, options?: VueEmitterEntityClose) => {
@@ -481,6 +495,18 @@
       // update old raw
       old_raw.value = data.value.length
     }
+  }
+
+  // necessary for mutate context entities
+  const onReset = () => {
+    hover.value = false
+    focus.value = false
+    edit.value = false
+    commands.value = false
+    old_raw.value = props.entity.raw.length
+    press.value = false
+    data.value = ''
+    keyboard.value = false
   }
 
   const onEnter = async () => {
@@ -741,6 +767,8 @@
   }
 
   const onClick = async () => {
+    if (press.value) return
+
     onStopEvents()
 
     focus.value = true

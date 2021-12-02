@@ -28,6 +28,8 @@ export default {
         delete: 'Delete',
         swap: 'Change Position',
         to: 'Go To Next Position',
+        dragtitle: 'Drag Position',
+        dragshort: 'Alt + Mouse Left',
       },
       global: {
         title: 'Global',

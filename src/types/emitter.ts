@@ -13,8 +13,8 @@ export interface VueEmitterEntityOpen {
 }
 
 export type VueEmitterName =
+  | 'entity-reset'
   | 'entity-input-focus'
-  | 'entity-input-force-enter'
   | 'entity-open'
   | 'entity-open-by-index'
   | 'entity-scroll-by-index'
