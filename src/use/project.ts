@@ -108,14 +108,21 @@ export const useProject = () => {
   }
 
   const onExportProject = () => {
-    storage.normalize().then(() => {
-      saveAs(
-        new Blob([JSON.stringify(storage.getProjectObject())], {
-          type: 'application/json',
-        }),
-        PROJECT.nameRaw + '.bw'
-      )
-    })
+    isLoading.value = true
+
+    storage
+      .normalize()
+      .then(() => {
+        saveAs(
+          new Blob([JSON.stringify(storage.getProjectObject())], {
+            type: 'application/json',
+          }),
+          PROJECT.nameRaw + '.bw'
+        )
+      })
+      .finally(() => {
+        isLoading.value = false
+      })
   }
 
   const onImportProject = () => {
