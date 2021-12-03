@@ -1,4 +1,3 @@
-import isElectron from 'is-electron'
 import { ProjectState } from '../types/project'
 import { useText } from './text'
 import { useEnv } from './env'
@@ -42,7 +41,7 @@ export const usePopulate = () => {
           },
         ],
         bw: {
-          platform: isElectron() ? 'desktop' : 'web',
+          platform: 'web',
           version: useEnv().packageVersion() as string,
         },
       },
@@ -73,7 +72,7 @@ export const usePopulate = () => {
           },
         ],
         bw: {
-          platform: isElectron() ? 'desktop' : 'web',
+          platform: 'web',
           version: useEnv().packageVersion() as string,
         },
       },

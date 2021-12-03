@@ -1,4 +1,3 @@
-import isElectron from 'is-electron'
 import { useEnv } from '../env'
 import { useProjectStore } from '@/store/project'
 import { useEditorStore } from '@/store/editor'
@@ -35,7 +34,7 @@ export const useStorage = () => {
     // <= 0.4.0
     if (!_.project.bw) {
       _.project.bw = {
-        platform: isElectron() ? 'desktop' : 'web',
+        platform: 'web',
         version: env.packageVersion(),
       }
     }

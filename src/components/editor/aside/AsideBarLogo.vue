@@ -23,7 +23,6 @@
   import { setEditorLogo } from '@/plugin/theme/external'
   import { onAfterMounted } from '@/plugin/core/cycle'
   import { useUtils } from '@/use/utils'
-  import isElectron from 'is-electron'
 
   const EDITOR = useEditorStore()
 
@@ -44,7 +43,7 @@
 
   const onClick = () => {
     local.onSaveProject().then(() => {
-      if (!isElectron()) router.push('/landing')
+      router.push('/landing')
     })
   }
 </script>

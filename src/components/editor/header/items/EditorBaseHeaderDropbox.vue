@@ -1,6 +1,6 @@
 <template>
   <!-- DROPBOX -->
-  <EditorHeaderButton v-if="!isElectron()">
+  <EditorHeaderButton>
     <template #icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,6 @@
   import { useI18n } from 'vue-i18n'
   import { useDropbox } from '@/use/storage/dropbox'
   import { useAuthStore } from '@/store/auth'
-  import isElectron from 'is-electron'
 
   const AUTH = useAuthStore()
 

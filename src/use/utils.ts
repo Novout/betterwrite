@@ -1,4 +1,3 @@
-import isElectron from 'is-electron'
 export const useUtils = () => {
   const delay = (time: number) => {
     return new Promise((resolve) => setTimeout(resolve, time))
@@ -157,7 +156,7 @@ export const useUtils = () => {
 
   const path = () => {
     const resolve = (content: string) => {
-      return isElectron() ? content : `/${content}`
+      return `/${content}`
     }
 
     return { resolve }

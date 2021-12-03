@@ -1,11 +1,5 @@
-import isElectron from 'is-electron'
-
 export const useEnv = () => {
   const getCorrectLocalUrl = () => {
-    if (isElectron()) {
-      return 'https://app.betterwrite.com/'
-    }
-
     return import.meta.env.PROD
       ? 'https://better-write.vercel.app'
       : 'http://localhost:3000'

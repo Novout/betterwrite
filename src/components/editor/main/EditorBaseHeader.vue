@@ -35,9 +35,8 @@
     </div>
     <div class="flex-1 w-full"></div>
     <div class="flex flex-row items-center">
-      <EditorBaseHeaderElectron v-if="isElectron()" />
       <div
-        v-if="PROJECT.name !== env.projectEmpty() && !isElectron()"
+        v-if="PROJECT.name !== env.projectEmpty()"
         class="wb-icon no-drag cursor-pointer"
         @click.prevent.stop="editor.fullScreen"
       >
@@ -65,7 +64,6 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
-  import isElectron from 'is-electron'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()

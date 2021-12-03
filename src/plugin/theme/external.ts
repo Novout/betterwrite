@@ -6,7 +6,6 @@ import { useEnv } from '@/use/env'
 import { useDefines } from '@/use/defines'
 import { BetterWriteThemes } from '@/types/editor'
 import { useFavicon, usePreferredColorScheme } from '@vueuse/core'
-import isElectron from 'is-electron'
 import { useUtils } from '@/use/utils'
 
 export const setTheme = () => {
@@ -53,26 +52,25 @@ export const setContentTheme = (theme: string) => {
   const favicon = useFavicon()
   const utils = useUtils()
 
-  if (!isElectron()) {
-    // custom favicon
-    switch (theme) {
-      case 'betterwrite-light':
-      case 'betterwrite-dark':
-        favicon.value = utils.path().resolve('logo_default.svg')
-        break
-      case 'betterwrite-rise':
-        favicon.value = utils.path().resolve('logo_rise.svg')
-        break
-      case 'betterwrite-harmonic':
-        favicon.value = utils.path().resolve('logo_harmonic.svg')
-        break
-      case 'betterwrite-ascend':
-        favicon.value = utils.path().resolve('logo_ascend.svg')
-        break
-      default:
-        favicon.value = utils.path().resolve('logo_default.svg')
-        break
-    }
+  
+  // custom favicon
+  switch (theme) {
+    case 'betterwrite-light':
+    case 'betterwrite-dark':
+      favicon.value = utils.path().resolve('logo_default.svg')
+      break
+    case 'betterwrite-rise':
+      favicon.value = utils.path().resolve('logo_rise.svg')
+      break
+    case 'betterwrite-harmonic':
+      favicon.value = utils.path().resolve('logo_harmonic.svg')
+      break
+    case 'betterwrite-ascend':
+      favicon.value = utils.path().resolve('logo_ascend.svg')
+      break
+    default:
+      favicon.value = utils.path().resolve('logo_default.svg')
+      break
   }
 
   // body class for css variables

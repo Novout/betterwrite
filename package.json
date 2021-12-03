@@ -8,20 +8,10 @@
     "url": "https://github.com/Novout"
   },
   "description": "A editor for creative writers.",
-  "main": "dist/main/index.js",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "rm -rf ./dist && yarn build && vite preview",
-    "desktop:set": "wait-on tcp:3000 && electron . --watch",
-    "desktop:dev": "yarn desktop:release && concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn desktop:set\"",
-    "desktop:start": "cross-env NODE_ENV=development electron dist/main/index.js",
-    "desktop:build": "yarn desktop:release && electron-builder",
-    "desktop:minimal": "yarn desktop:release && electron-builder --windows",
-    "desktop:view": "yarn desktop:minimal && yarn desktop:dev",
-    "desktop:main": "cross-env NODE_ENV=production tsc desktop/index.ts desktop/expose.ts --moduleResolution Node --removeComments -t esnext --outDir dist/main",
-    "desktop:release": "yarn desktop:main && yarn build",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format",
+    "serve": "rimraf ./dist && yarn build && vite preview",
     "format": "prettier desktop/**/*.ts test/**/*.ts src/**/*.{vue,css,ts} --write",
     "test": "jest",
     "extract": "vue-i18n-extract report --vueFiles './src/**/*.?(js|vue)' --languageFiles './src/lang/*.?(json|yml|yaml|js)'",
@@ -36,9 +26,7 @@
     "release:alpha:major": "standard-version --release-as major --prerelease alpha",
     "release:beta:major": "standard-version --release-as major --prerelease beta",
     "release:alpha": "standard-version --prerelease alpha",
-    "release:beta": "standard-version --prerelease beta",
-    "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "release:beta": "standard-version --prerelease beta"
   },
   "dependencies": {
     "@headlessui/vue": "1.4.2",
@@ -53,11 +41,7 @@
     "date-fns": "2.26.0",
     "docx": "7.2.0",
     "dropbox": "10.22.0",
-    "electron-dl": "3.3.0",
-    "electron-log": "4.4.1",
-    "electron-updater": "4.6.1",
     "file-saver": "2.0.5",
-    "is-electron": "2.2.1",
     "keyboardjs": "2.6.4",
     "mitt": "3.0.0",
     "pdfmake": "0.2.4",
@@ -85,16 +69,13 @@
     "@vitejs/plugin-vue": "1.10.1",
     "@vue/compiler-sfc": "3.2.23",
     "@vue/eslint-config-typescript": "9.1.0",
-    "concurrently": "6.4.0",
     "cross-env": "7.0.3",
-    "electron": "16.0.3",
-    "electron-builder": "22.14.5",
-    "electron-dev-runner": "1.0.1",
     "eslint": "8.3.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-vue": "8.1.1",
     "jest": "27.4.3",
     "prettier": "2.5.0",
+    "rimraf": "^3.0.2",
     "standard-version": "9.3.2",
     "ts-jest": "27.0.7",
     "typescript": "4.5.2",
@@ -136,43 +117,5 @@
         "vuedraggable"
       ]
     }
-  },
-  "build": {
-    "appId": "com.betterwrite.app",
-    "productName": "Better Write",
-    "directories": {
-      "buildResources": "desktop/resources",
-      "output": "build/dist"
-    },
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "Novout",
-        "repo": "better-write"
-      }
-    ],
-    "nsis": {
-      "oneClick": false,
-      "perMachine": true,
-      "allowToChangeInstallationDirectory": true
-    },
-    "win": {
-      "target": [
-        "nsis"
-      ]
-    },
-    "linux": {
-      "target": [
-        "deb",
-        "AppImage"
-      ],
-      "category": "Development"
-    },
-    "copyright": "Copyright © 2021 ${author}",
-    "files": [
-      "desktop/resources/**/*",
-      "dist/**/*",
-      "package.json"
-    ]
   }
 }

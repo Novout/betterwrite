@@ -1,19 +1,11 @@
 import {
   createRouter,
-  createWebHashHistory,
   createWebHistory,
 } from 'vue-router'
-import isElectron from 'is-electron'
-import Editor from '@/pages/Editor.vue'
-import Loading from '@/pages/generics/GenericsLoading.vue'
 import { defineAsyncComponent } from 'vue'
+import Loading from '@/pages/generics/GenericsLoading.vue'
 
-const electronRoutes = [
-  { path: '/', component: Editor },
-  { path: '/:pathMatch(.*)*', redirect: '/' },
-]
-
-const webRoutes = [
+const routes = [
   {
     path: '/',
     component: defineAsyncComponent({
@@ -37,6 +29,6 @@ const webRoutes = [
 ]
 
 export default createRouter({
-  history: isElectron() ? createWebHashHistory() : createWebHistory(),
-  routes: isElectron() ? electronRoutes : webRoutes,
+  history: createWebHistory(),
+  routes: routes,
 })
