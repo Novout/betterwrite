@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.14](https://github.com/Novout/better-write/compare/v0.9.13...v0.9.14) (2021-12-03)
+
+
+### Bug Fixes
+
+* **pwa:** correct inject manifest ([8d9d2c2](https://github.com/Novout/better-write/commits/8d9d2c22663c4e5049f6c252289ba3b32cf4550b))
+
+
+### Style
+
+* **editor:** loading in import .bw ([3d7fefc](https://github.com/Novout/better-write/commits/3d7fefc360bf3e6037a16431f9fcd09fe3a72d73))
+
 ### [0.9.13](https://github.com/Novout/better-write/compare/v0.9.12...v0.9.13) (2021-12-03)
 
 ### [0.9.12](https://github.com/Novout/better-write/compare/v0.9.11...v0.9.12) (2021-12-03)
