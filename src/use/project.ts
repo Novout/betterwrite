@@ -1,5 +1,6 @@
 import { nextTick } from 'vue'
 import { useToast } from 'vue-toastification'
+import { saveAs } from 'file-saver'
 import i18n from '@/lang'
 import { useProjectStore } from '@/store/project'
 import { useContextStore } from '@/store/context'
@@ -106,6 +107,43 @@ export const useProject = () => {
     isLoading.value = false
   }
 
+  const onExportProject = () => {
+    storage.normalize().then(() => {
+      saveAs(
+        new Blob([JSON.stringify(storage.getProjectObject())], {
+          type: 'application/json',
+        }),
+        PROJECT.nameRaw + '.bw'
+      )
+    })
+  }
+
+  const onImportProject = () => {
+    const _ = document.createElement('input')
+    _.type = 'file'
+    _.addEventListener('change', function () {
+      const file = (this.files as any)[0]
+
+      if (!file) return
+
+      const reader = new FileReader()
+      reader.readAsText(file)
+
+      reader.onload = function () {
+        if (!file.name.includes('.bw')) {
+          toast.error(t('toast.generics.error'))
+          return
+        }
+
+        const content = JSON.parse(reader.result as string)
+
+        onLoadProject(content)
+      }
+      reader.onerror = function (err) {}
+    })
+    _.click()
+  }
+
   const isBlankProject = () => {
     return PROJECT.type === 'blank'
   }
@@ -119,6 +157,8 @@ export const useProject = () => {
     destroy,
     create,
     onLoadProject,
+    onImportProject,
+    onExportProject,
     isBlankProject,
     isCreativeProject,
   }

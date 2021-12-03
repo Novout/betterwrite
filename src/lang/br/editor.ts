@@ -83,6 +83,8 @@ export default {
       preferences: 'Preferências',
       load: 'Carregar',
       save: 'Salvar',
+      import: 'Importar',
+      export: 'Exportar',
     },
     chapter: {
       new: 'Novo',

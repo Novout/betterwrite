@@ -37,6 +37,16 @@
         shortcut="CTRL + S"
         @action="local.onSaveProject"
       />
+      <EditorHeaderItemDiv />
+      <EditorHeaderItem
+        :text="t('editor.bar.project.import')"
+        @action="project.onImportProject"
+      />
+      <EditorHeaderItem
+        v-if="PROJECT.name !== env.projectEmpty()"
+        :text="t('editor.bar.project.export')"
+        @action="project.onExportProject"
+      />
     </template>
   </EditorHeaderButton>
 </template>

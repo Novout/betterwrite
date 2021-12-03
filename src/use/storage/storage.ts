@@ -243,10 +243,6 @@ export const useStorage = () => {
     // force entity paragraph comment a save / close comment modal
     emitter.emit('entity-external-comment-save')
 
-    await nextTick
-    // close all entities for not breaking same index in next page
-    emitter.emit('entity-edit-reset')
-
     // for lose ticket ms
     await nextTick
   }

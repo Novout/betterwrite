@@ -84,6 +84,8 @@ export default {
       save: 'Save',
       preferences: 'Preferences',
       autosave: 'Auto Save (in minutes)',
+      import: 'Import',
+      export: 'Export',
     },
     chapter: {
       new: 'New',
