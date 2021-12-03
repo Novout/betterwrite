@@ -3481,10 +3481,10 @@ drauu@^0.2.1:
   dependencies:
     "@drauu/core" "0.2.1"
 
-dropbox@10.22.0:
-  version "10.22.0"
-  resolved "https://registry.yarnpkg.com/dropbox/-/dropbox-10.22.0.tgz#b642739a9b64278041a27c15af4958adfcf15630"
-  integrity sha512-tnWBAE6NJa6UUlekXuEqTvjqEg/cgg9IwnfZZJTmnDizLqA3pZOaYDFFkAV7RU6bIKjx4B5DOb5H+qKkISAnlQ==
+dropbox@10.23.0:
+  version "10.23.0"
+  resolved "https://registry.yarnpkg.com/dropbox/-/dropbox-10.23.0.tgz#2a4215021b801d39ee0987d08155cd2d30f513d9"
+  integrity sha512-nG+3BlJijQj9+/aNyUDAJgnBegBQ4r3mD8ijP1iwHJ6ICX9mPdZaf7MN0p+efu47ex9XJLr1U1VsKXznsMmgiQ==
   dependencies:
     node-fetch "^2.6.1"
 

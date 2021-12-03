@@ -41,7 +41,7 @@
     "autoprefixer": "10.4.0",
     "date-fns": "2.26.0",
     "docx": "7.2.0",
-    "dropbox": "10.22.0",
+    "dropbox": "10.23.0",
     "file-saver": "2.0.5",
     "keyboardjs": "2.6.4",
     "mitt": "3.0.0",
