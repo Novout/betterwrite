@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.12](https://github.com/Novout/better-write/compare/v0.9.11...v0.9.12) (2021-12-03)
+
+
+### Features
+
+* **docx:** footer insert ([1493a5a](https://github.com/Novout/better-write/commits/1493a5a09e1080498d68c8f476f904d92c8cdad4))
+* **editor:** draggable entities ([5bccadf](https://github.com/Novout/better-write/commits/5bccadfd34c534398bd303dab7bb7769fdc5ac46))
+* **editor:** generate docx ([1e45bf7](https://github.com/Novout/better-write/commits/1e45bf7963ef8d1e6b25fd9505bfe70d9830280d))
+* **editor:** import and export .bw ([b73dac4](https://github.com/Novout/better-write/commits/b73dac42b55474eac7eddd2f85f1439a2f2f8ccf))
+
+
+### Bug Fixes
+
+* **docx:** not support images ([c54862d](https://github.com/Novout/better-write/commits/c54862df63fb6403fe0be955f3f7e74881959c73))
+* **docx:** small typos ([dac53c6](https://github.com/Novout/better-write/commits/dac53c658bde841ac1f52c48a585a2b1957f6cfb))
+* **editor:** on reset in mutable entities ([b6292a3](https://github.com/Novout/better-write/commits/b6292a3cc1cefd90aa249d831658ac8c072f2cd6))
+
 ### [0.9.11](https://github.com/Novout/better-write/compare/v0.9.10...v0.9.11) (2021-12-01)
 
 
