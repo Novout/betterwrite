@@ -622,8 +622,6 @@
 
     await nextTick
 
-    emitter.emit('entity-edit-reset')
-
     plugin.emit('plugin-entity-create', {
       data: props.entity.raw,
       index: CONTEXT.entities.indexOf(props.entity),
@@ -649,8 +647,6 @@
     })
 
     await nextTick
-
-    emitter.emit('entity-edit-reset')
 
     plugin.emit('plugin-entity-alter-in-page', {
       data: t(`editor.entity.${type}`).toUpperCase(),
