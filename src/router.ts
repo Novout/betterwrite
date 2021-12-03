@@ -1,27 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { defineAsyncComponent } from 'vue'
-import Loading from '@/pages/generics/GenericsLoading.vue'
 
 const routes = [
   {
     path: '/',
-    component: defineAsyncComponent({
-      loader: () => import('@/pages/Editor.vue'),
-      loadingComponent: Loading,
-    }),
+    component: () => import('@/pages/Editor.vue'),
   },
   {
     path: '/landing',
-    component: defineAsyncComponent({
-      loader: () => import('@/pages/Landing.vue'),
-      loadingComponent: Loading,
-    }),
+    component: () => import('@/pages/Landing.vue'),
   },
   {
     path: '/:pathMatch(.*)*',
-    component: defineAsyncComponent(
-      () => import('@/pages/generics/Generics404.vue')
-    ),
+    component: () => import('@/pages/generics/Generics404.vue'),
   },
 ]
 
