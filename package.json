@@ -50,7 +50,7 @@
     "@vueuse/integrations": "7.1.2",
     "@vueuse/motion": "2.0.0-beta.4",
     "autoprefixer": "10.4.0",
-    "date-fns": "2.26.0",
+    "date-fns": "2.27.0",
     "docx": "7.2.0",
     "dropbox": "10.22.0",
     "electron-dl": "3.3.0",
