@@ -9,7 +9,6 @@ import mitt from 'mitt'
 import { PluginEmitter } from './types/plugin/core'
 import { VueEmitter } from './types/emitter'
 import { plugin as PluginBase } from './types/plugin/emitter'
-import { IPCRenderer } from './types/electron'
 
 import router from './router'
 import i18n from './lang'
@@ -20,12 +19,6 @@ import './preset.css'
 import './tailwind.css'
 import 'v-tooltip/dist/v-tooltip.css'
 import 'vue-toastification/dist/index.css'
-
-declare global {
-  interface Window {
-    ipcRenderer: IPCRenderer // electron ipc
-  }
-}
 
 const app = createApp(App)
 const head = createHead()
