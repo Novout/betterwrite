@@ -280,11 +280,11 @@ export const useRaw = () => {
         entity.type === 'heading-three' ? style.heading.three.fontWeight : '',
 
         entity.type === 'page-break'
-          ? 'cursor-default my-4 border-b-8 border-theme-border-1 border-theme-editor-entity-page'
+          ? 'cursor-default mt-2 mb-6 border-b-8 border-theme-border-1 border-theme-editor-entity-page'
           : '',
 
         entity.type === 'line-break'
-          ? 'cursor-default my-4 border-b-8 border-dashed border-theme-editor-entity-line'
+          ? 'cursor-default mt-2 mb-6 border-b-8 border-dashed border-theme-editor-entity-line'
           : '',
       ]
     }

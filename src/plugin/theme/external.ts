@@ -52,7 +52,6 @@ export const setContentTheme = (theme: string) => {
   const favicon = useFavicon()
   const utils = useUtils()
 
-  
   // custom favicon
   switch (theme) {
     case 'betterwrite-light':

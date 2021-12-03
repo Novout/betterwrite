@@ -1,7 +1,4 @@
-import {
-  createRouter,
-  createWebHistory,
-} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import { defineAsyncComponent } from 'vue'
 import Loading from '@/pages/generics/GenericsLoading.vue'
 

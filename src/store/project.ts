@@ -4,7 +4,7 @@ import { ProjectState } from '@/types/project'
 import { useFormat } from '@/use/format'
 import { Entity } from '../types/context'
 import { useGlobalStore } from './global'
-import { usePopulate } from '../use/populate';
+import { usePopulate } from '../use/populate'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {

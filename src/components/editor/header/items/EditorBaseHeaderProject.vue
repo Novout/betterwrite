@@ -39,6 +39,13 @@
       />
       <EditorHeaderItemDiv />
       <EditorHeaderItem
+        v-if="PROJECT.name !== env.projectEmpty()"
+        :text="t('editor.bar.project.preferences')"
+        shortcut=""
+        @action="ABSOLUTE.project.preferences = true"
+      />
+      <EditorHeaderItemDiv />
+      <EditorHeaderItem
         :text="t('editor.bar.project.import')"
         @action="project.onImportProject"
       />
