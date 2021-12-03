@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.16](https://github.com/Novout/better-write/compare/v0.9.15...v0.9.16) (2021-12-03)
+
+
+### Test
+
+* **raw:** margins in fixed items ([03782d0](https://github.com/Novout/better-write/commits/03782d0c5c01ad0fa5ba33b7f7c5a9faf2836a3c))
+
 ### [0.9.15](https://github.com/Novout/better-write/compare/v0.9.14...v0.9.15) (2021-12-03)
 
 
