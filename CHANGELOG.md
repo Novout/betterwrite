@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.15](https://github.com/Novout/better-write/compare/v0.9.14...v0.9.15) (2021-12-03)
+
+
+### Bug Fixes
+
+* **pwa:** inserts offline support ([435daed](https://github.com/Novout/better-write/commits/435daed43b7e3376cf54948b17dc1228cae22597))
+
+
+### Style
+
+* **editor:** new default icons ([aaf0408](https://github.com/Novout/better-write/commits/aaf0408adb92bd4c1d3a279e7d3e5608e2e6248e))
+
+
+### Structure
+
+* **editor:** project provider and pwa base configs ([6f62a0b](https://github.com/Novout/better-write/commits/6f62a0bdaaaf2ed2ba8ca98f7ef325cf6deb82c9))
+* remove electron for only pwa ([2b85467](https://github.com/Novout/better-write/commits/2b8546742e4ae363dc36ede844af5e251d0f6a5f))
+* remove electron types ([3b071e2](https://github.com/Novout/better-write/commits/3b071e2e3e69b32820428b7f92b6cc14dc9d0824))
+
 ### [0.9.14](https://github.com/Novout/better-write/compare/v0.9.13...v0.9.14) (2021-12-03)
 
 
