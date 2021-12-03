@@ -30,7 +30,7 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],  
       manifest: {
         name: 'Better Write',
-        short_name: 'BW',
+        short_name: 'Better Write',
         description: 'A editor for creative writers.',
         theme_color: '#d1d5d8',
         icons: [
@@ -47,7 +47,7 @@ export default defineConfig({
         ]
       },
       workbox: {
-        sourcemap: true  
+        sourcemap: false  
       } 
     })
   ],
