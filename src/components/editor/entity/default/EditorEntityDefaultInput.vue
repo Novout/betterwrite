@@ -105,6 +105,11 @@
   const editable = computed(() => !entity.utils().isFixed(_index.value))
   const last = computed(() => _index.value === CONTEXT.entities.length - 1)
 
+  watch(props.entity, () => {
+    // new entity properties
+    onReset()
+  })
+
   watch(alt, (_shift) => {
     press.value = _shift
   })
