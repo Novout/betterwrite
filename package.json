@@ -46,7 +46,7 @@
     "keyboardjs": "2.6.4",
     "mitt": "3.0.0",
     "pdfmake": "0.2.4",
-    "pinia": "2.0.5",
+    "pinia": "2.0.6",
     "postcss": "8.4.4",
     "tailwindcss": "2.2.19",
     "tailwindcss-typography": "3.1.0",
