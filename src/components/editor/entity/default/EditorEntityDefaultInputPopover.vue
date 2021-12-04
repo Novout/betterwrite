@@ -620,6 +620,10 @@
   }
 
   const onNewEntity = async (type: string) => {
+    emitter.emit('entity-not-mutate', props.entity)
+
+    await nextTick
+
     CONTEXT.newInPage({
       entity: props.entity,
       type,
@@ -633,9 +637,6 @@
     })
 
     state.new = false
-
-    props.input.focus()
-    raw.v2().caret().set(props.input, props.entity.raw.length)
   }
 
   const onSwitcherEntityWrapper = () => {
