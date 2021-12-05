@@ -82,7 +82,7 @@
     "typescript": "4.5.2",
     "unplugin-vue-components": "0.17.2",
     "vite": "2.6.14",
-    "vite-plugin-optimize-persist": "0.1.0",
+    "vite-plugin-optimize-persist": "0.1.1",
     "vite-plugin-package-config": "0.1.0",
     "vite-plugin-pwa": "0.11.9",
     "vue-i18n-extract": "2.0.4",
