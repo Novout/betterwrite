@@ -29,7 +29,11 @@ export const useUtils = () => {
       return data.substring(input.selectionStart, input.selectionEnd)
     }
 
-    return { getSelection }
+    const kebab = (text: string) => {
+      return text.toLowerCase().replaceAll(' ', '-')
+    }
+
+    return { getSelection, kebab }
   }
 
   const regex = () => {
@@ -161,15 +165,14 @@ export const useUtils = () => {
 
     return { resolve }
   }
-
   return {
     position,
     delay,
     prevent,
     array,
     join,
-    text,
     regex,
+    text,
     cursor,
     support,
     path,

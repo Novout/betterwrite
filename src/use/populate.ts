@@ -1,15 +1,15 @@
 import { ProjectState } from '../types/project'
-import { useText } from './text'
 import { useEnv } from './env'
 import { useFormat } from './format'
 import { useDefines } from './defines'
 import { PDFStateStyles } from '../types/pdf'
+import { useUtils } from './utils'
 
 export const usePopulate = () => {
   const project = (project: ProjectState): ProjectState => {
     return {
       creative: {
-        name: useText().kebab(project.name),
+        name: useUtils().text().kebab(project.name),
         nameRaw: project.name,
         version: project.version,
         creator: project.creator,
@@ -46,7 +46,7 @@ export const usePopulate = () => {
         },
       },
       blank: {
-        name: useText().kebab(project.name),
+        name: useUtils().text().kebab(project.name),
         nameRaw: project.name,
         version: project.version,
         creator: project.creator,

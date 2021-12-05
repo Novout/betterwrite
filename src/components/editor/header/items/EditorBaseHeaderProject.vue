@@ -37,7 +37,7 @@
         shortcut="CTRL + S"
         @action="local.onSaveProject"
       />
-      <EditorHeaderItemDiv />
+      <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.preferences')"

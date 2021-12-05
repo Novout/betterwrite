@@ -73,18 +73,16 @@
   import { useI18n } from 'vue-i18n'
   import { useProjectStore } from '@/store/project'
   import { watch, computed } from 'vue'
-  import { useText } from '@/use/text'
+  import { useUtils } from '@/use/utils'
 
   const PROJECT = useProjectStore()
 
   const { t } = useI18n()
-  const text = useText()
+  const text = useUtils().text()
 
   const name = computed(() => PROJECT.nameRaw)
 
   watch(name, () => {
     PROJECT.name = text.kebab(PROJECT.nameRaw)
-
-    console.log(PROJECT.name)
   })
 </script>
