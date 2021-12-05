@@ -417,6 +417,8 @@ export default {
     },
   },
   drafts: {
+    active: 'Ativo',
+    others: 'Outros',
     statistics: {
       characters: 'Caracteres',
       letters: 'Letras',

@@ -1,8 +1,13 @@
 <template>
   <div
-    class="flex justify-between items-center bg-theme-background-3 w-full p-1 shadow my-2"
+    class="flex justify-between items-center bg-theme-editor-creative-drafts-container-item-background hover:bg-theme-editor-creative-drafts-container-item-background-hover active:bg-theme-editor-creative-drafts-container-item-background-active w-full p-1 shadow my-2"
   >
-    <p class="cursor-pointer" @click="emit('info')">{{ props.page.title }}</p>
+    <p
+      class="cursor-pointer text-theme-editor-creative-drafts-container-item-text"
+      @click="emit('info')"
+    >
+      {{ props.page.title }}
+    </p>
     <div class="flex items-center">
       <HeroIcon
         v-if="!props.active"

@@ -1,17 +1,17 @@
 <template>
   <div
     id="pdf-absolute"
-    class="overflow-y-auto wb-text p-4 fixed top-0 left-0 h-screen w-full bg-theme-editor-pdf-configuration-background hover:bg-theme-editor-pdf-configuration-background-hover active:bg-theme-editor-pdf-configuration-background-active transition z-max"
+    class="overflow-y-auto wb-text p-4 fixed top-0 left-0 h-screen w-full bg-theme-editor-creative-drafts-background text-theme-editor-creative-drafts-container-list-text z-max"
   >
     <EditorPagesDraftsHeader />
     <h2 class="font-poppins font-bold text-2xl">
       {{ t('editor.bar.chapter.drafts') }}
     </h2>
     <div
-      class="flex flex-col md:flex-row h-auto md:h-editor w-full mt-10 bg-theme-background-2 shadow-xl"
+      class="flex flex-col md:flex-row h-auto md:h-editor w-full mt-10 bg-theme-editor-creative-drafts-container-background shadow-xl"
     >
       <div
-        class="flex bg-theme-background-3 overflow-y-auto flex-col w-full md:w-72"
+        class="flex border-none md:border-solid border-r border-theme-editor-creative-drafts-container-borders bg-theme-editor-creative-drafts-container-list-background hover:bg-theme-editor-creative-drafts-container-list-background-hover active:bg-theme-editor-creative-drafts-container-list-background-active overflow-y-auto flex-col w-full md:w-72"
       >
         <Draggable :list="PROJECT.pages" item-key="id">
           <template #item="{ element }">
@@ -24,7 +24,9 @@
           </template>
         </Draggable>
       </div>
-      <div class="flex flex-col flex-1 w-auto p-5 overflow-y-auto shadow-lg">
+      <div
+        class="flex border-none md:border-solid border-r border-theme-editor-creative-drafts-container-borders flex-col flex-1 w-auto p-5 overflow-y-auto"
+      >
         <h2 class="font-xl font-bold">{{ t('editor.drafts.active') }}</h2>
         <EditorPagesDraftsItem
           :id="{
