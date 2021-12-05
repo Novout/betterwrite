@@ -13,14 +13,21 @@
       <div
         class="flex border-none md:border-solid border-r border-theme-editor-creative-drafts-container-borders bg-theme-editor-creative-drafts-container-list-background hover:bg-theme-editor-creative-drafts-container-list-background-hover active:bg-theme-editor-creative-drafts-container-list-background-active overflow-y-auto flex-col w-full md:w-72"
       >
+        <div
+          class="flex border-none md:border-solid border-b border-theme-editor-creative-drafts-container-borders items-center justify-center p-5 font-poppins h-20 font-semibold text-lg"
+        >
+          {{ t('editor.drafts.chapters') }}
+        </div>
         <Draggable :list="PROJECT.pages" item-key="id">
           <template #item="{ element }">
-            <p
-              class="shadow truncate text-center cursor-pointer h-24 hover:bg-black-opacity text-lg w-full p-2 font-bold"
+            <div
+              class="text-center shadow cursor-pointer h-24 hover:bg-black-opacity text-lg w-full p-2 font-bold"
               @click="onClickAside(element)"
             >
-              {{ element.title }}
-            </p>
+              <p class="relative top-6 truncate">
+                {{ element.title }}
+              </p>
+            </div>
           </template>
         </Draggable>
       </div>
@@ -40,6 +47,7 @@
         <div class="flex items-center w-full mt-5">
           <p class="font-xl font-bold mr-1">{{ t('editor.drafts.others') }}</p>
           <HeroIcon
+            class="wb-icon"
             @click="
               creative.draft().new({
                 draft: page.id,
@@ -147,6 +155,7 @@
 
   const onClickAside = (element: ContextState) => {
     isLoading.value = true
+
     page.value = element
 
     storage

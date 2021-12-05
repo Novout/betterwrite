@@ -2,16 +2,19 @@
   <div
     class="flex justify-between items-center bg-theme-editor-creative-drafts-container-item-background hover:bg-theme-editor-creative-drafts-container-item-background-hover active:bg-theme-editor-creative-drafts-container-item-background-active w-full p-1 shadow my-2"
   >
-    <p
+    <div
+      ref="input"
+      :contenteditable="edit"
       class="cursor-pointer text-theme-editor-creative-drafts-container-item-text"
+      @keydown.enter="edit = false"
       @click="emit('info')"
     >
       {{ props.page.title }}
-    </p>
+    </div>
     <div class="flex items-center">
       <HeroIcon
         v-if="!props.active"
-        class="cursor-pointer"
+        class="cursor-pointer wb-icon"
         @click="creative.draft().reset(id)"
       >
         <svg
@@ -32,7 +35,7 @@
           ></path>
         </svg>
       </HeroIcon>
-      <HeroIcon>
+      <HeroIcon class="cursor-pointer wb-icon" @click="edit = !edit">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -51,7 +54,7 @@
       </HeroIcon>
       <HeroIcon
         v-if="!props.active"
-        class="cursor-pointer"
+        class="cursor-pointer wb-icon"
         @click="creative.draft().set(id)"
       >
         <svg
@@ -72,7 +75,7 @@
       </HeroIcon>
       <HeroIcon
         v-if="!props.active"
-        class="cursor-pointer"
+        class="cursor-pointer wb-icon"
         @click="creative.draft().delete(id)"
       >
         <svg
@@ -98,11 +101,31 @@
 <script setup lang="ts">
   import { ContextState } from '@/types/context'
   import { ProjectTypeID } from '@/types/project'
+  import { useRaw } from '@/use/raw'
   import { useCreativeType } from '@/use/type/creative'
+  import { ref, watch, nextTick } from 'vue'
 
   const creative = useCreativeType()
 
   const emit = defineEmits(['info'])
+  const input = ref<HTMLDivElement | null>(null)
+  const edit = ref<boolean>(false)
+  const raw = useRaw()
+
+  watch(edit, async (_edit) => {
+    await nextTick
+
+    if (_edit) {
+      raw
+        .v2()
+        .caret()
+        .set(input.value as HTMLDivElement, props.page.title.length)
+
+      return
+    }
+
+    creative.draft().updateTitle(props.id, input.value?.innerText as string)
+  })
 
   const props = defineProps({
     page: {

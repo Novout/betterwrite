@@ -6,6 +6,7 @@ import useEmitter from '../emitter'
 import { useFormat } from '../format'
 import { useStorage } from '../storage/storage'
 import { useContextStore } from '../../store/context'
+import { nextTick } from 'vue'
 
 export const useCreativeType = () => {
   const PROJECT = useProjectStore()
@@ -36,11 +37,19 @@ export const useCreativeType = () => {
 
       if (!target) return
 
+      const title = `${target.entities[0].raw} | ${format.actually()}`
+
+      const exists = PROJECT.creative.drafts.filter(
+        (page) => page.title === title
+      )[0]
+
+      if (exists) return
+
       isLoading.value = true
 
       const page = {
         id: id.active,
-        title: `${target.entities[0].raw} | ${format.actually()}`,
+        title,
         entities: target.entities,
         createdAt: format.actually(),
         updatedAt: format.actually(),
@@ -51,7 +60,9 @@ export const useCreativeType = () => {
       isLoading.value = false
     }
 
-    const remove = (id: ProjectTypeID) => {
+    const remove = async (id: ProjectTypeID) => {
+      isLoading.value = true
+
       PROJECT.creative.drafts = PROJECT.creative.drafts.filter(
         (page) => PROJECT.creative.drafts.indexOf(page) !== id.draft
       )
@@ -59,6 +70,10 @@ export const useCreativeType = () => {
       const target = getActivePage(id)
 
       setInfo(target)
+
+      await nextTick
+
+      isLoading.value = false
     }
 
     const reset = (id: ProjectTypeID) => {
@@ -122,7 +137,33 @@ export const useCreativeType = () => {
         })
     }
 
-    return { new: add, delete: remove, set, reset }
+    const updateTitle = (id: ProjectTypeID, title: string) => {
+      isLoading.value = true
+
+      if (id.active === id.draft) {
+        const target = getActivePage(id)
+
+        const index = PROJECT.pages.indexOf(target)
+
+        PROJECT.pages[index].title = title
+        PROJECT.pages[index].updatedAt = format.actually()
+
+        isLoading.value = false
+
+        return
+      }
+
+      const target = getDraftPage(id)
+
+      const index = PROJECT.creative.drafts.indexOf(target)
+
+      PROJECT.creative.drafts[index].title = title
+      PROJECT.creative.drafts[index].updatedAt = format.actually()
+
+      isLoading.value = false
+    }
+
+    return { new: add, delete: remove, set, reset, updateTitle }
   }
 
   return { draft }

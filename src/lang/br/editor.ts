@@ -419,6 +419,7 @@ export default {
   drafts: {
     active: 'Ativo',
     others: 'Outros',
+    chapters: 'Capítulos',
     statistics: {
       characters: 'Caracteres',
       letters: 'Letras',

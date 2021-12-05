@@ -418,6 +418,7 @@ export default {
   drafts: {
     active: 'Active',
     others: 'Others',
+    chapters: 'Chapters',
     statistics: {
       characters: 'Characters',
       letters: 'Letters',
