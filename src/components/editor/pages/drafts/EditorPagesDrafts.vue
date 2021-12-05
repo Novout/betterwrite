@@ -11,10 +11,10 @@
       class="flex flex-col md:flex-row h-auto md:h-editor w-full mt-10 bg-theme-editor-creative-drafts-container-background shadow-xl"
     >
       <div
-        class="flex border-none md:border-solid border-r border-theme-editor-creative-drafts-container-borders bg-theme-editor-creative-drafts-container-list-background hover:bg-theme-editor-creative-drafts-container-list-background-hover active:bg-theme-editor-creative-drafts-container-list-background-active overflow-y-auto flex-col w-full md:w-72"
+        class="flex border-b md:border-solid md:border-r border-theme-editor-creative-drafts-container-borders bg-theme-editor-creative-drafts-container-list-background hover:bg-theme-editor-creative-drafts-container-list-background-hover active:bg-theme-editor-creative-drafts-container-list-background-active overflow-y-auto flex-col w-full md:w-72"
       >
         <div
-          class="flex border-none md:border-solid border-b border-theme-editor-creative-drafts-container-borders items-center justify-center p-5 font-poppins h-20 font-semibold text-lg"
+          class="flex border-b md:border-solid md:border-b border-theme-editor-creative-drafts-container-borders items-center justify-center p-5 font-poppins h-20 font-semibold text-lg"
         >
           {{ t('editor.drafts.chapters') }}
         </div>
@@ -32,7 +32,7 @@
         </Draggable>
       </div>
       <div
-        class="flex border-none md:border-solid border-r border-theme-editor-creative-drafts-container-borders flex-col flex-1 w-auto p-5 overflow-y-auto"
+        class="flex border-b md:border-solid border-r border-theme-editor-creative-drafts-container-borders flex-col flex-1 w-auto p-5 overflow-y-auto"
       >
         <h2 class="font-xl font-bold">{{ t('editor.drafts.active') }}</h2>
         <EditorPagesDraftsItem
