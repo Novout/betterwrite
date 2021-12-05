@@ -7,6 +7,8 @@ import {
   PluginCode,
   PluginLoggerPaste,
 } from '@/types/plugin/on'
+import { ProjectTypeID } from '@/types/project'
+import { ContextState } from '@/types/context'
 
 export const entity = () => {
   const PluginEntityInputInitial = (
@@ -212,4 +214,88 @@ export const save = () => {
   }
 
   return { PluginAutoSave, PluginDropboxSave }
+}
+
+export const creative = () => {
+  const drafts = () => {
+    const PluginCreativeDraftsSet = (
+      emitter: PluginEmitter,
+      content: PluginContentOn
+    ) => {
+      emitter.on(
+        'plugin-project-creative-drafts-set-draft',
+        (page: ContextState) => {
+          const created = content[0]
+
+          created && created(page)
+        }
+      )
+    }
+
+    const PluginCreativeDraftsCreate = (
+      emitter: PluginEmitter,
+      content: PluginContentOn
+    ) => {
+      emitter.on(
+        'plugin-project-creative-drafts-create-draft',
+        (page: ContextState) => {
+          const created = content[0]
+
+          created && created(page)
+        }
+      )
+    }
+
+    const PluginCreativeDraftsDelete = (
+      emitter: PluginEmitter,
+      content: PluginContentOn
+    ) => {
+      emitter.on(
+        'plugin-project-creative-drafts-delete-draft',
+        (page: ContextState) => {
+          const created = content[0]
+
+          created && created(page)
+        }
+      )
+    }
+
+    const PluginCreativeDraftsUpdate = (
+      emitter: PluginEmitter,
+      content: PluginContentOn
+    ) => {
+      emitter.on(
+        'plugin-project-creative-drafts-update',
+        (page: ContextState) => {
+          const created = content[0]
+
+          created && created(page)
+        }
+      )
+    }
+
+    const PluginCreativeDraftsReset = (
+      emitter: PluginEmitter,
+      content: PluginContentOn
+    ) => {
+      emitter.on(
+        'plugin-project-creative-drafts-reset-draft',
+        (page: ContextState) => {
+          const created = content[0]
+
+          created && created(page)
+        }
+      )
+    }
+
+    return {
+      PluginCreativeDraftsSet,
+      PluginCreativeDraftsCreate,
+      PluginCreativeDraftsDelete,
+      PluginCreativeDraftsUpdate,
+      PluginCreativeDraftsReset,
+    }
+  }
+
+  return { drafts }
 }

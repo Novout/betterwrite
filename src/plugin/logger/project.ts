@@ -1,10 +1,11 @@
 import { PluginEmitter, PluginStores } from '@/types/plugin/core'
-import { project, save } from '../core/on'
+import { creative, project, save } from '../core/on'
 import { LoggerContent } from '@/types/logger'
 import { useFormat } from '@/use/format'
 import { useI18n } from 'vue-i18n'
 import { PluginLoggerEntitySwapper } from '@/types/plugin/on'
 import { useProjectStore } from '@/store/project'
+import { ContextState } from '@/types/context'
 export const PluginLoggerProject = (
   emitter: PluginEmitter,
   stores: PluginStores
@@ -93,4 +94,84 @@ export const PluginLoggerProject = (
       } as LoggerContent)
     },
   ])
+
+  creative()
+    .drafts()
+    .PluginCreativeDraftsSet(emitter, [
+      (page: ContextState) => {
+        stores.LOGGER.add({
+          type: 'project',
+          method: 'info',
+          arguments: t('plugin.logger.on.creative.drafts.set', {
+            name: page.title,
+          }),
+          createdAt: format.actually(),
+        } as LoggerContent)
+      },
+      () => {},
+    ])
+
+  creative()
+    .drafts()
+    .PluginCreativeDraftsCreate(emitter, [
+      (page: ContextState) => {
+        stores.LOGGER.add({
+          type: 'project',
+          method: 'info',
+          arguments: t('plugin.logger.on.creative.drafts.create', {
+            name: page.title,
+          }),
+          createdAt: format.actually(),
+        } as LoggerContent)
+      },
+      () => {},
+    ])
+
+  creative()
+    .drafts()
+    .PluginCreativeDraftsDelete(emitter, [
+      (page: ContextState) => {
+        stores.LOGGER.add({
+          type: 'project',
+          method: 'info',
+          arguments: t('plugin.logger.on.creative.drafts.delete', {
+            name: page.title,
+          }),
+          createdAt: format.actually(),
+        } as LoggerContent)
+      },
+      () => {},
+    ])
+
+  creative()
+    .drafts()
+    .PluginCreativeDraftsUpdate(emitter, [
+      (page: ContextState) => {
+        stores.LOGGER.add({
+          type: 'project',
+          method: 'info',
+          arguments: t('plugin.logger.on.creative.drafts.update', {
+            name: page.title,
+          }),
+          createdAt: format.actually(),
+        } as LoggerContent)
+      },
+      () => {},
+    ])
+
+  creative()
+    .drafts()
+    .PluginCreativeDraftsReset(emitter, [
+      (page: ContextState) => {
+        stores.LOGGER.add({
+          type: 'project',
+          method: 'info',
+          arguments: t('plugin.logger.on.creative.drafts.reset', {
+            name: page.title,
+          }),
+          createdAt: format.actually(),
+        } as LoggerContent)
+      },
+      () => {},
+    ])
 }

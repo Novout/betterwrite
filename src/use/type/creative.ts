@@ -7,6 +7,7 @@ import { useFormat } from '../format'
 import { useStorage } from '../storage/storage'
 import { useContextStore } from '../../store/context'
 import { nextTick } from 'vue'
+import usePlugin from '../plugin/core'
 
 export const useCreativeType = () => {
   const PROJECT = useProjectStore()
@@ -14,6 +15,7 @@ export const useCreativeType = () => {
 
   const format = useFormat()
   const emitter = useEmitter()
+  const plugin = usePlugin()
   const storage = useStorage()
   const { isLoading } = useNProgress()
 
@@ -58,10 +60,14 @@ export const useCreativeType = () => {
       PROJECT.creative.drafts.push(page)
 
       isLoading.value = false
+
+      plugin.emit('plugin-project-creative-drafts-create-draft', page)
     }
 
     const remove = async (id: ProjectTypeID) => {
       isLoading.value = true
+
+      const set = getDraftPage(id)
 
       PROJECT.creative.drafts = PROJECT.creative.drafts.filter(
         (page) => PROJECT.creative.drafts.indexOf(page) !== id.draft
@@ -74,6 +80,8 @@ export const useCreativeType = () => {
       await nextTick
 
       isLoading.value = false
+
+      plugin.emit('plugin-project-creative-drafts-delete-draft', set)
     }
 
     const reset = (id: ProjectTypeID) => {
@@ -97,6 +105,8 @@ export const useCreativeType = () => {
       setInfo(target)
 
       isLoading.value = false
+
+      plugin.emit('plugin-project-creative-drafts-reset-draft', target)
     }
 
     const setActive = (page: ContextState) => {
@@ -135,6 +145,8 @@ export const useCreativeType = () => {
         .finally(() => {
           isLoading.value = false
         })
+
+      plugin.emit('plugin-project-creative-drafts-set-draft', actually)
     }
 
     const updateTitle = (id: ProjectTypeID, title: string) => {

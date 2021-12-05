@@ -23,6 +23,15 @@ export default {
       swap: 'PAGE <{index}>  HAS BEEN CHANGED WITH POSITION {target}.',
       autosave: 'PROJECT AUTOMATICALLY SAVED SUCCESSFUL!',
     },
+    creative: {
+      drafts: {
+        set: 'PAGE <{name}> HAS BEEN ACTIVATED!',
+        create: 'PAGE <{name}> ADDED AS DRAFT!',
+        delete: 'PAGE <{name}> HAS BEEN DELETED!',
+        update: 'PAGE <{name}> HAS BEEN UPDATED!',
+        reset: 'PAGE <{name}> HAS BEEN CLEANED!',
+      },
+    },
   },
   normalize: {
     image: 'IMAGE',

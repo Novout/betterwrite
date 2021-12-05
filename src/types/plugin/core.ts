@@ -21,6 +21,11 @@ export type PluginEmitterName =
   | 'plugin-project-page-new'
   | 'plugin-project-page-delete'
   | 'plugin-project-page-swap'
+  | 'plugin-project-creative-drafts-delete-draft'
+  | 'plugin-project-creative-drafts-create-draft'
+  | 'plugin-project-creative-drafts-reset-draft'
+  | 'plugin-project-creative-drafts-set-draft'
+  | 'plugin-project-creative-drafts-update'
   | 'plugin-auto-save'
   | 'plugin-dropbox-save'
 export interface PluginEmitter {

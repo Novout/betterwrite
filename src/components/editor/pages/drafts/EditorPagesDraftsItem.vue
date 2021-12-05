@@ -101,11 +101,13 @@
 <script setup lang="ts">
   import { ContextState } from '@/types/context'
   import { ProjectTypeID } from '@/types/project'
+  import usePlugin from '@/use/plugin/core'
   import { useRaw } from '@/use/raw'
   import { useCreativeType } from '@/use/type/creative'
   import { ref, watch, nextTick } from 'vue'
 
   const creative = useCreativeType()
+  const plugin = usePlugin()
 
   const emit = defineEmits(['info'])
   const input = ref<HTMLDivElement | null>(null)
@@ -125,6 +127,10 @@
     }
 
     creative.draft().updateTitle(props.id, input.value?.innerText as string)
+
+    await nextTick
+
+    plugin.emit('plugin-project-creative-drafts-update', props.page)
   })
 
   const props = defineProps({
