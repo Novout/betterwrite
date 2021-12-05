@@ -22,6 +22,11 @@ export interface ProjectState {
   pageLoaded: number
   bw: ProjectStateBetterWrite
   pdf: ProjectStatePDF
+  creative: ProjectStateCreative
+}
+
+export interface ProjectStateCreative {
+  drafts: Array<ContextState>
 }
 
 export interface ProjectStatePDF {
@@ -54,4 +59,9 @@ export interface ProjectObject {
 export interface ProjectStateBetterWrite {
   platform: 'web' | 'desktop' | 'app'
   version: string
+}
+
+export interface ProjectTypeID {
+  draft: ID<number>
+  active: ID<number>
 }

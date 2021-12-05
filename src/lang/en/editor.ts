@@ -88,6 +88,7 @@ export default {
       export: 'Export',
     },
     chapter: {
+      drafts: 'Drafts',
       new: 'New',
       delete: 'Delete',
       up: 'Up',
@@ -412,6 +413,17 @@ export default {
       newContent: 'New content available, click on reload button to update.',
       reload: 'Reload',
       close: 'Close',
+    },
+  },
+  drafts: {
+    active: 'Active',
+    others: 'Others',
+    statistics: {
+      characters: 'Characters',
+      letters: 'Letters',
+      paragraph: "Paragraph's",
+      heading: "Heading's",
+      fixed: 'Fixed Items',
     },
   },
 }

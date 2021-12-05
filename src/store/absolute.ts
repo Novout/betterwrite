@@ -30,6 +30,9 @@ export const useAbsoluteStore = defineStore('absolute', {
       entity: {
         comment: false,
       },
+      pages: {
+        drafts: false,
+      },
     }
   },
 })

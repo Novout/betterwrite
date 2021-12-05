@@ -87,6 +87,7 @@ export default {
       export: 'Exportar',
     },
     chapter: {
+      drafts: 'Rascunhos',
       new: 'Novo',
       delete: 'Deletar',
       up: 'Cima',
@@ -413,6 +414,15 @@ export default {
         'Novo conteúdo disponível, clique no botão recarregar para atualizar.',
       reload: 'Atualizar',
       close: 'Fechar',
+    },
+  },
+  drafts: {
+    statistics: {
+      characters: 'Caracteres',
+      letters: 'Letras',
+      paragraph: 'Parágrafos',
+      heading: 'Cabeçalhos',
+      fixed: 'Itens Fixados',
     },
   },
 }

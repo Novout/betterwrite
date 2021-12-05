@@ -5,6 +5,7 @@ import { useFormat } from '@/use/format'
 import { Entity } from '../types/context'
 import { useGlobalStore } from './global'
 import { usePopulate } from '../use/populate'
+import { ID } from '@/types/utils'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -20,7 +21,7 @@ export const useProjectStore = defineStore('project', {
       totalPagesCreated: 0,
       main: {},
       summary: {},
-      pages: [] as Array<ContextState>,
+      pages: [],
       pageLoaded: 1,
       pdf: {
         encryption: {
@@ -40,6 +41,9 @@ export const useProjectStore = defineStore('project', {
       bw: {
         version: '0.1.0',
         platform: 'web',
+      },
+      creative: {
+        drafts: [],
       },
     }
   },
@@ -72,6 +76,7 @@ export const useProjectStore = defineStore('project', {
 
       const context: ContextState = {
         id: this.totalPagesCreated,
+        title: 'Untitled',
         entities: [
           {
             type: 'heading-one',
@@ -86,6 +91,8 @@ export const useProjectStore = defineStore('project', {
             updatedAt: useFormat().actually(),
           },
         ],
+        createdAt: useFormat().actually(),
+        updatedAt: useFormat().actually(),
       }
 
       this.pageLoaded = context.id
@@ -156,6 +163,13 @@ export const useProjectStore = defineStore('project', {
       if (index === -1) return
 
       this.pages[index].entities = context.entities
+      this.pages[index].updatedAt = useFormat().actually()
+    },
+  },
+  getters: {
+    getCreativeDrafts: (state) => {
+      return (id: ID<number>) =>
+        state.creative.drafts.filter((draft) => draft.id === id)
     },
   },
 })

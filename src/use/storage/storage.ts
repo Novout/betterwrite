@@ -220,6 +220,24 @@ export const useStorage = () => {
       }
     }
 
+    // <= 0.10.0
+    if (!_.project.creative) {
+      _.project.creative = {
+        drafts: [],
+      }
+    }
+    if (!_.project.pages[0].createdAt) {
+      _.project?.pages.forEach((target: any) => {
+        target['createdAt'] = useFormat().actually()
+        target['updatedAt'] = useFormat().actually()
+      })
+    }
+    if (!_.project.pages[0].title) {
+      _.project?.pages.forEach((target: any) => {
+        target['title'] = target.entities[0].raw
+      })
+    }
+
     return _
   }
 

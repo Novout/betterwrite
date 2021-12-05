@@ -21,7 +21,10 @@ export const useContextStore = defineStore('context', {
   state: (): ContextState => {
     return {
       id: 0,
+      title: 'Untitled',
       entities: [],
+      createdAt: useFormat().actually(),
+      updatedAt: useFormat().actually(),
     }
   },
   actions: {

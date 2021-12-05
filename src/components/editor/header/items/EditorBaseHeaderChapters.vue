@@ -27,6 +27,11 @@
     </template>
     <template #bar>
       <EditorHeaderItem
+        :text="t('editor.bar.chapter.drafts')"
+        @action="ABSOLUTE.pages.drafts = true"
+      />
+      <EditorHeaderItemDiv />
+      <EditorHeaderItem
         :text="t('editor.bar.chapter.new')"
         shortcut="CTRL + Q"
         @action="page.onCreatePage"
@@ -56,8 +61,10 @@
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useI18n } from 'vue-i18n'
+  import { useAbsoluteStore } from '@/store/absolute'
 
   const PROJECT = useProjectStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const page = usePage()
   const project = useProject()

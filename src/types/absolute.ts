@@ -26,6 +26,10 @@ export interface AbsoluteStateEntity {
   comment: boolean
 }
 
+export interface AbsoluteStatePages {
+  drafts: boolean
+}
+
 export interface AbsoluteState {
   commands: boolean
   project: AbsoluteStateProject
@@ -37,4 +41,5 @@ export interface AbsoluteState {
   pdf: AbsoluteStatePDF
   auth: AbsoluteStateAuth
   entity: AbsoluteStateEntity
+  pages: AbsoluteStatePages
 }

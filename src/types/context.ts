@@ -46,7 +46,10 @@ export type EntityType =
 
 export type ContextState = {
   id: number
+  title: string
   entities: Array<Entity>
+  createdAt: string
+  updatedAt: string
 }
 
 export interface EntityShowEditOptions {

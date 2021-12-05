@@ -10,11 +10,13 @@ import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
 import { ProjectObject } from '@/types/project'
-import { ContextState } from '@/types/context'
+import { ContextState, Entity } from '@/types/context'
 import { useStorage } from './storage/storage'
 import { setThemeInvokate } from '@/plugin/theme/external'
 import { ProjectState } from '../types/project'
 import { useNProgress } from '@vueuse/integrations'
+import { useEnv } from './env'
+import { useEntity } from './entity'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -27,7 +29,9 @@ export const useProject = () => {
   const toast = useToast()
   const storage = useStorage()
   const local = useLocalStorage()
+  const entity = useEntity()
   const { isLoading } = useNProgress()
+  const env = useEnv()
   const { t } = i18n.global
 
   let timer: NodeJS.Timer | null
@@ -159,6 +163,64 @@ export const useProject = () => {
     return PROJECT.type === 'creative'
   }
 
+  const utils = () => {
+    const isValidType = (val: Entity) => {
+      return !entity.utils().isFixedRaw(val.raw) && val.type !== 'image'
+    }
+
+    const getChapterLetters = (page: ContextState) => {
+      return page.entities
+        .filter((val) => isValidType(val))
+        .map((val) => val.raw.replace(/\s/g, ''))
+        .reduce((sum, val) => sum + val.length, 0)
+    }
+
+    const getChapterAllCharacters = (page: ContextState) => {
+      return page.entities.reduce(
+        (sum, val) => sum + (isValidType(val) ? val.raw.length : 0),
+        0
+      )
+    }
+
+    const getChapterParagraphs = (page: ContextState) => {
+      return page.entities.reduce((sum, val) => {
+        if (val.type === 'paragraph' && val.raw !== env.emptyLine())
+          return sum + 1
+
+        return sum
+      }, 0)
+    }
+
+    const getChapterHeadings = (page: ContextState) => {
+      return page.entities.reduce((sum, val) => {
+        if (val.type.includes('heading')) return sum + 1
+
+        return sum
+      }, 0)
+    }
+
+    const getChapterFixed = (page: ContextState) => {
+      return page.entities.reduce((sum, val) => {
+        if (
+          val.type === 'image' ||
+          val.type === 'line-break' ||
+          val.type === 'page-break'
+        )
+          return sum + 1
+
+        return sum
+      }, 0)
+    }
+
+    return {
+      getChapterLetters,
+      getChapterAllCharacters,
+      getChapterParagraphs,
+      getChapterHeadings,
+      getChapterFixed,
+    }
+  }
+
   return {
     init,
     destroy,
@@ -168,5 +230,6 @@ export const useProject = () => {
     onExportProject,
     isBlankProject,
     isCreativeProject,
+    utils,
   }
 }
