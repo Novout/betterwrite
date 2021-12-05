@@ -426,6 +426,7 @@ export default {
       paragraph: 'Parágrafos',
       heading: 'Cabeçalhos',
       fixed: 'Itens Fixados',
+      longest: 'Maior Conteúdo',
     },
   },
 }

@@ -85,7 +85,7 @@
         />
       </div>
       <div
-        class="flex flex-col justify-start xl:justify-around flex-1 w-auto text-lg p-2 overflow-y-auto"
+        class="flex flex-col justify-start gap-10 flex-1 w-auto text-lg p-2 overflow-y-auto"
       >
         <h2 class="font-xl text-center pb-5 font-bold text-xl my-10 md:my-0">
           {{ page.title }}
@@ -113,6 +113,16 @@
             :title="t('editor.drafts.statistics.fixed')"
             :result="project.utils().getChapterFixed(page)"
           />
+        </div>
+        <div class="flex flex-wrap gap-5 justify-around w-full mt-10">
+          <div
+            class="px-3 w-full font-bold shadow-lg text-theme-editor-creative-drafts-container-item-text overflow-y-auto bg-theme-editor-creative-drafts-container-item-background h-40 hover:bg-theme-editor-creative-drafts-container-item-background-hover active:bg-theme-editor-creative-drafts-container-item-background-active"
+          >
+            <h2>{{ t('editor.drafts.statistics.longest') }}</h2>
+            <p class="mt-2 w-full text-sm text-justify">
+              {{ project.utils().getParagraphLongest(page) }}
+            </p>
+          </div>
         </div>
       </div>
     </div>

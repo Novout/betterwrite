@@ -425,6 +425,7 @@ export default {
       paragraph: "Paragraph's",
       heading: "Heading's",
       fixed: 'Fixed Items',
+      longest: 'Longest Content',
     },
   },
 }

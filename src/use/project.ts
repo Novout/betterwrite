@@ -212,12 +212,31 @@ export const useProject = () => {
       }, 0)
     }
 
+    const getParagraphLongest = (page: ContextState) => {
+      let length = 0
+      let longest = ''
+
+      for (let i = 0; i < page.entities.length; i++) {
+        const entity = page.entities[i]
+
+        if (isValidType(entity)) {
+          if (entity.raw.length > length) {
+            length = entity.raw.length
+            longest = entity.raw
+          }
+        }
+      }
+
+      return longest
+    }
+
     return {
       getChapterLetters,
       getChapterAllCharacters,
       getChapterParagraphs,
       getChapterHeadings,
       getChapterFixed,
+      getParagraphLongest,
     }
   }
 
