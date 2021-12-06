@@ -121,7 +121,7 @@ export const useProject = () => {
           new Blob([JSON.stringify(storage.getProjectObject())], {
             type: 'application/json',
           }),
-          PROJECT.nameRaw + '.bw'
+          utils().exportName('bw')
         )
       })
       .finally(() => {
@@ -230,6 +230,10 @@ export const useProject = () => {
       return longest
     }
 
+    const exportName = (extension: string) => {
+      return `${PROJECT.name}.${extension}`
+    }
+
     return {
       getChapterLetters,
       getChapterAllCharacters,
@@ -237,6 +241,7 @@ export const useProject = () => {
       getChapterHeadings,
       getChapterFixed,
       getParagraphLongest,
+      exportName,
     }
   }
 

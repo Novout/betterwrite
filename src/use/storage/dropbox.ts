@@ -41,7 +41,7 @@ export const useDropbox = () => {
       accessToken: AUTH.dropbox.accessToken,
     })
 
-    const path = `/${PROJECT.name}.bw`
+    const path = `/${project.utils().exportName('bw')}`
 
     toast.info(t('toast.generics.load'))
 

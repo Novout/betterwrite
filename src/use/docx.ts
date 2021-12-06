@@ -4,10 +4,12 @@ import { useProjectStore } from '@/store/project'
 import { Entity } from '@/types/context'
 import { useEnv } from './env'
 import { useNProgress } from '@vueuse/integrations'
+import { useProject } from './project'
 
 export const useDocx = () => {
   const PROJECT = useProjectStore()
 
+  const project = useProject()
   const env = useEnv()
   const { isLoading } = useNProgress()
 
@@ -204,7 +206,7 @@ export const useDocx = () => {
 
     docx.Packer.toBlob(doc)
       .then((blob) => {
-        saveAs(blob, PROJECT.nameRaw + '.docx')
+        saveAs(blob, project.utils().exportName('docx'))
       })
       .finally(() => {
         isLoading.value = false

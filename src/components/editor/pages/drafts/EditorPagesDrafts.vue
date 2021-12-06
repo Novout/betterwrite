@@ -158,6 +158,8 @@
   )
 
   onMounted(() => {
+    PROJECT.updateContext(CONTEXT.$state)
+
     emitter.on('project-creative-drafts-set-info', (_page: ContextState) => {
       page.value = _page
     })
