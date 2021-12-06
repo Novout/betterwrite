@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.0](https://github.com/Novout/better-write/compare/v0.9.16...v0.10.0) (2021-12-06)
+
+
+### Features
+
+* **editor:** drafts longest paragraph ([7d313c7](https://github.com/Novout/better-write/commits/7d313c7fc61f1aa2b35951ebe1f0e9e5cb357731))
+* **editor:** initial creative drafts ([a4128ad](https://github.com/Novout/better-write/commits/a4128ad51e78cb904ccdf3909b909ceca0e05879))
+* **landing:** github logo ([843deea](https://github.com/Novout/better-write/commits/843deea341a6453f58127bdd19d412dc713681a9))
+* **logger:** drafts implementation ([d57eddb](https://github.com/Novout/better-write/commits/d57eddbb99c4a7dc64ad37fbf606e8dd49db6709))
+
+
+### Bug Fixes
+
+* **editor:** add popover not mutate entity ([83ad5d8](https://github.com/Novout/better-write/commits/83ad5d8338580398dc9a489aabc743b97a6025a9))
+* **editor:** drafts small typos ([65d0975](https://github.com/Novout/better-write/commits/65d0975b9ab5213cab9a6ef47b88c1c31c4cb7c3))
+* **editor:** export project name ([35c1b8f](https://github.com/Novout/better-write/commits/35c1b8fe97e350686d35de32b136f1078ebc4fa0))
+* **editor:** force reset entity properties in update entities ([cb46d1c](https://github.com/Novout/better-write/commits/cb46d1c1f634c23f4bf89cf3ed240c2ccfb3e1e4))
+
+
+### Style
+
+* **editor:** draft lines in bottom ([231df53](https://github.com/Novout/better-write/commits/231df532e30ad3c353c1e4d8e624509e12f1e14c))
+* **editor:** drafts line in mobile ([e4d5728](https://github.com/Novout/better-write/commits/e4d57284803f44a3a99e2483ab39660dae534564))
+* **theme:** drafts implementation ([6c4b2f7](https://github.com/Novout/better-write/commits/6c4b2f74c4b334716056cc7958498fbb1888b806))
+
+
+### Structure
+
+* **editor:** text utils structure ([1e69c37](https://github.com/Novout/better-write/commits/1e69c37fe0459413926f5ebf3b97681c8abdd662))
+* **package:** validate in release script ([7dcdf9c](https://github.com/Novout/better-write/commits/7dcdf9c022c14bb7ae3f24307bab70ec28e147ce))
+* **pwa:** theme color ([9950c65](https://github.com/Novout/better-write/commits/9950c65d563028de1296c2aca0c5e487a003f59b))
+
 ### [0.9.16](https://github.com/Novout/better-write/compare/v0.9.15...v0.9.16) (2021-12-03)
 
 
