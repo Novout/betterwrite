@@ -32,7 +32,7 @@ export default defineConfig({
         name: 'Better Write',
         short_name: 'Better Write',
         description: 'A editor for creative writers.',
-        theme_color: '#d1d5d8',
+        theme_color: '#1F2937',
         icons: [
           {
             src: 'android-chrome-192x192.png',
