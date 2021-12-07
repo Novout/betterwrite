@@ -83,6 +83,7 @@ export default {
       load: 'Load',
       save: 'Save',
       preferences: 'Preferences',
+      corrector: 'Corrector',
       autosave: 'Auto Save (in minutes)',
       import: 'Import',
       export: 'Export',

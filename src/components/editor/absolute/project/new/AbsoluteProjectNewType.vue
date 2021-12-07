@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-4 py-2 m-1 wb-text cursor-pointer rounded-full"
+    class="px-4 transition-all py-2 m-1 wb-text cursor-pointer rounded-full"
     :class="[
       props.title !== props.is
         ? 'bg-theme-background-2'

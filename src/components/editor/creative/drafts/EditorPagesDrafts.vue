@@ -7,10 +7,10 @@
     :delay="100"
     class="overflow-y-auto wb-text p-4 fixed top-0 left-0 h-screen w-full bg-theme-editor-creative-drafts-background text-theme-editor-creative-drafts-container-list-text z-max"
   >
-    <EditorPagesDraftsHeader />
-    <h2 class="font-poppins font-bold text-2xl">
-      {{ t('editor.bar.chapter.drafts') }}
-    </h2>
+    <EditorAbsoluteHeader
+      :title="t('editor.bar.chapter.drafts')"
+      @close="onClose"
+    />
     <div
       class="flex flex-col md:flex-row h-auto md:h-editor w-full mt-10 bg-theme-editor-creative-drafts-container-background shadow-xl"
     >
@@ -151,9 +151,11 @@
   import { useStorage } from '@/use/storage/storage'
   import { useContextStore } from '@/store/context'
   import { useNProgress } from '@vueuse/integrations'
+  import { useAbsoluteStore } from '@/store/absolute'
 
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
   const project = useProject()
@@ -174,6 +176,10 @@
       page.value = _page
     })
   })
+
+  const onClose = async () => {
+    ABSOLUTE.pages.drafts = false
+  }
 
   const onClickAside = (element: ContextState) => {
     isLoading.value = true

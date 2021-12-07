@@ -8,6 +8,7 @@ export const useAbsoluteStore = defineStore('absolute', {
         new: false,
         configuration: false,
         preferences: false,
+        corrector: false,
       },
       modal: {
         newProject: false,

@@ -2,6 +2,7 @@ export interface AbsoluteStateProject {
   new: boolean
   configuration: boolean
   preferences: boolean
+  corrector: boolean
 }
 
 export interface AbsoluteStateModal {

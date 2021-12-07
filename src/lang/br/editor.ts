@@ -81,6 +81,7 @@ export default {
       new: 'Novo',
       configuration: 'Configurar',
       preferences: 'Preferências',
+      corrector: 'Corretor',
       load: 'Carregar',
       save: 'Salvar',
       import: 'Importar',
