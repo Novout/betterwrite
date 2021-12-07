@@ -107,6 +107,9 @@ export const useProjectStore = defineStore('project', {
 
       const index = this.pages.indexOf(content)
 
+      this.creative.drafts = this.creative.drafts.filter(
+        (draft) => draft.id !== content.id
+      )
       this.pages.splice(index, 1)
     },
     updatePage(page: ContextState) {

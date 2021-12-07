@@ -22,14 +22,14 @@
         >
           {{ t('editor.drafts.chapters') }}
         </div>
-        <Draggable :list="PROJECT.pages" item-key="id">
+        <Draggable v-model="PROJECT.pages" item-key="id">
           <template #item="{ element }">
             <div
               class="text-center shadow cursor-pointer h-24 hover:bg-black-opacity text-lg w-full p-2 font-bold"
               @click="onClickAside(element)"
             >
               <p class="relative top-6 truncate">
-                {{ element.title }}
+                {{ element.entities[0].raw }}
               </p>
             </div>
           </template>
