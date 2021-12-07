@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.1](https://github.com/Novout/better-write/compare/v0.10.0...v0.10.1) (2021-12-07)
+
+
+### Bug Fixes
+
+* **editor:** correct update title in drafts ([f381d0e](https://github.com/Novout/better-write/commits/f381d0e566151ddd96d947d474fba1fd8933d395))
+* **editor:** delete drafts in delete unique page ([145ade7](https://github.com/Novout/better-write/commits/145ade705381fdc3b016b5fa483282ebd51ae4ca))
+* **editor:** insert title draft in create project ([1a1a80d](https://github.com/Novout/better-write/commits/1a1a80d664c4c17b90c53a43cf612840ee37f070))
+
+
+### Style
+
+* **editor:** set transition in appear ([293f466](https://github.com/Novout/better-write/commits/293f466fa404571b44ecaf154cbd56a172edc70d))
+
+
+### Structure
+
+* **css:** configuration-reverse ([9da408d](https://github.com/Novout/better-write/commits/9da408d163de0a9b607dcf40e2679874d5fb97d4))
+* **editor:** aside open in new project ([495527a](https://github.com/Novout/better-write/commits/495527ada8a9169dd9c82dca08c0b58f273f0e7e))
+* **editor:** corrector componentization ([dc0f398](https://github.com/Novout/better-write/commits/dc0f3981c09158f2f35dd166bbc1a101101c09b1))
+* **editor:** drafts organization ([3274d9f](https://github.com/Novout/better-write/commits/3274d9f881ddea3afc66ad7d3fc3bc377daf21e8))
+* **project:** components absolute ([275a01d](https://github.com/Novout/better-write/commits/275a01d81695ba7603af25582fbb7cc283146212))
+
 ## [0.10.0](https://github.com/Novout/better-write/compare/v0.9.16...v0.10.0) (2021-12-06)
 
 
