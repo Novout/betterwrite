@@ -24,6 +24,7 @@ export const usePopulate = () => {
         pages: [
           {
             id: 1,
+            title: project.name,
             entities: [
               {
                 type: 'heading-one',
@@ -38,6 +39,8 @@ export const usePopulate = () => {
                 updatedAt: useFormat().actually(),
               },
             ],
+            createdAt: useFormat().actually(),
+            updatedAt: useFormat().actually(),
           },
         ],
         bw: {
@@ -61,6 +64,7 @@ export const usePopulate = () => {
         pages: [
           {
             id: 1,
+            title: project.name,
             entities: [
               {
                 type: 'paragraph',
@@ -69,6 +73,8 @@ export const usePopulate = () => {
                 updatedAt: useFormat().actually(),
               },
             ],
+            createdAt: useFormat().actually(),
+            updatedAt: useFormat().actually(),
           },
         ],
         bw: {
