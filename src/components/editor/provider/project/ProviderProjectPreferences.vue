@@ -1,5 +1,11 @@
 <template>
-  <div class="wb-configuration-absolute">
+  <div
+    v-motion
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1 }"
+    :delay="100"
+    class="wb-configuration-absolute"
+  >
     <EditorProjectPreferencesDefault />
     <EditorProjectPreferencesConfiguration />
     <EditorProjectPreferencesEntity />

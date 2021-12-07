@@ -6,7 +6,7 @@
     class="w-full text-gray-200 bg-black-opacity body-font"
   >
     <div
-      class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+      class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col"
     >
       <a
         class="flex title-font font-medium items-center md:justify-start justify-center"

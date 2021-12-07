@@ -1,5 +1,9 @@
 <template>
   <header
+    v-motion
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1 }"
+    :delay="100"
     class="flex justify-start items-start w-full bg-theme-editor-header-background hover:bg-theme-editor-header-background-hover active:bg-theme-editor-header-background-active z-50 pt-0.5"
   >
     <div>

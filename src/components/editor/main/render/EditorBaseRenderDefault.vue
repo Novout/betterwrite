@@ -1,6 +1,10 @@
 <template>
   <section
     id="edit"
+    v-motion
+    :initial="{ opacity: 0, y: 100 }"
+    :enter="{ opacity: 1, y: 0 }"
+    :delay="100"
     :class="[project.isBlankProject() ? 'pt-28' : '']"
     class="flex flex-col w-full min-h-editor overflow-y-auto overflow-x-hidden"
   >

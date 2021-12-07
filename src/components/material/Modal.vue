@@ -1,6 +1,9 @@
 <template>
   <div
     ref="absolute"
+    v-motion
+    :initial="{ opacity: 0, y: 10 }"
+    :enter="{ opacity: 1, y: 0 }"
     class="fixed left-0 top-0 w-full h-screen bg-theme-transparent z-max"
   >
     <slot />
