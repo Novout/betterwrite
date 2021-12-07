@@ -68,7 +68,7 @@
     "@types/tailwindcss": "2.2.4",
     "@typescript-eslint/eslint-plugin": "5.5.0",
     "@typescript-eslint/parser": "5.5.0",
-    "@vitejs/plugin-vue": "1.10.1",
+    "@vitejs/plugin-vue": "1.10.2",
     "@vue/compiler-sfc": "3.2.23",
     "@vue/eslint-config-typescript": "9.1.0",
     "cross-env": "7.0.3",
