@@ -126,7 +126,7 @@
         </div>
         <div class="flex flex-wrap gap-5 justify-around w-full mt-10">
           <div
-            class="px-3 w-full font-bold shadow-lg text-theme-editor-creative-drafts-container-item-text overflow-y-auto bg-theme-editor-creative-drafts-container-item-background h-40 hover:bg-theme-editor-creative-drafts-container-item-background-hover active:bg-theme-editor-creative-drafts-container-item-background-active"
+            class="p-3 w-full font-bold shadow-lg text-theme-editor-creative-drafts-container-item-text overflow-y-auto bg-theme-editor-creative-drafts-container-item-background max-h-40 hover:bg-theme-editor-creative-drafts-container-item-background-hover active:bg-theme-editor-creative-drafts-container-item-background-active"
           >
             <h2>{{ t('editor.drafts.statistics.longest') }}</h2>
             <p class="mt-2 w-full text-sm text-justify">
