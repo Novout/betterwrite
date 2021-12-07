@@ -1,6 +1,10 @@
 <template>
   <div
     id="pdf-absolute"
+    v-motion
+    :initial="{ opacity: 0, y: 10 }"
+    :enter="{ opacity: 1, y: 0 }"
+    :delay="100"
     class="overflow-y-auto wb-text p-4 fixed top-0 left-0 h-screen w-full bg-theme-editor-creative-drafts-background text-theme-editor-creative-drafts-container-list-text z-max"
   >
     <EditorPagesDraftsHeader />
@@ -42,6 +46,7 @@
           }"
           :page="actually"
           :active="true"
+          :main="true"
           @info="page = actually"
         />
         <div class="flex items-center w-full mt-5">
@@ -81,10 +86,15 @@
           :key="index"
           :page="p"
           :active="false"
+          :main="false"
           @info="page = p"
         />
       </div>
       <div
+        v-motion
+        :initial="{ opacity: 0, y: -30 }"
+        :enter="{ opacity: 1, y: 0 }"
+        :delay="300"
         class="flex flex-col justify-start gap-10 flex-1 w-auto text-lg p-2 overflow-y-auto"
       >
         <h2 class="font-xl text-center pb-5 font-bold text-xl my-10 md:my-0">

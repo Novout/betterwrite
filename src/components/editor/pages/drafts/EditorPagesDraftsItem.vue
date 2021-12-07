@@ -1,5 +1,8 @@
 <template>
   <div
+    v-motion
+    :initial="{ opacity: 0, y: 100 }"
+    :enter="{ opacity: 1, y: 0 }"
     class="flex justify-between items-center bg-theme-editor-creative-drafts-container-item-background hover:bg-theme-editor-creative-drafts-container-item-background-hover active:bg-theme-editor-creative-drafts-container-item-background-active w-full p-1 shadow my-2"
   >
     <div
@@ -7,6 +10,7 @@
       :contenteditable="edit"
       class="cursor-pointer text-theme-editor-creative-drafts-container-item-text"
       @keydown.enter="edit = false"
+      @focusout="edit = false"
       @click="emit('info')"
     >
       {{ props.page.title }}
@@ -126,7 +130,9 @@
       return
     }
 
-    creative.draft().updateTitle(props.id, input.value?.innerText as string)
+    creative
+      .draft()
+      .updateTitle(props.id, props.main, input.value?.innerText as string)
 
     await nextTick
 
@@ -143,6 +149,10 @@
       type: Object as () => ProjectTypeID,
     },
     active: {
+      required: true,
+      type: Boolean,
+    },
+    main: {
       required: true,
       type: Boolean,
     },

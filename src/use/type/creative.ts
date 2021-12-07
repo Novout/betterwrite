@@ -149,10 +149,10 @@ export const useCreativeType = () => {
       plugin.emit('plugin-project-creative-drafts-set-draft', actually)
     }
 
-    const updateTitle = (id: ProjectTypeID, title: string) => {
+    const updateTitle = (id: ProjectTypeID, main: boolean, title: string) => {
       isLoading.value = true
 
-      if (id.active === id.draft) {
+      if (main) {
         const target = getActivePage(id)
 
         const index = PROJECT.pages.indexOf(target)

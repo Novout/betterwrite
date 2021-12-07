@@ -1,5 +1,11 @@
 <template>
-  <HeroIcon class="absolute top-5 right-5 wb-icon" @click.prevent="onClose">
+  <HeroIcon
+    v-motion
+    :initial="{ opacity: 0, x: -100 }"
+    :enter="{ opacity: 1, x: 0 }"
+    class="absolute top-5 right-5 wb-icon"
+    @click.prevent="onClose"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-6 w-6"
