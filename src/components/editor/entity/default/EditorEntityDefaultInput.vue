@@ -174,6 +174,7 @@
       commands.value = true
     } else {
       commands.value = false
+      if (last.value) scroll.entity(_index.value, 'bottom')
     }
 
     if (
