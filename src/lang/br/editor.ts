@@ -430,4 +430,19 @@ export default {
       longest: 'Maior Conteúdo',
     },
   },
+  addons: {
+    corrector: {
+      convert: 'Converter',
+      removeStartWhitespace: {
+        title: 'Remover Espaços do Início',
+        description:
+          'Todos os espaços em branco no começo do parágrafo serão removidos.',
+      },
+      removeEndWhitespace: {
+        title: 'Remover Espaços do Final',
+        description:
+          'Todos os espaços em branco no fim do parágrafo serão removidos.',
+      },
+    },
+  },
 }

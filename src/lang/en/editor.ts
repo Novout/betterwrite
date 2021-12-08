@@ -429,4 +429,19 @@ export default {
       longest: 'Longest Content',
     },
   },
+  addons: {
+    corrector: {
+      convert: 'Convert',
+      removeStartWhitespace: {
+        title: 'Remove spaces at the beginning',
+        description:
+          'All white space at the beginning of the paragraph will be removed.',
+      },
+      removeEndWhitespace: {
+        title: 'Remove spaces at the end',
+        description:
+          'All white space at the end of the paragraph will be removed.',
+      },
+    },
+  },
 }

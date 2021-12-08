@@ -240,7 +240,47 @@ export const useRaw = () => {
         return { open, close, length }
       }
 
-      return { italic, bold }
+      const error = () => {
+        const open = () => {
+          return '<span style="background-color: rgba(255, 130, 130, 0.2);">'
+        }
+
+        const close = () => {
+          return '</span>'
+        }
+
+        const length = () => {
+          return open().length + close().length
+        }
+
+        const item = (content: string) => {
+          return open() + content + close()
+        }
+
+        return { open, close, length, item }
+      }
+
+      const correct = () => {
+        const open = () => {
+          return '<span style="background-color: rgba(150, 255, 150, 0.2);">'
+        }
+
+        const close = () => {
+          return '</span>'
+        }
+
+        const length = () => {
+          return open().length + close().length
+        }
+
+        const item = (content: string) => {
+          return open() + content + close()
+        }
+
+        return { open, close, length, item }
+      }
+
+      return { italic, bold, error, correct }
     }
 
     const style = (entity: Entity, style: any) => {
