@@ -12,7 +12,7 @@
             v-for="(rule, index) in ADDONS.corrector.options"
             :key="index"
             :title="t(rule.title)"
-            @hover="onSet(rule)"
+            @click="onSet(rule)"
           >
             <InputBoolean v-model="rule.option" />
           </EditorProjectCorrectorRow>
@@ -52,7 +52,8 @@
           </div>
           <div class="flex justify-end mt-5">
             <button
-              class="rounded-full px-4 py-2 bg-theme-background-2 font-bold text-lg"
+              class="rounded-full px-4 py-2 bg-theme-background-2 font-bold text-lg transition-all active:bg-theme-background-4"
+              @click="convertor.apply"
             >
               {{ t('editor.addons.corrector.convert') }}
             </button>
@@ -70,10 +71,12 @@
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { AddonsCorrectorOption } from '@/types/addons'
+  import { useCorrector } from '@/use/corrector'
 
   const ABSOLUTE = useAbsoluteStore()
   const ADDONS = useAddonsStore()
 
+  const convertor = useCorrector()
   const { t } = useI18n()
 
   const corrector = ref<HTMLElement | null>(null)
