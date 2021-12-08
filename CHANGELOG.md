@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.2](https://github.com/Novout/better-write/compare/v0.10.1...v0.10.2) (2021-12-08)
+
+
+### Features
+
+* **editor:** corrector initial apply ([21bab13](https://github.com/Novout/better-write/commits/21bab139df16d6ba27e5a6b84212b932e07049b1))
+
+
+### Bug Fixes
+
+* **editor:** force scroll in last entity ([7eec9e0](https://github.com/Novout/better-write/commits/7eec9e0aca42a0e40b74833174ddba39b7dba0a0))
+
+
+### Style
+
+* **editor:** corrector modal ([ca21829](https://github.com/Novout/better-write/commits/ca218294de5f5b1d84bfb61ba88cc17844736f5e))
+
+
+### Structure
+
+* **deps:** update package ([97e29c2](https://github.com/Novout/better-write/commits/97e29c213f7224b74c85a645d1cec6e26e37dcb6))
+
 ### [0.10.1](https://github.com/Novout/better-write/compare/v0.10.0...v0.10.1) (2021-12-07)
 
 
