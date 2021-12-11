@@ -36,7 +36,7 @@
     "@vuelidate/core": "2.0.0-alpha.32",
     "@vuelidate/validators": "2.0.0-alpha.25",
     "@vueuse/core": "7.2.2",
-    "@vueuse/head": "0.7.2",
+    "@vueuse/head": "0.7.4",
     "@vueuse/integrations": "7.2.2",
     "@vueuse/motion": "2.0.0-beta.4",
     "autoprefixer": "10.4.0",

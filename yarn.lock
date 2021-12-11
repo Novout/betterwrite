@@ -1895,10 +1895,10 @@
     "@vueuse/shared" "6.9.2"
     vue-demi "*"
 
-"@vueuse/head@0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.2.tgz#594e857bd7161c6087e5d0934a7ee0f7c4276154"
-  integrity sha512-97RxYbIYwB9yFuRbdDbktsjKS0k12wYNksYV/UtYLOFNx+GAflK2kQ63b+sx09MJllEozD3GLeXV7O8rzMskeQ==
+"@vueuse/head@0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.4.tgz#2eec185ebe52e634400dfe2a8b1a18f788c06bcf"
+  integrity sha512-cmps+wrdgL77V72vtjU6kaAunkG6GhswaMIQoh7Twc52ql4/p7i1Amd31LqnnvNF/bfuvzcXgYvsH8I7kimZmA==
 
 "@vueuse/integrations@7.2.2":
   version "7.2.2"
