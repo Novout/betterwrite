@@ -1,3 +1,4 @@
+import { useTextSelection } from '@vueuse/core'
 import { Entity, EntityType } from '@/types/context'
 import { ContextState } from '@/types/context'
 import { useScroll } from '@/use/scroll'
@@ -30,25 +31,18 @@ export const useEntity = () => {
   const format = useFormat()
   const storage = useStorage()
   const factory = useFactory()
+  const select = useTextSelection()
 
   const pages = computed(() => PROJECT.pages)
-  const selection = computed(() => EDITOR.actives.text.selection.content)
-
-  watch(selection, (_content) => {
-    fstate.entry = _content
-    sstate.entry = _content
-
-    finder().onFinder()
-  })
 
   const sstate = reactive({
-    entry: EDITOR.actives.text.selection.content || ('' as string),
+    entry: select.value.text || ('' as string),
     output: '' as string,
     equal: true as boolean,
   })
   const sentry = ref<HTMLElement | null>(null)
   const fstate = reactive({
-    entry: EDITOR.actives.text.selection.content || ('' as string),
+    entry: select.value.text || ('' as string),
     actuallyLetterCounter: 0 as number,
     actuallyLetterRaw: '' as string,
     listOfLettersExists: [] as Array<Record<string, any>>,

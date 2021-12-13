@@ -16,18 +16,7 @@ export interface EditorStateActivesEntity {
 }
 
 export interface EditorStateActives {
-  text: EditorStateActivesText
   entity: EditorStateActivesEntity
-}
-
-export interface EditorStateActivesText {
-  selection: EditorStateActivesTextSelection
-}
-
-export interface EditorStateActivesTextSelection {
-  end: number
-  start: number
-  content: string
 }
 
 export interface EditorStateConfigurationEntity {

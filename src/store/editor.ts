@@ -84,13 +84,6 @@ export const useEditorStore = defineStore('editor', {
         entity: {
           index: 0,
         },
-        text: {
-          selection: {
-            content: '',
-            end: 0,
-            start: 0,
-          },
-        },
       },
     }
   },
@@ -99,11 +92,6 @@ export const useEditorStore = defineStore('editor', {
       this.styles = content.styles
       this.configuration = content.configuration
       this.actives = content.actives
-    },
-    setTextSelection(payload: any) {
-      this.actives.text.selection.content = payload.content
-      this.actives.text.selection.end = payload.end
-      this.actives.text.selection.start = payload.start
     },
     setAutoSave(auto: number | 'never') {
       this.configuration.auto = auto

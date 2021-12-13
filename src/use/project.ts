@@ -263,8 +263,6 @@ export const useProject = () => {
 
       map.delete('')
 
-      console.log(map)
-
       return new Map(
         [...map].sort((a, b) => {
           if (a[1] < b[1]) {
