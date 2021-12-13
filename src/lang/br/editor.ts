@@ -443,6 +443,11 @@ export default {
         description:
           'Todos os espaços em branco no fim do parágrafo serão removidos.',
       },
+      insertParagraphEndStop: {
+        title: 'Inserir Ponto Final',
+        description:
+          'Todos os parágrafos terão um ponto final acrescentado se houver necessidade.',
+      },
     },
   },
 }

@@ -235,6 +235,7 @@ export const useProject = () => {
     }
 
     return {
+      isValidType,
       getChapterLetters,
       getChapterAllCharacters,
       getChapterParagraphs,

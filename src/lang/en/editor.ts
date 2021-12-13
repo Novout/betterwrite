@@ -442,6 +442,10 @@ export default {
         description:
           'All white space at the end of the paragraph will be removed.',
       },
+      insertParagraphEndStop: {
+        title: 'Insert End Point',
+        description: 'All paragraphs will have a period added if necessary.',
+      },
     },
   },
 }
