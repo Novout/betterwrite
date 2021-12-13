@@ -6,6 +6,7 @@
     <EditorPagesDrafts v-else-if="ABSOLUTE.pages.drafts" />
     <ProviderLogger v-else-if="ABSOLUTE.logger" />
     <ProviderProjectCreate v-else-if="ABSOLUTE.project.new" />
+    <EditorProjectStatistics v-else-if="ABSOLUTE.project.statistics" />
     <EditorProjectCorrector v-else-if="ABSOLUTE.project.corrector" />
     <ProviderProjectPreferences v-else-if="ABSOLUTE.project.preferences" />
     <ProviderPDFConfiguration v-else-if="ABSOLUTE.pdf.configuration" />

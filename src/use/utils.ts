@@ -15,7 +15,13 @@ export const useUtils = () => {
       ...arr.slice(index),
     ]
 
-    return { insert }
+    const mapToObject = (m: any) =>
+      [...m].reduce((o, v) => {
+        o[v[0]] = v[1]
+        return o
+      }, {})
+
+    return { insert, mapToObject }
   }
 
   const join = (parts: any, sep?: any): string => {

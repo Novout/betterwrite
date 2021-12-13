@@ -40,6 +40,12 @@
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
+        :text="t('editor.bar.project.statistics')"
+        shortcut=""
+        @action="ABSOLUTE.project.statistics = true"
+      />
+      <EditorHeaderItem
+        v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.preferences')"
         shortcut=""
         @action="ABSOLUTE.project.preferences = true"

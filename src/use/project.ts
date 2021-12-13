@@ -182,6 +182,19 @@ export const useProject = () => {
       )
     }
 
+    const getWords = (entity: Entity) => {
+      return entity.raw.trim().split(' ')
+    }
+
+    const getChapterWords = (page: ContextState) => {
+      return page.entities.reduce(
+        (sum, val) =>
+          sum +
+          (isValidType(val) ? getWords(val).reduce((sum) => sum + 1, 0) : 0),
+        0
+      )
+    }
+
     const getChapterParagraphs = (page: ContextState) => {
       return page.entities.reduce((sum, val) => {
         if (val.type === 'paragraph' && val.raw !== env.emptyLine())
@@ -230,18 +243,28 @@ export const useProject = () => {
       return longest
     }
 
+    const getWordOccurrences = (page: ContextState) => {
+      return page.entities.reduce((map, value) => {
+        map.set(value.raw, (map.get(value.raw) || 0) + 1)
+        return map
+      }, new Map())
+    }
+
     const exportName = (extension: string) => {
       return `${PROJECT.name}.${extension}`
     }
 
     return {
       isValidType,
+      getWords,
       getChapterLetters,
       getChapterAllCharacters,
+      getChapterWords,
       getChapterParagraphs,
       getChapterHeadings,
       getChapterFixed,
       getParagraphLongest,
+      getWordOccurrences,
       exportName,
     }
   }

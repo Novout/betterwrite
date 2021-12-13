@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore, mapActions } from 'pinia'
 import { ContextState } from '@/types/context'
 import { ProjectState } from '@/types/project'
 import { useFormat } from '@/use/format'
@@ -6,6 +6,7 @@ import { Entity } from '../types/context'
 import { useGlobalStore } from './global'
 import { usePopulate } from '../use/populate'
 import { ID } from '@/types/utils'
+import { useProject } from '@/use/project'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -173,6 +174,48 @@ export const useProjectStore = defineStore('project', {
     getCreativeDrafts: (state) => {
       return (id: ID<number>) =>
         state.creative.drafts.filter((draft) => draft.id === id)
+    },
+    getAllCharacters: (state) => {
+      return () =>
+        state.pages.reduce(
+          (sum, val) => sum + useProject().utils().getChapterAllCharacters(val),
+          0
+        )
+    },
+    getAllLetters: (state) => {
+      return () =>
+        state.pages.reduce(
+          (sum, val) => sum + useProject().utils().getChapterLetters(val),
+          0
+        )
+    },
+    getAllWords: (state) => {
+      return () =>
+        state.pages.reduce(
+          (sum, val) => sum + useProject().utils().getChapterWords(val),
+          0
+        )
+    },
+    getAllParagraphs: (state) => {
+      return () =>
+        state.pages.reduce(
+          (sum, val) => sum + useProject().utils().getChapterParagraphs(val),
+          0
+        )
+    },
+    getAllHeadings: (state) => {
+      return () =>
+        state.pages.reduce(
+          (sum, val) => sum + useProject().utils().getChapterHeadings(val),
+          0
+        )
+    },
+    getAllFixeds: (state) => {
+      return () =>
+        state.pages.reduce(
+          (sum, val) => sum + useProject().utils().getChapterFixed(val),
+          0
+        )
     },
   },
 })

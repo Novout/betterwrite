@@ -80,6 +80,7 @@ export default {
     project: {
       new: 'Novo',
       configuration: 'Configurar',
+      statistics: 'Estatísticas',
       preferences: 'Preferências',
       corrector: 'Corretor',
       load: 'Carregar',
@@ -458,6 +459,15 @@ export default {
         description:
           'Todos os parágrafos terão um ponto final acrescentado no final da segunda ocorrência de diálogo.',
       },
+    },
+    statistics: {
+      characters: 'Caracteres',
+      letters: 'Letras',
+      words: 'Palavras',
+      paragraph: 'Parágrafos',
+      heading: 'Cabeçalhos',
+      fixed: 'Itens Fixados',
+      longest: 'Maior Conteúdo',
     },
   },
 }

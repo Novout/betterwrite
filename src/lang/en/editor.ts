@@ -83,6 +83,7 @@ export default {
       load: 'Load',
       save: 'Save',
       preferences: 'Preferences',
+      statistics: 'Statistics',
       corrector: 'Corrector',
       autosave: 'Auto Save (in minutes)',
       import: 'Import',
@@ -455,6 +456,15 @@ export default {
         description:
           'All paragraphs will have a period appended at the end of the second occurrence of dialog.',
       },
+    },
+    statistics: {
+      characters: 'Characters',
+      letters: 'Letters',
+      words: 'Words',
+      paragraph: "Paragraph's",
+      heading: "Heading's",
+      fixed: 'Fixed Items',
+      longest: 'Longest Content',
     },
   },
 }
