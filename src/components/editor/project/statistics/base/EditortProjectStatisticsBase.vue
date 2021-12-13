@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-col w-full py-5">
+  <div class="flex flex-1 flex-col w-full md:w-96 p-3 shadow-lg">
+    <h2 class="font-bold font-poppins text-lg mb-5">
+      {{ t('editor.addons.statistics.global') }}
+    </h2>
     <EditorProjectStatisticsBaseRow
       :title="t('editor.addons.statistics.characters')"
       :result="PROJECT.getAllCharacters()"

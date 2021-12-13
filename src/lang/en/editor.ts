@@ -458,9 +458,11 @@ export default {
       },
     },
     statistics: {
+      global: 'Global',
       characters: 'Characters',
       letters: 'Letters',
       words: 'Words',
+      repeated: 'Repeated Words',
       paragraph: "Paragraph's",
       heading: "Heading's",
       fixed: 'Fixed Items',

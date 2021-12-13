@@ -461,9 +461,11 @@ export default {
       },
     },
     statistics: {
+      global: 'Global',
       characters: 'Caracteres',
       letters: 'Letras',
       words: 'Palavras',
+      repeated: 'Palavras Repetidas',
       paragraph: 'Parágrafos',
       heading: 'Cabeçalhos',
       fixed: 'Itens Fixados',

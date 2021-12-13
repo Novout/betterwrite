@@ -17,6 +17,7 @@ import { ProjectState } from '../types/project'
 import { useNProgress } from '@vueuse/integrations'
 import { useEnv } from './env'
 import { useEntity } from './entity'
+import { useUtils } from './utils'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -32,6 +33,7 @@ export const useProject = () => {
   const entity = useEntity()
   const { isLoading } = useNProgress()
   const env = useEnv()
+  const util = useUtils()
   const { t } = i18n.global
 
   let timer: NodeJS.Timer | null
@@ -244,10 +246,37 @@ export const useProject = () => {
     }
 
     const getWordOccurrences = (page: ContextState) => {
-      return page.entities.reduce((map, value) => {
-        map.set(value.raw, (map.get(value.raw) || 0) + 1)
-        return map
-      }, new Map())
+      const map = page.entities
+        .filter((entity) => isValidType(entity))
+        .reduce((map, value) => {
+          value.raw.split(' ').forEach((raw) => {
+            const normalize = raw
+              .replaceAll(',', '')
+              .replaceAll('.', '')
+              .replaceAll(':', '')
+
+            map.set(normalize, (map.get(normalize) || 0) + 1)
+          })
+
+          return map
+        }, new Map())
+
+      map.delete('')
+
+      console.log(map)
+
+      return new Map(
+        [...map].sort((a, b) => {
+          if (a[1] < b[1]) {
+            return 1
+          }
+          if (a[1] > b[1]) {
+            return -1
+          }
+
+          return 0
+        })
+      )
     }
 
     const exportName = (extension: string) => {

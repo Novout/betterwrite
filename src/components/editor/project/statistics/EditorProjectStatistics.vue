@@ -1,6 +1,9 @@
 <template>
   <FullModal :title="t('editor.bar.project.statistics')" @close="onClose">
-    <EditortProjectStatisticsBase />
+    <div class="flex justify-start flex-col md:flex-row flex-wrap gap-5">
+      <EditortProjectStatisticsBase />
+      <EditortProjectStatisticsWord />
+    </div>
   </FullModal>
 </template>
 

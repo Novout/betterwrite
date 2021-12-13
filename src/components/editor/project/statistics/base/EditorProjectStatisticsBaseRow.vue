@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between items-center w-full md:w-96 p-1 text-lg">
+  <div class="flex justify-between items-center w-full p-1 text-lg">
     <h2>{{ props.title }}</h2>
     <p>{{ props.result }}</p>
   </div>
