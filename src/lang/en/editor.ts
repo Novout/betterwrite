@@ -446,6 +446,15 @@ export default {
         title: 'Insert End Point',
         description: 'All paragraphs will have a period added if necessary.',
       },
+      removeExtraWhitespace: {
+        title: 'Remove Multiple White Space',
+        description: 'All unnecessary white space will be removed.',
+      },
+      insertDialogEndStop: {
+        title: 'Insert End Point in Dialog',
+        description:
+          'All paragraphs will have a period appended at the end of the second occurrence of dialog.',
+      },
     },
   },
 }

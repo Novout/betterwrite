@@ -448,6 +448,16 @@ export default {
         description:
           'Todos os parágrafos terão um ponto final acrescentado se houver necessidade.',
       },
+      removeExtraWhitespace: {
+        title: 'Remover Múltiplos Espaços em Branco',
+        description:
+          'Todos os espaços em brancos desnecessários serão removidos.',
+      },
+      insertDialogEndStop: {
+        title: 'Inserir Ponto Final no Diálogo',
+        description:
+          'Todos os parágrafos terão um ponto final acrescentado no final da segunda ocorrência de diálogo.',
+      },
     },
   },
 }

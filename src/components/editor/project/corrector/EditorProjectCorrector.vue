@@ -6,7 +6,7 @@
       class="fixed flex flex-col w-3/4 md:w-1/2 h-3/4 bg-theme-background-1 wb-text rounded shadow-2xl p-5 overflow-y-auto"
     >
       <EditorAbsoluteHeader class="pl-5" :title="'Corretor'" @close="onClose" />
-      <div class="flex flex-wrap flex-1 flex-col-reverse lg:flex-row mt-5">
+      <div class="flex flex-wrap flex-1 flex-col lg:flex-row mt-5">
         <div class="flex flex-1 flex-col p-5">
           <EditorProjectCorrectorRow
             v-for="(rule, index) in ADDONS.corrector.options"
@@ -22,7 +22,7 @@
             <h2 class="font-bold text-lg lg:text-xl">{{ t(set.title) }}</h2>
             <p class="mt-3">{{ t(set.description) }}</p>
           </div>
-          <div class="flex flex-1 flex-col justify-cente mt-5">
+          <div class="flex flex-1 flex-col justify-center mt-10">
             <div class="w-full my-2 bg-theme-background-2 shadow-lg">
               <p class="p-2 text-lg text-justify" v-html="set.html.before" />
             </div>
