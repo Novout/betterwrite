@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.3](https://github.com/Novout/better-write/compare/v0.10.2...v0.10.3) (2021-12-14)
+
+
+### Features
+
+* **editor:** new options to convert ([bd90bd7](https://github.com/Novout/better-write/commits/bd90bd771b1608ca8d31ac1f781a3024ed42a5af))
+* **editor:** repeated words in statistics ([b18a88f](https://github.com/Novout/better-write/commits/b18a88f9d035bb0201c547c141e20718cf1f8a96))
+* **editor:** statistics interface ([0e97377](https://github.com/Novout/better-write/commits/0e973770af9d07128352b994ac9adf50cbfdd147))
+
+
+### Bug Fixes
+
+* **editor:** corrector validate inserts ([c7b7df8](https://github.com/Novout/better-write/commits/c7b7df87557a6e36ad1c84b51f55421b0a8efa47))
+* **editor:** finder active event ([c0c66e1](https://github.com/Novout/better-write/commits/c0c66e1d4dd18806f7ba65f154985f05989672f8))
+
+
+### Structure
+
+* **deps:** update dependency @vue/compiler-sfc to v3.2.24 ([5f8f38f](https://github.com/Novout/better-write/commits/5f8f38fe758a415e907b161991f67ca6b34ef75a))
+
 ### [0.10.2](https://github.com/Novout/better-write/compare/v0.10.1...v0.10.2) (2021-12-08)
 
 
