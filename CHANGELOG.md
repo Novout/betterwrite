@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.4](https://github.com/Novout/better-write/compare/v0.10.3...v0.10.4) (2021-12-15)
+
+
+### Bug Fixes
+
+* **dropbox:** overwrite existent files ([3b443c0](https://github.com/Novout/better-write/commits/3b443c07705e4f121ac5691878a8f8a09ac31b8d))
+
+
+### Structure
+
+* **dropbox:** insert dynamic script tag ([f0957f8](https://github.com/Novout/better-write/commits/f0957f8fb9563b90e112b051ceca361d4dcfe299))
+* **dropbox:** toast save and inject script tag ([26c0833](https://github.com/Novout/better-write/commits/26c0833a75ba1dbc20d8afcc5594c6952a240cea))
+* **fonts:** request with vueuse fetch ([963a311](https://github.com/Novout/better-write/commits/963a311e38f4b54d7e53009ad36eb010b4434873))
+
 ### [0.10.3](https://github.com/Novout/better-write/compare/v0.10.2...v0.10.3) (2021-12-14)
 
 
