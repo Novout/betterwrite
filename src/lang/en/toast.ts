@@ -19,5 +19,6 @@ export default {
   },
   dropbox: {
     load: 'Connected with Dropbox!',
+    save: 'Saved to Dropbox under Apps > Better Write',
   },
 }

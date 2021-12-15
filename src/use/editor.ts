@@ -6,7 +6,6 @@ import { useEnv } from '@/use/env'
 import { useKeyboard } from '@/use/keyboard'
 import { useProject } from '@/use/project'
 import { useLocalStorage } from '@/use/storage/local'
-import { useScriptTag } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
 import { computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -64,14 +63,6 @@ export const useEditor = () => {
         },
       ],
     })
-
-    useScriptTag(
-      'https://www.dropbox.com/static/api/2/dropins.js',
-      (el: HTMLScriptElement) => {
-        el.id = 'dropboxjs'
-        el.setAttribute('data-app-key', env.dropboxKey())
-      }
-    )
   }
 
   const fullScreen = (): void => {

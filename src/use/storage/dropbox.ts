@@ -52,7 +52,7 @@ export const useDropbox = () => {
           },
         })
         .then(() => {
-          toast.success(t('toast.project.save'))
+          toast.success(t('toast.dropbox.save'))
           plugin.emit('plugin-dropbox-save', 'success')
         })
         .catch(() => {
