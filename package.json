@@ -99,7 +99,6 @@
         "@vueuse/head",
         "@vueuse/integrations",
         "@vueuse/motion",
-        "axios",
         "date-fns",
         "date-fns/locale",
         "docx",

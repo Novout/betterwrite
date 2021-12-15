@@ -1,7 +1,7 @@
-import axios from 'axios'
 import { GoogleFont } from '@/types/google'
 import { useEnv } from '../env'
 import { useDefines } from '../defines'
+import { useFetch } from '@vueuse/core'
 
 export const useFonts = () => {
   const setGlobal = (vfs: Record<any, any>) => {
@@ -33,67 +33,79 @@ export const useFonts = () => {
     let normalize: Record<string, any> = {}
     const names: Array<string> = []
 
-    const { data } = await axios.get(
+    await useFetch(
       `https://www.googleapis.com/webfonts/v1/webfonts?key=${
         import.meta.env.VITE_GOOGLE_FONTS_KEY
-      }&sort=popularity`
-    )
+      }&sort=popularity`,
+      {
+        afterFetch(ctx) {
+          const data = JSON.parse(ctx.data)
 
-    useDefines()
-      .pdf()
-      .fixFonts()
-      .forEach((font: string) => {
-        const fonts = data.items.filter(
-          (obj: GoogleFont) => obj.family === font
-        )
+          data.items.forEach((item: GoogleFont) => {
+            if (item.files['regular'])
+              item.files['regular'] = item.files['regular'].replace(
+                /^http:\/\//i,
+                'https://'
+              )
+            if (item.files['italic'])
+              item.files['italic'] = item.files['italic'].replace(
+                /^http:\/\//i,
+                'https://'
+              )
+            if (item.files['700'])
+              item.files['700'] = item.files['700'].replace(
+                /^http:\/\//i,
+                'https://'
+              )
+            if (item.files['700italic'])
+              item.files['700italic'] = item.files['700italic'].replace(
+                /^http:\/\//i,
+                'https://'
+              )
 
-        fonts.forEach((obj: GoogleFont) => {
-          if (!obj.files['regular']) return
+            if (Object.keys(normalize).length < useEnv().maxFonts()) {
+              normalize[item.family] = {
+                normal: item.files['regular'],
+                italics: item.files['italic']
+                  ? item.files['italic']
+                  : item.files['regular'],
+                bold: item.files['700']
+                  ? item.files['700']
+                  : item.files['regular'],
+                bolditalics: item.files['700italic']
+                  ? item.files['700italic']
+                  : item.files['regular'],
+              }
+            }
+          })
 
-          normalize[obj.family] = {
-            normal: obj.files['regular'].replace('http', 'https'),
-            italics: obj.files['italic']
-              ? obj.files['italic'].replace('http', 'https')
-              : obj.files['regular'].replace('http', 'https'),
-            bold: obj.files['700']
-              ? obj.files['700'].replace('http', 'https')
-              : obj.files['regular'].replace('http', 'https'),
-            bolditalics: obj.files['700italic']
-              ? obj.files['700italic'].replace('http', 'https')
-              : obj.files['regular'].replace('http', 'https'),
-          }
+          useDefines()
+            .pdf()
+            .fixFonts()
+            .forEach((font: string) => {
+              data.items.forEach((obj: GoogleFont) => {
+                if (obj.files['regular']) {
+                  if (obj.family === font && !names.includes(obj.family)) {
+                    names.push(obj.family)
+                  }
+                }
+              })
+            })
 
-          names.push(obj.family)
-        })
-      })
+          Object.entries(normalize).forEach((item) => {
+            if (!names.includes(item[0])) names.push(item[0])
+          })
 
-    data.items.forEach((obj: GoogleFont) => {
-      if (
-        !obj.files['regular'] ||
-        Object.keys(normalize).length >= useEnv().maxFonts() ||
-        names.includes(obj.family)
-      )
-        return
+          names.sort()
 
-      normalize[obj.family] = {
-        normal: obj.files['regular'].replace('http', 'https'),
-        italics: obj.files['italic']
-          ? obj.files['italic'].replace('http', 'https')
-          : obj.files['regular'].replace('http', 'https'),
-        bold: obj.files['700']
-          ? obj.files['700'].replace('http', 'https')
-          : obj.files['regular'].replace('http', 'https'),
-        bolditalics: obj.files['700italic']
-          ? obj.files['700italic'].replace('http', 'https')
-          : obj.files['regular'].replace('http', 'https'),
+          setGlobal(normalize)
+
+          ctx.data = JSON.stringify(data)
+
+          return ctx
+        },
       }
-
-      names.push(obj.family)
-    })
-
-    names.sort()
-
-    setGlobal(normalize)
+    )
 
     return { normalize, names }
   }
