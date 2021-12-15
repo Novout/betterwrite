@@ -1,30 +1,25 @@
-import { nextTick } from 'vue'
 import { useToast } from 'vue-toastification'
 import { Dropbox as DBX, DropboxResponse, DropboxResponseError } from 'dropbox'
 import { useEnv } from '@/use/env'
-import { useProjectStore } from '@/store/project'
-import i18n from '@/lang'
 import { useAuthStore } from '@/store/auth'
-import useEmitter from '@/use/emitter'
 import { useAbsoluteStore } from '@/store/absolute'
 import usePlugin from '../plugin/core'
 import { useProject } from '../project'
 import { ProjectObject } from '@/types/project'
 import { useStorage } from './storage'
 import { useNProgress } from '@vueuse/integrations'
+import { useI18n } from 'vue-i18n'
 
 export const useDropbox = () => {
-  const PROJECT = useProjectStore()
   const AUTH = useAuthStore()
   const ABSOLUTE = useAbsoluteStore()
 
   const toast = useToast()
-  const emitter = useEmitter()
   const storage = useStorage()
   const plugin = usePlugin()
   const project = useProject()
   const { isLoading } = useNProgress()
-  const { t } = i18n.global
+  const { t } = useI18n()
 
   const loadContext = async (context: ProjectObject) => {
     if (!context) return
@@ -52,40 +47,20 @@ export const useDropbox = () => {
         .filesUpload({
           path,
           contents: JSON.stringify(storage.getProjectObject()),
+          mode: {
+            '.tag': 'overwrite',
+          },
         })
         .then(() => {
           toast.success(t('toast.project.save'))
           plugin.emit('plugin-dropbox-save', 'success')
-
-          isLoading.value = false
         })
         .catch(() => {
-          dbx
-            .filesDeleteV2({
-              path,
-            })
-            .then(() => {
-              dbx
-                .filesUpload({
-                  path,
-                  contents: JSON.stringify(storage.getProjectObject()),
-                })
-                .then(() => {
-                  toast.success(t('toast.project.save'))
-                  plugin.emit('plugin-dropbox-save', 'success')
-                  isLoading.value = false
-                })
-                .catch(() => {
-                  toast.error(t('toast.project.error'))
-                  plugin.emit('plugin-dropbox-save', 'error')
-                  isLoading.value = false
-                })
-            })
-            .catch(() => {
-              toast.error(t('toast.project.error'))
-              plugin.emit('plugin-dropbox-save', 'error')
-              isLoading.value = false
-            })
+          toast.error(t('toast.project.error'))
+          plugin.emit('plugin-dropbox-save', 'error')
+        })
+        .finally(() => {
+          isLoading.value = false
         })
     })
   }

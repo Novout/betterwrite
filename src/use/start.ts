@@ -88,12 +88,14 @@ export const useStart: Callback<void> = () => {
         if (finish) {
           AUTH.dropbox.accessToken = str
 
+          console.log(str)
+
           toast.success(t('toast.dropbox.load'))
 
           return
         }
 
-        if (letter === '&' && intersection === 2) {
+        if (letter === '&' && intersection === 1) {
           firstQuery = false
           finish = true
         }
@@ -104,7 +106,7 @@ export const useStart: Callback<void> = () => {
 
         if (letter === '=') intersection++
 
-        if (letter === '=' && intersection === 2) {
+        if (letter === '=' && intersection === 1) {
           firstQuery = true
         }
       }
