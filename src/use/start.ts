@@ -88,8 +88,6 @@ export const useStart: Callback<void> = () => {
         if (finish) {
           AUTH.dropbox.accessToken = str
 
-          console.log(str)
-
           toast.success(t('toast.dropbox.load'))
 
           return
