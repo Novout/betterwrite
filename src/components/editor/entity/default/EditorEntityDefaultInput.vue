@@ -65,6 +65,7 @@
   import { ID } from '@/types/utils'
   import { useUtils } from '@/use/utils'
   import { useMagicKeys } from '@vueuse/core'
+  import { OnFocusOptions } from '@/types/entity'
 
   const props = defineProps({
     entity: {
@@ -146,6 +147,35 @@
       focus.value = false
     }
   })
+
+  const onFocus = (options: OnFocusOptions) => {
+    switch (options.position) {
+      case 'start':
+        raw
+          .v2()
+          .caret()
+          .set(input.value as HTMLDivElement, 0)
+        break
+      case 'offset':
+        raw
+          .v2()
+          .caret()
+          .set(input.value as HTMLDivElement, old_raw.value)
+        break
+      case 'end':
+        raw
+          .v2()
+          .caret()
+          .set(
+            input.value as HTMLDivElement,
+            input.value?.innerHTML.length as any
+          )
+        break
+      case 'auto':
+        input.value?.focus()
+        break
+    }
+  }
 
   const setData = (val: string) => {
     const _input = input.value as HTMLDivElement
@@ -445,7 +475,7 @@
   })
 
   const onUpdateContent = async () => {
-    if (props.entity.raw === data.value) return
+    if (props.entity.raw === data.value || !data.value) return
 
     CONTEXT.updateInPage({
       entity: props.entity,
@@ -725,11 +755,6 @@
     } else if (e.key === 'ArrowDown') {
       // to bottom
       if (end) {
-        if (_index.value + 1 === CONTEXT.entities.length) {
-          emitter.emit('entity-input-focus')
-          return
-        }
-
         if (entity.utils().isFixed(_index.value + 1)) return
 
         emitter.emit('entity-edit-save')
