@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.5](https://github.com/Novout/better-write/compare/v0.10.4...v0.10.5) (2021-12-17)
+
+
+### Bug Fixes
+
+* **editor:** validate in onupdatecontent call ([ae4fcee](https://github.com/Novout/better-write/commits/ae4fceeeca5644ca77e1e083ceaa02c03fe1f7a2))
+
+
+### Refactor
+
+* **editor:** save entity empty lines ([470a2d6](https://github.com/Novout/better-write/commits/470a2d6413fa8d4e0d9d062f9dd52871273a24ea))
+
 ### [0.10.4](https://github.com/Novout/better-write/compare/v0.10.3...v0.10.4) (2021-12-15)
 
 
