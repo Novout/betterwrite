@@ -10,3 +10,9 @@ export interface V2RawSet {
 }
 
 export type V2RawNormalizeType = 'simple' | 'full' | 'editor'
+
+export interface OnFocusOptions {
+  input: HTMLDivElement
+  position: 'start' | 'offset' | 'end' | 'auto'
+  offset?: number
+}

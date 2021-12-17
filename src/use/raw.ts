@@ -1,5 +1,10 @@
 import { Entity } from '@/types/context'
-import { V2RawApply, V2RawNormalizeType, V2RawSet } from '@/types/raw'
+import {
+  OnFocusOptions,
+  V2RawApply,
+  V2RawNormalizeType,
+  V2RawSet,
+} from '@/types/raw'
 import { useClipboard } from '@vueuse/core'
 import { useUtils } from './utils'
 
@@ -410,6 +415,23 @@ export const useRaw = () => {
         return (window.getSelection() as any)?.toString()
       }
 
+      const focus = ({ input, position, offset }: OnFocusOptions) => {
+        switch (position) {
+          case 'start':
+            set(input as HTMLDivElement, 0)
+            break
+          case 'offset':
+            set(input as HTMLDivElement, offset as number)
+            break
+          case 'end':
+            set(input as HTMLDivElement, input?.innerHTML.length as any)
+            break
+          case 'auto':
+            input?.focus()
+            break
+        }
+      }
+
       const object = (el: HTMLDivElement) => {
         return {
           isSupported: isSupported(),
@@ -421,7 +443,7 @@ export const useRaw = () => {
         }
       }
 
-      return { set, html, index, end, start, empty, value, object }
+      return { set, html, index, end, start, empty, value, object, focus }
     }
 
     const validate = (arr: Array<string>): Array<V2RawSet> => {

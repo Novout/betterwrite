@@ -52,13 +52,8 @@ export const useContextStore = defineStore('context', {
 
       if (index === -1 || raw === this.entities[index].raw) return
 
-      if (raw === '') {
-        this.entities[index].raw = useEnv().emptyLine()
-        this.entities[index].updatedAt = useFormat().actually()
-      } else if (raw !== this.entities[index].raw) {
-        this.entities[index].raw = raw
-        this.entities[index].updatedAt = useFormat().actually()
-      }
+      this.entities[index].raw = raw
+      this.entities[index].updatedAt = useFormat().actually()
     },
     updateCommentInPage({ entity, raw }: ContextActionsUpdateInPage) {
       if (!entity || !entity.raw) return

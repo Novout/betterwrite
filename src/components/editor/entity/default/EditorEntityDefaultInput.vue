@@ -65,7 +65,6 @@
   import { ID } from '@/types/utils'
   import { useUtils } from '@/use/utils'
   import { useMagicKeys } from '@vueuse/core'
-  import { OnFocusOptions } from '@/types/entity'
 
   const props = defineProps({
     entity: {
@@ -147,35 +146,6 @@
       focus.value = false
     }
   })
-
-  const onFocus = (options: OnFocusOptions) => {
-    switch (options.position) {
-      case 'start':
-        raw
-          .v2()
-          .caret()
-          .set(input.value as HTMLDivElement, 0)
-        break
-      case 'offset':
-        raw
-          .v2()
-          .caret()
-          .set(input.value as HTMLDivElement, old_raw.value)
-        break
-      case 'end':
-        raw
-          .v2()
-          .caret()
-          .set(
-            input.value as HTMLDivElement,
-            input.value?.innerHTML.length as any
-          )
-        break
-      case 'auto':
-        input.value?.focus()
-        break
-    }
-  }
 
   const setData = (val: string) => {
     const _input = input.value as HTMLDivElement
@@ -475,11 +445,11 @@
   })
 
   const onUpdateContent = async () => {
-    if (props.entity.raw === data.value || !data.value) return
+    if (props.entity.raw === data.value) return
 
     CONTEXT.updateInPage({
       entity: props.entity,
-      raw: data.value,
+      raw: !data.value ? env.emptyLine() : data.value,
     })
 
     await nextTick
