@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
-import { LoggerState } from '@/types/logger'
-import { LoggerContent } from '../types/logger'
+import { LoggerState, LoggerContent } from 'better-write-types'
 
 export const useLoggerStore = defineStore('logger', {
   state: (): LoggerState => {

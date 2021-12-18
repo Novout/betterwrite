@@ -64,7 +64,7 @@
 
 <script setup lang="ts">
   import { useEnv } from '@/use/env'
-  import { Entity } from '@/types/context'
+  import { Entity } from 'better-write-types'
 
   const props = defineProps({
     entity: {

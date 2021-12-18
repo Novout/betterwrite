@@ -1,4 +1,4 @@
-import { ProjectObject } from '@/types/project'
+import { ProjectObject } from 'better-write-types'
 import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
 import i18n from '@/lang'

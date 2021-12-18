@@ -1,4 +1,4 @@
-import { ShortcutsState } from '@/types/shortcuts'
+import { ShortcutsState } from 'better-write-types'
 import { defineStore } from 'pinia'
 import { useDefines } from '../use/defines'
 

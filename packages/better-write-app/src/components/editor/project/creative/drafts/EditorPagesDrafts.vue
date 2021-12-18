@@ -141,7 +141,7 @@
 
 <script setup lang="ts">
   import { useProjectStore } from '@/store/project'
-  import { ContextState } from '@/types/context'
+  import { ContextState } from 'better-write-types'
   import useEmitter from '@/use/emitter'
   import { useProject } from '@/use/project'
   import { useCreativeType } from '@/use/type/creative'
@@ -166,7 +166,7 @@
 
   const page = ref<ContextState>(PROJECT.pages[0])
   const actually = computed(
-    () => PROJECT.pages.filter((p) => p.id === page.value.id)[0]
+    () => PROJECT.pages.filter((p: ContextState) => p.id === page.value.id)[0]
   )
 
   onMounted(() => {

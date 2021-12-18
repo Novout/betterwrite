@@ -1,4 +1,4 @@
-import { BetterWriteThemes } from '@/types/editor'
+import { BetterWriteThemes } from 'better-write-types'
 import { setDefaultColorTheme } from './external'
 
 export const ThemeNormalize = (theme: BetterWriteThemes) => {

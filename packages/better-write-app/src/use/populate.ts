@@ -1,8 +1,7 @@
-import { ProjectState } from '../types/project'
+import { ProjectState, PDFStateStyles } from 'better-write-types'
 import { useEnv } from './env'
 import { useFormat } from './format'
 import { useDefines } from './defines'
-import { PDFStateStyles } from '../types/pdf'
 import { useUtils } from './utils'
 
 export const usePopulate = () => {

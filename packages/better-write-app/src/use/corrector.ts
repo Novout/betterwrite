@@ -5,7 +5,7 @@ import { useStorage } from './storage/storage'
 import { nextTick } from 'vue'
 import { useNProgress } from '@vueuse/integrations'
 import { useProject } from './project'
-import { Entity } from '@/types/context'
+import { Entity } from 'better-write-types'
 import { useEditorStore } from '../store/editor'
 
 export const useCorrector = () => {

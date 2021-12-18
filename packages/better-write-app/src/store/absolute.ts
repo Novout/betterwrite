@@ -1,4 +1,4 @@
-import { AbsoluteState } from '@/types/absolute'
+import { AbsoluteState } from 'better-write-types'
 import { defineStore } from 'pinia'
 
 export const useAbsoluteStore = defineStore('absolute', {

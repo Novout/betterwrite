@@ -1,4 +1,4 @@
-import { PDFState } from '@/types/pdf'
+import { PDFState } from 'better-write-types'
 import { usePopulate } from '@/use/populate'
 import { defineStore } from 'pinia'
 

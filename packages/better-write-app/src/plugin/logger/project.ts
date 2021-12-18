@@ -1,10 +1,10 @@
 import { PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
-import { LoggerContent } from '@/types/logger'
+import { LoggerContent, ContextState } from 'better-write-types'
 import { useFormat } from '@/use/format'
 import { useI18n } from 'vue-i18n'
 import { useProjectStore } from '@/store/project'
-import { ContextState } from '@/types/context'
+
 export const PluginLoggerProject = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores

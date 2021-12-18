@@ -1,7 +1,7 @@
 import * as docx from 'docx'
 import { saveAs } from 'file-saver'
 import { useProjectStore } from '@/store/project'
-import { Entity } from '@/types/context'
+import { Entity } from 'better-write-types'
 import { useEnv } from './env'
 import { useNProgress } from '@vueuse/integrations'
 import { useProject } from './project'

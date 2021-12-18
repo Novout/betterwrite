@@ -103,8 +103,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ContextState } from '@/types/context'
-  import { ProjectTypeID } from '@/types/project'
+  import { ProjectTypeID, ContextState } from 'better-write-types'
   import { useRaw } from '@/use/raw'
   import { useCreativeType } from '@/use/type/creative'
   import { usePlugin } from 'better-write-plugin-core'

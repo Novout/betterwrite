@@ -4,7 +4,7 @@ import { ThemeNormalize } from './utils'
 import { useProjectStore } from '@/store/project'
 import { useEnv } from '@/use/env'
 import { useDefines } from '@/use/defines'
-import { BetterWriteThemes } from '@/types/editor'
+import { BetterWriteThemes } from 'better-write-types'
 import { useFavicon, usePreferredColorScheme } from '@vueuse/core'
 import { useUtils } from '@/use/utils'
 

@@ -9,11 +9,14 @@ import { useEditorStore } from '@/store/editor'
 import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
-import { ProjectObject } from '@/types/project'
-import { ContextState, Entity } from '@/types/context'
+import {
+  ProjectObject,
+  ProjectState,
+  ContextState,
+  Entity,
+} from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { setThemeInvokate } from '@/plugin/theme/external'
-import { ProjectState } from '../types/project'
 import { useNProgress } from '@vueuse/integrations'
 import { useEnv } from './env'
 import { useEntity } from './entity'

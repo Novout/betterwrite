@@ -1,9 +1,7 @@
-import { useProject } from '@/use/project'
 import { useRaw } from '@/use/raw'
 import { defineStore } from 'pinia'
-import { AddonsState } from '../types/addons'
+import { AddonsState } from 'better-write-types'
 import { useEditorStore } from './editor'
-import { useProjectStore } from './project'
 
 export const useAddonsStore = defineStore('addons', {
   state: (): AddonsState => {

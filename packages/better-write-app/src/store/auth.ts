@@ -1,4 +1,4 @@
-import { AuthState } from '@/types/auth'
+import { AuthState } from 'better-write-types'
 import { defineStore } from 'pinia'
 
 export const useAuthStore = defineStore('auth', {

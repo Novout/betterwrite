@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { EditorState } from '../types/editor'
+import { EditorState } from 'better-write-types'
 import { useDefines } from '../use/defines'
 
 export const useEditorStore = defineStore('editor', {

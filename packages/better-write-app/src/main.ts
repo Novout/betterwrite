@@ -7,7 +7,7 @@ import { MotionPlugin as motion } from '@vueuse/motion'
 import tooltip from 'v-tooltip'
 import toast, { POSITION } from 'vue-toastification'
 import mitt from 'mitt'
-import { VueEmitter } from './types/emitter'
+import { VueEmitter } from 'better-write-types'
 
 import router from './router'
 import i18n from './lang'

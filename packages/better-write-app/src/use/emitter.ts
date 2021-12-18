@@ -1,5 +1,5 @@
 import { getCurrentInstance, ComponentInternalInstance } from 'vue'
-import { VueEmitter } from '@/types/emitter'
+import { VueEmitter } from 'better-write-types'
 
 export default function useEmitter() {
   const internalInstance = getCurrentInstance()

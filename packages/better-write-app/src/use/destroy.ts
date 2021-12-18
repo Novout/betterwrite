@@ -1,4 +1,4 @@
-import { Callback } from '@/types/utils'
+import { Callback } from 'better-write-types'
 import { useLocalStorage } from './storage/local'
 import { useProject } from './project'
 

@@ -1,11 +1,8 @@
-import { defineStore, mapActions } from 'pinia'
-import { ContextState } from '@/types/context'
-import { ProjectState } from '@/types/project'
+import { defineStore } from 'pinia'
+import { ContextState, ProjectState, ID, Entity } from 'better-write-types'
 import { useFormat } from '@/use/format'
-import { Entity } from '../types/context'
 import { useGlobalStore } from './global'
 import { usePopulate } from '../use/populate'
-import { ID } from '@/types/utils'
 import { useProject } from '@/use/project'
 
 export const useProjectStore = defineStore('project', {

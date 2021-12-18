@@ -5,7 +5,7 @@ import { usePDFStore } from './pdf'
 import { useAbsoluteStore } from './absolute'
 import { useShortcutsStore } from './shortcuts'
 
-import { GlobalState } from '@/types/global'
+import { GlobalState } from 'better-write-types'
 import { useProjectStore } from './project'
 
 export const useGlobalStore = defineStore('global', {

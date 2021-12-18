@@ -54,15 +54,19 @@
   import { useFactory } from '@/use/factory'
   import { useToast } from 'vue-toastification'
   import { useI18n } from 'vue-i18n'
-  import { Entity, EntityShowEditOptions } from '@/types/context'
-  import { VueEmitterEntityOpen, VueEmitterEntityClose } from '@/types/emitter'
   import { useScroll } from '@/use/scroll'
   import { useContextStore } from '@/store/context'
   import { useProjectStore } from '@/store/project'
   import { useEditorStore } from '@/store/editor'
   import { useAbsoluteStore } from '@/store/absolute'
   import { usePlugin } from 'better-write-plugin-core'
-  import { ID } from '@/types/utils'
+  import {
+    ID,
+    Entity,
+    EntityShowEditOptions,
+    VueEmitterEntityOpen,
+    VueEmitterEntityClose,
+  } from 'better-write-types'
   import { useUtils } from '@/use/utils'
   import { useMagicKeys } from '@vueuse/core'
 

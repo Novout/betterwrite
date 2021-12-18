@@ -1,7 +1,6 @@
-import { Callback } from '@/types/utils'
 import { useToast } from 'vue-toastification'
 import * as pdfMake from 'pdfmake/build/pdfmake'
-import { ContextState, Entity } from '@/types/context'
+import { ContextState, Entity, Callback } from 'better-write-types'
 import { useRaw } from './raw'
 import { useEnv } from './env'
 import { useFonts } from './google/fonts'

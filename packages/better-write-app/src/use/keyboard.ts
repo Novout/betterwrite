@@ -1,5 +1,5 @@
 import keyboard from 'keyboardjs'
-import { Callback } from '@/types/utils'
+import { Callback } from 'better-write-types'
 import { useLocalStorage } from './storage/local'
 import { useUtils } from './utils'
 import { usePage } from './page'

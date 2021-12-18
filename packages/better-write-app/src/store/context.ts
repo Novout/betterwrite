@@ -10,12 +10,12 @@ import {
   ContextActionNewInPage,
   ContextActionNewInPagePosEdit,
   ContextActionAlterInPage,
-} from '../types/context'
+  Entities,
+} from 'better-write-types'
 import { useEnv } from '../use/env'
 import { useFormat } from '../use/format'
 import { useUtils } from '../use/utils'
 import { useProjectStore } from './project'
-import { Entities } from '../types/context'
 
 export const useContextStore = defineStore('context', {
   state: (): ContextState => {

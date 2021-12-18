@@ -1,5 +1,5 @@
 import { useEnv } from './env'
-import { Entity, EntityType } from '@/types/context'
+import { Entity, EntityType } from 'better-write-types'
 import { useFormat } from './format'
 import { useUtils } from './utils'
 

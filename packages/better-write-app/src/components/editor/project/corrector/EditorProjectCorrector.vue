@@ -70,7 +70,7 @@
   import { onClickOutside, MaybeElementRef, useDraggable } from '@vueuse/core'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { AddonsCorrectorOption } from '@/types/addons'
+  import { AddonsCorrectorOption } from 'better-write-types'
   import { useCorrector } from '@/use/corrector'
 
   const ABSOLUTE = useAbsoluteStore()

@@ -1,5 +1,4 @@
-import { BetterWriteThemes } from '@/types/editor'
-import { Callback } from '@/types/utils'
+import { Callback, BetterWriteThemes } from 'better-write-types'
 
 export const useDefines = () => {
   const shortcuts = (k: string) => {

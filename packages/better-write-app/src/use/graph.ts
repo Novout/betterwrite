@@ -1,11 +1,10 @@
-import { ContextState } from '@/types/context'
 import { nextTick } from 'vue'
 import { useScroll } from './scroll'
 import { useContextStore } from '@/store/context'
 import { useBreakpoints, breakpointsTailwind } from '@vueuse/core'
 import { useAbsoluteStore } from '@/store/absolute'
 import { useProjectStore } from '@/store/project'
-import { ID } from '../types/utils'
+import { ID, ContextState } from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { useNProgress } from '@vueuse/integrations'
 

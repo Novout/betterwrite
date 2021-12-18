@@ -1,10 +1,10 @@
-import { Entity } from '@/types/context'
 import {
   OnFocusOptions,
   V2RawApply,
   V2RawNormalizeType,
   V2RawSet,
-} from '@/types/raw'
+  Entity,
+} from 'better-write-types'
 import { useClipboard } from '@vueuse/core'
 import { useUtils } from './utils'
 

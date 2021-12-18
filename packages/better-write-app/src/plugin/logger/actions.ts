@@ -1,10 +1,9 @@
 import { On } from 'better-write-plugin-core'
-import { LoggerContent } from '@/types/logger'
 import { useFormat } from '@/use/format'
 import { useI18n } from 'vue-i18n'
 import { PluginTypes } from 'better-write-types'
 import { useEntity } from '@/use/entity'
-import { ID } from '@/types/utils'
+import { ID, LoggerContent } from 'better-write-types'
 
 export const PluginLoggerActions = (
   emitter: PluginTypes.PluginEmitter,

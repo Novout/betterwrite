@@ -1,5 +1,5 @@
 import { useI18n } from 'vue-i18n'
-import { Callback } from '@/types/utils'
+import { Callback } from 'better-write-types'
 import { usePDF } from './pdf'
 import { useFormat } from './format'
 import { useRoute, useRouter } from 'vue-router'

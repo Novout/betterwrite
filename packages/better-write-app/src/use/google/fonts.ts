@@ -1,4 +1,4 @@
-import { GoogleFont } from '@/types/google'
+import { GoogleFont } from 'better-write-types'
 import { useEnv } from '../env'
 import { useDefines } from '../defines'
 import { useFetch } from '@vueuse/core'

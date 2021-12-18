@@ -1,4 +1,5 @@
-import { ID } from '../types/utils'
+import { ID } from 'better-write-types'
+
 export const useScroll = () => {
   const force = (tag: string) => {
     setTimeout(() => {
