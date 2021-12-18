@@ -34,5 +34,18 @@ export function createPluginCore(options?: PluginTypes.CoreOption): PluginTypes.
 	return plugin;
 }
 
+export const createPlugin = (
+	defines: PluginTypes.PluginDefines,
+	cb: Array<Function>
+): PluginTypes.Plugin => {
+	const init = (emitter: PluginTypes.PluginEmitter, stores: PluginTypes.PluginStores) => {
+		cb.forEach((fn) => {
+			fn && fn(emitter, stores);
+		});
+	};
+
+	return { init, defines };
+};
+
 export * as Cycle from './cycle';
 export * as On from './on';

@@ -4,7 +4,7 @@
 
 import { useFormat } from '../../src/use/format'
 import { bold, italic, link, useRaw } from '../../src/use/raw'
-import { Entity } from '../../src/types/context'
+import { Entity } from 'better-write-types'
 
 describe('Editor Converter - v1', () => {
   beforeEach(() => {})

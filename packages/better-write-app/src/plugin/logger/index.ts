@@ -1,19 +1,7 @@
 import { PluginTypes } from 'better-write-types'
 import { PluginLoggerActions } from './actions'
 import { PluginLoggerProject } from './project'
+import { createPlugin } from 'better-write-plugin-core'
 
-export const LoggerPlugin = (): PluginTypes.Plugin => {
-  const defines = {
-    name: 'logger',
-  } as PluginTypes.PluginDefines
-
-  const init = (
-    emitter: PluginTypes.PluginEmitter,
-    stores: PluginTypes.PluginStores
-  ) => {
-    PluginLoggerActions(emitter, stores)
-    PluginLoggerProject(emitter, stores)
-  }
-
-  return { init, defines }
-}
+export const LoggerPlugin = () =>
+  createPlugin({ name: 'logger' }, [PluginLoggerActions, PluginLoggerProject])

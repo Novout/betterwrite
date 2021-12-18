@@ -9,6 +9,7 @@
 	"scripts": {
 		"dev": "rimraf ./dist && unbuild",
 		"build": "rimraf ./dist && unbuild",
+		"test": "echo \"Error: no test specified\"",
 		"lint": "prettier --write src/"
 	},
 	"files": [

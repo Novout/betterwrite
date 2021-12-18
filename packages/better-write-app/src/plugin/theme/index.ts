@@ -1,17 +1,5 @@
-import { PluginTypes } from 'better-write-types'
+import { createPlugin } from 'better-write-plugin-core'
 import { PluginThemeSet } from './set'
 
-export const ThemePlugin = (): PluginTypes.Plugin => {
-  const defines = {
-    name: 'theme',
-  } as PluginTypes.PluginDefines
-
-  const init = (
-    emitter: PluginTypes.PluginEmitter,
-    stores: PluginTypes.PluginStores
-  ) => {
-    PluginThemeSet(emitter, stores)
-  }
-
-  return { init, defines }
-}
+export const ThemePlugin = () =>
+  createPlugin({ name: 'theme' }, [PluginThemeSet])
