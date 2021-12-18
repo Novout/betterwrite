@@ -1,0 +1,14 @@
+node_modules
+.DS_Store
+build
+dist
+dist-ssr
+*.local
+.idea
+.vscode
+components.d.ts
+TODO.md
+yarn-error.log
+coverage
+.yarnrc
+.yarn
