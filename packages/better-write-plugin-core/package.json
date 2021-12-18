@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-core",
-	"version": "0.1.0",
+	"version": "0.11.0",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -19,10 +19,10 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-types": "*",
-		"vue-demi": "latest",
+		"better-write-types": "^0.11.0",
 		"mitt": "3.0.0",
-		"pinia": "2.0.6"
+		"pinia": "2.0.6",
+		"vue-demi": "latest"
 	},
 	"peerDependencies": {
 		"@vue/composition-api": "^1.0.0-rc.1",
