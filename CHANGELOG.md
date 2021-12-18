@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [](https://github.com/Novout/write-better/compare/v0.11.0...v) (2021-12-18)
+
 ### [0.10.5](https://github.com/Novout/better-write/compare/v0.10.4...v0.10.5) (2021-12-17)
 
 

@@ -28,5 +28,6 @@
   "devDependencies": {
     "lerna": "4.0.0",
     "standard-version": "^9.3.2"
-  }
+  },
+  "version": null
 }
