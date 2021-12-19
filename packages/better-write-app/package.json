@@ -32,6 +32,7 @@
     "autoprefixer": "10.4.0",
     "better-write-entity": "0.11.0",
     "better-write-plugin-core": "^0.11.1",
+    "better-write-plugin-theme": "^0.11.1",
     "better-write-plugin-logger": "^0.11.1",
     "better-write-types": "^0.11.1",
     "date-fns": "2.27.0",

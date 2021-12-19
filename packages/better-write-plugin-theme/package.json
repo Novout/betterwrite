@@ -20,7 +20,7 @@
 	},
 	"files": [
 		"dist/**/*",
-		"inject.css",
+		"css/**/*",
 		"package.json",
 		"LICENSE",
 		"README.md"
