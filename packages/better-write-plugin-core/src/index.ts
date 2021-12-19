@@ -6,7 +6,7 @@ export const Key: InjectionKey<PluginTypes.CorePlugin> = Symbol();
 
 export function useCore(): PluginTypes.CorePlugin {
 	const plugin = inject(Key);
-	if (!plugin) throw new Error('[BETTER-WRITE]: Fail in Entity Hook!');
+	if (!plugin) throw new Error('[BETTER-WRITE]: Fail in Plugin Core Hook!');
 
 	return plugin;
 }
@@ -16,9 +16,13 @@ export function usePlugin(): PluginTypes.PluginEmitter {
 }
 
 export function createPluginCore(options?: PluginTypes.CoreOption): PluginTypes.CorePlugin {
-	const start = (stores: PluginTypes.PluginStores, plugins: PluginTypes.Plugins) => {
+	const start = (
+		stores: PluginTypes.PluginStores,
+		plugins: PluginTypes.Plugins,
+		hooks: PluginTypes.PluginHooks
+	) => {
 		plugins?.forEach((plugin: PluginTypes.Plugin) => {
-			plugin.init(getCurrentInstance()?.appContext.config.globalProperties.plugin, stores);
+			plugin.init(getCurrentInstance()?.appContext.config.globalProperties.plugin, stores, hooks);
 		});
 	};
 
@@ -38,9 +42,13 @@ export const createPlugin = (
 	defines: PluginTypes.PluginDefines,
 	cb: Array<Function>
 ): PluginTypes.Plugin => {
-	const init = (emitter: PluginTypes.PluginEmitter, stores: PluginTypes.PluginStores) => {
+	const init = (
+		emitter: PluginTypes.PluginEmitter,
+		stores: PluginTypes.PluginStores,
+		hooks: PluginTypes.PluginHooks
+	) => {
 		cb.forEach((fn) => {
-			fn && fn(emitter, stores);
+			fn && fn(emitter, stores, hooks);
 		});
 	};
 

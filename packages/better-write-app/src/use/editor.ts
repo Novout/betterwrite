@@ -1,4 +1,3 @@
-import { setTheme } from '@/plugin/theme/external'
 import { useContextStore } from '@/store/context'
 import { useProjectStore } from '@/store/project'
 import { useEntity } from '@/use/entity'
@@ -7,6 +6,7 @@ import { useKeyboard } from '@/use/keyboard'
 import { useProject } from '@/use/project'
 import { useLocalStorage } from '@/use/storage/local'
 import { useHead } from '@vueuse/head'
+import { usePlugin } from 'better-write-plugin-core'
 import { computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
@@ -21,6 +21,7 @@ export const useEditor = () => {
   const entity = useEntity()
   const local = useLocalStorage()
   const router = useRouter()
+  const plugin = usePlugin()
   const { t } = useI18n()
 
   const init = () => {
@@ -30,7 +31,7 @@ export const useEditor = () => {
       project.onLoadProject()
     })
 
-    setTheme()
+    plugin.emit('plugin-theme-set')
 
     if (!env.isDev()) {
       window.onbeforeunload = function () {

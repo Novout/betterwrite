@@ -21,6 +21,8 @@ export type PluginEmitterName =
 	| 'plugin-entity-page-break'
 	| 'plugin-entity-alter-in-page'
 	| 'plugin-entity-paste-in-page'
+	| 'plugin-theme-set'
+	| 'plugin-theme-set-logo'
 	| 'plugin-project-page-new'
 	| 'plugin-project-page-delete'
 	| 'plugin-project-page-swap'
@@ -30,7 +32,8 @@ export type PluginEmitterName =
 	| 'plugin-project-creative-drafts-set-draft'
 	| 'plugin-project-creative-drafts-update'
 	| 'plugin-auto-save'
-	| 'plugin-dropbox-save';
+	| 'plugin-dropbox-save'
+	| 'plugin-editor-mounted';
 export interface PluginEmitter {
 	on: (name: PluginEmitterName, callback: (...c: any) => any) => void;
 	emit: (name: PluginEmitterName, ...c: any) => void;
@@ -63,11 +66,47 @@ export interface PluginDefines {
 	name: string;
 }
 
+export type PluginHook = any;
+
+export interface PluginHooks {
+	googleFonts: PluginHook;
+	dropbox: PluginHook;
+	local: PluginHook;
+	storage: PluginHook;
+	creative: PluginHook;
+	defines: PluginHook;
+	destroy: PluginHook;
+	docx: PluginHook;
+	editor: PluginHook;
+	entity: PluginHook;
+	env: PluginHook;
+	factory: PluginHook;
+	format: PluginHook;
+	graph: PluginHook;
+	input: PluginHook;
+	keyboard: PluginHook;
+	page: PluginHook;
+	pdf: PluginHook;
+	populate: PluginHook;
+	project: PluginHook;
+	raw: PluginHook;
+	scroll: PluginHook;
+	start: PluginHook;
+	utils: PluginHook;
+	i18n: PluginHook;
+}
+
+export type PluginContext = (
+	emitter: PluginEmitter,
+	stores: PluginStores,
+	hooks: PluginHooks
+) => void;
+
 export interface Plugin {
 	defines: PluginDefines;
-	init: (emitter: PluginEmitter, stores: PluginStores) => void;
+	init: PluginContext;
 }
-export type Plugins = Array<Plugin>;
+export type Plugins = Plugin[];
 
 export interface PluginCore {
 	start: (plugins?: Plugins) => void;
@@ -77,6 +116,6 @@ export interface CoreOption {}
 
 export interface CorePlugin {
 	options?: CoreOption;
-	start: (stores: PluginStores, plugins: Plugins) => void;
+	start: (stores: PluginStores, plugins: Plugins, hooks: PluginHooks) => void;
 	install: (app: App) => void;
 }

@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { LoggerState, LoggerContent } from 'better-write-types'
+import { useFormat } from '../use/format'
 
 export const useLoggerStore = defineStore('logger', {
   state: (): LoggerState => {
@@ -9,7 +10,10 @@ export const useLoggerStore = defineStore('logger', {
   },
   actions: {
     add(content: LoggerContent) {
-      this.content.push(content)
+      this.content.push({
+        ...content,
+        createdAt: useFormat().actually(),
+      })
     },
     reset() {
       this.content = []

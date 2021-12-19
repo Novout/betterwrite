@@ -43,13 +43,13 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useLocalStorage } from '@/use/storage/local'
   import { useDefines } from '@/use/defines'
-  import { ThemeNormalize } from '@/plugin/theme/utils'
-  import { setContentTheme } from '@/plugin/theme/external'
+  import { usePlugin } from 'better-write-plugin-core'
 
   const ABSOLUTE = useAbsoluteStore()
   const EDITOR = useEditorStore()
 
   const local = useLocalStorage()
+  const plugin = usePlugin()
 
   const { t, locale } = useI18n()
 
@@ -66,10 +66,8 @@
     })
   })
 
-  watch(theme, (_theme) => {
-    const value = ThemeNormalize(_theme)
-
-    setContentTheme(value)
+  watch(theme, () => {
+    plugin.emit('plugin-theme-set')
   })
 
   const convert = (iso: string) => {

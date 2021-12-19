@@ -14,8 +14,9 @@ import i18n from './lang'
 
 import App from './App.vue'
 
-import './preset.css'
-import './tailwind.css'
+import './css/preset.css'
+import './css/tailwind.css'
+import './css/inject.css'
 import 'v-tooltip/dist/v-tooltip.css'
 import 'vue-toastification/dist/index.css'
 

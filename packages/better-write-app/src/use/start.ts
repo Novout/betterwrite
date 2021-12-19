@@ -1,11 +1,9 @@
-import { useI18n } from 'vue-i18n'
 import { Callback } from 'better-write-types'
 import { usePDF } from './pdf'
 import { useFormat } from './format'
 import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import { useEnv } from './env'
-import i18n from '@/lang'
 import { useLoggerStore } from '@/store/logger'
 import { useAuthStore } from '@/store/auth'
 import { useAbsoluteStore } from '@/store/absolute'
@@ -16,6 +14,28 @@ import { useProjectStore } from '@/store/project'
 import { useShortcutsStore } from '@/store/shortcuts'
 import { useCore } from 'better-write-plugin-core'
 import { PluginTypes } from 'better-write-types'
+import { useFonts } from './google/fonts'
+import { useDropbox } from './storage/dropbox'
+import { useLocalStorage } from './storage/local'
+import { useStorage } from './storage/storage'
+import { useCreativeType } from './type/creative'
+import { useDefines } from './defines'
+import { useDestroy } from './destroy'
+import { useDocx } from './docx'
+import { useEditor } from './editor'
+import { useEntity } from './entity'
+import { useFactory } from './factory'
+import { useGraph } from './graph'
+import { useInput } from './input'
+import { useKeyboard } from './keyboard'
+import { usePage } from './page'
+import { usePopulate } from './populate'
+import { useProject } from './project'
+import { useRaw } from './raw'
+import { useScroll } from './scroll'
+import { useUtils } from './utils'
+import i18n from '@/lang'
+import { useI18n } from 'vue-i18n'
 
 export const useStart: Callback<void> = () => {
   const LOGGER = useLoggerStore()
@@ -158,7 +178,34 @@ export const useStart: Callback<void> = () => {
         PROJECT: useProjectStore(),
         SHORTCUTS: useShortcutsStore(),
       },
-      plugins
+      plugins,
+      {
+        googleFonts: useFonts(),
+        dropbox: useDropbox(),
+        local: useLocalStorage(),
+        storage: useStorage(),
+        creative: useCreativeType(),
+        defines: useDefines(),
+        destroy: useDestroy(),
+        docx: useDocx(),
+        editor: useEditor(),
+        entity: useEntity(),
+        env: useEnv(),
+        factory: useFactory(),
+        format: useFormat(),
+        graph: useGraph(),
+        input: useInput(),
+        keyboard: useKeyboard(),
+        page: usePage(),
+        pdf: usePDF(),
+        populate: usePopulate(),
+        project: useProject(),
+        raw: useRaw(),
+        scroll: useScroll(),
+        start: useStart(),
+        utils: useUtils(),
+        i18n: i18n.global,
+      }
     )
 
     if (!env.isDev()) global()

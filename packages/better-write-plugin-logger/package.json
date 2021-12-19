@@ -1,15 +1,21 @@
 {
-	"name": "better-write-plugin-core",
+	"name": "better-write-plugin-logger",
 	"version": "0.11.0",
 	"author": "Novout",
 	"license": "MIT",
+	"keywords": [
+		"vue",
+		"hook",
+		"text",
+		"editor"
+	],
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"dev": "rimraf ./dist && unbuild",
-		"build": "rimraf ./dist && unbuild",
 		"test": "echo \"Error: no test specified\"",
+		"build": "rimraf ./dist && unbuild",
 		"lint": "prettier --write src/"
 	},
 	"files": [
@@ -19,10 +25,8 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@vueuse/core": "7.3.0",
-    "@vueuse/integrations": "7.3.0",
-		"better-write-types": "^0.11.0",
-		"mitt": "3.0.0",
+		"better-write-types": "*",
+		"better-write-plugin-core": "*",
 		"pinia": "2.0.6",
 		"vue-demi": "latest"
 	},

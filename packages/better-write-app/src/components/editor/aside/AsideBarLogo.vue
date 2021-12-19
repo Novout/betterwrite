@@ -20,7 +20,7 @@
   import { useRouter } from 'vue-router'
   import { useEditorStore } from '@/store/editor'
   import { computed, watch, ref } from 'vue'
-  import { setEditorLogo } from '@/plugin/theme/external'
+  import { setEditorLogo } from 'better-write-plugin-theme'
   import { Cycle } from 'better-write-plugin-core'
   import { useUtils } from '@/use/utils'
 
@@ -34,11 +34,11 @@
   const theme = computed(() => EDITOR.configuration.theme)
 
   Cycle.onAfterMounted(() => {
-    path.value = setEditorLogo(theme.value)
+    path.value = setEditorLogo(theme.value, useUtils())
   })
 
   watch(theme, (_theme) => {
-    path.value = setEditorLogo(_theme)
+    path.value = setEditorLogo(_theme, useUtils())
   })
 
   const onClick = () => {

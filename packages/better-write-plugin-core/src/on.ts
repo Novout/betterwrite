@@ -178,6 +178,36 @@ export const project = () => {
 	};
 };
 
+export const editor = () => {
+	const PluginEditorMounted = (
+		emitter: PluginTypes.PluginEmitter,
+		content: PluginTypes.PluginContentOn
+	) => {
+		emitter.on('plugin-editor-mounted', () => {
+			const created = content[0];
+
+			created && created();
+		});
+	};
+
+	return { PluginEditorMounted };
+};
+
+export const externals = () => {
+	const PluginThemeSet = (
+		emitter: PluginTypes.PluginEmitter,
+		content: PluginTypes.PluginContentOn
+	) => {
+		emitter.on('plugin-theme-set', () => {
+			const created = content[0];
+
+			created && created();
+		});
+	};
+
+	return { PluginThemeSet };
+};
+
 export const save = () => {
 	const PluginAutoSave = (
 		emitter: PluginTypes.PluginEmitter,

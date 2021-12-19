@@ -16,11 +16,11 @@ import {
   Entity,
 } from 'better-write-types'
 import { useStorage } from './storage/storage'
-import { setThemeInvokate } from '@/plugin/theme/external'
 import { useNProgress } from '@vueuse/integrations'
 import { useEnv } from './env'
 import { useEntity } from './entity'
 import { useUtils } from './utils'
+import { usePlugin } from 'better-write-plugin-core'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -36,6 +36,7 @@ export const useProject = () => {
   const entity = useEntity()
   const { isLoading } = useNProgress()
   const env = useEnv()
+  const plugin = usePlugin()
   const util = useUtils()
   const { t } = i18n.global
 
@@ -64,7 +65,7 @@ export const useProject = () => {
 
       await nextTick
 
-      setThemeInvokate()
+      plugin.emit('plugin-theme-set')
 
       await nextTick
 
@@ -105,7 +106,7 @@ export const useProject = () => {
 
     await nextTick
 
-    setThemeInvokate()
+    plugin.emit('plugin-theme-set')
 
     await nextTick
 

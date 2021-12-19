@@ -7,8 +7,8 @@
   import { onBeforeUnmount } from 'vue'
   import { useStart } from '@/use/start'
   import { useDestroy } from '@/use/destroy'
-  import { LoggerPlugin } from './plugin/logger'
-  import { ThemePlugin } from './plugin/theme'
+  import { LoggerPlugin } from 'better-write-plugin-logger'
+  import { ThemePlugin } from 'better-write-plugin-theme'
 
   const start = useStart()
   const destroy = useDestroy()
