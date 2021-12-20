@@ -205,7 +205,51 @@ export const externals = () => {
 		});
 	};
 
-	return { PluginThemeSet };
+	const PluginPDFGenerate = (
+		emitter: PluginTypes.PluginEmitter,
+		content: PluginTypes.PluginContentOn
+	) => {
+		emitter.on('plugin-pdf-generate', () => {
+			const created = content[0];
+
+			created && created();
+		});
+	};
+
+	const PluginPDFPreview = (
+		emitter: PluginTypes.PluginEmitter,
+		content: PluginTypes.PluginContentOn
+	) => {
+		emitter.on('plugin-pdf-preview', () => {
+			const created = content[0];
+
+			created && created();
+		});
+	};
+
+	const PluginPDFInit = (
+		emitter: PluginTypes.PluginEmitter,
+		content: PluginTypes.PluginContentOn
+	) => {
+		emitter.on('plugin-pdf-init', () => {
+			const created = content[0];
+
+			created && created();
+		});
+	};
+
+	const PluginDocxGenerate = (
+		emitter: PluginTypes.PluginEmitter,
+		content: PluginTypes.PluginContentOn
+	) => {
+		emitter.on('plugin-docx-generate', () => {
+			const created = content[0];
+
+			created && created();
+		});
+	};
+
+	return { PluginThemeSet, PluginPDFPreview, PluginPDFGenerate, PluginPDFInit, PluginDocxGenerate };
 };
 
 export const save = () => {

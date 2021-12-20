@@ -3,12 +3,6 @@
 	"version": "0.11.1",
 	"author": "Novout",
 	"license": "MIT",
-	"keywords": [
-		"vue",
-		"hook",
-		"text",
-		"editor"
-	],
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",

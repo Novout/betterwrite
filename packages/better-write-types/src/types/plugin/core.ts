@@ -23,6 +23,10 @@ export type PluginEmitterName =
 	| 'plugin-entity-paste-in-page'
 	| 'plugin-theme-set'
 	| 'plugin-theme-set-logo'
+	| 'plugin-pdf-generate'
+	| 'plugin-pdf-preview'
+	| 'plugin-pdf-init'
+	| 'plugin-docx-generate'
 	| 'plugin-project-page-new'
 	| 'plugin-project-page-delete'
 	| 'plugin-project-page-swap'
@@ -52,14 +56,14 @@ export type ExistingStores =
 export type PluginStore<T extends ExistingStores, B = {}, C = {}, D = {}> = Store<T, B, C, D>;
 
 export interface PluginStores {
-	ABSOLUTE: PluginStore<'absolute', AbsoluteState>;
-	AUTH: PluginStore<'auth', AuthState>;
-	CONTEXT: PluginStore<'context', ContextState>;
-	EDITOR: PluginStore<'editor', EditorState>;
-	LOGGER: PluginStore<'logger', LoggerState, any, {}>;
-	PDF: PluginStore<'pdf', PDFState>;
-	PROJECT: PluginStore<'project', ProjectState>;
-	SHORTCUTS: PluginStore<'shortcuts', ShortcutsState>;
+	ABSOLUTE: PluginStore<'absolute', AbsoluteState, any, any>;
+	AUTH: PluginStore<'auth', AuthState, any, any>;
+	CONTEXT: PluginStore<'context', ContextState, any, any>;
+	EDITOR: PluginStore<'editor', EditorState, any, any>;
+	LOGGER: PluginStore<'logger', LoggerState, any, any>;
+	PDF: PluginStore<'pdf', PDFState, any, any>;
+	PROJECT: PluginStore<'project', ProjectState, any, any>;
+	SHORTCUTS: PluginStore<'shortcuts', ShortcutsState, any, any>;
 }
 
 export interface PluginDefines {
@@ -76,7 +80,6 @@ export interface PluginHooks {
 	creative: PluginHook;
 	defines: PluginHook;
 	destroy: PluginHook;
-	docx: PluginHook;
 	editor: PluginHook;
 	entity: PluginHook;
 	env: PluginHook;
@@ -86,7 +89,6 @@ export interface PluginHooks {
 	input: PluginHook;
 	keyboard: PluginHook;
 	page: PluginHook;
-	pdf: PluginHook;
 	populate: PluginHook;
 	project: PluginHook;
 	raw: PluginHook;
@@ -94,6 +96,7 @@ export interface PluginHooks {
 	start: PluginHook;
 	utils: PluginHook;
 	i18n: PluginHook;
+	emitter: PluginHook;
 }
 
 export type PluginContext = (

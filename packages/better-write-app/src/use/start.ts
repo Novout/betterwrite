@@ -1,5 +1,3 @@
-import { Callback } from 'better-write-types'
-import { usePDF } from './pdf'
 import { useFormat } from './format'
 import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
@@ -12,7 +10,7 @@ import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
 import { useProjectStore } from '@/store/project'
 import { useShortcutsStore } from '@/store/shortcuts'
-import { useCore } from 'better-write-plugin-core'
+import { useCore, usePlugin } from 'better-write-plugin-core'
 import { PluginTypes } from 'better-write-types'
 import { useFonts } from './google/fonts'
 import { useDropbox } from './storage/dropbox'
@@ -21,7 +19,6 @@ import { useStorage } from './storage/storage'
 import { useCreativeType } from './type/creative'
 import { useDefines } from './defines'
 import { useDestroy } from './destroy'
-import { useDocx } from './docx'
 import { useEditor } from './editor'
 import { useEntity } from './entity'
 import { useFactory } from './factory'
@@ -36,18 +33,19 @@ import { useScroll } from './scroll'
 import { useUtils } from './utils'
 import i18n from '@/lang'
 import { useI18n } from 'vue-i18n'
+import useEmitter from './emitter'
 
-export const useStart: Callback<void> = () => {
+export const useStart = () => {
   const LOGGER = useLoggerStore()
   const AUTH = useAuthStore()
 
   const route = useRoute()
   const router = useRouter()
   const toast = useToast()
-  const pdf = usePDF()
   const env = useEnv()
   const format = useFormat()
-  const plugin = useCore()
+  const core = useCore()
+  const plugin = usePlugin()
   const { t } = i18n.global
 
   const global = () => {
@@ -162,12 +160,11 @@ export const useStart: Callback<void> = () => {
     }
   }
 
-  const init = (plugins: PluginTypes.Plugins) => {
+  const init = async (plugins: PluginTypes.Plugins) => {
     lang()
     auth()
     initial()
-    pdf.init()
-    plugin.start(
+    await core.start(
       {
         ABSOLUTE: useAbsoluteStore(),
         AUTH: useAuthStore(),
@@ -187,7 +184,6 @@ export const useStart: Callback<void> = () => {
         creative: useCreativeType(),
         defines: useDefines(),
         destroy: useDestroy(),
-        docx: useDocx(),
         editor: useEditor(),
         entity: useEntity(),
         env: useEnv(),
@@ -197,7 +193,6 @@ export const useStart: Callback<void> = () => {
         input: useInput(),
         keyboard: useKeyboard(),
         page: usePage(),
-        pdf: usePDF(),
         populate: usePopulate(),
         project: useProject(),
         raw: useRaw(),
@@ -205,8 +200,10 @@ export const useStart: Callback<void> = () => {
         start: useStart(),
         utils: useUtils(),
         i18n: i18n.global,
+        emitter: useEmitter(),
       }
     )
+    plugin.emit('plugin-pdf-init')
 
     if (!env.isDev()) global()
   }

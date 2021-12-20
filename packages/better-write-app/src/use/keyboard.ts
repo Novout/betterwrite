@@ -3,25 +3,23 @@ import { Callback } from 'better-write-types'
 import { useLocalStorage } from './storage/local'
 import { useUtils } from './utils'
 import { usePage } from './page'
-import { usePDF } from './pdf'
 import { useEnv } from './env'
 import { useProject } from './project'
 import { useProjectStore } from '@/store/project'
-import { useContextStore } from '@/store/context'
 import { useShortcutsStore } from '@/store/shortcuts'
 import { useAbsoluteStore } from '@/store/absolute'
+import { usePlugin } from 'better-write-plugin-core/src'
 
 export const useKeyboard = () => {
   const PROJECT = useProjectStore()
   const SHORTCUTS = useShortcutsStore()
   const ABSOLUTE = useAbsoluteStore()
-  const CONTEXT = useContextStore()
 
   const local = useLocalStorage()
   const page = usePage()
-  const pdf = usePDF()
   const env = useEnv()
   const utils = useUtils()
+  const plugin = usePlugin()
   const project = useProject()
 
   const init: Callback<void> = () => {
@@ -111,11 +109,7 @@ export const useKeyboard = () => {
 
   const generatePDF = () => {
     keyboard.bind(SHORTCUTS.generatePDF[1], (e: Event) => {
-      utils.prevent(e)
-
-      if (PROJECT.name === env.projectEmpty()) return
-
-      pdf.external().onGeneratePDF()
+      plugin.emit('plugin-pdf-generate')
     })
   }
 

@@ -9,11 +9,13 @@
   import { useDestroy } from '@/use/destroy'
   import { LoggerPlugin } from 'better-write-plugin-logger'
   import { ThemePlugin } from 'better-write-plugin-theme'
+  import { PDFPlugin } from 'better-write-plugin-pdf'
+  import { DocxPlugin } from 'better-write-plugin-docx'
 
   const start = useStart()
   const destroy = useDestroy()
 
-  start.init([LoggerPlugin(), ThemePlugin()])
+  start.init([LoggerPlugin(), ThemePlugin(), PDFPlugin(), DocxPlugin()])
 
   onBeforeUnmount(async () => {
     await destroy.init()

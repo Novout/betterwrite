@@ -19,7 +19,6 @@ import { useStorage } from './storage/storage'
 import { useNProgress } from '@vueuse/integrations'
 import { useEnv } from './env'
 import { useEntity } from './entity'
-import { useUtils } from './utils'
 import { usePlugin } from 'better-write-plugin-core'
 
 export const useProject = () => {
@@ -37,17 +36,16 @@ export const useProject = () => {
   const { isLoading } = useNProgress()
   const env = useEnv()
   const plugin = usePlugin()
-  const util = useUtils()
   const { t } = i18n.global
 
-  let timer: NodeJS.Timer | null
+  let timer: any
 
   const init = () => {
     timer = local.onAutoSave(EDITOR.configuration.auto)
   }
 
   const destroy = () => {
-    clearInterval(timer as NodeJS.Timer)
+    clearInterval(timer as any)
   }
 
   const create = (project: ProjectState) => {
@@ -285,6 +283,10 @@ export const useProject = () => {
       return `${PROJECT.name}.${extension}`
     }
 
+    const exportFullName = (extension: string) => {
+      return `${PROJECT.nameRaw}.${extension}`
+    }
+
     return {
       isValidType,
       getWords,
@@ -297,6 +299,7 @@ export const useProject = () => {
       getParagraphLongest,
       getWordOccurrences,
       exportName,
+      exportFullName,
     }
   }
 

@@ -22,7 +22,7 @@
       <EditorHeaderItem
         :text="t('editor.bar.pdf.configuration')"
         shortcut="CTRL + G"
-        @action="pdf.external().onConfigurationPDF()"
+        @action="ABSOLUTE.pdf.configuration = true"
       >
         <template #icon>
           <svg
@@ -68,7 +68,7 @@
       <EditorHeaderItem
         :text="t('editor.bar.pdf.generate')"
         shortcut="CTRL + Alt + G"
-        @action="pdf.external().onGeneratePDF()"
+        @action="plugin.emit('plugin-pdf-generate')"
       >
         <template #icon>
           <svg
@@ -91,7 +91,7 @@
       <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.docx.generate')"
-        @action="docx.generate()"
+        @action="plugin.emit('plugin-docx-generate')"
       >
         <template #icon>
           <svg
@@ -120,15 +120,13 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
-  import { usePDF } from '@/use/pdf'
   import { useI18n } from 'vue-i18n'
-  import { useDocx } from '@/use/docx'
+  import { usePlugin } from 'better-write-plugin-core'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
 
   const env = useEnv()
-  const pdf = usePDF()
-  const docx = useDocx()
+  const plugin = usePlugin()
   const { t } = useI18n()
 </script>

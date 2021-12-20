@@ -1,6 +1,6 @@
 {
-	"name": "better-write-entity",
-	"version": "0.11.0",
+	"name": "better-write-plugin-docx",
+	"version": "0.11.2",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -19,6 +19,15 @@
 		"README.md"
 	],
 	"dependencies": {
+		"better-write-plugin-core": "^0.11.1",
+		"better-write-types": "^0.11.1",
+		"docx": "7.2.0",
+		"file-saver": "2.0.5",
+		"@vueuse/core": "7.3.0",
+    "@vueuse/head": "0.7.4",
+    "@vueuse/integrations": "7.3.0",
+    "@vueuse/motion": "2.0.0-beta.4",
+		"pinia": "2.0.6",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {

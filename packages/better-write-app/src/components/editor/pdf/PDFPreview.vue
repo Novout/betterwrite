@@ -14,31 +14,29 @@
         />
       </svg>
     </HeroIcon>
-    <div ref="preview" :class="[exists ? 'h-3/4 p-5' : '']"></div>
+    <div
+      id="pdf-preview-div"
+      ref="preview"
+      :class="[exists ? 'h-3/4 p-5' : '']"
+    ></div>
   </section>
 </template>
 
 <script setup lang="ts">
-  import { usePDF } from '@/use/pdf'
   import { ref, onMounted } from 'vue'
-  import { useI18n } from 'vue-i18n'
-  import { useToast } from 'vue-toastification'
   import useEmitter from '@/use/emitter'
   import { useAbsoluteStore } from '@/store/absolute'
+  import { usePlugin } from 'better-write-plugin-core'
 
   const ABSOLUTE = useAbsoluteStore()
 
   const preview = ref<HTMLElement | null>(null)
   const exists = ref<boolean>(false)
-  const { t } = useI18n()
-  const toast = useToast()
-  const pdf = usePDF()
+  const plugin = usePlugin()
   const emitter = useEmitter()
 
   onMounted(() => {
-    pdf.external().onPreviewPDF(preview.value as HTMLElement)
-
-    toast.warning(t('toast.pdf.previewProblems'))
+    plugin.emit('plugin-pdf-preview')
 
     emitter.on('pdf-preview-exists', () => {
       exists.value = true
