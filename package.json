@@ -4,6 +4,7 @@
   "workspaces": [
     "packages/*"
   ],
+  "version": "0.11.2",
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
     "dev": "lerna exec yarn dev",
@@ -11,19 +12,10 @@
     "test": "lerna exec yarn test",
     "lint": "lerna exec yarn lint",
     "deploy": "yarn bootstrap && yarn build",
-    "release:validate": "yarn test && yarn build",
-    "release:initial": "yarn release:validate && standard-version --first-release",
-    "release:minor": "yarn release:validate && standard-version --release-as minor",
-    "release:alpha:minor": "yarn release:validate && standard-version --release-as minor --prerelease alpha",
-    "release:beta:minor": "yarn release:validate && standard-version --release-as minor --prerelease beta",
-    "release:patch": "yarn release:validate && standard-version --release-as patch",
-    "release:alpha:patch": "yarn release:validate && standard-version --release-as patch --prerelease alpha",
-    "release:beta:patch": "yarn release:validate && standard-version --release-as patch --prerelease beta",
-    "release:major": "yarn release:validate && standard-version --release-as major",
-    "release:alpha:major": "yarn release:validate && standard-version --release-as major --prerelease alpha",
-    "release:beta:major": "yarn release:validate && standard-version --release-as major --prerelease beta",
-    "release:alpha": "yarn release:validate && standard-version --prerelease alpha",
-    "release:beta": "yarn release:validate && standard-version --prerelease beta"
+    "lerna:changelog": "git add CHANGELOG.md && git commit -m 'chore: CHANGELOG.md update'",
+    "lerna:patch": "changelog -p && yarn lerna:changelog && lerna version patch",
+    "lerna:minor": "changelog -m && yarn lerna:changelog && lerna version minor",
+    "lerna:major": "changelog -M && yarn lerna:changelog && lerna version major"
   },
   "devDependencies": {
     "lerna": "4.0.0",
