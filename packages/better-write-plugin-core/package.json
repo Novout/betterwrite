@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-core",
-	"version": "0.11.1",
+	"version": "0.11.3",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -21,7 +21,7 @@
 	"dependencies": {
 		"@vueuse/core": "7.3.0",
 		"@vueuse/integrations": "7.3.0",
-		"better-write-types": "^0.11.1",
+		"better-write-types": "^0.11.3",
 		"mitt": "3.0.0",
 		"pinia": "2.0.6",
 		"vue-demi": "latest"
