@@ -12,7 +12,7 @@
     "test": "lerna exec yarn test",
     "lint": "lerna exec yarn lint",
     "deploy": "yarn bootstrap && yarn build",
-    "lerna:changelog": "git add CHANGELOG.md && git commit -m 'chore: CHANGELOG.md update'",
+    "lerna:changelog": "git add CHANGELOG.md && git commit -m 'chore: CHANGELOG.md'",
     "lerna:patch": "changelog -p && yarn lerna:changelog && lerna version patch",
     "lerna:minor": "changelog -m && yarn lerna:changelog && lerna version minor",
     "lerna:major": "changelog -M && yarn lerna:changelog && lerna version major"
