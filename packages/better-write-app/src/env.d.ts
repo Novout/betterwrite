@@ -30,11 +30,7 @@ declare var Dropbox: any
 
 declare module '@heroicons/vue'
 declare module 'keyboardjs'
-declare module 'pdfmake/build/pdfmake' {
-  let pdfMake: any
-  namespace pdfMake {}
-  export = pdfMake
-}
+declare module 'pdfmake/build/pdfmake.js'
 declare module 'node-fetch'
 declare module 'v-tooltip'
 declare module 'file-saver'

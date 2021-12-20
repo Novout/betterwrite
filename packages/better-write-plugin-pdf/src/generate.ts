@@ -574,7 +574,9 @@ export const PluginPDFSet = (
 		});
 
 		if (stores.PDF.normalize['Roboto']) set['Roboto'] = stores.PDF.normalize['Roboto'];
-		(pdfMake as any).fonts = set;
+
+		// Suppress error: Cannot assign to import "fonts"
+		hooks.utils.object().assign(pdfMake, 'fonts', set);
 	};
 
 	const create = () => {

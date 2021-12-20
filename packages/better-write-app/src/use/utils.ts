@@ -171,6 +171,27 @@ export const useUtils = () => {
 
     return { resolve }
   }
+
+  const object = () => {
+    const assign = (obj: any, prop: any, value: any) => {
+      if (typeof prop === 'string') prop = prop.split('.')
+
+      if (prop.length > 1) {
+        var e = prop.shift()
+        assign(
+          (obj[e] =
+            Object.prototype.toString.call(obj[e]) === '[object Object]'
+              ? obj[e]
+              : {}),
+          prop,
+          value
+        )
+      } else obj[prop[0]] = value
+    }
+
+    return { assign }
+  }
+
   return {
     position,
     delay,
@@ -182,5 +203,6 @@ export const useUtils = () => {
     cursor,
     support,
     path,
+    object,
   }
 }
