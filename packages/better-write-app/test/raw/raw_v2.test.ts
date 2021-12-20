@@ -1,13 +1,9 @@
-/**
- * @jest-environment jsdom
- */
-
+import { describe, expect, it } from 'vitest'
 import { useRaw } from '../../src/use/raw'
 import { useFormat } from '../../src/use/format'
 
 describe('Raw v2 - HTML', () => {
   const html = useRaw().v2().html()
-  beforeEach(() => {})
 
   it('should correct italic open', () => {
     expect(html.italic().open()).toEqual(
@@ -45,8 +41,6 @@ describe('Raw v2 - HTML', () => {
 describe('Raw v2 - HTML', () => {
   const v2 = useRaw().v2()
   const format = useFormat()
-
-  beforeEach(() => {})
 
   const styleMock = {
     paragraph: {
@@ -362,8 +356,6 @@ describe('Raw v2 - HTML', () => {
 describe('Raw v2 - Make', () => {
   const make = useRaw().v2().make()
   const format = useFormat()
-
-  beforeEach(() => {})
 
   it('should create image', () => {
     const file_name = 'foo.png'

@@ -1,14 +1,9 @@
-/**
- * @jest-environment jsdom
- */
-
 import { useFormat } from '../../src/use/format'
 import { bold, italic, link, useRaw } from '../../src/use/raw'
 import { Entity } from 'better-write-types'
+import { describe, expect, it } from 'vitest'
 
 describe('Editor Converter - v1', () => {
-  beforeEach(() => {})
-
   it('should not convert unnecessary paragraph', () => {
     const entity = {
       id: 0,
@@ -301,8 +296,6 @@ describe('Editor Converter - v1', () => {
 })
 
 describe('PDF Converter - v1', () => {
-  beforeEach(() => {})
-
   it('should create a simple entity without a object', () => {
     const raw = useRaw().v1().pdfConvert('Untitled')
 
