@@ -1,4 +1,4 @@
-<img src="./.github/logo.png" alt="Logo" width="6%">
+# Better Write
 
 ![Build Status](https://img.shields.io/github/workflow/status/Novout/better-write/Tests) ![License](https://img.shields.io/github/license/Novout/better-write) ![Version](https://img.shields.io/github/lerna-json/v/Novout/better-write) ![Size](https://img.shields.io/github/repo-size/Novout/better-write)
 
