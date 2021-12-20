@@ -2,19 +2,16 @@
 
 ##### Chores
 
+*  typo (dbca671e)
+*  changelog setup (a783e5f0)
 * **monorepo:**
   *  small typo (fa96dccb)
   *  pdf and docx packages (e337d0c1)
-*  changelog setup (a783e5f0)
 * **test:**  jest to vitest (ea90d264)
 
 ##### Bug Fixes
 
 * **pdf:**  set illegal fonts statement (4c6e413f)
-
-# Changelog
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ### [0.10.5](https://github.com/Novout/better-write/compare/v0.10.4...v0.10.5) (2021-12-17)
 
