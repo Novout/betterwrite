@@ -1,3 +1,17 @@
+#### 0.11.3 (2021-12-20)
+
+##### Chores
+
+* **monorepo:**
+  *  small typo (fa96dccb)
+  *  pdf and docx packages (e337d0c1)
+*  changelog setup (a783e5f0)
+* **test:**  jest to vitest (ea90d264)
+
+##### Bug Fixes
+
+* **pdf:**  set illegal fonts statement (4c6e413f)
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
