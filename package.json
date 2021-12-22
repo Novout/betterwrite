@@ -17,7 +17,8 @@
   },
   "devDependencies": {
     "lerna": "4.0.0",
-    "turbo": "latest"
+    "turbo": "latest",
+    "generi": "0.2.4"
   },
   "turbo": {
     "pipeline": {
