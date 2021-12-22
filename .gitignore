@@ -3,6 +3,7 @@
 
 node_modules
 dist
+.turbo
 
 yarn-error.log
 lerna-debug.log

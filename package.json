@@ -4,23 +4,38 @@
   "workspaces": [
     "packages/*"
   ],
-  "version": "0.11.2",
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
-    "dev": "lerna exec yarn dev",
-    "build": "lerna exec yarn build",
-    "test": "lerna exec yarn test",
-    "lint": "lerna exec yarn lint",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint --parallel --no-cache",
     "deploy": "yarn bootstrap && yarn build",
-    "changelog:patch": "changelog -p",
     "lerna:patch": "lerna version patch",
-    "changelog:minor": "changelog -m",
     "lerna:minor": "lerna version minor",
-    "changelog:major": "changelog -M",
     "lerna:major": "lerna version major"
   },
   "devDependencies": {
     "lerna": "4.0.0",
-    "standard-version": "^9.3.2"
+    "turbo": "latest"
+  },
+  "turbo": {
+    "pipeline": {
+      "build": {
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**"]
+      },
+      "test": {
+        "outputs": []
+      },
+      "dev": {
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**"]
+      },
+      "lint": {},
+      "deploy": {
+        "dependsOn": ["build", "test", "lint"]
+      }
+    }
   }
 }
