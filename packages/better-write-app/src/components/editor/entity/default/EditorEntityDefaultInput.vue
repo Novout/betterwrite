@@ -10,6 +10,12 @@
     @click="onClickInEntity"
     @contextmenu.prevent.stop="onSetContextMenu"
   >
+    <section
+      v-if="EDITOR.configuration.entity.updateTime"
+      class="absolute top-0 text-xs wb-text"
+    >
+      {{ update }}
+    </section>
     <section v-if="commands" class="absolute z-max left-40 -top-60">
       <EditorCommands />
     </section>
@@ -65,6 +71,7 @@
   } from 'better-write-types'
   import { useUtils } from '@/use/utils'
   import { useMagicKeys } from '@vueuse/core'
+  import { useFormat } from '@/use/format'
 
   const props = defineProps({
     entity: {
@@ -87,6 +94,7 @@
   const { t } = useI18n()
   const raw = useRaw()
   const plugin = usePlugin()
+  const format = useFormat()
   const { alt } = useMagicKeys()
 
   const hover = ref<boolean>(false)
@@ -104,6 +112,7 @@
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
   const editable = computed(() => !entity.utils().isFixed(_index.value))
   const last = computed(() => _index.value === CONTEXT.entities.length - 1)
+  const update = computed(() => format.lastTime(props.entity.updatedAt))
 
   watch(props.entity, () => {
     // new entity properties
