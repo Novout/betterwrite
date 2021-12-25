@@ -17,6 +17,12 @@ export interface EditorStateActivesEntity {
 
 export interface EditorStateActives {
 	entity: EditorStateActivesEntity;
+	global: {
+		mouse: {
+			x: number;
+			y: number;
+		};
+	};
 }
 
 export interface EditorStateConfigurationEntity {

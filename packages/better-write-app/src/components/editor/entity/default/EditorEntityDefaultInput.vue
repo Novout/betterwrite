@@ -8,12 +8,8 @@
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     @click="onClickInEntity"
+    @contextmenu.prevent.stop="onSetContextMenu"
   >
-    <EditorEntityDefaultInputPopover
-      v-if="hover && !press && props.entity.type !== 'heading-one'"
-      :entity="props.entity"
-      :input="input"
-    />
     <section v-if="commands" class="absolute z-max left-40 -top-60">
       <EditorCommands />
     </section>
@@ -779,5 +775,15 @@
 
   const onInput = (e: any) => {
     data.value = e.target.innerHTML
+  }
+
+  const onSetContextMenu = async () => {
+    ABSOLUTE.entity.menu = false
+
+    EDITOR.actives.entity.index = _index.value
+
+    await nextTick
+
+    ABSOLUTE.entity.menu = true
   }
 </script>

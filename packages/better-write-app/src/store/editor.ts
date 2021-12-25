@@ -84,6 +84,12 @@ export const useEditorStore = defineStore('editor', {
         entity: {
           index: 0,
         },
+        global: {
+          mouse: {
+            x: 0,
+            y: 0,
+          },
+        },
       },
     }
   },

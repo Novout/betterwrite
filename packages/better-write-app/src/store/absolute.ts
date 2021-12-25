@@ -31,6 +31,7 @@ export const useAbsoluteStore = defineStore('absolute', {
       load: false,
       entity: {
         comment: false,
+        menu: false,
       },
       pages: {
         drafts: false,

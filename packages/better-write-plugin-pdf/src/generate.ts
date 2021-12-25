@@ -118,7 +118,7 @@ export const PluginPDFSet = (
 				return {
 					image: entity.raw,
 					width:
-						hooks.defines.pdf.base().pageSizeFixes()[stores.PDF.styles.base.pageSize][0] -
+						hooks.defines.pdf().base().pageSizeFixes()[stores.PDF.styles.base.pageSize][0] -
 						generate().base().pageMargins[0] -
 						generate().base().pageMargins[2],
 					margin: [generate().base().pageMargins[0], 10, generate().base().pageMargins[2], 10],

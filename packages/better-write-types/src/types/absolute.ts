@@ -26,6 +26,7 @@ export interface AbsoluteStateAuth {
 
 export interface AbsoluteStateEntity {
 	comment: boolean;
+	menu: boolean;
 }
 
 export interface AbsoluteStatePages {

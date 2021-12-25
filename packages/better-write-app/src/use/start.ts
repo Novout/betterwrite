@@ -34,9 +34,12 @@ import { useUtils } from './utils'
 import i18n from '@/lang'
 import { useI18n } from 'vue-i18n'
 import useEmitter from './emitter'
+import { useMouse } from '@vueuse/core'
+import { watch } from 'vue'
 
 export const useStart = () => {
   const LOGGER = useLoggerStore()
+  const EDITOR = useEditorStore()
   const AUTH = useAuthStore()
 
   const route = useRoute()
@@ -46,7 +49,13 @@ export const useStart = () => {
   const format = useFormat()
   const core = useCore()
   const plugin = usePlugin()
+  const { x, y } = useMouse({ type: 'page' })
   const { t } = i18n.global
+
+  watch([x, y], ([_x, _y]) => {
+    EDITOR.actives.global.mouse.x = _x
+    EDITOR.actives.global.mouse.y = _y
+  })
 
   const global = () => {
     let _log = console.log,

@@ -1,6 +1,7 @@
 <template>
   <section
     id="edit"
+    ref="editor"
     v-motion
     :initial="{ opacity: 0, y: 100 }"
     :enter="{ opacity: 1, y: 0 }"
@@ -32,10 +33,22 @@
   import { useStorage } from '@/use/storage/storage'
   import useEmitter from '@/use/emitter'
   import Draggable from 'vuedraggable'
+  import { ref, watch } from 'vue'
+  import { useScroll } from '@vueuse/core'
+  import { useAbsoluteStore } from '@/store/absolute'
 
   const CONTEXT = useContextStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const project = useProject()
   const storage = useStorage()
   const emitter = useEmitter()
+
+  const editor = ref<HTMLElement | null>(null)
+
+  const scroll = useScroll(editor)
+
+  watch(scroll.isScrolling, () => {
+    ABSOLUTE.entity.menu = false
+  })
 </script>

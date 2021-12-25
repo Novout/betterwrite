@@ -267,6 +267,9 @@ export default {
       delete: 'Deletar',
       up: 'Cima',
       down: 'Baixo',
+      switch: 'Trocar',
+      add: 'Adicionar',
+      image: 'Imagem',
     },
     project: {
       title: 'Projeto',
