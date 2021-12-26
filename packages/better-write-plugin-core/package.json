@@ -19,7 +19,7 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@vueuse/core": "7.3.0",
+		"@vueuse/core": "7.4.1",
 		"@vueuse/integrations": "7.3.0",
 		"better-write-types": "^0.11.7",
 		"mitt": "3.0.0",
