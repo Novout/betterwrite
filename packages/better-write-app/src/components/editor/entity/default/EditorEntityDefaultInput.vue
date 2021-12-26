@@ -54,7 +54,6 @@
   import { useEnv } from '@/use/env'
   import { useEntity } from '@/use/entity'
   import { useFactory } from '@/use/factory'
-  import { useTouch } from '@/use/touch'
   import { useToast } from 'vue-toastification'
   import { useI18n } from 'vue-i18n'
   import { useScroll } from '@/use/scroll'
@@ -96,7 +95,6 @@
   const raw = useRaw()
   const plugin = usePlugin()
   const format = useFormat()
-  const touch = useTouch()
   const { alt } = useMagicKeys()
 
   const hover = ref<boolean>(false)
@@ -137,10 +135,6 @@
     } else {
       keyboard.value = false
     }
-  })
-
-  watch(touch.isLong, (_long) => {
-    if (_long) onSetContextMenu()
   })
 
   watch(edit, async (_edit) => {
