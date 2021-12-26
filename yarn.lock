@@ -2750,14 +2750,6 @@
   dependencies:
     vue-demi "^0.12.0"
 
-"@vueuse/core@7.3.0":
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-7.3.0.tgz#fe24ff698069cb7dcc835a8fe2eeb29b22b2a702"
-  integrity sha512-gPJyMMAquva9Qwqz63qGQT122m5hWI8Kuy8kfPV/JLQU7m01CXooyv8FIrX9TV8OxVcHBTPXPJHY0oyUiFoNgw==
-  dependencies:
-    "@vueuse/shared" "7.3.0"
-    vue-demi "*"
-
 "@vueuse/core@7.4.1":
   version "7.4.1"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-7.4.1.tgz#81ede3f67dfd58af8284c910ac2fee25458892c6"
@@ -2779,22 +2771,22 @@
   resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.4.tgz#2eec185ebe52e634400dfe2a8b1a18f788c06bcf"
   integrity sha512-cmps+wrdgL77V72vtjU6kaAunkG6GhswaMIQoh7Twc52ql4/p7i1Amd31LqnnvNF/bfuvzcXgYvsH8I7kimZmA==
 
-"@vueuse/integrations@7.3.0":
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-7.3.0.tgz#38024ff60266c67af92b07c167122bc1f3267325"
-  integrity sha512-Sem0tG6+MlgRd8No7BRCoW0CrwX5WYz+KTpwGFNfBZv75Wkqsp6cAMYwXGysP7KPbsrF11i92CEK/01u8F3l7Q==
+"@vueuse/integrations@7.4.1":
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-7.4.1.tgz#d1feac5be3c45dd69e50e9eb9a8e7b85032452e9"
+  integrity sha512-gu0fbUJcknkXd3cSkleOT9hGcFed9Nyyz6BDlflkX5/XWCxfn800IdvCN5K98hdj+teOlgrs1ulYVtIyS4xHRg==
   dependencies:
-    "@vueuse/core" "7.3.0"
-    "@vueuse/shared" "7.3.0"
+    "@vueuse/core" "7.4.1"
+    "@vueuse/shared" "7.4.1"
     vue-demi "*"
   optionalDependencies:
-    axios "^0.23.0"
+    axios "^0.24.0"
     drauu "^0.2.1"
     focus-trap "^6.7.1"
     fuse.js "^6.4.6"
     jwt-decode "^3.1.2"
     nprogress "^0.2.0"
-    qrcode "^1.4.4"
+    qrcode "^1.5.0"
     universal-cookie "^4.0.4"
 
 "@vueuse/motion@2.0.0-beta.4":
@@ -2810,13 +2802,6 @@
   version "6.9.2"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-6.9.2.tgz#97e4369fa7262ebc96fe1d6e210268f30b037005"
   integrity sha512-lAiMh6XROs0kSKVd0Yb/6GKoQMxC1fYrFDi6opvQWISPtcqRNluRrQxLUZ3WTI78ovtoKRLktjhkFAtydcfFDg==
-  dependencies:
-    vue-demi "*"
-
-"@vueuse/shared@7.3.0":
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-7.3.0.tgz#729b2f0a83f38647896d955902e828dcbd8ed7dc"
-  integrity sha512-vOAeI84tIXKVkzm8s/Mxbrzhj0QN6NyVc/sC6LrW0AjVNdvpD8sB1dZiDn9yh8T77WJmloCEt4zZVIppeq7I+w==
   dependencies:
     vue-demi "*"
 
@@ -3110,10 +3095,10 @@ axios@^0.21.1:
   dependencies:
     follow-redirects "^1.14.0"
 
-axios@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.23.0.tgz#b0fa5d0948a8d1d75e3d5635238b6c4625b05149"
-  integrity sha512-NmvAE4i0YAv5cKq8zlDoPd1VLKAqX5oLuZKs8xkJa4qi6RGn0uhCYFjWtHHC9EM/MwOwYWOs53W+V0aqEXq1sg==
+axios@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.24.0.tgz#804e6fa1e4b9c5288501dd9dff56a7a0940d20d6"
+  integrity sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==
   dependencies:
     follow-redirects "^1.14.4"
 
@@ -7611,7 +7596,7 @@ q@^1.5.1:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
-qrcode@^1.4.4:
+qrcode@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/qrcode/-/qrcode-1.5.0.tgz#95abb8a91fdafd86f8190f2836abbfc500c72d1b"
   integrity sha512-9MgRpgVc+/+47dFvQeD6U2s0Z92EsKzcHogtum4QB+UNd025WOJSHvn/hjk9xmzj7Stj95CyUAs31mrjxliEsQ==
