@@ -18,7 +18,7 @@
     </div>
     <div
       v-if="hover"
-      class="absolute flex flex-col md:flex-row left-full bg-theme-background-2"
+      class="absolute flex flex-col left-full bg-theme-background-2"
     >
       <slot name="overflow" />
     </div>

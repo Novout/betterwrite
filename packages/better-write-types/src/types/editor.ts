@@ -21,6 +21,8 @@ export interface EditorStateActives {
 		mouse: {
 			x: number;
 			y: number;
+			vertical: 'top' | 'bottom';
+			horizontal: 'right' | 'left';
 			validLastSelection: boolean;
 		};
 	};

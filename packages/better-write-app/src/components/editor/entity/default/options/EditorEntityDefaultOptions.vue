@@ -386,7 +386,7 @@
   import { Entity, EntityType } from 'better-write-types'
   import { useEditorStore } from '@/store/editor'
   import { useContextStore } from '@/store/context'
-  import { tryOnMounted } from '@vueuse/core'
+  import { tryOnMounted, useIntersectionObserver } from '@vueuse/core'
   import { onClickOutside } from '@vueuse/core'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useI18n } from 'vue-i18n'
@@ -402,6 +402,7 @@
   )
   const options = ref<HTMLElement | null>(null)
   const visible = ref<boolean>(false)
+  const block = ref<boolean>(false)
 
   const { t } = useI18n()
   const emitter = useEmitter()
@@ -411,14 +412,43 @@
 
   const mouse = computed(() => EDITOR.actives.global.mouse)
 
+  useIntersectionObserver(
+    options,
+    ([{ isIntersecting }]) => {
+      if (block.value) return
+
+      visible.value = isIntersecting
+      block.value = true
+
+      onPosition()
+    },
+    {
+      threshold: 1,
+    }
+  )
+
   tryOnMounted(() => {
+    onPosition()
+  })
+
+  const onPosition = () => {
     const el = options.value as HTMLElement
 
+    if (!visible.value && block.value) {
+      if (mouse.value.vertical === 'bottom') {
+        el.style.top = `${mouse.value.y - el.offsetHeight}px`
+      }
+
+      if (mouse.value.horizontal === 'right') {
+        el.style.left = `${mouse.value.x - el.offsetWidth}px`
+      }
+
+      return
+    }
+
+    el.style.top = `${mouse.value.y}px`
     el.style.left = `${mouse.value.x}px`
-    el.style.top = `${
-      !visible.value ? mouse.value.y - el.offsetHeight : mouse.value.y
-    }px`
-  })
+  }
 
   const onClose = () => {
     ABSOLUTE.entity.menu = false

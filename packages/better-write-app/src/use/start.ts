@@ -59,6 +59,10 @@ export const useStart = () => {
   watch([x, y], ([_x, _y]) => {
     EDITOR.actives.global.mouse.x = _x
     EDITOR.actives.global.mouse.y = _y
+    EDITOR.actives.global.mouse.vertical =
+      window.innerHeight / 2 >= _y ? 'top' : 'bottom'
+    EDITOR.actives.global.mouse.horizontal =
+      window.innerWidth / 2 >= _x ? 'left' : 'right'
   })
 
   // for stop propagation problems in auto reset selection (contextmenu i.e)

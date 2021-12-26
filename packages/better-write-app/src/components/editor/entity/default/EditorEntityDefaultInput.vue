@@ -11,7 +11,7 @@
     @contextmenu="onSetContextMenu"
   >
     <section
-      v-if="EDITOR.configuration.entity.updateTime"
+      v-if="EDITOR.configuration.entity.updateTime && hover"
       class="absolute top-0 text-xs wb-text"
     >
       {{ update }}
