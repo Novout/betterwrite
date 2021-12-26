@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-pdf",
-	"version": "0.11.6",
+	"version": "0.11.7",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -23,8 +23,8 @@
 		"@vueuse/head": "0.7.4",
 		"@vueuse/integrations": "7.3.0",
 		"@vueuse/motion": "2.0.0-beta.4",
-		"better-write-plugin-core": "^0.11.6",
-		"better-write-types": "^0.11.6",
+		"better-write-plugin-core": "^0.11.7",
+		"better-write-types": "^0.11.7",
 		"pdfmake": "0.2.4",
 		"pinia": "2.0.6",
 		"vue-demi": "latest",

@@ -2,6 +2,10 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.11.7
+
+* **fix(editor):** support old versions in new menu [72b605f]
+
 ### v0.11.6
 
 * **chore(deps):** upgrade generi [c644c5f]
