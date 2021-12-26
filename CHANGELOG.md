@@ -1,6 +1,19 @@
-# Changelog (22/12/2021)
+# Changelog (25/12/2021)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.11.6
+
+* **chore(deps):** upgrade generi [c644c5f]
+* **chore(logger):** global console in plugin-logger repo [12234c6]
+* **chore(editor):** menu in mobile supress [a6021bc]
+* **fix(editor):** menu rows in correct intersection [7ba7ee4]
+* **fix(editor):** intersection in options menu [da6adc1]
+* **fix(editor):** reset events [f65bdd3]
+* **fix(editor):** contextmenu in selection elements [6465ba1]
+* **chore(editor):** popover theme in options container [c3c72c9]
+* **fix(editor):** update time dialog [1c42379]
+* **refactor(editor):** popover to menu [7a2e67d]
 
 ### v0.11.5
 
