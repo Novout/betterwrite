@@ -77,57 +77,6 @@ export const useStart = () => {
     ABSOLUTE.entity.menu = false
   })
 
-  const global = () => {
-    let _log = console.log,
-      _warn = console.warn,
-      _error = console.error,
-      _info = console.info
-
-    console.log = function () {
-      LOGGER.add({
-        type: 'system',
-        method: 'log',
-        arguments,
-        createdAt: format.actually(),
-      })
-
-      return _log.apply(console, arguments as any)
-    }
-
-    console.warn = function () {
-      LOGGER.add({
-        type: 'system',
-        method: 'warn',
-        arguments,
-        createdAt: format.actually(),
-      })
-
-      return _warn.apply(console, arguments as any)
-    }
-
-    console.error = function () {
-      LOGGER.add({
-        type: 'system',
-        method: 'error',
-        arguments,
-        createdAt: format.actually(),
-      })
-
-      return _error.apply(console, arguments as any)
-    }
-
-    console.info = function () {
-      LOGGER.add({
-        type: 'system',
-        method: 'info',
-        arguments,
-        createdAt: format.actually(),
-      })
-
-      return _info.apply(console, arguments as any)
-    }
-  }
-
   const auth = () => {
     if (route.fullPath.includes('access_token')) {
       let str = ''
@@ -233,8 +182,6 @@ export const useStart = () => {
       }
     )
     plugin.emit('plugin-pdf-init')
-
-    if (!env.isDev()) global()
   }
 
   return { init }

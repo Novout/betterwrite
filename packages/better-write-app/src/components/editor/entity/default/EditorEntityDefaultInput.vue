@@ -137,7 +137,7 @@
   })
 
   watch(touch.isLong, (_long) => {
-    if(_long) onSetContextMenu()
+    if (_long) onSetContextMenu()
   })
 
   watch(edit, async (_edit) => {
