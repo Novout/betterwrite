@@ -7,6 +7,7 @@ import { useStorage } from '../storage/storage'
 import { useContextStore } from '@/store/context'
 import { nextTick } from 'vue'
 import { usePlugin } from 'better-write-plugin-core'
+import { useFactory } from '../factory'
 
 export const useCreativeType = () => {
   const PROJECT = useProjectStore()
@@ -16,6 +17,7 @@ export const useCreativeType = () => {
   const emitter = useEmitter()
   const plugin = usePlugin()
   const storage = useStorage()
+  const factory = useFactory()
   const { isLoading } = useNProgress()
 
   const draft = () => {
@@ -91,12 +93,9 @@ export const useCreativeType = () => {
       const pos = PROJECT.creative.drafts.indexOf(target)
 
       target.entities = [
-        {
-          type: 'heading-one',
-          raw: target.entities[0].raw || 'Untitled',
-          createdAt: useFormat().actually(),
-          updatedAt: useFormat().actually(),
-        },
+        factory
+          .entity()
+          .create('heading-one', target.entities[0].raw || 'Untitled'),
       ]
 
       PROJECT.creative.drafts.splice(pos, 1, target)

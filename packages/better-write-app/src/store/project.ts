@@ -4,6 +4,7 @@ import { useFormat } from '@/use/format'
 import { useGlobalStore } from './global'
 import { usePopulate } from '../use/populate'
 import { useProject } from '@/use/project'
+import { useFactory } from '../use/factory'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -76,18 +77,10 @@ export const useProjectStore = defineStore('project', {
         id: this.totalPagesCreated,
         title: 'Untitled',
         entities: [
-          {
-            type: 'heading-one',
-            raw: 'Untitled',
-            createdAt: useFormat().actually(),
-            updatedAt: useFormat().actually(),
-          },
-          {
-            type: 'paragraph',
-            raw: usePopulate().debug().names().paragraph(),
-            createdAt: useFormat().actually(),
-            updatedAt: useFormat().actually(),
-          },
+          useFactory().entity().create('heading-one', 'Untitled'),
+          useFactory()
+            .entity()
+            .create('paragraph', usePopulate().debug().names().paragraph()),
         ],
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),

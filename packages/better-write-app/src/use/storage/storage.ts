@@ -254,6 +254,22 @@ export const useStorage = () => {
       }
     }
 
+    // <= 0.11.8
+    if (!_.project.pages[0].entities[0].visual) {
+      _.project.pages.forEach((page) => {
+        page.entities = page.entities.map((entity) => {
+          return {
+            ...entity,
+            visual: {
+              error: false,
+              info: false,
+              warning: false,
+            },
+          }
+        })
+      })
+    }
+
     return _
   }
 

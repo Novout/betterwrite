@@ -290,7 +290,7 @@ export const useRaw = () => {
 
     const style = (entity: Entity, style: any) => {
       return [
-        'editable overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+        'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
         entity.type === 'paragraph'
           ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
           : '',
@@ -330,6 +330,16 @@ export const useRaw = () => {
 
         entity.type === 'line-break'
           ? 'cursor-default mt-2 mb-6 border-b-8 border-dashed border-theme-editor-entity-line'
+          : '',
+
+        entity.visual.info
+          ? 'bg-theme-editor-entity-info hover:bg-theme-editor-entity-info-hover active:bg-theme-editor-entity-info-active'
+          : '',
+        entity.visual.warning
+          ? 'bg-theme-editor-entity-warning hover:bg-theme-editor-entity-warning-hover active:bg-theme-editor-entity-warning-active'
+          : '',
+        entity.visual.error
+          ? 'bg-theme-editor-entity-error hover:bg-theme-editor-entity-error-hover active:bg-theme-editor-entity-error-active'
           : '',
       ]
     }

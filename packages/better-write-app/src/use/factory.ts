@@ -9,13 +9,18 @@ export const useFactory = () => {
   const utils = useUtils()
 
   const entity = () => {
-    const create = (type: EntityType): Entity => {
+    const create = (type: EntityType, raw?: string): Entity => {
       if (type === 'line-break') {
         return {
           type,
-          raw: env.lineBreak(),
+          raw: raw || env.lineBreak(),
           createdAt: format.actually(),
           updatedAt: format.actually(),
+          visual: {
+            error: false,
+            info: false,
+            warning: false,
+          },
           external: {},
         }
       }
@@ -23,18 +28,28 @@ export const useFactory = () => {
       if (type === 'page-break') {
         return {
           type,
-          raw: env.pageBreak(),
+          raw: raw || env.pageBreak(),
           createdAt: format.actually(),
           updatedAt: format.actually(),
+          visual: {
+            error: false,
+            info: false,
+            warning: false,
+          },
           external: {},
         }
       }
 
       return {
         type,
-        raw: env.emptyLine(),
+        raw: raw || env.emptyLine(),
         createdAt: format.actually(),
         updatedAt: format.actually(),
+        visual: {
+          error: false,
+          info: false,
+          warning: false,
+        },
         external: {
           comment: {
             raw: '',

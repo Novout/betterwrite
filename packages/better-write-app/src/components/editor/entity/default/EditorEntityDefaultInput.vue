@@ -115,6 +115,9 @@
   const editable = computed(() => !entity.utils().isFixed(_index.value))
   const last = computed(() => _index.value === CONTEXT.entities.length - 1)
   const update = computed(() => format.lastTime(props.entity.updatedAt))
+  const target = computed(
+    () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu
+  )
 
   watch(props.entity, () => {
     // new entity properties
@@ -160,6 +163,13 @@
     } else {
       focus.value = false
     }
+  })
+
+  watch(target, (_target) => {
+    // for delete mutate
+    if (!CONTEXT.entities[_index.value]) return
+
+    CONTEXT.entities[_index.value].visual.info = _target
   })
 
   const setData = (val: string) => {

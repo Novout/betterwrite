@@ -16,6 +16,7 @@ import { useEnv } from '../use/env'
 import { useFormat } from '../use/format'
 import { useUtils } from '../use/utils'
 import { useProjectStore } from './project'
+import { useFactory } from '@/use/factory'
 
 export const useContextStore = defineStore('context', {
   state: (): ContextState => {
@@ -163,12 +164,9 @@ export const useContextStore = defineStore('context', {
 
       if (index === -1) return
 
-      const target = {
-        type: type as string,
-        raw: useEnv().emptyLine(),
-        createdAt: useFormat().actually(),
-        updatedAt: useFormat().actually(),
-      } as Entity
+      const target = useFactory()
+        .entity()
+        .create(type as EntityType, '')
 
       this.entities = useUtils().array().insert(this.entities, index, target)
     },
@@ -179,12 +177,7 @@ export const useContextStore = defineStore('context', {
 
       if (index === -1) return
 
-      const target = {
-        type: type as string,
-        raw: raw || useEnv().emptyLine(),
-        createdAt: useFormat().actually(),
-        updatedAt: useFormat().actually(),
-      } as Entity
+      const target = useFactory().entity().create(type, raw)
 
       this.entities = useUtils()
         .array()
@@ -207,6 +200,11 @@ export const useContextStore = defineStore('context', {
       this.entities[index].raw = raw
       this.entities[index].createdAt = useFormat().actually()
       this.entities[index].updatedAt = useFormat().actually()
+      this.entities[index].visual = {
+        info: false,
+        warning: false,
+        error: false,
+      }
       this.entities[index].external = entity.external || {}
     },
     insertRawInExistentEntity(entity: Entity) {

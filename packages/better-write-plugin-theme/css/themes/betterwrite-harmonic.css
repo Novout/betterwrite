@@ -55,6 +55,15 @@
   --theme-editor-entity-popover-background: #6a819e;
   --theme-editor-entity-popover-background-hover: rgba(222, 237, 255, 0.5);
   --theme-editor-entity-popover-background-active: #b6ceeb;
+  --theme-editor-entity-info: rgba(139, 191, 250, 0.1);
+  --theme-editor-entity-info-hover: rgba(139, 191, 250, 0.1);
+  --theme-editor-entity-info-active: rgba(139, 191, 250, 0.1);
+  --theme-editor-entity-warning: rgba(255, 231, 137, 0.3);
+  --theme-editor-entity-warning-hover: rgba(255, 231, 137, 0.3);
+  --theme-editor-entity-warning-active: rgba(255, 231, 137, 0.3);
+  --theme-editor-entity-error: rgba(245, 86, 94, 0.3);
+  --theme-editor-entity-error-hover: rgba(245, 86, 94, 0.3);
+  --theme-editor-entity-error-active: rgba(245, 86, 94, 0.3);
   --theme-editor-bold-text: #6a819e;
   --theme-editor-bold-text-hover: #111111;
   --theme-editor-bold-text-active: #111111;

@@ -81,11 +81,18 @@ export interface EntityExternalImage {
 	alignment: 'left' | 'center' | 'right' | 'full';
 }
 
+export interface EntityVisual {
+	info: boolean;
+	error: boolean;
+	warning: boolean;
+}
+
 export type Entity = {
 	type: EntityType;
 	raw: string;
 	createdAt: string;
 	updatedAt: string;
+	visual: EntityVisual;
 	external?: EntityExternal;
 };
 

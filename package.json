@@ -11,9 +11,9 @@
     "test": "turbo run test",
     "lint": "turbo run lint --parallel --no-cache",
     "deploy": "yarn bootstrap && yarn build",
-    "lerna:patch": "lerna version patch",
-    "lerna:minor": "lerna version minor",
-    "lerna:major": "lerna version major"
+    "patch": "generi log patch",
+    "minor": "generi log minor",
+    "major": "generi log major"
   },
   "devDependencies": {
     "lerna": "4.0.0",
@@ -24,14 +24,16 @@
     "pipeline": {
       "build": {
         "dependsOn": ["^build"],
-        "outputs": ["dist/**"]
+        "outputs": ["dist/**"],
+        "cache": false
       },
       "test": {
         "outputs": []
       },
       "dev": {
         "dependsOn": ["^build"],
-        "outputs": ["dist/**"]
+        "outputs": ["dist/**"],
+        "cache": false
       },
       "lint": {},
       "deploy": {

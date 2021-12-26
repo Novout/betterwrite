@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { useRaw } from '../../src/use/raw'
 import { useFormat } from '../../src/use/format'
+import { useFactory } from '../../src/use/factory'
 
 describe('Raw v2 - HTML', () => {
   const html = useRaw().v2().html()
@@ -74,19 +75,13 @@ describe('Raw v2 - HTML', () => {
 
   it('should return paragraph styles', () => {
     expect(
-      v2.style(
-        {
-          type: 'paragraph',
-          raw: '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
-          external: {},
-        },
-        styleMock
-      )
+      v2.style(useFactory().entity().create('paragraph'), styleMock)
     ).toEqual([
-      'editable overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active',
+      '',
+      '',
+      '',
       '',
       '',
       '',
@@ -114,18 +109,9 @@ describe('Raw v2 - HTML', () => {
 
   it('should return heading one styles', () => {
     expect(
-      v2.style(
-        {
-          type: 'heading-one',
-          raw: '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
-          external: {},
-        },
-        styleMock
-      )
+      v2.style(useFactory().entity().create('heading-one'), styleMock)
     ).toEqual([
-      'editable overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -149,23 +135,17 @@ describe('Raw v2 - HTML', () => {
       '',
       '',
       '',
+      '',
+      '',
+      '',
     ])
   })
 
   it('should return heading two styles', () => {
     expect(
-      v2.style(
-        {
-          type: 'heading-two',
-          raw: '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
-          external: {},
-        },
-        styleMock
-      )
+      v2.style(useFactory().entity().create('heading-two'), styleMock)
     ).toEqual([
-      'editable overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -189,23 +169,17 @@ describe('Raw v2 - HTML', () => {
       '',
       '',
       '',
+      '',
+      '',
+      '',
     ])
   })
 
   it('should return heading three styles', () => {
     expect(
-      v2.style(
-        {
-          type: 'heading-three',
-          raw: '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
-          external: {},
-        },
-        styleMock
-      )
+      v2.style(useFactory().entity().create('heading-three'), styleMock)
     ).toEqual([
-      'editable overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -229,23 +203,17 @@ describe('Raw v2 - HTML', () => {
       '',
       '',
       '',
+      '',
+      '',
+      '',
     ])
   })
 
   it('should return heading three styles', () => {
     expect(
-      v2.style(
-        {
-          type: 'heading-three',
-          raw: '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
-          external: {},
-        },
-        styleMock
-      )
+      v2.style(useFactory().entity().create('heading-three'), styleMock)
     ).toEqual([
-      'editable overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -263,6 +231,9 @@ describe('Raw v2 - HTML', () => {
       '',
       '',
       'text-center pb-2 pt-5 text-theme-editor-entity-heading-three hover:text-theme-editor-entity-heading-three-hover active:text-theme-editor-entity-heading-three-active',
+      '',
+      '',
+      '',
       '',
       '',
       '',
@@ -274,18 +245,9 @@ describe('Raw v2 - HTML', () => {
 
   it('should return page break styles', () => {
     expect(
-      v2.style(
-        {
-          type: 'page-break',
-          raw: '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
-          external: {},
-        },
-        styleMock
-      )
+      v2.style(useFactory().entity().create('page-break'), styleMock)
     ).toEqual([
-      'editable overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -309,23 +271,17 @@ describe('Raw v2 - HTML', () => {
       '',
       'cursor-default mt-2 mb-6 border-b-8 border-theme-border-1 border-theme-editor-entity-page',
       '',
+      '',
+      '',
+      '',
     ])
   })
 
   it('should return line break styles', () => {
     expect(
-      v2.style(
-        {
-          type: 'line-break',
-          raw: '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
-          external: {},
-        },
-        styleMock
-      )
+      v2.style(useFactory().entity().create('line-break'), styleMock)
     ).toEqual([
-      'editable overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -349,6 +305,9 @@ describe('Raw v2 - HTML', () => {
       '',
       '',
       'cursor-default mt-2 mb-6 border-b-8 border-dashed border-theme-editor-entity-line',
+      '',
+      '',
+      '',
     ])
   })
 })
@@ -366,6 +325,11 @@ describe('Raw v2 - Make', () => {
         raw: '',
         createdAt: format.actually(),
         updatedAt: format.actually(),
+        visual: {
+          info: false,
+          warning: false,
+          error: false,
+        },
         external: {
           image: {
             name: file_name,
@@ -389,6 +353,11 @@ describe('Raw v2 - Make', () => {
         raw: 'dsaKDSADaskASHDGYasdahbdasnASD...',
         createdAt: format.actually(),
         updatedAt: format.actually(),
+        visual: {
+          info: false,
+          warning: false,
+          error: false,
+        },
         external: {
           image: {
             name: file_name,
