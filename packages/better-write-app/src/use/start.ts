@@ -34,10 +34,11 @@ import { useUtils } from './utils'
 import i18n from '@/lang'
 import { useI18n } from 'vue-i18n'
 import useEmitter from './emitter'
-import { useMouse, useTextSelection } from '@vueuse/core'
+import { useMouse, usePageLeave, useTextSelection } from '@vueuse/core'
 import { watch } from 'vue'
 
 export const useStart = () => {
+  const ABSOLUTE = useAbsoluteStore()
   const LOGGER = useLoggerStore()
   const EDITOR = useEditorStore()
   const AUTH = useAuthStore()
@@ -51,17 +52,25 @@ export const useStart = () => {
   const plugin = usePlugin()
   const { x, y } = useMouse({ type: 'page' })
   const selection = useTextSelection()
+  const isLeft = usePageLeave()
   const { t } = i18n.global
 
+  // set global mouse tracking
   watch([x, y], ([_x, _y]) => {
     EDITOR.actives.global.mouse.x = _x
     EDITOR.actives.global.mouse.y = _y
   })
 
+  // for stop propagation problems in auto reset selection (contextmenu i.e)
   watch(selection, (_selection) => {
     if (!_selection.text) return
 
     EDITOR.actives.global.mouse.validLastSelection = true
+  })
+
+  // reset absolute variables in external case
+  watch(isLeft, (_left) => {
+    ABSOLUTE.entity.menu = false
   })
 
   const global = () => {

@@ -71,7 +71,7 @@
     VueEmitterEntityClose,
   } from 'better-write-types'
   import { useUtils } from '@/use/utils'
-  import { useMagicKeys, useTextSelection } from '@vueuse/core'
+  import { useMagicKeys } from '@vueuse/core'
   import { useFormat } from '@/use/format'
 
   const props = defineProps({
@@ -97,7 +97,6 @@
   const plugin = usePlugin()
   const format = useFormat()
   const touch = useTouch()
-  const selection = useTextSelection()
   const { alt } = useMagicKeys()
 
   const hover = ref<boolean>(false)
