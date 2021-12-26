@@ -88,6 +88,7 @@ export const useEditorStore = defineStore('editor', {
           mouse: {
             x: 0,
             y: 0,
+            validLastSelection: false,
           },
         },
       },

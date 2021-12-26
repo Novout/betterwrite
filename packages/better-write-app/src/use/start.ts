@@ -34,7 +34,7 @@ import { useUtils } from './utils'
 import i18n from '@/lang'
 import { useI18n } from 'vue-i18n'
 import useEmitter from './emitter'
-import { useMouse } from '@vueuse/core'
+import { useMouse, useTextSelection } from '@vueuse/core'
 import { watch } from 'vue'
 
 export const useStart = () => {
@@ -50,11 +50,18 @@ export const useStart = () => {
   const core = useCore()
   const plugin = usePlugin()
   const { x, y } = useMouse({ type: 'page' })
+  const selection = useTextSelection()
   const { t } = i18n.global
 
   watch([x, y], ([_x, _y]) => {
     EDITOR.actives.global.mouse.x = _x
     EDITOR.actives.global.mouse.y = _y
+  })
+
+  watch(selection, (_selection) => {
+    if (!_selection.text) return
+
+    EDITOR.actives.global.mouse.validLastSelection = true
   })
 
   const global = () => {

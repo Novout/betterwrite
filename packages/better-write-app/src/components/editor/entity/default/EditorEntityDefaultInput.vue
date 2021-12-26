@@ -8,7 +8,7 @@
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     @click="onClickInEntity"
-    @contextmenu.prevent.stop="onSetContextMenu"
+    @contextmenu="onSetContextMenu"
   >
     <section
       v-if="EDITOR.configuration.entity.updateTime"
@@ -54,6 +54,7 @@
   import { useEnv } from '@/use/env'
   import { useEntity } from '@/use/entity'
   import { useFactory } from '@/use/factory'
+  import { useTouch } from '@/use/touch'
   import { useToast } from 'vue-toastification'
   import { useI18n } from 'vue-i18n'
   import { useScroll } from '@/use/scroll'
@@ -70,7 +71,7 @@
     VueEmitterEntityClose,
   } from 'better-write-types'
   import { useUtils } from '@/use/utils'
-  import { useMagicKeys } from '@vueuse/core'
+  import { useMagicKeys, useTextSelection } from '@vueuse/core'
   import { useFormat } from '@/use/format'
 
   const props = defineProps({
@@ -95,6 +96,8 @@
   const raw = useRaw()
   const plugin = usePlugin()
   const format = useFormat()
+  const touch = useTouch()
+  const selection = useTextSelection()
   const { alt } = useMagicKeys()
 
   const hover = ref<boolean>(false)
@@ -132,6 +135,10 @@
     } else {
       keyboard.value = false
     }
+  })
+
+  watch(touch.isLong, (_long) => {
+    // if(_long) onSetContextMenu()
   })
 
   watch(edit, async (_edit) => {
@@ -786,10 +793,17 @@
     data.value = e.target.innerHTML
   }
 
-  const onSetContextMenu = async () => {
+  const onSetContextMenu = async (e?: MouseEvent) => {
     ABSOLUTE.entity.menu = false
 
     EDITOR.actives.entity.index = _index.value
+
+    if (EDITOR.actives.global.mouse.validLastSelection) {
+      EDITOR.actives.global.mouse.validLastSelection = false
+      return
+    }
+
+    e?.preventDefault()
 
     await nextTick
 

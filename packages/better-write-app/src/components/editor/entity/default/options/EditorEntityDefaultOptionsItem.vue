@@ -4,6 +4,8 @@
     :class="[!props.off ? 'cursor-pointer' : 'cursor-default']"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
+    @touchstart="hover = true"
+    @touchcancel="hover = true"
     @click="onAction"
   >
     <div class="flex items-center justify-between w-full">
@@ -16,7 +18,7 @@
     </div>
     <div
       v-if="hover"
-      class="absolute flex flex-row left-full bg-theme-background-2"
+      class="absolute flex flex-col md:flex-row left-full bg-theme-background-2"
     >
       <slot name="overflow" />
     </div>
