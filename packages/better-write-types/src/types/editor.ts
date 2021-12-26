@@ -15,17 +15,21 @@ export interface EditorStateActivesEntity {
 	index: number;
 }
 
+export interface EditorStateActivesGlobalMouse {
+	x: number;
+	y: number;
+	vertical: 'top' | 'bottom';
+	horizontal: 'right' | 'left';
+	validLastSelection: boolean;
+}
+
+export interface EditorStateActivesGlobal {
+	mouse: EditorStateActivesGlobalMouse;
+}
+
 export interface EditorStateActives {
 	entity: EditorStateActivesEntity;
-	global: {
-		mouse: {
-			x: number;
-			y: number;
-			vertical: 'top' | 'bottom';
-			horizontal: 'right' | 'left';
-			validLastSelection: boolean;
-		};
-	};
+	global: EditorStateActivesGlobal;
 }
 
 export interface EditorStateConfigurationEntity {

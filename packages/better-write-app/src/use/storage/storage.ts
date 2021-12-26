@@ -238,6 +238,22 @@ export const useStorage = () => {
       })
     }
 
+    // <= 0.11.7
+    if (!_.editor.actives.global) {
+      _.editor.actives = {
+        ..._.editor.actives,
+        global: {
+          mouse: {
+            x: 0,
+            y: 0,
+            vertical: 'top',
+            horizontal: 'right',
+            validLastSelection: false,
+          },
+        },
+      }
+    }
+
     return _
   }
 
