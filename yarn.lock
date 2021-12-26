@@ -5098,14 +5098,14 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
-generi@0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/generi/-/generi-0.2.4.tgz#8435df61f26665a8c332f84576df5f8a75d9e87f"
-  integrity sha512-dV1n0yejLHT8Tdq8CVRMGQPyfGTEdqcl3uWR15g6O9MlY+OuHvb3+4OoIF3Bj1o6mRe+1D3MD8wWUDj9k8YNjQ==
+generi@0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/generi/-/generi-0.2.7.tgz#da9e6234c11bd7dcee68aeaacb7d8f3701b236fc"
+  integrity sha512-O8qxcSN2fth5DWzTRAiHWF1ttkX9rcEy3Tw02osTSpP3BzGjoSE6MK11nsQr1y76Jpm2B4M9HUituQZWowPolQ==
   dependencies:
+    consola "^2.15.3"
     execa "^5.0.0"
     gradient-string "^2.0.0"
-    picocolors "^1.0.0"
     sade "^1.7.4"
 
 gensync@^1.0.0-beta.2:
