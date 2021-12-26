@@ -18,7 +18,11 @@
     </div>
     <div
       v-if="hover"
-      class="absolute flex flex-col left-full bg-theme-background-2"
+      class="absolute flex left-full bg-theme-background-2"
+      :class="[
+        mouse.horizontal === 'right' ? 'flex-col' : 'flex-row',
+        mouse.vertical === 'bottom' ? 'flex-row' : 'flex-row md:flex-col',
+      ]"
     >
       <slot name="overflow" />
     </div>
@@ -27,8 +31,9 @@
 
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useEditorStore } from '@/store/editor'
   import useEmitter from '@/use/emitter'
-  import { ref, nextTick } from 'vue'
+  import { ref, nextTick, computed } from 'vue'
 
   const props = defineProps({
     off: {
@@ -39,10 +44,12 @@
   })
 
   const ABSOLUTE = useAbsoluteStore()
+  const EDITOR = useEditorStore()
 
   const emit = defineEmits(['action'])
   const emitter = useEmitter()
   const hover = ref<boolean>(false)
+  const mouse = computed(() => EDITOR.actives.global.mouse)
 
   const onAction = async () => {
     if (props.off) return
