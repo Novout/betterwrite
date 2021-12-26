@@ -1,6 +1,14 @@
-# Changelog (25/12/2021)
+# Changelog (26/12/2021)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.11.8
+
+* **fix(editor):** full touch in mobile menu [ca28d41]
+* **feat(editor):** visual alerts in entities [7744466]
+* **fix(build):** unbuild in .cjs exports [7f523b5]
+* **fix(deps):** update dependency @vueuse/integrations to v7.4.1 [fb18931]
+* **chore(deps):** update dependency unbuild to v0.6.7 [5a95b78]
 
 ### v0.11.7
 
@@ -18,12 +26,14 @@ Changelog was created by [Generi](https://github.com/Novout/generi). Any questio
 * **chore(editor):** popover theme in options container [c3c72c9]
 * **fix(editor):** update time dialog [1c42379]
 * **refactor(editor):** popover to menu [7a2e67d]
+* **fix(deps):** update dependency @vueuse/core to v7.4.1 [5a0d265]
 
 ### v0.11.5
 
 * **chore(generi):** configs [3ab8143]
 * **chore:** generate generi.json [a306ee1]
 * **chore(deps):** added generi [5cb58ef]
+* **chore(deps):** update dependency vite to v2.7.6 [36bc3b1]
 * **chore(monorepo):** turborepo setup [416da8b]
 * **chore:** fix readme [949ea74]
 
