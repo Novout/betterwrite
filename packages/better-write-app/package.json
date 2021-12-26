@@ -29,7 +29,7 @@
     "@vuelidate/validators": "2.0.0-alpha.25",
     "@vueuse/core": "7.4.1",
     "@vueuse/head": "0.7.4",
-    "@vueuse/integrations": "7.3.0",
+    "@vueuse/integrations": "7.4.1",
     "@vueuse/motion": "2.0.0-beta.4",
     "autoprefixer": "10.4.0",
     "better-write-entity": "^0.11.7",
