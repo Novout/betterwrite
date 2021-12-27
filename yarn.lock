@@ -5104,10 +5104,10 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
-generi@0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/generi/-/generi-0.2.7.tgz#da9e6234c11bd7dcee68aeaacb7d8f3701b236fc"
-  integrity sha512-O8qxcSN2fth5DWzTRAiHWF1ttkX9rcEy3Tw02osTSpP3BzGjoSE6MK11nsQr1y76Jpm2B4M9HUituQZWowPolQ==
+generi@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/generi/-/generi-0.3.0.tgz#91f615f7eabadbe72694eb5cab477cf5b52524b1"
+  integrity sha512-RzdbrLvDzTwKdFlk9XmDqOzdOmGj1+gqQSyeDWYY2NjehvRHax9RaRoTWbqsjgJ0UVPoh6dMi7W6SRA5HDb+XQ==
   dependencies:
     consola "^2.15.3"
     execa "^5.0.0"

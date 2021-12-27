@@ -3,8 +3,11 @@ import { useEnv } from './env'
 import { useFormat } from './format'
 import { useDefines } from './defines'
 import { useUtils } from './utils'
+import { useFactory } from './factory'
 
 export const usePopulate = () => {
+  const factory = useFactory()
+
   const project = (project: ProjectState): ProjectState => {
     return {
       creative: {
@@ -25,18 +28,8 @@ export const usePopulate = () => {
             id: 1,
             title: project.name,
             entities: [
-              {
-                type: 'heading-one',
-                raw: project.name,
-                createdAt: useFormat().actually(),
-                updatedAt: useFormat().actually(),
-              },
-              {
-                type: 'paragraph',
-                raw: debug().names().paragraph(),
-                createdAt: useFormat().actually(),
-                updatedAt: useFormat().actually(),
-              },
+              factory.entity().create('heading-one', project.name),
+              factory.entity().create('paragraph', debug().names().paragraph()),
             ],
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
@@ -65,12 +58,7 @@ export const usePopulate = () => {
             id: 1,
             title: project.name,
             entities: [
-              {
-                type: 'paragraph',
-                raw: debug().names().paragraph(),
-                createdAt: useFormat().actually(),
-                updatedAt: useFormat().actually(),
-              },
+              factory.entity().create('paragraph', debug().names().paragraph()),
             ],
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),

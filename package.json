@@ -7,6 +7,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
     "dev": "turbo run dev",
+    "serve": "turbo run serve",
     "build": "turbo run build",
     "test": "turbo run test",
     "lint": "turbo run lint --parallel --no-cache",
@@ -18,7 +19,7 @@
   "devDependencies": {
     "lerna": "4.0.0",
     "turbo": "latest",
-    "generi": "0.2.7"
+    "generi": "0.3.0"
   },
   "turbo": {
     "pipeline": {
@@ -35,10 +36,12 @@
         "outputs": ["dist/**"],
         "cache": false
       },
-      "lint": {},
-      "deploy": {
-        "dependsOn": ["build", "test", "lint"]
-      }
+      "serve": {
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**"],
+        "cache": false
+      },
+      "lint": {}
     }
   }
 }
