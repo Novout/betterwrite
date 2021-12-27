@@ -1,6 +1,11 @@
-# Changelog (26/12/2021)
+# Changelog (27/12/2021)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.11.9
+
+* **fix(pdf):** set vfs fonts in pdfmake create function [cf3af60]
+* **fix(editor):** new project factory items [4f6b5f2]
 
 ### v0.11.8
 
