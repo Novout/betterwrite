@@ -555,19 +555,19 @@ export const PluginPDFSet = (
 		};
 	};
 
-	const setVfsFonts = () => {
-		const fonts: Array<string> = [];
+	const getVfsFonts = () => {
+		const _fonts: Array<string> = [];
 		const set: Record<string, any> = {};
 
-		fonts.push(stores.PDF.styles.paragraph.font);
-		fonts.push(stores.PDF.styles.headingOne.font);
-		fonts.push(stores.PDF.styles.headingTwo.font);
-		fonts.push(stores.PDF.styles.headingThree.font);
-		fonts.push(stores.PDF.styles.base.header.fontFamily);
-		fonts.push(stores.PDF.styles.base.footer.fontFamily);
-		fonts.push(stores.PDF.styles.base.summary.fontFamily);
+		_fonts.push(stores.PDF.styles.paragraph.font);
+		_fonts.push(stores.PDF.styles.headingOne.font);
+		_fonts.push(stores.PDF.styles.headingTwo.font);
+		_fonts.push(stores.PDF.styles.headingThree.font);
+		_fonts.push(stores.PDF.styles.base.header.fontFamily);
+		_fonts.push(stores.PDF.styles.base.footer.fontFamily);
+		_fonts.push(stores.PDF.styles.base.summary.fontFamily);
 
-		const unique = fonts.filter((v, i, a) => a.indexOf(v) === i);
+		const unique = _fonts.filter((v, i, a) => a.indexOf(v) === i);
 
 		unique.forEach((s: string) => {
 			set[s] = stores.PDF.normalize[s];
@@ -575,14 +575,13 @@ export const PluginPDFSet = (
 
 		if (stores.PDF.normalize['Roboto']) set['Roboto'] = stores.PDF.normalize['Roboto'];
 
-		// Suppress error: Cannot assign to import "fonts"
-		hooks.utils.object().assign(pdfMake, 'fonts', set);
+		return set;
 	};
 
 	const create = () => {
-		setVfsFonts();
+		const fonts = getVfsFonts();
 
-		const pdf = pdfMake.createPdf(doc({ final: true }) as any);
+		const pdf = pdfMake.createPdf(doc({ final: true }) as any, undefined, fonts);
 
 		new Promise((res) => {
 			pdf.download(hooks.project.utils().exportFullName('pdf'), () => {
@@ -595,10 +594,10 @@ export const PluginPDFSet = (
 	};
 
 	const preview = (input: HTMLElement) => {
-		setVfsFonts();
+		const fonts = getVfsFonts();
 
 		new Promise((res) => {
-			const generator = pdfMake.createPdf(doc({ final: false }) as any);
+			const generator = pdfMake.createPdf(doc({ final: false }) as any, undefined, fonts);
 
 			generator.getDataUrl(async (dataUrl: any) => {
 				const iframe = document.createElement('iframe');
