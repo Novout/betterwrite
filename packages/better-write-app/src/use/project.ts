@@ -247,15 +247,17 @@ export const useProject = () => {
       return longest
     }
 
-    const getWordOccurrences = (page: ContextState) => {
+    const getWordOccurrences = (page: ContextState, min: number = 0) => {
       const map = page.entities
         .filter((entity) => isValidType(entity))
         .reduce((map, value) => {
           value.raw.split(' ').forEach((raw) => {
             const normalize = raw
-              .replaceAll(',', '')
-              .replaceAll('.', '')
-              .replaceAll(':', '')
+              .trim()
+              .replace(/[~`!“”@#$%^&*()+={}\[\];:\'\"<>.,\/\\\?-_]/g, '')
+              .replaceAll('...', '')
+
+            if (normalize.length <= min) return
 
             map.set(normalize, (map.get(normalize) || 0) + 1)
           })

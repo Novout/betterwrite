@@ -5,13 +5,17 @@
         {{ t('editor.addons.statistics.repeated') }}
       </h2>
       <InputSelect
-        v-model="data"
+        v-model="chapter"
         :arr="PROJECT.pages.map((page) => page.title)"
       />
+      <h2 class="ml-10 font-bold font-poppins text-lg mr-5">
+        {{ t('editor.addons.statistics.min') }}
+      </h2>
+      <InputNumber v-model="state.min" @action="onSet" />
     </div>
     <div class="flex flex-row justify-around flex-wrap w-full mt-5">
       <div
-        v-for="(obj, index) in bests"
+        v-for="(obj, index) in state.bests"
         :key="index"
         class="flex flex-1 flex-col justify-center items-center p-1 text-2xl min-w-40"
       >
@@ -23,7 +27,7 @@
     </div>
     <div class="flex max-h-72 overflow-y-auto flex-col w-full mt-5">
       <div
-        v-for="(obj, index) in words"
+        v-for="(obj, index) in state.words"
         :key="index"
         class="flex justify-between items-center p-1 w-full"
       >
@@ -37,21 +41,23 @@
 <script setup lang="ts">
   import { useProjectStore } from '@/store/project'
   import { useProject } from '@/use/project'
-  import { ref, watch } from 'vue'
+  import { reactive, watch, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { tryOnMounted } from '@vueuse/core'
 
   const PROJECT = useProjectStore()
 
+  const chapter = ref<string>(PROJECT.pages[0].title)
   const project = useProject()
   const { t } = useI18n()
 
-  const data = ref(PROJECT.pages[0].title)
+  const state = reactive({
+    min: 2,
+    bests: new Map(),
+    words: new Map(),
+  })
 
-  const bests = ref<Map<string, number>>(new Map())
-  const words = ref<Map<string, number>>(new Map())
-
-  watch(data, (_data) => {
+  watch(chapter, () => {
     onSet()
   })
 
@@ -60,23 +66,25 @@
   })
 
   const onSet = () => {
-    const target = PROJECT.pages.filter((page) => page.title === data.value)[0]
+    const target = PROJECT.pages.filter(
+      (page) => page.title === chapter.value
+    )[0]
 
-    const result = project.utils().getWordOccurrences(target)
+    const result = project.utils().getWordOccurrences(target, state.min)
 
     const arr = [...result]
 
-    bests.value.clear()
+    state.bests.clear()
 
     const max = result.size < 5 ? result.size : 5
 
     for (let i = 0; i < max; i++) {
       if (arr[i][0] !== undefined) {
-        bests.value.set(arr[i][0], arr[i][1])
+        state.bests.set(arr[i][0], arr[i][1])
         result.delete(arr[i][0])
       }
     }
 
-    words.value = result
+    state.words = result
   }
 </script>

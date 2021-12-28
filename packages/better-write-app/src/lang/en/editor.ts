@@ -466,6 +466,7 @@ export default {
       letters: 'Letters',
       words: 'Words',
       repeated: 'Repeated Words',
+      min: 'Minimum Characters',
       paragraph: "Paragraph's",
       heading: "Heading's",
       fixed: 'Fixed Items',

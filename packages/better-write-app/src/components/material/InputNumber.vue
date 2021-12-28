@@ -59,13 +59,15 @@
 
   const onNegative = () => {
     cmp.value -= Number(props.step)
+    emit('action')
   }
 
   const onPositive = () => {
     cmp.value += Number(props.step)
+    emit('action')
   }
 
-  const emit = defineEmits(['update:modelValue'])
+  const emit = defineEmits(['update:modelValue', 'action'])
   const inp = ref<HTMLElement | null>(null as any)
   const cmp: WritableComputedRef<number> = computed({
     get() {

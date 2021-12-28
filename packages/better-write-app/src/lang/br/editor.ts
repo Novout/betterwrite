@@ -469,6 +469,7 @@ export default {
       letters: 'Letras',
       words: 'Palavras',
       repeated: 'Palavras Repetidas',
+      min: 'Mínimo de Caracteres',
       paragraph: 'Parágrafos',
       heading: 'Cabeçalhos',
       fixed: 'Itens Fixados',
