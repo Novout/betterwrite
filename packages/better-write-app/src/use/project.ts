@@ -254,7 +254,8 @@ export const useProject = () => {
           value.raw.split(' ').forEach((raw) => {
             const normalize = raw
               .trim()
-              .replace(/[~`!“”@#$%^&*()+={}\[\];:\'\"<>.,\/\\\?-_]/g, '')
+              .toLowerCase()
+              .replace(/[~`!\“\”@#$%^&*()+={}\[\];:\'\"<>.,\/\\\?-_]/g, '')
               .replaceAll('...', '')
 
             if (normalize.length <= min) return
