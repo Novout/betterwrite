@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex min-w-screen-md flex-1 flex-col w-full p-3 shadow-lg overflow-y-auto"
+    class="flex max-h-full md:max-h-96 flex-1 flex-col w-full p-3 shadow-lg overflow-y-auto"
   >
     <h2 class="font-bold font-poppins text-lg mb-5">
       {{ t('editor.addons.statistics.impact') }}
