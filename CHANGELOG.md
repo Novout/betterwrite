@@ -1,6 +1,13 @@
-# Changelog (27/12/2021)
+# Changelog (29/12/2021)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.11.10
+
+* **feat(creative):** impact chart in statistics [efe9553]
+* **fix(editor):** force lowercase in statistics [2880738]
+* **feat(editor):** min caracters in statistics [a2de929]
+* **feat(editor):** statistics best repeated words [dea5dc2]
 
 ### v0.11.9
 
