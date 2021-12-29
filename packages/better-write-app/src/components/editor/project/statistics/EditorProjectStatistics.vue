@@ -1,7 +1,10 @@
 <template>
   <FullModal :title="t('editor.bar.project.statistics')" @close="onClose">
     <div class="flex justify-start flex-col flex-wrap gap-5">
-      <EditortProjectStatisticsBase />
+      <div class="flex flex-wrap flex-col md:flex-row w-full">
+        <EditortProjectStatisticsBase />
+        <EditortProjectStatisticsImpact v-if="project.isCreativeProject()" />
+      </div>
       <EditortProjectStatisticsWord />
     </div>
   </FullModal>
@@ -11,6 +14,7 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useContextStore } from '@/store/context'
   import { useProjectStore } from '@/store/project'
+  import { useProject } from '@/use/project'
   import { useStorage } from '@/use/storage/storage'
   import { onClickOutside, MaybeElementRef } from '@vueuse/core'
   import { ref, onMounted } from 'vue'
@@ -21,6 +25,7 @@
   const PROJECT = useProjectStore()
 
   const storage = useStorage()
+  const project = useProject()
 
   const { t } = useI18n()
 

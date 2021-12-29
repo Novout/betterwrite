@@ -466,6 +466,7 @@ export default {
     statistics: {
       global: 'Global',
       characters: 'Caracteres',
+      impact: 'Impacto por Capítulo',
       letters: 'Letras',
       words: 'Palavras',
       repeated: 'Palavras Repetidas',

@@ -1,17 +1,21 @@
 <template>
   <div class="flex flex-1 flex-col w-full p-3 shadow-lg">
-    <div class="flex w-full items-center">
-      <h2 class="font-bold font-poppins text-lg mr-5">
-        {{ t('editor.addons.statistics.repeated') }}
-      </h2>
-      <InputSelect
-        v-model="chapter"
-        :arr="PROJECT.pages.map((page) => page.title)"
-      />
-      <h2 class="ml-10 font-bold font-poppins text-lg mr-5">
-        {{ t('editor.addons.statistics.min') }}
-      </h2>
-      <InputNumber v-model="state.min" @action="onSet" />
+    <div class="flex gap-5 justify-around flex-wrap w-full items-center">
+      <div class="flex">
+        <h2 class="font-bold font-poppins text-lg mr-5">
+          {{ t('editor.addons.statistics.repeated') }}
+        </h2>
+        <InputSelect
+          v-model="chapter"
+          :arr="PROJECT.pages.map((page) => page.title)"
+        />
+      </div>
+      <div class="flex">
+        <h2 class="font-bold font-poppins text-lg mr-5">
+          {{ t('editor.addons.statistics.min') }}
+        </h2>
+        <InputNumber v-model="state.min" @action="onSet" />
+      </div>
     </div>
     <div class="flex flex-row justify-around flex-wrap w-full mt-5">
       <div

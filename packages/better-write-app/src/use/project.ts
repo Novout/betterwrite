@@ -179,11 +179,31 @@ export const useProject = () => {
         .reduce((sum, val) => sum + val.length, 0)
     }
 
-    const getChapterAllCharacters = (page: ContextState) => {
+    const getChapterAllCharacters = (page: ContextState): number => {
       return page.entities.reduce(
         (sum, val) => sum + (isValidType(val) ? val.raw.length : 0),
         0
       )
+    }
+
+    const getChapterImpact = (b1: ContextState) => {
+      const a1: ContextState = PROJECT.pages.reduce((r, val) => {
+        if (!r || getChapterAllCharacters(val) > getChapterAllCharacters(r)) {
+          return val
+        }
+
+        return r
+        {
+        }
+      })
+
+      const a2 = 100
+
+      const x1 = a2 * getChapterAllCharacters(b1)
+
+      const b2 = x1 / getChapterAllCharacters(a1)
+
+      return b2
     }
 
     const getWords = (entity: Entity) => {
@@ -295,6 +315,7 @@ export const useProject = () => {
       getWords,
       getChapterLetters,
       getChapterAllCharacters,
+      getChapterImpact,
       getChapterWords,
       getChapterParagraphs,
       getChapterHeadings,
