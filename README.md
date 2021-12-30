@@ -9,9 +9,9 @@ Better Write
 A Modern Word Processor
 <h4>
 <p align="center">
-  <a href="https://www.npmjs.com/package/generi"><img src="https://img.shields.io/github/workflow/status/Novout/generi/Tests?style=for-the-badge&color=cbd5e1&"></a>
-  <a href="https://www.npmjs.com/package/generi"><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
-  <a href="https://www.npmjs.com/package/generi"><img src="https://img.shields.io/github/lerna-json/v/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
+  <a><img src="https://img.shields.io/github/workflow/status/Novout/generi/Tests?style=for-the-badge&color=cbd5e1&"></a>
+  <a><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
+  <ap><img src="https://img.shields.io/github/lerna-json/v/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
 <p>
 
 <br>
