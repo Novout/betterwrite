@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'
 import { createPinia } from 'pinia'
-import { createEditor } from 'better-write-entity'
 import { createPluginCore } from 'better-write-plugin-core'
 import { MotionPlugin as motion } from '@vueuse/motion'
 import tooltip from 'v-tooltip'
@@ -23,7 +22,6 @@ import 'vue-toastification/dist/index.css'
 const app = createApp(App)
 const head = createHead()
 const store = createPinia()
-const editor = createEditor()
 const core = createPluginCore()
 const emitter = mitt()
 
@@ -34,7 +32,6 @@ app.use(store)
 app.use(i18n)
 app.use(motion)
 app.use(head)
-app.use(editor)
 app.use(core)
 app.use(tooltip, {
   themes: {
