@@ -1,6 +1,13 @@
-# Changelog (29/12/2021)
+# Changelog (30/12/2021)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.11.11
+
+* **fix:** typo [231bfd6]
+* **test(app):** set new factory creation [7452224]
+* **chore(deps):** remove better-write-entity [21df003]
+* **fix(editor):** breaking point in statistics impact [883b871]
 
 ### v0.11.10
 
