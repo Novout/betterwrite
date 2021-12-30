@@ -2,73 +2,48 @@ import { useFormat } from '../../src/use/format'
 import { bold, italic, link, useRaw } from '../../src/use/raw'
 import { Entity } from 'better-write-types'
 import { describe, expect, it } from 'vitest'
+import { useFactory } from '../../src/use/factory'
 
 describe('Editor Converter - v1', () => {
+  const factory = useFactory()
+
   it('should not convert unnecessary paragraph', () => {
-    const entity = {
-      id: 0,
-      type: 'paragraph',
-      raw: 'Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory.entity().create('paragraph')
 
     const raw = useRaw().v1().convert(entity)
 
-    expect(entity.raw).toEqual(raw)
+    expect('').toEqual(raw)
   })
 
   it('should not convert unnecessary heading one', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-one',
-      raw: 'Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory.entity().create('heading-one')
 
     const raw = useRaw().v1().convert(entity)
 
-    expect(entity.raw).toEqual(raw)
+    expect('').toEqual(raw)
   })
 
   it('should not convert unnecessary heading two', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-two',
-      raw: 'Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory.entity().create('heading-two')
 
     const raw = useRaw().v1().convert(entity)
 
-    expect(entity.raw).toEqual(raw)
+    expect('').toEqual(raw)
   })
 
   it('should not convert unnecessary heading three', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-three',
-      raw: 'Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory.entity().create('heading-three')
 
     const raw = useRaw().v1().convert(entity)
 
-    expect(entity.raw).toEqual(raw)
+    expect('').toEqual(raw)
   })
 
   // link
   it('should not convert link in heading one', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-one',
-      raw: 'Untitled http://test Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('heading-one', 'Untitled http://test Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -76,13 +51,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should not convert link in heading one', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-two',
-      raw: 'Untitled http://test Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('heading-two', 'Untitled http://test Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -90,13 +61,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should not convert link in heading one', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-three',
-      raw: 'Untitled http://test Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('heading-three', 'Untitled http://test Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -104,13 +71,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should correct link convert', () => {
-    const entity = {
-      id: 0,
-      type: 'paragraph',
-      raw: 'Untitled http://test Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('paragraph', 'Untitled http://test Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -123,13 +86,9 @@ describe('Editor Converter - v1', () => {
 
   // italic
   it('should not convert italic in heading one', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-one',
-      raw: 'Untitled *test* Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('heading-one', 'Untitled *test* Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -137,13 +96,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should not convert italic in heading two', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-two',
-      raw: 'Untitled *test* Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('heading-two', 'Untitled *test* Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -151,13 +106,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should not convert italic in heading three', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-three',
-      raw: 'Untitled *test* Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('heading-three', 'Untitled *test* Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -165,13 +116,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should correct italic convert', () => {
-    const entity = {
-      id: 0,
-      type: 'paragraph',
-      raw: 'Untitled *test* Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('paragraph', 'Untitled *test* Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -181,13 +128,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should not convert break italic insert', () => {
-    const entity = {
-      id: 0,
-      type: 'paragraph',
-      raw: 'Untitled *test Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('paragraph', 'Untitled *test Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -196,13 +139,9 @@ describe('Editor Converter - v1', () => {
 
   // bold
   it('should not convert bold in heading one', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-one',
-      raw: 'Untitled &test& Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('heading-one', 'Untitled &test& Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -210,13 +149,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should not convert bold in heading two', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-two',
-      raw: 'Untitled &test& Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('heading-two', 'Untitled &test& Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -224,13 +159,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should not convert bold in heading three', () => {
-    const entity = {
-      id: 0,
-      type: 'heading-three',
-      raw: 'Untitled &test& Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('heading-three', 'Untitled &test& Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -238,13 +169,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should correct bold convert', () => {
-    const entity = {
-      id: 0,
-      type: 'paragraph',
-      raw: 'Untitled &test& Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('paragraph', 'Untitled &test& Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
@@ -254,13 +181,9 @@ describe('Editor Converter - v1', () => {
   })
 
   it('should not convert break bold insert', () => {
-    const entity = {
-      id: 0,
-      type: 'paragraph',
-      raw: 'Untitled &test Untitled',
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
-    } as Entity
+    const entity = factory
+      .entity()
+      .create('paragraph', 'Untitled &test Untitled')
 
     const raw = useRaw().v1().convert(entity)
 
