@@ -77,7 +77,7 @@ describe('Raw v2 - HTML', () => {
     expect(
       v2.style(useFactory().entity().create('paragraph'), styleMock)
     ).toEqual([
-      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-colors overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active',
       '',
       '',
@@ -111,7 +111,7 @@ describe('Raw v2 - HTML', () => {
     expect(
       v2.style(useFactory().entity().create('heading-one'), styleMock)
     ).toEqual([
-      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-colors overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -145,7 +145,7 @@ describe('Raw v2 - HTML', () => {
     expect(
       v2.style(useFactory().entity().create('heading-two'), styleMock)
     ).toEqual([
-      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-colors overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -179,7 +179,7 @@ describe('Raw v2 - HTML', () => {
     expect(
       v2.style(useFactory().entity().create('heading-three'), styleMock)
     ).toEqual([
-      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-colors overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -213,7 +213,7 @@ describe('Raw v2 - HTML', () => {
     expect(
       v2.style(useFactory().entity().create('heading-three'), styleMock)
     ).toEqual([
-      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-colors overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -247,7 +247,7 @@ describe('Raw v2 - HTML', () => {
     expect(
       v2.style(useFactory().entity().create('page-break'), styleMock)
     ).toEqual([
-      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-colors overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
@@ -281,7 +281,7 @@ describe('Raw v2 - HTML', () => {
     expect(
       v2.style(useFactory().entity().create('line-break'), styleMock)
     ).toEqual([
-      'editable transition-all overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+      'editable transition-colors overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
       '',
       '',
       '',
