@@ -642,6 +642,10 @@
         e.stopPropagation()
 
         entity.base().onDelete(props.entity, _index.value)
+
+        await nextTick
+
+        emitter.emit('entity-reset')
       }
 
       // italic entity
