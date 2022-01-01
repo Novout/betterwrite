@@ -527,12 +527,7 @@ export const PluginPDFSet = (
 							];
 					  }
 					: undefined,
-				pageBreakBefore: function (
-					currentNode: any,
-					followingNodesOnPage: any,
-					nodesOnNextPage: any,
-					previousNodesOnPage: any
-				) {
+				pageBreakBefore: function (currentNode: any) {
 					if (
 						currentNode.id === 'signature' &&
 						(currentNode.pageNumbers.length != 1 || currentNode.pageNumbers[0] != currentNode.pages)
@@ -555,7 +550,7 @@ export const PluginPDFSet = (
 		};
 	};
 
-	const getVfsFonts = () => {
+	const setVfsFonts = () => {
 		const _fonts: Array<string> = [];
 		const set: Record<string, any> = {};
 
@@ -575,13 +570,13 @@ export const PluginPDFSet = (
 
 		if (stores.PDF.normalize['Roboto']) set['Roboto'] = stores.PDF.normalize['Roboto'];
 
-		return set;
+		pdfMake.addFonts(set);
 	};
 
 	const create = () => {
-		const fonts = getVfsFonts();
+		setVfsFonts();
 
-		const pdf = pdfMake.createPdf(doc({ final: true }) as any, undefined, fonts);
+		const pdf = pdfMake.createPdf(doc({ final: true }) as any);
 
 		new Promise((res) => {
 			pdf.download(hooks.project.utils().exportFullName('pdf'), () => {
@@ -594,45 +589,53 @@ export const PluginPDFSet = (
 	};
 
 	const preview = (input: HTMLElement) => {
-		const fonts = getVfsFonts();
+		setVfsFonts();
 
-		new Promise((res) => {
-			const generator = pdfMake.createPdf(doc({ final: false }) as any, undefined, fonts);
+		const generator = pdfMake.createPdf(doc({ final: false }) as any);
 
-			generator.getDataUrl(async (dataUrl: any) => {
-				const iframe = document.createElement('iframe');
+		generator
+			.getDataUrl()
+			.then(
+				async (data: any) => {
+					const iframe = document.createElement('iframe');
 
-				hooks.emitter.emit('pdf-preview-exists');
+					hooks.emitter.emit('pdf-preview-exists');
 
-				await nextTick;
+					await nextTick;
 
-				iframe.src = dataUrl;
-				iframe.style.width = '400px';
-				iframe.style.height = '500px';
-				iframe.style.overflow = 'hidden';
+					iframe.src = data;
+					iframe.style.width = '400px';
+					iframe.style.height = '500px';
+					iframe.style.overflow = 'hidden';
 
-				let child = input?.lastElementChild;
-				while (child) {
-					input?.removeChild(child);
-					child = input?.lastElementChild;
+					let child = input?.lastElementChild;
+					while (child) {
+						input?.removeChild(child);
+						child = input?.lastElementChild;
+					}
+
+					input?.appendChild(iframe);
+				},
+				(err: any) => {
+					toast(hooks.i18n.t('test'));
 				}
-
-				res(input?.appendChild(iframe));
+			)
+			.finally(() => {
+				stores.ABSOLUTE.load = false;
+				isLoading.value = false;
 			});
-		}).finally(() => {
-			stores.ABSOLUTE.load = false;
-			isLoading.value = false;
-		});
 	};
 
 	On.externals().PluginPDFGenerate(emitter, [
-		() => {
+		async () => {
 			if (hooks.env.isEmptyProject(stores.PROJECT.name)) return;
 
 			toast.info(hooks.i18n.t('toast.generics.load'));
 
 			stores.ABSOLUTE.load = true;
 			isLoading.value = true;
+
+			await nextTick;
 
 			hooks.storage.normalize().then(() => {
 				create();
@@ -642,11 +645,14 @@ export const PluginPDFSet = (
 	]);
 
 	On.externals().PluginPDFPreview(emitter, [
-		() => {
+		async () => {
 			if (hooks.env.isEmptyProject(stores.PROJECT.name)) return;
 
 			stores.ABSOLUTE.load = true;
 			isLoading.value = true;
+
+			await nextTick;
+			await nextTick;
 
 			hooks.storage.normalize().then(() => {
 				preview(document.querySelector('#pdf-preview-div') as any);
