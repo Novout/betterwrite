@@ -119,7 +119,7 @@ export const setPDFI18n = () => {
 			},
 			configuration: {
 				header: {
-					content: '<Conteúdo Aqui>',
+					content: 'Conteúdo Aqui',
 				},
 				footer: {
 					style: {
@@ -266,7 +266,7 @@ export const setPDFI18n = () => {
 			},
 			configuration: {
 				header: {
-					content: '<Content Here>',
+					content: 'Content Here',
 				},
 				footer: {
 					style: {
