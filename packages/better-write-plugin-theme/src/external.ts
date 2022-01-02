@@ -255,3 +255,17 @@ export const setTailwindCssVariables = () => {
 		'theme-toast-warning-text': 'var(--theme-toast-warning-text)',
 	};
 };
+
+export const getPDFUtils = () => {
+	const _ = getComputedStyle(document.body);
+
+	const theme = {
+		paragraph: _.getPropertyValue('--theme-editor-pdf-generator-paragraph').trim(),
+		'heading-one': _.getPropertyValue('--theme-editor-pdf-generator-heading-one').trim(),
+		'heading-two': _.getPropertyValue('--theme-editor-pdf-generator-heading-two').trim(),
+		'heading-three': _.getPropertyValue('--theme-editor-pdf-generator-heading-three').trim(),
+		page: _.getPropertyValue('--theme-editor-pdf-generator-page').trim(),
+	};
+
+	return { theme };
+};
