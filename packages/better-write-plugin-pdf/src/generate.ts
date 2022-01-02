@@ -536,6 +536,10 @@ export const PluginPDFSet = (
 											][1],
 										},
 								  ]
+								: currentPage <= 1 &&
+								  stores.PDF.styles.switcher.cover &&
+								  stores.PDF.styles.base.background.data
+								? undefined
 								: [
 										{
 											canvas: [generate().styles().background()],
