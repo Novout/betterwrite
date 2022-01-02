@@ -621,18 +621,25 @@ export const PluginPDFSet = (
 		pdfMake.addFonts(set);
 	};
 
-	const create = () => {
+	const create = async () => {
 		setVfsFonts();
 
 		const pdf = pdfMake.createPdf(doc({ final: true }) as any);
 
-		new Promise((res) => {
-			pdf.download(hooks.project.utils().exportFullName('pdf'), () => {
-				res(toast.success(hooks.i18n.t('toast.pdf.create')));
+		await nextTick;
+
+		pdf
+			.download(hooks.project.utils().exportFullName('pdf'))
+			.then(() => {
+				toast.success(hooks.i18n.t('toast.pdf.create'));
+			})
+			.catch(() => {
+				toast(hooks.i18n.t('toast.generics.error'));
+			})
+			.finally(() => {
 				stores.ABSOLUTE.load = false;
 				isLoading.value = false;
 			});
-		});
 	};
 
 	const preview = (input: HTMLElement) => {
@@ -663,11 +670,13 @@ export const PluginPDFSet = (
 
 					input?.appendChild(iframe);
 				},
-				(err: any) => {
-					toast(hooks.i18n.t('test'));
-					console.log(err);
+				() => {
+					toast(hooks.i18n.t('toast.generics.error'));
 				}
 			)
+			.catch(() => {
+				toast(hooks.i18n.t('toast.generics.error'));
+			})
 			.finally(() => {
 				stores.ABSOLUTE.load = false;
 				isLoading.value = false;
