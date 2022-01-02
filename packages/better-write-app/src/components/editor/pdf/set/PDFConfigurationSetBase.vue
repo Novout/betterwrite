@@ -97,14 +97,14 @@
             <label>{{ t('editor.pdf.base.footer.type') }}</label>
             <InputSelect
               v-model="pdf.base.footer.textType"
-              :arr="['simple', 'counter']"
+              :arr="useDefines().pdf().base().footerStyle()"
             />
           </section>
           <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
             <label>{{ t('editor.pdf.base.footer.alignment') }}</label>
             <InputSelect
               v-model="pdf.base.footer.alignment"
-              :arr="['default', 'left', 'center', 'right']"
+              :arr="useDefines().pdf().base().alignment()"
             />
           </section>
           <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
@@ -147,14 +147,14 @@
             <label>{{ t('editor.pdf.base.header.type') }}</label>
             <InputSelect
               v-model="pdf.base.header.textType"
-              :arr="['simple', 'counter']"
+              :arr="useDefines().pdf().base().footerStyle()"
             />
           </section>
           <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
             <label>{{ t('editor.pdf.base.header.alignment') }}</label>
             <InputSelect
               v-model="pdf.base.header.alignment"
-              :arr="['default', 'left', 'center', 'right']"
+              :arr="useDefines().pdf().base().alignment()"
             />
           </section>
           <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
@@ -184,7 +184,10 @@
           </section>
           <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
             <label>{{ t('editor.pdf.base.summary.type') }}</label>
-            <InputSelect v-model="pdf.base.summary.type" :arr="['default']" />
+            <InputSelect
+              v-model="pdf.base.summary.type"
+              :arr="useDefines().pdf().base().summaryStyle()"
+            />
           </section>
           <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
             <label>{{ t('editor.pdf.base.summary.fontSize') }}</label>

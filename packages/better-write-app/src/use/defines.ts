@@ -1,6 +1,9 @@
 import { Callback, BetterWriteThemes } from 'better-write-types'
+import i18n from '@/lang'
 
 export const useDefines = () => {
+  const { t } = i18n.global
+
   const shortcuts = (k: string) => {
     return {
       localSaveProject: ['CTRL + S', 'ctrl > s'],
@@ -17,7 +20,7 @@ export const useDefines = () => {
     }[k]
   }
 
-  const pdf: Callback<any> = () => {
+  const pdf = () => {
     const fixFonts = () => {
       return ['EB Garamond', 'Cormorant Garamond']
     }
@@ -27,7 +30,12 @@ export const useDefines = () => {
     }
 
     const alignment = (): Array<string> => {
-      return ['left', 'center', 'right', 'justify']
+      return [
+        t('editor.pdf.configuration.alignment.justify'),
+        t('editor.pdf.configuration.alignment.left'),
+        t('editor.pdf.configuration.alignment.center'),
+        t('editor.pdf.configuration.alignment.right'),
+      ]
     }
 
     const decoration = (): Array<string> => {
@@ -150,14 +158,54 @@ export const useDefines = () => {
       }
 
       const pageOrientation = (): Array<string> => {
-        return ['portrait', 'landscape']
+        return [
+          t('editor.pdf.configuration.orientation.portrait'),
+          t('editor.pdf.configuration.orientation.landscape'),
+        ]
       }
 
       const pageMargins = (): Array<number> => {
         return [40, 20, 40, 20]
       }
 
-      return { pageSize, pageMargins, pageOrientation, pageSizeFixes }
+      const footerStyle = () => {
+        return [
+          t('editor.pdf.configuration.footer.style.simple'),
+          t('editor.pdf.configuration.footer.style.counter'),
+        ]
+      }
+
+      const summaryStyle = () => {
+        return [t('editor.pdf.configuration.summary.style.default')]
+      }
+
+      const alignment = () => {
+        return [
+          t('editor.pdf.configuration.alignment.default'),
+          t('editor.pdf.configuration.alignment.left'),
+          t('editor.pdf.configuration.alignment.center'),
+          t('editor.pdf.configuration.alignment.right'),
+        ]
+      }
+
+      const header = () => {
+        const content = () => {
+          return t('editor.pdf.configuration.header.content')
+        }
+
+        return { content }
+      }
+
+      return {
+        pageSize,
+        pageMargins,
+        pageOrientation,
+        pageSizeFixes,
+        footerStyle,
+        summaryStyle,
+        alignment,
+        header,
+      }
     }
 
     return {

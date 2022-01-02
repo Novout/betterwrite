@@ -5,3 +5,5 @@ import { PluginPDFBase } from './base';
 
 export const PDFPlugin = (): PluginTypes.Plugin =>
 	createPlugin({ name: 'pdf' }, [PluginPDFBase, PluginPDFSet]);
+
+export * from './externals';

@@ -1,3 +1,5 @@
+import { setPDFI18n } from 'better-write-plugin-pdf'
+
 export default {
   project: {
     configuration: {
@@ -131,124 +133,7 @@ export default {
       },
     },
   },
-  pdf: {
-    theme: {
-      title: 'Use Theme',
-      tooltip:
-        'This feature will use the current design theme and ignore the other pdf options that apply coloring.',
-    },
-    project: {
-      title: 'Document',
-      encryption: {
-        title: 'Encryption',
-        user: 'User Password',
-        owner: 'Owner Password',
-      },
-      permissions: {
-        title: 'Permissions',
-        printing: 'Print',
-        modifying: 'Modify',
-        copying: 'Copy',
-        annotating: 'Write',
-        fillingForms: 'Subscribe / Fill in',
-        contentAccessibility: 'Content Accessibility',
-        documentAssembly: 'Mounting',
-      },
-      tooltip: {
-        title: `The following options interfere with the user's access to the PDF. Only interfere with the default configuration if you feel it is necessary.`,
-        permissions: {
-          printing: 'Print',
-          modifying: 'Modify',
-          copying: 'Copy',
-          annotating: 'Write',
-          fillingForms: 'Subscribe / Fill in',
-          contentAccessibility: 'Content Accessibility',
-          documentAssembly: 'Mounting',
-        },
-      },
-    },
-    cover: {
-      tooltip:
-        ' So far, the cover inserted with image has problems with the top margin, defined in Page. We recommend leaving the top margin at 0 if you want to use the cover with image feature.',
-      type: 'Image',
-    },
-    base: {
-      backgroundColor: {
-        title: 'Background Color',
-        tooltip:
-          'The Background Color will only be applied if the "Use Theme" option is disabled.',
-      },
-      tooltip:
-        'Page features can change drastically up to v1.x version of BetterWrite.',
-      title: 'Page',
-      pageSize: 'Size',
-      pageOrientation: 'Orientations',
-      pageMargins: {
-        title: 'Margins',
-        left: 'Left',
-        top: 'Top',
-        right: 'Right',
-        bottom: 'Bottom',
-      },
-      footer: {
-        title: 'Footer',
-        exists: 'On',
-        start: 'Initial',
-        alignment: 'Alignment',
-        size: 'Size',
-        type: 'Style',
-        fontFamily: 'Font',
-      },
-      header: {
-        title: 'Footer',
-        content: 'Content',
-        exists: 'On',
-        start: 'Initial',
-        alignment: 'Alignment',
-        size: 'Size',
-        type: 'Style',
-        fontFamily: 'Font',
-      },
-      summary: {
-        title: 'Sumário',
-        type: 'Estilo',
-        fontSize: 'Tamanho',
-        fontFamily: 'Fonte',
-      },
-    },
-    custom: {
-      image: {
-        height: 'Height',
-        width: 'Width',
-        alignment: 'Alignment',
-      },
-      title: {
-        cover: 'Cover',
-        paragraph: 'Paragraph',
-        headingOne: 'Heading One',
-        headingTwo: 'Heading Two',
-        headingThree: 'Heading Three',
-      },
-      generics: {
-        font: 'Font',
-        fontSize: 'Font Size',
-        lineHeight: 'Line Height',
-        indent: 'Indent',
-        bold: 'Bold',
-        italics: 'Italic',
-        alignment: 'Alignment',
-        characterSpacing: 'Character-Spacing',
-        color: 'Text Color',
-        background: 'Text Background',
-        markerColor: 'Marker Color',
-        decoration: 'Decoration',
-        decorationStyle: 'Decoration Style',
-        decorationColor: 'Decoration Color',
-        breakPage: 'Break Page',
-      },
-      save: 'Save',
-    },
-  },
+  pdf: setPDFI18n().en(),
   aside: {
     dropbox: {
       connect: 'Connect',

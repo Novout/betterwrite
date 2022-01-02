@@ -1,4 +1,3 @@
-import { Callback } from 'better-write-types'
 import { useLocalStorage } from './storage/local'
 import { useProject } from './project'
 
@@ -6,7 +5,7 @@ export const useDestroy = () => {
   const local = useLocalStorage()
   const project = useProject()
 
-  const init: Callback<any> = () => {
+  const init = () => {
     project.destroy()
     local.onSaveProject()
   }

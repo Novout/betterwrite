@@ -89,7 +89,7 @@ export const usePopulate = () => {
       return {
         base: {
           summary: {
-            type: 'default',
+            type: useDefines().pdf().base().summaryStyle()[0] as any,
             fontFamily: useDefines().pdf().fontFamily()[1],
             fontSize: 20,
           },
@@ -111,17 +111,17 @@ export const usePopulate = () => {
           },
           header: {
             start: 3,
-            content: 'Content here',
-            alignment: 'center',
+            content: useDefines().pdf().base().header().content(),
+            alignment: useDefines().pdf().base().alignment()[0] as any,
             textSize: 9,
-            textType: 'simple',
+            textType: useDefines().pdf().base().footerStyle()[0] as any,
             fontFamily: useDefines().pdf().fontFamily()[1],
           },
           footer: {
             start: 3,
-            alignment: 'default',
+            alignment: useDefines().pdf().base().alignment()[0] as any,
             textSize: 9,
-            textType: 'simple',
+            textType: useDefines().pdf().base().footerStyle()[0] as any,
             fontFamily: useDefines().pdf().fontFamily()[1],
           },
         },
@@ -129,7 +129,7 @@ export const usePopulate = () => {
           font: useDefines().pdf().fontFamily()[1] as string,
           fontSize: 12 as number,
           lineHeight: 1 as number,
-          alignment: useDefines().pdf().alignment()[3] as
+          alignment: useDefines().pdf().alignment()[0] as
             | 'left'
             | 'center'
             | 'right'
@@ -161,7 +161,7 @@ export const usePopulate = () => {
           lineHeight: 1 as number,
           bold: true as boolean,
           italics: false as boolean,
-          alignment: useDefines().pdf().alignment()[1] as
+          alignment: useDefines().pdf().alignment()[2] as
             | 'left'
             | 'center'
             | 'right'
@@ -193,7 +193,7 @@ export const usePopulate = () => {
           lineHeight: 1 as number,
           bold: true as boolean,
           italics: false as boolean,
-          alignment: useDefines().pdf().alignment()[1] as
+          alignment: useDefines().pdf().alignment()[2] as
             | 'left'
             | 'center'
             | 'right'
@@ -224,7 +224,7 @@ export const usePopulate = () => {
           lineHeight: 1 as number,
           bold: true as boolean,
           italics: false as boolean,
-          alignment: useDefines().pdf().alignment()[1] as
+          alignment: useDefines().pdf().alignment()[2] as
             | 'left'
             | 'center'
             | 'right'
