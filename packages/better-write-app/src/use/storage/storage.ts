@@ -270,6 +270,14 @@ export const useStorage = () => {
       })
     }
 
+    // <= 0.12.0
+    if (!_.pdf.styles.switcher.theme) {
+      _.pdf.styles.switcher = {
+        ..._.pdf.styles.switcher,
+        theme: false,
+      }
+    }
+
     return _
   }
 

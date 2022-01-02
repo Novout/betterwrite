@@ -12,6 +12,11 @@
       class="flex flex-row flex-wrap justify-start items-center my-3 overflow-x-hidden gap-5"
     >
       <div class="wb-input-container">
+        <label class="text-xs">{{ t('editor.pdf.theme.title') }}</label>
+        <TooltipIcon class="mr-3" :tooltip="t('editor.pdf.theme.tooltip')" />
+        <InputBoolean v-model="PDF.styles.switcher.theme" />
+      </div>
+      <div class="wb-input-container">
         <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
         <InputBoolean v-model="PDF.styles.switcher.main" />
         <InputFile
@@ -23,7 +28,6 @@
           @exclude="onDeleteMainImage"
         />
       </div>
-
       <div class="wb-input-container">
         <label class="mx-2 text-xs">{{ t('editor.pdf.base.pageSize') }}</label>
         <InputSelect

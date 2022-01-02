@@ -99,6 +99,7 @@ export interface PDFStateStylesSwitcher {
 	header: boolean;
 	summary: boolean;
 	encryption: boolean;
+	theme: boolean;
 }
 
 export interface PDFState {

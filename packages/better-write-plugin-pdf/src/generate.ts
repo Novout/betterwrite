@@ -179,6 +179,9 @@ export const PluginPDFSet = (
 					text: stores.PROJECT.nameRaw,
 					fontSize: 42,
 					font: stores.PDF.styles.headingOne.font,
+					color: generate().styles().isTheme
+						? generate().styles().theme.paragraph
+						: stores.PDF.styles.paragraph.color,
 					alignment: 'center',
 					margin: [0, 50],
 				};
@@ -188,6 +191,9 @@ export const PluginPDFSet = (
 					fontSize: 11,
 					font: stores.PDF.styles.paragraph.font,
 					margin: [generate().base().pageMargins[0], 50, generate().base().pageMargins[2], 0],
+					color: generate().styles().isTheme
+						? generate().styles().theme.paragraph
+						: stores.PDF.styles.paragraph.color,
 					alignment: 'center',
 				};
 
@@ -196,6 +202,9 @@ export const PluginPDFSet = (
 					fontSize: 11,
 					font: stores.PDF.styles.paragraph.font,
 					margin: [generate().base().pageMargins[0], 250, generate().base().pageMargins[2], 0],
+					color: generate().styles().isTheme
+						? generate().styles().theme.paragraph
+						: stores.PDF.styles.paragraph.color,
 					alignment: 'left',
 					pageBreak: 'after',
 				};
@@ -205,6 +214,7 @@ export const PluginPDFSet = (
           text: stores.PROJECT.creator,
           fontSize: 11,
           font: stores.PDF.styles.paragraph.font,
+					color: generate().styles().isTheme ? generate().styles().theme.paragraph : stores.PDF.styles.paragraph.color,
           margin: [10, 10],
           alignment: 'left',
         }
@@ -291,7 +301,18 @@ export const PluginPDFSet = (
 			};
 		};
 
-		const styles = (): Record<string, any> => {
+		const styles = () => {
+			const _ = getComputedStyle(document.body);
+			const isTheme = stores.PDF.styles.switcher.theme;
+
+			const theme = {
+				paragraph: _.getPropertyValue('--theme-editor-pdf-generator-paragraph').trim(),
+				'heading-one': _.getPropertyValue('--theme-editor-pdf-generator-heading-one').trim(),
+				'heading-two': _.getPropertyValue('--theme-editor-pdf-generator-heading-two').trim(),
+				'heading-three': _.getPropertyValue('--theme-editor-pdf-generator-heading-three').trim(),
+				page: _.getPropertyValue('--theme-editor-pdf-generator-page').trim(),
+			};
+
 			const paragraph = () => {
 				return {
 					font: stores.PDF.styles.paragraph.font,
@@ -299,7 +320,7 @@ export const PluginPDFSet = (
 					lineHeight: stores.PDF.styles.paragraph.lineHeight,
 					alignment: stores.PDF.styles.paragraph.alignment,
 					characterSpacing: stores.PDF.styles.paragraph.characterSpacing,
-					color: stores.PDF.styles.paragraph.color,
+					color: isTheme ? theme.paragraph : stores.PDF.styles.paragraph.color,
 					decorationColor: stores.PDF.styles.paragraph.decorationColor,
 				};
 			};
@@ -313,7 +334,7 @@ export const PluginPDFSet = (
 					italics: stores.PDF.styles.headingOne.italics,
 					alignment: stores.PDF.styles.headingOne.alignment,
 					characterSpacing: stores.PDF.styles.headingOne.characterSpacing,
-					color: stores.PDF.styles.headingOne.color,
+					color: isTheme ? theme['heading-one'] : stores.PDF.styles.headingOne.color,
 					decorationColor: stores.PDF.styles.headingOne.decorationColor,
 				};
 			};
@@ -327,7 +348,7 @@ export const PluginPDFSet = (
 					italics: stores.PDF.styles.headingTwo.italics,
 					alignment: stores.PDF.styles.headingTwo.alignment,
 					characterSpacing: stores.PDF.styles.headingTwo.characterSpacing,
-					color: stores.PDF.styles.headingTwo.color,
+					color: isTheme ? theme['heading-two'] : stores.PDF.styles.headingTwo.color,
 					decorationColor: stores.PDF.styles.headingTwo.decorationColor,
 				};
 			};
@@ -341,7 +362,7 @@ export const PluginPDFSet = (
 					italics: stores.PDF.styles.headingThree.italics,
 					alignment: stores.PDF.styles.headingThree.alignment,
 					characterSpacing: stores.PDF.styles.headingThree.characterSpacing,
-					color: stores.PDF.styles.headingThree.color,
+					color: isTheme ? theme['heading-three'] : stores.PDF.styles.headingThree.color,
 					decorationColor: stores.PDF.styles.headingThree.decorationColor,
 				};
 			};
@@ -349,15 +370,32 @@ export const PluginPDFSet = (
 			const summaryDefault = () => {
 				return {
 					margin: [generate().base().pageMargins[0], 30, generate().base().pageMargins[2], 30],
+					color: generate().styles().isTheme
+						? generate().styles().theme.paragraph
+						: stores.PDF.styles.paragraph.color,
+				};
+			};
+
+			const background = () => {
+				return {
+					type: 'rect',
+					x: 0,
+					y: 0,
+					w: hooks.defines.pdf().base().pageSizeFixes()[stores.PDF.styles.base.pageSize][0],
+					h: hooks.defines.pdf().base().pageSizeFixes()[stores.PDF.styles.base.pageSize][1],
+					color: isTheme ? theme.page : '#FFFFFF',
 				};
 			};
 
 			return {
+				isTheme,
+				theme,
 				paragraph,
 				headingOne,
 				headingTwo,
 				headingThree,
 				summaryDefault,
+				background,
 			};
 		};
 
@@ -490,15 +528,19 @@ export const PluginPDFSet = (
 								? [
 										{
 											image: stores.PDF.styles.base.background.main,
-											width: hooks.defines.stores.PDF().base().pageSizeFixes()[
+											width: hooks.defines.pdf().base().pageSizeFixes()[
 												stores.PDF.styles.base.pageSize
 											][0],
-											height: hooks.defines.stores.PDF().base().pageSizeFixes()[
+											height: hooks.defines.pdf().base().pageSizeFixes()[
 												stores.PDF.styles.base.pageSize
 											][1],
 										},
 								  ]
-								: undefined;
+								: [
+										{
+											canvas: [generate().styles().background()],
+										},
+								  ];
 					  }
 					: undefined,
 				footer: stores.PDF.styles.switcher.footer
@@ -510,6 +552,9 @@ export const PluginPDFSet = (
 									fontSize: stores.PDF.styles.base.footer.textSize,
 									font: stores.PDF.styles.base.footer.fontFamily,
 									alignment: footer().alignment(currentPage, pageCount, pageSize),
+									color: generate().styles().isTheme
+										? generate().styles().theme.paragraph
+										: stores.PDF.styles.paragraph.color,
 								},
 							];
 					  }
@@ -523,6 +568,9 @@ export const PluginPDFSet = (
 									font: stores.PDF.styles.base.header.fontFamily,
 									decoration: 'underline',
 									alignment: header().alignment(currentPage, pageCount, pageSize),
+									color: generate().styles().isTheme
+										? generate().styles().theme.paragraph
+										: stores.PDF.styles.paragraph.color,
 								},
 							];
 					  }
@@ -581,10 +629,9 @@ export const PluginPDFSet = (
 		new Promise((res) => {
 			pdf.download(hooks.project.utils().exportFullName('pdf'), () => {
 				res(toast.success(hooks.i18n.t('toast.pdf.create')));
+				stores.ABSOLUTE.load = false;
+				isLoading.value = false;
 			});
-		}).finally(() => {
-			stores.ABSOLUTE.load = false;
-			isLoading.value = false;
 		});
 	};
 
@@ -618,6 +665,7 @@ export const PluginPDFSet = (
 				},
 				(err: any) => {
 					toast(hooks.i18n.t('test'));
+					console.log(err);
 				}
 			)
 			.finally(() => {

@@ -130,6 +130,11 @@ export default {
     },
   },
   pdf: {
+    theme: {
+      title: 'Use Theme',
+      tooltip:
+        'This feature will use the current design theme and ignore the other pdf options that apply coloring.',
+    },
     project: {
       title: 'Document',
       encryption: {

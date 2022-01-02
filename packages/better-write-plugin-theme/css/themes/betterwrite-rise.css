@@ -100,6 +100,11 @@
   --theme-editor-pdf-configuration-container-background: #2f3357;
   --theme-editor-pdf-configuration-container-background-hover: #2f3357;
   --theme-editor-pdf-configuration-container-background-active: #2f3357;
+  --theme-editor-pdf-generator-paragraph: #e1e1e1;
+  --theme-editor-pdf-generator-heading-one: #e1e1e1;
+  --theme-editor-pdf-generator-heading-two: #e1e1e1;
+  --theme-editor-pdf-generator-heading-three: #e1e1e1;
+  --theme-editor-pdf-generator-page: #2f3357;
   --theme-editor-material-border: #373d66;
   --theme-editor-material-background: #373d66;
   --theme-editor-material-background-hover: #373d66;

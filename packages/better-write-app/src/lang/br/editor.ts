@@ -129,6 +129,11 @@ export default {
     },
   },
   pdf: {
+    theme: {
+      title: 'Usar Tema',
+      tooltip:
+        'Este recurso irá usar o tema atual do projeto e irá ignorar as outras opções do pdf que apliquem coloração.',
+    },
     project: {
       title: 'Documento',
       encryption: {
