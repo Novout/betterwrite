@@ -114,6 +114,8 @@ export default {
   window: {
     confirmConfiguration: 'Do you want to quit saving the settings?',
     confirmClearLogger: 'Do you want to delete all data?',
+    saveDropbox: 'Are you sure to save this file to Dropbox?',
+    saveLocal: 'Are you sure to save this file?',
   },
   text: {
     placeholder: {
@@ -172,9 +174,9 @@ export default {
     },
     base: {
       backgroundColor: {
-        title: 'Cor do Fundo',
+        title: 'Background Color',
         tooltip:
-          'A Cor do Fundo só sera aplicada se a opção "Usar Tema" estiver desabilitada.',
+          'The Background Color will only be applied if the "Use Theme" option is disabled.',
       },
       tooltip:
         'Page features can change drastically up to v1.x version of BetterWrite.',

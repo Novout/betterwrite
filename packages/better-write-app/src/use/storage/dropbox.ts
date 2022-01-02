@@ -32,6 +32,8 @@ export const useDropbox = () => {
       return
     }
 
+    if (!confirm(t('editor.window.saveDropbox'))) return
+
     const dbx = new DBX({
       accessToken: AUTH.dropbox.accessToken,
     })

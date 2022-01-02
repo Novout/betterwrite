@@ -35,7 +35,7 @@
         v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.save')"
         shortcut="CTRL + S"
-        @action="local.onSaveProject"
+        @action="onSaveProject"
       />
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
@@ -85,4 +85,10 @@
   const env = useEnv()
   const local = useLocalStorage()
   const { t } = useI18n()
+
+  const onSaveProject = () => {
+    if (!confirm(t('editor.window.saveLocal'))) return
+
+    local.onSaveProject()
+  }
 </script>

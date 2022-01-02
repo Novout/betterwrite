@@ -256,6 +256,7 @@ export const usePopulate = () => {
           header: false,
           summary: true,
           encryption: false,
+          theme: false,
         },
       }
     }

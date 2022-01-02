@@ -1,7 +1,6 @@
 import editor from './editor'
 import toast from './toast'
 import landing from './landing'
-import desktop from './desktop'
 import seo from './seo'
 import logger from './plugin/logger'
 
@@ -10,7 +9,6 @@ export default {
   toast,
   landing,
   seo,
-  desktop,
   plugin: {
     logger,
   },

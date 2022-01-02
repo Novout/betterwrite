@@ -113,6 +113,8 @@ export default {
   window: {
     confirmConfiguration: 'Você quer sair salvando as configurações?',
     confirmClearLogger: 'Você quer excluir todos os dados?',
+    saveDropbox: 'Você tem certeza em salvar este arquivo no Dropbox?',
+    saveLocal: 'Você tem certeza em salvar este arquivo?',
   },
   text: {
     placeholder: {
