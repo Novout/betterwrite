@@ -17,6 +17,16 @@
         <InputBoolean v-model="PDF.styles.switcher.theme" />
       </div>
       <div class="wb-input-container">
+        <label class="text-xs">{{
+          t('editor.pdf.base.backgroundColor.title')
+        }}</label>
+        <TooltipIcon
+          class="mr-3"
+          :tooltip="t('editor.pdf.base.backgroundColor.tooltip')"
+        />
+        <InputColorPicker v-model="pdf.base.background.color" />
+      </div>
+      <div class="wb-input-container">
         <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
         <InputBoolean v-model="PDF.styles.switcher.main" />
         <InputFile

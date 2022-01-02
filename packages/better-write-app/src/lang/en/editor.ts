@@ -171,6 +171,11 @@ export default {
       type: 'Image',
     },
     base: {
+      backgroundColor: {
+        title: 'Cor do Fundo',
+        tooltip:
+          'A Cor do Fundo só sera aplicada se a opção "Usar Tema" estiver desabilitada.',
+      },
       tooltip:
         'Page features can change drastically up to v1.x version of BetterWrite.',
       title: 'Page',

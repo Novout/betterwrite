@@ -8,6 +8,7 @@ export interface PDFStateStyles {
 }
 
 export interface PDFStateStylesBaseBackground {
+	color: string;
 	data: string;
 	main: string;
 }

@@ -94,6 +94,7 @@ export const usePopulate = () => {
             fontSize: 20,
           },
           background: {
+            color: '#FFFFFF' as string,
             data: '' as string,
             main: '' as string,
           },

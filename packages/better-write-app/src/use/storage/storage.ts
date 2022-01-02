@@ -278,6 +278,13 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.pdf.styles.base.background.color) {
+      _.pdf.styles.base.background = {
+        ..._.pdf.styles.base.background,
+        color: '#FFFFFF',
+      }
+    }
+
     return _
   }
 

@@ -383,7 +383,7 @@ export const PluginPDFSet = (
 					y: 0,
 					w: hooks.defines.pdf().base().pageSizeFixes()[stores.PDF.styles.base.pageSize][0],
 					h: hooks.defines.pdf().base().pageSizeFixes()[stores.PDF.styles.base.pageSize][1],
-					color: isTheme ? theme.page : '#FFFFFF',
+					color: isTheme ? theme.page : stores.PDF.styles.base.background.color,
 				};
 			};
 
