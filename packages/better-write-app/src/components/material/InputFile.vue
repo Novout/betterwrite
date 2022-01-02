@@ -82,13 +82,12 @@
     const reader = new FileReader()
     const file = (inp.value as any).files[0]
 
-    if (file.name.includes('svg')) {
+    if (file.name.endsWith('.svg')) {
       reader.readAsText(file)
     } else {
       reader.readAsDataURL(file)
     }
 
-    reader.readAsText(file)
     reader.onload = function () {
       if (utils.support().images(reader)) return
 
