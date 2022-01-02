@@ -1,6 +1,22 @@
-# Changelog (30/12/2021)
+# Changelog (02/01/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.11.12
+
+* **fix(pdf):** XSS warning in i18n setter [97cb275]
+* **feat(pdf):** i18n in input select configuration [bb06446]
+* **chore(theme):** pdf utils [efbf529]
+* **chore(project):** alerts in save project [1812214]
+* **feat(pdf):** default background color option [1193309]
+* **fix(pdf):** theme background canvas broken cover image [4d57cd5]
+* **fix(pdf):** tracking error in generate [c2f7c80]
+* **fix(material):** input select in svg inputs [13e7dd2]
+* **feat(pdf):** option theme affected colors [e0a6e4e]
+* **fix(editor):** entity options in break area [52553ef]
+* **chore(pdf):** update pdfmake [b4f0ad6]
+* **fix(editor):** delete entity reset base [b71f222]
+* **fix(editor):** entity color transition [8df40a3]
 
 ### v0.11.11
 
