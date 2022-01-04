@@ -69,6 +69,28 @@
       </template>
       <template #title>{{ t('editor.aside.entity.down') }}</template>
     </EditorEntityDefaultOptionsItem>
+    <EditorEntityDefaultOptionsItem
+      v-if="entity.type === 'paragraph'"
+      @action="ABSOLUTE.entity.comment = true"
+    >
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          class="h-5 w-5"
+          role="img"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 432 432"
+        >
+          <path
+            d="M405 88q9 0 15.5 6.5T427 109v320l-86-85H107q-9 0-15.5-6.5T85 323v-43h278V88h42zm-85 128q0 9-6.5 15t-14.5 6H85L0 323V24q0-9 6.5-15T21 3h278q8 0 14.5 6t6.5 15v192z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </template>
+      <template #title>{{ t('editor.aside.entity.comments') }}</template>
+    </EditorEntityDefaultOptionsItem>
     <EditorEntityDefaultOptionsItem :off="true">
       <template #icon>
         <svg

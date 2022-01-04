@@ -166,6 +166,7 @@ export default {
       switch: 'Trocar',
       add: 'Adicionar',
       image: 'Imagem',
+      comments: 'Comentários',
     },
     project: {
       title: 'Projeto',
