@@ -1,6 +1,12 @@
-# Changelog (02/01/2022)
+# Changelog (04/01/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.11.13
+
+* **chore(pdf):** description typos [50c91a3]
+* **chore(editor):** header size icons [77ae7e6]
+* **fix(editor):** comments option [f1cd6b7]
 
 ### v0.11.12
 
