@@ -25,7 +25,7 @@ export const setPDFI18n = () => {
 				},
 				tooltip: {
 					title:
-						'As opções a seguir interferem no acesso do usuário ao PDF. Só interfira na configuração padrão se achar necessário.',
+						'As opções a seguir interferem no acesso do usuário ao PDF. Só interfira na configuração padrão se considerar necessário.',
 					permissions: {
 						printing: 'Impressão',
 						modifying: 'Modificar',
@@ -39,7 +39,7 @@ export const setPDFI18n = () => {
 			},
 			cover: {
 				tooltip:
-					'Até o momento, a capa inserida com imagem possui problemas com a margem superior, definida em Página. Recomendamos deixar a margem superior em 0 caso deseja utilizar o recurso da capa com imagem.',
+					'Até o momento, a capa inserida com a imagem possui problemas com as margens superiores, definido na seção Página. Recomendamos deixar a margem superior em 0 caso deseja utilizar a capa com imagem.',
 				type: 'Imagem',
 			},
 			base: {
