@@ -7,8 +7,8 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         aria-hidden="true"
         role="img"
-        width="21"
-        height="21"
+        width="26"
+        height="26"
         preserveAspectRatio="xMidYMid meet"
         viewBox="0 0 384 512"
       >

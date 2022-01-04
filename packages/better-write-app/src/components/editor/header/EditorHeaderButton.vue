@@ -4,7 +4,7 @@
       :style="{
         backgroundColor: props.color !== 'none' ? props.color : 'none',
       }"
-      class="inline-flex no-drag wb-icon"
+      class="inline-flex wb-icon"
       :class="[value ? 'text-theme-icon-active' : '']"
     >
       <slot name="icon" />

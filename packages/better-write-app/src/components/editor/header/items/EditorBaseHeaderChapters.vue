@@ -13,9 +13,8 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         aria-hidden="true"
         role="img"
-        class="iconify iconify--ic"
-        width="24"
-        height="24"
+        width="29"
+        height="29"
         preserveAspectRatio="xMidYMid meet"
         viewBox="0 0 24 24"
       >
