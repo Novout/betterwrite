@@ -26,9 +26,11 @@
       :data-placeholder="
         entity.utils().isFixed(_index)
           ? ''
-          : t('editor.text.placeholder.base', {
+          : focused
+          ? t('editor.text.placeholder.base', {
               prefix: EDITOR.configuration.commands.prefix,
             })
+          : ''
       "
       :style="{
         minHeight: '24px',
@@ -70,7 +72,7 @@
     VueEmitterEntityClose,
   } from 'better-write-types'
   import { useUtils } from '@/use/utils'
-  import { useMagicKeys } from '@vueuse/core'
+  import { useFocus, useMagicKeys } from '@vueuse/core'
   import { useFormat } from '@/use/format'
 
   const props = defineProps({
@@ -116,6 +118,7 @@
   const target = computed(
     () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu
   )
+  const { focused } = useFocus({ target: input })
 
   watch(props.entity, () => {
     // new entity properties
