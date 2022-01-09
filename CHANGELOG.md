@@ -1,6 +1,16 @@
-# Changelog (04/01/2022)
+# Changelog (09/01/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.11.14
+
+* **chore:** typo [42f8ecd]
+* **fix(pwa):** use prompt instead auto updater [27d2f84]
+* **chore:** improved readme [f27412b]
+* **style(graph):** activity page highlighted [c15b99c]
+* **feat(project):** create blank project in empty local storage content [f0b43ba]
+* **feat(graph):** chapter commands [edc6acc]
+* **fix(editor):** focus in entity placeholder [c01e0f3]
 
 ### v0.11.13
 
