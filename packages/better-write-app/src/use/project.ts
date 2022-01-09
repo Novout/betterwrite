@@ -74,6 +74,20 @@ export const useProject = () => {
   const onLoadProject = async (context?: ProjectObject) => {
     if (!context) context = local.getProject()
 
+    if (!context) {
+      await PROJECT.create({
+        name: 'Untitled',
+        version: '0.1.0',
+        creator: 'Better Write',
+        subject: 'Untitled',
+        type: 'blank',
+      } as any)
+
+      await local.onSaveProject(false)
+
+      context = local.getProject()
+    }
+
     if (!context) return
 
     isLoading.value = true
