@@ -28,6 +28,9 @@ export const useGraph = () => {
 
   const load = async (go: ID, page: ContextState) => {
     isLoading.value = true
+
+    await nextTick
+
     storage
       .normalize()
       .then(async () => {

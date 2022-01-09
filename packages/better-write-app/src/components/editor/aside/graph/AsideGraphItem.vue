@@ -18,6 +18,7 @@
       props.entity.type === 'image'
         ? 'flex items-end border-l border-theme-aside-graph-lines ml-1'
         : '',
+      activity ? '' : 'opacity-75',
     ]"
   >
     <div
@@ -63,15 +64,25 @@
 </template>
 
 <script setup lang="ts">
+  import { useContextStore } from '@/store/context'
   import { useEnv } from '@/use/env'
-  import { Entity } from 'better-write-types'
+  import { ContextState, Entity } from 'better-write-types'
+  import { computed } from 'vue'
 
   const props = defineProps({
     entity: {
       required: true,
       type: Object as () => Entity,
     },
+    page: {
+      required: true,
+      type: Object as () => ContextState,
+    },
   })
 
+  const CONTEXT = useContextStore()
+
   const env = useEnv()
+
+  const activity = computed<boolean>(() => props.page.id === CONTEXT.id)
 </script>

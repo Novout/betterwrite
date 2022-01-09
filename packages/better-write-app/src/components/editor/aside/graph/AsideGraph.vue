@@ -17,7 +17,7 @@
         :key="graph.normalize().key(page, ind)"
         @click="graph.to(ind, page)"
       >
-        <AsideGraphItem :entity="entity" />
+        <AsideGraphItem :entity="entity" :page="page" />
       </div>
     </div>
   </div>
