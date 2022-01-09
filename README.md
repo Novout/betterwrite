@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./.github/logo.png" height="230">
+  <img src="./.github/logo.png" height="220">
 </p>
 
 <h1 align="center">
@@ -9,9 +9,9 @@ Better Write
 A Modern Word Processor
 <h4>
 <p align="center">
-  <a><img src="https://img.shields.io/github/workflow/status/Novout/generi/Tests?style=for-the-badge&color=cbd5e1&"></a>
-  <a><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
-  <ap><img src="https://img.shields.io/github/lerna-json/v/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
+  <a href="https://better-write.vercel.app"><img src="https://img.shields.io/github/workflow/status/Novout/generi/Tests?style=for-the-badge&color=cbd5e1&"></a>
+  <a href="https://better-write.vercel.app"><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
+  <a href="https://better-write.vercel.app"><img src="https://img.shields.io/github/lerna-json/v/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
 <p>
 
 <br>
@@ -26,6 +26,8 @@ A Modern Word Processor
 - ✅ Plugin Friendly
 - ✅ Mobile & Desktop (PWA)
 - ✅ PDF - DOCX Generator
+
+[DEMO HERE](https://better-write.vercel.app)
 
 Check all features [here](./FEATURES.md)
 
