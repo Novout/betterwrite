@@ -6,6 +6,7 @@ import { ContextState } from 'better-write-types'
 import useEmitter from './emitter'
 import { useScroll } from './scroll'
 import { usePlugin } from 'better-write-plugin-core'
+import { useI18n } from 'vue-i18n'
 
 export const usePage = () => {
   const PROJECT = useProjectStore()
@@ -15,6 +16,7 @@ export const usePage = () => {
   const plugin = usePlugin()
   const emitter = useEmitter()
   const scroll = useScroll()
+  const { t } = useI18n()
 
   const onCreatePage = async () => {
     if (PROJECT.name === env.projectEmpty()) return
@@ -40,6 +42,8 @@ export const usePage = () => {
   }
 
   const onDeletePage = async () => {
+    if (!confirm(t('editor.window.deleteChapterPage'))) return
+
     if (PROJECT.name === env.projectEmpty()) return
 
     if (PROJECT.pages.length <= 1) return

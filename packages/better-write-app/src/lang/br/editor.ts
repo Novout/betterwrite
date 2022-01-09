@@ -117,6 +117,7 @@ export default {
     confirmClearLogger: 'Você quer excluir todos os dados?',
     saveDropbox: 'Você tem certeza em salvar este arquivo no Dropbox?',
     saveLocal: 'Você tem certeza em salvar este arquivo?',
+    deleteChapterPage: 'Você tem certeza em excluir o capítulo atual?',
   },
   text: {
     placeholder: {

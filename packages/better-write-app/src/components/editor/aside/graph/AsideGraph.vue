@@ -1,12 +1,15 @@
 <template>
   <div class="flex px-2 flex-col mt-5 w-full">
-    <p
-      v-if="!env.isEmptyProject(PROJECT.name)"
-      class="cursor-pointer font-bold text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
-      @click="graph.base()"
-    >
-      {{ PROJECT.nameRaw }}
-    </p>
+    <div class="flex items-center w-full">
+      <p
+        v-if="!env.isEmptyProject(PROJECT.name)"
+        class="cursor-pointer font-bold text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+        @click="graph.base()"
+      >
+        {{ PROJECT.nameRaw }}
+      </p>
+      <AsideGraphControl />
+    </div>
     <div v-for="(page, index) in PROJECT.pages" :key="index">
       <div
         v-for="(entity, ind) in page.entities"
