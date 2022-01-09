@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { useRegisterSW } from 'virtual:pwa-register/vue'
 import { createHead } from '@vueuse/head'
 import { createPinia } from 'pinia'
 import { createPluginCore } from 'better-write-plugin-core'
@@ -18,7 +19,6 @@ import './css/tailwind.css'
 import 'better-write-plugin-theme/css/inject.css'
 import 'v-tooltip/dist/v-tooltip.css'
 import 'vue-toastification/dist/index.css'
-import { useRegisterSW } from 'virtual:pwa-register/vue'
 
 const app = createApp(App)
 const head = createHead()
