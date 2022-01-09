@@ -18,6 +18,7 @@ import './css/tailwind.css'
 import 'better-write-plugin-theme/css/inject.css'
 import 'v-tooltip/dist/v-tooltip.css'
 import 'vue-toastification/dist/index.css'
+import { useRegisterSW } from 'virtual:pwa-register/vue'
 
 const app = createApp(App)
 const head = createHead()
@@ -45,6 +46,15 @@ app.use(toast, {
   position: POSITION.TOP_CENTER,
   timeout: 4000,
   maxToasts: 3,
+})
+
+useRegisterSW({
+  onRegistered(r) {
+    r &&
+      setInterval(() => {
+        r.update()
+      }, 60 * 30 * 1000)
+  },
 })
 
 router.isReady().then(() => app.mount('#app'))

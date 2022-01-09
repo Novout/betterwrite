@@ -26,7 +26,7 @@ export default defineConfig({
     vitePackageVersion(),
     vitePWA({
       base: '/',
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],  
       manifest: {
         name: 'Better Write',
