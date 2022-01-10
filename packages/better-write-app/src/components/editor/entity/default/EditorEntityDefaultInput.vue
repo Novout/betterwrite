@@ -177,6 +177,8 @@
   }
 
   watch(data, async (_data: string) => {
+    const _last = last.value
+
     if (_data === env.emptyLine()) {
       setData('')
     }
@@ -250,15 +252,19 @@
         new: factory.entity().create('page-break'),
       })
 
-      await nextTick
+      if (_last) {
+        await nextTick
 
-      CONTEXT.newInPagePosEdit({
-        entity: props.entity,
-        type: 'paragraph',
-        raw: data.value,
-      })
+        CONTEXT.newInPagePosEdit({
+          entity: props.entity,
+          type: 'paragraph',
+          raw: data.value,
+        })
 
-      emitter.emit('entity-not-mutate-down', props.entity)
+        await nextTick
+
+        emitter.emit('entity-not-mutate-down', props.entity)
+      }
     }
 
     if (
@@ -273,15 +279,19 @@
         new: factory.entity().create('line-break'),
       })
 
-      await nextTick
+      if (_last) {
+        await nextTick
 
-      CONTEXT.newInPagePosEdit({
-        entity: props.entity,
-        type: 'paragraph',
-        raw: data.value,
-      })
+        CONTEXT.newInPagePosEdit({
+          entity: props.entity,
+          type: 'paragraph',
+          raw: data.value,
+        })
 
-      emitter.emit('entity-not-mutate-down', props.entity)
+        await nextTick
+
+        emitter.emit('entity-not-mutate-down', props.entity)
+      }
     }
 
     if (
@@ -298,15 +308,19 @@
             new: content,
           })
 
-          await nextTick
+          if (_last) {
+            await nextTick
 
-          CONTEXT.newInPagePosEdit({
-            entity: props.entity,
-            type: 'paragraph',
-            raw: data.value,
-          })
+            CONTEXT.newInPagePosEdit({
+              entity: props.entity,
+              type: 'paragraph',
+              raw: data.value,
+            })
 
-          emitter.emit('entity-not-mutate-down', props.entity)
+            await nextTick
+
+            emitter.emit('entity-not-mutate-down', props.entity)
+          }
         },
         () => {
           toast.error(t('toast.generics.error'))
