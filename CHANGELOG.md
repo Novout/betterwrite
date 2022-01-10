@@ -1,6 +1,12 @@
-# Changelog (09/01/2022)
+# Changelog (10/01/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.11.15
+
+* **chore(tsconfig):** vite pwa types [25bef9a]
+* **fix(editor):** insert new line in fixed items only the last entity [bc27fc5]
+* **feat(graph):** comments show [099b991]
 
 ### v0.11.14
 
