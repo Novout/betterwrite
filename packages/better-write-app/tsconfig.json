@@ -13,7 +13,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
-    "types": ["@intlify/vite-plugin-vue-i18n/client", "vite/client"],
+    "types": ["@intlify/vite-plugin-vue-i18n/client", "vite/client", "vite-plugin-pwa/client"],
     "paths": {
       "@/*": ["src/*"]
     },
