@@ -370,6 +370,8 @@ export const PluginPDFSet = (
 					} else if (entity.type === 'line-break') {
 						_raw = lineBreak();
 					} else if (entity.type === 'image') {
+						if (!options.final) return;
+
 						_raw = image(entity);
 					}
 

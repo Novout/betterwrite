@@ -114,7 +114,7 @@ export const useFactory = () => {
 
         const reader = new FileReader()
 
-        if (file.name.includes('svg')) {
+        if (file.name.endsWith('svg')) {
           reader.readAsText(file)
         } else {
           reader.readAsDataURL(file)

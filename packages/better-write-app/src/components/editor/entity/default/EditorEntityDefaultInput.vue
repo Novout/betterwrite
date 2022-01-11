@@ -321,6 +321,10 @@
 
             emitter.emit('entity-not-mutate-down', props.entity)
           }
+
+          await nextTick
+
+          PROJECT.updateContext(CONTEXT.$state)
         },
         () => {
           toast.error(t('toast.generics.error'))

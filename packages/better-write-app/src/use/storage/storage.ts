@@ -8,9 +8,11 @@ import { nextTick } from 'vue'
 import useEmitter from '../emitter'
 import { useDefines } from '../defines'
 import { useFormat } from '../format'
+import { useContextStore } from '@/store/context'
 
 export const useStorage = () => {
   const PROJECT = useProjectStore()
+  const CONTEXT = useContextStore()
   const EDITOR = useEditorStore()
   const LOGGER = useLoggerStore()
   const PDF = usePDFStore()
@@ -327,6 +329,11 @@ export const useStorage = () => {
     emitter.emit('entity-edit-save')
     // force entity paragraph comment a save / close comment modal
     emitter.emit('entity-external-comment-save')
+
+    await nextTick
+
+    // Generators render in only PROJECT contents, context is unique for editor show
+    PROJECT.updateContext(CONTEXT.$state)
 
     // for lose ticket ms
     await nextTick
