@@ -103,6 +103,10 @@ export interface PDFStateStylesSwitcher {
 	theme: boolean;
 }
 
+export interface PDFGenerateOptions {
+	final: boolean;
+}
+
 export interface PDFState {
 	styles: PDFStateStyles;
 	fonts: Array<string>;

@@ -15,7 +15,8 @@
         leave-to-class="opacity-0"
       >
         <ListboxOptions
-          class="fixed py-1 mt-1 text-base bg-theme-background-4 rounded-md shadow-lg max-h-60 overflow-auto ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-max"
+          :class="[min ? 'max-h-28' : 'max-h-60']"
+          class="fixed py-1 mt-1 text-base bg-theme-background-4 rounded-md shadow-lg overflow-auto ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-max"
         >
           <ListboxOption
             v-for="(it, index) in props.arr"
@@ -81,6 +82,11 @@
       default: false,
     },
     aside: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
+    min: {
       required: false,
       type: Boolean,
       default: false,

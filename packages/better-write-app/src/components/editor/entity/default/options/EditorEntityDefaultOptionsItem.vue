@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center px-2 py-1 w-full hover:bg-theme-background-3"
+    class="flex items-end px-2 py-1 w-full hover:bg-theme-background-3"
     :class="[!props.off ? 'cursor-pointer' : 'cursor-default']"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
@@ -32,6 +32,11 @@
 
   const props = defineProps({
     off: {
+      default: false,
+      required: false,
+      type: Boolean,
+    },
+    align: {
       default: false,
       required: false,
       type: Boolean,

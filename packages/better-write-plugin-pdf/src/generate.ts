@@ -1,5 +1,5 @@
 import { On } from 'better-write-plugin-core';
-import { ContextState, Entity, PluginTypes } from 'better-write-types';
+import { ContextState, Entity, PDFGenerateOptions, PluginTypes } from 'better-write-types';
 import { nextTick, computed } from 'vue-demi';
 import { useNProgress } from '@vueuse/integrations';
 import { useToast } from 'vue-toastification';
@@ -66,7 +66,7 @@ export const PluginPDFSet = (
 		const entityAlignment = (b: string) => {
 			switch (b) {
 				case hooks.i18n.t('editor.pdf.configuration.alignment.justify'):
-					return 'default';
+					return 'justify';
 				case hooks.i18n.t('editor.pdf.configuration.alignment.left'):
 					return 'left';
 				case hooks.i18n.t('editor.pdf.configuration.alignment.center'):
@@ -134,10 +134,32 @@ export const PluginPDFSet = (
 			};
 		};
 
-		const paragraph = (raw: string) => {
+		const paragraph = (entity: Entity) => {
+			const obj = entity.external?.paragraph?.active
+				? {
+						font: entity.external?.paragraph?.generator.font,
+						fontSize: entity.external?.paragraph?.generator.fontSize,
+						lineHeight: entity.external?.paragraph?.generator.lineHeight,
+						alignment: transform().entityAlignment(
+							entity.external?.paragraph?.generator.alignment as any
+						),
+						indent: entity.external?.paragraph?.generator.indent,
+						characterSpacing: entity.external?.paragraph?.generator.characterSpacing,
+						color: entity.external?.paragraph?.generator.color,
+						background: entity.external?.paragraph?.generator.background,
+						italics: entity.external?.paragraph?.generator.italics,
+						bold: entity.external?.paragraph?.generator.bold,
+				  }
+				: {};
+
 			let indent = '';
 
-			for (let i = 0; i < stores.PDF.styles.paragraph.indent; i++) {
+			const quantity =
+				entity.external?.paragraph?.active && obj.indent
+					? obj.indent
+					: stores.PDF.styles.paragraph.indent;
+
+			for (let i = 0; i < quantity; i++) {
 				indent += '\t';
 			}
 
@@ -145,15 +167,20 @@ export const PluginPDFSet = (
 				text: hooks.raw
 					.v2()
 					.purge()
-					.pdf(indent + raw),
-				style: 'paragraph',
+					.pdf(indent + entity.raw),
+				style: entity.external?.paragraph?.active ? 'none' : 'paragraph',
 				preserveLeadingSpaces: true,
 				margin: [
 					generate().base().pageMargins[0],
-					stores.PDF.styles.paragraph.margin.top,
+					entity.external?.paragraph?.active
+						? entity.external.paragraph.generator.margin.top
+						: stores.PDF.styles.paragraph.margin.top,
 					generate().base().pageMargins[2],
-					stores.PDF.styles.paragraph.margin.bottom,
+					entity.external?.paragraph?.active
+						? entity.external.paragraph.generator.margin.bottom
+						: stores.PDF.styles.paragraph.margin.bottom,
 				],
+				...obj,
 			};
 		};
 
@@ -175,7 +202,7 @@ export const PluginPDFSet = (
 
 		const image = (entity: Entity) => {
 			if (entity.external?.image?.alignment === 'full') {
-				if (entity.external.image.name.includes('svg')) {
+				if (entity.external.image.name.endsWith('svg')) {
 					return {
 						svg: entity.raw,
 						width:
@@ -195,7 +222,7 @@ export const PluginPDFSet = (
 					margin: [generate().base().pageMargins[0], 10, generate().base().pageMargins[2], 10],
 				};
 			} else {
-				if (entity.external?.image?.name.includes('svg')) {
+				if (entity.external?.image?.name.endsWith('svg')) {
 					return {
 						svg: entity.raw,
 						width: entity.external?.image?.size.width,
@@ -311,7 +338,7 @@ export const PluginPDFSet = (
 			}
 		};
 
-		const content = (): Array<any> => {
+		const content = (options: PDFGenerateOptions): Array<any> => {
 			const pages: Array<ContextState> = stores.PROJECT.pages;
 			const arr: Array<any> = [];
 
@@ -330,14 +357,14 @@ export const PluginPDFSet = (
 						return;
 					}
 
-					if ((entity as any).type === 'paragraph') {
-						_raw = paragraph(entity.raw);
+					if (entity.type === 'paragraph') {
+						_raw = paragraph(entity);
 					} else if (entity.type === 'heading-one') {
 						_raw = headingOne(entity.raw);
 					} else if (entity.type === 'heading-two') {
 						_raw = headingTwo(entity.raw);
 					} else if (entity.type === 'heading-three') {
-						_raw = headingThree((entity as any).raw);
+						_raw = headingThree(entity.raw);
 					} else if (entity.type === 'page-break') {
 						_raw = pageBreak();
 					} else if (entity.type === 'line-break') {
@@ -452,7 +479,7 @@ export const PluginPDFSet = (
 		return { content, styles, base };
 	};
 
-	const doc = (options: Record<any, any>) => {
+	const doc = (options: PDFGenerateOptions) => {
 		const encrypt = () => {
 			return stores.PDF.styles.switcher.encryption
 				? {
@@ -498,7 +525,7 @@ export const PluginPDFSet = (
 
 		const content = () => {
 			return {
-				content: generate().content(),
+				content: generate().content(options),
 				styles: {
 					'heading-three': generate().styles().headingThree(),
 					'heading-two': generate().styles().headingTwo(),
@@ -661,6 +688,13 @@ export const PluginPDFSet = (
 		_fonts.push(stores.PDF.styles.base.header.fontFamily);
 		_fonts.push(stores.PDF.styles.base.footer.fontFamily);
 		_fonts.push(stores.PDF.styles.base.summary.fontFamily);
+		stores.PROJECT.pages.forEach((page: ContextState) => {
+			page.entities.forEach((entity: Entity) => {
+				if (entity.external?.paragraph?.generator.font && entity.external.paragraph.active) {
+					_fonts.push(entity.external?.paragraph?.generator.font);
+				}
+			});
+		});
 
 		const unique = _fonts.filter((v, i, a) => a.indexOf(v) === i);
 
@@ -676,7 +710,7 @@ export const PluginPDFSet = (
 	const create = async () => {
 		setVfsFonts();
 
-		const pdf = pdfMake.createPdf(doc({ final: true }) as any);
+		const pdf = pdfMake.createPdf(doc({ final: true }));
 
 		await nextTick;
 
@@ -697,7 +731,7 @@ export const PluginPDFSet = (
 	const preview = (input: HTMLElement) => {
 		setVfsFonts();
 
-		const generator = pdfMake.createPdf(doc({ final: false }) as any);
+		const generator = pdfMake.createPdf(doc({ final: false }));
 
 		generator
 			.getDataUrl()

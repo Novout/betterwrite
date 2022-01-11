@@ -40,6 +40,46 @@ export const useFactory = () => {
         }
       }
 
+      if (type === 'paragraph') {
+        return {
+          type,
+          raw: raw || env.emptyLine(),
+          createdAt: format.actually(),
+          updatedAt: format.actually(),
+          visual: {
+            error: false,
+            info: false,
+            warning: false,
+          },
+          external: {
+            paragraph: {
+              active: false,
+              generator: {
+                font: 'Roboto',
+                fontSize: 12,
+                lineHeight: 1,
+                alignment: 'justify',
+                indent: 3,
+                characterSpacing: 1,
+                color: '#000000',
+                background: '#FFFFFF',
+                italics: false,
+                bold: false,
+                margin: {
+                  top: 2,
+                  bottom: 2,
+                },
+              },
+            },
+            comment: {
+              raw: '',
+              updatedAt: format.actually(),
+              createdAt: format.actually(),
+            },
+          },
+        }
+      }
+
       return {
         type,
         raw: raw || env.emptyLine(),

@@ -168,6 +168,7 @@ export default {
       add: 'Adicionar',
       image: 'Imagem',
       comments: 'Comentários',
+      paragraph: 'Parágrafo',
     },
     project: {
       title: 'Projeto',

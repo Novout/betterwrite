@@ -100,6 +100,9 @@ export const useDropbox = () => {
           .catch((err: DropboxResponseError<any>) => {
             toast.error(t('toast.project.error'))
           })
+          .finally(() => {
+            isLoading.value = false
+          })
       },
 
       cancel: function () {},

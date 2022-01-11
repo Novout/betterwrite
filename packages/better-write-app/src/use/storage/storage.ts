@@ -143,22 +143,6 @@ export const useStorage = () => {
         index: 0,
       }
     }
-    _.project?.pages.forEach((target: any) => {
-      if (
-        target['entities'].type === 'paragraph' &&
-        !target['entities'].external &&
-        !target['entities'].external.comment
-      )
-        return
-
-      target['entities'].external = {
-        comment: {
-          raw: '',
-          updatedAt: useFormat().actually(),
-          createdAt: useFormat().actually(),
-        },
-      }
-    })
 
     // <= 0.9.2
     if (!_.editor.configuration.entity) {
@@ -277,13 +261,50 @@ export const useStorage = () => {
         theme: false,
       }
     }
-
     if (!_.pdf.styles.base.background.color) {
       _.pdf.styles.base.background = {
         ..._.pdf.styles.base.background,
         color: '#FFFFFF',
       }
     }
+    _.project?.pages.forEach((page: any) => {
+      page.entities = page.entities.map((entity) => {
+        if (entity.type !== 'paragraph' || entity.external?.paragraph)
+          return entity
+
+        const _entity = entity
+
+        const paragraph = {
+          active: false,
+          generator: {
+            font: 'Roboto',
+            fontSize: 12,
+            lineHeight: 1,
+            alignment: 'justify',
+            indent: 3,
+            characterSpacing: 1,
+            color: '#000000',
+            background: '#FFFFFF',
+            italics: false,
+            bold: false,
+            margin: {
+              top: 2,
+              bottom: 2,
+            },
+          },
+        }
+
+        if (!_entity.external) {
+          _entity.external = {
+            paragraph,
+          }
+        } else {
+          _entity.external['paragraph'] = paragraph
+        }
+
+        return _entity
+      })
+    })
 
     return _
   }

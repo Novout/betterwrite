@@ -353,6 +353,129 @@
         </EditorEntityDefaultOptionsOverflow>
       </template>
     </EditorEntityDefaultOptionsItem>
+    <EditorEntityDefaultOptionsItem
+      v-if="entity.type === 'paragraph'"
+      :off="true"
+    >
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          class="h-5 w-5"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M13 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4h-2v6H9V4h4m0 6a2 2 0 0 0 2-2a2 2 0 0 0-2-2h-2v4h2z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </template>
+      <template #title>{{ t('editor.aside.entity.paragraph') }}</template>
+
+      <template #overflow>
+        <div class="flex p-3 items-center justify-between w-full">
+          <h3>Test</h3>
+          <InputBoolean v-model="paragraph.active" />
+        </div>
+        <div
+          class="flex flex-col items-center overflow-auto max-h-28"
+          :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
+        >
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.font')
+            }}</label>
+            <InputSelect
+              v-model="(paragraph.generator as any).font"
+              class="flex-1"
+              :min="true"
+              :arr="PDF.fonts"
+              :font="true"
+            />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.fontSize')
+            }}</label>
+            <InputNumber v-model="(paragraph.generator as any).fontSize" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.bold')
+            }}</label>
+            <InputBoolean v-model="(paragraph.generator as any).bold" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.italics')
+            }}</label>
+            <InputBoolean v-model="(paragraph.generator as any).italics" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.base.pageMargins.title')
+            }}</label>
+            <section>
+              <label>{{ t('editor.pdf.base.pageMargins.top') }}</label>
+              <InputNumber v-model="(paragraph.generator as any).margin.top" />
+            </section>
+            <section>
+              <label>{{ t('editor.pdf.base.pageMargins.bottom') }}</label>
+              <InputNumber
+                v-model="(paragraph.generator as any).margin.bottom"
+              />
+            </section>
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.lineHeight')
+            }}</label>
+            <InputNumber v-model="(paragraph.generator as any).lineHeight" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.alignment')
+            }}</label>
+            <InputCarousel
+              v-model="(paragraph.generator as any).alignment"
+              class="flex-1"
+              :arr="defines.pdf().alignment()"
+            />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.indent')
+            }}</label>
+            <InputNumber v-model="(paragraph.generator as any).indent" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.characterSpacing')
+            }}</label>
+            <InputNumber
+              v-model="(paragraph.generator as any).characterSpacing"
+            />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-1 text-xs">{{
+              t('editor.pdf.custom.generics.color')
+            }}</label>
+            <InputColorPicker v-model="(paragraph.generator as any).color" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-1 text-xs">{{
+              t('editor.pdf.custom.generics.background')
+            }}</label>
+            <InputColorPicker
+              v-model="(paragraph.generator as any).background"
+            />
+          </div>
+        </div>
+      </template>
+    </EditorEntityDefaultOptionsItem>
     <EditorEntityDefaultOptionsItem v-if="entity.type === 'image'" :off="true">
       <template #icon>
         <svg
@@ -414,10 +537,13 @@
   import { useI18n } from 'vue-i18n'
   import useEmitter from '@/use/emitter'
   import { usePlugin } from 'better-write-plugin-core'
+  import { usePDFStore } from '@/store/pdf'
+  import { useDefines } from '@/use/defines'
 
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
   const CONTEXT = useContextStore()
+  const PDF = usePDFStore()
 
   const entity = computed<Entity>(
     () => CONTEXT.entities[EDITOR.actives.entity.index]
@@ -429,6 +555,7 @@
   const { t } = useI18n()
   const emitter = useEmitter()
   const plugin = usePlugin()
+  const defines = useDefines()
 
   onClickOutside(options, () => onClose())
 
@@ -541,5 +668,19 @@
       image.height as any
     ;(CONTEXT.entities[_index] as any).external.image.size.width =
       image.width as any
+  })
+
+  const paragraph = reactive({
+    active: entity.value.external?.paragraph?.active,
+    generator: entity.value.external?.paragraph?.generator,
+  })
+
+  watch(paragraph, () => {
+    const _index: number = CONTEXT.entities.indexOf(entity.value)
+
+    ;(CONTEXT.entities[_index] as any).external.paragraph.active =
+      paragraph.active as any
+    ;(CONTEXT.entities[_index] as any).external.paragraph.generator =
+      paragraph.generator as any
   })
 </script>
