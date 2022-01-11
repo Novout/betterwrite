@@ -2,6 +2,10 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.11.17
+
+* **chore(editor):** paragraph options title [3ea07d9]
+
 ### v0.11.16
 
 * **chore:** standardize the prettierrc [2f55230]
