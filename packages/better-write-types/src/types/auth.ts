@@ -1,9 +1,9 @@
-import { Maybe } from './utils';
+import { Maybe } from './utils'
 
 export interface AuthState {
-	dropbox: AuthStateDropbox;
+  dropbox: AuthStateDropbox
 }
 
 interface AuthStateDropbox {
-	accessToken: Maybe<string>;
+  accessToken: Maybe<string>
 }

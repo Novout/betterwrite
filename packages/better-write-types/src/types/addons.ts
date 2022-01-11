@@ -1,17 +1,17 @@
 export interface AddonsState {
-	corrector: AddonsCorrector;
+  corrector: AddonsCorrector
 }
 
 export interface AddonsCorrector {
-	options: Array<AddonsCorrectorOption>;
+  options: Array<AddonsCorrectorOption>
 }
 
 export interface AddonsCorrectorOption {
-	title: string;
-	description: string;
-	option: boolean;
-	html: {
-		before: string;
-		after: string;
-	};
+  title: string
+  description: string
+  option: boolean
+  html: {
+    before: string
+    after: string
+  }
 }

@@ -1,10 +1,10 @@
 export interface LoggerState {
-	content: Array<LoggerContent>;
+  content: Array<LoggerContent>
 }
 
 export interface LoggerContent {
-	type: 'system' | 'internal' | 'editor' | 'project';
-	method: 'log' | 'warn' | 'error' | 'info';
-	arguments: IArguments | string;
-	createdAt?: string;
+  type: 'system' | 'internal' | 'editor' | 'project'
+  method: 'log' | 'warn' | 'error' | 'info'
+  arguments: IArguments | string
+  createdAt?: string
 }

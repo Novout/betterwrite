@@ -1,120 +1,120 @@
 export interface ContextActionsUpdateInPage {
-	entity: Entity;
-	raw: string;
+  entity: Entity
+  raw: string
 }
 
 export interface ContextActionSwitchInPage {
-	entity: Entity;
-	direction: 'up' | 'down';
+  entity: Entity
+  direction: 'up' | 'down'
 }
 
 export interface ContextActionSwitchEntityRaw {
-	entity: Entity;
-	match: string;
-	raw: string;
+  entity: Entity
+  match: string
+  raw: string
 }
 
 export interface ContextActionNewInExistentEntity {
-	old: Entity;
-	new: Entity;
+  old: Entity
+  new: Entity
 }
 
 export interface ContextActionNewInPage {
-	entity: Entity;
-	type: string;
+  entity: Entity
+  type: string
 }
 
 export interface ContextActionNewInPagePosEdit {
-	entity: Entity;
-	type: EntityType;
-	raw?: string;
+  entity: Entity
+  type: EntityType
+  raw?: string
 }
 
 export interface ContextActionAlterInPage {
-	entity: Entity;
-	type: EntityType;
+  entity: Entity
+  type: EntityType
 }
 
 export type EntityType =
-	| 'paragraph'
-	| 'heading-one'
-	| 'heading-two'
-	| 'heading-three'
-	| 'page-break'
-	| 'line-break'
-	| 'image';
+  | 'paragraph'
+  | 'heading-one'
+  | 'heading-two'
+  | 'heading-three'
+  | 'page-break'
+  | 'line-break'
+  | 'image'
 
 export type ContextState = {
-	id: number;
-	title: string;
-	entities: Array<Entity>;
-	createdAt: string;
-	updatedAt: string;
-};
+  id: number
+  title: string
+  entities: Array<Entity>
+  createdAt: string
+  updatedAt: string
+}
 
 export interface EntityShowEditOptions {
-	keyboard?: boolean;
-	switch?: boolean;
-	selectionInitial?: boolean;
-	cursor?: boolean;
+  keyboard?: boolean
+  switch?: boolean
+  selectionInitial?: boolean
+  cursor?: boolean
 }
 
 export interface EntityExternalComment {
-	raw: string;
-	updatedAt: string;
-	createdAt: string;
+  raw: string
+  updatedAt: string
+  createdAt: string
 }
 
 export interface EntityExternalParagraph {
-	active: boolean;
-	generator: {
-		font: string;
-		fontSize: number;
-		lineHeight: number;
-		alignment: 'left' | 'center' | 'right' | 'justify';
-		indent: number;
-		characterSpacing: number;
-		color: string;
-		background: string;
-		italics: boolean;
-		bold: boolean;
-		margin: {
-			top: number;
-			bottom: number;
-		};
-	};
+  active: boolean
+  generator: {
+    font: string
+    fontSize: number
+    lineHeight: number
+    alignment: 'left' | 'center' | 'right' | 'justify'
+    indent: number
+    characterSpacing: number
+    color: string
+    background: string
+    italics: boolean
+    bold: boolean
+    margin: {
+      top: number
+      bottom: number
+    }
+  }
 }
 
 export interface EntityExternal {
-	paragraph?: EntityExternalParagraph;
-	image?: EntityExternalImage;
-	comment?: EntityExternalComment;
+  paragraph?: EntityExternalParagraph
+  image?: EntityExternalImage
+  comment?: EntityExternalComment
 }
 
 export interface EntityExternalImageSize {
-	width: number;
-	height: number;
+  width: number
+  height: number
 }
 
 export interface EntityExternalImage {
-	name: string;
-	size: EntityExternalImageSize;
-	alignment: 'left' | 'center' | 'right' | 'full';
+  name: string
+  size: EntityExternalImageSize
+  alignment: 'left' | 'center' | 'right' | 'full'
 }
 
 export interface EntityVisual {
-	info: boolean;
-	error: boolean;
-	warning: boolean;
+  info: boolean
+  error: boolean
+  warning: boolean
 }
 
 export type Entity = {
-	type: EntityType;
-	raw: string;
-	createdAt: string;
-	updatedAt: string;
-	visual: EntityVisual;
-	external?: EntityExternal;
-};
+  type: EntityType
+  raw: string
+  createdAt: string
+  updatedAt: string
+  visual: EntityVisual
+  external?: EntityExternal
+}
 
-export type Entities = Array<Entity>;
+export type Entities = Array<Entity>
