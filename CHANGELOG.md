@@ -1,6 +1,13 @@
-# Changelog (10/01/2022)
+# Changelog (11/01/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.11.16
+
+* **chore:** standardize the prettierrc [2f55230]
+* **fix(editor):** project update in normalize storage [bbdf244]
+* **feat(editor):** entity paragraph custom [b144468]
+* **style(pwa):** width settings in prompt [343fb30]
 
 ### v0.11.15
 
