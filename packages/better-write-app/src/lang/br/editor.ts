@@ -169,6 +169,7 @@ export default {
       image: 'Imagem',
       comments: 'Comentários',
       paragraph: 'Parágrafo',
+      optionsOn: 'Habilitar',
     },
     project: {
       title: 'Projeto',
@@ -314,8 +315,7 @@ export default {
   pwa: {
     prompt: {
       offlineReady: 'Aplicativo pronto para funcionar offline!',
-      newContent:
-        'Novo conteúdo disponível, clique no botão recarregar para atualizar.',
+      newContent: `Novo conteúdo disponível, clique no botão 'Atualizar' para carregar a nova versão.`,
       reload: 'Atualizar',
       close: 'Fechar',
     },

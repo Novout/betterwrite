@@ -170,6 +170,7 @@ export default {
       image: 'Image',
       comments: 'Comments',
       paragraph: 'Paragraph',
+      optionsOn: 'Enable',
     },
     project: {
       title: 'Project',

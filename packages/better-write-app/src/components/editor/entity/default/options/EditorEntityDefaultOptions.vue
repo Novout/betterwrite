@@ -377,7 +377,7 @@
 
       <template #overflow>
         <div class="flex p-3 items-center justify-between w-full">
-          <h3>Test</h3>
+          <h3>{{ t('editor.aside.entity.optionsOn') }}</h3>
           <InputBoolean v-model="paragraph.active" />
         </div>
         <div
