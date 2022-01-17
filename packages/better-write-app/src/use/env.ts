@@ -22,9 +22,7 @@ export const useEnv = () => {
   }
 
   const maxFonts = () => {
-    return parseInt(
-      import.meta.env.VITE_GOOGLE_FONTS_MAX_FONTS as string
-    ) as number
+    return import.meta.env.VITE_GOOGLE_FONTS_MAX_FONTS
   }
 
   const production = () => {
