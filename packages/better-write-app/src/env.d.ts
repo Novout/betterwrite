@@ -7,6 +7,28 @@ declare module '*.vue' {
   export default component
 }
 
+interface ImportMetaEnv {
+  readonly VITE_APP_TITLE: string
+  readonly VITE_PROJECT_EMPTY: string
+  readonly VITE_LOCAL_STORAGE: string
+  readonly VITE_EMPTY_LINE: string
+  readonly VITE_LINE_BREAK: string
+  readonly VITE_PAGE_BREAK: string
+  readonly VITE_INITIAL_LOAD: string
+
+  readonly VITE_GOOGLE_FONTS_KEY: string
+  readonly VITE_GOOGLE_FONTS_MAX_FONTS: number
+
+  readonly VITE_DROPBOX_APP_KEY: string
+
+  readonly VITE_SUPABASE_URL: string
+  readonly VITE_SUPABASE_ANON_KEY: string
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}
+
 declare module 'virtual:pwa-register/vue' {
   // @ts-ignore ignore when vue is not installed
   import type { Ref } from 'vue'
