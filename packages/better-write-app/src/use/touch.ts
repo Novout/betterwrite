@@ -2,7 +2,7 @@ import { tryOnBeforeUnmount, tryOnMounted } from '@vueuse/core'
 import { ref } from 'vue'
 
 export const useTouch = (duration: number = 300) => {
-  const timer = ref<number | null>(0)
+  const timer = ref<any>(0)
   const isLong = ref<boolean>(false)
 
   const touchstart = () => {

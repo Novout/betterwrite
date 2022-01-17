@@ -1,6 +1,7 @@
 <template>
   <teleport to="body">
-    <EditorEntityDefaultOptions v-if="ABSOLUTE.entity.menu" />
+    <EditorAuthLogin v-if="ABSOLUTE.auth.supabase" />
+    <EditorEntityDefaultOptions v-else-if="ABSOLUTE.entity.menu" />
     <EditorShortcutsSwitcher v-else-if="ABSOLUTE.shortcuts.switcher" />
     <EditorShortcutsFinder v-else-if="ABSOLUTE.shortcuts.finder" />
     <EditorEntityDefaultComment v-else-if="ABSOLUTE.entity.comment" />

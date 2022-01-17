@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "1.4.2",
+    "@supabase/supabase-js": "1.29.1",
     "@tailwindcss/forms": "0.3.4",
     "@vue/test-utils": "2.0.0-rc.17",
     "@vuelidate/core": "2.0.0-alpha.32",
@@ -88,6 +89,7 @@
     "optimizeDeps": {
       "include": [
         "@headlessui/vue",
+        "@supabase/supabase-js",
         "@vue/reactivity",
         "@vueuse/core",
         "@vueuse/head",

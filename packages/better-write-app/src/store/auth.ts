@@ -4,6 +4,9 @@ import { defineStore } from 'pinia'
 export const useAuthStore = defineStore('auth', {
   state: (): AuthState => {
     return {
+      account: {
+        user: null,
+      },
       dropbox: {
         accessToken: null,
       },

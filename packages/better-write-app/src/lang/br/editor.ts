@@ -1,6 +1,17 @@
 import { setPDFI18n } from 'better-write-plugin-pdf'
 
 export default {
+  auth: {
+    login: {
+      show: 'Entrar',
+      title: 'Entrar no Better Write',
+      error: 'Ocorreu um erro inesperado na autenticação da conta :(',
+      placeholder: 'Digite seu email aqui.',
+      success: 'Logado com sucesso!',
+      google: 'Entrar com Conta Google',
+      github: 'Entrar com Conta Github',
+    },
+  },
   project: {
     configuration: {
       title: 'Configurações do Projeto',
