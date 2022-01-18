@@ -7,13 +7,13 @@
       <div
         v-for="(context, index) in projects"
         :key="index"
-        class="flex flex-col w-full sm:w-60 flex-wrap justify-between items-center p-5 bg-theme-background-2 wb-text rounded my-1 shadow-binset"
+        class="flex flex-col w-full sm:w-52 flex-wrap justify-between items-center p-5 bg-theme-background-2 wb-text rounded my-1 shadow-binset"
       >
         <div
-          v-if="context.pdf.styles.base.background.main"
-          class="h-60 bg-cover"
+          v-if="context.pdf.styles.base.background.data"
+          class="flex items-center justify-center h-60 bg-cover"
         >
-          <img :src="context.pdf.styles.base.background.main" />
+          <img :src="context.pdf.styles.base.background.data" />
         </div>
         <div v-else class="flex items-center justify-center h-60">
           <svg
