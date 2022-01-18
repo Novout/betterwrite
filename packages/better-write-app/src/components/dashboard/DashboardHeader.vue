@@ -1,6 +1,6 @@
 <template>
   <header
-    class="flex items-center justify-between w-full bg-theme-background-2 p-3"
+    class="flex items-center justify-between w-full bg-theme-background-2 p-5"
   >
     <h1 class="text-xl font-poppins font-bold wb-text">
       {{ t('dashboard.title') }}

@@ -1,11 +1,14 @@
 <template>
-  <div class="flex flex-col w-full p-2 md:p-10">
+  <div class="flex flex-col w-full p-5">
     <h2 class="text-2xl font-bold wb-text my-5">
-      {{ t('dashboard.projects') }}
+      {{ t('dashboard.projects.title') }}
     </h2>
-    <div class="flex flex-wrap flex-row justify-start items-center gap-10">
+    <div
+      class="flex flex-wrap flex-row justify-start items-center gap-10 bg-black-opacity p-5"
+    >
       <div
         v-for="(context, index) in projects"
+        v-if="projects.length !== 0"
         :key="index"
         class="flex flex-col w-full sm:w-52 flex-wrap justify-between items-center p-5 bg-theme-background-2 wb-text rounded my-1 shadow-binset"
       >
@@ -43,7 +46,26 @@
           </svg>
         </div>
         <div class="flex justify-between items-center w-full">
-          <p class="text-lg">{{ context.project.nameRaw }}</p>
+          <p class="text-lg truncate">{{ context.project.nameRaw }}</p>
+          <HeroIcon
+            class="wb-icon"
+            @click.prevent.stop="onDeleteProject(context)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              role="img"
+              class="h-8 w-8"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </HeroIcon>
           <HeroIcon
             class="wb-icon"
             @click.prevent.stop="supabase.loadProject(context)"
@@ -69,6 +91,9 @@
           </HeroIcon>
         </div>
       </div>
+      <div v-else class="wb-text">
+        {{ t('dashboard.projects.empty') }}
+      </div>
     </div>
   </div>
 </template>
@@ -76,7 +101,7 @@
 <script setup lang="ts">
   import { useSupabase } from '@/use/storage/supabase'
   import { ProjectObject } from 'better-write-types'
-  import { ref } from 'vue'
+  import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const supabase = useSupabase()
@@ -84,7 +109,19 @@
 
   const projects = ref<ProjectObject[]>([])
 
-  supabase.getProjects().then((_projects) => {
-    projects.value = _projects as ProjectObject[]
+  const onSetProject = () => {
+    supabase.getProjects().then((_projects) => {
+      projects.value = _projects as ProjectObject[]
+    })
+  }
+
+  onMounted(() => {
+    onSetProject()
   })
+
+  const onDeleteProject = (context: ProjectObject) => {
+    supabase.deleteProject(context).then(() => {
+      onSetProject()
+    })
+  }
 </script>

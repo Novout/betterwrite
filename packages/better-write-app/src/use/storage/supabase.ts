@@ -117,6 +117,25 @@ export const useSupabase = () => {
     }
   }
 
+  const deleteProject = async (context: ProjectObject) => {
+    isLoading.value = true
+
+    const { error } = await s
+      .from('projects')
+      .delete({ returning: 'minimal' })
+      .match({ id: context.id })
+
+    isLoading.value = false
+
+    if (error) {
+      toast.error(error.message)
+
+      return
+    }
+
+    toast.success(t('toast.project.save'))
+  }
+
   const loadProject = (context: ProjectObject) => {
     AUTH.account.project_id_activity = context.id || null
 
@@ -129,5 +148,5 @@ export const useSupabase = () => {
     })
   }
 
-  return { login, out, getProjects, saveProject, loadProject }
+  return { login, out, getProjects, saveProject, loadProject, deleteProject }
 }
