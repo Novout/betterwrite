@@ -17,6 +17,7 @@ module.exports = {
     "vue/no-parsing-error": 0,
     "vue/no-v-html": 0, // editor entities
     "vue/require-prop-types": 0, // material any inserts
+    "vue/multi-word-component-names": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "no-undef": 0,

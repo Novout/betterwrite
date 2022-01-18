@@ -32,10 +32,22 @@
         @action="project.onLoadProject"
       />
       <EditorHeaderItem
+        v-if="AUTH.account.user"
+        :divider="true"
+        :text="t('editor.bar.supabase.load')"
+        @action="router.push('/dashboard')"
+      />
+      <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
+      <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.save')"
         shortcut="CTRL + S"
         @action="onSaveProject"
+      />
+      <EditorHeaderItem
+        v-if="PROJECT.name !== env.projectEmpty() && AUTH.account.user"
+        :text="t('editor.bar.supabase.save')"
+        @action="onSaveProjectSupabase"
       />
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
@@ -77,18 +89,30 @@
   import { useEnv } from '@/use/env'
   import { useI18n } from 'vue-i18n'
   import { useLocalStorage } from '@/use/storage/local'
+  import { useSupabase } from '@/use/storage/supabase'
+  import { useAuthStore } from '@/store/auth'
+  import { useRouter } from 'vue-router'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
+  const AUTH = useAuthStore()
 
+  const supabase = useSupabase()
   const project = useProject()
   const env = useEnv()
   const local = useLocalStorage()
   const { t } = useI18n()
+  const router = useRouter()
 
   const onSaveProject = () => {
     if (!confirm(t('editor.window.saveLocal'))) return
 
     local.onSaveProject()
+  }
+
+  const onSaveProjectSupabase = () => {
+    if (!confirm(t('editor.window.saveLocal'))) return
+
+    supabase.saveProject()
   }
 </script>

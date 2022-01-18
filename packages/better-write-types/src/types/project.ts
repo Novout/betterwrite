@@ -50,6 +50,7 @@ export interface ProjectStatePDFPermissions {
 }
 
 export interface ProjectObject {
+  id?: ID<number>
   project: ProjectState
   editor: EditorState
   logger: LoggerState

@@ -26,7 +26,10 @@
       :class="[mobile ? 'w-32' : 'w-auto']"
       class="flex items-center px-3 font-poppins py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full"
     >
-      <button class="flex items-center truncate">
+      <button
+        class="flex items-center truncate"
+        @click.prevent.stop="onDashboard"
+      >
         <HeroIcon class="mr-2">
           <svg
             v-if="AUTH.account.user.app_metadata.provider === 'google'"
@@ -76,7 +79,7 @@
         </p>
       </button>
       <HeroIcon
-        clas="wb-text cursor-pointer"
+        clas="wb-icon cursor-pointer"
         @click.prevent.stop="supabase.out"
       >
         <svg
@@ -104,19 +107,23 @@
   import { useSupabase } from '@/use/storage/supabase'
   import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
   import { useI18n } from 'vue-i18n'
+  import { useRouter } from 'vue-router'
 
   const ABSOLUTE = useAbsoluteStore()
   const AUTH = useAuthStore()
 
   const { t } = useI18n()
-
   const supabase = useSupabase()
+  const router = useRouter()
 
   const breakpoints = useBreakpoints(breakpointsTailwind)
-
   const mobile = breakpoints.greater('sm')
 
   const onOpen = () => {
     ABSOLUTE.auth.supabase = true
+  }
+
+  const onDashboard = () => {
+    router.push('/dashboard')
   }
 </script>

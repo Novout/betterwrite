@@ -7,6 +7,7 @@ import { useShortcutsStore } from './shortcuts'
 
 import { GlobalState } from 'better-write-types'
 import { useProjectStore } from './project'
+import { useAuthStore } from './auth'
 
 export const useGlobalStore = defineStore('global', {
   state: (): GlobalState => {
@@ -20,6 +21,7 @@ export const useGlobalStore = defineStore('global', {
       const absolute = useAbsoluteStore()
       const shortcuts = useShortcutsStore()
       const project = useProjectStore()
+      const auth = useAuthStore()
 
       absolute.$reset()
       shortcuts.$reset()
@@ -27,6 +29,7 @@ export const useGlobalStore = defineStore('global', {
       pdf.resetStyles()
       logger.reset()
       project.$reset()
+      auth.account.project_id_activity = null
     },
   },
 })

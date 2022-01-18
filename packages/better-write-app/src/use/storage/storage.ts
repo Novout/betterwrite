@@ -9,6 +9,7 @@ import useEmitter from '../emitter'
 import { useDefines } from '../defines'
 import { useFormat } from '../format'
 import { useContextStore } from '@/store/context'
+import { useAuthStore } from '@/store/auth'
 
 export const useStorage = () => {
   const PROJECT = useProjectStore()
@@ -16,6 +17,7 @@ export const useStorage = () => {
   const EDITOR = useEditorStore()
   const LOGGER = useLoggerStore()
   const PDF = usePDFStore()
+  const AUTH = useAuthStore()
 
   const env = useEnv()
   const emitter = useEmitter()
@@ -312,7 +314,12 @@ export const useStorage = () => {
   }
 
   const getProjectObject = (): ProjectObject => {
+    const id = AUTH.account.project_id_activity
+      ? { id: AUTH.account.project_id_activity }
+      : {}
+
     return {
+      ...id,
       project: PROJECT.$state,
       editor: EDITOR.$state,
       logger: LOGGER.$state,

@@ -71,7 +71,10 @@ export const useProject = () => {
     })
   }
 
-  const onLoadProject = async (context?: ProjectObject) => {
+  const onLoadProject = async (
+    context?: ProjectObject,
+    notification: boolean = true
+  ) => {
     if (!context) context = local.getProject()
 
     if (!context) {
@@ -124,7 +127,7 @@ export const useProject = () => {
 
     ABSOLUTE.aside = true
 
-    toast.success(t('toast.project.load'))
+    if (notification) toast.success(t('toast.project.load'))
 
     isLoading.value = false
   }

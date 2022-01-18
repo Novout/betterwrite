@@ -6,6 +6,7 @@ export const useAuthStore = defineStore('auth', {
     return {
       account: {
         user: null,
+        project_id_activity: null,
       },
       dropbox: {
         accessToken: null,

@@ -82,6 +82,10 @@ export default {
     image: 'Imagem',
   },
   bar: {
+    supabase: {
+      load: 'Carregar da Nuvem',
+      save: 'Salvar na Nuvem',
+    },
     pdf: {
       preview: 'Simular',
       generate: 'Gerar',

@@ -1,8 +1,9 @@
 import { User } from '@supabase/supabase-js'
-import { Maybe } from './utils'
+import { ID, Maybe } from './utils'
 
 export interface AuthStateAccount {
   user: User | null
+  project_id_activity: ID<number> | null
 }
 
 export interface AuthState {
