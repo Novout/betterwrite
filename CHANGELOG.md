@@ -1,6 +1,19 @@
-# Changelog (11/01/2022)
+# Changelog (19/01/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.0
+
+* **feat(dashboard):** object save size [faf9ec3]
+* **chore(editor):** header generator to generic [06121f2]
+* **feat(pdf):** line-break command settings [9defd85]
+* **test(raw):** remove v1 tests [9170efe]
+* **feat(dashboard):** delete project [65248dd]
+* **fix(dashboard):** image main [56a0311]
+* **feat(dashboard):** database projects save [fa7f494]
+* **fix(env):** insert number in google max fonts [bc79125]
+* **fix(env):** only local keys [1f4d69e]
+* **feat(auth):** supabase initial content [70672e5]
 
 ### v0.11.17
 
