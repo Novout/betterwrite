@@ -310,6 +310,18 @@ export const useStorage = () => {
       })
     })
 
+    if (!_.pdf.styles.lineBreak) {
+      _.pdf.styles.lineBreak = {
+        spacing: 10,
+        image: {
+          data: '',
+          active: false,
+          width: 50,
+          height: 50,
+        },
+      }
+    }
+
     return _
   }
 

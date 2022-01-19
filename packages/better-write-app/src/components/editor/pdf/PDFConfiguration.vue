@@ -14,5 +14,6 @@
     <PDFConfigurationSetHeadingOne />
     <PDFConfigurationSetHeadingTwo />
     <PDFConfigurationSetHeadingThree />
+    <PDFConfigurationSetLineBreak />
   </div>
 </template>

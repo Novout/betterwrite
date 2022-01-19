@@ -249,6 +249,15 @@ export const usePopulate = () => {
             bottom: 15 as number,
           },
         },
+        lineBreak: {
+          spacing: 10,
+          image: {
+            data: '',
+            active: false,
+            width: 50,
+            height: 50,
+          },
+        },
         switcher: {
           cover: false,
           main: false,

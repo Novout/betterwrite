@@ -86,6 +86,11 @@ export const setPDFI18n = () => {
           fontFamily: 'Fonte',
         },
       },
+      lineBreak: {
+        spacing: 'Espaçamento',
+        active: 'Usar Imagem',
+        size: 'Tamanho',
+      },
       custom: {
         image: {
           height: 'Altura',
@@ -115,6 +120,7 @@ export const setPDFI18n = () => {
           decorationStyle: 'Estilo da Decoração',
           decorationColor: 'Cor da Decoração',
           breakPage: 'Quebra de Página',
+          lineBreak: 'Quebra de Linha',
         },
         save: 'Salvar',
       },
@@ -234,6 +240,11 @@ export const setPDFI18n = () => {
           fontFamily: 'Fonte',
         },
       },
+      lineBreak: {
+        spacing: 'Spacing',
+        active: 'Use Image',
+        size: 'Size',
+      },
       custom: {
         image: {
           height: 'Height',
@@ -263,6 +274,7 @@ export const setPDFI18n = () => {
           decorationStyle: 'Decoration Style',
           decorationColor: 'Decoration Color',
           breakPage: 'Break Page',
+          lineBreak: 'Line Break',
         },
         save: 'Save',
       },

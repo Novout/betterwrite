@@ -207,10 +207,44 @@ export const PluginPDFSet = (
       }
     }
 
-    const lineBreak = (value = 10) => {
+    const lineBreak = (fixed: boolean = true) => {
+      if (
+        stores.PDF.styles.lineBreak.image.data &&
+        stores.PDF.styles.lineBreak.image.active &&
+        fixed
+      ) {
+        if (stores.PDF.styles.lineBreak.image.data.startsWith('<svg')) {
+          return {
+            svg: stores.PDF.styles.lineBreak.image.data,
+            width: stores.PDF.styles.lineBreak.image.width,
+            height: stores.PDF.styles.lineBreak.image.height,
+            alignment: 'center',
+            margin: [
+              0,
+              stores.PDF.styles.lineBreak.spacing,
+              0,
+              stores.PDF.styles.lineBreak.spacing,
+            ],
+          }
+        }
+
+        return {
+          image: stores.PDF.styles.lineBreak.image.data,
+          width: stores.PDF.styles.lineBreak.image.width,
+          height: stores.PDF.styles.lineBreak.image.height,
+          alignment: 'center',
+          margin: [
+            0,
+            stores.PDF.styles.lineBreak.spacing,
+            0,
+            stores.PDF.styles.lineBreak.spacing,
+          ],
+        }
+      }
+
       return {
         text: '',
-        margin: [0, value],
+        margin: [0, stores.PDF.styles.lineBreak.spacing],
         style: 'line-break',
       }
     }
@@ -403,7 +437,7 @@ export const PluginPDFSet = (
           let _raw = {}
 
           if (entity.raw === hooks.env.emptyLine()) {
-            _raw = lineBreak(5)
+            _raw = lineBreak(false)
             arr.push(_raw)
             return
           }

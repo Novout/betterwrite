@@ -4,6 +4,7 @@ export interface PDFStateStyles {
   headingOne: PDFStateStylesHeading
   headingTwo: PDFStateStylesHeading
   headingThree: PDFStateStylesHeading
+  lineBreak: PDFStateStylesLineBreak
   switcher: PDFStateStylesSwitcher
 }
 
@@ -91,6 +92,18 @@ export interface PDFStateStylesHeading {
     top: number
     bottom: number
   }
+}
+
+export interface PDFStateStylesLineBreakImage {
+  data: string
+  active: boolean
+  width: number
+  height: number
+}
+
+export interface PDFStateStylesLineBreak {
+  spacing: number
+  image: PDFStateStylesLineBreakImage
 }
 
 export interface PDFStateStylesSwitcher {
