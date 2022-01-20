@@ -98,6 +98,7 @@
         "date-fns/locale",
         "docx",
         "dropbox",
+        "es5-ext/global",
         "file-saver",
         "jiti",
         "keyboardjs",
@@ -109,8 +110,7 @@
         "vue",
         "vue-i18n",
         "vue-router",
-        "vue-toastification",
-        "vuedraggable"
+        "vue-toastification"
       ],
       "exclude": [
         "vue-demi"

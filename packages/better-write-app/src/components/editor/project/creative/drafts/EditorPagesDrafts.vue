@@ -22,18 +22,16 @@
         >
           {{ t('editor.drafts.chapters') }}
         </div>
-        <Draggable v-model="PROJECT.pages" item-key="id">
-          <template #item="{ element }">
-            <div
-              class="text-center shadow cursor-pointer h-24 hover:bg-black-opacity text-lg w-full p-2 font-bold"
-              @click="onClickAside(element)"
-            >
-              <p class="relative top-6 truncate">
-                {{ element.entities[0].raw }}
-              </p>
-            </div>
-          </template>
-        </Draggable>
+        <div
+          v-for="(element, index) in PROJECT.pages"
+          :key="index"
+          class="text-center shadow cursor-pointer h-24 hover:bg-black-opacity text-lg w-full p-2 font-bold"
+          @click="onClickAside(element)"
+        >
+          <p class="relative top-6 truncate">
+            {{ element.entities[0].raw }}
+          </p>
+        </div>
       </div>
       <div
         class="flex border-b md:border-b-0 md:border-solid border-r-0 md:border-r border-theme-editor-creative-drafts-container-borders flex-col flex-1 w-auto p-5 overflow-y-auto"
@@ -147,7 +145,6 @@
   import { useCreativeType } from '@/use/type/creative'
   import { ref, computed, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import Draggable from 'vuedraggable'
   import { useStorage } from '@/use/storage/storage'
   import { useContextStore } from '@/store/context'
   import { useNProgress } from '@vueuse/integrations'
