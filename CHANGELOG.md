@@ -1,6 +1,12 @@
-# Changelog (19/01/2022)
+# Changelog (20/01/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.1
+
+* **chore(md):** new features [ad18ba0]
+* **chore(entity):** remove transition-colors [8f6a11b]
+* **fix(editor):** remove vuedraggable [ecdf57e]
 
 ### v0.12.0
 
