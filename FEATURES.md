@@ -4,12 +4,10 @@ Here will contain all the features that Better Write offers.
 
 ## Structure
 
-- ✅ - Deploy Website
-- ✅ - Deploy Desktop
-- ➖ - PWA
+- ✅ - Deploy
+- ✅ - PWA
 - ➖ - Unit Tests
 - ❌ - e2e Tests
-- ❌ - Logger for Developers
 
 ## Editor
 
@@ -18,7 +16,7 @@ Here will contain all the features that Better Write offers.
 - ✅ - Custom Themes
 - ✅ - i18n Locale
 - ✅ - Auto Save
-- ❌ - Cloud Auto Save
+- ✅ - Cloud Save
 - ✅ - Logger for Users
 - ✅ - Alerts
 - ✅ - Shortcuts
@@ -28,10 +26,10 @@ Here will contain all the features that Better Write offers.
 - ✅ - Create Project
 - ✅ - Change Project
 - ✅ - Save Project
-- ➖ - Delete Project
+- ✅ - Delete Project
 - ✅ - Graph Aside Content
 - ✅ - Graph Navigation
-- ❌ - Customize Styles
+- ✅ - Customize Styles
 
 ### Pages
 
@@ -55,7 +53,7 @@ Here will contain all the features that Better Write offers.
 - ➖ - Replace Text
 - ✅ - Navigator Grammar
 - ❌ - Highlight Grammar
-- ❌ - Custom Entity
+- ✅ - Custom Entity
 
 ### PDF
 
@@ -78,7 +76,7 @@ Here will contain all the features that Better Write offers.
 - ✅ - Paragraph Italic
 - ➖ - Paragraph Links
 - ✅ - Heading's
-- ❌ - Custom Entity
+- ➖ - Custom Entity
 - ✅ - Footer
 - ✅ - Header
 
@@ -101,6 +99,7 @@ Here will contain all the features that Better Write offers.
 - ❌ - Paragraph Bold
 - ❌ - Paragraph Italic
 - ❌ - Paragraph Links
+- ✅ - Fixed Item's
 - ✅ - Heading's
 - ❌ - Custom Entity
 - ➖ - Footer
@@ -111,19 +110,21 @@ Here will contain all the features that Better Write offers.
 - ✅ - Google Fonts API Integration
 - ❌ - Google Drive Integration
 - ❌ - Google Docs Integration
-- ➖ - Dropbox Integration
+- ✅ - Dropbox Integration
 - ❌ - Notion Integration
+- ✅ - OAuth2 Integration
 
 ### Desktop
 
 - ✅ - Basic Features
 - ✅ - Save/Load
-- ❌ - Integrations
+- ✅ - Integrations
 - ✅ - Shortcuts and Alerts
 
 ## Landing
 
 - ✅ - Basic Content
+- ❌ - Features
 
 ## Support
 
