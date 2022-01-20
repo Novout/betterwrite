@@ -29,12 +29,6 @@
         :title="t('editor.preferences.shortcuts.editor.swap')"
         shortcut="Shift + ↑ / ↓"
       />
-      <PreferencesKeyboardItem
-        :title="t('editor.preferences.shortcuts.editor.dragtitle')"
-        :shortcut="t('editor.preferences.shortcuts.editor.dragshort')"
-      >
-        Alt + Click
-      </PreferencesKeyboardItem>
     </div>
     <div
       class="text-theme-text-2 text-base shadow-lg w-full lg:w-1/2 py-1 my-2"

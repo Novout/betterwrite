@@ -1,10 +1,7 @@
 <template>
   <section
     class="w-full relative px-4 md:px-14"
-    :class="
-      (style.entity.shadow ? 'shadow-winset p-0 m-0' : '',
-      press ? 'cursor-pointer shadow-winset' : 'cursor-text')
-    "
+    :class="style.entity.shadow ? 'shadow-winset p-0 m-0' : ''"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     @click="onClickInEntity"
@@ -21,7 +18,7 @@
     </section>
     <div
       ref="input"
-      :contenteditable="!press && editable"
+      :contenteditable="editable"
       :spellcheck="true"
       :data-placeholder="
         entity.utils().isFixed(_index)

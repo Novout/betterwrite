@@ -9,30 +9,18 @@
     :class="[project.isBlankProject() ? 'pt-28' : '']"
     class="flex flex-col w-full min-h-editor overflow-y-auto overflow-x-hidden"
   >
-    <Draggable
-      :list="CONTEXT.entities"
-      group="entities"
-      item-key="id"
-      @start="storage.normalize()"
-      @end="emitter.emit('entity-reset')"
-    >
-      <template #item="{ element, index }">
-        <EditorEntityDefaultInput
-          :id="`entity-${String(index)}`"
-          :key="index"
-          :entity="element"
-        />
-      </template>
-    </Draggable>
+    <EditorEntityDefaultInput
+      v-for="(element, index) in CONTEXT.entities"
+      :id="`entity-${String(index)}`"
+      :key="index"
+      :entity="element"
+    />
   </section>
 </template>
 
 <script lang="ts" setup>
   import { useProject } from '@/use/project'
   import { useContextStore } from '@/store/context'
-  import { useStorage } from '@/use/storage/storage'
-  import useEmitter from '@/use/emitter'
-  import Draggable from 'vuedraggable'
   import { ref, watch } from 'vue'
   import { useScroll } from '@vueuse/core'
   import { useAbsoluteStore } from '@/store/absolute'
@@ -41,8 +29,6 @@
   const ABSOLUTE = useAbsoluteStore()
 
   const project = useProject()
-  const storage = useStorage()
-  const emitter = useEmitter()
 
   const editor = ref<HTMLElement | null>(null)
 
