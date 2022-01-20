@@ -2,6 +2,10 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.12.2
+
+* **fix(deploy):** correct global components [9afa303]
+
 ### v0.12.1
 
 * **chore(md):** new features [ad18ba0]
