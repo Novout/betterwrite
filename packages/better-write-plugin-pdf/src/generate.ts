@@ -244,7 +244,7 @@ export const PluginPDFSet = (
 
       return {
         text: '',
-        margin: [0, stores.PDF.styles.lineBreak.spacing],
+        margin: [0, fixed ? stores.PDF.styles.lineBreak.spacing : 8],
         style: 'line-break',
       }
     }
