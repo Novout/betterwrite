@@ -5,8 +5,6 @@ import App from '../src/App.vue'
 
 test('App exists', async () => {
   /*
-  @vueuse/motion breaking...
-
   const wrapper = mount(App, getVueMock())
 
   expect(wrapper).toBeTruthy()
