@@ -9977,6 +9977,11 @@ vue-tsc@0.29.8:
     "@volar/shared" "0.29.8"
     vscode-vue-languageservice "0.29.8"
 
+vue-typical@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vue-typical/-/vue-typical-2.1.0.tgz#68731300f8b747548e0f36da0364d03614ba3a15"
+  integrity sha512-vqfN08VgfhV8zuvf/UwDs4/P3VtQxHWK9ZshDwc1cEqWDUXzgwJwLiEUqYtksIug5wkhgoedyTAeEG6kJao6WA==
+
 vue@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.0.0.tgz#cfb5df5c34efce319b113a1667d12b74dcfd9c90"

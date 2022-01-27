@@ -129,3 +129,14 @@ input[type='number'] {
   opacity: 0.75;
   cursor: text;
 }
+
+.blink::after {
+  content: '|';
+  animation: blink 1s infinite step-start;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

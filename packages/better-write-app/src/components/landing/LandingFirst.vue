@@ -14,14 +14,24 @@
         >
           {{ t('landing.first.title') }}
         </h1>
-        <p
+        <v-typical
           v-motion
           :initial="{ opacity: 0, y: 50 }"
           :enter="{ opacity: 1, y: 0, transition: { delay: 300 } }"
-          class="mb-10 mt-2 leading-relaxed text-lg"
-        >
-          {{ t('landing.first.description') }}
-        </p>
+          class="mb-10 mt-2 leading-relaxed text-lg blink"
+          :steps="[
+            t('landing.first.typical.1'),
+            700,
+            t('landing.first.typical.2'),
+            100,
+            t('landing.first.typical.3'),
+            700,
+            t('landing.first.typical.3'),
+            700,
+          ]"
+          :loop="Infinity"
+          :wrapper="'p'"
+        ></v-typical>
         <div
           v-motion
           class="flex items-center justify-between w-1/2 lg:w-5/12 xl:w-1/3 mt-32"
@@ -49,6 +59,7 @@
   import { useEnv } from '@/use/env'
   import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import VTypical from 'vue-typical'
 
   const { t } = useI18n()
   const env = useEnv()
