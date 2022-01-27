@@ -21,10 +21,11 @@ import 'v-tooltip/dist/v-tooltip.css'
 import 'vue-toastification/dist/index.css'
 
 const app = createApp(App)
-const head = createHead()
-const store = createPinia()
-const core = createPluginCore()
-const emitter = mitt()
+
+export const head = createHead()
+export const store = createPinia()
+export const core = createPluginCore()
+export const emitter = mitt()
 
 app.config.globalProperties.emitter = emitter as VueEmitter
 
