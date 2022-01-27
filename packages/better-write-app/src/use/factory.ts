@@ -2,8 +2,11 @@ import { useEnv } from './env'
 import { Entity, EntityType } from 'better-write-types'
 import { useFormat } from './format'
 import { useUtils } from './utils'
+import { usePDFStore } from '@/store/pdf'
 
 export const useFactory = () => {
+  const PDF = usePDFStore()
+
   const env = useEnv()
   const format = useFormat()
   const utils = useUtils()
@@ -55,19 +58,19 @@ export const useFactory = () => {
             paragraph: {
               active: false,
               generator: {
-                font: 'Roboto',
-                fontSize: 12,
-                lineHeight: 1,
-                alignment: 'justify',
-                indent: 3,
-                characterSpacing: 1,
-                color: '#000000',
-                background: '#FFFFFF',
+                font: PDF.styles.paragraph.font || 'Roboto',
+                fontSize: PDF.styles.paragraph.fontSize || 12,
+                lineHeight: PDF.styles.paragraph.lineHeight || 1,
+                alignment: PDF.styles.paragraph.alignment || 'justify',
+                indent: PDF.styles.paragraph.indent || 3,
+                characterSpacing: PDF.styles.paragraph.characterSpacing || 1,
+                color: PDF.styles.paragraph.color || '#000000',
+                background: PDF.styles.paragraph.background || '#FFFFFF',
                 italics: false,
                 bold: false,
                 margin: {
-                  top: 2,
-                  bottom: 2,
+                  top: PDF.styles.paragraph.margin.top || 2,
+                  bottom: PDF.styles.paragraph.margin.bottom || 2,
                 },
               },
             },

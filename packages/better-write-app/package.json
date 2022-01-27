@@ -79,7 +79,7 @@
     "vite-plugin-optimize-persist": "0.1.1",
     "vite-plugin-package-config": "0.1.0",
     "vite-plugin-pwa": "0.11.12",
-    "vitest": "0.0.100",
+    "vitest": "0.2.4",
     "vue-i18n-extract": "2.0.4",
     "vue-tsc": "0.29.8",
     "wait-on": "6.0.0"
