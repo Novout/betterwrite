@@ -1,6 +1,14 @@
-# Changelog (20/01/2022)
+# Changelog (27/01/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.3
+
+* **test:** support @vueuse/motion [a2a46fb]
+* **test:** remove defaults and setup vue [f8cf1a3]
+* **chore(editor):** use default settings for custom entity [24bdd89]
+* **fix(pdf):** line break in default values [b1ace88]
+* **fix(editor):** placeholder hover cursor text [d1915cd]
 
 ### v0.12.2
 
