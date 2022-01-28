@@ -9474,10 +9474,10 @@ vite-plugin-package-version@1.0.2:
   resolved "https://registry.yarnpkg.com/vite-plugin-package-version/-/vite-plugin-package-version-1.0.2.tgz#72b9919f6022eac093fd04533dc0e26dffe22771"
   integrity sha512-xCJMR0KD4rqSUwINyHJlLizio2VzYzaMrRkqC9xWaVGXgw1lIrzdD+wBUf1XDM8EhL1JoQ7aykLOfKrlZd1SoQ==
 
-vite-plugin-pwa@0.11.12:
-  version "0.11.12"
-  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.11.12.tgz#02b4cfccd7ad098cfb291415c62c3b7281b7c538"
-  integrity sha512-XqFmA4y9C4RBb5osSsa26GVwOSwbzf2GNVcT5+06KYYdguqLpuI9FW7iV/akZqg0OUNUpH4tHfme8SnHA4PIXA==
+vite-plugin-pwa@0.11.13:
+  version "0.11.13"
+  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.11.13.tgz#54ed80580b7d3e61aadcf4325fe9bc6f7ffce5db"
+  integrity sha512-Ssj14m3TRVLfkFEAWSMcFE2d1cSdEZyrVTzfY2lSL+umHYvcIFHVDAY143sygtBCb44OPczsAOmWwBTxwOvh7g==
   dependencies:
     debug "^4.3.3"
     fast-glob "^3.2.7"
