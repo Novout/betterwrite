@@ -67,7 +67,7 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useAddonsStore } from '@/store/addons'
-  import { onClickOutside, MaybeElementRef, useDraggable } from '@vueuse/core'
+  import { onClickOutside, useDraggable } from '@vueuse/core'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { AddonsCorrectorOption } from 'better-write-types'
@@ -86,7 +86,7 @@
     initialValue: { x: window.innerWidth / 4, y: window.innerHeight / 6 },
   })
 
-  onClickOutside(corrector as MaybeElementRef, () => {
+  onClickOutside(corrector as any, () => {
     onClose()
   })
 

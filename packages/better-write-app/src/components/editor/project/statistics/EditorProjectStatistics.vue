@@ -16,7 +16,7 @@
   import { useProjectStore } from '@/store/project'
   import { useProject } from '@/use/project'
   import { useStorage } from '@/use/storage/storage'
-  import { onClickOutside, MaybeElementRef } from '@vueuse/core'
+  import { onClickOutside } from '@vueuse/core'
   import { ref, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
 
@@ -37,7 +37,7 @@
 
   const statistics = ref<HTMLElement | null>(null)
 
-  onClickOutside(statistics as MaybeElementRef, () => {
+  onClickOutside(statistics as any, () => {
     onClose()
   })
 

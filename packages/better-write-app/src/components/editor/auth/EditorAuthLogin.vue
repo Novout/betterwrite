@@ -78,7 +78,7 @@
 
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
-  import { onClickOutside, MaybeElementRef, useDraggable } from '@vueuse/core'
+  import { onClickOutside, useDraggable } from '@vueuse/core'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useSupabase } from '@/use/storage/supabase'
@@ -94,7 +94,7 @@
     initialValue: { x: window.innerWidth / 4, y: window.innerHeight / 3 },
   })
 
-  onClickOutside(login as MaybeElementRef, () => {
+  onClickOutside(login as any, () => {
     onClose()
   })
 

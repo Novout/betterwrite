@@ -106,7 +106,7 @@
     search.value?.focus()
   })
 
-  onClickOutside(finder as MaybeElementRef, () => {
+  onClickOutside(finder as any, () => {
     onClose()
   })
 </script>

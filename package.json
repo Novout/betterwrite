@@ -17,28 +17,40 @@
     "major": "generi log major"
   },
   "devDependencies": {
+    "generi": "0.3.0",
     "lerna": "4.0.0",
-    "turbo": "1.0.23",
-    "generi": "0.3.0"
+    "turbo": "1.0.23"
   },
   "turbo": {
     "pipeline": {
       "build": {
-        "dependsOn": ["^build"],
-        "outputs": ["dist/**"],
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          "dist/**"
+        ],
         "cache": false
       },
       "test": {
         "outputs": []
       },
       "dev": {
-        "dependsOn": ["^build"],
-        "outputs": ["dist/**"],
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          "dist/**"
+        ],
         "cache": false
       },
       "serve": {
-        "dependsOn": ["^build"],
-        "outputs": ["dist/**"],
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          "dist/**"
+        ],
         "cache": false
       },
       "lint": {}

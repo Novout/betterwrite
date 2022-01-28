@@ -114,7 +114,7 @@
     entry.value?.focus()
   })
 
-  onClickOutside(switcher as MaybeElementRef, () => {
+  onClickOutside(switcher as any, () => {
     onClose()
   })
 </script>

@@ -30,11 +30,11 @@ export const emitter = mitt()
 app.config.globalProperties.emitter = emitter as VueEmitter
 
 app.use(router)
-app.use(store)
+app.use(store as any)
 app.use(i18n)
-app.use(motion)
+app.use(motion as any)
 app.use(head)
-app.use(core)
+app.use(core as any)
 app.use(tooltip, {
   themes: {
     'better-write': {

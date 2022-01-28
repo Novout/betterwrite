@@ -557,12 +557,12 @@
   const plugin = usePlugin()
   const defines = useDefines()
 
-  onClickOutside(options, () => onClose())
+  onClickOutside(options as any, () => onClose())
 
   const mouse = computed(() => EDITOR.actives.global.mouse)
 
   useIntersectionObserver(
-    options,
+    options as any,
     ([{ isIntersecting }]) => {
       if (block.value) return
 

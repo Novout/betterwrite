@@ -69,7 +69,7 @@
     VueEmitterEntityClose,
   } from 'better-write-types'
   import { useUtils } from '@/use/utils'
-  import { useFocus, useMagicKeys } from '@vueuse/core'
+  import { useFocus } from '@vueuse/core'
   import { useFormat } from '@/use/format'
 
   const props = defineProps({
@@ -94,7 +94,6 @@
   const raw = useRaw()
   const plugin = usePlugin()
   const format = useFormat()
-  const { alt } = useMagicKeys()
 
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)
@@ -104,7 +103,7 @@
   const press = ref<boolean>(false)
 
   const data = ref<string>('')
-  const input = ref<HTMLDivElement | null>(null)
+  const input = ref<any>(null)
   const keyboard = ref<boolean>(false)
 
   const style = computed(() => EDITOR.styles.show)
@@ -120,10 +119,6 @@
   watch(props.entity, () => {
     // new entity properties
     onReset()
-  })
-
-  watch(alt, (_shift) => {
-    press.value = _shift
   })
 
   watch(hover, async (_hover) => {

@@ -33,7 +33,7 @@
   const opacity = ref(1)
 
   const { width } = useWindowSize()
-  const { lengthX } = useSwipe(aside, {
+  const { lengthX } = useSwipe(aside as any, {
     passive: true,
     onSwipe() {
       if (width.value) {

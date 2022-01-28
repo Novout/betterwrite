@@ -32,7 +32,7 @@
 
   const editor = ref<HTMLElement | null>(null)
 
-  const scroll = useScroll(editor)
+  const scroll = useScroll(editor as any)
 
   watch(scroll.isScrolling, () => {
     ABSOLUTE.entity.menu = false

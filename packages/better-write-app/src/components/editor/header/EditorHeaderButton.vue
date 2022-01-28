@@ -1,15 +1,15 @@
 <template>
-  <div @mouseleave="value = false" @mouseenter="value = true">
+  <div @mouseleave="n = false" @mouseenter="n = true">
     <HeroIcon
       :style="{
         backgroundColor: props.color !== 'none' ? props.color : 'none',
       }"
       class="inline-flex wb-icon"
-      :class="[value ? 'text-theme-icon-active' : '']"
+      :class="[n ? 'text-theme-icon-active' : '']"
     >
       <slot name="icon" />
     </HeroIcon>
-    <EditorHeaderBar v-if="value">
+    <EditorHeaderBar v-if="n">
       <slot name="bar" />
     </EditorHeaderBar>
   </div>
@@ -18,7 +18,7 @@
 <script setup lang="ts">
   import { useToggle } from '@vueuse/core'
 
-  const [value] = useToggle()
+  const [n] = useToggle()
 
   const props = defineProps({
     color: {

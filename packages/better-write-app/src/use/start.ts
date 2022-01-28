@@ -57,16 +57,23 @@ export const useStart = () => {
 
   // set global mouse tracking
   watch([x, y], ([_x, _y]) => {
+    // @ts-ignore
     EDITOR.actives.global.mouse.x = _x
+    // @ts-ignore
     EDITOR.actives.global.mouse.y = _y
+    // @ts-ignore
     EDITOR.actives.global.mouse.vertical =
+      // @ts-ignore
       window.innerHeight / 2 >= _y ? 'top' : 'bottom'
+
     EDITOR.actives.global.mouse.horizontal =
+      // @ts-ignore
       window.innerWidth / 2 >= _x ? 'left' : 'right'
   })
 
   // for stop propagation problems in auto reset selection (contextmenu i.e)
   watch(selection, (_selection) => {
+    // @ts-ignore
     if (!_selection.text) return
 
     EDITOR.actives.global.mouse.validLastSelection = true
@@ -152,7 +159,7 @@ export const useStart = () => {
         PDF: usePDFStore(),
         PROJECT: useProjectStore(),
         SHORTCUTS: useShortcutsStore(),
-      },
+      } as any,
       plugins,
       {
         googleFonts: useFonts(),
