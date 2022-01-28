@@ -20,7 +20,7 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@vueuse/core": "7.4.1",
+		"@vueuse/core": "7.5.5",
 		"@vueuse/head": "0.7.4",
 		"@vueuse/integrations": "7.4.1",
 		"@vueuse/motion": "2.0.0-beta.4",
