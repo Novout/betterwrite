@@ -2849,14 +2849,6 @@
   dependencies:
     vue-demi "^0.12.0"
 
-"@vueuse/core@7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-7.4.1.tgz#81ede3f67dfd58af8284c910ac2fee25458892c6"
-  integrity sha512-8UeLPCAieeQLXFHF1/28SIEK6ILLPb/4hp03hR+xkXF00gB/YUp0CEVcRAL9uQ8HTZa3S2T/jTISMc1ZjilM0A==
-  dependencies:
-    "@vueuse/shared" "7.4.1"
-    vue-demi "*"
-
 "@vueuse/core@7.5.5", "@vueuse/core@^7.5.1":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-7.5.5.tgz#c2f2a8783de0884acfb0be25e71ec3c6d1f9c42e"
@@ -2878,19 +2870,19 @@
   resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.4.tgz#2eec185ebe52e634400dfe2a8b1a18f788c06bcf"
   integrity sha512-cmps+wrdgL77V72vtjU6kaAunkG6GhswaMIQoh7Twc52ql4/p7i1Amd31LqnnvNF/bfuvzcXgYvsH8I7kimZmA==
 
-"@vueuse/integrations@7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-7.4.1.tgz#d1feac5be3c45dd69e50e9eb9a8e7b85032452e9"
-  integrity sha512-gu0fbUJcknkXd3cSkleOT9hGcFed9Nyyz6BDlflkX5/XWCxfn800IdvCN5K98hdj+teOlgrs1ulYVtIyS4xHRg==
+"@vueuse/integrations@7.5.5":
+  version "7.5.5"
+  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-7.5.5.tgz#4ac94b66a38538728f2a6cd606bfe06a8520373c"
+  integrity sha512-x8ZJxEa5d3Am57XyT1AsGbadDnRBA8u+lczwKTrahhos+/fbDr0QDi/KdtUQAmdjy4nUrDzqeBsiaYLEof/rAw==
   dependencies:
-    "@vueuse/core" "7.4.1"
-    "@vueuse/shared" "7.4.1"
+    "@vueuse/core" "7.5.5"
+    "@vueuse/shared" "7.5.5"
     vue-demi "*"
   optionalDependencies:
     axios "^0.24.0"
     drauu "^0.2.1"
     focus-trap "^6.7.1"
-    fuse.js "^6.4.6"
+    fuse.js "^6.5.3"
     jwt-decode "^3.1.2"
     nprogress "^0.2.0"
     qrcode "^1.5.0"
@@ -2918,13 +2910,6 @@
   version "6.9.2"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-6.9.2.tgz#97e4369fa7262ebc96fe1d6e210268f30b037005"
   integrity sha512-lAiMh6XROs0kSKVd0Yb/6GKoQMxC1fYrFDi6opvQWISPtcqRNluRrQxLUZ3WTI78ovtoKRLktjhkFAtydcfFDg==
-  dependencies:
-    vue-demi "*"
-
-"@vueuse/shared@7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-7.4.1.tgz#0aa090147fbd66ba56334ada1ffa2dafab815c1b"
-  integrity sha512-Pzb7XoHIcgPwwBJ5Ow9lZb0HTDyaLDV3pgxKauPGTMN9qvEylG06kUG+VTjJXkPsRtiGu46di8XyFeMw2dongA==
   dependencies:
     vue-demi "*"
 
@@ -5259,10 +5244,10 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-fuse.js@^6.4.6:
-  version "6.4.6"
-  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-6.4.6.tgz#62f216c110e5aa22486aff20be7896d19a059b79"
-  integrity sha512-/gYxR/0VpXmWSfZOIPS3rWwU8SHgsRTwWuXhyb2O6s7aRuVtHtxCkR33bNYu3wyLyNx/Wpv0vU7FZy8Vj53VNw==
+fuse.js@^6.5.3:
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-6.5.3.tgz#7446c0acbc4ab0ab36fa602e97499bdb69452b93"
+  integrity sha512-sA5etGE7yD/pOqivZRBvUBd/NaL2sjAu6QuSaFoe1H2BrJSkH/T/UXAJ8CdXdw7DvY3Hs8CXKYkDWX7RiP5KOg==
 
 gauge@~2.7.3:
   version "2.7.4"
