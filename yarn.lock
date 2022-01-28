@@ -9453,10 +9453,10 @@ vite-plugin-optimize-persist@0.1.1:
     debug "^4.3.2"
     fs-extra "^10.0.0"
 
-vite-plugin-package-config@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-package-config/-/vite-plugin-package-config-0.1.0.tgz#7faa68a47b1a4f30b5564d3ecd5ad3f085a0f929"
-  integrity sha512-cnj/PiugW8EJIaDaorSygKL85GqdLz/oLg031YD0/tF1wiGGz3jkrpkUvZauDqJmR7vpLGnP+zVxQvmXbXjIXQ==
+vite-plugin-package-config@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-package-config/-/vite-plugin-package-config-0.1.1.tgz#6bd579f71db7582ef9dcc05e9f7920e689c498c9"
+  integrity sha512-w9B3I8ZnqoyhlbzimXjXNk85imrMZgvI9m8f6j3zonK5IVA5KXzpT+PZOHlDz8lqh1vqvoEI1uhy+ZDoLAiA/w==
   dependencies:
     debug "^4.3.3"
 
