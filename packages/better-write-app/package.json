@@ -23,7 +23,7 @@
     "extract": "vue-i18n-extract report --vueFiles './src/**/*.?(js|vue)' --languageFiles './src/lang/*.?(json|yml|yaml|js)'"
   },
   "dependencies": {
-    "@headlessui/vue": "1.4.2",
+    "@headlessui/vue": "1.4.3",
     "@supabase/supabase-js": "1.29.1",
     "@vitest/ui": "0.2.4",
     "@vuelidate/core": "2.0.0-alpha.32",
