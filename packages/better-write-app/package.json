@@ -58,7 +58,7 @@
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "3.2.1",
     "@types/file-saver": "2.0.5",
-    "@types/jsdom": "16.2.13",
+    "@types/jsdom": "16.2.14",
     "@typescript-eslint/eslint-plugin": "5.10.1",
     "@typescript-eslint/parser": "5.10.1",
     "@vitejs/plugin-vue": "2.1.0",
