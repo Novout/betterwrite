@@ -2,6 +2,14 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.12.4
+
+* **chore(app):** default fonts by the vite fonts [22bbcc4]
+* **chore(app):** tailwindcss to windicss [ec2cbc4]
+* **chore(build):** minify with esbuild [6a18e17]
+* **fix(editor):** switcher in fixed items [1659e5a]
+* **feat(landing):** typical in description [0aae22a]
+
 ### v0.12.3
 
 * **test:** support @vueuse/motion [a2a46fb]
