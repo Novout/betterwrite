@@ -290,7 +290,7 @@ export const useRaw = () => {
 
     const style = (entity: Entity, style: any) => {
       return [
-        'editable overflow-hidden w-full text-sm break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+        'editable overflow-hidden w-full break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
         entity.type === 'paragraph'
           ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
           : '',
@@ -301,7 +301,7 @@ export const useRaw = () => {
         entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
 
         entity.type === 'heading-one'
-          ? 'text-center pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'
+          ? 'text-center text-2xl pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'
           : '',
         entity.type === 'heading-one' ? style.heading.one.fontSize : '',
         entity.type === 'heading-one' ? style.heading.one.fontFamily : '',

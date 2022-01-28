@@ -8,7 +8,8 @@ import { VitePWA as vitePWA } from 'vite-plugin-pwa'
 import vitePersist from 'vite-plugin-optimize-persist'
 import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
-import WindiCSS from 'vite-plugin-windicss'
+import viteFonts from 'vite-plugin-fonts'
+import windiCSS from 'vite-plugin-windicss'
 
 export default defineConfig({
   base: './',
@@ -22,7 +23,20 @@ export default defineConfig({
       dts: true,
       resolvers: [HeadlessUiResolver()],
     }),
-    WindiCSS(),
+    windiCSS(),
+    viteFonts({
+      google: {
+        families: [{
+          name: 'Raleway',
+          styles: 'wght@200;400;700',
+          defer: true
+        }, {
+          name: 'Poppins',
+          styles: 'wght@200;400;700',
+          defer: true
+        }]
+      },
+    }),
     vitePersist(),
     vitePackageAccess(),
     vitePackageVersion(),

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Raleway:wght@200;400;700&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -94,26 +92,6 @@ input[type='number'] {
 
 *::-webkit-scrollbar-thumb:hover {
   background: var(--scr-thumb-hover);
-}
-
-.list-enter-active,
-.list-leave-active {
-  transition: all 200ms;
-}
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-}
-.list-move {
-  transition: transform 300ms;
-}
-
-.fade-enter-active {
-  transition: opacity 0.5s;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 
 .drag {
