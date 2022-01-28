@@ -1,6 +1,20 @@
-# Changelog (27/01/2022)
+# Changelog (28/01/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.5
+
+* **chore(deps):** update vue to 3.2.29 [5e07850]
+* **chore(deps):** update dependency vite-plugin-optimize-persist to v0.1.2 [a2e2a8c]
+* **chore(deps):** update dependency vite-plugin-pwa to v0.11.13 [36f33fc]
+* **chore(deps):** update dependency @types/jsdom to v16.2.14 [24c39f4]
+* **fix(deps):** update dependency @headlessui/vue to v1.4.3 [2bb28d7]
+* **fix(deps):** update dependency @vueuse/integrations to v7.5.5 [d522657]
+* **fix(deps):** update dependency @vueuse/core to v7.5.5 [8b9ad85]
+* **chore(deps):** update dependency vite-plugin-package-config to v0.1.1 [bd1a955]
+* **chore(deps):** update typescript-eslint monorepo to v5.10.1 [574e838]
+* **chore(deps):** update dependency unplugin-vue-components to v0.17.15 [04d5c25]
+* **chore(deps):** update dependency @types/file-saver to v2.0.5 [62c7a03]
 
 ### v0.12.4
 
