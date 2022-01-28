@@ -55,6 +55,7 @@ export default defineConfig({
     outDir: resolve(__dirname, 'dist/render'),
     emptyOutDir: true,
     chunkSizeWarningLimit: 3000, // pdfmake
+    minify: 'esbuild',
     rollupOptions: {
       output:{
         manualChunks(id) {
