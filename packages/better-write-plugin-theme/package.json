@@ -27,7 +27,7 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@vueuse/core": "7.4.1",
+		"@vueuse/core": "7.5.5",
 		"@vueuse/integrations": "7.4.1",
 		"better-write-plugin-core": "^0.12.4",
 		"better-write-types": "^0.12.4",
