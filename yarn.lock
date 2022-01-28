@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@antfu/utils@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-0.3.0.tgz#6306c43b52a883bd8e973e3ed8dd64248418bcc4"
-  integrity sha512-UU8TLr/EoXdg7OjMp0h9oDoIAVr+Z/oW9cpOxQQyrsz6Qzd2ms/1CdWx8fl2OQdFpxGmq5Vc4TwfLHId6nAZjA==
-  dependencies:
-    "@types/throttle-debounce" "^2.1.0"
-
 "@antfu/utils@^0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-0.4.0.tgz#df100ed9922d7359bf6c99083765b5207086b9a7"
@@ -2127,7 +2120,7 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@rollup/pluginutils@^4.1.0", "@rollup/pluginutils@^4.1.1":
+"@rollup/pluginutils@^4.1.0", "@rollup/pluginutils@^4.1.1", "@rollup/pluginutils@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.1.2.tgz#ed5821c15e5e05e32816f5fb9ec607cdf5a75751"
   integrity sha512-ROn4qvkxP9SyPeHaf7uQC/GPFY6L/OWy9+bd9AwcjOAWQwxRscoEyAUD8qCY5o5iL4jqQwoLk2kaTKJPb/HwzQ==
@@ -5871,6 +5864,13 @@ is-core-module@^2.2.0, is-core-module@^2.5.0:
   dependencies:
     has "^1.0.3"
 
+is-core-module@^2.8.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.8.1.tgz#f59fdfca701d5879d0a6b100a40aa1560ce27211"
+  integrity sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==
+  dependencies:
+    has "^1.0.3"
+
 is-date-object@^1.0.1:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/is-date-object/-/is-date-object-1.0.5.tgz#0841d5536e724c25597bf6ea62e1bd38298df31f"
@@ -7437,7 +7437,7 @@ path-key@^3.0.0, path-key@^3.1.0:
   resolved "https://registry.yarnpkg.com/path-key/-/path-key-3.1.1.tgz#581f6ade658cbba65a0d3380de7753295054f375"
   integrity sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==
 
-path-parse@^1.0.6:
+path-parse@^1.0.6, path-parse@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
   integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
@@ -8132,6 +8132,15 @@ resolve@^1.1.5, resolve@^1.10.0, resolve@^1.14.2, resolve@^1.15.1, resolve@^1.17
     is-core-module "^2.2.0"
     path-parse "^1.0.6"
 
+resolve@^1.21.0:
+  version "1.22.0"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.0.tgz#5e0b8c67c15df57a89bdbabe603a002f21731198"
+  integrity sha512-Hhtrw0nLeSrFQ7phPp4OOcVjLPIeMnRlr5mcnVuMe7M/7eBn98A3hmFRLoFo3DLZkivSYwhRUJTyPyWAk56WLw==
+  dependencies:
+    is-core-module "^2.8.1"
+    path-parse "^1.0.7"
+    supports-preserve-symlinks-flag "^1.0.0"
+
 restore-cursor@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/restore-cursor/-/restore-cursor-3.1.0.tgz#39f67c54b3a7a58cea5236d95cf0034239631f7e"
@@ -8736,6 +8745,11 @@ supports-color@^7.0.0, supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
+supports-preserve-symlinks-flag@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
+  integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
 sync-request@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/sync-request/-/sync-request-6.1.0.tgz#e96217565b5e50bbffe179868ba75532fb597e68"
@@ -9325,26 +9339,26 @@ universalify@^2.0.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
   integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
-unplugin-vue-components@0.17.9:
-  version "0.17.9"
-  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.17.9.tgz#a2acc9b4e073f52df82d2036a318d76f0c66538b"
-  integrity sha512-SZrK3T/uEoP2g2bH+8DwBznoqlS0dI7kQvCmHmL8HmTXdM78kh5P/9SN5IwuNpfbmXoGXWJPB8Pr8Ke8zsgpmA==
+unplugin-vue-components@0.17.15:
+  version "0.17.15"
+  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.17.15.tgz#bae100c53ef489c31d1a9053b2cd7d5133d23e71"
+  integrity sha512-KpSlv7BaPRswwlCUy7gdpiqOAaHnMeMTmMOqJPmreYTGupt+6qXH3S3uLEmPmXUcuzRXlL+4eysuVunSAbsn0A==
   dependencies:
-    "@antfu/utils" "^0.3.0"
-    "@rollup/pluginutils" "^4.1.1"
+    "@antfu/utils" "^0.4.0"
+    "@rollup/pluginutils" "^4.1.2"
     chokidar "^3.5.2"
-    debug "^4.3.2"
-    fast-glob "^3.2.7"
-    local-pkg "^0.4.0"
+    debug "^4.3.3"
+    fast-glob "^3.2.11"
+    local-pkg "^0.4.1"
     magic-string "^0.25.7"
     minimatch "^3.0.4"
-    resolve "^1.20.0"
-    unplugin "^0.2.21"
+    resolve "^1.21.0"
+    unplugin "^0.3.0"
 
-unplugin@^0.2.21:
-  version "0.2.21"
-  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.2.21.tgz#7852cddd9f78f0b32881812fd2efd5a39dcc64e5"
-  integrity sha512-IJ15/L5XbhnV7J09Zjk0FT5HEkBjkXucWAXQWRsmEtUxmmxwh23yavrmDbCF6ZPxWiVB28+wnKIHePTRRpQPbQ==
+unplugin@^0.3.0:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.3.2.tgz#5113b13b90df14f92e17ddafed9d465bb18d2ca6"
+  integrity sha512-5d0DMYNKZU+S9eZUiBfw6Co32eRg8myUgBPoWSqG/wDFCUE/WznfSsJnZWi1P9l69x4uLJqt2qVq1xW/AsXFrw==
   dependencies:
     webpack-virtual-modules "^0.4.3"
 
