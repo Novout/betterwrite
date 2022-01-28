@@ -1,10 +1,29 @@
-const colors = require('tailwindcss/colors');
-const { setTailwindCssVariables } = require('better-write-plugin-theme');
+import { defineConfig } from 'windicss/helpers'
+import colors from 'windicss/colors'
+import { setTailwindCssVariables } from 'better-write-plugin-theme'
 
-/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
-module.exports = {
-  mode: 'jit',
-  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+export default defineConfig({
+  extract: {
+    include: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+    exclude: [
+      'node_modules/**/*',
+      '.git/**/*',
+    ],
+  },
+  shortcuts: {
+    'wb-base': 'bg-theme-background-1 w-full h-screen',
+    'wb-title': 'text-4xl opacity-70 hover:text-theme-text-3 cursor-default',
+    'wb-icon': 'text-theme-icon hover:text-theme-icon-hover active:text-theme-icon-active',
+    'wb-text': 'text-theme-text-1',
+    'wb-background-color': 'bg-theme-background-1',
+    'wb-aside-button': 'text-2xs pl-2 transition w-full font-bold text-theme-text-2 rounded-none flex',
+    'wb-input-container': 'flex flex-1 h-auto w-auto items-center justify-between p-5 mx-2 mt-5 border rounded-lg border-theme-editor-material-border bg-theme-editor-material-background hover:bg-theme-editor-material-background-hover active:bg-theme-editor-material-background-active text-theme-editor-material-text hover:text-theme-editor-material-text-hover active:text-theme-editor-material-text-active shadow-lg',
+    'wb-disabled': 'opacity-50 pointer-events-none',
+    'wb-configuration-absolute': 'absolute top-0 left-0 bg-theme-background-1 flex flex-col h-screen w-full z-max px-2 py-5 md:px-20 overflow-y-auto overflow-x-hidden',
+    'wb-configuration': 'flex gap-5 font-bold text-base text-theme-text-2 justify-between items-center w-full px-2 py-2',
+    'wb-configuration-reserve': 'flex flex-row-reverse md:flex-row gap-5 font-bold text-base text-theme-text-2 justify-between items-center w-full px-2 py-2',
+    'wb-configuration-input-text': 'bg-theme-editor-material-background px-2 shadow-lg w-full md:w-60',
+  },
   theme: {
     fontFamily: {
       'poppins': ['Poppins', 'ui-sans-serif', 'system-ui'],
@@ -242,17 +261,5 @@ module.exports = {
       },
     }),
   },
-  variants: ["hover", "focus", "active", "dark", "responsive"],
-  plugins: [
-    require('tailwindcss-typography')({
-      ellipsis: true,      
-      hyphens: true,         
-      kerning: true,       
-      textUnset: true,        
-      componentPrefix: 'c-', 
-    }),
-    require("@tailwindcss/forms")({
-      strategy: 'class',
-    }),
-  ],
-};
+  plugins: [],
+})

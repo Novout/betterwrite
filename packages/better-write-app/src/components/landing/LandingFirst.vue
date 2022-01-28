@@ -23,7 +23,7 @@
             t('landing.first.typical.1'),
             700,
             t('landing.first.typical.2'),
-            100,
+            75,
             t('landing.first.typical.3'),
             700,
             t('landing.first.typical.3'),

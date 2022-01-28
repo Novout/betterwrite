@@ -8,6 +8,7 @@ import { VitePWA as vitePWA } from 'vite-plugin-pwa'
 import vitePersist from 'vite-plugin-optimize-persist'
 import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
+import WindiCSS from 'vite-plugin-windicss'
 
 export default defineConfig({
   base: './',
@@ -21,6 +22,7 @@ export default defineConfig({
       dts: true,
       resolvers: [HeadlessUiResolver()],
     }),
+    WindiCSS(),
     vitePersist(),
     vitePackageAccess(),
     vitePackageVersion(),
