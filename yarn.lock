@@ -9445,10 +9445,10 @@ vite-plugin-fonts@0.2.2:
   resolved "https://registry.yarnpkg.com/vite-plugin-fonts/-/vite-plugin-fonts-0.2.2.tgz#48cda78f5ad36907f3de497fa418ffd2b8f2ca83"
   integrity sha512-fhzhsrTiuzlDjSO6g5sV5EVIIvbb8lmsaIY6eUTBM4lcF55x40UBpHrcyvNwIhQG211g0lu83XC7oZlkmvdkMA==
 
-vite-plugin-optimize-persist@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/vite-plugin-optimize-persist/-/vite-plugin-optimize-persist-0.1.1.tgz#76c5e2b0cf00570689363a3e42265be95c23d82e"
-  integrity sha512-f7/8P16OgLNYrEgJVzIhd9d7KK8vFrLIKgpxM6o1820Qp3CiybiB/kwmQOFAqI9tOyFAhDJDe/4Qka+JRIiTdw==
+vite-plugin-optimize-persist@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-optimize-persist/-/vite-plugin-optimize-persist-0.1.2.tgz#c2aa2712afa74db55f580e3d1656e8cc0b783019"
+  integrity sha512-H/Ebn2kZO8PvwUF08SsT5K5xMJNCWKoGX71+e9/ER3yNj7GHiFjNQlvGg5ih/zEx09MZ9m7WCxOwmEKbeIVzww==
   dependencies:
     debug "^4.3.2"
     fs-extra "^10.0.0"
