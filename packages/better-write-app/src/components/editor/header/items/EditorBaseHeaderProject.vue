@@ -23,7 +23,7 @@
       <EditorHeaderItem
         :text="t('editor.bar.project.new')"
         shortcut="CTRL + Shift + Q"
-        @action="ABSOLUTE.project.new = true"
+        @action="router.push('/dashboard')"
       />
       <EditorHeaderItem
         :divider="true"

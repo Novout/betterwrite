@@ -20,6 +20,7 @@ import { useNProgress } from '@vueuse/integrations'
 import { useEnv } from './env'
 import { useEntity } from './entity'
 import { usePlugin } from 'better-write-plugin-core'
+import { useRouter } from 'vue-router'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -36,6 +37,7 @@ export const useProject = () => {
   const { isLoading } = useNProgress()
   const env = useEnv()
   const plugin = usePlugin()
+  const router = useRouter()
   const { t } = i18n.global
 
   let timer: any
@@ -78,20 +80,9 @@ export const useProject = () => {
     if (!context) context = local.getProject()
 
     if (!context) {
-      await PROJECT.create({
-        name: 'Untitled',
-        version: '0.1.0',
-        creator: 'Better Write',
-        subject: 'Untitled',
-        type: 'blank',
-      } as any)
-
-      await local.onSaveProject(false)
-
-      context = local.getProject()
+      router.push('/dashboard')
+      return
     }
-
-    if (!context) return
 
     isLoading.value = true
 
