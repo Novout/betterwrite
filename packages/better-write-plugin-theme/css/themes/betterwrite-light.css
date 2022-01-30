@@ -195,8 +195,8 @@
   --theme-toast-warning-text: black;
   --theme-toast-warning-background: rgb(255, 198, 132);
   --scr-track: #f1f1f1;
-  --scr-thumb: rgba(0, 0, 0, 0.04);
-  --scr-thumb-hover: rgba(0, 0, 0, 0.1);
+  --scr-thumb: #f0f0f0;
+  --scr-thumb-hover: #e2e2e2;
   --wb-selection: rgba(0, 0, 0, 0.1);
   --wb-text-selection: #000;
 }
