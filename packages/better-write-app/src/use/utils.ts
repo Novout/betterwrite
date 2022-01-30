@@ -236,6 +236,28 @@ export const useUtils = () => {
     return { assign, getMemorySizeOfObject }
   }
 
+  const language = () => {
+    const isoToCode = (iso: string) => {
+      return (
+        {
+          'pt-BR': 'br',
+          'en-US': 'en',
+        }[iso] || 'en'
+      )
+    }
+
+    const codeToIso = (code: string) => {
+      return (
+        {
+          en: 'en-US',
+          br: 'pt-BR',
+        }[code] || 'en-US'
+      )
+    }
+
+    return { isoToCode, codeToIso }
+  }
+
   return {
     position,
     delay,
@@ -248,5 +270,6 @@ export const useUtils = () => {
     support,
     path,
     object,
+    language,
   }
 }

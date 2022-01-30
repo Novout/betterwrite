@@ -34,7 +34,12 @@ import { useUtils } from './utils'
 import i18n from '@/lang'
 import { useI18n } from 'vue-i18n'
 import useEmitter from './emitter'
-import { useMouse, usePageLeave, useTextSelection } from '@vueuse/core'
+import {
+  useMouse,
+  useNavigatorLanguage,
+  usePageLeave,
+  useTextSelection,
+} from '@vueuse/core'
 import { watch } from 'vue'
 
 export const useStart = () => {
@@ -53,6 +58,7 @@ export const useStart = () => {
   const { x, y } = useMouse({ type: 'page' })
   const selection = useTextSelection()
   const isLeft = usePageLeave()
+  const utils = useUtils()
   const { t } = i18n.global
 
   // set global mouse tracking
@@ -122,19 +128,19 @@ export const useStart = () => {
 
   const lang = () => {
     const { locale } = useI18n()
-    const lang = localStorage.getItem('lang')
+
+    const lang =
+      localStorage.getItem('lang') ||
+      utils
+        .language()
+        .isoToCode(useNavigatorLanguage().language.value as string)
 
     if (!lang) return
 
     locale.value = lang
-
-    const iso =
-      {
-        en: 'en-US',
-        br: 'pt-BR',
-      }[lang] || 'en-US'
-
-    ;(document.querySelector('html') as HTMLElement).lang = iso
+    ;(document.querySelector('html') as HTMLElement).lang = utils
+      .language()
+      .codeToIso(lang)
   }
 
   const initial = () => {
