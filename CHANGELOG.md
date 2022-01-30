@@ -2,6 +2,10 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.12.7
+
+* **style(editor):** entity scan text indent [a599a41]
+
 ### v0.12.6
 
 * **chore(deps):** update turborepo to v1.1 [875a268]
