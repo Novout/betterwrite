@@ -778,6 +778,9 @@ export const PluginPDFSet = (
                   stores.PDF.styles.switcher.cover &&
                   stores.PDF.styles.base.background.data
                 ? undefined
+                : !isTheme.value &&
+                  stores.PDF.styles.base.background.color === '#FFFFFF'
+                ? undefined
                 : [
                     {
                       canvas: [generate().styles().background()],
