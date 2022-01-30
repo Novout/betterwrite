@@ -19,41 +19,7 @@
   "devDependencies": {
     "generi": "0.3.0",
     "lerna": "4.0.0",
-    "turbo": "1.0.23"
+    "turbo": "1.1.1"
   },
-  "turbo": {
-    "pipeline": {
-      "build": {
-        "dependsOn": [
-          "^build"
-        ],
-        "outputs": [
-          "dist/**"
-        ],
-        "cache": false
-      },
-      "test": {
-        "outputs": []
-      },
-      "dev": {
-        "dependsOn": [
-          "^build"
-        ],
-        "outputs": [
-          "dist/**"
-        ],
-        "cache": false
-      },
-      "serve": {
-        "dependsOn": [
-          "^build"
-        ],
-        "outputs": [
-          "dist/**"
-        ],
-        "cache": false
-      },
-      "lint": {}
-    }
-  }
+  "packageManager": "yarn@1.22.17"
 }
