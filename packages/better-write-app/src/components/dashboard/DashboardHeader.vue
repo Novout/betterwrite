@@ -5,7 +5,11 @@
     <h1 class="text-xl font-poppins font-bold wb-text">
       {{ t('dashboard.title') }}
     </h1>
-    <HeroIcon class="wb-icon" @click.prevent.stop="router.push('/')">
+    <HeroIcon
+      v-if="local.getProject()"
+      class="wb-icon"
+      @click.prevent.stop="router.push('/')"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -25,9 +29,12 @@
 </template>
 
 <script setup lang="ts">
+  import { useLocalStorage } from '@/use/storage/local'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
 
   const { t } = useI18n()
   const router = useRouter()
+
+  const local = useLocalStorage()
 </script>

@@ -8,6 +8,14 @@
 
 <script setup lang="ts">
   import { useAuthStore } from '@/store/auth'
+  import { tryOnMounted } from '@vueuse/core'
+  import { usePlugin } from 'better-write-plugin-core'
 
   const AUTH = useAuthStore()
+
+  const plugin = usePlugin()
+
+  tryOnMounted(() => {
+    plugin.emit('plugin-theme-set')
+  })
 </script>
