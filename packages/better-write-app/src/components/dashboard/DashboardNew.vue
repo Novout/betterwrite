@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-around items-center mt-16 bg-theme-background-2 w-full min-h-60 p-5"
+    class="flex justify-around items-center mt-16 bg-theme-background-1 w-full min-h-60 p-5"
   >
     <HeroIcon
       class="wb-icon transform rotate-180"
