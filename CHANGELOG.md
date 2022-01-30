@@ -1,6 +1,23 @@
-# Changelog (28/01/2022)
+# Changelog (30/01/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.6
+
+* **chore(deps):** update turborepo to v1.1 [875a268]
+* **style(landing):** landing bold in title [3e888a9]
+* **fix(app):** detect default navigator language in start hook [76500b9]
+* **style(dashboard):** animations in appear [abbda52]
+* **chore(editor):** base paragraph indent [796ca05]
+* **style(dashboard):** base colors [a50d007]
+* **style(editor):** project preferences textarea in subject [1583689]
+* **fix(pdf):** remove canvas in white background [6b3bdff]
+* **style(app):** base scroll theme colors [716b7e7]
+* **fix(dashboard):** plugin theme setter [e0c884b]
+* **feat(dashboard):** carousel project options [afed7b6]
+* **feat(dashboard):** create blank project [08c68c7]
+* **chore(deps):** remove tailwindcss deps [8592c0c]
+* **chore(deps):** update vue monorepo to v3.2.29 [b123a8b]
 
 ### v0.12.5
 
