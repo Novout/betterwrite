@@ -18,7 +18,7 @@ export const useEditorStore = defineStore('editor', {
           fontFamily: 'font-raleway',
           fontColor: 'text-black dark:text-gray-100',
           paragraph: {
-            indent: 'indent-15',
+            indent: 'indent-8',
             fontFamily: 'font-raleway',
             fontColor: 'text-black dark:text-gray-100',
             fontSize: 'text-sm',
