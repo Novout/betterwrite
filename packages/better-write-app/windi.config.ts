@@ -23,6 +23,7 @@ export default defineConfig({
     'wb-configuration': 'flex gap-5 font-bold text-base text-theme-text-2 justify-between items-center w-full px-2 py-2',
     'wb-configuration-reserve': 'flex flex-row-reverse md:flex-row gap-5 font-bold text-base text-theme-text-2 justify-between items-center w-full px-2 py-2',
     'wb-configuration-input-text': 'bg-theme-editor-material-background px-2 shadow-lg w-full md:w-60',
+    'wb-indent': 'indent-8'
   },
   theme: {
     fontFamily: {

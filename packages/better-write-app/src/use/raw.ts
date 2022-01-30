@@ -294,7 +294,6 @@ export const useRaw = () => {
         entity.type === 'paragraph'
           ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
           : '',
-        entity.type === 'paragraph' ? style.paragraph.indent : '',
         entity.type === 'paragraph' ? style.paragraph.fontSize : '',
         entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
         entity.type === 'paragraph' ? style.paragraph.fontColor : '',

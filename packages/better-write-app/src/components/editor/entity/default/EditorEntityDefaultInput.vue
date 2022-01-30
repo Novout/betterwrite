@@ -33,6 +33,7 @@
         minHeight: '24px',
         whiteSpace: 'break-spaces',
         paddingBottom: last ? '5rem' : '',
+        textIndent: props.entity.type === 'paragraph' ? '2rem' : 0,
       }"
       :class="raw.v2().style(props.entity, style)"
       @input="onInput"
