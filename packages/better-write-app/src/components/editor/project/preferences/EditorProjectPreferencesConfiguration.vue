@@ -37,9 +37,10 @@
           :tooltip="t('editor.project.configuration.tooltip.subject')"
         />
       </section>
-      <InputText
+      <InputTextArea
         v-model="PROJECT.subject"
-        class="wb-configuration-input-text"
+        class="wb-configuration-input-text overflow-x-hidden resize-none"
+        rows="5"
       />
     </div>
     <div class="wb-configuration">
