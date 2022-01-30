@@ -1,5 +1,9 @@
 <template>
   <div
+    v-motion
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1 }"
+    :delay="200"
     class="flex justify-around items-center mt-16 bg-theme-background-1 w-full min-h-60 p-5"
   >
     <HeroIcon

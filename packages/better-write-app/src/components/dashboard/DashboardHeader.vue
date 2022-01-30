@@ -1,5 +1,9 @@
 <template>
   <header
+    v-motion
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1 }"
+    :delay="100"
     class="flex items-center justify-between w-full bg-theme-background-2 p-5"
   >
     <h1 class="text-xl font-poppins font-bold wb-text">

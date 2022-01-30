@@ -1,5 +1,11 @@
 <template>
-  <div class="flex flex-col w-full p-5">
+  <div
+    v-motion
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1 }"
+    :delay="500"
+    class="flex flex-col w-full p-5"
+  >
     <h2 class="text-2xl font-bold wb-text my-5">
       {{ t('dashboard.projects.title') }}
     </h2>
