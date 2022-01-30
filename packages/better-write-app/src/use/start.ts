@@ -44,7 +44,6 @@ import { watch } from 'vue'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
-  const LOGGER = useLoggerStore()
   const EDITOR = useEditorStore()
   const AUTH = useAuthStore()
 
@@ -52,13 +51,13 @@ export const useStart = () => {
   const router = useRouter()
   const toast = useToast()
   const env = useEnv()
-  const format = useFormat()
   const core = useCore()
   const plugin = usePlugin()
   const { x, y } = useMouse({ type: 'page' })
   const selection = useTextSelection()
   const isLeft = usePageLeave()
   const utils = useUtils()
+  const nav = useNavigatorLanguage()
   const { t } = i18n.global
 
   // set global mouse tracking
@@ -131,9 +130,7 @@ export const useStart = () => {
 
     const lang =
       localStorage.getItem('lang') ||
-      utils
-        .language()
-        .isoToCode(useNavigatorLanguage().language.value as string)
+      utils.language().isoToCode(nav.language.value || 'en-US')
 
     if (!lang) return
 

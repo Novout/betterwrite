@@ -10,7 +10,7 @@
           v-motion
           :initial="{ opacity: 0, y: -50 }"
           :enter="{ opacity: 1, y: 0, transition: { delay: 300 } }"
-          class="title-font sm:text-4xl text-3xl mb-4"
+          class="title-font font-bold md:text-5xl text-3xl mb-4"
         >
           {{ t('landing.first.title') }}
         </h1>
@@ -39,7 +39,7 @@
           :enter="{ opacity: 1, transition: { delay: 300 } }"
         >
           <router-link
-            class="font-bold shadow-xl w-full text-base md:text-lg px-5 py-2 md:px-5 md:py-5 rounded-full border border-gray-800 bg-black-opacity hover:bg-gray-900 text-gray-200 flex flex-col"
+            class="font-bold transition-colors shadow-xl w-full text-base md:text-lg px-6 py-3 md:px-5 md:py-5 rounded-full border border-gray-800 bg-black-opacity hover:bg-gray-900 text-gray-200 flex flex-col"
             to="/"
             ><div>
               {{ t('landing.first.editor.website') }}
