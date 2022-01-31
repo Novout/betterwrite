@@ -436,7 +436,10 @@ export const PluginPDFSet = (
         page.entities.forEach((entity: Entity) => {
           let _raw = {}
 
-          if (entity.raw === hooks.env.emptyLine()) {
+          if (
+            entity.raw === hooks.env.emptyLine() &&
+            entity.type === 'paragraph'
+          ) {
             _raw = lineBreak(false)
             arr.push(_raw)
             return
