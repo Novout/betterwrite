@@ -1,6 +1,13 @@
-# Changelog (30/01/2022)
+# Changelog (01/02/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.8
+
+* **fix(pdf):** reload google fonts request in dev mode [2f1d238]
+* **feat(pdf):** support offline mode [70c71f8]
+* **fix(pdf):** preview in line break render image not support [b103c64]
+* **fix(pdf):** validate empty line in line break setter [bc1116b]
 
 ### v0.12.7
 
