@@ -207,7 +207,9 @@ export const PluginPDFSet = (
       }
     }
 
-    const lineBreak = (fixed: boolean = true) => {
+    const lineBreak = (fixed: boolean = true, final: boolean) => {
+      if (!final && fixed) return
+
       if (
         stores.PDF.styles.lineBreak.image.data &&
         stores.PDF.styles.lineBreak.image.active &&
@@ -434,14 +436,16 @@ export const PluginPDFSet = (
 
       pages.forEach((page: ContextState) => {
         page.entities.forEach((entity: Entity) => {
-          let _raw = {}
+          let _raw: any = {}
 
           if (
             entity.raw === hooks.env.emptyLine() &&
             entity.type === 'paragraph'
           ) {
-            _raw = lineBreak(false)
-            arr.push(_raw)
+            _raw = lineBreak(false, options.final)
+
+            if (_raw) arr.push(_raw)
+
             return
           }
 
@@ -456,7 +460,7 @@ export const PluginPDFSet = (
           } else if (entity.type === 'page-break') {
             _raw = pageBreak()
           } else if (entity.type === 'line-break') {
-            _raw = lineBreak()
+            _raw = lineBreak(true, options.final)
           } else if (entity.type === 'image') {
             if (!options.final) return
 
