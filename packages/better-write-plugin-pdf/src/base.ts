@@ -8,6 +8,9 @@ export const PluginPDFBase = (
 ) => {
   On.externals().PluginPDFInit(emitter, [
     async () => {
+      // not force google fonts request
+      if (stores.PDF.normalize.length !== 0) return
+
       const { normalize, names } = await hooks.googleFonts.get()
 
       stores.PDF.loadFonts({ names, normalize })
