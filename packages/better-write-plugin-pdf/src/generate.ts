@@ -10,6 +10,7 @@ import { useNProgress } from '@vueuse/integrations'
 import { useToast } from 'vue-toastification'
 import * as pdfMake from 'pdfmake/build/pdfmake'
 import { getPDFUtils } from 'better-write-plugin-theme'
+import { useOnline } from '@vueuse/core'
 
 export const PluginPDFSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -18,8 +19,21 @@ export const PluginPDFSet = (
 ) => {
   const { isLoading } = useNProgress()
   const toast = useToast()
+  const online = useOnline()
 
   const isTheme = computed(() => stores.PDF.styles.switcher.theme)
+
+  const utils = () => {
+    const isOnline = () => {
+      return online.value && stores.PDF.normalize.length !== 0
+    }
+
+    const correctFontInject = (font: string) => {
+      return isOnline() ? font : 'Roboto'
+    }
+
+    return { isOnline, correctFontInject }
+  }
 
   const transform = () => {
     const pageOrientation = (orientation: string) => {
@@ -151,7 +165,9 @@ export const PluginPDFSet = (
     const paragraph = (entity: Entity) => {
       const obj = entity.external?.paragraph?.active
         ? {
-            font: entity.external?.paragraph?.generator.font,
+            font: utils().correctFontInject(
+              entity.external?.paragraph?.generator.font
+            ),
             fontSize: entity.external?.paragraph?.generator.fontSize,
             lineHeight: entity.external?.paragraph?.generator.lineHeight,
             alignment: transform().entityAlignment(
@@ -347,7 +363,7 @@ export const PluginPDFSet = (
         let _title = {
           text: stores.PROJECT.nameRaw,
           fontSize: 42,
-          font: stores.PDF.styles.headingOne.font,
+          font: utils().correctFontInject(stores.PDF.styles.headingOne.font),
           color: isTheme.value
             ? theme.paragraph
             : stores.PDF.styles.paragraph.color,
@@ -358,7 +374,7 @@ export const PluginPDFSet = (
         let _subject = {
           text: stores.PROJECT.subject,
           fontSize: 11,
-          font: stores.PDF.styles.paragraph.font,
+          font: utils().correctFontInject(stores.PDF.styles.paragraph.font),
           margin: [
             generate().base().pageMargins[0],
             50,
@@ -374,7 +390,7 @@ export const PluginPDFSet = (
         let _creator = {
           text: stores.PROJECT.creator,
           fontSize: 11,
-          font: stores.PDF.styles.paragraph.font,
+          font: utils().correctFontInject(stores.PDF.styles.paragraph.font),
           margin: [
             generate().base().pageMargins[0],
             250,
@@ -388,17 +404,6 @@ export const PluginPDFSet = (
           pageBreak: 'after',
         }
 
-        /*
-        let _version = {
-          text: stores.PROJECT.creator,
-          fontSize: 11,
-          font: stores.PDF.styles.paragraph.font,
-					color: isTheme.value ? theme.paragraph : stores.PDF.styles.paragraph.color,
-          margin: [10, 10],
-          alignment: 'left',
-        }
-        */
-
         arr.push(_title)
         arr.push(_subject)
         arr.push(_creator)
@@ -411,13 +416,17 @@ export const PluginPDFSet = (
           toc: {
             title: {
               text: stores.PROJECT.nameRaw,
-              font: stores.PDF.styles.base.summary.fontFamily,
+              font: utils().correctFontInject(
+                stores.PDF.styles.base.summary.fontFamily
+              ),
               fontSize: stores.PDF.styles.base.summary.fontSize,
             },
           },
           pageBreak: 'before',
           alignment: 'center',
-          font: stores.PDF.styles.base.summary.fontFamily,
+          font: utils().correctFontInject(
+            stores.PDF.styles.base.summary.fontFamily
+          ),
           style: 'summary-default',
         }
 
@@ -492,7 +501,7 @@ export const PluginPDFSet = (
     const styles = () => {
       const paragraph = () => {
         return {
-          font: stores.PDF.styles.paragraph.font,
+          font: utils().correctFontInject(stores.PDF.styles.paragraph.font),
           fontSize: stores.PDF.styles.paragraph.fontSize,
           lineHeight: stores.PDF.styles.paragraph.lineHeight,
           alignment: transform().entityAlignment(
@@ -508,7 +517,7 @@ export const PluginPDFSet = (
 
       const headingOne = () => {
         return {
-          font: stores.PDF.styles.headingOne.font,
+          font: utils().correctFontInject(stores.PDF.styles.headingOne.font),
           fontSize: stores.PDF.styles.headingOne.fontSize,
           lineHeight: stores.PDF.styles.headingOne.lineHeight,
           bold: stores.PDF.styles.headingOne.bold,
@@ -526,7 +535,7 @@ export const PluginPDFSet = (
 
       const headingTwo = () => {
         return {
-          font: stores.PDF.styles.headingTwo.font,
+          font: utils().correctFontInject(stores.PDF.styles.headingTwo.font),
           fontSize: stores.PDF.styles.headingTwo.fontSize,
           lineHeight: stores.PDF.styles.headingTwo.lineHeight,
           bold: stores.PDF.styles.headingTwo.bold,
@@ -544,7 +553,7 @@ export const PluginPDFSet = (
 
       const headingThree = () => {
         return {
-          font: stores.PDF.styles.headingThree.font,
+          font: utils().correctFontInject(stores.PDF.styles.headingThree.font),
           fontSize: stores.PDF.styles.headingThree.fontSize,
           lineHeight: stores.PDF.styles.headingThree.lineHeight,
           bold: stores.PDF.styles.headingThree.bold,
@@ -806,7 +815,9 @@ export const PluginPDFSet = (
                   text: footer().text(currentPage, pageCount, pageSize),
                   margin: [15, 0],
                   fontSize: stores.PDF.styles.base.footer.textSize,
-                  font: stores.PDF.styles.base.footer.fontFamily,
+                  font: utils().correctFontInject(
+                    stores.PDF.styles.base.footer.fontFamily
+                  ),
                   alignment: footer().alignment(
                     currentPage,
                     pageCount,
@@ -825,7 +836,9 @@ export const PluginPDFSet = (
                 {
                   text: header().text(currentPage, pageCount, pageSize),
                   fontSize: stores.PDF.styles.base.header.textSize,
-                  font: stores.PDF.styles.base.header.fontFamily,
+                  font: utils().correctFontInject(
+                    stores.PDF.styles.base.header.fontFamily
+                  ),
                   decoration: 'underline',
                   alignment: header().alignment(
                     currentPage,
@@ -890,14 +903,35 @@ export const PluginPDFSet = (
 
     const unique = _fonts.filter((v, i, a) => a.indexOf(v) === i)
 
-    unique.forEach((s: string) => {
-      set[s] = stores.PDF.normalize[s]
-    })
+    if (!utils().isOnline()) {
+      // now online, reload google fonts
+      if (online.value && stores.PDF.normalize.length === 0) {
+        toast(hooks.i18n.t('editor.pdf.inserts.nowOnline'))
 
-    if (stores.PDF.normalize['Roboto'])
-      set['Roboto'] = stores.PDF.normalize['Roboto']
+        return
+      } else {
+        pdfMake.addFonts({
+          Roboto: {
+            normal:
+              'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.1/fonts/Roboto/Roboto-Regular.ttf',
+            bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.1/fonts/Roboto/Roboto-Medium.ttf',
+            italics:
+              'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.1/fonts/Roboto/Roboto-Italic.ttf',
+            bolditalics:
+              'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.1/fonts/Roboto/Roboto-MediumItalic.ttf',
+          },
+        })
+      }
+    } else {
+      unique.forEach((s: string) => {
+        set[s] = stores.PDF.normalize[s]
+      })
 
-    pdfMake.addFonts(set)
+      if (stores.PDF.normalize['Roboto'])
+        set['Roboto'] = stores.PDF.normalize['Roboto']
+
+      pdfMake.addFonts(set)
+    }
   }
 
   const create = async () => {

@@ -1,6 +1,10 @@
 export const setPDFI18n = () => {
   const br = () => {
     return {
+      inserts: {
+        nowOnline:
+          'Foi detectado que você tem conexão com a internet, mas as fontes não foram carregadas. Por favor, recarregue a página.',
+      },
       theme: {
         title: 'Usar Tema',
         tooltip:
@@ -156,6 +160,10 @@ export const setPDFI18n = () => {
 
   const en = () => {
     return {
+      inserts: {
+        nowOnline:
+          'It was detected that you have an internet connection, but the fonts were not loaded. Please reload the page.',
+      },
       theme: {
         title: 'Use Theme',
         tooltip:
