@@ -1,6 +1,11 @@
-# Changelog (01/02/2022)
+# Changelog (15/02/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.9
+
+* **feat(dropbox):** option for hour insert in save file [edd77ba]
+* **fix(editor):** open comment modal in graph comment click [5a896cc]
 
 ### v0.12.8
 
