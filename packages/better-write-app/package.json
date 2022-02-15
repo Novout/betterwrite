@@ -106,6 +106,7 @@
         "mitt",
         "node-fetch",
         "pdfmake/build/pdfmake",
+        "pdfmake/build/vfs_fonts",
         "pinia",
         "v-tooltip",
         "vue",

@@ -4,14 +4,16 @@ import { useContextStore } from '@/store/context'
 import { useBreakpoints, breakpointsTailwind } from '@vueuse/core'
 import { useAbsoluteStore } from '@/store/absolute'
 import { useProjectStore } from '@/store/project'
-import { ID, ContextState } from 'better-write-types'
+import { ID, ContextState, Entity } from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { useNProgress } from '@vueuse/integrations'
+import { useEditorStore } from '@/store/editor'
 
 export const useGraph = () => {
   const CONTEXT = useContextStore()
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
+  const EDITOR = useEditorStore()
 
   const scroll = useScroll()
   const storage = useStorage()
@@ -26,7 +28,11 @@ export const useGraph = () => {
     return { mobile }
   }
 
-  const load = async (go: ID, page: ContextState) => {
+  const load = async (
+    index: ID<number>,
+    page: ContextState,
+    entity: Entity
+  ) => {
     isLoading.value = true
 
     await nextTick
@@ -40,17 +46,22 @@ export const useGraph = () => {
         PROJECT.pageLoaded = page.id
         await nextTick
         // force scroll to element clicked in aside graph
-        scroll.to(String(go))
+        scroll.to(`#entity-${String(index)}`)
       })
       .finally(() => {
         isLoading.value = false
+
+        // open comment modal with comment click
+        if (entity.external?.comment?.raw) {
+          EDITOR.actives.entity.index = index
+
+          ABSOLUTE.entity.comment = true
+        }
       })
   }
 
-  const to = (ind: ID, page: ContextState) => {
-    load(`#entity-${String(ind)}`, page)
-
-    PROJECT.pageLoaded = page.id
+  const to = async (index: ID<number>, page: ContextState, entity: Entity) => {
+    await load(index, page, entity)
 
     utils().mobile()
   }

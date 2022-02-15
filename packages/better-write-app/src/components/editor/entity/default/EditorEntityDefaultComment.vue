@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted, nextTick } from 'vue'
+  import { ref, onMounted, nextTick, computed } from 'vue'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useDraggable } from '@vueuse/core'
   import { useEditorStore } from '@/store/editor'
@@ -66,8 +66,8 @@
   const comment = ref<HTMLElement | null>(null)
   const search = ref<HTMLElement | null>(null)
 
-  const entity = CONTEXT.entities[EDITOR.actives.entity.index]
-  const input = ref(entity.external?.comment?.raw || '')
+  const entity = computed(() => CONTEXT.entities[EDITOR.actives.entity.index])
+  const input = ref(entity.value.external?.comment?.raw || '')
 
   const { style } = useDraggable(comment as any, {
     initialValue: { x: window.innerWidth / 2 - 192, y: window.innerHeight / 3 },
@@ -78,13 +78,15 @@
 
   const onClose = async () => {
     CONTEXT.updateCommentInPage({
-      entity,
+      entity: entity.value,
       raw: input.value,
     })
 
     await nextTick
 
     PROJECT.updateContext(CONTEXT.$state)
+
+    await nextTick
 
     ABSOLUTE.entity.comment = false
   }

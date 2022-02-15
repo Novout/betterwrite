@@ -15,7 +15,7 @@
         v-for="(entity, ind) in page.entities"
         :id="graph.normalize().id(page, ind)"
         :key="graph.normalize().key(page, ind)"
-        @click="graph.to(ind, page)"
+        @click="graph.to(ind, page, entity)"
       >
         <AsideGraphItem :entity="entity" :page="page" />
       </div>
