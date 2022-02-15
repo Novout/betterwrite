@@ -92,7 +92,7 @@
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useAbsoluteStore } from '@/store/absolute'
-  import { MaybeElementRef, onClickOutside, useDraggable } from '@vueuse/core'
+  import { onClickOutside, useDraggable } from '@vueuse/core'
 
   const ABSOLUTE = useAbsoluteStore()
 

@@ -79,6 +79,9 @@ export const useEditorStore = defineStore('editor', {
             value: '— ',
           },
         },
+        dropbox: {
+          hourInSaveFileName: false,
+        },
       },
       actives: {
         entity: {

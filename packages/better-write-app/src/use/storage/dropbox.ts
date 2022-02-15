@@ -9,15 +9,19 @@ import { useStorage } from './storage'
 import { useNProgress } from '@vueuse/integrations'
 import { useI18n } from 'vue-i18n'
 import { usePlugin } from 'better-write-plugin-core'
+import { useEditorStore } from '@/store/editor'
+import { useFormat } from '../format'
 
 export const useDropbox = () => {
   const AUTH = useAuthStore()
   const ABSOLUTE = useAbsoluteStore()
+  const EDITOR = useEditorStore()
 
   const toast = useToast()
   const storage = useStorage()
   const plugin = usePlugin()
   const project = useProject()
+  const format = useFormat()
   const { isLoading } = useNProgress()
   const { t } = useI18n()
 
@@ -38,7 +42,9 @@ export const useDropbox = () => {
       accessToken: AUTH.dropbox.accessToken,
     })
 
-    const path = `/${project.utils().exportName('bw')}`
+    const path = EDITOR.configuration.dropbox.hourInSaveFileName
+      ? `/${format.actually()} | ${project.utils().exportName('bw')}`
+      : `/${project.utils().exportName('bw')}`
 
     toast.info(t('toast.generics.load'))
 

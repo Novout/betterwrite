@@ -167,6 +167,10 @@ export default {
       draggable: 'Draggable',
       bars: 'Sidebars',
       autosave: 'Auto Save (in minutes)',
+      dropbox: {
+        title: 'Dropbox',
+        hourInSaveFileName: 'Save Time On Filename',
+      },
       entity: {
         title: 'Editor',
         updateTime: 'Updated Time',

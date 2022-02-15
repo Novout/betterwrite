@@ -62,12 +62,17 @@ export interface EditorStateConfigurationCommands {
   }
 }
 
+export interface EditorStateConfigurationDropbox {
+  hourInSaveFileName: boolean
+}
+
 export interface EditorStateConfiguration {
   theme: BetterWriteThemes
   lang?: boolean
   draggable: boolean
   bars: boolean
   auto: number | 'never'
+  dropbox: EditorStateConfigurationDropbox
   entity: EditorStateConfigurationEntity
   commands: EditorStateConfigurationCommands
 }

@@ -322,6 +322,13 @@ export const useStorage = () => {
       }
     }
 
+    // <= 0.12.9
+    if (!_.editor.configuration.dropbox) {
+      _.editor.configuration.dropbox = {
+        hourInSaveFileName: false,
+      }
+    }
+
     return _
   }
 
