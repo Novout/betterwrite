@@ -23,12 +23,12 @@ export interface AbsoluteStatePDF {
 export interface AbsoluteStateAuth {
   dropbox: boolean
   supabase: boolean
-  customize: boolean
 }
 
 export interface AbsoluteStateEntity {
   comment: boolean
   menu: boolean
+  customize: boolean
 }
 
 export interface AbsoluteStatePages {
