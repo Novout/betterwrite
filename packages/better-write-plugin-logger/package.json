@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-logger",
-	"version": "0.12.9",
+	"version": "0.12.10",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -20,8 +20,8 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-plugin-core": "^0.12.9",
-		"better-write-types": "^0.12.9",
+		"better-write-plugin-core": "^0.12.10",
+		"better-write-types": "^0.12.10",
 		"pinia": "2.0.6",
 		"vue-demi": "latest"
 	},

@@ -1,6 +1,11 @@
-# Changelog (15/02/2022)
+# Changelog (17/02/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.10
+
+* **chore(deps):** update packages [4eeb9f9]
+* **refactor(editor):** entity paragraph custom in mobile provider [44fa261]
 
 ### v0.12.9
 
