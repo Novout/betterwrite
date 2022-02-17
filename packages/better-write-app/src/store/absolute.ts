@@ -33,6 +33,7 @@ export const useAbsoluteStore = defineStore('absolute', {
       entity: {
         comment: false,
         menu: false,
+        customize: false,
       },
       pages: {
         drafts: false,

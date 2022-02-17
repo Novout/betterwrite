@@ -355,7 +355,7 @@
     </EditorEntityDefaultOptionsItem>
     <EditorEntityDefaultOptionsItem
       v-if="entity.type === 'paragraph'"
-      :off="true"
+      @action="ABSOLUTE.entity.customize = true"
     >
       <template #icon>
         <svg
@@ -373,107 +373,8 @@
           ></path>
         </svg>
       </template>
-      <template #title>{{ t('editor.aside.entity.paragraph') }}</template>
-
-      <template #overflow>
-        <div class="flex p-3 items-center justify-between w-full">
-          <h3>{{ t('editor.aside.entity.optionsOn') }}</h3>
-          <InputBoolean v-model="paragraph.active" />
-        </div>
-        <div
-          class="flex flex-col items-center overflow-auto max-h-28"
-          :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
-        >
-          <div class="wb-input-container">
-            <label class="mx-2 text-xs">{{
-              t('editor.pdf.custom.generics.font')
-            }}</label>
-            <InputSelect
-              v-model="(paragraph.generator as any).font"
-              class="flex-1"
-              :min="true"
-              :arr="PDF.fonts"
-              :font="true"
-            />
-          </div>
-          <div class="wb-input-container">
-            <label class="mx-2 text-xs">{{
-              t('editor.pdf.custom.generics.fontSize')
-            }}</label>
-            <InputNumber v-model="(paragraph.generator as any).fontSize" />
-          </div>
-          <div class="wb-input-container">
-            <label class="mx-2 text-xs">{{
-              t('editor.pdf.custom.generics.bold')
-            }}</label>
-            <InputBoolean v-model="(paragraph.generator as any).bold" />
-          </div>
-          <div class="wb-input-container">
-            <label class="mx-2 text-xs">{{
-              t('editor.pdf.custom.generics.italics')
-            }}</label>
-            <InputBoolean v-model="(paragraph.generator as any).italics" />
-          </div>
-          <div class="wb-input-container">
-            <label class="mx-2 text-xs">{{
-              t('editor.pdf.base.pageMargins.title')
-            }}</label>
-            <section>
-              <label>{{ t('editor.pdf.base.pageMargins.top') }}</label>
-              <InputNumber v-model="(paragraph.generator as any).margin.top" />
-            </section>
-            <section>
-              <label>{{ t('editor.pdf.base.pageMargins.bottom') }}</label>
-              <InputNumber
-                v-model="(paragraph.generator as any).margin.bottom"
-              />
-            </section>
-          </div>
-          <div class="wb-input-container">
-            <label class="mx-2 text-xs">{{
-              t('editor.pdf.custom.generics.lineHeight')
-            }}</label>
-            <InputNumber v-model="(paragraph.generator as any).lineHeight" />
-          </div>
-          <div class="wb-input-container">
-            <label class="mx-2 text-xs">{{
-              t('editor.pdf.custom.generics.alignment')
-            }}</label>
-            <InputCarousel
-              v-model="(paragraph.generator as any).alignment"
-              class="flex-1"
-              :arr="defines.pdf().alignment()"
-            />
-          </div>
-          <div class="wb-input-container">
-            <label class="mx-2 text-xs">{{
-              t('editor.pdf.custom.generics.indent')
-            }}</label>
-            <InputNumber v-model="(paragraph.generator as any).indent" />
-          </div>
-          <div class="wb-input-container">
-            <label class="mx-2 text-xs">{{
-              t('editor.pdf.custom.generics.characterSpacing')
-            }}</label>
-            <InputNumber
-              v-model="(paragraph.generator as any).characterSpacing"
-            />
-          </div>
-          <div class="wb-input-container">
-            <label class="mx-1 text-xs">{{
-              t('editor.pdf.custom.generics.color')
-            }}</label>
-            <InputColorPicker v-model="(paragraph.generator as any).color" />
-          </div>
-          <div class="wb-input-container">
-            <label class="mx-1 text-xs">{{
-              t('editor.pdf.custom.generics.background')
-            }}</label>
-            <InputColorPicker
-              v-model="(paragraph.generator as any).background"
-            />
-          </div>
-        </div>
+      <template #title>
+        {{ t('editor.aside.entity.paragraph') }}
       </template>
     </EditorEntityDefaultOptionsItem>
     <EditorEntityDefaultOptionsItem v-if="entity.type === 'image'" :off="true">
