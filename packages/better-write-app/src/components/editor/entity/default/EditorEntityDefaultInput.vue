@@ -172,11 +172,11 @@
   watch(data, async (_data: string) => {
     const _last = last.value
 
+    data.value = data.value.replace(/\n/g, '')
+
     if (_data === env.emptyLine()) {
       setData('')
     }
-
-    data.value = data.value.replace(/\n/g, '')
 
     plugin.emit('plugin-input-watch-initial', {
       data: _data.replace(props.entity.raw, ''),

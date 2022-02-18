@@ -29,7 +29,7 @@
           @click="onClickAside(element)"
         >
           <p class="relative top-6 truncate">
-            {{ element.entities[0].raw }}
+            {{ element.title }}
           </p>
         </div>
       </div>
@@ -166,7 +166,7 @@
     () => PROJECT.pages.filter((p: ContextState) => p.id === page.value.id)[0]
   )
 
-  onMounted(() => {
+  onMounted(async () => {
     PROJECT.updateContext(CONTEXT.$state)
 
     emitter.on('project-creative-drafts-set-info', (_page: ContextState) => {
