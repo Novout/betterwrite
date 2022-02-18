@@ -11,7 +11,7 @@
         duration: 150,
       },
     }"
-    class="relative transform duration-700 w-60 h-60 overflow-y-auto bg-theme-background-1 p-2 rounded transition shadow-2xl"
+    class="relative -left-30 md:-left-20 transform duration-700 w-44 md:w-60 h-60 overflow-y-auto bg-theme-background-1 p-2 rounded transition shadow-2xl"
     :class="[visible ? '' : 'top-60']"
   >
     <EditorAbsoluteCommands
