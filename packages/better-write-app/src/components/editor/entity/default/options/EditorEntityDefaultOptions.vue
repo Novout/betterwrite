@@ -438,13 +438,10 @@
   import { useI18n } from 'vue-i18n'
   import useEmitter from '@/use/emitter'
   import { usePlugin } from 'better-write-plugin-core'
-  import { usePDFStore } from '@/store/pdf'
-  import { useDefines } from '@/use/defines'
 
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
   const CONTEXT = useContextStore()
-  const PDF = usePDFStore()
 
   const entity = computed<Entity>(
     () => CONTEXT.entities[EDITOR.actives.entity.index]
@@ -456,7 +453,6 @@
   const { t } = useI18n()
   const emitter = useEmitter()
   const plugin = usePlugin()
-  const defines = useDefines()
 
   onClickOutside(options as any, () => onClose())
 

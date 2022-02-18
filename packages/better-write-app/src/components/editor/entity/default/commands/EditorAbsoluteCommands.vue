@@ -6,15 +6,21 @@
       <slot name="icon" />
     </HeroIcon>
     <div class="flex flex-col items-end justify-end">
-      <p>{{ props.title }}</p>
+      <p v-if="!mobile">{{ props.title }}</p>
       <p class="text-2xs">{{ props.description }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+
   const props = defineProps({
     title: String,
     description: String,
   })
+
+  const breakpoints = useBreakpoints(breakpointsTailwind)
+
+  const mobile = breakpoints.smaller('md')
 </script>

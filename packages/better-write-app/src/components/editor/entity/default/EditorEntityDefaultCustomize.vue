@@ -123,12 +123,9 @@
   import { Entity } from 'better-write-types'
   import { useEditorStore } from '@/store/editor'
   import { useContextStore } from '@/store/context'
-  import { useDraggable } from '@vueuse/core'
   import { onClickOutside } from '@vueuse/core'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useI18n } from 'vue-i18n'
-  import useEmitter from '@/use/emitter'
-  import { usePlugin } from 'better-write-plugin-core'
   import { usePDFStore } from '@/store/pdf'
   import { useDefines } from '@/use/defines'
 
@@ -149,8 +146,6 @@
   const options = ref<HTMLElement | null>(null)
 
   const { t } = useI18n()
-  const emitter = useEmitter()
-  const plugin = usePlugin()
   const defines = useDefines()
 
   onClickOutside(options as any, () => onClose())
