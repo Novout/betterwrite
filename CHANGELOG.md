@@ -1,6 +1,12 @@
-# Changelog (17/02/2022)
+# Changelog (18/02/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.11
+
+* **style(commands):** remove title in mobile for breakpoint [13ae70f]
+* **fix(commands):** mobile sizes [31e20c9]
+* **fix(drafts):** title name in sidebar [0897e9a]
 
 ### v0.12.10
 
