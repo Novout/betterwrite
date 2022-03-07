@@ -96,6 +96,7 @@ export default {
     },
     project: {
       new: 'Novo',
+      blank: 'Anotação Rápida',
       configuration: 'Configurar',
       statistics: 'Estatísticas',
       preferences: 'Preferências',

@@ -1,7 +1,6 @@
 <template>
   <div class="min-h-screen overflow-y-auto w-full bg-theme-background-2">
     <DashboardHeader />
-    <DashboardNew />
     <DashboardProjects v-if="AUTH.account.user" />
   </div>
 </template>

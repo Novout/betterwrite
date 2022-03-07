@@ -23,7 +23,11 @@
       <EditorHeaderItem
         :text="t('editor.bar.project.new')"
         shortcut="CTRL + Shift + Q"
-        @action="router.push('/dashboard')"
+        @action="dashboard.project().new('creative')"
+      />
+      <EditorHeaderItem
+        :text="t('editor.bar.project.blank')"
+        @action="dashboard.project().new('blank')"
       />
       <EditorHeaderItem
         :divider="true"
@@ -92,6 +96,7 @@
   import { useSupabase } from '@/use/storage/supabase'
   import { useAuthStore } from '@/store/auth'
   import { useRouter } from 'vue-router'
+  import { useDashboard } from '@/use/dashboard'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
@@ -103,6 +108,7 @@
   const local = useLocalStorage()
   const { t } = useI18n()
   const router = useRouter()
+  const dashboard = useDashboard()
 
   const onSaveProject = () => {
     if (!confirm(t('editor.window.saveLocal'))) return

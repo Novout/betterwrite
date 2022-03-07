@@ -92,6 +92,7 @@ export default {
     },
     project: {
       new: 'New',
+      blank: 'Annotation',
       configuration: 'Configure',
       load: 'Load',
       save: 'Save',

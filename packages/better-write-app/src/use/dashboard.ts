@@ -1,4 +1,5 @@
 import { useProjectStore } from '@/store/project'
+import { ProjectType } from 'better-write-types'
 import { nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
@@ -13,7 +14,7 @@ export const useDashboard = () => {
   const { t } = useI18n()
 
   const project = () => {
-    const n = async (type: string) => {
+    const n = async (type: ProjectType) => {
       PROJECT.create({
         name: t('editor.aside.project.new.content.name'),
         version: t('editor.aside.project.new.content.version'),
