@@ -67,6 +67,12 @@ export const useEntity = () => {
       )
     }
 
+    const normalizeEmptyLines = (raw: string) => {
+      let _raw = raw.replaceAll(env.emptyLine(), '')
+
+      return _raw
+    }
+
     const isFixed = (index: number, options?: Record<string, boolean>) => {
       const entity = CONTEXT.entities[index]
 
@@ -114,6 +120,7 @@ export const useEntity = () => {
       entry,
       isFixed,
       getNamesByTheContent,
+      normalizeEmptyLines,
       getIndex,
       isLink,
       isImageCommand,
@@ -241,13 +248,12 @@ export const useEntity = () => {
 
   const base = () => {
     const onPaste = async (entity: Entity, value: string, event: any) => {
-      if (value !== '') return
-
       event.preventDefault()
       event.stopPropagation()
 
       const data = input.pasteText(event)
       const entities: Entities = []
+      let isFirst = true
 
       const index = CONTEXT.entities.indexOf(entity)
 
@@ -257,7 +263,15 @@ export const useEntity = () => {
         if (normalize) {
           const content = factory.entity().create(entity.type)
 
-          content.raw = normalize
+          if (value !== '' && value !== env.emptyLine() && isFirst) {
+            content.raw += value + normalize
+
+            content.raw = utils().normalizeEmptyLines(content.raw)
+
+            isFirst = false
+          } else {
+            content.raw = normalize
+          }
 
           entities.push(content)
         }
