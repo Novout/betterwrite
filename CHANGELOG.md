@@ -1,6 +1,16 @@
-# Changelog (18/02/2022)
+# Changelog (09/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.12
+
+* **style(editor):** loading bar in new project [aa23beb]
+* **fix(editor):** remove aside in blank projects [cd360c7]
+* **chore(deps):** upgrade unbuild to 0.7.0 [bee08af]
+* **chore(landing):** time of letters [f591b3d]
+* **fix(pdf):** offline vfs roboto insert [919bf91]
+* **fix(editor):** paste text entity sequence [2da2b6e]
+* **chore(project):** create new projects and annotations [42e4029]
 
 ### v0.12.11
 
