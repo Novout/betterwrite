@@ -1,3 +1,5 @@
+import * as pdfMake from 'pdfmake/build/pdfmake'
+import * as pdfFonts from 'pdfmake/build/vfs_fonts'
 import { On } from 'better-write-plugin-core'
 import {
   ContextState,
@@ -8,7 +10,6 @@ import {
 import { nextTick, computed } from 'vue-demi'
 import { useNProgress } from '@vueuse/integrations'
 import { useToast } from 'vue-toastification'
-import * as pdfMake from 'pdfmake/build/pdfmake'
 import { getPDFUtils } from 'better-write-plugin-theme'
 import { useOnline } from '@vueuse/core'
 
@@ -909,19 +910,9 @@ export const PluginPDFSet = (
         toast(hooks.i18n.t('editor.pdf.inserts.nowOnline'))
 
         return
-      } else {
-        pdfMake.addFonts({
-          Roboto: {
-            normal:
-              'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.1/fonts/Roboto/Roboto-Regular.ttf',
-            bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.1/fonts/Roboto/Roboto-Medium.ttf',
-            italics:
-              'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.1/fonts/Roboto/Roboto-Italic.ttf',
-            bolditalics:
-              'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.1/fonts/Roboto/Roboto-MediumItalic.ttf',
-          },
-        })
       }
+
+      ;(<any>pdfMake).addVirtualFileSystem(pdfFonts)
     } else {
       unique.forEach((s: string) => {
         set[s] = stores.PDF.normalize[s]
