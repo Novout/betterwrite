@@ -36,7 +36,7 @@ export default defineConfig({
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
-      gray: colors.coolGray,
+      gray: colors.gray,
     },
     fontSize: {
       '3xs': '.6rem',

@@ -21,13 +21,13 @@
           class="mb-10 mt-2 leading-relaxed text-lg blink"
           :steps="[
             t('landing.first.typical.1'),
-            700,
+            1500,
             t('landing.first.typical.2'),
-            75,
+            150,
             t('landing.first.typical.3'),
-            700,
+            1500,
             t('landing.first.typical.3'),
-            700,
+            1500,
           ]"
           :loop="Infinity"
           :wrapper="'p'"
