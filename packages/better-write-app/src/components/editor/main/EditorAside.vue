@@ -1,6 +1,6 @@
 <template>
   <aside
-    v-if="ABSOLUTE.aside"
+    v-if="ABSOLUTE.aside && PROJECT.type !== 'blank'"
     id="editor-aside"
     ref="aside"
     v-motion="'aside'"
@@ -23,10 +23,12 @@
 
 <script lang="ts" setup>
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useProjectStore } from '@/store/project'
   import { useSwipe, useWindowSize } from '@vueuse/core'
   import { ref } from 'vue'
 
   const ABSOLUTE = useAbsoluteStore()
+  const PROJECT = useProjectStore()
 
   const aside = ref<HTMLElement | null>(null)
   const left = ref('0')

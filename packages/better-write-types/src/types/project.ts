@@ -14,7 +14,7 @@ export interface ProjectState {
   producer: string
   keywords: string
   subject: string
-  type: string
+  type: ProjectType
   totalPagesCreated: number
   main: Record<any, any>
   summary: Record<any, any>

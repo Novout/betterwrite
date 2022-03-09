@@ -6,9 +6,9 @@
     :delay="100"
     class="flex justify-center items-center w-full bg-theme-editor-header-background hover:bg-theme-editor-header-background-hover active:bg-theme-editor-header-background-active z-50 pt-0.5"
   >
-    <div>
+    <div class="w-12">
       <HeroIcon
-        v-if="PROJECT.name !== env.projectEmpty()"
+        v-if="PROJECT.name !== env.projectEmpty() && PROJECT.type !== 'blank'"
         class="relative justify-center items-center z-aside-open wb-icon rounded-br no-drag mr-7"
         @click="ABSOLUTE.aside = !ABSOLUTE.aside"
       >
