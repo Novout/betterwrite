@@ -2,6 +2,11 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.12.14
+
+* **chore(project):** remove keyboardjs [9fc956d]
+* **fix(editor):** remove normalize keyboard [c8e110d]
+
 ### v0.12.13
 
 * **fix(editor):** project reset context loader [bec97d9]
