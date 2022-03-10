@@ -11,7 +11,6 @@
     <EditorProjectPreferencesDropbox v-if="AUTH.dropbox.accessToken" />
     <EditorProjectPreferencesEntity />
     <EditorProjectPreferencesCommands />
-    <EditorProjectPreferencesKeyboard />
   </div>
 </template>
 
