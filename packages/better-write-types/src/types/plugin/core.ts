@@ -8,7 +8,6 @@ import {
   LoggerState,
   PDFState,
   ProjectState,
-  ShortcutsState,
 } from '../../'
 
 export type PluginEmitterName =
@@ -51,7 +50,6 @@ export type ExistingStores =
   | 'logger'
   | 'pdf'
   | 'project'
-  | 'shortcuts'
 
 export type PluginStore<
   T extends ExistingStores,
@@ -68,7 +66,6 @@ export interface PluginStores {
   LOGGER: PluginStore<'logger', LoggerState, any, any>
   PDF: PluginStore<'pdf', PDFState, any, any>
   PROJECT: PluginStore<'project', ProjectState, any, any>
-  SHORTCUTS: PluginStore<'shortcuts', ShortcutsState, any, any>
 }
 
 export interface PluginDefines {
@@ -92,7 +89,6 @@ export interface PluginHooks {
   format: PluginHook
   graph: PluginHook
   input: PluginHook
-  keyboard: PluginHook
   page: PluginHook
   populate: PluginHook
   project: PluginHook

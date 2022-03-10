@@ -1,24 +1,8 @@
-import { Callback, BetterWriteThemes } from 'better-write-types'
+import { BetterWriteThemes } from 'better-write-types'
 import i18n from '@/lang'
 
 export const useDefines = () => {
   const { t } = i18n.global
-
-  const shortcuts = (k: string) => {
-    return {
-      localSaveProject: ['CTRL + S', 'ctrl > s'],
-      localLoadProject: ['CTRL + P', 'ctrl > p'],
-      newProject: ['CTRL + Shift + Q', 'ctrl > shift > q'],
-      newChapter: ['CTRL + Q', 'ctrl > q'],
-      deleteChapter: ['CTRL + Alt + D', 'ctrl > alt > d'],
-      configurationPDF: ['CTRL + G', 'ctrl > g'],
-      previewPDF: ['CTRL + Shift + G', 'ctrl > shift > g'],
-      generatePDF: ['CTRL + Alt + G', 'ctrl > alt > g'],
-      switcherRawText: ['CTRL + H', 'ctrl > h'],
-      finderRawText: ['CTRL + F', 'ctrl > f'],
-      logger: ['CTRL + L', 'ctrl > l'],
-    }[k]
-  }
 
   const pdf = () => {
     const fixFonts = () => {
@@ -229,7 +213,6 @@ export const useDefines = () => {
   }
 
   return {
-    shortcuts,
     pdf,
     themes,
   }

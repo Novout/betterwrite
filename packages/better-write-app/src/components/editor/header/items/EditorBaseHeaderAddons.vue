@@ -21,7 +21,6 @@
     <template #bar>
       <EditorHeaderItem
         :text="t('editor.bar.dropbox.connect')"
-        shortcut=""
         @action="dropbox.connect"
       >
         <template #icon>
@@ -46,7 +45,6 @@
       <EditorHeaderItem
         v-if="AUTH.dropbox.accessToken"
         :text="t('editor.bar.dropbox.load')"
-        shortcut=""
         @action="dropbox.load"
       >
         <template #icon>
@@ -71,7 +69,6 @@
       <EditorHeaderItem
         v-if="AUTH.dropbox.accessToken"
         :text="t('editor.bar.dropbox.save')"
-        shortcut=""
         @action="dropbox.save"
       >
         <template #icon>

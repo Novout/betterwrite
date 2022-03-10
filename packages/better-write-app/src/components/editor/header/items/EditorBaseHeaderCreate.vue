@@ -21,13 +21,11 @@
     <template #bar>
       <EditorHeaderItem
         :text="t('editor.bar.pdf.configuration')"
-        shortcut="CTRL + G"
         @action="ABSOLUTE.pdf.configuration = true"
       />
       <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.pdf.preview')"
-        shortcut="CTRL + Shift + G"
         @action="ABSOLUTE.pdf.preview = true"
       >
         <template #icon>
@@ -50,7 +48,6 @@
       </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.bar.pdf.generate')"
-        shortcut="CTRL + Alt + G"
         @action="plugin.emit('plugin-pdf-generate')"
       >
         <template #icon>

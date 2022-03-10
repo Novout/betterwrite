@@ -72,7 +72,6 @@
   import { useUtils } from '@/use/utils'
   import { useFocus } from '@vueuse/core'
   import { useFormat } from '@/use/format'
-  import { useStorage } from '@/use/storage/storage'
 
   const props = defineProps({
     entity: {
@@ -96,7 +95,6 @@
   const raw = useRaw()
   const plugin = usePlugin()
   const format = useFormat()
-  const storage = useStorage()
 
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)

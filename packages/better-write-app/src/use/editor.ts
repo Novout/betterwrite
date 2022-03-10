@@ -2,12 +2,11 @@ import { useContextStore } from '@/store/context'
 import { useProjectStore } from '@/store/project'
 import { useEntity } from '@/use/entity'
 import { useEnv } from '@/use/env'
-import { useKeyboard } from '@/use/keyboard'
 import { useProject } from '@/use/project'
 import { useLocalStorage } from '@/use/storage/local'
 import { useHead } from '@vueuse/head'
 import { usePlugin } from 'better-write-plugin-core'
-import { computed, onMounted, onUnmounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
@@ -15,7 +14,6 @@ export const useEditor = () => {
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
 
-  const keyboard = useKeyboard()
   const env = useEnv()
   const project = useProject()
   const entity = useEntity()
@@ -25,8 +23,6 @@ export const useEditor = () => {
   const { t } = useI18n()
 
   const init = () => {
-    keyboard.init()
-
     onMounted(() => {
       project.onLoadProject()
     })
@@ -38,10 +34,6 @@ export const useEditor = () => {
         if (router.currentRoute.value.path === '/') local.onSaveProject()
       }
     }
-
-    onUnmounted(() => {
-      keyboard.destroy()
-    })
 
     const title = computed(() => t('seo.editor.title'))
     const description = computed(() => t('seo.editor.description'))

@@ -9,7 +9,6 @@ import { useContextStore } from '@/store/context'
 import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
 import { useProjectStore } from '@/store/project'
-import { useShortcutsStore } from '@/store/shortcuts'
 import { useCore, usePlugin } from 'better-write-plugin-core'
 import { PluginTypes } from 'better-write-types'
 import { useFonts } from './google/fonts'
@@ -24,7 +23,6 @@ import { useEntity } from './entity'
 import { useFactory } from './factory'
 import { useGraph } from './graph'
 import { useInput } from './input'
-import { useKeyboard } from './keyboard'
 import { usePage } from './page'
 import { usePopulate } from './populate'
 import { useProject } from './project'
@@ -161,7 +159,6 @@ export const useStart = () => {
         LOGGER: useLoggerStore(),
         PDF: usePDFStore(),
         PROJECT: useProjectStore(),
-        SHORTCUTS: useShortcutsStore(),
       } as any,
       plugins,
       {
@@ -179,7 +176,6 @@ export const useStart = () => {
         format: useFormat(),
         graph: useGraph(),
         input: useInput(),
-        keyboard: useKeyboard(),
         page: usePage(),
         populate: usePopulate(),
         project: useProject(),

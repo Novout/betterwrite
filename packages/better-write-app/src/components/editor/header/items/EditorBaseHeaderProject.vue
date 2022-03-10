@@ -22,7 +22,6 @@
     <template #bar>
       <EditorHeaderItem
         :text="t('editor.bar.project.new')"
-        shortcut="CTRL + Shift + Q"
         @action="dashboard.project().new('creative')"
       />
       <EditorHeaderItem
@@ -32,7 +31,6 @@
       <EditorHeaderItem
         :divider="true"
         :text="t('editor.bar.project.load')"
-        shortcut="CTRL + P"
         @action="project.onLoadProject"
       />
       <EditorHeaderItem
@@ -45,7 +43,6 @@
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.save')"
-        shortcut="CTRL + S"
         @action="onSaveProject"
       />
       <EditorHeaderItem
@@ -57,19 +54,16 @@
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.statistics')"
-        shortcut=""
         @action="ABSOLUTE.project.statistics = true"
       />
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.preferences')"
-        shortcut=""
         @action="ABSOLUTE.project.preferences = true"
       />
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.corrector')"
-        shortcut=""
         @action="ABSOLUTE.project.corrector = true"
       />
       <EditorHeaderItemDiv />

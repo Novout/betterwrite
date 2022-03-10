@@ -32,22 +32,18 @@
       <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.chapter.new')"
-        shortcut="CTRL + Q"
         @action="page.onCreatePage"
       />
       <EditorHeaderItem
         :text="t('editor.bar.chapter.delete')"
-        shortcut="CTRL + Alt + D"
         @action="page.onDeletePage"
       />
       <EditorHeaderItem
         :text="t('editor.bar.chapter.up')"
-        shortcut=""
         @action="page.onUpPage"
       />
       <EditorHeaderItem
         :text="t('editor.bar.chapter.down')"
-        shortcut=""
         @action="page.onDownPage"
       />
     </template>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute shadow-xl rounded top-8 flex flex-col w-52 z-50 bg-theme-editor-header-list-background"
+    class="absolute shadow-xl rounded top-8 flex flex-col w-48 md:w-52 lg:w-72 z-50 bg-theme-editor-header-list-background"
   >
     <slot />
   </div>

@@ -22,17 +22,14 @@
     <template #bar>
       <EditorHeaderItem
         :text="t('editor.bar.assistants.actions')"
-        shortcut="CTRL + L"
         @action="ABSOLUTE.logger = true"
       />
       <EditorHeaderItem
         :text="t('editor.bar.assistants.finder')"
-        shortcut="CTRL + F"
         @action="ABSOLUTE.shortcuts.finder = true"
       />
       <EditorHeaderItem
         :text="t('editor.bar.assistants.swapper')"
-        shortcut="CTRL + H"
         @action="ABSOLUTE.shortcuts.switcher = true"
       />
     </template>
