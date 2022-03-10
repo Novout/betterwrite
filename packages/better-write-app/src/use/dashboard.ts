@@ -1,3 +1,4 @@
+import { useContextStore } from '@/store/context'
 import { useProjectStore } from '@/store/project'
 import { useNProgress } from '@vueuse/integrations'
 import { ProjectType } from 'better-write-types'
@@ -8,6 +9,7 @@ import { useLocalStorage } from './storage/local'
 
 export const useDashboard = () => {
   const PROJECT = useProjectStore()
+  const CONTEXT = useContextStore()
 
   const router = useRouter()
   const local = useLocalStorage()
@@ -29,14 +31,9 @@ export const useDashboard = () => {
 
       await nextTick
 
-      local
-        .onSaveProject(false)
-        .then(() => {
-          router.push('/')
-        })
-        .finally(() => {
-          isLoading.value = false
-        })
+      CONTEXT.load()
+
+      isLoading.value = false
     }
 
     return { new: n }
