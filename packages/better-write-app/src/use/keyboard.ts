@@ -23,7 +23,6 @@ export const useKeyboard = () => {
   const project = useProject()
 
   const init: Callback<void> = () => {
-    normalize()
     saveLocal()
     loadLocal()
     newProject()
@@ -39,23 +38,6 @@ export const useKeyboard = () => {
 
   const destroy = () => {
     keyboard.stop()
-  }
-
-  const normalize = () => {
-    window.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (
-        (e.ctrlKey || e.altKey) &&
-        e.key !== 'c' &&
-        e.key !== 'a' &&
-        e.key !== 'v' &&
-        e.key !== 'z' &&
-        e.key !== 'x' &&
-        e.key !== 'y'
-      ) {
-        e.preventDefault()
-        e.stopPropagation()
-      }
-    })
   }
 
   const saveLocal = () => {
