@@ -1,6 +1,12 @@
-# Changelog (09/03/2022)
+# Changelog (10/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.13
+
+* **fix(editor):** project reset context loader [bec97d9]
+* **fix(editor):** paste correct workflow break lines [be3bc25]
+* **fix(editor):** redirect empty project [366865c]
 
 ### v0.12.12
 
