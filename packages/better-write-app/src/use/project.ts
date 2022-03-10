@@ -79,10 +79,7 @@ export const useProject = () => {
   ) => {
     if (!context) context = local.getProject()
 
-    if (!context) {
-      router.push('/dashboard')
-      return
-    }
+    if (!context) return
 
     isLoading.value = true
 

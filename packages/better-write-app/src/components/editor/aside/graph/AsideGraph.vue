@@ -8,7 +8,7 @@
       >
         {{ PROJECT.nameRaw }}
       </p>
-      <AsideGraphControl />
+      <AsideGraphControl v-if="!env.isEmptyProject(PROJECT.name)" />
     </div>
     <div v-for="(page, index) in PROJECT.pages" :key="index">
       <div
