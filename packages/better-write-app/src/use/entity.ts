@@ -12,6 +12,7 @@ import { useInput } from './input'
 import { useFactory } from './factory'
 import { useStorage } from './storage/storage'
 import { useAbsoluteStore } from '@/store/absolute'
+import { useRaw } from './raw'
 
 export const useEntity = () => {
   const PROJECT = useProjectStore()
@@ -19,6 +20,7 @@ export const useEntity = () => {
   const ABSOLUTE = useAbsoluteStore()
 
   const env = useEnv()
+  const raw = useRaw()
   const emitter = useEmitter()
   const plugin = usePlugin()
   const { t } = useI18n()
@@ -247,47 +249,84 @@ export const useEntity = () => {
   }
 
   const base = () => {
-    const onPaste = async (entity: Entity, value: string, event: any) => {
+    const onPaste = async (
+      entity: Entity,
+      value: string,
+      event: any,
+      el: HTMLDivElement
+    ) => {
       event.preventDefault()
       event.stopPropagation()
 
       const data = input.pasteText(event)
       const entities: Entities = []
       let isFirst = true
+      let isReallyFirst = true
+      let offsetFirst = 0
+      let restStr = ''
 
-      const index = CONTEXT.entities.indexOf(entity)
+      storage.normalize().then(() => {
+        const index = CONTEXT.entities.indexOf(entity)
 
-      data.forEach(async (raw: string) => {
-        const normalize = raw.replace(/\s+/g, ' ').trim()
+        data.forEach(async (data: string, index: number, arr: string[]) => {
+          const normalize = data.replace(/\s+/g, ' ').trim()
 
-        if (normalize) {
-          const content = factory.entity().create(entity.type)
+          if (normalize) {
+            const content = factory.entity().create(entity.type)
 
-          if (value !== '' && value !== env.emptyLine() && isFirst) {
-            content.raw += value + normalize
+            if (isFirst) {
+              content.raw = utils().normalizeEmptyLines(content.raw)
 
-            content.raw = utils().normalizeEmptyLines(content.raw)
+              const offset = raw.v2().caret().index(el)
 
-            isFirst = false
-          } else {
-            content.raw = normalize
+              const v = raw.v2().html().insert(value, offset, data)
+
+              content.raw = v
+
+              offsetFirst = offset + data.length
+
+              restStr = v.substring(offsetFirst, v.length)
+
+              if (arr.length > 1) {
+                content.raw = content.raw.substring(0, offsetFirst)
+              }
+
+              isFirst = false
+            } else {
+              content.raw = normalize
+            }
+
+            entities.push(content)
+
+            // create last element with restStr
+            if (index === arr.length - 1 && !isReallyFirst && restStr) {
+              const lastContent = factory.entity().create(entity.type)
+
+              content.raw = restStr
+
+              entities.push(lastContent)
+            }
+
+            isReallyFirst = false
           }
+        })
 
-          entities.push(content)
-        }
-      })
+        storage.normalize().then(async () => {
+          CONTEXT.newInPaste(entities, entity).then(async () => {
+            const position = index + entities.length - 1
 
-      storage.normalize().then(async () => {
-        CONTEXT.newInPaste(entities, entity).then(() => {
-          const position = index + entities.length - 1
+            await nextTick
 
-          emitter.emit('entity-scroll-by-index', position)
+            raw.v2().caret().set(el, offsetFirst, true)
 
-          emitter.emit('entity-open-by-index', position)
+            emitter.emit('entity-scroll-by-index', position)
 
-          plugin.emit('plugin-entity-paste-in-page', {
-            index,
-            quantity: entities.length,
+            emitter.emit('entity-open-by-index', position)
+
+            plugin.emit('plugin-entity-paste-in-page', {
+              index,
+              quantity: entities.length,
+            })
           })
         })
       })

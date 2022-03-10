@@ -40,7 +40,7 @@
       @keypress.enter.prevent="onEnter"
       @keydown="onKeyboard"
       @click="onClick"
-      @paste="entity.base().onPaste(props.entity, data, $event)"
+      @paste="entity.base().onPaste(props.entity, data, $event, input)"
       @copy="raw.v2().copy()"
       v-html="raw.v2().purge().editor(props.entity)"
     />

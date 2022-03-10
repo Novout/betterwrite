@@ -213,6 +213,12 @@ export const useRaw = () => {
 
   const v2 = () => {
     const html = () => {
+      const insert = (str: string, index: number, middle: string) => {
+        return (
+          str.substring(0, index) + middle + str.substring(index, str.length)
+        )
+      }
+
       const bold = () => {
         const open = () => {
           return '<span class="font-bold text-sm text-theme-editor-bold-text hover:text-theme-editor-bold-text-hover active:text-theme-editor-bold-text-active">'
@@ -285,7 +291,7 @@ export const useRaw = () => {
         return { open, close, length, item }
       }
 
-      return { italic, bold, error, correct }
+      return { insert, italic, bold, error, correct }
     }
 
     const style = (entity: Entity, style: any) => {

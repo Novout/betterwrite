@@ -221,17 +221,23 @@ export const useContextStore = defineStore('context', {
     },
     newInPaste(entities: Entities, initial: Entity): Promise<any> {
       return new Promise((res, rej) => {
+        let isInsert = false
+
         if (!initial || !initial.raw) rej()
 
         const start = this.entities.indexOf(initial)
 
-        entities.reverse().forEach((entity: Entity) => {
+        entities.reverse().forEach(async (entity: Entity) => {
+          if (!entity.raw) return
+
           this.entities = useUtils()
             .array()
             .insert(this.entities, start + 1, entity)
+
+          isInsert = true
         })
 
-        res(this.removeInPage(initial))
+        isInsert ? res(this.removeInPage(initial)) : res(() => {})
       })
     },
   },
