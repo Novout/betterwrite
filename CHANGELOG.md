@@ -2,6 +2,11 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.12.16
+
+* **style(editor):** header icons and reactivity [4d23f36]
+* **fix(project):** breakpoint hook typo [b43734c]
+
 ### v0.12.15
 
 * **chore(vite):** vue-tsc checker in vite runtime [56fa48c]
