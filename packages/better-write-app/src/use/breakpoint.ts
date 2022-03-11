@@ -4,7 +4,7 @@ export const useBreakpoint = () => {
   const breakpoints = useBreakpoints(breakpointsTailwind)
 
   const isMobile = () => {
-    return breakpoints.smaller('md').value
+    return breakpoints.smaller('md')
   }
 
   return { isMobile }

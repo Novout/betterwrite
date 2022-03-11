@@ -113,7 +113,7 @@ export const useProject = () => {
 
     await nextTick
 
-    if (!breakpoints.isMobile()) ABSOLUTE.aside = true
+    if (!breakpoints.isMobile().value) ABSOLUTE.aside = true
 
     const editor = document.querySelector('#edit')
 

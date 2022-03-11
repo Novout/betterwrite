@@ -4,43 +4,22 @@
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1 }"
     :delay="100"
-    class="flex justify-center items-center w-full bg-theme-editor-header-background hover:bg-theme-editor-header-background-hover active:bg-theme-editor-header-background-active z-50 pt-0.5"
+    class="flex justify-between items-center w-full bg-theme-editor-header-background hover:bg-theme-editor-header-background-hover active:bg-theme-editor-header-background-active z-50 pt-0.5"
   >
-    <div class="w-12">
-      <HeroIcon
-        v-if="PROJECT.name !== env.projectEmpty() && PROJECT.type !== 'blank'"
-        class="relative justify-center items-center z-aside-open wb-icon rounded-br no-drag mr-7"
-        @click="ABSOLUTE.aside = !ABSOLUTE.aside"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-9 w-9"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 5l7 7-7 7M5 5l7 7-7 7"
-          />
-        </svg>
-      </HeroIcon>
-    </div>
-
-    <div class="flex flex-row items-center">
+    <div class="flex justify-between">
+      <EditorBaseHeaderAside />
       <EditorBaseHeaderProject />
       <EditorBaseHeaderCreate />
       <EditorBaseHeaderAddons />
       <EditorBaseHeaderChapters />
       <EditorBaseHeaderExternals />
     </div>
-    <div class="flex-1 w-full"></div>
-    <div class="flex flex-row items-center">
+    <div class="flex">
       <EditorBaseHeaderLogin />
       <div
-        v-if="PROJECT.name !== env.projectEmpty() && mobile"
+        v-if="
+          PROJECT.name !== env.projectEmpty() && !breakpoint.isMobile().value
+        "
         class="wb-icon no-drag cursor-pointer"
         @click.prevent.stop="editor.fullScreen"
       >
@@ -66,18 +45,13 @@
 
 <script setup lang="ts">
   import { useEditor } from '@/use/editor'
-  import { useAbsoluteStore } from '@/store/absolute'
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
-  import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+  import { useBreakpoint } from '@/use/breakpoint'
 
-  const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
 
   const editor = useEditor()
   const env = useEnv()
-
-  const breakpoints = useBreakpoints(breakpointsTailwind)
-
-  const mobile = breakpoints.greater('md')
+  const breakpoint = useBreakpoint()
 </script>

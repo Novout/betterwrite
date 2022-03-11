@@ -2,7 +2,6 @@
   <!-- Chapters -->
   <div
     v-if="project.isCreativeProject() && PROJECT.name !== env.projectEmpty()"
-    class="px-4"
   ></div>
   <EditorHeaderButton
     v-if="project.isCreativeProject() && PROJECT.name !== env.projectEmpty()"
@@ -13,8 +12,6 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         aria-hidden="true"
         role="img"
-        width="29"
-        height="29"
         preserveAspectRatio="xMidYMid meet"
         viewBox="0 0 24 24"
       >

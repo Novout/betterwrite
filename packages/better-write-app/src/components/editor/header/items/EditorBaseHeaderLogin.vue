@@ -10,7 +10,6 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         aria-hidden="true"
         role="img"
-        class="h-5 w-5"
         preserveAspectRatio="xMidYMid meet"
         viewBox="0 0 24 24"
       >
@@ -87,7 +86,6 @@
           xmlns:xlink="http://www.w3.org/1999/xlink"
           aria-hidden="true"
           role="img"
-          class="h-5 w-5"
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 40 40"
         >
