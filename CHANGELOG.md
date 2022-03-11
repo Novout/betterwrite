@@ -1,6 +1,12 @@
-# Changelog (10/03/2022)
+# Changelog (11/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.12.15
+
+* **chore(vite):** vue-tsc checker in vite runtime [56fa48c]
+* **feat(project):** use actually scroll value in save and load context [d9ad9fe]
+* **fix(editor):** component typo [14fd9f7]
 
 ### v0.12.14
 
