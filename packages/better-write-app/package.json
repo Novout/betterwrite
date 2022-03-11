@@ -14,7 +14,7 @@
   "description": "A editor for creative writers.",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "serve": "rimraf ./dist && yarn build && vite preview",
     "format": "prettier test/**/*.ts src/**/*.{vue,css,ts} --write",
     "test": "vitest run",
@@ -74,14 +74,15 @@
     "typescript": "4.5.2",
     "unplugin-vue-components": "0.17.15",
     "vite": "2.8.6",
+    "vite-plugin-checker": "0.4.2",
     "vite-plugin-fonts": "0.2.2",
     "vite-plugin-optimize-persist": "0.1.2",
     "vite-plugin-package-config": "0.1.1",
     "vite-plugin-pwa": "0.11.13",
-    "vite-plugin-windicss": "1.7.0",
+    "vite-plugin-windicss": "1.8.3",
     "vitest": "latest",
     "vue-i18n-extract": "2.0.4",
-    "vue-tsc": "0.31.4"
+    "vue-tsc": "0.32.1"
   },
   "vite": {
     "optimizeDeps": {
