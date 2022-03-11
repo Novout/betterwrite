@@ -22,6 +22,7 @@ export const useProjectStore = defineStore('project', {
       summary: {},
       pages: [],
       pageLoaded: 1,
+      scrollLoaded: 0,
       pdf: {
         encryption: {
           userPassword: '',
@@ -57,6 +58,8 @@ export const useProjectStore = defineStore('project', {
       this.creator = payload.creator
       this.type = payload.type || 'creative'
       this.subject = payload.subject
+      this.pageLoaded = payload.pageLoaded
+      this.scrollLoaded = payload.scrollLoaded
       this.totalPagesCreated = payload.totalPagesCreated
       this.main = payload.main
       this.summary = payload.summary

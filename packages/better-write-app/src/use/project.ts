@@ -20,7 +20,7 @@ import { useNProgress } from '@vueuse/integrations'
 import { useEnv } from './env'
 import { useEntity } from './entity'
 import { usePlugin } from 'better-write-plugin-core'
-import { useRouter } from 'vue-router'
+import { useBreakpoint } from './breakpoint'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -37,7 +37,7 @@ export const useProject = () => {
   const { isLoading } = useNProgress()
   const env = useEnv()
   const plugin = usePlugin()
-  const router = useRouter()
+  const breakpoints = useBreakpoint()
   const { t } = i18n.global
 
   let timer: any
@@ -113,7 +113,11 @@ export const useProject = () => {
 
     await nextTick
 
-    ABSOLUTE.aside = true
+    if (!breakpoints.isMobile()) ABSOLUTE.aside = true
+
+    const editor = document.querySelector('#edit')
+
+    if (editor) editor.scrollTop = PROJECT.scrollLoaded
 
     if (notification) toast.success(t('toast.project.load'))
 

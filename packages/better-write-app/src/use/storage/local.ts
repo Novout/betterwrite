@@ -36,6 +36,10 @@ export const useLocalStorage = () => {
   const onSaveProject = async (event: boolean = true) => {
     if (PROJECT.name === env.projectEmpty()) return
 
+    const editor = document.querySelector('#edit')
+
+    if (editor) PROJECT.scrollLoaded = Math.floor(editor.scrollTop)
+
     if (event) {
       isLoading.value = true
       storage

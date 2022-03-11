@@ -329,6 +329,14 @@ export const useStorage = () => {
       }
     }
 
+    // <= 0.12.14
+    if (!_.project.scrollLoaded) {
+      _.project = {
+        ..._.project,
+        scrollLoaded: 0,
+      }
+    }
+
     return _
   }
 

@@ -14,7 +14,7 @@ export const useAbsoluteStore = defineStore('absolute', {
       modal: {
         newProject: false,
       },
-      aside: true,
+      aside: false,
       shortcuts: {
         switcher: false,
         finder: false,

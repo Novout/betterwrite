@@ -20,6 +20,7 @@ export interface ProjectState {
   summary: Record<any, any>
   pages: Array<ContextState>
   pageLoaded: number
+  scrollLoaded: number
   bw: ProjectStateBetterWrite
   pdf: ProjectStatePDF
   creative: ProjectStateCreative
