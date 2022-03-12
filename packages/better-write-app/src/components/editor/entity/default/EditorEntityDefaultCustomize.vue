@@ -2,12 +2,12 @@
   <Modal @close="onClose">
     <div
       ref="custom"
-      class="fixed w-full h-screen overflow-y-auto text-theme-editor-extras-finder-text hover:text-theme-editor-extras-finder-text-hover active:text-theme-editor-extras-finder-text-active bg-theme-editor-extras-finder-background hover:bg-theme-editor-extras-finder-background-hover active:bg-theme-editor-extras-finder-background-active p-2 rounded shadow-2xl"
+      class="fixed px-2 md:px-10 w-full h-screen overflow-y-auto text-theme-editor-extras-finder-text hover:text-theme-editor-extras-finder-text-hover active:text-theme-editor-extras-finder-text-active bg-theme-editor-extras-finder-background hover:bg-theme-editor-extras-finder-background-hover active:bg-theme-editor-extras-finder-background-active p-2 rounded shadow-2xl"
     >
-      <div class="flex p-3 items-center justify-between w-full">
+      <div class="flex py-3 items-center justify-between w-full">
         <div class="flex">
           <h3 class="mr-2">{{ t('editor.aside.entity.optionsOn') }}</h3>
-          <InputBoolean v-model="paragraph.active" />
+          <InputBoolean v-model="paragraph.active" :specific="true" />
         </div>
         <HeroIcon class="wb-icon" @click.prevent="onClose">
           <svg
@@ -23,6 +23,25 @@
             />
           </svg>
         </HeroIcon>
+      </div>
+      <div
+        class="flex h-60 max-h-60 items-center justify-center w-full overflow-hidden p-1 md:p-5 bg-theme-background-opacity-1"
+        :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
+      >
+        <p
+          :style="{
+            fontFamily: paragraph.generator?.font,
+            fontSize: `${paragraph.generator?.fontSize}px`,
+            fontStyle: paragraph.generator?.italics ? 'italic' : 'normal',
+            fontWeight: paragraph.generator?.bold ? 'bolder' : 'normal',
+            letterSpacing: `${paragraph.generator?.characterSpacing}px`,
+            color: paragraph.generator?.color,
+            backgroundColor: paragraph.generator?.background,
+            padding: '2rem',
+          }"
+        >
+          Lorem
+        </p>
       </div>
       <div
         class="flex flex-row flex-wrap items-center overflow-auto"
