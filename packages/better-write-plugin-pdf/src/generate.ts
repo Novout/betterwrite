@@ -174,7 +174,6 @@ export const PluginPDFSet = (
             alignment: transform().entityAlignment(
               entity.external?.paragraph?.generator.alignment as any
             ),
-            indent: entity.external?.paragraph?.generator.indent,
             characterSpacing:
               entity.external?.paragraph?.generator.characterSpacing,
             color: entity.external?.paragraph?.generator.color,
@@ -187,8 +186,9 @@ export const PluginPDFSet = (
       let indent = ''
 
       const quantity =
-        entity.external?.paragraph?.active && obj.indent
-          ? obj.indent
+        entity.external?.paragraph?.active &&
+        entity.external?.paragraph?.generator.indent
+          ? entity.external?.paragraph?.generator.indent
           : stores.PDF.styles.paragraph.indent
 
       for (let i = 0; i < quantity; i++) {
