@@ -26,7 +26,7 @@
       </div>
       <div
         :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
-        class="flex items-center justify-start w-full"
+        class="flex items-center justify-start w-full my-5"
       >
         <InputSelect v-model="template" class="w-52" :arr="templates" />
         <div
