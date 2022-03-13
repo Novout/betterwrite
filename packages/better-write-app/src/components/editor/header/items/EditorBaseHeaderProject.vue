@@ -19,11 +19,11 @@
     <template #bar>
       <EditorHeaderItem
         :text="t('editor.bar.project.new')"
-        @action="dashboard.project().new('creative')"
+        @action="project.external().new('creative')"
       />
       <EditorHeaderItem
         :text="t('editor.bar.project.blank')"
-        @action="dashboard.project().new('blank')"
+        @action="project.external().new('blank')"
       />
       <EditorHeaderItem
         :divider="true"
@@ -164,7 +164,6 @@
   import { useSupabase } from '@/use/storage/supabase'
   import { useAuthStore } from '@/store/auth'
   import { useRouter } from 'vue-router'
-  import { useDashboard } from '@/use/dashboard'
   import { useDropbox } from '@/use/storage/dropbox'
 
   const ABSOLUTE = useAbsoluteStore()
@@ -177,7 +176,6 @@
   const local = useLocalStorage()
   const { t } = useI18n()
   const router = useRouter()
-  const dashboard = useDashboard()
   const dropbox = useDropbox()
 
   const onSaveProject = () => {

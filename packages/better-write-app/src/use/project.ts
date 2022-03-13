@@ -12,6 +12,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import {
   ProjectObject,
   ProjectState,
+  ProjectType,
   ContextState,
   Entity,
 } from 'better-write-types'
@@ -49,6 +50,33 @@ export const useProject = () => {
 
   const destroy = () => {
     clearInterval(timer as any)
+  }
+
+  const external = () => {
+    const n = async (type: ProjectType) => {
+      isLoading.value = true
+
+      PROJECT.create({
+        name: t('editor.aside.project.new.content.name'),
+        version: t('editor.aside.project.new.content.version'),
+        creator: t('editor.aside.project.new.content.creator'),
+        subject: t('editor.aside.project.new.content.subject'),
+        type,
+      } as any)
+
+      await nextTick
+
+      CONTEXT.load()
+
+      toast.success(t('toast.project.create'))
+
+      if (!breakpoints.isMobile().value && type === 'creative')
+        ABSOLUTE.aside = true
+
+      isLoading.value = false
+    }
+
+    return { new: n }
   }
 
   const create = (project: ProjectState) => {
@@ -377,6 +405,7 @@ export const useProject = () => {
     init,
     destroy,
     create,
+    external,
     onLoadProject,
     onImportProject,
     onExportProject,
