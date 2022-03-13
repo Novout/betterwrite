@@ -4,6 +4,7 @@ import { useEntity } from '@/use/entity'
 import { useEnv } from '@/use/env'
 import { useProject } from '@/use/project'
 import { useLocalStorage } from '@/use/storage/local'
+import { useFullscreen } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
 import { usePlugin } from 'better-write-plugin-core'
 import { computed, onMounted } from 'vue'
@@ -23,6 +24,7 @@ export const useEditor = () => {
   const plugin = usePlugin()
   const listener = useListener()
   const { t } = useI18n()
+  const { toggle } = useFullscreen()
 
   const init = () => {
     onMounted(() => {
@@ -63,12 +65,7 @@ export const useEditor = () => {
   }
 
   const fullScreen = (): void => {
-    if (document.fullscreenElement) {
-      document.exitFullscreen()
-      return
-    }
-
-    document.body.requestFullscreen()
+    toggle()
   }
 
   return { init, fullScreen }
