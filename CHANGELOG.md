@@ -2,6 +2,11 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.13.1
+
+* **ci(2e2):** execute in all cases [d332452]
+* **fix(build):** @vueuse/integration 8.0.0 to 7.7.1 [c56c63f]
+
 ### v0.13.0
 
 * **chore(project):** project hook in externals creation [9542c0f]
