@@ -1,5 +1,4 @@
 import * as pdfMake from 'pdfmake/build/pdfmake'
-import * as pdfFonts from 'pdfmake/build/vfs_fonts'
 import { On } from 'better-write-plugin-core'
 import {
   ContextState,
@@ -30,7 +29,7 @@ export const PluginPDFSet = (
     }
 
     const correctFontInject = (font: string) => {
-      return isOnline() ? font : 'Roboto'
+      return isOnline() ? font : 'Helvetica'
     }
 
     return { isOnline, correctFontInject }
@@ -912,7 +911,14 @@ export const PluginPDFSet = (
         return
       }
 
-      ;(<any>pdfMake).addVirtualFileSystem(pdfFonts)
+      pdfMake.addFonts({
+        Helvetica: {
+          normal: 'Helvetica',
+          bold: 'Helvetica-Bold',
+          italics: 'Helvetica-Oblique',
+          bolditalics: 'Helvetica-BoldOblique',
+        },
+      })
     } else {
       unique.forEach((s: string) => {
         set[s] = stores.PDF.normalize[s]
@@ -938,7 +944,7 @@ export const PluginPDFSet = (
         toast.success(hooks.i18n.t('toast.pdf.create'))
       })
       .catch(() => {
-        toast(hooks.i18n.t('toast.generics.error'))
+        toast(hooks.i18n.t('toast.pdf.error'))
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
@@ -975,11 +981,11 @@ export const PluginPDFSet = (
           input?.appendChild(iframe)
         },
         () => {
-          toast(hooks.i18n.t('toast.generics.error'))
+          toast(hooks.i18n.t('toast.pdf.error'))
         }
       )
       .catch(() => {
-        toast(hooks.i18n.t('toast.generics.error'))
+        toast(hooks.i18n.t('toast.pdf.error'))
       })
       .finally(() => {
         stores.ABSOLUTE.load = false

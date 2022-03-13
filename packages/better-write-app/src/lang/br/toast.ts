@@ -4,6 +4,8 @@ export default {
     error: 'Um erro inesperado ocorreu :(',
   },
   pdf: {
+    error:
+      'Não foi possível gerar o pdf. Até o momento, Better Write não suporta a geração de PDF sem acesso á internet.',
     configuration: {
       save: 'Configurações salvas com sucesso!',
     },
