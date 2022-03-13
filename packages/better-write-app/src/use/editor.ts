@@ -9,6 +9,7 @@ import { usePlugin } from 'better-write-plugin-core'
 import { computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import { useListener } from './listener'
 
 export const useEditor = () => {
   const PROJECT = useProjectStore()
@@ -20,12 +21,15 @@ export const useEditor = () => {
   const local = useLocalStorage()
   const router = useRouter()
   const plugin = usePlugin()
+  const listener = useListener()
   const { t } = useI18n()
 
   const init = () => {
     onMounted(() => {
       project.onLoadProject()
     })
+
+    listener.keyboard().add()
 
     plugin.emit('plugin-theme-set')
 
