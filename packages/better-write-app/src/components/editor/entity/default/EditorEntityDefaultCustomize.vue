@@ -196,6 +196,7 @@
   import { useProjectStore } from '@/store/project'
   import { useNProgress } from '@vueuse/integrations'
   import { useToast } from 'vue-toastification'
+  import { useFactory } from '@/use/factory'
 
   const custom = ref<HTMLElement | null>(null)
 
@@ -212,6 +213,7 @@
   const { t } = useI18n()
   const toast = useToast()
   const defines = useDefines()
+  const factory = useFactory()
   const { isLoading } = useNProgress()
 
   const entity = computed<Entity>(
@@ -236,22 +238,7 @@
     if (!_template) return
 
     if (_template === t('editor.entity.generator.template')) {
-      paragraph.generator = {
-        font: PDF.styles.paragraph.font,
-        fontSize: PDF.styles.paragraph.fontSize,
-        lineHeight: PDF.styles.paragraph.lineHeight,
-        alignment: PDF.styles.paragraph.alignment,
-        indent: PDF.styles.paragraph.indent,
-        characterSpacing: PDF.styles.paragraph.characterSpacing,
-        color: PDF.styles.paragraph.color,
-        background: PDF.styles.paragraph.background,
-        italics: false,
-        bold: false,
-        margin: {
-          top: PDF.styles.paragraph.margin.top,
-          bottom: PDF.styles.paragraph.margin.bottom,
-        },
-      }
+      paragraph.generator = factory.entity().generator()
 
       return
     }
@@ -307,7 +294,7 @@
 
     PROJECT.templates.generator.push({
       name: templateText.value,
-      paragraph: paragraph.generator,
+      paragraph: factory.entity().generator(),
     })
 
     template.value = templateText.value

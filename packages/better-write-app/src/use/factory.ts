@@ -12,6 +12,25 @@ export const useFactory = () => {
   const utils = useUtils()
 
   const entity = () => {
+    const generator = () => {
+      return {
+        font: PDF.styles.paragraph.font,
+        fontSize: PDF.styles.paragraph.fontSize,
+        lineHeight: PDF.styles.paragraph.lineHeight,
+        alignment: PDF.styles.paragraph.alignment,
+        indent: PDF.styles.paragraph.indent,
+        characterSpacing: PDF.styles.paragraph.characterSpacing,
+        color: PDF.styles.paragraph.color,
+        background: PDF.styles.paragraph.background,
+        italics: false,
+        bold: false,
+        margin: {
+          top: PDF.styles.paragraph.margin.top,
+          bottom: PDF.styles.paragraph.margin.bottom,
+        },
+      }
+    }
+
     const create = (type: EntityType, raw?: string): Entity => {
       if (type === 'line-break') {
         return {
@@ -57,22 +76,7 @@ export const useFactory = () => {
           external: {
             paragraph: {
               active: false,
-              generator: {
-                font: PDF.styles.paragraph.font,
-                fontSize: PDF.styles.paragraph.fontSize,
-                lineHeight: PDF.styles.paragraph.lineHeight,
-                alignment: PDF.styles.paragraph.alignment,
-                indent: PDF.styles.paragraph.indent,
-                characterSpacing: PDF.styles.paragraph.characterSpacing,
-                color: PDF.styles.paragraph.color,
-                background: PDF.styles.paragraph.background,
-                italics: false,
-                bold: false,
-                margin: {
-                  top: PDF.styles.paragraph.margin.top,
-                  bottom: PDF.styles.paragraph.margin.bottom,
-                },
-              },
+              generator: generator(),
             },
             comment: {
               raw: '',
@@ -103,7 +107,7 @@ export const useFactory = () => {
       }
     }
 
-    return { create }
+    return { create, generator }
   }
 
   const simulate = () => {
