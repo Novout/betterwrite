@@ -1,10 +1,6 @@
 name: E2E
 
-on:
-  push:
-    branches: [trunk]
-  pull_request:
-    branches: [trunk]
+on: [push, pull_request]
 
 jobs:
   ci:
