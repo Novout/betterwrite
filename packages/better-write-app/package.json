@@ -20,7 +20,10 @@
     "test": "vitest run",
     "test:ui": "vitest --ui",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format",
-    "extract": "vue-i18n-extract report --vueFiles './src/**/*.?(js|vue)' --languageFiles './src/lang/*.?(json|yml|yaml|js)'"
+    "extract": "vue-i18n-extract report --vueFiles './src/**/*.?(js|vue)' --languageFiles './src/lang/*.?(json|yml|yaml|js)'",
+    "e2e": "concurrently --kill-others \"yarn e2e:start\" \"cypress open\"",
+    "e2e:ci": "cypress run --headless",
+    "e2e:start": "yarn dev && wait-on tcp:3000 -v"
   },
   "dependencies": {
     "@headlessui/vue": "1.5.0",
@@ -53,6 +56,7 @@
     "windicss": "3.5.1"
   },
   "devDependencies": {
+    "@cypress/vite-dev-server": "2.2.2",
     "@intlify/vite-plugin-vue-i18n": "3.2.1",
     "@types/file-saver": "2.0.5",
     "@types/jsdom": "16.2.14",
@@ -63,7 +67,9 @@
     "@vue/eslint-config-typescript": "9.1.0",
     "@vue/test-utils": "2.0.0-rc.18",
     "c8": "7.11.0",
+    "concurrently": "7.0.0",
     "cross-env": "7.0.3",
+    "cypress": "9.5.1",
     "eslint": "8.4.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-vue": "8.2.0",
@@ -82,7 +88,8 @@
     "vite-plugin-windicss": "1.8.3",
     "vitest": "latest",
     "vue-i18n-extract": "2.0.4",
-    "vue-tsc": "0.32.1"
+    "vue-tsc": "0.32.1",
+    "wait-on": "6.0.1"
   },
   "vite": {
     "optimizeDeps": {
@@ -117,5 +124,8 @@
         "vue-demi"
       ]
     }
+  },
+  "resolutions": {
+    "cypress": "^6.2"
   }
 }

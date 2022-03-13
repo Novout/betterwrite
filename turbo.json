@@ -30,6 +30,24 @@
       ],
       "cache": false
     },
+    "e2e": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ],
+      "cache": false
+    },
+    "e2e:ci": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ],
+      "cache": false
+    },
     "lint": {}
   }
 }
