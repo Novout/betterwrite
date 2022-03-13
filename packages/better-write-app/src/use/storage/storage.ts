@@ -337,6 +337,16 @@ export const useStorage = () => {
       }
     }
 
+    // <= 0.13.0
+    if (!_.project.templates) {
+      _.project = {
+        ..._.project,
+        templates: {
+          generator: [],
+        },
+      }
+    }
+
     return _
   }
 

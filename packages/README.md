@@ -2,7 +2,6 @@
 
 ```
   ├── better-write-app                          # Website
-  ├── better-write-entity                       # Editor Setters
   ├── better-write-plugin-core                  # Plugin base core
   ├── better-write-plugin-docx                  # DOCX Generator Plugin
   ├── better-write-plugin-logger                # Logger Plugin

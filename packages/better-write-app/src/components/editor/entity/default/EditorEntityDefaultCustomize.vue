@@ -25,6 +25,52 @@
         </HeroIcon>
       </div>
       <div
+        :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
+        class="flex items-center justify-start w-full"
+      >
+        <InputSelect v-model="template" class="w-52" :arr="templates" />
+        <div
+          class="flex flex-wrap ml-2 px-2 items-center bg-theme-background-2"
+        >
+          <InputText
+            v-model="templateText"
+            class="mx-2 bg-transparent shadow shadow-xl rounded"
+          />
+          <HeroIcon class="wb-icon w-10 h-10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              role="img"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 24 24"
+              @click.prevent.stop="onCreateParagraphTemplate"
+            >
+              <path
+                fill="currentColor"
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+              ></path>
+            </svg>
+          </HeroIcon>
+          <HeroIcon class="wb-icon w-10 h-10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              role="img"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 24 24"
+              @click.prevent.stop="onDeleteParagraphTemplate"
+            >
+              <path
+                fill="currentColor"
+                d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+              ></path>
+            </svg>
+          </HeroIcon>
+        </div>
+      </div>
+      <div
         class="flex h-60 max-h-60 items-center justify-center w-full overflow-hidden p-1 md:p-5 bg-theme-background-opacity-1"
         :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
       >
@@ -147,6 +193,9 @@
   import { useI18n } from 'vue-i18n'
   import { usePDFStore } from '@/store/pdf'
   import { useDefines } from '@/use/defines'
+  import { useProjectStore } from '@/store/project'
+  import { useNProgress } from '@vueuse/integrations'
+  import { useToast } from 'vue-toastification'
 
   const custom = ref<HTMLElement | null>(null)
 
@@ -157,15 +206,25 @@
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
   const CONTEXT = useContextStore()
+  const PROJECT = useProjectStore()
   const PDF = usePDFStore()
+
+  const { t } = useI18n()
+  const toast = useToast()
+  const defines = useDefines()
+  const { isLoading } = useNProgress()
 
   const entity = computed<Entity>(
     () => CONTEXT.entities[EDITOR.actives.entity.index]
   )
   const options = ref<HTMLElement | null>(null)
 
-  const { t } = useI18n()
-  const defines = useDefines()
+  const templates = computed(() => [
+    t('editor.entity.generator.template'),
+    ...PROJECT.templates.generator.map((g) => g.name),
+  ])
+  const template = ref<string>(templates.value[0])
+  const templateText = ref<string>('')
 
   onClickOutside(options as any, () => onClose())
 
@@ -173,21 +232,44 @@
     ABSOLUTE.entity.customize = false
   }
 
-  const image = reactive({
-    height: entity.value.external?.image?.size.height,
-    width: entity.value.external?.image?.size.width,
-    alignment: entity.value.external?.image?.alignment,
-  })
+  watch(template, (_template) => {
+    if (!_template) return
 
-  watch(image, () => {
+    if (_template === t('editor.entity.generator.template')) {
+      paragraph.generator = {
+        font: PDF.styles.paragraph.font,
+        fontSize: PDF.styles.paragraph.fontSize,
+        lineHeight: PDF.styles.paragraph.lineHeight,
+        alignment: PDF.styles.paragraph.alignment,
+        indent: PDF.styles.paragraph.indent,
+        characterSpacing: PDF.styles.paragraph.characterSpacing,
+        color: PDF.styles.paragraph.color,
+        background: PDF.styles.paragraph.background,
+        italics: false,
+        bold: false,
+        margin: {
+          top: PDF.styles.paragraph.margin.top,
+          bottom: PDF.styles.paragraph.margin.bottom,
+        },
+      }
+
+      return
+    }
+
+    const generator = PROJECT.templates.generator.find(
+      (g) => g.name === template.value
+    )
+
+    if (!generator) return
+
+    paragraph.generator = generator.paragraph
+
     const _index: number = CONTEXT.entities.indexOf(entity.value)
 
-    ;(CONTEXT.entities[_index] as any).external.image.alignment =
-      image.alignment as any
-    ;(CONTEXT.entities[_index] as any).external.image.size.height =
-      image.height as any
-    ;(CONTEXT.entities[_index] as any).external.image.size.width =
-      image.width as any
+    ;(CONTEXT.entities[_index] as any).external.paragraph.active =
+      paragraph.active as any
+    ;(CONTEXT.entities[_index] as any).external.paragraph.generator =
+      paragraph.generator as any
   })
 
   const paragraph = reactive({
@@ -196,6 +278,8 @@
   })
 
   watch(paragraph, () => {
+    if (template.value !== t('editor.entity.generator.template')) return
+
     const _index: number = CONTEXT.entities.indexOf(entity.value)
 
     ;(CONTEXT.entities[_index] as any).external.paragraph.active =
@@ -203,4 +287,43 @@
     ;(CONTEXT.entities[_index] as any).external.paragraph.generator =
       paragraph.generator as any
   })
+
+  const onCreateParagraphTemplate = () => {
+    if (!templateText.value) {
+      toast.error(t('toast.entity.paragraph.generator.empty'))
+      return
+    }
+
+    if (
+      PROJECT.templates.generator.find((g) => g.name === templateText.value)
+    ) {
+      toast.error(t('toast.entity.paragraph.generator.exists'))
+      return
+    }
+
+    isLoading.value = true
+
+    if (!paragraph.generator) return
+
+    PROJECT.templates.generator.push({
+      name: templateText.value,
+      paragraph: paragraph.generator,
+    })
+
+    template.value = templateText.value
+    templateText.value = ''
+    isLoading.value = false
+  }
+
+  const onDeleteParagraphTemplate = () => {
+    isLoading.value = true
+
+    PROJECT.templates.generator = PROJECT.templates.generator.filter(
+      (g) => g.name !== template.value
+    )
+
+    template.value = t('editor.entity.generator.template')
+    templateText.value = ''
+    isLoading.value = false
+  }
 </script>

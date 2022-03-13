@@ -80,6 +80,9 @@ export default {
     'page-break': 'Page Break',
     'line-break': 'Line Break',
     image: 'Image',
+    generator: {
+      template: 'Default',
+    },
   },
   bar: {
     pdf: {

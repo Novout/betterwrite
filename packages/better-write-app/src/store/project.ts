@@ -45,6 +45,9 @@ export const useProjectStore = defineStore('project', {
       creative: {
         drafts: [],
       },
+      templates: {
+        generator: [],
+      },
     }
   },
   actions: {
@@ -64,6 +67,7 @@ export const useProjectStore = defineStore('project', {
       this.main = payload.main
       this.summary = payload.summary
       this.pages = payload.pages
+      this.templates = payload.templates
       this.bw.platform = payload.bw.platform
       this.bw.version = payload.bw.version
     },

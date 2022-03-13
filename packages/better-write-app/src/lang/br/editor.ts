@@ -80,6 +80,9 @@ export default {
     'page-break': 'Quebra de Página',
     'line-break': 'Quebra de Linha',
     image: 'Imagem',
+    generator: {
+      template: 'Padrão',
+    },
   },
   bar: {
     supabase: {

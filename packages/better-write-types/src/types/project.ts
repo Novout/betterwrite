@@ -1,4 +1,4 @@
-import { ContextState } from './context'
+import { ContextState, EntityExternalParagraphGenerator } from './context'
 import { EditorState } from './editor'
 import { LoggerState } from './logger'
 import { PDFState } from './pdf'
@@ -24,6 +24,16 @@ export interface ProjectState {
   bw: ProjectStateBetterWrite
   pdf: ProjectStatePDF
   creative: ProjectStateCreative
+  templates: ProjectStateTemplates
+}
+
+export interface ProjectStateTemplates {
+  generator: ProjectStateTemplatesGenerator[]
+}
+
+export interface ProjectStateTemplatesGenerator {
+  name: string
+  paragraph: EntityExternalParagraphGenerator
 }
 
 export interface ProjectStateCreative {

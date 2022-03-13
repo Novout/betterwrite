@@ -21,4 +21,12 @@ export default {
     load: 'Conectado com o Dropbox!',
     save: 'Salvo no Dropbox em Aplicativos > Better Write',
   },
+  entity: {
+    paragraph: {
+      generator: {
+        empty: 'Insira um nome para salvar o estilo!',
+        exists: 'O nome do estilo já existe!',
+      },
+    },
+  },
 }
