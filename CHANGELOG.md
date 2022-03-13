@@ -1,6 +1,25 @@
-# Changelog (11/03/2022)
+# Changelog (13/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.13.0
+
+* **chore(project):** project hook in externals creation [9542c0f]
+* **chore(editor):** vueuse fullscreen hook [f4bf353]
+* **fix(pdf):** broken application in offline mode [33e5e14]
+* **fix(editor):** aside in z-indexc [07f95e3]
+* **feat(project):** export as support [ccf90ae]
+* **style(editor):** header content in overflow [fac9805]
+* **fix(editor):** entity paste typo in first raw [38f3373]
+* **fix(editor):** passive finder and switcher in window listener [940f3a8]
+* **ci(test):** cypress setup [b089406]
+* **chore(project):** header corrector in addons [e3d7fca]
+* **style(editor):** customize margin template [9f80439]
+* **fix(editor):** generator not save actually template [dbaa44d]
+* **feat(editor):** entity paragraph generator templates [3472422]
+* **chore(editor):** header ux [78452ea]
+* **fix(pdf):** customize paragraph 0 false inserts [dd4baae]
+* **feat(editor):** custom paragraph preview [0c4f236]
 
 ### v0.12.16
 
