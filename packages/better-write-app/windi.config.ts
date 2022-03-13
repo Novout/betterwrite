@@ -93,8 +93,8 @@ export default defineConfig({
         "umax": "999999",
         "max": "9999",
         "preview": "200",
-        "aside": "100",
-        "aside-open": "100",
+        "aside": "40",
+        "aside-open": "40",
         "min": "-1"
       }),
       whiteSpace: theme => ({
