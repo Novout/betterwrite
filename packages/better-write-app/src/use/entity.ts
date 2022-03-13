@@ -32,13 +32,13 @@ export const useEntity = () => {
   const pages = computed(() => PROJECT.pages)
 
   const sstate = reactive({
-    entry: select.value.text || ('' as string),
+    entry: select.text || ('' as string),
     output: '' as string,
     equal: true as boolean,
   })
   const sentry = ref<HTMLElement | null>(null)
   const fstate = reactive({
-    entry: select.value.text || ('' as string),
+    entry: select.text || ('' as string),
     actuallyLetterCounter: 0 as number,
     actuallyLetterRaw: '' as string,
     listOfLettersExists: [] as Array<Record<string, any>>,

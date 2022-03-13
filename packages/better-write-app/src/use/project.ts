@@ -21,6 +21,7 @@ import { useEnv } from './env'
 import { useEntity } from './entity'
 import { usePlugin } from 'better-write-plugin-core'
 import { useBreakpoint } from './breakpoint'
+import { useFileSystemAccess } from '@vueuse/core'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -136,6 +137,42 @@ export const useProject = () => {
           }),
           utils().exportName('bw')
         )
+      })
+      .finally(() => {
+        isLoading.value = false
+      })
+  }
+
+  const onExportProjectAs = () => {
+    isLoading.value = true
+
+    storage
+      .normalize()
+      .then(() => {
+        const res = useFileSystemAccess({
+          dataType: 'Blob',
+          types: [
+            {
+              description: 'Better Write',
+              accept: {
+                'application/json': ['.bw'],
+              },
+            },
+          ],
+          excludeAcceptAllOption: true,
+        })
+
+        if (!res.isSupported) return
+
+        res.data.value = new Blob(
+          [JSON.stringify(storage.getProjectObject())],
+          {
+            type: 'application/json',
+          }
+        )
+        res.fileName.value = utils().exportName('bw')
+
+        res.saveAs()
       })
       .finally(() => {
         isLoading.value = false
@@ -343,6 +380,7 @@ export const useProject = () => {
     onLoadProject,
     onImportProject,
     onExportProject,
+    onExportProjectAs,
     isBlankProject,
     isCreativeProject,
     utils,

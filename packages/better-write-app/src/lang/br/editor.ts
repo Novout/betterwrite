@@ -108,6 +108,7 @@ export default {
       save: 'Salvar',
       import: 'Importar',
       export: 'Exportar',
+      exportAs: 'Exportar como...',
     },
     chapter: {
       drafts: 'Rascunhos',

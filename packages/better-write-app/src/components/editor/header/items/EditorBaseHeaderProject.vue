@@ -145,6 +145,11 @@
         :text="t('editor.bar.project.export')"
         @action="project.onExportProject"
       />
+      <EditorHeaderItem
+        v-if="PROJECT.name !== env.projectEmpty()"
+        :text="t('editor.bar.project.exportAs')"
+        @action="project.onExportProjectAs"
+      />
     </template>
   </EditorHeaderButton>
 </template>

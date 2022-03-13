@@ -105,6 +105,7 @@ export default {
       autosave: 'Auto Save (in minutes)',
       import: 'Import',
       export: 'Export',
+      exportAs: 'Export as...',
     },
     chapter: {
       drafts: 'Drafts',

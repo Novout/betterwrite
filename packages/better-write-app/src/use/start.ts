@@ -75,9 +75,9 @@ export const useStart = () => {
   })
 
   // for stop propagation problems in auto reset selection (contextmenu i.e)
-  watch(selection, (_selection) => {
+  watch(selection.text, (_selection) => {
     // @ts-ignore
-    if (!_selection.text) return
+    if (!_selection) return
 
     EDITOR.actives.global.mouse.validLastSelection = true
   })
