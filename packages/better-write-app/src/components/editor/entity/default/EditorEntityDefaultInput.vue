@@ -115,7 +115,7 @@
   const target = computed(
     () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu
   )
-  const { focused } = useFocus({ target: input })
+  const { focused } = useFocus({ target: input } as any)
 
   watch(props.entity, () => {
     // new entity properties

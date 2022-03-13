@@ -6,7 +6,6 @@ dist-ssr
 *.local
 .idea
 .vscode
-components.d.ts
 TODO.md
 yarn-error.log
 coverage
