@@ -135,11 +135,6 @@
         :text="t('editor.bar.project.preferences')"
         @action="ABSOLUTE.project.preferences = true"
       />
-      <EditorHeaderItem
-        v-if="PROJECT.name !== env.projectEmpty()"
-        :text="t('editor.bar.project.corrector')"
-        @action="ABSOLUTE.project.corrector = true"
-      />
       <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.project.import')"

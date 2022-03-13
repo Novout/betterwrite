@@ -18,6 +18,10 @@
     </template>
     <template #bar>
       <EditorHeaderItem
+        :text="t('editor.bar.project.corrector')"
+        @action="ABSOLUTE.project.corrector = true"
+      />
+      <EditorHeaderItem
         :text="t('editor.bar.assistants.finder')"
         @action="ABSOLUTE.shortcuts.finder = true"
       />
