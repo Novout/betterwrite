@@ -1,4 +1,3 @@
-import { useTextSelection } from '@vueuse/core'
 import { Entity, EntityType, ContextState, Entities } from 'better-write-types'
 import { useScroll } from '@/use/scroll'
 import { computed, reactive, nextTick, ref } from 'vue'
@@ -27,18 +26,17 @@ export const useEntity = () => {
   const input = useInput()
   const storage = useStorage()
   const factory = useFactory()
-  const select = useTextSelection()
 
   const pages = computed(() => PROJECT.pages)
 
   const sstate = reactive({
-    entry: select.text || ('' as string),
+    entry: '',
     output: '' as string,
     equal: true as boolean,
   })
   const sentry = ref<HTMLElement | null>(null)
   const fstate = reactive({
-    entry: select.text || ('' as string),
+    entry: '',
     actuallyLetterCounter: 0 as number,
     actuallyLetterRaw: '' as string,
     listOfLettersExists: [] as Array<Record<string, any>>,
