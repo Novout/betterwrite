@@ -2,6 +2,10 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.13.4
+
+* **ci(e2e):** remove base test [dfe6140]
+
 ### v0.13.3
 
 * **chore(i18n):** landing typo [071a086]
