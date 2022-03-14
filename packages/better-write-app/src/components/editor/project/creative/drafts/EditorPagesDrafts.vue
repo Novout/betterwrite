@@ -29,7 +29,7 @@
           @click="onClickAside(element)"
         >
           <p class="relative top-6 truncate">
-            {{ element.title }}
+            {{ element.entities[0]?.raw || element.title }}
           </p>
         </div>
       </div>

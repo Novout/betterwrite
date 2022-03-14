@@ -8,7 +8,7 @@
     <EditortProjectStatisticsImpactRow
       v-for="(chapter, index) in PROJECT.pages"
       :key="index"
-      :title="chapter.title"
+      :title="chapter.entities[0]?.raw || chapter.title"
       :value="project.utils().getChapterImpact(chapter)"
     />
   </div>
