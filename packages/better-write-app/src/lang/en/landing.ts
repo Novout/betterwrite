@@ -8,7 +8,7 @@ export default {
       4: 'Use creativity in the best way.',
     },
     editor: {
-      website: 'Online',
+      website: 'Editor',
       desktop: 'Desktop',
     },
   },
