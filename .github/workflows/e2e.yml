@@ -51,6 +51,9 @@ jobs:
         run: yarn --frozen-lockfile
 
       ## Test
+      - name: Run build
+        run: yarn build
+
       - name: Run dev
         run: yarn e2e:start
 
