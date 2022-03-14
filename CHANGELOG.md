@@ -2,6 +2,10 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.13.2
+
+* **ci(e2e):** only ubuntu build [67b0d5c]
+
 ### v0.13.1
 
 * **ci(2e2):** execute in all cases [d332452]
