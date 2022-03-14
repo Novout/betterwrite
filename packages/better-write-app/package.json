@@ -7,7 +7,6 @@
     "email": "novout@hotmail.com",
     "url": "https://github.com/Novout"
   },
-  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
