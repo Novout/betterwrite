@@ -2,6 +2,11 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.13.5
+
+* **fix(editor):** draft and statistics use heading chapter [668c96c]
+* **fix(editor):** finder and switcher select break [dedba99]
+
 ### v0.13.4
 
 * **ci(e2e):** remove base test [dfe6140]
