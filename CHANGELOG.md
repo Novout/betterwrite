@@ -2,6 +2,11 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.13.3
+
+* **chore(i18n):** landing typo [071a086]
+* **ci(e2e):** build before run dev [6aa9dd5]
+
 ### v0.13.2
 
 * **ci(e2e):** only ubuntu build [67b0d5c]
