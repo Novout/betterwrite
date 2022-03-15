@@ -347,6 +347,14 @@ export const useStorage = () => {
       }
     }
 
+    // <= 0.13.6
+    if (!_.project.offsetLoaded) {
+      _.project = {
+        ..._.project,
+        offsetLoaded: 0,
+      }
+    }
+
     return _
   }
 

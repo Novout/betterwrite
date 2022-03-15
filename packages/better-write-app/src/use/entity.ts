@@ -277,7 +277,10 @@ export const useEntity = () => {
 
               const offset = raw.v2().caret().index(el)
 
-              const v = raw.v2().html().insert(data, offset, value)
+              const v = raw
+                .v2()
+                .html()
+                .insert(value, offset || PROJECT.offsetLoaded, data)
 
               content.raw = v
 

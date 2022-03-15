@@ -338,6 +338,9 @@
 
       setData(sub)
 
+      // for paste and other utilities correct workflow focus
+      PROJECT.offsetLoaded = offset
+
       raw
         .v2()
         .caret()

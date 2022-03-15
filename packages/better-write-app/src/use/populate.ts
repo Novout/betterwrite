@@ -24,6 +24,7 @@ export const usePopulate = () => {
         summary: {},
         pageLoaded: 1,
         scrollLoaded: 0,
+        offsetLoaded: 0,
         pages: [
           {
             id: 1,
@@ -55,6 +56,7 @@ export const usePopulate = () => {
         summary: {},
         pageLoaded: 1,
         scrollLoaded: 0,
+        offsetLoaded: 0,
         pages: [
           {
             id: 1,

@@ -21,6 +21,7 @@ export interface ProjectState {
   pages: Array<ContextState>
   pageLoaded: number
   scrollLoaded: number
+  offsetLoaded: number
   bw: ProjectStateBetterWrite
   pdf: ProjectStatePDF
   creative: ProjectStateCreative
