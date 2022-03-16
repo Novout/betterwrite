@@ -1,6 +1,14 @@
-# Changelog (13/03/2022)
+# Changelog (16/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.13.6
+
+* **style(editor):** z-index in header [62fd3be]
+* **fix(editor):** paste offset in dialog command [fb8bc62]
+* **chore:** typo [b85c8d6]
+* **chore:** new license [7260492]
+* **chore:** delete license [812bf38]
 
 ### v0.13.5
 
