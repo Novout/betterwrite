@@ -6,6 +6,7 @@
     <img
       class="object-contain cursor-pointer"
       width="60"
+      alt="Better Write Logo"
       :src="path"
       @click.stop.prevent="onClick"
     />

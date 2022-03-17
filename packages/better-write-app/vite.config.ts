@@ -14,6 +14,11 @@ import windiCSS from 'vite-plugin-windicss'
 
 export default defineConfig({
   base: './',
+  define: {
+    __VUE_I18N_FULL_INSTALL__: true,
+    __VUE_I18N_LEGACY_API__: false,
+    __INTLIFY_PROD_DEVTOOLS__: false,
+  },
   plugins: [
     vue(),
     vueI18n({

@@ -2,7 +2,7 @@
   <div>
     <button
       v-if="!AUTH.account.user"
-      class="flex font-poppins mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full cursor-pointer"
+      class="flex font-poppins px-3 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full cursor-pointer"
       @click.prevent.stop="onOpen"
     >
       <svg

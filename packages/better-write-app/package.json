@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "rimraf ./dist && yarn build && vite preview",
+    "serve": "rimraf ./dist && yarn build && vite --port 5000 preview",
     "format": "prettier test/**/*.ts src/**/*.{vue,css,ts} --write",
     "test": "vitest run",
     "test:ui": "vitest --ui",
