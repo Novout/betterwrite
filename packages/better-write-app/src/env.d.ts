@@ -15,6 +15,7 @@ interface ImportMetaEnv {
   readonly VITE_LINE_BREAK: string
   readonly VITE_PAGE_BREAK: string
   readonly VITE_INITIAL_LOAD: string
+  readonly VITE_BASE_URL: string
 
   readonly VITE_GOOGLE_FONTS_KEY: string
   readonly VITE_GOOGLE_FONTS_MAX_FONTS: number

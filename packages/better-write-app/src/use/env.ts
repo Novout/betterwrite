@@ -1,16 +1,16 @@
 export const useEnv = () => {
   const getCorrectLocalUrl = () => {
     return import.meta.env.PROD
-      ? 'https://better-write.vercel.app'
+      ? import.meta.env.VITE_BASE_URL
       : 'http://localhost:3000'
   }
 
   const projectEmpty = (): string => {
-    return import.meta.env.VITE_PROJECT_EMPTY as string
+    return import.meta.env.VITE_PROJECT_EMPTY
   }
 
   const projectLocalStorage = () => {
-    return import.meta.env.VITE_LOCAL_STORAGE as string
+    return import.meta.env.VITE_LOCAL_STORAGE
   }
 
   const isEmptyProject = (name: string) => {
@@ -18,7 +18,7 @@ export const useEnv = () => {
   }
 
   const dropboxKey = () => {
-    return import.meta.env.VITE_DROPBOX_APP_KEY as string
+    return import.meta.env.VITE_DROPBOX_APP_KEY
   }
 
   const maxFonts = () => {
@@ -30,19 +30,19 @@ export const useEnv = () => {
   }
 
   const emptyLine = () => {
-    return import.meta.env.VITE_EMPTY_LINE as string
+    return import.meta.env.VITE_EMPTY_LINE
   }
 
   const lineBreak = () => {
-    return import.meta.env.VITE_LINE_BREAK as string
+    return import.meta.env.VITE_LINE_BREAK
   }
 
   const pageBreak = () => {
-    return import.meta.env.VITE_PAGE_BREAK as string
+    return import.meta.env.VITE_PAGE_BREAK
   }
 
   const initialLoad = () => {
-    return import.meta.env.VITE_INITIAL_LOAD as string
+    return import.meta.env.VITE_INITIAL_LOAD
   }
 
   const packageVersion = () => {
