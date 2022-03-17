@@ -1,6 +1,13 @@
-# Changelog (16/03/2022)
+# Changelog (17/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.13.7
+
+* **style(editor):** new transitions [a740fbe]
+* **style(theme):** ascend hover icons [72d72be]
+* **chore(env):** base url [6f1fed6]
+* **chore(seo):** improve load timer [4262ae1]
 
 ### v0.13.6
 
