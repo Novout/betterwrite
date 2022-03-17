@@ -1,5 +1,15 @@
 <template>
   <div
+    v-motion
+    :initial="{ opacity: 0, y: 10 }"
+    :enter="{
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0,
+        duration: 150,
+      },
+    }"
     class="absolute shadow-xl rounded top-8 md:top-9 lg:top-10 flex flex-col w-48 md:w-52 lg:w-72 z-40 bg-theme-editor-header-list-background"
   >
     <slot />

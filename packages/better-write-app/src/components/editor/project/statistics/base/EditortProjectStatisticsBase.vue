@@ -1,5 +1,11 @@
 <template>
-  <div class="flex flex-1 flex-col w-full md:w-96 p-3 shadow-lg">
+  <div
+    v-motion
+    :initial="{ opacity: 0, y: 10 }"
+    :enter="{ opacity: 1, y: 0 }"
+    :delay="50"
+    class="flex flex-1 flex-col w-full md:w-96 p-3 shadow-lg"
+  >
     <h2 class="font-bold font-poppins text-lg mb-5">
       {{ t('editor.addons.statistics.global') }}
     </h2>

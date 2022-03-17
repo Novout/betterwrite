@@ -1,5 +1,11 @@
 <template>
-  <div class="flex flex-1 flex-col w-full p-3 shadow-lg">
+  <div
+    v-motion
+    :initial="{ opacity: 0, y: 10 }"
+    :enter="{ opacity: 1, y: 0 }"
+    :delay="300"
+    class="flex flex-1 flex-col w-full p-3 shadow-lg"
+  >
     <div class="flex gap-5 justify-around flex-wrap w-full items-center">
       <div class="flex">
         <h2 class="font-bold font-poppins text-lg mr-5">
