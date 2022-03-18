@@ -359,12 +359,8 @@ export const useStorage = () => {
   }
 
   const getProjectObject = (): ProjectObject => {
-    const id = AUTH.account.project_id_activity
-      ? { id: AUTH.account.project_id_activity }
-      : {}
-
     return {
-      ...id,
+      id: CONTEXT.id || AUTH.account.project_id_activity || undefined,
       project: PROJECT.$state,
       editor: EDITOR.$state,
       logger: LOGGER.$state,

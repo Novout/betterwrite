@@ -114,6 +114,21 @@ export const useSupabase = () => {
 
     if (data) {
       AUTH.account.project_id_activity = data[0].id || null
+
+      await storage.normalize()
+
+      const { error: err } = await s.from('projects').upsert(
+        {
+          // @ts-ignore
+          id_user: AUTH.account.user.id,
+          ...storage.getProjectObject(),
+        },
+        { onConflict: 'id' }
+      )
+
+      if (err) {
+        toast.error(err.message)
+      }
     }
   }
 
