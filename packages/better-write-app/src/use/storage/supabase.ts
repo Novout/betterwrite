@@ -2,11 +2,12 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useAuthStore } from '@/store/auth'
 import { createClient } from '@supabase/supabase-js'
 import { useNProgress } from '@vueuse/integrations'
-import { ProjectObject, Maybe } from 'better-write-types'
+import { ProjectObject, Maybe, AccountPlan } from 'better-write-types'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
+import { useFormat } from '../format'
 import { useProject } from '../project'
 import { useLocalStorage } from './local'
 import { useStorage } from './storage'
@@ -28,6 +29,7 @@ export const useSupabase = () => {
   const project = useProject()
   const local = useLocalStorage()
   const router = useRouter()
+  const format = useFormat()
 
   const login = (
     provider: 'google' | 'github',
@@ -37,7 +39,7 @@ export const useSupabase = () => {
 
     s.auth
       .signIn({ provider }, { redirectTo: env.getCorrectLocalUrl() })
-      .then(({ error }) => {
+      .then(async ({ error }) => {
         if (error) throw error
 
         if (notification) toast(t('editor.auth.login.success'))
@@ -163,5 +165,57 @@ export const useSupabase = () => {
     })
   }
 
-  return { login, out, getProjects, saveProject, loadProject, deleteProject }
+  const getProfile = async () => {
+    const { data: exists } = await s.from('profiles')
+
+    // @ts-ignore
+    const profile = exists[0]
+
+    if (!profile) {
+      const { data: d, error } = await s.from('profiles').upsert(
+        {
+          id: s.auth.user()!.id,
+          created_at_day: format.actually(),
+        },
+        { onConflict: 'id' }
+      )
+      if (!d) return
+
+      if (error) {
+        toast.error(error)
+      }
+
+      const [profile] = d
+
+      return profile
+    }
+
+    return profile
+  }
+
+  const getCorrectPlan = (plan: AccountPlan) => {
+    switch (plan) {
+      case 'beginner':
+        return t('dashboard.account.plans.beginner')
+      case 'intermediate':
+        return t('dashboard.account.plans.intermediate')
+      case 'advanced':
+        return t('dashboard.account.plans.advanced')
+      case 'unlimited':
+        return t('dashboard.account.plans.unlimited')
+      default:
+        return '__NOT_DEFINED__'
+    }
+  }
+
+  return {
+    login,
+    out,
+    getProjects,
+    saveProject,
+    loadProject,
+    deleteProject,
+    getProfile,
+    getCorrectPlan,
+  }
 }

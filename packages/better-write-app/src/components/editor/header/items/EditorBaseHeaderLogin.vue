@@ -2,23 +2,26 @@
   <div>
     <button
       v-if="!AUTH.account.user"
-      class="flex font-poppins px-3 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full cursor-pointer"
+      class="flex wb-icon items-center justify-center font-poppins px-3 py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full cursor-pointer"
       @click.prevent.stop="onOpen"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        aria-hidden="true"
-        role="img"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M10 11H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8h6v3l5-4l-5-4v3z"
-          fill="currentColor"
-        ></path>
-      </svg>
       <p v-if="mobile" class="ml-1">{{ t('editor.auth.login.show') }}</p>
+      <HeroIcon class="ml-1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          class="h-7 w-7"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="currentColor"
+            d="M160 136v104h153.37l-52.68-52.69a16 16 0 0 1 22.62-22.62l80 80a16 16 0 0 1 0 22.62l-80 80a16 16 0 0 1-22.62-22.62L313.37 272H160v104a56.06 56.06 0 0 0 56 56h208a56.06 56.06 0 0 0 56-56V136a56.06 56.06 0 0 0-56-56H216a56.06 56.06 0 0 0-56 56ZM48 240a16 16 0 0 0 0 32h112v-32Z"
+          ></path>
+        </svg>
+      </HeroIcon>
     </button>
     <div
       v-else
@@ -76,6 +79,22 @@
         <p v-if="mobile" class="truncate cursor-pointer">
           {{ AUTH.account.user.email }}
         </p>
+        <HeroIcon class="wb-icon" @click.prevent.stop="supabase.out">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            role="img"
+            class="w-5 h-5"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
+            ></path>
+          </svg>
+        </HeroIcon>
       </button>
     </div>
   </div>
@@ -84,6 +103,7 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useAuthStore } from '@/store/auth'
+  import { useSupabase } from '@/use/storage/supabase'
   import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
@@ -93,6 +113,7 @@
 
   const { t } = useI18n()
   const router = useRouter()
+  const supabase = useSupabase()
 
   const breakpoints = useBreakpoints(breakpointsTailwind)
   const mobile = breakpoints.greater('sm')

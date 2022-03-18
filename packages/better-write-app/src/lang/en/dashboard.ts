@@ -17,4 +17,16 @@ export default {
     empty:
       'No projects saved in Better Write database. Here it will not show projects saved in Dropbox.',
   },
+  account: {
+    created: {
+      title: 'Created at',
+    },
+    plans: {
+      title: 'Plan',
+      beginner: 'Beginner',
+      intermediate: 'Intermediate',
+      advanced: 'Advanced',
+      unlimited: 'Unlimited',
+    },
+  },
 }

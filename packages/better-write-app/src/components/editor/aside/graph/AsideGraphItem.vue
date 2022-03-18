@@ -7,16 +7,6 @@
       props.entity.type !== 'line-break' &&
       props.entity.raw !== env.emptyLine()
     "
-    v-motion
-    :initial="{ opacity: 0, x: 10 }"
-    :enter="{
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: 0,
-        duration: 120,
-      },
-    }"
     class="cursor-pointer bg-theme-aside-graph-background hover:bg-theme-aside-graph-background-hover active:bg-theme-aside-graph-background-active text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active transition"
     :class="[
       props.entity.type === 'heading-one'

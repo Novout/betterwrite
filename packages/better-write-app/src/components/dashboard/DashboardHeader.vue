@@ -12,7 +12,7 @@
     <HeroIcon
       v-if="local.getProject()"
       class="wb-icon"
-      @click.prevent.stop="router.push('/')"
+      @click.prevent.stop="onCloseDashboard"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -34,11 +34,21 @@
 
 <script setup lang="ts">
   import { useLocalStorage } from '@/use/storage/local'
+  import { useNProgress } from '@vueuse/integrations'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
 
   const { t } = useI18n()
+  const { isLoading } = useNProgress()
   const router = useRouter()
 
   const local = useLocalStorage()
+
+  const onCloseDashboard = () => {
+    isLoading.value = true
+
+    router.push('/').finally(() => {
+      isLoading.value = false
+    })
+  }
 </script>

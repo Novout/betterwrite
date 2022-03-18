@@ -18,4 +18,16 @@ export default {
     empty:
       'Nenhum projeto salvo no banco de dados do Better Write. Aqui não mostrará projetos salvos no Dropbox.',
   },
+  account: {
+    created: {
+      title: 'Criado em',
+    },
+    plans: {
+      title: 'Plano',
+      beginner: 'Iniciante',
+      intermediate: 'Intermediário',
+      advanced: 'Avançado',
+      unlimited: 'Ilimitado',
+    },
+  },
 }
