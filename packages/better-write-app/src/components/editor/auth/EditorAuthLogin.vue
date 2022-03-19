@@ -124,7 +124,7 @@
               xmlns:xlink="http://www.w3.org/1999/xlink"
               aria-hidden="true"
               role="img"
-              class="w-8 h-8 md:(h-10 w-10)"
+              class="w-8 h-8 md:(h-10 w-10) text-white"
               preserveAspectRatio="xMidYMid meet"
               viewBox="0 0 16 16"
             >

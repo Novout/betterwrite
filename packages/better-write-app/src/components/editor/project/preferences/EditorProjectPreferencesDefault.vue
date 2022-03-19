@@ -44,12 +44,14 @@
   import { useLocalStorage } from '@/use/storage/local'
   import { useDefines } from '@/use/defines'
   import { usePlugin } from 'better-write-plugin-core'
+import { useStorage } from '@/use/storage/storage'
 
   const ABSOLUTE = useAbsoluteStore()
   const EDITOR = useEditorStore()
 
   const local = useLocalStorage()
   const plugin = usePlugin()
+  const storage = useStorage()
 
   const { t, locale } = useI18n()
 
@@ -66,8 +68,10 @@
     })
   })
 
-  watch(theme, () => {
+  watch(theme, async () => {
     plugin.emit('plugin-theme-set')
+
+    await storage.normalize()
   })
 
   const convert = (iso: string) => {
