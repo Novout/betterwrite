@@ -115,6 +115,7 @@
         "pdfmake/build/vfs_fonts",
         "pinia",
         "three",
+        "three/examples/jsm/capabilities/WebGL.js",
         "three/examples/jsm/geometries/TextGeometry.js",
         "three/examples/jsm/loaders/FontLoader",
         "v-tooltip",

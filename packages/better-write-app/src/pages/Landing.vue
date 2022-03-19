@@ -8,10 +8,10 @@
   import { useHead } from '@vueuse/head'
   import { useI18n } from 'vue-i18n'
   import { computed, onMounted } from 'vue'
-  import { useLanding } from '@/use/landing'
+  import { useWebGL } from '@/use/webgl'
 
   const { t } = useI18n()
-  const landing = useLanding()
+  const webgl = useWebGL()
 
   onMounted(() => {
     document.body.removeAttribute('class')
@@ -27,5 +27,5 @@
     ],
   })
 
-  landing.init()
+  webgl.init()
 </script>

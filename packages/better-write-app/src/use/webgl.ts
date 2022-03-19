@@ -1,7 +1,7 @@
 import { useEventListener } from '@vueuse/core'
 import * as THREE from 'three'
-import { onMounted } from 'vue'
-import { useUtils } from './utils'
+import WebGL from 'three/examples/jsm/capabilities/WebGL.js'
+import { onBeforeUnmount, onMounted } from 'vue'
 
 export const three = () => {
   let scene
@@ -11,17 +11,11 @@ export const three = () => {
   let cloud
   let _cloud
   let _cloudMaterial
-  let mouse
-  let raycaster
-  let material
-  let intersects
-  let font
   const _cloudParticles: any = []
-  const meshArray: any = []
-
-  const utils = useUtils()
 
   const mounted = () => {
+    if (!WebGL.isWebGLAvailable()) return
+
     const cameraCreate = () => {
       camera = new THREE.PerspectiveCamera(
         70,
@@ -41,7 +35,7 @@ export const three = () => {
         canvas: document.getElementById('landing-canvas') as HTMLCanvasElement,
       })
       renderer.setSize(window.innerWidth - 10, document.body.offsetHeight)
-      scene.fog = new THREE.FogExp2(0x0f172a, 0.001)
+      scene.fog = new THREE.FogExp2(0x1e293b, 0.001)
       renderer.setClearColor(scene.fog.color)
       document.getElementById('landing-base')?.appendChild(renderer.domElement)
     }
@@ -96,41 +90,12 @@ export const three = () => {
       scene.add(light3)
     }
 
-    const onMouseDown = (event) => {
-      event.preventDefault()
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
-      raycaster.setFromCamera(mouse, camera)
-      intersects = raycaster.intersectObjects(scene.children, true)
-      for (let i = 0; i < intersects?.length; i++) {
-        if (
-          intersects[i].object.geometry.type === 'SphereGeometry' ||
-          intersects[i].object.geometry.type === 'IcosahedronGeometry'
-        ) {
-          intersects[i].object.scale.x += 10
-          intersects[i].object.scale.y += 10
-          intersects[i].object.scale.z += 10
-        }
-      }
-    }
-
     const render = () => {
       _cloudParticles.forEach((p) => {
         p.rotation.z -= 0.005
       })
       requestAnimationFrame(render)
       renderer.render(scene, camera)
-      /*
-      for (let i = 0; i < meshArray.length; i++) {
-        const particle = meshArray[i]
-        particle.position.z += 0.5
-        particle.rotation.x += 0.01
-        particle.rotation.y += particle['__Z__']
-        if (particle.position.z > 1000) {
-          particle.position.z -= 2000
-        }
-      }
-      */
     }
 
     const createContext = () => {
@@ -143,13 +108,10 @@ export const three = () => {
     }
     createContext()
     scene = new THREE.Scene()
-    raycaster = new THREE.Raycaster()
-    mouse = new THREE.Vector2()
     cameraCreate()
     rendererCreate()
     loaderSmoke()
     contextResize()
-    // createNodes()
     createLight()
     render()
   }
@@ -161,14 +123,22 @@ export const three = () => {
   return [mounted, unmounted]
 }
 
-export const useLanding = () => {
+export const useWebGL = () => {
   const init = () => {
-    const [mounted] = three()
+    const [mounted, unmounted] = three()
 
     onMounted(() => {
       mounted()
     })
+
+    onBeforeUnmount(() => {
+      unmounted()
+    })
   }
 
-  return { init }
+  const isSupported = () => {
+    return WebGL.isWebGLAvailable()
+  }
+
+  return { init, isSupported }
 }

@@ -1,7 +1,8 @@
 <template>
   <section
     id="landing-base"
-    class="flex flex-col z-max text-white items-center justify-between min-h-screen w-full bg-transparent"
+    :class="[!webgl.isSupported() ? 'bg-theme-background-2' : 'bg-transparent']"
+    class="flex flex-col z-max text-white items-center justify-between min-h-screen w-full"
   >
     <div
       class="flex-1 container mx-auto flex px-5 py-24 md:flex-row flex-col items-center z-50"
@@ -59,6 +60,7 @@
 
 <script setup lang="ts">
   import { useEnv } from '@/use/env'
+  import { useWebGL } from '@/use/webgl'
   import { useNProgress } from '@vueuse/integrations'
   import { computed, nextTick } from 'vue'
   import { useI18n } from 'vue-i18n'
@@ -69,6 +71,7 @@
   const env = useEnv()
   const router = useRouter()
   const { isLoading } = useNProgress()
+  const webgl = useWebGL()
 
   const version = computed(() => `v${env.packageVersion()}`)
 
