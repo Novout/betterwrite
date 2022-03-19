@@ -5,7 +5,7 @@
   >
     <img
       class="object-contain cursor-pointer"
-      width="60"
+      :width="width"
       alt="Better Write Logo"
       :src="path"
       @click.stop.prevent="onClick"
@@ -24,6 +24,10 @@
   import { setEditorLogo } from 'better-write-plugin-theme'
   import { Cycle } from 'better-write-plugin-core'
   import { useUtils } from '@/use/utils'
+
+  defineProps<{
+    width: number
+  }>()
 
   const EDITOR = useEditorStore()
 

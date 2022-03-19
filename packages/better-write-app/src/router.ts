@@ -18,6 +18,11 @@ const routes = [
     component: () => import('@/pages/Dashboard.vue'),
   },
   {
+    name: 'Plans',
+    path: '/plans',
+    component: () => import('@/pages/Plans.vue'),
+  },
+  {
     path: '/:pathMatch(.*)*',
     component: () => import('@/pages/generics/Generics404.vue'),
   },
@@ -29,7 +34,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name === 'Dashboard' && !s.auth.user()) next({ name: 'Main' })
+  if ((to.name === 'Dashboard' || to.name === 'Plans') && !s.auth.user())
+    next({ name: 'Main' })
 
   next()
 })

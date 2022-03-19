@@ -44,7 +44,7 @@
   import { useLocalStorage } from '@/use/storage/local'
   import { useDefines } from '@/use/defines'
   import { usePlugin } from 'better-write-plugin-core'
-import { useStorage } from '@/use/storage/storage'
+  import { useStorage } from '@/use/storage/storage'
 
   const ABSOLUTE = useAbsoluteStore()
   const EDITOR = useEditorStore()
