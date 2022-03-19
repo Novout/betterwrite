@@ -1,6 +1,24 @@
-# Changelog (17/03/2022)
+# Changelog (19/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.14.0
+
+* **style(theme):** ascend default base colors [c025b45]
+* **feat(dashboard):** bw-theme implements [63fef60]
+* **style(plans):** bar color [86b7489]
+* **fix(landing:** webgl supported [35add77]
+* **feat:** plans section [e77ac1e]
+* **fix(editor):** normalize theme [96baa67]
+* **fix(dashboard):** navigation guard for empty user [f655ea0]
+* **fix(dashboard):** empty projects remove spinner [e7faa6e]
+* **fix(landing):** remove nodes [26dda26]
+* **chore:** typo [597d00f]
+* **feat(landing):** webgl background [aecc4ac]
+* **feat(dashboard):** notion and gitlab integration [3938c80]
+* **feat(dashboard):** plans route [0adf888]
+* **feat(dashboard):** profile database [79caf0a]
+* **fix(account):** correct upsert project id [198b9ab]
 
 ### v0.13.7
 
