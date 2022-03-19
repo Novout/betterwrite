@@ -1,9 +1,8 @@
 <template>
   <main class="min-h-screen overflow-y-auto w-full bg-theme-background-2">
-    <div class="w-full md:w-52 my-2">
+    <div class="w-full md:w-52 my-2 ml-0 md:ml-5">
       <AsideBarLogo :width="30" />
     </div>
-    <PlansHeader />
     <PlansContent />
     <PlansCards />
   </main>

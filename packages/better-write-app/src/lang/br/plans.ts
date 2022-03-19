@@ -37,7 +37,7 @@ export default {
   intermediate: {
     name: 'Entusiasta',
     price: '$5',
-    description: 'Perfeito para experimentar a sua liberdade.',
+    description: 'Perfeito para experimentar a liberdade.',
     features: [
       {
         status: 'yes',
