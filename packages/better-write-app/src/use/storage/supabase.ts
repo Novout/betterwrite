@@ -1,5 +1,6 @@
 import { useAbsoluteStore } from '@/store/absolute'
 import { useAuthStore } from '@/store/auth'
+import { useProjectStore } from '@/store/project'
 import { createClient } from '@supabase/supabase-js'
 import { useNProgress } from '@vueuse/integrations'
 import { ProjectObject, Maybe, AccountPlan } from 'better-write-types'
@@ -9,6 +10,7 @@ import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
 import { useFormat } from '../format'
 import { useProject } from '../project'
+import { useUtils } from '../utils'
 import { useLocalStorage } from './local'
 import { useStorage } from './storage'
 
@@ -20,6 +22,7 @@ export const s = createClient(supabaseUrl, supabaseAnonKey)
 export const useSupabase = () => {
   const ABSOLUTE = useAbsoluteStore()
   const AUTH = useAuthStore()
+  const PROJECT = useProjectStore()
 
   const { isLoading } = useNProgress()
   const toast = useToast()
@@ -30,6 +33,7 @@ export const useSupabase = () => {
   const local = useLocalStorage()
   const router = useRouter()
   const format = useFormat()
+  const utils = useUtils()
 
   const login = (
     provider: 'google' | 'github',
@@ -153,7 +157,7 @@ export const useSupabase = () => {
     toast.success(t('toast.project.save'))
   }
 
-  const loadProject = (context: ProjectObject) => {
+  const loadProject = async (context: ProjectObject) => {
     AUTH.account.project_id_activity = context.id || null
 
     storage.normalize().then(() => {
@@ -193,6 +197,40 @@ export const useSupabase = () => {
     return profile
   }
 
+  const getProjectSize = (context: ProjectObject) => {
+    return (
+      utils.object().getMemorySizeOfObject(context)[0] +
+      ' ' +
+      utils.object().getMemorySizeOfObject(context)[1]
+    )
+  }
+
+  const getAllProjectSize = async () => {
+    const projects = await getProjects()
+
+    return projects?.reduce((_, val) => {
+      return Number(utils.object().getMemorySizeOfObject(val)[0])
+    }, 0)
+  }
+
+  const getPlanBar = async (plan: AccountPlan) => {
+    //const a1 = await getAllProjectSize()
+
+    const a1 = env.getAccountPlanLimit('beginner') as number
+
+    const a2 = 100
+
+    const b1 = await getAllProjectSize()
+
+    const x1 = a2 * b1
+
+    const b2 = x1 / a1
+
+    console.log(x1)
+
+    return b2
+  }
+
   const getCorrectPlan = (plan: AccountPlan) => {
     switch (plan) {
       case 'beginner':
@@ -216,6 +254,9 @@ export const useSupabase = () => {
     loadProject,
     deleteProject,
     getProfile,
+    getProjectSize,
+    getAllProjectSize,
+    getPlanBar,
     getCorrectPlan,
   }
 }

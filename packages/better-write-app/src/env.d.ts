@@ -24,6 +24,15 @@ interface ImportMetaEnv {
 
   readonly VITE_SUPABASE_URL: string
   readonly VITE_SUPABASE_ANON_KEY: string
+
+  readonly VITE_SUPABASE_URL: string
+  readonly VITE_SUPABASE_ANON_KEY: string
+
+  readonly VITE_BEGINEER_LIMIT: number
+  readonly VITE_INTERMEDIATE_LIMIT: number
+  readonly VITE_ADVANCED_LIMIT: number
+  readonly VITE_CUSTOM_LIMIT: number
+  readonly VITE_UNLIMITED_LIMIT: number
 }
 
 interface ImportMeta {

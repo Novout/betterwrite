@@ -97,26 +97,24 @@
             </svg>
           </HeroIcon>
         </div>
-        <p class="text-lg">{{ getSize(context) }}</p>
+        <p class="text-lg">{{ supabase.getProjectSize(context) }}</p>
       </div>
       <div v-else class="wb-text">
         {{ t('dashboard.projects.empty') }}
       </div>
     </div>
-    <Spinner v-else width="100" height="100" />
+    <Spinner v-else :width="100" :height="100" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { useSupabase } from '@/use/storage/supabase'
-  import { useUtils } from '@/use/utils'
   import { ProjectObject } from 'better-write-types'
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const supabase = useSupabase()
   const { t } = useI18n()
-  const utils = useUtils()
 
   const projects = ref<ProjectObject[]>([])
 
@@ -134,13 +132,5 @@
     supabase.deleteProject(context).then(() => {
       onSetProject()
     })
-  }
-
-  const getSize = (context: ProjectObject) => {
-    return (
-      utils.object().getMemorySizeOfObject(context)[0] +
-      ' ' +
-      utils.object().getMemorySizeOfObject(context)[1]
-    )
   }
 </script>

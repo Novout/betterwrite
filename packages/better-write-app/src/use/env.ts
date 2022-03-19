@@ -1,3 +1,5 @@
+import { AccountPlan } from 'better-write-types'
+
 export const useEnv = () => {
   const getCorrectLocalUrl = () => {
     return import.meta.env.PROD
@@ -53,6 +55,19 @@ export const useEnv = () => {
     return import.meta.env.DEV
   }
 
+  const getAccountPlanLimit = (plan: AccountPlan) => {
+    switch (plan) {
+      case 'beginner':
+        return import.meta.env.VITE_BEGINEER_LIMIT
+      case 'intermediate':
+        return import.meta.env.VITE_INTERMEDIATE_LIMIT
+      case 'advanced':
+        return import.meta.env.VITE_ADVANCED_LIMIT
+      case 'unlimited':
+        return import.meta.env.VITE_UNLIMITED_LIMIT
+    }
+  }
+
   return {
     dropboxKey,
     projectEmpty,
@@ -67,5 +82,6 @@ export const useEnv = () => {
     initialLoad,
     packageVersion,
     isDev,
+    getAccountPlanLimit,
   }
 }

@@ -6,8 +6,10 @@
     :delay="100"
     class="flex items-center justify-between w-full bg-theme-background-2 p-5"
   >
-    <h1 class="text-xl font-poppins font-bold wb-text">
-      {{ t('dashboard.title') }}
+    <h1
+      class="text-lg pointer-events-none font-poppins font-raleway wb-text border-b border-theme-background-4"
+    >
+      {{ PROJECT.nameRaw }} > {{ t('dashboard.title') }}
     </h1>
     <HeroIcon
       v-if="local.getProject()"
@@ -33,10 +35,13 @@
 </template>
 
 <script setup lang="ts">
+  import { useProjectStore } from '@/store/project'
   import { useLocalStorage } from '@/use/storage/local'
   import { useNProgress } from '@vueuse/integrations'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
+
+  const PROJECT = useProjectStore()
 
   const { t } = useI18n()
   const { isLoading } = useNProgress()

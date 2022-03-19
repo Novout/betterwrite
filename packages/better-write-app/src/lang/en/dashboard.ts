@@ -1,5 +1,5 @@
 export default {
-  title: 'Dashboard',
+  title: 'Profile',
   newCreate: 'Create',
   new: [
     {
@@ -23,6 +23,7 @@ export default {
     },
     plans: {
       title: 'Plan',
+      upgrade: 'Upgrade your Plan!',
       beginner: 'Beginner',
       intermediate: 'Intermediate',
       advanced: 'Advanced',

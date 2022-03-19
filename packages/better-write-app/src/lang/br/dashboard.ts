@@ -1,5 +1,5 @@
 export default {
-  title: 'Painel de Controle',
+  title: 'Perfil',
   newCreate: 'Criar',
   new: [
     {
@@ -24,6 +24,7 @@ export default {
     },
     plans: {
       title: 'Plano',
+      upgrade: 'Melhore seu Plano!',
       beginner: 'Iniciante',
       intermediate: 'Intermediário',
       advanced: 'Avançado',
