@@ -1,5 +1,7 @@
 <template>
-  <div class="min-h-screen overflow-y-auto w-full bg-theme-background-2">
+  <div
+    class="min-h-screen overflow-y-auto w-full bg-theme-editor-dashboard-background-main"
+  >
     <DashboardHeader />
     <DashboardData />
     <DashboardProjects />

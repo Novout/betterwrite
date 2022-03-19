@@ -279,6 +279,13 @@ export const setTailwindCssVariables = () => {
       'var(--theme-editor-creative-drafts-container-item-background-active)',
     'theme-editor-creative-drafts-container-item-text':
       'var(--theme-editor-creative-drafts-container-item-text)',
+    'theme-editor-dashboard-background-main':
+      'var(--theme-editor-dashboard-background-main)',
+    'theme-editor-dashboard-background-item':
+      'var(--theme-editor-dashboard-background-item)',
+    'theme-editor-dashboard-background-card':
+      'var(--theme-editor-dashboard-background-card)',
+    'theme-editor-dashboard-text': 'var(--theme-editor-dashboard-text)',
     'theme-text-1': 'var(--theme-text-1)',
     'theme-text-2': 'var(--theme-text-2)',
     'theme-text-3': 'var(--theme-text-3)',

@@ -16,7 +16,7 @@
         v-for="(context, index) in projects"
         v-if="projects.length !== 0"
         :key="index"
-        class="flex flex-col w-full sm:w-52 flex-wrap justify-between items-center p-5 bg-theme-background-2 wb-text rounded my-1 shadow-binset"
+        class="flex flex-col w-full sm:w-52 flex-wrap justify-between items-center p-5 bg-theme-editor-dashboard-background-main wb-text rounded my-1 shadow-binset"
       >
         <div
           v-if="context.pdf.styles.base.background.data"

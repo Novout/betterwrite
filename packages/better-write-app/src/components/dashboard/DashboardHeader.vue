@@ -4,7 +4,7 @@
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1 }"
     :delay="100"
-    class="flex items-center justify-between w-full bg-theme-background-2 p-5"
+    class="flex items-center justify-between w-full bg-theme-editor-dashboard-background-main p-5"
   >
     <h1
       class="text-lg pointer-events-none font-poppins font-raleway wb-text border-b border-theme-background-4"

@@ -162,6 +162,10 @@
   --theme-editor-creative-drafts-container-item-background-hover: #deedff;
   --theme-editor-creative-drafts-container-item-background-active: #deedff;
   --theme-editor-creative-drafts-container-item-text: #111111;
+  --theme-editor-dashboard-background-main: #b6ceeb;
+  --theme-editor-dashboard-background-item: rgba(222, 237, 255, 0.3);
+  --theme-editor-dashboard-background-card: #deedff;
+  --theme-editor-dashboard-text: #111111;
   --theme-text-1: #111111;
   --theme-text-2: #111111;
   --theme-text-3: #111111;

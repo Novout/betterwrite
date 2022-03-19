@@ -5,17 +5,17 @@
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1 }"
     :delay="200"
-    class="flex flex-wrap w-full text-theme-text-1 p-5"
+    class="flex flex-wrap w-full wb-text p-5"
   >
     <div class="flex flex-col w-full md:w-1/2">
       <div class="flex flex-col">
         <h2 class="mb-2 text-lg">{{ t('dashboard.account.plans.title') }}</h2>
         <div
-          class="flex justify-between items-center p-3 bg-theme-background-opacity-1 rounded font-bold text-lg"
+          class="flex justify-between items-center p-3 bg-theme-editor-dashboard-background-item rounded font-bold text-lg"
         >
           <p class="mr-5">{{ getCorrectPlan(profile.plan) }}</p>
           <button
-            class="px-2 md:px-5 py-1 bg-theme-background-opacity-1 rounded-full text-sm wb-icon font-poppins"
+            class="px-2 md:px-5 py-1 bg-theme-editor-dashboard-background-item rounded-full text-sm wb-icon font-poppins"
             @click.prevent.stop="onPlanRoute"
           >
             {{ t('dashboard.account.plans.upgrade') }}
@@ -24,7 +24,9 @@
       </div>
       <div class="flex flex-col mt-5">
         <h2 class="mb-2 text-lg">{{ t('dashboard.account.created.title') }}</h2>
-        <p class="p-3 bg-theme-background-opacity-1 rounded font-bold">
+        <p
+          class="p-3 bg-theme-editor-dashboard-background-item rounded font-bold"
+        >
           {{ profile.created_at_day }}
         </p>
       </div>

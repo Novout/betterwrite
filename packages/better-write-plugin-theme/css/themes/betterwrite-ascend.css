@@ -161,6 +161,10 @@
   --theme-editor-creative-drafts-container-item-background-hover: #242222;
   --theme-editor-creative-drafts-container-item-background-active: #242222;
   --theme-editor-creative-drafts-container-item-text: #fa8373;
+  --theme-editor-dashboard-background-main: #242222;
+  --theme-editor-dashboard-background-item: #282626;
+  --theme-editor-dashboard-background-card: #725656;
+  --theme-editor-dashboard-text: #fa8373;
   --theme-text-1: #faa59e;
   --theme-text-2: #faa59e;
   --theme-text-3: #faa59e;
