@@ -1,7 +1,5 @@
 import { useEventListener } from '@vueuse/core'
 import * as THREE from 'three'
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { onMounted } from 'vue'
 import { useUtils } from './utils'
 
@@ -82,34 +80,6 @@ export const three = () => {
       })
     }
 
-    const createNodes = () => {
-      for (let i = -3000; i < 3000; i += 15) {
-        material = new THREE.MeshPhysicalMaterial({
-          color: 0xcccccc,
-          roughness: 1,
-          reflectivity: 1,
-          clearcoat: 1,
-        })
-        let mesh = new THREE.Mesh(
-          new TextGeometry(utils.text().randomLetter(), {
-            font,
-            size: 25,
-            height: 5,
-          }),
-          material
-        )
-        mesh.position.x = Math.random() * 1000 - 500
-        mesh.position.y = Math.random() * 1000 - 500
-        mesh.position.z = i
-
-        const sets = [0.01, 0.005, -0.01, 0.015, -0.015, -0.005]
-
-        mesh['__Z__'] = sets[Math.floor(Math.random() * sets.length)]
-        meshArray.push(mesh)
-        scene.add(mesh)
-      }
-    }
-
     const createLight = () => {
       const light = new THREE.AmbientLight(0x5480e8)
       light.position.set(0, 0, 0)
@@ -171,22 +141,17 @@ export const three = () => {
 
       document.querySelector('#landing-base')?.appendChild(canvas)
     }
-    const l = new FontLoader()
-
-    l.load('three/helvetiker_regular.typeface.json', (_font) => {
-      font = _font
-      createContext()
-      scene = new THREE.Scene()
-      raycaster = new THREE.Raycaster()
-      mouse = new THREE.Vector2()
-      cameraCreate()
-      rendererCreate()
-      loaderSmoke()
-      contextResize()
-      // createNodes()
-      createLight()
-      render()
-    })
+    createContext()
+    scene = new THREE.Scene()
+    raycaster = new THREE.Raycaster()
+    mouse = new THREE.Vector2()
+    cameraCreate()
+    rendererCreate()
+    loaderSmoke()
+    contextResize()
+    // createNodes()
+    createLight()
+    render()
   }
 
   const unmounted = () => {
