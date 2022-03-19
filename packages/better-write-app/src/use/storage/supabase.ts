@@ -1,9 +1,13 @@
 import { useAbsoluteStore } from '@/store/absolute'
 import { useAuthStore } from '@/store/auth'
-import { useProjectStore } from '@/store/project'
 import { createClient } from '@supabase/supabase-js'
 import { useNProgress } from '@vueuse/integrations'
-import { ProjectObject, Maybe, AccountPlan } from 'better-write-types'
+import {
+  ProjectObject,
+  Maybe,
+  AccountPlan,
+  SupabaseIntegrations,
+} from 'better-write-types'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
@@ -22,7 +26,6 @@ export const s = createClient(supabaseUrl, supabaseAnonKey)
 export const useSupabase = () => {
   const ABSOLUTE = useAbsoluteStore()
   const AUTH = useAuthStore()
-  const PROJECT = useProjectStore()
 
   const { isLoading } = useNProgress()
   const toast = useToast()
@@ -36,7 +39,7 @@ export const useSupabase = () => {
   const utils = useUtils()
 
   const login = (
-    provider: 'google' | 'github',
+    provider: SupabaseIntegrations,
     notification: boolean = true
   ) => {
     isLoading.value = true
@@ -46,7 +49,7 @@ export const useSupabase = () => {
       .then(async ({ error }) => {
         if (error) throw error
 
-        if (notification) toast(t('editor.auth.login.success'))
+        // if (notification) toast(t('editor.auth.login.success'))
       })
       .catch(() => {
         if (notification) toast(t('editor.auth.login.error'))
@@ -222,7 +225,7 @@ export const useSupabase = () => {
 
     const b1 = await getAllProjectSize()
 
-    const x1 = a2 * b1
+    const x1 = a2 * (b1 || 0)
 
     const b2 = x1 / a1
 

@@ -11,6 +11,8 @@ export interface AuthState {
   account: AuthStateAccount
 }
 
-interface AuthStateDropbox {
+export interface AuthStateDropbox {
   accessToken: Maybe<string>
 }
+
+export type SupabaseIntegrations = 'google' | 'github' | 'gitlab' | 'notion'

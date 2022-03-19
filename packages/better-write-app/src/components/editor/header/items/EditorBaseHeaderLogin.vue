@@ -75,6 +75,60 @@
               fill="currentColor"
             ></path>
           </svg>
+          <svg
+            v-else-if="AUTH.account.user.app_metadata.provider === 'notion'"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            role="img"
+            class="h-5 w-5"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 15 15"
+          >
+            <path
+              fill="currentColor"
+              d="M3.258 3.117c.42.341.577.315 1.366.262l7.433-.446c.158 0 .027-.157-.026-.183l-1.235-.893c-.236-.184-.551-.394-1.155-.341l-7.198.525c-.262.026-.315.157-.21.262l1.025.814Zm.446 1.732v7.821c0 .42.21.578.683.552l8.17-.473c.472-.026.525-.315.525-.656V4.324c0-.34-.131-.525-.42-.499l-8.538.499c-.315.026-.42.184-.42.525Zm8.065.42c.052.236 0 .472-.237.499l-.394.078v5.774c-.341.184-.657.29-.92.29c-.42 0-.525-.132-.84-.526L6.803 7.342v3.911l.815.184s0 .472-.657.472l-1.812.105c-.053-.105 0-.367.184-.42l.472-.13V6.292L5.15 6.24c-.053-.236.078-.577.446-.604l1.944-.13L10.22 9.6V5.978l-.683-.079c-.053-.289.157-.499.42-.525l1.813-.105Zm-9.93-3.937L9.326.781c.919-.08 1.155-.026 1.733.394l2.39 1.68c.395.288.526.367.526.682v9.212c0 .578-.21.92-.946.971l-8.694.525c-.552.027-.815-.052-1.104-.42l-1.76-2.283c-.315-.42-.446-.735-.446-1.103V2.25c0-.472.21-.866.814-.918Z"
+            ></path>
+          </svg>
+          <svg
+            v-else-if="AUTH.account.user.app_metadata.provider === 'gitlab'"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            role="img"
+            class="h-5 w-5"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 32 32"
+          >
+            <path
+              fill="#e24329"
+              d="m16 28.896l5.156-15.867H10.844L16 28.896z"
+            ></path>
+            <path
+              fill="#fc6d26"
+              d="m16 28.896l-5.156-15.867H3.619L16 28.896z"
+            ></path>
+            <path
+              fill="#fca326"
+              d="m3.619 13.029l-1.567 4.822a1.067 1.067 0 0 0 .388 1.193L16 28.9L3.619 13.029Z"
+            ></path>
+            <path
+              fill="#e24329"
+              d="M3.619 13.029h7.225L7.739 3.473a.534.534 0 0 0-1.015 0l-3.105 9.556Z"
+            ></path>
+            <path
+              fill="#fc6d26"
+              d="m16 28.896l5.156-15.867h7.225L16 28.896z"
+            ></path>
+            <path
+              fill="#fca326"
+              d="m28.381 13.029l1.567 4.822a1.067 1.067 0 0 1-.388 1.193L16 28.9l12.381-15.871Z"
+            ></path>
+            <path
+              fill="#e24329"
+              d="M28.381 13.029h-7.225l3.105-9.557a.534.534 0 0 1 1.015 0l3.105 9.557Z"
+            ></path>
+          </svg>
         </HeroIcon>
         <p v-if="mobile" class="truncate cursor-pointer">
           {{ AUTH.account.user.email }}

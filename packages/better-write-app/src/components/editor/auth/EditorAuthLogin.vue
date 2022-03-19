@@ -6,13 +6,16 @@
       class="fixed flex flex-col w-3/4 md:w-1/2 bg-theme-background-1 wb-text rounded shadow-2xl p-5 overflow-y-auto"
     >
       <EditorAbsoluteHeader
-        class="pl-5"
+        class="pl-3 pr-1"
         :title="t('editor.auth.login.title')"
         @close="onClose"
       />
-      <div class="flex flex-col items-center justify-between w-full gap-5 p-2">
+      <div
+        class="flex flex-wrap flex-row items-center justify-between w-full gap-5 p-2"
+      >
         <button
-          class="flex items-center w-full bg-theme-background-2 border-theme-border-1 px-3 py-1 rounded-sm mt-5"
+          class="flex h-20 flex-1 items-center justify-center px-3 py-1 rounded-sm mt-5"
+          :style="{ backgroundColor: '#FAFAFA' }"
           @click.prevent.stop="onLogin('google')"
         >
           <HeroIcon>
@@ -21,7 +24,7 @@
               xmlns:xlink="http://www.w3.org/1999/xlink"
               aria-hidden="true"
               role="img"
-              class="h-5 w-5"
+              class="w-8 h-8 md:(h-10 w-10)"
               preserveAspectRatio="xMidYMid meet"
               viewBox="0 0 24 24"
             >
@@ -43,12 +46,76 @@
               ></path>
             </svg>
           </HeroIcon>
-          <p class="ml-2 font-bold">
-            {{ t('editor.auth.login.google') }}
-          </p>
         </button>
         <button
-          class="flex items-center w-full bg-theme-background-2 border-theme-border-1 px-3 py-1 rounded-sm"
+          class="flex h-20 flex-1 items-center justify-center bg-theme-background-2 border-theme-border-1 px-3 py-1 rounded-sm mt-5"
+          :style="{ backgroundColor: '#FFF' }"
+          @click.prevent.stop="onLogin('notion')"
+        >
+          <HeroIcon>
+            <svg
+              id="Layer_1"
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-8 h-8 md:(h-10 w-10)"
+              viewBox="0 0 122.88 128.1"
+            >
+              <path
+                class="cls-1"
+                d="M21.19,22.46c4,3.23,5.48,3,13,2.49l70.53-4.24c1.5,0,.25-1.49-.25-1.74L92.72,10.5a14.08,14.08,0,0,0-11-3.23l-68.29,5c-2.49.24-3,1.49-2,2.49l9.73,7.72ZM25.42,38.9v74.21c0,4,2,5.48,6.48,5.23l77.52-4.48c4.49-.25,5-3,5-6.23V33.91c0-3.23-1.25-5-4-4.73l-81,4.73c-3,.25-4,1.75-4,5Zm76.53,4c.49,2.24,0,4.48-2.25,4.73L96,48.36v54.79c-3.24,1.74-6.23,2.73-8.72,2.73-4,0-5-1.24-8-5L54.83,62.55V99.66l7.73,1.74s0,4.48-6.23,4.48l-17.2,1c-.5-1,0-3.48,1.75-4l4.48-1.25V52.59l-6.23-.5a4.66,4.66,0,0,1,4.24-5.73l18.44-1.24L87.24,84V49.6l-6.48-.74a4.21,4.21,0,0,1,4-5l17.21-1ZM7.72,5.52l71-5.23C87.49-.46,89.73.05,95.21,4L117.89,20c3.74,2.74,5,3.48,5,6.47v87.42c0,5.47-2,8.71-9,9.21l-82.5,5c-5.24.25-7.73-.5-10.47-4L4.24,102.4c-3-4-4.24-7-4.24-10.46V14.24C0,9.76,2,6,7.72,5.52Z"
+              />
+            </svg>
+          </HeroIcon>
+        </button>
+        <button
+          class="flex h-20 flex-1 items-center justify-center bg-theme-background-2 border-theme-border-1 px-3 py-1 rounded-sm mt-5"
+          :style="{ backgroundColor: '#FF7646' }"
+          @click.prevent.stop="onLogin('gitlab')"
+        >
+          <HeroIcon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              role="img"
+              class="w-8 h-8 md:(h-10 w-10)"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 256 236"
+            >
+              <path
+                fill="#E24329"
+                d="m128.075 236.075l47.104-144.97H80.97l47.104 144.97Z"
+              ></path>
+              <path
+                fill="#FC6D26"
+                d="M128.075 236.074L80.97 91.104H14.956l113.119 144.97Z"
+              ></path>
+              <path
+                fill="#FCA326"
+                d="M14.956 91.104L.642 135.16a9.752 9.752 0 0 0 3.542 10.903l123.891 90.012l-113.12-144.97Z"
+              ></path>
+              <path
+                fill="#E24329"
+                d="M14.956 91.105H80.97L52.601 3.79c-1.46-4.493-7.816-4.492-9.275 0l-28.37 87.315Z"
+              ></path>
+              <path
+                fill="#FC6D26"
+                d="m128.075 236.074l47.104-144.97h66.015l-113.12 144.97Z"
+              ></path>
+              <path
+                fill="#FCA326"
+                d="m241.194 91.104l14.314 44.056a9.752 9.752 0 0 1-3.543 10.903l-123.89 90.012l113.119-144.97Z"
+              ></path>
+              <path
+                fill="#E24329"
+                d="M241.194 91.105h-66.015l28.37-87.315c1.46-4.493 7.816-4.492 9.275 0l28.37 87.315Z"
+              ></path>
+            </svg>
+          </HeroIcon>
+        </button>
+        <button
+          class="flex h-20 flex-1 items-center justify-center bg-theme-background-2 border-theme-border-1 px-3 py-1 rounded-sm mt-5"
+          :style="{ backgroundColor: '#111111' }"
           @click.prevent.stop="onLogin('github')"
         >
           <HeroIcon>
@@ -57,7 +124,7 @@
               xmlns:xlink="http://www.w3.org/1999/xlink"
               aria-hidden="true"
               role="img"
-              class="h-5 w-5"
+              class="w-8 h-8 md:(h-10 w-10)"
               preserveAspectRatio="xMidYMid meet"
               viewBox="0 0 16 16"
             >
@@ -67,9 +134,6 @@
               ></path>
             </svg>
           </HeroIcon>
-          <p class="ml-2 font-bold">
-            {{ t('editor.auth.login.github') }}
-          </p>
         </button>
       </div>
     </div>
@@ -82,6 +146,7 @@
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useSupabase } from '@/use/storage/supabase'
+  import { SupabaseIntegrations } from 'better-write-types'
 
   const ABSOLUTE = useAbsoluteStore()
 
@@ -102,7 +167,7 @@
     ABSOLUTE.auth.supabase = false
   }
 
-  const onLogin = (provider: 'google' | 'github') => {
+  const onLogin = (provider: SupabaseIntegrations) => {
     supabase.login(provider)
   }
 </script>
