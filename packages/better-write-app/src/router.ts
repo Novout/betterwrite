@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { s } from './use/storage/supabase'
 
 const routes = [
   {
@@ -28,6 +29,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  if (to.name === 'Dashboard' && !s.auth.user()) next({ name: 'Main' })
+
   next()
 })
 
