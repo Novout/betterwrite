@@ -3,7 +3,7 @@
     v-motion
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1, transition: { delay: 300 } }"
-    class="w-full text-gray-200 bg-black-opacity body-font"
+    class="w-full z-50 text-gray-200 bg-black-opacity body-font"
   >
     <div
       class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col"

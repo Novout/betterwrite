@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen w-full landing overflow-x-hidden">
+  <main class="min-h-screen w-full overflow-x-hidden">
     <LandingFirst />
   </main>
 </template>
@@ -8,8 +8,10 @@
   import { useHead } from '@vueuse/head'
   import { useI18n } from 'vue-i18n'
   import { computed, onMounted } from 'vue'
+  import { useLanding } from '@/use/landing'
 
   const { t } = useI18n()
+  const landing = useLanding()
 
   onMounted(() => {
     document.body.removeAttribute('class')
@@ -24,4 +26,6 @@
       },
     ],
   })
+
+  landing.init()
 </script>

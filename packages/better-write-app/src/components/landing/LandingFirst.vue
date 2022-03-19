@@ -1,9 +1,10 @@
 <template>
   <section
-    class="flex flex-col text-white items-center justify-between min-h-screen w-full bg-gray-900 bg-wb-landing"
+    id="landing-base"
+    class="flex flex-col z-max text-white items-center justify-between min-h-screen w-full bg-transparent"
   >
     <div
-      class="flex-1 container mx-auto flex px-5 py-24 md:flex-row flex-col items-center"
+      class="flex-1 container mx-auto flex px-5 py-24 md:flex-row flex-col items-center z-50"
     >
       <div class="lg:flex-grow w-full flex flex-col items-center text-center">
         <h1
@@ -38,16 +39,17 @@
           :initial="{ opacity: 0 }"
           :enter="{ opacity: 1, transition: { delay: 300 } }"
         >
-          <router-link
-            class="font-bold transition-colors shadow-xl w-full text-base md:text-lg px-6 py-3 md:px-5 md:py-5 rounded-full border border-gray-800 bg-black-opacity hover:bg-gray-900 text-gray-200 flex flex-col"
-            to="/"
-            ><div>
+          <button
+            class="flex items-center justify-center font-bold transition-colors shadow-xl w-full text-base md:text-lg px-6 py-3 md:px-5 md:py-5 border border-gray-800 bg-black-opacity hover:bg-gray-900 text-gray-200 flex flex-col"
+            @click.prevent.stop="onClick"
+          >
+            <div>
               {{ t('landing.first.editor.website') }}
             </div>
             <div class="text-xs">
               {{ version }}
-            </div></router-link
-          >
+            </div>
+          </button>
         </div>
       </div>
     </div>
@@ -57,12 +59,26 @@
 
 <script setup lang="ts">
   import { useEnv } from '@/use/env'
-  import { computed } from 'vue'
+  import { useNProgress } from '@vueuse/integrations'
+  import { computed, nextTick } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import { useRouter } from 'vue-router'
   import VTypical from 'vue-typical'
 
   const { t } = useI18n()
   const env = useEnv()
+  const router = useRouter()
+  const { isLoading } = useNProgress()
 
   const version = computed(() => `v${env.packageVersion()}`)
+
+  const onClick = async () => {
+    isLoading.value = true
+
+    await nextTick
+
+    router.push('/').finally(() => {
+      isLoading.value = false
+    })
+  }
 </script>

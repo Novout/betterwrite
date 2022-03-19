@@ -39,7 +39,14 @@ export const useUtils = () => {
       return text.toLowerCase().replaceAll(' ', '-')
     }
 
-    return { getSelection, kebab }
+    function randomLetter() {
+      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      var charactersLength = characters.length
+
+      return characters.charAt(Math.floor(Math.random() * charactersLength))
+    }
+
+    return { getSelection, kebab, randomLetter }
   }
 
   const regex = () => {
