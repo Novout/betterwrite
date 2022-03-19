@@ -10,7 +10,6 @@
       {{ t('dashboard.projects.title') }}
     </h2>
     <div
-      v-if="projects.length > 0"
       class="flex flex-wrap flex-row justify-start items-center gap-10 bg-black-opacity p-5"
     >
       <div
@@ -103,7 +102,6 @@
         {{ t('dashboard.projects.empty') }}
       </div>
     </div>
-    <Spinner v-else :width="100" :height="100" />
   </div>
 </template>
 
