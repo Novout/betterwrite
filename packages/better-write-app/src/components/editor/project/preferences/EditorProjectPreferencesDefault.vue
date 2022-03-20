@@ -83,7 +83,7 @@
     )
   }
 
-  const lang = ref(convert(localStorage.getItem('lang') || 'en'))
+  const lang = ref(convert(locale.value))
 
   watch(lang, (_lang: string) => {
     const set =
