@@ -7,10 +7,11 @@ import { useLocalStorage } from '@/use/storage/local'
 import { useFullscreen } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
 import { usePlugin } from 'better-write-plugin-core'
-import { computed, onMounted } from 'vue'
+import { computed, onBeforeUnmount, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
+import { onBeforeRouteLeave, useRouter } from 'vue-router'
 import { useListener } from './listener'
+import { useStorage } from './storage/storage'
 
 export const useEditor = () => {
   const PROJECT = useProjectStore()
@@ -18,6 +19,7 @@ export const useEditor = () => {
 
   const env = useEnv()
   const project = useProject()
+  const storage = useStorage()
   const entity = useEntity()
   const local = useLocalStorage()
   const router = useRouter()
@@ -31,15 +33,13 @@ export const useEditor = () => {
       project.onLoadProject()
     })
 
+    onBeforeRouteLeave(async () => {
+      await local.onSaveProject()
+    })
+
     listener.keyboard().add()
 
     plugin.emit('plugin-theme-set')
-
-    if (!env.isDev()) {
-      window.onbeforeunload = function () {
-        if (router.currentRoute.value.path === '/') local.onSaveProject()
-      }
-    }
 
     const title = computed(() => t('seo.editor.title'))
     const description = computed(() => t('seo.editor.description'))

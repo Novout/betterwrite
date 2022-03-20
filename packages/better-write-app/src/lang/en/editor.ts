@@ -85,6 +85,10 @@ export default {
     },
   },
   bar: {
+    supabase: {
+      load: 'Cloud Load',
+      save: 'Cloud Save',
+    },
     pdf: {
       preview: 'Preview',
       generate: 'Generate',
