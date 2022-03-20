@@ -2,7 +2,7 @@
   <section
     id="landing-base"
     :class="[!webgl.isSupported() ? 'bg-theme-background-2' : 'bg-transparent']"
-    class="flex flex-col z-max text-white items-center justify-between min-h-screen w-full"
+    class="flex flex-col z-max text-white items-center justify-between min-h-screen w-full overflow-x-hidden"
   >
     <div
       class="flex-1 container mx-auto flex px-5 py-24 md:flex-row flex-col items-center z-50"

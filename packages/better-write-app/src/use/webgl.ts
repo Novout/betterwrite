@@ -19,7 +19,7 @@ export const three = () => {
     const cameraCreate = () => {
       camera = new THREE.PerspectiveCamera(
         70,
-        window.innerWidth / window.innerHeight,
+        document.body.offsetWidth / document.body.offsetHeight,
         1,
         1000
       )
@@ -34,7 +34,7 @@ export const three = () => {
         antialias: true,
         canvas: document.getElementById('landing-canvas') as HTMLCanvasElement,
       })
-      renderer.setSize(window.innerWidth, document.body.offsetHeight)
+      renderer.setSize(document.body.offsetWidth, document.body.offsetHeight)
       scene.fog = new THREE.FogExp2(0x1e293b, 0.001)
       renderer.setClearColor(scene.fog.color)
       document.getElementById('landing-base')?.appendChild(renderer.domElement)
@@ -68,9 +68,7 @@ export const three = () => {
 
     const contextResize = () => {
       useEventListener('resize', () => {
-        renderer.setSize(window.innerWidth, document.body.offsetHeight)
-        camera.aspect = window.innerWidth / document.body.offsetHeight
-        camera.updateProjectionMatrix()
+        window.location.reload()
       })
     }
 
