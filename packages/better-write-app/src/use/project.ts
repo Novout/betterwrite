@@ -68,12 +68,14 @@ export const useProject = () => {
 
       CONTEXT.load()
 
-      toast.success(t('toast.project.create'))
-
       if (!breakpoints.isMobile().value && type === 'creative')
         ABSOLUTE.aside = true
 
       isLoading.value = false
+
+      await local.onSaveProject(false)
+
+      window.location.reload()
     }
 
     return { new: n }
@@ -91,10 +93,6 @@ export const useProject = () => {
 
       destroy()
       init()
-
-      await nextTick
-
-      plugin.emit('plugin-theme-set')
 
       await nextTick
 
