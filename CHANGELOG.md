@@ -2,6 +2,11 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.14.2
+
+* **fix(editor):** event listener in save unmount [b5aebbf]
+* **fix(editor):** sabe in unmounted editor [c491fe1]
+
 ### v0.14.1
 
 * **chore(lang):** typo [0225f84]
