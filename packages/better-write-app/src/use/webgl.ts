@@ -34,7 +34,7 @@ export const three = () => {
         antialias: true,
         canvas: document.getElementById('landing-canvas') as HTMLCanvasElement,
       })
-      renderer.setSize(window.innerWidth - 10, document.body.offsetHeight)
+      renderer.setSize(window.innerWidth, document.body.offsetHeight)
       scene.fog = new THREE.FogExp2(0x1e293b, 0.001)
       renderer.setClearColor(scene.fog.color)
       document.getElementById('landing-base')?.appendChild(renderer.domElement)
@@ -68,7 +68,7 @@ export const three = () => {
 
     const contextResize = () => {
       useEventListener('resize', () => {
-        renderer.setSize(window.innerWidth - 10, document.body.offsetHeight)
+        renderer.setSize(window.innerWidth, document.body.offsetHeight)
         camera.aspect = window.innerWidth / document.body.offsetHeight
         camera.updateProjectionMatrix()
       })

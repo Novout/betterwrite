@@ -6,93 +6,93 @@ export default {
   beginner: {
     name: 'Beginner',
     price: '$0',
-    description: 'Perfeito para experimentar a sua liberdade.',
+    description: 'Everything you need to start your journey.',
     features: [
       {
         status: 'yes',
-        description: 'Projetos Ilimitados',
+        description: 'Unlimited Projects',
       },
       {
         status: 'meh',
-        description: '2MB de Armazenamento',
+        description: '2MB of Storage',
       },
       {
         status: 'yes',
-        description: 'Ferramentas',
-      },
-      {
-        status: 'yes',
-        description: 'Gerador (PDF / DOCX / TXT)',
+        description: 'Tools',
       },
       {
         status: 'meh',
-        description: 'Dropbox e Google Drive',
+        description: 'Generator (PDF / DOCX / TXT)',
+      },
+      {
+        status: 'meh',
+        description: 'Dropbox and Google Drive',
       },
       {
         status: 'no',
-        description: 'Suporte',
+        description: 'Support',
       },
     ],
   },
   intermediate: {
     name: 'Enthusiast',
     price: '$5',
-    description: 'Perfeito para experimentar a sua liberdade.',
+    description: 'Take your books to a new level.',
     features: [
       {
         status: 'yes',
-        description: 'Projetos Ilimitados',
+        description: 'Unlimited Projects',
       },
       {
         status: 'meh',
-        description: '50MB de Armazenamento',
+        description: '50MB of Storage',
       },
       {
         status: 'yes',
-        description: 'Ferramentas',
+        description: 'Tools',
       },
       {
         status: 'yes',
-        description: 'Gerador (PDF / DOCX / TXT)',
+        description: 'Generator (PDF / DOCX / TXT)',
       },
       {
         status: 'yes',
-        description: 'Dropbox e Google Drive',
+        description: 'Dropbox and Google Drive',
       },
       {
         status: 'no',
-        description: 'Suporte',
+        description: 'Support',
       },
     ],
   },
   advanced: {
     name: 'Literate',
     price: '$12',
-    description: 'Perfeito para experimentar a sua liberdade.',
+    description: 'Take your books to a new level.',
     features: [
       {
         status: 'yes',
-        description: 'Projetos Ilimitados',
+        description: 'Unlimited Projects',
       },
       {
         status: 'meh',
-        description: '200MB de Armazenamento',
+        description: '200MB of Storage',
       },
       {
         status: 'yes',
-        description: 'Ferramentas',
+        description: 'Tools',
       },
       {
         status: 'yes',
-        description: 'Gerador (PDF / DOCX / TXT)',
+        description: 'Generator (PDF / DOCX / TXT)',
       },
       {
         status: 'yes',
-        description: 'Dropbox e Google Drive',
+        description: 'Dropbox and Google Drive',
       },
       {
         status: 'yes',
-        description: 'Suporte',
+        description: 'Support',
       },
     ],
   },

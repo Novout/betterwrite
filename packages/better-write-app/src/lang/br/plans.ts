@@ -5,8 +5,8 @@ export default {
   new: 'Ver mais',
   beginner: {
     name: 'Iniciante',
-    price: '$0',
-    description: 'Tudo o que você precisa para começar a sua jornada.',
+    price: 'R$0',
+    description: 'Tudo o que você precisa para começar a jornada.',
     features: [
       {
         status: 'yes',
@@ -21,7 +21,7 @@ export default {
         description: 'Ferramentas',
       },
       {
-        status: 'yes',
+        status: 'meh',
         description: 'Gerador (PDF / DOCX / TXT)',
       },
       {
@@ -36,8 +36,8 @@ export default {
   },
   intermediate: {
     name: 'Entusiasta',
-    price: '$5',
-    description: 'Perfeito para experimentar a liberdade.',
+    price: 'R$8',
+    description: 'Perfeito para explorar a liberdade.',
     features: [
       {
         status: 'yes',
@@ -67,8 +67,8 @@ export default {
   },
   advanced: {
     name: 'Literato',
-    price: '$12',
-    description: 'Eleve o patamar das suas obras.',
+    price: 'R$20',
+    description: 'Eleve seus livros a um novo patamar.',
     features: [
       {
         status: 'yes',
