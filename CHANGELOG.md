@@ -1,6 +1,14 @@
-# Changelog (19/03/2022)
+# Changelog (20/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.14.1
+
+* **chore(lang):** typo [0225f84]
+* **fix(editor):** new project reload contexts [7839549]
+* **fix(landing):** webgl resize [c66570e]
+* **fix(editor):** route leave save local project [11ed054]
+* **chore(lang):** english typo in plans [1b68230]
 
 ### v0.14.0
 
