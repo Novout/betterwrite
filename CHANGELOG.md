@@ -2,6 +2,12 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.14.4
+
+* **style(plans):** appear transitions [7a7a268]
+* **chore(pwa):** cache fonts and css at google requests [82e2141]
+* **chore(pwa):** new assets in cache [958643d]
+
 ### v0.14.3
 
 * **fix(pdf):** standard vfs in offline mode [0c02ddd]
