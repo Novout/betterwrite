@@ -14,13 +14,15 @@
       <div class="wb-input-container justify-start">
         <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
         <InputBoolean v-model="PDF.styles.switcher.cover" />
-        <InputFile
-          v-if="PDF.styles.switcher.cover"
-          id="cover-background"
-          :src="pdf.base.background.data"
-          @load="onCoverImageLoad"
-          @exclude="onDeleteCoverImage"
-        />
+        <div v-if="PDF.styles.switcher.cover" class="flex flex-col ml-5">
+          <label class="mx-2 text-xs">{{ t('editor.pdf.cover.image') }}</label>
+          <InputFile
+            id="cover-background"
+            :src="pdf.base.background.data"
+            @load="onCoverImageLoad"
+            @exclude="onDeleteCoverImage"
+          />
+        </div>
       </div>
     </div>
   </PDFConfigurationSlot>

@@ -17,6 +17,8 @@ export const PluginPDFSet = (
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
 ) => {
+  let __FIRST__HEADING__ONE__ = true
+
   const { isLoading } = useNProgress()
   const toast = useToast()
   const online = useOnline()
@@ -120,7 +122,8 @@ export const PluginPDFSet = (
         ],
         pageBreak:
           stores.PDF.styles.headingOne.breakPage &&
-          !hooks.project.isBlankProject()
+          !hooks.project.isBlankProject() &&
+          !__FIRST__HEADING__ONE__
             ? 'before'
             : undefined,
         style: 'heading-one',
@@ -344,22 +347,7 @@ export const PluginPDFSet = (
     }
 
     const frontCover = (arr: Array<any>) => {
-      if (stores.PDF.styles.switcher.cover) {
-        if (!stores.PDF.styles.base.background.data) return
-
-        let _raw = {
-          image: stores.PDF.styles.base.background.data,
-          pageBreak: 'after',
-          width: hooks.defines.pdf().base().pageSizeFixes()[
-            stores.PDF.styles.base.pageSize
-          ][0],
-          height: hooks.defines.pdf().base().pageSizeFixes()[
-            stores.PDF.styles.base.pageSize
-          ][1],
-        }
-
-        arr.push(_raw)
-      } else {
+      if (!stores.PDF.styles.base.background.data) {
         let _title = {
           text: stores.PROJECT.nameRaw,
           fontSize: 42,
@@ -407,7 +395,22 @@ export const PluginPDFSet = (
         arr.push(_title)
         arr.push(_subject)
         arr.push(_creator)
+
+        return
       }
+
+      let _raw = {
+        image: stores.PDF.styles.base.background.data,
+        pageBreak: 'after',
+        width: hooks.defines.pdf().base().pageSizeFixes()[
+          stores.PDF.styles.base.pageSize
+        ][0],
+        height: hooks.defines.pdf().base().pageSizeFixes()[
+          stores.PDF.styles.base.pageSize
+        ][1],
+      }
+
+      arr.push(_raw)
     }
 
     const summary = (arr: Array<any>) => {
@@ -422,7 +425,7 @@ export const PluginPDFSet = (
               fontSize: stores.PDF.styles.base.summary.fontSize,
             },
           },
-          pageBreak: 'before',
+          pageBreak: 'after',
           alignment: 'center',
           font: utils().correctFontInject(
             stores.PDF.styles.base.summary.fontFamily
@@ -439,7 +442,7 @@ export const PluginPDFSet = (
       const arr: Array<any> = []
 
       if (hooks.project.isCreativeProject()) {
-        frontCover(arr)
+        if (stores.PDF.styles.switcher.cover) frontCover(arr)
         summary(arr)
       }
 
@@ -462,6 +465,8 @@ export const PluginPDFSet = (
             _raw = paragraph(entity)
           } else if (entity.type === 'heading-one') {
             _raw = headingOne(entity.raw)
+
+            __FIRST__HEADING__ONE__ = false
           } else if (entity.type === 'heading-two') {
             _raw = headingTwo(entity.raw)
           } else if (entity.type === 'heading-three') {

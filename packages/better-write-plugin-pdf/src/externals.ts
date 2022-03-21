@@ -44,7 +44,8 @@ export const setPDFI18n = () => {
       cover: {
         tooltip:
           'Até o momento, a capa inserida com a imagem possui problemas com as margens superiores, definido na seção Página. Recomendamos deixar a margem superior em 0 caso deseja utilizar a capa com imagem.',
-        type: 'Imagem',
+        type: 'Habilitar',
+        image: 'Usar Imagem',
       },
       base: {
         backgroundColor: {
@@ -202,7 +203,8 @@ export const setPDFI18n = () => {
       cover: {
         tooltip:
           ' So far, the cover inserted with image has problems with the top margin, defined in Page. We recommend leaving the top margin at 0 if you want to use the cover with image feature.',
-        type: 'Image',
+        type: 'Enable',
+        image: 'Use Image',
       },
       base: {
         backgroundColor: {
