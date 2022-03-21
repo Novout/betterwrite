@@ -1,6 +1,12 @@
-# Changelog (20/03/2022)
+# Changelog (21/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.14.3
+
+* **fix(pdf):** standard vfs in offline mode [0c02ddd]
+* **fix(pdf):** cover in break points [7019661]
+* **fix(editor):** back route in graph logo [590777a]
 
 ### v0.14.2
 
