@@ -51,7 +51,7 @@ export default defineConfig({
     vitePWA({
       base: '/',
       registerType: 'prompt',
-      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],  
+      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'sitemap.xml', 'browserconfig.xml', 'apple-touch-icon.png', 'three/*.png', 'logo_ascend.svg', 'logo_default.svg', 'logo_harmonic.svg', 'logo_rise.svg', 'logo_desktop.png', 'logo.png', 'logo.svg'],  
       manifest: {
         name: 'Better Write',
         short_name: 'Better Write',
