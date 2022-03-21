@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center wb-text flex-col w-full">
-    <h1 class="md:text-3xl lg:text-4xl sm:text-2xl text-xl mt-20 font-bold">
+    <h1 class="md:text-3xl lg:text-4xl sm:text-2xl text-xl mt-5 font-bold">
       {{ t('plans.title') }}
     </h1>
     <v-typical

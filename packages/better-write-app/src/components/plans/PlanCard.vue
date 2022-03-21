@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center bg-theme-background-3 shadow-binset mb-5 w-10/12 sm:w-72 wb-text rounded-t-md transition transform hover:-translate-y-5"
+    class="flex flex-col items-center bg-theme-background-3 shadow-binset mb-5 w-10/12 sm:w-72 wb-text rounded-t-md"
   >
     <div class="w-full h-2 rounded-t-md" />
     <div

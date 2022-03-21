@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-wrap justify-center mt-20 gap-10">
     <PlanCard
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 400 } }"
       :content="{
         plan: t('plans.beginner.name'),
         description: t('plans.beginner.description'),
@@ -34,6 +37,9 @@
       }"
     />
     <PlanCard
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 700 } }"
       :content="{
         plan: t('plans.intermediate.name'),
         description: t('plans.intermediate.description'),
@@ -67,6 +73,9 @@
       }"
     />
     <PlanCard
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 1000 } }"
       :content="{
         plan: t('plans.advanced.name'),
         description: t('plans.advanced.description'),

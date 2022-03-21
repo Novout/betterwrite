@@ -33,7 +33,7 @@
     "@vueuse/core": "8.0.0",
     "@vueuse/head": "0.7.5",
     "@vueuse/integrations": "7.7.1",
-    "@vueuse/motion": "2.0.0-beta.9",
+    "@vueuse/motion": "2.0.0-beta.12",
     "better-write-plugin-core": "^0.14.3",
     "better-write-plugin-docx": "^0.14.3",
     "better-write-plugin-logger": "^0.14.3",
