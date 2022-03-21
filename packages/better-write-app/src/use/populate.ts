@@ -267,7 +267,7 @@ export const usePopulate = () => {
           main: false,
           footer: true,
           header: false,
-          summary: true,
+          summary: false,
           encryption: false,
           theme: false,
         },

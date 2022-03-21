@@ -11,6 +11,7 @@ import { useNProgress } from '@vueuse/integrations'
 import { useToast } from 'vue-toastification'
 import { getPDFUtils } from 'better-write-plugin-theme'
 import { useOnline } from '@vueuse/core'
+import { getStandardVFS } from './externals'
 
 export const PluginPDFSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -31,7 +32,7 @@ export const PluginPDFSet = (
     }
 
     const correctFontInject = (font: string) => {
-      return isOnline() ? font : 'Helvetica'
+      return isOnline() ? font : 'Roboto'
     }
 
     return { isOnline, correctFontInject }
@@ -916,14 +917,8 @@ export const PluginPDFSet = (
         return
       }
 
-      pdfMake.addFonts({
-        Helvetica: {
-          normal: 'Helvetica',
-          bold: 'Helvetica-Bold',
-          italics: 'Helvetica-Oblique',
-          bolditalics: 'Helvetica-BoldOblique',
-        },
-      })
+      // roboto raw .ttf
+      pdfMake.addVirtualFileSystem(getStandardVFS().vfs)
     } else {
       unique.forEach((s: string) => {
         set[s] = stores.PDF.normalize[s]
