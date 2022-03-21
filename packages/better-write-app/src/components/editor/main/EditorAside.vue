@@ -16,7 +16,7 @@
       x: -240,
     }"
   >
-    <AsideBarLogo :width="60" />
+    <AsideBarLogo :back="false" :width="60" />
     <AsideGraph />
   </aside>
 </template>

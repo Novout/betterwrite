@@ -5,7 +5,7 @@
   >
     <img
       class="object-contain cursor-pointer"
-      :width="width"
+      :width="props.width"
       alt="Better Write Logo"
       :src="path"
       @click.stop.prevent="onClick"
@@ -25,8 +25,9 @@
   import { Cycle } from 'better-write-plugin-core'
   import { useUtils } from '@/use/utils'
 
-  defineProps<{
+  const props = defineProps<{
     width: number
+    back: boolean
   }>()
 
   const EDITOR = useEditorStore()
@@ -48,7 +49,7 @@
 
   const onClick = () => {
     local.onSaveProject().then(() => {
-      router.push('/landing')
+      props.back ? router.back() : router.push('/landing')
     })
   }
 </script>
