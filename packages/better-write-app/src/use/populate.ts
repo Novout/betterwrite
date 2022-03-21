@@ -263,7 +263,7 @@ export const usePopulate = () => {
           },
         },
         switcher: {
-          cover: false,
+          cover: true,
           main: false,
           footer: true,
           header: false,

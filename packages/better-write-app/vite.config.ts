@@ -51,7 +51,22 @@ export default defineConfig({
     vitePWA({
       base: '/',
       registerType: 'prompt',
-      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'sitemap.xml', 'browserconfig.xml', 'apple-touch-icon.png', 'three/*.png', 'logo_ascend.svg', 'logo_default.svg', 'logo_harmonic.svg', 'logo_rise.svg', 'logo_desktop.png', 'logo.png', 'logo.svg'],  
+      includeAssets: [
+        'favicon.svg', 
+        'favicon.ico', 
+        'robots.txt', 
+        'sitemap.xml', 
+        'browserconfig.xml', 
+        'apple-touch-icon.png', 
+        'three/*.png', 
+        'logo_ascend.svg', 
+        'logo_default.svg', 
+        'logo_harmonic.svg', 
+        'logo_rise.svg', 
+        'logo_desktop.png', 
+        'logo.png',
+        'logo.svg'
+      ],  
       manifest: {
         name: 'Better Write',
         short_name: 'Better Write',
@@ -71,7 +86,37 @@ export default defineConfig({
         ]
       },
       workbox: {
-        sourcemap: false  
+        sourcemap: false,
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'gstatic-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              },
+            }
+          }
+        ]
       } 
     })
   ],
