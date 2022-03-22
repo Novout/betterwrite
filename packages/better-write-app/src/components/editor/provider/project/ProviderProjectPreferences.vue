@@ -3,14 +3,40 @@
     v-motion
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1 }"
-    :delay="100"
+    :delay="0"
     class="wb-configuration-absolute"
   >
-    <EditorProjectPreferencesDefault />
-    <EditorProjectPreferencesConfiguration />
-    <EditorProjectPreferencesDropbox v-if="AUTH.dropbox.accessToken" />
-    <EditorProjectPreferencesEntity />
-    <EditorProjectPreferencesCommands />
+    <EditorProjectPreferencesDefault
+      v-motion
+      :initial="{ opacity: 0, y: 30 }"
+      :enter="{ opacity: 1, y: 0 }"
+      :delay="150"
+    />
+    <EditorProjectPreferencesConfiguration
+      v-motion
+      :initial="{ opacity: 0, y: 30 }"
+      :enter="{ opacity: 1, y: 0 }"
+      :delay="250"
+    />
+    <EditorProjectPreferencesDropbox
+      v-if="AUTH.dropbox.accessToken"
+      v-motion
+      :initial="{ opacity: 0, y: 30 }"
+      :enter="{ opacity: 1, y: 0 }"
+      :delay="350"
+    />
+    <EditorProjectPreferencesEntity
+      v-motion
+      :initial="{ opacity: 0, y: 30 }"
+      :enter="{ opacity: 1, y: 0 }"
+      :delay="450"
+    />
+    <EditorProjectPreferencesCommands
+      v-motion
+      :initial="{ opacity: 0, y: 30 }"
+      :enter="{ opacity: 1, y: 0 }"
+      :delay="550"
+    />
   </div>
 </template>
 

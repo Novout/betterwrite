@@ -31,7 +31,7 @@
       />
       <HeroIcon
         v-if="props.src"
-        class="wb-text"
+        class="wb-icon"
         @click.prevent.stop="onDeleteBase64"
       >
         <svg
