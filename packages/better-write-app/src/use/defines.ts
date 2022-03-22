@@ -20,6 +20,7 @@ export const useDefines = () => {
         t('landing.first.paragraphs[10]'),
         t('landing.first.paragraphs[11]'),
         t('landing.first.paragraphs[12]'),
+        t('landing.first.paragraphs[13]'),
       ]
 
       return arr[Math.floor(Math.random() * arr.length)]

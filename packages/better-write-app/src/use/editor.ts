@@ -31,11 +31,11 @@ export const useEditor = () => {
     })
 
     onBeforeRouteLeave(async () => {
-      await local.onSaveProject()
+      await local.onSaveProject(false)
     })
 
     useEventListener('beforeunload', () => {
-      local.onSaveProject()
+      local.onSaveProject(false)
     })
 
     listener.keyboard().add()
