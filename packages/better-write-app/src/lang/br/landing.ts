@@ -38,7 +38,7 @@ para Linea aceitar a perda.`,
       `No último esforço,
 Percebi a insolência,
 Recebendo o amor doloroso,
-Aceitei a clarência.`,
+Aceitei a dormência.`,
     ],
   },
 }

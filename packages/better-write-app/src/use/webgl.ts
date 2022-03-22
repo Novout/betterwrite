@@ -21,7 +21,11 @@ export const useWebGL = () => {
 
   const init = () => {
     onMounted(() => {
-      if (!WebGL.isWebGLAvailable()) return
+      if (!WebGL.isWebGLAvailable()) {
+        isLoaded.value = true
+
+        return
+      }
 
       const cameraCreate = () => {
         camera = new THREE.PerspectiveCamera(

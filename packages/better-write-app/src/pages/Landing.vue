@@ -2,6 +2,7 @@
   <main class="min-h-screen w-full overflow-x-hidden">
     <section
       id="landing-base"
+      :style="{ backgroundColor: '#1e293b' }"
       class="flex flex-col bg-theme-background-2 z-max text-white items-center justify-between min-h-screen w-full overflow-x-hidden"
     >
       <div
@@ -59,9 +60,10 @@
       </div>
       <div
         v-else
-        class="flex justify-center items-center h-screen w-full bg-theme-background-2 z-umax"
+        class="flex justify-center items-center h-screen w-full z-umax"
+        :style="{ backgroundColor: '#1e293b' }"
       >
-        <Spinner :width="150" :height="150" />
+        <Spinner :width="100" :height="100" />
       </div>
     </section>
   </main>

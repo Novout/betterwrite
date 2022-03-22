@@ -5,4 +5,6 @@
   --scr-thumb-hover: #777;
   --wb-selection: rgba(0, 0, 0, 0.1);
   --wb-text-selection: #000;
+  --theme-editor-nprogress-background: #e1e1e1;
+  --theme-editor-nprogress-height: 2px;
 }
