@@ -18,6 +18,7 @@ export interface AbsoluteStateShortcuts {
 export interface AbsoluteStatePDF {
   configuration: boolean
   preview: boolean
+  generate: boolean
 }
 
 export interface AbsoluteStateAuth {

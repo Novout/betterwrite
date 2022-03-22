@@ -46,7 +46,7 @@
       </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.bar.pdf.generate')"
-        @action="plugin.emit('plugin-pdf-generate')"
+        @action="ABSOLUTE.pdf.generate = true"
       >
         <template #icon>
           <svg

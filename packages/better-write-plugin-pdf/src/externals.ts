@@ -1,6 +1,16 @@
 export const setPDFI18n = () => {
   const br = () => {
     return {
+      externals: {
+        generate: {
+          title: 'Gerar',
+          button: 'Criar',
+        },
+        preview: {
+          title: 'Simular',
+          button: 'Criar',
+        },
+      },
       inserts: {
         nowOnline:
           'Foi detectado que você tem conexão com a internet, mas as fontes não foram carregadas. Por favor, recarregue a página.',
@@ -161,6 +171,16 @@ export const setPDFI18n = () => {
 
   const en = () => {
     return {
+      externals: {
+        generate: {
+          title: 'Generate',
+          button: 'Create',
+        },
+        preview: {
+          title: 'Simulate',
+          button: 'Create',
+        },
+      },
       inserts: {
         nowOnline:
           'It was detected that you have an internet connection, but the fonts were not loaded. Please reload the page.',

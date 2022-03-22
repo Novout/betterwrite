@@ -10,6 +10,9 @@ export default {
       save: 'Configurações salvas com sucesso!',
     },
     create: 'PDF Baixado com Sucesso!',
+    generate: {
+      empty: 'Selecione pelo menos um capítulo!',
+    },
     previewProblems:
       'Certas features não irão aparecer no preview para evitar problemas de desempenho.',
   },

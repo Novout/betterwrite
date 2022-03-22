@@ -1,3 +1,5 @@
+import { ContextState } from './context'
+
 export interface PDFStateStyles {
   base: PDFStateStylesBase
   paragraph: PDFStateStylesParagraph
@@ -118,6 +120,10 @@ export interface PDFStateStylesSwitcher {
 
 export interface PDFGenerateOptions {
   final: boolean
+  chapters: {
+    page: ContextState
+    select: boolean
+  }[]
 }
 
 export interface PDFState {

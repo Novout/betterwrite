@@ -439,8 +439,12 @@ export const PluginPDFSet = (
     }
 
     const content = (options: PDFGenerateOptions): Array<any> => {
-      const pages: Array<ContextState> = stores.PROJECT.pages
+      const pages: Array<ContextState> = []
       const arr: Array<any> = []
+
+      options.chapters.forEach((chapter) => {
+        if (chapter.select) pages.push(chapter.page)
+      })
 
       if (hooks.project.isCreativeProject()) {
         if (stores.PDF.styles.switcher.cover) frontCover(arr)
@@ -931,10 +935,10 @@ export const PluginPDFSet = (
     }
   }
 
-  const create = async () => {
+  const create = async (options: PDFGenerateOptions) => {
     setVfsFonts()
 
-    const pdf = pdfMake.createPdf(doc({ final: true }))
+    const pdf = pdfMake.createPdf(doc(options))
 
     await nextTick
 
@@ -955,7 +959,7 @@ export const PluginPDFSet = (
   const preview = (input: HTMLElement) => {
     setVfsFonts()
 
-    const generator = pdfMake.createPdf(doc({ final: false }))
+    const generator = pdfMake.createPdf(doc({ final: false, chapters: [] }))
 
     generator
       .getDataUrl()
@@ -994,7 +998,7 @@ export const PluginPDFSet = (
   }
 
   On.externals().PluginPDFGenerate(emitter, [
-    async () => {
+    async (options: PDFGenerateOptions) => {
       if (hooks.env.isEmptyProject(stores.PROJECT.name)) return
 
       toast.info(hooks.i18n.t('toast.generics.load'))
@@ -1005,7 +1009,7 @@ export const PluginPDFSet = (
       await nextTick
 
       hooks.storage.normalize().then(() => {
-        create()
+        create(options)
       })
     },
     () => {},

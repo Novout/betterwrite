@@ -81,11 +81,11 @@
   --theme-editor-header-background-hover: none;
   --theme-editor-header-background-active: none;
   --theme-editor-header-list-background: #2f3357;
-  --theme-editor-header-list-background-hover: #2f3357;
-  --theme-editor-header-list-background-active: #2f3357;
+  --theme-editor-header-list-background-hover: #181b38;
+  --theme-editor-header-list-background-active: #161829;
   --theme-editor-header-list-text: #e5e7eb;
-  --theme-editor-header-list-text-hover: #e5e7eb;
-  --theme-editor-header-list-text-active: #e5e7eb;
+  --theme-editor-header-list-text-hover: #8ab6ff;
+  --theme-editor-header-list-text-active: #8ab6ff;
   --theme-editor-header-list-shortcuts-background: none;
   --theme-editor-header-list-shortcuts-background-hover: none;
   --theme-editor-header-list-shortcuts-background-active: #d1d5db;

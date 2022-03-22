@@ -23,6 +23,7 @@ export const useAbsoluteStore = defineStore('absolute', {
       pdf: {
         configuration: false,
         preview: false,
+        generate: false,
       },
       auth: {
         dropbox: false,

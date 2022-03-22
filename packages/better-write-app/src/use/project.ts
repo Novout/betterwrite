@@ -374,6 +374,15 @@ export const useProject = () => {
       )
     }
 
+    const getChaptersSelection = () => {
+      return PROJECT.pages.map((page) => {
+        return {
+          page,
+          select: true,
+        }
+      })
+    }
+
     const exportName = (extension: string) => {
       return `${PROJECT.name}.${extension}`
     }
@@ -394,6 +403,7 @@ export const useProject = () => {
       getChapterFixed,
       getParagraphLongest,
       getWordOccurrences,
+      getChaptersSelection,
       exportName,
       exportFullName,
     }
