@@ -118,6 +118,7 @@
         "three/examples/jsm/capabilities/WebGL.js",
         "three/examples/jsm/geometries/TextGeometry.js",
         "three/examples/jsm/loaders/FontLoader",
+        "three/examples/jsm/loaders/FontLoader.js",
         "v-tooltip",
         "vue",
         "vue-i18n",

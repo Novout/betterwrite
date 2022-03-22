@@ -28,46 +28,31 @@
     <PDFConfigurationSetParagraph
       v-motion
       :initial="{ opacity: 0, y: 30 }"
-      :visible-once="{
-        opacity: 1,
-        y: 0,
-      }"
+      :enter="{ opacity: 1, y: 0 }"
       :delay="0"
     />
     <PDFConfigurationSetHeadingOne
       v-motion
       :initial="{ opacity: 0, y: 30 }"
-      :visible-once="{
-        opacity: 1,
-        y: 0,
-      }"
+      :enter="{ opacity: 1, y: 0 }"
       :delay="0"
     />
     <PDFConfigurationSetHeadingTwo
       v-motion
       :initial="{ opacity: 0, y: 30 }"
-      :visible-once="{
-        opacity: 1,
-        y: 0,
-      }"
+      :enter="{ opacity: 1, y: 0 }"
       :delay="0"
     />
     <PDFConfigurationSetHeadingThree
       v-motion
       :initial="{ opacity: 0, y: 30 }"
-      :visible-once="{
-        opacity: 1,
-        y: 0,
-      }"
+      :enter="{ opacity: 1, y: 0 }"
       :delay="0"
     />
     <PDFConfigurationSetLineBreak
       v-motion
       :initial="{ opacity: 0, y: 30 }"
-      :visible-once="{
-        opacity: 1,
-        y: 0,
-      }"
+      :enter="{ opacity: 1, y: 0 }"
       :delay="0"
     />
   </div>

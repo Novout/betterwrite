@@ -59,6 +59,8 @@ export default defineConfig({
         'browserconfig.xml', 
         'apple-touch-icon.png', 
         'three/*.png', 
+        'three/fonts/*.json',
+        'three/fonts/*.ttf',
         'logo_ascend.svg', 
         'logo_default.svg', 
         'logo_harmonic.svg', 

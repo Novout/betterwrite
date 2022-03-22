@@ -4,6 +4,30 @@ import i18n from '@/lang'
 export const useDefines = () => {
   const { t } = i18n.global
 
+  const landing = () => {
+    const name = () => {
+      // vue-i18n limitation zzzzzzzzzzzzzzz
+      const arr = [
+        t('landing.first.paragraphs[0]'),
+        t('landing.first.paragraphs[1]'),
+        t('landing.first.paragraphs[3]'),
+        t('landing.first.paragraphs[4]'),
+        t('landing.first.paragraphs[5]'),
+        t('landing.first.paragraphs[6]'),
+        t('landing.first.paragraphs[7]'),
+        t('landing.first.paragraphs[8]'),
+        t('landing.first.paragraphs[9]'),
+        t('landing.first.paragraphs[10]'),
+        t('landing.first.paragraphs[11]'),
+        t('landing.first.paragraphs[12]'),
+      ]
+
+      return arr[Math.floor(Math.random() * arr.length)]
+    }
+
+    return { name }
+  }
+
   const pdf = () => {
     const fixFonts = () => {
       return ['EB Garamond', 'Cormorant Garamond']
@@ -215,5 +239,6 @@ export const useDefines = () => {
   return {
     pdf,
     themes,
+    landing,
   }
 }

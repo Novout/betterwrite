@@ -442,7 +442,7 @@ export const PluginPDFSet = (
       const pages: Array<ContextState> = []
       const arr: Array<any> = []
 
-      options.chapters.forEach((chapter) => {
+      options.chapters.forEach((chapter: any) => {
         if (chapter.select) pages.push(chapter.page)
       })
 
