@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen w-full overflow-x-hidden">
+  <main class="min-h-screen w-full">
     <section
       id="landing-base"
       :style="{ backgroundColor: '#1e293b' }"
@@ -40,7 +40,7 @@
           ></v-typical>
           <div
             v-motion
-            class="flex items-center justify-between w-1/2 lg:w-5/12 xl:w-1/3 mt-32"
+            class="flex flex-col items-center justify-between w-1/2 lg:w-5/12 xl:w-1/3 mt-32"
             :initial="{ opacity: 0 }"
             :enter="{ opacity: 1, transition: { delay: 300 } }"
           >
@@ -87,6 +87,8 @@
 
   onMounted(() => {
     document.body.removeAttribute('class')
+
+    document.body.style.overflow = 'hidden'
   })
 
   useHead({
@@ -109,6 +111,9 @@
     await nextTick
 
     router.push('/').finally(() => {
+      // for common reactivity in other routes
+      document.body.style.overflow = 'auto'
+
       isLoading.value = false
     })
   }

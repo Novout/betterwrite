@@ -40,7 +40,7 @@ Percebi a insolência,
 Recebendo o amor doloroso,
 Aceitei a dormência.`,
       `      Clima tenso. Correndo contra tudo, a virtude não teve dúvidas
-de quem realmente está do lado certo.`
+de quem realmente está do lado certo.`,
     ],
   },
 }

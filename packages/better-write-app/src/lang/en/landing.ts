@@ -40,7 +40,7 @@ I noticed the insolence,
 Receiving painful love,
 I accepted the numbness.`,
       `      Tense vibe. Running against everything, virtue had no doubts
-who is really on the right side.`
+who is really on the right side.`,
     ],
-  }
+  },
 }
