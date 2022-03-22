@@ -118,7 +118,7 @@ export interface PDFStateStylesSwitcher {
   theme: boolean
 }
 
-export interface PDFGenerateOptions {
+export interface PDFDocOptions {
   final: boolean
   chapters: {
     page: ContextState

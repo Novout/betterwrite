@@ -17,6 +17,7 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useI18n } from 'vue-i18n'
   import { usePlugin } from 'better-write-plugin-core'
+  import { useProject } from '@/use/project'
 
   const ABSOLUTE = useAbsoluteStore()
 
@@ -24,10 +25,14 @@
   const exists = ref<boolean>(false)
   const plugin = usePlugin()
   const emitter = useEmitter()
+  const project = useProject()
   const { t } = useI18n()
 
   onMounted(() => {
-    plugin.emit('plugin-pdf-preview')
+    plugin.emit('plugin-pdf-preview', {
+      final: false,
+      chapters: project.utils().getChaptersSelection(),
+    })
 
     emitter.on('pdf-preview-exists', () => {
       exists.value = true

@@ -14,7 +14,12 @@
       <div class="wb-input-container justify-start">
         <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
         <InputBoolean v-model="PDF.styles.switcher.cover" />
-        <div v-if="PDF.styles.switcher.cover" class="flex flex-col ml-5">
+      </div>
+      <div
+        v-if="PDF.styles.switcher.cover"
+        class="wb-input-container justify-start"
+      >
+        <div class="flex items-center flex-row ml-5">
           <label class="mx-2 text-xs">{{ t('editor.pdf.cover.image') }}</label>
           <InputFile
             id="cover-background"

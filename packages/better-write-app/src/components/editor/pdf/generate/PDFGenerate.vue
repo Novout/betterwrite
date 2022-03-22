@@ -1,5 +1,8 @@
 <template>
-  <FullModal :title="t('editor.pdf.externals.generate.title')" @close="onClose">
+  <PDFContainer
+    :title="t('editor.pdf.externals.generate.title')"
+    :close="onClose"
+  >
     <div
       v-motion
       :initial="{ opacity: 0, x: 20 }"
@@ -7,14 +10,14 @@
       :delay="250"
       class="flex flex-col w-full p-5"
     >
-      <h2 class="text-lg wb-text font-bold mb-2 font-poppins">Capítulos</h2>
+      <h2 class="text-base wb-text font-bold mb-2 font-poppins">Capítulos</h2>
       <div
         v-for="(chapter, index) in chapters"
         :key="index"
-        class="flex items-center justify-between gap-2 wb-text mb-3"
+        class="flex items-center justify-start gap-2 wb-text mb-3"
       >
         <InputBoolean v-model="chapter.select" />
-        <p class="flex-1 text-lg md:text-xl">
+        <p class="flex-1 text-base md:text-lg truncate">
           {{ chapter.page.entities[0].raw }}
         </p>
       </div>
@@ -27,7 +30,7 @@
       :on-click="onGenerate"
       >{{ t('editor.pdf.externals.generate.button') }}</Button
     >
-  </FullModal>
+  </PDFContainer>
 </template>
 
 <script setup lang="ts">

@@ -4,7 +4,7 @@
     :initial="{ opacity: 0, y: 20 }"
     :enter="{ opacity: 1, y: 0 }"
     :delay="0"
-    class="flex flex-col items-center w-full h-screen md:h-auto overflow-x-hidden bg-theme-editor-pdf-preview-background shadow-xl z-30"
+    class="flex flex-col items-start w-full h-screen md:h-auto overflow-x-hidden bg-theme-editor-pdf-preview-background shadow-xl z-30"
   >
     <div class="flex w-full justify-start items-center">
       <h2 class="flex-1 pl-5 text-lg md:text-xl wb-text font-bold font-raleway">
@@ -25,9 +25,7 @@
         </svg>
       </HeroIcon>
     </div>
-    <div
-      class="flex flex-col items-center min-h-96 w-full px-5 overflow-y-auto"
-    >
+    <div class="flex flex-col items-start min-h-96 w-full px-5 overflow-y-auto">
       <slot />
     </div>
   </section>

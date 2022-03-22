@@ -3,7 +3,7 @@ import { On } from 'better-write-plugin-core'
 import {
   ContextState,
   Entity,
-  PDFGenerateOptions,
+  PDFDocOptions,
   PluginTypes,
 } from 'better-write-types'
 import { nextTick, computed } from 'vue-demi'
@@ -438,7 +438,7 @@ export const PluginPDFSet = (
       }
     }
 
-    const content = (options: PDFGenerateOptions): Array<any> => {
+    const content = (options: PDFDocOptions): Array<any> => {
       const pages: Array<ContextState> = []
       const arr: Array<any> = []
 
@@ -623,7 +623,7 @@ export const PluginPDFSet = (
     return { content, styles, base }
   }
 
-  const doc = (options: PDFGenerateOptions) => {
+  const doc = (options: PDFDocOptions) => {
     const encrypt = () => {
       return stores.PDF.styles.switcher.encryption
         ? {
@@ -935,7 +935,7 @@ export const PluginPDFSet = (
     }
   }
 
-  const create = async (options: PDFGenerateOptions) => {
+  const create = async (options: PDFDocOptions) => {
     setVfsFonts()
 
     const pdf = pdfMake.createPdf(doc(options))
@@ -956,10 +956,10 @@ export const PluginPDFSet = (
       })
   }
 
-  const preview = (input: HTMLElement) => {
+  const preview = (input: HTMLElement, options: PDFDocOptions) => {
     setVfsFonts()
 
-    const generator = pdfMake.createPdf(doc({ final: false, chapters: [] }))
+    const generator = pdfMake.createPdf(doc(options))
 
     generator
       .getDataUrl()
@@ -998,7 +998,7 @@ export const PluginPDFSet = (
   }
 
   On.externals().PluginPDFGenerate(emitter, [
-    async (options: PDFGenerateOptions) => {
+    async (options: PDFDocOptions) => {
       if (hooks.env.isEmptyProject(stores.PROJECT.name)) return
 
       toast.info(hooks.i18n.t('toast.generics.load'))
@@ -1016,7 +1016,7 @@ export const PluginPDFSet = (
   ])
 
   On.externals().PluginPDFPreview(emitter, [
-    async () => {
+    async (options: PDFDocOptions) => {
       if (hooks.env.isEmptyProject(stores.PROJECT.name)) return
 
       stores.ABSOLUTE.load = true
@@ -1026,7 +1026,7 @@ export const PluginPDFSet = (
       await nextTick
 
       hooks.storage.normalize().then(() => {
-        preview(document.querySelector('#pdf-preview-div') as any)
+        preview(document.querySelector('#pdf-preview-div') as any, options)
       })
     },
     () => {},

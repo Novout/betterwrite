@@ -14,7 +14,7 @@
     <ProviderProjectPreferences v-else-if="ABSOLUTE.project.preferences" />
     <ProviderPDFConfiguration v-else-if="ABSOLUTE.pdf.configuration" />
     <ProviderPDFPreview v-else-if="ABSOLUTE.pdf.preview" />
-    <PDFGenerate v-else-if="ABSOLUTE.pdf.generate" />
+    <ProviderPDFGenerate v-else-if="ABSOLUTE.pdf.generate" />
   </teleport>
 </template>
 

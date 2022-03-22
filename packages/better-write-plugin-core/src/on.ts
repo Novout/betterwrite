@@ -1,8 +1,4 @@
-import {
-  ContextState,
-  PDFGenerateOptions,
-  PluginTypes,
-} from 'better-write-types'
+import { ContextState, PDFDocOptions, PluginTypes } from 'better-write-types'
 
 export const entity = () => {
   const PluginEntityInputInitial = (
@@ -237,7 +233,7 @@ export const externals = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
-    emitter.on('plugin-pdf-generate', (options: PDFGenerateOptions) => {
+    emitter.on('plugin-pdf-generate', (options: PDFDocOptions) => {
       const created = content[0]
 
       created && created(options)
@@ -248,10 +244,10 @@ export const externals = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
-    emitter.on('plugin-pdf-preview', () => {
+    emitter.on('plugin-pdf-preview', (options: PDFDocOptions) => {
       const created = content[0]
 
-      created && created()
+      created && created(options)
     })
   }
 
