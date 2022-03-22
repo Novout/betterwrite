@@ -1,6 +1,16 @@
-# Changelog (21/03/2022)
+# Changelog (22/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.14.5
+
+* **fix(landing):** overflow hidden in body main [82805b1]
+* **chore(landing):** i18n en in paragraphs [1950f75]
+* **fix(landing):** async webgl render [f1c152f]
+* **feat(dashboard):** paragraphs in 3D context [805473c]
+* **chore(editor):** new styles [4ae5c81]
+* **fix(pdf):** pdf container appear [cd61d29]
+* **feat(pdf):** generate chapter choice [da77330]
 
 ### v0.14.4
 
