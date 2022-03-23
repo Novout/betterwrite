@@ -106,6 +106,8 @@ export default {
       corrector: 'Corretor',
       load: 'Carregar',
       save: 'Salvar',
+      language: 'Idioma',
+      theme: 'Tema',
       import: 'Importar',
       export: 'Exportar',
       exportAs: 'Exportar como...',

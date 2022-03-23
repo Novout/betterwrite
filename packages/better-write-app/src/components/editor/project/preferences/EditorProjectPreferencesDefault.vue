@@ -20,17 +20,6 @@
   </div>
   <div class="flex flex-col justify-end w-full lg:w-1/2 wb-text shadow-lg">
     <div class="wb-configuration-reverse">
-      <p>{{ t('editor.aside.configuration.lang') }}</p>
-      <InputSelect v-model="lang" :arr="['Português do Brasil', 'English']" />
-    </div>
-    <div class="wb-configuration-reverse">
-      <p>{{ t('editor.aside.configuration.dark') }}</p>
-      <InputSelect
-        v-model="EDITOR.configuration.theme"
-        :arr="useDefines().themes()"
-      />
-    </div>
-    <div class="wb-configuration-reverse">
       <p>{{ t('editor.aside.configuration.autosave') }}</p>
       <InputSelect v-model="auto" :arr="[1, 2, 5, 15, 30, 'never']" />
     </div>
@@ -38,25 +27,19 @@
 </template>
 <script setup lang="ts">
   import { useEditorStore } from '@/store/editor'
-  import { ref, watch, nextTick, computed } from 'vue'
+  import { ref, watch, nextTick } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useLocalStorage } from '@/use/storage/local'
-  import { useDefines } from '@/use/defines'
-  import { usePlugin } from 'better-write-plugin-core'
-  import { useStorage } from '@/use/storage/storage'
 
   const ABSOLUTE = useAbsoluteStore()
   const EDITOR = useEditorStore()
 
   const local = useLocalStorage()
-  const plugin = usePlugin()
-  const storage = useStorage()
 
-  const { t, locale } = useI18n()
+  const { t } = useI18n()
 
   const auto = ref(EDITOR.configuration.auto)
-  const theme = computed(() => EDITOR.configuration.theme)
 
   watch(auto, async (_auto) => {
     EDITOR.setAutoSave(_auto)
@@ -66,41 +49,5 @@
     local.onSaveProject().then(() => {
       window.location.reload()
     })
-  })
-
-  watch(theme, async () => {
-    plugin.emit('plugin-theme-set')
-
-    await storage.normalize()
-  })
-
-  const convert = (iso: string) => {
-    return (
-      {
-        br: 'Português do Brasil',
-        en: 'English',
-      }[iso] || 'en'
-    )
-  }
-
-  const lang = ref(convert(locale.value))
-
-  watch(lang, (_lang: string) => {
-    const set =
-      {
-        'Português do Brasil': 'br',
-        English: 'en',
-      }[_lang] || 'en'
-
-    localStorage.setItem('lang', set)
-    locale.value = set
-
-    const iso =
-      {
-        en: 'en-US',
-        br: 'pt-BR',
-      }[set] || 'en-US'
-
-    ;(document.querySelector('html') as HTMLElement).lang = iso
   })
 </script>

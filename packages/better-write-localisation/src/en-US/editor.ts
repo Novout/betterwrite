@@ -107,6 +107,8 @@ export default {
       statistics: 'Statistics',
       corrector: 'Corrector',
       autosave: 'Auto Save (in minutes)',
+      language: 'Language',
+      theme: 'Theme',
       import: 'Import',
       export: 'Export',
       exportAs: 'Export as...',

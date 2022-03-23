@@ -136,6 +136,39 @@
         @action="ABSOLUTE.project.preferences = true"
       />
       <EditorHeaderItemDiv />
+      <EditorHeaderItemOpen :text="t('editor.bar.project.language')">
+        <template #open>
+          <div
+            class="relative bottom-16 flex flex-col h-40 w-40 overflow-y-auto bg-theme-background-2 rounded-tr rounded-br shadow"
+          >
+            <p
+              v-for="(language, index) in Languages"
+              :key="index"
+              class="hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40 text-xs"
+              @click.prevent.stop="onSwitchLanguage(language)"
+            >
+              {{ language }}
+            </p>
+          </div>
+        </template>
+      </EditorHeaderItemOpen>
+      <EditorHeaderItemOpen :text="t('editor.bar.project.theme')">
+        <template #open>
+          <div
+            class="relative bottom-16 flex flex-col h-40 w-40 overflow-y-auto bg-theme-background-2 rounded-tr rounded-br shadow"
+          >
+            <p
+              v-for="(theme, index) in defines.themes()"
+              :key="index"
+              class="hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40 text-xs"
+              @click.prevent.stop="onSwitchTheme(theme)"
+            >
+              {{ theme }}
+            </p>
+          </div>
+        </template>
+      </EditorHeaderItemOpen>
+      <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.project.import')"
         @action="project.onImportProject"
@@ -165,18 +198,29 @@
   import { useAuthStore } from '@/store/auth'
   import { useRouter } from 'vue-router'
   import { useDropbox } from '@/use/storage/dropbox'
+  import { Language, Languages } from 'better-write-localisation'
+  import { useDefines } from '@/use/defines'
+  import { BetterWriteThemes } from 'better-write-types'
+  import { useEditorStore } from '@/store/editor'
+  import { nextTick } from 'vue'
+  import { usePlugin } from 'better-write-plugin-core'
+  import { useStorage } from '@/use/storage/storage'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
+  const EDITOR = useEditorStore()
   const AUTH = useAuthStore()
 
   const supabase = useSupabase()
   const project = useProject()
   const env = useEnv()
   const local = useLocalStorage()
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
+  const plugin = usePlugin()
+  const storage = useStorage()
   const router = useRouter()
   const dropbox = useDropbox()
+  const defines = useDefines()
 
   const onSaveProject = () => {
     if (!confirm(t('editor.window.saveLocal'))) return
@@ -188,5 +232,34 @@
     if (!confirm(t('editor.window.saveLocal'))) return
 
     supabase.saveProject()
+  }
+
+  const onSwitchLanguage = (lang: Language) => {
+    const set =
+      {
+        'Português do Brasil': 'br',
+        English: 'en',
+      }[lang] || 'en'
+
+    localStorage.setItem('lang', set)
+    locale.value = set
+
+    const iso =
+      {
+        en: 'en-US',
+        br: 'pt-BR',
+      }[set] || 'en-US'
+
+    ;(document.querySelector('html') as HTMLElement).lang = iso
+  }
+
+  const onSwitchTheme = async (theme: BetterWriteThemes) => {
+    EDITOR.configuration.theme = theme
+
+    await nextTick
+
+    plugin.emit('plugin-theme-set')
+
+    storage.normalize()
   }
 </script>

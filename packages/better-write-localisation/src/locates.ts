@@ -10,3 +10,7 @@ export const VueI18nLocales = [
     iso: 'en-US',
   },
 ]
+
+export type Language = 'Português do Brasil' | 'English'
+
+export const Languages: Language[] = ['Português do Brasil', 'English']
