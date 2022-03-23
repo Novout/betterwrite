@@ -166,9 +166,9 @@ export const useWebGL = () => {
         rendererCreate()
         loaderSmoke()
         contextResize()
-        createNodes()
         createLight()
         contextResize()
+        createNodes()
         render().then(() => {
           isLoaded.value = true
         })
