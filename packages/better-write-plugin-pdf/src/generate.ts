@@ -501,9 +501,13 @@ export const PluginPDFSet = (
         ),
         pageMargins: [
           stores.PDF.styles.base.pageMargins.left,
-          stores.PDF.styles.base.pageMargins.top,
+          stores.PDF.styles.base.background.data
+            ? 0
+            : stores.PDF.styles.base.pageMargins.top,
           stores.PDF.styles.base.pageMargins.right,
-          stores.PDF.styles.base.pageMargins.bottom,
+          stores.PDF.styles.base.background.data
+            ? 0
+            : stores.PDF.styles.base.pageMargins.bottom,
         ],
       }
     }
