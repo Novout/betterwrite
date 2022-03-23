@@ -13,7 +13,8 @@
           <div class="flex justify-start items-end">
             <img
               class="shadow-lg rounded-xs w-12 md:w-18"
-              src="@/assets/logo.png"
+              alt="Better Write Logo"
+              src="/logo_default.svg"
             />
             <span
               class="ml-5 relative top-3 sm:top-4 lg:top-6 md:ml-10 text-3xl sm:text-4xl lg:text-5xl font-bold"
