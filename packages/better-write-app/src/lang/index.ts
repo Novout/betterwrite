@@ -1,25 +1,13 @@
 import { createI18n } from 'vue-i18n'
-import br from './br'
-import en from './en'
+import { ptBR, enUS, VueI18nLocales } from 'better-write-localisation'
 
 export default createI18n({
   legacy: false,
   locale: 'en',
   fallbackLocale: 'en',
-  locales: [
-    {
-      name: 'Português',
-      code: 'br',
-      iso: 'pt-BR',
-    },
-    {
-      name: 'English',
-      code: 'en',
-      iso: 'en-US',
-    },
-  ],
+  locales: VueI18nLocales,
   messages: {
-    br,
-    en,
+    br: ptBR.default,
+    en: enUS.default,
   },
 })

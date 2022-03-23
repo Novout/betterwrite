@@ -1,0 +1,36 @@
+{
+	"name": "better-write-localisation",
+	"version": "0.14.5",
+	"author": "Novout",
+	"license": "MIT",
+	"keywords": [
+		"vue",
+		"hook",
+		"text",
+		"editor"
+	],
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"dev": "rimraf ./dist && unbuild",
+		"serve": "rimraf ./dist && unbuild",
+		"test": "echo \"Error: no test specified\"",
+		"build": "rimraf ./dist && unbuild",
+		"lint": "prettier --write src/"
+	},
+	"files": [
+		"dist/**/*",
+		"package.json",
+		"LICENSE",
+		"README.md"
+	],
+	"dependencies": {
+		"better-write-plugin-pdf": "^0.14.5"
+	},
+	"devDependencies": {
+		"prettier": "2.5.1",
+		"rimraf": "3.0.2",
+		"unbuild": "0.7.0"
+	}
+}

@@ -88,6 +88,7 @@ export default defineConfig({
         ]
       },
       workbox: {
+        maximumFileSizeToCacheInBytes: 3145728000,
         sourcemap: false,
         runtimeCaching: [
           {

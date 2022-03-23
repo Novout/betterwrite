@@ -2,6 +2,7 @@
 
 ```
   ├── better-write-app                          # Website
+  ├── better-write-localisation                 # i18n
   ├── better-write-plugin-core                  # Plugin base core
   ├── better-write-plugin-docx                  # DOCX Generator Plugin
   ├── better-write-plugin-logger                # Logger Plugin
