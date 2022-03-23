@@ -40,35 +40,78 @@ export const PluginPDFSet = (
   }
 
   const transform = () => {
-    const pageOrientation = (orientation: string) => {
-      switch (orientation) {
-        case hooks.i18n.t('editor.pdf.configuration.orientation.portrait'):
-          return 'portrait'
-        case hooks.i18n.t('editor.pdf.configuration.orientation.landscape'):
-          return 'landscape'
-        default:
-          return orientation
-      }
+    const pageOrientation = (b: string) => {
+      let value: Maybe<string> = null
+      let __STOP__: boolean = false
+
+      hooks.i18n.availableLocales.forEach((locale: string) => {
+        if (__STOP__) return
+
+        const { editor } = hooks.i18n.getLocaleMessage(locale)
+
+        switch (b) {
+          case editor.pdf.configuration.orientation.portrait:
+            __STOP__ = true
+            value = 'portrait'
+            break
+          case editor.pdf.configuration.orientation.landscape:
+            __STOP__ = true
+            value = 'landscape'
+            break
+          default:
+            __STOP__ = false
+        }
+      })
+
+      return value
     }
 
     const footerStyle = (b: string) => {
-      switch (b) {
-        case hooks.i18n.t('editor.pdf.configuration.footer.style.simple'):
-          return 'simple'
-        case hooks.i18n.t('editor.pdf.configuration.footer.style.counter'):
-          return 'counter'
-        default:
-          return b
-      }
+      let value: Maybe<string> = null
+      let __STOP__: boolean = false
+
+      hooks.i18n.availableLocales.forEach((locale: string) => {
+        if (__STOP__) return
+
+        const { editor } = hooks.i18n.getLocaleMessage(locale)
+
+        switch (b) {
+          case editor.pdf.configuration.footer.style.simple:
+            __STOP__ = true
+            value = 'simple'
+            break
+          case editor.pdf.configuration.footer.style.counter:
+            __STOP__ = true
+            value = 'counter'
+            break
+          default:
+            __STOP__ = false
+        }
+      })
+
+      return value
     }
 
     const summaryStyle = (b: string) => {
-      switch (b) {
-        case hooks.i18n.t('editor.pdf.configuration.summary.style.default'):
-          return 'default'
-        default:
-          return b
-      }
+      let value: Maybe<string> = null
+      let __STOP__: boolean = false
+
+      hooks.i18n.availableLocales.forEach((locale: string) => {
+        if (__STOP__) return
+
+        const { editor } = hooks.i18n.getLocaleMessage(locale)
+
+        switch (b) {
+          case editor.pdf.configuration.summary.style.default:
+            __STOP__ = true
+            value = 'default'
+            break
+          default:
+            __STOP__ = false
+        }
+      })
+
+      return value
     }
 
     const alignment = (b: string): string => {
