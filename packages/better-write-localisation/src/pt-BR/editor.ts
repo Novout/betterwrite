@@ -90,12 +90,12 @@ export default {
       save: 'Salvar na Nuvem',
     },
     pdf: {
-      preview: 'Simular',
-      generate: 'Gerar',
+      preview: 'Simular (.PDF)',
+      generate: 'Gerar (.PDF)',
       configuration: 'Configurar',
     },
     docx: {
-      generate: 'Gerar',
+      generate: 'Gerar (.DOCX)',
     },
     project: {
       new: 'Novo',

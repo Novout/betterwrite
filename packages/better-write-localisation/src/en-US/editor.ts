@@ -90,12 +90,12 @@ export default {
       save: 'Cloud Save',
     },
     pdf: {
-      preview: 'Preview',
-      generate: 'Generate',
+      preview: 'Preview (.PDF)',
+      generate: 'Generate (.PDF)',
       configuration: 'Configure',
     },
     docx: {
-      generate: 'Generate',
+      generate: 'Generate (.DOCX)',
     },
     project: {
       new: 'New',
