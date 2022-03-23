@@ -1,6 +1,16 @@
-# Changelog (22/03/2022)
+# Changelog (23/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.14.6
+
+* **fix(pdf):** all message locales in alignment i18n search [b8f385a]
+* **fix(pdf):** base cover image in margins set at 0 [6797e95]
+* **fix:** typo [c3ea1e0]
+* **chore(monorepo):** preset css in better-write-theme [9d01477]
+* **chore(monorepo):** better-write-localisation [12d1a5f]
+* **style(landing):** spinner logo [0548336]
+* **chore(landing):** cached image [90b83e3]
 
 ### v0.14.5
 
