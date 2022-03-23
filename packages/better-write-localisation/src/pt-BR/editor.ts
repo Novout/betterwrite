@@ -129,6 +129,7 @@ export default {
       load: 'Carregar Google Drive',
     },
     assistants: {
+      speechRecognition: 'Digitação por Voz',
       actions: 'Ações',
       finder: 'Encontrar Texto',
       swapper: 'Substituir Texto',

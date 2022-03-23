@@ -9,9 +9,7 @@
       <p class="text-sm ml-2">{{ props.text }}</p>
     </div>
     <div class="flex justify-between w-full">
-      <p
-        class="font-tiny rounded-full px-1 text-3xs bg-theme-editor-header-list-shortcuts-background hover:bg-theme-editor-header-list-shortcuts-background-hover active:bg-theme-editor-header-list-shortcuts-background-active"
-      >
+      <p class="font-tiny rounded-full px-1 text-3xs">
         {{ props.shortcut }}
       </p>
       <HeroIcon class="wb-icon">
@@ -55,6 +53,4 @@
   })
 
   const open = ref<boolean>(false)
-
-  const emit = defineEmits(['action'])
 </script>

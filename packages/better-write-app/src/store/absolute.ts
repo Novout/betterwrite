@@ -39,6 +39,9 @@ export const useAbsoluteStore = defineStore('absolute', {
       pages: {
         drafts: false,
       },
+      tools: {
+        speechRecognition: false,
+      },
     }
   },
 })

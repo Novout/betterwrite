@@ -36,6 +36,10 @@ export interface AbsoluteStatePages {
   drafts: boolean
 }
 
+export interface AbsoluteStateTools {
+  speechRecognition: boolean
+}
+
 export interface AbsoluteState {
   commands: boolean
   project: AbsoluteStateProject
@@ -48,4 +52,5 @@ export interface AbsoluteState {
   auth: AbsoluteStateAuth
   entity: AbsoluteStateEntity
   pages: AbsoluteStatePages
+  tools: AbsoluteStateTools
 }

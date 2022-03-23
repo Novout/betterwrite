@@ -139,7 +139,7 @@
       <EditorHeaderItemOpen :text="t('editor.bar.project.language')">
         <template #open>
           <div
-            class="relative overflow-x-hidden bottom-16 flex flex-col h-40 w-40 overflow-y-auto bg-theme-background-2 rounded-tr rounded-br shadow"
+            class="relative overflow-x-hidden bottom-16 flex flex-col h-40 w-40 overflow-y-auto bg-theme-editor-header-list-background rounded-tr rounded-br shadow"
           >
             <p
               v-for="(language, index) in Languages"
@@ -155,7 +155,7 @@
       <EditorHeaderItemOpen :text="t('editor.bar.project.theme')">
         <template #open>
           <div
-            class="relative overflow-x-hidden bottom-16 flex flex-col h-40 w-40 overflow-y-auto bg-theme-background-2 rounded-tr rounded-br shadow"
+            class="relative overflow-x-hidden bottom-16 flex flex-col h-40 w-40 overflow-y-auto bg-theme-editor-header-list-background rounded-tr rounded-br shadow"
           >
             <p
               v-for="(theme, index) in defines.themes()"

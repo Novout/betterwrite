@@ -130,6 +130,7 @@ export default {
       load: 'Google Drive Load',
     },
     assistants: {
+      speechRecognition: 'Voice Typing',
       actions: 'Actions',
       finder: 'Text Search',
       swapper: 'Text Swapper',
