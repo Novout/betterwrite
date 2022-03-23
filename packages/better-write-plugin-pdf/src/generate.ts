@@ -12,6 +12,7 @@ import { useToast } from 'vue-toastification'
 import { getPDFUtils } from 'better-write-plugin-theme'
 import { useOnline } from '@vueuse/core'
 import { getStandardVFS } from './externals'
+import { Maybe } from 'better-write-types'
 
 export const PluginPDFSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -70,34 +71,72 @@ export const PluginPDFSet = (
       }
     }
 
-    const alignment = (b: string) => {
-      switch (b) {
-        case hooks.i18n.t('editor.pdf.configuration.alignment.default'):
-          return 'default'
-        case hooks.i18n.t('editor.pdf.configuration.alignment.left'):
-          return 'left'
-        case hooks.i18n.t('editor.pdf.configuration.alignment.center'):
-          return 'center'
-        case hooks.i18n.t('editor.pdf.configuration.alignment.right'):
-          return 'right'
-        default:
-          return b
-      }
+    const alignment = (b: string): string => {
+      let value: Maybe<string> = null
+      let __STOP__: boolean = false
+
+      hooks.i18n.availableLocales.forEach((locale: string) => {
+        if (__STOP__) return
+
+        const { editor } = hooks.i18n.getLocaleMessage(locale)
+
+        switch (b) {
+          case editor.pdf.configuration.alignment.default:
+            __STOP__ = true
+            value = 'default'
+            break
+          case editor.pdf.configuration.alignment.left:
+            __STOP__ = true
+            value = 'left'
+            break
+          case editor.pdf.configuration.alignment.center:
+            __STOP__ = true
+            value = 'center'
+            break
+          case editor.pdf.configuration.alignment.right:
+            __STOP__ = true
+            value = 'right'
+            break
+          default:
+            __STOP__ = false
+        }
+      })
+
+      return value
     }
 
-    const entityAlignment = (b: string) => {
-      switch (b) {
-        case hooks.i18n.t('editor.pdf.configuration.alignment.justify'):
-          return 'justify'
-        case hooks.i18n.t('editor.pdf.configuration.alignment.left'):
-          return 'left'
-        case hooks.i18n.t('editor.pdf.configuration.alignment.center'):
-          return 'center'
-        case hooks.i18n.t('editor.pdf.configuration.alignment.right'):
-          return 'right'
-        default:
-          return b
-      }
+    const entityAlignment = (b: string): string => {
+      let value: Maybe<string> = null
+      let __STOP__: boolean = false
+
+      hooks.i18n.availableLocales.forEach((locale: string) => {
+        if (__STOP__) return
+
+        const { editor } = hooks.i18n.getLocaleMessage(locale)
+
+        switch (b) {
+          case editor.pdf.configuration.alignment.justify:
+            __STOP__ = true
+            value = 'justify'
+            break
+          case editor.pdf.configuration.alignment.left:
+            __STOP__ = true
+            value = 'left'
+            break
+          case editor.pdf.configuration.alignment.center:
+            __STOP__ = true
+            value = 'center'
+            break
+          case editor.pdf.configuration.alignment.right:
+            __STOP__ = true
+            value = 'right'
+            break
+          default:
+            __STOP__ = false
+        }
+      })
+
+      return value
     }
 
     return {

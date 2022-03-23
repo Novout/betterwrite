@@ -29,7 +29,6 @@ import { useProject } from './project'
 import { useRaw } from './raw'
 import { useScroll } from './scroll'
 import { useUtils } from './utils'
-import i18n from '@/lang'
 import { useI18n } from 'vue-i18n'
 import useEmitter from './emitter'
 import {
@@ -56,7 +55,7 @@ export const useStart = () => {
   const isLeft = usePageLeave()
   const utils = useUtils()
   const nav = useNavigatorLanguage()
-  const { t } = i18n.global
+  const { t } = useI18n()
 
   // set global mouse tracking
   watch([x, y], ([_x, _y]) => {
@@ -183,7 +182,7 @@ export const useStart = () => {
         scroll: useScroll(),
         start: useStart(),
         utils: useUtils(),
-        i18n: i18n.global,
+        i18n: useI18n(),
         emitter: useEmitter(),
       }
     )
