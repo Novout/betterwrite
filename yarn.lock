@@ -2046,11 +2046,6 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@polka/url@^1.0.0-next.20":
-  version "1.0.0-next.21"
-  resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
-  integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
-
 "@popperjs/core@^2.10.2":
   version "2.11.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
@@ -2602,13 +2597,6 @@
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-2.1.0.tgz#ddf5e0059f84f2ff649afc25ce5a59211e670542"
   integrity sha512-AZ78WxvFMYd8JmM/GBV6a6SGGTU0GgN/0/4T+FnMMsLzFEzTeAUwuraapy50ifHZsC+G5SvWs86bvaCPTneFlA==
 
-"@vitest/ui@latest":
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.3.6.tgz#3218e89fe7156582fcbd472b840268eaf3a46f74"
-  integrity sha512-xnU6TJAdvMNQ0GVIxZT4GmlZ3FzgysgpzT93Ym+BKGCJGClzwCl5OwOa9MVLBcB0dC/syZ22wZHxXqJQkMh9/g==
-  dependencies:
-    sirv "^2.0.2"
-
 "@volar/code-gen@0.33.7":
   version "0.33.7"
   resolved "https://registry.yarnpkg.com/@volar/code-gen/-/code-gen-0.33.7.tgz#0ebbc313e3b35fd41baeac702c9b7a91a3a6591a"
@@ -2993,6 +2981,14 @@
     "@vueuse/shared" "7.5.5"
     vue-demi "*"
 
+"@vueuse/core@7.7.1":
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-7.7.1.tgz#fc284f4103de73c7fb79bc06579d8066790db511"
+  integrity sha512-PRRgbATMpoeUmkCEBtUeJgOwtew8s+4UsEd+Pm7MhkjL2ihCNrSqxNVtM6NFE4uP2sWnkGcZpCjPuNSxowJ1Ow==
+  dependencies:
+    "@vueuse/shared" "7.7.1"
+    vue-demi "*"
+
 "@vueuse/core@8.1.2", "@vueuse/core@^8.0.1":
   version "8.1.2"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-8.1.2.tgz#3153d4766b07a648bfbdd01559e8d3b20fda6eb5"
@@ -3008,16 +3004,6 @@
   integrity sha512-FRwl4ccSFuHZBHLGgS9TMv/+Dd6XFaL4o9nph2qtgQIV+z29RBFokw08XjHfykiENRzB01MjYHJ7iRUnsIFQXg==
   dependencies:
     "@vueuse/shared" "6.9.2"
-    vue-demi "*"
-
-"@vueuse/gesture@2.0.0-beta.1":
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/gesture/-/gesture-2.0.0-beta.1.tgz#e4c555bab652e4e13d612e3970eb21184a27a0b8"
-  integrity sha512-HTLibLy3bh6TjRnDAbMAvHSsEmrkRituMj2x+mHwmp1EnM8A8CDRTfNJEr8d/hIairnPPp5Va2KWYVmyP/zvkA==
-  dependencies:
-    chokidar "^3.5.2"
-    consola "^2.15.3"
-    upath "^2.0.1"
     vue-demi "*"
 
 "@vueuse/head@0.7.4":
@@ -3048,13 +3034,13 @@
     qrcode "^1.5.0"
     universal-cookie "^4.0.4"
 
-"@vueuse/integrations@8.1.2":
-  version "8.1.2"
-  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-8.1.2.tgz#70d32a275a4585227c0a0d5d070de6b94250e99e"
-  integrity sha512-zf7gWP5zbvjxcKxHf8KoL4NSqQbqXutAINjNaMQ4lhnKuxeVMahibfkftCaU9cSTRPxmCX9jxuhuAy7S0BjGTg==
+"@vueuse/integrations@7.7.1":
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-7.7.1.tgz#bd7dd7058b34f8247b257cfda22ce774c2311723"
+  integrity sha512-qQ/+sxxICYKQZr+CmqfPFJXBCSTbbLAnE3fHE8s8kU/ohy+GcIZFVADM/JjbVqXsJJPgL/TnkCxPs0RVLsHbkw==
   dependencies:
-    "@vueuse/core" "8.1.2"
-    "@vueuse/shared" "8.1.2"
+    "@vueuse/core" "7.7.1"
+    "@vueuse/shared" "7.7.1"
     vue-demi "*"
 
 "@vueuse/metadata@8.1.2":
@@ -3094,6 +3080,13 @@
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-7.5.5.tgz#0e5c16b848b4a19e5b9ee9199a997e1f6dd39679"
   integrity sha512-mzzTsotHQRPnPAChy8iCv6ek/90CKYhAFyMRgNsMxpT0afZJkbMO/X0OaOu/1NuGbgb8UVjlsWKmCUgKTOF5hA==
+  dependencies:
+    vue-demi "*"
+
+"@vueuse/shared@7.7.1":
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-7.7.1.tgz#77e312de7275380efce86b0079bd7938791a076b"
+  integrity sha512-rN2qd22AUl7VdBxihagWyhUNHCyVk9IpvBTTfHoLH9G7rGE552X1f+zeCfehuno0zXif13jPw+icW/wn2a0rnQ==
   dependencies:
     vue-demi "*"
 
@@ -3749,7 +3742,7 @@ check-more-types@^2.24.0:
   resolved "https://registry.yarnpkg.com/check-more-types/-/check-more-types-2.24.0.tgz#1420ffb10fd444dcfc79b43891bbfffd32a84600"
   integrity sha1-FCD/sQ/URNz8ebQ4kbv//TKoRgA=
 
-chokidar@^3.5.1, chokidar@^3.5.2, chokidar@^3.5.3:
+chokidar@^3.5.1, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -7203,11 +7196,6 @@ mri@^1.1.0, mri@^1.2.0:
   resolved "https://registry.yarnpkg.com/mri/-/mri-1.2.0.tgz#6721480fec2a11a4889861115a48b6cbe7cc8f0b"
   integrity sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==
 
-mrmime@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/mrmime/-/mrmime-1.0.0.tgz#14d387f0585a5233d291baba339b063752a2398b"
-  integrity sha512-a70zx7zFfVO7XpnQ2IX1Myh9yY4UYvfld/dikWRnsXxbyvMcfz+u6UfgNAtH+k2QqtJuzVpv6eLTx1G2+WKZbQ==
-
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -8679,15 +8667,6 @@ signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.6.tgz#24e630c4b0f03fea446a2bd299e62b4a6ca8d0af"
   integrity sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==
 
-sirv@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/sirv/-/sirv-2.0.2.tgz#128b9a628d77568139cff85703ad5497c46a4760"
-  integrity sha512-4Qog6aE29nIjAOKe/wowFTxOdmbEZKb+3tsLljaBRzJwtqto0BChD2zzH0LhgCSXiI+V7X+Y45v14wBZQ1TK3w==
-  dependencies:
-    "@polka/url" "^1.0.0-next.20"
-    mrmime "^1.0.0"
-    totalist "^3.0.0"
-
 slash@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
@@ -9324,11 +9303,6 @@ token-stream@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/token-stream/-/token-stream-1.0.0.tgz#cc200eab2613f4166d27ff9afc7ca56d49df6eb4"
   integrity sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=
-
-totalist@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/totalist/-/totalist-3.0.0.tgz#4ef9c58c5f095255cdc3ff2a0a55091c57a3a1bd"
-  integrity sha512-eM+pCBxXO/njtF7vdFsHuqb+ElbxqtI4r5EAvk6grfAFyJ6IvWlSkfZ5T9ozC6xWw3Fj1fGoSmrl0gUs46JVIw==
 
 tough-cookie@~2.5.0:
   version "2.5.0"
