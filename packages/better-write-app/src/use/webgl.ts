@@ -4,7 +4,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import WebGL from 'three/examples/jsm/capabilities/WebGL.js'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { useDefines } from './defines'
+import { useI18n } from 'vue-i18n'
 
 export const useWebGL = () => {
   const isLoaded = ref(false)
@@ -18,6 +18,8 @@ export const useWebGL = () => {
   let _font
   const _cloudParticles: any = []
   const meshArray: any = []
+
+  const { t, getLocaleMessage, locale } = useI18n()
 
   const init = () => {
     onMounted(() => {
@@ -106,24 +108,28 @@ export const useWebGL = () => {
       }
 
       const createNodes = () => {
-        for (let i = -1000; i < 1000; i += 50) {
-          const paragraph = new TextGeometry(useDefines().landing().name(), {
+        const { landing }: any = getLocaleMessage(locale.value)
+
+        const paragraphs = landing.first.paragraphs
+
+        paragraphs.forEach((paragraph) => {
+          const geometry = new TextGeometry(paragraph, {
             font: _font,
             size: Math.floor(Math.random() * 8) + 8,
             height: 1,
           })
 
-          const mesh = new THREE.Mesh(paragraph)
-          mesh.position.x = Math.random() * 2000 - 1000 + i
-          mesh.position.y = 650 - Math.random() * 170
-          mesh.position.z = Math.random() * 2000 - 1000 + i
+          const mesh = new THREE.Mesh(geometry)
+          mesh.position.x = Math.random() * 2500 - 1000
+          mesh.position.y = 650 - Math.random() * 10
+          mesh.position.z = Math.random() * 2500 - 1000
           mesh.rotation.x = 1.16
           mesh.rotation.y = -0.12
           mesh.rotation.z = 0.57
 
           meshArray.push(mesh)
           scene.add(mesh)
-        }
+        })
       }
 
       const render = () => {
@@ -165,10 +171,10 @@ export const useWebGL = () => {
         cameraCreate()
         rendererCreate()
         loaderSmoke()
+        createNodes()
         contextResize()
         createLight()
         contextResize()
-        createNodes()
         render().then(() => {
           isLoaded.value = true
         })

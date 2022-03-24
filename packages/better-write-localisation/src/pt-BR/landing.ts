@@ -41,6 +41,15 @@ Recebendo o amor doloroso,
 Aceitei a dormência.`,
       `      Clima tenso. Correndo contra tudo, a virtude não teve dúvidas
 de quem realmente está do lado certo.`,
+      `      — Aparentemente, está vazio. Cadê... tudo?`,
+      `      A chave foi inserida.
+      Nada acontece.
+      Pullio percebe que a chave está do lado
+inverso. Acontece
+      A porta abre.`,
+      `      — Enganação... quem esgana quem?`,
+      `      — Positividade sempre.`,
+      `      — Questionar nunca será problemático.`,
     ],
   },
 }
