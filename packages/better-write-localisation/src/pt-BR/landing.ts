@@ -44,8 +44,7 @@ de quem realmente está do lado certo.`,
       `      — Aparentemente, está vazio. Cadê... tudo?`,
       `      A chave foi inserida.
       Nada acontece.
-      Pullio percebe que a chave está do lado
-inverso. Acontece
+      Pullio percebe que a chave está invertida.
       A porta abre.`,
       `      — Enganação... quem esgana quem?`,
       `      — Positividade sempre.`,

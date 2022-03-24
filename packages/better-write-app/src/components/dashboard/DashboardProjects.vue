@@ -20,7 +20,7 @@
       >
         <div
           v-if="context.pdf.styles.base.background.data"
-          class="flex items-center justify-center h-60 bg-cover"
+          class="flex items-center justify-center h-60 w-42 bg-cover"
         >
           <img :src="context.pdf.styles.base.background.data" />
         </div>
