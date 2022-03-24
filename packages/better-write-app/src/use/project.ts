@@ -240,6 +240,14 @@ export const useProject = () => {
   }
 
   const utils = () => {
+    const resetAllVisual = () => {
+      CONTEXT.entities.forEach((entity) => {
+        entity.visual.info = false
+        entity.visual.warning = false
+        entity.visual.error = false
+      })
+    }
+
     const isValidType = (val: Entity) => {
       return !entity.utils().isFixedRaw(val.raw) && val.type !== 'image'
     }
@@ -392,6 +400,7 @@ export const useProject = () => {
     }
 
     return {
+      resetAllVisual,
       isValidType,
       getWords,
       getChapterLetters,

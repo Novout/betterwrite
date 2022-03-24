@@ -2,6 +2,7 @@ export default {
   generics: {
     load: 'Aguarde um momento...',
     error: 'Um erro inesperado ocorreu :(',
+    supported: 'O seu navegador não suporta este recurso :(',
   },
   pdf: {
     error:

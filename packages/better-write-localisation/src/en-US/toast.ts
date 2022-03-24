@@ -2,6 +2,7 @@ export default {
   generics: {
     load: 'Wait a moment...',
     error: 'An unexpected error occurred :(',
+    supported: 'Your browser does not support this feature :(',
   },
   pdf: {
     error:

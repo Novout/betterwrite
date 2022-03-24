@@ -40,7 +40,7 @@
       @keypress.enter.prevent="onEnter"
       @keydown="onKeyboard"
       @click="onClick"
-      @paste="entity.base().onPaste(props.entity, data, $event, input)"
+      @paste="entity.base().onPaste(props.entity, data, $event, input as HTMLInputElement)"
       @copy="raw.v2().copy()"
       v-html="raw.v2().purge().editor(props.entity)"
     />
@@ -72,6 +72,7 @@
   import { useUtils } from '@/use/utils'
   import { useFocus } from '@vueuse/core'
   import { useFormat } from '@/use/format'
+  import { useProject } from '@/use/project'
 
   const props = defineProps({
     entity: {
@@ -95,6 +96,7 @@
   const raw = useRaw()
   const plugin = usePlugin()
   const format = useFormat()
+  const project = useProject()
 
   const hover = ref<boolean>(false)
   const focus = ref<boolean>(false)
@@ -104,7 +106,7 @@
   const press = ref<boolean>(false)
 
   const data = ref<string>('')
-  const input = ref<any>(null)
+  const input = ref<HTMLInputElement | null>(null)
   const keyboard = ref<boolean>(false)
 
   const style = computed(() => EDITOR.styles.show)
@@ -115,11 +117,23 @@
   const target = computed(
     () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu
   )
-  const { focused } = useFocus({ target: input } as any)
+  const { focused } = useFocus(input)
 
   watch(props.entity, () => {
     // new entity properties
     onReset()
+  })
+
+  watch(focused, (_focused) => {
+    if (_focused && !entity.utils().isFixed(_index.value)) {
+      EDITOR.actives.entity.index = _index.value
+
+      if (ABSOLUTE.tools.speechRecognition) {
+        project.utils().resetAllVisual()
+
+        CONTEXT.entities[_index.value].visual.warning = true
+      }
+    }
   })
 
   watch(hover, async (_hover) => {
@@ -164,6 +178,8 @@
 
   const setData = (val: string) => {
     const _input = input.value as HTMLDivElement
+
+    if (val === null) return
 
     data.value = val
     _input.innerHTML = val
@@ -476,6 +492,18 @@
             index: _index.value,
           })
         }
+      }
+    })
+
+    emitter.on('entity-speech-recognition', async ({ id, result }) => {
+      if (CONTEXT.entities[id] === props.entity && input.value) {
+        const _data = data.value
+
+        setData(result)
+
+        await nextTick
+
+        if (result !== _data) onUpdateContent()
       }
     })
   })
