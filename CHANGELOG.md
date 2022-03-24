@@ -2,6 +2,12 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.15.1
+
+* **chore(editor):** header microphone icon remove [589720c]
+* **fix(editor):** set initial load in router [5c94f0d]
+* **fix(dashboard):** project image in mobile [19c6743]
+
 ### v0.15.0
 
 * **fix(build):** @vueuse/integration version [01c6d34]
