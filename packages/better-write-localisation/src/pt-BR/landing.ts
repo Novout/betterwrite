@@ -37,7 +37,7 @@ Desfalecendo no auspício.`,
 para Linea aceitar a perda.`,
       `No último esforço,
 Percebi a insolência,
-Recebendo o amor doloroso,
+Insistindo no amor doloroso,
 Aceitei a dormência.`,
       `      Clima tenso. Correndo contra tudo, a virtude não teve dúvidas
 de quem realmente está do lado certo.`,
@@ -49,7 +49,14 @@ inverso. Acontece
       A porta abre.`,
       `      — Enganação... quem esgana quem?`,
       `      — Positividade sempre.`,
-      `      — Questionar nunca será problemático.`,
+      `      — Questionar é a melhor forma de nivelar e
+transparecer o pensamento.`,
+      `      Foi observado diversas alternativas para
+a resolução do problema. Ele não observou.`,
+      `      — A visão é um descaso para a luta. Duelo é 
+um universo a parte.`,
+      `      Revelando a área coberta do palácio, o
+silêncio continuou reinando no ambiente.`
     ],
   },
 }
