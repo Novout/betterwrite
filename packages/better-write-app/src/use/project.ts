@@ -53,8 +53,8 @@ export const useProject = () => {
   }
 
   const external = () => {
-    const n = async (type: ProjectType) => {
-      if (!confirm(t('toast.project.createAlert'))) return
+    const n = async (type: ProjectType, skipAlert: boolean = false) => {
+      if (!skipAlert && !confirm(t('toast.project.createAlert'))) return
 
       isLoading.value = true
 
@@ -108,7 +108,11 @@ export const useProject = () => {
   ) => {
     if (!context) context = local.getProject()
 
-    if (!context) return
+    if (!context) {
+      await external().new('creative', true)
+
+      return
+    }
 
     isLoading.value = true
 

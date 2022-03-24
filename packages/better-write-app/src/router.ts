@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useEnv } from './use/env'
 import { s } from './use/storage/supabase'
 
 const routes = [
@@ -36,6 +37,14 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if ((to.name === 'Dashboard' || to.name === 'Plans') && !s.auth.user())
     next({ name: 'Main' })
+
+  const isOtherLoad = useEnv().initialLoad()
+
+  if (!isOtherLoad) {
+    localStorage.setItem(isOtherLoad, isOtherLoad)
+
+    next({ name: 'Landing' })
+  }
 
   next()
 })

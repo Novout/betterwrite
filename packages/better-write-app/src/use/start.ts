@@ -137,18 +137,9 @@ export const useStart = () => {
       .codeToIso(lang)
   }
 
-  const initial = () => {
-    if (!localStorage.getItem(env.initialLoad())) {
-      localStorage.setItem(env.initialLoad(), env.initialLoad())
-
-      router.push('/landing')
-    }
-  }
-
   const init = async (plugins: PluginTypes.Plugins) => {
     lang()
     auth()
-    initial()
     await core.start(
       {
         ABSOLUTE: useAbsoluteStore(),
