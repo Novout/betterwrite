@@ -7,11 +7,7 @@
       <slot name="icon"></slot>
       <p class="text-sm">{{ props.text }}</p>
     </div>
-    <p
-      class="font-tiny rounded-full px-1 text-3xs bg-theme-editor-header-list-shortcuts-background hover:bg-theme-editor-header-list-shortcuts-background-hover active:bg-theme-editor-header-list-shortcuts-background-active"
-    >
-      {{ props.shortcut }}
-    </p>
+    <slot name="shortcut" />
   </div>
 </template>
 
@@ -20,11 +16,6 @@
     text: {
       required: true,
       type: String,
-    },
-    shortcut: {
-      required: false,
-      type: String,
-      default: '',
     },
     divider: {
       required: false,
