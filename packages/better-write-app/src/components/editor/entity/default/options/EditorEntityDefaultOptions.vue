@@ -482,18 +482,18 @@
 
     if (!visible.value && block.value) {
       if (mouse.value.vertical === 'bottom') {
-        el.style.top = `${mouse.value.y - el.offsetHeight}px`
+        el.style.top = `${mouse.value.y - el.offsetHeight + 10}px`
       }
 
       if (mouse.value.horizontal === 'right') {
-        el.style.left = `${mouse.value.x - el.offsetWidth}px`
+        el.style.left = `${mouse.value.x - el.offsetWidth + 10}px`
       }
 
       return
     }
 
-    el.style.top = `${mouse.value.y}px`
-    el.style.left = `${mouse.value.x}px`
+    el.style.top = `${mouse.value.y + 10}px`
+    el.style.left = `${mouse.value.x + 10}px`
   }
 
   const onClose = () => {

@@ -2,8 +2,18 @@
   <div class="fixed left-0 top-0 w-full h-screen bg-modal z-max">
     <div
       ref="comment"
+      v-motion
       class="flex flex-col fixed w-96 bg-theme-editor-external-comment-background hover:bg-theme-editor-external-comment-background-hover active:bg-theme-editor-external-comment-background-active px-5 py-2 h-40 rounded shadow-2xl"
       :style="style"
+      :initial="{ opacity: 0, x: 40 }"
+      :enter="{
+        opacity: 1,
+        x: 0,
+        transition: {
+          delay: 100,
+          duration: 200,
+        },
+      }"
     >
       <div class="flex justify-between items-center cursor-pointer pb-2">
         <h2

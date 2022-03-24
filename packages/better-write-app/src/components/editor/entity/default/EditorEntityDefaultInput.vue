@@ -70,7 +70,7 @@
     VueEmitterEntityClose,
   } from 'better-write-types'
   import { useUtils } from '@/use/utils'
-  import { useFocus } from '@vueuse/core'
+  import { useFocus, useMousePressed, watchDebounced } from '@vueuse/core'
   import { useFormat } from '@/use/format'
   import { useProject } from '@/use/project'
 
@@ -118,11 +118,23 @@
     () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu
   )
   const { focused } = useFocus(input)
+  const { pressed, sourceType: mouseType } = useMousePressed({
+    touch: true,
+    target: input,
+  })
 
   watch(props.entity, () => {
     // new entity properties
     onReset()
   })
+
+  watchDebounced(
+    pressed,
+    (_presset) => {
+      if (_presset && mouseType.value === 'touch') onSetContextMenu()
+    },
+    { debounce: 250 }
+  )
 
   watch(focused, (_focused) => {
     if (_focused && !entity.utils().isFixed(_index.value)) {
