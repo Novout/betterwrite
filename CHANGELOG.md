@@ -1,6 +1,24 @@
-# Changelog (23/03/2022)
+# Changelog (24/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.0
+
+* **fix(build):** @vueuse/integration version [01c6d34]
+* **fix(editor):** contextmenu in mobile [eb32ec6]
+* **feat(editor):** beta badge [f172887]
+* **fix:** typos [5b45bda]
+* **chore(editor):** new project alert [492c99c]
+* **chore(landing):** deps and types [e1f9cc4]
+* **chore(monorepo):** dev command runner [5f59a66]
+* **style(editor):** header item gap flex [1e6225e]
+* **fix(landing):** get messages for text geometry [2a08c80]
+* **feat(editor):** use speech recognition tool [05874eb]
+* **style(editor):** header chapter controls [9acefb8]
+* **feat(editor):** speech recognition defines [050d286]
+* **fix:** typo [d7c84bb]
+* **style(editor):** theme and language in project bar [a604e57]
+* **fix(pdf):** i18n in all transforms [8f764c2]
 
 ### v0.14.6
 
