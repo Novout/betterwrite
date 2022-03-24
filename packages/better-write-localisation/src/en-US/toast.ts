@@ -18,6 +18,7 @@ export default {
       'Certain features will not appear in the preview to avoid performance issues.',
   },
   project: {
+    createAlert: 'Are you sure you want to create a new project? You will lose any data that was not saved in the cloud.',
     create: 'Successfully created project!',
     load: 'Successfully loaded project!',
     save: 'Successfully saved project!',
