@@ -18,7 +18,8 @@ export default {
       'Certas features não irão aparecer no preview para evitar problemas de desempenho.',
   },
   project: {
-    createAlert: 'Você tem certeza que deseja criar um novo projeto? Você perderá todos os dados que não forem salvos na nuvem.',
+    createAlert:
+      'Você tem certeza que deseja criar um novo projeto? Você perderá todos os dados que não forem salvos na nuvem.',
     create: 'Projeto criado com sucesso!',
     load: 'Projeto carregado com sucesso!',
     save: 'Projeto salvo com sucesso!',

@@ -56,7 +56,7 @@ a resolução do problema. Ele não observou.`,
       `      — A visão é um descaso para a luta. Duelo é 
 um universo a parte.`,
       `      Revelando a área coberta do palácio, o
-silêncio continuou reinando no ambiente.`
+silêncio continuou reinando no ambiente.`,
     ],
   },
 }

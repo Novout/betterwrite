@@ -217,7 +217,7 @@ export default {
       load: {
         title: 'Carregar Simples',
       },
-      blocked: 'Crie ou carregue um projeto!!!',
+      blocked: 'Crie ou carregue um projeto.',
       page: {
         new: {
           title: 'Novo Capítulo',

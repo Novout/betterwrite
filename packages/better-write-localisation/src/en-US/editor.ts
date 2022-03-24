@@ -218,7 +218,7 @@ export default {
       load: {
         title: 'Simple Load',
       },
-      blocked: 'Create or load a project!!!',
+      blocked: 'Create or load a project.',
       page: {
         new: {
           title: 'New Chapter',

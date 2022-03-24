@@ -54,7 +54,7 @@ export const useProject = () => {
 
   const external = () => {
     const n = async (type: ProjectType) => {
-      if(!confirm(t('toast.project.createAlert'))) return
+      if (!confirm(t('toast.project.createAlert'))) return
 
       isLoading.value = true
 

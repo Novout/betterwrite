@@ -144,7 +144,7 @@
             <p
               v-for="(language, index) in Languages"
               :key="index"
-              class="pl-2 hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40 text-xs"
+              class="pl-2 hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40"
               @click.prevent.stop="onSwitchLanguage(language)"
             >
               {{ language }}
@@ -160,10 +160,10 @@
             <p
               v-for="(theme, index) in defines.themes()"
               :key="index"
-              class="pl-2 w-40 hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40 text-xs"
+              class="pl-2 w-40 hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40"
               @click.prevent.stop="onSwitchTheme(theme)"
             >
-              {{ theme }}
+              {{ theme.replaceAll('BetterWrite -', '') }}
             </p>
           </div>
         </template>
