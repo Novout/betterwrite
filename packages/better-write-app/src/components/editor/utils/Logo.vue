@@ -10,7 +10,10 @@
       :src="path"
       @click.stop.prevent="onClick"
     />
-    <p class="font-raleway text-3xl md:text-xl text-theme-aside-logo-text">
+    <p
+      :class="[!back ? 'hidden md:flex text-lg' : 'text-xl']"
+      class="font-raleway text-theme-aside-logo-text ml-3"
+    >
       Better Write
     </p>
   </div>

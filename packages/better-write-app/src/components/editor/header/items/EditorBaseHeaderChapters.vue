@@ -6,6 +6,9 @@
   <EditorHeaderButton
     v-if="project.isCreativeProject() && PROJECT.name !== env.projectEmpty()"
   >
+    <template #text>
+      {{ t('editor.header.chapters') }}
+    </template>
     <template #icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"

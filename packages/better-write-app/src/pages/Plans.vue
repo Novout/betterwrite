@@ -6,7 +6,7 @@
       :enter="{ opacity: 1, x: 0, transition: { delay: 0 } }"
       class="w-full md:w-52 my-2 ml-0 md:ml-5"
     >
-      <AsideBarLogo :back="true" :width="30" />
+      <Logo :back="true" :width="30" />
     </div>
     <PlansContent
       v-motion

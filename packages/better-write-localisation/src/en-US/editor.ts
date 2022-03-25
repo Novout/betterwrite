@@ -1,6 +1,12 @@
 import { setPDFI18n } from 'better-write-plugin-pdf'
 
 export default {
+  header: {
+    project: 'Project',
+    export: 'Export',
+    chapters: 'Chapters',
+    tools: 'Tools',
+  },
   auth: {
     login: {
       show: 'Enter',
@@ -159,6 +165,7 @@ export default {
   },
   pdf: setPDFI18n().en(),
   aside: {
+    resume: 'Resumo',
     dropbox: {
       connect: 'Connect',
       save: 'Save',

@@ -1,14 +1,21 @@
 <template>
   <div @mouseleave="n = false" @mouseenter="n = true">
-    <HeroIcon
+    <p
       :style="{
         backgroundColor: props.color !== 'none' ? props.color : 'none',
       }"
       class="wb-header-button"
       :class="[n ? 'text-theme-icon-active' : '']"
     >
-      <slot name="icon" />
-    </HeroIcon>
+      <div class="flex items-center pointer-events-none">
+        <HeroIcon class="h-8 w-8 md:(w-6 h-6) mr-0 md:mr-1">
+          <slot name="icon" />
+        </HeroIcon>
+        <p class="hidden md:flex">
+          <slot name="text" />
+        </p>
+      </div>
+    </p>
     <EditorHeaderBar v-if="n">
       <slot name="bar" />
     </EditorHeaderBar>
@@ -16,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useToggle } from '@vueuse/core'
+import { useToggle } from '@vueuse/core'
 
   const [n] = useToggle()
 

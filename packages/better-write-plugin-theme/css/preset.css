@@ -120,3 +120,14 @@ input[type='number'] {
     opacity: 0;
   }
 }
+
+.wb-edit {
+  height: calc(100vh - 3rem);
+  overflow-y: auto;
+}
+
+.wb-max-edit {
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+}
+

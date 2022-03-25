@@ -1,5 +1,27 @@
 <template>
-  <div class="flex px-2 flex-col mt-5 w-full">
+  <div class="flex px-2 flex-col w-full">
+    <HeroIcon
+      class="relative right-1 wb-icon w-9 h-9 mb-5"
+      @click.prevent.stop="ABSOLUTE.aside = false"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M17.59 18L19 16.59L14.42 12L19 7.41L17.59 6l-6 6z"
+        ></path>
+        <path
+          fill="currentColor"
+          d="m11 18l1.41-1.41L7.83 12l4.58-4.59L11 6l-6 6z"
+        ></path>
+      </svg>
+    </HeroIcon>
     <div class="flex items-center w-full">
       <p
         v-if="!env.isEmptyProject(PROJECT.name)"
@@ -24,11 +46,13 @@
 </template>
 
 <script setup lang="ts">
+  import { useAbsoluteStore } from '@/store/absolute'
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useGraph } from '@/use/graph'
 
   const PROJECT = useProjectStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const graph = useGraph()
   const env = useEnv()

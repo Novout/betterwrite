@@ -1,6 +1,9 @@
 <template>
   <!-- Create -->
   <EditorHeaderButton v-if="PROJECT.name !== env.projectEmpty()">
+    <template #text>
+      {{ t('editor.header.export') }}
+    </template>
     <template #icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"

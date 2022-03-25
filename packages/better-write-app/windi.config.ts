@@ -24,7 +24,7 @@ export default defineConfig({
     'wb-configuration-reserve': 'flex flex-row-reverse md:flex-row gap-5 font-bold text-base text-theme-text-2 justify-between items-center w-full px-2 py-2',
     'wb-configuration-input-text': 'bg-theme-editor-material-background px-2 shadow-lg w-full md:w-60',
     'wb-indent': 'indent-8',
-    'wb-header-button': 'wb-icon w-8 h-8 md:(w-9 h-9) xl:(w-10 h-10)'
+    'wb-header-button': 'wb-text mx-0.5 md:mx-3'
   },
   theme: {
     fontFamily: {

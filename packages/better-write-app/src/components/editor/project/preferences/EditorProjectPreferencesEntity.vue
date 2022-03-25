@@ -3,7 +3,8 @@
     <h3 class="text-2xl font-bold text-theme-text-2">
       {{ t('editor.aside.configuration.entity.title') }}
     </h3>
-    <div class="wb-configuration">
+    <!-- DEPRECATED -->
+    <div v-if="false" class="wb-configuration">
       <p>{{ t('editor.aside.configuration.entity.updateTime') }}</p>
       <InputBoolean
         v-model="EDITOR.configuration.entity.updateTime"
