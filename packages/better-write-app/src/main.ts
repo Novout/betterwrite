@@ -72,7 +72,9 @@ Sentry.init({
     }),
   ],
   logErrors: true,
-  tracesSampleRate: 1.0,
+  tracesSampleRate: env.isDev() ? 1.0 : 0.1,
+  trackComponents: true,
+  hooks: ['activate', 'mount', 'update', 'destroy', 'create']
 })
 
 router.isReady().then(() => app.mount('#app'))
