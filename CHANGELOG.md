@@ -1,6 +1,12 @@
-# Changelog (24/03/2022)
+# Changelog (26/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.2
+
+* **chore(app):** betterwrite.io [4262d26]
+* **chore(editor):** complete header rewrite [2ebc705]
+* **fix(pdf):** input select in z-index context [8194705]
 
 ### v0.15.1
 
