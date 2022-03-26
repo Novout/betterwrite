@@ -2,6 +2,11 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.15.3
+
+* **feat(sentry):** tracking components [9fb7747]
+* **chore(tracking):** sentry setup [7b23dec]
+
 ### v0.15.2
 
 * **chore(app):** betterwrite.io [4262d26]
