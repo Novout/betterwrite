@@ -10,6 +10,8 @@ import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
 import viteChecker from 'vite-plugin-checker'
 import viteFonts from 'vite-plugin-fonts'
+import vitePages from 'vite-plugin-pages'
+import viteSitemap from 'vite-plugin-pages-sitemap'
 import windiCSS from 'vite-plugin-windicss'
 
 export default defineConfig({
@@ -48,6 +50,13 @@ export default defineConfig({
     vitePersist(),
     vitePackageAccess(),
     vitePackageVersion(),
+    vitePages({
+      onRoutesGenerated: routes => (viteSitemap({ 
+        hostname: 'https://www.betterwrite.io/', 
+        filename: 'sitemap',
+        routes 
+      })),
+    }),
     vitePWA({
       base: '/',
       registerType: 'prompt',

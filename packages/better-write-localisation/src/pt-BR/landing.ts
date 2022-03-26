@@ -1,4 +1,10 @@
 export default {
+  auth: {
+    email: 'Insira um email válido!',
+    password: 'A senha precisa ter pelo menos 7 (sete) caracteres!',
+    verification: 'Código de Acesso enviado para o seu email!',
+    integration: 'ou entre com sua conta do...',
+  },
   first: {
     title: 'Editor para escritores criativos.',
     typical: {

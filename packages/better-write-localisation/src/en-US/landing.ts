@@ -1,4 +1,10 @@
 export default {
+  auth: {
+    email: 'Enter a valid email!',
+    password: 'The password must be at least 7 (seven) characters long!',
+    verification: 'Access Code sent to your email!',
+    integration: 'or log in with your account...',
+  },
   first: {
     title: 'Editor for creative writers.',
     typical: {

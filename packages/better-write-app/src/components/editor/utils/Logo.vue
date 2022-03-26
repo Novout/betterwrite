@@ -14,7 +14,7 @@
       :class="[!back ? 'hidden md:flex text-lg' : 'text-xl']"
       class="font-raleway text-theme-aside-logo-text ml-3"
     >
-      Better Write
+      betterwrite<span class="text-theme-background-3 font-bold">.io</span>
     </p>
   </div>
 </template>

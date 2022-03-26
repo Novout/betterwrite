@@ -35,15 +35,20 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if ((to.name === 'Dashboard' || to.name === 'Plans') && !s.auth.user())
-    next({ name: 'Main' })
+  if ((to.name === 'Dashboard' || to.name === 'Plans') && !s.auth.user()) {
+    next({ name: 'Landing' })
+
+    return
+  }
 
   const isOtherLoad = useEnv().initialLoad()
 
-  if (!isOtherLoad) {
+  if (!localStorage.getItem(isOtherLoad)) {
     localStorage.setItem(isOtherLoad, isOtherLoad)
 
     next({ name: 'Landing' })
+
+    return
   }
 
   next()

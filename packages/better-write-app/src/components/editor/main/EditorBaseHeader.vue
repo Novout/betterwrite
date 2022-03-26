@@ -14,6 +14,9 @@
       <EditorBaseHeaderChapters />
       <EditorBaseHeaderExternals />
     </div>
-    <EditorBaseHeaderLogin />
+    <div class="flex items-center gap-2">
+      <EditorBaseHeaderOnline />
+      <EditorBaseHeaderLogin />
+    </div>
   </header>
 </template>

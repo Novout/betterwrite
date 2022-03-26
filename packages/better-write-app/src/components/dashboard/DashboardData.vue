@@ -14,7 +14,9 @@
           class="flex justify-between items-center p-3 bg-theme-editor-dashboard-background-item rounded font-bold text-lg"
         >
           <p class="mr-5">{{ getCorrectPlan(profile.plan) }}</p>
+          <!-- TODO: Integrate -->
           <button
+            v-if="env.isDev()"
             class="px-2 md:px-5 py-1 bg-theme-editor-dashboard-background-item rounded-full text-sm wb-icon font-poppins"
             @click.prevent.stop="onPlanRoute"
           >
@@ -36,6 +38,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { useEnv } from '@/use/env'
   import { useSupabase } from '@/use/storage/supabase'
   import { useNProgress } from '@vueuse/integrations'
   import { onMounted, ref } from 'vue'
@@ -46,6 +49,7 @@
   const { t } = useI18n()
   const router = useRouter()
   const { isLoading } = useNProgress()
+  const env = useEnv()
 
   const profile = ref<any>({})
 

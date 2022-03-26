@@ -38,6 +38,39 @@ export const useSupabase = () => {
   const format = useFormat()
   const utils = useUtils()
 
+  const loginWithEmailAndPassword = (
+    { email, password }: { email: string; password: string },
+    notification: boolean = true
+  ) => {
+    return new Promise((res) => {
+      isLoading.value = true
+
+      s.auth
+        .signIn(
+          {
+            email,
+            password,
+          },
+          { redirectTo: env.getCorrectLocalUrl() }
+        )
+        .then(async ({ error }) => {
+          if (error) {
+            if (notification) toast(t('editor.auth.login.error'))
+
+            return
+          }
+
+          res(200)
+        })
+        .catch(() => {
+          res(404)
+        })
+        .finally(() => {
+          isLoading.value = false
+        })
+    })
+  }
+
   const login = (
     provider: SupabaseIntegrations,
     notification: boolean = true
@@ -67,6 +100,8 @@ export const useSupabase = () => {
       .signOut()
       .then(() => {
         AUTH.account.user = null
+
+        router.push('/landing')
       })
       .finally(() => {
         isLoading.value = false
@@ -250,6 +285,7 @@ export const useSupabase = () => {
   }
 
   return {
+    loginWithEmailAndPassword,
     login,
     out,
     getProjects,

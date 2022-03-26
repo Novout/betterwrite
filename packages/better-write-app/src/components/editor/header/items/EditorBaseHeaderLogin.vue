@@ -1,30 +1,6 @@
 <template>
   <div>
-    <button
-      v-if="!AUTH.account.user"
-      class="flex wb-icon items-center justify-center font-poppins px-3 py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full cursor-pointer"
-      @click.prevent.stop="onOpen"
-    >
-      <p v-if="mobile" class="ml-1">{{ t('editor.auth.login.show') }}</p>
-      <HeroIcon class="ml-1">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          aria-hidden="true"
-          role="img"
-          class="h-7 w-7"
-          preserveAspectRatio="xMidYMid meet"
-          viewBox="0 0 512 512"
-        >
-          <path
-            fill="currentColor"
-            d="M160 136v104h153.37l-52.68-52.69a16 16 0 0 1 22.62-22.62l80 80a16 16 0 0 1 0 22.62l-80 80a16 16 0 0 1-22.62-22.62L313.37 272H160v104a56.06 56.06 0 0 0 56 56h208a56.06 56.06 0 0 0 56-56V136a56.06 56.06 0 0 0-56-56H216a56.06 56.06 0 0 0-56 56ZM48 240a16 16 0 0 0 0 32h112v-32Z"
-          ></path>
-        </svg>
-      </HeroIcon>
-    </button>
     <div
-      v-else
       :class="[mobile ? 'w-32' : 'w-auto']"
       class="flex items-center px-3 font-poppins py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full"
     >
@@ -34,7 +10,7 @@
       >
         <HeroIcon class="mr-2">
           <svg
-            v-if="AUTH.account.user.app_metadata.provider === 'google'"
+            v-if="user && user.app_metadata.provider === 'google'"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             aria-hidden="true"
@@ -61,7 +37,7 @@
             ></path>
           </svg>
           <svg
-            v-else-if="AUTH.account.user.app_metadata.provider === 'github'"
+            v-else-if="user && user.app_metadata.provider === 'github'"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             aria-hidden="true"
@@ -76,7 +52,7 @@
             ></path>
           </svg>
           <svg
-            v-else-if="AUTH.account.user.app_metadata.provider === 'notion'"
+            v-else-if="user && user.app_metadata.provider === 'notion'"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             aria-hidden="true"
@@ -91,7 +67,7 @@
             ></path>
           </svg>
           <svg
-            v-else-if="AUTH.account.user.app_metadata.provider === 'gitlab'"
+            v-else-if="user && user.app_metadata.provider === 'gitlab'"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             aria-hidden="true"
@@ -130,10 +106,14 @@
             ></path>
           </svg>
         </HeroIcon>
-        <p v-if="mobile" class="truncate cursor-pointer">
-          {{ AUTH.account.user.email }}
+        <p v-if="mobile && user" class="truncate cursor-pointer">
+          {{ user.email || '' }}
         </p>
-        <HeroIcon class="wb-icon" @click.prevent.stop="supabase.out">
+        <HeroIcon
+          v-if="env.isDev()"
+          class="wb-icon"
+          @click.prevent.stop="supabase.out"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -155,26 +135,24 @@
 </template>
 
 <script setup lang="ts">
-  import { useAbsoluteStore } from '@/store/absolute'
   import { useAuthStore } from '@/store/auth'
+  import { useEnv } from '@/use/env'
   import { useSupabase } from '@/use/storage/supabase'
   import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+  import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
 
-  const ABSOLUTE = useAbsoluteStore()
   const AUTH = useAuthStore()
+  const user = computed(() => AUTH.account.user)
 
   const { t } = useI18n()
+  const env = useEnv()
   const router = useRouter()
   const supabase = useSupabase()
 
   const breakpoints = useBreakpoints(breakpointsTailwind)
   const mobile = breakpoints.greater('sm')
-
-  const onOpen = () => {
-    ABSOLUTE.auth.supabase = true
-  }
 
   const onDashboard = () => {
     router.push('/dashboard')

@@ -9,8 +9,9 @@ import { useHead } from '@vueuse/head'
 import { usePlugin } from 'better-write-plugin-core'
 import { computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { onBeforeRouteLeave } from 'vue-router'
+import { onBeforeRouteLeave, useRouter } from 'vue-router'
 import { useListener } from './listener'
+import { s } from '@/use/storage/supabase'
 
 export const useEditor = () => {
   const PROJECT = useProjectStore()
@@ -24,8 +25,11 @@ export const useEditor = () => {
   const listener = useListener()
   const { t } = useI18n()
   const { toggle } = useFullscreen()
+  const router = useRouter()
 
   const init = () => {
+    if (!s.auth.user()) router.push('/landing')
+
     onMounted(() => {
       project.onLoadProject()
     })
