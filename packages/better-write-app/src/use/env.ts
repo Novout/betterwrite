@@ -1,10 +1,16 @@
 import { AccountPlan } from 'better-write-types'
 
 export const useEnv = () => {
+  const getSentryDsn = () => {
+    return import.meta.env.VITE_SENTRY_DSN
+  }
+
+  const getProdUrl = () => {
+    return import.meta.env.VITE_BASE_URL
+  }
+
   const getCorrectLocalUrl = () => {
-    return import.meta.env.PROD
-      ? import.meta.env.VITE_BASE_URL
-      : 'http://localhost:3000'
+    return import.meta.env.PROD ? getProdUrl() : 'http://localhost:3000'
   }
 
   const projectEmpty = (): string => {
@@ -75,6 +81,8 @@ export const useEnv = () => {
     isEmptyProject,
     maxFonts,
     production,
+    getSentryDsn,
+    getProdUrl,
     getCorrectLocalUrl,
     emptyLine,
     lineBreak,
