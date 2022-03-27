@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => {
     return
   }
 
-  if(s.auth.user() && to.name === 'Landing') {
+  if (s.auth.user() && to.name === 'Landing') {
     next({ name: 'Main' })
 
     return

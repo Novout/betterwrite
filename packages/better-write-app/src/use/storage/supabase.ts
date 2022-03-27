@@ -177,6 +177,8 @@ export const useSupabase = () => {
   }
 
   const deleteProject = async (context: ProjectObject) => {
+    if (!confirm(t('toast.project.deleteAlert'))) return
+
     isLoading.value = true
 
     const { error } = await s

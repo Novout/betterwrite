@@ -4,7 +4,8 @@
     class="flex bg-theme-aside-logo-background justify-around md:justify-between items-center w-full p-2"
   >
     <img
-      class="object-contain cursor-pointer"
+      class="object-contain"
+      :class="[!s.auth.user() ? 'cursor-pointer' : '']"
       :width="props.width"
       alt="Better Write Logo"
       :src="path"
@@ -52,7 +53,7 @@
   })
 
   const onClick = () => {
-    if(s.auth.user()) return
+    if (s.auth.user()) return
 
     local.onSaveProject().then(() => {
       props.back ? router.back() : router.push('/')
