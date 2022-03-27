@@ -1,5 +1,5 @@
 <template>
-  <div v-if="project.isCreativeProject()" class="flex flex-1 items-center ml-2">
+  <div v-if="project.isCreativeProject()" class="flex items-center">
     <HeroIcon class="wb-icon" @click.prevent.stop="page.onCreatePage">
       <svg
         xmlns="http://www.w3.org/2000/svg"

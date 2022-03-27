@@ -23,10 +23,10 @@
         ></path>
       </svg>
     </HeroIcon>
-    <div class="flex items-center w-full">
+    <div class="flex justify-between items-center w-full">
       <p
         v-if="!env.isEmptyProject(PROJECT.name)"
-        class="cursor-pointer font-bold text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+        class="cursor-pointer truncate font-bold text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
         @click="graph.base()"
       >
         {{ PROJECT.nameRaw }}
