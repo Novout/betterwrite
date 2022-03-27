@@ -23,7 +23,7 @@
 		"@vueuse/integrations": "7.5.5",
 		"better-write-types": "^0.15.4",
 		"mitt": "3.0.0",
-		"pinia": "2.0.6",
+		"pinia": "2.0.12",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {
