@@ -22,7 +22,7 @@
 		"@vueuse/core": "7.5.5",
 		"@vueuse/head": "0.7.4",
 		"@vueuse/integrations": "7.5.5",
-		"@vueuse/motion": "2.0.0-beta.4",
+		"@vueuse/motion": "2.0.0-beta.12",
 		"better-write-plugin-core": "^0.15.4",
 		"better-write-types": "^0.15.4",
 		"docx": "7.2.0",
