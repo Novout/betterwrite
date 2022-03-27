@@ -13,7 +13,7 @@
       @focusout="edit = false"
       @click="emit('info')"
     >
-      {{ props.page.title }}
+      {{ props.page.entities[0]?.raw }}
     </div>
     <div class="flex items-center">
       <HeroIcon

@@ -15,23 +15,21 @@
       class="flex flex-col md:flex-row h-auto md:h-editor w-full mt-10 bg-theme-editor-creative-drafts-container-background shadow-xl"
     >
       <div
-        class="flex border-b md:border-b-0 md:border-solid md:border-r border-theme-editor-creative-drafts-container-borders bg-theme-editor-creative-drafts-container-list-background hover:bg-theme-editor-creative-drafts-container-list-background-hover active:bg-theme-editor-creative-drafts-container-list-background-active overflow-y-auto flex-col w-full md:w-72"
+        class="flex flex-col overflow-y-auto bg-theme-editor-creative-drafts-container-list-background hover:bg-theme-editor-creative-drafts-container-list-background-hover active:bg-theme-editor-creative-drafts-container-list-background-active w-full md:w-72"
       >
-        <div
-          class="flex border-b md:border-solid border-theme-editor-creative-drafts-container-borders items-center justify-center p-5 font-poppins h-20 font-semibold text-lg"
+        <h2
+          class="flex items-center justify-center p-5 font-poppins h-20 font-semibold text-lg"
         >
           {{ t('editor.drafts.chapters') }}
-        </div>
-        <div
+        </h2>
+        <p
           v-for="(element, index) in PROJECT.pages"
           :key="index"
-          class="text-center shadow cursor-pointer h-24 hover:bg-black-opacity text-lg w-full p-2 font-bold"
+          class="flex items-center justify-center py-10 w-full truncate shadow cursor-pointer hover:bg-black-opacity text-lg w-full font-bold"
           @click="onClickAside(element)"
         >
-          <p class="relative top-6 truncate">
-            {{ element.entities[0]?.raw || element.title }}
-          </p>
-        </div>
+          {{ element.entities[0]?.raw || element.title }}
+        </p>
       </div>
       <div
         class="flex border-b md:border-b-0 md:border-solid border-r-0 md:border-r border-theme-editor-creative-drafts-container-borders flex-col flex-1 w-auto p-5 overflow-y-auto"

@@ -31,7 +31,7 @@
       "
       :style="{
         minHeight: '24px',
-        whiteSpace: 'break-spaces',
+        whiteSpace: 'pre-line',
         paddingBottom: last ? '5rem' : '',
         textIndent: props.entity.type === 'paragraph' ? '2rem' : 0,
       }"

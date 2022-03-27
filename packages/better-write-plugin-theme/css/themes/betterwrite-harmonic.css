@@ -4,7 +4,7 @@
   --theme-black: #000000;
   --theme-white: #ffffff;
   --theme-background-1: #b6ceeb;
-  --theme-background-2: rgba(222, 237, 255, 0.3);
+  --theme-background-2: rgba(222, 237, 255, 0.5);
   --theme-background-3: #deedff;
   --theme-background-4: #b6ceeb;
   --theme-background-opacity-1: rgba(0, 0, 0, 0.15);
@@ -14,9 +14,9 @@
   --theme-border-absolute-1: #ffffff;
   --theme-border-absolute-2: #111827;
   --theme-border-commands-1: #000000;
-  --theme-aside-background: rgba(222, 237, 255, 0.3);
-  --theme-aside-background-hover: rgba(222, 237, 255, 0.5);
-  --theme-aside-background-active: rgba(222, 237, 255, 0.3);
+  --theme-aside-background: #b6ceeb;
+  --theme-aside-background-hover: #b6ceeb;
+  --theme-aside-background-active: #b6ceeb;
   --theme-aside-logo-background: none;
   --theme-aside-logo-text: #6a819e;
   --theme-aside-graph-lines: #6a819e;

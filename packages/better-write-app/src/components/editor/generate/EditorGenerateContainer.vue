@@ -66,7 +66,7 @@
   const props = defineProps<{
     title: string
     close: () => void
-    reverse: () => void
+    reverse?: () => void
   }>()
 
   const container = ref(null)

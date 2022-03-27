@@ -3,9 +3,9 @@
     class="flex flex-col w-full bg-theme-editor-full-background hover:bg-theme-editor-full-background-hover active:bg-theme-editor-full-background-active"
   >
     <EditorBaseHeader />
-    <section class="flex flex-col md:flex-row">
+    <section class="flex flex-col md:flex-row w-full">
       <EditorAside />
-      <main class="flex justify-center flex-1">
+      <main class="flex justify-center w-full">
         <EditorBase />
       </main>
     </section>
