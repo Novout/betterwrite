@@ -101,7 +101,7 @@ export const useSupabase = () => {
       .then(() => {
         AUTH.account.user = null
 
-        router.push('/landing')
+        router.push('/')
       })
       .finally(() => {
         isLoading.value = false

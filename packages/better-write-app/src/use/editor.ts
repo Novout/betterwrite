@@ -28,7 +28,7 @@ export const useEditor = () => {
   const router = useRouter()
 
   const init = () => {
-    if (!s.auth.user()) router.push('/landing')
+    if (!s.auth.user()) router.push('/')
 
     onMounted(() => {
       project.onLoadProject()

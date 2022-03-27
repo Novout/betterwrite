@@ -27,6 +27,7 @@
   import { setEditorLogo } from 'better-write-plugin-theme'
   import { Cycle } from 'better-write-plugin-core'
   import { useUtils } from '@/use/utils'
+  import { s } from '@/use/storage/supabase'
 
   const props = defineProps<{
     width: number
@@ -51,8 +52,10 @@
   })
 
   const onClick = () => {
+    if(s.auth.user()) return
+
     local.onSaveProject().then(() => {
-      props.back ? router.back() : router.push('/landing')
+      props.back ? router.back() : router.push('/')
     })
   }
 </script>

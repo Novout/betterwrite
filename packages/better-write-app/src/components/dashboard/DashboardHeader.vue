@@ -49,7 +49,7 @@
   const onCloseDashboard = () => {
     isLoading.value = true
 
-    router.push('/').finally(() => {
+    router.push('/editor').finally(() => {
       isLoading.value = false
     })
   }

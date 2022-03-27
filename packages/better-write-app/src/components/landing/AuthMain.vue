@@ -95,6 +95,9 @@
       </button>
     </form>
     <div
+      v-motion
+      :initial="{ opacity: 0, y: 10 }"
+      :enter="{ opacity: 1, transition: { delay: 420 } }"
       class="flex justify-center font-thin items-center w-full mt-7 text-lg border-b"
     >
       {{ t('landing.auth.integration') }}

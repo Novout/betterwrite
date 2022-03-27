@@ -140,13 +140,11 @@
   import { useSupabase } from '@/use/storage/supabase'
   import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
   import { computed } from 'vue'
-  import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
 
   const AUTH = useAuthStore()
   const user = computed(() => AUTH.account.user)
 
-  const { t } = useI18n()
   const env = useEnv()
   const router = useRouter()
   const supabase = useSupabase()

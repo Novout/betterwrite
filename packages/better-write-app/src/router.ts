@@ -1,17 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useEnv } from './use/env'
 import { s } from './use/storage/supabase'
 
 const routes = [
   {
-    name: 'Main',
+    name: 'Landing',
     path: '/',
-    component: () => import('@/pages/Editor.vue'),
+    component: () => import('@/pages/Landing.vue'),
   },
   {
-    name: 'Landing',
-    path: '/landing',
-    component: () => import('@/pages/Landing.vue'),
+    name: 'Main',
+    path: '/editor',
+    component: () => import('@/pages/Editor.vue'),
   },
   {
     name: 'Dashboard',
@@ -41,12 +40,8 @@ router.beforeEach((to, from, next) => {
     return
   }
 
-  const isOtherLoad = useEnv().initialLoad()
-
-  if (!localStorage.getItem(isOtherLoad)) {
-    localStorage.setItem(isOtherLoad, isOtherLoad)
-
-    next({ name: 'Landing' })
+  if(s.auth.user() && to.name === 'Landing') {
+    next({ name: 'Main' })
 
     return
   }

@@ -1,5 +1,5 @@
 import { useFormat } from './format'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import { useEnv } from './env'
 import { useLoggerStore } from '@/store/logger'
@@ -45,9 +45,7 @@ export const useStart = () => {
   const AUTH = useAuthStore()
 
   const route = useRoute()
-  const router = useRouter()
   const toast = useToast()
-  const env = useEnv()
   const core = useCore()
   const plugin = usePlugin()
   const { x, y } = useMouse({ type: 'page' })
