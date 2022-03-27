@@ -4,13 +4,13 @@ import vue from "@vitejs/plugin-vue"
 import vueGlobalComponent  from "unplugin-vue-components/vite"
 import { HeadlessUiResolver } from "unplugin-vue-components/resolvers"
 import vueI18n from "@intlify/vite-plugin-vue-i18n"
+import vuePages from 'vite-plugin-pages'
 import { VitePWA as vitePWA } from 'vite-plugin-pwa'
 import vitePersist from 'vite-plugin-optimize-persist'
 import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
 import viteChecker from 'vite-plugin-checker'
 import viteFonts from 'vite-plugin-fonts'
-import vitePages from 'vite-plugin-pages'
 import viteSitemap from 'vite-plugin-pages-sitemap'
 import windiCSS from 'vite-plugin-windicss'
 
@@ -24,6 +24,14 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    vuePages({
+      dirs: 'src/pages',
+      onRoutesGenerated: routes => (viteSitemap({ 
+        hostname: 'https://www.betterwrite.io/', 
+        filename: 'sitemap',
+        routes 
+      })),
+    }),
     vueI18n({
       include: resolve(__dirname, "./src/lang/**"),
       runtimeOnly: false
@@ -50,13 +58,6 @@ export default defineConfig({
     vitePersist(),
     vitePackageAccess(),
     vitePackageVersion(),
-    vitePages({
-      onRoutesGenerated: routes => (viteSitemap({ 
-        hostname: 'https://www.betterwrite.io/', 
-        filename: 'sitemap',
-        routes 
-      })),
-    }),
     vitePWA({
       base: '/',
       registerType: 'prompt',

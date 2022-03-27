@@ -2,8 +2,8 @@
   <section
     ref="container"
     v-motion
-    :initial="{ opacity: 0, y: 20 }"
-    :enter="{ opacity: 1, y: 0 }"
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1 }"
     :delay="0"
     class="flex flex-col items-start w-full md:h-auto overflow-x-hidden bg-theme-editor-pdf-preview-background shadow-xl z-30"
   >

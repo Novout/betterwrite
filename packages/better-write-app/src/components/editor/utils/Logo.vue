@@ -10,12 +10,12 @@
       :src="path"
       @click.stop.prevent="onClick"
     />
-    <p
+    <h1
       :class="[!back ? 'hidden md:flex text-lg' : 'text-xl']"
       class="font-raleway text-theme-aside-logo-text ml-3"
     >
       betterwrite<span class="text-theme-background-3 font-bold">.io</span>
-    </p>
+    </h1>
   </div>
 </template>
 
@@ -27,7 +27,6 @@
   import { setEditorLogo } from 'better-write-plugin-theme'
   import { Cycle } from 'better-write-plugin-core'
   import { useUtils } from '@/use/utils'
-  import { s } from '@/use/storage/supabase'
 
   const props = defineProps<{
     width: number

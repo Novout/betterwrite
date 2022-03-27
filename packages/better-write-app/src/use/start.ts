@@ -29,6 +29,7 @@ import { useProject } from './project'
 import { useRaw } from './raw'
 import { useScroll } from './scroll'
 import { useUtils } from './utils'
+import { VueI18nSEO } from 'better-write-localisation'
 import { useI18n } from 'vue-i18n'
 import useEmitter from './emitter'
 import {
@@ -37,7 +38,8 @@ import {
   usePageLeave,
   useTextSelection,
 } from '@vueuse/core'
-import { watch } from 'vue'
+import { computed, watch } from 'vue'
+import { useHead } from '@vueuse/head'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -54,6 +56,7 @@ export const useStart = () => {
   const utils = useUtils()
   const nav = useNavigatorLanguage()
   const { t } = useI18n()
+  const env = useEnv()
 
   // set global mouse tracking
   watch([x, y], ([_x, _y]) => {
@@ -135,9 +138,55 @@ export const useStart = () => {
       .codeToIso(lang)
   }
 
+  const head = () => {
+    useHead({
+      title: computed(() => t('seo.editor.title')),
+      meta: [
+        {
+          name: 'description',
+          content: computed(() => t('seo.editor.description')),
+        },
+        ...VueI18nSEO,
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@betterwriteio' },
+        {
+          name: 'twitter:title',
+          content: computed(() => t('seo.editor.title')),
+        },
+        {
+          name: 'twitter:description',
+          content: computed(() => t('seo.editor.description')),
+        },
+        { name: 'twitter:image', content: '/logo_default.svg' },
+        {
+          name: 'twitter:image:alt',
+          content: computed(() => t('seo.editor.alt')),
+        },
+        {
+          property: 'og:title',
+          content: computed(() => t('seo.editor.title')),
+        },
+        {
+          property: 'og:description',
+          content: computed(() => t('seo.editor.description')),
+        },
+        { property: 'og:url', content: env.getProdUrl() },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:image', content: 'logo_default.svg' },
+        {
+          property: 'og:image:alt',
+          content: computed(() => t('seo.editor.alt')),
+        },
+        { property: 'og:image:width', content: '500' },
+        { property: 'og:image:height', content: '500' },
+      ],
+    })
+  }
+
   const init = async (plugins: PluginTypes.Plugins) => {
     lang()
     auth()
+    head()
     await core.start(
       {
         ABSOLUTE: useAbsoluteStore(),

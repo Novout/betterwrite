@@ -19,10 +19,11 @@
               alt="Better Write Logo"
               src="/logo_default.svg"
             />
-            <span
+            <h1
               class="ml-5 relative top-3 sm:top-4 lg:top-6 md:ml-10 text-3xl sm:text-4xl lg:text-5xl font-bold"
-              >Better Write.</span
             >
+              Better Write.
+            </h1>
           </div>
           <v-typical
             v-motion
