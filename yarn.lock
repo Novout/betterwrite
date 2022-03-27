@@ -3034,10 +3034,10 @@
     vscode-languageserver-textdocument "^1.0.1"
     vscode-uri "^2.1.2"
 
-"@vuelidate/core@2.0.0-alpha.32":
-  version "2.0.0-alpha.32"
-  resolved "https://registry.yarnpkg.com/@vuelidate/core/-/core-2.0.0-alpha.32.tgz#1ad6f4e6480a3fa061d5c0fe3d26f7c7b23e55dd"
-  integrity sha512-bB5YJzorKZyRm+R4d3svGChwpHjPw+ECOLwlKfvKJIuyC+y25Wf7NGbr/9odZggoGTi/rKPUYXhpbp5RXb4ssw==
+"@vuelidate/core@2.0.0-alpha.38":
+  version "2.0.0-alpha.38"
+  resolved "https://registry.yarnpkg.com/@vuelidate/core/-/core-2.0.0-alpha.38.tgz#6e4abd96facf3d29698a7f75896cd6fb367142fb"
+  integrity sha512-hRA+SXXXl7nJVGOSTUWRfpPCsqCR7zChKl1evzdsfp/jhNz7S7LWGh10a5UnEcXiBJvNj42cltfRPh8kqE1TVA==
   dependencies:
     vue-demi "^0.12.0"
 
