@@ -145,7 +145,7 @@ export const PluginPDFSet = (
         }
       })
 
-      return value
+      return value || b
     }
 
     const entityAlignment = (b: string): string => {
@@ -179,7 +179,7 @@ export const PluginPDFSet = (
         }
       })
 
-      return value
+      return value || b
     }
 
     return {
@@ -583,13 +583,9 @@ export const PluginPDFSet = (
         ),
         pageMargins: [
           stores.PDF.styles.base.pageMargins.left,
-          stores.PDF.styles.base.background.data
-            ? 0
-            : stores.PDF.styles.base.pageMargins.top,
+          stores.PDF.styles.base.pageMargins.top,
           stores.PDF.styles.base.pageMargins.right,
-          stores.PDF.styles.base.background.data
-            ? 0
-            : stores.PDF.styles.base.pageMargins.bottom,
+          stores.PDF.styles.base.pageMargins.bottom,
         ],
       }
     }
@@ -1032,6 +1028,8 @@ export const PluginPDFSet = (
       .download(hooks.project.utils().exportFullName('pdf'))
       .then(() => {
         toast.success(hooks.i18n.t('toast.pdf.create'))
+
+        hooks.emitter.emit('pdf-preview-exists')
       })
       .catch(() => {
         toast(hooks.i18n.t('toast.pdf.error'))
