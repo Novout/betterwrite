@@ -1,6 +1,15 @@
-# Changelog (26/03/2022)
+# Changelog (27/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.4
+
+* **chore(seo):** og metatags [6292fc2]
+* **fix(editor):** typo [a94789f]
+* **style(editor):** reactivity inserts and headers [7c730b4]
+* **feat(pdf):** new options in preview and generate [0db093d]
+* **chore(dashboard):** project delete toast [e80fabf]
+* **chore(app):** routes redirect [b5ee591]
 
 ### v0.15.3
 
