@@ -25,7 +25,7 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@supabase/supabase-js": "1.29.1",
+		"@supabase/supabase-js": "1.33.0",
 		"pinia": "2.0.6",
 		"vue-demi": "latest"
 	},
