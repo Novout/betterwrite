@@ -632,6 +632,7 @@ export const useRaw = () => {
           )
             return
 
+          /*
           // http
           if (content.match(useUtils().regex().links())) {
             const fin = raw.split(useUtils().regex().links())
@@ -643,13 +644,16 @@ export const useRaw = () => {
                   link: str,
                   decoration: 'underline',
                 })
+                set = false
               } else {
                 final.push(str)
+                set = false
               }
             })
-
+            
             return
           }
+          */
 
           final.push(content)
         })
