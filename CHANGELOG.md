@@ -1,6 +1,12 @@
-# Changelog (27/03/2022)
+# Changelog (28/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.5
+
+* **chore(editor):** configure pdf in header [4b86154]
+* **fix(supabase):** profile logic and store calls [b153e28]
+* **chore(pwa):** maskable icons [d6d388c]
 
 ### v0.15.4
 
