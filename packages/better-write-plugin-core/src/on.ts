@@ -273,12 +273,24 @@ export const externals = () => {
     })
   }
 
+  const PluginTxtGenerate = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-txt-generate', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
     PluginPDFGenerate,
     PluginPDFInit,
     PluginDocxGenerate,
+    PluginTxtGenerate,
   }
 }
 

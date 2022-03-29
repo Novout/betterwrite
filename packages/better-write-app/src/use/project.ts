@@ -23,6 +23,7 @@ import { useEntity } from './entity'
 import { usePlugin } from 'better-write-plugin-core'
 import { useBreakpoint } from './breakpoint'
 import { useFileSystemAccess } from '@vueuse/core'
+import { useRaw } from './raw'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -38,6 +39,7 @@ export const useProject = () => {
   const entity = useEntity()
   const { isLoading } = useNProgress()
   const env = useEnv()
+  const raw = useRaw()
   const plugin = usePlugin()
   const breakpoints = useBreakpoint()
   const { t } = i18n.global
@@ -397,6 +399,27 @@ export const useProject = () => {
       })
     }
 
+    const getOnlyRaw = () => {
+      const arr: string[] = []
+
+      PROJECT.pages.forEach((page) => {
+        const value = page.entities
+          .filter((ent) => isValidType(ent))
+          .reduce((conc, ent) => {
+            return (
+              conc +
+              raw.v2().normalize(ent.raw) +
+              (entity.utils().isHeading(ent.type) ? '\n\n' : '\n')
+            )
+          }, '')
+
+        arr.push(value)
+        arr.push('\n')
+      })
+
+      return arr
+    }
+
     const exportName = (extension: string) => {
       return `${PROJECT.name}.${extension}`
     }
@@ -409,6 +432,7 @@ export const useProject = () => {
       resetAllVisual,
       isValidType,
       getWords,
+      getOnlyRaw,
       getChapterLetters,
       getChapterAllCharacters,
       getChapterImpact,

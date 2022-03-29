@@ -200,10 +200,14 @@ export const useSupabase = () => {
   const loadProject = async (context: ProjectObject) => {
     AUTH.account.project_id_activity = context.id || null
 
+    isLoading.value = true
+
     storage.normalize().then(() => {
       project.onLoadProject(context, false).then(() => {
         local.onSaveProject(false).then(() => {
-          router.push('/')
+          router.push('/editor').finally(() => {
+            isLoading.value = false
+          })
         })
       })
     })

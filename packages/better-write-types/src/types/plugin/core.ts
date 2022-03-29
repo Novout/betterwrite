@@ -26,6 +26,7 @@ export type PluginEmitterName =
   | 'plugin-pdf-preview'
   | 'plugin-pdf-init'
   | 'plugin-docx-generate'
+  | 'plugin-txt-generate'
   | 'plugin-project-page-new'
   | 'plugin-project-page-delete'
   | 'plugin-project-page-swap'

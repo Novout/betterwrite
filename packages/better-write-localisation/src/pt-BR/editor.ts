@@ -100,6 +100,9 @@ export default {
       generate: 'Gerar (.PDF)',
       configuration: 'Configurar (.PDF)',
     },
+    txt: {
+      generate: 'Gerar (.TXT)',
+    },
     docx: {
       generate: 'Gerar (.DOCX)',
     },

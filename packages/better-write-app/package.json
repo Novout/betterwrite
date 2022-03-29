@@ -38,6 +38,7 @@
     "better-write-localisation": "^0.15.5",
     "better-write-plugin-core": "^0.15.5",
     "better-write-plugin-docx": "^0.15.5",
+    "better-write-plugin-txt": "^0.15.5",
     "better-write-plugin-logger": "^0.15.5",
     "better-write-plugin-pdf": "^0.15.5",
     "better-write-plugin-theme": "^0.15.5",

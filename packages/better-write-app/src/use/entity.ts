@@ -108,6 +108,14 @@ export const useEntity = () => {
       )
     }
 
+    const isHeading = (type: EntityType) => {
+      return (
+        type === 'heading-one' ||
+        type === 'heading-two' ||
+        type === 'heading-three'
+      )
+    }
+
     const isFixedRaw = (raw: string) => {
       return (
         raw === env.emptyLine() ||
@@ -127,6 +135,7 @@ export const useEntity = () => {
       isPageBreak,
       isLineBreak,
       isText,
+      isHeading,
       isFixedRaw,
     }
   }
