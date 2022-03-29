@@ -1,6 +1,12 @@
-# Changelog (28/03/2022)
+# Changelog (29/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.6
+
+* **feat(generator):** .txt support [fc8bac4]
+* **fix(pdf):** disallow links [b9653b0]
+* **fix(docx):** support italics and bold [83e8e7d]
 
 ### v0.15.5
 
