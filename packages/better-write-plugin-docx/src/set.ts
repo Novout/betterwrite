@@ -3,6 +3,9 @@ import { saveAs } from 'file-saver'
 import { Entity, PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 import { useNProgress } from '@vueuse/integrations'
+import { ContextState } from 'better-write-types'
+
+type DocxPurge = Array<docx.ExternalHyperlink | docx.TextRun>
 
 export const PluginDocxSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -10,6 +13,89 @@ export const PluginDocxSet = (
   hooks: PluginTypes.PluginHooks
 ) => {
   const { isLoading } = useNProgress()
+
+  const purge = (raw: string): DocxPurge => {
+    const final: DocxPurge = []
+    let set: false | 'bold' | 'italic' = false
+
+    const rest = raw.split(hooks.utils.regex().htmlTags())
+
+    rest.forEach((content: string) => {
+      // italic
+      if (set === 'italic') {
+        final.push(
+          new docx.TextRun({
+            text: content,
+            italics: true,
+          })
+        )
+        set = false
+        return
+      }
+
+      if (content === hooks.raw.v2().html().italic().open()) {
+        set = 'italic'
+        return
+      }
+
+      if (set === 'bold') {
+        final.push(
+          new docx.TextRun({
+            text: content,
+            bold: true,
+          })
+        )
+        set = false
+        return
+      }
+
+      // bold
+      if (content === hooks.raw.v2().html().bold().open()) {
+        set = 'bold'
+        return
+      }
+
+      if (
+        content === hooks.raw.v2().html().italic().close() ||
+        content === hooks.raw.v2().html().bold().close()
+      )
+        return
+
+      /*
+      // http
+      if (content.match(hooks.utils.regex().links())) {
+        const fin = raw.split(hooks.utils.regex().links())
+
+        fin.forEach((str: string) => {
+          if (str.match(hooks.utils.regex().links())) {
+            final.push(new docx.ExternalHyperlink({
+              children: [
+                new docx.TextRun({
+                  text: str.replace('http://', '').replace('https://', '')
+                }),
+              ],
+              link: str,
+            }))
+          } else {
+            final.push(new docx.TextRun({
+              text: str
+            }))
+          }
+        })
+
+        return
+      }
+      */
+
+      final.push(
+        new docx.TextRun({
+          text: content,
+        })
+      )
+    })
+
+    return final
+  }
 
   const create = () => {
     const properties = (): docx.ISectionPropertiesOptions => {
@@ -115,7 +201,7 @@ export const PluginDocxSet = (
         if (hooks.env.emptyLine() === raw) return lineBreak()
 
         return new docx.Paragraph({
-          text: '                  ' + raw,
+          children: purge(raw),
           alignment: docx.AlignmentType.JUSTIFIED,
         })
       }
@@ -150,7 +236,7 @@ export const PluginDocxSet = (
     const content = () => {
       const arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents> = []
 
-      stores.PROJECT.pages.forEach((page) => {
+      stores.PROJECT.pages.forEach((page: ContextState) => {
         page.entities.forEach((entity: Entity) => {
           switch (entity.type) {
             case 'paragraph':
