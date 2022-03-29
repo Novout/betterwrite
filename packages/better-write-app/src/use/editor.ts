@@ -12,10 +12,12 @@ import { useI18n } from 'vue-i18n'
 import { onBeforeRouteLeave, useRouter } from 'vue-router'
 import { useListener } from './listener'
 import { s } from '@/use/storage/supabase'
+import { useAuthStore } from '@/store/auth'
 
 export const useEditor = () => {
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
+  const AUTH = useAuthStore()
 
   const env = useEnv()
   const project = useProject()
@@ -28,7 +30,7 @@ export const useEditor = () => {
   const router = useRouter()
 
   const init = () => {
-    if (!s.auth.user()) router.push('/')
+    if (!AUTH.account.user) router.push('/')
 
     onMounted(() => {
       project.onLoadProject()

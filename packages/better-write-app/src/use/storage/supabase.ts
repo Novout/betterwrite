@@ -210,7 +210,10 @@ export const useSupabase = () => {
   }
 
   const getProfile = async () => {
-    const { data: exists } = await s.from('profiles')
+    const { data: exists } = await s
+      .from('profiles')
+      .select()
+      .eq('id', AUTH.account.user!.id)
 
     // @ts-ignore
     const profile = exists[0]
@@ -218,7 +221,7 @@ export const useSupabase = () => {
     if (!profile) {
       const { data: d, error } = await s.from('profiles').upsert(
         {
-          id: s.auth.user()!.id,
+          id: AUTH.account.user!.id,
           created_at_day: format.actually(),
         },
         { onConflict: 'id' }

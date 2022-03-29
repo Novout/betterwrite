@@ -1,6 +1,5 @@
 import { useFormat } from './format'
 import { useRoute } from 'vue-router'
-import { useToast } from 'vue-toastification'
 import { useEnv } from './env'
 import { useLoggerStore } from '@/store/logger'
 import { useAuthStore } from '@/store/auth'
@@ -38,6 +37,8 @@ import {
   usePageLeave,
   useTextSelection,
 } from '@vueuse/core'
+import { s } from '@/use/storage/supabase'
+import { Session } from '@supabase/supabase-js'
 import { computed, watch } from 'vue'
 import { useHead } from '@vueuse/head'
 
@@ -47,7 +48,6 @@ export const useStart = () => {
   const AUTH = useAuthStore()
 
   const route = useRoute()
-  const toast = useToast()
   const core = useCore()
   const plugin = usePlugin()
   const { x, y } = useMouse({ type: 'page' })
@@ -87,7 +87,7 @@ export const useStart = () => {
     ABSOLUTE.entity.menu = false
   })
 
-  const auth = () => {
+  const dropbox = () => {
     if (route.fullPath.includes('access_token')) {
       let str = ''
       let firstQuery = false
@@ -99,8 +99,6 @@ export const useStart = () => {
 
         if (finish) {
           AUTH.dropbox.accessToken = str
-
-          toast.success(t('toast.dropbox.load'))
 
           return
         }
@@ -183,10 +181,19 @@ export const useStart = () => {
     })
   }
 
+  const supabase = () => {
+    AUTH.account.user = s.auth.user()
+
+    s.auth.onAuthStateChange((_, session) => {
+      AUTH.account.user = (session as Session)?.user || null
+    })
+  }
+
   const init = async (plugins: PluginTypes.Plugins) => {
     lang()
-    auth()
+    dropbox()
     head()
+    supabase()
     await core.start(
       {
         ABSOLUTE: useAbsoluteStore(),
