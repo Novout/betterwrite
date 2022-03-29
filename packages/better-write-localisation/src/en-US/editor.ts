@@ -98,7 +98,7 @@ export default {
     pdf: {
       preview: 'Preview (.PDF)',
       generate: 'Generate (.PDF)',
-      configuration: 'Configure',
+      configuration: 'Configure (.PDF)',
     },
     docx: {
       generate: 'Generate (.DOCX)',
