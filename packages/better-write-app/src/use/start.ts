@@ -155,7 +155,7 @@ export const useStart = () => {
           name: 'twitter:description',
           content: computed(() => t('seo.editor.description')),
         },
-        { name: 'twitter:image', content: '/logo_default.svg' },
+        { name: 'twitter:image', content: env.getProdUrl() + '/logo.png' },
         {
           name: 'twitter:image:alt',
           content: computed(() => t('seo.editor.alt')),
@@ -170,7 +170,7 @@ export const useStart = () => {
         },
         { property: 'og:url', content: env.getProdUrl() },
         { property: 'og:type', content: 'website' },
-        { property: 'og:image', content: 'logo_default.svg' },
+        { property: 'og:image', content: env.getProdUrl() + '/logo.png' },
         {
           property: 'og:image:alt',
           content: computed(() => t('seo.editor.alt')),
