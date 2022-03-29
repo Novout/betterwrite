@@ -77,7 +77,7 @@
     useSpeechRecognition,
   } from '@vueuse/core'
   import { VueI18nAllISO } from 'better-write-localisation'
-  import { computed, ref, watch } from 'vue'
+  import { computed, onMounted, ref, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
 
@@ -99,6 +99,14 @@
   const id = computed(() => EDITOR.actives.entity.index)
 
   const { isListening, isSupported, stop, result, start } = speech
+
+  onMounted(() => {
+    if (!isSupported) {
+      toast(t('toast.generics.supported'))
+
+      ABSOLUTE.tools.speechRecognition = false
+    }
+  })
 
   const onClose = () => {
     onStop()
