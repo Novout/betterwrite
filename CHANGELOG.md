@@ -2,6 +2,11 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.15.7
+
+* **chore(seo):** prerendering seo [485a8af]
+* **fix(editor):** speech supported validation [a1e0838]
+
 ### v0.15.6
 
 * **feat(generator):** .txt support [fc8bac4]
