@@ -402,7 +402,7 @@ export default {
     statistics: {
       global: 'Global',
       characters: 'Caracteres',
-      impact: 'Impacto por Capítulo',
+      impact: 'Tempo de Leitura Estimado',
       letters: 'Letras',
       words: 'Palavras',
       repeated: 'Palavras Repetidas',

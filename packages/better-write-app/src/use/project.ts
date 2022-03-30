@@ -269,7 +269,11 @@ export const useProject = () => {
 
     const getChapterAllCharacters = (page: ContextState): number => {
       return page.entities.reduce(
-        (sum, val) => sum + (isValidType(val) ? val.raw.length : 0),
+        (sum, val) =>
+          sum +
+          (isValidType(val) && raw.v2().normalize(val.raw)
+            ? raw.v2().normalize(val.raw)!.length
+            : 0),
         0
       )
     }
@@ -358,7 +362,7 @@ export const useProject = () => {
     const getWordOccurrences = (page: ContextState, min: number = 0) => {
       const map = page.entities
         .filter((entity) => isValidType(entity))
-        .reduce((map, value) => {
+        .reduce((map: any, value: any) => {
           const normalize = raw.v2().normalize(value.raw)
 
           if (!normalize) return

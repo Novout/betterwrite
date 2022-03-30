@@ -13,7 +13,7 @@
         </h2>
         <InputSelect
           v-model="chapter"
-          :arr="PROJECT.pages.map((page) => page.title)"
+          :arr="PROJECT.pages.map((page) => page.entities[0].raw)"
         />
       </div>
       <div class="flex">
@@ -57,7 +57,7 @@
 
   const PROJECT = useProjectStore()
 
-  const chapter = ref<string>(PROJECT.pages[0].title)
+  const chapter = ref<string>(PROJECT.pages[0].entities[0].raw)
   const project = useProject()
   const { t } = useI18n()
 
@@ -77,7 +77,7 @@
 
   const onSet = () => {
     const target = PROJECT.pages.filter(
-      (page) => page.title === chapter.value
+      (page) => page.entities[0].raw === chapter.value
     )[0]
 
     const result = project.utils().getWordOccurrences(target, state.min)
