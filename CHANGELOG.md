@@ -1,6 +1,13 @@
-# Changelog (29/03/2022)
+# Changelog (30/03/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.8
+
+* **fix(editor):** chapter impact better values [64ae38c]
+* **fix(editor):** typos [28c728e]
+* **fix(landing):** typos [96b0dd9]
+* **chore:** seo enhancements [94550be]
 
 ### v0.15.7
 
