@@ -2,7 +2,7 @@
   <div class="flex px-2 flex-col w-full">
     <HeroIcon
       v-if="PROJECT.type === 'creative'"
-      class="relative right-1 wb-icon w-9 h-9 mb-5"
+      class="relative right-1 wb-icon w-12 h-12 md:(w-9 h-9) mb-5"
       @click.prevent.stop="ABSOLUTE.aside = false"
     >
       <svg

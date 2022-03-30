@@ -128,12 +128,13 @@
     onReset()
   })
 
+  // mobile contextmenu open
   watchDebounced(
     pressed,
     (_presset) => {
       if (_presset && mouseType.value === 'touch') onSetContextMenu()
     },
-    { debounce: 250 }
+    { debounce: 350 }
   )
 
   watch(focused, (_focused) => {

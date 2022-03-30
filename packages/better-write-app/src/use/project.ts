@@ -359,16 +359,20 @@ export const useProject = () => {
       const map = page.entities
         .filter((entity) => isValidType(entity))
         .reduce((map, value) => {
-          value.raw.split(' ').forEach((raw) => {
-            const normalize = raw
+          const normalize = raw.v2().normalize(value.raw)
+
+          if (!normalize) return
+
+          normalize.split(' ').forEach((r) => {
+            const replaces = r
               .trim()
               .toLowerCase()
               .replace(/[~`!\“\”@#$%^&*()+={}\[\];:\'\"<>.,\/\\\?-_]/g, '')
               .replaceAll('...', '')
 
-            if (normalize.length <= min) return
+            if (replaces.length <= min) return
 
-            map.set(normalize, (map.get(normalize) || 0) + 1)
+            map.set(replaces, (map.get(replaces) || 0) + 1)
           })
 
           return map

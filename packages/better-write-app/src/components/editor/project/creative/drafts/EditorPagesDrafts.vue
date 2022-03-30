@@ -126,7 +126,9 @@
           >
             <h2>{{ t('editor.drafts.statistics.longest') }}</h2>
             <p class="mt-2 w-full text-sm text-justify">
-              {{ project.utils().getParagraphLongest(page) }}
+              {{
+                raw.v2().normalize(project.utils().getParagraphLongest(page))
+              }}
             </p>
           </div>
         </div>
@@ -147,6 +149,7 @@
   import { useContextStore } from '@/store/context'
   import { useNProgress } from '@vueuse/integrations'
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useRaw } from '@/use/raw'
 
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
@@ -157,6 +160,7 @@
   const creative = useCreativeType()
   const emitter = useEmitter()
   const storage = useStorage()
+  const raw = useRaw()
   const { isLoading } = useNProgress()
 
   const page = ref<ContextState>(PROJECT.pages[0])

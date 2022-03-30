@@ -8,7 +8,7 @@
       :class="[n ? 'text-theme-icon-active' : '']"
     >
       <div class="flex items-center pointer-events-none">
-        <HeroIcon class="h-8 w-8 md:(w-6 h-6) mr-0 md:mr-1">
+        <HeroIcon class="h-9 w-9 md:(w-7 h-7) mr-0 md:mr-1">
           <slot name="icon" />
         </HeroIcon>
         <p class="hidden md:flex">

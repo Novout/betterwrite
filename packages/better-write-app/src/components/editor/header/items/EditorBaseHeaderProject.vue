@@ -50,8 +50,10 @@
         :text="t('editor.bar.supabase.save')"
         @action="onSaveProjectSupabase"
       />
-      <EditorHeaderItemDiv />
+      <EditorHeaderItemDiv v-if="env.isDev()" />
+      <!-- TODO: Future PRO Plan Feature -->
       <EditorHeaderItem
+        v-if="env.isDev()"
         :text="t('editor.bar.dropbox.connect')"
         @action="dropbox.connect"
       >
@@ -75,7 +77,7 @@
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
-        v-if="AUTH.dropbox.accessToken"
+        v-if="AUTH.dropbox.accessToken && env.isDev()"
         :text="t('editor.bar.dropbox.load')"
         @action="dropbox.load"
       >
@@ -99,7 +101,7 @@
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
-        v-if="AUTH.dropbox.accessToken"
+        v-if="AUTH.dropbox.accessToken && env.isDev()"
         :text="t('editor.bar.dropbox.save')"
         @action="dropbox.save"
       >

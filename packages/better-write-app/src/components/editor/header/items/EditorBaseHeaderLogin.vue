@@ -2,7 +2,7 @@
   <div>
     <div
       :class="[mobile ? 'w-32' : 'w-auto']"
-      class="flex items-center px-3 font-poppins py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full"
+      class="flex items-center px-3 font-poppins py-2 sm:py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full"
     >
       <button
         class="flex items-center truncate"
