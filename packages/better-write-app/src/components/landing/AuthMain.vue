@@ -24,15 +24,15 @@
       <input
         v-model="user.email"
         type="email"
-        placeholder="Email"
-        class="w-full p-3 rounded bg-black-opacity"
+        :placeholder="t('landing.auth.emailPlaceholder')"
+        class="w-full p-3 rounded bg-gray-900"
       />
       <input
         v-model="user.password"
         type="password"
-        autocomplete="current-password"
-        placeholder="Senha"
-        class="w-full p-3 rounded bg-black-opacity"
+        autocomplete="on"
+        :placeholder="t('landing.auth.passwordPlaceholder')"
+        class="w-full p-3 rounded bg-gray-900"
       />
       <div
         v-for="error of v.$errors"

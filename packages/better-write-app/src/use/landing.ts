@@ -17,7 +17,7 @@ export const useLanding = () => {
   onMounted(() => {
     document.body.removeAttribute('class')
 
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflowX = 'hidden'
   })
 
   useHead({
@@ -45,7 +45,7 @@ export const useLanding = () => {
 
     router.push('/editor').finally(() => {
       // for common reactivity in other routes
-      document.body.style.overflow = 'auto'
+      document.body.style.overflowX = 'auto'
 
       isLoading.value = false
     })

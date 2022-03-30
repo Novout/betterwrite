@@ -19,7 +19,7 @@ export const useWebGL = () => {
   const _cloudParticles: any = []
   const meshArray: any = []
 
-  const { t, getLocaleMessage, locale } = useI18n()
+  const { getLocaleMessage, locale } = useI18n()
 
   const init = () => {
     onMounted(() => {
@@ -83,12 +83,14 @@ export const useWebGL = () => {
         })
       }
 
+      const setCamera = () => {
+        renderer.setSize(document.body.offsetWidth, document.body.offsetHeight)
+        camera.aspect = document.body.offsetWidth / document.body.offsetHeight
+        camera.updateProjectionMatrix()
+      }
+
       const contextResize = () => {
-        useEventListener('resize', () => {
-          renderer.setSize(window.innerWidth, window.innerHeight)
-          camera.aspect = window.innerWidth / window.innerHeight
-          camera.updateProjectionMatrix()
-        })
+        useEventListener('resize', setCamera)
       }
 
       const createLight = () => {
@@ -177,6 +179,10 @@ export const useWebGL = () => {
         contextResize()
         render().then(() => {
           isLoaded.value = true
+
+          setTimeout(() => {
+            setCamera()
+          }, 0)
         })
       })
     })

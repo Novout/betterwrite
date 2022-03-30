@@ -1,7 +1,9 @@
 export default {
   auth: {
     email: 'Insira um email válido!',
+    emailPlaceholder: 'Email...',
     password: 'A senha precisa ter pelo menos 7 (sete) caracteres!',
+    passwordPlaceholder: 'Senha...',
     verification: 'Código de Acesso enviado para o seu email!',
     integration: 'ou entre com sua conta do...',
   },

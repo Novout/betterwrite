@@ -1,7 +1,9 @@
 export default {
   auth: {
     email: 'Enter a valid email!',
+    emailPlaceholder: 'Email...',
     password: 'The password must be at least 7 (seven) characters long!',
+    passwordPlaceholder: 'Senha...',
     verification: 'Access Code sent to your email!',
     integration: 'or log in with your account...',
   },
@@ -26,25 +28,15 @@ all types of locomotion.`,
       `      — Sorry for the arrogance, I can
 repay satisfactorily in other circumstances.`,
       `      What we have left will eventually break the promising future.`,
-      `      The imbroglio cannot be resolved. THE
+      `      The problem cannot be resolved. THE
 complacency of those involved in the discussion was dissolved
 by sheer individualistic hatr.`,
-      `I started to chat,
-Suffocating the destitute,
-I learned to fail
-Understanding improvisation,
-I held to save,
-Fainting on auspice.`,
       `      Write better or better write?`,
       `      Creativity is salvation from the ostracism of everyday life.`,
       `      — Music for my ears! Victory Unison!`,
       `      — The passage is right there! We will!`,
       `      Kino appeared in the corner, at a glance, more than enough
 for Linea to accept the loss.`,
-      `In the last effort,
-I noticed the insolence,
-Receiving painful love,
-I accepted the numbness.`,
       `      Tense vibe. Running against everything, virtue had no doubts
 who is really on the right side.`,
     ],
