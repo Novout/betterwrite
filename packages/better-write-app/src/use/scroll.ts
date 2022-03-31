@@ -61,5 +61,23 @@ export const useScroll = () => {
     ;(scr as HTMLElement).scrollIntoView()
   }
 
-  return { force, entity, to }
+  const editor = () => {
+    const get = () => {
+      const doc = document.querySelector('#edit')
+
+      return doc?.scrollTop || 0
+    }
+
+    const set = (value: number) => {
+      const doc = document.querySelector('#edit')
+
+      if(!doc) return
+
+      doc.scrollTop = value
+    }
+
+    return { get, set }
+  }
+
+  return { force, entity, to, editor }
 }

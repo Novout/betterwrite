@@ -170,6 +170,8 @@
   --theme-editor-dashboard-background-item: #3a465a;
   --theme-editor-dashboard-background-card: #111827;
   --theme-editor-dashboard-text: #ffffff;
+  --theme-editor-render-finder-text: #ffffff;
+  --theme-editor-render-finder-background: rgba(0, 0, 0, 0.5);
   --theme-text-1: #e5e7eb;
   --theme-text-2: #d1d5db;
   --theme-text-3: #4b5563;

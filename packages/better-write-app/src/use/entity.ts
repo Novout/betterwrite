@@ -12,11 +12,13 @@ import { useFactory } from './factory'
 import { useStorage } from './storage/storage'
 import { useAbsoluteStore } from '@/store/absolute'
 import { useRaw } from './raw'
+import { useExternalsStore } from '@/store/externals'
 
 export const useEntity = () => {
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
   const ABSOLUTE = useAbsoluteStore()
+  const EXTERNALS = useExternalsStore()
 
   const env = useEnv()
   const raw = useRaw()
@@ -190,6 +192,8 @@ export const useEntity = () => {
       fstate.actuallyLetterRaw = ''
       fstate.maxLetterCounter = 0
 
+      EXTERNALS.finder.value = fstate.entry
+
       pages.value.forEach((context: ContextState) => {
         context.entities.forEach((entity: Entity) => {
           if (!fstate.entry) return
@@ -215,6 +219,8 @@ export const useEntity = () => {
       const entityIndex = PROJECT.pages[pageIndex].entities.indexOf(
         object.entity
       )
+
+      EXTERNALS.finder.entityFocus = entityIndex
 
       storage.normalize().then(() => {
         onGo(`entity-${entityIndex}`, object.page)

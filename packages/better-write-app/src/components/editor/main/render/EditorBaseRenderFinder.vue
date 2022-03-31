@@ -9,7 +9,7 @@
     :class="[project.isBlankProject() ? 'pt-28' : '']"
     class="flex wb-edit flex-col w-full overflow-y-auto overflow-x-hidden"
   >
-    <EditorEntityDefaultInput
+    <EditorEntityFinderInput
       v-for="(element, index) in CONTEXT.entities"
       :id="`entity-${String(index)}`"
       :key="index"
@@ -21,13 +21,10 @@
 <script lang="ts" setup>
   import { useProject } from '@/use/project'
   import { useContextStore } from '@/store/context'
-  import { onMounted, ref, watch } from 'vue'
-  import { useScroll as useScr } from '@vueuse/core'
+  import { ref, watch } from 'vue'
+  import { useScroll } from '@vueuse/core'
   import { useAbsoluteStore } from '@/store/absolute'
-import { useScroll } from '@/use/scroll'
-import { useExternalsStore } from '@/store/externals'
 
-  const EXTERNALS = useExternalsStore()
   const CONTEXT = useContextStore()
   const ABSOLUTE = useAbsoluteStore()
 
@@ -35,18 +32,9 @@ import { useExternalsStore } from '@/store/externals'
 
   const editor = ref<HTMLElement | null>(null)
 
-  const scr = useScr(editor as any)
-  const scroll = useScroll()
+  const scroll = useScroll(editor as any)
 
-  watch(scr.isScrolling, () => {
+  watch(scroll.isScrolling, () => {
     ABSOLUTE.entity.menu = false
-  })
-
-  onMounted(() => {
-    if(EXTERNALS.finder.closeFinder) {
-      scroll.entity(EXTERNALS.finder.entityFocus, 'center')
-
-      EXTERNALS.finder.closeFinder = false
-    }
   })
 </script>

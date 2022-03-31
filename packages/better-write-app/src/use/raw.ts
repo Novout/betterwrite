@@ -7,6 +7,7 @@ import {
 } from 'better-write-types'
 import { useClipboard } from '@vueuse/core'
 import { useUtils } from './utils'
+import { useExternalsStore } from '@/store/externals'
 
 export const bold = () => {
   const open = () => {
@@ -45,6 +46,8 @@ export const link = () => {
 }
 
 export const useRaw = () => {
+  const EXTERNALS = useExternalsStore()
+
   const v1 = () => {
     const convert = (entity: Entity) => {
       let final = ''
@@ -291,7 +294,27 @@ export const useRaw = () => {
         return { open, close, length, item }
       }
 
-      return { insert, italic, bold, error, correct }
+      const finder = () => {
+        const replacer = (raw: string, target: string) => {
+          return raw.replaceAll(target, item(target))
+        }
+
+        const open = () => {
+          return '<span class="text-theme-editor-render-finder-text bg-theme-editor-render-finder-background">'
+        }
+
+        const close = () => {
+          return '</span>'
+        }
+
+        const item = (content: string) => {
+          return open() + content + close()
+        }
+
+        return { replacer, open, close, item }
+      }
+
+      return { insert, italic, bold, error, correct, finder }
     }
 
     const style = (entity: Entity, style: any) => {
@@ -300,43 +323,21 @@ export const useRaw = () => {
         entity.type === 'paragraph'
           ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
           : '',
-        entity.type === 'paragraph' ? style.paragraph.fontSize : '',
-        entity.type === 'paragraph' ? style.paragraph.fontFamily : '',
-        entity.type === 'paragraph' ? style.paragraph.fontColor : '',
-        entity.type === 'paragraph' ? style.paragraph.fontWeight : '',
-
         entity.type === 'heading-one'
           ? 'text-center text-2xl pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'
           : '',
-        entity.type === 'heading-one' ? style.heading.one.fontSize : '',
-        entity.type === 'heading-one' ? style.heading.one.fontFamily : '',
-        entity.type === 'heading-one' ? style.heading.one.fontColor : '',
-        entity.type === 'heading-one' ? style.heading.one.fontWeight : '',
-
         entity.type === 'heading-two'
-          ? 'text-center pb-3 pt-8 text-theme-editor-entity-heading-two hover:text-theme-editor-entity-heading-two-hover active:text-theme-editor-entity-heading-two-active'
+          ? 'text-center text-xl pb-3 pt-8 text-theme-editor-entity-heading-two hover:text-theme-editor-entity-heading-two-hover active:text-theme-editor-entity-heading-two-active'
           : '',
-        entity.type === 'heading-two' ? style.heading.two.fontSize : '',
-        entity.type === 'heading-two' ? style.heading.two.fontFamily : '',
-        entity.type === 'heading-two' ? style.heading.two.fontColor : '',
-        entity.type === 'heading-two' ? style.heading.two.fontWeight : '',
-
         entity.type === 'heading-three'
-          ? 'text-center pb-2 pt-5 text-theme-editor-entity-heading-three hover:text-theme-editor-entity-heading-three-hover active:text-theme-editor-entity-heading-three-active'
+          ? 'text-center text-lg pb-2 pt-5 text-theme-editor-entity-heading-three hover:text-theme-editor-entity-heading-three-hover active:text-theme-editor-entity-heading-three-active'
           : '',
-        entity.type === 'heading-three' ? style.heading.three.fontSize : '',
-        entity.type === 'heading-three' ? style.heading.three.fontFamily : '',
-        entity.type === 'heading-three' ? style.heading.three.fontColor : '',
-        entity.type === 'heading-three' ? style.heading.three.fontWeight : '',
-
         entity.type === 'page-break'
           ? 'cursor-default mt-2 mb-6 border-b-8 border-theme-border-1 border-theme-editor-entity-page'
           : '',
-
         entity.type === 'line-break'
           ? 'cursor-default mt-2 mb-6 border-b-8 border-dashed border-theme-editor-entity-line'
           : '',
-
         entity.visual.info
           ? 'bg-theme-editor-entity-info hover:bg-theme-editor-entity-info-hover active:bg-theme-editor-entity-info-active'
           : '',
@@ -572,6 +573,20 @@ export const useRaw = () => {
     }
 
     const purge = () => {
+      const finder = (entity: Entity): string => {
+        if (
+          entity.type === 'page-break' ||
+          entity.type === 'line-break' ||
+          entity.type === 'image' ||
+          entity.raw === '__EMPTY_LINE__'
+        )
+          return ''
+
+        if(!EXTERNALS.finder.value) return entity.raw
+
+        return html().finder().replacer(normalize(entity.raw, 'full') || '', EXTERNALS.finder.value) || ''
+      }
+
       const editor = (entity: Entity) => {
         if (
           entity.type === 'page-break' ||
@@ -583,8 +598,6 @@ export const useRaw = () => {
         if (entity.type === 'image') {
           return make().image(entity)
         }
-
-        // if (entity.type !== 'paragraph') return entity.raw
 
         return normalize(entity.raw, 'editor')
       }
@@ -661,7 +674,7 @@ export const useRaw = () => {
         return final
       }
 
-      return { apply, editor, pdf }
+      return { apply, editor, pdf, finder }
     }
 
     const normalize = (

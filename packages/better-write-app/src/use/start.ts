@@ -41,6 +41,7 @@ import { s } from '@/use/storage/supabase'
 import { Session } from '@supabase/supabase-js'
 import { computed, watch } from 'vue'
 import { useHead } from '@vueuse/head'
+import { useExternalsStore } from '@/store/externals'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -194,6 +195,7 @@ export const useStart = () => {
     dropbox()
     head()
     supabase()
+    
     await core.start(
       {
         ABSOLUTE: useAbsoluteStore(),
@@ -203,6 +205,7 @@ export const useStart = () => {
         LOGGER: useLoggerStore(),
         PDF: usePDFStore(),
         PROJECT: useProjectStore(),
+        EXTERNALS: useExternalsStore()
       } as any,
       plugins,
       {

@@ -85,8 +85,10 @@
   import { useEntity } from '@/use/entity'
   import { useAbsoluteStore } from '@/store/absolute'
   import { onClickOutside, useDraggable } from '@vueuse/core'
-
+import { useExternalsStore } from '@/store/externals'
+  
   const ABSOLUTE = useAbsoluteStore()
+  const EXTERNALS = useExternalsStore()
 
   const { t } = useI18n()
   const entity = useEntity()
@@ -99,10 +101,14 @@
   })
 
   const onClose = () => {
+    EXTERNALS.finder.closeFinder = true
+
     ABSOLUTE.shortcuts.finder = false
   }
 
   onMounted(() => {
+    EXTERNALS.finder.value = ''
+
     search.value?.focus()
   })
 

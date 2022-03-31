@@ -51,6 +51,7 @@ export type ExistingStores =
   | 'logger'
   | 'pdf'
   | 'project'
+  | 'externals'
 
 export type PluginStore<
   T extends ExistingStores,
@@ -67,6 +68,7 @@ export interface PluginStores {
   LOGGER: PluginStore<'logger', LoggerState, any, any>
   PDF: PluginStore<'pdf', PDFState, any, any>
   PROJECT: PluginStore<'project', ProjectState, any, any>
+  EXTERNALS: PluginStore<'externals', ProjectState, any, any>
 }
 
 export interface PluginDefines {
