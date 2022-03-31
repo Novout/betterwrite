@@ -7,7 +7,7 @@
       "outputs": [
         "dist/**"
       ],
-      "cache": false
+      "cache": true
     },
     "test": {
       "outputs": []
@@ -19,7 +19,7 @@
       "outputs": [
         "dist/**"
       ],
-      "cache": false
+      "cache": true
     },
     "serve": {
       "dependsOn": [

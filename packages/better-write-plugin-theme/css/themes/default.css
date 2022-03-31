@@ -5,6 +5,16 @@
   --scr-thumb-hover: #777;
   --wb-selection: rgba(0, 0, 0, 0.1);
   --wb-text-selection: #000;
+  --theme-black: #000000;
+  --theme-white: #ffffff;
+  --theme-background-1: #374151;
+  --theme-background-2: #1f2937;
+  --theme-background-3: #111827;
+  --theme-background-4: #6b7280;
+  --theme-text-1: #e5e7eb;
+  --theme-text-2: #d1d5db;
+  --theme-text-3: #4b5563;
+  --theme-text-active: #ffffff;
   --theme-editor-nprogress-background: #e1e1e1;
   --theme-editor-nprogress-height: 2px;
   --theme-toast-default-text: rgb(103, 147, 255);
