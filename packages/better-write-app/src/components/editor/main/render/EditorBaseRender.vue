@@ -1,5 +1,6 @@
 <template>
   <EditorBaseRenderFinder v-if="ABSOLUTE.shortcuts.finder" />
+  <EditorBaseRenderSwitcher v-else-if="ABSOLUTE.shortcuts.switcher" />
   <EditorBaseRenderDefault v-else />
 </template>
 

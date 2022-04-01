@@ -314,7 +314,27 @@ export const useRaw = () => {
         return { replacer, open, close, item }
       }
 
-      return { insert, italic, bold, error, correct, finder }
+      const switcher = () => {
+        const replacer = (raw: string, target: string) => {
+          return raw.replaceAll(target, item(target))
+        }
+
+        const open = () => {
+          return '<span class="text-theme-editor-render-switcher-text bg-theme-editor-render-switcher-background">'
+        }
+
+        const close = () => {
+          return '</span>'
+        }
+
+        const item = (content: string) => {
+          return open() + content + close()
+        }
+
+        return { replacer, open, close, item }
+      }
+
+      return { insert, italic, bold, error, correct, finder, switcher }
     }
 
     const style = (entity: Entity, style: any) => {
@@ -587,6 +607,20 @@ export const useRaw = () => {
         return html().finder().replacer(normalize(entity.raw, 'full') || '', EXTERNALS.finder.value) || ''
       }
 
+      const switcher = (entity: Entity): string => {
+        if (
+          entity.type === 'page-break' ||
+          entity.type === 'line-break' ||
+          entity.type === 'image' ||
+          entity.raw === '__EMPTY_LINE__'
+        )
+          return ''
+
+        if(!EXTERNALS.switcher.value) return entity.raw
+
+        return html().switcher().replacer(normalize(entity.raw, 'full') || '', EXTERNALS.switcher.value) || ''
+      }
+
       const editor = (entity: Entity) => {
         if (
           entity.type === 'page-break' ||
@@ -674,7 +708,7 @@ export const useRaw = () => {
         return final
       }
 
-      return { apply, editor, pdf, finder }
+      return { apply, editor, pdf, switcher, finder }
     }
 
     const normalize = (

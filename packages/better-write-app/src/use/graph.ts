@@ -6,7 +6,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useProjectStore } from '@/store/project'
 import { ID, ContextState, Entity } from 'better-write-types'
 import { useStorage } from './storage/storage'
-import { useNProgress } from '@vueuse/integrations'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useEditorStore } from '@/store/editor'
 
 export const useGraph = () => {
@@ -46,7 +46,7 @@ export const useGraph = () => {
         PROJECT.pageLoaded = page.id
         await nextTick
         // force scroll to element clicked in aside graph
-        scroll.to(`#entity-${String(index)}`)
+        scroll.entity(index)
       })
       .finally(() => {
         isLoading.value = false

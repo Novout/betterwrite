@@ -6,7 +6,14 @@ export const useExternalsStore = defineStore('externals', {
     return {
       finder: {
         value: '',
-        entityFocus: 0
+        entity: 0,
+        close: false
+      },
+      switcher: {
+        value: '',
+        entity: 0,
+        replace: '',
+        close: false
       }
     }
   }

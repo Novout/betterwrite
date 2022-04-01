@@ -289,6 +289,10 @@ export const setTailwindCssVariables = () => {
     'theme-editor-render-finder-text': 'var(--theme-editor-render-finder-text)',
     'theme-editor-render-finder-background':
       'var(--theme-editor-render-finder-background)',
+    'theme-editor-render-switcher-text':
+      'var(--theme-editor-render-switcher-text)',
+    'theme-editor-render-switcher-background':
+      'var(--theme-editor-render-switcher-background)',
     'theme-text-1': 'var(--theme-text-1)',
     'theme-text-2': 'var(--theme-text-2)',
     'theme-text-3': 'var(--theme-text-3)',
