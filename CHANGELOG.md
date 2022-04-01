@@ -1,6 +1,16 @@
-# Changelog (30/03/2022)
+# Changelog (01/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.9
+
+* **style(editor):** transitions in header and corrector [4a6db23]
+* **feat(editor):** corrector clear entity raw [f7a0617]
+* **chore(editor):** preferences auto save [f522be0]
+* **feat(editor):** keyboard preferences [5467991]
+* **feat(editor):** switcher render [02badda]
+* **feat(editor):** finder specific highlight [0db8574]
+* **chore:** typos [651086c]
 
 ### v0.15.8
 
