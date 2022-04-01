@@ -1,6 +1,6 @@
 {
 	"name": "better-write-localisation",
-	"version": "0.15.9",
+	"version": "0.15.10",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -25,7 +25,7 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-plugin-pdf": "^0.15.9"
+		"better-write-plugin-pdf": "^0.15.10"
 	},
 	"devDependencies": {
 		"prettier": "2.5.1",

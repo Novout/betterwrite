@@ -2,6 +2,10 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.15.10
+
+* **chore:** landing typo [4c7e234]
+
 ### v0.15.9
 
 * **style(editor):** transitions in header and corrector [4a6db23]
