@@ -7,7 +7,19 @@
     >
       <EditorAbsoluteHeader class="pl-5" :title="'Corretor'" @close="onClose" />
       <div class="flex flex-wrap flex-1 flex-col lg:flex-row mt-5">
-        <div class="flex flex-1 flex-col p-5">
+        <div
+          v-motion
+          :initial="{ opacity: 0, x: -15 }"
+          :enter="{
+            opacity: 1,
+            x: 0,
+            transition: {
+              delay: 250,
+              duration: 200,
+            },
+          }"
+          class="flex flex-1 flex-col p-5"
+        >
           <EditorProjectCorrectorRow
             v-for="(rule, index) in ADDONS.corrector.options"
             :key="index"
@@ -17,7 +29,19 @@
             <InputBoolean v-model="rule.option" />
           </EditorProjectCorrectorRow>
         </div>
-        <div class="flex justify-start flex-1 flex-col p-3">
+        <div
+          v-motion
+          :initial="{ opacity: 0, x: 15 }"
+          :enter="{
+            opacity: 1,
+            x: 0,
+            transition: {
+              delay: 250,
+              duration: 200,
+            },
+          }"
+          class="flex justify-start flex-1 flex-col p-3"
+        >
           <div class="w-full">
             <h2 class="font-bold text-lg lg:text-xl">{{ t(set.title) }}</h2>
             <p class="mt-3">{{ t(set.description) }}</p>

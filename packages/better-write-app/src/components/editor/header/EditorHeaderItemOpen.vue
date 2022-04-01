@@ -26,7 +26,20 @@
         </svg>
       </HeroIcon>
     </div>
-    <div v-if="open" class="absolute left-48 md:left-52 lg:left-72">
+    <div
+      v-if="open"
+      v-motion
+      :initial="{ opacity: 0, x: 10 }"
+      :enter="{
+        opacity: 1,
+        x: 0,
+        transition: {
+          delay: 0,
+          duration: 150,
+        },
+      }"
+      class="absolute left-48 md:left-52 lg:left-72"
+    >
       <slot name="open" />
     </div>
   </div>
