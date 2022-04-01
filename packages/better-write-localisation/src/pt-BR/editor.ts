@@ -369,6 +369,10 @@ export default {
         description:
           'Todos os parágrafos terão um ponto final acrescentado no final da segunda ocorrência de diálogo.',
       },
+      resetEntityRaw: {
+        title: 'Limpar os Itens',
+        description: 'Remover o conteúdo interno de todos os itens digitáveis.',
+      },
     },
     statistics: {
       global: 'Global',

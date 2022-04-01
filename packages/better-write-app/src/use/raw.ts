@@ -11,26 +11,34 @@ import { useExternalsStore } from '@/store/externals'
 
 export const bold = () => {
   const open = () => {
-    return '<span class="font-bold text-sm">'
+    return '<i class="font-bold">'
   }
 
   const close = () => {
-    return '</span>'
+    return '</i>'
   }
 
-  return { open, close }
+  const insert = (raw: string) => {
+    return open() + raw + close()
+  }
+
+  return { open, close, insert }
 }
 
 export const italic = () => {
   const open = () => {
-    return '<span class="italic text-sm">'
+    return '<i class="italic">'
   }
 
   const close = () => {
-    return '</span>'
+    return '</i>'
   }
 
-  return { open, close }
+  const insert = (raw: string) => {
+    return open() + raw + close()
+  }
+
+  return { open, close, insert }
 }
 
 export const link = () => {
@@ -224,34 +232,42 @@ export const useRaw = () => {
 
       const bold = () => {
         const open = () => {
-          return '<span class="font-bold text-sm text-theme-editor-bold-text hover:text-theme-editor-bold-text-hover active:text-theme-editor-bold-text-active">'
+          return '<i class="font-bold text-sm text-theme-editor-bold-text hover:text-theme-editor-bold-text-hover active:text-theme-editor-bold-text-active">'
         }
 
         const close = () => {
-          return '</span>'
+          return '</i>'
         }
 
         const length = () => {
           return open().length + close().length
         }
 
-        return { open, close, length }
+        const insert = (raw: string) => {
+          return open() + raw + close()
+        }
+
+        return { open, close, length, insert }
       }
 
       const italic = () => {
         const open = () => {
-          return '<span class="italic text-sm text-theme-editor-italic-text hover:text-theme-editor-italic-text-hover active:text-theme-editor-italic-text-active">'
+          return '<i class="italic text-sm text-theme-editor-italic-text hover:text-theme-editor-italic-text-hover active:text-theme-editor-italic-text-active">'
         }
 
         const close = () => {
-          return '</span>'
+          return '</i>'
         }
 
         const length = () => {
           return open().length + close().length
         }
 
-        return { open, close, length }
+        const insert = (raw: string) => {
+          return open() + raw + close()
+        }
+
+        return { open, close, length, insert }
       }
 
       const error = () => {

@@ -1,4 +1,4 @@
-import { useRaw } from '@/use/raw'
+import { bold, italic, useRaw } from '@/use/raw'
 import { defineStore } from 'pinia'
 import { AddonsState } from 'better-write-types'
 import { useEditorStore } from './editor'
@@ -100,6 +100,35 @@ export const useAddonsStore = defineStore('addons', {
                 .item('. ')}${
                 useEditorStore().configuration.commands.dialogue.value
               }Etiam dictum tellus tellus.`,
+            },
+          },
+          {
+            title: 'editor.addons.corrector.resetEntityRaw.title',
+            description: 'editor.addons.corrector.resetEntityRaw.description',
+            option: false,
+            html: {
+              before: `Donec arcu odio, ${useRaw()
+                .v2()
+                .html()
+                .error()
+                .item(
+                  italic().insert('dictum')
+                )} at porttitor eu. Curabitur sollicitudin suscipit ${useRaw()
+                .v2()
+                .html()
+                .error()
+                .item(bold().insert('luctus'))}. Etiam dictum tellus tellus.`,
+              after: `Donec arcu odio, ${useRaw()
+                .v2()
+                .html()
+                .correct()
+                .item(
+                  'dictum'
+                )} at porttitor eu. Curabitur luctus sollicitudin suscipit ${useRaw()
+                .v2()
+                .html()
+                .correct()
+                .item('luctus')}. Etiam dictum tellus tellus.`,
             },
           },
         ],

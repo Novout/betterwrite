@@ -6,6 +6,12 @@
     :delay="0"
     class="wb-configuration-absolute"
   >
+    <EditorProjectPreferencesHeader
+      v-motion
+      :initial="{ opacity: 0, y: 30 }"
+      :enter="{ opacity: 1, y: 0 }"
+      :delay="50"
+    />
     <EditorProjectPreferencesConfiguration
       v-motion
       :initial="{ opacity: 0, y: 30 }"

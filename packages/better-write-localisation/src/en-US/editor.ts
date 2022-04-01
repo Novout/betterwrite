@@ -41,7 +41,6 @@ export default {
     shortcuts: {
       title: 'Hotkeys',
       editor: {
-        title: 'Text Editor',
         italic: 'Add Italic',
         bold: 'Add Bold',
         delete: 'Delete',
@@ -49,32 +48,6 @@ export default {
         to: 'Go To Next Position',
         dragtitle: 'Drag Position',
         dragshort: 'Alt + Mouse Left',
-      },
-      global: {
-        title: 'Global',
-        project: {
-          title: 'Project',
-          save: 'Save',
-          load: 'Load',
-          new: 'New',
-          chapter: {
-            title: 'Chapter',
-            new: 'New',
-            delete: 'Delete',
-          },
-          helpers: {
-            title: 'Helpers',
-            switcher: 'Change Text',
-            finder: 'Find Text',
-            logger: 'Actions',
-          },
-          pdf: {
-            title: 'PDF',
-            generate: 'Generate',
-            configuration: 'Configuration',
-            preview: 'Preview',
-          },
-        },
       },
     },
   },
@@ -396,6 +369,10 @@ export default {
         title: 'Insert End Point in Dialog',
         description:
           'All paragraphs will have a period appended at the end of the second occurrence of dialog.',
+      },
+      resetEntityRaw: {
+        title: 'Clear the Items',
+        description: 'Remove the internal content of all typed items.',
       },
     },
     statistics: {

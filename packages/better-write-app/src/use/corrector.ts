@@ -7,6 +7,8 @@ import { useNProgress } from '@vueuse/integrations'
 import { useProject } from './project'
 import { Entity } from 'better-write-types'
 import { useEditorStore } from '../store/editor'
+import { useRaw } from './raw'
+import { useEnv } from './env'
 
 export const useCorrector = () => {
   const PROJECT = useProjectStore()
@@ -16,6 +18,8 @@ export const useCorrector = () => {
 
   const storage = useStorage()
   const project = useProject()
+  const raw = useRaw()
+  const env = useEnv()
   const { isLoading } = useNProgress()
 
   const getAllEntities = (cb: (...a: any) => void) => {
@@ -97,6 +101,14 @@ export const useCorrector = () => {
       }
     }
 
+    const resetEntityRaw = () => {
+      if (ADDONS.corrector.options[4].option) {
+        getParagraphEntities((entity: Entity) => {
+          entity.raw = raw.v2().normalize(entity.raw, 'full') || env.emptyLine()
+        })
+      }
+    }
+
     return {
       getAllEntities,
       getParagraphEntities,
@@ -105,6 +117,7 @@ export const useCorrector = () => {
       insertParagraphEndStop,
       removeExtraWhitespace,
       insertDialogEndStop,
+      resetEntityRaw,
     }
   }
 
@@ -121,6 +134,7 @@ export const useCorrector = () => {
       await options().insertParagraphEndStop()
       await options().removeExtraWhitespace()
       await options().insertDialogEndStop()
+      await options().resetEntityRaw()
 
       CONTEXT.load(PROJECT.pages[0])
     })
