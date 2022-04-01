@@ -24,8 +24,8 @@
   import { ref, watch } from 'vue'
   import { tryOnMounted, useScroll as useScr } from '@vueuse/core'
   import { useAbsoluteStore } from '@/store/absolute'
-import { useScroll } from '@/use/scroll'
-import { useExternalsStore } from '@/store/externals'
+  import { useScroll } from '@/use/scroll'
+  import { useExternalsStore } from '@/store/externals'
 
   const EXTERNALS = useExternalsStore()
   const CONTEXT = useContextStore()
@@ -43,7 +43,7 @@ import { useExternalsStore } from '@/store/externals'
   })
 
   tryOnMounted(() => {
-    if(EXTERNALS.switcher.close) {
+    if (EXTERNALS.switcher.close) {
       scroll.entity(EXTERNALS.switcher.entity, 'center')
 
       EXTERNALS.switcher.close = false
@@ -51,7 +51,7 @@ import { useExternalsStore } from '@/store/externals'
       return
     }
 
-    if(EXTERNALS.finder.close) {
+    if (EXTERNALS.finder.close) {
       scroll.entity(EXTERNALS.finder.entity, 'center')
 
       EXTERNALS.finder.close = false

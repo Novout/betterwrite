@@ -14,10 +14,7 @@
               {{ finder.state.actuallyLetterCounter }} /
               {{ finder.state.maxLetterCounter }}
             </div>
-            <HeroIcon
-              class="text-2xs ml-2 wb-icon"
-              @click="finder.onUp"
-            >
+            <HeroIcon class="text-2xs ml-2 wb-icon" @click="finder.onUp">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5"
@@ -31,10 +28,7 @@
                 />
               </svg>
             </HeroIcon>
-            <HeroIcon
-              class="text-2xs wb-icon"
-              @click="finder.onDown"
-            >
+            <HeroIcon class="text-2xs wb-icon" @click="finder.onDown">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5"
@@ -84,9 +78,9 @@
   import { useI18n } from 'vue-i18n'
   import { useAbsoluteStore } from '@/store/absolute'
   import { onClickOutside, useDraggable } from '@vueuse/core'
-import { useExternalsStore } from '@/store/externals'
-import { useFinder } from '@/use/tools/finder'
-  
+  import { useExternalsStore } from '@/store/externals'
+  import { useFinder } from '@/use/tools/finder'
+
   const ABSOLUTE = useAbsoluteStore()
   const EXTERNALS = useExternalsStore()
 

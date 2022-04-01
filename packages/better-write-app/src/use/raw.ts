@@ -602,9 +602,16 @@ export const useRaw = () => {
         )
           return ''
 
-        if(!EXTERNALS.finder.value) return entity.raw
+        if (!EXTERNALS.finder.value) return entity.raw
 
-        return html().finder().replacer(normalize(entity.raw, 'full') || '', EXTERNALS.finder.value) || ''
+        return (
+          html()
+            .finder()
+            .replacer(
+              normalize(entity.raw, 'full') || '',
+              EXTERNALS.finder.value
+            ) || ''
+        )
       }
 
       const switcher = (entity: Entity): string => {
@@ -616,9 +623,16 @@ export const useRaw = () => {
         )
           return ''
 
-        if(!EXTERNALS.switcher.value) return entity.raw
+        if (!EXTERNALS.switcher.value) return entity.raw
 
-        return html().switcher().replacer(normalize(entity.raw, 'full') || '', EXTERNALS.switcher.value) || ''
+        return (
+          html()
+            .switcher()
+            .replacer(
+              normalize(entity.raw, 'full') || '',
+              EXTERNALS.switcher.value
+            ) || ''
+        )
       }
 
       const editor = (entity: Entity) => {

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAbsoluteStore } from '@/store/absolute';
+  import { useAbsoluteStore } from '@/store/absolute'
 
-const ABSOLUTE = useAbsoluteStore()
+  const ABSOLUTE = useAbsoluteStore()
 </script>

@@ -195,7 +195,7 @@ export const useStart = () => {
     dropbox()
     head()
     supabase()
-    
+
     await core.start(
       {
         ABSOLUTE: useAbsoluteStore(),
@@ -205,7 +205,7 @@ export const useStart = () => {
         LOGGER: useLoggerStore(),
         PDF: usePDFStore(),
         PROJECT: useProjectStore(),
-        EXTERNALS: useExternalsStore()
+        EXTERNALS: useExternalsStore(),
       } as any,
       plugins,
       {

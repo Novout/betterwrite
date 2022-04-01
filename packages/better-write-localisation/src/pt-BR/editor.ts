@@ -41,40 +41,11 @@ export default {
     shortcuts: {
       title: 'Teclas de Atalho',
       editor: {
-        title: 'Editor de Texto',
         italic: 'Adicionar Itálico',
         bold: 'Adicionar Negrito',
         delete: 'Deletar',
         swap: 'Trocar de Posição',
         to: 'Ir Para Posição Seguinte',
-        dragtitle: 'Arrastar a Posição',
-        dragshort: 'Alt + Mouse Esq.',
-      },
-      global: {
-        title: 'Geral',
-        project: {
-          title: 'Projeto',
-          save: 'Salvar',
-          load: 'Carregar',
-          new: 'Novo',
-          chapter: {
-            title: 'Capítulo',
-            new: 'Novo',
-            delete: 'Deletar',
-          },
-          helpers: {
-            title: 'Auxiliares',
-            switcher: 'Trocar Texto',
-            finder: 'Encontrar Texto',
-            logger: 'Ações',
-          },
-          pdf: {
-            title: 'PDF',
-            generate: 'Criar',
-            configuration: 'Configuração',
-            preview: 'Visualização',
-          },
-        },
       },
     },
   },

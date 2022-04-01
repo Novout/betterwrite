@@ -71,7 +71,7 @@ export const useScroll = () => {
     const set = (value: number) => {
       const doc = document.querySelector('#edit')
 
-      if(!doc) return
+      if (!doc) return
 
       doc.scrollTop = value
     }

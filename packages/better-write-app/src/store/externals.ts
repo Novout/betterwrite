@@ -7,14 +7,14 @@ export const useExternalsStore = defineStore('externals', {
       finder: {
         value: '',
         entity: 0,
-        close: false
+        close: false,
       },
       switcher: {
         value: '',
         entity: 0,
         replace: '',
-        close: false
-      }
+        close: false,
+      },
     }
-  }
+  },
 })

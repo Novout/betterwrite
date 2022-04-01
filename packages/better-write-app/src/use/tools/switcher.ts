@@ -1,11 +1,11 @@
-import { useAbsoluteStore } from "@/store/absolute"
-import { useContextStore } from "@/store/context"
-import { useExternalsStore } from "@/store/externals"
-import { useProjectStore } from "@/store/project"
-import { ContextState, Entity } from "better-write-types"
-import { nextTick, reactive } from "vue"
-import { useScroll } from "../scroll"
-import { useStorage } from "../storage/storage"
+import { useAbsoluteStore } from '@/store/absolute'
+import { useContextStore } from '@/store/context'
+import { useExternalsStore } from '@/store/externals'
+import { useProjectStore } from '@/store/project'
+import { ContextState, Entity } from 'better-write-types'
+import { nextTick, reactive } from 'vue'
+import { useScroll } from '../scroll'
+import { useStorage } from '../storage/storage'
 
 export const useSwitcher = () => {
   const CONTEXT = useContextStore()
@@ -91,13 +91,10 @@ export const useSwitcher = () => {
 
   const onSearchGo = (object: Record<string, any>) => {
     state.actuallyLetterRaw = object.letter
-    state.actuallyLetterCounter =
-    state.listOfLettersExists.indexOf(object) + 1
+    state.actuallyLetterCounter = state.listOfLettersExists.indexOf(object) + 1
 
     const pageIndex = PROJECT.pages.indexOf(object.page)
-    const entityIndex = PROJECT.pages[pageIndex].entities.indexOf(
-      object.entity
-    )
+    const entityIndex = PROJECT.pages[pageIndex].entities.indexOf(object.entity)
 
     EXTERNALS.switcher.entity = entityIndex
 
@@ -130,18 +127,26 @@ export const useSwitcher = () => {
 
   const onDown = () => {
     if (!state.entry) return
-    
+
     if (state.actuallyLetterCounter <= 1) {
       onSearchGo(
         state.listOfLettersExists[state.listOfLettersExists.length - 1]
       )
     } else {
-      const object =
-      state.listOfLettersExists[state.actuallyLetterCounter - 2]
+      const object = state.listOfLettersExists[state.actuallyLetterCounter - 2]
 
       onSearchGo(object)
     }
   }
 
-  return { state, switcherText, onSwitcherAll, onSwitcher, onSearchGo, onGo, onUp, onDown }
+  return {
+    state,
+    switcherText,
+    onSwitcherAll,
+    onSwitcher,
+    onSearchGo,
+    onGo,
+    onUp,
+    onDown,
+  }
 }

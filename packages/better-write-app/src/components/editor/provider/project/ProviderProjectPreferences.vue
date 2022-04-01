@@ -18,24 +18,30 @@
       :enter="{ opacity: 1, y: 0 }"
       :delay="250"
     />
-    <EditorProjectPreferencesDropbox
-      v-if="AUTH.dropbox.accessToken"
+    <EditorProjectPreferencesKeyboard
       v-motion
       :initial="{ opacity: 0, y: 30 }"
       :enter="{ opacity: 1, y: 0 }"
       :delay="350"
     />
-    <EditorProjectPreferencesEntity
+    <EditorProjectPreferencesDropbox
+      v-if="AUTH.dropbox.accessToken"
       v-motion
       :initial="{ opacity: 0, y: 30 }"
       :enter="{ opacity: 1, y: 0 }"
       :delay="450"
     />
-    <EditorProjectPreferencesCommands
+    <EditorProjectPreferencesEntity
       v-motion
       :initial="{ opacity: 0, y: 30 }"
       :enter="{ opacity: 1, y: 0 }"
       :delay="550"
+    />
+    <EditorProjectPreferencesCommands
+      v-motion
+      :initial="{ opacity: 0, y: 30 }"
+      :enter="{ opacity: 1, y: 0 }"
+      :delay="650"
     />
   </div>
 </template>
