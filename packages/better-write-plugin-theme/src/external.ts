@@ -325,6 +325,11 @@ export const setTailwindCssVariables = () => {
     'theme-toast-error-text': 'var(--theme-toast-error-text)',
     'theme-toast-warning-background': 'var(--theme-toast-warning-background)',
     'theme-toast-warning-text': 'var(--theme-toast-warning-text)',
+    'theme-pwa-prompt-text': 'var(--theme-pwa-prompt-text)',
+    'theme-pwa-prompt-background': 'var(--theme-pwa-prompt-background)',
+    'theme-pwa-prompt-button-text': 'var(--theme-pwa-prompt-button-text)',
+    'theme-pwa-prompt-button-background':
+      'var(--theme-pwa-prompt-button-background)',
   }
 }
 

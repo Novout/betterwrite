@@ -1,10 +1,13 @@
 <template>
   <div
     v-if="offlineReady || needRefresh"
-    class="fixed top-0 right-0 m-3 p-2 rounded-sm shadow-lg text-left wb-text bg-theme-background-2 z-max w-full md:w-96 break-words"
+    class="fixed top-0 right-0 m-3 p-2 rounded-sm shadow-lg text-left bg-theme-pwa-prompt-background z-max w-full md:w-96 break-words"
     role="alert"
   >
-    <HeroIcon class="absolute right-0 top-0 wb-icon" @click.prevent="close">
+    <HeroIcon
+      class="absolute text-theme-pwa-prompt-text right-0 top-0 wb-icon"
+      @click.prevent="close"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -18,7 +21,7 @@
         />
       </svg>
     </HeroIcon>
-    <div class="mt-5">
+    <div class="mt-5 text-theme-pwa-prompt-text">
       <span v-if="offlineReady">
         {{ t('editor.pwa.prompt.offlineReady') }}
       </span>
@@ -28,7 +31,7 @@
     </div>
     <button
       v-if="needRefresh"
-      class="bg-theme-background-1 px-2 py-1 mt-1"
+      class="bg-theme-pwa-prompt-button-background text-theme-pwa-prompt-button-text px-2 py-1 mt-1"
       @click="updateServiceWorker()"
     >
       {{ t('editor.pwa.prompt.reload') }}

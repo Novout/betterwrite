@@ -201,6 +201,10 @@
   --theme-toast-error-background: rgb(255, 137, 135, 1);
   --theme-toast-warning-text: black;
   --theme-toast-warning-background: rgb(255, 198, 132, 1);
+  --theme-pwa-prompt-text: #fa8373;
+  --theme-pwa-prompt-background: #242222;
+  --theme-pwa-prompt-button-text: #fa8373;
+  --theme-pwa-prompt-button-background: #514646;
   --scr-track: #222;
   --scr-thumb: #3b3737;
   --scr-thumb-hover: #504b4b;
