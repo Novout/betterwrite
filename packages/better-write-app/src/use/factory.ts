@@ -31,6 +31,33 @@ export const useFactory = () => {
       }
     }
 
+    const defaults = () => {
+      return {
+        visual: {
+          error: false,
+          info: false,
+          warning: false,
+        },
+        external: {
+          checkbox: {
+            select: false,
+          },
+          list: {
+            type: 'number' as 'number' | 'rounded',
+          },
+          paragraph: {
+            active: false,
+            generator: generator(),
+          },
+          comment: {
+            raw: '',
+            updatedAt: format.actually(),
+            createdAt: format.actually(),
+          },
+        },
+      }
+    }
+
     const create = (type: EntityType, raw?: string): Entity => {
       if (type === 'line-break') {
         return {
@@ -38,12 +65,7 @@ export const useFactory = () => {
           raw: raw || env.lineBreak(),
           createdAt: format.actually(),
           updatedAt: format.actually(),
-          visual: {
-            error: false,
-            info: false,
-            warning: false,
-          },
-          external: {},
+          ...defaults(),
         }
       }
 
@@ -53,12 +75,7 @@ export const useFactory = () => {
           raw: raw || env.pageBreak(),
           createdAt: format.actually(),
           updatedAt: format.actually(),
-          visual: {
-            error: false,
-            info: false,
-            warning: false,
-          },
-          external: {},
+          ...defaults(),
         }
       }
 
@@ -68,16 +85,7 @@ export const useFactory = () => {
           raw: raw || env.emptyLine(),
           createdAt: format.actually(),
           updatedAt: format.actually(),
-          visual: {
-            error: false,
-            info: false,
-            warning: false,
-          },
-          external: {
-            checkbox: {
-              select: false,
-            },
-          },
+          ...defaults(),
         }
       }
 
@@ -87,16 +95,7 @@ export const useFactory = () => {
           raw: raw || env.emptyLine(),
           createdAt: format.actually(),
           updatedAt: format.actually(),
-          visual: {
-            error: false,
-            info: false,
-            warning: false,
-          },
-          external: {
-            list: {
-              type: 'number',
-            },
-          },
+          ...defaults(),
         }
       }
 
@@ -106,22 +105,7 @@ export const useFactory = () => {
           raw: raw || env.emptyLine(),
           createdAt: format.actually(),
           updatedAt: format.actually(),
-          visual: {
-            error: false,
-            info: false,
-            warning: false,
-          },
-          external: {
-            paragraph: {
-              active: false,
-              generator: generator(),
-            },
-            comment: {
-              raw: '',
-              updatedAt: format.actually(),
-              createdAt: format.actually(),
-            },
-          },
+          ...defaults(),
         }
       }
 
@@ -130,18 +114,7 @@ export const useFactory = () => {
         raw: raw || env.emptyLine(),
         createdAt: format.actually(),
         updatedAt: format.actually(),
-        visual: {
-          error: false,
-          info: false,
-          warning: false,
-        },
-        external: {
-          comment: {
-            raw: '',
-            updatedAt: format.actually(),
-            createdAt: format.actually(),
-          },
-        },
+        ...defaults(),
       }
     }
 
