@@ -8,5 +8,6 @@
   ├── better-write-plugin-logger                # Logger Plugin
   ├── better-write-plugin-pdf                   # PDF Generator Plugin
   ├── better-write-plugin-theme                 # Multi-Theme Plugin
+  ├── better-write-plugin-txt                   # TXT Generator Plugin
   ├── better-write-types                        # Typescript All Types
 ```

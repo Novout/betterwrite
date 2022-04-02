@@ -1,5 +1,5 @@
 <template>
-  <div class="flex py-1 gap-2 wb-text w-full relative px-4 md:px-14">
+  <div class="flex gap-2 wb-text w-full relative px-4 md:px-14">
     <EditorEntityDefaultInput :entity="entity" />
   </div>
 </template>

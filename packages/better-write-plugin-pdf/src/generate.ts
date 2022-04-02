@@ -20,6 +20,10 @@ export const PluginPDFSet = (
   hooks: PluginTypes.PluginHooks
 ) => {
   let __FIRST__HEADING__ONE__ = true
+  let __LIST__: any = {
+    arr: [],
+    exists: false,
+  }
 
   const { isLoading } = useNProgress()
   const toast = useToast()
@@ -277,14 +281,15 @@ export const PluginPDFSet = (
           : stores.PDF.styles.paragraph.indent
 
       for (let i = 0; i < quantity; i++) {
-        indent += '\t'
+        if (entity.type === 'paragraph') {
+          indent += '\t'
+        }
       }
 
+      const value = indent + entity.raw
+
       return {
-        text: hooks.raw
-          .v2()
-          .purge()
-          .pdf(indent + entity.raw),
+        text: hooks.raw.v2().purge().pdf(value),
         style: entity.external?.paragraph?.active ? 'none' : 'paragraph',
         preserveLeadingSpaces: true,
         margin: [
@@ -299,6 +304,12 @@ export const PluginPDFSet = (
         ],
         ...obj,
       }
+    }
+
+    const list = (entity: Entity) => {
+      __LIST__.arr.push(paragraph(entity))
+
+      __LIST__.exists = true
     }
 
     const pageBreak = () => {
@@ -533,6 +544,17 @@ export const PluginPDFSet = (
         summary(arr)
       }
 
+      const onGenerateList = (entity?: Entity) => {
+        if (__LIST__.exists && entity?.type !== 'list') {
+          arr.push({
+            ol: __LIST__.arr,
+          })
+
+          __LIST__.exists = false
+          __LIST__.arr = []
+        }
+      }
+
       pages.forEach((page: ContextState) => {
         page.entities.forEach((entity: Entity) => {
           let _raw: any = {}
@@ -548,6 +570,8 @@ export const PluginPDFSet = (
             return
           }
 
+          onGenerateList(entity)
+
           if (entity.type === 'paragraph') {
             _raw = paragraph(entity)
           } else if (entity.type === 'heading-one') {
@@ -558,6 +582,10 @@ export const PluginPDFSet = (
             _raw = headingTwo(entity.raw)
           } else if (entity.type === 'heading-three') {
             _raw = headingThree(entity.raw)
+          } else if (entity.type === 'checkbox') {
+            _raw = paragraph(entity)
+          } else if (entity.type === 'list') {
+            _raw = list(entity)
           } else if (entity.type === 'page-break') {
             _raw = pageBreak()
           } else if (entity.type === 'line-break') {
@@ -571,6 +599,8 @@ export const PluginPDFSet = (
           arr.push(_raw)
         })
       })
+
+      onGenerateList()
 
       return arr
     }
