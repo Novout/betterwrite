@@ -22,6 +22,7 @@ module.exports = {
     "vue/no-setup-props-destructure": 0, // vue >= 3.2.20
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-non-null-assertion": 0, // MaybeRefElement
     "no-undef": 0,
     "no-constant-condition": 0,
     "no-import-assign": 0

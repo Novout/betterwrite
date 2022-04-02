@@ -348,8 +348,8 @@ export const PluginPDFSet = (
       }
     }
 
-    const lineBreak = (fixed: boolean = true, final: boolean) => {
-      if (!final && fixed) return
+    const lineBreak = (fixed: boolean = true) => {
+      if (fixed) return
 
       if (
         stores.PDF.styles.lineBreak.image.data &&
@@ -591,7 +591,7 @@ export const PluginPDFSet = (
             entity.raw === hooks.env.emptyLine() &&
             entity.type === 'paragraph'
           ) {
-            _raw = lineBreak(false, options.final)
+            _raw = lineBreak(false)
 
             if (_raw) arr.push(_raw)
 
@@ -617,10 +617,8 @@ export const PluginPDFSet = (
           } else if (entity.type === 'page-break') {
             _raw = pageBreak()
           } else if (entity.type === 'line-break') {
-            _raw = lineBreak(true, options.final)
+            _raw = lineBreak(true)
           } else if (entity.type === 'image') {
-            if (!options.final) return
-
             _raw = image(entity)
           }
 
@@ -930,36 +928,34 @@ export const PluginPDFSet = (
       const { theme } = getPDFUtils()
 
       return {
-        background: options.final
-          ? function (currentPage: number) {
-              return currentPage >= 3 &&
-                stores.PDF.styles.base.background.main &&
-                stores.PDF.styles.switcher.main
-                ? [
-                    {
-                      image: stores.PDF.styles.base.background.main,
-                      width: hooks.defines.pdf().base().pageSizeFixes()[
-                        stores.PDF.styles.base.pageSize
-                      ][0],
-                      height: hooks.defines.pdf().base().pageSizeFixes()[
-                        stores.PDF.styles.base.pageSize
-                      ][1],
-                    },
-                  ]
-                : currentPage <= 1 &&
-                  stores.PDF.styles.switcher.cover &&
-                  stores.PDF.styles.base.background.data
-                ? undefined
-                : !isTheme.value &&
-                  stores.PDF.styles.base.background.color === '#FFFFFF'
-                ? undefined
-                : [
-                    {
-                      canvas: [generate().styles().background()],
-                    },
-                  ]
-            }
-          : undefined,
+        background: function (currentPage: number) {
+          return currentPage >= 3 &&
+            stores.PDF.styles.base.background.main &&
+            stores.PDF.styles.switcher.main
+            ? [
+                {
+                  image: stores.PDF.styles.base.background.main,
+                  width: hooks.defines.pdf().base().pageSizeFixes()[
+                    stores.PDF.styles.base.pageSize
+                  ][0],
+                  height: hooks.defines.pdf().base().pageSizeFixes()[
+                    stores.PDF.styles.base.pageSize
+                  ][1],
+                },
+              ]
+            : currentPage <= 1 &&
+              stores.PDF.styles.switcher.cover &&
+              stores.PDF.styles.base.background.data
+            ? undefined
+            : !isTheme.value &&
+              stores.PDF.styles.base.background.color === '#FFFFFF'
+            ? undefined
+            : [
+                {
+                  canvas: [generate().styles().background()],
+                },
+              ]
+        },
         footer: stores.PDF.styles.switcher.footer
           ? function (
               currentPage: number,

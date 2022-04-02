@@ -88,7 +88,6 @@
 
     setTimeout(() => {
       plugin.emit('plugin-pdf-generate', {
-        final: true,
         chapters: chapters.value,
       })
     }, 100)

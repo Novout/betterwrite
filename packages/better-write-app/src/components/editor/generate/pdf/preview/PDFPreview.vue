@@ -89,7 +89,6 @@
 
     setTimeout(() => {
       plugin.emit('plugin-pdf-preview', {
-        final: true,
         chapters: chapters.value,
       })
     }, 100)

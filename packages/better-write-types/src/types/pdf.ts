@@ -119,7 +119,6 @@ export interface PDFStateStylesSwitcher {
 }
 
 export interface PDFDocOptions {
-  final: boolean
   chapters: {
     page: ContextState
     select: boolean
