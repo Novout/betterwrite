@@ -56,6 +56,12 @@ export interface EditorStateConfigurationCommands {
   image: {
     prefix: string
   }
+  checkbox: {
+    prefix: string
+  }
+  list: {
+    prefix: string
+  }
   dialogue: {
     prefix: string
     value: string

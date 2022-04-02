@@ -74,6 +74,12 @@ export const useEditorStore = defineStore('editor', {
           image: {
             prefix: 'im',
           },
+          checkbox: {
+            prefix: 'ch',
+          },
+          list: {
+            prefix: 'li',
+          },
           dialogue: {
             prefix: 'd',
             value: '— ',

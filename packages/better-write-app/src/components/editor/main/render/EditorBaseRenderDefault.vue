@@ -9,7 +9,7 @@
     :class="[project.isBlankProject() ? 'pt-28' : '']"
     class="flex wb-edit flex-col w-full overflow-y-auto overflow-x-hidden"
   >
-    <EditorEntityDefaultInput
+    <EditorEntityDefault
       v-for="(element, index) in CONTEXT.entities"
       :id="`entity-${String(index)}`"
       :key="index"

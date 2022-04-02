@@ -66,6 +66,20 @@
         class="wb-configuration-input-text"
       />
     </div>
+    <div class="wb-configuration">
+      <p>{{ t('editor.aside.commands.contents[10].prefix') }}</p>
+      <InputText
+        v-model="EDITOR.configuration.commands.checkbox.prefix"
+        class="wb-configuration-input-text"
+      />
+    </div>
+    <div class="wb-configuration">
+      <p>{{ t('editor.aside.commands.contents[11].prefix') }}</p>
+      <InputText
+        v-model="EDITOR.configuration.commands.list.prefix"
+        class="wb-configuration-input-text"
+      />
+    </div>
   </div>
 </template>
 

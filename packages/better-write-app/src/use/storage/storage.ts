@@ -355,6 +355,19 @@ export const useStorage = () => {
       }
     }
 
+    // <= 0.16.0
+    if (!_.editor.configuration.commands.checkbox) {
+      _.editor.configuration.commands = {
+        ..._.editor.configuration.commands,
+        checkbox: {
+          prefix: 'ch',
+        },
+        list: {
+          prefix: 'li',
+        },
+      }
+    }
+
     return _
   }
 

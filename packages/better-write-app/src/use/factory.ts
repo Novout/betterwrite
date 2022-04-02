@@ -62,6 +62,44 @@ export const useFactory = () => {
         }
       }
 
+      if (type === 'checkbox') {
+        return {
+          type,
+          raw: raw || env.emptyLine(),
+          createdAt: format.actually(),
+          updatedAt: format.actually(),
+          visual: {
+            error: false,
+            info: false,
+            warning: false,
+          },
+          external: {
+            checkbox: {
+              select: false,
+            },
+          },
+        }
+      }
+
+      if (type === 'list') {
+        return {
+          type,
+          raw: raw || env.emptyLine(),
+          createdAt: format.actually(),
+          updatedAt: format.actually(),
+          visual: {
+            error: false,
+            info: false,
+            warning: false,
+          },
+          external: {
+            list: {
+              type: 'number',
+            },
+          },
+        }
+      }
+
       if (type === 'paragraph') {
         return {
           type,

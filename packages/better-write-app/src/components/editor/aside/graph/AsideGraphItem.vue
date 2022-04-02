@@ -19,7 +19,9 @@
       props.entity.type === 'image'
         ? 'flex items-end border-l border-theme-aside-graph-lines ml-1'
         : '',
-      props.entity.external?.comment?.raw
+      props.entity.external?.comment?.raw ||
+      props.entity.external?.checkbox ||
+      props.entity.external?.list
         ? 'flex items-end border-l border-theme-aside-graph-lines ml-1'
         : '',
       activity ? '' : 'opacity-75',
@@ -30,6 +32,8 @@
         props.entity.type === 'heading-two' ||
         props.entity.type === 'heading-three' ||
         props.entity.type === 'image' ||
+        props.entity.type === 'checkbox' ||
+        props.entity.type === 'list' ||
         props.entity.external?.comment?.raw
       "
       :class="[props.entity.type === 'heading-two' ? 'w-6' : 'w-12']"
@@ -55,6 +59,69 @@
       </svg>
       <p class="ml-1 text-left truncate w-32">
         {{ props.entity.external?.comment?.raw }}
+      </p>
+    </HeroIcon>
+    <HeroIcon
+      v-else-if="props.entity.external?.checkbox"
+      class="ml-2 wb-text flex justify-start items-center"
+    >
+      <svg
+        v-if="!props.entity.external?.checkbox.select"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        class="h-6 w-6"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 21 21"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M5.5 3.5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2z"
+        ></path>
+      </svg>
+      <svg
+        v-else
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        class="h-6 w-6"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12Zm-1.53 4.97L10 14.44l-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l7-7a.75.75 0 0 0-1.06-1.06Z"
+        ></path>
+      </svg>
+      <p class="ml-1 text-left truncate w-32">
+        {{ props.entity.raw }}
+      </p>
+    </HeroIcon>
+    <HeroIcon
+      v-else-if="props.entity.external?.list"
+      class="ml-2 wb-text flex justify-start items-center"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        class="w-6 h-6"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5s1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5S5.5 6.83 5.5 6S4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5s1.5-.68 1.5-1.5s-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"
+        ></path>
+      </svg>
+      <p class="ml-1 text-left truncate w-32">
+        {{ props.entity.raw }}
       </p>
     </HeroIcon>
     <p

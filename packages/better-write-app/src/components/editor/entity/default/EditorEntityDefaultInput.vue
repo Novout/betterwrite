@@ -1,6 +1,6 @@
 <template>
   <section
-    class="w-full relative px-4 md:px-14"
+    class="w-full relative"
     :class="style.entity.shadow ? 'shadow-winset p-0 m-0' : ''"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
@@ -354,6 +354,56 @@
       )
     }
 
+    if (
+      entity.utils().entry(_data, EDITOR.configuration.commands.checkbox.prefix)
+    ) {
+      setData('')
+
+      CONTEXT.newInExistentEntity({
+        old: props.entity,
+        new: factory.entity().create('checkbox'),
+      })
+
+      if (_last) {
+        await nextTick
+
+        CONTEXT.newInPagePosEdit({
+          entity: props.entity,
+          type: 'paragraph',
+          raw: data.value,
+        })
+
+        await nextTick
+
+        emitter.emit('entity-not-mutate-down', props.entity)
+      }
+    }
+
+    if (
+      entity.utils().entry(_data, EDITOR.configuration.commands.list.prefix)
+    ) {
+      setData('')
+
+      CONTEXT.newInExistentEntity({
+        old: props.entity,
+        new: factory.entity().create('list'),
+      })
+
+      if (_last) {
+        await nextTick
+
+        CONTEXT.newInPagePosEdit({
+          entity: props.entity,
+          type: 'paragraph',
+          raw: data.value,
+        })
+
+        await nextTick
+
+        emitter.emit('entity-not-mutate-down', props.entity)
+      }
+    }
+
     const dialogue =
       EDITOR.configuration.commands.prefix +
       EDITOR.configuration.commands.dialogue.prefix
@@ -596,7 +646,7 @@
     if (end) {
       CONTEXT.newInPagePosEdit({
         entity: props.entity,
-        type: 'paragraph',
+        type: props.entity.type,
       })
 
       plugin.emit('plugin-entity-create-empty', _index.value + 1)

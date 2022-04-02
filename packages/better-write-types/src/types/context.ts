@@ -43,6 +43,8 @@ export type EntityType =
   | 'page-break'
   | 'line-break'
   | 'image'
+  | 'checkbox'
+  | 'list'
 
 export type ContextState = {
   id: number
@@ -63,6 +65,14 @@ export interface EntityExternalComment {
   raw: string
   updatedAt: string
   createdAt: string
+}
+
+export interface EntityExternalCheckbox {
+  select: boolean
+}
+
+export interface EntityExternalList {
+  type: 'number' | 'rounded'
 }
 
 export interface EntityExternalParagraphGenerator {
@@ -91,6 +101,8 @@ export interface EntityExternal {
   paragraph?: EntityExternalParagraph
   image?: EntityExternalImage
   comment?: EntityExternalComment
+  checkbox?: EntityExternalCheckbox
+  list?: EntityExternalList
 }
 
 export interface EntityExternalImageSize {
