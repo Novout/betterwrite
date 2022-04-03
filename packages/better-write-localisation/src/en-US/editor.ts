@@ -252,87 +252,45 @@ export default {
       contents: [
         {
           tag: 'P',
-          title: 'Paragraph',
-          prefix: '',
-          description: '{prefix} text here',
-          content: '',
-        },
-        {
-          tag: 'B',
-          title: 'Bold',
-          prefix: '',
-          description: '&text here&',
-          content: '',
-        },
-        {
-          tag: 'I',
-          title: 'Italic',
-          prefix: '',
-          description: '*text here*',
-          content: '',
-        },
-        {
-          tag: 'H1',
-          title: 'Heading 1',
-          prefix: '',
-          description: '{prefix} text here',
-          content: '',
+          content:
+            'Insert a simple paragraph. By default, all blocks start as a paragraph.',
         },
         {
           tag: 'H2',
-          title: 'Heading 2',
-          prefix: '',
-          description: '{prefix} text here',
-          content: '',
+          content: 'Secondary title.',
         },
         {
           tag: 'H3',
-          title: 'Heading 3',
-          prefix: '',
-          description: '{prefix} text here',
-          content: '',
+          content: 'Tertiary title.',
         },
         {
           tag: 'BP',
-          title: 'Page Break',
-          prefix: '',
-          description: '{prefix}',
-          content: '',
+          content:
+            'Page Break. Generators have automatically broken the page it is on.',
         },
         {
           tag: 'LB',
-          title: 'Line Break',
-          prefix: '',
-          description: '{prefix}',
-          content: '',
+          content:
+            'Line break. The generators automatically wrapped the line where it is inserted.',
         },
         {
           tag: 'IM',
-          title: 'Image',
-          prefix: '',
-          description: '{prefix}',
-          content: '',
+          content: 'Image. Add an image from your device to the editor.',
         },
         {
           tag: 'D',
-          title: 'Dialogue',
-          prefix: 'Dialogue - Prefix',
-          description: '{prefix}   {value}',
-          content: 'Dialogue - Value',
+          content:
+            'Dialogue. The editor will insert the defined dialog objective. See Preferences for available options for this feature.',
         },
         {
           tag: 'CH',
-          title: 'Checkbox',
-          prefix: '',
-          description: '{prefix}',
-          content: '',
+          content:
+            'Selection box. The generators will automatically render the checkbox option.',
         },
         {
           tag: 'LI',
-          title: 'List',
-          prefix: '',
-          description: '{prefix}',
-          content: '',
+          content:
+            'List. The generators will automatically count subsequent lists.',
         },
       ],
     },

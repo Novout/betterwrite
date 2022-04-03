@@ -249,87 +249,45 @@ export default {
       contents: [
         {
           tag: 'P',
-          title: 'Parágrafo',
-          prefix: '',
-          description: '{prefix} texto aqui',
-          content: '',
-        },
-        {
-          tag: 'B',
-          title: 'Negrito',
-          prefix: '',
-          description: '&texto aqui&',
-          content: '',
-        },
-        {
-          tag: 'I',
-          title: 'Itálico',
-          prefix: '',
-          description: '*texto aqui*',
-          content: '',
-        },
-        {
-          tag: 'H1',
-          title: 'Cabeçalho 1',
-          prefix: '',
-          description: '{prefix} texto aqui',
-          content: '',
+          content:
+            'Insira um paragráfo simples. Por padrão, todos os blocos iniciam como parágrafo.',
         },
         {
           tag: 'H2',
-          title: 'Cabeçalho 2',
-          prefix: '',
-          description: '{prefix} texto aqui',
-          content: '',
+          content: 'Título secundário.',
         },
         {
           tag: 'H3',
-          title: 'Cabeçalho 3',
-          prefix: '',
-          description: '{prefix} texto aqui',
-          content: '',
+          content: 'Título terciário.',
         },
         {
           tag: 'BP',
-          title: 'Quebra de Página',
-          prefix: '',
-          description: '{prefix}',
-          content: '',
+          content:
+            'Quebra de Página. Os geradores quebrarão automaticamente a página em que estiver inserida.',
         },
         {
           tag: 'LB',
-          title: 'Quebra de Linha',
-          prefix: '',
-          description: '{prefix}',
-          content: '',
+          content:
+            'Quebra de Linha. Os geradores quebrarão automaticamente a linha em que estiver inserida.',
         },
         {
           tag: 'IM',
-          title: 'Imagem',
-          prefix: '',
-          description: '{prefix}',
-          content: '',
+          content: 'Imagem. Adicione uma imagem do seu dispositivo ao editor.',
         },
         {
           tag: 'D',
-          title: 'Diálogo',
-          prefix: 'Diálogo - Prefixo',
-          description: '{prefix}   {value}',
-          content: 'Diálogo - Valor',
+          content:
+            'Diálogo. O editor irá inserir o objetivo de diálogo definido. Consulte em Preferências as opções disponíveis deste recurso.',
         },
         {
           tag: 'CH',
-          title: 'Caixa de Seleção',
-          prefix: '',
-          description: '{prefix}',
-          content: '',
+          content:
+            'Caixa de Seleção. Os geradores vão renderizar automaticamente a opção da caixa de seleção.',
         },
         {
           tag: 'LI',
-          title: 'Lista',
-          prefix: '',
-          description: '{prefix}',
-          content: '',
+          content:
+            'Lista. Os geradores contará automaticamente as listas subsequentes.',
         },
       ],
     },

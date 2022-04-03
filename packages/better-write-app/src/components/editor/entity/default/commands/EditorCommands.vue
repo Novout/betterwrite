@@ -11,16 +11,12 @@
         duration: 150,
       },
     }"
-    class="relative -left-30 md:-left-20 transform duration-700 w-44 md:w-60 h-60 overflow-y-auto bg-theme-background-1 p-2 rounded transition shadow-2xl"
+    class="relative -left-30 md:-left-20 transform duration-700 w-44 md:w-60 h-60 overflow-y-auto bg-theme-background-1 rounded transition shadow-2xl"
     :class="[visible ? '' : 'top-60']"
   >
     <EditorAbsoluteCommands
-      :title="t('editor.aside.commands.contents[0].title')"
-      :description="
-        t('editor.aside.commands.contents[0].description', {
-          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.paragraph.prefix}`,
-        })
-      "
+      :tag="t('editor.aside.commands.contents[0].tag')"
+      :content="t('editor.aside.commands.contents[0].content')"
     >
       <template #icon>
         <svg
@@ -41,12 +37,8 @@
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
-      :title="t('editor.aside.commands.contents[4].title')"
-      :description="
-        t('editor.aside.commands.contents[4].description', {
-          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.headingTwo.prefix}`,
-        })
-      "
+      :tag="t('editor.aside.commands.contents[1].tag')"
+      :content="t('editor.aside.commands.contents[1].content')"
     >
       <template #icon>
         <svg
@@ -73,12 +65,8 @@
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
-      :title="t('editor.aside.commands.contents[5].title')"
-      :description="
-        t('editor.aside.commands.contents[5].description', {
-          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.lineBreak.prefix}`,
-        })
-      "
+      :tag="t('editor.aside.commands.contents[2].tag')"
+      :content="t('editor.aside.commands.contents[2].content')"
     >
       <template #icon>
         <svg
@@ -105,12 +93,8 @@
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
-      :title="t('editor.aside.commands.contents[6].title')"
-      :description="
-        t('editor.aside.commands.contents[6].description', {
-          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.pageBreak.prefix}`,
-        })
-      "
+      :tag="t('editor.aside.commands.contents[3].tag')"
+      :content="t('editor.aside.commands.contents[3].content')"
     >
       <template #icon>
         <svg
@@ -157,12 +141,8 @@
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
-      :title="t('editor.aside.commands.contents[7].title')"
-      :description="
-        t('editor.aside.commands.contents[7].description', {
-          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.lineBreak.prefix}`,
-        })
-      "
+      :tag="t('editor.aside.commands.contents[4].tag')"
+      :content="t('editor.aside.commands.contents[4].content')"
     >
       <template #icon>
         <svg
@@ -184,12 +164,8 @@
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
-      :title="t('editor.aside.commands.contents[8].title')"
-      :description="
-        t('editor.aside.commands.contents[8].description', {
-          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.image.prefix}`,
-        })
-      "
+      :tag="t('editor.aside.commands.contents[5].tag')"
+      :content="t('editor.aside.commands.contents[5].content')"
     >
       <template #icon>
         <svg
@@ -210,13 +186,8 @@
       </template>
     </EditorAbsoluteCommands>
     <EditorAbsoluteCommands
-      :title="t('editor.aside.commands.contents[9].title')"
-      :description="
-        t('editor.aside.commands.contents[9].description', {
-          prefix: `${EDITOR.configuration.commands.prefix}${EDITOR.configuration.commands.dialogue.prefix}`,
-          value: EDITOR.configuration.commands.dialogue.value,
-        })
-      "
+      :tag="t('editor.aside.commands.contents[6].tag')"
+      :content="t('editor.aside.commands.contents[6].content')"
     >
       <template #icon>
         <svg
@@ -236,16 +207,59 @@
         </svg>
       </template>
     </EditorAbsoluteCommands>
+    <EditorAbsoluteCommands
+      :tag="t('editor.aside.commands.contents[7].tag')"
+      :content="t('editor.aside.commands.contents[7].content')"
+    >
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          class="iconify iconify--ri"
+          width="26"
+          height="26"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm7.003 13l7.07-7.071l-1.414-1.414l-5.656 5.657l-2.829-2.829l-1.414 1.414L11.003 16z"
+          ></path>
+        </svg>
+      </template>
+    </EditorAbsoluteCommands>
+    <EditorAbsoluteCommands
+      :tag="t('editor.aside.commands.contents[8].tag')"
+      :content="t('editor.aside.commands.contents[8].content')"
+    >
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          class="iconify iconify--ic"
+          width="26"
+          height="26"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5s1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5S5.5 6.83 5.5 6S4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5s1.5-.68 1.5-1.5s-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"
+          ></path>
+        </svg>
+      </template>
+    </EditorAbsoluteCommands>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { useEditorStore } from '@/store/editor'
   import { useIntersectionObserver } from '@vueuse/core'
   import { useI18n } from 'vue-i18n'
   import { ref } from 'vue'
-
-  const EDITOR = useEditorStore()
 
   const { t } = useI18n()
 
