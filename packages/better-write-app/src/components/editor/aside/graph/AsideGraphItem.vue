@@ -58,15 +58,15 @@
         ></path>
       </svg>
       <p class="ml-1 text-left truncate w-32">
-        {{ props.entity.external?.comment?.raw }}
+        {{ raw.v2().normalize(props.entity.external?.comment?.raw, 'full') }}
       </p>
     </HeroIcon>
     <HeroIcon
-      v-else-if="props.entity.external?.checkbox"
+      v-else-if="props.entity.type === 'checkbox'"
       class="ml-2 wb-text flex justify-start items-center"
     >
       <svg
-        v-if="!props.entity.external?.checkbox.select"
+        v-if="!props.entity.external?.checkbox?.select"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         aria-hidden="true"
@@ -99,11 +99,11 @@
         ></path>
       </svg>
       <p class="ml-1 text-left truncate w-32">
-        {{ props.entity.raw }}
+        {{ raw.v2().normalize(props.entity.raw, 'full') }}
       </p>
     </HeroIcon>
     <HeroIcon
-      v-else-if="props.entity.external?.list"
+      v-else-if="props.entity.type === 'list'"
       class="ml-2 wb-text flex justify-start items-center"
     >
       <svg
@@ -121,7 +121,7 @@
         ></path>
       </svg>
       <p class="ml-1 text-left truncate w-32">
-        {{ props.entity.raw }}
+        {{ raw.v2().normalize(props.entity.raw, 'full') }}
       </p>
     </HeroIcon>
     <p
@@ -135,7 +135,7 @@
         props.entity.type === 'heading-three' ? 'text-xs' : '',
       ]"
     >
-      {{ props.entity.raw }}
+      {{ raw.v2().normalize(props.entity.raw, 'full') }}
     </p>
     <HeroIcon v-else class="ml-2 wb-text flex justify-start items-center">
       <svg
@@ -160,6 +160,7 @@
 <script setup lang="ts">
   import { useContextStore } from '@/store/context'
   import { useEnv } from '@/use/env'
+  import { useRaw } from '@/use/raw'
   import { ContextState, Entity } from 'better-write-types'
   import { computed } from 'vue'
 
@@ -177,6 +178,7 @@
   const CONTEXT = useContextStore()
 
   const env = useEnv()
+  const raw = useRaw()
 
   const activity = computed<boolean>(() => props.page.id === CONTEXT.id)
 </script>

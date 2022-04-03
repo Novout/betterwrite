@@ -646,7 +646,8 @@
     if (end) {
       CONTEXT.newInPagePosEdit({
         entity: props.entity,
-        type: props.entity.type,
+        type:
+          props.entity.type === 'heading-one' ? 'paragraph' : props.entity.type,
       })
 
       plugin.emit('plugin-entity-create-empty', _index.value + 1)
