@@ -25,6 +25,7 @@ export default {
       website: 'Editor',
       desktop: 'Desktop',
     },
+    support: 'Follow the project!',
     paragraphs: [
       `      — Between the open air and despair, I survived.`,
       `      It is possible to observe a modest house to the

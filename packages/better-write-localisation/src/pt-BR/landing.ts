@@ -25,6 +25,7 @@ export default {
       website: 'Editor',
       desktop: 'Desktop',
     },
+    support: 'Acompanhe o projeto de perto!',
     paragraphs: [
       `      — Entre o relento e o desespero, sobrevivi.`,
       `      É possível observar uma casa modesta ao

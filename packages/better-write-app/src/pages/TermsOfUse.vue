@@ -5,23 +5,47 @@
   >
     <TermsOfUseLogo />
 
-    <h2>Website Terms of Use</h2>
+    <h2
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 100 } }"
+    >
+      Website Terms of Use
+    </h2>
 
-    <p>Version 1.0</p>
+    <p
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 150 } }"
+    >
+      Version 1.0
+    </p>
 
-    <p>
+    <p
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 200 } }"
+    >
       The betterwrite.io website located at https://betterwrite.io/ is a
       copyrighted work belonging to Better Write. Certain features of the Site
       may be subject to additional guidelines, terms, or rules, which will be
       posted on the Site in connection with such features.
     </p>
 
-    <p>
+    <p
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 250 } }"
+    >
       All such additional terms, guidelines, and rules are incorporated by
       reference into these Terms.
     </p>
 
-    <p>
+    <p
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 300 } }"
+    >
       These Terms of Use described the legally binding terms and conditions that
       oversee your use of the Site. BY LOGGING INTO THE SITE, YOU ARE BEING
       COMPLIANT THAT THESE TERMS and you represent that you have the authority
@@ -30,7 +54,11 @@
       TERMS, DO NOT LOG INTO AND/OR USE THE SITE.
     </p>
 
-    <p>
+    <p
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 350 } }"
+    >
       These terms require the use of arbitration Section 10.2 on an individual
       basis to resolve disputes and also limit the remedies available to you in
       the event of a dispute. These Terms of Use were created with the help of
@@ -38,15 +66,29 @@
       <a href="https://www.termsofusegenerator.net">Terms Of Use Generator</a>.
     </p>
 
-    <h2>Access to the Site</h2>
+    <h2
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 400 } }"
+    >
+      Access to the Site
+    </h2>
 
-    <p>
+    <p
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 450 } }"
+    >
       <strong>Subject to these Terms.</strong> Company grants you a
       non-transferable, non-exclusive, revocable, limited license to access the
       Site solely for your own personal, noncommercial use.
     </p>
 
-    <p>
+    <p
+      v-motion
+      :initial="{ opacity: 0, y: -50 }"
+      :enter="{ opacity: 1, y: 0, transition: { delay: 500 } }"
+    >
       <strong>Certain Restrictions.</strong> The rights approved to you in these
       Terms are subject to the following restrictions: (a) you shall not sell,
       rent, lease, transfer, assign, distribute, host, or otherwise commercially
