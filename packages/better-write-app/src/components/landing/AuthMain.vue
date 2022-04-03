@@ -3,7 +3,7 @@
     v-motion
     :initial="{ opacity: 0, y: 50 }"
     :enter="{ opacity: 1, y: 0, transition: { delay: 0 } }"
-    class="flex items-center flex-col w-full sm:w-1/2 md:w-1/3 bg-black-opacity shadow-lg p-5"
+    class="flex items-center flex-col w-full md:w-1/3 bg-black-opacity shadow-lg p-5"
   >
     <img
       v-motion
@@ -34,6 +34,17 @@
         :placeholder="t('landing.auth.passwordPlaceholder')"
         class="w-full p-3 rounded bg-gray-900"
       />
+      <div class="flex gap-2 items-center w-full">
+        <input v-model="user.termsOfUse" type="checkbox" />
+        <p>
+          {{ t('landing.auth.terms.text')
+          }}<span
+            class="underline font-bold tracking-wide cursor-pointer"
+            @click.prevent.stop="router.push('terms-of-use')"
+            >{{ t('landing.auth.terms.link') }}</span
+          >
+        </p>
+      </div>
       <div
         v-for="error of v.$errors"
         v-if="v.$errors"
@@ -57,6 +68,11 @@
           ></div>
           {{ error.$propertyPath === 'email' && ((error.$params as any).type === 'email' || (error.$params as any).type === 'required') ? t('landing.auth.email') : '' }}
           {{ error.$propertyPath === 'password' && ((error.$params as any).type === 'minLength' || (error.$params as any).type === 'required') ? t('landing.auth.password', (error.$params as any).min) : '' }}
+          {{
+            error.$propertyPath === 'termsOfUse'
+              ? t('landing.auth.termsError')
+              : ''
+          }}
         </div>
       </div>
       <div v-if="verification" class="flex items-center gap-2 font-bold">
@@ -73,7 +89,7 @@
         :enter="{ opacity: 1, transition: { delay: 360 } }"
         class="flex gap-1 items-center justify-center w-full p-2 mt-5 rounded bg-gray-900"
       >
-        <p>Entrar</p>
+        <p>{{ t('landing.auth.enter') }}</p>
         <HeroIcon>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +118,6 @@
     >
       {{ t('landing.auth.integration') }}
     </div>
-
     <AuthIntegrations
       v-motion
       :initial="{ opacity: 0, y: 10 }"
@@ -117,14 +132,17 @@
   import { useVuelidate } from '@vuelidate/core'
   import { minLength, required, email } from '@vuelidate/validators'
   import { useI18n } from 'vue-i18n'
+  import { useRouter } from 'vue-router'
 
   const supabase = useSupabase()
+  const router = useRouter()
   const { t } = useI18n()
 
   const verification = ref<boolean>(false)
   const user = reactive({
     email: '' as string,
     password: '' as string,
+    termsOfUse: false as boolean,
   })
   const rules = computed(() => ({
     email: {
@@ -134,6 +152,9 @@
     password: {
       required,
       minLength: minLength(7),
+    },
+    termsOfUse: {
+      checked: (checked) => checked === true,
     },
   }))
 

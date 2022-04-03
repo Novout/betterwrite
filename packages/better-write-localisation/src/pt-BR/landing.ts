@@ -4,8 +4,14 @@ export default {
     emailPlaceholder: 'Email...',
     password: 'A senha precisa ter pelo menos 7 (sete) caracteres!',
     passwordPlaceholder: 'Senha...',
+    termsError: 'Aceite os Termos de Uso!',
     verification: 'Código de Acesso enviado para o seu email!',
     integration: 'ou entre com sua conta do...',
+    enter: 'Entrar',
+    terms: {
+      text: 'Eu aceito os ',
+      link: 'Termos de Uso',
+    },
   },
   first: {
     title: 'Editor para escritores criativos.',

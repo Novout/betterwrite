@@ -2,7 +2,6 @@
   <main class="min-h-screen w-full">
     <section
       id="landing-base"
-      :style="{ backgroundColor: '#1e293b' }"
       class="flex flex-col bg-theme-background-2 z-max text-white items-center justify-between min-h-screen w-full overflow-x-hidden"
     >
       <div
@@ -85,10 +84,19 @@
   import { useLanding } from '@/use/landing'
   import { useWebGL } from '@/use/webgl'
   import { useI18n } from 'vue-i18n'
+  import { watch } from 'vue'
 
   const { version, onClick, isNecessaryLogin } = useLanding()
   const { t } = useI18n()
   const webgl = useWebGL()
 
   webgl.init()
+
+  watch(isNecessaryLogin, (login) => {
+    if (login) {
+      setTimeout(() => {
+        webgl.setCamera()
+      }, 0)
+    }
+  })
 </script>

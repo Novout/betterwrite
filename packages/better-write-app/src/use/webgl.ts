@@ -21,6 +21,12 @@ export const useWebGL = () => {
 
   const { getLocaleMessage, locale } = useI18n()
 
+  const setCamera = () => {
+    renderer.setSize(document.body.offsetWidth, document.body.offsetHeight)
+    camera.aspect = document.body.offsetWidth / document.body.offsetHeight
+    camera.updateProjectionMatrix()
+  }
+
   const init = () => {
     onMounted(() => {
       if (!WebGL.isWebGLAvailable()) {
@@ -81,12 +87,6 @@ export const useWebGL = () => {
             scene.add(cloud)
           }
         })
-      }
-
-      const setCamera = () => {
-        renderer.setSize(document.body.offsetWidth, document.body.offsetHeight)
-        camera.aspect = document.body.offsetWidth / document.body.offsetHeight
-        camera.updateProjectionMatrix()
       }
 
       const contextResize = () => {
@@ -196,5 +196,5 @@ export const useWebGL = () => {
     return WebGL.isWebGLAvailable()
   }
 
-  return { isLoaded, init, isSupported }
+  return { isLoaded, init, isSupported, setCamera }
 }

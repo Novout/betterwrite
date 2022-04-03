@@ -11,6 +11,7 @@ export default defineConfig({
     ],
   },
   shortcuts: {
+    'wb-h1': 'ml-5 relative top-3 sm:top-4 lg:top-6 md:ml-10 text-3xl sm:text-4xl lg:text-5xl font-bold',
     'wb-base': 'bg-theme-background-1 w-full h-screen',
     'wb-title': 'text-4xl opacity-70 hover:text-theme-text-3 cursor-default',
     'wb-icon': 'text-theme-icon hover:text-theme-icon-hover active:text-theme-icon-active',

@@ -4,8 +4,14 @@ export default {
     emailPlaceholder: 'Email...',
     password: 'The password must be at least 7 (seven) characters long!',
     passwordPlaceholder: 'Senha...',
+    termsError: 'Accept the Terms of Use!',
     verification: 'Access Code sent to your email!',
     integration: 'or log in with your account...',
+    enter: 'Enter',
+    terms: {
+      text: 'I agreed ',
+      link: 'Terms of Use',
+    },
   },
   first: {
     title: 'Editor for creative writers.',

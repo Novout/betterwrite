@@ -23,6 +23,7 @@ module.exports = {
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-non-null-assertion": 0, // MaybeRefElement
+    "no-irregular-whitespace": 0, // TermsOfUse.vue
     "no-undef": 0,
     "no-constant-condition": 0,
     "no-import-assign": 0
