@@ -576,6 +576,7 @@ export const PluginPDFSet = (
         if (__LIST__.exists && entity?.type !== 'list') {
           arr.push({
             ol: __LIST__.arr,
+            ...(isTheme.value ? { color: theme.paragraph } : {}),
           })
 
           __LIST__.exists = false
