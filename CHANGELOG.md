@@ -1,6 +1,24 @@
-# Changelog (01/04/2022)
+# Changelog (03/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.11
+
+* **fix(editor):** force indent checkbox and list [e62f17f]
+* **fix(editor):** checkbox and list margin left [5d57a2e]
+* **fix(pdf):** indent in list and checkbox [696c76d]
+* **chore(editor):** commands rewrite [b492e17]
+* **chore(landing):** github icon [fa1fb61]
+* **feat:** terms of use [4e2bd4c]
+* **style(pdf):** preview raw in configuration [96a298d]
+* **fix(pdf):** theme list setts [77c10a3]
+* **fix(editor):** focus in headings [0c29eba]
+* **fix(editor):** graph icons in list and checkbox [ae6ce6f]
+* **chore(pdf):** remove final option [70d44bb]
+* **feat(pdf):** checkbox support [ca2f0f6]
+* **feat(pdf):** list support [c14bb52]
+* **feat(editor):** checkbox and list command base styles [a8e4e8a]
+* **style(pwa):** prompt theme [b521255]
 
 ### v0.15.10
 
