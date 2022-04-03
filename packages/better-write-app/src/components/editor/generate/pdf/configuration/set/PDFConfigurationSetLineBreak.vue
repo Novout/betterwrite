@@ -7,9 +7,7 @@
         </h2>
       </section>
     </template>
-    <div
-      class="flex flex-row flex-wrap justify-start items-center my-3 overflow-x-hidden gap-5"
-    >
+    <div class="wb-pdf-container">
       <div class="wb-input-container">
         <label class="mx-2 text-xs">{{
           t('editor.pdf.lineBreak.spacing')

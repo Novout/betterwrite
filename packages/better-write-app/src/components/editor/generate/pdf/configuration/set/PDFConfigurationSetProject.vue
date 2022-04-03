@@ -8,9 +8,7 @@
         <TooltipIcon :tooltip="t('editor.pdf.project.tooltip.title')" />
       </section>
     </template>
-    <section
-      class="flex flex-row flex-wrap justify-between items-center my-3 overflow-x-hidden"
-    >
+    <section class="wb-pdf-container">
       <div class="wb-input-container flex flex-wrap">
         <section class="flex items-center mx-2">
           <label class="mx-2 text-xs">{{

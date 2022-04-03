@@ -5,9 +5,7 @@
         {{ t('editor.pdf.custom.title.headingThree') }}
       </h2>
     </template>
-    <div
-      class="flex flex-row flex-wrap justify-between items-center my-3 overflow-x-hidden"
-    >
+    <div class="wb-pdf-container">
       <div class="wb-input-container">
         <label class="mx-2 text-xs">{{
           t('editor.pdf.custom.generics.font')
@@ -91,6 +89,7 @@
         <InputColorPicker v-model="pdf.headingThree.markerColor" />
       </div>
     </div>
+    <PDFUtilsPreview :generator="pdf.headingThree" />
   </PDFConfigurationSlot>
 </template>
 
