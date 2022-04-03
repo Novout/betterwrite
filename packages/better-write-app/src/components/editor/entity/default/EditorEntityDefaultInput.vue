@@ -234,9 +234,11 @@
         old: props.entity,
         new: factory.entity().create('paragraph'),
       })
-    }
 
-    if (
+      await nextTick
+
+      input.value?.focus()
+    } else if (
       entity
         .utils()
         .entry(_data, EDITOR.configuration.commands.headingTwo.prefix)
@@ -247,9 +249,11 @@
         old: props.entity,
         new: factory.entity().create('heading-two'),
       })
-    }
 
-    if (
+      await nextTick
+
+      input.value?.focus()
+    } else if (
       entity
         .utils()
         .entry(_data, EDITOR.configuration.commands.headingThree.prefix)
@@ -260,9 +264,11 @@
         old: props.entity,
         new: factory.entity().create('heading-three'),
       })
-    }
 
-    if (
+      await nextTick
+
+      input.value?.focus()
+    } else if (
       entity
         .utils()
         .entry(_data, EDITOR.configuration.commands.pageBreak.prefix)
@@ -286,10 +292,12 @@
         await nextTick
 
         emitter.emit('entity-not-mutate-down', props.entity)
-      }
-    }
 
-    if (
+        await nextTick
+
+        input.value?.focus()
+      }
+    } else if (
       entity
         .utils()
         .entry(_data, EDITOR.configuration.commands.lineBreak.prefix)
@@ -314,9 +322,11 @@
 
         emitter.emit('entity-not-mutate-down', props.entity)
       }
-    }
 
-    if (
+      await nextTick
+
+      PROJECT.updateContext(CONTEXT.$state)
+    } else if (
       entity.utils().entry(_data, EDITOR.configuration.commands.image.prefix)
     ) {
       setData('')
@@ -352,9 +362,7 @@
           toast.error(t('toast.generics.error'))
         }
       )
-    }
-
-    if (
+    } else if (
       entity.utils().entry(_data, EDITOR.configuration.commands.checkbox.prefix)
     ) {
       setData('')
@@ -363,23 +371,7 @@
         old: props.entity,
         new: factory.entity().create('checkbox'),
       })
-
-      if (_last) {
-        await nextTick
-
-        CONTEXT.newInPagePosEdit({
-          entity: props.entity,
-          type: 'paragraph',
-          raw: data.value,
-        })
-
-        await nextTick
-
-        emitter.emit('entity-not-mutate-down', props.entity)
-      }
-    }
-
-    if (
+    } else if (
       entity.utils().entry(_data, EDITOR.configuration.commands.list.prefix)
     ) {
       setData('')
@@ -389,19 +381,7 @@
         new: factory.entity().create('list'),
       })
 
-      if (_last) {
-        await nextTick
-
-        CONTEXT.newInPagePosEdit({
-          entity: props.entity,
-          type: 'paragraph',
-          raw: data.value,
-        })
-
-        await nextTick
-
-        emitter.emit('entity-not-mutate-down', props.entity)
-      }
+      return
     }
 
     const dialogue =
