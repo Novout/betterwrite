@@ -195,6 +195,24 @@ export const PluginPDFSet = (
     }
   }
 
+  const getIndent = (entity?: Entity) => {
+    if (!entity) return ''
+
+    let indent = ''
+
+    const quantity =
+      entity.external?.paragraph?.active &&
+      entity.external?.paragraph?.generator.indent
+        ? entity.external?.paragraph?.generator.indent
+        : stores.PDF.styles.paragraph.indent
+
+    for (let i = 0; i < quantity; i++) {
+      indent += ' '
+    }
+
+    return indent
+  }
+
   const generate = () => {
     const { theme } = getPDFUtils()
 
@@ -309,31 +327,58 @@ export const PluginPDFSet = (
     }
 
     const list = (entity: Entity) => {
-      __LIST__.arr.push(paragraph(entity))
+      const p = paragraph(entity)
+      const indent = getIndent(entity)
+
+      __LIST__.arr.push({
+        text: p.text,
+        font: p.font,
+        fontSize: p.fontSize,
+        characterSpacing: p.characterSpacing,
+        margin: [
+          generate().base().pageMargins[0] + indent.length * 10,
+          0,
+          0,
+          0,
+        ],
+      })
 
       __LIST__.exists = true
     }
 
     const checkbox = (entity: Entity) => {
+      const p = paragraph(entity)
+      const indent = getIndent(entity)
+
       return {
         table: {
           widths: [1, 'auto'],
           body: [
             [
               {
+                border: [false, false, false, false],
                 margin: [
-                  generate().base().pageMargins[0],
+                  generate().base().pageMargins[0] + -4 + indent.length * 10,
                   0,
                   generate().base().pageMargins[2],
                   0,
                 ],
-                border: [false, false, false, false],
                 image: entity.external?.checkbox?.select
                   ? 'checked'
                   : 'unchecked',
                 width: 15,
               },
-              { border: [false, false, false, false], ...paragraph(entity) },
+              {
+                border: [false, false, false, false],
+                text: p.text,
+                margin: [p.margin[0] + 7 + indent.length * 10, 0, 0, 0],
+                font: p.font,
+                fontSize: p.fontSize,
+                characterSpacing: p.characterSpacing,
+                ...(isTheme.value
+                  ? { color: theme.paragraph }
+                  : { color: p.color }),
+              },
             ],
           ],
         },
