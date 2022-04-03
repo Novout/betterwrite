@@ -2,6 +2,9 @@
   <section
     ref="checkbox"
     class="flex py-1 gap-2 wb-text w-full relative px-4 md:px-14"
+    :style="{
+      marginLeft: '2rem',
+    }"
   >
     <InputBoolean v-model="select" :specific="true" />
     <EditorEntityDefaultInput :entity="entity" />
