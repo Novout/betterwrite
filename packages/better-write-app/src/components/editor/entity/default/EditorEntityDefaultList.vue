@@ -3,10 +3,8 @@
     ref="list"
     class="flex py-1 gap-4 wb-text w-full relative px-4 md:px-14"
     :class="[last ? 'items-start' : 'items-center']"
-    :style="{
-      marginLeft: '2rem',
-    }"
   >
+    <div class="w-5" />
     <div
       class="h-1 w-1 p-1 bg-theme-background-3 rounded-full"
       :class="[last ? 'mt-2.5' : '']"

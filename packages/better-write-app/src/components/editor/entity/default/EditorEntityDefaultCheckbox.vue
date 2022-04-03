@@ -1,11 +1,9 @@
 <template>
   <section
     ref="checkbox"
-    class="flex py-1 gap-2 wb-text w-full relative px-4 md:px-14"
-    :style="{
-      marginLeft: '2rem',
-    }"
+    class="flex relative py-1 gap-2 wb-text w-full px-4 md:px-14"
   >
+    <div class="w-5" />
     <InputBoolean v-model="select" :specific="true" />
     <EditorEntityDefaultInput :entity="entity" />
   </section>
