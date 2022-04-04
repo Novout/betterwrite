@@ -251,43 +251,52 @@ export default {
       prefix: 'Prefix',
       contents: [
         {
+          title: 'Paragraph',
           tag: 'P',
           content:
             'Insert a simple paragraph. By default, all blocks start as a paragraph.',
         },
         {
+          title: 'Heading One',
           tag: 'H2',
           content: 'Secondary title.',
         },
         {
+          title: 'Heading Two',
           tag: 'H3',
           content: 'Tertiary title.',
         },
         {
+          title: 'Heading Three',
           tag: 'BP',
           content:
             'Page Break. Generators have automatically broken the page it is on.',
         },
         {
+          title: 'Line Break',
           tag: 'LB',
           content:
             'Line break. The generators automatically wrapped the line where it is inserted.',
         },
         {
+          title: 'Image',
           tag: 'IM',
           content: 'Image. Add an image from your device to the editor.',
         },
         {
+          title: 'Dialogue',
           tag: 'D',
           content:
             'Dialogue. The editor will insert the defined dialog objective. See Preferences for available options for this feature.',
         },
         {
+          title: 'Checkbox',
           tag: 'CH',
           content:
             'Selection box. The generators will automatically render the checkbox option.',
         },
         {
+          title: 'List',
           tag: 'LI',
           content:
             'List. The generators will automatically count subsequent lists.',

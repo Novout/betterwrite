@@ -11,70 +11,70 @@
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[1].title') }}</p>
+      <p>{{ t('editor.aside.commands.contents[0].title') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.paragraph.prefix"
         class="wb-configuration-input-text"
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[4].title') }}</p>
+      <p>{{ t('editor.aside.commands.contents[1].title') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.headingTwo.prefix"
         class="wb-configuration-input-text"
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[5].title') }}</p>
+      <p>{{ t('editor.aside.commands.contents[2].title') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.headingThree.prefix"
         class="wb-configuration-input-text"
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[6].title') }}</p>
+      <p>{{ t('editor.aside.commands.contents[3].title') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.pageBreak.prefix"
         class="wb-configuration-input-text"
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[7].title') }}</p>
+      <p>{{ t('editor.aside.commands.contents[4].title') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.lineBreak.prefix"
         class="wb-configuration-input-text"
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[8].title') }}</p>
+      <p>{{ t('editor.aside.commands.contents[5].title') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.image.prefix"
         class="wb-configuration-input-text"
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[9].prefix') }}</p>
+      <p>{{ t('editor.aside.commands.contents[6].title') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.dialogue.prefix"
         class="wb-configuration-input-text"
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[9].content') }}</p>
+      <p>{{ t('editor.aside.commands.contents[6].tag') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.dialogue.value"
         class="wb-configuration-input-text"
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[10].prefix') }}</p>
+      <p>{{ t('editor.aside.commands.contents[7].title') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.checkbox.prefix"
         class="wb-configuration-input-text"
       />
     </div>
     <div class="wb-configuration">
-      <p>{{ t('editor.aside.commands.contents[11].prefix') }}</p>
+      <p>{{ t('editor.aside.commands.contents[8].title') }}</p>
       <InputText
         v-model="EDITOR.configuration.commands.list.prefix"
         class="wb-configuration-input-text"

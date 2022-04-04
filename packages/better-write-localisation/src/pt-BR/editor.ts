@@ -248,43 +248,52 @@ export default {
       prefix: 'Prefixo',
       contents: [
         {
+          title: 'Parágrafo',
           tag: 'P',
           content:
             'Insira um paragráfo simples. Por padrão, todos os blocos iniciam como parágrafo.',
         },
         {
+          title: 'Título Secundário',
           tag: 'H2',
           content: 'Título secundário.',
         },
         {
+          title: 'Título Terciário',
           tag: 'H3',
           content: 'Título terciário.',
         },
         {
+          title: 'Quebra de Página',
           tag: 'BP',
           content:
             'Quebra de Página. Os geradores quebrarão automaticamente a página em que estiver inserida.',
         },
         {
+          title: 'Quebra de Linha',
           tag: 'LB',
           content:
             'Quebra de Linha. Os geradores quebrarão automaticamente a linha em que estiver inserida.',
         },
         {
+          title: 'Imagem',
           tag: 'IM',
           content: 'Imagem. Adicione uma imagem do seu dispositivo ao editor.',
         },
         {
+          title: 'Diálogo',
           tag: 'D',
           content:
             'Diálogo. O editor irá inserir o objetivo de diálogo definido. Consulte em Preferências as opções disponíveis deste recurso.',
         },
         {
+          title: 'Caixa de Seleção',
           tag: 'CH',
           content:
             'Caixa de Seleção. Os geradores vão renderizar automaticamente a opção da caixa de seleção.',
         },
         {
+          title: 'Lista',
           tag: 'LI',
           content:
             'Lista. Os geradores contará automaticamente as listas subsequentes.',
