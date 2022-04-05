@@ -363,7 +363,7 @@ export const useProject = () => {
       const map = page.entities
         .filter((entity) => isValidType(entity))
         .reduce((map: any, value: any) => {
-          const normalize = raw.v2().normalize(value.raw)
+          const normalize = raw.v2().normalize(value.raw, 'full')
 
           if (!normalize) return
 
