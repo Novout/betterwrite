@@ -1,6 +1,12 @@
-# Changelog (03/04/2022)
+# Changelog (06/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.12
+
+* **chore(editor):** wrapper blocks entity for contextmenu and visuals [5703e9a]
+* **fix(editor):** statistics normalize full in words [55939df]
+* **chore(editor):** i18n in preferences commands [67a9c25]
 
 ### v0.15.11
 
