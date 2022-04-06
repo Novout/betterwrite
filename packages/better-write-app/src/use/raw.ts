@@ -353,37 +353,43 @@ export const useRaw = () => {
       return { insert, italic, bold, error, correct, finder, switcher }
     }
 
-    const style = (entity: Entity, style: any) => {
-      return [
-        'editable overflow-hidden w-full break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
-        entity.type === 'paragraph'
-          ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
-          : '',
-        entity.type === 'heading-one'
-          ? 'text-center text-2xl pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'
-          : '',
-        entity.type === 'heading-two'
-          ? 'text-center text-xl pb-3 pt-8 text-theme-editor-entity-heading-two hover:text-theme-editor-entity-heading-two-hover active:text-theme-editor-entity-heading-two-active'
-          : '',
-        entity.type === 'heading-three'
-          ? 'text-center text-lg pb-2 pt-5 text-theme-editor-entity-heading-three hover:text-theme-editor-entity-heading-three-hover active:text-theme-editor-entity-heading-three-active'
-          : '',
-        entity.type === 'page-break'
-          ? 'cursor-default mt-2 mb-6 border-b-8 border-theme-border-1 border-theme-editor-entity-page'
-          : '',
-        entity.type === 'line-break'
-          ? 'cursor-default mt-2 mb-6 border-b-8 border-dashed border-theme-editor-entity-line'
-          : '',
-        entity.visual.info
-          ? 'bg-theme-editor-entity-info hover:bg-theme-editor-entity-info-hover active:bg-theme-editor-entity-info-active'
-          : '',
-        entity.visual.warning
-          ? 'bg-theme-editor-entity-warning hover:bg-theme-editor-entity-warning-hover active:bg-theme-editor-entity-warning-active'
-          : '',
-        entity.visual.error
-          ? 'bg-theme-editor-entity-error hover:bg-theme-editor-entity-error-hover active:bg-theme-editor-entity-error-active'
-          : '',
-      ]
+    const style = (entity: Entity, type: 'main' | 'input' = 'input') => {
+      switch (type) {
+        case 'main':
+          return [
+            entity.visual.info
+              ? 'bg-theme-editor-entity-info hover:bg-theme-editor-entity-info-hover active:bg-theme-editor-entity-info-active'
+              : '',
+            entity.visual.warning
+              ? 'bg-theme-editor-entity-warning hover:bg-theme-editor-entity-warning-hover active:bg-theme-editor-entity-warning-active'
+              : '',
+            entity.visual.error
+              ? 'bg-theme-editor-entity-error hover:bg-theme-editor-entity-error-hover active:bg-theme-editor-entity-error-active'
+              : '',
+          ]
+        case 'input':
+          return [
+            'editable overflow-hidden w-full break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+            entity.type === 'paragraph'
+              ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
+              : '',
+            entity.type === 'heading-one'
+              ? 'text-center text-2xl pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'
+              : '',
+            entity.type === 'heading-two'
+              ? 'text-center text-xl pb-3 pt-8 text-theme-editor-entity-heading-two hover:text-theme-editor-entity-heading-two-hover active:text-theme-editor-entity-heading-two-active'
+              : '',
+            entity.type === 'heading-three'
+              ? 'text-center text-lg pb-2 pt-5 text-theme-editor-entity-heading-three hover:text-theme-editor-entity-heading-three-hover active:text-theme-editor-entity-heading-three-active'
+              : '',
+            entity.type === 'page-break'
+              ? 'cursor-default mt-2 mb-6 border-b-8 border-theme-border-1 border-theme-editor-entity-page'
+              : '',
+            entity.type === 'line-break'
+              ? 'cursor-default mt-2 mb-6 border-b-8 border-dashed border-theme-editor-entity-line'
+              : '',
+          ]
+      }
     }
 
     const make = () => {

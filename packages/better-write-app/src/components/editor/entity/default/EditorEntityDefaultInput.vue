@@ -5,7 +5,6 @@
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     @click="onClickInEntity"
-    @contextmenu="onSetContextMenu"
   >
     <section
       v-if="EDITOR.configuration.entity.updateTime && hover"
@@ -35,7 +34,7 @@
         paddingBottom: last ? '5rem' : '',
         textIndent: props.entity.type === 'paragraph' ? '2rem' : 0,
       }"
-      :class="raw.v2().style(props.entity, style)"
+      :class="raw.v2().style(props.entity, 'input')"
       @input="onInput"
       @keypress.enter.prevent="onEnter"
       @keydown="onKeyboard"
@@ -70,7 +69,7 @@
     VueEmitterEntityClose,
   } from 'better-write-types'
   import { useUtils } from '@/use/utils'
-  import { useFocus, useMousePressed, watchDebounced } from '@vueuse/core'
+  import { useFocus } from '@vueuse/core'
   import { useFormat } from '@/use/format'
   import { useProject } from '@/use/project'
 
@@ -118,24 +117,11 @@
     () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu
   )
   const { focused } = useFocus(input)
-  const { pressed, sourceType: mouseType } = useMousePressed({
-    touch: true,
-    target: input,
-  })
 
   watch(props.entity, () => {
     // new entity properties
     onReset()
   })
-
-  // mobile contextmenu open
-  watchDebounced(
-    pressed,
-    (_presset) => {
-      if (_presset && mouseType.value === 'touch') onSetContextMenu()
-    },
-    { debounce: 350 }
-  )
 
   watch(focused, (_focused) => {
     if (_focused && !entity.utils().isFixed(_index.value)) {
@@ -887,22 +873,5 @@
 
   const onInput = (e: any) => {
     data.value = e.target.innerHTML
-  }
-
-  const onSetContextMenu = async (e?: MouseEvent) => {
-    ABSOLUTE.entity.menu = false
-
-    EDITOR.actives.entity.index = _index.value
-
-    if (EDITOR.actives.global.mouse.validLastSelection) {
-      EDITOR.actives.global.mouse.validLastSelection = false
-      return
-    }
-
-    e?.preventDefault()
-
-    await nextTick
-
-    ABSOLUTE.entity.menu = true
   }
 </script>

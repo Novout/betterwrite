@@ -1,12 +1,14 @@
 <template>
-  <section
-    ref="checkbox"
-    class="flex relative py-1 gap-2 wb-text w-full px-4 md:px-14"
-  >
-    <div class="w-5" />
-    <InputBoolean v-model="select" :specific="true" />
-    <EditorEntityDefaultInput :entity="entity" />
-  </section>
+  <EditorEntityDefaultContainer :entity="props.entity">
+    <section
+      ref="checkbox"
+      class="flex relative py-1 gap-2 wb-text w-full px-4 md:px-14"
+    >
+      <div class="w-5" />
+      <InputBoolean v-model="select" :specific="true" />
+      <EditorEntityDefaultInput :entity="entity" />
+    </section>
+  </EditorEntityDefaultContainer>
 </template>
 
 <script setup lang="ts">

@@ -156,6 +156,8 @@ export const useProject = () => {
 
     if (notification) toast.success(t('toast.project.load'))
 
+    utils().resetAllVisual()
+
     isLoading.value = false
   }
 

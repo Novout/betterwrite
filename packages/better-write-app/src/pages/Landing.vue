@@ -67,8 +67,8 @@
           </div>
           <a
             v-motion
-            :initial="{ opacity: 0, y: -50 }"
-            :enter="{ opacity: 1, y: 0, transition: { delay: 500 } }"
+            :initial="{ opacity: 0 }"
+            :enter="{ opacity: 1, transition: { delay: 500 } }"
             target="_blank"
             rel="noopener noreferrer"
             href="https://github.com/betterwrite"
