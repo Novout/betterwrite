@@ -45,6 +45,7 @@ export type EntityType =
   | 'image'
   | 'checkbox'
   | 'list'
+  | 'drau'
 
 export type ContextState = {
   id: number

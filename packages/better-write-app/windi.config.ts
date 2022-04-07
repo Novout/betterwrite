@@ -14,7 +14,7 @@ export default defineConfig({
     'wb-h1': 'ml-5 relative top-3 sm:top-4 lg:top-6 md:ml-10 text-3xl sm:text-4xl lg:text-5xl font-bold',
     'wb-base': 'bg-theme-background-1 w-full h-screen',
     'wb-title': 'text-4xl opacity-70 hover:text-theme-text-3 cursor-default',
-    'wb-icon': 'text-theme-icon hover:text-theme-icon-hover active:text-theme-icon-active',
+    'wb-icon': 'text-theme-icon hover:text-theme-icon-hover active:text-theme-icon-active cursor-pointer',
     'wb-text': 'text-theme-text-1',
     'wb-background-color': 'bg-theme-background-1',
     'wb-aside-button': 'text-2xs pl-2 transition w-full font-bold text-theme-text-2 rounded-none flex',
@@ -26,7 +26,8 @@ export default defineConfig({
     'wb-configuration-reserve': 'flex flex-row-reverse md:flex-row gap-5 font-bold text-base text-theme-text-2 justify-between items-center w-full px-2 py-2',
     'wb-configuration-input-text': 'bg-theme-editor-material-background px-2 shadow-lg w-full md:w-60',
     'wb-indent': 'indent-8',
-    'wb-header-button': 'wb-text mx-0.5 md:mx-2'
+    'wb-header-button': 'wb-text mx-0.5 md:mx-2',
+    'wb-drau-icon': 'wb-icon w-6 h-6'
   },
   theme: {
     fontFamily: {

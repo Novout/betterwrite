@@ -264,6 +264,20 @@ export const useUtils = () => {
     return { isoToCode, codeToIso }
   }
 
+  const convert = () => {
+    const blobToBase64 = (blob) => {
+      const reader = new FileReader()
+      reader.readAsDataURL(blob)
+      return new Promise((resolve) => {
+        reader.onloadend = () => {
+          resolve(reader.result)
+        }
+      })
+    }
+
+    return { blobToBase64 }
+  }
+
   return {
     position,
     delay,
@@ -277,5 +291,6 @@ export const useUtils = () => {
     path,
     object,
     language,
+    convert,
   }
 }

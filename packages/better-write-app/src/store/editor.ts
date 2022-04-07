@@ -84,6 +84,9 @@ export const useEditorStore = defineStore('editor', {
             prefix: 'd',
             value: '— ',
           },
+          drau: {
+            prefix: 't',
+          },
         },
         dropbox: {
           hourInSaveFileName: false,

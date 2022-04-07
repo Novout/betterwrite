@@ -368,6 +368,15 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.editor.configuration.commands.drau) {
+      _.editor.configuration.commands = {
+        ..._.editor.configuration.commands,
+        drau: {
+          prefix: 't',
+        },
+      }
+    }
+
     return _
   }
 

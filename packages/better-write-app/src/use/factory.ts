@@ -109,6 +109,16 @@ export const useFactory = () => {
         }
       }
 
+      if (type === 'drau') {
+        return {
+          type,
+          raw: raw || env.emptyLine(),
+          createdAt: format.actually(),
+          updatedAt: format.actually(),
+          ...defaults(),
+        }
+      }
+
       return {
         type,
         raw: raw || env.emptyLine(),

@@ -7,6 +7,10 @@
     v-else-if="entity.type === 'list'"
     :entity="entity"
   />
+  <EditorEntityDefaultDrau
+    v-else-if="entity.type === 'drau'"
+    :entity="entity"
+  />
   <EditorEntityDefaultParagraph v-else :entity="entity" />
 </template>
 

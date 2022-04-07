@@ -368,6 +368,17 @@
       })
 
       return
+    } else if (
+      entity.utils().entry(_data, EDITOR.configuration.commands.drau.prefix)
+    ) {
+      setData('')
+
+      CONTEXT.newInExistentEntity({
+        old: props.entity,
+        new: factory.entity().create('drau'),
+      })
+
+      return
     }
 
     const dialogue =
