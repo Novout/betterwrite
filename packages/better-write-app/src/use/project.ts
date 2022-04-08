@@ -17,7 +17,7 @@ import {
   Entity,
 } from 'better-write-types'
 import { useStorage } from './storage/storage'
-import { useNProgress } from '@vueuse/integrations'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useEnv } from './env'
 import { useEntity } from './entity'
 import { usePlugin } from 'better-write-plugin-core'

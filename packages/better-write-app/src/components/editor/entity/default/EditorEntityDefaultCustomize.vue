@@ -194,7 +194,7 @@
   import { usePDFStore } from '@/store/pdf'
   import { useDefines } from '@/use/defines'
   import { useProjectStore } from '@/store/project'
-  import { useNProgress } from '@vueuse/integrations'
+  import { useNProgress } from '@vueuse/integrations/useNProgress'
   import { useToast } from 'vue-toastification'
   import { useFactory } from '@/use/factory'
 

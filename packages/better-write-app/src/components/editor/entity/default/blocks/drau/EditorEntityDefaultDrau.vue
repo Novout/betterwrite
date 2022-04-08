@@ -20,7 +20,6 @@
         />
 
         <IconEraser
-          v-if="env.isDev()"
           ref="lStylus"
           class="wb-drau-icon"
           @click.prevent.stop="onBrushModeChoice('eraseLine')"
@@ -171,12 +170,9 @@
     drauu.value!.brush.color = color
   })
 
-  const onBrushModeChoice = (
-    mode: DrawingMode | 'eraseLine',
-    arrow = false
-  ) => {
+  const onBrushModeChoice = (mode: DrawingMode, arrow = false) => {
     brush.value.arrowEnd = arrow
-    drauu.value!.mode = mode as any
+    drauu.value!.mode = mode
   }
 
   const setColor = () => {

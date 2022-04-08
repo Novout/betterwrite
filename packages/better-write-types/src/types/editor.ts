@@ -66,6 +66,9 @@ export interface EditorStateConfigurationCommands {
     prefix: string
     value: string
   }
+  drau: {
+    prefix: string
+  }
 }
 
 export interface EditorStateConfigurationDropbox {

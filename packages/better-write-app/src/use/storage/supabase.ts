@@ -1,7 +1,7 @@
 import { useAbsoluteStore } from '@/store/absolute'
 import { useAuthStore } from '@/store/auth'
 import { createClient } from '@supabase/supabase-js'
-import { useNProgress } from '@vueuse/integrations'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import {
   ProjectObject,
   Maybe,

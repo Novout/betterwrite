@@ -147,7 +147,7 @@
   import { useI18n } from 'vue-i18n'
   import { useStorage } from '@/use/storage/storage'
   import { useContextStore } from '@/store/context'
-  import { useNProgress } from '@vueuse/integrations'
+  import { useNProgress } from '@vueuse/integrations/useNProgress'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useRaw } from '@/use/raw'
 

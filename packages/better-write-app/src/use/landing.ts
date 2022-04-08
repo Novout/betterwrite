@@ -2,7 +2,7 @@ import { useHead } from '@vueuse/head'
 import { useI18n } from 'vue-i18n'
 import { computed, onMounted, nextTick, ref } from 'vue'
 import { useEnv } from '@/use/env'
-import { useNProgress } from '@vueuse/integrations'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useRouter } from 'vue-router'
 import { s } from '@/use/storage/supabase'
 

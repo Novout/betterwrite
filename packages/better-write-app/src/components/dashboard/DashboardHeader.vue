@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
   import { useLocalStorage } from '@/use/storage/local'
-  import { useNProgress } from '@vueuse/integrations'
+  import { useNProgress } from '@vueuse/integrations/useNProgress'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
 

@@ -40,7 +40,7 @@
 <script lang="ts" setup>
   import { useEnv } from '@/use/env'
   import { useSupabase } from '@/use/storage/supabase'
-  import { useNProgress } from '@vueuse/integrations'
+  import { useNProgress } from '@vueuse/integrations/useNProgress'
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'

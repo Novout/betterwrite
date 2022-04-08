@@ -1,6 +1,6 @@
 import { useProjectStore } from '@/store/project'
 import { ProjectTypeID, ContextState } from 'better-write-types'
-import { useNProgress } from '@vueuse/integrations'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import useEmitter from '../emitter'
 import { useFormat } from '../format'
 import { useStorage } from '../storage/storage'

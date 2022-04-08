@@ -4,7 +4,7 @@ import { useEnv } from '../env'
 import i18n from '@/lang'
 import { useProjectStore } from '@/store/project'
 import { useStorage } from './storage'
-import { useNProgress } from '@vueuse/integrations'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { usePlugin } from 'better-write-plugin-core'
 
 export const useLocalStorage = () => {
