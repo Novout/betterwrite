@@ -64,7 +64,8 @@ export const useEntity = () => {
       return (
         entity.type === 'page-break' ||
         entity.type === 'line-break' ||
-        entity.type === 'image'
+        entity.type === 'image' ||
+        entity.type === 'drau'
       )
     }
 

@@ -4,45 +4,67 @@
       <div
         class="px-6 p-3 gap-2 flex flex-wrap items-center gap-0.5 children:align-middle children:my-auto shadow"
       >
-        <IconUndo ref="lUndo" class="wb-drau-icon" />
-        <IconRedo ref="lRedo" class="wb-drau-icon" />
-        <IconTrash ref="lClear" class="wb-drau-icon" />
+        <IconUndo @click="undo" ref="lUndo" class="wb-drau-icon" />
+        <IconRedo @click="redo()" ref="lRedo" class="wb-drau-icon" />
+        <IconTrash @click="clear()" ref="lClear" class="wb-drau-icon" />
         <EditorEntityDefaultDrauDiviser />
         <IconWriteStylus
           ref="lStylus"
-          class="wb-drau-icon"
+          :class="[
+            drauu?.mode === 'stylus' ? 'wb-drau-icon-active' : 'wb-drau-icon',
+          ]"
           @click.prevent.stop="onBrushModeChoice('stylus')"
         />
         <IconPencilCreative
           ref="lDraw"
-          class="wb-drau-icon"
+          :class="[
+            drauu?.mode === 'draw' ? 'wb-drau-icon-active' : 'wb-drau-icon',
+          ]"
           @click.prevent.stop="onBrushModeChoice('draw')"
         />
 
         <IconEraser
           ref="lStylus"
-          class="wb-drau-icon"
+          :class="[
+            drauu?.mode === 'eraseLine'
+              ? 'wb-drau-icon-active'
+              : 'wb-drau-icon',
+          ]"
           @click.prevent.stop="onBrushModeChoice('eraseLine')"
         />
         <EditorEntityDefaultDrauDiviser />
         <IconLine
           ref="lLine"
-          class="wb-drau-icon"
+          :class="[
+            drauu?.mode === 'line' && !brush.arrowEnd
+              ? 'wb-drau-icon-active'
+              : 'wb-drau-icon',
+          ]"
           @click.prevent.stop="onBrushModeChoice('line')"
         />
         <IconArrowRight
           ref="lArrow"
-          class="wb-drau-icon"
+          :class="[
+            drauu?.mode === 'line' && brush.arrowEnd
+              ? 'wb-drau-icon-active'
+              : 'wb-drau-icon',
+          ]"
           @click.prevent.stop="onBrushModeChoice('line', true)"
         />
         <IconRectangle
           ref="lRect"
-          class="wb-drau-icon"
+          :class="[
+            drauu?.mode === 'rectangle'
+              ? 'wb-drau-icon-active'
+              : 'wb-drau-icon',
+          ]"
           @click.prevent.stop="onBrushModeChoice('rectangle')"
         />
         <IconEllipse
           ref="lEllipse"
-          class="wb-drau-icon"
+          :class="[
+            drauu?.mode === 'ellipse' ? 'wb-drau-icon-active' : 'wb-drau-icon',
+          ]"
           @click.prevent.stop="onBrushModeChoice('ellipse')"
         />
         <EditorEntityDefaultDrauDiviser />
@@ -57,22 +79,32 @@
           step="0.5"
           name="Size"
           title="Size"
+          @input="onInputRange"
         />
         <EditorEntityDefaultDrauDiviser />
         <IconSolid
           ref="lSolid"
           class="wb-drau-icon"
           aria-label="Solid"
+          :class="[
+            brush.dasharray === undefined
+              ? 'wb-drau-icon-active'
+              : 'wb-drau-icon',
+          ]"
           @click.prevent.stop="onStyleModeChoice('solid')"
         />
         <IconDashed
           ref="lDashed"
-          class="wb-drau-icon"
+          :class="[
+            brush.dasharray === '4' ? 'wb-drau-icon-active' : 'wb-drau-icon',
+          ]"
           @click.prevent.stop="onStyleModeChoice('dashed')"
         />
         <IconDotted
           ref="lDotted"
-          class="wb-drau-icon"
+          :class="[
+            brush.dasharray === '1 7' ? 'wb-drau-icon-active' : 'wb-drau-icon',
+          ]"
           @click.prevent.stop="onStyleModeChoice('dotted')"
         />
         <EditorEntityDefaultDrauDiviser />
@@ -86,7 +118,7 @@
         ref="drau"
         class="w-full min-h-64 flex-auto z-10"
         style="touch-action: none"
-      />
+      ></svg>
     </div>
   </EditorEntityDefaultContainer>
 </template>
@@ -94,7 +126,6 @@
 <script setup lang="ts">
   import { useEnv } from '@/use/env'
   import { useCycle } from '@/use/cycle'
-  import { useEventListener } from '@vueuse/core'
   import { useDrauu } from '@vueuse/integrations/useDrauu'
   import { Entity } from 'better-write-types'
   import { DrawingMode } from 'drauu'
@@ -148,24 +179,6 @@
     await cycle.update()
   })
 
-  useEventListener(lUndo, 'click', () => {
-    undo()
-  })
-
-  useEventListener(lRedo, 'click', () => {
-    redo()
-  })
-
-  useEventListener(lClear, 'click', () => {
-    clear()
-  })
-
-  useEventListener(lInput, 'input', () => {
-    brush.value.size = +lInput.value.value
-
-    setColor()
-  })
-
   watch(lColor, (color) => {
     drauu.value!.brush.color = color
   })
@@ -197,6 +210,12 @@
         brush.value.dasharray = undefined
         setColor()
     }
+  }
+
+  const onInputRange = () => {
+    brush.value.size = +lInput.value.value
+
+    setColor()
   }
 
   const onCreateSvg = () => {
