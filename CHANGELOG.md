@@ -1,6 +1,19 @@
-# Changelog (06/04/2022)
+# Changelog (08/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.13
+
+* **chore:** page components [0633bfc]
+* **feat(editor):** switcher and add option in checkbox list and drawing [36d9e29]
+* **fix(editor):** commands appear [d48e163]
+* **style(editor):** drau block icon [e3ae928]
+* **chore(deps):** upgrade v-tooltip [6736d3b]
+* **chore(deps):** update packages [29736d9]
+* **chore:** remove dropbox sdk and support [7862b4c]
+* **chore(deps):** update @vueuse/integrations [16ed160]
+* **feat(pdf):** drau support [40702b1]
+* **feat(editor):** drau block component [c8e564a]
 
 ### v0.15.12
 
