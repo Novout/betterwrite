@@ -6,7 +6,7 @@ import { createHead } from '@vueuse/head'
 import { createPinia } from 'pinia'
 import { createPluginCore } from 'better-write-plugin-core'
 import { MotionPlugin as motion } from '@vueuse/motion'
-import tooltip from 'v-tooltip'
+import tooltip from 'floating-vue'
 import toast, { POSITION } from 'vue-toastification'
 import mitt from 'mitt'
 import { VueEmitter } from 'better-write-types'
@@ -19,7 +19,7 @@ import App from './App.vue'
 
 import 'virtual:windi.css'
 import 'better-write-plugin-theme/css/inject.css'
-import 'v-tooltip/dist/v-tooltip.css'
+import 'floating-vue/dist/style.css'
 import 'vue-toastification/dist/index.css'
 
 const env = useEnv()
