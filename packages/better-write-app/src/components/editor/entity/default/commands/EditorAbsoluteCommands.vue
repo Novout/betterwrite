@@ -12,7 +12,6 @@
       </p>
     </div>
     <div
-      v-if="hover"
       v-motion
       :initial="{ opacity: 0, y: 20 }"
       :enter="{
@@ -23,7 +22,7 @@
           duration: 400,
         },
       }"
-      class="border border-theme-border-1 p-2 mt-2 w-full rounded-lg"
+      class="mt-2 w-full rounded-lg text-xs break-words"
     >
       {{ props.content }}
     </div>
@@ -31,15 +30,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useElementHover } from '@vueuse/core'
-  import { ref } from 'vue'
-
   const props = defineProps({
     tag: String,
     content: String,
   })
-
-  const command = ref()
-
-  const hover = useElementHover(command)
 </script>

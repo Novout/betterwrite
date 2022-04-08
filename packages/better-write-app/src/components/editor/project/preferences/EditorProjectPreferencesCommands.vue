@@ -80,6 +80,13 @@
         class="wb-configuration-input-text"
       />
     </div>
+    <div class="wb-configuration">
+      <p>{{ t('editor.aside.commands.contents[9].title') }}</p>
+      <InputText
+        v-model="EDITOR.configuration.commands.drau.prefix"
+        class="wb-configuration-input-text"
+      />
+    </div>
   </div>
 </template>
 

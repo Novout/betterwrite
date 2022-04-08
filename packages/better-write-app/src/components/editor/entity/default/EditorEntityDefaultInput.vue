@@ -378,6 +378,10 @@
         new: factory.entity().create('drau'),
       })
 
+      await nextTick
+
+      if (_last) CONTEXT.newInPageInLastPosition('paragraph')
+
       return
     }
 

@@ -165,6 +165,11 @@ export const useContextStore = defineStore('context', {
 
       this.entities = useUtils().array().insert(this.entities, index, target)
     },
+    newInPageInLastPosition(type: EntityType = 'paragraph') {
+      const target = useFactory().entity().create(type)
+
+      this.entities = [...this.entities, target]
+    },
     newInPagePosEdit({ entity, raw, type }: ContextActionNewInPagePosEdit) {
       if (!entity || !entity.raw) return
 

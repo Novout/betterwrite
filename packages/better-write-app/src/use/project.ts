@@ -259,7 +259,11 @@ export const useProject = () => {
     }
 
     const isValidType = (val: Entity) => {
-      return !entity.utils().isFixedRaw(val.raw) && val.type !== 'image'
+      return (
+        !entity.utils().isFixedRaw(val.raw) &&
+        val.type !== 'image' &&
+        val.type !== 'drau'
+      )
     }
 
     const getChapterLetters = (page: ContextState) => {
@@ -367,7 +371,7 @@ export const useProject = () => {
         .reduce((map: any, value: any) => {
           const normalize = raw.v2().normalize(value.raw, 'full')
 
-          if (!normalize) return
+          if (!normalize) return map
 
           normalize.split(' ').forEach((r) => {
             const replaces = r

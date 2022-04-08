@@ -253,6 +253,14 @@
         </svg>
       </template>
     </EditorAbsoluteCommands>
+    <EditorAbsoluteCommands
+      :tag="t('editor.aside.commands.contents[9].tag')"
+      :content="t('editor.aside.commands.contents[9].content')"
+    >
+      <template #icon>
+        <IconDrawing width="26" height="26" />
+      </template>
+    </EditorAbsoluteCommands>
   </div>
 </template>
 

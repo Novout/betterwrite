@@ -301,6 +301,12 @@ export default {
           content:
             'List. The generators will automatically count subsequent lists.',
         },
+        {
+          title: 'Draw',
+          tag: 'T',
+          content:
+            'Create ideas from your drawings. Generators convert the drawing to an image.',
+        },
       ],
     },
   },

@@ -51,9 +51,8 @@
 <script setup lang="ts">
   import { useProjectStore } from '@/store/project'
   import { useProject } from '@/use/project'
-  import { reactive, watch, ref } from 'vue'
+  import { reactive, watch, ref, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { tryOnMounted } from '@vueuse/core'
 
   const PROJECT = useProjectStore()
 
@@ -71,7 +70,7 @@
     onSet()
   })
 
-  tryOnMounted(() => {
+  onMounted(() => {
     onSet()
   })
 
@@ -81,6 +80,8 @@
     )[0]
 
     const result = project.utils().getWordOccurrences(target, state.min)
+
+    if (!result) return
 
     const arr = [...result]
 

@@ -4,9 +4,9 @@
       <div
         class="px-6 p-3 gap-2 flex flex-wrap items-center gap-0.5 children:align-middle children:my-auto shadow"
       >
-        <IconUndo @click="undo" ref="lUndo" class="wb-drau-icon" />
-        <IconRedo @click="redo()" ref="lRedo" class="wb-drau-icon" />
-        <IconTrash @click="clear()" ref="lClear" class="wb-drau-icon" />
+        <IconUndo ref="lUndo" class="wb-drau-icon" @click="undo" />
+        <IconRedo ref="lRedo" class="wb-drau-icon" @click="redo()" />
+        <IconTrash ref="lClear" class="wb-drau-icon" @click="clear()" />
         <EditorEntityDefaultDrauDiviser />
         <IconWriteStylus
           ref="lStylus"

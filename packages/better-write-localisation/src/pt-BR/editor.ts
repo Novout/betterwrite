@@ -298,6 +298,12 @@ export default {
           content:
             'Lista. Os geradores contará automaticamente as listas subsequentes.',
         },
+        {
+          title: 'Desenho',
+          tag: 'T',
+          content:
+            'Crie ideias a partir dos seus desenhos. Os geradores converterão o desenho para imagem.',
+        },
       ],
     },
   },
