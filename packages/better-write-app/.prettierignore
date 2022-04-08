@@ -1,2 +1,1 @@
-src/components/editor/entity/EditorEntityInput.vue
-src/components/editor/header/EditorHeaderButton.vue
+src/components/page/editor/header/EditorHeaderButton.vue
