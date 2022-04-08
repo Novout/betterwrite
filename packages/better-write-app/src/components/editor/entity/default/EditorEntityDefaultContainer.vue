@@ -40,7 +40,12 @@
   watchDebounced(
     pressed,
     (_presset) => {
-      if (_presset && mouseType.value === 'touch') onSetContextMenu()
+      if (
+        _presset &&
+        mouseType.value === 'touch' &&
+        props.entity.type !== 'drau'
+      )
+        onSetContextMenu()
     },
     { debounce: 350 }
   )

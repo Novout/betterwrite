@@ -27,7 +27,7 @@ export default defineConfig({
     'wb-configuration-input-text': 'bg-theme-editor-material-background px-2 shadow-lg w-full md:w-60',
     'wb-indent': 'indent-8',
     'wb-header-button': 'wb-text mx-0.5 md:mx-2',
-    'wb-drau-icon': 'wb-icon w-6 h-6'
+    'wb-drau-icon': 'wb-icon w-8 h-8 md:(w-6 h-6)'
   },
   theme: {
     fontFamily: {

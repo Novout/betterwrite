@@ -265,17 +265,17 @@ export const useUtils = () => {
   }
 
   const convert = () => {
-    const blobToBase64 = (blob) => {
+    const blobXmlToBase64 = (blob): Promise<string> => {
       const reader = new FileReader()
-      reader.readAsDataURL(blob)
+      reader.readAsText(blob)
       return new Promise((resolve) => {
         reader.onloadend = () => {
-          resolve(reader.result)
+          resolve(reader.result as string)
         }
       })
     }
 
-    return { blobToBase64 }
+    return { blobXmlToBase64 }
   }
 
   return {

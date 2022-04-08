@@ -666,6 +666,8 @@ export const PluginPDFSet = (
             _raw = lineBreak(true)
           } else if (entity.type === 'image') {
             _raw = image(entity)
+          } else if (entity.type === 'drau') {
+            _raw = image(entity)
           }
 
           arr.push(_raw)

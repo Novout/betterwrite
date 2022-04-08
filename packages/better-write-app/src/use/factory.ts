@@ -115,7 +115,21 @@ export const useFactory = () => {
           raw: raw || env.emptyLine(),
           createdAt: format.actually(),
           updatedAt: format.actually(),
-          ...defaults(),
+          visual: {
+            error: false,
+            info: false,
+            warning: false,
+          },
+          external: {
+            image: {
+              name: 'draw.svg',
+              size: {
+                width: 100,
+                height: 100,
+              },
+              alignment: 'full',
+            },
+          },
         }
       }
 
