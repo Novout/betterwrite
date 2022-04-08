@@ -222,6 +222,21 @@
             ></path>
           </svg>
         </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="onSwitchEntity('checkbox')"
+        >
+          <IconCheckbox width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="onSwitchEntity('list')"
+        >
+          <IconList width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="onSwitchEntity('drau')"
+        >
+          <IconDrawing width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
       </template>
     </EditorEntityDefaultOptionsItem>
     <EditorEntityDefaultOptionsItem :off="true">
@@ -350,6 +365,21 @@
               fill="currentColor"
             ></path>
           </svg>
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="onNewEntity('checkbox')"
+        >
+          <IconCheckbox width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="onNewEntity('list')"
+        >
+          <IconList width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="onNewEntity('drau')"
+        >
+          <IconDrawing width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
       </template>
     </EditorEntityDefaultOptionsItem>
@@ -518,7 +548,7 @@
     })
   }
 
-  const onNewEntity = async (type: string) => {
+  const onNewEntity = async (type: EntityType) => {
     emitter.emit('entity-not-mutate', entity.value)
 
     await nextTick
