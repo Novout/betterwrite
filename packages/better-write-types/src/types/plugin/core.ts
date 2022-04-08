@@ -79,7 +79,6 @@ export type PluginHook = any
 
 export interface PluginHooks {
   googleFonts: PluginHook
-  dropbox: PluginHook
   local: PluginHook
   storage: PluginHook
   creative: PluginHook

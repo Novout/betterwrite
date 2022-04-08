@@ -60,8 +60,6 @@ declare module 'virtual:pwa-register/vue' {
   }
 }
 
-declare var Dropbox: any
-
 declare module '@heroicons/vue'
 declare module 'keyboardjs'
 declare module 'pdfmake/build/pdfmake.js'

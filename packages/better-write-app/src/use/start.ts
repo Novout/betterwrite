@@ -11,7 +11,6 @@ import { useProjectStore } from '@/store/project'
 import { useCore, usePlugin } from 'better-write-plugin-core'
 import { PluginTypes } from 'better-write-types'
 import { useFonts } from './google/fonts'
-import { useDropbox } from './storage/dropbox'
 import { useLocalStorage } from './storage/local'
 import { useStorage } from './storage/storage'
 import { useCreativeType } from './type/creative'
@@ -88,40 +87,6 @@ export const useStart = () => {
     ABSOLUTE.entity.menu = false
   })
 
-  const dropbox = () => {
-    if (route.fullPath.includes('access_token')) {
-      let str = ''
-      let firstQuery = false
-      let finish = false
-      let intersection = 0
-
-      for (let i = 0; i < route.fullPath.length; i++) {
-        const letter = route.fullPath.charAt(i)
-
-        if (finish) {
-          AUTH.dropbox.accessToken = str
-
-          return
-        }
-
-        if (letter === '&' && intersection === 1) {
-          firstQuery = false
-          finish = true
-        }
-
-        if (firstQuery) {
-          str += letter
-        }
-
-        if (letter === '=') intersection++
-
-        if (letter === '=' && intersection === 1) {
-          firstQuery = true
-        }
-      }
-    }
-  }
-
   const lang = () => {
     const { locale } = useI18n()
 
@@ -192,7 +157,6 @@ export const useStart = () => {
 
   const init = async (plugins: PluginTypes.Plugins) => {
     lang()
-    dropbox()
     head()
     supabase()
 
@@ -210,7 +174,6 @@ export const useStart = () => {
       plugins,
       {
         googleFonts: useFonts(),
-        dropbox: useDropbox(),
         local: useLocalStorage(),
         storage: useStorage(),
         creative: useCreativeType(),

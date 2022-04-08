@@ -50,80 +50,6 @@
         :text="t('editor.bar.supabase.save')"
         @action="onSaveProjectSupabase"
       />
-      <EditorHeaderItemDiv v-if="env.isDev()" />
-      <!-- TODO: Future PRO Plan Feature -->
-      <EditorHeaderItem
-        v-if="env.isDev()"
-        :text="t('editor.bar.dropbox.connect')"
-        @action="dropbox.connect"
-      >
-        <template #icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            aria-hidden="true"
-            role="img"
-            width="24"
-            height="24"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="currentColor"
-              fill-rule="evenodd"
-              d="M7.06 1L0 5.61l4.882 3.908L12 5.123L7.06 1zM0 13.428l7.06 4.61L12 13.914L4.882 9.52L0 13.43zm12 .486l4.94 4.124l7.06-4.61l-4.882-3.91L12 13.914zM24 5.61L16.94 1L12 5.124l7.118 4.395L24 5.609zM12.014 14.8L7.06 18.913l-2.12-1.385v1.552l7.074 4.243l7.075-4.243v-1.552l-2.12 1.385l-4.955-4.112z"
-            ></path>
-          </svg>
-        </template>
-      </EditorHeaderItem>
-      <EditorHeaderItem
-        v-if="AUTH.dropbox.accessToken && env.isDev()"
-        :text="t('editor.bar.dropbox.load')"
-        @action="dropbox.load"
-      >
-        <template #icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            aria-hidden="true"
-            role="img"
-            width="24"
-            height="24"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="currentColor"
-              fill-rule="evenodd"
-              d="M7.06 1L0 5.61l4.882 3.908L12 5.123L7.06 1zM0 13.428l7.06 4.61L12 13.914L4.882 9.52L0 13.43zm12 .486l4.94 4.124l7.06-4.61l-4.882-3.91L12 13.914zM24 5.61L16.94 1L12 5.124l7.118 4.395L24 5.609zM12.014 14.8L7.06 18.913l-2.12-1.385v1.552l7.074 4.243l7.075-4.243v-1.552l-2.12 1.385l-4.955-4.112z"
-            ></path>
-          </svg>
-        </template>
-      </EditorHeaderItem>
-      <EditorHeaderItem
-        v-if="AUTH.dropbox.accessToken && env.isDev()"
-        :text="t('editor.bar.dropbox.save')"
-        @action="dropbox.save"
-      >
-        <template #icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            aria-hidden="true"
-            role="img"
-            width="24"
-            height="24"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="currentColor"
-              fill-rule="evenodd"
-              d="M7.06 1L0 5.61l4.882 3.908L12 5.123L7.06 1zM0 13.428l7.06 4.61L12 13.914L4.882 9.52L0 13.43zm12 .486l4.94 4.124l7.06-4.61l-4.882-3.91L12 13.914zM24 5.61L16.94 1L12 5.124l7.118 4.395L24 5.609zM12.014 14.8L7.06 18.913l-2.12-1.385v1.552l7.074 4.243l7.075-4.243v-1.552l-2.12 1.385l-4.955-4.112z"
-            ></path>
-          </svg>
-        </template>
-      </EditorHeaderItem>
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
@@ -202,7 +128,6 @@
   import { useSupabase } from '@/use/storage/supabase'
   import { useAuthStore } from '@/store/auth'
   import { useRouter } from 'vue-router'
-  import { useDropbox } from '@/use/storage/dropbox'
   import { Language, Languages } from 'better-write-localisation'
   import { useDefines } from '@/use/defines'
   import { BetterWriteThemes } from 'better-write-types'
@@ -224,7 +149,6 @@
   const plugin = usePlugin()
   const storage = useStorage()
   const router = useRouter()
-  const dropbox = useDropbox()
   const defines = useDefines()
 
   const onSaveProject = () => {
