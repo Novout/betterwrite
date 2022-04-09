@@ -6,6 +6,7 @@ export default {
     export: 'Export',
     chapters: 'Chapters',
     tools: 'Tools',
+    help: 'Help',
   },
   auth: {
     login: {
@@ -116,6 +117,11 @@ export default {
       actions: 'Actions',
       finder: 'Text Search',
       swapper: 'Text Swapper',
+    },
+    help: {
+      doubts: 'Doubts',
+      support: 'Suporte',
+      terms: 'Terms of Use',
     },
   },
   window: {

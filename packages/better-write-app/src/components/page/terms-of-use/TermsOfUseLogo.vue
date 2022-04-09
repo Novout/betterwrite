@@ -4,7 +4,7 @@
     :initial="{ opacity: 0, y: -50 }"
     :enter="{ opacity: 1, y: 0, transition: { delay: 50 } }"
     class="flex items-center justify-center w-full"
-    @click.prevent.stop="router.push('/')"
+    @click.prevent.stop="router.back()"
   >
     <img
       class="object-contain cursor-pointer w-16 sm:w-32"

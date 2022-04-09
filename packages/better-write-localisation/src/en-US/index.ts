@@ -3,6 +3,7 @@ import toast from './toast'
 import landing from './landing'
 import seo from './seo'
 import dashboard from './dashboard'
+import questions from './questions'
 import plans from './plans'
 import logger from './plugin/logger'
 
@@ -13,6 +14,7 @@ export default {
   seo,
   dashboard,
   plans,
+  questions,
   plugin: {
     logger,
   },

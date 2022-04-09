@@ -118,7 +118,7 @@
     >
       {{ t('landing.auth.integration') }}
     </div>
-    <AuthIntegrations
+    <EditorAuthIntegrations
       v-motion
       :initial="{ opacity: 0, y: 10 }"
       :enter="{ opacity: 1, y: 0, transition: { delay: 480 } }"

@@ -21,6 +21,10 @@
     </template>
     <template #bar>
       <EditorHeaderItem
+        :text="t('editor.bar.chapter.drafts')"
+        @action="ABSOLUTE.pages.drafts = true"
+      />
+      <EditorHeaderItem
         :text="t('editor.bar.project.corrector')"
         @action="ABSOLUTE.project.corrector = true"
       />

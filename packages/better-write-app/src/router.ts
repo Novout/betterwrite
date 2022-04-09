@@ -28,6 +28,16 @@ const routes = [
     component: () => import('@/pages/TermsOfUse.vue'),
   },
   {
+    name: 'Support',
+    path: '/support',
+    component: () => import('@/pages/Support.vue'),
+  },
+  {
+    name: 'Questions',
+    path: '/questions',
+    component: () => import('@/pages/Questions.vue'),
+  },
+  {
     path: '/:pathMatch(.*)*',
     component: () => import('@/pages/generics/Generics404.vue'),
   },
