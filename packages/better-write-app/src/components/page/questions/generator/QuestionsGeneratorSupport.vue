@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-end w-full p-10 mt-10">
+  <div class="flex flex-col items-end w-full mt-10">
     <div class="flex w-7/12 sm:w-8/12 md:w-9/12 bg-theme-background-3">
       <QuestionsGeneratorFile>
         <IconPDF class="w-9 h-9 md:(w-10 h-10)" />
@@ -18,7 +18,9 @@
         <p class="text-lg hidden md:inline">.TXT</p>
       </QuestionsGeneratorFile>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.paragraph') }}
@@ -40,7 +42,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.customParagraph') }}
@@ -62,7 +66,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.italicAndBold') }}
@@ -75,7 +81,7 @@
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
         >
-          <IconError class="w-9 h-9" />
+          <IconYes class="w-9 h-9" />
         </QuestionsGeneratorFile>
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
@@ -84,7 +90,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.headings') }}
@@ -106,7 +114,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.breakLine') }}
@@ -128,7 +138,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.breakPage') }}
@@ -150,7 +162,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.image') }}
@@ -172,7 +186,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.list') }}
@@ -194,7 +210,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.checkbox') }}
@@ -216,7 +234,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.summary') }}
@@ -238,7 +258,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.header') }}
@@ -260,7 +282,9 @@
         </QuestionsGeneratorFile>
       </div>
     </div>
-    <div class="flex flex-col flex-1 w-full bg-theme-background-1">
+    <div
+      class="flex flex-col flex-1 w-full bg-theme-background-1 hover:bg-theme-background-opacity-1"
+    >
       <div class="flex items-center">
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.footer') }}

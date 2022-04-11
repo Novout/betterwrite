@@ -1,14 +1,14 @@
 <template>
   <div
     v-cloak
-    class="flex bg-theme-aside-logo-background justify-around md:justify-between items-center w-full p-2 mr-5 md:mr-0"
+    class="flex cursor-pointer bg-theme-aside-logo-background justify-around md:justify-between items-center w-full mr-5 md:mr-0"
+    @click.stop.prevent="onClick"
   >
     <img
-      class="object-contain cursor-pointer"
+      class="object-contain"
       :width="props.width"
       alt="Better Write Logo"
       :src="path"
-      @click.stop.prevent="onClick"
     />
     <h1
       :class="[!back ? 'hidden md:flex text-lg' : 'text-xl']"

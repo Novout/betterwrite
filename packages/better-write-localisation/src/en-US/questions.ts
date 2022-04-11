@@ -1,4 +1,8 @@
 export default {
+  default: {
+    description:
+      'Here are several answers to common questions about betterwrite.io:',
+  },
   generatorSupport: {
     title: `Why don't generators have the same support as (.PDF)?`,
     description:

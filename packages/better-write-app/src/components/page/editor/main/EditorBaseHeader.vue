@@ -7,7 +7,7 @@
     class="flex h-12 justify-between items-center w-full z-30 shadow-lg bg-theme-editor-background hover:bg-theme-editor-background-hover active:bg-theme-editor-background-active"
   >
     <div class="flex gap-1 sm:gap-2 lg:gap-5 items-center justify-start">
-      <Logo :back="false" :width="19" />
+      <Logo class="ml-3" :back="false" :width="19" />
       <div class="flex items-center justify-between">
         <EditorBaseHeaderProject />
         <EditorBaseHeaderCreate />

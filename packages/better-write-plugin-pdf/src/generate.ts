@@ -394,8 +394,6 @@ export const PluginPDFSet = (
     }
 
     const lineBreak = (fixed: boolean = true) => {
-      if (fixed) return
-
       if (
         stores.PDF.styles.lineBreak.image.data &&
         stores.PDF.styles.lineBreak.image.active &&
