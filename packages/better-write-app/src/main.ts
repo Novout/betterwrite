@@ -72,7 +72,7 @@ Sentry.init({
     }),
   ],
   logErrors: true,
-  tracesSampleRate: env.isDev() ? 1.0 : 0.25,
+  tracesSampleRate: env.isDev() ? 0.0 : 0.25,
   trackComponents: true,
   hooks: ['activate', 'mount', 'update', 'destroy', 'create'],
 })

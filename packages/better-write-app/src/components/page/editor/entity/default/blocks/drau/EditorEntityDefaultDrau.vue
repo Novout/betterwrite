@@ -114,11 +114,9 @@
           @click.prevent.stop="onCreateSvg"
         />
       </div>
-      <svg
-        ref="drau"
-        class="w-full min-h-64 flex-auto z-10"
-        style="touch-action: none"
-      ></svg>
+      <div style="touch-action: none">
+        <svg ref="drau" class="w-full min-h-64 flex-auto z-10"></svg>
+      </div>
     </div>
   </EditorEntityDefaultContainer>
 </template>
@@ -126,6 +124,7 @@
 <script setup lang="ts">
   import { useEnv } from '@/use/env'
   import { useCycle } from '@/use/cycle'
+  import { useUtils } from '@/use/utils'
   import { useDrauu } from '@vueuse/integrations/useDrauu'
   import { Entity } from 'better-write-types'
   import { DrawingMode } from 'drauu'
@@ -138,6 +137,7 @@
 
   const env = useEnv()
   const cycle = useCycle()
+  const utils = useUtils()
 
   const main = ref()
   const drau = ref<SVGElement | null>()
@@ -168,13 +168,20 @@
   onMounted(() => {
     if (props.entity.raw !== env.emptyLine()) {
       cycle.awaitedOnMounted(() => {
+        clear()
+
         load(props.entity.raw)
       })
     }
   })
 
   onEnd(async () => {
-    props.entity.raw = drauu.value!.el!.outerHTML || ''
+    const normalize = drauu.value!.el!.outerHTML.replace(
+      utils.regex().classTag(),
+      ''
+    )
+
+    props.entity.raw = normalize || ''
 
     await cycle.update()
   })

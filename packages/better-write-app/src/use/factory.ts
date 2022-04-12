@@ -127,7 +127,7 @@ export const useFactory = () => {
                 width: 100,
                 height: 100,
               },
-              alignment: 'full',
+              alignment: 'auto',
             },
           },
         }

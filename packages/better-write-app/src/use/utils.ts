@@ -60,7 +60,11 @@ export const useUtils = () => {
       return new RegExp(/(<[^<>]+>)/g)
     }
 
-    return { links, htmlTags }
+    const classTag = () => {
+      return new RegExp(/\sclass="[a-zA-Z0-9:;\.\s\(\)\-\,]*"/gi)
+    }
+
+    return { links, htmlTags, classTag }
   }
 
   const cursor = () => {

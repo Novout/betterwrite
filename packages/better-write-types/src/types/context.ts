@@ -114,7 +114,7 @@ export interface EntityExternalImageSize {
 export interface EntityExternalImage {
   name: string
   size: EntityExternalImageSize
-  alignment: 'left' | 'center' | 'right' | 'full'
+  alignment: 'left' | 'center' | 'right' | 'full' | 'auto'
 }
 
 export interface EntityVisual {

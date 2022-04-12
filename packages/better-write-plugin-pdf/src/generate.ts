@@ -470,6 +470,28 @@ export const PluginPDFSet = (
             10,
           ],
         }
+      } else if (entity.external?.image?.alignment === 'auto') {
+        if (entity.external.image.name.endsWith('svg')) {
+          return {
+            svg: entity.raw,
+            margin: [
+              generate().base().pageMargins[0],
+              10,
+              generate().base().pageMargins[2],
+              10,
+            ],
+          }
+        }
+
+        return {
+          image: entity.raw,
+          margin: [
+            generate().base().pageMargins[0],
+            10,
+            generate().base().pageMargins[2],
+            10,
+          ],
+        }
       } else {
         if (entity.external?.image?.name.endsWith('svg')) {
           return {
@@ -1174,11 +1196,15 @@ export const PluginPDFSet = (
 
           input?.appendChild(iframe)
         },
-        () => {
+        (err: any) => {
+          if (hooks.env.isDev()) console.log(err)
+
           toast(hooks.i18n.t('toast.pdf.error'))
         }
       )
-      .catch(() => {
+      .catch((err: any) => {
+        if (hooks.env.isDev()) console.log(err)
+
         toast(hooks.i18n.t('toast.pdf.error'))
       })
       .finally(() => {
