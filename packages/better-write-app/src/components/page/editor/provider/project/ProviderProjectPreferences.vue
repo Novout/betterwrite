@@ -37,11 +37,17 @@
       :enter="{ opacity: 1, y: 0 }"
       :delay="450"
     />
-    <EditorProjectPreferencesCommands
+    <EditorProjectPreferencesGraph
       v-motion
       :initial="{ opacity: 0, y: 30 }"
       :enter="{ opacity: 1, y: 0 }"
       :delay="550"
+    />
+    <EditorProjectPreferencesCommands
+      v-motion
+      :initial="{ opacity: 0, y: 30 }"
+      :enter="{ opacity: 1, y: 0 }"
+      :delay="650"
     />
   </div>
 </template>

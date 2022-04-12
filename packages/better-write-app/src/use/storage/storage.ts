@@ -377,6 +377,56 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.editor.configuration.commands.paragraph.active) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        commands: {
+          prefix: '/',
+          paragraph: {
+            prefix: 'p',
+            active: true,
+          },
+          headingTwo: {
+            prefix: 'h2',
+            active: true,
+          },
+          headingThree: {
+            prefix: 'h3',
+            active: true,
+          },
+          pageBreak: {
+            prefix: 'bp',
+            active: false,
+          },
+          lineBreak: {
+            prefix: 'lb',
+            active: false,
+          },
+          image: {
+            prefix: 'im',
+            active: true,
+          },
+          checkbox: {
+            prefix: 'ch',
+            active: true,
+          },
+          list: {
+            prefix: 'li',
+            active: true,
+          },
+          dialogue: {
+            prefix: 'd',
+            value: '— ',
+            active: false,
+          },
+          drau: {
+            prefix: 't',
+            active: true,
+          },
+        },
+      }
+    }
+
     return _
   }
 
