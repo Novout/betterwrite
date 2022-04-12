@@ -29,10 +29,9 @@
     <div
       v-if="open"
       v-motion
-      :initial="{ opacity: 0, x: 10 }"
+      :initial="{ y: -15 }"
       :enter="{
-        opacity: 1,
-        x: 0,
+        y: 0,
         transition: {
           delay: 0,
           duration: 150,
