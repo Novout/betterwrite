@@ -539,6 +539,8 @@
       entity: entity.value,
       direction: 'up',
     })
+
+    onClose()
   }
 
   const onDownEntity = () => {
@@ -546,6 +548,8 @@
       entity: entity.value,
       direction: 'down',
     })
+
+    onClose()
   }
 
   const onNewEntity = async (type: EntityType) => {
@@ -564,6 +568,8 @@
       data: entity.value.raw,
       index: CONTEXT.entities.indexOf(entity.value),
     })
+
+    onClose()
   }
 
   const onSwitchEntity = async (type: EntityType) => {
@@ -578,6 +584,8 @@
       data: t(`editor.entity.${type}`).toUpperCase(),
       index: CONTEXT.entities.indexOf(entity.value),
     })
+
+    onClose()
   }
 
   const image = reactive({

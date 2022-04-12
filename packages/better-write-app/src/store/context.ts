@@ -17,6 +17,7 @@ import { useFormat } from '../use/format'
 import { useUtils } from '../use/utils'
 import { useProjectStore } from './project'
 import { useFactory } from '@/use/factory'
+import { useAbsoluteStore } from './absolute'
 
 export const useContextStore = defineStore('context', {
   state: (): ContextState => {
@@ -98,6 +99,10 @@ export const useContextStore = defineStore('context', {
         this.entities.length <= 1
       )
         return
+
+      const ABSOLUTE = useAbsoluteStore()
+
+      ABSOLUTE.entity.menu = false
 
       this.entities = this.entities.filter(
         (item: Entity) => this.entities.indexOf(item) !== index
