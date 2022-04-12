@@ -146,8 +146,18 @@ export const useContextStore = defineStore('context', {
 
       if (index === -1) return
 
+      if (
+        payload.old.type === 'image' ||
+        payload.old.type === 'drau' ||
+        payload.old.type === 'line-break' ||
+        payload.old.type === 'page-break'
+      ) {
+        this.entities[index].raw = useEnv().emptyLine()
+      } else {
+        this.entities[index].raw = payload.new.raw
+      }
+
       this.entities[index].type = payload.new.type
-      this.entities[index].raw = payload.new.raw
       this.entities[index].createdAt = payload.new.createdAt
       this.entities[index].updatedAt = useFormat().actually()
       this.entities[index].external = payload.new.external || {}

@@ -69,6 +69,15 @@ export const useEntity = () => {
       )
     }
 
+    const isNotInput = (entity: Entity) => {
+      return (
+        entity.type === 'page-break' ||
+        entity.type === 'line-break' ||
+        entity.type === 'image' ||
+        entity.type === 'drau'
+      )
+    }
+
     const getNamesByTheContent = (raw: string) => {
       if (isImageCommand(raw)) return t('plugin.logger.normalize.image')
       if (isLineBreak(raw)) return t('plugin.logger.normalize.lineBreak')
@@ -109,6 +118,7 @@ export const useEntity = () => {
     return {
       entry,
       isFixed,
+      isNotInput,
       getNamesByTheContent,
       normalizeEmptyLines,
       getIndex,

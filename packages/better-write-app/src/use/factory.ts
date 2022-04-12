@@ -38,23 +38,6 @@ export const useFactory = () => {
           info: false,
           warning: false,
         },
-        external: {
-          checkbox: {
-            select: false,
-          },
-          list: {
-            type: 'number' as 'number' | 'rounded',
-          },
-          paragraph: {
-            active: false,
-            generator: generator(),
-          },
-          comment: {
-            raw: '',
-            updatedAt: format.actually(),
-            createdAt: format.actually(),
-          },
-        },
       }
     }
 
@@ -86,6 +69,11 @@ export const useFactory = () => {
           createdAt: format.actually(),
           updatedAt: format.actually(),
           ...defaults(),
+          external: {
+            checkbox: {
+              select: false,
+            },
+          },
         }
       }
 
@@ -96,6 +84,11 @@ export const useFactory = () => {
           createdAt: format.actually(),
           updatedAt: format.actually(),
           ...defaults(),
+          external: {
+            list: {
+              type: 'number' as 'number' | 'rounded',
+            },
+          },
         }
       }
 
@@ -106,6 +99,12 @@ export const useFactory = () => {
           createdAt: format.actually(),
           updatedAt: format.actually(),
           ...defaults(),
+          external: {
+            paragraph: {
+              active: false,
+              generator: generator(),
+            },
+          },
         }
       }
 

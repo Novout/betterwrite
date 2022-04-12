@@ -189,7 +189,11 @@
 
     data.value = data.value.replace(/\n/g, '')
 
-    if (_data === env.emptyLine()) {
+    if (
+      _data === env.emptyLine() ||
+      _data === env.lineBreak() ||
+      _data === env.pageBreak()
+    ) {
       setData('')
     }
 
