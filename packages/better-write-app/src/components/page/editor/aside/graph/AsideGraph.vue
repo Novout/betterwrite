@@ -6,7 +6,9 @@
         class="wb-icon w-12 h-12 md:(w-9 h-9)"
         @click.prevent.stop="ABSOLUTE.aside = false"
       />
-      <p class="wb-text font-bold font-raleway w-1/2 text-right truncate">
+      <p
+        class="wb-text font-bold font-raleway w-1/2 text-right truncate pointer-events-none"
+      >
         {{ PROJECT.nameRaw }}
       </p>
     </div>

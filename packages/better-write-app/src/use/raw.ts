@@ -8,6 +8,7 @@ import {
 import { useClipboard } from '@vueuse/core'
 import { useUtils } from './utils'
 import { useExternalsStore } from '@/store/externals'
+import { useEnv } from './env'
 
 export const bold = () => {
   const open = () => {
@@ -55,6 +56,8 @@ export const link = () => {
 
 export const useRaw = () => {
   const EXTERNALS = useExternalsStore()
+
+  const env = useEnv()
 
   const v1 = () => {
     const convert = (entity: Entity) => {
@@ -764,7 +767,9 @@ export const useRaw = () => {
       }
 
       const All = (str: string) => {
-        return str.replaceAll(/<\/?[^>]+(>|$)/g, '')
+        return str
+          .replaceAll(/<\/?[^>]+(>|$)/g, '')
+          .replaceAll(env.emptyLine(), '')
       }
 
       if (type === 'simple') {
