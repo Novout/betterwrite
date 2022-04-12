@@ -1,13 +1,13 @@
 <template>
   <div class="flex px-2 flex-col w-full">
-    <div class="flex items-center justify-between mb-5">
+    <div class="flex flex-row-reverse items-center justify-between mb-5 mt-2">
       <IconGraphClose
         v-if="PROJECT.type === 'creative'"
         class="wb-icon w-12 h-12 md:(w-9 h-9)"
         @click.prevent.stop="ABSOLUTE.aside = false"
       />
       <p
-        class="wb-text font-bold font-raleway w-1/2 text-right truncate pointer-events-none"
+        class="wb-text font-bold font-raleway w-2/3 text-left truncate pointer-events-none"
       >
         {{ PROJECT.nameRaw }}
       </p>
