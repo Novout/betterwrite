@@ -158,6 +158,7 @@ export default {
       load: 'Google Drive Load',
     },
     graph: {
+      chapters: 'Chapters',
       actuallyPage: 'Página Atual',
       projectPages: 'Projeto',
     },
