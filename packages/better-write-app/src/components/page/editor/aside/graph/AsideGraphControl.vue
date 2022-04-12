@@ -1,6 +1,15 @@
 <template>
   <div v-if="project.isCreativeProject()" class="flex items-center">
-    <HeroIcon class="wb-icon" @click.prevent.stop="page.onCreatePage">
+    <HeroIcon
+      class="wb-icon"
+      @click.prevent.stop="
+        page.onCreatePage(
+          t('editor.project.control.title', {
+            suffix: PROJECT.totalPagesCreated + 1,
+          })
+        )
+      "
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -68,9 +77,14 @@
 </template>
 
 <script setup lang="ts">
+  import { useProjectStore } from '@/store/project'
   import { usePage } from '@/use/page'
   import { useProject } from '@/use/project'
+  import { useI18n } from 'vue-i18n'
+
+  const PROJECT = useProjectStore()
 
   const page = usePage()
   const project = useProject()
+  const { t } = useI18n()
 </script>

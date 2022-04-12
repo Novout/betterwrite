@@ -60,13 +60,16 @@ export const useProject = () => {
 
       isLoading.value = true
 
-      PROJECT.create({
-        name: t('editor.aside.project.new.content.name'),
-        version: t('editor.aside.project.new.content.version'),
-        creator: t('editor.aside.project.new.content.creator'),
-        subject: t('editor.aside.project.new.content.subject'),
-        type,
-      } as any)
+      PROJECT.create(
+        {
+          name: t('editor.aside.project.new.content.name'),
+          version: t('editor.aside.project.new.content.version'),
+          creator: t('editor.aside.project.new.content.creator'),
+          subject: t('editor.aside.project.new.content.subject'),
+          type,
+        } as any,
+        t('editor.project.control.title', { suffix: 1 })
+      )
 
       await nextTick
 
@@ -87,7 +90,7 @@ export const useProject = () => {
 
   const create = (project: ProjectState) => {
     storage.normalize().then(async () => {
-      PROJECT.create(project)
+      PROJECT.create(project, t('editor.project.control.title', { suffix: 1 }))
 
       await nextTick
 

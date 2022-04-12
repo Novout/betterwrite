@@ -73,20 +73,20 @@ export const useProjectStore = defineStore('project', {
       this.bw.platform = payload.bw.platform
       this.bw.version = payload.bw.version
     },
-    create(payload: ProjectState) {
+    create(payload: ProjectState, title: string) {
       const global = useGlobalStore()
       global.reset()
 
-      this.$state = usePopulate().project(payload)
+      this.$state = usePopulate().project(payload, title)
     },
-    newPage() {
+    newPage(title: string) {
       this.totalPagesCreated++
 
       const context: ContextState = {
         id: this.totalPagesCreated,
-        title: 'Untitled',
+        title,
         entities: [
-          useFactory().entity().create('heading-one', 'Untitled'),
+          useFactory().entity().create('heading-one', title),
           useFactory()
             .entity()
             .create('paragraph', usePopulate().debug().names().paragraph()),

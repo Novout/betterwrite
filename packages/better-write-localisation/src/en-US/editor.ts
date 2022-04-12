@@ -20,6 +20,9 @@ export default {
     },
   },
   project: {
+    control: {
+      title: 'Chapter {suffix}',
+    },
     configuration: {
       title: 'Project Configurations',
       creator: 'Author',

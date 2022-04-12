@@ -18,10 +18,10 @@ export const usePage = () => {
   const scroll = useScroll()
   const { t } = useI18n()
 
-  const onCreatePage = async () => {
+  const onCreatePage = async (title: string) => {
     if (PROJECT.name === env.projectEmpty()) return
 
-    PROJECT.newPage()
+    PROJECT.newPage(title)
 
     await nextTick
 

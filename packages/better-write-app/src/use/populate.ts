@@ -8,7 +8,7 @@ import { useFactory } from './factory'
 export const usePopulate = () => {
   const factory = useFactory()
 
-  const project = (project: ProjectState): ProjectState => {
+  const project = (project: ProjectState, title?: string): ProjectState => {
     return {
       creative: {
         name: useUtils().text().kebab(project.name),
@@ -30,7 +30,7 @@ export const usePopulate = () => {
             id: 1,
             title: project.name,
             entities: [
-              factory.entity().create('heading-one', project.name),
+              factory.entity().create('heading-one', title || project.name),
               factory.entity().create('paragraph', debug().names().paragraph()),
             ],
             createdAt: useFormat().actually(),
