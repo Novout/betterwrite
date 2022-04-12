@@ -175,6 +175,21 @@ export const useContextStore = defineStore('context', {
 
       this.entities = useUtils().array().insert(this.entities, index, target)
     },
+    newInPageByOption({ entity, type }: ContextActionNewInPage) {
+      if (!entity || !entity.raw) return
+
+      const index = this.entities.indexOf(entity as Entity)
+
+      if (index === -1) return
+
+      const target = useFactory()
+        .entity()
+        .create(type as EntityType, '')
+
+      this.entities = useUtils()
+        .array()
+        .insert(this.entities, index + 1, target)
+    },
     newInPageInLastPosition(type: EntityType = 'paragraph') {
       const target = useFactory().entity().create(type)
 

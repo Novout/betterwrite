@@ -5,45 +5,73 @@
     </h3>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.commands.contents[0].title') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.commands.paragraph.active" />
+      <InputBoolean
+        v-model="EDITOR.configuration.commands.paragraph.active"
+        :specific="true"
+      />
     </div>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.commands.contents[1].title') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.commands.headingTwo.active" />
+      <InputBoolean
+        v-model="EDITOR.configuration.commands.headingTwo.active"
+        :specific="true"
+      />
     </div>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.commands.contents[2].title') }}</p>
       <InputBoolean
         v-model="EDITOR.configuration.commands.headingThree.active"
+        :specific="true"
       />
     </div>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.commands.contents[3].title') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.commands.pageBreak.active" />
+      <InputBoolean
+        v-model="EDITOR.configuration.commands.pageBreak.active"
+        :specific="true"
+      />
     </div>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.commands.contents[4].title') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.commands.lineBreak.active" />
+      <InputBoolean
+        v-model="EDITOR.configuration.commands.lineBreak.active"
+        :specific="true"
+      />
     </div>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.commands.contents[5].title') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.commands.image.active" />
+      <InputBoolean
+        v-model="EDITOR.configuration.commands.image.active"
+        :specific="true"
+      />
     </div>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.commands.contents[6].title') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.commands.dialogue.active" />
+      <InputBoolean
+        v-model="EDITOR.configuration.commands.dialogue.active"
+        :specific="true"
+      />
     </div>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.commands.contents[7].title') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.commands.checkbox.active" />
+      <InputBoolean
+        v-model="EDITOR.configuration.commands.checkbox.active"
+        :specific="true"
+      />
     </div>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.commands.contents[8].title') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.commands.list.active" />
+      <InputBoolean
+        v-model="EDITOR.configuration.commands.list.active"
+        :specific="true"
+      />
     </div>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.commands.contents[9].title') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.commands.drau.active" />
+      <InputBoolean
+        v-model="EDITOR.configuration.commands.drau.active"
+        :specific="true"
+      />
     </div>
   </div>
 </template>

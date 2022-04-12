@@ -553,7 +553,7 @@
 
     await nextTick
 
-    CONTEXT.newInPage({
+    CONTEXT.newInPageByOption({
       entity: entity.value,
       type,
     })
