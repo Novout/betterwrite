@@ -102,7 +102,7 @@ export const useCorrector = () => {
     }
 
     const resetEntityRaw = () => {
-      if (ADDONS.corrector.options[4].option) {
+      if (ADDONS.corrector.options[5].option) {
         getParagraphEntities((entity: Entity) => {
           entity.raw = raw.v2().normalize(entity.raw, 'full') || env.emptyLine()
         })

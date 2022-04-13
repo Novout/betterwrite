@@ -217,6 +217,8 @@ export const PluginPDFSet = (
     const { theme } = getPDFUtils()
 
     const headingOne = (entity: Entity) => {
+      __FIRST__HEADING__ONE__ = false
+
       return {
         text: entity.raw,
         margin: [
