@@ -24,6 +24,9 @@
         ></path>
       </svg>
     </template>
+    <p class="wb-text break-words pointer-events-none w-auto sm:w-80 my-2">
+      {{ t('editor.pdf.externals.preview.warning') }}
+    </p>
     <div id="pdf-preview-div" ref="preview"></div>
     <div
       v-if="!exists"

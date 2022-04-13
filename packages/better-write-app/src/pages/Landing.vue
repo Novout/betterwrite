@@ -81,8 +81,8 @@
                 aria-hidden="true"
                 role="img"
                 class="iconify iconify--uiw"
-                width="36"
-                height="36"
+                width="30"
+                height="30"
                 preserveAspectRatio="xMidYMid meet"
                 viewBox="0 0 20 20"
               >
@@ -93,7 +93,7 @@
               </svg>
             </HeroIcon>
             <v-typical
-              class="tracking-wide text-center text-sm md:text-lg blink"
+              class="tracking-wide text-center text-sm md:text-base blink"
               :steps="[
                 t('landing.first.support'),
                 10000,

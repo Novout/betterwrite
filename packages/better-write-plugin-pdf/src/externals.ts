@@ -9,6 +9,8 @@ export const setPDFI18n = () => {
         preview: {
           title: 'Simular',
           button: 'Criar',
+          warning:
+            '* O modo Simular não suporta todos os recursos implementados no Better Write. Se não renderizar, opte por Gerar o PDF.',
         },
       },
       inserts: {
@@ -179,6 +181,7 @@ export const setPDFI18n = () => {
         preview: {
           title: 'Simulate',
           button: 'Create',
+          warning: `* Simulation mode does not support all Better Write implementation features. If it doesn't render, choose Generate or PDF.`,
         },
       },
       inserts: {
