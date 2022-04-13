@@ -384,7 +384,11 @@
       </template>
     </EditorEntityDefaultOptionsItem>
     <EditorEntityDefaultOptionsItem
-      v-if="entity.type === 'paragraph'"
+      v-if="
+        entity.type === 'paragraph' ||
+        entity.type === 'list' ||
+        entity.type === 'checkbox'
+      "
       @action="ABSOLUTE.entity.customize = true"
     >
       <template #icon>
@@ -404,7 +408,7 @@
         </svg>
       </template>
       <template #title>
-        {{ t('editor.aside.entity.paragraph') }}
+        {{ t('editor.aside.entity.customize') }}
       </template>
     </EditorEntityDefaultOptionsItem>
     <EditorEntityDefaultOptionsItem v-if="entity.type === 'image'" :off="true">

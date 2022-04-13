@@ -191,6 +191,7 @@ export default {
       image: 'Image',
       comments: 'Comments',
       paragraph: 'Paragraph',
+      customize: 'Text',
       optionsOn: 'Enable',
     },
     project: {

@@ -335,6 +335,7 @@ export const PluginPDFSet = (
 
       __LIST__.arr.push({
         text: p.text,
+        style: entity.external?.paragraph?.active ? 'none' : 'paragraph',
         font: p.font,
         fontSize: p.fontSize,
         characterSpacing: p.characterSpacing,
@@ -375,13 +376,10 @@ export const PluginPDFSet = (
               {
                 border: [false, false, false, false],
                 text: p.text,
+                style: entity.external?.paragraph?.active
+                  ? 'none'
+                  : 'paragraph',
                 margin: [p.margin[0] + 7 + indent.length * 10, 0, 0, 0],
-                font: p.font,
-                fontSize: p.fontSize,
-                characterSpacing: p.characterSpacing,
-                ...(isTheme.value
-                  ? { color: theme.paragraph }
-                  : { color: p.color }),
               },
             ],
           ],
@@ -644,6 +642,7 @@ export const PluginPDFSet = (
             arr.push({
               ol: __LIST__.arr,
               ...(isTheme.value ? { color: theme.paragraph } : {}),
+              style: 'paragraph',
             })
 
             __LIST__.exists = false

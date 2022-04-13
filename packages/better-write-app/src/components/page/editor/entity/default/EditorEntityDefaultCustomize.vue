@@ -90,7 +90,7 @@
         </p>
       </div>
       <div
-        class="flex flex-row flex-wrap items-center overflow-auto"
+        class="flex gap-5 flex-row flex-wrap items-center overflow-auto"
         :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
       >
         <div class="wb-input-container">

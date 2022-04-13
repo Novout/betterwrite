@@ -70,6 +70,10 @@ export const useFactory = () => {
           updatedAt: format.actually(),
           ...defaults(),
           external: {
+            paragraph: {
+              active: false,
+              generator: generator(),
+            },
             checkbox: {
               select: false,
             },
@@ -85,6 +89,10 @@ export const useFactory = () => {
           updatedAt: format.actually(),
           ...defaults(),
           external: {
+            paragraph: {
+              active: false,
+              generator: generator(),
+            },
             list: {
               type: 'number' as 'number' | 'rounded',
             },

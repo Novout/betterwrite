@@ -188,6 +188,7 @@ export default {
       image: 'Imagem',
       comments: 'Comentários',
       paragraph: 'Parágrafo',
+      customize: 'Texto',
       optionsOn: 'Habilitar',
     },
     project: {
