@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-Better Write
+betterwrite.io
 </h1>
 <h4 align="center">
 A Modern Word Processor
@@ -32,8 +32,7 @@ A Modern Word Processor
 
 # Motivation
 
-There are no word processors on the market that are not inextricable from the context itself. 
-__Better Write__ offers an individual and reactive approach to any item that is entered in the editor.
+There are no word processors on the market that are not inextricable from the context itself. This approach makes it difficult to integrate other resources, limiting creative possibilities for writers and publishers. __Better Write__ offers an individual and reactive approach to any item that is entered in the editor.
 
 <br>
 
@@ -43,16 +42,24 @@ __Better Write__ offers an individual and reactive approach to any item that is 
 
 <br>
 
-## Entity Model
+# Entity Model
 
 Better Write works with the Entity Model, where each item in the editor is unique and independent of other content. This model allows the creation of resources that do not necessarily function as texts, such as Lists, Checkboxes, Images and Drawings.
 
 <br>
 
+## Canvas Model (Common in other Word Processors)
+
+<img src="./.github/canvasmodel.png" width="50%" />
+
+## Entity Model
+
 <img src="./.github/entitymodel.png" width="50%" />
 
 <br>
 
+The generators do not need to extract data from the editor because with the Entity Model we can standardize the project data, allowing the extensions (.PDF, .DOCX, .TXT) to work independently.
+
 # Changelog
 
-Check changelog [here](./CHANGELOG.md)
+Check git changelog [here](./CHANGELOG.md)
