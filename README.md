@@ -15,20 +15,44 @@ A Modern Word Processor
 <p>
 
 <br>
-<br>
 
-> WARNING: Early stage of development and is not recommended for use in production.
+# Features
 
+- ✅ Entity-Model Editor
+- ✅ Offline First
 - ✅ Cloud Save
+- ✅ Full Customization
 - ✅ Multipurpose
 - ✅ High Tracking
+- ✅ Statistics in Real-Time
 - ✅ Graph Control
 - ✅ Plugin Friendly
 - ✅ Mobile & Desktop (PWA)
-- ✅ PDF - DOCX Generator
+- ✅ PDF, DOCX, TXT Generator
 
-[DEMO HERE](https://better-write.vercel.app)
+# Motivation
 
-Check all features [here](./FEATURES.md)
+There are no word processors on the market that are not inextricable from the context itself. 
+__Better Write__ offers an individual and reactive approach to any item that is entered in the editor.
+
+<br>
+
+<p align="center">
+  <img src="./.github/example.png" width="100%" />
+<p>
+
+<br>
+
+## Entity Model
+
+Better Write works with the Entity Model, where each item in the editor is unique and independent of other content. This model allows the creation of resources that do not necessarily function as texts, such as Lists, Checkboxes, Images and Drawings.
+
+<br>
+
+<img src="./.github/entitymodel.png" width="50%" />
+
+<br>
+
+# Changelog
 
 Check changelog [here](./CHANGELOG.md)
