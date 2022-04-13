@@ -335,7 +335,7 @@ export const PluginPDFSet = (
 
       __LIST__.arr.push({
         text: p.text,
-        style: entity.external?.paragraph?.active ? 'none' : 'paragraph',
+        style: entity.external?.paragraph?.active ? 'none' : 'text',
         font: p.font,
         fontSize: p.fontSize,
         characterSpacing: p.characterSpacing,
@@ -376,9 +376,10 @@ export const PluginPDFSet = (
               {
                 border: [false, false, false, false],
                 text: p.text,
-                style: entity.external?.paragraph?.active
-                  ? 'none'
-                  : 'paragraph',
+                font: p.font,
+                fontSize: p.fontSize,
+                characterSpacing: p.characterSpacing,
+                style: entity.external?.paragraph?.active ? 'none' : 'text',
                 margin: [p.margin[0] + 7 + indent.length * 10, 0, 0, 0],
               },
             ],
@@ -642,7 +643,7 @@ export const PluginPDFSet = (
             arr.push({
               ol: __LIST__.arr,
               ...(isTheme.value ? { color: theme.paragraph } : {}),
-              style: 'paragraph',
+              style: 'text',
             })
 
             __LIST__.exists = false
@@ -738,6 +739,16 @@ export const PluginPDFSet = (
         }
       }
 
+      const text = () => {
+        return {
+          font: utils().correctFontInject(stores.PDF.styles.paragraph.font),
+          fontSize: stores.PDF.styles.paragraph.fontSize,
+          color: isTheme.value
+            ? theme.paragraph
+            : stores.PDF.styles.paragraph.color,
+        }
+      }
+
       const headingOne = () => {
         return {
           font: utils().correctFontInject(stores.PDF.styles.headingOne.font),
@@ -824,6 +835,7 @@ export const PluginPDFSet = (
       }
 
       return {
+        text,
         paragraph,
         headingOne,
         headingTwo,
@@ -900,6 +912,7 @@ export const PluginPDFSet = (
           'heading-one': generate().styles().headingOne(),
           'summary-default': generate().styles().summaryDefault(),
           paragraph: generate().styles().paragraph(),
+          text: generate().styles().text(),
         },
         images: images(),
       }
