@@ -437,28 +437,57 @@ export const PluginPDFSet = (
       }
     }
 
-    const image = (entity: Entity) => {
-      if (entity.external?.image?.alignment === 'full') {
-        if (entity.external.image.name.endsWith('svg')) {
-          return {
-            svg: entity.raw,
-            width:
-              hooks.defines.pdf().base().pageSizeFixes()[
-                stores.PDF.styles.base.pageSize
-              ][0] -
-              generate().base().pageMargins[0] -
-              generate().base().pageMargins[2],
-            margin: [
-              generate().base().pageMargins[0],
-              10,
-              generate().base().pageMargins[2],
-              10,
-            ],
-          }
-        }
+    const image = async (entity: Entity) => {
+      const convert = (raw: string): Promise<string> => {
+        return new Promise((res) => {
+          if (!raw.startsWith('<svg') && !raw.endsWith('svg>')) {
+            res(raw)
 
+            return
+          }
+
+          const blob = new Blob([raw], { type: 'image/svg+xml;charset=utf-8' })
+
+          const URL = window.URL || window.webkitURL || window
+
+          const blobURL = URL.createObjectURL(blob)
+
+          const image = new Image()
+          image.setAttribute('crossOrigin', 'anonymous')
+          image.onload = () => {
+            const canvas = document.createElement('canvas')
+
+            canvas.width = entity.external?.image?.size.width as number
+            canvas.height = entity.external?.image?.size.height as number
+
+            const context = canvas.getContext('2d') as CanvasRenderingContext2D
+
+            context.drawImage(
+              image,
+              0,
+              0,
+              entity.external?.image?.size.width as number,
+              entity.external?.image?.size.height as number
+            )
+
+            const url = canvas.toDataURL('image/png')
+
+            res(url)
+          }
+          image.onerror = () => {
+            res('error')
+          }
+
+          // TODO: other blob performatic method
+          image.src = blobURL
+        })
+      }
+
+      const raw = await convert(entity.raw)
+
+      if (entity.external?.image?.alignment === 'full') {
         return {
-          image: entity.raw,
+          image: raw,
           width:
             hooks.defines.pdf().base().pageSizeFixes()[
               stores.PDF.styles.base.pageSize
@@ -473,20 +502,8 @@ export const PluginPDFSet = (
           ],
         }
       } else if (entity.external?.image?.alignment === 'auto') {
-        if (entity.external.image.name.endsWith('svg')) {
-          return {
-            svg: entity.raw,
-            margin: [
-              generate().base().pageMargins[0],
-              10,
-              generate().base().pageMargins[2],
-              10,
-            ],
-          }
-        }
-
         return {
-          image: entity.raw,
+          image: raw,
           margin: [
             generate().base().pageMargins[0],
             10,
@@ -495,28 +512,8 @@ export const PluginPDFSet = (
           ],
         }
       } else {
-        if (entity.external?.image?.name.endsWith('svg')) {
-          return {
-            svg: entity.raw,
-            width: entity.external?.image?.size.width,
-            height: entity.external?.image?.size.height,
-            alignment: entity.external?.image?.alignment,
-            margin: [
-              entity.external?.image?.alignment === 'center'
-                ? 0
-                : generate().base().pageMargins[0] / 2,
-              10,
-              entity.external?.image?.alignment === 'right' ||
-              entity.external?.image?.alignment === 'center'
-                ? 0
-                : generate().base().pageMargins[2] / 2,
-              10,
-            ],
-          }
-        }
-
         return {
-          image: entity.raw,
+          image: raw,
           width: entity.external?.image?.size.width,
           height: entity.external?.image?.size.height,
           alignment: entity.external?.image?.alignment,
@@ -692,23 +689,17 @@ export const PluginPDFSet = (
                   _raw = await pageBreak()
                   break
                 case 'image':
-                  _raw = await image(entity)
-                  break
                 case 'drau':
                   _raw = await image(entity)
                   break
               }
 
-              console.log('here?')
-
-              arr.push(_raw)
+              if (_raw && _raw !== 'error') arr.push(_raw)
             }
           }
         }
 
         onGenerateList()
-
-        console.log('here res')
 
         res(arr)
       })

@@ -176,10 +176,19 @@
   })
 
   onEnd(async () => {
+    const width = drauu.value!.el!.clientWidth
+    const height = drauu.value!.el!.clientHeight
+
+    drauu.value!.el!.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    drauu.value!.el!.setAttribute('viewBox', `0 0 ${width} ${height}`)
+
     const normalize = drauu.value!.el!.outerHTML.replace(
       utils.regex().classTag(),
       ''
     )
+
+    props.entity.external!.image!.size!.width = width
+    props.entity.external!.image!.size!.height = height
 
     props.entity.raw = normalize || ''
 
