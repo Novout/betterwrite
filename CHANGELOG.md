@@ -1,6 +1,31 @@
-# Changelog (08/04/2022)
+# Changelog (13/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.14
+
+* **chore(readme):** entity model [bec38b2]
+* **chore:** readme [e58ddad]
+* **fix:** typos [d0d9c9c]
+* **fix(pdf):** text style [87ea500]
+* **fix(pdf):** list and checkbox support custom text [7b394d8]
+* **fix:** typos [614929f]
+* **fix(pdf):** convert svgs to png for correct content workflow [c35aeab]
+* **fix(pdf):** support async generate content [e9bc7f7]
+* **chore(header):** transition open down [75381df]
+* **style(theme):** icons in dark and light mode [e093b3f]
+* **fix(entity):** options close in all cases [15f0bf6]
+* **fix(entity):** options insert after actually block [4c1e11f]
+* **chore(graph):** icons [9da7892]
+* **fix(entity):** control externals for small json size [0941e16]
+* **feat(project):** generate new title board [be848c4]
+* **chore(theme):** toast colors [ed5d776]
+* **feat(graph):** totally control and preferences exibition [7a2a001]
+* **feat(graph):** support drau and page~line break [d3b87b5]
+* **style(graph):** chapters title [c147806]
+* **fix(entity):** drau typos [509ab92]
+* **fix:** typos [3831a14]
+* **feat:** questions section [38a804a]
 
 ### v0.15.13
 
