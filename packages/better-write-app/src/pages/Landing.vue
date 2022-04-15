@@ -66,6 +66,7 @@
             </button>
           </div>
           <a
+            v-if="env.isDev()"
             v-motion
             :initial="{ opacity: 0 }"
             :enter="{ opacity: 1, transition: { delay: 500 } }"
@@ -128,10 +129,12 @@
   import { useWebGL } from '@/use/webgl'
   import { useI18n } from 'vue-i18n'
   import { watch } from 'vue'
+import { useEnv } from '@/use/env'
 
   const { version, onClick, isNecessaryLogin } = useLanding()
   const { t } = useI18n()
   const webgl = useWebGL()
+  const env = useEnv()
 
   webgl.init()
 
