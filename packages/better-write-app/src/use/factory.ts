@@ -41,6 +41,15 @@ export const useFactory = () => {
       }
     }
 
+    const setText = () => {
+      return {
+        paragraph: {
+          active: false,
+          generator: generator(),
+        },
+      }
+    }
+
     const create = (type: EntityType, raw?: string): Entity => {
       if (type === 'line-break') {
         return {
@@ -70,10 +79,7 @@ export const useFactory = () => {
           updatedAt: format.actually(),
           ...defaults(),
           external: {
-            paragraph: {
-              active: false,
-              generator: generator(),
-            },
+            ...setText(),
             checkbox: {
               select: false,
             },
@@ -89,10 +95,7 @@ export const useFactory = () => {
           updatedAt: format.actually(),
           ...defaults(),
           external: {
-            paragraph: {
-              active: false,
-              generator: generator(),
-            },
+            ...setText(),
             list: {
               type: 'number' as 'number' | 'rounded',
             },
@@ -108,10 +111,7 @@ export const useFactory = () => {
           updatedAt: format.actually(),
           ...defaults(),
           external: {
-            paragraph: {
-              active: false,
-              generator: generator(),
-            },
+            ...setText(),
           },
         }
       }
@@ -149,7 +149,7 @@ export const useFactory = () => {
       }
     }
 
-    return { create, generator }
+    return { create, generator, setText }
   }
 
   const simulate = () => {

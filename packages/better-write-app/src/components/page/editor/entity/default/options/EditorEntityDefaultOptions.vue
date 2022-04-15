@@ -389,7 +389,7 @@
         entity.type === 'list' ||
         entity.type === 'checkbox'
       "
-      @action="ABSOLUTE.entity.customize = true"
+      @action="onText"
     >
       <template #icon>
         <svg
@@ -471,6 +471,7 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useI18n } from 'vue-i18n'
   import useEmitter from '@/use/emitter'
+  import { useFactory } from '@/use/factory'
   import { usePlugin } from 'better-write-plugin-core'
 
   const EDITOR = useEditorStore()
@@ -487,6 +488,7 @@
   const { t } = useI18n()
   const emitter = useEmitter()
   const plugin = usePlugin()
+  const factory = useFactory()
 
   onClickOutside(options as any, () => onClose())
 
@@ -622,4 +624,20 @@
     ;(CONTEXT.entities[_index] as any).external.paragraph.generator =
       paragraph.generator as any
   })
+
+  const onText = async () => {
+    const _index: number = CONTEXT.entities.indexOf(entity.value)
+
+    if(!entity.value.external?.paragraph) {
+
+      CONTEXT.entities[_index].external = {
+        ...CONTEXT.entities[_index].external,
+        ...factory.entity().setText()
+      }
+    }
+
+    await nextTick
+
+    ABSOLUTE.entity.customize = true
+  }
 </script>

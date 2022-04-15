@@ -22,31 +22,10 @@ export const useCorrector = () => {
   const env = useEnv()
   const { isLoading } = useNProgress()
 
-  const getAllEntities = (cb: (...a: any) => void) => {
-    PROJECT.pages.forEach((page) => {
-      page.entities.forEach((entity) => {
-        if (project.utils().isValidType(entity)) cb && cb(entity)
-      })
-    })
-
-    isLoading.value = false
-  }
-
-  const getParagraphEntities = (cb: (...a: any) => void) => {
-    PROJECT.pages.forEach((page) => {
-      page.entities.forEach((entity) => {
-        if (project.utils().isValidType(entity) && entity.type === 'paragraph')
-          cb && cb(entity)
-      })
-    })
-
-    isLoading.value = false
-  }
-
   const options = () => {
     const removeStartWhitespace = () => {
       if (ADDONS.corrector.options[0].option) {
-        getParagraphEntities((entity: Entity) => {
+        project.utils().getParagraphEntities((entity: Entity) => {
           entity.raw = entity.raw.trimStart()
         })
       }
@@ -54,7 +33,7 @@ export const useCorrector = () => {
 
     const removeEndWhitespace = () => {
       if (ADDONS.corrector.options[1].option) {
-        getParagraphEntities((entity: Entity) => {
+        project.utils().getParagraphEntities((entity: Entity) => {
           entity.raw = entity.raw.trimEnd()
         })
       }
@@ -62,7 +41,7 @@ export const useCorrector = () => {
 
     const insertParagraphEndStop = () => {
       if (ADDONS.corrector.options[2].option) {
-        getParagraphEntities((entity: Entity) => {
+        project.utils().getParagraphEntities((entity: Entity) => {
           const last = entity.raw.charAt(entity.raw.length - 1)
 
           if (last !== '.' && last !== ':' && last !== '/') entity.raw += '.'
@@ -72,7 +51,7 @@ export const useCorrector = () => {
 
     const removeExtraWhitespace = () => {
       if (ADDONS.corrector.options[3].option) {
-        getAllEntities((entity: Entity) => {
+        project.utils().getAllEntities((entity: Entity) => {
           entity.raw = entity.raw.replace(/\s+/g, ' ').trim()
         })
       }
@@ -80,7 +59,7 @@ export const useCorrector = () => {
 
     const insertDialogEndStop = () => {
       if (ADDONS.corrector.options[4].option) {
-        getParagraphEntities((entity: Entity) => {
+        project.utils().getParagraphEntities((entity: Entity) => {
           let counter = 0
           for (let i = 0; i < entity.raw.length; i++) {
             const letter = entity.raw.charAt(i)
@@ -103,15 +82,13 @@ export const useCorrector = () => {
 
     const resetEntityRaw = () => {
       if (ADDONS.corrector.options[5].option) {
-        getParagraphEntities((entity: Entity) => {
+        project.utils().getParagraphEntities((entity: Entity) => {
           entity.raw = raw.v2().normalize(entity.raw, 'full') || env.emptyLine()
         })
       }
     }
 
     return {
-      getAllEntities,
-      getParagraphEntities,
       removeStartWhitespace,
       removeEndWhitespace,
       insertParagraphEndStop,

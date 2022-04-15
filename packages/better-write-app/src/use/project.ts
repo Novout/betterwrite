@@ -253,6 +253,27 @@ export const useProject = () => {
   }
 
   const utils = () => {
+    const getAllEntities = (cb: (...a: any) => void) => {
+      PROJECT.pages.forEach((page) => {
+        page.entities.forEach((entity) => {
+          if (utils().isValidType(entity)) cb && cb(entity)
+        })
+      })
+  
+      isLoading.value = false
+    }
+  
+    const getParagraphEntities = (cb: (...a: any) => void) => {
+      PROJECT.pages.forEach((page) => {
+        page.entities.forEach((entity) => {
+          if (utils().isValidType(entity) && entity.type === 'paragraph')
+            cb && cb(entity)
+        })
+      })
+  
+      isLoading.value = false
+    }
+
     const resetAllVisual = () => {
       CONTEXT.entities.forEach((entity) => {
         entity.visual.info = false
@@ -448,6 +469,8 @@ export const useProject = () => {
     return {
       resetAllVisual,
       isValidType,
+      getAllEntities,
+      getParagraphEntities,
       getWords,
       getOnlyRaw,
       getChapterLetters,

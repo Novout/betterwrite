@@ -444,6 +444,28 @@ export const useStorage = () => {
     }
   }
 
+  const purge = () => {
+    PROJECT.pages.forEach((page) => {
+      page.entities.forEach((entity) => {
+        if ((entity.type === 'paragraph' || entity.type === 'list' || entity.type === 'checkbox') && !(
+          entity.raw === env.emptyLine() ||
+          entity.raw === env.pageBreak() ||
+          entity.raw === env.lineBreak()
+        )) {
+          /* dynamic paragraph generator */
+          if(!entity.external?.paragraph?.active && entity.external?.paragraph?.generator) {
+            delete entity.external.paragraph
+          }
+
+          /* dynamic paragraph comment */
+          if(entity.external && !entity.external?.comment?.raw) {
+            delete entity.external.comment
+          }
+        }
+      })
+    })
+  }
+
   const normalize = async (force: boolean = false) => {
     // close open entities contents
     emitter.emit('entity-edit-save')
@@ -454,6 +476,11 @@ export const useStorage = () => {
 
     // Generators render in only PROJECT contents, context is unique for editor show
     PROJECT.updateContext(CONTEXT.$state)
+
+    await nextTick
+
+    // remove unused entity external
+    await purge()
 
     // for lose ticket ms
     await nextTick
