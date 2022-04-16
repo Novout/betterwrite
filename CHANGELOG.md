@@ -1,6 +1,16 @@
-# Changelog (13/04/2022)
+# Changelog (16/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.15
+
+* **feat(editor):** speech ready [e657c4c]
+* **fix:** typo [8af7948]
+* **style(editor):** finder and switcher entity type [6f46b73]
+* **feat(logger):** entity json loader [305e879]
+* **fix(entity):** customize save text template [dbe5c45]
+* **fix:** typo [6940faa]
+* **feat(project):** purge entities [12aa700]
 
 ### v0.15.14
 
