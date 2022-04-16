@@ -33,11 +33,7 @@
         @action="
           ABSOLUTE.tools.speechRecognition = !ABSOLUTE.tools.speechRecognition
         "
-      >
-        <template #shortcut>
-          <BETABagde />
-        </template>
-      </EditorHeaderItem>
+      />
       <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.assistants.finder')"

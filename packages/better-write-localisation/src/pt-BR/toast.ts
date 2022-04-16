@@ -39,4 +39,7 @@ export default {
       },
     },
   },
+  speech: {
+    microphone: 'Nenhum microfone foi reconhecido pelo sistema!',
+  },
 }
