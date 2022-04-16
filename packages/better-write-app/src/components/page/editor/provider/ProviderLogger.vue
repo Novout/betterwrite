@@ -4,7 +4,7 @@
   >
     <LoggerHeader />
     <div class="grid grid-cols-4 overflow-hidden wb-text">
-      <div class="col-span-3 h-screen overflow-y-auto">
+      <div class="col-span-2 md:col-span-3 h-screen overflow-y-auto">
         <LoggerEntityItem
           v-for="(entity, index) in entities"
           v-once
@@ -12,7 +12,9 @@
           :entity="entity"
         />
       </div>
-      <div class="flex col-auto flex-col h-screen overflow-y-auto">
+      <div
+        class="flex col-span-2 md:col-auto flex-col h-screen overflow-y-auto"
+      >
         <LoggerDataItem
           v-for="(log, index) in LOGGER.content"
           v-once
