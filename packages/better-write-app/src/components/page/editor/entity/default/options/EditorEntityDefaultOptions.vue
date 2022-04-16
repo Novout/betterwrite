@@ -628,11 +628,10 @@
   const onText = async () => {
     const _index: number = CONTEXT.entities.indexOf(entity.value)
 
-    if(!entity.value.external?.paragraph) {
-
+    if (!entity.value.external?.paragraph) {
       CONTEXT.entities[_index].external = {
         ...CONTEXT.entities[_index].external,
-        ...factory.entity().setText()
+        ...factory.entity().setText(),
       }
     }
 

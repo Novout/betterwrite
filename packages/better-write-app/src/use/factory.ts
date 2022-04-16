@@ -45,6 +45,7 @@ export const useFactory = () => {
       return {
         paragraph: {
           active: false,
+          class: null,
           generator: generator(),
         },
       }

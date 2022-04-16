@@ -225,7 +225,14 @@
     t('editor.entity.generator.template'),
     ...PROJECT.templates.generator.map((g) => g.name),
   ])
-  const template = ref<string>(templates.value[0])
+  const template = ref<string>(
+    entity.value?.external?.paragraph?.class &&
+      templates.value.find(
+        (template) => template === entity.value?.external?.paragraph?.class
+      )
+      ? entity.value?.external?.paragraph?.class
+      : templates.value[0]
+  )
   const templateText = ref<string>('')
 
   onClickOutside(options as any, () => onClose())
@@ -257,6 +264,7 @@
       paragraph.active as any
     ;(CONTEXT.entities[_index] as any).external.paragraph.generator =
       paragraph.generator as any
+    ;(CONTEXT.entities[_index] as any).external.paragraph.class = template.value
   })
 
   const paragraph = reactive({
@@ -273,6 +281,7 @@
       paragraph.active as any
     ;(CONTEXT.entities[_index] as any).external.paragraph.generator =
       paragraph.generator as any
+    ;(CONTEXT.entities[_index] as any).external.paragraph.class = template.value
   })
 
   const onCreateParagraphTemplate = () => {
@@ -303,6 +312,8 @@
   }
 
   const onDeleteParagraphTemplate = () => {
+    if (template.value === t('editor.entity.generator.template')) return
+
     isLoading.value = true
 
     PROJECT.templates.generator = PROJECT.templates.generator.filter(

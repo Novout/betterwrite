@@ -129,7 +129,7 @@
   import { useWebGL } from '@/use/webgl'
   import { useI18n } from 'vue-i18n'
   import { watch } from 'vue'
-import { useEnv } from '@/use/env'
+  import { useEnv } from '@/use/env'
 
   const { version, onClick, isNecessaryLogin } = useLanding()
   const { t } = useI18n()

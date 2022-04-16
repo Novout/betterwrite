@@ -95,6 +95,7 @@ export interface EntityExternalParagraphGenerator {
 
 export interface EntityExternalParagraph {
   active: boolean
+  class: string | null
   generator: EntityExternalParagraphGenerator
 }
 

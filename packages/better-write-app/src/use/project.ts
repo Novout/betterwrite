@@ -259,10 +259,10 @@ export const useProject = () => {
           if (utils().isValidType(entity)) cb && cb(entity)
         })
       })
-  
+
       isLoading.value = false
     }
-  
+
     const getParagraphEntities = (cb: (...a: any) => void) => {
       PROJECT.pages.forEach((page) => {
         page.entities.forEach((entity) => {
@@ -270,7 +270,7 @@ export const useProject = () => {
             cb && cb(entity)
         })
       })
-  
+
       isLoading.value = false
     }
 
