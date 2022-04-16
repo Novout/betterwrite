@@ -15,6 +15,7 @@ import {
   ProjectType,
   ContextState,
   Entity,
+  Entities,
 } from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
@@ -290,6 +291,14 @@ export const useProject = () => {
       )
     }
 
+    const getEntities = () => {
+      return PROJECT.pages.reduce((sum, val) => {
+        sum.push(...val.entities)
+
+        return sum
+      }, [] as Entities)
+    }
+
     const getChapterLetters = (page: ContextState) => {
       return page.entities
         .filter((val) => isValidType(val))
@@ -470,6 +479,7 @@ export const useProject = () => {
       resetAllVisual,
       isValidType,
       getAllEntities,
+      getEntities,
       getParagraphEntities,
       getWords,
       getOnlyRaw,

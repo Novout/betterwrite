@@ -313,6 +313,8 @@ export const setTailwindCssVariables = () => {
     'theme-logger-error-text': 'var(--theme-logger-error-text)',
     'theme-logger-info-background': 'var(--theme-logger-info-background)',
     'theme-logger-info-text': 'var(--theme-logger-info-text)',
+    'theme-logger-entity-background': 'var(--theme-logger-entity-background)',
+    'theme-logger-entity-text': 'var(--theme-logger-entity-text)',
     'theme-toast-default-background': 'var(--theme-toast-default-background)',
     'theme-toast-default-text': 'var(--theme-toast-default-text)',
     'theme-toast-default-close': 'var(--theme-toast-default-close)',

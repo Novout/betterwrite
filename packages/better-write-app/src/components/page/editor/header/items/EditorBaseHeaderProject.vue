@@ -54,7 +54,7 @@
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.assistants.actions')"
-        @action="ABSOLUTE.logger = true"
+        @action="onLogger"
       />
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
@@ -190,5 +190,11 @@
     plugin.emit('plugin-theme-set')
 
     storage.normalize()
+  }
+
+  const onLogger = async () => {
+    await storage.normalize()
+
+    ABSOLUTE.logger = true
   }
 </script>
