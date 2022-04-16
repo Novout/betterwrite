@@ -26,6 +26,8 @@
   --theme-aside-graph-background: #242222;
   --theme-aside-graph-background-hover: #725656;
   --theme-aside-graph-background-active: #514646;
+  --theme-editor-betterwrite: #faa59e;
+  --theme-editor-io: #fa8373;
   --theme-editor-full-background: #191919;
   --theme-editor-full-background-hover: #191919;
   --theme-editor-full-background-active: #191919;
@@ -189,8 +191,8 @@
   --theme-logger-error-background: rgb(255, 137, 135, 0.1);
   --theme-logger-info-text: rgb(103, 147, 255);
   --theme-logger-info-background: rgb(103, 147, 255, 0.1);
-  --theme-logger-entity-background: #1f2937;
-  --theme-logger-entity-text: #e5e7eb;
+  --theme-logger-entity-background: #282626;
+  --theme-logger-entity-text: #faa59e;
   --theme-toast-default-text: rgb(103, 147, 255);
   --theme-toast-default-background: rgb(103, 147, 255, 0.5);
   --theme-toast-default-close: black;

@@ -26,6 +26,8 @@
   --theme-aside-graph-background: none;
   --theme-aside-graph-background-hover: rgba(106, 129, 158, 0.5);
   --theme-aside-graph-background-active: rgba(106, 129, 158, 0.2);
+  --theme-editor-betterwrite: #111111;
+  --theme-editor-io: #6a819e;
   --theme-editor-full-background: rgba(222, 237, 255, 0.3);
   --theme-editor-full-background-hover: rgba(222, 237, 255, 0.3);
   --theme-editor-full-background-active: rgba(222, 237, 255, 0.3);
