@@ -45,18 +45,6 @@
     </div>
     <div class="wb-configuration">
       <section class="flex gap-2">
-        <p>{{ t('editor.project.configuration.producer') }}</p>
-        <TooltipIcon
-          :tooltip="t('editor.project.configuration.tooltip.producer')"
-        />
-      </section>
-      <InputText
-        v-model="PROJECT.producer"
-        class="wb-configuration-input-text"
-      />
-    </div>
-    <div class="wb-configuration">
-      <section class="flex gap-2">
         <p>{{ t('editor.project.configuration.keywords') }}</p>
         <TooltipIcon
           :tooltip="t('editor.project.configuration.tooltip.keywords')"

@@ -886,7 +886,7 @@ export const PluginPDFSet = (
           title: stores.PROJECT.name,
           author: stores.PROJECT.creator,
           subject: stores.PROJECT.subject,
-          producer: stores.PROJECT.producer,
+          producer: 'betterwrite.io',
           keywords: stores.PROJECT.keywords,
         },
       }
