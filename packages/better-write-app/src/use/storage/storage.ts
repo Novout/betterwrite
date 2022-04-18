@@ -75,7 +75,7 @@ export const useStorage = () => {
     })
   }
 
-  const normalize = async (force: boolean = false) => {
+  const normalize = async () => {
     // close open entities contents
     emitter.emit('entity-edit-save')
     // force entity paragraph comment a save / close comment modal
@@ -86,14 +86,9 @@ export const useStorage = () => {
     // Generators render in only PROJECT contents, context is unique for editor show
     PROJECT.updateContext(CONTEXT.$state)
 
-    await nextTick
-
-    // remove unused entity external
-    await purge()
-
     // for lose ticket ms
     await nextTick
   }
 
-  return { support, getProjectObject, normalize }
+  return { support, getProjectObject, normalize, purge }
 }

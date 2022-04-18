@@ -44,7 +44,9 @@ export const useLocalStorage = () => {
       isLoading.value = true
       storage
         .normalize()
-        .then(() => {
+        .then(async () => {
+          await storage.purge()
+
           setProject(storage.getProjectObject())
 
           toast.success(t('toast.project.save'))

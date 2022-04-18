@@ -161,6 +161,8 @@ export const useSupabase = () => {
 
       await storage.normalize()
 
+      await storage.purge()
+
       const { error: err } = await s.from('projects').upsert(
         {
           // @ts-ignore
