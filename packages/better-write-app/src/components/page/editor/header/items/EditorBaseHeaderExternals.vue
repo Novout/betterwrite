@@ -52,7 +52,6 @@
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useI18n } from 'vue-i18n'
-  import BETABagde from '@/components/material/BETABagde.vue'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
