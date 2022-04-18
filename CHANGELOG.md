@@ -1,6 +1,11 @@
-# Changelog (16/04/2022)
+# Changelog (18/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.16
+
+* **fix(editor):** purge only in save [6eba7d2]
+* **feat(graph):** edit project name [a081d2c]
 
 ### v0.15.15
 
