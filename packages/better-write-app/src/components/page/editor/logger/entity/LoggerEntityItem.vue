@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex flex-col w-full cursor-pointer py-3"
+    class="flex flex-col w-full cursor-pointer shadow-lg rounded-lg border border-theme-border-1 my-5"
     @click.prevent.stop="toggle()"
   >
-    <EntityTypeShow :type="entity.type" />
+    <EntityTypeShow class="rounded-tl-lg shadow-lg" :type="entity.type" />
     <div class="flex justify-between items-center w-full">
       <p class="flex-1 pointer-events-none">
         {{
