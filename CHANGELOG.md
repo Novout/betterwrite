@@ -1,6 +1,15 @@
-# Changelog (18/04/2022)
+# Changelog (22/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.17
+
+* **fix(pdf):** empty line in other types [614cbba]
+* **style(editor):** logger raw [e19930d]
+* **fix(pdf):** full drau image raw [0383932]
+* **fix(editor):** nprogress behaviour [a7538d6]
+* **chore(loader):** destr instead json parse [2228ccc]
+* **chore(project):** producer default [9d958ae]
 
 ### v0.15.16
 
