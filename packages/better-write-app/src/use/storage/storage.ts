@@ -43,6 +43,8 @@ export const useStorage = () => {
   }
 
   const purge = () => {
+    LOGGER.content = LOGGER.content.slice(-1 * 100)
+
     PROJECT.pages.forEach((page) => {
       page.entities.forEach((entity) => {
         if (

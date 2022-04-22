@@ -10,6 +10,7 @@ export const useLanding = () => {
   const { t } = useI18n()
   const env = useEnv()
   const router = useRouter()
+  const { isLoading } = useNProgress()
 
   const isNecessaryLogin = ref<boolean>(false)
 
@@ -38,11 +39,15 @@ export const useLanding = () => {
       return
     }
 
+    isLoading.value = true
+
     await nextTick
 
     router.push('/editor').finally(() => {
       // for common reactivity in other routes
       document.body.style.overflowX = 'auto'
+
+      isLoading.value = false
     })
   }
 
