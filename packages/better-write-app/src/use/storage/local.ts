@@ -1,3 +1,4 @@
+import destr from 'destr'
 import { ProjectObject } from 'better-write-types'
 import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
@@ -22,7 +23,7 @@ export const useLocalStorage = () => {
   }
 
   const get = (name: string) => {
-    return JSON.parse((localStorage as any).getItem(name))
+    return destr((localStorage as any).getItem(name))
   }
 
   const setProject = (obj: ProjectObject) => {
