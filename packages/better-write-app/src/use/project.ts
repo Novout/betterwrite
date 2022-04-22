@@ -38,7 +38,6 @@ export const useProject = () => {
   const storage = useStorage()
   const local = useLocalStorage()
   const entity = useEntity()
-  const { isLoading } = useNProgress()
   const env = useEnv()
   const raw = useRaw()
   const plugin = usePlugin()
@@ -59,8 +58,6 @@ export const useProject = () => {
     const n = async (type: ProjectType, skipAlert: boolean = false) => {
       if (!skipAlert && !confirm(t('toast.project.createAlert'))) return
 
-      isLoading.value = true
-
       PROJECT.create(
         {
           name: t('editor.aside.project.new.content.name'),
@@ -78,8 +75,6 @@ export const useProject = () => {
 
       if (!breakpoints.isMobile().value && type === 'creative')
         ABSOLUTE.aside = true
-
-      isLoading.value = false
 
       await local.onSaveProject(false)
 
@@ -120,8 +115,6 @@ export const useProject = () => {
       return
     }
 
-    isLoading.value = true
-
     PROJECT.load(context.project)
 
     await nextTick
@@ -161,13 +154,9 @@ export const useProject = () => {
     if (notification) toast.success(t('toast.project.load'))
 
     utils().resetAllVisual()
-
-    isLoading.value = false
   }
 
   const onExportProject = () => {
-    isLoading.value = true
-
     storage
       .normalize()
       .then(() => {
@@ -178,14 +167,10 @@ export const useProject = () => {
           utils().exportName('bw')
         )
       })
-      .finally(() => {
-        isLoading.value = false
-      })
+      .finally(() => {})
   }
 
   const onExportProjectAs = () => {
-    isLoading.value = true
-
     storage
       .normalize()
       .then(() => {
@@ -214,9 +199,7 @@ export const useProject = () => {
 
         res.saveAs()
       })
-      .finally(() => {
-        isLoading.value = false
-      })
+      .finally(() => {})
   }
 
   const onImportProject = () => {
@@ -260,8 +243,6 @@ export const useProject = () => {
           if (utils().isValidType(entity)) cb && cb(entity)
         })
       })
-
-      isLoading.value = false
     }
 
     const getParagraphEntities = (cb: (...a: any) => void) => {
@@ -271,8 +252,6 @@ export const useProject = () => {
             cb && cb(entity)
         })
       })
-
-      isLoading.value = false
     }
 
     const resetAllVisual = () => {

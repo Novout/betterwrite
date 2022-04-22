@@ -1,6 +1,5 @@
 import { useProjectStore } from '@/store/project'
 import { ProjectTypeID, ContextState } from 'better-write-types'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import useEmitter from '../emitter'
 import { useFormat } from '../format'
 import { useStorage } from '../storage/storage'
@@ -18,7 +17,6 @@ export const useCreativeType = () => {
   const plugin = usePlugin()
   const storage = useStorage()
   const factory = useFactory()
-  const { isLoading } = useNProgress()
 
   const draft = () => {
     const getActivePage = (id: ProjectTypeID) => {
@@ -48,8 +46,6 @@ export const useCreativeType = () => {
 
       if (exists) return
 
-      isLoading.value = true
-
       const page = {
         id: id.active,
         title,
@@ -60,14 +56,10 @@ export const useCreativeType = () => {
 
       PROJECT.creative.drafts.push(page)
 
-      isLoading.value = false
-
       plugin.emit('plugin-project-creative-drafts-create-draft', page)
     }
 
     const remove = async (id: ProjectTypeID) => {
-      isLoading.value = true
-
       const set = getDraftPage(id)
 
       PROJECT.creative.drafts = PROJECT.creative.drafts.filter(
@@ -80,14 +72,10 @@ export const useCreativeType = () => {
 
       await nextTick
 
-      isLoading.value = false
-
       plugin.emit('plugin-project-creative-drafts-delete-draft', set)
     }
 
     const reset = (id: ProjectTypeID) => {
-      isLoading.value = true
-
       const target = getDraftPage(id)
 
       const pos = PROJECT.creative.drafts.indexOf(target)
@@ -101,8 +89,6 @@ export const useCreativeType = () => {
       PROJECT.creative.drafts.splice(pos, 1, target)
 
       setInfo(target)
-
-      isLoading.value = false
 
       plugin.emit('plugin-project-creative-drafts-reset-draft', target)
     }
@@ -118,8 +104,6 @@ export const useCreativeType = () => {
     }
 
     const set = (id: ProjectTypeID) => {
-      isLoading.value = true
-
       const target = getDraftPage(id)
       let actually = getActivePage(id)
 
@@ -140,16 +124,12 @@ export const useCreativeType = () => {
         .then(() => {
           CONTEXT.load(actually)
         })
-        .finally(() => {
-          isLoading.value = false
-        })
+        .finally(() => {})
 
       plugin.emit('plugin-project-creative-drafts-set-draft', actually)
     }
 
     const updateTitle = (id: ProjectTypeID, main: boolean, title: string) => {
-      isLoading.value = true
-
       if (main) {
         const target = getActivePage(id)
 
@@ -157,8 +137,6 @@ export const useCreativeType = () => {
 
         PROJECT.pages[index].title = title
         PROJECT.pages[index].updatedAt = format.actually()
-
-        isLoading.value = false
 
         return
       }
@@ -169,8 +147,6 @@ export const useCreativeType = () => {
 
       PROJECT.creative.drafts[index].title = title
       PROJECT.creative.drafts[index].updatedAt = format.actually()
-
-      isLoading.value = false
     }
 
     return { new: add, delete: remove, set, reset, updateTitle }

@@ -9,7 +9,6 @@ import { s } from '@/use/storage/supabase'
 export const useLanding = () => {
   const { t } = useI18n()
   const env = useEnv()
-  const { isLoading } = useNProgress()
   const router = useRouter()
 
   const isNecessaryLogin = ref<boolean>(false)
@@ -39,15 +38,11 @@ export const useLanding = () => {
       return
     }
 
-    isLoading.value = true
-
     await nextTick
 
     router.push('/editor').finally(() => {
       // for common reactivity in other routes
       document.body.style.overflowX = 'auto'
-
-      isLoading.value = false
     })
   }
 

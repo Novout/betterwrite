@@ -3,7 +3,6 @@ import { useContextStore } from '@/store/context'
 import { useProjectStore } from '@/store/project'
 import { useStorage } from './storage/storage'
 import { nextTick } from 'vue'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useProject } from './project'
 import { Entity } from 'better-write-types'
 import { useEditorStore } from '../store/editor'
@@ -20,7 +19,6 @@ export const useCorrector = () => {
   const project = useProject()
   const raw = useRaw()
   const env = useEnv()
-  const { isLoading } = useNProgress()
 
   const options = () => {
     const removeStartWhitespace = () => {
@@ -99,8 +97,6 @@ export const useCorrector = () => {
   }
 
   const apply = () => {
-    isLoading.value = true
-
     storage.normalize().then(async () => {
       PROJECT.updateContext(CONTEXT.$state)
 

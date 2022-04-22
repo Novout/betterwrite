@@ -17,7 +17,6 @@ export const useGraph = () => {
 
   const scroll = useScroll()
   const storage = useStorage()
-  const { isLoading } = useNProgress()
   const breakpoints = useBreakpoints(breakpointsTailwind)
 
   const utils = () => {
@@ -33,10 +32,6 @@ export const useGraph = () => {
     page: ContextState,
     entity: Entity
   ) => {
-    isLoading.value = true
-
-    await nextTick
-
     storage
       .normalize()
       .then(async () => {
@@ -49,8 +44,6 @@ export const useGraph = () => {
         scroll.entity(index)
       })
       .finally(() => {
-        isLoading.value = false
-
         // open comment modal with comment click
         if (entity.external?.comment?.raw) {
           EDITOR.actives.entity.index = index

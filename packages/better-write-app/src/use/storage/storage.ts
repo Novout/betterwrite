@@ -6,8 +6,6 @@ import { usePDFStore } from '@/store/pdf'
 import { ProjectObject } from 'better-write-types'
 import { nextTick } from 'vue'
 import useEmitter from '../emitter'
-import { useDefines } from '../defines'
-import { useFormat } from '../format'
 import { useContextStore } from '@/store/context'
 import { useAuthStore } from '@/store/auth'
 
@@ -21,7 +19,6 @@ export const useStorage = () => {
 
   const env = useEnv()
   const emitter = useEmitter()
-  const defines = useDefines()
 
   const support = (project: any) => {
     if (!project) return

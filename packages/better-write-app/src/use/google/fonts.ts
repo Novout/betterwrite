@@ -1,3 +1,4 @@
+import destr from 'destr'
 import { GoogleFont } from 'better-write-types'
 import { useEnv } from '../env'
 import { useDefines } from '../defines'
@@ -39,7 +40,7 @@ export const useFonts = () => {
       }&sort=popularity`,
       {
         afterFetch(ctx) {
-          const data = JSON.parse(ctx.data)
+          const data = destr(ctx.data)
 
           data.items.forEach((item: GoogleFont) => {
             if (item.files['regular'])
