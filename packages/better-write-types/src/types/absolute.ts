@@ -40,6 +40,10 @@ export interface AbsoluteStateTools {
   speechRecognition: boolean
 }
 
+export interface AbsoluteStateGenerator {
+  substitutions: boolean
+}
+
 export interface AbsoluteState {
   commands: boolean
   project: AbsoluteStateProject
@@ -53,4 +57,5 @@ export interface AbsoluteState {
   entity: AbsoluteStateEntity
   pages: AbsoluteStatePages
   tools: AbsoluteStateTools
+  generator: AbsoluteStateGenerator
 }

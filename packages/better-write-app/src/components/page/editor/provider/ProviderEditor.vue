@@ -13,6 +13,7 @@
     <ProviderPDFConfiguration v-else-if="ABSOLUTE.pdf.configuration" />
     <ProviderPDFPreview v-else-if="ABSOLUTE.pdf.preview" />
     <ProviderPDFGenerate v-else-if="ABSOLUTE.pdf.generate" />
+    <EditorGeneratorSubstitutions v-if="ABSOLUTE.generator.substitutions" />
     <EditorToolsSwitcher v-else-if="ABSOLUTE.shortcuts.switcher" />
     <EditorToolsFinder v-else-if="ABSOLUTE.shortcuts.finder" />
     <EditorToolsSpeechRecognition v-if="ABSOLUTE.tools.speechRecognition" />

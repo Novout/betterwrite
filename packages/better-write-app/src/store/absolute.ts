@@ -42,6 +42,9 @@ export const useAbsoluteStore = defineStore('absolute', {
       tools: {
         speechRecognition: false,
       },
+      generator: {
+        substitutions: false,
+      },
     }
   },
 })

@@ -9,6 +9,7 @@ import { useClipboard } from '@vueuse/core'
 import { useUtils } from './utils'
 import { useExternalsStore } from '@/store/externals'
 import { useEnv } from './env'
+import { useSubstitution } from './tools/substitution'
 
 export const bold = () => {
   const open = () => {
@@ -58,6 +59,7 @@ export const useRaw = () => {
   const EXTERNALS = useExternalsStore()
 
   const env = useEnv()
+  const substitution = useSubstitution()
 
   const v1 = () => {
     const convert = (entity: Entity) => {
@@ -679,7 +681,9 @@ export const useRaw = () => {
         const final: Array<any> = []
         let set: false | 'bold' | 'italic' = false
 
-        const rest = raw.split(useUtils().regex().htmlTags())
+        const _raw = substitution.purge(raw)
+
+        const rest = _raw.split(useUtils().regex().htmlTags())
 
         rest.forEach((content: string) => {
           // italic

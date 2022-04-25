@@ -30,6 +30,15 @@ export interface ProjectState {
 
 export interface ProjectStateTemplates {
   generator: ProjectStateTemplatesGenerator[]
+  substitutions: {
+    text: ProjectStateTemplatesSubstitutionsText[]
+  }
+}
+
+export interface ProjectStateTemplatesSubstitutionsText {
+  active: boolean
+  old: string
+  new: string
 }
 
 export interface ProjectStateTemplatesGenerator {

@@ -40,14 +40,7 @@ export const PluginPDFSet = (
       return isOnline() ? font : 'Roboto'
     }
 
-    const purgeRaw = (text: string) => {
-      return text
-        .replaceAll(hooks.env.emptyLine(), ' ')
-        .replaceAll(hooks.env.lineBreak(), ' ')
-        .replaceAll(hooks.env.pageBreak(), ' ')
-    }
-
-    return { isOnline, correctFontInject, purgeRaw }
+    return { isOnline, correctFontInject }
   }
 
   const transform = () => {
@@ -227,7 +220,7 @@ export const PluginPDFSet = (
       __FIRST__HEADING__ONE__ = false
 
       return {
-        text: utils().purgeRaw(entity.raw),
+        text: hooks.raw.v2().purge().pdf(entity.raw),
         margin: [
           generate().base().pageMargins[0],
           stores.PDF.styles.headingOne.margin.top,
@@ -250,7 +243,7 @@ export const PluginPDFSet = (
 
     const headingTwo = (entity: Entity) => {
       return {
-        text: utils().purgeRaw(entity.raw),
+        text: hooks.raw.v2().purge().pdf(entity.raw),
         margin: [
           generate().base().pageMargins[0],
           stores.PDF.styles.headingTwo.margin.top,
@@ -268,7 +261,7 @@ export const PluginPDFSet = (
 
     const headingThree = (entity: Entity) => {
       return {
-        text: utils().purgeRaw(entity.raw),
+        text: hooks.raw.v2().purge().pdf(entity.raw),
         margin: [
           generate().base().pageMargins[0],
           stores.PDF.styles.headingThree.margin.top,

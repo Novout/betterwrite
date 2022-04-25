@@ -1,4 +1,7 @@
-import { BetterWriteThemes } from 'better-write-types'
+import {
+  BetterWriteThemes,
+  ProjectStateTemplatesSubstitutionsText,
+} from 'better-write-types'
 import i18n from '@/lang'
 
 export const useDefines = () => {
@@ -212,8 +215,48 @@ export const useDefines = () => {
     ]
   }
 
+  const generator = () => {
+    const substitutions = (): ProjectStateTemplatesSubstitutionsText[] => {
+      return [
+        {
+          active: true,
+          old: '[[c]]',
+          new: '©',
+        },
+        {
+          active: true,
+          old: '[[r]]',
+          new: '®',
+        },
+        {
+          active: true,
+          old: '[[tm]]',
+          new: '™',
+        },
+        {
+          active: true,
+          old: '[[c/o]]',
+          new: '℅',
+        },
+        {
+          active: true,
+          old: '&nbsp',
+          new: ' ',
+        },
+        {
+          active: true,
+          old: '&#160',
+          new: ' ',
+        },
+      ]
+    }
+
+    return { substitutions }
+  }
+
   return {
     pdf,
     themes,
+    generator,
   }
 }

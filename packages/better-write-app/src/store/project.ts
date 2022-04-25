@@ -5,6 +5,7 @@ import { useGlobalStore } from './global'
 import { usePopulate } from '../use/populate'
 import { useProject } from '@/use/project'
 import { useFactory } from '../use/factory'
+import { toRaw } from 'vue'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -48,6 +49,9 @@ export const useProjectStore = defineStore('project', {
       },
       templates: {
         generator: [],
+        substitutions: {
+          text: [],
+        },
       },
     }
   },

@@ -126,6 +126,9 @@ export default {
       support: 'Suporte',
       terms: 'Terms of Use',
     },
+    generator: {
+      substitutions: 'Substitutions',
+    },
   },
   window: {
     confirmConfiguration: 'Do you want to quit saving the settings?',

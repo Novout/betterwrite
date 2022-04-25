@@ -41,6 +41,30 @@ export const usePopulate = () => {
           platform: 'web',
           version: useEnv().packageVersion() as string,
         },
+        pdf: {
+          encryption: {
+            userPassword: '',
+            ownerPassword: '',
+          },
+          permissions: {
+            printing: 'highResolution',
+            modifying: false,
+            copying: false,
+            annotating: true,
+            fillingForms: true,
+            contentAccessibility: true,
+            documentAssembly: true,
+          },
+        },
+        creative: {
+          drafts: [],
+        },
+        templates: {
+          generator: [],
+          substitutions: {
+            text: useDefines().generator().substitutions(),
+          },
+        },
       },
       blank: {
         name: useUtils().text().kebab(project.name),
@@ -71,6 +95,30 @@ export const usePopulate = () => {
         bw: {
           platform: 'web',
           version: useEnv().packageVersion() as string,
+        },
+        pdf: {
+          encryption: {
+            userPassword: '',
+            ownerPassword: '',
+          },
+          permissions: {
+            printing: 'highResolution',
+            modifying: false,
+            copying: false,
+            annotating: true,
+            fillingForms: true,
+            contentAccessibility: true,
+            documentAssembly: true,
+          },
+        },
+        creative: {
+          drafts: [],
+        },
+        templates: {
+          generator: [],
+          substitutions: {
+            text: useDefines().generator().substitutions(),
+          },
         },
       },
     }[project.type] as ProjectState

@@ -1,4 +1,4 @@
-import { nextTick } from 'vue'
+import { nextTick, unref } from 'vue'
 import { useToast } from 'vue-toastification'
 import { saveAs } from 'file-saver'
 import i18n from '@/lang'
@@ -18,13 +18,13 @@ import {
   Entities,
 } from 'better-write-types'
 import { useStorage } from './storage/storage'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useEnv } from './env'
 import { useEntity } from './entity'
 import { usePlugin } from 'better-write-plugin-core'
 import { useBreakpoint } from './breakpoint'
 import { useRaw } from './raw'
 import { useFileSystemAccess } from '@vueuse/core'
+import { useSubstitution } from './tools/substitution'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -42,6 +42,7 @@ export const useProject = () => {
   const raw = useRaw()
   const plugin = usePlugin()
   const breakpoints = useBreakpoint()
+  const substitution = useSubstitution()
   const { t } = i18n.global
 
   let timer: any
@@ -416,15 +417,6 @@ export const useProject = () => {
       )
     }
 
-    const getChaptersSelection = () => {
-      return PROJECT.pages.map((page) => {
-        return {
-          page,
-          select: true,
-        }
-      })
-    }
-
     const getOnlyRaw = () => {
       const arr: string[] = []
 
@@ -444,6 +436,15 @@ export const useProject = () => {
       })
 
       return arr
+    }
+
+    const getChaptersSelection = () => {
+      return PROJECT.pages.map((page) => {
+        return {
+          page,
+          select: true,
+        }
+      })
     }
 
     const exportName = (extension: string) => {
