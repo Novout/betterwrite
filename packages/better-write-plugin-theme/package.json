@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-theme",
-	"version": "0.15.17",
+	"version": "0.15.18",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -28,8 +28,8 @@
 	"dependencies": {
 		"@vueuse/core": "8.2.4",
 		"@vueuse/integrations": "7.5.5",
-		"better-write-plugin-core": "^0.15.17",
-		"better-write-types": "^0.15.17",
+		"better-write-plugin-core": "^0.15.18",
+		"better-write-types": "^0.15.18",
 		"pinia": "2.0.6",
 		"vue-demi": "latest"
 	},

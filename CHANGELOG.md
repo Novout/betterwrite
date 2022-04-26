@@ -1,6 +1,17 @@
-# Changelog (22/04/2022)
+# Changelog (25/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.18
+
+* **fix(docx):** indent in paragraph's [71257e3]
+* **feat(editor):** substitution description [c6ce6ab]
+* **fix(editor):** flex breaking in mobile substitution [4be96f5]
+* **chore(editor):** substitutions placeholder [4a53527]
+* **fix(project):** load supporting substitution [d73803d]
+* **fix(generator):** purge in heading's [d838b5c]
+* **feat(editor):** substitution default keys support [f18840b]
+* **fix(editor):** purge logger for better performance [3b656b4]
 
 ### v0.15.17
 
