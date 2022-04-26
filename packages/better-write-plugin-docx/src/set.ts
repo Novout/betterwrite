@@ -206,7 +206,7 @@ export const PluginDocxSet = (
           children: purge(raw),
           alignment: docx.AlignmentType.JUSTIFIED,
           indent: {
-            firstLine: 550,
+            firstLine: 350,
           },
         })
       }
