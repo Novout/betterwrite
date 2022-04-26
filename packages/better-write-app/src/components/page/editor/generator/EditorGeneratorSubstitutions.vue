@@ -10,6 +10,9 @@
         :title="t('editor.bar.generator.substitutions')"
         @close="onClose"
       />
+      <h2 class="mt-5 break-words font-light text-lg">
+        {{ t('editor.addons.substitutions.description') }}
+      </h2>
       <div class="flex flex-col w-full gap-5 mt-10">
         <EditorGeneratorSubstitutionsAdd />
         <div class="flex justify-around items-center w-full">

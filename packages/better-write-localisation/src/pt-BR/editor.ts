@@ -345,6 +345,8 @@ export default {
   },
   addons: {
     substitutions: {
+      description:
+        'Substitui palavras e frases inteiras sem a necessidade de trocá-las uma por uma. Não é recomendável editar ou remover os itens padrões. O gerador substituirá primeiramente as palavras para depois inserir o negrito/itálico.',
       from: 'Substituir',
       to: 'Para',
     },
