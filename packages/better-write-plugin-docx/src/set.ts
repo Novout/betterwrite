@@ -205,6 +205,9 @@ export const PluginDocxSet = (
         return new docx.Paragraph({
           children: purge(raw),
           alignment: docx.AlignmentType.JUSTIFIED,
+          indent: {
+            firstLine: 550,
+          },
         })
       }
 
