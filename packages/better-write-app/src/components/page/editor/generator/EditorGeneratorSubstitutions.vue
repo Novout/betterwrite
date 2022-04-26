@@ -12,6 +12,14 @@
       />
       <div class="flex flex-col w-full gap-5 mt-10">
         <EditorGeneratorSubstitutionsAdd />
+        <div class="flex justify-around items-center w-full">
+          <p class="text-lg font-bold">
+            {{ t('editor.addons.substitutions.from') }}
+          </p>
+          <p class="text-lg font-bold">
+            {{ t('editor.addons.substitutions.to') }}
+          </p>
+        </div>
         <EditorGeneratorSubstitutionsItem
           v-for="(template, index) in PROJECT.templates.substitutions.text"
           :template="template"

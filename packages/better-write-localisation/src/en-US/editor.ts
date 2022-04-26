@@ -347,6 +347,10 @@ export default {
     },
   },
   addons: {
+    substitutions: {
+      from: 'Replace',
+      to: 'For',
+    },
     corrector: {
       convert: 'Convert',
       removeStartWhitespace: {
