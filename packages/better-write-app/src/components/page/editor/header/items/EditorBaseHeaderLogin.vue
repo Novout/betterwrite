@@ -9,11 +9,11 @@
         @click.prevent.stop="onDashboard"
       >
         <img
-          v-if="user?.user_metadata?.avatar_url"
+          v-if="user && user.user_metadata?.avatar_url"
           class="rounded-full mr-2"
           :width="28"
           :src="user?.user_metadata?.avatar_url"
-          alt="Perfil Logo"
+          alt="Profile Logo"
         />
         <HeroIcon v-else class="mr-2">
           <svg
