@@ -69,7 +69,7 @@
         @action="ABSOLUTE.generator.substitutions = true"
       >
         <template #icon>
-          <IconSwitch class="w-6 h-6" />
+          <IconArrowTo class="w-6 h-6 transform -rotate-90" />
         </template>
       </EditorHeaderItem>
     </template>

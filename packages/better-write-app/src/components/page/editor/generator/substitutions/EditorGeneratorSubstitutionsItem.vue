@@ -1,13 +1,13 @@
 <template>
   <div class="flex items-center w-full gap-5 wb-text">
-    <InputBoolean v-model="template.active" :specific="true" />
+    <InputBoolean v-model="template.active" class="w-24" :specific="true" />
     <InputText
       v-model="template.old"
-      class="flex-1 p-2 shadow-lg bg-theme-background-2 rounded-xl tracking-wider"
+      class="p-2 shadow-lg bg-theme-background-2 rounded-xl tracking-wider w-full"
     />
     <InputText
       v-model="template.new"
-      class="flex-1 p-2 shadow-lg bg-theme-background-2 rounded-xl tracking-wider"
+      class="p-2 shadow-lg bg-theme-background-2 rounded-xl tracking-wider w-full"
     />
   </div>
 </template>
