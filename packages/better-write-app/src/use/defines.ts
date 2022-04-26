@@ -1,6 +1,8 @@
 import {
   BetterWriteThemes,
   ProjectStateTemplatesSubstitutionsText,
+  ProjectStateTemplatesSubstitutionsItalic,
+  ProjectStateTemplatesSubstitutionsBold,
 } from 'better-write-types'
 import i18n from '@/lang'
 
@@ -252,7 +254,15 @@ export const useDefines = () => {
         ]
       }
 
-      return { text }
+      const italic = (): ProjectStateTemplatesSubstitutionsItalic[] => {
+        return []
+      }
+
+      const bold = (): ProjectStateTemplatesSubstitutionsBold[] => {
+        return []
+      }
+
+      return { text, italic, bold }
     }
 
     return { substitutions }

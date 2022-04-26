@@ -32,7 +32,19 @@ export interface ProjectStateTemplates {
   generator: ProjectStateTemplatesGenerator[]
   substitutions: {
     text: ProjectStateTemplatesSubstitutionsText[]
+    italic: ProjectStateTemplatesSubstitutionsItalic[]
+    bold: ProjectStateTemplatesSubstitutionsBold[]
   }
+}
+
+export interface ProjectStateTemplatesSubstitutionsItalic {
+  active: boolean
+  data: string
+}
+
+export interface ProjectStateTemplatesSubstitutionsBold {
+  active: boolean
+  data: string
 }
 
 export interface ProjectStateTemplatesSubstitutionsText {

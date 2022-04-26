@@ -36,6 +36,14 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.project.templates.substitutions.italic) {
+      _.project.templates.substitutions = {
+        ..._.project.templates.substitutions,
+        italic: defines.generator().substitutions().italic(),
+        bold: defines.generator().substitutions().bold(),
+      }
+    }
+
     return _
   }
 

@@ -63,6 +63,8 @@ export const usePopulate = () => {
           generator: [],
           substitutions: {
             text: useDefines().generator().substitutions().text(),
+            italic: useDefines().generator().substitutions().italic(),
+            bold: useDefines().generator().substitutions().bold(),
           },
         },
       },
@@ -118,6 +120,8 @@ export const usePopulate = () => {
           generator: [],
           substitutions: {
             text: useDefines().generator().substitutions().text(),
+            italic: useDefines().generator().substitutions().italic(),
+            bold: useDefines().generator().substitutions().bold(),
           },
         },
       },

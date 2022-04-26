@@ -28,6 +28,28 @@
           :template="template"
           :index="index"
         />
+        <div class="flex flex-col my-4">
+          <h2 class="font-bold text-xl">
+            {{ t('editor.addons.substitutions.italic') }}
+          </h2>
+          <EditorGeneratorSubstitutionsItalicAdd />
+          <EditorGeneratorSubstitutionsItalicItem
+            v-for="(template, index) in PROJECT.templates.substitutions.italic"
+            :template="template"
+            :index="index"
+          />
+        </div>
+        <div class="flex flex-col my-4">
+          <h2 class="font-bold text-xl">
+            {{ t('editor.addons.substitutions.bold') }}
+          </h2>
+          <EditorGeneratorSubstitutionsBoldAdd />
+          <EditorGeneratorSubstitutionsBoldItem
+            v-for="(template, index) in PROJECT.templates.substitutions.bold"
+            :template="template"
+            :index="index"
+          />
+        </div>
       </div>
     </div>
   </Modal>

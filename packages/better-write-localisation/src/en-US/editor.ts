@@ -352,6 +352,8 @@ export default {
         'Replace entire words and phrases without having to change them one by one. It is not recommended to edit or remove default items. Substitute initially as words and then enter bold/italic.',
       from: 'Replace',
       to: 'For',
+      italic: 'Italic',
+      bold: 'Bold',
     },
     corrector: {
       convert: 'Convert',

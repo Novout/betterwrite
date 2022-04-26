@@ -51,6 +51,8 @@ export const useProjectStore = defineStore('project', {
         generator: [],
         substitutions: {
           text: [],
+          italic: [],
+          bold: [],
         },
       },
     }
