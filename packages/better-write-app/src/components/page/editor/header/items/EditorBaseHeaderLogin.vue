@@ -1,14 +1,21 @@
 <template>
   <div>
     <div
-      :class="[mobile ? 'w-32' : 'w-auto']"
+      :class="[mobile ? 'w-40' : 'w-auto']"
       class="flex items-center px-3 font-poppins py-2 sm:py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full"
     >
       <button
         class="flex items-center truncate"
         @click.prevent.stop="onDashboard"
       >
-        <HeroIcon class="mr-2">
+        <img
+          v-if="user?.user_metadata?.avatar_url"
+          class="rounded-full mr-2"
+          :width="28"
+          :src="user?.user_metadata?.avatar_url"
+          alt="Perfil Logo"
+        />
+        <HeroIcon v-else class="mr-2">
           <svg
             v-if="user && user.app_metadata.provider === 'google'"
             xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +114,12 @@
           </svg>
         </HeroIcon>
         <p v-if="mobile && user" class="truncate cursor-pointer">
-          {{ user.email || '' }}
+          {{
+            user.user_metadata?.name ||
+            user.user_metadata?.name ||
+            user.email ||
+            ''
+          }}
         </p>
         <HeroIcon
           v-if="env.isDev()"
