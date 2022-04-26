@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="entity.type !== 'heading-one'"
     ref="options"
     v-motion
     :initial="{ opacity: 0, y: 50, x: 25 }"
@@ -459,6 +460,8 @@
       </template>
     </EditorEntityDefaultOptionsItem>
   </div>
+  <!-- for not breaking in empty entity.type = "heading-one" open -->
+  <div v-else ref="options" />
 </template>
 
 <script setup lang="ts">
