@@ -216,39 +216,43 @@ export const useDefines = () => {
   }
 
   const generator = () => {
-    const substitutions = (): ProjectStateTemplatesSubstitutionsText[] => {
-      return [
-        {
-          active: true,
-          old: '[[c]]',
-          new: '©',
-        },
-        {
-          active: true,
-          old: '[[r]]',
-          new: '®',
-        },
-        {
-          active: true,
-          old: '[[tm]]',
-          new: '™',
-        },
-        {
-          active: true,
-          old: '[[c/o]]',
-          new: '℅',
-        },
-        {
-          active: true,
-          old: '&nbsp',
-          new: ' ',
-        },
-        {
-          active: true,
-          old: '&#160',
-          new: ' ',
-        },
-      ]
+    const substitutions = () => {
+      const text = (): ProjectStateTemplatesSubstitutionsText[] => {
+        return [
+          {
+            active: true,
+            old: '[[c]]',
+            new: '©',
+          },
+          {
+            active: true,
+            old: '[[r]]',
+            new: '®',
+          },
+          {
+            active: true,
+            old: '[[tm]]',
+            new: '™',
+          },
+          {
+            active: true,
+            old: '[[c/o]]',
+            new: '℅',
+          },
+          {
+            active: true,
+            old: '&nbsp',
+            new: ' ',
+          },
+          {
+            active: true,
+            old: '&#160',
+            new: ' ',
+          },
+        ]
+      }
+
+      return { text }
     }
 
     return { substitutions }

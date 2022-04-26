@@ -8,6 +8,7 @@ import { nextTick } from 'vue'
 import useEmitter from '../emitter'
 import { useContextStore } from '@/store/context'
 import { useAuthStore } from '@/store/auth'
+import { useDefines } from '../defines'
 
 export const useStorage = () => {
   const PROJECT = useProjectStore()
@@ -19,11 +20,21 @@ export const useStorage = () => {
 
   const env = useEnv()
   const emitter = useEmitter()
+  const defines = useDefines()
 
   const support = (project: any) => {
     if (!project) return
 
     let _ = project
+
+    if (!_.project.templates.substitutions) {
+      _.project.templates = {
+        ..._.project.templates,
+        substitutions: {
+          text: defines.generator().substitutions().text(),
+        },
+      }
+    }
 
     return _
   }

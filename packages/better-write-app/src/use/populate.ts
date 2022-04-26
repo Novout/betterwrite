@@ -62,7 +62,7 @@ export const usePopulate = () => {
         templates: {
           generator: [],
           substitutions: {
-            text: useDefines().generator().substitutions(),
+            text: useDefines().generator().substitutions().text(),
           },
         },
       },
@@ -117,7 +117,7 @@ export const usePopulate = () => {
         templates: {
           generator: [],
           substitutions: {
-            text: useDefines().generator().substitutions(),
+            text: useDefines().generator().substitutions().text(),
           },
         },
       },
