@@ -100,6 +100,7 @@ export interface PluginHooks {
   utils: PluginHook
   i18n: PluginHook
   emitter: PluginHook
+  substitution: PluginHook
 }
 
 export type PluginContext = (

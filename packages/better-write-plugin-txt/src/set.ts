@@ -1,8 +1,7 @@
 import { saveAs } from 'file-saver'
-import { Entity, PluginTypes } from 'better-write-types'
+import { PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 import { useNProgress } from '@vueuse/integrations'
-import { ContextState } from 'better-write-types'
 
 export const PluginTxtSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -12,7 +11,10 @@ export const PluginTxtSet = (
   const { isLoading } = useNProgress()
 
   const purge = (texts: string[]): string => {
-    return texts.reduce((conc, text) => conc + text + '\n', '')
+    return texts.reduce(
+      (conc, text) => hooks.substitution.purge(conc + text) + '\n',
+      ''
+    )
   }
 
   const download = (texts: string[]) => {

@@ -41,6 +41,7 @@ import { Session } from '@supabase/supabase-js'
 import { computed, watch } from 'vue'
 import { useHead } from '@vueuse/head'
 import { useExternalsStore } from '@/store/externals'
+import { useSubstitution } from './tools/substitution'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -195,6 +196,7 @@ export const useStart = () => {
         utils: useUtils(),
         i18n: useI18n(),
         emitter: useEmitter(),
+        substitution: useSubstitution(),
       }
     )
     plugin.emit('plugin-pdf-init')

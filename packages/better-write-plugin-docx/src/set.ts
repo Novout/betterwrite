@@ -18,7 +18,9 @@ export const PluginDocxSet = (
     const final: DocxPurge = []
     let set: false | 'bold' | 'italic' = false
 
-    const rest = raw.split(hooks.utils.regex().htmlTags())
+    const rest = hooks.substitution
+      .purge(raw)
+      .split(hooks.utils.regex().htmlTags())
 
     rest.forEach((content: string) => {
       // italic
@@ -174,7 +176,7 @@ export const PluginDocxSet = (
     const entities = () => {
       const headingOne = (raw: string) => {
         return new docx.Paragraph({
-          text: raw,
+          text: hooks.substitution.purge(raw),
           heading: docx.HeadingLevel.HEADING_1,
           alignment: docx.AlignmentType.CENTER,
           pageBreakBefore: true,
@@ -183,7 +185,7 @@ export const PluginDocxSet = (
 
       const headingTwo = (raw: string) => {
         return new docx.Paragraph({
-          text: raw,
+          text: hooks.substitution.purge(raw),
           heading: docx.HeadingLevel.HEADING_2,
           alignment: docx.AlignmentType.CENTER,
         })
@@ -191,7 +193,7 @@ export const PluginDocxSet = (
 
       const headingThree = (raw: string) => {
         return new docx.Paragraph({
-          text: raw,
+          text: hooks.substitution.purge(raw),
           heading: docx.HeadingLevel.HEADING_3,
           alignment: docx.AlignmentType.CENTER,
         })
