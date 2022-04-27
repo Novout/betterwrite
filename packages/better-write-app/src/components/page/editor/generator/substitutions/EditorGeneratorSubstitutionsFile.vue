@@ -41,7 +41,12 @@
 
     const data = destr(res.data.value) as ProjectStateTemplatesSubstitutions
 
-    PROJECT.templates.substitutions = data
+    if (
+      Array.isArray(data.text) &&
+      Array.isArray(data.italic) &&
+      Array.isArray(data.bold)
+    )
+      PROJECT.templates.substitutions = data
   }
 
   const exportFile = async () => {
