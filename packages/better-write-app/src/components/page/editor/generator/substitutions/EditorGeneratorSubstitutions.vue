@@ -5,6 +5,7 @@
       :title="t('editor.bar.generator.substitutions')"
       @close="onClose"
     />
+    <EditorGeneratorSubstitutionsFile />
     <h2 class="mt-5 break-words text-base sm:text-lg">
       {{ t('editor.addons.substitutions.description') }}
     </h2>

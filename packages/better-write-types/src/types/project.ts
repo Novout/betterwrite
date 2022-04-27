@@ -30,11 +30,13 @@ export interface ProjectState {
 
 export interface ProjectStateTemplates {
   generator: ProjectStateTemplatesGenerator[]
-  substitutions: {
-    text: ProjectStateTemplatesSubstitutionsText[]
-    italic: ProjectStateTemplatesSubstitutionsItalic[]
-    bold: ProjectStateTemplatesSubstitutionsBold[]
-  }
+  substitutions: ProjectStateTemplatesSubstitutions
+}
+
+export interface ProjectStateTemplatesSubstitutions {
+  text: ProjectStateTemplatesSubstitutionsText[]
+  italic: ProjectStateTemplatesSubstitutionsItalic[]
+  bold: ProjectStateTemplatesSubstitutionsBold[]
 }
 
 export interface ProjectStateTemplatesSubstitutionsItalic {
