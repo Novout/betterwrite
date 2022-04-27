@@ -7,7 +7,7 @@ import { useLocalStorage } from '@/use/storage/local'
 import { useEventListener, useFullscreen } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
 import { usePlugin } from 'better-write-plugin-core'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { onBeforeRouteLeave, useRouter } from 'vue-router'
 import { useListener } from './listener'
@@ -36,21 +36,30 @@ export const useEditor = () => {
       project.onLoadProject()
     })
 
+    // tracking all auto-save cases
     onBeforeRouteLeave(async () => {
       await local.onSaveProject(false)
     })
-
     useEventListener('beforeunload', () => {
       local.onSaveProject(false)
     })
+    watch(
+      PROJECT.$state,
+      () => {
+        local.onSaveProject(false)
+      },
+      { deep: true }
+    )
 
+    // shortcuts
     listener.keyboard().add()
 
+    // theme loader
     plugin.emit('plugin-theme-set')
 
+    // dynamic head title
     const title = computed(() => t('seo.editor.title'))
     const description = computed(() => t('seo.editor.description'))
-
     const _title = computed(() =>
       PROJECT.nameRaw === env.projectEmpty() ||
       !CONTEXT.entities[0] ||
@@ -59,7 +68,6 @@ export const useEditor = () => {
         ? title.value
         : PROJECT.nameRaw + ' - ' + CONTEXT.entities[0]?.raw
     )
-
     useHead({
       title: _title,
       meta: [
