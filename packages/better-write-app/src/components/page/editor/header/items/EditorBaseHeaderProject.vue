@@ -88,14 +88,15 @@
           <div
             class="relative overflow-x-hidden bottom-16 flex flex-col h-40 w-40 overflow-y-auto bg-theme-editor-header-list-background rounded-tr rounded-br shadow"
           >
-            <p
-              v-for="(theme, index) in defines.themes()"
+            <div
+              v-for="([theme, logo], index) in defines.allThemes()"
               :key="index"
-              class="pl-2 w-40 hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40"
+              class="flex items-center w-full gap-2 pl-2 hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40"
               @click.prevent.stop="onSwitchTheme(theme)"
             >
-              {{ theme.replaceAll('BetterWrite -', '') }}
-            </p>
+              <img width="15" :src="logo" :alt="theme" />
+              <p>{{ theme.replaceAll('BetterWrite -', '') }}</p>
+            </div>
           </div>
         </template>
       </EditorHeaderItemOpen>

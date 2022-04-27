@@ -217,6 +217,16 @@ export const useDefines = () => {
     ]
   }
 
+  const allThemes = (): Array<[BetterWriteThemes, string]> => {
+    return [
+      ['BetterWrite - Light', '/logo.svg'],
+      ['BetterWrite - Dark', '/logo.svg'],
+      ['BetterWrite - Rise', '/logo_rise.svg'],
+      ['BetterWrite - Ascend', '/logo_ascend.svg'],
+      ['BetterWrite - Harmonic', '/logo_harmonic.svg'],
+    ]
+  }
+
   const generator = () => {
     const substitutions = () => {
       const text = (): ProjectStateTemplatesSubstitutionsText[] => {
@@ -271,6 +281,7 @@ export const useDefines = () => {
   return {
     pdf,
     themes,
+    allThemes,
     generator,
   }
 }
