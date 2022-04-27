@@ -2,15 +2,16 @@
   <div class="flex items-center w-full gap-5 wb-text my-6 wb-text">
     <InputText
       v-model="state.old"
-      class="flex-1 p-2 shadow-lg bg-theme-background-2 rounded-xl tracking-wider placeholder-theme-text-1"
+      class="p-2 shadow-lg bg-theme-background-2 rounded-xl tracking-wider placeholder-theme-text-1 w-full"
       :placeholder="t('editor.addons.substitutions.from')"
     />
     <InputText
       v-model="state.new"
-      class="flex-1 p-2 shadow-lg bg-theme-background-2 rounded-xl tracking-wider placeholder-theme-text-1"
+      class="p-2 shadow-lg bg-theme-background-2 rounded-xl tracking-wider placeholder-theme-text-1 w-full"
       :placeholder="t('editor.addons.substitutions.to')"
+      @keyup.enter="add"
     />
-    <IconAdd class="w-7 h-7 wb-icon" @click.prevent.stop="add" />
+    <IconAdd class="w-18 h-18 wb-icon" @click.prevent.stop="add" />
   </div>
 </template>
 

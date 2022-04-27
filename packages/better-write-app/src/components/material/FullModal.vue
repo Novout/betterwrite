@@ -6,7 +6,11 @@
     :enter="{ opacity: 1, y: 0 }"
     class="overflow-y-auto wb-text p-6 fixed top-0 left-0 h-screen w-full bg-theme-background-1 wb-text z-max"
   >
-    <EditorAbsoluteHeader :title="props.title" @close="emit('close')" />
+    <EditorAbsoluteHeader
+      v-if="props.title"
+      :title="props.title"
+      @close="emit('close')"
+    />
     <slot />
   </div>
 </template>
@@ -17,7 +21,8 @@
 
   const props = defineProps({
     title: {
-      required: true,
+      required: false,
+      default: '',
       type: String,
     },
   })

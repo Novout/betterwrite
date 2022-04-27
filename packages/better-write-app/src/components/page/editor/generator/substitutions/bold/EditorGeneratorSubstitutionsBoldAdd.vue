@@ -4,8 +4,13 @@
       v-model="state.data"
       class="flex-1 p-2 shadow-lg bg-theme-background-2 rounded-xl tracking-wider placeholder-theme-text-1"
       :placeholder="t('editor.addons.substitutions.from')"
+      @keyup.enter="add"
     />
-    <IconAdd class="w-7 h-7 wb-icon" @click.prevent.stop="add" />
+    <IconAdd
+      class="w-7 h-7 wb-icon"
+      @keyup.enter="add"
+      @click.prevent.stop="add"
+    />
   </div>
 </template>
 

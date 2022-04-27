@@ -28,7 +28,7 @@
       "outputs": [
         "dist/**"
       ],
-      "cache": false
+      "cache": true
     },
     "e2e": {
       "dependsOn": [

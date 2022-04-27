@@ -55,6 +55,134 @@ export const link = () => {
   return { open, close }
 }
 
+export const html = () => {
+  const insert = (str: string, index: number, middle: string) => {
+    return str.substring(0, index) + middle + str.substring(index, str.length)
+  }
+
+  const bold = () => {
+    const open = () => {
+      return '<i class="font-bold text-sm text-theme-editor-bold-text hover:text-theme-editor-bold-text-hover active:text-theme-editor-bold-text-active">'
+    }
+
+    const close = () => {
+      return '</i>'
+    }
+
+    const length = () => {
+      return open().length + close().length
+    }
+
+    const insert = (raw: string) => {
+      return open() + raw + close()
+    }
+
+    return { open, close, length, insert }
+  }
+
+  const italic = () => {
+    const open = () => {
+      return '<i class="italic text-sm text-theme-editor-italic-text hover:text-theme-editor-italic-text-hover active:text-theme-editor-italic-text-active">'
+    }
+
+    const close = () => {
+      return '</i>'
+    }
+
+    const length = () => {
+      return open().length + close().length
+    }
+
+    const insert = (raw: string) => {
+      return open() + raw + close()
+    }
+
+    return { open, close, length, insert }
+  }
+
+  const error = () => {
+    const open = () => {
+      return '<span style="background-color: rgba(255, 130, 130, 0.2);">'
+    }
+
+    const close = () => {
+      return '</span>'
+    }
+
+    const length = () => {
+      return open().length + close().length
+    }
+
+    const item = (content: string) => {
+      return open() + content + close()
+    }
+
+    return { open, close, length, item }
+  }
+
+  const correct = () => {
+    const open = () => {
+      return '<span style="background-color: rgba(150, 255, 150, 0.2);">'
+    }
+
+    const close = () => {
+      return '</span>'
+    }
+
+    const length = () => {
+      return open().length + close().length
+    }
+
+    const item = (content: string) => {
+      return open() + content + close()
+    }
+
+    return { open, close, length, item }
+  }
+
+  const finder = () => {
+    const replacer = (raw: string, target: string) => {
+      return raw.replaceAll(target, item(target))
+    }
+
+    const open = () => {
+      return '<span class="text-theme-editor-render-finder-text bg-theme-editor-render-finder-background">'
+    }
+
+    const close = () => {
+      return '</span>'
+    }
+
+    const item = (content: string) => {
+      return open() + content + close()
+    }
+
+    return { replacer, open, close, item }
+  }
+
+  const switcher = () => {
+    const replacer = (raw: string, target: string) => {
+      return raw.replaceAll(target, item(target))
+    }
+
+    const open = () => {
+      return '<span class="text-theme-editor-render-switcher-text bg-theme-editor-render-switcher-background">'
+    }
+
+    const close = () => {
+      return '</span>'
+    }
+
+    const item = (content: string) => {
+      return open() + content + close()
+    }
+
+    return { replacer, open, close, item }
+  }
+
+  return { insert, italic, bold, error, correct, finder, switcher }
+}
+
 export const useRaw = () => {
   const EXTERNALS = useExternalsStore()
 
@@ -228,136 +356,6 @@ export const useRaw = () => {
   }
 
   const v2 = () => {
-    const html = () => {
-      const insert = (str: string, index: number, middle: string) => {
-        return (
-          str.substring(0, index) + middle + str.substring(index, str.length)
-        )
-      }
-
-      const bold = () => {
-        const open = () => {
-          return '<i class="font-bold text-sm text-theme-editor-bold-text hover:text-theme-editor-bold-text-hover active:text-theme-editor-bold-text-active">'
-        }
-
-        const close = () => {
-          return '</i>'
-        }
-
-        const length = () => {
-          return open().length + close().length
-        }
-
-        const insert = (raw: string) => {
-          return open() + raw + close()
-        }
-
-        return { open, close, length, insert }
-      }
-
-      const italic = () => {
-        const open = () => {
-          return '<i class="italic text-sm text-theme-editor-italic-text hover:text-theme-editor-italic-text-hover active:text-theme-editor-italic-text-active">'
-        }
-
-        const close = () => {
-          return '</i>'
-        }
-
-        const length = () => {
-          return open().length + close().length
-        }
-
-        const insert = (raw: string) => {
-          return open() + raw + close()
-        }
-
-        return { open, close, length, insert }
-      }
-
-      const error = () => {
-        const open = () => {
-          return '<span style="background-color: rgba(255, 130, 130, 0.2);">'
-        }
-
-        const close = () => {
-          return '</span>'
-        }
-
-        const length = () => {
-          return open().length + close().length
-        }
-
-        const item = (content: string) => {
-          return open() + content + close()
-        }
-
-        return { open, close, length, item }
-      }
-
-      const correct = () => {
-        const open = () => {
-          return '<span style="background-color: rgba(150, 255, 150, 0.2);">'
-        }
-
-        const close = () => {
-          return '</span>'
-        }
-
-        const length = () => {
-          return open().length + close().length
-        }
-
-        const item = (content: string) => {
-          return open() + content + close()
-        }
-
-        return { open, close, length, item }
-      }
-
-      const finder = () => {
-        const replacer = (raw: string, target: string) => {
-          return raw.replaceAll(target, item(target))
-        }
-
-        const open = () => {
-          return '<span class="text-theme-editor-render-finder-text bg-theme-editor-render-finder-background">'
-        }
-
-        const close = () => {
-          return '</span>'
-        }
-
-        const item = (content: string) => {
-          return open() + content + close()
-        }
-
-        return { replacer, open, close, item }
-      }
-
-      const switcher = () => {
-        const replacer = (raw: string, target: string) => {
-          return raw.replaceAll(target, item(target))
-        }
-
-        const open = () => {
-          return '<span class="text-theme-editor-render-switcher-text bg-theme-editor-render-switcher-background">'
-        }
-
-        const close = () => {
-          return '</span>'
-        }
-
-        const item = (content: string) => {
-          return open() + content + close()
-        }
-
-        return { replacer, open, close, item }
-      }
-
-      return { insert, italic, bold, error, correct, finder, switcher }
-    }
-
     const style = (entity: Entity, type: 'main' | 'input' = 'input') => {
       switch (type) {
         case 'main':

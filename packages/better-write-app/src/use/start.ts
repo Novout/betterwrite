@@ -1,5 +1,4 @@
 import { useFormat } from './format'
-import { useRoute } from 'vue-router'
 import { useEnv } from './env'
 import { useLoggerStore } from '@/store/logger'
 import { useAuthStore } from '@/store/auth'
@@ -48,7 +47,6 @@ export const useStart = () => {
   const EDITOR = useEditorStore()
   const AUTH = useAuthStore()
 
-  const route = useRoute()
   const core = useCore()
   const plugin = usePlugin()
   const { x, y } = useMouse({ type: 'page' })
