@@ -1,6 +1,17 @@
-# Changelog (25/04/2022)
+# Changelog (26/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.19
+
+* **fix(generator):** substitutions import file validate structure [d65c320]
+* **feat(generator):** substitutions import and export settings [df1d63d]
+* **feat(generator):** support italic and bold substitutions [4d63277]
+* **feat(editor):** substitution italic and bold in modal [842eb02]
+* **fix:** typo [1b7f3c2]
+* **style(editor):** header account provider logo and name [a5d8327]
+* **fix:** typos [5d8b12a]
+* **fix(editor):** entity options in heading-one force [9fe024d]
 
 ### v0.15.18
 
