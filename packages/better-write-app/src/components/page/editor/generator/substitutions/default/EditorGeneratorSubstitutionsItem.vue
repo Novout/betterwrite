@@ -4,7 +4,7 @@
     v-motion
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1 }"
-    class="flex items-center w-full gap-5 wb-text transition-transform"
+    class="flex items-center w-full gap-5 wb-text my-2 transition-transform"
   >
     <InputBoolean
       v-model="props.template.active"
@@ -19,14 +19,32 @@
       v-model="props.template.new"
       class="p-2 shadow-lg bg-theme-background-2 rounded-xl tracking-wider w-full"
     />
-    <IconDelete
-      v-motion
-      :initial="{ opacity: 0, y: 30 }"
-      :enter="{ opacity: 1, y: 0 }"
-      :delay="50"
-      class="w-15 h-15 wb-icon"
-      @click.prevent.stop="remove"
-    />
+    <div class="flex items-center gap-0 md:gap-2">
+      <IconUp
+        v-motion
+        :initial="{ opacity: 0, y: 30 }"
+        :enter="{ opacity: 1, y: 0 }"
+        :delay="50"
+        class="w-7 h-7 wb-icon"
+        @click.prevent.stop="move('up')"
+      />
+      <IconDown
+        v-motion
+        :initial="{ opacity: 0, y: 30 }"
+        :enter="{ opacity: 1, y: 0 }"
+        :delay="50"
+        class="w-7 h-7 wb-icon"
+        @click.prevent.stop="move('down')"
+      />
+      <IconDelete
+        v-motion
+        :initial="{ opacity: 0, y: 30 }"
+        :enter="{ opacity: 1, y: 0 }"
+        :delay="50"
+        class="w-7 h-7 wb-icon"
+        @click.prevent.stop="remove"
+      />
+    </div>
   </div>
 </template>
 
@@ -43,5 +61,26 @@
   const remove = () => {
     PROJECT.templates.substitutions.text =
       PROJECT.templates.substitutions.text.filter((t) => t !== props.template)
+  }
+
+  const move = (direction: 'up' | 'down') => {
+    const index = PROJECT.templates.substitutions.text.indexOf(props.template)
+
+    if (index === -1) return
+
+    let sIndex
+    direction === 'up' ? (sIndex = index - 1) : (sIndex = index + 1)
+
+    if (
+      (sIndex < 0 && direction === 'up') ||
+      (sIndex >= PROJECT.templates.substitutions.text.length &&
+        direction === 'down')
+    )
+      return
+
+    const temp = PROJECT.templates.substitutions.text[index]
+    PROJECT.templates.substitutions.text[index] =
+      PROJECT.templates.substitutions.text[sIndex]
+    PROJECT.templates.substitutions.text[sIndex] = temp
   }
 </script>

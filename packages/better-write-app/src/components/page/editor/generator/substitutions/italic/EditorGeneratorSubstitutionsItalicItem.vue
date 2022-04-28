@@ -4,7 +4,7 @@
     v-motion
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1 }"
-    class="flex items-center w-full gap-5 wb-text transition-transform"
+    class="flex items-center w-full gap-5 my-2 wb-text transition-transform"
   >
     <InputBoolean
       v-model="props.template.active"

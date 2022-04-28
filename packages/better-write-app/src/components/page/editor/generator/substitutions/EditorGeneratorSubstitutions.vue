@@ -9,7 +9,7 @@
     <h2 class="mt-5 break-words text-base sm:text-lg">
       {{ t('editor.addons.substitutions.description') }}
     </h2>
-    <div class="flex flex-col w-full gap-5 mt-10">
+    <div class="flex flex-col w-full mt-5">
       <EditorGeneratorSubstitutionsAdd />
       <div class="flex justify-around items-center w-full">
         <p class="text-lg font-bold">
@@ -53,7 +53,7 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useProjectStore } from '@/store/project'
-  import { onClickOutside, useDraggable } from '@vueuse/core'
+  import { onClickOutside } from '@vueuse/core'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
@@ -63,10 +63,6 @@
   const { t } = useI18n()
 
   const rf = ref<HTMLElement | null>(null)
-
-  const { style } = useDraggable(rf as any, {
-    initialValue: { x: window.innerWidth / 4, y: window.innerHeight / 6 },
-  })
 
   onClickOutside(rf as any, () => {
     onClose()
