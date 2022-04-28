@@ -37,12 +37,6 @@ export const useEditor = () => {
     })
 
     // tracking all auto-save cases
-    onBeforeRouteLeave(async () => {
-      await local.onSaveProject(false)
-    })
-    useEventListener('beforeunload', () => {
-      local.onSaveProject(false)
-    })
     watch(
       PROJECT.$state,
       () => {
