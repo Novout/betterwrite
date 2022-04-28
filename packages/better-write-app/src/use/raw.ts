@@ -672,7 +672,7 @@ export const useRaw = () => {
           return make().image(entity)
         }
 
-        return normalize(entity.raw, 'editor')
+        return entity.raw
       }
 
       const pdf = (raw: string): Array<any> => {
