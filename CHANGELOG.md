@@ -1,6 +1,14 @@
-# Changelog (26/04/2022)
+# Changelog (28/04/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.20
+
+* **feat(generator):** substitutions move [fa3b839]
+* **fix(editor):** raw remove normalize for property italic and bold inserts [00859e8]
+* **fix(editor):** autosave in unique instance [a033d4d]
+* **chore(project):** auto-save logic [9df711e]
+* **style(editor):** theme header icon [1bd79d9]
 
 ### v0.15.19
 
