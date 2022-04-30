@@ -44,9 +44,11 @@ export const useEditor = () => {
       },
       { deep: true }
     )
-
     // shortcuts
-    listener.keyboard().add()
+    listener.keyboard().start()
+
+    // window events
+    listener.window().start()
 
     // theme loader
     plugin.emit('plugin-theme-set')

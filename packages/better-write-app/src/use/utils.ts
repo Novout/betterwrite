@@ -1,3 +1,5 @@
+import destr from 'destr'
+
 export const useUtils = () => {
   const delay = (time: number) => {
     return new Promise((resolve) => setTimeout(resolve, time))
@@ -279,7 +281,21 @@ export const useUtils = () => {
       })
     }
 
-    return { blobXmlToBase64 }
+    const read = (file: File, type: 'json' = 'json') => {
+      return new Promise((res) => {
+        if (type === 'json') {
+          const reader = new FileReader()
+          reader.addEventListener('load', (event) => {
+            const data = destr(event?.target?.result)
+
+            res(data)
+          })
+          reader.readAsText(file)
+        }
+      })
+    }
+
+    return { blobXmlToBase64, read }
   }
 
   return {
