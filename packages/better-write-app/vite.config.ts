@@ -86,6 +86,7 @@ export default defineConfig({
         short_name: 'Better Write',
         description: 'A editor for creative writers.',
         theme_color: '#1F2937',
+        categories: ['editor', 'text', 'creative write', 'word processor'],
         icons: [
           {
             src: 'icon_x192.png',
@@ -99,7 +100,7 @@ export default defineConfig({
             type: 'image/png',
             purpose: "any maskable"
           }
-        ]
+        ],
       },
       workbox: {
         maximumFileSizeToCacheInBytes: 3145728000,

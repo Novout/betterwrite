@@ -84,7 +84,7 @@
     "vite-plugin-package-version": "1.0.2",
     "vite-plugin-pages": "0.22.0",
     "vite-plugin-pages-sitemap": "1.2.0",
-    "vite-plugin-pwa": "0.11.13",
+    "vite-plugin-pwa": "0.12.0",
     "vite-plugin-windicss": "1.8.3",
     "vue-tsc": "0.33.9",
     "wait-on": "6.0.1"
