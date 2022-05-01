@@ -58,6 +58,11 @@ input[type='number'] {
   text-align: center;
 }
 
+/* firefox */
+[contenteditable] {
+  outline: none;
+}
+
 /* waiting for future support experimental features */
 
 *::grammar-error {
