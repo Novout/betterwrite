@@ -1,7 +1,6 @@
 import { useAbsoluteStore } from '@/store/absolute'
 import { useAuthStore } from '@/store/auth'
 import { createClient } from '@supabase/supabase-js'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import {
   ProjectObject,
   Maybe,
@@ -27,7 +26,6 @@ export const useSupabase = () => {
   const ABSOLUTE = useAbsoluteStore()
   const AUTH = useAuthStore()
 
-  const { isLoading } = useNProgress()
   const toast = useToast()
   const { t } = useI18n()
   const env = useEnv()
@@ -43,8 +41,6 @@ export const useSupabase = () => {
     notification: boolean = true
   ) => {
     return new Promise((res) => {
-      isLoading.value = true
-
       s.auth
         .signIn(
           {
@@ -65,9 +61,7 @@ export const useSupabase = () => {
         .catch(() => {
           res(404)
         })
-        .finally(() => {
-          isLoading.value = false
-        })
+        .finally(() => {})
     })
   }
 
@@ -75,8 +69,6 @@ export const useSupabase = () => {
     provider: SupabaseIntegrations,
     notification: boolean = true
   ) => {
-    isLoading.value = true
-
     s.auth
       .signIn({ provider }, { redirectTo: env.getCorrectLocalUrl() })
       .then(async ({ error }) => {
@@ -88,14 +80,11 @@ export const useSupabase = () => {
         if (notification) toast(t('editor.auth.login.error'))
       })
       .finally(() => {
-        isLoading.value = false
         ABSOLUTE.auth.supabase = false
       })
   }
 
   const out = () => {
-    isLoading.value = true
-
     s.auth
       .signOut()
       .then(() => {
@@ -103,15 +92,11 @@ export const useSupabase = () => {
 
         router.push('/')
       })
-      .finally(() => {
-        isLoading.value = false
-      })
+      .finally(() => {})
   }
 
   const getProjects = async (): Promise<Maybe<ProjectObject[]>> => {
     try {
-      isLoading.value = true
-
       const {
         data: projects,
         error,
@@ -130,13 +115,10 @@ export const useSupabase = () => {
     } catch (error: any) {
       toast.error(error.message)
     } finally {
-      isLoading.value = false
     }
   }
 
   const saveProject = async () => {
-    isLoading.value = true
-
     const { data, error } = await s.from('projects').upsert(
       {
         // @ts-ignore
@@ -145,8 +127,6 @@ export const useSupabase = () => {
       },
       { onConflict: 'id' }
     )
-
-    isLoading.value = false
 
     if (error) {
       toast.error(error.message)
@@ -181,14 +161,10 @@ export const useSupabase = () => {
   const deleteProject = async (context: ProjectObject) => {
     if (!confirm(t('toast.project.deleteAlert'))) return
 
-    isLoading.value = true
-
     const { error } = await s
       .from('projects')
       .delete({ returning: 'minimal' })
       .match({ id: context.id })
-
-    isLoading.value = false
 
     if (error) {
       toast.error(error.message)
@@ -202,14 +178,10 @@ export const useSupabase = () => {
   const loadProject = async (context: ProjectObject) => {
     AUTH.account.project_id_activity = context.id || null
 
-    isLoading.value = true
-
     storage.normalize().then(() => {
       project.onLoadProject(context, false).then(() => {
         local.onSaveProject(false).then(() => {
-          router.push('/editor').finally(() => {
-            isLoading.value = false
-          })
+          router.push('/editor').finally(() => {})
         })
       })
     })
