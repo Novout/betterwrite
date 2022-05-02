@@ -86,12 +86,12 @@
       <EditorHeaderItemOpen :text="t('editor.bar.project.theme')">
         <template #open>
           <div
-            class="relative overflow-x-hidden bottom-16 flex flex-col h-40 w-40 overflow-y-auto bg-theme-editor-header-list-background rounded-tr rounded-br shadow"
+            class="relative overflow-x-hidden bottom-16 flex flex-col gap-1 h-40 w-40 overflow-y-auto bg-theme-editor-header-list-background rounded-tr rounded-br shadow"
           >
             <div
               v-for="([theme, logo], index) in defines.allThemes()"
               :key="index"
-              class="flex items-center w-full gap-2 pl-2 hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40"
+              class="flex py-1 items-center w-full gap-2 hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40"
               @click.prevent.stop="onSwitchTheme(theme)"
             >
               <img width="15" :src="logo" :alt="theme" />

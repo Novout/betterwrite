@@ -4,6 +4,7 @@ export type BetterWriteThemes =
   | 'BetterWrite - Rise'
   | 'BetterWrite - Ascend'
   | 'BetterWrite - Harmonic'
+  | 'BetterWrite - Infinity'
 
 export interface EditorState {
   styles: EditorStateStyles

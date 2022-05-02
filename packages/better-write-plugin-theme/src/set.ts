@@ -67,6 +67,9 @@ export const PluginThemeContent = (
       case 'betterwrite-ascend':
         favicon.value = hooks.utils.path().resolve('logo_ascend.svg')
         break
+      case 'betterwrite-infinity':
+        favicon.value = hooks.utils.path().resolve('logo_infinity.svg')
+        break
       default:
         favicon.value = hooks.utils.path().resolve('logo_default.svg')
         break
@@ -85,6 +88,7 @@ export const PluginThemeContent = (
         'BetterWrite - Rise': 'betterwrite-rise',
         'BetterWrite - Ascend': 'betterwrite-ascend',
         'BetterWrite - Harmonic': 'betterwrite-harmonic',
+        'BetterWrite - Infinity': 'betterwrite-infinity',
       }[theme] || setDefaultColorTheme()
     )
   }

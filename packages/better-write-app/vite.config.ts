@@ -75,6 +75,7 @@ export default defineConfig({
         'logo_default.svg', 
         'logo_harmonic.svg', 
         'logo_rise.svg', 
+        'logo_infinity.svg', 
         'logo_desktop.png', 
         'logo.png',
         'logo.svg',

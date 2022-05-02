@@ -215,6 +215,7 @@ export const useDefines = () => {
       'BetterWrite - Rise',
       'BetterWrite - Ascend',
       'BetterWrite - Harmonic',
+      'BetterWrite - Infinity',
     ]
   }
 
@@ -225,6 +226,7 @@ export const useDefines = () => {
       ['BetterWrite - Rise', '/logo_rise.svg'],
       ['BetterWrite - Ascend', '/logo_ascend.svg'],
       ['BetterWrite - Harmonic', '/logo_harmonic.svg'],
+      ['BetterWrite - Infinity', '/logo_infinity.svg'],
     ]
   }
 
