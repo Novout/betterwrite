@@ -668,10 +668,6 @@ export const useRaw = () => {
         )
           return ''
 
-        if (entity.type === 'image') {
-          return make().image(entity)
-        }
-
         return entity.raw
       }
 
