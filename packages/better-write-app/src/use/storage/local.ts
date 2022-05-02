@@ -64,22 +64,11 @@ export const useLocalStorage = () => {
     setProject(storage.getProjectObject())
   }
 
-  const onAutoSave = (time: number | 'never') => {
-    if (time === 'never') return null
-
-    return setInterval(() => {
-      onSaveProject(false)
-
-      plugin.emit('plugin-auto-save')
-    }, 1000 * 60 * (time as number))
-  }
-
   return {
     set,
     get,
     setProject,
     getProject,
     onSaveProject,
-    onAutoSave,
   }
 }

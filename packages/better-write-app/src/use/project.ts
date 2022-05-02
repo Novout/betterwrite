@@ -42,14 +42,9 @@ export const useProject = () => {
   const raw = useRaw()
   const plugin = usePlugin()
   const breakpoints = useBreakpoint()
-  const substitution = useSubstitution()
   const { t } = i18n.global
 
   let timer: any
-
-  const init = () => {
-    timer = local.onAutoSave(EDITOR.configuration.auto)
-  }
 
   const destroy = () => {
     clearInterval(timer as any)
@@ -96,7 +91,6 @@ export const useProject = () => {
       await nextTick
 
       destroy()
-      init()
 
       await nextTick
 
@@ -135,10 +129,6 @@ export const useProject = () => {
     EDITOR.load(context.editor)
 
     PDF.load(context.pdf)
-
-    await nextTick
-
-    init()
 
     await nextTick
 
@@ -479,7 +469,6 @@ export const useProject = () => {
   }
 
   return {
-    init,
     destroy,
     create,
     external,
