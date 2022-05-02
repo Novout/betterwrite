@@ -27,7 +27,9 @@ export const useLocalStorage = () => {
   }
 
   const setProject = (obj: ProjectObject) => {
-    set(obj, env.projectLocalStorage())
+    try {
+      set(obj, env.projectLocalStorage())
+    } catch (e) {}
   }
 
   const getProject = (): ProjectObject => {

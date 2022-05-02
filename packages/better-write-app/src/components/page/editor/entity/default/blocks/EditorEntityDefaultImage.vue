@@ -30,13 +30,8 @@
 
 <script setup lang="ts">
   import { Entity } from 'better-write-types'
-  import { watchEffect } from 'vue'
 
   const props = defineProps<{
     entity: Entity
   }>()
-
-  watchEffect(() => {
-    console.log('here')
-  })
 </script>

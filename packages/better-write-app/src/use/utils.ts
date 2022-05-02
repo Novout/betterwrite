@@ -281,7 +281,7 @@ export const useUtils = () => {
       })
     }
 
-    const read = (file: File, type: 'json' = 'json') => {
+    const read = (file: File, type: 'json' | 'image' = 'json') => {
       return new Promise((res) => {
         if (type === 'json') {
           const reader = new FileReader()
@@ -291,6 +291,16 @@ export const useUtils = () => {
             res(data)
           })
           reader.readAsText(file)
+        }
+
+        if (type === 'image') {
+          const reader = new FileReader()
+          reader.addEventListener('load', (event) => {
+            const data = destr(event?.target?.result)
+
+            res(data)
+          })
+          reader.readAsDataURL(file)
         }
       })
     }

@@ -1,9 +1,10 @@
 <template>
   <div
     ref="container"
-    :class="raw.v2().style(props.entity, 'main')"
+    :class="raw.v2().block().style(props.entity, 'main')"
     class="w-full relative px-4 md:px-14"
-    @contextmenu="onSetContextMenu"
+    @contextmenu="raw.v2().block().menu($event, _index)"
+    @drop="raw.v2().block().drop($event, props.entity)"
   >
     <slot />
   </div>
@@ -16,7 +17,7 @@
   import { useRaw } from '@/use/raw'
   import { useMousePressed, watchDebounced } from '@vueuse/core'
   import { Entity } from 'better-write-types'
-  import { computed, nextTick, ref } from 'vue'
+  import { computed, ref } from 'vue'
 
   const props = defineProps<{
     entity: Entity
@@ -45,25 +46,11 @@
         mouseType.value === 'touch' &&
         props.entity.type !== 'drau'
       )
-        onSetContextMenu()
+        raw
+          .v2()
+          .block()
+          .menu('' as any, _index.value)
     },
     { debounce: 350 }
   )
-
-  const onSetContextMenu = async (e?: MouseEvent) => {
-    ABSOLUTE.entity.menu = false
-
-    EDITOR.actives.entity.index = _index.value
-
-    if (EDITOR.actives.global.mouse.validLastSelection) {
-      EDITOR.actives.global.mouse.validLastSelection = false
-      return
-    }
-
-    e?.preventDefault()
-
-    await nextTick
-
-    ABSOLUTE.entity.menu = true
-  }
 </script>

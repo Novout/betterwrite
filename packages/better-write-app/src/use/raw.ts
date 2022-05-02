@@ -10,6 +10,12 @@ import { useUtils } from './utils'
 import { useExternalsStore } from '@/store/externals'
 import { useEnv } from './env'
 import { useSubstitution } from './tools/substitution'
+import { nextTick } from 'vue'
+import { useContextStore } from '@/store/context'
+import { useFactory } from './factory'
+import { usePlugin } from 'better-write-plugin-core'
+import { useAbsoluteStore } from '@/store/absolute'
+import { useEditorStore } from '@/store/editor'
 
 export const bold = () => {
   const open = () => {
@@ -184,10 +190,16 @@ export const html = () => {
 }
 
 export const useRaw = () => {
+  const CONTEXT = useContextStore()
   const EXTERNALS = useExternalsStore()
+  const ABSOLUTE = useAbsoluteStore()
+  const EDITOR = useEditorStore()
 
   const env = useEnv()
+  const utils = useUtils()
+  const plugin = usePlugin()
   const substitution = useSubstitution()
+  const factory = useFactory()
 
   const v1 = () => {
     const convert = (entity: Entity) => {
@@ -356,43 +368,96 @@ export const useRaw = () => {
   }
 
   const v2 = () => {
-    const style = (entity: Entity, type: 'main' | 'input' = 'input') => {
-      switch (type) {
-        case 'main':
-          return [
-            entity.visual.info
-              ? 'bg-theme-editor-entity-info hover:bg-theme-editor-entity-info-hover active:bg-theme-editor-entity-info-active'
-              : '',
-            entity.visual.warning
-              ? 'bg-theme-editor-entity-warning hover:bg-theme-editor-entity-warning-hover active:bg-theme-editor-entity-warning-active'
-              : '',
-            entity.visual.error
-              ? 'bg-theme-editor-entity-error hover:bg-theme-editor-entity-error-hover active:bg-theme-editor-entity-error-active'
-              : '',
-          ]
-        case 'input':
-          return [
-            'editable overflow-hidden w-full break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
-            entity.type === 'paragraph'
-              ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
-              : '',
-            entity.type === 'heading-one'
-              ? 'text-center text-2xl pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'
-              : '',
-            entity.type === 'heading-two'
-              ? 'text-center text-xl pb-3 pt-8 text-theme-editor-entity-heading-two hover:text-theme-editor-entity-heading-two-hover active:text-theme-editor-entity-heading-two-active'
-              : '',
-            entity.type === 'heading-three'
-              ? 'text-center text-lg pb-2 pt-5 text-theme-editor-entity-heading-three hover:text-theme-editor-entity-heading-three-hover active:text-theme-editor-entity-heading-three-active'
-              : '',
-            entity.type === 'page-break'
-              ? 'cursor-default mt-2 mb-6 border-b-8 border-theme-border-1 border-theme-editor-entity-page'
-              : '',
-            entity.type === 'line-break'
-              ? 'cursor-default mt-2 mb-6 border-b-8 border-dashed border-theme-editor-entity-line'
-              : '',
-          ]
+    const block = () => {
+      const drop = async (e: DragEvent, item: Entity) => {
+        const target = e.dataTransfer?.items[0]
+
+        if (
+          target &&
+          target.kind === 'file' &&
+          target.type.includes('image/')
+        ) {
+          const file = await target.getAsFile()
+
+          if (file) {
+            const data = await utils.convert().read(file, 'image')
+
+            const entity = factory.entity().create('image', data as string)
+
+            entity.external!.image!.name = file.name
+
+            CONTEXT.newInDropFile({
+              old: item,
+              insert: entity,
+            })
+
+            await nextTick
+
+            plugin.emit('plugin-entity-create', {
+              data: item.raw,
+              index: CONTEXT.entities.indexOf(item),
+            })
+          }
+        }
       }
+
+      const menu = async (e: MouseEvent, index: number) => {
+        ABSOLUTE.entity.menu = false
+
+        EDITOR.actives.entity.index = index
+
+        if (EDITOR.actives.global.mouse.validLastSelection) {
+          EDITOR.actives.global.mouse.validLastSelection = false
+          return
+        }
+
+        e?.preventDefault()
+
+        await nextTick
+
+        ABSOLUTE.entity.menu = true
+      }
+
+      const style = (entity: Entity, type: 'main' | 'input' = 'input') => {
+        switch (type) {
+          case 'main':
+            return [
+              entity.visual.info
+                ? 'bg-theme-editor-entity-info hover:bg-theme-editor-entity-info-hover active:bg-theme-editor-entity-info-active'
+                : '',
+              entity.visual.warning
+                ? 'bg-theme-editor-entity-warning hover:bg-theme-editor-entity-warning-hover active:bg-theme-editor-entity-warning-active'
+                : '',
+              entity.visual.error
+                ? 'bg-theme-editor-entity-error hover:bg-theme-editor-entity-error-hover active:bg-theme-editor-entity-error-active'
+                : '',
+            ]
+          case 'input':
+            return [
+              'editable overflow-hidden w-full break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
+              entity.type === 'paragraph'
+                ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
+                : '',
+              entity.type === 'heading-one'
+                ? 'text-center text-2xl pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'
+                : '',
+              entity.type === 'heading-two'
+                ? 'text-center text-xl pb-3 pt-8 text-theme-editor-entity-heading-two hover:text-theme-editor-entity-heading-two-hover active:text-theme-editor-entity-heading-two-active'
+                : '',
+              entity.type === 'heading-three'
+                ? 'text-center text-lg pb-2 pt-5 text-theme-editor-entity-heading-three hover:text-theme-editor-entity-heading-three-hover active:text-theme-editor-entity-heading-three-active'
+                : '',
+              entity.type === 'page-break'
+                ? 'cursor-default mt-2 mb-6 border-b-8 border-theme-border-1 border-theme-editor-entity-page'
+                : '',
+              entity.type === 'line-break'
+                ? 'cursor-default mt-2 mb-6 border-b-8 border-dashed border-theme-editor-entity-line'
+                : '',
+            ]
+        }
+      }
+
+      return { drop, menu, style }
     }
 
     const make = () => {
@@ -799,13 +864,13 @@ export const useRaw = () => {
     }
 
     return {
+      block,
       html,
       caret,
       apply,
       validate,
       purge,
       make,
-      style,
       normalize,
       copy,
       support,

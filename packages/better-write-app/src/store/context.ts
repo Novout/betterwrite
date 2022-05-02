@@ -180,6 +180,15 @@ export const useContextStore = defineStore('context', {
 
       this.entities = useUtils().array().insert(this.entities, index, target)
     },
+    newInDropFile({ old, insert }: { old: Entity; insert: Entity }) {
+      if (!old || !old.raw) return
+
+      const index = this.entities.indexOf(old as Entity) + 1
+
+      if (index === -1) return
+
+      this.entities = useUtils().array().insert(this.entities, index, insert)
+    },
     newInPageByOption({ entity, type }: ContextActionNewInPage) {
       if (!entity || !entity.raw) return
 

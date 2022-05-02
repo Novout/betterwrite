@@ -141,6 +141,30 @@ export const useFactory = () => {
         }
       }
 
+      if (type === 'image') {
+        return {
+          type,
+          raw: raw || env.emptyLine(),
+          createdAt: format.actually(),
+          updatedAt: format.actually(),
+          visual: {
+            error: false,
+            info: false,
+            warning: false,
+          },
+          external: {
+            image: {
+              name: '__DEFAULT__.png',
+              size: {
+                width: 100,
+                height: 100,
+              },
+              alignment: 'full',
+            },
+          },
+        }
+      }
+
       return {
         type,
         raw: raw || env.emptyLine(),

@@ -90,6 +90,18 @@ export const useStorage = () => {
           }
         }
       })
+
+      /* exclude broken image */
+      page.entities = page.entities.filter((entity) => {
+        if (
+          entity.type === 'image' &&
+          (!entity.raw || entity.raw === env.emptyLine())
+        ) {
+          return false
+        }
+
+        return true
+      })
     })
   }
 

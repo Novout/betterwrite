@@ -34,7 +34,7 @@
         paddingBottom: last ? '5rem' : '',
         textIndent: props.entity.type === 'paragraph' ? '2rem' : 0,
       }"
-      :class="raw.v2().style(props.entity, 'input')"
+      :class="raw.v2().block().style(props.entity, 'input')"
       @input="onInput"
       @keypress.enter.prevent="onEnter"
       @keydown="onKeyboard"
