@@ -1,6 +1,17 @@
-# Changelog (28/04/2022)
+# Changelog (03/05/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.15.21
+
+* **chore(project):** remove autosave init [80bc3ba]
+* **feat(editor):** insert drop image [a4cc268]
+* **chore(editor):** image block [baf292a]
+* **style(editor):** new theme infinity [22c0a2e]
+* **fix(editor):** firefox outline in text element [a889c6f]
+* **fix(database):** loader bar broken [2df3607]
+* **chore(pwa):** update plugin [73b7144]
+* **feat(editor):** load .bw in dragover [936b00b]
 
 ### v0.15.20
 

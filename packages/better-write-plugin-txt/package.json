@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-txt",
-	"version": "0.15.20",
+	"version": "0.15.21",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -20,8 +20,8 @@
 	],
 	"dependencies": {
 		"@vueuse/integrations": "7.7.1",
-		"better-write-plugin-core": "^0.15.20",
-		"better-write-types": "^0.15.20",
+		"better-write-plugin-core": "^0.15.21",
+		"better-write-types": "^0.15.21",
 		"file-saver": "2.0.5",
 		"vue-demi": "latest"
 	},
