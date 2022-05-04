@@ -180,6 +180,13 @@ export const useContextStore = defineStore('context', {
 
       this.entities = useUtils().array().insert(this.entities, index, target)
     },
+    insert(entity: Entity, index: number) {
+      if (!entity) return
+
+      if (index === -1) return
+
+      this.entities = useUtils().array().insert(this.entities, index, entity)
+    },
     newInDropFile({ old, insert }: { old: Entity; insert: Entity }) {
       if (!old || !old.raw) return
 

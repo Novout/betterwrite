@@ -369,6 +369,36 @@ export const useRaw = () => {
 
   const v2 = () => {
     const block = () => {
+      const text = () => {
+        const parse = (text: string): string[] => {
+          return text
+            .split(utils.regex().htmlTags())
+            .map((text) => text.replaceAll('<br>', ' '))
+            .filter(
+              (text) =>
+                text && !text.includes('<div>') && !text.includes('</div>')
+            )
+        }
+
+        const join = (texts: string[]): string => {
+          return texts.reduce((acc, text, index) => {
+            if (index === 0) return (acc += text)
+
+            if (text === ' ') {
+              return (acc += '<br>')
+            }
+
+            const aux = '<div>' + text + '</div>'
+
+            acc += aux
+
+            return acc
+          }, '')
+        }
+
+        return { parse, join }
+      }
+
       const drop = async (e: DragEvent, item: Entity) => {
         const target = e.dataTransfer?.items[0]
 
@@ -432,59 +462,13 @@ export const useRaw = () => {
                 ? 'bg-theme-editor-entity-error hover:bg-theme-editor-entity-error-hover active:bg-theme-editor-entity-error-active'
                 : '',
             ]
-          case 'input':
-            return [
-              'editable overflow-hidden w-full break-words bg-theme-editor-entity-background hover:bg-theme-editor-entity-background-hover active:bg-theme-editor-entity-background-active',
-              entity.type === 'paragraph'
-                ? 'text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active'
-                : '',
-              entity.type === 'heading-one'
-                ? 'text-center text-2xl pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'
-                : '',
-              entity.type === 'heading-two'
-                ? 'text-center text-xl pb-3 pt-8 text-theme-editor-entity-heading-two hover:text-theme-editor-entity-heading-two-hover active:text-theme-editor-entity-heading-two-active'
-                : '',
-              entity.type === 'heading-three'
-                ? 'text-center text-lg pb-2 pt-5 text-theme-editor-entity-heading-three hover:text-theme-editor-entity-heading-three-hover active:text-theme-editor-entity-heading-three-active'
-                : '',
-              entity.type === 'page-break'
-                ? 'cursor-default mt-2 mb-6 border-b-8 border-theme-border-1 border-theme-editor-entity-page'
-                : '',
-              entity.type === 'line-break'
-                ? 'cursor-default mt-2 mb-6 border-b-8 border-dashed border-theme-editor-entity-line'
-                : '',
-            ]
         }
       }
 
-      return { drop, menu, style }
+      return { text, drop, menu, style }
     }
 
     const make = () => {
-      const image = (entity: Entity) => {
-        if (!support().images(entity.external?.image?.name as string)) {
-          return `<div class="flex wb-text text-xl items-end w-full justify-center py-5">
-          <svg id="unsupported-extension-image" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="h-7 w-7" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><g stroke-width="1.5" fill="none"><path d="M12 8v4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 16.01l.01-.011" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 3H4v3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 11v2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 11v2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 3h5v3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 21H4v-3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 21h5v-3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
-          </div>`
-        }
-
-        return `<div class="flex wb-text text-xl items-end w-full justify-center py-5">
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-7 w-7"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          <p class="ml-1">${entity.external?.image?.name}</p>
-        </div>`
-      }
-
       const italic = (content: string) => {
         return html().italic().open() + content + html().italic().close()
       }
@@ -493,7 +477,7 @@ export const useRaw = () => {
         return html().bold().open() + content + html().bold().close()
       }
 
-      return { image, italic, bold }
+      return { italic, bold }
     }
 
     const caret = () => {

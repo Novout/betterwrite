@@ -38,6 +38,8 @@
   import { useProject } from '@/use/project'
   import useEmitter from '@/use/emitter'
   import { useUtils } from '@/use/utils'
+  import { useFactory } from '@/use/factory'
+  import { useStorage } from '@/use/storage/storage'
 
   const props = defineProps<{
     entity: Entity
@@ -57,6 +59,8 @@
   const emitter = useEmitter()
   const raw = useRaw()
   const utils = useUtils()
+  const factory = useFactory()
+  const storage = useStorage()
 
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
 
@@ -123,6 +127,10 @@
 
   const onInput = () => {
     isSalvageable.value = true
+
+    const parse = raw.v2().block().text().parse(__INPUT__.value.innerHTML)
+
+    console.log(raw.v2().block().text().join(parse))
   }
 
   const onKeyboard = async (e: KeyboardEvent) => {
@@ -267,10 +275,26 @@
     }
   }
 
-  const onEnter = (e: KeyboardEvent) => {
+  const onEnter = async (e: KeyboardEvent) => {
     if (props.isAttached) {
       e.preventDefault()
       e.stopPropagation()
+
+      const item = factory.entity().create(props.entity.type)
+      const index = _index.value + 1
+
+      CONTEXT.insert(item, index)
+
+      await nextTick
+
+      await storage.normalize()
+
+      await nextTick
+
+      emitter.emit('entity-text-focus', {
+        position: 'auto',
+        target: index,
+      })
     }
   }
 </script>

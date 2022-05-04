@@ -2,7 +2,7 @@
   <EditorEntityDefaultContainer :entity="props.entity">
     <section
       ref="list"
-      class="flex py-1 gap-4 wb-text w-full relative px-4 md:px-14"
+      class="flex py-1 gap-4 wb-text w-full relative"
       :class="[last ? 'items-start' : 'items-center']"
     >
       <div class="w-5" />

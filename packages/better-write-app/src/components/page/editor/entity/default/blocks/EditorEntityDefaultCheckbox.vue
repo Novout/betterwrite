@@ -2,9 +2,8 @@
   <EditorEntityDefaultContainer :entity="props.entity">
     <section
       ref="checkbox"
-      class="flex relative py-1 gap-2 wb-text w-full px-4 md:px-14"
+      class="flex relative py-1 gap-2 wb-text w-full px-7"
     >
-      <div class="w-5" />
       <InputBoolean v-model="select" :specific="true" />
       <EditorEntityDefaultText :is-attached="true" :entity="props.entity" />
     </section>
