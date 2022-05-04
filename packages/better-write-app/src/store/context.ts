@@ -89,7 +89,7 @@ export const useContextStore = defineStore('context', {
       }
     },
     removeInPage(entity: Entity) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       const index = this.entities.indexOf(entity)
 
