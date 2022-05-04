@@ -7,11 +7,10 @@ import { useLocalStorage } from '@/use/storage/local'
 import { useEventListener, useFullscreen } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
 import { usePlugin } from 'better-write-plugin-core'
-import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { onBeforeRouteLeave, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { useListener } from './listener'
-import { s } from '@/use/storage/supabase'
 import { useAuthStore } from '@/store/auth'
 import { useStorage } from './storage/storage'
 
@@ -38,8 +37,8 @@ export const useEditor = () => {
       project.onLoadProject()
     })
 
-    onBeforeUnmount(async () => {
-      await storage.normalize()
+    useEventListener('beforeunload', () => {
+      storage.normalize()
     })
 
     // tracking all auto-save cases
