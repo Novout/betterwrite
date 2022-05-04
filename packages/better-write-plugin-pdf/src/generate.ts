@@ -308,10 +308,24 @@ export const PluginPDFSet = (
 
       if (entity.type === 'checkbox') indent += '\t'
 
-      const value = indent + entity.raw
+      const getParagraphs = () => {
+        return hooks.raw
+          .v2()
+          .block()
+          .text()
+          .parse(entity.raw)
+          .map((row: string) => {
+            return {
+              text: hooks.raw
+                .v2()
+                .purge()
+                .pdf(indent + row + '\n'),
+            }
+          })
+      }
 
       return {
-        text: hooks.raw.v2().purge().pdf(value),
+        text: getParagraphs(),
         style: entity.external?.paragraph?.active ? 'none' : 'paragraph',
         preserveLeadingSpaces: true,
         margin: [

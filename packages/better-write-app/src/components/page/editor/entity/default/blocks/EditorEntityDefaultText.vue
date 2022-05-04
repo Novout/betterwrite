@@ -127,10 +127,6 @@
 
   const onInput = () => {
     isSalvageable.value = true
-
-    const parse = raw.v2().block().text().parse(__INPUT__.value.innerHTML)
-
-    console.log(raw.v2().block().text().join(parse))
   }
 
   const onKeyboard = async (e: KeyboardEvent) => {

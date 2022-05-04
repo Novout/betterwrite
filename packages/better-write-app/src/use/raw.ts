@@ -372,7 +372,7 @@ export const useRaw = () => {
       const text = () => {
         const parse = (text: string): string[] => {
           return text
-            .split(utils.regex().htmlTags())
+            .split(utils.regex().divTag())
             .map((text) => text.replaceAll('<br>', ' '))
             .filter(
               (text) =>

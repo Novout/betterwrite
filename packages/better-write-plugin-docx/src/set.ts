@@ -199,16 +199,23 @@ export const PluginDocxSet = (
         })
       }
 
-      const paragraph = (raw: string) => {
-        if (hooks.env.emptyLine() === raw) return lineBreak()
+      const paragraph = (raw: string): docx.Paragraph[] => {
+        if (hooks.env.emptyLine() === raw || raw === ' ') return [lineBreak()]
 
-        return new docx.Paragraph({
-          children: purge(raw),
-          alignment: docx.AlignmentType.JUSTIFIED,
-          indent: {
-            firstLine: 350,
-          },
-        })
+        return hooks.raw
+          .v2()
+          .block()
+          .text()
+          .parse(raw)
+          .map((paragraph: string) => {
+            return new docx.Paragraph({
+              children: purge(paragraph),
+              alignment: docx.AlignmentType.JUSTIFIED,
+              indent: {
+                firstLine: 350,
+              },
+            })
+          })
       }
 
       const pageBreak = () => {
@@ -245,7 +252,9 @@ export const PluginDocxSet = (
         page.entities.forEach((entity: Entity) => {
           switch (entity.type) {
             case 'paragraph':
-              arr.push(entities().paragraph(entity.raw))
+              entities()
+                .paragraph(entity.raw)
+                ?.forEach((paragraph: docx.Paragraph) => arr.push(paragraph))
               break
             case 'heading-one':
               arr.push(entities().headingOne(entity.raw))

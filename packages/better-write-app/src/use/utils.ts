@@ -62,11 +62,15 @@ export const useUtils = () => {
       return new RegExp(/(<[^<>]+>)/g)
     }
 
+    const divTag = () => {
+      return new RegExp(/<div>(.*?)<\/div>/)
+    }
+
     const classTag = () => {
       return new RegExp(/\sclass="[a-zA-Z0-9:;\.\s\(\)\-\,]*"/gi)
     }
 
-    return { links, htmlTags, classTag }
+    return { links, htmlTags, divTag, classTag }
   }
 
   const cursor = () => {

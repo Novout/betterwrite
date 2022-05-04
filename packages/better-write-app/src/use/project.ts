@@ -401,9 +401,18 @@ export const useProject = () => {
         const value = page.entities
           .filter((ent) => isValidType(ent))
           .reduce((conc, ent) => {
+            const nm = raw
+              .v2()
+              .block()
+              .text()
+              .parse(ent.raw)
+              .reduce((acc, value) => {
+                return (acc += value + '\n')
+              }, '')
+
             return (
               conc +
-              raw.v2().normalize(ent.raw) +
+              raw.v2().normalize(nm) +
               (entity.utils().isHeading(ent.type) ? '\n\n' : '\n')
             )
           }, '')
