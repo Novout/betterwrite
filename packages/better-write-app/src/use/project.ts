@@ -24,7 +24,6 @@ import { usePlugin } from 'better-write-plugin-core'
 import { useBreakpoint } from './breakpoint'
 import { useRaw } from './raw'
 import { useFileSystemAccess } from '@vueuse/core'
-import { useSubstitution } from './tools/substitution'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -43,12 +42,6 @@ export const useProject = () => {
   const plugin = usePlugin()
   const breakpoints = useBreakpoint()
   const { t } = i18n.global
-
-  let timer: any
-
-  const destroy = () => {
-    clearInterval(timer as any)
-  }
 
   const external = () => {
     const n = async (type: ProjectType, skipAlert: boolean = false) => {
@@ -72,9 +65,7 @@ export const useProject = () => {
       if (!breakpoints.isMobile().value && type === 'creative')
         ABSOLUTE.aside = true
 
-      await local.onSaveProject(false)
-
-      window.location.reload()
+      await local.onSaveProject()
     }
 
     return { new: n }
@@ -87,10 +78,6 @@ export const useProject = () => {
       await nextTick
 
       CONTEXT.load(PROJECT.pages[0])
-
-      await nextTick
-
-      destroy()
 
       await nextTick
 
@@ -469,7 +456,6 @@ export const useProject = () => {
   }
 
   return {
-    destroy,
     create,
     external,
     onLoadProject,

@@ -83,7 +83,6 @@ export interface PluginHooks {
   storage: PluginHook
   creative: PluginHook
   defines: PluginHook
-  destroy: PluginHook
   editor: PluginHook
   entity: PluginHook
   env: PluginHook

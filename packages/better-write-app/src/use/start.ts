@@ -14,7 +14,6 @@ import { useLocalStorage } from './storage/local'
 import { useStorage } from './storage/storage'
 import { useCreativeType } from './type/creative'
 import { useDefines } from './defines'
-import { useDestroy } from './destroy'
 import { useEditor } from './editor'
 import { useEntity } from './entity'
 import { useFactory } from './factory'
@@ -177,7 +176,6 @@ export const useStart = () => {
         storage: useStorage(),
         creative: useCreativeType(),
         defines: useDefines(),
-        destroy: useDestroy(),
         editor: useEditor(),
         entity: useEntity(),
         env: useEnv(),
