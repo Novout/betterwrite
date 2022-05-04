@@ -86,7 +86,7 @@
     })
 
     emitter.on('entity-text-force-save', () => {
-      if (isSalvageable.value) {
+      if (isSalvageable.value && __INPUT__.value && __INPUT__.value.innerHTML) {
         block.save(_index.value, __INPUT__.value.innerHTML)
 
         isSalvageable.value = false
