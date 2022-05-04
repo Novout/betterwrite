@@ -11,17 +11,21 @@
 </template>
 
 <script setup lang="ts">
+  import { useAbsoluteStore } from '@/store/absolute'
   import { useContextStore } from '@/store/context'
+  import { useEditorStore } from '@/store/editor'
   import { useRaw } from '@/use/raw'
   import { useMousePressed, watchDebounced } from '@vueuse/core'
   import { Entity } from 'better-write-types'
-  import { computed, ref } from 'vue'
+  import { computed, ref, watch } from 'vue'
 
   const props = defineProps<{
     entity: Entity
   }>()
 
   const CONTEXT = useContextStore()
+  const EDITOR = useEditorStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const raw = useRaw()
   const container = ref()
@@ -31,6 +35,18 @@
   const { pressed, sourceType: mouseType } = useMousePressed({
     touch: true,
     target: container,
+  })
+
+  const target = computed(
+    () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu
+  )
+
+  /* info */
+  watch(target, (_target) => {
+    // for delete mutate
+    if (!CONTEXT.entities[_index.value]) return
+
+    CONTEXT.entities[_index.value].visual.info = _target
   })
 
   // mobile contextmenu open

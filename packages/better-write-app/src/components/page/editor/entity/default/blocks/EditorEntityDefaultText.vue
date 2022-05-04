@@ -36,7 +36,6 @@
   import { useProject } from '@/use/project'
   import useEmitter from '@/use/emitter'
   import { useUtils } from '@/use/utils'
-  import { useScroll } from '@/use/scroll'
 
   const props = defineProps<{
     entity: Entity
@@ -55,12 +54,8 @@
   const emitter = useEmitter()
   const raw = useRaw()
   const utils = useUtils()
-  const scroll = useScroll()
 
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
-  const target = computed(
-    () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu
-  )
 
   const { focused } = useFocus(__INPUT__)
 
@@ -81,14 +76,6 @@
 
       isSalvageable.value = false
     }
-  })
-
-  /* info */
-  watch(target, (_target) => {
-    // for delete mutate
-    if (!CONTEXT.entities[_index.value]) return
-
-    CONTEXT.entities[_index.value].visual.info = _target
   })
 
   onMounted(() => {

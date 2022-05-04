@@ -15,6 +15,14 @@
     v-else-if="entity.type === 'drau'"
     :entity="entity"
   />
+  <EditorEntityDefaultLineBreak
+    v-else-if="entity.type === 'line-break'"
+    :entity="entity"
+  />
+  <EditorEntityDefaultPageBreak
+    v-else-if="entity.type === 'page-break'"
+    :entity="entity"
+  />
   <EditorEntityDefaultHeading
     v-else-if="
       entity.type === 'heading-one' ||
@@ -23,7 +31,10 @@
     "
     :entity="entity"
   />
-  <EditorEntityDefaultParagraph v-else :entity="entity" />
+  <EditorEntityDefaultParagraph
+    v-else-if="entity.type === 'paragraph'"
+    :entity="entity"
+  />
 </template>
 
 <script setup lang="ts">
