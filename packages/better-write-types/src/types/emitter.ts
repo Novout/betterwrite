@@ -29,6 +29,8 @@ export type VueEmitterName =
   | 'entity-hover'
   | 'entity-external-comment-save'
   | 'entity-speech-recognition'
+  | 'entity-text-focus'
+  | 'entity-text-force-save'
   | 'controller-entity-next'
   | 'controller-entity-back'
   | 'project-creative-drafts-set-info'

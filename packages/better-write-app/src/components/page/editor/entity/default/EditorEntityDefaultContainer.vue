@@ -11,9 +11,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useAbsoluteStore } from '@/store/absolute'
   import { useContextStore } from '@/store/context'
-  import { useEditorStore } from '@/store/editor'
   import { useRaw } from '@/use/raw'
   import { useMousePressed, watchDebounced } from '@vueuse/core'
   import { Entity } from 'better-write-types'
@@ -23,8 +21,6 @@
     entity: Entity
   }>()
 
-  const ABSOLUTE = useAbsoluteStore()
-  const EDITOR = useEditorStore()
   const CONTEXT = useContextStore()
 
   const raw = useRaw()

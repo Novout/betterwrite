@@ -15,6 +15,14 @@
     v-else-if="entity.type === 'drau'"
     :entity="entity"
   />
+  <EditorEntityDefaultHeading
+    v-else-if="
+      entity.type === 'heading-one' ||
+      entity.type === 'heading-two' ||
+      entity.type === 'heading-three'
+    "
+    :entity="entity"
+  />
   <EditorEntityDefaultParagraph v-else :entity="entity" />
 </template>
 
