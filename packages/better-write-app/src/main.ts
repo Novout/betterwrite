@@ -9,7 +9,7 @@ import { MotionPlugin as motion } from '@vueuse/motion'
 import tooltip from 'floating-vue'
 import toast, { POSITION } from 'vue-toastification'
 import mitt from 'mitt'
-import { VueEmitter } from 'better-write-types'
+import { Events } from 'better-write-types'
 import { useEnv } from './use/env'
 
 import router from './router'
@@ -29,9 +29,9 @@ const app = createApp(App)
 export const head = createHead()
 export const store = createPinia()
 export const core = createPluginCore()
-export const emitter = mitt()
+export const emitter = mitt<Events>()
 
-app.config.globalProperties.emitter = emitter as VueEmitter
+app.config.globalProperties.emitter = emitter
 
 app.use(router)
 app.use(store as any)

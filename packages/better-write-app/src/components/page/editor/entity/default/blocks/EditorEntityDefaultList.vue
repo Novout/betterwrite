@@ -10,7 +10,7 @@
         class="h-1 w-1 p-1 bg-theme-background-3 rounded-full"
         :class="[last ? 'mt-2.5' : '']"
       ></div>
-      <EditorEntityDefaultInput :entity="props.entity" />
+      <EditorEntityDefaultText :is-attached="true" :entity="props.entity" />
     </section>
   </EditorEntityDefaultContainer>
 </template>

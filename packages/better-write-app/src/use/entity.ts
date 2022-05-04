@@ -1,4 +1,4 @@
-import { Entity, EntityType, Entities } from 'better-write-types'
+import { Entity, EntityType } from 'better-write-types'
 import { nextTick } from 'vue'
 import { useEnv } from './env'
 import { useProjectStore } from '@/store/project'
@@ -133,102 +133,17 @@ export const useEntity = () => {
   }
 
   const base = () => {
-    const onPaste = async (
-      entity: Entity,
-      value: string,
-      event: any,
-      el: HTMLDivElement
-    ) => {
-      event.preventDefault()
-      event.stopPropagation()
-
-      const data = input.pasteText(event)
-      const entities: Entities = []
-      let isFirst = true
-      let isReallyFirst = true
-      let offsetFirst = 0
-      let restStr = ''
-
-      storage.normalize().then(() => {
-        const index = CONTEXT.entities.indexOf(entity)
-
-        data.forEach(async (data: string, index: number, arr: string[]) => {
-          const normalize = data.replace(/\s+/g, ' ').trim()
-
-          if (normalize) {
-            const content = factory.entity().create(entity.type)
-
-            if (isFirst) {
-              content.raw = utils().normalizeEmptyLines(content.raw)
-
-              const offset = raw.v2().caret().index(el)
-
-              const v = raw
-                .v2()
-                .html()
-                .insert(value, offset || PROJECT.offsetLoaded, data)
-
-              content.raw = v
-
-              offsetFirst = offset + data.length
-
-              restStr = v.substring(offsetFirst, v.length)
-
-              if (arr.length > 1) {
-                content.raw = content.raw.substring(0, offsetFirst)
-              }
-
-              isFirst = false
-            } else {
-              content.raw = normalize
-            }
-
-            entities.push(content)
-
-            // create last element with restStr
-            if (index === arr.length - 1 && !isReallyFirst && restStr) {
-              const lastContent = factory.entity().create(entity.type)
-
-              content.raw = restStr
-
-              entities.push(lastContent)
-            }
-
-            isReallyFirst = false
-          }
-        })
-
-        storage.normalize().then(async () => {
-          CONTEXT.newInPaste(entities, entity).then(async () => {
-            const position = index + entities.length - 1
-
-            await nextTick
-
-            raw.v2().caret().set(el, offsetFirst, true)
-
-            emitter.emit('entity-scroll-by-index', position)
-
-            emitter.emit('entity-open-by-index', position)
-
-            plugin.emit('plugin-entity-paste-in-page', {
-              index,
-              quantity: entities.length,
-            })
-          })
-        })
-      })
-    }
-
     const onUp = async (entity: Entity, index: number) => {
-      await nextTick
-
-      emitter.emit('entity-not-mutate', entity)
-
-      await nextTick
-
       CONTEXT.switchInPage({
         entity,
         direction: 'up',
+      })
+
+      await nextTick
+
+      emitter.emit('entity-text-focus', {
+        position: 'end',
+        target: index - 1,
       })
 
       if (index === 0) return
@@ -240,15 +155,16 @@ export const useEntity = () => {
     }
 
     const onDown = async (entity: Entity, index: number) => {
-      await nextTick
-
-      emitter.emit('entity-not-mutate-down', entity)
-
-      await nextTick
-
       CONTEXT.switchInPage({
         entity,
         direction: 'down',
+      })
+
+      await nextTick
+
+      emitter.emit('entity-text-focus', {
+        position: 'end',
+        target: index + 1,
       })
 
       if (index === CONTEXT.entities.length - 1) return
@@ -259,42 +175,19 @@ export const useEntity = () => {
       })
     }
 
-    const onUpCursor = async (entity: Entity) => {
-      emitter.emit('entity-close', { all: true })
-
-      await nextTick
-
-      emitter.emit('entity-open', {
-        entity: entity,
-        up: true,
-        selectionInitial: true,
-        keyboard: true,
-      })
-    }
-
-    const onDownCursor = async (entity: Entity) => {
-      emitter.emit('entity-close', { all: true })
-
-      await nextTick
-
-      emitter.emit('entity-open', {
-        entity,
-        up: false,
-        selectionInitial: true,
-        keyboard: true,
-      })
-    }
-
     const onDelete = async (entity: Entity, index: number) => {
-      emitter.emit('entity-not-mutate', entity)
-
-      await nextTick
-
       CONTEXT.removeInPage(entity)
 
       await nextTick
 
       PROJECT.updateContext(CONTEXT.$state)
+
+      await nextTick
+
+      emitter.emit('entity-text-focus', {
+        position: 'end',
+        target: index - 1,
+      })
 
       plugin.emit('plugin-entity-delete', index)
     }
@@ -324,11 +217,8 @@ export const useEntity = () => {
     }
 
     return {
-      onPaste,
       onUp,
       onDown,
-      onUpCursor,
-      onDownCursor,
       onDelete,
       onDeleteRaw,
       onBoldRaw,

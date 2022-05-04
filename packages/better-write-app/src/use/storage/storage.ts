@@ -106,8 +106,6 @@ export const useStorage = () => {
   }
 
   const normalize = async () => {
-    // close open entities contents
-    emitter.emit('entity-edit-save')
     // text block saver
     emitter.emit('entity-text-force-save')
     // force entity paragraph comment a save / close comment modal

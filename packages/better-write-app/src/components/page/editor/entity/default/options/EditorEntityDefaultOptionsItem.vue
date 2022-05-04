@@ -27,7 +27,6 @@
 
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
-  import useEmitter from '@/use/emitter'
   import { ref, nextTick } from 'vue'
 
   const props = defineProps({
@@ -46,15 +45,12 @@
   const ABSOLUTE = useAbsoluteStore()
 
   const emit = defineEmits(['action'])
-  const emitter = useEmitter()
   const hover = ref<boolean>(false)
 
   const onAction = async () => {
     if (props.off) return
 
     emit('action')
-
-    emitter.emit('entity-reset')
 
     await nextTick
 

@@ -50,6 +50,9 @@
 
     await nextTick
 
-    emitter.emit('entity-text-focus', _index.value + 1)
+    emitter.emit('entity-text-focus', {
+      target: _index.value + 1,
+      position: 'auto',
+    })
   }
 </script>

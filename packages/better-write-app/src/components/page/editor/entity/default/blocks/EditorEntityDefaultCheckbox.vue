@@ -6,7 +6,7 @@
     >
       <div class="w-5" />
       <InputBoolean v-model="select" :specific="true" />
-      <EditorEntityDefaultInput :entity="entity" />
+      <EditorEntityDefaultText :is-attached="true" :entity="props.entity" />
     </section>
   </EditorEntityDefaultContainer>
 </template>

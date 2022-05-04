@@ -190,7 +190,7 @@ export const useContextStore = defineStore('context', {
       this.entities = useUtils().array().insert(this.entities, index, insert)
     },
     newInPageByOption({ entity, type }: ContextActionNewInPage) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       const index = this.entities.indexOf(entity as Entity)
 

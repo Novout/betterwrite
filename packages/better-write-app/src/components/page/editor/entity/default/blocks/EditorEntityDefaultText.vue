@@ -5,7 +5,8 @@
   <div class="relative w-full">
     <p
       ref="__INPUT__"
-      class="editable indent-8 whitespace-pre-line text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active"
+      :class="!isAttached ? 'indent-8' : ''"
+      class="editable whitespace-pre-line text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active"
       :spellcheck="true"
       :contenteditable="true"
       :data-placeholder="
@@ -17,6 +18,7 @@
       "
       @input="onInput"
       @keydown="onKeyboard"
+      @keypress.enter="onEnter"
       v-html="raw.v2().purge().editor(props.entity)"
     />
   </div>
@@ -30,7 +32,7 @@
   import { useFocus } from '@vueuse/core'
   import { useI18n } from 'vue-i18n'
   import { useContextStore } from '@/store/context'
-  import { Entity, ID } from 'better-write-types'
+  import { Entity } from 'better-write-types'
   import { useRaw } from '@/use/raw'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useProject } from '@/use/project'
@@ -39,6 +41,7 @@
 
   const props = defineProps<{
     entity: Entity
+    isAttached: boolean
   }>()
 
   const EDITOR = useEditorStore()
@@ -71,6 +74,7 @@
       }
     }
 
+    /* save block */
     if (!_focused) {
       block.save(_index.value, __INPUT__.value.innerHTML)
 
@@ -79,11 +83,30 @@
   })
 
   onMounted(() => {
-    emitter.on('entity-text-focus', (index: ID<number>) => {
-      if (CONTEXT.entities[index] === props.entity) {
-        __INPUT__.value?.focus()
+    emitter.on(
+      'entity-text-focus',
+      async ({ target, position, positionOffset }) => {
+        if (CONTEXT.entities[target] === props.entity) {
+          switch (position) {
+            case 'start':
+              raw.v2().caret().set(__INPUT__.value, 0)
+              break
+            case 'end':
+              raw.v2().caret().setEnd(__INPUT__.value)
+              break
+            case 'offset':
+              raw
+                .v2()
+                .caret()
+                .set(__INPUT__.value, positionOffset as number)
+              break
+            case 'auto':
+              __INPUT__.value?.focus()
+              break
+          }
+        }
       }
-    })
+    )
 
     emitter.on('entity-text-force-save', () => {
       if (isSalvageable.value && __INPUT__.value && __INPUT__.value.innerHTML) {
@@ -154,10 +177,6 @@
         e.stopPropagation()
 
         entity.base().onDelete(props.entity, _index.value)
-
-        await nextTick
-
-        emitter.emit('entity-reset')
       }
 
       // italic entity
@@ -205,12 +224,12 @@
         e.preventDefault()
         e.stopPropagation()
 
-        entity.base().onUpCursor(props.entity)
+        // entity.base().onUpCursor(props.entity)
       } else if (e.key === 'ArrowDown') {
         e.preventDefault()
         e.stopPropagation()
 
-        entity.base().onDownCursor(props.entity)
+        // entity.base().onDownCursor(props.entity)
       }
 
       return
@@ -231,19 +250,6 @@
       if (entity.utils().isFixed(_index.value - 1)) return
 
       entity.base().onDelete(props.entity, _index.value)
-
-      await nextTick
-
-      emitter.emit('entity-reset')
-
-      await nextTick
-
-      emitter.emit('entity-open', {
-        entity: props.entity,
-        up: true,
-        cursor: true,
-        keyboard: true,
-      })
     } else if (e.key === 'ArrowUp') {
       // to top
       if (start) {
@@ -252,32 +258,19 @@
           entity.utils().isFixed(_index.value - 1)
         )
           return
-
-        emitter.emit('entity-edit-save')
-
-        await nextTick
-
-        emitter.emit('entity-open', {
-          entity: props.entity,
-          up: true,
-          keyboard: true,
-        })
       }
     } else if (e.key === 'ArrowDown') {
       // to bottom
       if (end) {
         if (entity.utils().isFixed(_index.value + 1)) return
-
-        emitter.emit('entity-edit-save')
-
-        await nextTick
-
-        emitter.emit('entity-open', {
-          entity: props.entity,
-          up: false,
-          keyboard: true,
-        })
       }
+    }
+  }
+
+  const onEnter = (e: KeyboardEvent) => {
+    if (props.isAttached) {
+      e.preventDefault()
+      e.stopPropagation()
     }
   }
 </script>

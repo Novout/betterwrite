@@ -525,6 +525,30 @@ export const useRaw = () => {
         if (focus) el.focus()
       }
 
+      const setEnd = (el: HTMLParagraphElement) => {
+        el.focus()
+
+        if (
+          typeof window.getSelection != 'undefined' &&
+          typeof document.createRange != 'undefined'
+        ) {
+          const range = document.createRange()
+          range.selectNodeContents(el)
+          range.collapse(false)
+
+          const sel = window.getSelection()
+          sel?.removeAllRanges()
+          sel?.addRange(range)
+          // @ts-ignore
+        } else if (typeof document.body.createTextRange != 'undefined') {
+          // @ts-ignore
+          const textRange = document.body.createTextRange()
+          textRange.moveToElementText(el)
+          textRange.collapse(false)
+          textRange.select()
+        }
+      }
+
       const end = (el: HTMLDivElement) => {
         return index(el) === el.innerText.length
       }
@@ -550,7 +574,7 @@ export const useRaw = () => {
             set(input as HTMLDivElement, offset as number)
             break
           case 'end':
-            set(input as HTMLDivElement, input?.innerHTML.length as any)
+            setEnd(input as HTMLDivElement)
             break
           case 'auto':
             input?.focus()
@@ -569,7 +593,18 @@ export const useRaw = () => {
         }
       }
 
-      return { set, html, index, end, start, empty, value, object, focus }
+      return {
+        set,
+        setEnd,
+        html,
+        index,
+        end,
+        start,
+        empty,
+        value,
+        object,
+        focus,
+      }
     }
 
     const validate = (arr: Array<string>): Array<V2RawSet> => {

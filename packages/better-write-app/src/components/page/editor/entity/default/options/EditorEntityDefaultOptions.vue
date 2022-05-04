@@ -209,6 +209,7 @@
   import useEmitter from '@/use/emitter'
   import { useFactory } from '@/use/factory'
   import { usePlugin } from 'better-write-plugin-core'
+  import { useEntity } from '@/use/entity'
 
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
@@ -217,6 +218,7 @@
   const entity = computed<Entity>(
     () => CONTEXT.entities[EDITOR.actives.entity.index]
   )
+  const _index = computed(() => CONTEXT.entities.indexOf(entity.value))
   const options = ref<HTMLElement | null>(null)
   const visible = ref<boolean>(false)
   const block = ref<boolean>(false)
@@ -225,6 +227,7 @@
   const emitter = useEmitter()
   const plugin = usePlugin()
   const factory = useFactory()
+  const ent = useEntity()
 
   onClickOutside(options as any, () => onClose())
 
@@ -272,8 +275,8 @@
     ABSOLUTE.entity.menu = false
   }
 
-  const onDeleteEntity = () => {
-    CONTEXT.removeInPage(entity.value)
+  const onDeleteEntity = async () => {
+    ent.base().onDelete(entity.value, _index.value)
   }
 
   const onUpEntity = () => {
@@ -295,16 +298,17 @@
   }
 
   const onNewEntity = async (type: EntityType) => {
-    emitter.emit('entity-not-mutate', entity.value)
-
-    await nextTick
-
     CONTEXT.newInPageByOption({
       entity: entity.value,
       type,
     })
 
     await nextTick
+
+    emitter.emit('entity-text-focus', {
+      position: 'end',
+      target: _index.value + 1,
+    })
 
     plugin.emit('plugin-entity-create', {
       data: entity.value.raw,

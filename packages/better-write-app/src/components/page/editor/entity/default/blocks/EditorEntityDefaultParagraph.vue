@@ -1,6 +1,6 @@
 <template>
   <EditorEntityDefaultContainer :entity="props.entity">
-    <EditorEntityDefaultText :entity="props.entity" />
+    <EditorEntityDefaultText :is-attached="false" :entity="props.entity" />
   </EditorEntityDefaultContainer>
 </template>
 

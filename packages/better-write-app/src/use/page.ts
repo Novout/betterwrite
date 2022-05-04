@@ -28,8 +28,6 @@ export const usePage = () => {
     const arr = PROJECT.pages
     const obj = arr[arr.length - 1]
 
-    emitter.emit('entity-not-mutate')
-
     await nextTick
 
     CONTEXT.load(obj)
@@ -51,10 +49,6 @@ export const usePage = () => {
     plugin.emit('plugin-project-page-delete', CONTEXT.entities[0].raw)
 
     PROJECT.deletePage(CONTEXT.$state)
-
-    await nextTick
-
-    emitter.emit('entity-not-mutate')
 
     await nextTick
 

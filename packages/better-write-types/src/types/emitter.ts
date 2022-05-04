@@ -1,4 +1,6 @@
 import { Entity } from './context'
+import { ID } from './utils'
+
 export interface VueEmitterEntityClose {
   all?: boolean
 }
@@ -12,32 +14,18 @@ export interface VueEmitterEntityOpen {
   keyboard?: boolean
 }
 
-export type VueEmitterName =
-  | 'entity-reset'
-  | 'entity-input-focus'
-  | 'entity-open'
-  | 'entity-open-by-index'
-  | 'entity-scroll-by-index'
-  | 'entity-close'
-  | 'entity-focus'
-  | 'entity-input-raw'
-  | 'entity-open-last'
-  | 'entity-not-mutate'
-  | 'entity-force-close'
-  | 'entity-not-mutate-down'
-  | 'entity-edit-save'
-  | 'entity-hover'
-  | 'entity-external-comment-save'
-  | 'entity-speech-recognition'
-  | 'entity-text-focus'
-  | 'entity-text-force-save'
-  | 'controller-entity-next'
-  | 'controller-entity-back'
-  | 'project-creative-drafts-set-info'
-  | 'project-save'
-  | 'pdf-preview-exists'
+export type EventsEntityTextFocus = {
+  position: 'start' | 'offset' | 'end' | 'auto'
+  positionOffset?: number
+  target: ID<number>
+}
 
-export interface VueEmitter {
-  on: (name: VueEmitterName, callback: (...c: any) => any) => void
-  emit: (name: VueEmitterName, ...c: any) => void
+export type Events = {
+  'entity-external-comment-save': any
+  'entity-speech-recognition': any
+  'entity-text-focus': EventsEntityTextFocus
+  'entity-text-force-save': void
+  'project-creative-drafts-set-info': any
+  'project-save': any
+  'pdf-preview-exists': any
 }
