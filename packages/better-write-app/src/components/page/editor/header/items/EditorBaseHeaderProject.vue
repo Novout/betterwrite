@@ -72,14 +72,22 @@
           <div
             class="relative overflow-x-hidden bottom-16 flex flex-col h-40 w-40 wb-scroll overflow-y-auto bg-theme-editor-header-list-background rounded-tr rounded-br shadow"
           >
-            <p
+            <div
               v-for="(language, index) in Languages"
               :key="index"
-              class="pl-2 hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40"
+              class="flex gap-2 items-center pl-2 hover:bg-theme-background-opacity-1 cursor-pointer py-1 w-full"
               @click.prevent.stop="onSwitchLanguage(language)"
             >
-              {{ language }}
-            </p>
+              <IconFlagBrazil
+                v-if="language === 'Português do Brasil'"
+                class="w-9 h-9"
+              />
+              <IconFlagUnitedStates
+                v-else-if="language === 'English'"
+                class="w-7 h-7"
+              />
+              <p class="truncate">{{ language }}</p>
+            </div>
           </div>
         </template>
       </EditorHeaderItemOpen>
