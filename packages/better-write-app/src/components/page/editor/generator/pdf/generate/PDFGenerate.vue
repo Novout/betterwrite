@@ -29,7 +29,7 @@
       class="flex flex-col items-center justify-center min-h-80 w-full"
     >
       <Spinner v-if="inGenerate" :width="100" :height="100" />
-      <div v-else class="flex h-80 overflow-y-auto flex-col py-5">
+      <div v-else class="flex h-80 overflow-y-auto wb-scroll flex-col py-5">
         <h2 class="text-base wb-text font-bold mb-2 font-poppins">Capítulos</h2>
         <div
           v-for="(chapter, index) in chapters"

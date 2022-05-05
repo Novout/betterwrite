@@ -5,7 +5,7 @@
     :initial="{ opacity: 0, y: 10 }"
     :enter="{ opacity: 1, y: 0 }"
     :delay="100"
-    class="overflow-y-auto wb-text p-4 fixed top-0 left-0 h-screen w-full bg-theme-editor-creative-drafts-background text-theme-editor-creative-drafts-container-list-text z-max"
+    class="overflow-y-auto wb-scroll wb-text p-4 fixed top-0 left-0 h-screen w-full bg-theme-editor-creative-drafts-background text-theme-editor-creative-drafts-container-list-text z-max"
   >
     <EditorAbsoluteHeader
       :title="t('editor.bar.chapter.drafts')"
@@ -15,7 +15,7 @@
       class="flex flex-col md:flex-row h-auto md:h-editor w-full mt-10 bg-theme-editor-creative-drafts-container-background shadow-xl"
     >
       <div
-        class="flex flex-col overflow-y-auto bg-theme-editor-creative-drafts-container-list-background hover:bg-theme-editor-creative-drafts-container-list-background-hover active:bg-theme-editor-creative-drafts-container-list-background-active w-full md:w-72"
+        class="flex flex-col wb-scroll overflow-y-auto bg-theme-editor-creative-drafts-container-list-background hover:bg-theme-editor-creative-drafts-container-list-background-hover active:bg-theme-editor-creative-drafts-container-list-background-active w-full md:w-72"
       >
         <h2
           class="flex items-center justify-center p-5 font-poppins h-20 font-semibold text-lg"
@@ -32,7 +32,7 @@
         </p>
       </div>
       <div
-        class="flex border-b md:border-b-0 md:border-solid border-r-0 md:border-r border-theme-editor-creative-drafts-container-borders flex-col flex-1 w-auto p-5 overflow-y-auto"
+        class="flex border-b md:border-b-0 md:border-solid border-r-0 md:border-r border-theme-editor-creative-drafts-container-borders flex-col flex-1 w-auto p-5 wb-scroll overflow-y-auto"
       >
         <h2 class="font-xl font-bold">{{ t('editor.drafts.active') }}</h2>
         <EditorPagesDraftsItem
@@ -91,7 +91,7 @@
         :initial="{ opacity: 0, y: -30 }"
         :enter="{ opacity: 1, y: 0 }"
         :delay="300"
-        class="flex flex-col justify-start gap-10 flex-1 w-auto text-lg p-2 overflow-y-auto"
+        class="flex flex-col justify-start gap-10 flex-1 w-auto text-lg p-2 overflow-y-auto wb-scroll"
       >
         <h2 class="font-xl text-center pb-5 font-bold text-xl my-10 md:my-0">
           {{ page.title }}
@@ -122,7 +122,7 @@
         </div>
         <div class="flex flex-wrap gap-5 justify-around w-full mt-10">
           <div
-            class="p-3 w-full font-bold shadow-lg text-theme-editor-creative-drafts-container-item-text overflow-y-auto bg-theme-editor-creative-drafts-container-item-background max-h-40 hover:bg-theme-editor-creative-drafts-container-item-background-hover active:bg-theme-editor-creative-drafts-container-item-background-active"
+            class="p-3 w-full font-bold shadow-lg text-theme-editor-creative-drafts-container-item-text wb-scroll overflow-y-auto bg-theme-editor-creative-drafts-container-item-background max-h-40 hover:bg-theme-editor-creative-drafts-container-item-background-hover active:bg-theme-editor-creative-drafts-container-item-background-active"
           >
             <h2>{{ t('editor.drafts.statistics.longest') }}</h2>
             <p class="mt-2 w-full text-sm text-justify">

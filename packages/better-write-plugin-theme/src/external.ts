@@ -69,6 +69,8 @@ export const setTailwindCssVariables = () => {
     'theme-aside-graph-text': 'var(--theme-aside-graph-text)',
     'theme-aside-graph-text-hover': 'var(--theme-aside-graph-text-hover)',
     'theme-aside-graph-text-active': 'var(--theme-aside-graph-text-active)',
+    'theme-editor-scrollbar-track': 'var(--theme-editor-scrollbar-track)',
+    'theme-editor-scrollbar-thumb': 'var(--theme-editor-scrollbar-thumb)',
     'theme-editor-betterwrite': 'var(--theme-editor-betterwrite)',
     'theme-editor-io': 'var(--theme-editor-io)',
     'theme-editor-full-background': 'var(--theme-editor-full-background)',

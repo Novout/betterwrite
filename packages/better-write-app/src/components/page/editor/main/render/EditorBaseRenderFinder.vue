@@ -7,7 +7,7 @@
     :enter="{ opacity: 1, y: 0 }"
     :delay="100"
     :class="[project.isBlankProject() ? 'pt-28' : '']"
-    class="flex wb-edit flex-col w-full overflow-y-auto overflow-x-hidden"
+    class="flex wb-edit flex-col w-full overflow-y-auto wb-scroll overflow-x-hidden"
   >
     <EditorEntityFinderInput
       v-for="(element, index) in CONTEXT.entities"

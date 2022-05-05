@@ -1,7 +1,7 @@
 <template>
   <main
     id="terms"
-    class="min-h-screen overflow-y-auto w-full bg-gray-700 text-gray-200 p-5 md:p-10"
+    class="wb-screen w-full bg-gray-700 text-gray-200 p-5 md:p-10"
   >
     <TermsOfUseLogo />
 

@@ -4,7 +4,7 @@
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1 }"
     :delay="0"
-    class="wb-configuration-absolute"
+    class="wb-configuration-absolute wb-scroll"
   >
     <EditorProjectPreferencesHeader
       v-motion

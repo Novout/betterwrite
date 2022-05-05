@@ -21,14 +21,16 @@ export default defineConfig({
     'wb-input-container': 'flex flex-1 h-auto w-auto items-center justify-between p-5 border rounded-lg border-theme-editor-material-border bg-theme-editor-material-background hover:bg-theme-editor-material-background-hover active:bg-theme-editor-material-background-active text-theme-editor-material-text hover:text-theme-editor-material-text-hover active:text-theme-editor-material-text-active shadow-lg',
     'wb-pdf-container': 'flex flex-row gap-5 flex-wrap justify-between items-center my-3 overflow-x-hidden',
     'wb-disabled': 'opacity-50 pointer-events-none',
-    'wb-configuration-absolute': 'absolute top-0 left-0 bg-theme-background-1 flex flex-col h-screen w-full z-max px-2 py-5 md:px-20 overflow-y-auto overflow-x-hidden',
+    'wb-configuration-absolute': 'absolute top-0 left-0 bg-theme-background-1 flex flex-col h-screen w-full z-max px-2 py-5 md:px-20 overflow-y-auto overflow-x-hidden wb-scroll',
     'wb-configuration': 'flex gap-5 font-bold text-base text-theme-text-2 justify-between items-center w-full px-2 py-2',
     'wb-configuration-reserve': 'flex flex-row-reverse md:flex-row gap-5 font-bold text-base text-theme-text-2 justify-between items-center w-full px-2 py-2',
     'wb-configuration-input-text': 'bg-theme-editor-material-background px-2 shadow-lg w-full md:w-60',
     'wb-indent': 'indent-8',
     'wb-header-button': 'wb-text mx-0.5 md:mx-2',
     'wb-drau-icon': 'wb-icon w-8 h-8 md:(w-6 h-6)',
-    'wb-drau-icon-active': 'text-theme-icon-hover cursor-pointer w-8 h-8 md:(w-6 h-6)'
+    'wb-drau-icon-active': 'text-theme-icon-hover cursor-pointer w-8 h-8 md:(w-6 h-6)',
+    'wb-scroll': 'scrollbar-thin scrollbar-thumb-theme-editor-scrollbar-thumb scrollbar-track-theme-editor-scrollbar-track',
+    'wb-screen': 'h-screen wb-scroll overflow-y-auto'
   },
   theme: {
     fontFamily: {
@@ -119,145 +121,8 @@ export default defineConfig({
       '19': '7rem',
       '20': '7.5rem'
     },
-    textShadow: {
-      'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
-      'lg': '0 2px 10px rgba(0, 0, 0, 0.5)',
-    },
-    textDecorationStyle: {
-      'solid': 'solid',
-      'double': 'double',
-      'dotted': 'dotted',
-      'dashed': 'dashed',
-      'wavy': 'wavy',
-    },
-    textDecorationColor: {
-      'red': '#f00',
-      'green': '#0f0',
-      'blue': '#00f',
-    },
-    fontVariantCaps: {
-      'normal': 'normal',
-      'small': 'small-caps',
-      'all-small': 'all-small-caps',
-      'petite': 'petite-caps',
-      'unicase': 'unicase',
-      'titling': 'titling-caps',
-    },
-    fontVariantNumeric: {
-      'normal': 'normal',
-      'ordinal': 'ordinal',
-      'slashed-zero': 'slashed-zero',
-      'lining': 'lining-nums',
-      'oldstyle': 'oldstyle-nums',
-      'proportional': 'proportional-nums',
-      'tabular': 'tabular-nums',
-      'diagonal-fractions': 'diagonal-fractions',
-      'stacked-fractions': 'stacked-fractions',
-    },
-    fontVariantLigatures: {
-      'normal': 'normal',
-      'none': 'none',
-      'common': 'common-ligatures',
-      'no-common': 'no-common-ligatures',
-      'discretionary': 'discretionary-ligatures',
-      'no-discretionary': 'no-discretionary-ligatures',
-      'historical': 'historical-ligatures',
-      'no-historical': 'no-historical-ligatures',
-      'contextual': 'contextual',
-      'no-contextual': 'no-contextual',
-    },
-    textRendering: {
-      'rendering-auto': 'auto',
-      'optimize-legibility': 'optimizeLegibility',
-      'optimize-speed': 'optimizeSpeed',
-      'geometric-precision': 'geometricPrecision'
-    },
-    textStyles: theme => ({
-      heading: {
-        output: false,
-        fontWeight: theme('fontWeight.bold'),
-        lineHeight: theme('lineHeight.tight'),
-      },
-      h1: {
-        extends: 'heading',
-        fontSize: theme('fontSize.5xl'),
-        '@screen sm': {
-          fontSize: theme('fontSize.6xl'),
-        },
-      },
-      h2: {
-        extends: 'heading',
-        fontSize: theme('fontSize.4xl'),
-        '@screen sm': {
-          fontSize: theme('fontSize.5xl'),
-        },
-      },
-      h3: {
-        extends: 'heading',
-        fontSize: theme('fontSize.4xl'),
-      },
-      h4: {
-        extends: 'heading',
-        fontSize: theme('fontSize.3xl'),
-      },
-      h5: {
-        extends: 'heading',
-        fontSize: theme('fontSize.2xl'),
-      },
-      h6: {
-        extends: 'heading',
-        fontSize: theme('fontSize.xl'),
-      },
-      link: {
-        fontWeight: theme('fontWeight.bold'),
-        color: theme('colors.blue.400'),
-        '&:hover': {
-          color: theme('colors.blue.600'),
-          textDecoration: 'underline',
-        },
-      },
-      richText: {
-        fontWeight: theme('fontWeight.normal'),
-        fontSize: theme('fontSize.base'),
-        lineHeight: theme('lineHeight.relaxed'),
-        '> * + *': {
-          marginTop: '1em',
-        },
-        'h1': {
-          extends: 'h1',
-        },
-        'h2': {
-          extends: 'h2',
-        },
-        'h3': {
-          extends: 'h3',
-        },
-        'h4': {
-          extends: 'h4',
-        },
-        'h5': {
-          extends: 'h5',
-        },
-        'h6': {
-          extends: 'h6',
-        },
-        'ul': {
-          listStyleType: 'disc',
-        },
-        'ol': {
-          listStyleType: 'decimal',
-        },
-        'a': {
-          extends: 'link',
-        },
-        'b, strong': {
-          fontWeight: theme('fontWeight.bold'),
-        },
-        'i, em': {
-          fontStyle: 'italic',
-        },
-      },
-    }),
   },
-  plugins: [],
+  plugins: [
+    require('@windicss/plugin-scrollbar')
+  ],
 })

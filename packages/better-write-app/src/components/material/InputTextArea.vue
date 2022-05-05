@@ -1,5 +1,5 @@
 <template>
-  <textarea ref="inp" v-model="cmp" :class="css" />
+  <textarea ref="inp" v-model="cmp" class="wb-scroll" :class="css" />
 </template>
 
 <script setup lang="ts">

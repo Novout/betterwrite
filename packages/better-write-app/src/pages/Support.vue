@@ -1,7 +1,5 @@
 <template>
-  <main class="min-h-screen overflow-y-auto w-full bg-theme-background-2">
-    test
-  </main>
+  <main class="wb-screen w-full bg-theme-background-2">test</main>
 </template>
 
 <script setup lang="ts">

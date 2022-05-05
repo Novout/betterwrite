@@ -35,7 +35,7 @@
         <p>{{ obj[1] }}</p>
       </div>
     </div>
-    <div class="flex max-h-72 overflow-y-auto flex-col w-full mt-5">
+    <div class="flex max-h-72 wb-scroll overflow-y-auto flex-col w-full mt-5">
       <div
         v-for="(obj, index) in state.words"
         :key="index"

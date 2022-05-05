@@ -3,7 +3,7 @@
     v-motion
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1 }"
-    class="min-h-screen overflow-y-auto w-full bg-theme-background-2 p-5"
+    class="wb-screen w-full bg-theme-background-2 p-5"
   >
     <div class="mb-10 w-auto md:w-60">
       <Logo :width="40" :back="true" />

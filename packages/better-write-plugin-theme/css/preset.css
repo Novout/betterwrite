@@ -85,22 +85,6 @@ input[type='number'] {
   color: var(--wb-text-selection);
 }
 
-*::-webkit-scrollbar {
-  width: 10px;
-}
-
-*::-webkit-scrollbar-track {
-  background: var(--src-track);
-}
-
-*::-webkit-scrollbar-thumb {
-  background: var(--scr-thumb);
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: var(--scr-thumb-hover);
-}
-
 .drag {
   -webkit-app-region: drag;
 }

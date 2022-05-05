@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen overflow-y-auto w-full bg-theme-background-2">
+  <main class="wb-screen w-full bg-theme-background-2">
     <div
       v-motion
       :initial="{ opacity: 0, x: -20 }"
