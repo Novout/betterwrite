@@ -207,28 +207,6 @@ export const useDefines = () => {
     }
   }
 
-  const themes = (): Array<BetterWriteThemes> => {
-    return [
-      'BetterWrite - Light',
-      'BetterWrite - Dark',
-      'BetterWrite - Rise',
-      'BetterWrite - Ascend',
-      'BetterWrite - Harmonic',
-      'BetterWrite - Infinity',
-    ]
-  }
-
-  const allThemes = (): Array<[BetterWriteThemes, string]> => {
-    return [
-      ['BetterWrite - Light', '/logo.svg'],
-      ['BetterWrite - Dark', '/logo.svg'],
-      ['BetterWrite - Rise', '/logo_rise.svg'],
-      ['BetterWrite - Ascend', '/logo_ascend.svg'],
-      ['BetterWrite - Harmonic', '/logo_harmonic.svg'],
-      ['BetterWrite - Infinity', '/logo_infinity.svg'],
-    ]
-  }
-
   const generator = () => {
     const substitutions = () => {
       const text = (): ProjectStateTemplatesSubstitutionsText[] => {
@@ -282,8 +260,6 @@ export const useDefines = () => {
 
   return {
     pdf,
-    themes,
-    allThemes,
     generator,
   }
 }

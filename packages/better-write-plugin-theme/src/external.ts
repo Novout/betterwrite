@@ -1,5 +1,16 @@
 import { BetterWriteThemes } from 'better-write-types'
 
+export const Themes = (): Array<[BetterWriteThemes, string]> => {
+  return [
+    ['BetterWrite - Light', '/logo.svg'],
+    ['BetterWrite - Dark', '/logo.svg'],
+    ['BetterWrite - Rise', '/logo_rise.svg'],
+    ['BetterWrite - Ascend', '/logo_ascend.svg'],
+    ['BetterWrite - Harmonic', '/logo_harmonic.svg'],
+    ['BetterWrite - Infinity', '/logo_infinity.svg'],
+  ]
+}
+
 export const setEditorLogo = (theme: BetterWriteThemes, utils: any) => {
   let logo = ''
 

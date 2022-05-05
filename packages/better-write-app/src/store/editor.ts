@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { EditorState } from 'better-write-types'
-import { useDefines } from '../use/defines'
+import { Themes } from 'better-write-plugin-theme'
 
 export const useEditorStore = defineStore('editor', {
   state: (): EditorState => {
@@ -47,7 +47,7 @@ export const useEditorStore = defineStore('editor', {
         },
       },
       configuration: {
-        theme: useDefines().themes()[1],
+        theme: Themes()[1][0],
         draggable: false,
         auto: 15,
         bars: true,

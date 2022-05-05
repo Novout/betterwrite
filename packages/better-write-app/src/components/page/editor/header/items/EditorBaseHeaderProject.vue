@@ -86,16 +86,18 @@
       <EditorHeaderItemOpen :text="t('editor.bar.project.theme')">
         <template #open>
           <div
-            class="relative overflow-x-hidden bottom-16 flex flex-col gap-1 h-40 w-40 overflow-y-auto bg-theme-editor-header-list-background rounded-tr rounded-br shadow"
+            class="relative bottom-16 flex flex-col gap-1 h-40 w-40 overflow-y-auto bg-theme-editor-header-list-background rounded-tr rounded-br shadow"
           >
             <div
-              v-for="([theme, logo], index) in defines.allThemes()"
+              v-for="([theme, logo], index) in Themes()"
               :key="index"
-              class="flex py-1 items-center w-full gap-2 hover:bg-theme-background-opacity-1 cursor-pointer py-1 truncate w-40"
+              class="flex items-center w-full gap-2 hover:bg-theme-background-opacity-1 cursor-pointer py-1"
               @click.prevent.stop="onSwitchTheme(theme)"
             >
               <img width="15" :src="logo" :alt="theme" />
-              <p>{{ theme.replaceAll('BetterWrite -', '') }}</p>
+              <p class="truncate">
+                {{ theme.replaceAll('BetterWrite -', '') }}
+              </p>
             </div>
           </div>
         </template>
@@ -130,7 +132,7 @@
   import { useAuthStore } from '@/store/auth'
   import { useRouter } from 'vue-router'
   import { Language, Languages } from 'better-write-localisation'
-  import { useDefines } from '@/use/defines'
+  import { Themes } from 'better-write-plugin-theme'
   import { BetterWriteThemes } from 'better-write-types'
   import { useEditorStore } from '@/store/editor'
   import { nextTick } from 'vue'
@@ -150,7 +152,6 @@
   const plugin = usePlugin()
   const storage = useStorage()
   const router = useRouter()
-  const defines = useDefines()
 
   const onSaveProject = () => {
     if (!confirm(t('editor.window.saveLocal'))) return
