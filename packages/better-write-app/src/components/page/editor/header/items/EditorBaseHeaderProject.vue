@@ -138,6 +138,7 @@
   import { nextTick } from 'vue'
   import { usePlugin } from 'better-write-plugin-core'
   import { useStorage } from '@/use/storage/storage'
+  import { useNProgress } from '@vueuse/integrations/useNProgress'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
@@ -149,6 +150,7 @@
   const env = useEnv()
   const local = useLocalStorage()
   const { t, locale } = useI18n()
+  const { isLoading } = useNProgress()
   const plugin = usePlugin()
   const storage = useStorage()
   const router = useRouter()
@@ -187,11 +189,15 @@
   const onSwitchTheme = async (theme: BetterWriteThemes) => {
     EDITOR.configuration.theme = theme
 
+    isLoading.value = true
+
     await nextTick
+
+    await storage.normalize()
 
     plugin.emit('plugin-theme-set')
 
-    storage.normalize()
+    isLoading.value = false
   }
 
   const onLogger = async () => {

@@ -1,13 +1,10 @@
 <template>
-  <div>
+  <div class="cursor-pointer" @click.prevent.stop="onDashboard">
     <div
       :class="[mobile ? 'w-40' : 'w-auto']"
       class="flex items-center px-3 font-poppins py-2 sm:py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full"
     >
-      <button
-        class="flex items-center truncate"
-        @click.prevent.stop="onDashboard"
-      >
+      <button class="flex items-center truncate">
         <img
           v-if="user && user.user_metadata?.avatar_url"
           class="rounded-full mr-2"
@@ -113,7 +110,7 @@
             ></path>
           </svg>
         </HeroIcon>
-        <p v-if="mobile && user" class="truncate cursor-pointer">
+        <p v-if="mobile && user" class="truncate">
           {{ user.user_metadata?.name || user.email || '' }}
         </p>
         <HeroIcon
