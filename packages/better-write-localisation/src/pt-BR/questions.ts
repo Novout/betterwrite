@@ -3,6 +3,11 @@ export default {
     description:
       'Confira a seguir diversas respostas a perguntas comuns sobre o betterwrite.io:',
   },
+  navigatorSupport: {
+    title: 'Quais navegadores são suportados?',
+    description:
+      'betterwrite.io depende de certos recursos que não são suportados por todos os navegadores. Confira a seguir os navegadores recomendados:',
+  },
   generatorSupport: {
     title: 'Por quê os geradores não possuem o mesmo suporte do (.PDF)?',
     description:

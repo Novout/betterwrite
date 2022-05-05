@@ -13,6 +13,15 @@
     </p>
     <QuestionsBlock>
       <template #title>
+        {{ t('questions.navigatorSupport.title') }}
+      </template>
+      <template #description>
+        {{ t('questions.navigatorSupport.description') }}
+      </template>
+      <QuestionsNavigatorSupport />
+    </QuestionsBlock>
+    <QuestionsBlock>
+      <template #title>
         {{ t('questions.generatorSupport.title') }}
       </template>
       <template #description>
