@@ -5,7 +5,6 @@ import {
   ProjectStateTemplatesSubstitutionsBold,
 } from 'better-write-types'
 import i18n from '@/lang'
-import { html } from './raw'
 
 export const useDefines = () => {
   const { t } = i18n.global
@@ -253,16 +252,6 @@ export const useDefines = () => {
             active: true,
             old: '[[c/o]]',
             new: '℅',
-          },
-          {
-            active: true,
-            old: '<b>',
-            new: html().bold().open(),
-          },
-          {
-            active: true,
-            old: '</b>',
-            new: html().bold().close(),
           },
           {
             active: true,
