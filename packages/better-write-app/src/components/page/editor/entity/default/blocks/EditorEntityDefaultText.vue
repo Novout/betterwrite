@@ -3,9 +3,9 @@
     <EditorCommands />
   </section>
   <div class="relative w-full">
-    <p
+    <div
       ref="__INPUT__"
-      :class="!isAttached ? 'indent-8' : ''"
+      :class="!isAttached ? 'indent-lg' : ''"
       class="editable whitespace-pre-line text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active"
       :spellcheck="true"
       :contenteditable="true"

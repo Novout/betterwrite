@@ -61,6 +61,7 @@ input[type='number'] {
 /* firefox */
 [contenteditable] {
   outline: none;
+  -moz-user-select: text;
 }
 
 /* waiting for future support experimental features */
