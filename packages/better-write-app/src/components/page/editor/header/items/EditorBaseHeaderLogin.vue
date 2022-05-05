@@ -114,12 +114,7 @@
           </svg>
         </HeroIcon>
         <p v-if="mobile && user" class="truncate cursor-pointer">
-          {{
-            user.user_metadata?.name ||
-            user.user_metadata?.name ||
-            user.email ||
-            ''
-          }}
+          {{ user.user_metadata?.name || user.email || '' }}
         </p>
         <HeroIcon
           v-if="env.isDev()"

@@ -5,8 +5,29 @@
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1 }"
     :delay="200"
-    class="flex flex-wrap w-full wb-text p-5"
+    class="flex justify-between flex-wrap w-full wb-text p-5 gap-10"
   >
+    <div
+      v-if="
+        AUTH?.account?.user?.user_metadata?.avatar_url ||
+        AUTH?.account.user?.user_metadata.name
+      "
+      class="flex items-center flex-1 px-5"
+    >
+      <img
+        class="rounded-full w-60"
+        alt="Avatar"
+        :src="AUTH?.account?.user?.user_metadata?.avatar_url"
+      />
+      <div
+        v-if="AUTH?.account.user?.user_metadata.name"
+        class="flex p-10 flex-col items-center justify-center"
+      >
+        <p class="font-bold text-lg lg:text-xl">
+          {{ AUTH?.account.user?.user_metadata.name }}
+        </p>
+      </div>
+    </div>
     <div class="flex flex-col w-full md:w-1/2">
       <div class="flex flex-col">
         <h2 class="mb-2 text-lg">{{ t('dashboard.account.plans.title') }}</h2>
@@ -38,12 +59,15 @@
 </template>
 
 <script lang="ts" setup>
+  import { useAuthStore } from '@/store/auth'
   import { useEnv } from '@/use/env'
   import { useSupabase } from '@/use/storage/supabase'
   import { useNProgress } from '@vueuse/integrations/useNProgress'
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
+
+  const AUTH = useAuthStore()
 
   const { getProfile, getCorrectPlan } = useSupabase()
   const { t } = useI18n()
