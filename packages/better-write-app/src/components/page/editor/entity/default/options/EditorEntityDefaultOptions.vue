@@ -88,6 +88,11 @@
           <IconList width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
         <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="onSwitchEntity('image')"
+        >
+          <IconDrawing width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
           @click.prevent.stop="onSwitchEntity('drau')"
         >
           <IconDrawing width="24" height="24" />
@@ -135,6 +140,11 @@
           @click.prevent.stop="onNewEntity('list')"
         >
           <IconList width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="onNewEntity('image')"
+        >
+          <IconImage width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
         <EditorEntityDefaultOptionsOverflow
           @click.prevent.stop="onNewEntity('drau')"
@@ -297,9 +307,21 @@
     onClose()
   }
 
-  const onNewEntity = async (type: EntityType) => {
+  const onNewEntity = (type: EntityType) => {
+    if (type === 'image') {
+      factory.simulate().file((content: Entity) => {
+        onNew(content, type)
+      })
+
+      return
+    }
+
+    onNew(entity.value, type)
+  }
+
+  const onNew = async (content: Entity, type: EntityType) => {
     CONTEXT.newInPageByOption({
-      entity: entity.value,
+      entity: content,
       type,
     })
 
@@ -319,8 +341,20 @@
   }
 
   const onSwitchEntity = async (type: EntityType) => {
+    if (type === 'image') {
+      factory.simulate().file((content: Entity) => {
+        onSwitch(content, type)
+      })
+
+      return
+    }
+
+    onSwitch(entity.value, type)
+  }
+
+  const onSwitch = async (content: Entity, type: EntityType) => {
     CONTEXT.alterInPage({
-      entity: entity.value,
+      entity: content,
       type,
     })
 
@@ -328,7 +362,7 @@
 
     plugin.emit('plugin-entity-alter-in-page', {
       data: t(`editor.entity.${type}`).toUpperCase(),
-      index: CONTEXT.entities.indexOf(entity.value),
+      index: CONTEXT.entities.indexOf(content),
     })
 
     onClose()

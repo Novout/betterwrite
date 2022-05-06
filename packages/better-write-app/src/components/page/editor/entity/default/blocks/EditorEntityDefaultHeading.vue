@@ -32,7 +32,6 @@
 <script setup lang="ts">
   import { useContextStore } from '@/store/context'
   import { useBlockText } from '@/use/block/text'
-  import useEmitter from '@/use/emitter'
   import { useFocus } from '@vueuse/core'
   import { Entity } from 'better-write-types'
   import { computed, onMounted, ref } from 'vue'

@@ -1,7 +1,4 @@
 <template>
-  <section v-if="false" class="absolute z-max left-40 -top-60">
-    <EditorCommands />
-  </section>
   <div class="relative w-full">
     <div
       ref="__INPUT__"
