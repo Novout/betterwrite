@@ -197,8 +197,8 @@
   --theme-logger-info-background: rgb(103, 147, 255, 0.1);
   --theme-logger-entity-background: #8ab6ff;
   --theme-logger-entity-text: black;
-  --theme-toast-default-text: rgb(103, 147, 255);
-  --theme-toast-default-background: rgb(103, 147, 255, 0.5);
+  --theme-toast-default-text: black;
+  --theme-toast-default-background: rgb(103, 147, 255, 1);
   --theme-toast-default-close: black;
   --theme-toast-default-progress: rgba(0, 0, 0, 0.2);
   --theme-toast-info-text: black;
