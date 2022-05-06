@@ -39,6 +39,10 @@ export default {
         exists: 'O nome do estilo já existe!',
       },
     },
+    image: {
+      errorLoad:
+        'betterwrite.io não teve permissão para carregar a imagem em questão.',
+    },
   },
   speech: {
     microphone: 'Nenhum microfone foi reconhecido pelo sistema!',

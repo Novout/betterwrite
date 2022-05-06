@@ -16,6 +16,8 @@ import { useFactory } from './factory'
 import { usePlugin } from 'better-write-plugin-core'
 import { useAbsoluteStore } from '@/store/absolute'
 import { useEditorStore } from '@/store/editor'
+import { useToast } from 'vue-toastification'
+import { useI18n } from 'vue-i18n'
 
 export const bold = () => {
   const open = () => {
@@ -200,6 +202,8 @@ export const useRaw = () => {
   const plugin = usePlugin()
   const substitution = useSubstitution()
   const factory = useFactory()
+  const toast = useToast()
+  const { t } = useI18n()
 
   const v1 = () => {
     const convert = (entity: Entity) => {
@@ -410,23 +414,29 @@ export const useRaw = () => {
           const file = await target.getAsFile()
 
           if (file) {
-            const data = await utils.convert().read(file, 'image')
+            utils
+              .convert()
+              .read(file, 'image')
+              .then(async (data) => {
+                const entity = factory.entity().create('image', data as string)
 
-            const entity = factory.entity().create('image', data as string)
+                entity.external!.image!.name = file.name
 
-            entity.external!.image!.name = file.name
+                CONTEXT.newInDropFile({
+                  old: item,
+                  insert: entity,
+                })
 
-            CONTEXT.newInDropFile({
-              old: item,
-              insert: entity,
-            })
+                await nextTick
 
-            await nextTick
-
-            plugin.emit('plugin-entity-create', {
-              data: item.raw,
-              index: CONTEXT.entities.indexOf(item),
-            })
+                plugin.emit('plugin-entity-create', {
+                  data: item.raw,
+                  index: CONTEXT.entities.indexOf(item),
+                })
+              })
+              .catch(() => {
+                toast(t('toast.entity.image.errorLoad'))
+              })
           }
         }
       }

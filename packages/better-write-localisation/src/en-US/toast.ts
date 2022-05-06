@@ -39,6 +39,10 @@ export default {
         exists: 'The style name already exists!',
       },
     },
+    image: {
+      errorLoad:
+        'betterwrite.io was not allowed to load the image in question.',
+    },
   },
   speech: {
     microphone: 'No microphone was recognized by the system!',

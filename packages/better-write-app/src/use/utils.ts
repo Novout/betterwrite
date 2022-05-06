@@ -286,7 +286,7 @@ export const useUtils = () => {
     }
 
     const read = (file: File, type: 'json' | 'image' = 'json') => {
-      return new Promise((res) => {
+      return new Promise((res, rej) => {
         if (type === 'json') {
           const reader = new FileReader()
           reader.addEventListener('load', (event) => {
@@ -304,6 +304,8 @@ export const useUtils = () => {
 
             res(data)
           })
+          reader.addEventListener('error', () => rej())
+          reader.addEventListener('abort', () => rej())
           reader.readAsDataURL(file)
         }
       })
