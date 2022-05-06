@@ -2,12 +2,17 @@ import { format, formatRelative, parse } from 'date-fns'
 import { ptBR, enUS } from 'date-fns/locale'
 
 export const useFormat = () => {
-  const simple = (date: Date): string => {
-    return format(date, 'yyyy-MM-dd HH:mm:ss')
+  const simple = (
+    date: Date,
+    type: 'default' | 'resume' = 'default'
+  ): string => {
+    return type === 'default'
+      ? format(date, 'yyyy-MM-dd HH:mm:ss')
+      : format(date, 'HH:mm')
   }
 
-  const actually = (): string => {
-    return simple(new Date())
+  const actually = (type: 'default' | 'resume' = 'default'): string => {
+    return simple(new Date(), type)
   }
 
   const lastTime = (updatedAt: string) => {

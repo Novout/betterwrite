@@ -81,6 +81,11 @@ export const setTailwindCssVariables = () => {
     'theme-editor-background': 'var(--theme-editor-background)',
     'theme-editor-background-hover': 'var(--theme-editor-background-hover)',
     'theme-editor-background-active': 'var(--theme-editor-background-active)',
+    'theme-editor-background-bar': 'var(--theme-editor-background-bar)',
+    'theme-editor-background-bar-hover':
+      'var(--theme-editor-background-bar-hover)',
+    'theme-editor-background-bar-active':
+      'var(--theme-editor-background-bar-active)',
     'theme-editor-entity-background': 'var(--theme-editor-entity-background)',
     'theme-editor-entity-background-hover':
       'var(--theme-editor-entity-background-hover)',

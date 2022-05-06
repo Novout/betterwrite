@@ -3,9 +3,6 @@
     <div
       ref="__INPUT__"
       :class="!isAttached ? 'indent-lg' : ''"
-      :style="{
-        paddingBottom: last ? '5rem' : '',
-      }"
       class="editable whitespace-pre-line text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active"
       :spellcheck="true"
       :contenteditable="true"
@@ -41,7 +38,7 @@
   const { focused } = useFocus(__INPUT__)
 
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
-  const last = computed(() => _index.value === CONTEXT.entities.length - 1)
+  // const last = computed(() => _index.value === CONTEXT.entities.length - 1)
 
   const block = useBlockText({
     props,

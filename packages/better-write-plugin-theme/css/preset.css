@@ -117,7 +117,6 @@ input[type='number'] {
 
 .wb-edit {
   height: calc(100vh - 3rem);
-  overflow-y: auto;
 }
 
 .wb-max-edit {

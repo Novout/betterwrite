@@ -1,21 +1,24 @@
 <template>
-  <section
-    id="edit"
-    ref="editor"
-    v-motion
-    :initial="{ opacity: 0, y: 100 }"
-    :enter="{ opacity: 1, y: 0 }"
-    :delay="100"
-    :class="[project.isBlankProject() ? 'pt-28' : '']"
-    class="flex wb-edit wb-scroll flex-col w-full overflow-y-auto overflow-x-hidden"
-  >
-    <EditorEntityDefault
-      v-for="(element, index) in CONTEXT.entities"
-      :id="`entity-${String(index)}`"
-      :key="index"
-      :entity="element"
-    />
-  </section>
+  <div class="relative flex justify-between wb-edit flex-col w-full">
+    <section
+      id="edit"
+      ref="editor"
+      v-motion
+      :initial="{ opacity: 0, y: 100 }"
+      :enter="{ opacity: 1, y: 0 }"
+      :delay="100"
+      :class="[project.isBlankProject() ? 'pt-28' : '']"
+      class="flex flex-col w-full wb-scroll"
+    >
+      <EditorEntityDefault
+        v-for="(element, index) in CONTEXT.entities"
+        :id="`entity-${String(index)}`"
+        :key="index"
+        :entity="element"
+      />
+    </section>
+    <EditorBaseRenderBar />
+  </div>
 </template>
 
 <script lang="ts" setup>

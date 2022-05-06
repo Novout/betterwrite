@@ -36,6 +36,9 @@
   --theme-editor-background: #f3f4f6;
   --theme-editor-background-hover: #f3f4f6;
   --theme-editor-background-active: #f3f4f6;
+  --theme-editor-background-bar: #dbdee1;
+  --theme-editor-background-bar-hover: #dbdee1;
+  --theme-editor-background-bar-active: #dbdee1;
   --theme-editor-entity-background: none;
   --theme-editor-entity-background-hover: none;
   --theme-editor-entity-background-active: none;
