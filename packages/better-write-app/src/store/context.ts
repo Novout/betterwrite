@@ -11,6 +11,7 @@ import {
   ContextActionNewInPagePosEdit,
   ContextActionAlterInPage,
   Entities,
+  ID,
 } from 'better-write-types'
 import { useEnv } from '../use/env'
 import { useFormat } from '../use/format'
@@ -228,6 +229,11 @@ export const useContextStore = defineStore('context', {
       this.entities = useUtils()
         .array()
         .insert(this.entities, index + 1, target)
+    },
+    replace(entity: Entity, index: number) {
+      if (!entity) return
+
+      this.entities[index] = entity
     },
     alterInPage({ entity, type }: ContextActionAlterInPage) {
       if (!entity || !entity.raw) return

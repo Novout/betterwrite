@@ -178,7 +178,10 @@ export const useFactory = () => {
   }
 
   const simulate = () => {
-    const file = (load: (...c: any) => void, error?: (...c: any) => void) => {
+    const file = (
+      load: (entity: Entity) => void,
+      error?: (...c: any) => void
+    ) => {
       const _ = document.createElement('input')
       _.type = 'file'
       _.addEventListener('change', function () {
@@ -200,22 +203,7 @@ export const useFactory = () => {
             return
           }
 
-          const content = {
-            type: 'image',
-            raw: reader.result,
-            createdAt: format.actually(),
-            updatedAt: format.actually(),
-            external: {
-              image: {
-                name: file.name,
-                size: {
-                  width: 100,
-                  height: 100,
-                },
-                alignment: 'full',
-              },
-            },
-          } as Entity
+          const content = entity().create('image', reader.result as string)
 
           load && load(content)
         }

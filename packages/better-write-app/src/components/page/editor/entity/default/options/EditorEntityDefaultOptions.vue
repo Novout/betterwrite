@@ -90,7 +90,7 @@
         <EditorEntityDefaultOptionsOverflow
           @click.prevent.stop="onSwitchEntity('image')"
         >
-          <IconDrawing width="24" height="24" />
+          <IconImage width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
         <EditorEntityDefaultOptionsOverflow
           @click.prevent.stop="onSwitchEntity('drau')"
@@ -309,8 +309,8 @@
 
   const onNewEntity = (type: EntityType) => {
     if (type === 'image') {
-      factory.simulate().file((content: Entity) => {
-        onNew(content, type)
+      factory.simulate().file(async (content: Entity) => {
+        CONTEXT.insert(content, EDITOR.actives.entity.index + 1)
       })
 
       return
@@ -343,7 +343,7 @@
   const onSwitchEntity = async (type: EntityType) => {
     if (type === 'image') {
       factory.simulate().file((content: Entity) => {
-        onSwitch(content, type)
+        CONTEXT.replace(content, EDITOR.actives.entity.index)
       })
 
       return

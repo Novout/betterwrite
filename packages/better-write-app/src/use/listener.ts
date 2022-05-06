@@ -2,7 +2,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useContextStore } from '@/store/context'
 import { useEditorStore } from '@/store/editor'
 import { useEventListener } from '@vueuse/core'
-import { EntityType, ProjectObject } from 'better-write-types'
+import { Entity, EntityType, ProjectObject } from 'better-write-types'
 import { nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import useEmitter from './emitter'
@@ -100,7 +100,7 @@ export const useListener = () => {
         }
 
         // fixeds
-        if (e.key === '4' || e.key === '5') {
+        if (e.key === '4' || e.key === '5' || e.key === '9') {
           e.preventDefault()
           e.stopPropagation()
 
@@ -117,6 +117,9 @@ export const useListener = () => {
             case '5':
               type = 'page-break'
               break
+            case '9':
+              type = 'drau'
+              break
           }
 
           CONTEXT.insert(factory.entity().create(type), value)
@@ -130,6 +133,33 @@ export const useListener = () => {
           emitter.emit('entity-text-focus', {
             target: value + 1,
             position: 'auto',
+          })
+        }
+
+        // image
+        if (e.key === '8') {
+          e.preventDefault()
+          e.stopPropagation()
+
+          await storage.normalize()
+
+          const value = index + 1
+
+          let type: EntityType = 'image'
+
+          factory.simulate().file(async (entity) => {
+            CONTEXT.insert(entity, value)
+
+            await nextTick
+
+            CONTEXT.insert(factory.entity().create('paragraph'), value + 1)
+
+            await nextTick
+
+            emitter.emit('entity-text-focus', {
+              target: value + 1,
+              position: 'auto',
+            })
           })
         }
       }
