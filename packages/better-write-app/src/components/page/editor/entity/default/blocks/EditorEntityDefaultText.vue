@@ -6,16 +6,13 @@
     <div
       ref="__INPUT__"
       :class="!isAttached ? 'indent-lg' : ''"
+      :style="{
+        paddingBottom: last ? '5rem' : '',
+      }"
       class="editable whitespace-pre-line text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active"
       :spellcheck="true"
       :contenteditable="true"
-      :data-placeholder="
-        focused
-          ? t('editor.text.placeholder.base', {
-              prefix: EDITOR.configuration.commands.prefix,
-            })
-          : ''
-      "
+      :data-placeholder="focused ? t('editor.text.placeholder.base') : ''"
       @input="onInput"
       @keydown="onKeyboard"
       @keypress.enter="onEnter"
@@ -63,6 +60,7 @@
   const storage = useStorage()
 
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
+  const last = computed(() => _index.value === CONTEXT.entities.length - 1)
 
   const { focused } = useFocus(__INPUT__)
 

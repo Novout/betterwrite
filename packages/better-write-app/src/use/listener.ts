@@ -1,36 +1,103 @@
 import { useAbsoluteStore } from '@/store/absolute'
+import { useContextStore } from '@/store/context'
+import { useEditorStore } from '@/store/editor'
 import { useEventListener } from '@vueuse/core'
-import { ProjectObject } from 'better-write-types'
+import { EntityType, ProjectObject } from 'better-write-types'
+import { nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
+import useEmitter from './emitter'
+import { useFactory } from './factory'
 import { useProject } from './project'
+import { useStorage } from './storage/storage'
 import { useUtils } from './utils'
 
 export const useListener = () => {
   const ABSOLUTE = useAbsoluteStore()
+  const CONTEXT = useContextStore()
+  const EDITOR = useEditorStore()
 
   const project = useProject()
+  const factory = useFactory()
 
   const utils = useUtils()
   const { t } = useI18n()
+  const storage = useStorage()
+  const emitter = useEmitter()
 
   const keyboard = () => {
     const start = () => {
       useEventListener('keydown', cb)
     }
 
-    const cb = (e: KeyboardEvent) => {
+    const cb = async (e: KeyboardEvent) => {
+      // finder
       if (e.ctrlKey && (e.key === 'f' || e.key === 'F')) {
         e.preventDefault()
         e.stopPropagation()
 
         ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.finder
+
+        return
       }
 
+      // switcher
       if (e.ctrlKey && (e.key === 'h' || e.key === 'H')) {
         e.preventDefault()
         e.stopPropagation()
 
         ABSOLUTE.shortcuts.switcher = !ABSOLUTE.shortcuts.switcher
+
+        return
+      }
+
+      // commands
+      if (e.ctrlKey) {
+        const index = EDITOR.actives.entity.index
+
+        // text attached
+        if (
+          e.key === '1' ||
+          e.key === '2' ||
+          e.key === '3' ||
+          e.key === '6' ||
+          e.key === '7'
+        ) {
+          e.preventDefault()
+          e.stopPropagation()
+
+          await storage.normalize()
+
+          const value = index + 1
+
+          let type: EntityType = 'paragraph'
+
+          switch (e.key) {
+            case '1':
+              type = 'paragraph'
+              break
+            case '2':
+              type = 'heading-two'
+              break
+            case '3':
+              type = 'heading-three'
+              break
+            case '6':
+              type = 'checkbox'
+              break
+            case '7':
+              type = 'list'
+              break
+          }
+
+          CONTEXT.insert(factory.entity().create(type), value)
+
+          await nextTick
+
+          emitter.emit('entity-text-focus', {
+            target: value,
+            position: 'auto',
+          })
+        }
       }
     }
 

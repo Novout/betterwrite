@@ -136,7 +136,7 @@ export default {
   },
   text: {
     placeholder: {
-      base: `Insira '{prefix}' para exibir a lista de comandos.`,
+      base: `Pressione ou clique com o botão direito para exibir o menu de opções.`,
       paragraph: 'Parágrafo',
       headingone: 'H1',
       headingtwo: 'H2',

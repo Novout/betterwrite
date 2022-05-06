@@ -139,7 +139,7 @@ export default {
   },
   text: {
     placeholder: {
-      base: `Insert '{prefix}' to display a list of commands.`,
+      base: `Press or Right-Click to display the options menu.`,
       paragraph: 'Paragraph',
       headingone: 'H1',
       headingtwo: 'H2',
