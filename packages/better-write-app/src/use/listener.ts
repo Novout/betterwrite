@@ -112,10 +112,10 @@ export const useListener = () => {
 
           switch (e.key) {
             case '4':
-              type = 'line-break'
+              type = 'page-break'
               break
             case '5':
-              type = 'page-break'
+              type = 'line-break'
               break
             case '9':
               type = 'drau'

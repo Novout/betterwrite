@@ -42,6 +42,17 @@ export default {
     },
   },
   preferences: {
+    commands: {
+      '1': 'Paragraph',
+      '2': 'Heading Two',
+      '3': 'Heading Three',
+      '4': 'Line Break',
+      '5': 'Page Break',
+      '6': 'Checkbox',
+      '7': 'List',
+      '8': 'Image',
+      '9': 'Drawing',
+    },
     shortcuts: {
       title: 'Teclas de Atalho',
       editor: {

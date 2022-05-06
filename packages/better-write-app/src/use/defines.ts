@@ -232,6 +232,11 @@ export const useDefines = () => {
             new: '℅',
           },
           {
+            active: false,
+            old: '- ',
+            new: '— ',
+          },
+          {
             active: true,
             old: '&nbsp',
             new: ' ',

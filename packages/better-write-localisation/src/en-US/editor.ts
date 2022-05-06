@@ -42,6 +42,17 @@ export default {
     },
   },
   preferences: {
+    commands: {
+      '1': 'Parágrafo',
+      '2': 'Título Secundário',
+      '3': 'Título Terciário',
+      '4': 'Quebra de Página',
+      '5': 'Quebra de Linha',
+      '6': 'Caixa de Seleção',
+      '7': 'Lista',
+      '8': 'Imagem',
+      '9': 'Desenho',
+    },
     shortcuts: {
       title: 'Hotkeys',
       editor: {

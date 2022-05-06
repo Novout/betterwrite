@@ -77,32 +77,6 @@ export const useAddonsStore = defineStore('addons', {
             },
           },
           {
-            title: 'editor.addons.corrector.insertDialogEndStop.title',
-            description:
-              'editor.addons.corrector.insertDialogEndStop.description',
-            option: false,
-            html: {
-              before: `Donec arcu odio, dictum at porttitor eu. ${
-                useEditorStore().configuration.commands.dialogue.value
-              }Curabitur luctus sollicitudin suscipit${useRaw()
-                .v2()
-                .html()
-                .error()
-                .item('&nbsp;')}${
-                useEditorStore().configuration.commands.dialogue.value
-              }Etiam dictum tellus tellus.`,
-              after: `Donec arcu odio, dictum at porttitor eu. ${
-                useEditorStore().configuration.commands.dialogue.value
-              }Curabitur luctus sollicitudin suscipit${useRaw()
-                .v2()
-                .html()
-                .correct()
-                .item('. ')}${
-                useEditorStore().configuration.commands.dialogue.value
-              }Etiam dictum tellus tellus.`,
-            },
-          },
-          {
             title: 'editor.addons.corrector.resetEntityRaw.title',
             description: 'editor.addons.corrector.resetEntityRaw.description',
             option: false,

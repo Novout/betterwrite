@@ -24,6 +24,42 @@
         :title="t('editor.preferences.shortcuts.editor.to')"
         shortcut="CTRL + ↥ ↧"
       />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.commands.1')"
+        shortcut="CTRL + 1"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.commands.2')"
+        shortcut="CTRL + 2"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.commands.3')"
+        shortcut="CTRL + 3"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.commands.4')"
+        shortcut="CTRL + 4"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.commands.5')"
+        shortcut="CTRL + 5"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.commands.6')"
+        shortcut="CTRL + 6"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.commands.7')"
+        shortcut="CTRL + 7"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.commands.8')"
+        shortcut="CTRL + 8"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.commands.9')"
+        shortcut="CTRL + 9"
+      />
     </div>
   </div>
 </template>

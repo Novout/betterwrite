@@ -55,29 +55,6 @@ export const useCorrector = () => {
       }
     }
 
-    const insertDialogEndStop = () => {
-      if (ADDONS.corrector.options[4].option) {
-        project.utils().getParagraphEntities((entity: Entity) => {
-          let counter = 0
-          for (let i = 0; i < entity.raw.length; i++) {
-            const letter = entity.raw.charAt(i)
-
-            if (
-              letter === EDITOR.configuration.commands.dialogue.value.charAt(0)
-            ) {
-              counter++
-            }
-
-            if (counter === 2) {
-              entity.raw =
-                entity.raw.slice(0, i - 1) + '.' + entity.raw.slice(i - 1)
-              break
-            }
-          }
-        })
-      }
-    }
-
     const resetEntityRaw = () => {
       if (ADDONS.corrector.options[5].option) {
         project.utils().getParagraphEntities((entity: Entity) => {
@@ -91,7 +68,6 @@ export const useCorrector = () => {
       removeEndWhitespace,
       insertParagraphEndStop,
       removeExtraWhitespace,
-      insertDialogEndStop,
       resetEntityRaw,
     }
   }
@@ -106,7 +82,6 @@ export const useCorrector = () => {
       await options().removeEndWhitespace()
       await options().insertParagraphEndStop()
       await options().removeExtraWhitespace()
-      await options().insertDialogEndStop()
       await options().resetEntityRaw()
 
       CONTEXT.load(PROJECT.pages[0])
