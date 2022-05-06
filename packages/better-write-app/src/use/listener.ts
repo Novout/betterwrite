@@ -98,6 +98,40 @@ export const useListener = () => {
             position: 'auto',
           })
         }
+
+        // fixeds
+        if (e.key === '4' || e.key === '5') {
+          e.preventDefault()
+          e.stopPropagation()
+
+          await storage.normalize()
+
+          const value = index + 1
+
+          let type: EntityType = 'line-break'
+
+          switch (e.key) {
+            case '4':
+              type = 'line-break'
+              break
+            case '5':
+              type = 'page-break'
+              break
+          }
+
+          CONTEXT.insert(factory.entity().create(type), value)
+
+          await nextTick
+
+          CONTEXT.insert(factory.entity().create('paragraph'), value + 1)
+
+          await nextTick
+
+          emitter.emit('entity-text-focus', {
+            target: value + 1,
+            position: 'auto',
+          })
+        }
       }
     }
 

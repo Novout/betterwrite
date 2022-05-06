@@ -505,11 +505,15 @@ export const useRaw = () => {
       }
 
       const set = (el: HTMLDivElement, offset: number, focus = true) => {
+        if (!el) return
+
         useUtils().cursor().setCurrentCursorPosition(offset, el)
         if (focus) el.focus()
       }
 
       const setEnd = (el: HTMLParagraphElement) => {
+        if (!el) return
+
         el.focus()
 
         if (

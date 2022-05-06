@@ -1,28 +1,20 @@
 import { Entity, EntityType } from 'better-write-types'
-import { nextTick } from 'vue'
+import { nextTick, Ref } from 'vue'
 import { useEnv } from './env'
 import { useProjectStore } from '@/store/project'
 import { useContextStore } from '@/store/context'
 import useEmitter from './emitter'
 import { usePlugin } from 'better-write-plugin-core'
 import { useI18n } from 'vue-i18n'
-import { useInput } from './input'
-import { useFactory } from './factory'
-import { useStorage } from './storage/storage'
-import { useRaw } from './raw'
 
 export const useEntity = () => {
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
 
   const env = useEnv()
-  const raw = useRaw()
   const emitter = useEmitter()
   const plugin = usePlugin()
   const { t } = useI18n()
-  const input = useInput()
-  const storage = useStorage()
-  const factory = useFactory()
 
   const utils = () => {
     const isLink = (raw: string) => {
