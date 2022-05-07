@@ -7630,10 +7630,10 @@ pathe@^0.2.0:
   resolved "https://registry.yarnpkg.com/pathe/-/pathe-0.2.0.tgz#30fd7bbe0a0d91f0e60bae621f5d19e9e225c339"
   integrity sha512-sTitTPYnn23esFR3RlqYBWn4c45WGeLcsKzQiUpXJAyfcWkolvlYpV8FLo7JishK946oQwMFUCHXQ9AjGPKExw==
 
-pdfmake@0.3.0-beta.1:
-  version "0.3.0-beta.1"
-  resolved "https://registry.yarnpkg.com/pdfmake/-/pdfmake-0.3.0-beta.1.tgz#7acea4838e7cbe80b602424a60c7feebac406eb0"
-  integrity sha512-Keck2ShE65ElX2S0tmTQ0MlB3xUhdqHsD8erC/1PPdjVQM+pEORRBxWbonPmw1UbF5lIU3r5+BKOgQl+jp2pKg==
+pdfmake@0.3.0-beta.2:
+  version "0.3.0-beta.2"
+  resolved "https://registry.yarnpkg.com/pdfmake/-/pdfmake-0.3.0-beta.2.tgz#85573da9a7258a488fc18d49549e01c6993bfe0c"
+  integrity sha512-uNgivW5gXkEuP7pzYYPat08FZDObyg2vHqNfFmCMrM7YKpugOjoKBcZd377K/y2PtCMjkOEPoDDLRCtUkGnPdA==
   dependencies:
     "@foliojs-fork/linebreak" "^1.1.1"
     "@foliojs-fork/pdfkit" "^0.13.0"
@@ -9727,6 +9727,14 @@ vue-typical@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vue-typical/-/vue-typical-2.1.0.tgz#68731300f8b747548e0f36da0364d03614ba3a15"
   integrity sha512-vqfN08VgfhV8zuvf/UwDs4/P3VtQxHWK9ZshDwc1cEqWDUXzgwJwLiEUqYtksIug5wkhgoedyTAeEG6kJao6WA==
+
+vue3-pdfmake@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vue3-pdfmake/-/vue3-pdfmake-1.2.0.tgz#007f529ec30daa46fb9187a8300f61871d89d8dc"
+  integrity sha512-1ci8Fcj0dAzYha0CxEhb4ufH+h/mQaX7kkrF/BCC8W9DqvtRuVE84xSwmYt8X92tC1CyOxrpJhU+EjHPZ1OQpw==
+  dependencies:
+    pdfmake "0.3.0-beta.2"
+    vue-demi latest
 
 vue@3.2.29:
   version "3.2.29"

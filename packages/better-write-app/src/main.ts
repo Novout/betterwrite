@@ -5,11 +5,12 @@ import { useRegisterSW } from 'virtual:pwa-register/vue'
 import { createHead } from '@vueuse/head'
 import { createPinia } from 'pinia'
 import { createPluginCore } from 'better-write-plugin-core'
+import { Events } from 'better-write-types'
+import pdf from 'vue3-pdfmake'
 import { MotionPlugin as motion } from '@vueuse/motion'
 import tooltip from 'floating-vue'
 import toast, { POSITION } from 'vue-toastification'
 import mitt from 'mitt'
-import { Events } from 'better-write-types'
 import { useEnv } from './use/env'
 
 import router from './router'
@@ -33,6 +34,7 @@ export const emitter = mitt<Events>()
 
 app.config.globalProperties.emitter = emitter
 
+app.use(pdf)
 app.use(router)
 app.use(store as any)
 app.use(i18n)

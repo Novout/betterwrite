@@ -1,4 +1,4 @@
-import * as pdfMake from 'pdfmake/build/pdfmake'
+import { usePDF } from 'vue3-pdfmake'
 import { On } from 'better-write-plugin-core'
 import {
   ContextState,
@@ -28,6 +28,7 @@ export const PluginPDFSet = (
   const { isLoading } = useNProgress()
   const toast = useToast()
   const online = useOnline()
+  const pdfmake = usePDF().default
 
   const isTheme = computed(() => stores.PDF.styles.switcher.theme)
 
@@ -1174,7 +1175,7 @@ export const PluginPDFSet = (
       }
 
       // roboto raw .ttf
-      pdfMake.addVirtualFileSystem(getStandardVFS().vfs)
+      pdfmake.addVirtualFileSystem(getStandardVFS().vfs)
     } else {
       unique.forEach((s: string) => {
         set[s] = stores.PDF.normalize[s]
@@ -1183,7 +1184,7 @@ export const PluginPDFSet = (
       if (stores.PDF.normalize['Roboto'])
         set['Roboto'] = stores.PDF.normalize['Roboto']
 
-      pdfMake.addFonts(set)
+      pdfmake.addFonts(set)
     }
   }
 
@@ -1192,7 +1193,7 @@ export const PluginPDFSet = (
 
     const data = await doc(options)
 
-    const pdf = pdfMake.createPdf(data)
+    const pdf = pdfmake.createPdf(data)
 
     await nextTick
 
@@ -1217,7 +1218,7 @@ export const PluginPDFSet = (
 
     const data = await doc(options)
 
-    const generator = pdfMake.createPdf(data)
+    const generator = pdfmake.createPdf(data)
 
     generator
       .getDataUrl()
