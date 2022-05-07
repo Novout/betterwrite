@@ -6,7 +6,14 @@
     :delay="0"
     class="flex flex-col justify-start items-start p-5 gap-5"
   >
-    <PDFConfigurationHeader />
+    <div class="w-full">
+      <EditorAbsoluteHeader
+        class="wb-text"
+        :title="'PDF'"
+        @close="ABSOLUTE.pdf.configuration = false"
+      />
+    </div>
+    <PDFConfigurationConfig />
     <PDFConfigurationSetProject
       v-motion
       :initial="{ opacity: 0, y: 30 }"
@@ -57,3 +64,9 @@
     />
   </div>
 </template>
+
+<script setup lang="ts">
+  import { useAbsoluteStore } from '@/store/absolute'
+
+  const ABSOLUTE = useAbsoluteStore()
+</script>
