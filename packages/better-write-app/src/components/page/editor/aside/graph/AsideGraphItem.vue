@@ -108,7 +108,10 @@
       class="wb-text flex gap-2 justify-start items-center"
     >
       <IconImage class="wb-text h-6 w-6" />
-      <p class="text-left truncate w-32">
+      <p
+        v-if="!props.entity.external?.image?.name.includes('__DEFAULT__')"
+        class="text-left truncate w-32"
+      >
         {{ props.entity.external?.image?.name }}
       </p>
     </div>
