@@ -22,7 +22,7 @@
           <label>{{ t('editor.pdf.project.encryption.user') }}</label>
           <InputText
             v-model="PROJECT.pdf.encryption.userPassword"
-            class="bg-theme-transparent shadow-lg"
+            class="shadow-lg bg-theme-background-opacity-1"
           />
         </section>
         <section
@@ -31,7 +31,7 @@
           <label>{{ t('editor.pdf.project.encryption.owner') }}</label>
           <InputText
             v-model="PROJECT.pdf.encryption.ownerPassword"
-            class="bg-theme-transparent shadow-lg"
+            class="shadow-lg bg-theme-background-opacity-1"
           />
         </section>
       </div>

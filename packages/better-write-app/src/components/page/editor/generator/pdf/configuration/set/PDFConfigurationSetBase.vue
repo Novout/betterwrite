@@ -79,7 +79,7 @@
       </div>
       <div class="wb-input-container">
         <section
-          class="flex justify-center items-center w-full flex-row flex-wrap gap-5"
+          class="flex justify-between items-center w-full flex-row flex-wrap gap-5"
         >
           <section class="flex items-center">
             <label class="mx-2 text-xs">{{
@@ -122,7 +122,7 @@
       </div>
       <div class="wb-input-container">
         <section
-          class="flex justify-center items-center w-full flex-row flex-wrap gap-5"
+          class="flex justify-between items-center w-full flex-row flex-wrap gap-5"
         >
           <section class="flex items-center">
             <label class="mx-2 text-xs">{{
@@ -135,10 +135,9 @@
             <InputNumber v-model="pdf.base.header.start" />
           </section>
           <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
-            <label>{{ t('editor.pdf.base.header.content') }}</label>
             <InputText
               v-model="pdf.base.header.content"
-              class="shadow-lg bg-theme-editor-material-background"
+              class="shadow-lg bg-theme-background-opacity-1"
             />
           </section>
           <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
