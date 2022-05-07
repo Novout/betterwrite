@@ -16,7 +16,7 @@
       >
         <ListboxOptions
           :class="[min ? 'max-h-28' : 'max-h-52']"
-          class="fixed py-1 mt-1 text-base bg-theme-background-4 rounded-md shadow-lg overflow-auto ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-max"
+          class="fixed py-1 mt-1 text-base bg-theme-background-4 rounded-md shadow-lg wb-scroll ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-max"
         >
           <ListboxOption
             v-for="(it, index) in props.arr"
