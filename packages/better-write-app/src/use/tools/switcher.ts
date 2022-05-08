@@ -32,28 +32,17 @@ export const useSwitcher = () => {
     // TODO: Deletar em caso de output vazio
     if (!entry) return
 
-    arr.forEach((e: Entity) => {
-      const text = e.raw.split(' ')
-
-      text.forEach((t: string) => {
-        if (equal && t === entry) {
-          storage.normalize().then(() => {
-            CONTEXT.switchEntityRaw({
-              entity: e,
-              match: t,
-              raw: output,
-            })
+    arr.forEach((entity: Entity) => {
+      // all cases
+      if (entry === entity.raw) {
+        storage.normalize().then(() => {
+          CONTEXT.switchEntityRaw({
+            entity,
+            match: entry,
+            raw: output,
           })
-        } else if (!equal && t.includes(entry)) {
-          storage.normalize().then(() => {
-            CONTEXT.switchEntityRaw({
-              entity: e,
-              match: entry,
-              raw: output,
-            })
-          })
-        }
-      })
+        })
+      }
     })
   }
 
@@ -75,12 +64,17 @@ export const useSwitcher = () => {
 
     PROJECT.pages.forEach((context: ContextState) => {
       context.entities.forEach((e: Entity) => {
-        if (!state.entry) return
+        const raw = e.raw.split(' ')
 
-        if (e.raw.includes(state.entry)) {
-          state.listOfLettersExists.push({ entity: e, page: context })
-          state.maxLetterCounter++
-        }
+        raw.forEach((word) => {
+          console.log(word)
+          if (!state.entry) return
+
+          if (word.includes(state.entry)) {
+            state.listOfLettersExists.push({ entity: e, page: context })
+            state.maxLetterCounter++
+          }
+        })
       })
     })
 

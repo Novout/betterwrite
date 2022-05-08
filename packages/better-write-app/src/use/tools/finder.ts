@@ -34,12 +34,16 @@ export const useFinder = () => {
 
     PROJECT.pages.forEach((context: ContextState) => {
       context.entities.forEach((entity: Entity) => {
-        if (!state.entry) return
+        const raw = entity.raw.split(' ')
 
-        if (entity.raw.includes(state.entry)) {
-          state.listOfLettersExists.push({ entity, page: context })
-          state.maxLetterCounter++
-        }
+        raw.forEach((word) => {
+          if (!state.entry) return
+
+          if (word.includes(state.entry)) {
+            state.listOfLettersExists.push({ entity, page: context })
+            state.maxLetterCounter++
+          }
+        })
       })
     })
 
