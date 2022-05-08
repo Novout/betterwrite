@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex justify-between wb-edit flex-col w-full overflow-x-hidden"
+    class="relative flex justify-between wb-edit flex-col w-full overflow-hidden"
   >
     <section
       id="edit"
