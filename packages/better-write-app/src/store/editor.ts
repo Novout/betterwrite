@@ -51,55 +51,41 @@ export const useEditorStore = defineStore('editor', {
         draggable: false,
         auto: 15,
         bars: true,
+        transition: true,
         entity: {
           updateTime: false,
         },
         commands: {
-          prefix: '/',
           paragraph: {
-            prefix: 'p',
             active: true,
           },
           headingTwo: {
-            prefix: 'h2',
             active: true,
           },
           headingThree: {
-            prefix: 'h3',
             active: true,
           },
           pageBreak: {
-            prefix: 'bp',
             active: false,
           },
           lineBreak: {
-            prefix: 'lb',
             active: false,
           },
           image: {
-            prefix: 'im',
             active: true,
           },
           checkbox: {
-            prefix: 'ch',
             active: true,
           },
           list: {
-            prefix: 'li',
             active: true,
           },
           dialogue: {
-            prefix: 'd',
-            value: '— ',
             active: false,
           },
           drau: {
-            prefix: 't',
             active: true,
           },
-        },
-        dropbox: {
-          hourInSaveFileName: false,
         },
       },
       actives: {

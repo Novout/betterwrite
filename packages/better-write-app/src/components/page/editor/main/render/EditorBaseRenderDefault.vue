@@ -1,5 +1,7 @@
 <template>
-  <div class="relative flex justify-between wb-edit flex-col w-full">
+  <div
+    class="relative flex justify-between wb-edit flex-col w-full overflow-x-hidden"
+  >
     <section
       id="edit"
       ref="editor"
@@ -8,7 +10,7 @@
       :enter="{ opacity: 1, y: 0 }"
       :delay="100"
       :class="[project.isBlankProject() ? 'pt-28' : '']"
-      class="flex flex-col w-full wb-scroll"
+      class="flex flex-col w-full wb-scroll overflow-x-hidden"
     >
       <EditorEntityDefault
         v-for="(element, index) in CONTEXT.entities"

@@ -183,11 +183,7 @@ export default {
       lang: 'Linguagem',
       draggable: 'Arrastável',
       bars: 'Barras Laterias',
-      autosave: 'Salvamento Automático (em minutos)',
-      dropbox: {
-        title: 'Dropbox',
-        hourInSaveFileName: 'Horário No Nome Do Arquivo',
-      },
+      transition: 'Transições',
       entity: {
         title: 'Editor',
         updateTime: 'Tempo Atualizado',

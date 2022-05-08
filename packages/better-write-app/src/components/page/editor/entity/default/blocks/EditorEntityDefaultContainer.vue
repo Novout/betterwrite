@@ -15,7 +15,12 @@
   import { useContextStore } from '@/store/context'
   import { useEditorStore } from '@/store/editor'
   import { useRaw } from '@/use/raw'
-  import { useMousePressed, watchDebounced } from '@vueuse/core'
+  import {
+    useIntersectionObserver,
+    useMousePressed,
+    watchDebounced,
+  } from '@vueuse/core'
+  import { useMotion, MotionVariants } from '@vueuse/motion'
   import { Entity } from 'better-write-types'
   import { computed, ref, watch } from 'vue'
 
@@ -65,4 +70,36 @@
     },
     { debounce: 350 }
   )
+
+  // animations
+  if (EDITOR.configuration.transition) {
+    const variants = ref<MotionVariants>({
+      initial: {
+        opacity: 0,
+        x: -25,
+        transition: {
+          delay: 125,
+          stiffness: 90,
+          damping: 20,
+        },
+      },
+      enter: {
+        opacity: 1,
+        x: 0,
+        transition: {
+          delay: 125,
+          stiffness: 90,
+          damping: 15,
+        },
+      },
+    })
+
+    const motion = useMotion(container, variants)
+
+    useIntersectionObserver(container, ([{ isIntersecting }]) => {
+      isIntersecting
+        ? (motion.variant.value = 'enter')
+        : (motion.variant.value = 'initial')
+    })
+  }
 </script>

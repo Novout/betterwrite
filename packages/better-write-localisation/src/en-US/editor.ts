@@ -186,11 +186,7 @@ export default {
       lang: 'Language',
       draggable: 'Draggable',
       bars: 'Sidebars',
-      autosave: 'Auto Save (in minutes)',
-      dropbox: {
-        title: 'Dropbox',
-        hourInSaveFileName: 'Save Time On Filename',
-      },
+      transition: 'Transitions',
       entity: {
         title: 'Editor',
         updateTime: 'Updated Time',

@@ -3,17 +3,16 @@
     <h3 class="text-2xl font-bold text-theme-text-2">
       {{ t('editor.aside.configuration.entity.title') }}
     </h3>
-    <!-- DEPRECATED -->
-    <div v-if="false" class="wb-configuration">
-      <p>{{ t('editor.aside.configuration.entity.updateTime') }}</p>
-      <InputBoolean
-        v-model="EDITOR.configuration.entity.updateTime"
-        :specific="true"
-      />
-    </div>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.configuration.bars') }}</p>
       <InputBoolean v-model="EDITOR.configuration.bars" :specific="true" />
+    </div>
+    <div class="wb-configuration">
+      <p>{{ t('editor.aside.configuration.transition') }}</p>
+      <InputBoolean
+        v-model="EDITOR.configuration.transition"
+        :specific="true"
+      />
     </div>
   </div>
 </template>

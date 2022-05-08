@@ -38,52 +38,36 @@ export interface EditorStateConfigurationEntity {
 }
 
 export interface EditorStateConfigurationCommands {
-  prefix: string
   paragraph: {
-    prefix: string
     active: boolean
   }
   headingTwo: {
-    prefix: string
     active: boolean
   }
   headingThree: {
-    prefix: string
     active: boolean
   }
   pageBreak: {
-    prefix: string
     active: boolean
   }
   lineBreak: {
-    prefix: string
     active: boolean
   }
   image: {
-    prefix: string
     active: boolean
   }
   checkbox: {
-    prefix: string
     active: boolean
   }
   list: {
-    prefix: string
     active: boolean
   }
   dialogue: {
-    prefix: string
-    value: string
     active: boolean
   }
   drau: {
-    prefix: string
     active: boolean
   }
-}
-
-export interface EditorStateConfigurationDropbox {
-  hourInSaveFileName: boolean
 }
 
 export interface EditorStateConfiguration {
@@ -91,8 +75,8 @@ export interface EditorStateConfiguration {
   lang?: boolean
   draggable: boolean
   bars: boolean
+  transition: boolean
   auto: number | 'never'
-  dropbox: EditorStateConfigurationDropbox
   entity: EditorStateConfigurationEntity
   commands: EditorStateConfigurationCommands
 }

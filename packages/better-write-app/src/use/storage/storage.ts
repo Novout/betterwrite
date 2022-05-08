@@ -44,6 +44,13 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.editor.configuration.transition) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        transition: true,
+      }
+    }
+
     return _
   }
 
