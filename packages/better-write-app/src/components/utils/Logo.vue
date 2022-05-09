@@ -1,7 +1,8 @@
 <template>
   <div
     v-cloak
-    class="flex cursor-pointer bg-theme-aside-logo-background justify-around md:justify-between items-center w-full mr-5 md:mr-0"
+    :class="[!props.hidden ? 'w-full cursor-pointer' : 'w-auto']"
+    class="flex bg-theme-aside-logo-background justify-around md:justify-between items-center mr-5 md:mr-0"
     @click.stop.prevent="onClick"
   >
     <img
@@ -11,6 +12,7 @@
       :src="path"
     />
     <h1
+      v-if="!props.hidden"
       :class="[!back ? 'hidden md:flex text-lg' : 'text-xl']"
       class="font-raleway text-theme-editor-betterwrite ml-3"
     >
@@ -34,6 +36,7 @@
   const props = defineProps<{
     width: number
     back: boolean
+    hidden?: boolean
   }>()
 
   const EDITOR = useEditorStore()
@@ -54,6 +57,8 @@
   })
 
   const onClick = () => {
+    if (props.hidden) return
+
     local.onSaveProject().then(() => {
       props.back ? router.back() : router.push('/')
     })

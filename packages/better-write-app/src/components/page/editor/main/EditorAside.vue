@@ -19,7 +19,7 @@
     <AsideGraph />
   </aside>
   <HeroIcon
-    v-else-if="PROJECT.type === 'creative'"
+    v-else-if="PROJECT.type === 'creative' && !ABSOLUTE.project.blocked"
     class="absolute z-10 left-0 transform rotate-180 right-1 wb-icon w-12 h-12 md:(w-9 h-9) bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active rounded-br shadow-xl"
     @click.prevent.stop="ABSOLUTE.aside = true"
   >

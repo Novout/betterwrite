@@ -4,6 +4,7 @@ export interface AbsoluteStateProject {
   configuration: boolean
   preferences: boolean
   corrector: boolean
+  blocked: boolean
 }
 
 export interface AbsoluteStateModal {

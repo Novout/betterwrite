@@ -1,6 +1,17 @@
 import { setPDFI18n } from 'better-write-plugin-pdf'
 
 export default {
+  blocked: {
+    title: 'Better Write.',
+    introduction: {
+      name: 'Introdução',
+      description1: '',
+    },
+    commands: {
+      description: `Comandos são itens flexíveis que o usuário pode utilizar para customizar o seu projeto, indo de itens digitáveis (texto, título, listas, caixas de seleção) a itens fixados (imagem, desenho, quebra de linha/página).\nClique com Botão Direito ou Pressione um item flexível para abrir o menu de opções do item.\nConfira a seguir os comandos disponíveis e seus atalhos de teclado.`,
+      name: 'Comandos',
+    },
+  },
   header: {
     project: 'Arquivo',
     export: 'Exportar',
@@ -43,15 +54,15 @@ export default {
   },
   preferences: {
     commands: {
-      '1': 'Paragraph',
-      '2': 'Heading Two',
-      '3': 'Heading Three',
-      '4': 'Line Break',
-      '5': 'Page Break',
-      '6': 'Checkbox',
-      '7': 'List',
-      '8': 'Image',
-      '9': 'Drawing',
+      '1': 'Parágrafo',
+      '2': 'Título Secundário',
+      '3': 'Título Terciário',
+      '4': 'Quebra de Página',
+      '5': 'Quebra de Linha',
+      '6': 'Caixa de Seleção',
+      '7': 'Lista',
+      '8': 'Imagem',
+      '9': 'Desenho',
     },
     shortcuts: {
       title: 'Teclas de Atalho',

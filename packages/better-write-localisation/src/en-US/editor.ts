@@ -1,6 +1,17 @@
 import { setPDFI18n } from 'better-write-plugin-pdf'
 
 export default {
+  blocked: {
+    title: 'Better Write.',
+    introduction: {
+      name: 'Introduction',
+      description1: '',
+    },
+    commands: {
+      description: `Commands are flexible items that the user can use to customize their project, ranging from typeable items (text, title, lists, checkboxes) to pinned items (image, drawing, line/page break).\nRight Click or Press a flexible item to open the item's options menu.\nSee below for available commands and their keyboard shortcuts.`,
+      name: 'Commands',
+    },
+  },
   header: {
     project: 'Project',
     export: 'Export',
@@ -43,15 +54,15 @@ export default {
   },
   preferences: {
     commands: {
-      '1': 'Parágrafo',
-      '2': 'Título Secundário',
-      '3': 'Título Terciário',
-      '4': 'Quebra de Página',
-      '5': 'Quebra de Linha',
-      '6': 'Caixa de Seleção',
-      '7': 'Lista',
-      '8': 'Imagem',
-      '9': 'Desenho',
+      '1': 'Paragraph',
+      '2': 'Heading Two',
+      '3': 'Heading Three',
+      '4': 'Line Break',
+      '5': 'Page Break',
+      '6': 'Checkbox',
+      '7': 'List',
+      '8': 'Image',
+      '9': 'Drawing',
     },
     shortcuts: {
       title: 'Hotkeys',

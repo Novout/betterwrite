@@ -9,21 +9,18 @@
         : 'w-full',
     ]"
   >
-    <EditorBaseBlocked v-if="PROJECT.name === env.projectEmpty()" />
-    <EditorBaseRender />
+    <EditorBaseBlocked v-if="ABSOLUTE.project.blocked" />
+    <EditorBaseRender v-else />
   </div>
 </template>
 
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import { useEnv } from '@/use/env'
-  import { useProjectStore } from '@/store/project'
   import { useEditorStore } from '@/store/editor'
+  import { useAbsoluteStore } from '@/store/absolute'
 
-  const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
-
-  const env = useEnv()
+  const ABSOLUTE = useAbsoluteStore()
 
   const main = ref<HTMLElement | null>(null)
 </script>
