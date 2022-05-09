@@ -35,7 +35,7 @@
 
   const props = defineProps<{
     width: number
-    back: boolean
+    back?: boolean
     hidden?: boolean
   }>()
 

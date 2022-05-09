@@ -13,11 +13,15 @@ import { useRouter } from 'vue-router'
 import { useListener } from './listener'
 import { useAuthStore } from '@/store/auth'
 import { useStorage } from './storage/storage'
+import { useEditorStore } from '@/store/editor'
+import { usePDFStore } from '@/store/pdf'
 
 export const useEditor = () => {
   const PROJECT = useProjectStore()
+  const EDITOR = useEditorStore()
   const CONTEXT = useContextStore()
   const AUTH = useAuthStore()
+  const PDF = usePDFStore()
 
   const env = useEnv()
   const project = useProject()
@@ -43,7 +47,7 @@ export const useEditor = () => {
 
     // tracking all auto-save cases
     watch(
-      PROJECT.$state,
+      [PROJECT.$state, EDITOR.$state, PDF.$state],
       () => {
         local.onSaveProject(false)
       },
