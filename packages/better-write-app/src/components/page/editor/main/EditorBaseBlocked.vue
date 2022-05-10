@@ -1,6 +1,6 @@
 <template>
   <div
-    class="z-20 flex flex-col items-center gap-3 wb-edit wb-scroll w-full wb-text px-10 py-5"
+    class="flex flex-col items-center gap-3 wb-edit wb-scroll w-full wb-text px-10 py-5"
   >
     <div
       v-motion
@@ -30,7 +30,10 @@
       :delay="300"
       :title="t('editor.blocked.commands.name')"
     >
-      <p class="mb-2">{{ t('editor.blocked.commands.description') }}</p>
+      <BlockedText>{{ t('editor.blocked.commands.description1') }}</BlockedText>
+      <BlockedText>{{ t('editor.blocked.commands.description2') }}</BlockedText>
+      <img src="@/assets/gif/blocked-commands-1.gif" width="300" />
+      <BlockedText>{{ t('editor.blocked.commands.description3') }}</BlockedText>
       <BlockedItem :title="t('editor.preferences.commands.1')">
         <template #icon>
           <IconParagraph class="w-7 h-7" />

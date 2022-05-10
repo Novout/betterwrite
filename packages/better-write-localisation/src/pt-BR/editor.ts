@@ -8,7 +8,12 @@ export default {
       description1: '',
     },
     commands: {
-      description: `Comandos são itens flexíveis que o usuário pode utilizar para customizar o seu projeto, indo de itens digitáveis (texto, título, listas, caixas de seleção) a itens fixados (imagem, desenho, quebra de linha/página).\nClique com Botão Direito ou Pressione um item flexível para abrir o menu de opções do item.\nConfira a seguir os comandos disponíveis e seus atalhos de teclado.`,
+      description1:
+        'Comandos são itens flexíveis que o usuário pode utilizar para customizar o seu projeto, variando entre itens digitáveis (texto, título, listas, caixas de seleção) a itens fixados (imagem, desenho, quebra de linha/página).',
+      description2:
+        'Clique com Botão Direito ou Pressione um item flexível para abrir o menu de opções do item.',
+      description3:
+        'Confira a seguir os comandos disponíveis e suas teclas de atalho.',
       name: 'Comandos',
     },
   },
