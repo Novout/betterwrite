@@ -198,6 +198,9 @@ export default {
       draggable: 'Draggable',
       bars: 'Sidebars',
       transition: 'Transitions',
+      autosave: 'Auto-Save',
+      blocked: 'Initial Tutorial',
+      bottomBar: 'Bottom Bar',
       entity: {
         title: 'Editor',
         updateTime: 'Updated Time',

@@ -49,9 +49,11 @@ export const useEditorStore = defineStore('editor', {
       configuration: {
         theme: Themes()[1][0],
         draggable: false,
-        auto: 15,
         bars: true,
         transition: true,
+        autosave: true,
+        blocked: true,
+        bottomBar: true,
         entity: {
           updateTime: false,
         },
@@ -109,9 +111,6 @@ export const useEditorStore = defineStore('editor', {
       this.styles = content.styles
       this.configuration = content.configuration
       this.actives = content.actives
-    },
-    setAutoSave(auto: number | 'never') {
-      this.configuration.auto = auto
     },
   },
 })

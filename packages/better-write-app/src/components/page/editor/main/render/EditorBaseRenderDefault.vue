@@ -19,7 +19,7 @@
         :entity="element"
       />
     </section>
-    <EditorBaseRenderBar />
+    <EditorBaseRenderBar v-if="EDITOR.configuration.bottomBar" />
   </div>
 </template>
 
@@ -31,10 +31,12 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useScroll } from '@/use/scroll'
   import { useExternalsStore } from '@/store/externals'
+  import { useEditorStore } from '@/store/editor'
 
   const EXTERNALS = useExternalsStore()
   const CONTEXT = useContextStore()
   const ABSOLUTE = useAbsoluteStore()
+  const EDITOR = useEditorStore()
 
   const project = useProject()
 

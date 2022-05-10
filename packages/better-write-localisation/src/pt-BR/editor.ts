@@ -200,6 +200,9 @@ export default {
       draggable: 'Arrastável',
       bars: 'Barras Laterias',
       transition: 'Transições',
+      autosave: 'Salvamento Automático',
+      blocked: 'Tutorial Inicial',
+      bottomBar: 'Barra Inferior',
       entity: {
         title: 'Editor',
         updateTime: 'Tempo Atualizado',

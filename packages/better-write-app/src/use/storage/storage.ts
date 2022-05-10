@@ -44,10 +44,31 @@ export const useStorage = () => {
       }
     }
 
-    if (!_.editor.configuration.transition) {
+    if (!_.editor.configuration.hasOwnProperty('transition')) {
       _.editor.configuration = {
         ..._.editor.configuration,
         transition: true,
+      }
+    }
+
+    if (!_.editor.configuration.hasOwnProperty('autosave')) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        autosave: true,
+      }
+    }
+
+    if (!_.editor.configuration.hasOwnProperty('blocked')) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        blocked: true,
+      }
+    }
+
+    if (!_.editor.configuration.hasOwnProperty('bottomBar')) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        bottomBar: true,
       }
     }
 

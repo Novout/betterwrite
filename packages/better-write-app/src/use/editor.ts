@@ -15,8 +15,10 @@ import { useAuthStore } from '@/store/auth'
 import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
+import { useAbsoluteStore } from '@/store/absolute'
 
 export const useEditor = () => {
+  const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
   const CONTEXT = useContextStore()
@@ -42,17 +44,20 @@ export const useEditor = () => {
     })
 
     useEventListener('beforeunload', () => {
-      storage.normalize()
+      if (EDITOR.configuration.autosave) storage.normalize()
     })
 
     // tracking all auto-save cases
-    watch(
-      [PROJECT.$state, EDITOR.$state, PDF.$state],
-      () => {
-        local.onSaveProject(false)
-      },
-      { deep: true }
-    )
+    if (EDITOR.configuration.autosave) {
+      watch(
+        [PROJECT.$state, PDF.$state],
+        () => {
+          local.onSaveProject(false)
+        },
+        { deep: true }
+      )
+    }
+
     // shortcuts
     listener.keyboard().start()
 

@@ -75,8 +75,10 @@ export interface EditorStateConfiguration {
   lang?: boolean
   draggable: boolean
   bars: boolean
+  bottomBar: boolean
   transition: boolean
-  auto: number | 'never'
+  autosave: boolean
+  blocked: boolean
   entity: EditorStateConfigurationEntity
   commands: EditorStateConfigurationCommands
 }

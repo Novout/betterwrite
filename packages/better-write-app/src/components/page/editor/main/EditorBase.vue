@@ -9,7 +9,7 @@
         : 'w-full',
     ]"
   >
-    <EditorBaseBlocked v-if="ABSOLUTE.project.blocked" />
+    <EditorBaseBlocked v-if="EDITOR.configuration.blocked" />
     <EditorBaseRender v-else />
   </div>
 </template>
