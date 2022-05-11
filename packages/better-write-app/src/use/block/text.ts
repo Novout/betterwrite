@@ -315,7 +315,11 @@ export const useBlockText = ({
       return
     }
 
-    if (props.isAttached) {
+    if (
+      props.isAttached ||
+      (raw.v2().caret().end(input.value, true) &&
+        props.entity.type === 'paragraph')
+    ) {
       e.preventDefault()
       e.stopPropagation()
 
