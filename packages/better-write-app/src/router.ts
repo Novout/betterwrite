@@ -3,14 +3,14 @@ import { s } from './use/storage/supabase'
 
 const routes = [
   {
-    name: 'Landing',
+    name: 'Main',
     path: '/',
-    component: () => import('@/pages/Landing.vue'),
+    component: () => import('@/pages/Editor.vue'),
   },
   {
-    name: 'Main',
-    path: '/editor',
-    component: () => import('@/pages/Editor.vue'),
+    name: 'Landing',
+    path: '/landing',
+    component: () => import('@/pages/Landing.vue'),
   },
   {
     name: 'Dashboard',
@@ -36,6 +36,10 @@ const routes = [
     name: 'Questions',
     path: '/questions',
     component: () => import('@/pages/Questions.vue'),
+  },
+  {
+    path: '/editor',
+    redirect: '/',
   },
   {
     path: '/:pathMatch(.*)*',

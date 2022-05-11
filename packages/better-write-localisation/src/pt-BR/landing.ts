@@ -22,8 +22,7 @@ export default {
       4: 'Use a criatividade da melhor forma.',
     },
     editor: {
-      website: 'Editor',
-      desktop: 'Desktop',
+      website: 'Entrar',
     },
     support: 'Acompanhe o projeto de perto!',
     paragraphs: [

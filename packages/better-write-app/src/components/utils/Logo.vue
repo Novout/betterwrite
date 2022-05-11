@@ -60,7 +60,7 @@
     if (props.hidden) return
 
     local.onSaveProject().then(() => {
-      props.back ? router.back() : router.push('/')
+      props.back ? router.back() : router.push('/landing')
     })
   }
 </script>

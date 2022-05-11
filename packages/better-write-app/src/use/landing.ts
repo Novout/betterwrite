@@ -43,7 +43,7 @@ export const useLanding = () => {
 
     await nextTick
 
-    router.push('/editor').finally(() => {
+    router.push('/').finally(() => {
       // for common reactivity in other routes
       document.body.style.overflowX = 'auto'
 

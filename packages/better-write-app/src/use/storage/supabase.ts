@@ -181,7 +181,7 @@ export const useSupabase = () => {
     storage.normalize().then(() => {
       project.onLoadProject(context, false).then(() => {
         local.onSaveProject(false).then(() => {
-          router.push('/editor').finally(() => {})
+          router.push('/').finally(() => {})
         })
       })
     })

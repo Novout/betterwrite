@@ -4,7 +4,7 @@ import { useEntity } from '@/use/entity'
 import { useEnv } from '@/use/env'
 import { useProject } from '@/use/project'
 import { useLocalStorage } from '@/use/storage/local'
-import { useEventListener, useFullscreen } from '@vueuse/core'
+import { useEventListener, useFullscreen, useNetwork } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
 import { usePlugin } from 'better-write-plugin-core'
 import { computed, onMounted, watch } from 'vue'
@@ -16,6 +16,7 @@ import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
+import { s } from './storage/supabase'
 
 export const useEditor = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -35,11 +36,12 @@ export const useEditor = () => {
   const { toggle } = useFullscreen()
   const router = useRouter()
   const storage = useStorage()
+  const network = useNetwork()
 
   const init = () => {
-    if (!AUTH.account.user) router.push('/')
-
     onMounted(() => {
+      if (!AUTH.account.user && network.isOnline.value) router.push('/landing')
+
       project.onLoadProject()
     })
 

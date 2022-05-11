@@ -22,8 +22,7 @@ export default {
       4: 'Use creativity in the best way.',
     },
     editor: {
-      website: 'Editor',
-      desktop: 'Desktop',
+      website: 'Login',
     },
     support: 'Follow the project!',
     paragraphs: [

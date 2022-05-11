@@ -15,8 +15,14 @@
         <EditorBaseHeaderHelp />
       </div>
     </div>
-    <div class="flex items-center gap-2">
+    <div v-if="AUTH.account.user" class="flex items-center gap-2">
       <EditorBaseHeaderLogin />
     </div>
   </header>
 </template>
+
+<script setup lang="ts">
+  import { useAuthStore } from '@/store/auth'
+
+  const AUTH = useAuthStore()
+</script>
