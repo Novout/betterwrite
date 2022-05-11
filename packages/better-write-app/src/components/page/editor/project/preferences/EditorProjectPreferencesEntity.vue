@@ -26,6 +26,19 @@
       <p>{{ t('editor.aside.configuration.blocked') }}</p>
       <InputBoolean v-model="EDITOR.configuration.blocked" :specific="true" />
     </div>
+    <div class="wb-configuration">
+      <p>
+        {{
+          t(
+            'editor.aside.configuration.entity.insertEntityInParagraphBreakLine'
+          )
+        }}
+      </p>
+      <InputBoolean
+        v-model="EDITOR.configuration.entity.insertEntityInParagraphBreakLine"
+        :specific="true"
+      />
+    </div>
   </div>
 </template>
 

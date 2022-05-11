@@ -72,6 +72,17 @@ export const useStorage = () => {
       }
     }
 
+    if (
+      !_.editor.configuration.entity.hasOwnProperty(
+        'insertEntityInParagraphBreakLine'
+      )
+    ) {
+      _.editor.configuration.entity = {
+        ..._.editor.configuration.entity,
+        insertEntityInParagraphBreakLine: false,
+      }
+    }
+
     return _
   }
 

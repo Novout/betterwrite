@@ -318,7 +318,8 @@ export const useBlockText = ({
     if (
       props.isAttached ||
       (raw.v2().caret().end(input.value, true) &&
-        props.entity.type === 'paragraph')
+        props.entity.type === 'paragraph' &&
+        EDITOR.configuration.entity.insertEntityInParagraphBreakLine)
     ) {
       e.preventDefault()
       e.stopPropagation()

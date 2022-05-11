@@ -218,7 +218,7 @@ export default {
       bottomBar: 'Bottom Bar',
       entity: {
         title: 'Editor',
-        updateTime: 'Updated Time',
+        insertEntityInParagraphBreakLine: 'Insert Paragraph at line breaks',
       },
     },
     entity: {

@@ -55,7 +55,7 @@ export const useEditorStore = defineStore('editor', {
         blocked: true,
         bottomBar: true,
         entity: {
-          updateTime: false,
+          insertEntityInParagraphBreakLine: false,
         },
         commands: {
           paragraph: {

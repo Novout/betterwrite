@@ -34,7 +34,7 @@ export interface EditorStateActives {
 }
 
 export interface EditorStateConfigurationEntity {
-  updateTime: boolean
+  insertEntityInParagraphBreakLine: boolean
 }
 
 export interface EditorStateConfigurationCommands {
