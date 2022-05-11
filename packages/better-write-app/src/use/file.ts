@@ -45,7 +45,7 @@ export const useFile = () => {
     await storage.normalize()
 
     saveAs(
-      new Blob([JSON.stringify(target)], {
+      new Blob([JSON.stringify(target, null, 2)], {
         type: 'application/json;charset=utf-8',
       }),
       PROJECT.name + name
