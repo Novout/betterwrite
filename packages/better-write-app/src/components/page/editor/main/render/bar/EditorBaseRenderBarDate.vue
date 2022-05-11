@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-1 mx-2">
+  <div class="flex">
     <p>{{ date }}</p>
   </div>
 </template>

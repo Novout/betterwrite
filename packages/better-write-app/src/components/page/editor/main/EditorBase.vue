@@ -17,10 +17,8 @@
 <script lang="ts" setup>
   import { ref } from 'vue'
   import { useEditorStore } from '@/store/editor'
-  import { useAbsoluteStore } from '@/store/absolute'
 
   const EDITOR = useEditorStore()
-  const ABSOLUTE = useAbsoluteStore()
 
   const main = ref<HTMLElement | null>(null)
 </script>

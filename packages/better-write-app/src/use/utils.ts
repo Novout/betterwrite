@@ -314,6 +314,39 @@ export const useUtils = () => {
     return { blobXmlToBase64, read }
   }
 
+  const system = () => {
+    const get = () => {
+      let userAgent = window.navigator.userAgent,
+        // @ts-ignore
+        platform =
+          // @ts-ignore
+          window.navigator?.userAgentData?.platform ??
+          // @ts-ignore
+          window.navigator.platform,
+        // @ts-ignore
+        macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+        windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+        iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+        os: 'Mac OS' | 'iOS' | 'Windows' | 'Android' | 'Linux' | null = null
+
+      if (macosPlatforms.indexOf(platform) !== -1) {
+        os = 'Mac OS'
+      } else if (iosPlatforms.indexOf(platform) !== -1) {
+        os = 'iOS'
+      } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = 'Windows'
+      } else if (/Android/.test(userAgent)) {
+        os = 'Android'
+      } else if (!os && /Linux/.test(platform)) {
+        os = 'Linux'
+      }
+
+      return os
+    }
+
+    return { get }
+  }
+
   return {
     position,
     delay,
@@ -328,5 +361,6 @@ export const useUtils = () => {
     object,
     language,
     convert,
+    system,
   }
 }
