@@ -19,32 +19,41 @@
           {{ t('editor.addons.substitutions.to') }}
         </p>
       </div>
-      <EditorGeneratorSubstitutionsItem
-        v-for="(template, index) in PROJECT.templates.substitutions.text"
-        :template="template"
-        :index="index"
-      />
+      <draggable :list="PROJECT.templates.substitutions.text" item-key="id">
+        <template #item="{ element, index }">
+          <EditorGeneratorSubstitutionsItem
+            :template="element"
+            :index="index"
+          />
+        </template>
+      </draggable>
       <div class="flex flex-col my-4">
         <h2 class="font-bold text-xl">
           {{ t('editor.addons.substitutions.italic') }}
         </h2>
         <EditorGeneratorSubstitutionsItalicAdd />
-        <EditorGeneratorSubstitutionsItalicItem
-          v-for="(template, index) in PROJECT.templates.substitutions.italic"
-          :template="template"
-          :index="index"
-        />
+        <draggable :list="PROJECT.templates.substitutions.italic" item-key="id">
+          <template #item="{ element, index }">
+            <EditorGeneratorSubstitutionsItalicItem
+              :template="element"
+              :index="index"
+            />
+          </template>
+        </draggable>
       </div>
       <div class="flex flex-col my-4">
         <h2 class="font-bold text-xl">
           {{ t('editor.addons.substitutions.bold') }}
         </h2>
         <EditorGeneratorSubstitutionsBoldAdd />
-        <EditorGeneratorSubstitutionsBoldItem
-          v-for="(template, index) in PROJECT.templates.substitutions.bold"
-          :template="template"
-          :index="index"
-        />
+        <draggable :list="PROJECT.templates.substitutions.bold" item-key="id">
+          <template #item="{ element, index }">
+            <EditorGeneratorSubstitutionsBoldItem
+              :template="element"
+              :index="index"
+            />
+          </template>
+        </draggable>
       </div>
     </div>
   </FullModal>
@@ -56,6 +65,7 @@
   import { onClickOutside } from '@vueuse/core'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import draggable from 'vuedraggable'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()

@@ -54,6 +54,7 @@
     "vue-toastification": "2.0.0-rc.5",
     "vue-typical": "2.1.0",
     "vue3-pdfmake": "1.2.0",
+    "vuedraggable": "4.0.1",
     "windicss": "3.5.1"
   },
   "devDependencies": {
