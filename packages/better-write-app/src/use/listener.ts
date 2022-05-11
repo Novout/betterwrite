@@ -145,8 +145,6 @@ export const useListener = () => {
 
           const value = index + 1
 
-          let type: EntityType = 'image'
-
           factory.simulate().file(async (entity) => {
             CONTEXT.insert(entity, value)
 
@@ -162,6 +160,14 @@ export const useListener = () => {
             })
           })
         }
+      }
+
+      // handle default fullscreen method
+      if (e.key === 'F11') {
+        e.preventDefault()
+        e.stopPropagation()
+
+        utils.context().fullscreen()
       }
     }
 

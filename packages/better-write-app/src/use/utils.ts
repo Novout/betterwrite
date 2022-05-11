@@ -314,6 +314,20 @@ export const useUtils = () => {
     return { blobXmlToBase64, read }
   }
 
+  const context = () => {
+    const fullscreen = () => {
+      if (!window) return
+
+      window.document.exitFullscreen().catch(() => {
+        const target = window.document.querySelector('body')
+
+        target?.requestFullscreen()
+      })
+    }
+
+    return { fullscreen }
+  }
+
   const system = () => {
     const get = () => {
       let userAgent = window.navigator.userAgent,
@@ -362,5 +376,6 @@ export const useUtils = () => {
     language,
     convert,
     system,
+    context,
   }
 }
