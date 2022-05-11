@@ -1,7 +1,7 @@
 <template>
   <IconFullScreen
     class="w-4 h-4 wb-icon"
-    @click="utils.context().fullscren()"
+    @click="utils.context().fullscreen()"
   />
 </template>
 
