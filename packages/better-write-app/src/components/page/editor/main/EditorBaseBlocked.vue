@@ -11,7 +11,7 @@
     >
       <IconClose
         class="w-7 h-7 wb-icon"
-        @click.prevent.stop="EDITOR.configuration.blocked = false"
+        @click.prevent.stop="ABSOLUTE.project.blocked = false"
       />
     </div>
     <div
@@ -117,10 +117,10 @@
 </template>
 
 <script lang="ts" setup>
-  import { useEditorStore } from '@/store/editor'
+  import { useAbsoluteStore } from '@/store/absolute'
   import { useI18n } from 'vue-i18n'
 
-  const EDITOR = useEditorStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
 </script>
