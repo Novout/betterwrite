@@ -33,6 +33,30 @@
       <BlockedText>{{ t('editor.blocked.commands.description1') }}</BlockedText>
       <BlockedText>{{ t('editor.blocked.commands.description2') }}</BlockedText>
       <img src="@/assets/gif/blocked-commands-1.gif" width="300" />
+      <BlockedText :item="true">{{
+        t('editor.blocked.commands.menu.delete')
+      }}</BlockedText>
+      <BlockedText :item="true">{{
+        t('editor.blocked.commands.menu.up')
+      }}</BlockedText>
+      <BlockedText :item="true">{{
+        t('editor.blocked.commands.menu.down')
+      }}</BlockedText>
+      <BlockedText :item="true">{{
+        t('editor.blocked.commands.menu.comments')
+      }}</BlockedText>
+      <BlockedText :item="true">{{
+        t('editor.blocked.commands.menu.swap')
+      }}</BlockedText>
+      <BlockedText :item="true">{{
+        t('editor.blocked.commands.menu.add')
+      }}</BlockedText>
+      <BlockedText :item="true">{{
+        t('editor.blocked.commands.menu.text')
+      }}</BlockedText>
+      <BlockedText :item="true">{{
+        t('editor.blocked.commands.menu.image')
+      }}</BlockedText>
       <BlockedText>{{ t('editor.blocked.commands.description3') }}</BlockedText>
       <BlockedItem :title="t('editor.preferences.commands.1')">
         <template #icon>

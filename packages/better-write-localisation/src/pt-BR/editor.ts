@@ -14,6 +14,18 @@ export default {
         'Clique com Botão Direito ou Pressione um item flexível para abrir o menu de opções do item.',
       description3:
         'Confira a seguir os comandos disponíveis e suas teclas de atalho.',
+      menu: {
+        delete: 'Deletar - Exclui o item selecionado.',
+        up: 'Cima - Troque a posição do item atual com o item superior.',
+        down: 'Baixo - Troque a posição do item atual com o item inferior.',
+        comments:
+          'Comentário - Disponível somente em textos, anote informações rápidas para consultar futuramente.',
+        swap: 'Trocar - Substitui o item atual por outro.',
+        add: 'Adicionar - Insira um novo item em uma posição abaixo do item atual.',
+        text: 'Texto - Disponível somente em textos, customize o texto com novos estilos para sobrescrever na geração do arquivo.',
+        image:
+          'Imagem - Disponível somente em imagens, modifique as configurações padrões da imagem.',
+      },
       name: 'Comandos',
     },
   },

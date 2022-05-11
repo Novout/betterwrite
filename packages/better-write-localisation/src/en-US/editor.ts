@@ -8,8 +8,23 @@ export default {
       description1: '',
     },
     commands: {
-      description: `Commands are flexible items that the user can use to customize their project, ranging from typeable items (text, title, lists, checkboxes) to pinned items (image, drawing, line/page break).\nRight Click or Press a flexible item to open the item's options menu.\nSee below for available commands and their keyboard shortcuts.`,
-      name: 'Commands',
+      description1:
+        'Commands are flexible items that the user can use to customize their project, ranging from typeable items (text, title, lists, checkboxes) to pinned items (image, drawing, line/page break).',
+      description2: `Right Click or Press a flexible item to open the item's options menu.`,
+      description3:
+        'Check out the available commands and their shortcut keys below.',
+      menu: {
+        delete: 'Delete - Deletes the selected item.',
+        up: `Top - Swap the current item's position with the top item.`,
+        down: `Down - Swap the current item's position with the lower item.`,
+        comments: `Comment - Available in text only, write down quick information for future reference.`,
+        swap: 'Swap - Replaces the current item with another.',
+        add: 'Add - Insert a new item at a position below the current item.',
+        text: 'Text - Available in text only, customize text with new styles to overwrite on file generation.',
+        image:
+          'Image - Available on images only, change the default image settings.',
+      },
+      name: 'Comandos',
     },
   },
   header: {
