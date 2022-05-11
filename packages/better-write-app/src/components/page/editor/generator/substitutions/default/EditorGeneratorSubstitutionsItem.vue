@@ -46,25 +46,4 @@
     PROJECT.templates.substitutions.text =
       PROJECT.templates.substitutions.text.filter((t) => t !== props.template)
   }
-
-  const move = (direction: 'up' | 'down') => {
-    const index = PROJECT.templates.substitutions.text.indexOf(props.template)
-
-    if (index === -1) return
-
-    let sIndex
-    direction === 'up' ? (sIndex = index - 1) : (sIndex = index + 1)
-
-    if (
-      (sIndex < 0 && direction === 'up') ||
-      (sIndex >= PROJECT.templates.substitutions.text.length &&
-        direction === 'down')
-    )
-      return
-
-    const temp = PROJECT.templates.substitutions.text[index]
-    PROJECT.templates.substitutions.text[index] =
-      PROJECT.templates.substitutions.text[sIndex]
-    PROJECT.templates.substitutions.text[sIndex] = temp
-  }
 </script>
