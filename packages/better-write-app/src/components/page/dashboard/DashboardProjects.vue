@@ -12,9 +12,10 @@
     <div
       class="flex flex-wrap flex-row justify-start items-center gap-10 bg-black-opacity p-5"
     >
+      <Spinner v-if="!isLoadded" :width="80" :height="80" />
       <div
         v-for="(context, index) in projects"
-        v-if="projects.length !== 0"
+        v-else-if="projects.length !== 0"
         :key="index"
         class="flex flex-col w-full sm:w-52 flex-wrap justify-center md:justify-between items-center p-5 bg-theme-editor-dashboard-background-main wb-text rounded my-1 shadow-binset"
       >
@@ -57,11 +58,17 @@
   const { t } = useI18n()
 
   const projects = ref<ProjectObject[]>([])
+  const isLoadded = ref<boolean>(false)
 
   const onSetProject = () => {
-    supabase.getProjects().then((_projects) => {
-      projects.value = _projects as ProjectObject[]
-    })
+    supabase
+      .getProjects()
+      .then((_projects) => {
+        projects.value = _projects as ProjectObject[]
+      })
+      .finally(() => {
+        isLoadded.value = true
+      })
   }
 
   onMounted(() => {
