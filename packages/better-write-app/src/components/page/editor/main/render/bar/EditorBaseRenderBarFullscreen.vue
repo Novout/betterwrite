@@ -1,6 +1,6 @@
 <template>
   <IconFullScreen
-    class="w-4 h-4 wb-icon"
+    class="w-6 h-6 md:(w-5 h-5) wb-icon"
     @click="utils.context().fullscreen()"
   />
 </template>

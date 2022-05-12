@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center gap-1">
-    <IconWIFI class="w-4 h-4 wb-icon" />
+    <IconWIFI class="w-6 h-6 md:(w-5 h-5) wb-icon" />
     <div
       :style="{
         backgroundColor: isOnline ? '#00EE00' : '#EE0000',
