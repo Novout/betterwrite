@@ -18,29 +18,11 @@
   >
     <AsideGraph />
   </aside>
-  <HeroIcon
-    v-else-if="PROJECT.type === 'creative' && !ABSOLUTE.project.blocked"
-    class="absolute z-10 left-0 transform rotate-180 right-1 wb-icon w-12 h-12 md:(w-9 h-9) bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active rounded-br shadow-xl"
+  <IconAsideGraph
+    v-else-if="PROJECT.type === 'creative'"
+    class="absolute z-10 left-0 transform right-1 wb-icon w-12 h-12 md:(w-9 h-9) bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active rounded-br shadow-xl"
     @click.prevent.stop="ABSOLUTE.aside = true"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      aria-hidden="true"
-      role="img"
-      preserveAspectRatio="xMidYMid meet"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="currentColor"
-        d="M17.59 18L19 16.59L14.42 12L19 7.41L17.59 6l-6 6z"
-      ></path>
-      <path
-        fill="currentColor"
-        d="m11 18l1.41-1.41L7.83 12l4.58-4.59L11 6l-6 6z"
-      ></path>
-    </svg>
-  </HeroIcon>
+  />
 </template>
 
 <script lang="ts" setup>

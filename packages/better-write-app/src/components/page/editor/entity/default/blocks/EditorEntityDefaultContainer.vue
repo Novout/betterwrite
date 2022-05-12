@@ -72,8 +72,6 @@
     { debounce: 350 }
   )
 
-  console.log(last.value)
-
   // animations
   if (EDITOR.configuration.transition && !last.value) {
     const variants = ref<MotionVariants>({
