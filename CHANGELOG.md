@@ -1,6 +1,12 @@
-# Changelog (11/05/2022)
+# Changelog (12/05/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.1
+
+* **fix(graph):** open and close in blocked div [a64dfd9]
+* **chore:** logic in auth redirect to editor [c235a46]
+* **chore:** typo [1a880b2]
 
 ### v0.16.0
 
