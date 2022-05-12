@@ -12,6 +12,7 @@
       />
       <p>{{ t('editor.live.enter.description') }}</p>
       <InputText
+        ref="target"
         v-model="input"
         class="w-full bg-theme-background-opacity-1 py-0.5 px-3"
         @keypress.enter="onEnter"
@@ -26,13 +27,16 @@
   import { usePlugin } from 'better-write-plugin-core'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import { useStorage } from '@/use/storage/storage'
 
   const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
   const plugin = usePlugin()
+  const storage = useStorage()
 
   const base = ref<HTMLElement | null>(null)
+  const target = ref<HTMLInputElement | null>(null)
   const input = ref<string>('')
 
   const { style } = useDraggable(base as any, {
@@ -47,9 +51,11 @@
     ABSOLUTE.live.enter = false
   }
 
-  const onEnter = (e) => {
+  const onEnter = async (e) => {
     e.preventDefault()
     e.stopPropagation()
+
+    await storage.normalize()
 
     plugin.emit('plugin-multiplayer-enter', input.value)
 

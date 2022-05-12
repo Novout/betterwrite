@@ -16,7 +16,9 @@ export const PluginMultiplayerSet = (
   stores.AUTH.account.multiplayer.client = client
 
   const setContext = async (room: Room) => {
-    room.subscribe('others', (others) => {})
+    room.subscribe('others', (others) => {
+      console.log(others.toArray())
+    })
   }
 
   On.multiplayer().PluginMultiplayerCreate(emitter, [
@@ -27,7 +29,12 @@ export const PluginMultiplayerSet = (
       ).toUpperCase()
       const key = `BETTERWRITE-PUBLIC-${random}`
 
-      room = client.enter(key)
+      room = client.enter(key, {
+        initialPresence: { cursor: null },
+        initialStorage: {
+          instance: new LiveObject(hooks.storage.getProjectObject()),
+        },
+      })
 
       hooks.plugin.emit('plugin-multiplayer-room-id', key)
 
@@ -42,8 +49,10 @@ export const PluginMultiplayerSet = (
   ])
 
   On.multiplayer().PluginMultiplayerEnter(emitter, [
-    (id: ID<string>) => {
+    async (id: ID<string>) => {
       room = client.enter(id)
+
+      const object = await room.getStorage()
 
       stores.AUTH.account.multiplayer.connect = {
         key: id,
