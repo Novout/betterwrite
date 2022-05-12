@@ -106,13 +106,20 @@
   import { useLanding } from '@/use/landing'
   import { useWebGL } from '@/use/webgl'
   import { useI18n } from 'vue-i18n'
-  import { watch } from 'vue'
+  import { onMounted, watch } from 'vue'
+  import { useAuthStore } from '@/store/auth'
+  import { useRouter } from 'vue-router'
+
+  const AUTH = useAuthStore()
 
   const { onClick, isNecessaryLogin } = useLanding()
   const { t } = useI18n()
   const webgl = useWebGL()
+  const router = useRouter()
 
   webgl.init()
+
+  if (AUTH.account.user) router.push('/')
 
   watch(isNecessaryLogin, (login) => {
     if (login) {
