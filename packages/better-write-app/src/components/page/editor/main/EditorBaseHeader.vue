@@ -13,6 +13,7 @@
         <EditorBaseHeaderCreate />
         <EditorBaseHeaderExternals />
         <EditorBaseHeaderHelp />
+        <EditorBaseHeaderConnect />
       </div>
     </div>
     <div v-if="AUTH.account.user" class="flex items-center gap-2">

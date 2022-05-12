@@ -49,16 +49,17 @@ export const useEditor = () => {
       if (EDITOR.configuration.autosave) storage.normalize()
     })
 
-    // tracking all auto-save cases
-    if (EDITOR.configuration.autosave) {
-      watch(
-        [PROJECT.$state, PDF.$state],
-        () => {
-          local.onSaveProject(false)
-        },
-        { deep: true }
-      )
-    }
+    // tracking all mutate cases
+    watch(
+      [PROJECT.$state, PDF.$state],
+      () => {
+        if (EDITOR.configuration.autosave) local.onSaveProject(false)
+
+        // live update
+        plugin.emit('plugin-multiplayer-room-context-update')
+      },
+      { deep: true }
+    )
 
     // shortcuts
     listener.keyboard().start()

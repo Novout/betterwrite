@@ -7,15 +7,9 @@ export const useAuthStore = defineStore('auth', {
       account: {
         user: null,
         project_id_activity: null,
-      },
-      dropbox: {
-        accessToken: null,
+        multiplayer: { client: null, connect: null },
       },
     }
   },
-  actions: {
-    setDropboxToken(token: string) {
-      this.dropbox.accessToken = token
-    },
-  },
+  actions: {},
 })

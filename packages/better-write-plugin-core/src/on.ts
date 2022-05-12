@@ -1,4 +1,9 @@
-import { ContextState, PDFDocOptions, PluginTypes } from 'better-write-types'
+import {
+  ContextState,
+  ID,
+  PDFDocOptions,
+  PluginTypes,
+} from 'better-write-types'
 
 export const entity = () => {
   const PluginEntityInputInitial = (
@@ -404,4 +409,63 @@ export const creative = () => {
   }
 
   return { drafts }
+}
+
+export const multiplayer = () => {
+  const PluginMultiplayerCreate = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-multiplayer-create', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginMultiplayerRoomID = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-multiplayer-room-id', (id: ID<string>) => {
+      if (!id) return
+
+      const created = content[0]
+
+      created && created(id)
+    })
+  }
+
+  const PluginMultiplayerEnter = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-multiplayer-enter', (id: ID<string>) => {
+      if (!id) return
+
+      const created = content[0]
+
+      created && created(id)
+    })
+  }
+
+  const PluginMultiplayerLeave = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-multiplayer-leave', (index: number) => {
+      if (!index) return
+
+      const created = content[0]
+
+      created && created(index)
+    })
+  }
+
+  return {
+    PluginMultiplayerCreate,
+    PluginMultiplayerRoomID,
+    PluginMultiplayerEnter,
+    PluginMultiplayerLeave,
+  }
 }

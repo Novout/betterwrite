@@ -192,6 +192,7 @@ export const useStart = () => {
         utils: useUtils(),
         i18n: useI18n(),
         emitter: useEmitter(),
+        plugin: usePlugin(),
         substitution: useSubstitution(),
       }
     )

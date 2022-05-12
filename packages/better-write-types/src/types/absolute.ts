@@ -45,6 +45,11 @@ export interface AbsoluteStateGenerator {
   substitutions: boolean
 }
 
+export interface AbsoluteStateLive {
+  create: boolean
+  enter: boolean
+}
+
 export interface AbsoluteState {
   commands: boolean
   project: AbsoluteStateProject
@@ -59,4 +64,5 @@ export interface AbsoluteState {
   pages: AbsoluteStatePages
   tools: AbsoluteStateTools
   generator: AbsoluteStateGenerator
+  live: AbsoluteStateLive
 }

@@ -10,6 +10,7 @@
   import { PDFPlugin } from 'better-write-plugin-pdf'
   import { DocxPlugin } from 'better-write-plugin-docx'
   import { TxtPlugin } from 'better-write-plugin-txt'
+  import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
 
   const start = useStart()
 
@@ -19,5 +20,6 @@
     PDFPlugin(),
     DocxPlugin(),
     TxtPlugin(),
+    MultiplayerPlugin(),
   ])
 </script>

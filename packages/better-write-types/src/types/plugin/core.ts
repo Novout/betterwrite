@@ -38,6 +38,12 @@ export type PluginEmitterName =
   | 'plugin-auto-save'
   | 'plugin-dropbox-save'
   | 'plugin-editor-mounted'
+  | 'plugin-multiplayer-create'
+  | 'plugin-multiplayer-enter'
+  | 'plugin-multiplayer-leave'
+  | 'plugin-multiplayer-room-id'
+  | 'plugin-multiplayer-room-context-update'
+
 export interface PluginEmitter {
   on: (name: PluginEmitterName, callback: (...c: any) => any) => void
   emit: (name: PluginEmitterName, ...c: any) => void
@@ -99,6 +105,7 @@ export interface PluginHooks {
   utils: PluginHook
   i18n: PluginHook
   emitter: PluginHook
+  plugin: PluginHook
   substitution: PluginHook
 }
 

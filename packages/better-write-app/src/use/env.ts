@@ -74,6 +74,16 @@ export const useEnv = () => {
     }
   }
 
+  const multiplayer = () => {
+    const pub = () =>
+      isDev()
+        ? 'pk_test_-PbqG8LpfQqTC3na0DcdnuQM'
+        : import.meta.env.VITE_LIVEBLOCKS_PUBLIC
+    const pri = () => import.meta.env.VITE_LIVEBLOCKS_SECRET
+
+    return { public: pub, private: pri }
+  }
+
   return {
     dropboxKey,
     projectEmpty,
@@ -91,5 +101,6 @@ export const useEnv = () => {
     packageVersion,
     isDev,
     getAccountPlanLimit,
+    multiplayer,
   }
 }

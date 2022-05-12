@@ -17,6 +17,8 @@
     <EditorToolsSwitcher v-else-if="ABSOLUTE.shortcuts.switcher" />
     <EditorToolsFinder v-else-if="ABSOLUTE.shortcuts.finder" />
     <EditorToolsSpeechRecognition v-if="ABSOLUTE.tools.speechRecognition" />
+    <EditorLiveCreate v-else-if="ABSOLUTE.live.create" />
+    <EditorLiveEnter v-else-if="ABSOLUTE.live.enter" />
   </teleport>
 </template>
 
