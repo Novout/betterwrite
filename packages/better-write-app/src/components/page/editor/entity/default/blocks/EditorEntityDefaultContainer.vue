@@ -36,6 +36,7 @@
   const container = ref()
 
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
+  const last = computed(() => _index.value === CONTEXT.entities.length - 1)
 
   const { pressed, sourceType: mouseType } = useMousePressed({
     touch: true,
@@ -71,8 +72,10 @@
     { debounce: 350 }
   )
 
+  console.log(last.value)
+
   // animations
-  if (EDITOR.configuration.transition) {
+  if (EDITOR.configuration.transition && !last.value) {
     const variants = ref<MotionVariants>({
       initial: {
         opacity: 0,

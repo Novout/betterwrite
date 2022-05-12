@@ -10,7 +10,9 @@
     ]"
   >
     <EditorBaseBlocked
-      v-if="EDITOR.configuration.blocked && ABSOLUTE.project.blocked"
+      v-if="
+        EDITOR.configuration.blocked && ABSOLUTE.project.blocked && env.isDev()
+      "
     />
     <EditorBaseRender v-else />
   </div>
@@ -20,9 +22,12 @@
   import { ref } from 'vue'
   import { useEditorStore } from '@/store/editor'
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useEnv } from '@/use/env'
 
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
+
+  const env = useEnv()
 
   const main = ref<HTMLElement | null>(null)
 </script>
