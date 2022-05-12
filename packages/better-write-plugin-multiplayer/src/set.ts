@@ -16,26 +16,7 @@ export const PluginMultiplayerSet = (
   stores.AUTH.account.multiplayer.client = client
 
   const setContext = async (room: Room) => {
-    const { root } = await room.getStorage()
-
-    let CONTEXT = root.get('CONTEXT')
-
-    if (CONTEXT == null) {
-      CONTEXT = new LiveObject<any>()
-      root.set('CONTEXT', CONTEXT)
-    } else {
-      stores.CONTEXT.$state = CONTEXT as any
-    }
-
-    room.subscribe(CONTEXT as any, (T) => {
-      console.log('here', T)
-    })
-
-    /*
-      hooks.plugin.on('plugin-multiplayer-room-context-update', () => {
-        CONTEXT = stores.CONTEXT.$state as any
-      })
-      */
+    room.subscribe('others', (others) => {})
   }
 
   On.multiplayer().PluginMultiplayerCreate(emitter, [
@@ -50,13 +31,18 @@ export const PluginMultiplayerSet = (
 
       hooks.plugin.emit('plugin-multiplayer-room-id', key)
 
+      stores.AUTH.account.multiplayer.connect = {
+        key,
+        type: 'owner',
+      }
+
       setContext(room)
     },
     () => {},
   ])
 
   On.multiplayer().PluginMultiplayerEnter(emitter, [
-    async (id: ID<string>) => {
+    (id: ID<string>) => {
       room = client.enter(id)
 
       stores.AUTH.account.multiplayer.connect = {
@@ -70,8 +56,8 @@ export const PluginMultiplayerSet = (
   ])
 
   On.multiplayer().PluginMultiplayerLeave(emitter, [
-    () => {
-      client.leave('BETTERWRITE-PUBLIC-1')
+    (key: ID<string>) => {
+      client.leave(key)
     },
     () => {},
   ])

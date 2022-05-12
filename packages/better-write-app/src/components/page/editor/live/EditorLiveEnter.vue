@@ -14,6 +14,7 @@
       <InputText
         v-model="input"
         class="w-full bg-theme-background-opacity-1 py-0.5 px-3"
+        @keypress.enter="onEnter"
       />
     </div>
   </Modal>
@@ -23,7 +24,6 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { onClickOutside, useDraggable } from '@vueuse/core'
   import { usePlugin } from 'better-write-plugin-core'
-  import { ID } from 'better-write-types'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
@@ -32,7 +32,6 @@
   const { t } = useI18n()
   const plugin = usePlugin()
 
-  const id = ref<ID<string> | null>(null)
   const base = ref<HTMLElement | null>(null)
   const input = ref<string>('')
 
@@ -46,5 +45,14 @@
 
   const onClose = () => {
     ABSOLUTE.live.enter = false
+  }
+
+  const onEnter = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    plugin.emit('plugin-multiplayer-enter', input.value)
+
+    input.value = ''
   }
 </script>
