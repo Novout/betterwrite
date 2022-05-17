@@ -320,7 +320,7 @@ export const PluginPDFSet = (
               text: hooks.raw
                 .v2()
                 .purge()
-                .pdf(indent + row + '\n'),
+                .pdf(indent + (row ? row : ' ') + '\n'),
             }
           })
       }
@@ -671,7 +671,9 @@ export const PluginPDFSet = (
             let _raw: any = {}
 
             if (
-              entity.raw === hooks.env.emptyLine() &&
+              (entity.raw === hooks.env.emptyLine() ||
+                entity.raw === '' ||
+                entity.raw === ' ') &&
               entity.type === 'paragraph'
             ) {
               _raw = lineBreak(false)

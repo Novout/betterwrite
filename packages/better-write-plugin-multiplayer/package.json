@@ -1,14 +1,8 @@
 {
-	"name": "better-write-plugin-theme",
+	"name": "better-write-plugin-multiplayer",
 	"version": "0.16.2",
 	"author": "Novout",
 	"license": "MIT",
-	"keywords": [
-		"vue",
-		"hook",
-		"text",
-		"editor"
-	],
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
@@ -20,17 +14,14 @@
 	},
 	"files": [
 		"dist/**/*",
-		"css/**/*",
 		"package.json",
 		"LICENSE",
 		"README.md"
 	],
 	"dependencies": {
-		"@vueuse/core": "8.2.4",
-		"@vueuse/integrations": "7.5.5",
+		"@liveblocks/client": "0.16.4",
 		"better-write-plugin-core": "^0.16.2",
 		"better-write-types": "^0.16.2",
-		"pinia": "2.0.6",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {

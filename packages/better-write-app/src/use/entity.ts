@@ -172,10 +172,6 @@ export const useEntity = () => {
 
       await nextTick
 
-      PROJECT.updateContext(CONTEXT.$state)
-
-      await nextTick
-
       emitter.emit('entity-text-focus', {
         position: 'end',
         target: index - 1,

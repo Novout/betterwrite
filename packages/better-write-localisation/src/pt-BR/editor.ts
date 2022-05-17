@@ -1,6 +1,19 @@
 import { setPDFI18n } from 'better-write-plugin-pdf'
 
 export default {
+  live: {
+    enter: {
+      title: 'Entrar na Sala',
+      description: 'Insira o código de acesso no campo abaixo:',
+    },
+    create: {
+      title: 'Criar Sala',
+      description:
+        'Compartilhe o seu projeto com até 10 usuários em tempo real!',
+      button: 'Gerar Sala',
+      code: 'O código de acesso é:',
+    },
+  },
   blocked: {
     title: 'Better Write.',
     introduction: {
@@ -35,6 +48,7 @@ export default {
     chapters: 'Capítulos',
     tools: 'Ferramentas',
     help: 'Ajuda',
+    live: 'Compartilhar',
   },
   auth: {
     login: {
@@ -164,6 +178,10 @@ export default {
     },
     generator: {
       substitutions: 'Substituições',
+    },
+    live: {
+      enter: 'Entrar',
+      create: 'Criar Sala',
     },
   },
   window: {

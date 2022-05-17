@@ -10,6 +10,7 @@
       @input="block.onInput"
       @keydown="block.onKeyboard"
       @keypress.enter="block.onEnter"
+      @paste="block.onPaste"
       v-html="raw.v2().purge().editor(props.entity)"
     />
   </div>

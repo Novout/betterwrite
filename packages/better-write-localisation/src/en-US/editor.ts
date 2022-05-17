@@ -1,6 +1,19 @@
 import { setPDFI18n } from 'better-write-plugin-pdf'
 
 export default {
+  live: {
+    enter: {
+      title: 'Enter the Room',
+      description: 'Enter the access code below:',
+    },
+    create: {
+      title: 'Create Room',
+      description:
+        'Create a room for others to access and interact with your project!',
+      button: 'Generate Room',
+      code: 'The access code is:',
+    },
+  },
   blocked: {
     title: 'Better Write.',
     introduction: {
@@ -33,6 +46,7 @@ export default {
     chapters: 'Chapters',
     tools: 'Tools',
     help: 'Help',
+    live: 'Live',
   },
   auth: {
     login: {
@@ -165,6 +179,10 @@ export default {
     },
     generator: {
       substitutions: 'Substitutions',
+    },
+    live: {
+      enter: 'Enter',
+      create: 'Create Room',
     },
   },
   window: {

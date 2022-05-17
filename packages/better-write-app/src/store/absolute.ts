@@ -46,6 +46,10 @@ export const useAbsoluteStore = defineStore('absolute', {
       generator: {
         substitutions: false,
       },
+      live: {
+        create: false,
+        enter: false,
+      },
     }
   },
 })

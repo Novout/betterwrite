@@ -65,7 +65,9 @@ export const useListener = () => {
           e.preventDefault()
           e.stopPropagation()
 
-          await storage.normalize()
+          emitter.emit('entity-text-force-save')
+
+          await nextTick
 
           const value = index + 1
 
@@ -104,7 +106,9 @@ export const useListener = () => {
           e.preventDefault()
           e.stopPropagation()
 
-          await storage.normalize()
+          emitter.emit('entity-text-force-save')
+
+          await nextTick
 
           const value = index + 1
 
@@ -141,7 +145,9 @@ export const useListener = () => {
           e.preventDefault()
           e.stopPropagation()
 
-          await storage.normalize()
+          emitter.emit('entity-text-force-save')
+
+          await nextTick
 
           const value = index + 1
 

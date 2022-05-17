@@ -106,7 +106,7 @@
   import { useLanding } from '@/use/landing'
   import { useWebGL } from '@/use/webgl'
   import { useI18n } from 'vue-i18n'
-  import { onMounted, watch } from 'vue'
+  import { watch } from 'vue'
   import { useAuthStore } from '@/store/auth'
   import { useRouter } from 'vue-router'
 

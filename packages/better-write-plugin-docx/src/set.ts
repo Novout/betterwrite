@@ -200,7 +200,8 @@ export const PluginDocxSet = (
       }
 
       const paragraph = (raw: string): docx.Paragraph[] => {
-        if (hooks.env.emptyLine() === raw || raw === ' ') return [lineBreak()]
+        if (hooks.env.emptyLine() === raw || raw === '' || raw === ' ')
+          return [lineBreak()]
 
         return hooks.raw
           .v2()

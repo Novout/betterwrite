@@ -261,6 +261,14 @@ export const useBlockText = ({
     isSalvageable.value = true
   }
 
+  const onPaste = (e: ClipboardEvent) => {
+    if (e.clipboardData) {
+      e.preventDefault()
+      const text = e.clipboardData.getData('text/plain')
+      window.document.execCommand('insertText', false, text)
+    }
+  }
+
   const onArrows = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLDivElement
 
@@ -330,7 +338,7 @@ export const useBlockText = ({
 
       await nextTick
 
-      await storage.normalize()
+      emitter.emit('entity-text-force-save')
 
       await nextTick
 
@@ -341,5 +349,5 @@ export const useBlockText = ({
     }
   }
 
-  return { save, onWatcher, onMounted, onKeyboard, onInput, onEnter }
+  return { save, onWatcher, onMounted, onKeyboard, onInput, onPaste, onEnter }
 }
