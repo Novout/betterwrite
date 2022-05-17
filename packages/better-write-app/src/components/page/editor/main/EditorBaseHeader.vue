@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
   import { useAuthStore } from '@/store/auth'
-import { useEnv } from '@/use/env';
+  import { useEnv } from '@/use/env'
 
   const AUTH = useAuthStore()
 
