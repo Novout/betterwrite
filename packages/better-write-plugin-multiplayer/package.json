@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-multiplayer",
-	"version": "0.16.1",
+	"version": "0.16.2",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -19,9 +19,9 @@
 		"README.md"
 	],
 	"dependencies": {
-    "@liveblocks/client": "0.16.4",
-		"better-write-plugin-core": "^0.16.1",
-		"better-write-types": "^0.16.1",
+		"@liveblocks/client": "0.16.4",
+		"better-write-plugin-core": "^0.16.2",
+		"better-write-types": "^0.16.2",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {

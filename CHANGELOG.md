@@ -1,6 +1,16 @@
-# Changelog (12/05/2022)
+# Changelog (17/05/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.2
+
+* **fix(generator):** accept line breaking in inline paragraph entity [1f9d4af]
+* **fix(editor):** paste remove innerHTML [82431be]
+* **fix(editor):** last entity appear [a5dfa73]
+* **fix(pdf):** loading theme hooks in a start new route [4b4a0c3]
+* **feat(live):** set initial instances [4ce25e8]
+* **fix(live):** control key input [55f1708]
+* **feat(live):** room initial implementation [59cd882]
 
 ### v0.16.1
 
