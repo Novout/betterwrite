@@ -32,6 +32,7 @@
     "@vueuse/head": "0.7.5",
     "@vueuse/integrations": "8.2.5",
     "@vueuse/motion": "2.0.0-beta.12",
+    "better-write-importer": "^0.16.2",
     "better-write-localisation": "^0.16.2",
     "better-write-plugin-core": "^0.16.2",
     "better-write-plugin-docx": "^0.16.2",
@@ -61,6 +62,7 @@
   "devDependencies": {
     "@cypress/vite-dev-server": "2.2.2",
     "@intlify/vite-plugin-vue-i18n": "3.4.0",
+    "@rollup/plugin-inject": "4.0.4",
     "@types/file-saver": "2.0.5",
     "@types/jsdom": "16.2.14",
     "@types/three": "0.138.0",
@@ -76,6 +78,7 @@
     "eslint": "8.12.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-vue": "8.6.0",
+    "node-stdlib-browser": "1.2.0",
     "prettier": "2.6.2",
     "rimraf": "3.0.2",
     "typescript": "4.6.3",
@@ -126,7 +129,8 @@
         "vue-i18n",
         "vue-router",
         "vue-toastification",
-        "vue-typical"
+        "vue-typical",
+        "vuedraggable"
       ],
       "exclude": [
         "vue-demi"

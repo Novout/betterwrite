@@ -1,3 +1,4 @@
+import destr from 'destr'
 import { nextTick } from 'vue'
 import { useToast } from 'vue-toastification'
 import { saveAs } from 'file-saver'
@@ -24,6 +25,7 @@ import { usePlugin } from 'better-write-plugin-core'
 import { useBreakpoint } from './breakpoint'
 import { useRaw } from './raw'
 import { useFileSystemAccess } from '@vueuse/core'
+import { DocxToJson } from 'better-write-importer'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -184,22 +186,29 @@ export const useProject = () => {
     const _ = document.createElement('input')
     _.type = 'file'
     _.addEventListener('change', function () {
-      const file = (this.files as any)[0]
+      const file: File = (this.files as any)[0]
 
       if (!file) return
 
-      const reader = new FileReader()
-      reader.readAsText(file)
+      const isDoc = file.name.endsWith('.doc') || file.name.endsWith('.docx')
+      const isBW = file.name.endsWith('.bw')
 
-      reader.onload = function () {
-        if (!file.name.includes('.bw')) {
-          toast.error(t('toast.generics.error'))
+      const reader = new FileReader()
+      isDoc ? reader.readAsDataURL(file) : reader.readAsText(file)
+      reader.onload = async function () {
+        if (isBW) {
+          const content = destr(reader.result as string)
+
+          onLoadProject(content)
+
           return
         }
 
-        const content = JSON.parse(reader.result as string)
+        if (isDoc) {
+          await DocxToJson(reader.result as string)
 
-        onLoadProject(content)
+          return
+        }
       }
       reader.onerror = function (err) {}
     })
