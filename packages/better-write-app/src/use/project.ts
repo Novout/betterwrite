@@ -136,6 +136,8 @@ export const useProject = () => {
 
     if (!breakpoints.isMobile().value) ABSOLUTE.aside = true
 
+    ABSOLUTE.project.blocked = false
+
     const editor = document.querySelector('#edit')
 
     if (editor) editor.scrollTop = PROJECT.scrollLoaded
@@ -191,7 +193,7 @@ export const useProject = () => {
       .finally(() => {})
   }
 
-  const onLoadImporter = async (content: ImporterData, fileName: string) => {
+  const onLoadDOCX = async (content: ImporterData, fileName: string) => {
     const entities: Entities = []
 
     content.entities.forEach(({ type, raw }) => {
@@ -290,13 +292,107 @@ export const useProject = () => {
     if (!breakpoints.isMobile().value && PROJECT.type === 'creative')
       ABSOLUTE.aside = true
 
+    ABSOLUTE.project.blocked = false
+
+    toast.success(t('toast.project.create'))
+  }
+
+  const onLoadTXT = async (data: string, filename: string) => {
+    const content = data.split('\n')
+    const entities: Entities = []
+    let __FIRST_ROW__ = true
+
+    content.forEach((row) => {
+      if (__FIRST_ROW__ && row) {
+        entities.push(factory.entity().create('heading-one', row))
+        __FIRST_ROW__ = false
+
+        return
+      }
+
+      if (!row) {
+        entities.push(factory.entity().create('line-break'))
+
+        return
+      }
+
+      entities.push(factory.entity().create('paragraph', row))
+    })
+
+    PROJECT.createExternal({
+      name: ut.text().kebab(filename),
+      nameRaw: filename,
+      version: '0.1.0',
+      creator: 'betterwrite',
+      producer: 'betterwrite',
+      keywords: 'docx,project',
+      subject: 'betterwrite',
+      type: 'creative',
+      totalPagesCreated: 1,
+      main: {},
+      summary: {},
+      pageLoaded: 1,
+      scrollLoaded: 0,
+      offsetLoaded: 0,
+      pages: [
+        {
+          id: 1,
+          title: entities[0].raw,
+          entities,
+          createdAt: format.actually(),
+          updatedAt: format.actually(),
+        },
+      ],
+      bw: {
+        platform: 'web',
+        version: useEnv().packageVersion() as string,
+      },
+      pdf: {
+        encryption: {
+          userPassword: '',
+          ownerPassword: '',
+        },
+        permissions: {
+          printing: 'highResolution',
+          modifying: false,
+          copying: false,
+          annotating: true,
+          fillingForms: true,
+          contentAccessibility: true,
+          documentAssembly: true,
+        },
+      },
+      creative: {
+        drafts: [],
+      },
+      templates: {
+        generator: [],
+        substitutions: {
+          text: defines.generator().substitutions().text(),
+          italic: defines.generator().substitutions().italic(),
+          bold: defines.generator().substitutions().bold(),
+        },
+      },
+    })
+
+    await nextTick
+
+    CONTEXT.load(PROJECT.pages[0])
+
+    await nextTick
+
+    if (!breakpoints.isMobile().value && PROJECT.type === 'creative')
+      ABSOLUTE.aside = true
+
+    ABSOLUTE.project.blocked = false
+
     toast.success(t('toast.project.create'))
   }
 
   const onImportProject = () => {
     const _ = document.createElement('input')
     _.type = 'file'
-    _.accept = '.doc,.docx,.bw'
+    _.accept = '.doc,.docx,.bw,.txt'
     _.addEventListener('change', function () {
       const file: File = (this.files as any)[0]
 
@@ -304,6 +400,7 @@ export const useProject = () => {
 
       const isDoc = file.name.endsWith('.doc') || file.name.endsWith('.docx')
       const isBW = file.name.endsWith('.bw')
+      const isTXT = file.name.endsWith('.txt')
 
       const reader = new FileReader()
       isDoc ? reader.readAsDataURL(file) : reader.readAsText(file)
@@ -316,18 +413,22 @@ export const useProject = () => {
           return
         }
 
+        const filename = file.name
+          .replace('.bw', '')
+          .replace('.docx', '')
+          .replace('.doc', '')
+          .replace('.txt', '')
+
         if (isDoc) {
           const importers = await DocxToJson(reader.result as string)
 
-          onLoadImporter(
-            importers,
-            file.name
-              .replace('.bw', '')
-              .replace('.docx', '')
-              .replace('.doc', '')
-          )
+          onLoadDOCX(importers, filename)
 
           return
+        }
+
+        if (isTXT) {
+          await onLoadTXT(reader.result as string, filename)
         }
       }
       reader.onerror = function (err) {}
