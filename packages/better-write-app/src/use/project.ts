@@ -205,12 +205,15 @@ export const useProject = () => {
     let pages = 0
 
     entities.forEach((entity) => {
-      if (entity.type === 'heading-one') {
+      if (entity.type === 'heading-one' || chapter === null) {
         if (chapter) {
           chapters.push(chapter)
 
           chapter = null
         }
+
+        // for edge case
+        entity.type = 'heading-one'
 
         pages++
 
@@ -316,7 +319,13 @@ export const useProject = () => {
         if (isDoc) {
           const importers = await DocxToJson(reader.result as string)
 
-          onLoadImporter(importers, file.name)
+          onLoadImporter(
+            importers,
+            file.name
+              .replace('.bw', '')
+              .replace('.docx', '')
+              .replace('.doc', '')
+          )
 
           return
         }
