@@ -149,6 +149,10 @@ export const usePopulate = () => {
             fontFamily: useDefines().pdf().fontFamily()[1],
             fontSize: 20,
           },
+          note: {
+            text: '',
+            bw: true,
+          },
           background: {
             color: '#FFFFFF' as string,
             data: '' as string,

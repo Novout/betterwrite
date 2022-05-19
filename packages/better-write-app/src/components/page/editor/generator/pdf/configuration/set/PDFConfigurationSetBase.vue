@@ -77,6 +77,45 @@
           </section>
         </section>
       </div>
+      <div class="wb-input-container gap-5">
+        <p>{{ t('editor.pdf.note.title') }}</p>
+        <InputTextArea
+          v-model="PDF.styles.base.note.text"
+          class="resize-none h-30 w-50 wb-scroll bg-theme-background-opacity-1 shadow-xl p-2 rounded-sm"
+        />
+      </div>
+      <div class="wb-input-container">
+        <section
+          class="flex justify-center items-center w-full flex-row flex-wrap gap-5"
+        >
+          <section class="flex items-center">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.base.summary.title')
+            }}</label>
+            <InputBoolean v-model="pdf.switcher.summary" />
+          </section>
+          <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.summary.type') }}</label>
+            <InputSelect
+              v-model="pdf.base.summary.type"
+              :arr="useDefines().pdf().base().summaryStyle()"
+            />
+          </section>
+          <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.summary.fontSize') }}</label>
+            <InputNumber v-model="pdf.base.summary.fontSize" />
+          </section>
+          <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
+            <label>{{ t('editor.pdf.base.summary.fontFamily') }}</label>
+            <InputSelect
+              v-model="pdf.base.summary.fontFamily"
+              class="flex-1"
+              :arr="PDF.fonts"
+              :font="true"
+            />
+          </section>
+        </section>
+      </div>
       <div class="wb-input-container">
         <section
           class="flex justify-between items-center w-full flex-row flex-wrap gap-5"
@@ -162,38 +201,6 @@
             <label>{{ t('editor.pdf.base.header.fontFamily') }}</label>
             <InputSelect
               v-model="pdf.base.header.fontFamily"
-              class="flex-1"
-              :arr="PDF.fonts"
-              :font="true"
-            />
-          </section>
-        </section>
-      </div>
-      <div class="wb-input-container">
-        <section
-          class="flex justify-center items-center w-full flex-row flex-wrap gap-5"
-        >
-          <section class="flex items-center">
-            <label class="mx-2 text-xs">{{
-              t('editor.pdf.base.summary.title')
-            }}</label>
-            <InputBoolean v-model="pdf.switcher.summary" />
-          </section>
-          <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
-            <label>{{ t('editor.pdf.base.summary.type') }}</label>
-            <InputSelect
-              v-model="pdf.base.summary.type"
-              :arr="useDefines().pdf().base().summaryStyle()"
-            />
-          </section>
-          <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
-            <label>{{ t('editor.pdf.base.summary.fontSize') }}</label>
-            <InputNumber v-model="pdf.base.summary.fontSize" />
-          </section>
-          <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
-            <label>{{ t('editor.pdf.base.summary.fontFamily') }}</label>
-            <InputSelect
-              v-model="pdf.base.summary.fontFamily"
               class="flex-1"
               :arr="PDF.fonts"
               :font="true"
