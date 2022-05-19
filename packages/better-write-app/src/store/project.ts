@@ -85,6 +85,12 @@ export const useProjectStore = defineStore('project', {
 
       this.$state = usePopulate().project(payload, title)
     },
+    createExternal(project: ProjectState) {
+      const global = useGlobalStore()
+      global.reset()
+
+      this.$state = project
+    },
     newPage(title: string) {
       this.totalPagesCreated++
 
