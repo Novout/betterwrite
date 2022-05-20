@@ -2,7 +2,7 @@
   <div
     id="about-3"
     alt="https://www.artstation.com/rigdhi_gamernoob"
-    style="background-image: url('/src/assets/png/about2.png')"
+    :style="{ backgroundImage: `url(${Image})` }"
     class="flex bg-cover text-white min-h-screen justify-center items-center gap-20 flex-col w-full pt-10 py-30"
   >
     <div
@@ -45,6 +45,7 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
+  import Image from '@/assets/png/about2.png'
 
   const { t } = useI18n()
 </script>
