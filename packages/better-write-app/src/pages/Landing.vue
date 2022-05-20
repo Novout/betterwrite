@@ -49,12 +49,19 @@
           ></v-typical>
           <div
             v-motion
-            class="flex flex-col items-center justify-between w-1/2 lg:w-5/12 xl:w-1/3 mt-24 md:(mt-32)"
+            class="flex items-center justify-center gap-3 w-1/2 lg:w-5/12 xl:w-1/3 mt-24 md:(mt-32)"
             :initial="{ opacity: 0, y: 20 }"
             :enter="{ opacity: 1, y: 0, transition: { delay: 400 } }"
           >
             <button
-              class="flex text-gray-200 items-center text-lg rounded-full gap-2 bg-gray-800 hover:bg-gray-900 px-7 py-3.5 md:(px-8 py-4) shadow-xl transition-colors font-bold"
+              class="flex text-gray-200 items-center text-lg rounded-full gap-2 transition-colors bg-gradient-to-br from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-300 text-black px-7 py-3.5 md:(px-8 py-4) shadow-xl transition-colors font-bold"
+              @click.prevent.stop="router.push('/about')"
+            >
+              {{ t('landing.first.editor.about') }}
+              <IconHelp class="w-6 h-6" />
+            </button>
+            <button
+              class="flex text-gray-200 items-center text-lg rounded-full gap-2 transition-colors bg-gradient-to-br from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-900 px-7 py-3.5 md:(px-8 py-4) shadow-xl transition-colors font-bold"
               @click.prevent.stop="onClick"
             >
               {{ t('landing.first.editor.website') }}

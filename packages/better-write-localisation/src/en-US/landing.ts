@@ -23,6 +23,7 @@ export default {
     },
     editor: {
       website: 'Login',
+      about: 'About',
     },
     support: 'Follow the project!',
     paragraphs: [

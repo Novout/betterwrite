@@ -1,0 +1,121 @@
+<template>
+  <div
+    id="about-2"
+    class="flex items-center flex-col w-full md:w-2/4 py-20 px-5 pointer-events-none"
+  >
+    <h2
+      v-motion
+      :initial="{
+        opacity: 0,
+        y: -50,
+      }"
+      :visible="{
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 800,
+        },
+      }"
+      class="text-white text-center font-bold text-xl md:text-3xl font-poppins mt-5"
+    >
+      {{ t('about.portability.title') }}
+    </h2>
+    <p
+      v-motion
+      :initial="{
+        opacity: 0,
+        y: -50,
+      }"
+      :visible="{
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 800,
+        },
+      }"
+      class="text-white font-thin mt-5 text-lg"
+    >
+      {{ t('about.portability.description') }}
+    </p>
+    <div
+      v-motion
+      :initial="{
+        opacity: 0,
+      }"
+      :visible="{
+        opacity: 1,
+        transition: {
+          duration: 800,
+        },
+      }"
+      :delay="500"
+      class="flex items-center justify-around w-full py-20"
+    >
+      <div
+        v-motion
+        :initial="{
+          y: -10,
+        }"
+        :visible="{
+          y: 0,
+          transition: {
+            duration: 1200,
+            repeat: Infinity,
+            repeatType: 'mirror',
+          },
+        }"
+        class="flex flex-col gap-5"
+      >
+        <AboutPortabilityItem color="blue"> .DOCX </AboutPortabilityItem>
+        <AboutPortabilityItem color="white"> .TXT </AboutPortabilityItem>
+        <AboutPortabilityItem color="orange"> .BW </AboutPortabilityItem>
+      </div>
+      <div
+        v-motion
+        :initial="{
+          y: 10,
+        }"
+        :visible="{
+          y: 0,
+          transition: {
+            duration: 1200,
+            repeat: Infinity,
+            repeatType: 'mirror',
+          },
+        }"
+        :delay="500"
+        class="flex justify-center gap-20 items-center w-full"
+      >
+        <IconArrowTo class="text-white h-12 w-12 transform -rotate-90" />
+        <img alt="BW Logo" src="/logo.png" width="100" />
+        <IconArrowTo class="text-white h-12 w-12 transform -rotate-90" />
+      </div>
+      <div
+        v-motion
+        :initial="{
+          y: 10,
+        }"
+        :visible="{
+          y: 0,
+          transition: {
+            duration: 1200,
+            repeat: Infinity,
+            repeatType: 'mirror',
+          },
+        }"
+        class="flex flex-col gap-5"
+      >
+        <AboutPortabilityItem color="blue"> .DOCX </AboutPortabilityItem>
+        <AboutPortabilityItem color="white"> .TXT </AboutPortabilityItem>
+        <AboutPortabilityItem color="red"> .PDF </AboutPortabilityItem>
+        <AboutPortabilityItem color="orange"> .BW </AboutPortabilityItem>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import { useI18n } from 'vue-i18n'
+
+  const { t } = useI18n()
+</script>
