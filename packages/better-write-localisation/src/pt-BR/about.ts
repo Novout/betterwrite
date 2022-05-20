@@ -15,6 +15,8 @@ export default {
       'Converta seus projetos de outras ferramentas e transforme-os como preferir.',
   },
   finish: {
-    title: 'Explore. Descubra. Transforme.',
+    title1: 'Explore.',
+    title2: 'Descubra.',
+    title3: 'Transforme.',
   },
 }

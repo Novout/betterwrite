@@ -1,7 +1,8 @@
 <template>
-  <div id="about-0" class="flex flex-col items-center py-10">
-    <div class="flex gap-10 items-center flex-col md:w-2/4 lg:w-3/5 w-full">
-      <h1
+  <div id="about-0" class="flex min-h-screen flex-col justify-between items-center py-10">
+    <div class="flex gap-10 items-center justify-around flex-col justify-start h-full md:w-3/4 lg:w-3/5 w-full">
+      <div class="flex flex-col gap-5">
+        <h1
         v-motion
         :initial="{
           opacity: 0,
@@ -41,6 +42,7 @@
         :loop="Infinity"
         :wrapper="'p'"
       />
+      </div>
       <img
         v-motion
         :initial="{
