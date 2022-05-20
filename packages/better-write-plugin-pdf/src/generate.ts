@@ -884,9 +884,7 @@ export const PluginPDFSet = (
           font: utils().correctFontInject(
             stores.PDF.styles.base.summary.fontFamily
           ),
-          fontSize: utils().correctFontInject(
-            stores.PDF.styles.base.summary.fontSize
-          ),
+          fontSize: stores.PDF.styles.base.summary.fontSize,
           margin: [
             generate().base().pageMargins[0],
             30,
