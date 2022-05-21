@@ -57,7 +57,9 @@
               class="flex text-gray-200 items-center text-lg rounded-full gap-2 transition-colors bg-gradient-to-br from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-300 text-black px-7 py-3.5 md:(px-8 py-4) shadow-xl transition-colors font-bold"
               @click.prevent.stop="router.push('/about')"
             >
-              {{ t('landing.first.editor.about') }}
+              <p class="hidden md:inline-block">
+                {{ t('landing.first.editor.about') }}
+              </p>
               <IconHelp class="w-6 h-6" />
             </button>
             <button
@@ -90,7 +92,7 @@
             ></v-typical>
           </a>
         </div>
-        <AuthMain v-else />
+        <AuthMain v-else @close="isNecessaryLogin = false" />
       </div>
       <div
         v-else
@@ -114,10 +116,7 @@
   import { useWebGL } from '@/use/webgl'
   import { useI18n } from 'vue-i18n'
   import { watch } from 'vue'
-  import { useAuthStore } from '@/store/auth'
   import { useRouter } from 'vue-router'
-
-  const AUTH = useAuthStore()
 
   const { onClick, isNecessaryLogin } = useLanding()
   const { t } = useI18n()
@@ -125,8 +124,6 @@
   const router = useRouter()
 
   webgl.init()
-
-  if (AUTH.account.user) router.push('/')
 
   watch(isNecessaryLogin, (login) => {
     if (login) {
