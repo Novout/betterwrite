@@ -1,7 +1,7 @@
 <template>
   <div
     id="about-2"
-    class="flex items-center flex-col w-full md:w-2/4 py-20 px-5 pointer-events-none"
+    class="flex min-h-screen justify-evenly items-center flex-col w-full md:w-3/4 lg:w-3/5 px-5 pointer-events-none"
   >
     <h2
       v-motion
@@ -16,7 +16,7 @@
           duration: 800,
         },
       }"
-      class="text-white text-center font-bold text-xl md:text-3xl font-poppins mt-5"
+      class="text-white text-center font-bold text-xl md:text-2xl lg:text-3xl font-poppins"
     >
       {{ t('about.portability.title') }}
     </h2>
@@ -33,7 +33,7 @@
           duration: 800,
         },
       }"
-      class="text-white font-thin mt-5 text-lg"
+      class="text-white font-thin mt-5 text-base lg:text-lg"
     >
       {{ t('about.portability.description') }}
     </p>
@@ -49,7 +49,7 @@
         },
       }"
       :delay="500"
-      class="flex items-center justify-around w-full py-20"
+      class="flex items-center justify-center md:justify-around w-full py-5"
     >
       <div
         v-motion
@@ -84,11 +84,15 @@
           },
         }"
         :delay="500"
-        class="flex justify-center gap-20 items-center w-full"
+        class="flex justify-center gap-5 md:gap-20 items-center w-full"
       >
-        <IconArrowTo class="text-white h-12 w-12 transform -rotate-90" />
+        <IconArrowTo
+          class="text-white h-8 w-8 md:(h-12 w-12) transform -rotate-90"
+        />
         <img alt="BW Logo" src="/logo.png" width="100" />
-        <IconArrowTo class="text-white h-12 w-12 transform -rotate-90" />
+        <IconArrowTo
+          class="text-white h-8 w-8 md:(h-12 w-12) transform -rotate-90"
+        />
       </div>
       <div
         v-motion

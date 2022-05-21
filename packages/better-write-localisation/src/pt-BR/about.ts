@@ -9,7 +9,7 @@ export default {
     description:
       'Insira títulos, paragráfos, quebras de linha, quebras de página, listas, caixas de seleção, imagens e desenhos separadamente.',
     bw: 'Better Write',
-    canvas: 'Outros Editores',
+    canvas: 'Outros',
   },
   portability: {
     title: 'Crie como quiser, para o que quiser.',

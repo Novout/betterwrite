@@ -3,7 +3,7 @@
     id="about-3"
     alt="https://www.artstation.com/rigdhi_gamernoob"
     :style="{ backgroundImage: `url(${Image})` }"
-    class="flex bg-cover text-white min-h-screen justify-start items-center gap-20 flex-col w-full pt-10 py-30"
+    class="flex bg-cover text-white min-h-screen justify-around items-center flex-col w-full pt-10 py-30"
   >
     <div
       v-motion
@@ -23,7 +23,7 @@
       <AboutFinishLogo />
     </div>
     <h2
-      class="flex gap-2 font-bold text-lg md:text-3xl font-poppins text-center tracking-wide"
+      class="flex flex-col md:flex-row gap-2 font-bold text-lg md:text-3xl font-poppins text-center tracking-wide"
     >
       <span
         v-motion

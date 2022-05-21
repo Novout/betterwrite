@@ -1,7 +1,7 @@
 <template>
   <div
     id="about-1"
-    class="flex flex-col items-center w-full md:w-3/4 border border-gray-900 shadow-xl shadow-gray-900 p-15 mt-20"
+    class="flex min-h-screen justify-evenly p-5 flex-col items-center w-full md:w-3/4 border border-gray-900 shadow-xl shadow-gray-900"
   >
     <h2
       v-motion
@@ -16,7 +16,7 @@
           duration: 800,
         },
       }"
-      class="text-white text-center font-bold text-xl md:text-3xl font-poppins mt-5"
+      class="text-white text-center font-bold text-xl md:text-2xl lg:text-3xl font-poppins mt-5"
     >
       {{ t('about.entity.title') }}
     </h2>
@@ -33,12 +33,12 @@
           duration: 800,
         },
       }"
-      class="text-white font-thin my-10 text-lg"
+      class="text-white font-thin my-2 lg:my-10 text-base lg:text-lg"
     >
       {{ t('about.entity.description') }}
     </p>
     <div class="flex w-full justify-between gap-10">
-      <div class="flex flex-col items-center w-full">
+      <div class="flex flex-1 flex-col items-center w-full">
         <h2
           v-motion
           :initial="{
@@ -129,7 +129,7 @@
           type="image"
         />
       </div>
-      <div class="flex flex-col items-center w-full">
+      <div class="flex flex-1 flex-col items-center w-full">
         <h2
           v-motion
           :initial="{
@@ -161,7 +161,7 @@
             },
           }"
           :delay="500 * 5"
-          class="flex gap-2 flex-col items-center bg-gray-900 text-gray-200 py-2 px-5 my-2"
+          class="flex gap-2 flex-col items-center bg-gray-900 text-gray-200 py-2 px-5 my-2 w-full"
         >
           <h2
             class="font-bold text-lg md:text-2xl my-3"

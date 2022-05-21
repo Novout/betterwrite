@@ -12,7 +12,7 @@
         ? 'from-orange-300 to-orange-400 shadow-xl shadow-orange-900'
         : '',
     ]"
-    class="flex font-bold items-center justify-center p-10 rounded-full w-5 h-5 bg-gradient-to-br"
+    class="flex font-bold items-center justify-center p-7 md:p-9 rounded-full w-5 h-5 bg-gradient-to-br"
   >
     <slot />
   </div>
