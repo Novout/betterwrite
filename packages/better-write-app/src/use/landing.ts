@@ -15,7 +15,11 @@ export const useLanding = () => {
 
   const isNecessaryLogin = ref<boolean>(!!route.query.login)
 
-  if (s?.auth?.user()) isNecessaryLogin.value = false
+  if (s?.auth?.user()) {
+    isNecessaryLogin.value = false
+
+    if (!!route.query.login) router.push('/')
+  }
 
   onMounted(() => {
     document.body.removeAttribute('class')

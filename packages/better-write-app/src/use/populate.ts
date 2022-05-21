@@ -31,7 +31,7 @@ export const usePopulate = () => {
             title: project.name,
             entities: [
               factory.entity().create('heading-one', title || project.name),
-              factory.entity().create('paragraph', debug().names().paragraph()),
+              factory.entity().create('paragraph', ''),
             ],
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
@@ -87,9 +87,7 @@ export const usePopulate = () => {
           {
             id: 1,
             title: project.name,
-            entities: [
-              factory.entity().create('paragraph', debug().names().paragraph()),
-            ],
+            entities: [factory.entity().create('paragraph', '')],
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
           },

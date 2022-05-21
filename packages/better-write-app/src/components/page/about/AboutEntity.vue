@@ -33,7 +33,7 @@
           duration: 800,
         },
       }"
-      class="text-white font-thin my-2 lg:my-10 text-base lg:text-lg"
+      class="text-white font-thin my-2 text-base lg:text-lg text-center"
     >
       {{ t('about.entity.description') }}
     </p>
@@ -72,7 +72,7 @@
           :delay="500"
           :content="
             t('editor.project.control.title', {
-              suffix: PROJECT.totalPagesCreated + 1,
+              suffix: 1,
             })
           "
           type="heading-one"
@@ -170,7 +170,7 @@
           >
             {{
               t('editor.project.control.title', {
-                suffix: PROJECT.totalPagesCreated + 1,
+                suffix: 1,
               })
             }}
           </h2>
@@ -188,11 +188,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useProjectStore } from '@/store/project'
   import { usePopulate } from '@/use/populate'
   import { useI18n } from 'vue-i18n'
-
-  const PROJECT = useProjectStore()
 
   const { t } = useI18n()
   const populate = usePopulate()

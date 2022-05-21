@@ -76,7 +76,7 @@ export const useProject = () => {
       if (!breakpoints.isMobile().value && type === 'creative')
         ABSOLUTE.aside = true
 
-      await local.onSaveProject()
+      await local.onSaveProject(false)
     }
 
     return { new: n }
