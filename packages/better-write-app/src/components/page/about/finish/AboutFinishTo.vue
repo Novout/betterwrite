@@ -33,7 +33,7 @@
   const onClick = () => {
     isLoading.value = true
 
-    router.push('/landing').finally(() => {
+    router.push({ path: '/landing', query: { login: 'auth' } }).finally(() => {
       isLoading.value = false
     })
   }

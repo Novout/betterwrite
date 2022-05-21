@@ -40,7 +40,8 @@ export const useEditor = () => {
 
   const init = () => {
     onMounted(() => {
-      if (!AUTH.account.user && network.isOnline.value) router.push('/landing')
+      if (!AUTH.account.user && network.isOnline.value)
+        router.push({ path: '/landing', query: { login: 'auth' } })
 
       project.onLoadProject()
     })
