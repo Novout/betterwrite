@@ -59,7 +59,7 @@
   const onClick = () => {
     if (props.hidden) return
 
-    local.onSaveProject().then(() => {
+    local.onSaveProject(false).then(() => {
       props.back ? router.back() : router.push('/landing')
     })
   }

@@ -44,6 +44,10 @@ export default defineConfig({
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
+      green: colors.green,
+      orange: colors.orange,
+      red: colors.red,
+      blue: colors.blue
     },
     fontSize: {
       '3xs': '.6rem',

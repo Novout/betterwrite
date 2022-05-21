@@ -83,6 +83,16 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.pdf.styles.base.note) {
+      _.pdf.styles.base = {
+        ..._.pdf.styles.base,
+        note: {
+          text: '',
+          bw: true,
+        },
+      }
+    }
+
     return _
   }
 

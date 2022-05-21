@@ -1,0 +1,38 @@
+{
+	"name": "better-write-importer",
+	"version": "0.16.3",
+	"author": "Novout",
+	"license": "MIT",
+	"keywords": [
+		"vue",
+		"hook",
+		"text",
+		"editor"
+	],
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"serve": "rimraf ./dist && unbuild",
+		"test": "echo \"Error: no test specified\"",
+		"build": "rimraf ./dist && unbuild",
+		"lint": "prettier --write src/"
+	},
+	"files": [
+		"dist/**/*",
+		"package.json",
+		"LICENSE",
+		"README.md"
+	],
+	"dependencies": {
+		"@zip.js/zip.js": "2.4.12",
+		"better-write-types": "^0.16.3",
+		"destr": "1.1.1",
+		"xml-js": "1.6.11"
+	},
+	"devDependencies": {
+		"prettier": "2.5.1",
+		"rimraf": "3.0.2",
+		"unbuild": "0.7.0"
+	}
+}

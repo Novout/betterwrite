@@ -13,6 +13,11 @@ const routes = [
     component: () => import('@/pages/Landing.vue'),
   },
   {
+    name: 'About',
+    path: '/about',
+    component: () => import('@/pages/About.vue'),
+  },
+  {
     name: 'Dashboard',
     path: '/dashboard',
     component: () => import('@/pages/Dashboard.vue'),

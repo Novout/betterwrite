@@ -238,7 +238,7 @@ export const useDefines = () => {
           },
           {
             active: true,
-            old: '&nbsp',
+            old: '&nbsp;',
             new: ' ',
           },
           {

@@ -1,7 +1,7 @@
+import destr from 'destr'
 import { nextTick } from 'vue'
 import { useToast } from 'vue-toastification'
 import { saveAs } from 'file-saver'
-import i18n from '@/lang'
 import { useProjectStore } from '@/store/project'
 import { useContextStore } from '@/store/context'
 import { useLocalStorage } from './storage/local'
@@ -16,6 +16,7 @@ import {
   ContextState,
   Entity,
   Entities,
+  ImporterData,
 } from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { useEnv } from './env'
@@ -24,6 +25,12 @@ import { usePlugin } from 'better-write-plugin-core'
 import { useBreakpoint } from './breakpoint'
 import { useRaw } from './raw'
 import { useFileSystemAccess } from '@vueuse/core'
+import { DocxToJson } from 'better-write-importer'
+import { useFactory } from './factory'
+import { useI18n } from 'vue-i18n'
+import { useDefines } from './defines'
+import { useFormat } from './format'
+import { useUtils } from './utils'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -41,7 +48,11 @@ export const useProject = () => {
   const raw = useRaw()
   const plugin = usePlugin()
   const breakpoints = useBreakpoint()
-  const { t } = i18n.global
+  const factory = useFactory()
+  const defines = useDefines()
+  const format = useFormat()
+  const ut = useUtils()
+  const { t } = useI18n()
 
   const external = () => {
     const n = async (type: ProjectType, skipAlert: boolean = false) => {
@@ -65,7 +76,7 @@ export const useProject = () => {
       if (!breakpoints.isMobile().value && type === 'creative')
         ABSOLUTE.aside = true
 
-      await local.onSaveProject()
+      await local.onSaveProject(false)
     }
 
     return { new: n }
@@ -125,6 +136,8 @@ export const useProject = () => {
 
     if (!breakpoints.isMobile().value) ABSOLUTE.aside = true
 
+    ABSOLUTE.project.blocked = false
+
     const editor = document.querySelector('#edit')
 
     if (editor) editor.scrollTop = PROJECT.scrollLoaded
@@ -180,26 +193,243 @@ export const useProject = () => {
       .finally(() => {})
   }
 
+  const onLoadDOCX = async (content: ImporterData, fileName: string) => {
+    const entities: Entities = []
+
+    content.entities.forEach(({ type, raw }) => {
+      const entity = factory.entity().create(type, raw)
+
+      entities.push(entity)
+    })
+
+    const chapters: ContextState[] = []
+    let chapter: ContextState | null = null
+    let pages = 0
+
+    entities.forEach((entity) => {
+      if (entity.type === 'heading-one' || chapter === null) {
+        if (chapter) {
+          chapters.push(chapter)
+
+          chapter = null
+        }
+
+        // for edge case
+        entity.type = 'heading-one'
+
+        pages++
+
+        chapter = {
+          id: pages,
+          title: entity.raw,
+          entities: [entity],
+          createdAt: format.actually(),
+          updatedAt: format.actually(),
+        }
+
+        return
+      }
+
+      if (chapter) chapter.entities.push(entity)
+    })
+
+    if (chapter) chapters.push(chapter)
+
+    PROJECT.createExternal({
+      name: ut.text().kebab(fileName),
+      nameRaw: fileName,
+      version: '0.1.0',
+      creator: 'betterwrite',
+      producer: 'betterwrite',
+      keywords: 'docx,project',
+      subject: 'betterwrite',
+      type: 'creative',
+      totalPagesCreated: pages,
+      main: {},
+      summary: {},
+      pageLoaded: 1,
+      scrollLoaded: 0,
+      offsetLoaded: 0,
+      pages: chapters,
+      bw: {
+        platform: 'web',
+        version: useEnv().packageVersion() as string,
+      },
+      pdf: {
+        encryption: {
+          userPassword: '',
+          ownerPassword: '',
+        },
+        permissions: {
+          printing: 'highResolution',
+          modifying: false,
+          copying: false,
+          annotating: true,
+          fillingForms: true,
+          contentAccessibility: true,
+          documentAssembly: true,
+        },
+      },
+      creative: {
+        drafts: [],
+      },
+      templates: {
+        generator: [],
+        substitutions: {
+          text: defines.generator().substitutions().text(),
+          italic: defines.generator().substitutions().italic(),
+          bold: defines.generator().substitutions().bold(),
+        },
+      },
+    })
+
+    await nextTick
+
+    CONTEXT.load(PROJECT.pages[0])
+
+    await nextTick
+
+    if (!breakpoints.isMobile().value && PROJECT.type === 'creative')
+      ABSOLUTE.aside = true
+
+    ABSOLUTE.project.blocked = false
+
+    toast.success(t('toast.project.create'))
+  }
+
+  const onLoadTXT = async (data: string, filename: string) => {
+    const content = data.split('\n')
+    const entities: Entities = []
+    let __FIRST_ROW__ = true
+
+    content.forEach((row) => {
+      if (__FIRST_ROW__ && row) {
+        entities.push(factory.entity().create('heading-one', row))
+        __FIRST_ROW__ = false
+
+        return
+      }
+
+      if (!row) {
+        entities.push(factory.entity().create('line-break'))
+
+        return
+      }
+
+      entities.push(factory.entity().create('paragraph', row))
+    })
+
+    PROJECT.createExternal({
+      name: ut.text().kebab(filename),
+      nameRaw: filename,
+      version: '0.1.0',
+      creator: 'betterwrite',
+      producer: 'betterwrite',
+      keywords: 'docx,project',
+      subject: 'betterwrite',
+      type: 'creative',
+      totalPagesCreated: 1,
+      main: {},
+      summary: {},
+      pageLoaded: 1,
+      scrollLoaded: 0,
+      offsetLoaded: 0,
+      pages: [
+        {
+          id: 1,
+          title: entities[0].raw,
+          entities,
+          createdAt: format.actually(),
+          updatedAt: format.actually(),
+        },
+      ],
+      bw: {
+        platform: 'web',
+        version: useEnv().packageVersion() as string,
+      },
+      pdf: {
+        encryption: {
+          userPassword: '',
+          ownerPassword: '',
+        },
+        permissions: {
+          printing: 'highResolution',
+          modifying: false,
+          copying: false,
+          annotating: true,
+          fillingForms: true,
+          contentAccessibility: true,
+          documentAssembly: true,
+        },
+      },
+      creative: {
+        drafts: [],
+      },
+      templates: {
+        generator: [],
+        substitutions: {
+          text: defines.generator().substitutions().text(),
+          italic: defines.generator().substitutions().italic(),
+          bold: defines.generator().substitutions().bold(),
+        },
+      },
+    })
+
+    await nextTick
+
+    CONTEXT.load(PROJECT.pages[0])
+
+    await nextTick
+
+    if (!breakpoints.isMobile().value && PROJECT.type === 'creative')
+      ABSOLUTE.aside = true
+
+    ABSOLUTE.project.blocked = false
+
+    toast.success(t('toast.project.create'))
+  }
+
   const onImportProject = () => {
     const _ = document.createElement('input')
     _.type = 'file'
+    _.accept = '.doc,.docx,.bw,.txt'
     _.addEventListener('change', function () {
-      const file = (this.files as any)[0]
+      const file: File = (this.files as any)[0]
 
       if (!file) return
 
-      const reader = new FileReader()
-      reader.readAsText(file)
+      const isDoc = file.name.endsWith('.doc') || file.name.endsWith('.docx')
+      const isBW = file.name.endsWith('.bw')
+      const isTXT = file.name.endsWith('.txt')
 
-      reader.onload = function () {
-        if (!file.name.includes('.bw')) {
-          toast.error(t('toast.generics.error'))
+      const reader = new FileReader()
+      isDoc ? reader.readAsDataURL(file) : reader.readAsText(file)
+      reader.onload = async function () {
+        if (isBW) {
+          const content = destr(reader.result as string)
+
+          onLoadProject(content)
+
           return
         }
 
-        const content = JSON.parse(reader.result as string)
+        const filename = file.name
+          .replace('.bw', '')
+          .replace('.docx', '')
+          .replace('.doc', '')
+          .replace('.txt', '')
 
-        onLoadProject(content)
+        if (isDoc) {
+          const importers = await DocxToJson(reader.result as string)
+
+          onLoadDOCX(importers, filename)
+
+          return
+        }
+
+        if (isTXT) {
+          await onLoadTXT(reader.result as string, filename)
+        }
       }
       reader.onerror = function (err) {}
     })

@@ -12,10 +12,21 @@ import vitePackageVersion from 'vite-plugin-package-version'
 import viteChecker from 'vite-plugin-checker'
 import viteFonts from 'vite-plugin-fonts'
 import viteSitemap from 'vite-plugin-pages-sitemap'
+import { viteStdlib } from "./scripts/vite"
 import windiCSS from 'vite-plugin-windicss'
+import stdLibBrowser from 'node-stdlib-browser'
 
 export default defineConfig({
   base: './',
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "./src"),
+      ...stdLibBrowser
+    },
+  },
+  optimizeDeps: {
+    include: ['buffer', 'process']
+  },
   define: {
     __VUE_I18N_FULL_INSTALL__: true,
     __VUE_I18N_LEGACY_API__: false,
@@ -58,6 +69,7 @@ export default defineConfig({
     vitePersist(),
     vitePackageAccess(),
     vitePackageVersion(),
+    viteStdlib(),
     vitePWA({
       base: '/',
       registerType: 'prompt',
@@ -153,11 +165,6 @@ export default defineConfig({
         }
       }
     }
-  },
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "./src"),
-    },
   },
   server: {
     fs: {

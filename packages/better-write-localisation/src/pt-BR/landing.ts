@@ -23,6 +23,7 @@ export default {
     },
     editor: {
       website: 'Entrar',
+      about: 'Saiba Mais!',
     },
     support: 'Acompanhe o projeto de perto!',
     paragraphs: [

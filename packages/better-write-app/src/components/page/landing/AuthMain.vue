@@ -3,8 +3,12 @@
     v-motion
     :initial="{ opacity: 0, y: 50 }"
     :enter="{ opacity: 1, y: 0, transition: { delay: 0 } }"
-    class="flex items-center flex-col w-full md:w-1/3 bg-black-opacity shadow-lg p-5"
+    class="flex items-center flex-col w-full md:w-3/5 xl:w-1/3 bg-black-opacity shadow-lg p-5"
   >
+    <IconClose
+      class="absolute wb-icon right-5 w-6 h-6"
+      @click.prevent.stop="emit('close')"
+    />
     <img
       v-motion
       :initial="{ opacity: 0 }"
@@ -137,6 +141,7 @@
   const supabase = useSupabase()
   const router = useRouter()
   const { t } = useI18n()
+  const emit = defineEmits(['close'])
 
   const verification = ref<boolean>(false)
   const user = reactive({

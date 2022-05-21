@@ -31,7 +31,7 @@ export const usePopulate = () => {
             title: project.name,
             entities: [
               factory.entity().create('heading-one', title || project.name),
-              factory.entity().create('paragraph', debug().names().paragraph()),
+              factory.entity().create('paragraph', ''),
             ],
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
@@ -87,9 +87,7 @@ export const usePopulate = () => {
           {
             id: 1,
             title: project.name,
-            entities: [
-              factory.entity().create('paragraph', debug().names().paragraph()),
-            ],
+            entities: [factory.entity().create('paragraph', '')],
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
           },
@@ -131,7 +129,7 @@ export const usePopulate = () => {
   const debug = () => {
     const names = () => {
       const paragraph = () => {
-        return 'Vivamus ac facilisis nisl. Nam a nulla convallis, euismod libero a, rutrum purus. Mauris luctus maximus diam, et ornare dolor luctus vel. Nam mi sem, venenatis sed elementum et, tempor id orci. Duis eget erat a eros scelerisque faucibus. Sed scelerisque pharetra justo id placerat. Mauris sit amet est eget felis iaculis dictum. In hac habitasse platea dictumst. Aenean nibh ipsum, faucibus nec pulvinar sed, euismod gravida metus. Vivamus quis nisl in nisl aliquet aliquam. Vestibulum quis tortor feugiat, faucibus ante quis, rutrum nulla. Donec congue ornare luctus.'
+        return '- Vivamus ac facilisis nisl.'
       }
 
       return { paragraph }
@@ -148,6 +146,10 @@ export const usePopulate = () => {
             type: useDefines().pdf().base().summaryStyle()[0] as any,
             fontFamily: useDefines().pdf().fontFamily()[1],
             fontSize: 20,
+          },
+          note: {
+            text: '',
+            bw: true,
           },
           background: {
             color: '#FFFFFF' as string,

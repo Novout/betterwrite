@@ -23,8 +23,14 @@ export interface PDFStateStylesBaseMargins {
   bottom: number
 }
 
+export interface PDFStateStylesBaseNote {
+  text: string
+  bw: boolean
+}
+
 export interface PDFStateStylesBase {
   summary: PDFStateStylesBaseSummary
+  note: PDFStateStylesBaseNote
   header: PDFStateStylesBaseHeader
   footer: PDFStateStylesBaseFooter
   background: PDFStateStylesBaseBackground

@@ -3,16 +3,23 @@ import { useI18n } from 'vue-i18n'
 import { computed, onMounted, nextTick, ref } from 'vue'
 import { useEnv } from '@/use/env'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { s } from '@/use/storage/supabase'
 
 export const useLanding = () => {
   const { t } = useI18n()
   const env = useEnv()
   const router = useRouter()
+  const route = useRoute()
   const { isLoading } = useNProgress()
 
-  const isNecessaryLogin = ref<boolean>(false)
+  const isNecessaryLogin = ref<boolean>(!!route.query.login)
+
+  if (s?.auth?.user()) {
+    isNecessaryLogin.value = false
+
+    if (!!route.query.login) router.push('/')
+  }
 
   onMounted(() => {
     document.body.removeAttribute('class')

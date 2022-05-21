@@ -4,7 +4,7 @@
     :initial="{ opacity: 0, y: 10 }"
     :enter="{ opacity: 1, y: 0 }"
     :delay="0"
-    class="flex flex-col justify-start items-start p-5 gap-5"
+    class="flex wb-scroll overflow-x-hidden flex-col justify-start items-start p-5 gap-5"
   >
     <div class="w-full">
       <EditorAbsoluteHeader
@@ -36,31 +36,31 @@
       v-motion
       :initial="{ opacity: 0, y: 30 }"
       :enter="{ opacity: 1, y: 0 }"
-      :delay="0"
+      :delay="400"
     />
     <PDFConfigurationSetHeadingOne
       v-motion
       :initial="{ opacity: 0, y: 30 }"
       :enter="{ opacity: 1, y: 0 }"
-      :delay="0"
+      :delay="500"
     />
     <PDFConfigurationSetHeadingTwo
       v-motion
       :initial="{ opacity: 0, y: 30 }"
       :enter="{ opacity: 1, y: 0 }"
-      :delay="0"
+      :delay="600"
     />
     <PDFConfigurationSetHeadingThree
       v-motion
       :initial="{ opacity: 0, y: 30 }"
       :enter="{ opacity: 1, y: 0 }"
-      :delay="0"
+      :delay="700"
     />
     <PDFConfigurationSetLineBreak
       v-motion
       :initial="{ opacity: 0, y: 30 }"
       :enter="{ opacity: 1, y: 0 }"
-      :delay="0"
+      :delay="800"
     />
   </div>
 </template>

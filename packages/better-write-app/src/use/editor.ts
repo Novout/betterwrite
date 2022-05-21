@@ -7,7 +7,7 @@ import { useLocalStorage } from '@/use/storage/local'
 import { useEventListener, useFullscreen, useNetwork } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
 import { usePlugin } from 'better-write-plugin-core'
-import { computed, onMounted, watch } from 'vue'
+import { computed, onBeforeMount, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useListener } from './listener'
@@ -39,10 +39,13 @@ export const useEditor = () => {
   const network = useNetwork()
 
   const init = () => {
-    onMounted(() => {
-      if (!AUTH.account.user && network.isOnline.value) router.push('/landing')
+    onBeforeMount(() => {
+      if (!AUTH.account.user && network.isOnline.value)
+        router.push({ path: '/landing', query: { login: 'auth' } })
+    })
 
-      project.onLoadProject()
+    onMounted(() => {
+      project.onLoadProject(undefined, false)
     })
 
     useEventListener('beforeunload', () => {

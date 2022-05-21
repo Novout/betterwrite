@@ -5,7 +5,6 @@ import { useGlobalStore } from './global'
 import { usePopulate } from '../use/populate'
 import { useProject } from '@/use/project'
 import { useFactory } from '../use/factory'
-import { toRaw } from 'vue'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -85,6 +84,12 @@ export const useProjectStore = defineStore('project', {
 
       this.$state = usePopulate().project(payload, title)
     },
+    createExternal(project: ProjectState) {
+      const global = useGlobalStore()
+      global.reset()
+
+      this.$state = project
+    },
     newPage(title: string) {
       this.totalPagesCreated++
 
@@ -93,9 +98,7 @@ export const useProjectStore = defineStore('project', {
         title,
         entities: [
           useFactory().entity().create('heading-one', title),
-          useFactory()
-            .entity()
-            .create('paragraph', usePopulate().debug().names().paragraph()),
+          useFactory().entity().create('paragraph', ''),
         ],
         createdAt: useFormat().actually(),
         updatedAt: useFormat().actually(),
