@@ -7,7 +7,7 @@
     </p>
     <h1
       v-if="type === 'heading-one'"
-      class="font-bold text-2xl"
+      class="font-bold text-lg md:text-2xl"
       :contenteditable="true"
       :spellcheck="true"
     >

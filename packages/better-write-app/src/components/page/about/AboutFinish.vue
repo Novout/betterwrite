@@ -3,7 +3,7 @@
     id="about-3"
     alt="https://www.artstation.com/rigdhi_gamernoob"
     :style="{ backgroundImage: `url(${Image})` }"
-    class="flex bg-cover text-white min-h-screen justify-center items-center gap-20 flex-col w-full pt-10 py-30"
+    class="flex bg-cover text-white min-h-screen justify-start items-center gap-20 flex-col w-full pt-10 py-30"
   >
     <div
       v-motion
@@ -18,6 +18,7 @@
           duration: 750,
         },
       }"
+      class="mt-10"
     >
       <AboutFinishLogo />
     </div>
@@ -25,47 +26,53 @@
       class="flex gap-2 font-bold text-lg md:text-3xl font-poppins text-center tracking-wide"
     >
       <span
-v-motion
-      :initial="{
-        opacity: 0,
-        x: -150,
-      }"
-      :visible="{
-        opacity: 1,
-        x: 0,
-        transition: {
-          duration: 750,
-        },
-      }"
-      :delay="500 + (500 * 1)">{{ t('about.finish.title1') }}</span>
+        v-motion
+        :initial="{
+          opacity: 0,
+          x: -150,
+        }"
+        :visible="{
+          opacity: 1,
+          x: 0,
+          transition: {
+            duration: 750,
+          },
+        }"
+        :delay="750 + 500 * 0"
+        >{{ t('about.finish.title1') }}</span
+      >
       <span
-v-motion
-      :initial="{
-        opacity: 0,
-        x: -150,
-      }"
-      :visible="{
-        opacity: 1,
-        x: 0,
-        transition: {
-          duration: 750,
-        },
-      }"
-      :delay="500 + (500 * 2)">{{ t('about.finish.title2') }}</span>
+        v-motion
+        :initial="{
+          opacity: 0,
+          x: -150,
+        }"
+        :visible="{
+          opacity: 1,
+          x: 0,
+          transition: {
+            duration: 750,
+          },
+        }"
+        :delay="750 + 500 * 1"
+        >{{ t('about.finish.title2') }}</span
+      >
       <span
-v-motion
-      :initial="{
-        opacity: 0,
-        x: -150,
-      }"
-      :visible="{
-        opacity: 1,
-        x: 0,
-        transition: {
-          duration: 750,
-        },
-      }"
-      :delay="500 + (500 * 3)">{{ t('about.finish.title3') }}</span>
+        v-motion
+        :initial="{
+          opacity: 0,
+          x: -150,
+        }"
+        :visible="{
+          opacity: 1,
+          x: 0,
+          transition: {
+            duration: 750,
+          },
+        }"
+        :delay="750 + 500 * 2"
+        >{{ t('about.finish.title3') }}</span
+      >
     </h2>
     <AboutFinishTo />
   </div>

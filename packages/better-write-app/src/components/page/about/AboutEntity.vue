@@ -1,7 +1,7 @@
 <template>
   <div
     id="about-1"
-    class="flex flex-col items-center w-full md:w-3/4 border border-gray-900 shadow-xl shadow-gray-900 p-15"
+    class="flex flex-col items-center w-full md:w-3/4 border border-gray-900 shadow-xl shadow-gray-900 p-15 mt-20"
   >
     <h2
       v-motion
@@ -37,78 +37,153 @@
     >
       {{ t('about.entity.description') }}
     </p>
-    <AboutEntityBlock
-      v-motion
-      :initial="{
-        opacity: 0,
-        y: 60,
-      }"
-      :visible="{
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 500,
-        },
-      }"
-      :delay="500"
-      :content="
-        t('editor.project.control.title', {
-          suffix: PROJECT.totalPagesCreated + 1,
-        })
-      "
-      type="heading-one"
-    />
-    <AboutEntityBlock
-      v-motion
-      :initial="{
-        opacity: 0,
-        y: 60,
-      }"
-      :visible="{
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 500,
-        },
-      }"
-      :delay="500 * 2"
-      :content="populate.debug().names().paragraph()"
-      type="paragraph"
-    />
-    <AboutEntityBlock
-      v-motion
-      :initial="{
-        opacity: 0,
-        y: 60,
-      }"
-      :visible="{
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 500,
-        },
-      }"
-      :delay="500 * 3"
-      :content="populate.debug().names().paragraph()"
-      type="paragraph"
-    />
-    <AboutEntityBlock
-      v-motion
-      :initial="{
-        opacity: 0,
-        y: 60,
-      }"
-      :visible="{
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 500,
-        },
-      }"
-      :delay="500 * 4"
-      content="/logo_default.svg"
-      type="image"
-    />
+    <div class="flex w-full justify-between gap-10">
+      <div class="flex flex-col items-center w-full">
+        <h2
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: -50,
+          }"
+          :visible="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 800,
+            },
+          }"
+          class="text-white font-bold text-lg mb-1"
+        >
+          {{ t('about.entity.bw') }}
+        </h2>
+        <AboutEntityBlock
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: 60,
+          }"
+          :visible="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 500,
+            },
+          }"
+          :delay="500"
+          :content="
+            t('editor.project.control.title', {
+              suffix: PROJECT.totalPagesCreated + 1,
+            })
+          "
+          type="heading-one"
+        />
+        <AboutEntityBlock
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: 60,
+          }"
+          :visible="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 500,
+            },
+          }"
+          :delay="500 * 2"
+          :content="populate.debug().names().paragraph()"
+          type="paragraph"
+        />
+        <AboutEntityBlock
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: 60,
+          }"
+          :visible="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 500,
+            },
+          }"
+          :delay="500 * 3"
+          :content="populate.debug().names().paragraph()"
+          type="paragraph"
+        />
+        <AboutEntityBlock
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: 60,
+          }"
+          :visible="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 500,
+            },
+          }"
+          :delay="500 * 4"
+          content="/logo_default.svg"
+          type="image"
+        />
+      </div>
+      <div class="flex flex-col items-center w-full">
+        <h2
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: -50,
+          }"
+          :visible="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 800,
+            },
+          }"
+          class="text-white font-bold text-lg mb-1"
+        >
+          {{ t('about.entity.canvas') }}
+        </h2>
+        <div
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: 60,
+          }"
+          :visible="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 500,
+            },
+          }"
+          :delay="500 * 5"
+          class="flex gap-2 flex-col items-center bg-gray-900 text-gray-200 py-2 px-5 my-2"
+        >
+          <h2
+            class="font-bold text-lg md:text-2xl my-3"
+            :contenteditable="true"
+            :spellcheck="true"
+          >
+            {{
+              t('editor.project.control.title', {
+                suffix: PROJECT.totalPagesCreated + 1,
+              })
+            }}
+          </h2>
+          <p class="my-2" :contenteditable="true" :spellcheck="true">
+            {{ populate.debug().names().paragraph() }}
+          </p>
+          <p class="my-2" :contenteditable="true" :spellcheck="true">
+            {{ populate.debug().names().paragraph() }}
+          </p>
+          <img class="my-2" alt="BW Logo" width="30" src="/logo_default.svg" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
