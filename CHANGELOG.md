@@ -1,6 +1,24 @@
-# Changelog (17/05/2022)
+# Changelog (21/05/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.3
+
+* **fix(editor):** paragraph insert in factory create [688c8c2]
+* **fix:** typos [b093fe8]
+* **feat(about):** correct resize in mobile [cc55998]
+* **fix(router):** dynamic auth redirect [74e5443]
+* **fix(landing):** redirect to auth main login form [abcf090]
+* **feat(about):** entity canvas example [a7058fe]
+* **feat(about):** appear transitions [354f967]
+* **fix:** typo [bff3784]
+* **feat(about):** initia implementation [b43f1e8]
+* **fix:** typos [6326817]
+* **feat(importer):** txt support [a9a7d13]
+* **fix(importer):** edge cases in word/document entrypoint [babd1d7]
+* **feat(importer):** accept docx [0ae772d]
+* **feat(importer):** initial implementation [67a073e]
+* **feat(pdf):** note and summary settings [5e5aa1e]
 
 ### v0.16.2
 
