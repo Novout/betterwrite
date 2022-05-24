@@ -55,7 +55,7 @@ export const useFactory = () => {
       if (type === 'line-break') {
         return {
           type,
-          raw: raw || env.lineBreak(),
+          raw: raw || '',
           createdAt: format.actually(),
           updatedAt: format.actually(),
           ...defaults(),
@@ -65,7 +65,7 @@ export const useFactory = () => {
       if (type === 'page-break') {
         return {
           type,
-          raw: raw || env.pageBreak(),
+          raw: raw || '',
           createdAt: format.actually(),
           updatedAt: format.actually(),
           ...defaults(),
@@ -75,7 +75,7 @@ export const useFactory = () => {
       if (type === 'checkbox') {
         return {
           type,
-          raw: raw || env.emptyLine(),
+          raw: raw || '',
           createdAt: format.actually(),
           updatedAt: format.actually(),
           ...defaults(),
@@ -91,7 +91,7 @@ export const useFactory = () => {
       if (type === 'list') {
         return {
           type,
-          raw: raw || env.emptyLine(),
+          raw: raw || '',
           createdAt: format.actually(),
           updatedAt: format.actually(),
           ...defaults(),
@@ -107,7 +107,7 @@ export const useFactory = () => {
       if (type === 'paragraph') {
         return {
           type,
-          raw: raw || env.emptyLine(),
+          raw: raw || '',
           createdAt: format.actually(),
           updatedAt: format.actually(),
           ...defaults(),
@@ -167,7 +167,7 @@ export const useFactory = () => {
 
       return {
         type,
-        raw: raw || env.emptyLine(),
+        raw: raw || '',
         createdAt: format.actually(),
         updatedAt: format.actually(),
         ...defaults(),

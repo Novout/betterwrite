@@ -12,7 +12,7 @@
         duration: 750,
       },
     }"
-    :delay="750 + 500 * 3"
+    :delay="750 + 450 * 3"
     class="flex text-gray-200 items-center text-lg rounded-full gap-2 transition-colors bg-gradient-to-br from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-900 px-7 py-3.5 md:(px-8 py-4) shadow-gray-900 shadow transition-colors font-bold"
     @click.prevent.stop="onClick"
   >

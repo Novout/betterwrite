@@ -7,7 +7,7 @@
         ref="__INPUT__"
         :contenteditable="true"
         :spellcheck="true"
-        class="font-bold"
+        class="font-bold w-full"
         :class="[
           props.entity.type === 'heading-one'
             ? 'text-2xl pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'

@@ -1,6 +1,14 @@
-# Changelog (21/05/2022)
+# Changelog (24/05/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.4
+
+* **fix(editor):** entity heading in full click size [ac45365]
+* **fix(editor):** entity blank line in remove env keys [14ea14e]
+* **fix(editor):** create new project in focus entity [e18732e]
+* **fix:** typo [7d958e4]
+* **feat(about):** finalize route [b85495f]
 
 ### v0.16.3
 

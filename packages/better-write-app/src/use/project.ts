@@ -31,6 +31,7 @@ import { useI18n } from 'vue-i18n'
 import { useDefines } from './defines'
 import { useFormat } from './format'
 import { useUtils } from './utils'
+import useEmitter from './emitter'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -52,6 +53,7 @@ export const useProject = () => {
   const defines = useDefines()
   const format = useFormat()
   const ut = useUtils()
+  const emitter = useEmitter()
   const { t } = useI18n()
 
   const external = () => {
@@ -73,10 +75,17 @@ export const useProject = () => {
 
       CONTEXT.load()
 
+      ABSOLUTE.project.blocked = false
+
       if (!breakpoints.isMobile().value && type === 'creative')
         ABSOLUTE.aside = true
 
       await local.onSaveProject(false)
+
+      emitter.emit('entity-text-focus', {
+        target: type === 'creative' ? 1 : 0,
+        position: 'start',
+      })
     }
 
     return { new: n }

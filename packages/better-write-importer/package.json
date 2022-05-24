@@ -1,6 +1,6 @@
 {
 	"name": "better-write-importer",
-	"version": "0.16.3",
+	"version": "0.16.4",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -26,7 +26,7 @@
 	],
 	"dependencies": {
 		"@zip.js/zip.js": "2.4.12",
-		"better-write-types": "^0.16.3",
+		"better-write-types": "^0.16.4",
 		"destr": "1.1.1",
 		"xml-js": "1.6.11"
 	},
