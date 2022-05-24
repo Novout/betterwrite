@@ -2,7 +2,7 @@
   <div
     id="about-1"
     class="flex min-h-screen justify-evenly p-5 flex-col items-center bg-cover w-full border border-gray-900 shadow-xl shadow-gray-900"
-    alt="https://www.artstation.com/feshiar"
+    alt="https://www.artstation.com/smlpt"
     :style="{ backgroundImage: `url(${Image})` }"
   >
     <h2
