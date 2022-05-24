@@ -1,7 +1,9 @@
 <template>
   <div
     id="about-2"
-    class="flex min-h-screen justify-evenly items-center flex-col w-full md:w-3/4 lg:w-3/5 px-5 pointer-events-none"
+    class="flex bg-cover min-h-screen justify-evenly items-center flex-col w-full px-5 pointer-events-none"
+    alt="https://www.artstation.com/feshiar"
+    :style="{ backgroundImage: `url(${Image})` }"
   >
     <h2
       v-motion
@@ -49,7 +51,7 @@
         },
       }"
       :delay="500"
-      class="flex items-center justify-center md:justify-around w-full py-5"
+      class="flex items-center justify-center w-full px-1 sm:w-3/4 py-5"
     >
       <div
         v-motion
@@ -120,6 +122,7 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
+  import Image from '@/assets/png/aboutportability.png'
 
   const { t } = useI18n()
 </script>
