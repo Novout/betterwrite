@@ -76,7 +76,7 @@
             :enter="{ opacity: 1, transition: { delay: 500 } }"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://github.com/betterwrite"
+            href="https://github.com/Novout/betterwrite"
             class="flex items-center gap-3 absolute bottom-0 right-0 p-5 cursor-pointer"
           >
             <IconGithub class="text-gray-200 w-7 h-7" />
