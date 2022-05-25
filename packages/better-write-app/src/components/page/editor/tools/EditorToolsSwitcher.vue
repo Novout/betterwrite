@@ -1,54 +1,47 @@
 <template>
-  <Modal @close="onClose">
+  <div
+    ref="sw"
+    class="fixed w-60 text-theme-editor-extras-switcher-text hover:text-theme-editor-extras-switcher-text-hover active:text-theme-editor-extras-switcher-text-active bg-theme-editor-extras-switcher-background hover:bg-theme-editor-extras-switcher-background-hover active:bg-theme-editor-extras-switcher-background-active p-2 rounded shadow-2xl"
+    :style="style"
+  >
     <div
-      ref="sw"
-      class="fixed w-60 text-theme-editor-extras-switcher-text hover:text-theme-editor-extras-switcher-text-hover active:text-theme-editor-extras-switcher-text-active bg-theme-editor-extras-switcher-background hover:bg-theme-editor-extras-switcher-background-hover active:bg-theme-editor-extras-switcher-background-active p-2 rounded shadow-2xl"
-      :style="style"
+      class="flex flex-col w-full"
+      @keypress.enter.prevent="switcher.onSwitcherAll"
     >
-      <div
-        class="flex flex-col w-full"
-        @keypress.enter.prevent="switcher.onSwitcherAll"
-      >
-        <div
-          class="flex items-center justify-between w-full mb-1 cursor-pointer"
-        >
-          <div class="flex items-center">
-            <div class="font-poppins">
-              {{ switcher.state.actuallyLetterCounter }} /
-              {{ switcher.state.maxLetterCounter }}
-            </div>
-            <IconUp
-              class="text-2xs ml-2 wb-icon h-5 w-5"
-              @click="switcher.onUp"
-            />
-            <IconDown
-              class="text-2xs wb-icon h-5 w-5"
-              @click="switcher.onDown"
-            />
+      <div class="flex items-center justify-between w-full mb-1 cursor-pointer">
+        <div class="flex items-center">
+          <div class="font-poppins">
+            {{ switcher.state.actuallyLetterCounter }} /
+            {{ switcher.state.maxLetterCounter }}
           </div>
-          <div>
-            <IconClose
-              class="text-2xs wb-icon h-5 w-5"
-              @click.prevent="onClose"
-            />
-          </div>
+          <IconUp
+            class="text-2xs ml-2 wb-icon h-5 w-5"
+            @click="switcher.onUp"
+          />
+          <IconDown class="text-2xs wb-icon h-5 w-5" @click="switcher.onDown" />
         </div>
-        <input
-          ref="entry"
-          v-model="switcher.state.entry"
-          class="bg-transparent border border-theme-editor-extras-switcher-border px-1 mb-1 placeholder-theme-editor-extras-switcher-text"
-          :placeholder="t('editor.text.placeholder.shortcuts.switcherEntry')"
-          @input="switcher.onSwitcher"
-          @keypress.enter.prevent="switcher.onUp"
-        />
-        <input
-          v-model="switcher.state.output"
-          class="bg-transparent border border-theme-editor-extras-switcher-border px-1 placeholder-theme-editor-extras-switcher-text"
-          :placeholder="t('editor.text.placeholder.shortcuts.switcherOutput')"
-        />
+        <div>
+          <IconClose
+            class="text-2xs wb-icon h-5 w-5"
+            @click.prevent="onClose"
+          />
+        </div>
       </div>
+      <input
+        ref="entry"
+        v-model="switcher.state.entry"
+        class="bg-transparent border border-theme-editor-extras-switcher-border px-1 mb-1 placeholder-theme-editor-extras-switcher-text"
+        :placeholder="t('editor.text.placeholder.shortcuts.switcherEntry')"
+        @input="switcher.onSwitcher"
+        @keypress.enter.prevent="switcher.onUp"
+      />
+      <input
+        v-model="switcher.state.output"
+        class="bg-transparent border border-theme-editor-extras-switcher-border px-1 placeholder-theme-editor-extras-switcher-text"
+        :placeholder="t('editor.text.placeholder.shortcuts.switcherOutput')"
+      />
     </div>
-  </Modal>
+  </div>
 </template>
 
 <script setup lang="ts">

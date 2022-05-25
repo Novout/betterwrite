@@ -64,6 +64,15 @@ export const useEditor = () => {
       { deep: true }
     )
 
+    // tracking normalize project cases
+    watch(
+      ABSOLUTE.$state,
+      async () => {
+        await storage.normalize()
+      },
+      { deep: true }
+    )
+
     // shortcuts
     listener.keyboard().start()
 
