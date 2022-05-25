@@ -66,7 +66,7 @@ export default {
       title: 'Capítulo {suffix}',
     },
     configuration: {
-      title: 'Configurações do Projeto',
+      title: 'Documento',
       creator: 'Autor',
       name: 'Nome',
       subject: 'Descrição',
@@ -84,6 +84,23 @@ export default {
     },
   },
   preferences: {
+    header: {
+      title: 'Preferências',
+      close:
+        'Algumas alterações só surtirão efeito ao recarregar a aplicação. Deseja recarregar a aplicação?',
+    },
+    project: {
+      title: 'Projeto',
+    },
+    configuration: {
+      title: 'Configurações',
+    },
+    styles: {
+      title: 'Aparência',
+    },
+    keyboard: {
+      title: 'Teclado',
+    },
     commands: {
       '1': 'Parágrafo',
       '2': 'Título Secundário',

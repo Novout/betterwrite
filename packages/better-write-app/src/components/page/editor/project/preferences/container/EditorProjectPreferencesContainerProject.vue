@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col w-full p-1 my-8 shadow-lg lg:w-1/2">
+  <EditorProjectPreferencesContainerSlot>
     <section class="flex gap-2 mb-5">
-      <h3 class="md:text-2xl text-xl font-bold text-theme-text-2">
+      <PreferencesContainerTitle>
         {{ t('editor.project.configuration.title') }}
-      </h3>
+      </PreferencesContainerTitle>
       <TooltipIcon :tooltip="t('editor.project.configuration.tooltip.base')" />
     </section>
     <div class="wb-configuration">
@@ -55,7 +55,7 @@
         class="wb-configuration-input-text"
       />
     </div>
-  </div>
+  </EditorProjectPreferencesContainerSlot>
 </template>
 
 <script setup lang="ts">

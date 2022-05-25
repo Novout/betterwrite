@@ -1,14 +1,28 @@
 <template>
-  <div class="flex justify-end w-full">
-    <IconClose class="wb-icon p-1 h-10 w-10" @click.prevent.stop="onClose" />
+  <div class="flex items-center justify-between px-3 w-full shadow">
+    <PreferencesContainerTitle>{{
+      t('editor.preferences.header.title')
+    }}</PreferencesContainerTitle>
+    <IconClose class="wb-icon h-8 w-8" @click.prevent.stop="onClose" />
   </div>
 </template>
 <script setup lang="ts">
+  import { useAbsoluteStore } from '@/store/absolute'
   import { useLocalStorage } from '@/use/storage/local'
+  import { useI18n } from 'vue-i18n'
+
+  const ABSOLUTE = useAbsoluteStore()
 
   const local = useLocalStorage()
+  const { t } = useI18n()
 
   const onClose = () => {
-    local.onSaveProject(false).finally(() => window.location.reload())
+    if (confirm(t('editor.preferences.header.close'))) {
+      local.onSaveProject(false).finally(() => window.location.reload())
+
+      return
+    }
+
+    ABSOLUTE.project.preferences = false
   }
 </script>

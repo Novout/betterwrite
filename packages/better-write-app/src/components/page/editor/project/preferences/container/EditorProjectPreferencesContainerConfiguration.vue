@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col w-full p-1 my-8 shadow-lg lg:w-1/2">
-    <h3 class="text-2xl font-bold text-theme-text-2">
+  <EditorProjectPreferencesContainerSlot>
+    <PreferencesContainerTitle>
       {{ t('editor.aside.configuration.entity.title') }}
-    </h3>
+    </PreferencesContainerTitle>
     <div class="wb-configuration">
       <p>{{ t('editor.aside.configuration.bars') }}</p>
       <InputBoolean v-model="EDITOR.configuration.bars" :specific="true" />
@@ -39,7 +39,7 @@
         :specific="true"
       />
     </div>
-  </div>
+  </EditorProjectPreferencesContainerSlot>
 </template>
 
 <script setup lang="ts">

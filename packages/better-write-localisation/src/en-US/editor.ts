@@ -64,7 +64,7 @@ export default {
       title: 'Chapter {suffix}',
     },
     configuration: {
-      title: 'Project Configurations',
+      title: 'Document',
       creator: 'Author',
       name: 'Name',
       subject: 'Subject',
@@ -82,6 +82,23 @@ export default {
     },
   },
   preferences: {
+    header: {
+      title: 'Preferences',
+      close:
+        'Some changes will only take effect when reloading an application. Do you want to reload an application?',
+    },
+    project: {
+      title: 'Project',
+    },
+    configuration: {
+      title: 'Configuration',
+    },
+    styles: {
+      title: 'Styles',
+    },
+    keyboard: {
+      title: 'Keyboard',
+    },
     commands: {
       '1': 'Paragraph',
       '2': 'Heading Two',
