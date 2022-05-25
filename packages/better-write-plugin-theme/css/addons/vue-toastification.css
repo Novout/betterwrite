@@ -1,22 +1,27 @@
 .Vue-Toastification__toast--default {
-  background-color: var(--theme-toast-default-background) !important;
-  color: var(--theme-toast-default-text) !important;
+  background: rgb(9,73,121) !important;
+  background: linear-gradient(90deg, rgba(9,73,121,0.7) 0%, rgba(13,98,106,0.7) 100%) !important;
+  color: white !important;
 }
 .Vue-Toastification__toast--info {
-  background-color: var(--theme-toast-info-background) !important;
-  color: var(--theme-toast-info-text) !important;
+  background: rgb(9,73,121) !important;
+  background: linear-gradient(90deg, rgba(9,73,121,0.7) 0%, rgba(13,98,106,0.7) 100%) !important;
+  color: white !important;
 }
 .Vue-Toastification__toast--success {
-  background-color: var(--theme-toast-success-background) !important;
-  color: var(--theme-toast-success-text) !important;
+  color: white !important;
+  background: rgb(14,133,19) !important;
+  background: linear-gradient(90deg, rgba(14,133,19,0.7) 0%, rgba(5,56,8,0.7) 100%) !important;
 }
 .Vue-Toastification__toast--error {
-  background-color: var(--theme-toast-error-background) !important;
-  color: var(--theme-toast-error-text) !important;
+  color: white !important;
+  background: rgb(121,9,9) !important;
+  background: linear-gradient(90deg, rgba(121,9,9,0.7) 0%, rgba(106,13,13,0.7) 100%) !important;
 }
 .Vue-Toastification__toast--warning {
-  background-color: var(--theme-toast-warning-background) !important;
-  color: var(--theme-toast-warning-text) !important;
+  color: white !important;
+  background: rgb(121,74,9) !important;
+  background: linear-gradient(90deg, rgba(121,74,9,0.7) 0%, rgba(106,106,13,0.7) 100%) !important;
 }
 .Vue-Toastification__close-button {
   font-weight: bold;
@@ -30,7 +35,7 @@
   cursor: pointer;
   transition: 0.3s ease;
   align-items: center;
-  color: var(--theme-toast-default-close) !important;
+  color: white;
   opacity: 0.3;
   transition: visibility 0s, opacity 0.2s linear;
 }
@@ -41,7 +46,7 @@
   width: 100%;
   height: 5px;
   z-index: 10000;
-  background-color: var(--theme-toast-default-progress) !important;
+  background-color: rgba(255,255,255,0.1);
   transform-origin: left;
   animation: scale-x-frames linear 1 forwards;
 }

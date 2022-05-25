@@ -40,6 +40,7 @@ import { computed, watch } from 'vue'
 import { useHead } from '@vueuse/head'
 import { useExternalsStore } from '@/store/externals'
 import { useSubstitution } from './tools/substitution'
+import { useToast } from 'vue-toastification'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -194,6 +195,7 @@ export const useStart = () => {
         emitter: useEmitter(),
         plugin: usePlugin(),
         substitution: useSubstitution(),
+        toast: useToast(),
       }
     )
     plugin.emit('plugin-pdf-init')

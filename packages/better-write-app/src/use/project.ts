@@ -80,7 +80,9 @@ export const useProject = () => {
       if (!breakpoints.isMobile().value && type === 'creative')
         ABSOLUTE.aside = true
 
-      await local.onSaveProject(false)
+      if (!skipAlert) toast.success(t('toast.project.create'))
+
+      await nextTick
 
       emitter.emit('entity-text-focus', {
         target: type === 'creative' ? 1 : 0,
@@ -166,6 +168,11 @@ export const useProject = () => {
           }),
           utils().exportName('bw')
         )
+
+        toast.success(t('toast.project.export'))
+      })
+      .catch(() => {
+        toast.error(t('toast.generics.error'))
       })
       .finally(() => {})
   }
@@ -198,6 +205,11 @@ export const useProject = () => {
         res.fileName.value = utils().exportName('bw')
 
         res.saveAs()
+
+        toast.success(t('toast.project.export'))
+      })
+      .catch(() => {
+        toast.error(t('toast.generics.error'))
       })
       .finally(() => {})
   }

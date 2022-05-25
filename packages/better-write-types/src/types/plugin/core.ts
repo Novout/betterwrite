@@ -107,6 +107,7 @@ export interface PluginHooks {
   emitter: PluginHook
   plugin: PluginHook
   substitution: PluginHook
+  toast: PluginHook
 }
 
 export type PluginContext = (

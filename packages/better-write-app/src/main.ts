@@ -50,7 +50,7 @@ app.use(tooltip, {
   },
 })
 app.use(toast, {
-  position: POSITION.TOP_CENTER,
+  position: POSITION.TOP_RIGHT,
   timeout: 4000,
   maxToasts: 3,
 })

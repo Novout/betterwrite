@@ -27,6 +27,13 @@ export default {
     load: 'Projeto carregado com sucesso!',
     save: 'Projeto salvo com sucesso!',
     error: 'Não foi possível carregar ou salvar o projeto :(',
+    export: 'Projeto exportado para a extensão (.bw) com sucesso!',
+    docx: {
+      generate: 'DOCX Baixado com Sucesso!',
+    },
+    txt: {
+      generate: 'TXT Baixado com Sucesso!',
+    },
   },
   dropbox: {
     load: 'Conectado com o Dropbox!',

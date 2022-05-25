@@ -1309,6 +1309,8 @@ export const PluginPDFSet = (
           }
 
           input?.appendChild(iframe)
+
+          toast.success(hooks.i18n.t('toast.pdf.create'))
         },
         (err: any) => {
           if (hooks.env.isDev()) console.log(err)
@@ -1348,6 +1350,8 @@ export const PluginPDFSet = (
   On.externals().PluginPDFPreview(emitter, [
     async (options: PDFDocOptions) => {
       if (hooks.env.isEmptyProject(stores.PROJECT.name)) return
+
+      toast.info(hooks.i18n.t('toast.generics.load'))
 
       stores.ABSOLUTE.load = true
       isLoading.value = true

@@ -1,6 +1,7 @@
 import { useAbsoluteStore } from '@/store/absolute'
 import { useAuthStore } from '@/store/auth'
 import { createClient } from '@supabase/supabase-js'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import {
   ProjectObject,
   Maybe,
@@ -35,6 +36,7 @@ export const useSupabase = () => {
   const router = useRouter()
   const format = useFormat()
   const utils = useUtils()
+  const { isLoading } = useNProgress()
 
   const loginWithEmailAndPassword = (
     { email, password }: { email: string; password: string },
@@ -178,10 +180,16 @@ export const useSupabase = () => {
   const loadProject = async (context: ProjectObject) => {
     AUTH.account.project_id_activity = context.id || null
 
+    isLoading.value = true
+
     storage.normalize().then(() => {
       project.onLoadProject(context, false).then(() => {
         local.onSaveProject(false).then(() => {
-          router.push('/').finally(() => {})
+          router.push('/').finally(() => {
+            isLoading.value = false
+
+            toast.success(t('toast.project.load'))
+          })
         })
       })
     })

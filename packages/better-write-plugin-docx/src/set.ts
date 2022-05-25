@@ -306,6 +306,8 @@ export const PluginDocxSet = (
     docx.Packer.toBlob(doc)
       .then((blob) => {
         saveAs(blob, hooks.project.utils().exportFullName('docx'))
+
+        hooks.toast.success(hooks.i18n.t('toast.project.docx.generate'))
       })
       .finally(() => {
         isLoading.value = false
