@@ -16,7 +16,7 @@ import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
-import { s } from './storage/supabase'
+import useEmitter from './emitter'
 
 export const useEditor = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -37,6 +37,7 @@ export const useEditor = () => {
   const router = useRouter()
   const storage = useStorage()
   const network = useNetwork()
+  const emitter = useEmitter()
 
   const init = () => {
     onBeforeMount(() => {
@@ -52,23 +53,22 @@ export const useEditor = () => {
       if (EDITOR.configuration.autosave) storage.normalize()
     })
 
-    // tracking all mutate cases
-    watch(
-      [PROJECT.$state, PDF.$state],
-      () => {
-        if (EDITOR.configuration.autosave) local.onSaveProject(false)
-
-        // live update
-        plugin.emit('plugin-multiplayer-room-context-update')
-      },
-      { deep: true }
-    )
+    if (EDITOR.configuration.autosave) {
+      // tracking all mutate cases
+      watch(
+        [PROJECT.$state, PDF.$state],
+        () => {
+          if (EDITOR.configuration.autosave) local.onSaveProject(false)
+        },
+        { deep: true }
+      )
+    }
 
     // tracking normalize project cases
     watch(
       ABSOLUTE.$state,
-      async () => {
-        await storage.normalize()
+      () => {
+        emitter.emit('entity-text-force-save')
       },
       { deep: true }
     )
