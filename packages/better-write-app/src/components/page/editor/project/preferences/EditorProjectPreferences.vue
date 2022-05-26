@@ -4,10 +4,12 @@
       ref="main"
       :style="style"
       :class="[!mobile ? 'fixed' : '']"
-      class="flex flex-col w-full md:w-1/2 h-full bg-theme-background-1 wb-text rounded shadow-2xl overflow-y-auto wb-scroll"
+      class="flex flex-col w-full md:w-1/2 h-full md:h-3/4 bg-theme-background-1 wb-text rounded shadow-2xl overflow-y-auto wb-scroll"
     >
       <EditorProjectPreferencesHeader />
-      <div class="flex flex-1 w-full overflow-hidden">
+      <div
+        class="flex flex-col sm:flex-row flex-1 w-full wb-scroll sm:overflow-hidden"
+      >
         <EditorProjectPreferencesAside @section="(i) => (section = i)" />
         <EditorProjectPreferencesContainer :section="section" />
       </div>

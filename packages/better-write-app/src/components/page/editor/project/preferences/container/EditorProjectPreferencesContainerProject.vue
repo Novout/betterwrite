@@ -8,7 +8,7 @@
     </section>
     <div class="wb-configuration">
       <section class="flex gap-2">
-        <p>{{ t('editor.project.configuration.creator') }}</p>
+        <p class="text-sm">{{ t('editor.project.configuration.creator') }}</p>
         <TooltipIcon
           :tooltip="t('editor.project.configuration.tooltip.creator')"
         />
@@ -20,7 +20,7 @@
     </div>
     <div class="wb-configuration">
       <section class="flex gap-2">
-        <p>{{ t('editor.project.configuration.name') }}</p>
+        <p class="text-sm">{{ t('editor.project.configuration.name') }}</p>
         <TooltipIcon
           :tooltip="t('editor.project.configuration.tooltip.name')"
         />
@@ -32,7 +32,7 @@
     </div>
     <div class="wb-configuration">
       <section class="flex gap-2">
-        <p>{{ t('editor.project.configuration.subject') }}</p>
+        <p class="text-sm">{{ t('editor.project.configuration.subject') }}</p>
         <TooltipIcon
           :tooltip="t('editor.project.configuration.tooltip.subject')"
         />
@@ -45,7 +45,7 @@
     </div>
     <div class="wb-configuration">
       <section class="flex gap-2">
-        <p>{{ t('editor.project.configuration.keywords') }}</p>
+        <p class="text-sm">{{ t('editor.project.configuration.keywords') }}</p>
         <TooltipIcon
           :tooltip="t('editor.project.configuration.tooltip.keywords')"
         />
