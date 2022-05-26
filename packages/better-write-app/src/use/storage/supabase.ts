@@ -180,7 +180,7 @@ export const useSupabase = () => {
       return
     }
 
-    toast.success(t('toast.project.save'))
+    toast.success(t('toast.project.delete'))
   }
 
   const loadProject = async (context: ProjectObject) => {
