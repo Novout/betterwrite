@@ -53,7 +53,7 @@ export const useSupabase = () => {
         )
         .then(async ({ error }) => {
           if (error) {
-            if (notification) toast(t('editor.auth.login.error'))
+            if (notification) toast.error(t('editor.auth.login.error'))
 
             return
           }
@@ -71,6 +71,10 @@ export const useSupabase = () => {
     provider: SupabaseIntegrations,
     notification: boolean = true
   ) => {
+    isLoading.value = true
+
+    toast.info(t('toast.generics.load'))
+
     s.auth
       .signIn({ provider }, { redirectTo: env.getCorrectLocalUrl() })
       .then(async ({ error }) => {
@@ -83,6 +87,8 @@ export const useSupabase = () => {
       })
       .finally(() => {
         ABSOLUTE.auth.supabase = false
+
+        isLoading.value = false
       })
   }
 

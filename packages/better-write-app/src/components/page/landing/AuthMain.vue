@@ -29,14 +29,14 @@
         v-model="user.email"
         type="email"
         :placeholder="t('landing.auth.emailPlaceholder')"
-        class="w-full p-3 rounded bg-gray-900"
+        class="w-full p-3 rounded bg-gray-900 border-none"
       />
       <input
         v-model="user.password"
         type="password"
         autocomplete="on"
         :placeholder="t('landing.auth.passwordPlaceholder')"
-        class="w-full p-3 rounded bg-gray-900"
+        class="w-full p-3 rounded bg-gray-900 border-none"
       />
       <div class="flex gap-2 items-center w-full">
         <input v-model="user.termsOfUse" type="checkbox" />
@@ -137,11 +137,15 @@
   import { minLength, required, email } from '@vuelidate/validators'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
+  import { useNProgress } from '@vueuse/integrations/useNProgress'
+  import { useToast } from 'vue-toastification'
 
   const supabase = useSupabase()
   const router = useRouter()
   const { t } = useI18n()
   const emit = defineEmits(['close'])
+  const toast = useToast()
+  const { isLoading } = useNProgress()
 
   const verification = ref<boolean>(false)
   const user = reactive({
@@ -174,8 +178,17 @@
 
     user.password = ''
 
-    supabase.loginWithEmailAndPassword(user).then(() => {
-      verification.value = true
-    })
+    isLoading.value = true
+
+    toast.info(t('toast.generics.load'))
+
+    supabase
+      .loginWithEmailAndPassword(user)
+      .then(() => {
+        verification.value = true
+      })
+      .finally(() => {
+        isLoading.value = false
+      })
   }
 </script>

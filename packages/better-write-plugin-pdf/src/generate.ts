@@ -1236,7 +1236,7 @@ export const PluginPDFSet = (
     if (!utils().isOnline()) {
       // now online, reload google fonts
       if (online.value && stores.PDF.normalize.length === 0) {
-        toast(hooks.i18n.t('editor.pdf.inserts.nowOnline'))
+        toast.info(hooks.i18n.t('editor.pdf.inserts.nowOnline'))
 
         return
       }
@@ -1272,7 +1272,7 @@ export const PluginPDFSet = (
         hooks.emitter.emit('pdf-preview-exists')
       })
       .catch(() => {
-        toast(hooks.i18n.t('toast.pdf.error'))
+        toast.error(hooks.i18n.t('toast.pdf.error'))
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
@@ -1315,13 +1315,13 @@ export const PluginPDFSet = (
         (err: any) => {
           if (hooks.env.isDev()) console.log(err)
 
-          toast(hooks.i18n.t('toast.pdf.error'))
+          toast.error(hooks.i18n.t('toast.pdf.error'))
         }
       )
       .catch((err: any) => {
         if (hooks.env.isDev()) console.log(err)
 
-        toast(hooks.i18n.t('toast.pdf.error'))
+        toast.error(hooks.i18n.t('toast.pdf.error'))
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
