@@ -2,13 +2,15 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useContextStore } from '@/store/context'
 import { useEditorStore } from '@/store/editor'
 import { useEventListener } from '@vueuse/core'
-import { Entity, EntityType, ProjectObject } from 'better-write-types'
+import { usePlugin } from 'better-write-plugin-core'
+import { read } from 'better-write-plugin-importer'
+import { EntityType, ProjectObject } from 'better-write-types'
 import { nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useToast } from 'vue-toastification'
 import useEmitter from './emitter'
 import { useFactory } from './factory'
 import { useProject } from './project'
-import { useStorage } from './storage/storage'
 import { useUtils } from './utils'
 
 export const useListener = () => {
@@ -21,8 +23,9 @@ export const useListener = () => {
 
   const utils = useUtils()
   const { t } = useI18n()
-  const storage = useStorage()
+  const plugin = usePlugin()
   const emitter = useEmitter()
+  const toast = useToast()
 
   const keyboard = () => {
     const start = () => {
@@ -199,15 +202,51 @@ export const useListener = () => {
         if (e.dataTransfer.items[0].kind === 'file') {
           const file = e.dataTransfer.items[0].getAsFile()
 
-          if (!file || !file.name.endsWith('.bw')) return
+          if (!file) return
 
-          if (
-            confirm(t('toast.project.importExternalBW', { name: file.name }))
-          ) {
-            const data = (await utils.convert().read(file)) as ProjectObject
+          const filename = file.name
+            .replace('.bw', '')
+            .replace('.docx', '')
+            .replace('.doc', '')
+            .replace('.txt', '')
 
-            project.onLoadProject(data)
+          if (file.name.endsWith('.bw')) {
+            if (confirm(t('toast.project.import', { name: file.name }))) {
+              const data = (await utils.convert().read(file)) as ProjectObject
+
+              project.onLoadProject(data, false)
+            }
+
+            return
           }
+
+          if (file.name.endsWith('.doc') || file.name.endsWith('.docx')) {
+            if (confirm(t('toast.project.import', { name: file.name }))) {
+              const data = await read(file, 'data')
+
+              plugin.emit('plugin-importer-docx', {
+                data,
+                fileName: filename,
+              })
+            }
+
+            return
+          }
+
+          if (file.name.endsWith('.txt')) {
+            if (confirm(t('toast.project.import', { name: file.name }))) {
+              const data = await read(file, 'text')
+
+              plugin.emit('plugin-importer-txt', {
+                data,
+                fileName: filename,
+              })
+            }
+
+            return
+          }
+
+          toast.warning(t('toast.project.unsupportedExtension'))
         }
       }
     }

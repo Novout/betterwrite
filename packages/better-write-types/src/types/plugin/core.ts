@@ -27,6 +27,9 @@ export type PluginEmitterName =
   | 'plugin-pdf-init'
   | 'plugin-docx-generate'
   | 'plugin-txt-generate'
+  | 'plugin-importer-docx'
+  | 'plugin-importer-txt'
+  | 'plugin-importer-bw'
   | 'plugin-project-page-new'
   | 'plugin-project-page-delete'
   | 'plugin-project-page-swap'
@@ -108,6 +111,7 @@ export interface PluginHooks {
   plugin: PluginHook
   substitution: PluginHook
   toast: PluginHook
+  breakpoints: PluginHook
 }
 
 export type PluginContext = (

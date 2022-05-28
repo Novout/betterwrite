@@ -22,12 +22,13 @@ export default {
       'Are you sure you want to create a new project? You will lose any data that was not saved in the cloud.',
     deleteAlert:
       'Are you sure you want to delete the project? This action is irreversible',
-    importExternalBW: 'Do you want to load {name}?',
+    import: 'Do you want to load {name}?',
     create: 'Successfully created project!',
     load: 'Successfully loaded project!',
     save: 'Successfully saved project!',
     error: 'Could not load project :(',
     export: 'Project exported to extension (.bw) successfully!',
+    unsupportedExtension: 'This extension is not supported by Better Write!',
     docx: {
       generate: 'Successfully Downloaded DOCX!',
     },
@@ -53,5 +54,9 @@ export default {
   },
   speech: {
     microphone: 'No microphone was recognized by the system!',
+  },
+  store: {
+    contextWarning:
+      'Chapter identifier not found! Make sure the uploaded file is valid!',
   },
 }

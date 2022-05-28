@@ -19,6 +19,8 @@ import { useUtils } from '../use/utils'
 import { useProjectStore } from './project'
 import { useFactory } from '@/use/factory'
 import { useAbsoluteStore } from './absolute'
+import { useToast } from 'vue-toastification'
+import i18n from '@/lang'
 
 export const useContextStore = defineStore('context', {
   state: (): ContextState => {
@@ -36,6 +38,12 @@ export const useContextStore = defineStore('context', {
 
       if (!context) {
         context = project.pages[0]
+      }
+
+      if (!context || !context.id) {
+        useToast().warning(i18n.global.t('toast.store.contextWarning'))
+
+        return
       }
 
       this.id = context.id

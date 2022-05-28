@@ -11,6 +11,7 @@ import { useProject } from '../project'
 import { useRaw } from '../raw'
 import { useStorage } from '../storage/storage'
 import { useUtils } from '../utils'
+import { html } from '../raw'
 
 export const useBlockText = ({
   props,
@@ -110,12 +111,36 @@ export const useBlockText = ({
     })
   }
 
+  const onDynamicInserts = (e: KeyboardEvent, offset: number) => {
+    const value = input.value.innerHTML
+
+    if (e.altKey && e.key.toLowerCase() === 'd') {
+      e.preventDefault()
+      e.stopPropagation()
+
+      const insert = '— '
+      const sub = html().insert(value, offset, insert)
+
+      setData(sub)
+
+      const _offset = insert.length + offset
+
+      emitter.emit('entity-text-focus', {
+        target: index.value,
+        position: 'offset',
+        positionOffset: _offset,
+      })
+    }
+  }
+
   const onKeyboard = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLDivElement
 
     const value = raw.v2().caret().value(_input)
     const start = raw.v2().caret().start(_input)
     const offset = utils.cursor().getCurrentCursorPosition(_input)
+
+    onDynamicInserts(e, offset)
 
     if (e.shiftKey) {
       if (e.key === 'ArrowUp') {

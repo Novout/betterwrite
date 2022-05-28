@@ -41,6 +41,7 @@ import { useHead } from '@vueuse/head'
 import { useExternalsStore } from '@/store/externals'
 import { useSubstitution } from './tools/substitution'
 import { useToast } from 'vue-toastification'
+import { useBreakpoint } from './breakpoint'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -196,6 +197,7 @@ export const useStart = () => {
         plugin: usePlugin(),
         substitution: useSubstitution(),
         toast: useToast(),
+        breakpoints: useBreakpoint(),
       }
     )
     plugin.emit('plugin-pdf-init')
