@@ -211,6 +211,9 @@ export const DOCXSet = (
             bold: hooks.defines.generator().substitutions().bold(),
           },
         },
+        shortcuts: {
+          inserts: [],
+        },
       })
 
       await nextTick

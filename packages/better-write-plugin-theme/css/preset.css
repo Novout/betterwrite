@@ -36,7 +36,9 @@ input:-webkit-autofill {
   -webkit-animation-name: autofill;
   -webkit-animation-fill-mode: both;
 }
-
+input::-webkit-input-placeholder {
+  opacity: 0.6;
+}
 input[type='color'] {
   -webkit-appearance: none;
   border: none;

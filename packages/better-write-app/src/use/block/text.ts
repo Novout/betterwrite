@@ -12,6 +12,7 @@ import { useRaw } from '../raw'
 import { useStorage } from '../storage/storage'
 import { useUtils } from '../utils'
 import { html } from '../raw'
+import { useProjectStore } from '@/store/project'
 
 export const useBlockText = ({
   props,
@@ -29,6 +30,7 @@ export const useBlockText = ({
   const CONTEXT = useContextStore()
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
+  const PROJECT = useProjectStore()
 
   const emitter = useEmitter()
   const entity = useEntity()
@@ -112,25 +114,26 @@ export const useBlockText = ({
   }
 
   const onDynamicInserts = (e: KeyboardEvent, offset: number) => {
-    const value = input.value.innerHTML
+    const value = utils.text().defaultWhitespace(input.value.innerHTML)
 
-    if (e.altKey && e.key.toLowerCase() === 'd') {
-      e.preventDefault()
-      e.stopPropagation()
+    PROJECT.shortcuts.inserts.forEach(({ key, value: insert }) => {
+      if (e.altKey && e.key.toLowerCase() === key.toLowerCase()) {
+        e.preventDefault()
+        e.stopPropagation()
 
-      const insert = '— '
-      const sub = html().insert(value, offset, insert)
+        const sub = html().insert(value, offset, insert)
 
-      setData(sub)
+        setData(sub)
 
-      const _offset = insert.length + offset
+        const _offset = insert.length + offset
 
-      emitter.emit('entity-text-focus', {
-        target: index.value,
-        position: 'offset',
-        positionOffset: _offset,
-      })
-    }
+        emitter.emit('entity-text-focus', {
+          target: index.value,
+          position: 'offset',
+          positionOffset: _offset,
+        })
+      }
+    })
   }
 
   const onKeyboard = async (e: KeyboardEvent) => {

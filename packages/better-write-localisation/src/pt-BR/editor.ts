@@ -121,6 +121,13 @@ export default {
         swap: 'Trocar de Posição',
         to: 'Ir Para Posição Seguinte',
       },
+      inserts: {
+        title: 'Atalhos de Inserção',
+        description:
+          'Defina valores para serem inseridos a partir da posição atual do texto.',
+        key: 'Atalho',
+        value: 'Valor',
+      },
     },
   },
   entity: {

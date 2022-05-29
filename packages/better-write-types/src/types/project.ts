@@ -26,6 +26,16 @@ export interface ProjectState {
   pdf: ProjectStatePDF
   creative: ProjectStateCreative
   templates: ProjectStateTemplates
+  shortcuts: ProjectStateShortcuts
+}
+
+export interface ProjectStateShortcuts {
+  inserts: ProjectStateShortcutsInserts[]
+}
+
+export interface ProjectStateShortcutsInserts {
+  key: string
+  value: string
 }
 
 export interface ProjectStateTemplates {

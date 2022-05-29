@@ -121,6 +121,13 @@ export default {
         dragtitle: 'Drag Position',
         dragshort: 'Alt + Mouse Left',
       },
+      inserts: {
+        title: 'Insert Shortcuts',
+        description:
+          'Set values ​​to be entered from the current caret position.',
+        key: 'Shortcut',
+        value: 'Value',
+      },
     },
   },
   entity: {

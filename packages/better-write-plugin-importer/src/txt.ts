@@ -84,6 +84,9 @@ export const TXTSet = (
             bold: hooks.defines.generator().substitutions().bold(),
           },
         },
+        shortcuts: {
+          inserts: [],
+        },
       })
 
       await nextTick
