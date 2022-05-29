@@ -79,9 +79,9 @@
             href="https://github.com/Novout/betterwrite"
             class="flex items-center gap-3 absolute bottom-0 right-0 p-5 cursor-pointer"
           >
-            <IconGithub class="text-gray-200 w-7 h-7" />
+            <IconGithub class="text-gray-200 w-6 h-6" />
             <v-typical
-              class="tracking-wide text-center text-sm md:text-base blink"
+              class="tracking-wide text-center text-xs md:text-sm blink"
               :steps="[
                 t('landing.first.support'),
                 10000,
