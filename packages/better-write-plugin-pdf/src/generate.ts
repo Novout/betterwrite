@@ -615,6 +615,15 @@ export const PluginPDFSet = (
       arr.push(_raw)
     }
 
+    const frontCoverNotExists = (arr: Array<any>) => {
+      let _break = {
+        text: ' ',
+        pageBreak: 'before',
+      }
+
+      arr.push(_break)
+    }
+
     const note = (arr: Array<any>) => {
       if (!stores.PDF.styles.base.note.bw) return
 
@@ -707,7 +716,9 @@ export const PluginPDFSet = (
         })
 
         if (hooks.project.isCreativeProject()) {
-          if (stores.PDF.styles.switcher.cover) frontCover(arr)
+          stores.PDF.styles.switcher.cover
+            ? frontCover(arr)
+            : frontCoverNotExists(arr)
           note(arr)
           summary(arr)
         }
