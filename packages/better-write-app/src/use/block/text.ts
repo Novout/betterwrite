@@ -1,7 +1,7 @@
 import { useAbsoluteStore } from '@/store/absolute'
 import { useContextStore } from '@/store/context'
 import { useEditorStore } from '@/store/editor'
-import { Entity, ID } from 'better-write-types'
+import { Entity, EntityType, ID } from 'better-write-types'
 import { nextTick, Ref, watch } from 'vue'
 import useEmitter from '../emitter'
 import { useEntity } from '../entity'
@@ -166,7 +166,6 @@ export const useBlockText = ({
 
       return
     }
-
     // in ctrl press
     if (e.ctrlKey) {
       // finder
@@ -257,6 +256,118 @@ export const useBlockText = ({
         emitter.emit('entity-text-focus', {
           target: index.value + 1,
           position: 'end',
+        })
+      }
+      // text attached
+      if (
+        e.key === '1' ||
+        e.key === '2' ||
+        e.key === '3' ||
+        e.key === '6' ||
+        e.key === '7'
+      ) {
+        e.preventDefault()
+        e.stopPropagation()
+
+        emitter.emit('entity-text-force-save')
+
+        await nextTick
+
+        const value = index.value + 1
+
+        let type: EntityType = 'paragraph'
+
+        switch (e.key) {
+          case '1':
+            type = 'paragraph'
+            break
+          case '2':
+            type = 'heading-two'
+            break
+          case '3':
+            type = 'heading-three'
+            break
+          case '6':
+            type = 'checkbox'
+            break
+          case '7':
+            type = 'list'
+            break
+        }
+
+        CONTEXT.insert(factory.entity().create(type), value)
+
+        await nextTick
+
+        emitter.emit('entity-text-focus', {
+          target: value,
+          position: 'auto',
+        })
+      }
+
+      // fixeds
+      if (e.key === '4' || e.key === '5' || e.key === '9') {
+        e.preventDefault()
+        e.stopPropagation()
+
+        emitter.emit('entity-text-force-save')
+
+        await nextTick
+
+        const value = index.value + 1
+
+        let type: EntityType = 'line-break'
+
+        switch (e.key) {
+          case '4':
+            type = 'page-break'
+            break
+          case '5':
+            type = 'line-break'
+            break
+          case '9':
+            type = 'drau'
+            break
+        }
+
+        CONTEXT.insert(factory.entity().create(type), value)
+
+        await nextTick
+
+        CONTEXT.insert(factory.entity().create('paragraph'), value + 1)
+
+        await nextTick
+
+        emitter.emit('entity-text-focus', {
+          target: value + 1,
+          position: 'auto',
+        })
+      }
+
+      // image
+      if (e.key === '8') {
+        e.preventDefault()
+        e.stopPropagation()
+
+        emitter.emit('entity-text-force-save')
+
+        await nextTick
+
+        const value = index.value + 1
+
+        factory.simulate().file(async (entity) => {
+          CONTEXT.insert(entity, value)
+
+          await nextTick
+
+          CONTEXT.insert(factory.entity().create('paragraph'), value + 1)
+
+          await nextTick
+
+          emitter.emit('entity-text-focus', {
+            target: value + 1,
+            position: 'auto',
+          })
         })
       }
 
