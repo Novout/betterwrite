@@ -67,6 +67,14 @@ export const usePopulate = () => {
             bold: useDefines().generator().substitutions().bold(),
           },
         },
+        shortcuts: {
+          inserts: [
+            {
+              key: 'D',
+              value: '— ',
+            },
+          ],
+        },
       },
       blank: {
         name: useUtils().text().kebab(project.name),
@@ -121,6 +129,14 @@ export const usePopulate = () => {
             italic: useDefines().generator().substitutions().italic(),
             bold: useDefines().generator().substitutions().bold(),
           },
+        },
+        shortcuts: {
+          inserts: [
+            {
+              key: 'D',
+              value: '— ',
+            },
+          ],
         },
       },
     }[project.type] as ProjectState

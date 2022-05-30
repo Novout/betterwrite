@@ -41,14 +41,18 @@ export const useUtils = () => {
       return text.toLowerCase().replaceAll(' ', '-')
     }
 
-    function randomLetter() {
+    const randomLetter = () => {
       var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
       var charactersLength = characters.length
 
       return characters.charAt(Math.floor(Math.random() * charactersLength))
     }
 
-    return { getSelection, kebab, randomLetter }
+    const defaultWhitespace = (value: string) => {
+      return value.replaceAll('&nbsp;', ' ').replaceAll('&#160', ' ')
+    }
+
+    return { getSelection, kebab, randomLetter, defaultWhitespace }
   }
 
   const regex = () => {

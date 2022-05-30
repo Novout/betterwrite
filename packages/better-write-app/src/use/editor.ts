@@ -16,7 +16,7 @@ import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
-import { s } from './storage/supabase'
+import useEmitter from './emitter'
 
 export const useEditor = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -37,11 +37,12 @@ export const useEditor = () => {
   const router = useRouter()
   const storage = useStorage()
   const network = useNetwork()
+  const emitter = useEmitter()
 
   const init = () => {
     onBeforeMount(() => {
       if (!AUTH.account.user && network.isOnline.value)
-        router.push({ path: '/landing', query: { login: 'auth' } })
+        router.push({ path: '/landing' })
     })
 
     onMounted(() => {
@@ -52,14 +53,22 @@ export const useEditor = () => {
       if (EDITOR.configuration.autosave) storage.normalize()
     })
 
-    // tracking all mutate cases
-    watch(
-      [PROJECT.$state, PDF.$state],
-      () => {
-        if (EDITOR.configuration.autosave) local.onSaveProject(false)
+    if (EDITOR.configuration.autosave) {
+      // tracking all mutate cases
+      watch(
+        [PROJECT.$state, PDF.$state],
+        () => {
+          if (EDITOR.configuration.autosave) local.onSaveProject(false)
+        },
+        { deep: true }
+      )
+    }
 
-        // live update
-        plugin.emit('plugin-multiplayer-room-context-update')
+    // tracking normalize project cases
+    watch(
+      ABSOLUTE.$state,
+      () => {
+        emitter.emit('entity-text-force-save')
       },
       { deep: true }
     )

@@ -2,10 +2,10 @@
 
 ```
   ├── better-write-app                          # Website
-  |── better-write-importer                     # Converter for some extensions -> .bw
   ├── better-write-localisation                 # i18n
   ├── better-write-plugin-core                  # Plugin base core
   ├── better-write-plugin-docx                  # DOCX Generator Plugin
+  |── better-write-plugin-importer              # Importer external files
   ├── better-write-plugin-logger                # Logger Plugin
   ├── better-write-plugin-multiplayer           # liveblocks.io Plugin
   ├── better-write-plugin-pdf                   # PDF Generator Plugin

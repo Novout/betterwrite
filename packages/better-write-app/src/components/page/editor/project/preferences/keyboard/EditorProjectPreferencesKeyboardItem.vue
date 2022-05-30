@@ -3,9 +3,7 @@
     class="flex flex-row font-bold justify-between text-theme-text-2 items-center w-full my-2"
   >
     <h3>{{ props.title }}</h3>
-    <p
-      class="px-2 py-1 rounded-full text-theme-text-2 bg-theme-background-2 w-24"
-    >
+    <p class="px-2 py-1 rounded-full text-theme-text-2 shadow-lg w-24">
       {{ props.shortcut }}
     </p>
   </div>

@@ -54,6 +54,14 @@ export const useProjectStore = defineStore('project', {
           bold: [],
         },
       },
+      shortcuts: {
+        inserts: [
+          {
+            key: 'D',
+            value: '— ',
+          },
+        ],
+      },
     }
   },
   actions: {
@@ -77,6 +85,7 @@ export const useProjectStore = defineStore('project', {
       this.templates = payload.templates
       this.bw.platform = payload.bw.platform
       this.bw.version = payload.bw.version
+      this.shortcuts = payload.shortcuts
     },
     create(payload: ProjectState, title: string) {
       const global = useGlobalStore()

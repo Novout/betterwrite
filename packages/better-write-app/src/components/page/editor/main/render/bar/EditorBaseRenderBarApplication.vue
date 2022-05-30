@@ -10,5 +10,10 @@
 
   const env = useEnv()
 
-  const version = computed(() => env.packageVersion())
+  const version = computed(
+    () =>
+      `v${env.packageVersion()}${
+        Number(env.packageVersion().charAt(0)) === 0 ? ' BETA' : ''
+      }`
+  )
 </script>

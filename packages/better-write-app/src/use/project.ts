@@ -16,7 +16,6 @@ import {
   ContextState,
   Entity,
   Entities,
-  ImporterData,
 } from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { useEnv } from './env'
@@ -25,13 +24,10 @@ import { usePlugin } from 'better-write-plugin-core'
 import { useBreakpoint } from './breakpoint'
 import { useRaw } from './raw'
 import { useFileSystemAccess } from '@vueuse/core'
-import { DocxToJson } from 'better-write-importer'
-import { useFactory } from './factory'
 import { useI18n } from 'vue-i18n'
-import { useDefines } from './defines'
-import { useFormat } from './format'
-import { useUtils } from './utils'
+import { read } from 'better-write-plugin-importer'
 import useEmitter from './emitter'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -49,10 +45,7 @@ export const useProject = () => {
   const raw = useRaw()
   const plugin = usePlugin()
   const breakpoints = useBreakpoint()
-  const factory = useFactory()
-  const defines = useDefines()
-  const format = useFormat()
-  const ut = useUtils()
+  const { isLoading } = useNProgress()
   const emitter = useEmitter()
   const { t } = useI18n()
 
@@ -80,7 +73,9 @@ export const useProject = () => {
       if (!breakpoints.isMobile().value && type === 'creative')
         ABSOLUTE.aside = true
 
-      await local.onSaveProject(false)
+      if (!skipAlert) toast.success(t('toast.project.create'))
+
+      await nextTick
 
       emitter.emit('entity-text-focus', {
         target: type === 'creative' ? 1 : 0,
@@ -157,23 +152,34 @@ export const useProject = () => {
   }
 
   const onExportProject = () => {
+    isLoading.value = true
+
     storage
       .normalize()
-      .then(() => {
-        saveAs(
+      .then(async () => {
+        await saveAs(
           new Blob([JSON.stringify(storage.getProjectObject())], {
             type: 'application/json',
           }),
           utils().exportName('bw')
         )
+
+        toast.success(t('toast.project.export'))
       })
-      .finally(() => {})
+      .catch(() => {
+        toast.error(t('toast.generics.error'))
+      })
+      .finally(() => {
+        isLoading.value = false
+      })
   }
 
   const onExportProjectAs = () => {
     storage
       .normalize()
-      .then(() => {
+      .then(async () => {
+        isLoading.value = true
+
         const res = useFileSystemAccess({
           dataType: 'Blob',
           types: [
@@ -197,205 +203,16 @@ export const useProject = () => {
         )
         res.fileName.value = utils().exportName('bw')
 
-        res.saveAs()
+        await res.saveAs()
+
+        toast.success(t('toast.project.export'))
       })
-      .finally(() => {})
-  }
-
-  const onLoadDOCX = async (content: ImporterData, fileName: string) => {
-    const entities: Entities = []
-
-    content.entities.forEach(({ type, raw }) => {
-      const entity = factory.entity().create(type, raw)
-
-      entities.push(entity)
-    })
-
-    const chapters: ContextState[] = []
-    let chapter: ContextState | null = null
-    let pages = 0
-
-    entities.forEach((entity) => {
-      if (entity.type === 'heading-one' || chapter === null) {
-        if (chapter) {
-          chapters.push(chapter)
-
-          chapter = null
-        }
-
-        // for edge case
-        entity.type = 'heading-one'
-
-        pages++
-
-        chapter = {
-          id: pages,
-          title: entity.raw,
-          entities: [entity],
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
-        }
-
-        return
-      }
-
-      if (chapter) chapter.entities.push(entity)
-    })
-
-    if (chapter) chapters.push(chapter)
-
-    PROJECT.createExternal({
-      name: ut.text().kebab(fileName),
-      nameRaw: fileName,
-      version: '0.1.0',
-      creator: 'betterwrite',
-      producer: 'betterwrite',
-      keywords: 'docx,project',
-      subject: 'betterwrite',
-      type: 'creative',
-      totalPagesCreated: pages,
-      main: {},
-      summary: {},
-      pageLoaded: 1,
-      scrollLoaded: 0,
-      offsetLoaded: 0,
-      pages: chapters,
-      bw: {
-        platform: 'web',
-        version: useEnv().packageVersion() as string,
-      },
-      pdf: {
-        encryption: {
-          userPassword: '',
-          ownerPassword: '',
-        },
-        permissions: {
-          printing: 'highResolution',
-          modifying: false,
-          copying: false,
-          annotating: true,
-          fillingForms: true,
-          contentAccessibility: true,
-          documentAssembly: true,
-        },
-      },
-      creative: {
-        drafts: [],
-      },
-      templates: {
-        generator: [],
-        substitutions: {
-          text: defines.generator().substitutions().text(),
-          italic: defines.generator().substitutions().italic(),
-          bold: defines.generator().substitutions().bold(),
-        },
-      },
-    })
-
-    await nextTick
-
-    CONTEXT.load(PROJECT.pages[0])
-
-    await nextTick
-
-    if (!breakpoints.isMobile().value && PROJECT.type === 'creative')
-      ABSOLUTE.aside = true
-
-    ABSOLUTE.project.blocked = false
-
-    toast.success(t('toast.project.create'))
-  }
-
-  const onLoadTXT = async (data: string, filename: string) => {
-    const content = data.split('\n')
-    const entities: Entities = []
-    let __FIRST_ROW__ = true
-
-    content.forEach((row) => {
-      if (__FIRST_ROW__ && row) {
-        entities.push(factory.entity().create('heading-one', row))
-        __FIRST_ROW__ = false
-
-        return
-      }
-
-      if (!row) {
-        entities.push(factory.entity().create('line-break'))
-
-        return
-      }
-
-      entities.push(factory.entity().create('paragraph', row))
-    })
-
-    PROJECT.createExternal({
-      name: ut.text().kebab(filename),
-      nameRaw: filename,
-      version: '0.1.0',
-      creator: 'betterwrite',
-      producer: 'betterwrite',
-      keywords: 'docx,project',
-      subject: 'betterwrite',
-      type: 'creative',
-      totalPagesCreated: 1,
-      main: {},
-      summary: {},
-      pageLoaded: 1,
-      scrollLoaded: 0,
-      offsetLoaded: 0,
-      pages: [
-        {
-          id: 1,
-          title: entities[0].raw,
-          entities,
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
-        },
-      ],
-      bw: {
-        platform: 'web',
-        version: useEnv().packageVersion() as string,
-      },
-      pdf: {
-        encryption: {
-          userPassword: '',
-          ownerPassword: '',
-        },
-        permissions: {
-          printing: 'highResolution',
-          modifying: false,
-          copying: false,
-          annotating: true,
-          fillingForms: true,
-          contentAccessibility: true,
-          documentAssembly: true,
-        },
-      },
-      creative: {
-        drafts: [],
-      },
-      templates: {
-        generator: [],
-        substitutions: {
-          text: defines.generator().substitutions().text(),
-          italic: defines.generator().substitutions().italic(),
-          bold: defines.generator().substitutions().bold(),
-        },
-      },
-    })
-
-    await nextTick
-
-    CONTEXT.load(PROJECT.pages[0])
-
-    await nextTick
-
-    if (!breakpoints.isMobile().value && PROJECT.type === 'creative')
-      ABSOLUTE.aside = true
-
-    ABSOLUTE.project.blocked = false
-
-    toast.success(t('toast.project.create'))
+      .catch(() => {
+        toast.warning(t('toast.generics.cancel'))
+      })
+      .finally(() => {
+        isLoading.value = false
+      })
   }
 
   const onImportProject = () => {
@@ -411,36 +228,46 @@ export const useProject = () => {
       const isBW = file.name.endsWith('.bw')
       const isTXT = file.name.endsWith('.txt')
 
-      const reader = new FileReader()
-      isDoc ? reader.readAsDataURL(file) : reader.readAsText(file)
-      reader.onload = async function () {
-        if (isBW) {
-          const content = destr(reader.result as string)
+      if (!isDoc && !isBW && !isTXT)
+        toast.warning(t('toast.project.unsupportedExtension'))
 
-          onLoadProject(content)
+      read(file, isDoc ? 'data' : 'text')
+        .then((data) => {
+          if (isBW) {
+            const content = destr(data as string)
 
-          return
-        }
+            onLoadProject(content)
 
-        const filename = file.name
-          .replace('.bw', '')
-          .replace('.docx', '')
-          .replace('.doc', '')
-          .replace('.txt', '')
+            return
+          }
 
-        if (isDoc) {
-          const importers = await DocxToJson(reader.result as string)
+          const filename = file.name
+            .replace('.bw', '')
+            .replace('.docx', '')
+            .replace('.doc', '')
+            .replace('.txt', '')
 
-          onLoadDOCX(importers, filename)
+          if (isDoc) {
+            plugin.emit('plugin-importer-docx', {
+              data,
+              fileName: filename,
+            })
 
-          return
-        }
+            return
+          }
 
-        if (isTXT) {
-          await onLoadTXT(reader.result as string, filename)
-        }
-      }
-      reader.onerror = function (err) {}
+          if (isTXT) {
+            plugin.emit('plugin-importer-txt', {
+              data,
+              fileName: filename,
+            })
+
+            return
+          }
+        })
+        .catch(() => {
+          toast.error(t('toast.project.error'))
+        })
     })
     _.click()
   }

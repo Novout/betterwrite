@@ -25,6 +25,8 @@ export const PluginTxtSet = (
     saveAs(data, hooks.project.utils().exportFullName('txt'))
 
     isLoading.value = false
+
+    hooks.toast.success(hooks.i18n.t('toast.project.txt.generate'))
   }
 
   On.externals().PluginTxtGenerate(emitter, [

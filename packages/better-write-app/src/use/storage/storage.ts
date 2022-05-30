@@ -93,6 +93,20 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.project.shortcuts) {
+      _.project = {
+        ..._.project,
+        shortcuts: {
+          inserts: [
+            {
+              key: 'D',
+              value: '— ',
+            },
+          ],
+        },
+      }
+    }
+
     return _
   }
 

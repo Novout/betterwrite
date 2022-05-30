@@ -615,6 +615,15 @@ export const PluginPDFSet = (
       arr.push(_raw)
     }
 
+    const frontCoverNotExists = (arr: Array<any>) => {
+      let _break = {
+        text: ' ',
+        pageBreak: 'before',
+      }
+
+      arr.push(_break)
+    }
+
     const note = (arr: Array<any>) => {
       if (!stores.PDF.styles.base.note.bw) return
 
@@ -707,7 +716,9 @@ export const PluginPDFSet = (
         })
 
         if (hooks.project.isCreativeProject()) {
-          if (stores.PDF.styles.switcher.cover) frontCover(arr)
+          stores.PDF.styles.switcher.cover
+            ? frontCover(arr)
+            : frontCoverNotExists(arr)
           note(arr)
           summary(arr)
         }
@@ -1236,7 +1247,7 @@ export const PluginPDFSet = (
     if (!utils().isOnline()) {
       // now online, reload google fonts
       if (online.value && stores.PDF.normalize.length === 0) {
-        toast(hooks.i18n.t('editor.pdf.inserts.nowOnline'))
+        toast.info(hooks.i18n.t('editor.pdf.inserts.nowOnline'))
 
         return
       }
@@ -1272,7 +1283,7 @@ export const PluginPDFSet = (
         hooks.emitter.emit('pdf-preview-exists')
       })
       .catch(() => {
-        toast(hooks.i18n.t('toast.pdf.error'))
+        toast.error(hooks.i18n.t('toast.pdf.error'))
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
@@ -1309,17 +1320,19 @@ export const PluginPDFSet = (
           }
 
           input?.appendChild(iframe)
+
+          toast.success(hooks.i18n.t('toast.pdf.create'))
         },
         (err: any) => {
           if (hooks.env.isDev()) console.log(err)
 
-          toast(hooks.i18n.t('toast.pdf.error'))
+          toast.error(hooks.i18n.t('toast.pdf.error'))
         }
       )
       .catch((err: any) => {
         if (hooks.env.isDev()) console.log(err)
 
-        toast(hooks.i18n.t('toast.pdf.error'))
+        toast.error(hooks.i18n.t('toast.pdf.error'))
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
@@ -1348,6 +1361,8 @@ export const PluginPDFSet = (
   On.externals().PluginPDFPreview(emitter, [
     async (options: PDFDocOptions) => {
       if (hooks.env.isEmptyProject(stores.PROJECT.name)) return
+
+      toast.info(hooks.i18n.t('toast.generics.load'))
 
       stores.ABSOLUTE.load = true
       isLoading.value = true

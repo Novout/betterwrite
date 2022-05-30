@@ -3,6 +3,7 @@ export default {
     load: 'Aguarde um momento...',
     error: 'Um erro inesperado ocorreu :(',
     supported: 'O seu navegador não suporta este recurso :(',
+    cancel: 'A ação foi cancelada!',
   },
   pdf: {
     error:
@@ -22,11 +23,19 @@ export default {
       'Você tem certeza que deseja criar um novo projeto? Você perderá todos os dados que não forem salvos na nuvem.',
     deleteAlert:
       'Você tem certeza que deseja deletar o projeto? Esta ação é irreversível!',
-    importExternalBW: 'Deseja carregar o projeto {name}?',
+    import: 'Deseja carregar o projeto {name}?',
     create: 'Projeto criado com sucesso!',
     load: 'Projeto carregado com sucesso!',
     save: 'Projeto salvo com sucesso!',
     error: 'Não foi possível carregar ou salvar o projeto :(',
+    export: 'Projeto exportado para a extensão (.bw) com sucesso!',
+    unsupportedExtension: 'Esta extensão não é suportada por Better Write!',
+    docx: {
+      generate: 'DOCX Baixado com Sucesso!',
+    },
+    txt: {
+      generate: 'TXT Baixado com Sucesso!',
+    },
   },
   dropbox: {
     load: 'Conectado com o Dropbox!',
@@ -46,5 +55,12 @@ export default {
   },
   speech: {
     microphone: 'Nenhum microfone foi reconhecido pelo sistema!',
+  },
+  store: {
+    contextWarning:
+      'O identificador do capítulo não foi encontrado! Verifique se o arquivo carregado é válido!',
+  },
+  corrector: {
+    apply: 'Corretor aplicado com sucesso!',
   },
 }

@@ -8,3 +8,8 @@ export interface ImporterEntity {
 export interface ImporterData {
   entities: ImporterEntity[]
 }
+
+export interface ImporterParams {
+  fileName: string
+  data: string
+}

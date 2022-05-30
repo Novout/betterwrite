@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col w-full p-1 my-8 shadow-lg lg:w-1/2">
-    <h3 class="text-2xl font-bold text-theme-text-2">
+  <EditorProjectPreferencesContainerSlot>
+    <PreferencesContainerTitle>
       {{ t('editor.preferences.shortcuts.title') }}
-    </h3>
+    </PreferencesContainerTitle>
     <div class="flex flex-col gap-2 w-full px-2">
       <EditorProjectPreferencesKeyboardItem
         :title="t('editor.preferences.shortcuts.editor.italic')"
@@ -61,11 +61,30 @@
         shortcut="CTRL + 9"
       />
     </div>
-  </div>
+    <PreferencesContainerTitle>
+      {{ t('editor.preferences.shortcuts.inserts.title') }}
+    </PreferencesContainerTitle>
+    <p>{{ t('editor.preferences.shortcuts.inserts.description') }}</p>
+    <div class="flex flex-col gap-2 w-full px-2">
+      <EditorProjectPreferencesKeyboardInsertAdd />
+      <draggable :list="PROJECT.shortcuts.inserts" item-key="id">
+        <template #item="{ element, index }">
+          <EditorProjectPreferencesKeyboardInsertItem
+            :key="index"
+            :insert="element"
+          />
+        </template>
+      </draggable>
+    </div>
+  </EditorProjectPreferencesContainerSlot>
 </template>
 
 <script setup lang="ts">
+  import { useProjectStore } from '@/store/project'
   import { useI18n } from 'vue-i18n'
+  import draggable from 'vuedraggable'
+
+  const PROJECT = useProjectStore()
 
   const { t } = useI18n()
 </script>

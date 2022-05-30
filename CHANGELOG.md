@@ -1,6 +1,29 @@
-# Changelog (24/05/2022)
+# Changelog (29/05/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.5
+
+* **chore(app):** upgrade deps [ce56a18]
+* **feat(editor):** correct and actions triggers [fb480d7]
+* **chore(editor):** statistics impact animation [655bac4]
+* **chore:** typo [29bcc5e]
+* **chore(editor):** drafts info data [40806a8]
+* **feat(editor):** new loaders and toasts [abf12ba]
+* **chore(pdf):** break page in empty front cover [bb2d175]
+* **fix(editor):** preferences header drag [8d1769a]
+* **chore(editor):** commands in block text [d8f52c4]
+* **feat(editor):** insert shortcuts [26465e9]
+* **fix:** typos [577146c]
+* **refactor(importer):** dragover supports other extensions and importer plugin events [8b619e1]
+* **fix(editor):** save entity in exact cases [eeb80dd]
+* **fix:** typo [adea804]
+* **refactor(app):** toasts logic and emit events [250adf2]
+* **feat(editor):** preferences in mobile [0b181ee]
+* **chore(landing):** github project link [9090ded]
+* **fix(editor):** finder and switcher tools in scrolldown and opening normalizes [356dabb]
+* **refactor(editor):** preferences modal [0de78c2]
+* **refactor(app):** toast colors and appear logic [44f2c6d]
 
 ### v0.16.4
 

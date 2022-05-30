@@ -3,6 +3,7 @@ import {
   ID,
   PDFDocOptions,
   PluginTypes,
+  ImporterParams,
 } from 'better-write-types'
 
 export const entity = () => {
@@ -289,6 +290,39 @@ export const externals = () => {
     })
   }
 
+  const PluginImporterDOCX = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-importer-docx', (obj: ImporterParams) => {
+      const created = content[0]
+
+      created && created(obj)
+    })
+  }
+
+  const PluginImporterTXT = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-importer-txt', (obj: ImporterParams) => {
+      const created = content[0]
+
+      created && created(obj)
+    })
+  }
+
+  const PluginImporterBW = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-importer-bw', (obj: ImporterParams) => {
+      const created = content[0]
+
+      created && created(obj)
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -296,6 +330,9 @@ export const externals = () => {
     PluginPDFInit,
     PluginDocxGenerate,
     PluginTxtGenerate,
+    PluginImporterDOCX,
+    PluginImporterTXT,
+    PluginImporterBW,
   }
 }
 
