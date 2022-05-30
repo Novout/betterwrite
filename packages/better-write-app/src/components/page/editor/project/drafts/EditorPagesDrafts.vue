@@ -91,7 +91,7 @@
         :initial="{ opacity: 0, y: -30 }"
         :enter="{ opacity: 1, y: 0 }"
         :delay="300"
-        class="flex flex-col justify-start gap-10 flex-1 w-auto text-lg p-2 overflow-y-auto wb-scroll"
+        class="flex flex-col justify-start gap-2 flex-1 w-auto text-lg p-2 overflow-y-auto wb-scroll"
       >
         <h2 class="font-xl text-center pb-5 font-bold text-xl my-10 md:my-0">
           {{ page.title }}
