@@ -6,7 +6,7 @@
     :delay="350"
     class="flex w-full px-2 gap-2 text-xs wb-text bg-theme-editor-background-bar hover:theme-editor-background-bar-hover active:theme-editor-background-bar-active"
   >
-    <div class="flex pointer-events-none items-center flex-1 gap-3">
+    <div class="flex pointer-events-none items-center flex-1 gap-4">
       <EditorBaseRenderBarBrowser />
       <EditorBaseRenderBarApplication />
       <EditorBaseRenderBarWifi />
