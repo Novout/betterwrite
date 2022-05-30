@@ -96,42 +96,12 @@
         <h2 class="font-xl text-center pb-5 font-bold text-xl my-10 md:my-0">
           {{ page.title }}
         </h2>
-        <div class="flex flex-wrap gap-5 justify-around w-full">
-          <EditorPagesDraftsInfo
-            :title="t('editor.drafts.statistics.characters')"
-            :result="project.utils().getChapterAllCharacters(page)"
-          />
-          <EditorPagesDraftsInfo
-            :title="t('editor.drafts.statistics.letters')"
-            :result="project.utils().getChapterLetters(page)"
-          />
-        </div>
-        <div class="flex flex-wrap gap-5 justify-around w-full mt-10">
-          <EditorPagesDraftsInfo
-            :title="t('editor.drafts.statistics.paragraph')"
-            :result="project.utils().getChapterParagraphs(page)"
-          />
-          <EditorPagesDraftsInfo
-            :title="t('editor.drafts.statistics.heading')"
-            :result="project.utils().getChapterHeadings(page)"
-          />
-          <EditorPagesDraftsInfo
-            :title="t('editor.drafts.statistics.fixed')"
-            :result="project.utils().getChapterFixed(page)"
-          />
-        </div>
-        <div class="flex flex-wrap gap-5 justify-around w-full mt-10">
-          <div
-            class="p-3 w-full font-bold shadow-lg text-theme-editor-creative-drafts-container-item-text wb-scroll overflow-y-auto bg-theme-editor-creative-drafts-container-item-background max-h-40 hover:bg-theme-editor-creative-drafts-container-item-background-hover active:bg-theme-editor-creative-drafts-container-item-background-active"
-          >
-            <h2>{{ t('editor.drafts.statistics.longest') }}</h2>
-            <p class="mt-2 w-full text-sm text-justify">
-              {{
-                raw.v2().normalize(project.utils().getParagraphLongest(page))
-              }}
-            </p>
-          </div>
-        </div>
+        <EditorEntityDraftsInput
+          v-for="(element, index) in CONTEXT.entities"
+          :id="`entity-${String(index)}`"
+          :key="index"
+          :entity="element"
+        />
       </div>
     </div>
   </div>

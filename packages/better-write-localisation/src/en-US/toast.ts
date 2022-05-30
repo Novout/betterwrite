@@ -3,7 +3,7 @@ export default {
     load: 'Wait a moment...',
     error: 'An unexpected error occurred :(',
     supported: 'Your browser does not support this feature :(',
-    cancel: 'The action has been cancelled!'
+    cancel: 'The action has been cancelled!',
   },
   pdf: {
     error:
