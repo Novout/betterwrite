@@ -10,7 +10,7 @@ import {
   ImporterParams,
   PluginTypes,
 } from 'better-write-types'
-import { nextTick } from 'vue'
+import { nextTick } from 'vue-demi'
 import { On } from 'better-write-plugin-core'
 import { Entity } from 'better-write-types'
 

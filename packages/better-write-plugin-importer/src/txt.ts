@@ -1,6 +1,6 @@
 import { On } from 'better-write-plugin-core'
 import { PluginTypes, ImporterParams, Entities } from 'better-write-types'
-import { nextTick } from 'vue'
+import { nextTick } from 'vue-demi'
 
 export const TXTSet = (
   emitter: PluginTypes.PluginEmitter,
