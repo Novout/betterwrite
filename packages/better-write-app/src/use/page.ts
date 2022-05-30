@@ -7,6 +7,7 @@ import useEmitter from './emitter'
 import { useScroll } from './scroll'
 import { usePlugin } from 'better-write-plugin-core'
 import { useI18n } from 'vue-i18n'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 
 export const usePage = () => {
   const PROJECT = useProjectStore()
@@ -14,12 +15,14 @@ export const usePage = () => {
 
   const env = useEnv()
   const plugin = usePlugin()
-  const emitter = useEmitter()
+  const { isLoading } = useNProgress()
   const scroll = useScroll()
   const { t } = useI18n()
 
   const onCreatePage = async (title: string) => {
     if (PROJECT.name === env.projectEmpty()) return
+
+    isLoading.value = true
 
     PROJECT.newPage(title)
 
@@ -37,6 +40,8 @@ export const usePage = () => {
     scroll.force('#editor-aside')
 
     plugin.emit('plugin-project-page-new', arr.length - 1)
+
+    isLoading.value = false
   }
 
   const onDeletePage = async () => {
@@ -46,6 +51,8 @@ export const usePage = () => {
 
     if (PROJECT.pages.length <= 1) return
 
+    isLoading.value = true
+
     plugin.emit('plugin-project-page-delete', CONTEXT.entities[0].raw)
 
     PROJECT.deletePage(CONTEXT.$state)
@@ -53,9 +60,13 @@ export const usePage = () => {
     await nextTick
 
     CONTEXT.load(PROJECT.pages[PROJECT.pages.length - 1])
+
+    isLoading.value = false
   }
 
   const onUpPage = (e: MouseEvent) => {
+    isLoading.value = true
+
     plugin.emit('plugin-project-page-swap', {
       index: utils().getPageIndex(CONTEXT.$state.id),
       direction: 'up',
@@ -65,9 +76,13 @@ export const usePage = () => {
       page: CONTEXT.$state,
       direction: 'up',
     })
+
+    isLoading.value = false
   }
 
   const onDownPage = (e: MouseEvent) => {
+    isLoading.value = true
+
     plugin.emit('plugin-project-page-swap', {
       index: utils().getPageIndex(CONTEXT.$state.id),
       direction: 'down',
@@ -77,6 +92,8 @@ export const usePage = () => {
       page: CONTEXT.$state,
       direction: 'down',
     })
+
+    isLoading.value = false
   }
 
   const utils = () => {

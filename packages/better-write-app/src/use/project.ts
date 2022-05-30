@@ -24,13 +24,10 @@ import { usePlugin } from 'better-write-plugin-core'
 import { useBreakpoint } from './breakpoint'
 import { useRaw } from './raw'
 import { useFileSystemAccess } from '@vueuse/core'
-import { useFactory } from './factory'
 import { useI18n } from 'vue-i18n'
-import { useDefines } from './defines'
-import { useFormat } from './format'
-import { useUtils } from './utils'
 import { read } from 'better-write-plugin-importer'
 import useEmitter from './emitter'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -48,10 +45,7 @@ export const useProject = () => {
   const raw = useRaw()
   const plugin = usePlugin()
   const breakpoints = useBreakpoint()
-  const factory = useFactory()
-  const defines = useDefines()
-  const format = useFormat()
-  const ut = useUtils()
+  const { isLoading } = useNProgress()
   const emitter = useEmitter()
   const { t } = useI18n()
 
@@ -158,10 +152,12 @@ export const useProject = () => {
   }
 
   const onExportProject = () => {
+    isLoading.value = true
+
     storage
       .normalize()
-      .then(() => {
-        saveAs(
+      .then(async () => {
+        await saveAs(
           new Blob([JSON.stringify(storage.getProjectObject())], {
             type: 'application/json',
           }),
@@ -173,13 +169,17 @@ export const useProject = () => {
       .catch(() => {
         toast.error(t('toast.generics.error'))
       })
-      .finally(() => {})
+      .finally(() => {
+        isLoading.value = false
+      })
   }
 
   const onExportProjectAs = () => {
     storage
       .normalize()
-      .then(() => {
+      .then(async () => {
+        isLoading.value = true
+
         const res = useFileSystemAccess({
           dataType: 'Blob',
           types: [
@@ -203,14 +203,16 @@ export const useProject = () => {
         )
         res.fileName.value = utils().exportName('bw')
 
-        res.saveAs()
+        await res.saveAs()
 
         toast.success(t('toast.project.export'))
       })
       .catch(() => {
-        toast.error(t('toast.generics.error'))
+        toast.warning(t('toast.generics.cancel'))
       })
-      .finally(() => {})
+      .finally(() => {
+        isLoading.value = false
+      })
   }
 
   const onImportProject = () => {
