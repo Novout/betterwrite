@@ -60,4 +60,7 @@ export default {
     contextWarning:
       'Chapter identifier not found! Make sure the uploaded file is valid!',
   },
+  corrector: {
+    apply: 'Effects applied successfully!',
+  },
 }

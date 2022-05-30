@@ -60,4 +60,7 @@ export default {
     contextWarning:
       'O identificador do capítulo não foi encontrado! Verifique se o arquivo carregado é válido!',
   },
+  corrector: {
+    apply: 'Corretor aplicado com sucesso!',
+  },
 }

@@ -8,10 +8,12 @@ import { Entity } from 'better-write-types'
 import { useEditorStore } from '../store/editor'
 import { useRaw } from './raw'
 import { useEnv } from './env'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
+import { useToast } from 'vue-toastification'
+import { useI18n } from 'vue-i18n'
 
 export const useCorrector = () => {
   const PROJECT = useProjectStore()
-  const EDITOR = useEditorStore()
   const CONTEXT = useContextStore()
   const ADDONS = useAddonsStore()
 
@@ -19,6 +21,9 @@ export const useCorrector = () => {
   const project = useProject()
   const raw = useRaw()
   const env = useEnv()
+  const { isLoading } = useNProgress()
+  const toast = useToast()
+  const { t } = useI18n()
 
   const options = () => {
     const removeStartWhitespace = () => {
@@ -56,7 +61,7 @@ export const useCorrector = () => {
     }
 
     const resetEntityRaw = () => {
-      if (ADDONS.corrector.options[5].option) {
+      if (ADDONS.corrector.options[4].option) {
         project.utils().getParagraphEntities((entity: Entity) => {
           entity.raw = raw.v2().normalize(entity.raw, 'full') || env.emptyLine()
         })
@@ -73,19 +78,32 @@ export const useCorrector = () => {
   }
 
   const apply = () => {
-    storage.normalize().then(async () => {
-      PROJECT.updateContext(CONTEXT.$state)
+    isLoading.value = true
 
-      await nextTick
+    storage
+      .normalize()
+      .then(async () => {
+        PROJECT.updateContext(CONTEXT.$state)
 
-      await options().removeStartWhitespace()
-      await options().removeEndWhitespace()
-      await options().insertParagraphEndStop()
-      await options().removeExtraWhitespace()
-      await options().resetEntityRaw()
+        await nextTick
 
-      CONTEXT.load(PROJECT.pages[0])
-    })
+        await options().removeStartWhitespace()
+        await options().removeEndWhitespace()
+        await options().insertParagraphEndStop()
+        await options().removeExtraWhitespace()
+        await options().resetEntityRaw()
+
+        CONTEXT.load(PROJECT.pages[0])
+
+        toast.success(t('toast.corrector.apply'))
+      })
+      .finally(() => {
+        isLoading.value = false
+      })
+      .catch((e) => {
+        console.log('here?', e)
+        toast.error(t('toast.generics.error'))
+      })
   }
 
   return { options, apply }
