@@ -194,7 +194,7 @@ export const useBlockText = ({
 
       // italic entity
       if (e.key === 'i' || e.key === 'I') {
-        if (!value || props.entity.type !== 'paragraph') return
+        if (!value || !entity.utils().isTextBlock(props.entity.type)) return
 
         e.preventDefault()
         e.stopPropagation()
@@ -214,7 +214,7 @@ export const useBlockText = ({
 
       // bold entity
       if (e.key === 'b' || e.key === 'B') {
-        if (!value || props.entity.type !== 'paragraph') return
+        if (!value || !entity.utils().isTextBlock(props.entity.type)) return
 
         e.preventDefault()
         e.stopPropagation()
