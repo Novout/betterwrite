@@ -233,19 +233,20 @@ export const useProject = () => {
 
       read(file, isDoc ? 'data' : 'text')
         .then((data) => {
-          if (isBW) {
-            const content = destr(data as string)
-
-            onLoadProject(content)
-
-            return
-          }
-
           const filename = file.name
             .replace('.bw', '')
             .replace('.docx', '')
             .replace('.doc', '')
             .replace('.txt', '')
+
+          if (isBW) {
+            plugin.emit('plugin-importer-bw', {
+              data,
+              fileName: filename,
+            })
+            
+            return
+          }
 
           if (isDoc) {
             plugin.emit('plugin-importer-docx', {
