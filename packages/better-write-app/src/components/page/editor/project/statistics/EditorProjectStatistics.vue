@@ -12,28 +12,15 @@
 
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
-  import { useContextStore } from '@/store/context'
-  import { useProjectStore } from '@/store/project'
   import { useProject } from '@/use/project'
-  import { useStorage } from '@/use/storage/storage'
   import { onClickOutside } from '@vueuse/core'
-  import { ref, onMounted } from 'vue'
+  import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const ABSOLUTE = useAbsoluteStore()
-  const CONTEXT = useContextStore()
-  const PROJECT = useProjectStore()
-
-  const storage = useStorage()
   const project = useProject()
 
   const { t } = useI18n()
-
-  onMounted(() => {
-    storage.normalize().then(() => {
-      PROJECT.updateContext(CONTEXT.$state)
-    })
-  })
 
   const statistics = ref<HTMLElement | null>(null)
 

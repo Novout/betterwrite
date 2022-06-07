@@ -91,6 +91,10 @@ export const useEntity = () => {
       )
     }
 
+    const isTextBlock = (type: EntityType) => {
+      return type === 'paragraph' || type === 'list' || type === 'checkbox'
+    }
+
     const isHeading = (type: EntityType) => {
       return (
         type === 'heading-one' ||
@@ -119,6 +123,7 @@ export const useEntity = () => {
       isPageBreak,
       isLineBreak,
       isText,
+      isTextBlock,
       isHeading,
       isFixedRaw,
     }
