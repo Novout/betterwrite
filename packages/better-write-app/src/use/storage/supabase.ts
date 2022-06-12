@@ -127,6 +127,9 @@ export const useSupabase = () => {
   }
 
   const saveProject = async () => {
+    isLoading.value = true
+    toast.info(t('toast.generics.load'))
+
     const { data, error } = await s.from('projects').upsert(
       {
         // @ts-ignore
@@ -136,16 +139,16 @@ export const useSupabase = () => {
       { onConflict: 'id' }
     )
 
+    isLoading.value = false
+
     if (error) {
       toast.error(error.message)
 
       return
     }
 
-    toast.success(t('toast.project.save'))
-
-    if (data) {
-      AUTH.account.project_id_activity = data[0].id || null
+    if (data[0]?.id) {
+      AUTH.account.project_id_activity = data[0].id
 
       await storage.normalize()
 
@@ -162,8 +165,12 @@ export const useSupabase = () => {
 
       if (err) {
         toast.error(err.message)
+
+        return
       }
     }
+
+    toast.success(t('toast.project.save'))
   }
 
   const deleteProject = async (context: ProjectObject) => {
@@ -260,8 +267,6 @@ export const useSupabase = () => {
     const x1 = a2 * (b1 || 0)
 
     const b2 = x1 / a1
-
-    console.log(x1)
 
     return b2
   }

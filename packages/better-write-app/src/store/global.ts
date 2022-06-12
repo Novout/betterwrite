@@ -5,7 +5,6 @@ import { usePDFStore } from './pdf'
 import { useAbsoluteStore } from './absolute'
 import { GlobalState } from 'better-write-types'
 import { useProjectStore } from './project'
-import { useAuthStore } from './auth'
 import { useContextStore } from './context'
 
 export const useGlobalStore = defineStore('global', {
@@ -20,7 +19,6 @@ export const useGlobalStore = defineStore('global', {
       const pdf = usePDFStore()
       const absolute = useAbsoluteStore()
       const project = useProjectStore()
-      const auth = useAuthStore()
 
       context.$reset()
       absolute.$reset()
@@ -28,7 +26,6 @@ export const useGlobalStore = defineStore('global', {
       pdf.resetStyles()
       logger.reset()
       project.$reset()
-      auth.account.project_id_activity = null
     },
   },
 })

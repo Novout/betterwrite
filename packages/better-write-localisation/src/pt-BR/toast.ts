@@ -30,6 +30,7 @@ export default {
     error: 'Não foi possível carregar ou salvar o projeto :(',
     export: 'Projeto exportado para a extensão (.bw) com sucesso!',
     unsupportedExtension: 'Esta extensão não é suportada por Better Write!',
+    delete: 'Projeto deletado com sucesso!',
     docx: {
       generate: 'DOCX Baixado com Sucesso!',
     },
