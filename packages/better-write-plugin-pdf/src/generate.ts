@@ -620,8 +620,13 @@ export const PluginPDFSet = (
         text: ' ',
         pageBreak: 'before',
       }
+      let _break2 = {
+        text: ' ',
+        pageBreak: 'before',
+      }
 
       arr.push(_break)
+      arr.push(_break2)
     }
 
     const note = (arr: Array<any>) => {
@@ -673,7 +678,6 @@ export const PluginPDFSet = (
         margin: [0, 2],
         alignment: 'center',
         image: 'betterwriteio',
-        pageBreak: 'after',
         height: 55,
         width: 140,
       }
@@ -684,6 +688,15 @@ export const PluginPDFSet = (
 
     const summary = (arr: Array<any>) => {
       if (stores.PDF.styles.switcher.summary) {
+        let _break = {
+          text: ' ',
+          pageBreak: 'before',
+        }
+        let _break2 = {
+          text: ' ',
+          pageBreak: 'after',
+        }
+
         let _raw = {
           toc: {
             title: {
@@ -691,7 +704,7 @@ export const PluginPDFSet = (
               font: utils().correctFontInject(
                 stores.PDF.styles.base.summary.fontFamily
               ),
-              fontSize: stores.PDF.styles.base.summary.fontSize,
+              fontSize: 28,
             },
           },
           pageBreak: 'after',
@@ -702,6 +715,8 @@ export const PluginPDFSet = (
           style: 'summary-default',
         }
 
+        arr.push(_break)
+        arr.push(_break2)
         arr.push(_raw)
       }
     }
@@ -1034,7 +1049,7 @@ export const PluginPDFSet = (
           transform().alignment(stores.PDF.styles.base.footer.alignment) ===
           'default'
         ) {
-          return currentPage % 2 ? 'left' : 'right'
+          return currentPage % 2 ? 'right' : 'left'
         }
 
         if (

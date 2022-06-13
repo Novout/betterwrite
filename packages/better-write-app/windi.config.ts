@@ -15,6 +15,7 @@ export default defineConfig({
     'wb-base': 'bg-theme-background-1 w-full h-screen',
     'wb-title': 'text-4xl opacity-70 hover:text-theme-text-3 cursor-default',
     'wb-icon': 'text-theme-icon hover:text-theme-icon-hover active:text-theme-icon-active cursor-pointer',
+    'wb-spinner': 'text-theme-icon hover:text-theme-icon-hover active:text-theme-icon-active cursor-wait',
     'wb-text': 'text-theme-text-1',
     'wb-background-color': 'bg-theme-background-1',
     'wb-aside-button': 'text-2xs pl-2 transition w-full font-bold text-theme-text-2 rounded-none flex',
@@ -85,7 +86,7 @@ export default defineConfig({
       backgroundColor: theme => ({
         "black-opacity": 'rgba(0,0,0, 0.15)',
         "white-opacity": 'rgba(255,255,255, 0.1)',
-        "modal": 'rgba(0,0,0, 0.4)'
+        "modal": 'rgba(0,0,0, 0.7)'
       }),
       boxShadow: theme => ({
         "binset": `rgba(50, 50, 93, 0.4) 0px 2px 5px -1px, rgba(0, 0, 0, 0.65) 0px 1px 3px -1px;`,

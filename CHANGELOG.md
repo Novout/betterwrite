@@ -1,6 +1,13 @@
-# Changelog (06/06/2022)
+# Changelog (12/06/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.7
+
+* **fix(chapter):** focus text entity in create hook [5392ca8b]
+* **feat(editor):** absolute loader for edge cases [12766ddf]
+* **refactor(cloud):** auth id in load project [20deaed6]
+* **style:** default break set [2d476822]
 
 ### v0.16.6
 

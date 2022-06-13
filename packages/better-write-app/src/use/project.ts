@@ -28,6 +28,7 @@ import { useI18n } from 'vue-i18n'
 import { read } from 'better-write-plugin-importer'
 import useEmitter from './emitter'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
+import { useAuthStore } from '@/store/auth'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -36,6 +37,7 @@ export const useProject = () => {
   const LOGGER = useLoggerStore()
   const PDF = usePDFStore()
   const ABSOLUTE = useAbsoluteStore()
+  const AUTH = useAuthStore()
 
   const toast = useToast()
   const storage = useStorage()
@@ -66,6 +68,8 @@ export const useProject = () => {
 
       await nextTick
 
+      AUTH.account.project_id_activity = null
+
       CONTEXT.load()
 
       ABSOLUTE.project.blocked = false
@@ -94,6 +98,8 @@ export const useProject = () => {
 
       CONTEXT.load(PROJECT.pages[0])
 
+      AUTH.account.project_id_activity = null
+
       await nextTick
 
       toast.success(t('toast.project.create'))
@@ -111,6 +117,8 @@ export const useProject = () => {
 
       return
     }
+
+    if (context.id) AUTH.account.project_id_activity = context.id
 
     PROJECT.load(context.project)
 
@@ -244,7 +252,7 @@ export const useProject = () => {
               data,
               fileName: filename,
             })
-            
+
             return
           }
 

@@ -7,6 +7,7 @@ import { useProjectStore } from '@/store/project'
 import { ID, ContextState, Entity } from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
+import { useCycle } from './cycle'
 
 export const useGraph = () => {
   const CONTEXT = useContextStore()
@@ -17,6 +18,7 @@ export const useGraph = () => {
   const scroll = useScroll()
   const storage = useStorage()
   const breakpoints = useBreakpoints(breakpointsTailwind)
+  const cycle = useCycle()
 
   const utils = () => {
     const mobile = () => {
@@ -53,9 +55,15 @@ export const useGraph = () => {
   }
 
   const to = async (index: ID<number>, page: ContextState, entity: Entity) => {
+    ABSOLUTE.spinner = true
+
+    await cycle.forceNextTick()
+
     await load(index, page, entity)
 
     utils().mobile()
+
+    ABSOLUTE.spinner = false
   }
 
   const normalize = () => {

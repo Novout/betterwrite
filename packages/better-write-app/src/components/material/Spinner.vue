@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center w-full">
-    <HeroIcon class="wb-icon animate-spin">
+    <HeroIcon class="wb-spinner animate-spin">
       <svg
         :width="width"
         :height="height"
