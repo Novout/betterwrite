@@ -3,11 +3,11 @@ import { useEnv } from './env'
 import { useProjectStore } from '@/store/project'
 import { useContextStore } from '@/store/context'
 import { ContextState } from 'better-write-types'
-import useEmitter from './emitter'
 import { useScroll } from './scroll'
 import { usePlugin } from 'better-write-plugin-core'
 import { useI18n } from 'vue-i18n'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
+import useEmitter from './emitter'
 
 export const usePage = () => {
   const PROJECT = useProjectStore()
@@ -18,6 +18,7 @@ export const usePage = () => {
   const { isLoading } = useNProgress()
   const scroll = useScroll()
   const { t } = useI18n()
+  const emitter = useEmitter()
 
   const onCreatePage = async (title: string) => {
     if (PROJECT.name === env.projectEmpty()) return
@@ -42,6 +43,13 @@ export const usePage = () => {
     plugin.emit('plugin-project-page-new', arr.length - 1)
 
     isLoading.value = false
+
+    await nextTick
+
+    emitter.emit('entity-text-focus', {
+      target: 1,
+      position: 'start',
+    })
   }
 
   const onDeletePage = async () => {
