@@ -19,6 +19,7 @@
     <EditorToolsSpeechRecognition v-if="ABSOLUTE.tools.speechRecognition" />
     <EditorLiveCreate v-else-if="ABSOLUTE.live.create" />
     <EditorLiveEnter v-else-if="ABSOLUTE.live.enter" />
+    <EditorAbsoluteLoader v-else-if="ABSOLUTE.spinner" />
   </teleport>
 </template>
 

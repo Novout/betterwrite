@@ -65,4 +65,5 @@ export interface AbsoluteState {
   tools: AbsoluteStateTools
   generator: AbsoluteStateGenerator
   live: AbsoluteStateLive
+  spinner: boolean
 }

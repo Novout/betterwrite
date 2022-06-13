@@ -50,6 +50,7 @@ export const useAbsoluteStore = defineStore('absolute', {
         create: false,
         enter: false,
       },
+      spinner: false,
     }
   },
 })
