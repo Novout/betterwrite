@@ -139,10 +139,10 @@ export const useSupabase = () => {
       { onConflict: 'id' }
     )
 
-    isLoading.value = false
-
     if (error) {
       toast.error(error.message)
+
+      isLoading.value = false
 
       return
     }
@@ -166,9 +166,13 @@ export const useSupabase = () => {
       if (err) {
         toast.error(err.message)
 
+        isLoading.value = false
+
         return
       }
     }
+
+    isLoading.value = false
 
     toast.success(t('toast.project.save'))
   }
