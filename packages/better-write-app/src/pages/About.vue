@@ -11,13 +11,14 @@
 </template>
 
 <script setup lang="ts">
-  import { useEventListener } from '@vueuse/core'
+  import { useEventListener, useScroll } from '@vueuse/core'
   import { reactive, ref } from 'vue'
 
   const main = ref<HTMLDivElement | null>(null)
   const section = reactive({
     actually: 0,
   })
+  const { isScrolling } = useScroll(main)
 
   useEventListener(main, 'wheel', (e: WheelEvent) => {
     e.preventDefault()
@@ -25,19 +26,19 @@
 
     const direction = e.deltaY > 0 ? 'down' : 'up'
 
-    onToSection(direction)
+    if (!isScrolling.value) onToSection(direction)
   })
 
   useEventListener('keydown', (e: KeyboardEvent) => {
     const isDownKey = e.key === 'ArrowDown'
     const isUpKey = e.key === 'ArrowUp'
 
-    if (isDownKey || isUpKey) {
+    if ((isDownKey || isUpKey) && !isScrolling.value) {
       e.preventDefault()
       e.stopPropagation()
 
-      if (isDownKey) onToSection('down')
-      if (isUpKey) onToSection('up')
+      if (isDownKey && !isScrolling.value) onToSection('down')
+      if (isUpKey && !isScrolling.value) onToSection('up')
     }
   })
 
