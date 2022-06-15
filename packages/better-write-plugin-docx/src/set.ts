@@ -138,6 +138,15 @@ export const PluginDocxSet = (
     return final
   }
 
+  const addons = () => {
+    const bw = (arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents>) => {
+      arr.push(create().entities().pageBreak())
+      arr.push(create().entities().headingThree('Documento produzido por betterwrite.io'))
+    }
+
+    return { bw }
+  }
+
   const create = () => {
     const properties = (): docx.ISectionPropertiesOptions => {
       return {
@@ -348,6 +357,8 @@ export const PluginDocxSet = (
           }
         })
       })
+
+      addons().bw(arr)
 
       return arr
     }
