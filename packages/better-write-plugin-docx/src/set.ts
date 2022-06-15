@@ -1,6 +1,6 @@
 import * as docx from 'docx'
 import { saveAs } from 'file-saver'
-import { Entity, PluginTypes } from 'better-write-types'
+import { Entity, Maybe, PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 import { useNProgress } from '@vueuse/integrations'
 import { ContextState } from 'better-write-types'
@@ -14,7 +14,45 @@ export const PluginDocxSet = (
 ) => {
   const { isLoading } = useNProgress()
 
-  const purge = (raw: string): DocxPurge => {
+  const transform = () => {
+    const entityAlignment = (b: string): docx.AlignmentType => {
+      let value: Maybe<docx.AlignmentType> = null
+      let __STOP__: boolean = false
+
+      hooks.i18n.availableLocales.forEach((locale: string) => {
+        if (__STOP__) return
+
+        const { editor } = hooks.i18n.getLocaleMessage(locale)
+
+        switch (b) {
+          case editor.pdf.configuration.alignment.justify:
+            __STOP__ = true
+            value = docx.AlignmentType.JUSTIFIED
+            break
+          case editor.pdf.configuration.alignment.left:
+            __STOP__ = true
+            value = docx.AlignmentType.LEFT
+            break
+          case editor.pdf.configuration.alignment.center:
+            __STOP__ = true
+            value = docx.AlignmentType.CENTER
+            break
+          case editor.pdf.configuration.alignment.right:
+            __STOP__ = true
+            value = docx.AlignmentType.RIGHT
+            break
+          default:
+            __STOP__ = false
+        }
+      })
+
+      return value || docx.AlignmentType.JUSTIFIED
+    }
+
+    return { entityAlignment }
+  }
+
+  const purge = (raw: string, custom: Record<string, any>): DocxPurge => {
     const final: DocxPurge = []
     let set: false | 'bold' | 'italic' = false
 
@@ -92,6 +130,7 @@ export const PluginDocxSet = (
       final.push(
         new docx.TextRun({
           text: content,
+          ...custom,
         })
       )
     })
@@ -141,7 +180,7 @@ export const PluginDocxSet = (
             },
             paragraph: {
               spacing: {
-                after: 300,
+                after: 1200,
               },
             },
           },
@@ -165,7 +204,7 @@ export const PluginDocxSet = (
             paragraph: {
               spacing: {
                 before: 80,
-                after: 350,
+                after: 400,
               },
             },
           },
@@ -173,10 +212,40 @@ export const PluginDocxSet = (
       }
     }
 
+    const customStyles = ({ external }: Entity) => {
+      const textRun = external?.paragraph?.active
+        ? {
+            italics: external?.paragraph?.generator.italics,
+            bold: external?.paragraph?.generator.bold,
+          }
+        : {}
+
+      const paragraph = external?.paragraph?.active
+        ? {
+            spacing: {
+              after: external?.paragraph?.generator.margin.bottom * 15,
+              before: external?.paragraph?.generator.margin.bottom * 15,
+            },
+            alignment: transform().entityAlignment(
+              external?.paragraph?.generator.alignment as any
+            ),
+            indent: {
+              firstLine: 375,
+            },
+          }
+        : {
+            indent: {
+              firstLine: 375,
+            },
+          }
+
+      return { textRun, paragraph }
+    }
+
     const entities = () => {
       const headingOne = (raw: string) => {
         return new docx.Paragraph({
-          text: hooks.substitution.purge(raw),
+          text: raw,
           heading: docx.HeadingLevel.HEADING_1,
           alignment: docx.AlignmentType.CENTER,
           pageBreakBefore: true,
@@ -185,7 +254,7 @@ export const PluginDocxSet = (
 
       const headingTwo = (raw: string) => {
         return new docx.Paragraph({
-          text: hooks.substitution.purge(raw),
+          text: raw,
           heading: docx.HeadingLevel.HEADING_2,
           alignment: docx.AlignmentType.CENTER,
         })
@@ -193,28 +262,32 @@ export const PluginDocxSet = (
 
       const headingThree = (raw: string) => {
         return new docx.Paragraph({
-          text: hooks.substitution.purge(raw),
+          text: raw,
           heading: docx.HeadingLevel.HEADING_3,
           alignment: docx.AlignmentType.CENTER,
         })
       }
 
-      const paragraph = (raw: string): docx.Paragraph[] => {
-        if (hooks.env.emptyLine() === raw || raw === '' || raw === ' ')
+      const paragraph = (entity: Entity): docx.Paragraph[] => {
+        if (
+          hooks.env.emptyLine() === entity.raw ||
+          entity.raw === '' ||
+          entity.raw === ' '
+        )
           return [lineBreak()]
+
+        const custom = customStyles(entity)
 
         return hooks.raw
           .v2()
           .block()
           .text()
-          .parse(raw)
+          .parse(entity.raw)
           .map((paragraph: string) => {
             return new docx.Paragraph({
-              children: purge(paragraph),
+              children: purge(paragraph, custom.textRun),
               alignment: docx.AlignmentType.JUSTIFIED,
-              indent: {
-                firstLine: 350,
-              },
+              ...custom.paragraph,
             })
           })
       }
@@ -254,7 +327,7 @@ export const PluginDocxSet = (
           switch (entity.type) {
             case 'paragraph':
               entities()
-                .paragraph(entity.raw)
+                .paragraph(entity)
                 ?.forEach((paragraph: docx.Paragraph) => arr.push(paragraph))
               break
             case 'heading-one':
