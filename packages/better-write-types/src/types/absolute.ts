@@ -22,6 +22,10 @@ export interface AbsoluteStatePDF {
   generate: boolean
 }
 
+export interface AbsoluteStateDOCX {
+  configuration: boolean
+}
+
 export interface AbsoluteStateAuth {
   dropbox: boolean
   supabase: boolean
@@ -59,6 +63,7 @@ export interface AbsoluteState {
   shortcuts: AbsoluteStateShortcuts
   logger: boolean
   pdf: AbsoluteStatePDF
+  docx: AbsoluteStateDOCX
   auth: AbsoluteStateAuth
   entity: AbsoluteStateEntity
   pages: AbsoluteStatePages

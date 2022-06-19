@@ -64,4 +64,10 @@ export default {
   corrector: {
     apply: 'Corretor aplicado com sucesso!',
   },
+  material: {
+    number: {
+      positive: 'Não é permitido números maiores que {number}!',
+      negative: 'Não é permitido números menores que {number}!',
+    },
+  },
 }

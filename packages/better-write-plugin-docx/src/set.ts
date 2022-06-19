@@ -139,9 +139,15 @@ export const PluginDocxSet = (
   }
 
   const addons = () => {
-    const bw = (arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents>) => {
+    const bw = (
+      arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents>
+    ) => {
       arr.push(create().entities().pageBreak())
-      arr.push(create().entities().headingThree('Documento produzido por betterwrite.io'))
+      arr.push(
+        create()
+          .entities()
+          .headingThree('Documento produzido por betterwrite.io')
+      )
     }
 
     return { bw }
@@ -328,9 +334,9 @@ export const PluginDocxSet = (
       }
     }
 
-    const content = () => {
-      const arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents> = []
-
+    const content = (
+      arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents>
+    ) => {
       stores.PROJECT.pages.forEach((page: ContextState) => {
         page.entities.forEach((entity: Entity) => {
           switch (entity.type) {
@@ -357,13 +363,34 @@ export const PluginDocxSet = (
           }
         })
       })
+    }
 
-      addons().bw(arr)
+    const flow = () => {
+      const arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents> = []
+
+      stores.DOCX.flow.forEach((f) => {
+        switch (f.type) {
+          case 'content':
+            content(arr)
+            break
+          case 'annotation':
+            entities()
+              .paragraph(hooks.factory.entity().create('paragraph', f.raw))
+              ?.forEach((paragraph: docx.Paragraph) => arr.push(paragraph))
+            break
+          case 'break-page':
+            arr.push(entities().pageBreak())
+            break
+          case 'bw':
+            addons().bw(arr)
+            break
+        }
+      })
 
       return arr
     }
 
-    return { properties, footer, styles, entities, content }
+    return { properties, footer, styles, entities, content, flow }
   }
 
   const doc = (): docx.File => {
@@ -377,7 +404,7 @@ export const PluginDocxSet = (
       sections: [
         {
           properties: create().properties(),
-          children: create().content(),
+          children: create().flow(),
           footers: create().footer(),
         },
       ],
@@ -387,6 +414,8 @@ export const PluginDocxSet = (
   const download = (doc: docx.File) => {
     isLoading.value = true
 
+    hooks.toast.info(hooks.i18n.t('toast.generics.load'))
+
     docx.Packer.toBlob(doc)
       .then((blob) => {
         saveAs(blob, hooks.project.utils().exportFullName('docx'))
@@ -395,6 +424,9 @@ export const PluginDocxSet = (
       })
       .finally(() => {
         isLoading.value = false
+      })
+      .catch(() => {
+        hooks.toast.error(hooks.i18n.t('toast.generics.error'))
       })
   }
 

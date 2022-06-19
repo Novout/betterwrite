@@ -7,6 +7,7 @@ import {
   EditorState,
   LoggerState,
   PDFState,
+  DOCXState,
   ProjectState,
 } from '../../'
 
@@ -59,6 +60,7 @@ export type ExistingStores =
   | 'editor'
   | 'logger'
   | 'pdf'
+  | 'docx'
   | 'project'
   | 'externals'
 
@@ -76,6 +78,7 @@ export interface PluginStores {
   EDITOR: PluginStore<'editor', EditorState, any, any>
   LOGGER: PluginStore<'logger', LoggerState, any, any>
   PDF: PluginStore<'pdf', PDFState, any, any>
+  DOCX: PluginStore<'docx', DOCXState, any, any>
   PROJECT: PluginStore<'project', ProjectState, any, any>
   EXTERNALS: PluginStore<'externals', ProjectState, any, any>
 }

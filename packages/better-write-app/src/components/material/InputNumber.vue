@@ -17,7 +17,13 @@
         />
       </svg>
     </HeroIcon>
-    <input ref="inp" v-model="cmp" type="number" class="w-6 bg-transparent" />
+    <input
+      ref="inp"
+      v-model="cmp"
+      type="number"
+      :min="props.min"
+      class="w-6 bg-transparent"
+    />
     <HeroIcon
       class="bg-theme-background-4 active:bg-theme-background-2"
       @click.prevent="onPositive"
@@ -40,6 +46,8 @@
 
 <script setup lang="ts">
   import { ref, computed, WritableComputedRef } from 'vue'
+  import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vue-toastification'
 
   const props = defineProps({
     modelValue: {
@@ -55,14 +63,37 @@
       type: Number,
       default: 1,
     },
+    min: {
+      required: false,
+      type: Number,
+      default: 0,
+    },
+    max: {
+      required: false,
+      type: Number,
+    },
   })
 
+  const toast = useToast()
+  const { t } = useI18n()
+
   const onNegative = () => {
+    if (cmp.value <= props.min) {
+      toast.warning(t('toast.material.number.negative', { number: props.min }))
+
+      return
+    }
+
     cmp.value -= Number(props.step)
     emit('action')
   }
 
   const onPositive = () => {
+    if (props.max && cmp.value >= props.max) {
+      toast.warning(t('toast.material.number.positive', { number: props.max }))
+
+      return
+    }
     cmp.value += Number(props.step)
     emit('action')
   }

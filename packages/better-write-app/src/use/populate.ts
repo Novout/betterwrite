@@ -1,9 +1,14 @@
-import { ProjectState, PDFStateStyles } from 'better-write-types'
+import {
+  ProjectState,
+  PDFStateStyles,
+  DOCXStateFlowItem,
+} from 'better-write-types'
 import { useEnv } from './env'
 import { useFormat } from './format'
 import { useDefines } from './defines'
 import { useUtils } from './utils'
 import { useFactory } from './factory'
+import { DOCXStateStyles } from 'better-write-types/src/types/docx'
 
 export const usePopulate = () => {
   const factory = useFactory()
@@ -152,6 +157,25 @@ export const usePopulate = () => {
     }
 
     return { names }
+  }
+
+  const docx = () => {
+    const flow = (): DOCXStateFlowItem[] => {
+      return [{ type: 'content' }, { type: 'bw' }]
+    }
+
+    const styles = (): DOCXStateStyles => {
+      return {
+        base: {},
+        paragraph: {},
+        headingOne: {},
+        headingTwo: {},
+        headingThree: {},
+        lineBreak: {},
+      }
+    }
+
+    return { flow, styles }
   }
 
   const pdf = () => {
@@ -347,5 +371,5 @@ export const usePopulate = () => {
     return { styles }
   }
 
-  return { project, pdf, debug }
+  return { project, docx, pdf, debug }
 }

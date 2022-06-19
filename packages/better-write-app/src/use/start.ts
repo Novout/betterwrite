@@ -42,6 +42,7 @@ import { useExternalsStore } from '@/store/externals'
 import { useSubstitution } from './tools/substitution'
 import { useToast } from 'vue-toastification'
 import { useBreakpoint } from './breakpoint'
+import { useDOCXStore } from '@/store/docx'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -168,6 +169,7 @@ export const useStart = () => {
         EDITOR: useEditorStore(),
         LOGGER: useLoggerStore(),
         PDF: usePDFStore(),
+        DOCX: useDOCXStore(),
         PROJECT: useProjectStore(),
         EXTERNALS: useExternalsStore(),
       } as any,

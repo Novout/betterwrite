@@ -156,6 +156,7 @@ export default {
       generate: 'Gerar (.TXT)',
     },
     docx: {
+      configuration: 'Configurar (.DOCX)',
       generate: 'Gerar (.DOCX)',
     },
     project: {
