@@ -16,7 +16,16 @@ export const useDefines = () => {
       ]
     }
 
-    return { flowItemTypes }
+    const entityAlignment = () => {
+      return [
+        t('generator.block.alignment.both'),
+        t('generator.block.alignment.left'),
+        t('generator.block.alignment.center'),
+        t('generator.block.alignment.right'),
+      ]
+    }
+
+    return { flowItemTypes, entityAlignment }
   }
 
   const pdf = () => {

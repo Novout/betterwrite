@@ -16,5 +16,28 @@ export default {
       },
     },
   },
+  block: {
+    paragraph: 'Parágrafo',
+    headingOne: 'Título Primário',
+    headingTwo: 'Título Secundário',
+    headingThree: 'Título Terciário',
+    fontSize: 'Tamanho do Texto',
+    fontColor: 'Cor do Texto',
+    bold: 'Negrito',
+    italics: 'Itálico',
+    alignment: {
+      title: 'Alinhamento',
+      both: 'Justificado',
+      left: 'Esquerda',
+      center: 'Centro',
+      right: 'Direita',
+    },
+    indent: 'Indentação',
+    margin: {
+      title: 'Margem',
+      top: 'Cima',
+      bottom: 'Baixo',
+    },
+  },
   generics: {},
 }

@@ -1,8 +1,33 @@
+export enum DOCXAlignmentType {
+  START = 'start',
+  END = 'end',
+  CENTER = 'center',
+  BOTH = 'both',
+  JUSTIFIED = 'both',
+  DISTRIBUTE = 'distribute',
+  LEFT = 'left',
+  RIGHT = 'right',
+}
+
 export interface DOCXStateStylesBase {}
 
-export interface DOCXStateStylesParagraph {}
+export interface DOCXStateStylesText {
+  bold: boolean
+  italics: boolean
+  color: string
+  size: number
+  margin: {
+    top: number
+    bottom: number
+  }
+  alignment: DOCXAlignmentType
+}
 
-export interface DOCXStateStylesHeading {}
+export interface DOCXStateStylesParagraph extends DOCXStateStylesText {
+  indent: number
+}
+
+export interface DOCXStateStylesHeading extends DOCXStateStylesText {}
 
 export interface DOCXStateStylesLineBreak {}
 

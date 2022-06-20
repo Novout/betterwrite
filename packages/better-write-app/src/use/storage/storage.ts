@@ -9,6 +9,7 @@ import useEmitter from '../emitter'
 import { useContextStore } from '@/store/context'
 import { useAuthStore } from '@/store/auth'
 import { useDefines } from '../defines'
+import { useDOCXStore } from '@/store/docx'
 
 export const useStorage = () => {
   const PROJECT = useProjectStore()
@@ -16,6 +17,7 @@ export const useStorage = () => {
   const EDITOR = useEditorStore()
   const LOGGER = useLoggerStore()
   const PDF = usePDFStore()
+  const DOCX = useDOCXStore()
   const AUTH = useAuthStore()
 
   const env = useEnv()
@@ -121,6 +123,7 @@ export const useStorage = () => {
         fonts: [],
         normalize: {},
       },
+      docx: DOCX.$state,
     }
   }
 

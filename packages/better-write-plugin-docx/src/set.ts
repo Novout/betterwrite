@@ -1,6 +1,6 @@
 import * as docx from 'docx'
 import { saveAs } from 'file-saver'
-import { Entity, Maybe, PluginTypes } from 'better-write-types'
+import { Entity, PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 import { useNProgress } from '@vueuse/integrations'
 import { ContextState } from 'better-write-types'
@@ -13,44 +13,6 @@ export const PluginDocxSet = (
   hooks: PluginTypes.PluginHooks
 ) => {
   const { isLoading } = useNProgress()
-
-  const transform = () => {
-    const entityAlignment = (b: string): docx.AlignmentType => {
-      let value: Maybe<docx.AlignmentType> = null
-      let __STOP__: boolean = false
-
-      hooks.i18n.availableLocales.forEach((locale: string) => {
-        if (__STOP__) return
-
-        const { editor } = hooks.i18n.getLocaleMessage(locale)
-
-        switch (b) {
-          case editor.pdf.configuration.alignment.justify:
-            __STOP__ = true
-            value = docx.AlignmentType.JUSTIFIED
-            break
-          case editor.pdf.configuration.alignment.left:
-            __STOP__ = true
-            value = docx.AlignmentType.LEFT
-            break
-          case editor.pdf.configuration.alignment.center:
-            __STOP__ = true
-            value = docx.AlignmentType.CENTER
-            break
-          case editor.pdf.configuration.alignment.right:
-            __STOP__ = true
-            value = docx.AlignmentType.RIGHT
-            break
-          default:
-            __STOP__ = false
-        }
-      })
-
-      return value || docx.AlignmentType.JUSTIFIED
-    }
-
-    return { entityAlignment }
-  }
 
   const purge = (raw: string, custom: Record<string, any>): DocxPurge => {
     const final: DocxPurge = []
@@ -67,6 +29,7 @@ export const PluginDocxSet = (
           new docx.TextRun({
             text: content,
             italics: true,
+            ...custom,
           })
         )
         set = false
@@ -83,6 +46,7 @@ export const PluginDocxSet = (
           new docx.TextRun({
             text: content,
             bold: true,
+            ...custom,
           })
         )
         set = false
@@ -188,38 +152,43 @@ export const PluginDocxSet = (
         default: {
           heading1: {
             run: {
-              size: 36,
-              bold: true,
-              italics: false,
-              color: '000000',
+              size: stores.DOCX.styles.headingOne.size * 1.5,
+              bold: stores.DOCX.styles.headingOne.bold,
+              italics: stores.DOCX.styles.headingOne.italics,
+              color: stores.DOCX.styles.headingOne.color.substring(1),
             },
             paragraph: {
               spacing: {
-                after: 1200,
+                before: stores.DOCX.styles.headingOne.margin.top * 15,
+                after: stores.DOCX.styles.headingOne.margin.bottom * 15,
               },
             },
           },
           heading2: {
             run: {
-              size: 28,
-              bold: true,
+              size: stores.DOCX.styles.headingTwo.size * 1.5,
+              bold: stores.DOCX.styles.headingTwo.bold,
+              italics: stores.DOCX.styles.headingTwo.italics,
+              color: stores.DOCX.styles.headingTwo.color.substring(1),
             },
             paragraph: {
               spacing: {
-                before: 100,
-                after: 500,
+                before: stores.DOCX.styles.headingTwo.margin.top * 15,
+                after: stores.DOCX.styles.headingTwo.margin.bottom * 15,
               },
             },
           },
           heading3: {
             run: {
-              size: 24,
-              bold: true,
+              size: stores.DOCX.styles.headingThree.size * 1.5,
+              bold: stores.DOCX.styles.headingThree.bold,
+              italics: stores.DOCX.styles.headingThree.italics,
+              color: stores.DOCX.styles.headingThree.color.substring(1),
             },
             paragraph: {
               spacing: {
-                before: 80,
-                after: 400,
+                before: stores.DOCX.styles.headingThree.margin.top * 15,
+                after: stores.DOCX.styles.headingThree.margin.bottom * 15,
               },
             },
           },
@@ -230,10 +199,17 @@ export const PluginDocxSet = (
     const customStyles = ({ external }: Entity) => {
       const textRun = external?.paragraph?.active
         ? {
+            size: external?.paragraph?.generator.fontSize * 1.5,
             italics: external?.paragraph?.generator.italics,
             bold: external?.paragraph?.generator.bold,
+            color: external?.paragraph?.generator.color.substring(1),
           }
-        : {}
+        : {
+            size: stores.DOCX.styles.paragraph.size * 1.5,
+            bold: stores.DOCX.styles.paragraph.bold,
+            italics: stores.DOCX.styles.paragraph.italics,
+            color: stores.DOCX.styles.paragraph.color.substring(1),
+          }
 
       const paragraph = external?.paragraph?.active
         ? {
@@ -241,16 +217,29 @@ export const PluginDocxSet = (
               after: external?.paragraph?.generator.margin.bottom * 15,
               before: external?.paragraph?.generator.margin.bottom * 15,
             },
-            alignment: transform().entityAlignment(
-              external?.paragraph?.generator.alignment as any
-            ),
+            alignment: hooks.transformer
+              .docx()
+              .entityAlignment(
+                external?.paragraph?.generator.alignment as any,
+                'setter'
+              ),
             indent: {
-              firstLine: 375,
+              firstLine: external?.paragraph?.generator.indent * 125,
             },
           }
         : {
+            spacing: {
+              before: stores.DOCX.styles.paragraph.margin.top * 15,
+              after: stores.DOCX.styles.paragraph.margin.bottom * 15,
+            },
+            alignment: hooks.transformer
+              .docx()
+              .entityAlignment(
+                stores.DOCX.styles.paragraph.alignment,
+                'setter'
+              ),
             indent: {
-              firstLine: 375,
+              firstLine: stores.DOCX.styles.paragraph.indent * 125,
             },
           }
 
@@ -301,7 +290,6 @@ export const PluginDocxSet = (
           .map((paragraph: string) => {
             return new docx.Paragraph({
               children: purge(paragraph, custom.textRun),
-              alignment: docx.AlignmentType.JUSTIFIED,
               ...custom.paragraph,
             })
           })

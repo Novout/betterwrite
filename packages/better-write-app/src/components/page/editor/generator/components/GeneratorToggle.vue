@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col w-full p-5 wb-text shadow-lg cursor-pointer">
+  <div class="flex flex-col w-full p-5 wb-text shadow-lg">
     <div
-      class="flex items-center justify-between w-full"
+      class="flex items-center justify-between w-full cursor-pointer"
       @click.prevent.stop="toggle()"
     >
       <div class="flex gap-2 items-center">

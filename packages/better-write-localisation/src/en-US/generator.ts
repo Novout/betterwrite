@@ -16,5 +16,28 @@ export default {
       },
     },
   },
+  block: {
+    paragraph: 'Paragraph',
+    headingOne: 'Heading One',
+    headingTwo: 'Heading Two',
+    headingThree: 'Heading Three',
+    fontSize: 'Font Size',
+    fontColor: 'Font Color',
+    bold: 'Bold',
+    italics: 'Italic',
+    alignment: {
+      title: 'Alignment',
+      both: 'Justified',
+      left: 'Left',
+      center: 'Center',
+      right: 'Right',
+    },
+    indent: 'Indentação',
+    margin: {
+      title: 'Margim',
+      top: 'Top',
+      bottom: 'Bottom',
+    },
+  },
   generics: {},
 }

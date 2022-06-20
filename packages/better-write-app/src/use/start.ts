@@ -43,6 +43,7 @@ import { useSubstitution } from './tools/substitution'
 import { useToast } from 'vue-toastification'
 import { useBreakpoint } from './breakpoint'
 import { useDOCXStore } from '@/store/docx'
+import { useTransformer } from './generator/transformer'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -200,6 +201,7 @@ export const useStart = () => {
         substitution: useSubstitution(),
         toast: useToast(),
         breakpoints: useBreakpoint(),
+        transformer: useTransformer(),
       }
     )
     plugin.emit('plugin-pdf-init')

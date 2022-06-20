@@ -111,7 +111,7 @@ export const useSupabase = () => {
         status,
       } = await s
         .from('projects')
-        .select(`id, logger, pdf, project, editor`)
+        .select(`id, logger, pdf, docx, project, editor`)
         // @ts-ignore
         .eq('id_user', AUTH.account.user.id)
 

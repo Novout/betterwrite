@@ -9,4 +9,10 @@ export const useDOCXStore = defineStore('docx', {
       styles: usePopulate().docx().styles(),
     }
   },
+  actions: {
+    load({ flow, styles }: DOCXState) {
+      this.flow = flow
+      this.styles = styles
+    },
+  },
 })

@@ -115,6 +115,7 @@ export interface PluginHooks {
   substitution: PluginHook
   toast: PluginHook
   breakpoints: PluginHook
+  transformer: PluginHook
 }
 
 export type PluginContext = (
