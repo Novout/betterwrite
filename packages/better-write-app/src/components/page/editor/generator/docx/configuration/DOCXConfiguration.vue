@@ -9,6 +9,7 @@
     <EditorAbsoluteHeader
       class="wb-text w-full"
       :title="'DOCX'"
+      :force="true"
       @close="ABSOLUTE.docx.configuration = false"
     />
     <GeneratorToggle
