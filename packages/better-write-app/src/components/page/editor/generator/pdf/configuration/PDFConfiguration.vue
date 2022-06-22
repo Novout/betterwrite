@@ -10,6 +10,7 @@
       <EditorAbsoluteHeader
         class="wb-text"
         :title="'PDF'"
+        :force="true"
         @close="ABSOLUTE.pdf.configuration = false"
       />
     </div>

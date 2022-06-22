@@ -1,6 +1,17 @@
-# Changelog (12/06/2022)
+# Changelog (22/06/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.8
+
+* **fix(Docx):** normalize in create file [6bf10ac2]
+* **fix(generator):** save in close configuration [4d83f86d]
+* **feat(Docx):** blocks support [d905986a]
+* **feat(docx):** flow support [92e1141c]
+* **feat(docx):** bw addon [d935e00f]
+* **feat(docx):** custom entity support [2f11c3e5]
+* **fix(about):** scrolling force stop in section [bec25b35]
+* **fix:** typo [a868cc1b]
 
 ### v0.16.7
 

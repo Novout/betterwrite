@@ -1,3 +1,6 @@
+.Vue-Toastification__container {
+  z-index: 999999999999999 !important;
+}
 .Vue-Toastification__toast--default {
   background: rgb(9,73,121) !important;
   background: linear-gradient(90deg, rgba(9,73,121,0.7) 0%, rgba(13,98,106,0.7) 100%) !important;

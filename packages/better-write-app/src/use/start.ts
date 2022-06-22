@@ -42,6 +42,8 @@ import { useExternalsStore } from '@/store/externals'
 import { useSubstitution } from './tools/substitution'
 import { useToast } from 'vue-toastification'
 import { useBreakpoint } from './breakpoint'
+import { useDOCXStore } from '@/store/docx'
+import { useTransformer } from './generator/transformer'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -168,6 +170,7 @@ export const useStart = () => {
         EDITOR: useEditorStore(),
         LOGGER: useLoggerStore(),
         PDF: usePDFStore(),
+        DOCX: useDOCXStore(),
         PROJECT: useProjectStore(),
         EXTERNALS: useExternalsStore(),
       } as any,
@@ -198,6 +201,7 @@ export const useStart = () => {
         substitution: useSubstitution(),
         toast: useToast(),
         breakpoints: useBreakpoint(),
+        transformer: useTransformer(),
       }
     )
     plugin.emit('plugin-pdf-init')

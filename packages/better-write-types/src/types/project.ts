@@ -1,4 +1,5 @@
 import { ContextState, EntityExternalParagraphGenerator } from './context'
+import { DOCXState } from './docx'
 import { EditorState } from './editor'
 import { LoggerState } from './logger'
 import { PDFState } from './pdf'
@@ -100,6 +101,7 @@ export interface ProjectObject {
   editor: EditorState
   logger: LoggerState
   pdf: PDFState
+  docx: DOCXState
 }
 
 export interface ProjectStateBetterWrite {

@@ -1,9 +1,15 @@
-import { ProjectState, PDFStateStyles } from 'better-write-types'
+import {
+  ProjectState,
+  PDFStateStyles,
+  DOCXStateFlowItem,
+  DOCXAlignmentType,
+} from 'better-write-types'
 import { useEnv } from './env'
 import { useFormat } from './format'
 import { useDefines } from './defines'
 import { useUtils } from './utils'
 import { useFactory } from './factory'
+import { DOCXStateStyles } from 'better-write-types/src/types/docx'
 
 export const usePopulate = () => {
   const factory = useFactory()
@@ -148,10 +154,74 @@ export const usePopulate = () => {
         return '- Vivamus ac facilisis nisl.'
       }
 
-      return { paragraph }
+      const text = () => {
+        return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum elit lacus, quis ultricies augue ullamcorper et. Duis in ante eget libero accumsan accumsan quis ac tortor.'
+      }
+
+      return { paragraph, text }
     }
 
     return { names }
+  }
+
+  const docx = () => {
+    const flow = (): DOCXStateFlowItem[] => {
+      return [{ type: 'content' }, { type: 'bw' }]
+    }
+
+    const styles = (): DOCXStateStyles => {
+      return {
+        base: {},
+        paragraph: {
+          indent: 3,
+          bold: false,
+          italics: false,
+          color: '#000000',
+          size: 18,
+          margin: {
+            top: 0,
+            bottom: 0,
+          },
+          alignment: useDefines().docx().entityAlignment()[0] as any,
+        },
+        headingOne: {
+          bold: true,
+          italics: false,
+          color: '#000000',
+          size: 42,
+          margin: {
+            top: 35,
+            bottom: 35,
+          },
+          alignment: useDefines().docx().entityAlignment()[2] as any,
+        },
+        headingTwo: {
+          bold: true,
+          italics: false,
+          color: '#000000',
+          size: 32,
+          margin: {
+            top: 16,
+            bottom: 16,
+          },
+          alignment: useDefines().docx().entityAlignment()[2] as any,
+        },
+        headingThree: {
+          bold: true,
+          italics: false,
+          color: '#000000',
+          size: 26,
+          margin: {
+            top: 12,
+            bottom: 12,
+          },
+          alignment: useDefines().docx().entityAlignment()[2] as any,
+        },
+        lineBreak: {},
+      }
+    }
+
+    return { flow, styles }
   }
 
   const pdf = () => {
@@ -347,5 +417,5 @@ export const usePopulate = () => {
     return { styles }
   }
 
-  return { project, pdf, debug }
+  return { project, docx, pdf, debug }
 }

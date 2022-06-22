@@ -10,6 +10,7 @@
     <EditorProjectStatistics v-else-if="ABSOLUTE.project.statistics" />
     <EditorProjectCorrector v-else-if="ABSOLUTE.project.corrector" />
     <ProviderProjectPreferences v-else-if="ABSOLUTE.project.preferences" />
+    <ProviderDOCXConfiguration v-else-if="ABSOLUTE.docx.configuration" />
     <ProviderPDFConfiguration v-else-if="ABSOLUTE.pdf.configuration" />
     <ProviderPDFPreview v-else-if="ABSOLUTE.pdf.preview" />
     <ProviderPDFGenerate v-else-if="ABSOLUTE.pdf.generate" />

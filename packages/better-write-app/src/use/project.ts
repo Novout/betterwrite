@@ -1,4 +1,3 @@
-import destr from 'destr'
 import { nextTick } from 'vue'
 import { useToast } from 'vue-toastification'
 import { saveAs } from 'file-saver'
@@ -29,6 +28,7 @@ import { read } from 'better-write-plugin-importer'
 import useEmitter from './emitter'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useAuthStore } from '@/store/auth'
+import { useDOCXStore } from '@/store/docx'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -36,6 +36,7 @@ export const useProject = () => {
   const EDITOR = useEditorStore()
   const LOGGER = useLoggerStore()
   const PDF = usePDFStore()
+  const DOCX = useDOCXStore()
   const ABSOLUTE = useAbsoluteStore()
   const AUTH = useAuthStore()
 
@@ -139,6 +140,8 @@ export const useProject = () => {
     EDITOR.load(context.editor)
 
     PDF.load(context.pdf)
+
+    if (context.docx) DOCX.load(context.docx)
 
     await nextTick
 

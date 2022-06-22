@@ -47,6 +47,14 @@
       </EditorHeaderItem>
       <EditorHeaderItemDiv />
       <EditorHeaderItem
+        :text="t('editor.bar.docx.configuration')"
+        @action="ABSOLUTE.docx.configuration = true"
+      >
+        <template #icon>
+          <IconDOCX class="w-6 h-6" />
+        </template>
+      </EditorHeaderItem>
+      <EditorHeaderItem
         :text="t('editor.bar.docx.generate')"
         @action="plugin.emit('plugin-docx-generate')"
       >

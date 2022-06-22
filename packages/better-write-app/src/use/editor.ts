@@ -14,7 +14,6 @@ import { useListener } from './listener'
 import { useAuthStore } from '@/store/auth'
 import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
-import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
 import useEmitter from './emitter'
 
@@ -24,7 +23,6 @@ export const useEditor = () => {
   const EDITOR = useEditorStore()
   const CONTEXT = useContextStore()
   const AUTH = useAuthStore()
-  const PDF = usePDFStore()
 
   const env = useEnv()
   const project = useProject()
@@ -56,7 +54,7 @@ export const useEditor = () => {
     if (EDITOR.configuration.autosave) {
       // tracking all mutate cases
       watch(
-        [PROJECT.$state, PDF.$state],
+        [PROJECT.$state],
         () => {
           if (EDITOR.configuration.autosave) local.onSaveProject(false)
         },

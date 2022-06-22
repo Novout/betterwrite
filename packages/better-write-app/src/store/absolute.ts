@@ -26,6 +26,9 @@ export const useAbsoluteStore = defineStore('absolute', {
         preview: false,
         generate: false,
       },
+      docx: {
+        configuration: false,
+      },
       auth: {
         dropbox: false,
         supabase: false,

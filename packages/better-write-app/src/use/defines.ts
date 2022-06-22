@@ -1,5 +1,4 @@
 import {
-  BetterWriteThemes,
   ProjectStateTemplatesSubstitutionsText,
   ProjectStateTemplatesSubstitutionsItalic,
   ProjectStateTemplatesSubstitutionsBold,
@@ -8,6 +7,26 @@ import i18n from '@/lang'
 
 export const useDefines = () => {
   const { t } = i18n.global
+
+  const docx = () => {
+    const flowItemTypes = (): string[] => {
+      return [
+        t('generator.flow.item.annotation'),
+        t('generator.flow.item.break-page'),
+      ]
+    }
+
+    const entityAlignment = () => {
+      return [
+        t('generator.block.alignment.both'),
+        t('generator.block.alignment.left'),
+        t('generator.block.alignment.center'),
+        t('generator.block.alignment.right'),
+      ]
+    }
+
+    return { flowItemTypes, entityAlignment }
+  }
 
   const pdf = () => {
     const fixFonts = () => {
@@ -264,6 +283,7 @@ export const useDefines = () => {
   }
 
   return {
+    docx,
     pdf,
     generator,
   }

@@ -1,4 +1,5 @@
 import editor from './editor'
+import generator from './generator'
 import toast from './toast'
 import landing from './landing'
 import about from './about'
@@ -10,6 +11,7 @@ import logger from './plugin/logger'
 
 export default {
   editor,
+  generator,
   toast,
   landing,
   about,

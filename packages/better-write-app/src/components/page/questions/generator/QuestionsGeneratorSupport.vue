@@ -57,7 +57,7 @@
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
         >
-          <IconError class="w-9 h-9" />
+          <IconLine class="w-9 h-9" />
         </QuestionsGeneratorFile>
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
