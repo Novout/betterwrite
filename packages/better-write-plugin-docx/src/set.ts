@@ -404,18 +404,20 @@ export const PluginDocxSet = (
 
     hooks.toast.info(hooks.i18n.t('toast.generics.load'))
 
-    docx.Packer.toBlob(doc)
-      .then((blob) => {
-        saveAs(blob, hooks.project.utils().exportFullName('docx'))
+    hooks.storage.normalize().then(() => {
+      docx.Packer.toBlob(doc)
+        .then((blob) => {
+          saveAs(blob, hooks.project.utils().exportFullName('docx'))
 
-        hooks.toast.success(hooks.i18n.t('toast.project.docx.generate'))
-      })
-      .finally(() => {
-        isLoading.value = false
-      })
-      .catch(() => {
-        hooks.toast.error(hooks.i18n.t('toast.generics.error'))
-      })
+          hooks.toast.success(hooks.i18n.t('toast.project.docx.generate'))
+        })
+        .finally(() => {
+          isLoading.value = false
+        })
+        .catch(() => {
+          hooks.toast.error(hooks.i18n.t('toast.generics.error'))
+        })
+    })
   }
 
   On.externals().PluginDocxGenerate(emitter, [
