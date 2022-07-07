@@ -196,7 +196,7 @@ export const PluginDocxSet = (
       }
     }
 
-    const customStyles = ({ external }: Entity) => {
+    const customStyles = ({ external, type }: Entity) => {
       const textRun = external?.paragraph?.active
         ? {
             size: external?.paragraph?.generator.fontSize * 1.5,
@@ -243,7 +243,16 @@ export const PluginDocxSet = (
             },
           }
 
-      return { textRun, paragraph }
+      const isList =
+        type === 'list'
+          ? {
+              bullet: {
+                level: 0,
+              },
+            }
+          : {}
+
+      return { textRun, paragraph, isList }
     }
 
     const entities = () => {
@@ -291,6 +300,7 @@ export const PluginDocxSet = (
             return new docx.Paragraph({
               children: purge(paragraph, custom.textRun),
               ...custom.paragraph,
+              ...custom.isList,
             })
           })
       }
@@ -329,6 +339,8 @@ export const PluginDocxSet = (
         page.entities.forEach((entity: Entity) => {
           switch (entity.type) {
             case 'paragraph':
+            case 'list':
+            case 'checkbox':
               entities()
                 .paragraph(entity)
                 ?.forEach((paragraph: docx.Paragraph) => arr.push(paragraph))
