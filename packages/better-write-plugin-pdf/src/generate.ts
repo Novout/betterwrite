@@ -356,9 +356,13 @@ export const PluginPDFSet = (
         characterSpacing: p.characterSpacing,
         margin: [
           generate().base().pageMargins[0] + indent.length * 10,
-          0,
-          0,
-          0,
+          entity.external?.paragraph?.active
+            ? entity.external.paragraph.generator.margin.top
+            : stores.PDF.styles.paragraph.margin.top,
+          generate().base().pageMargins[2],
+          entity.external?.paragraph?.active
+            ? entity.external.paragraph.generator.margin.bottom
+            : stores.PDF.styles.paragraph.margin.bottom,
         ],
       })
 
@@ -379,9 +383,14 @@ export const PluginPDFSet = (
                 border: [false, false, false, false],
                 margin: [
                   generate().base().pageMargins[0] + -4 + indent.length * 10,
-                  0,
+                  entity.external?.paragraph?.active
+                    ? entity.external.paragraph.generator.margin.top
+                    : stores.PDF.styles.paragraph.margin.top,
+                  ,
                   generate().base().pageMargins[2],
-                  0,
+                  entity.external?.paragraph?.active
+                    ? entity.external.paragraph.generator.margin.bottom
+                    : stores.PDF.styles.paragraph.margin.bottom,
                 ],
                 image: entity.external?.checkbox?.select
                   ? 'checked'
