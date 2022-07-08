@@ -177,7 +177,7 @@ export const usePopulate = () => {
           bold: false,
           italics: false,
           color: '#000000',
-          size: 18,
+          size: 14,
           margin: {
             top: 0,
             bottom: 0,

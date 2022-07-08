@@ -12,13 +12,6 @@
       :force="true"
       @close="ABSOLUTE.docx.configuration = false"
     />
-    <GeneratorToggle
-      :title="t('generator.flow.title')"
-      :tooltip="t('generator.flow.tooltip')"
-      :value="true"
-    >
-      <DOCXConfigurationFlow />
-    </GeneratorToggle>
     <GeneratorToggle :title="t('generator.block.paragraph')">
       <DOCXConfigurationParagraph />
     </GeneratorToggle>
