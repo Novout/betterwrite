@@ -360,6 +360,11 @@
 
     await nextTick
 
+    emitter.emit('entity-text-focus', {
+      position: 'end',
+      target: _index.value,
+    })
+
     plugin.emit('plugin-entity-alter-in-page', {
       data: t(`editor.entity.${type}`).toUpperCase(),
       index: CONTEXT.entities.indexOf(content),

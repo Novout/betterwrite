@@ -52,12 +52,12 @@ export const useContextStore = defineStore('context', {
       this.entities = context.entities
     },
     addInPage(entity: Entity) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       this.entities.push(entity)
     },
     updateInPage({ entity, raw }: ContextActionsUpdateInPage) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       const index = this.entities.indexOf(entity)
 
@@ -67,7 +67,7 @@ export const useContextStore = defineStore('context', {
       this.entities[index].updatedAt = useFormat().actually()
     },
     updateCommentInPage({ entity, raw }: ContextActionsUpdateInPage) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       const index = this.entities.indexOf(entity)
 
@@ -118,7 +118,7 @@ export const useContextStore = defineStore('context', {
       )
     },
     switchInPage({ entity, direction }: ContextActionSwitchInPage) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       const index = this.entities.indexOf(entity)
 
@@ -142,7 +142,7 @@ export const useContextStore = defineStore('context', {
       this.entities[sIndex] = temp
     },
     switchEntityRaw({ entity, match, raw }: ContextActionSwitchEntityRaw) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       const index = this.entities.indexOf(entity)
 
@@ -154,7 +154,7 @@ export const useContextStore = defineStore('context', {
       this: ContextState,
       payload: ContextActionNewInExistentEntity
     ) {
-      if (!payload.new || !payload.new.raw) return
+      if (!payload.new) return
 
       const index = this.entities.indexOf(payload.old)
 
@@ -177,7 +177,7 @@ export const useContextStore = defineStore('context', {
       this.entities[index].external = payload.new.external || {}
     },
     newInPage({ entity, type }: ContextActionNewInPage) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       const index = this.entities.indexOf(entity as Entity)
 
@@ -197,7 +197,7 @@ export const useContextStore = defineStore('context', {
       this.entities = useUtils().array().insert(this.entities, index, entity)
     },
     newInDropFile({ old, insert }: { old: Entity; insert: Entity }) {
-      if (!old || !old.raw) return
+      if (!old) return
 
       const index = this.entities.indexOf(old as Entity) + 1
 
@@ -226,7 +226,7 @@ export const useContextStore = defineStore('context', {
       this.entities = [...this.entities, target]
     },
     newInPagePosEdit({ entity, raw, type }: ContextActionNewInPagePosEdit) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       const index = this.entities.indexOf(entity as Entity)
 
@@ -244,31 +244,18 @@ export const useContextStore = defineStore('context', {
       this.entities[index] = entity
     },
     alterInPage({ entity, type }: ContextActionAlterInPage) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       const index = this.entities.indexOf(entity as Entity)
 
       if (index === -1) return
 
-      let raw = entity.raw
+      let item = useFactory().entity().create(type)
 
-      if (entity.type === 'image') {
-        raw = useEnv().emptyLine() // reset base64
-      }
-
-      this.entities[index].type = type as EntityType
-      this.entities[index].raw = raw
-      this.entities[index].createdAt = useFormat().actually()
-      this.entities[index].updatedAt = useFormat().actually()
-      this.entities[index].visual = {
-        info: false,
-        warning: false,
-        error: false,
-      }
-      this.entities[index].external = entity.external || {}
+      this.entities[index] = item
     },
     insertRawInExistentEntity(entity: Entity) {
-      if (!entity || !entity.raw) return
+      if (!entity) return
 
       const index = this.entities.indexOf(entity)
 
