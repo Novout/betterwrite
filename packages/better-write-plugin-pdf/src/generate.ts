@@ -404,7 +404,12 @@ export const PluginPDFSet = (
                 fontSize: p.fontSize,
                 characterSpacing: p.characterSpacing,
                 style: entity.external?.paragraph?.active ? 'none' : 'text',
-                margin: [p.margin[0] + 7 + indent.length * 10, 0, 0, 0],
+                margin: [
+                  p.margin[0] + 7 + indent.length * 10,
+                  0,
+                  generate().base().pageMargins[2],
+                  0,
+                ],
               },
             ],
           ],
