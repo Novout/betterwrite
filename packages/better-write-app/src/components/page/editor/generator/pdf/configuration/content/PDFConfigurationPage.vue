@@ -1,9 +1,15 @@
 <template>
   <GeneratorContainer>
-    <GeneratorItem :title="t('editor.pdf.theme.title')">
+    <GeneratorItem
+      :tooltip="t('editor.pdf.theme.tooltip')"
+      :title="t('editor.pdf.theme.title')"
+    >
       <InputBoolean v-model="PDF.styles.switcher.theme" />
     </GeneratorItem>
-    <GeneratorItem :title="t('editor.pdf.base.backgroundColor.title')">
+    <GeneratorItem
+      :tooltip="t('editor.pdf.base.backgroundColor.tooltip')"
+      :title="t('editor.pdf.base.backgroundColor.title')"
+    >
       <InputColorPicker v-model="pdf.base.background.color" />
     </GeneratorItem>
     <GeneratorItem :title="t('editor.pdf.cover.image')">
@@ -52,12 +58,6 @@
           <InputNumber v-model="pdf.base.pageMargins.bottom" />
         </section>
       </section>
-    </GeneratorItem>
-    <GeneratorItem :title="t('editor.pdf.note.title')">
-      <InputTextArea
-        v-model="PDF.styles.base.note.text"
-        class="resize-none h-30 w-50 wb-scroll bg-theme-background-opacity-1 shadow-xl p-2 rounded-sm"
-      />
     </GeneratorItem>
   </GeneratorContainer>
 </template>

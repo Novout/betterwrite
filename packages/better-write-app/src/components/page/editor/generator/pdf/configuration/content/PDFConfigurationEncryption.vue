@@ -1,6 +1,15 @@
 <template>
   <GeneratorContainer>
-    <GeneratorItem :title="t('editor.pdf.project.encryption.title')">
+    <GeneratorItem :title="t('editor.pdf.note.title')">
+      <InputTextArea
+        v-model="PDF.styles.base.note.text"
+        class="resize-none h-20 w-40 wb-scroll bg-theme-background-1 shadow-xl p-2 rounded-sm"
+      />
+    </GeneratorItem>
+    <GeneratorItem
+      :tooltip="t('editor.pdf.project.tooltip.title')"
+      :title="t('editor.pdf.project.encryption.title')"
+    >
       <InputBoolean v-model="PDF.styles.switcher.encryption" />
     </GeneratorItem>
     <GeneratorItem

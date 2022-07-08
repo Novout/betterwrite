@@ -18,10 +18,18 @@
     <GeneratorToggle :value="false" :title="t('editor.pdf.project.title')">
       <PDFConfigurationEncryption />
     </GeneratorToggle>
-    <GeneratorToggle :value="false" :title="t('editor.pdf.custom.title.cover')">
+    <GeneratorToggle
+      :tooltip="t('editor.pdf.cover.tooltip')"
+      :value="false"
+      :title="t('editor.pdf.custom.title.cover')"
+    >
       <PDFConfigurationCover />
     </GeneratorToggle>
-    <GeneratorToggle :value="false" :title="t('editor.pdf.base.title')">
+    <GeneratorToggle
+      :tooltip="t('editor.pdf.base.tooltip')"
+      :value="false"
+      :title="t('editor.pdf.base.title')"
+    >
       <PDFConfigurationPage />
     </GeneratorToggle>
     <GeneratorToggle :value="false" :title="t('editor.pdf.base.summary.title')">
