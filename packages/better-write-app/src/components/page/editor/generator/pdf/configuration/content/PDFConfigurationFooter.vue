@@ -1,41 +1,48 @@
 <template>
   <GeneratorContainer>
-    <GeneratorItem>
-      <section class="flex items-center">
-        <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
-        <InputBoolean v-model="pdf.switcher.footer" />
-      </section>
-      <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.footer.start') }}</label>
-        <InputNumber v-model="pdf.base.footer.start" />
-      </section>
-      <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.footer.type') }}</label>
-        <InputSelect
-          v-model="pdf.base.footer.textType"
-          :arr="useDefines().pdf().base().footerStyle()"
-        />
-      </section>
-      <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.footer.alignment') }}</label>
-        <InputSelect
-          v-model="pdf.base.footer.alignment"
-          :arr="useDefines().pdf().base().alignment()"
-        />
-      </section>
-      <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.footer.size') }}</label>
-        <InputNumber v-model="pdf.base.footer.textSize" />
-      </section>
-      <section :class="[!pdf.switcher.footer ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.footer.fontFamily') }}</label>
-        <InputSelect
-          v-model="pdf.base.footer.fontFamily"
-          class="flex-1"
-          :arr="PDF.fonts"
-          :font="true"
-        />
-      </section>
+    <GeneratorItem :title="t('editor.pdf.cover.type')">
+      <InputBoolean v-model="pdf.switcher.footer" />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.footer"
+      :title="t('editor.pdf.base.footer.start')"
+    >
+      <InputNumber v-model="pdf.base.footer.start" />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.footer"
+      :title="t('editor.pdf.base.footer.type')"
+    >
+      <InputSelect
+        v-model="pdf.base.footer.textType"
+        :arr="defines.pdf().base().footerStyle()"
+      />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.footer"
+      :title="t('editor.pdf.base.footer.alignment')"
+    >
+      <InputSelect
+        v-model="pdf.base.footer.alignment"
+        :arr="defines.pdf().base().alignment()"
+      />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.footer"
+      :title="t('editor.pdf.base.footer.size')"
+    >
+      <InputNumber v-model="pdf.base.footer.textSize" />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.footer"
+      :title="t('editor.pdf.base.footer.fontFamily')"
+    >
+      <InputSelect
+        v-model="pdf.base.footer.fontFamily"
+        class="flex-1"
+        :arr="PDF.fonts"
+        :font="true"
+      />
     </GeneratorItem>
   </GeneratorContainer>
 </template>

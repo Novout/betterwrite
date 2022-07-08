@@ -14,7 +14,10 @@
         @exclude="onDeleteMainImage"
       />
     </GeneratorItem>
-    <GeneratorItem :title="t('editor.pdf.lineBreak.size')">
+    <GeneratorItem
+      v-if="pdf.lineBreak.image.active"
+      :title="t('editor.pdf.lineBreak.size')"
+    >
       <section>
         <label>{{ t('editor.pdf.custom.image.width') }}</label>
         <InputNumber v-model="pdf.lineBreak.image.width" :step="25" />

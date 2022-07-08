@@ -3,7 +3,10 @@
     <GeneratorItem :title="t('editor.pdf.cover.type')">
       <InputBoolean v-model="PDF.styles.switcher.cover" />
     </GeneratorItem>
-    <GeneratorItem :title="t('editor.pdf.cover.image')">
+    <GeneratorItem
+      v-if="PDF.styles.switcher.cover"
+      :title="t('editor.pdf.cover.image')"
+    >
       <InputFile
         id="cover-background"
         :src="pdf.base.background.data"

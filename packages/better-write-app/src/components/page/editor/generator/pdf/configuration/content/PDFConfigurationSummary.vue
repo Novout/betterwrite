@@ -1,30 +1,33 @@
 <template>
   <GeneratorContainer>
-    <GeneratorItem>
-      <section class="flex items-center">
-        <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
-        <InputBoolean v-model="pdf.switcher.summary" />
-      </section>
-      <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.summary.type') }}</label>
-        <InputSelect
-          v-model="pdf.base.summary.type"
-          :arr="useDefines().pdf().base().summaryStyle()"
-        />
-      </section>
-      <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.summary.fontSize') }}</label>
-        <InputNumber v-model="pdf.base.summary.fontSize" />
-      </section>
-      <section :class="[!pdf.switcher.summary ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.summary.fontFamily') }}</label>
-        <InputSelect
-          v-model="pdf.base.summary.fontFamily"
-          class="flex-1"
-          :arr="PDF.fonts"
-          :font="true"
-        />
-      </section>
+    <GeneratorItem :title="t('editor.pdf.cover.type')">
+      <InputBoolean v-model="pdf.switcher.summary" />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.summary"
+      :title="t('editor.pdf.base.summary.type')"
+    >
+      <InputSelect
+        v-model="pdf.base.summary.type"
+        :arr="defines.pdf().base().summaryStyle()"
+      />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.summary"
+      :title="t('editor.pdf.base.summary.fontSize')"
+    >
+      <InputNumber v-model="pdf.base.summary.fontSize" />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.summary"
+      :title="t('editor.pdf.base.summary.fontFamily')"
+    >
+      <InputSelect
+        v-model="pdf.base.summary.fontFamily"
+        class="flex-1"
+        :arr="PDF.fonts"
+        :font="true"
+      />
     </GeneratorItem>
   </GeneratorContainer>
 </template>

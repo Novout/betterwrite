@@ -1,50 +1,57 @@
 <template>
   <GeneratorContainer>
-    <GeneratorItem>
-      <section class="flex items-center">
-        <label class="mx-2 text-xs">{{ t('editor.pdf.cover.type') }}</label>
-        <InputBoolean v-model="pdf.switcher.header" />
-      </section>
-      <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.header.start') }}</label>
-        <InputNumber v-model="pdf.base.header.start" />
-      </section>
-      <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
-        <div>
-          <p>{{ t('editor.pdf.base.header.content') }}</p>
-          <InputText
-            v-model="pdf.base.header.content"
-            class="shadow-lg bg-theme-background-opacity-1"
-          />
-        </div>
-      </section>
-      <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.header.type') }}</label>
-        <InputSelect
-          v-model="pdf.base.header.textType"
-          :arr="useDefines().pdf().base().footerStyle()"
-        />
-      </section>
-      <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.header.alignment') }}</label>
-        <InputSelect
-          v-model="pdf.base.header.alignment"
-          :arr="useDefines().pdf().base().alignment()"
-        />
-      </section>
-      <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.header.size') }}</label>
-        <InputNumber v-model="pdf.base.header.textSize" />
-      </section>
-      <section :class="[!pdf.switcher.header ? 'wb-disabled' : '']">
-        <label>{{ t('editor.pdf.base.header.fontFamily') }}</label>
-        <InputSelect
-          v-model="pdf.base.header.fontFamily"
-          class="flex-1"
-          :arr="PDF.fonts"
-          :font="true"
-        />
-      </section>
+    <GeneratorItem :title="t('editor.pdf.cover.type')">
+      <InputBoolean v-model="pdf.switcher.header" />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.header"
+      :title="t('editor.pdf.base.header.fontFamily')"
+    >
+      <InputSelect
+        v-model="pdf.base.header.fontFamily"
+        class="flex-1"
+        :arr="PDF.fonts"
+        :font="true"
+      />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.header"
+      :title="t('editor.pdf.base.header.start')"
+    >
+      <InputNumber v-model="pdf.base.header.start" />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.header"
+      :title="t('editor.pdf.base.header.content')"
+    >
+      <InputText
+        v-model="pdf.base.header.content"
+        class="shadow-lg bg-theme-background-opacity-1"
+      />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.header"
+      :title="t('editor.pdf.base.header.type')"
+    >
+      <InputSelect
+        v-model="pdf.base.header.textType"
+        :arr="defines.pdf().base().footerStyle()"
+      />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.header"
+      :title="t('editor.pdf.base.header.alignment')"
+    >
+      <InputSelect
+        v-model="pdf.base.header.alignment"
+        :arr="defines.pdf().base().alignment()"
+      />
+    </GeneratorItem>
+    <GeneratorItem
+      :disabled="!pdf.switcher.header"
+      :title="t('editor.pdf.base.header.size')"
+    >
+      <InputNumber v-model="pdf.base.header.textSize" />
     </GeneratorItem>
   </GeneratorContainer>
 </template>
