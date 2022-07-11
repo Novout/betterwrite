@@ -7,10 +7,14 @@
 <script setup lang="ts">
   import { useProjectStore } from '@/store/project'
   import { useFile } from '@/use/file'
+  import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vue-toastification'
 
   const PROJECT = useProjectStore()
 
   const file = useFile()
+  const toast = useToast()
+  const { t } = useI18n()
 
   const importFile = async () => {
     file
@@ -26,6 +30,7 @@
           Array.isArray(data.bold)
         )
           PROJECT.templates.substitutions = data
+        else toast.error(t('toast.generics.configurationFail'))
       })
       .catch(() => {})
   }

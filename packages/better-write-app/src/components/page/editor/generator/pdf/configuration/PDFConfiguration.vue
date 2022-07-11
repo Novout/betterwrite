@@ -14,10 +14,12 @@
         @close="ABSOLUTE.pdf.configuration = false"
       />
     </div>
-    <PDFConfigurationConfig />
-    <PDFConfigurationPreview
-      v-if="os !== 'Android' && os !== 'iOS' && os !== 'Mac OS'"
-    />
+    <div class="flex items-start flex-col my-5">
+      <PDFConfigurationConfig class="h-10" />
+      <PDFConfigurationPreview
+        v-if="os !== 'Android' && os !== 'iOS' && os !== 'Mac OS'"
+      />
+    </div>
     <GeneratorToggle :value="false" :title="t('editor.pdf.project.title')">
       <PDFConfigurationEncryption />
     </GeneratorToggle>

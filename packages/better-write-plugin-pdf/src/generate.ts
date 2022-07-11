@@ -1350,7 +1350,7 @@ export const PluginPDFSet = (
 
           input?.appendChild(iframe)
 
-          toast.success(hooks.i18n.t('toast.pdf.create'))
+          toast.success(hooks.i18n.t('toast.pdf.preview'))
         },
         (err: any) => {
           if (hooks.env.isDev()) console.log(err)

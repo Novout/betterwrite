@@ -5,10 +5,14 @@
 <script setup lang="ts">
   import { usePDFStore } from '@/store/pdf'
   import { useFile } from '@/use/file'
+  import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vue-toastification'
 
   const PDF = usePDFStore()
 
   const file = useFile()
+  const toast = useToast()
+  const { t } = useI18n()
 
   const importFile = async () => {
     file
@@ -19,6 +23,7 @@
       })
       .then((data: any) => {
         if (data.base) PDF.styles = data
+        else toast.error(t('toast.generics.configurationFail'))
       })
       .catch(() => {})
   }
