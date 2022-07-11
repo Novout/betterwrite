@@ -30,7 +30,7 @@
       </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.bar.pdf.generate')"
-        @action="ABSOLUTE.pdf.generate = true"
+        @action="onPDFGenerate"
       >
         <template #icon>
           <IconPDF class="w-6 h-6" />
@@ -81,6 +81,8 @@
   import { useEnv } from '@/use/env'
   import { useI18n } from 'vue-i18n'
   import { usePlugin } from 'better-write-plugin-core'
+  import { useStorage } from '@/use/storage/storage'
+  import { useProject } from '@/use/project'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
@@ -88,4 +90,20 @@
   const env = useEnv()
   const plugin = usePlugin()
   const { t } = useI18n()
+  const storage = useStorage()
+  const project = useProject()
+
+  const onPDFGenerate = async () => {
+    if (PROJECT.type === 'creative') {
+      ABSOLUTE.pdf.generate = true
+
+      return
+    }
+
+    await storage.normalize()
+
+    plugin.emit('plugin-pdf-generate', {
+      chapters: project.utils().getChaptersSelection(),
+    })
+  }
 </script>
