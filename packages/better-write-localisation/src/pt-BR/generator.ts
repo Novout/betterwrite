@@ -39,5 +39,7 @@ export default {
       bottom: 'Baixo',
     },
   },
-  generics: {},
+  generics: {
+    settings: 'Definições',
+  },
 }

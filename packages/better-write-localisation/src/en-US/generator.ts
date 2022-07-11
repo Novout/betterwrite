@@ -39,5 +39,7 @@ export default {
       bottom: 'Bottom',
     },
   },
-  generics: {},
+  generics: {
+    settings: 'Settings',
+  },
 }

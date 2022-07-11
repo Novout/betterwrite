@@ -29,15 +29,6 @@
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
-        v-if="!mobile"
-        :text="t('editor.bar.pdf.preview')"
-        @action="ABSOLUTE.pdf.preview = true"
-      >
-        <template #icon>
-          <IconPDF class="w-6 h-6" />
-        </template>
-      </EditorHeaderItem>
-      <EditorHeaderItem
         :text="t('editor.bar.pdf.generate')"
         @action="ABSOLUTE.pdf.generate = true"
       >
@@ -90,7 +81,6 @@
   import { useEnv } from '@/use/env'
   import { useI18n } from 'vue-i18n'
   import { usePlugin } from 'better-write-plugin-core'
-  import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
@@ -98,7 +88,4 @@
   const env = useEnv()
   const plugin = usePlugin()
   const { t } = useI18n()
-
-  const breakpoints = useBreakpoints(breakpointsTailwind)
-  const mobile = breakpoints.smaller('md')
 </script>

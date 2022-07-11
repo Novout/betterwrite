@@ -15,6 +15,9 @@
       />
     </div>
     <PDFConfigurationConfig />
+    <PDFConfigurationPreview
+      v-if="os !== 'Android' && os !== 'iOS' && os !== 'Mac OS'"
+    />
     <GeneratorToggle :value="false" :title="t('editor.pdf.project.title')">
       <PDFConfigurationEncryption />
     </GeneratorToggle>
@@ -64,9 +67,13 @@
 
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useUtils } from '@/use/utils'
   import { useI18n } from 'vue-i18n'
 
   const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
+  const utils = useUtils()
+
+  const os = utils.system().get()
 </script>
