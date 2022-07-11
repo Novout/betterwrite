@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-col w-full p-5 wb-text shadow-lg">
+  <div
+    class="flex flex-col bg-theme-background-opacity-1 w-full p-5 wb-text shadow-lg"
+  >
     <div
       class="flex items-center justify-between w-full cursor-pointer"
       @click.prevent.stop="toggle()"
@@ -37,9 +39,9 @@
   import { useToggle } from '@vueuse/core'
 
   const { title, tooltip, value } = defineProps<{
-    title: string
+    title?: string
     tooltip?: string
-    value?: boolean
+    value: boolean
   }>()
 
   const [v, toggle] = useToggle(value)

@@ -4,6 +4,7 @@ export default {
     error: 'An unexpected error occurred :(',
     supported: 'Your browser does not support this feature :(',
     cancel: 'The action has been cancelled!',
+    configurationFail: 'The imported configuration is not valid!',
   },
   pdf: {
     error:
@@ -12,6 +13,7 @@ export default {
       save: 'Configurações salvas com sucesso!',
     },
     create: 'Successfully Downloaded PDF!',
+    preview: 'PDF Preview successfully completed!',
     generate: {
       empty: 'Please select at least one chapter!',
     },

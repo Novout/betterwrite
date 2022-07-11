@@ -356,9 +356,13 @@ export const PluginPDFSet = (
         characterSpacing: p.characterSpacing,
         margin: [
           generate().base().pageMargins[0] + indent.length * 10,
-          0,
-          0,
-          0,
+          entity.external?.paragraph?.active
+            ? entity.external.paragraph.generator.margin.top
+            : stores.PDF.styles.paragraph.margin.top,
+          generate().base().pageMargins[2],
+          entity.external?.paragraph?.active
+            ? entity.external.paragraph.generator.margin.bottom
+            : stores.PDF.styles.paragraph.margin.bottom,
         ],
       })
 
@@ -379,9 +383,14 @@ export const PluginPDFSet = (
                 border: [false, false, false, false],
                 margin: [
                   generate().base().pageMargins[0] + -4 + indent.length * 10,
-                  0,
+                  entity.external?.paragraph?.active
+                    ? entity.external.paragraph.generator.margin.top
+                    : stores.PDF.styles.paragraph.margin.top,
+                  ,
                   generate().base().pageMargins[2],
-                  0,
+                  entity.external?.paragraph?.active
+                    ? entity.external.paragraph.generator.margin.bottom
+                    : stores.PDF.styles.paragraph.margin.bottom,
                 ],
                 image: entity.external?.checkbox?.select
                   ? 'checked'
@@ -395,7 +404,12 @@ export const PluginPDFSet = (
                 fontSize: p.fontSize,
                 characterSpacing: p.characterSpacing,
                 style: entity.external?.paragraph?.active ? 'none' : 'text',
-                margin: [p.margin[0] + 7 + indent.length * 10, 0, 0, 0],
+                margin: [
+                  p.margin[0] + 7 + indent.length * 10,
+                  0,
+                  generate().base().pageMargins[2],
+                  0,
+                ],
               },
             ],
           ],
@@ -1336,7 +1350,7 @@ export const PluginPDFSet = (
 
           input?.appendChild(iframe)
 
-          toast.success(hooks.i18n.t('toast.pdf.create'))
+          toast.success(hooks.i18n.t('toast.pdf.preview'))
         },
         (err: any) => {
           if (hooks.env.isDev()) console.log(err)

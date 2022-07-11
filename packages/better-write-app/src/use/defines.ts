@@ -198,7 +198,7 @@ export const useDefines = () => {
 
       const header = () => {
         const content = () => {
-          return t('editor.pdf.configuration.header.content')
+          return ''
         }
 
         return { content }
