@@ -41,10 +41,10 @@
       <InputNumber v-model="pdf.headingOne.characterSpacing" />
     </GeneratorItem>
     <GeneratorItem :title="t('editor.pdf.custom.generics.color')">
-      <InputNumber v-model="pdf.headingOne.color" />
+      <InputColorPicker v-model="pdf.headingOne.color" />
     </GeneratorItem>
     <GeneratorItem :title="t('editor.pdf.custom.generics.background')">
-      <InputNumber v-model="pdf.headingOne.background" />
+      <InputColorPicker v-model="pdf.headingOne.background" />
     </GeneratorItem>
     <GeneratorItem :title="t('editor.pdf.custom.generics.markerColor')">
       <InputColorPicker v-model="pdf.headingOne.markerColor" />
