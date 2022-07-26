@@ -8,7 +8,7 @@
     class="flex items-center cursor-pointer bg-theme-aside-graph-background hover:bg-theme-aside-graph-background-hover active:bg-theme-aside-graph-background-active text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
     :class="[
       'border-l border-theme-aside-graph-lines ml-1',
-      activity ? '' : 'opacity-75',
+      activity && PROJECT.base === 'chapter' ? '' : 'opacity-70',
       props.entity.type === 'heading-one' ? 'h-12' : '',
     ]"
   >
@@ -148,6 +148,7 @@
 <script setup lang="ts">
   import { useContextStore } from '@/store/context'
   import { useEditorStore } from '@/store/editor'
+  import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useRaw } from '@/use/raw'
   import { ContextState, Entity } from 'better-write-types'
@@ -166,6 +167,7 @@
 
   const CONTEXT = useContextStore()
   const EDITOR = useEditorStore()
+  const PROJECT = useProjectStore()
 
   const env = useEnv()
   const raw = useRaw()

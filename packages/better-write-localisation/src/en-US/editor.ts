@@ -248,6 +248,7 @@ export default {
       chapters: 'Chapters',
       actuallyPage: 'Página Atual',
       projectPages: 'Projeto',
+      timeline: 'Timeline',
     },
     configuration: {
       title: 'Settings',

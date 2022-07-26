@@ -16,6 +16,7 @@ export const useProjectStore = defineStore('project', {
       producer: 'Untitled',
       keywords: 'Untitled',
       subject: 'Untitled',
+      base: 'chapter',
       type: 'creative',
       totalPagesCreated: 0,
       main: {},

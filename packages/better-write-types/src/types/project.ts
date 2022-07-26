@@ -15,6 +15,7 @@ export interface ProjectState {
   producer: string
   keywords: string
   subject: string
+  base: 'chapter' | 'timeline'
   type: ProjectType
   totalPagesCreated: number
   main: Record<any, any>

@@ -2,14 +2,13 @@ import {
   ProjectState,
   PDFStateStyles,
   DOCXStateFlowItem,
-  DOCXAlignmentType,
+  DOCXStateStyles,
 } from 'better-write-types'
 import { useEnv } from './env'
 import { useFormat } from './format'
 import { useDefines } from './defines'
 import { useUtils } from './utils'
 import { useFactory } from './factory'
-import { DOCXStateStyles } from 'better-write-types/src/types/docx'
 
 export const usePopulate = () => {
   const factory = useFactory()
@@ -25,6 +24,7 @@ export const usePopulate = () => {
         keywords: '',
         subject: project.subject,
         type: project.type,
+        base: 'chapter',
         totalPagesCreated: 1,
         main: {},
         summary: {},

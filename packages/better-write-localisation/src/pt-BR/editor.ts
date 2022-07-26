@@ -247,6 +247,7 @@ export default {
       chapters: 'Capítulos',
       actuallyPage: 'Página Atual',
       projectPages: 'Projeto',
+      timeline: 'Linha do Tempo',
     },
     configuration: {
       title: 'Configuração',

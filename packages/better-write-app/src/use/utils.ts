@@ -32,6 +32,35 @@ export const useUtils = () => {
     return parts.join(separator).replace(replace, separator)
   }
 
+  const id = () => {
+    const uuidv4 = () => {
+      var d = new Date().getTime() //Timestamp
+      var d2 =
+        (typeof performance !== 'undefined' &&
+          performance.now &&
+          performance.now() * 1000) ||
+        0 //Time in microseconds since page-load or 0 if unsupported
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+        /[xy]/g,
+        function (c) {
+          var r = Math.random() * 16 //random number between 0 and 16
+          if (d > 0) {
+            //Use timestamp until depleted
+            r = (d + r) % 16 | 0
+            d = Math.floor(d / 16)
+          } else {
+            //Use microseconds since page-load if supported
+            r = (d2 + r) % 16 | 0
+            d2 = Math.floor(d2 / 16)
+          }
+          return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
+        }
+      )
+    }
+
+    return { uuidv4 }
+  }
+
   const text = () => {
     const getSelection = (data: string, input: HTMLTextAreaElement) => {
       return data.substring(input.selectionStart, input.selectionEnd)
@@ -52,7 +81,11 @@ export const useUtils = () => {
       return value.replaceAll('&nbsp;', ' ').replaceAll('&#160', ' ')
     }
 
-    return { getSelection, kebab, randomLetter, defaultWhitespace }
+    const randomColor = () => {
+      return '#' + Math.floor(Math.random() * 16777215).toString(16)
+    }
+
+    return { getSelection, kebab, randomLetter, defaultWhitespace, randomColor }
   }
 
   const regex = () => {
@@ -366,6 +399,7 @@ export const useUtils = () => {
   }
 
   return {
+    id,
     position,
     delay,
     prevent,
