@@ -33,18 +33,6 @@ export const TXTSet = (
       stores.PROJECT.createExternal({
         name: hooks.utils.text().kebab(fileName),
         nameRaw: fileName,
-        version: '0.1.0',
-        creator: 'betterwrite',
-        producer: 'betterwrite',
-        keywords: 'docx,project',
-        subject: 'betterwrite',
-        type: 'creative',
-        totalPagesCreated: 1,
-        main: {},
-        summary: {},
-        pageLoaded: 1,
-        scrollLoaded: 0,
-        offsetLoaded: 0,
         pages: [
           {
             id: 1,
@@ -54,39 +42,6 @@ export const TXTSet = (
             updatedAt: hooks.format.actually(),
           },
         ],
-        bw: {
-          platform: 'web',
-          version: hooks.env.packageVersion() as string,
-        },
-        pdf: {
-          encryption: {
-            userPassword: '',
-            ownerPassword: '',
-          },
-          permissions: {
-            printing: 'highResolution',
-            modifying: false,
-            copying: false,
-            annotating: true,
-            fillingForms: true,
-            contentAccessibility: true,
-            documentAssembly: true,
-          },
-        },
-        creative: {
-          drafts: [],
-        },
-        templates: {
-          generator: [],
-          substitutions: {
-            text: hooks.defines.generator().substitutions().text(),
-            italic: hooks.defines.generator().substitutions().italic(),
-            bold: hooks.defines.generator().substitutions().bold(),
-          },
-        },
-        shortcuts: {
-          inserts: [],
-        },
       })
 
       await nextTick

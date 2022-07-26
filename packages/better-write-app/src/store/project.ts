@@ -1,10 +1,19 @@
 import { defineStore } from 'pinia'
-import { ContextState, ProjectState, ID, Entity } from 'better-write-types'
+import {
+  ContextState,
+  ProjectState,
+  ID,
+  Entity,
+  ProjectStateOptions,
+} from 'better-write-types'
 import { useFormat } from '@/use/format'
 import { useGlobalStore } from './global'
 import { usePopulate } from '../use/populate'
 import { useProject } from '@/use/project'
 import { useFactory } from '../use/factory'
+import { useUtils } from '@/use/utils'
+import { useEnv } from '@/use/env'
+import { useDefines } from '@/use/defines'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -88,17 +97,96 @@ export const useProjectStore = defineStore('project', {
       this.bw.version = payload.bw.version
       this.shortcuts = payload.shortcuts
     },
-    create(payload: ProjectState, title: string) {
+    new(options: ProjectStateOptions, forceTitle?: string) {
       const global = useGlobalStore()
       global.reset()
 
-      this.$state = usePopulate().project(payload, title)
-    },
-    createExternal(project: ProjectState) {
-      const global = useGlobalStore()
-      global.reset()
+      const title = useUtils()
+        .text()
+        .kebab(options.name || '')
 
-      this.$state = project
+      this.$state = {
+        name: title,
+        nameRaw: options.name || 'Project',
+        version: options.version || '0.1.0',
+        creator: options.creator || 'Better Write',
+        producer: options.creator || 'betterwrite.io',
+        keywords: options.keywords || 'docx,project',
+        subject: options.subject || 'betterwrite',
+        type: options.type,
+        base: options.base || 'chapter',
+        totalPagesCreated: options.totalPagesCreated || 1,
+        main: options.main || {},
+        summary: options.summary || {},
+        pageLoaded: options.pageLoaded || 1,
+        scrollLoaded: options.scrollLoaded || 0,
+        offsetLoaded: options.offsetLoaded || 0,
+        pages: options.pages || [
+          {
+            id: 1,
+            title: forceTitle || title,
+            entities: [],
+            createdAt: useFormat().actually(),
+            updatedAt: useFormat().actually(),
+          },
+        ],
+        bw: options.bw || {
+          platform: 'web',
+          version: useEnv().packageVersion() as string,
+        },
+        pdf: options.pdf || {
+          encryption: {
+            userPassword: '',
+            ownerPassword: '',
+          },
+          permissions: {
+            printing: 'highResolution',
+            modifying: false,
+            copying: false,
+            annotating: true,
+            fillingForms: true,
+            contentAccessibility: true,
+            documentAssembly: true,
+          },
+        },
+        creative: options.creative || {
+          drafts: [],
+        },
+        templates: options.templates || {
+          generator: [],
+          substitutions: {
+            text: useDefines().generator().substitutions().text(),
+            italic: useDefines().generator().substitutions().italic(),
+            bold: useDefines().generator().substitutions().bold(),
+          },
+        },
+        shortcuts: options.shortcuts || {
+          inserts: [
+            {
+              key: 'D',
+              value: '— ',
+            },
+          ],
+        },
+      }
+
+      if (this.pages[0].entities.length === 0) {
+        switch (options.type) {
+          case 'creative':
+            this.pages[0].entities.push(
+              useFactory().entity().create('heading-one', options.name)
+            )
+            this.pages[0].entities.push(
+              useFactory().entity().create('paragraph', '')
+            )
+            break
+          case 'blank':
+            this.pages[0].entities.push(
+              useFactory().entity().create('paragraph', '')
+            )
+            break
+        }
+      }
     },
     newPage(title: string) {
       this.totalPagesCreated++

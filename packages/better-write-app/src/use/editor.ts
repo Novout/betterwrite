@@ -89,7 +89,9 @@ export const useEditor = () => {
       CONTEXT.entities[0].raw === env.emptyLine() ||
       entity.utils().isFixed(0)
         ? title.value
-        : PROJECT.nameRaw + ' - ' + CONTEXT.entities[0]?.raw
+        : PROJECT.nameRaw +
+          (CONTEXT.entities[0]?.raw ? ' - ' : '') +
+          CONTEXT.entities[0]?.raw
     )
     useHead({
       title: _title,

@@ -31,6 +31,30 @@ export interface ProjectState {
   shortcuts: ProjectStateShortcuts
 }
 
+export interface ProjectStateOptions {
+  name?: string
+  nameRaw?: string
+  version?: string
+  creator?: string
+  producer?: string
+  keywords?: string
+  subject?: string
+  base?: 'chapter' | 'timeline'
+  type: ProjectType
+  totalPagesCreated?: number
+  main?: Record<any, any>
+  summary?: Record<any, any>
+  pages?: Array<ContextState>
+  pageLoaded?: number
+  scrollLoaded?: number
+  offsetLoaded?: number
+  bw?: ProjectStateBetterWrite
+  pdf?: ProjectStatePDF
+  creative?: ProjectStateCreative
+  templates?: ProjectStateTemplates
+  shortcuts?: ProjectStateShortcuts
+}
+
 export interface ProjectStateShortcuts {
   inserts: ProjectStateShortcutsInserts[]
 }
