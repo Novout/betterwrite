@@ -57,7 +57,7 @@ export const useProjectStore = defineStore('project', {
         drafts: [],
       },
       templates: {
-        generator: [],
+        generators: [],
         substitutions: {
           text: [],
           italic: [],
@@ -153,7 +153,7 @@ export const useProjectStore = defineStore('project', {
           drafts: [],
         },
         templates: options.templates || {
-          generator: [],
+          generators: [useFactory().entity().generator()],
           substitutions: {
             text: useDefines().generator().substitutions().text(),
             italic: useDefines().generator().substitutions().italic(),

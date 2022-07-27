@@ -1,6 +1,10 @@
 import * as docx from 'docx'
 import { saveAs } from 'file-saver'
-import { Entity, PluginTypes } from 'better-write-types'
+import {
+  Entity,
+  PluginTypes,
+  ProjectStateTemplatesGenerator,
+} from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 import { useNProgress } from '@vueuse/integrations'
 import { ContextState } from 'better-write-types'
@@ -102,6 +106,20 @@ export const PluginDocxSet = (
     return final
   }
 
+  const utils = () => {
+    const getEntityGenerator = (
+      entity: Entity
+    ): ProjectStateTemplatesGenerator | undefined => {
+      const [generator] = stores.PROJECT.templates.generators.filter(
+        (g) => g.className === entity.external?.paragraph?.class
+      )
+
+      return generator
+    }
+
+    return { getEntityGenerator }
+  }
+
   const addons = () => {
     const bw = (
       arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents>
@@ -196,55 +214,56 @@ export const PluginDocxSet = (
       }
     }
 
-    const customStyles = ({ external, type }: Entity) => {
-      const textRun = external?.paragraph?.active
-        ? {
-            size: external?.paragraph?.generator.fontSize * 1.5,
-            italics: external?.paragraph?.generator.italics,
-            bold: external?.paragraph?.generator.bold,
-            color: external?.paragraph?.generator.color.substring(1),
-          }
-        : {
-            size: stores.DOCX.styles.paragraph.size * 1.5,
-            bold: stores.DOCX.styles.paragraph.bold,
-            italics: stores.DOCX.styles.paragraph.italics,
-            color: stores.DOCX.styles.paragraph.color.substring(1),
-          }
+    const customStyles = (entity: Entity) => {
+      const generator = utils().getEntityGenerator(entity)
 
-      const paragraph = external?.paragraph?.active
-        ? {
-            spacing: {
-              after: external?.paragraph?.generator.margin.bottom * 15,
-              before: external?.paragraph?.generator.margin.bottom * 15,
-            },
-            alignment: hooks.transformer
-              .docx()
-              .entityAlignment(
-                external?.paragraph?.generator.alignment as any,
-                'setter'
-              ),
-            indent: {
-              firstLine: external?.paragraph?.generator.indent * 125,
-            },
-          }
-        : {
-            spacing: {
-              before: stores.DOCX.styles.paragraph.margin.top * 15,
-              after: stores.DOCX.styles.paragraph.margin.bottom * 15,
-            },
-            alignment: hooks.transformer
-              .docx()
-              .entityAlignment(
-                stores.DOCX.styles.paragraph.alignment,
-                'setter'
-              ),
-            indent: {
-              firstLine: stores.DOCX.styles.paragraph.indent * 125,
-            },
-          }
+      const textRun =
+        entity.external?.paragraph?.active && generator
+          ? {
+              size: generator.fontSize * 1.5,
+              italics: generator.italics,
+              bold: generator.bold,
+              color: generator.color.substring(1),
+            }
+          : {
+              size: stores.DOCX.styles.paragraph.size * 1.5,
+              bold: stores.DOCX.styles.paragraph.bold,
+              italics: stores.DOCX.styles.paragraph.italics,
+              color: stores.DOCX.styles.paragraph.color.substring(1),
+            }
+
+      const paragraph =
+        entity.external?.paragraph?.active && generator
+          ? {
+              spacing: {
+                after: generator.margin.bottom * 15,
+                before: generator.margin.bottom * 15,
+              },
+              alignment: hooks.transformer
+                .docx()
+                .entityAlignment(generator.alignment, 'setter'),
+              indent: {
+                firstLine: generator.indent * 125,
+              },
+            }
+          : {
+              spacing: {
+                before: stores.DOCX.styles.paragraph.margin.top * 15,
+                after: stores.DOCX.styles.paragraph.margin.bottom * 15,
+              },
+              alignment: hooks.transformer
+                .docx()
+                .entityAlignment(
+                  stores.DOCX.styles.paragraph.alignment,
+                  'setter'
+                ),
+              indent: {
+                firstLine: stores.DOCX.styles.paragraph.indent * 125,
+              },
+            }
 
       const isList =
-        type === 'list'
+        entity.type === 'list'
           ? {
               bullet: {
                 level: 0,

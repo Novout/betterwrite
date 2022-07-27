@@ -1,14 +1,12 @@
 import { Entity, EntityType } from 'better-write-types'
-import { nextTick, Ref } from 'vue'
+import { nextTick } from 'vue'
 import { useEnv } from './env'
-import { useProjectStore } from '@/store/project'
 import { useContextStore } from '@/store/context'
 import useEmitter from './emitter'
 import { usePlugin } from 'better-write-plugin-core'
 import { useI18n } from 'vue-i18n'
 
 export const useEntity = () => {
-  const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
 
   const env = useEnv()

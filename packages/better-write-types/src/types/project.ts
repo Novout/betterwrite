@@ -1,4 +1,4 @@
-import { ContextState, EntityExternalParagraphGenerator } from './context'
+import { ContextState } from './context'
 import { DOCXState } from './docx'
 import { EditorState } from './editor'
 import { LoggerState } from './logger'
@@ -65,8 +65,26 @@ export interface ProjectStateShortcutsInserts {
 }
 
 export interface ProjectStateTemplates {
-  generator: ProjectStateTemplatesGenerator[]
+  generators: ProjectStateTemplatesGenerator[]
   substitutions: ProjectStateTemplatesSubstitutions
+}
+
+export interface ProjectStateTemplatesGenerator {
+  className: string
+  font: string
+  fontSize: number
+  lineHeight: number
+  alignment: 'left' | 'center' | 'right' | 'justify'
+  indent: number
+  characterSpacing: number
+  color: string
+  background: string
+  italics: boolean
+  bold: boolean
+  margin: {
+    top: number
+    bottom: number
+  }
 }
 
 export interface ProjectStateTemplatesSubstitutions {
@@ -89,11 +107,6 @@ export interface ProjectStateTemplatesSubstitutionsText {
   active: boolean
   old: string
   new: string
-}
-
-export interface ProjectStateTemplatesGenerator {
-  name: string
-  paragraph: EntityExternalParagraphGenerator
 }
 
 export interface ProjectStateCreative {

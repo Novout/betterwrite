@@ -76,27 +76,9 @@ export interface EntityExternalList {
   type: 'number' | 'rounded'
 }
 
-export interface EntityExternalParagraphGenerator {
-  font: string
-  fontSize: number
-  lineHeight: number
-  alignment: 'left' | 'center' | 'right' | 'justify'
-  indent: number
-  characterSpacing: number
-  color: string
-  background: string
-  italics: boolean
-  bold: boolean
-  margin: {
-    top: number
-    bottom: number
-  }
-}
-
 export interface EntityExternalParagraph {
   active: boolean
   class: string | null
-  generator: EntityExternalParagraphGenerator
 }
 
 export interface EntityExternal {

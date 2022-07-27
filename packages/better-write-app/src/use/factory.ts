@@ -1,8 +1,13 @@
 import { useEnv } from './env'
-import { Entity, EntityType } from 'better-write-types'
+import {
+  Entity,
+  EntityType,
+  ProjectStateTemplatesGenerator,
+} from 'better-write-types'
 import { useFormat } from './format'
 import { useUtils } from './utils'
 import { usePDFStore } from '@/store/pdf'
+import i18n from '@/lang'
 
 export const useFactory = () => {
   const PDF = usePDFStore()
@@ -10,10 +15,12 @@ export const useFactory = () => {
   const env = useEnv()
   const format = useFormat()
   const utils = useUtils()
+  const { t } = i18n.global
 
   const entity = () => {
-    const generator = () => {
+    const generator = (title?: string): ProjectStateTemplatesGenerator => {
       return {
+        className: title || t('editor.entity.generator.template'),
         font: PDF.styles.paragraph.font,
         fontSize: PDF.styles.paragraph.fontSize,
         lineHeight: PDF.styles.paragraph.lineHeight,
