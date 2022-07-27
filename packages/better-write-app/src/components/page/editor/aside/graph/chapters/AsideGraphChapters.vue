@@ -3,13 +3,18 @@
     :class="[PROJECT.base === 'chapter' ? '' : 'opacity-70']"
     class="flex justify-between items-center w-full"
   >
-    <p
-      v-if="!env.isEmptyProject(PROJECT.name)"
-      class="cursor-pointer truncate font-bold text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
-      @click="graph.base()"
+    <div
+      class="flex gap-1 items-center text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
     >
-      {{ t('editor.aside.graph.chapters') }}
-    </p>
+      <IconChapter class="w-7 h-7" />
+      <p
+        v-if="!env.isEmptyProject(PROJECT.name)"
+        class="cursor-pointer truncate font-bold"
+        @click="graph.base()"
+      >
+        {{ t('editor.aside.graph.chapters') }}
+      </p>
+    </div>
     <AsideGraphControl v-if="!env.isEmptyProject(PROJECT.name)" />
   </div>
   <div v-for="(page, index) in PROJECT.pages" :key="index">

@@ -1,8 +1,11 @@
 <template>
-  <div class="flex justify-between items-center w-full mt-5">
+  <div
+    class="flex justify-start items-center w-full mt-5 gap-1 text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+  >
+    <IconTimeline class="w-7 h-7" />
     <p
       :class="[PROJECT.base === 'timeline' ? '' : 'opacity-70']"
-      class="cursor-pointer truncate font-bold text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+      class="cursor-pointer truncate font-bold"
       @click="canvas.externals().load()"
     >
       {{ t('editor.aside.graph.timeline') }}
