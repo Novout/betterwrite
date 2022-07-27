@@ -5,6 +5,7 @@ import {
   Entity,
   PDFDocOptions,
   PluginTypes,
+  ProjectStateTemplatesGenerator,
 } from 'better-write-types'
 import { nextTick, computed } from 'vue-demi'
 import { useNProgress } from '@vueuse/integrations'
@@ -41,7 +42,17 @@ export const PluginPDFSet = (
       return isOnline() ? font : 'Roboto'
     }
 
-    return { isOnline, correctFontInject }
+    const getEntityGenerator = (
+      entity: Entity
+    ): ProjectStateTemplatesGenerator | undefined => {
+      const [generator] = stores.PROJECT.templates.generators.filter(
+        (g) => g.className === entity.external?.paragraph?.class
+      )
+
+      return generator
+    }
+
+    return { isOnline, correctFontInject, getEntityGenerator }
   }
 
   const transform = () => {
@@ -199,12 +210,13 @@ export const PluginPDFSet = (
   const getIndent = (entity?: Entity) => {
     if (!entity) return ''
 
+    const generator = utils().getEntityGenerator(entity)
+
     let indent = ''
 
     const quantity =
-      entity.external?.paragraph?.active &&
-      entity.external?.paragraph?.generator.indent
-        ? entity.external?.paragraph?.generator.indent
+      entity.external?.paragraph?.active && generator?.indent
+        ? generator.indent
         : stores.PDF.styles.paragraph.indent
 
     for (let i = 0; i < quantity; i++) {
@@ -274,31 +286,28 @@ export const PluginPDFSet = (
     }
 
     const paragraph = (entity: Entity) => {
-      const obj = entity.external?.paragraph?.active
-        ? {
-            font: utils().correctFontInject(
-              entity.external?.paragraph?.generator.font
-            ),
-            fontSize: entity.external?.paragraph?.generator.fontSize,
-            lineHeight: entity.external?.paragraph?.generator.lineHeight,
-            alignment: transform().entityAlignment(
-              entity.external?.paragraph?.generator.alignment as any
-            ),
-            characterSpacing:
-              entity.external?.paragraph?.generator.characterSpacing,
-            color: entity.external?.paragraph?.generator.color,
-            background: entity.external?.paragraph?.generator.background,
-            italics: entity.external?.paragraph?.generator.italics,
-            bold: entity.external?.paragraph?.generator.bold,
-          }
-        : {}
+      const generator = utils().getEntityGenerator(entity)
+
+      const obj =
+        entity.external?.paragraph?.active && generator
+          ? {
+              font: utils().correctFontInject(generator.font),
+              fontSize: generator.fontSize,
+              lineHeight: generator.lineHeight,
+              alignment: transform().entityAlignment(generator.alignment),
+              characterSpacing: generator.characterSpacing,
+              color: generator.color,
+              background: generator.background,
+              italics: generator.italics,
+              bold: generator.bold,
+            }
+          : {}
 
       let indent = ''
 
       const quantity =
-        entity.external?.paragraph?.active &&
-        entity.external?.paragraph?.generator.indent
-          ? entity.external?.paragraph?.generator.indent
+        entity.external?.paragraph?.active && generator?.indent
+          ? generator.indent
           : stores.PDF.styles.paragraph.indent
 
       for (let i = 0; i < quantity; i++) {
@@ -331,12 +340,12 @@ export const PluginPDFSet = (
         preserveLeadingSpaces: true,
         margin: [
           generate().base().pageMargins[0],
-          entity.external?.paragraph?.active
-            ? entity.external.paragraph.generator.margin.top
+          entity.external?.paragraph?.active && generator
+            ? generator.margin.top
             : stores.PDF.styles.paragraph.margin.top,
           generate().base().pageMargins[2],
-          entity.external?.paragraph?.active
-            ? entity.external.paragraph.generator.margin.bottom
+          entity.external?.paragraph?.active && generator
+            ? generator.margin.bottom
             : stores.PDF.styles.paragraph.margin.bottom,
         ],
         ...obj,
@@ -344,6 +353,7 @@ export const PluginPDFSet = (
     }
 
     const list = async (entity: Entity) => {
+      const generator = utils().getEntityGenerator(entity)
       const p = await paragraph(entity)
 
       const indent = getIndent(entity)
@@ -356,12 +366,12 @@ export const PluginPDFSet = (
         characterSpacing: p.characterSpacing,
         margin: [
           generate().base().pageMargins[0] + indent.length * 10,
-          entity.external?.paragraph?.active
-            ? entity.external.paragraph.generator.margin.top
+          entity.external?.paragraph?.active && generator
+            ? generator.margin.top
             : stores.PDF.styles.paragraph.margin.top,
           generate().base().pageMargins[2],
-          entity.external?.paragraph?.active
-            ? entity.external.paragraph.generator.margin.bottom
+          entity.external?.paragraph?.active && generator
+            ? generator.margin.bottom
             : stores.PDF.styles.paragraph.margin.bottom,
         ],
       })
@@ -370,6 +380,7 @@ export const PluginPDFSet = (
     }
 
     const checkbox = async (entity: Entity) => {
+      const generator = utils().getEntityGenerator(entity)
       const p = await paragraph(entity)
 
       const indent = getIndent(entity)
@@ -383,13 +394,13 @@ export const PluginPDFSet = (
                 border: [false, false, false, false],
                 margin: [
                   generate().base().pageMargins[0] + -4 + indent.length * 10,
-                  entity.external?.paragraph?.active
-                    ? entity.external.paragraph.generator.margin.top
+                  entity.external?.paragraph?.active && generator
+                    ? generator.margin.top
                     : stores.PDF.styles.paragraph.margin.top,
                   ,
                   generate().base().pageMargins[2],
-                  entity.external?.paragraph?.active
-                    ? entity.external.paragraph.generator.margin.bottom
+                  entity.external?.paragraph?.active && generator
+                    ? generator.margin.bottom
                     : stores.PDF.styles.paragraph.margin.bottom,
                 ],
                 image: entity.external?.checkbox?.select
@@ -1262,11 +1273,10 @@ export const PluginPDFSet = (
     _fonts.push(stores.PDF.styles.base.summary.fontFamily)
     stores.PROJECT.pages.forEach((page: ContextState) => {
       page.entities.forEach((entity: Entity) => {
-        if (
-          entity.external?.paragraph?.generator.font &&
-          entity.external.paragraph.active
-        ) {
-          _fonts.push(entity.external?.paragraph?.generator.font)
+        const generator = utils().getEntityGenerator(entity)
+
+        if (generator?.font && entity.external?.paragraph?.active) {
+          _fonts.push(generator.font)
         }
       })
     })

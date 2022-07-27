@@ -1,153 +1,11 @@
 import {
-  ProjectState,
   PDFStateStyles,
   DOCXStateFlowItem,
-  DOCXAlignmentType,
+  DOCXStateStyles,
 } from 'better-write-types'
-import { useEnv } from './env'
-import { useFormat } from './format'
 import { useDefines } from './defines'
-import { useUtils } from './utils'
-import { useFactory } from './factory'
-import { DOCXStateStyles } from 'better-write-types/src/types/docx'
 
 export const usePopulate = () => {
-  const factory = useFactory()
-
-  const project = (project: ProjectState, title?: string): ProjectState => {
-    return {
-      creative: {
-        name: useUtils().text().kebab(project.name),
-        nameRaw: project.name,
-        version: project.version,
-        creator: project.creator,
-        producer: project.creator,
-        keywords: '',
-        subject: project.subject,
-        type: project.type,
-        totalPagesCreated: 1,
-        main: {},
-        summary: {},
-        pageLoaded: 1,
-        scrollLoaded: 0,
-        offsetLoaded: 0,
-        pages: [
-          {
-            id: 1,
-            title: project.name,
-            entities: [
-              factory.entity().create('heading-one', title || project.name),
-              factory.entity().create('paragraph', ''),
-            ],
-            createdAt: useFormat().actually(),
-            updatedAt: useFormat().actually(),
-          },
-        ],
-        bw: {
-          platform: 'web',
-          version: useEnv().packageVersion() as string,
-        },
-        pdf: {
-          encryption: {
-            userPassword: '',
-            ownerPassword: '',
-          },
-          permissions: {
-            printing: 'highResolution',
-            modifying: false,
-            copying: false,
-            annotating: true,
-            fillingForms: true,
-            contentAccessibility: true,
-            documentAssembly: true,
-          },
-        },
-        creative: {
-          drafts: [],
-        },
-        templates: {
-          generator: [],
-          substitutions: {
-            text: useDefines().generator().substitutions().text(),
-            italic: useDefines().generator().substitutions().italic(),
-            bold: useDefines().generator().substitutions().bold(),
-          },
-        },
-        shortcuts: {
-          inserts: [
-            {
-              key: 'D',
-              value: '— ',
-            },
-          ],
-        },
-      },
-      blank: {
-        name: useUtils().text().kebab(project.name),
-        nameRaw: project.name,
-        version: project.version,
-        creator: project.creator,
-        producer: project.creator,
-        keywords: '',
-        subject: project.subject,
-        type: project.type,
-        totalPagesCreated: 1,
-        main: {},
-        summary: {},
-        pageLoaded: 1,
-        scrollLoaded: 0,
-        offsetLoaded: 0,
-        pages: [
-          {
-            id: 1,
-            title: project.name,
-            entities: [factory.entity().create('paragraph', '')],
-            createdAt: useFormat().actually(),
-            updatedAt: useFormat().actually(),
-          },
-        ],
-        bw: {
-          platform: 'web',
-          version: useEnv().packageVersion() as string,
-        },
-        pdf: {
-          encryption: {
-            userPassword: '',
-            ownerPassword: '',
-          },
-          permissions: {
-            printing: 'highResolution',
-            modifying: false,
-            copying: false,
-            annotating: true,
-            fillingForms: true,
-            contentAccessibility: true,
-            documentAssembly: true,
-          },
-        },
-        creative: {
-          drafts: [],
-        },
-        templates: {
-          generator: [],
-          substitutions: {
-            text: useDefines().generator().substitutions().text(),
-            italic: useDefines().generator().substitutions().italic(),
-            bold: useDefines().generator().substitutions().bold(),
-          },
-        },
-        shortcuts: {
-          inserts: [
-            {
-              key: 'D',
-              value: '— ',
-            },
-          ],
-        },
-      },
-    }[project.type] as ProjectState
-  }
-
   const debug = () => {
     const names = () => {
       const paragraph = () => {
@@ -417,5 +275,5 @@ export const usePopulate = () => {
     return { styles }
   }
 
-  return { project, docx, pdf, debug }
+  return { docx, pdf, debug }
 }

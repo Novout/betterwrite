@@ -142,14 +142,6 @@ export const useStorage = () => {
             entity.raw === env.lineBreak()
           )
         ) {
-          /* dynamic paragraph generator */
-          if (
-            !entity.external?.paragraph?.active &&
-            entity.external?.paragraph?.generator
-          ) {
-            delete entity.external.paragraph
-          }
-
           /* dynamic paragraph comment */
           if (entity.external && !entity.external?.comment?.raw) {
             delete entity.external.comment

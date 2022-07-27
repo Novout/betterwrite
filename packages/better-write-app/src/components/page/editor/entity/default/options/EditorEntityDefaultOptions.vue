@@ -390,20 +390,6 @@
       image.width as any
   })
 
-  const paragraph = reactive({
-    active: entity.value.external?.paragraph?.active,
-    generator: entity.value.external?.paragraph?.generator,
-  })
-
-  watch(paragraph, () => {
-    const _index: number = CONTEXT.entities.indexOf(entity.value)
-
-    ;(CONTEXT.entities[_index] as any).external.paragraph.active =
-      paragraph.active as any
-    ;(CONTEXT.entities[_index] as any).external.paragraph.generator =
-      paragraph.generator as any
-  })
-
   const onText = async () => {
     const _index: number = CONTEXT.entities.indexOf(entity.value)
 

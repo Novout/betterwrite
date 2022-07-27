@@ -33,6 +33,8 @@ export const useGraph = () => {
     page: ContextState,
     entity: Entity
   ) => {
+    PROJECT.base = 'chapter'
+
     storage
       .normalize()
       .then(async () => {
@@ -79,6 +81,8 @@ export const useGraph = () => {
   }
 
   const base = () => {
+    PROJECT.base = 'chapter'
+
     storage.normalize().then(async () => {
       // get initial page
       const start = PROJECT.pages[0]

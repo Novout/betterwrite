@@ -9,20 +9,7 @@
           <h3 class="mr-2">{{ t('editor.aside.entity.optionsOn') }}</h3>
           <InputBoolean v-model="paragraph.active" :specific="true" />
         </div>
-        <HeroIcon class="wb-icon" @click.prevent="onClose">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-7 w-7"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </HeroIcon>
+        <IconClose class="wb-icon h-7 w-7" @click.prevent="onClose" />
       </div>
       <div
         :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
@@ -35,39 +22,16 @@
           <InputText
             v-model="templateText"
             class="mx-2 bg-transparent shadow shadow-xl rounded"
+            @keyup.enter="onCreateParagraphTemplate()"
           />
-          <HeroIcon class="wb-icon w-10 h-10">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              aria-hidden="true"
-              role="img"
-              preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 24 24"
-              @click.prevent.stop="onCreateParagraphTemplate"
-            >
-              <path
-                fill="currentColor"
-                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-              ></path>
-            </svg>
-          </HeroIcon>
-          <HeroIcon class="wb-icon w-10 h-10">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              aria-hidden="true"
-              role="img"
-              preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 24 24"
-              @click.prevent.stop="onDeleteParagraphTemplate"
-            >
-              <path
-                fill="currentColor"
-                d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-              ></path>
-            </svg>
-          </HeroIcon>
+          <IconAdd
+            class="wb-icon w-10 h-10"
+            @click.prevent.stop="onCreateParagraphTemplate"
+          />
+          <IconDelete
+            class="wb-icon w-10 h-10"
+            @click.prevent.stop="onDeleteParagraphTemplate"
+          />
         </div>
       </div>
       <div
@@ -76,13 +40,13 @@
       >
         <p
           :style="{
-            fontFamily: paragraph.generator?.font,
-            fontSize: `${paragraph.generator?.fontSize}px`,
-            fontStyle: paragraph.generator?.italics ? 'italic' : 'normal',
-            fontWeight: paragraph.generator?.bold ? 'bolder' : 'normal',
-            letterSpacing: `${paragraph.generator?.characterSpacing}px`,
-            color: paragraph.generator?.color,
-            backgroundColor: paragraph.generator?.background,
+            fontFamily: generator.font,
+            fontSize: `${generator.fontSize}px`,
+            fontStyle: generator.italics ? 'italic' : 'normal',
+            fontWeight: generator.bold ? 'bolder' : 'normal',
+            letterSpacing: `${generator.characterSpacing}px`,
+            color: generator.color,
+            backgroundColor: generator.background,
             padding: '2rem',
           }"
         >
@@ -91,14 +55,19 @@
       </div>
       <div
         class="flex gap-5 flex-row flex-wrap items-center overflow-auto"
-        :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
+        :class="[
+          !paragraph.active ||
+          paragraph.class === t('editor.entity.generator.template')
+            ? 'opacity-50 pointer-events-none'
+            : '',
+        ]"
       >
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.font')
           }}</label>
           <InputSelect
-            v-model="(paragraph.generator as any).font"
+            v-model="generator.font"
             class="flex-1"
             :min="true"
             :arr="PDF.fonts"
@@ -109,19 +78,19 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.fontSize')
           }}</label>
-          <InputNumber v-model="(paragraph.generator as any).fontSize" />
+          <InputNumber v-model="generator.fontSize" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.bold')
           }}</label>
-          <InputBoolean v-model="(paragraph.generator as any).bold" />
+          <InputBoolean v-model="generator.bold" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.italics')
           }}</label>
-          <InputBoolean v-model="(paragraph.generator as any).italics" />
+          <InputBoolean v-model="generator.italics" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
@@ -129,25 +98,25 @@
           }}</label>
           <section>
             <label>{{ t('editor.pdf.base.pageMargins.top') }}</label>
-            <InputNumber v-model="(paragraph.generator as any).margin.top" />
+            <InputNumber v-model="generator.margin.top" />
           </section>
           <section>
             <label>{{ t('editor.pdf.base.pageMargins.bottom') }}</label>
-            <InputNumber v-model="(paragraph.generator as any).margin.bottom" />
+            <InputNumber v-model="generator.margin.bottom" />
           </section>
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.lineHeight')
           }}</label>
-          <InputNumber v-model="(paragraph.generator as any).lineHeight" />
+          <InputNumber v-model="generator.lineHeight" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.alignment')
           }}</label>
           <InputCarousel
-            v-model="(paragraph.generator as any).alignment"
+            v-model="generator.alignment"
             class="flex-1"
             :arr="defines.pdf().alignment()"
           />
@@ -156,27 +125,25 @@
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.indent')
           }}</label>
-          <InputNumber v-model="(paragraph.generator as any).indent" />
+          <InputNumber v-model="generator.indent" />
         </div>
         <div class="wb-input-container">
           <label class="mx-2 text-xs">{{
             t('editor.pdf.custom.generics.characterSpacing')
           }}</label>
-          <InputNumber
-            v-model="(paragraph.generator as any).characterSpacing"
-          />
+          <InputNumber v-model="generator.characterSpacing" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.color')
           }}</label>
-          <InputColorPicker v-model="(paragraph.generator as any).color" />
+          <InputColorPicker v-model="generator.color" />
         </div>
         <div class="wb-input-container">
           <label class="mx-1 text-xs">{{
             t('editor.pdf.custom.generics.background')
           }}</label>
-          <InputColorPicker v-model="(paragraph.generator as any).background" />
+          <InputColorPicker v-model="generator.background" />
         </div>
       </div>
     </div>
@@ -184,8 +151,12 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, watch, ref, reactive } from 'vue'
-  import { Entity } from 'better-write-types'
+  import { computed, watch, ref, onMounted } from 'vue'
+  import {
+    Entity,
+    EntityExternalParagraph,
+    ProjectStateTemplatesGenerator,
+  } from 'better-write-types'
   import { useEditorStore } from '@/store/editor'
   import { useContextStore } from '@/store/context'
   import { onClickOutside } from '@vueuse/core'
@@ -219,21 +190,30 @@
   const entity = computed<Entity>(
     () => CONTEXT.entities[EDITOR.actives.entity.index]
   )
+  const paragraph = computed(
+    () => entity.value.external!.paragraph as EntityExternalParagraph
+  )
+
   const options = ref<HTMLElement | null>(null)
 
-  const templates = computed(() => [
-    t('editor.entity.generator.template'),
-    ...PROJECT.templates.generator.map((g) => g.name),
-  ])
+  const templates = computed(() =>
+    PROJECT.templates.generators.map((g) => g.className)
+  )
   const template = ref<string>(
     entity.value?.external?.paragraph?.class &&
       templates.value.find(
         (template) => template === entity.value?.external?.paragraph?.class
       )
       ? entity.value?.external?.paragraph?.class
-      : templates.value[0]
+      : PROJECT.templates.generators[0].className
   )
   const templateText = ref<string>('')
+  const generator = computed<ProjectStateTemplatesGenerator>(
+    () =>
+      PROJECT.templates.generators.find(
+        (g) => g.className === template.value
+      ) as any
+  )
 
   onClickOutside(options as any, () => onClose())
 
@@ -241,48 +221,19 @@
     ABSOLUTE.entity.customize = false
   }
 
+  onMounted(() => {
+    PROJECT.templates.generators[0] = factory.entity().generator()
+  })
+
   watch(template, (_template) => {
-    if (!_template) return
-
     if (_template === t('editor.entity.generator.template')) {
-      paragraph.generator = factory.entity().generator()
-
-      return
+      PROJECT.templates.generators[0] = factory.entity().generator()
     }
 
-    const generator = PROJECT.templates.generator.find(
-      (g) => g.name === template.value
-    )
-
-    if (!generator) return
-
-    paragraph.generator = generator.paragraph
-
-    const _index: number = CONTEXT.entities.indexOf(entity.value)
-
-    ;(CONTEXT.entities[_index] as any).external.paragraph.active =
-      paragraph.active as any
-    ;(CONTEXT.entities[_index] as any).external.paragraph.generator =
-      paragraph.generator as any
-    ;(CONTEXT.entities[_index] as any).external.paragraph.class = template.value
+    paragraph.value.class = _template
   })
 
-  const paragraph = reactive({
-    active: entity.value.external?.paragraph?.active,
-    generator: entity.value.external?.paragraph?.generator,
-  })
-
-  watch(paragraph, () => {
-    if (template.value !== t('editor.entity.generator.template')) return
-
-    const _index: number = CONTEXT.entities.indexOf(entity.value)
-
-    ;(CONTEXT.entities[_index] as any).external.paragraph.active =
-      paragraph.active as any
-    ;(CONTEXT.entities[_index] as any).external.paragraph.generator =
-      paragraph.generator as any
-    ;(CONTEXT.entities[_index] as any).external.paragraph.class = template.value
-  })
+  // watch(generator, _generator => {})
 
   const onCreateParagraphTemplate = () => {
     if (!templateText.value) {
@@ -291,7 +242,9 @@
     }
 
     if (
-      PROJECT.templates.generator.find((g) => g.name === templateText.value)
+      PROJECT.templates.generators.find(
+        (g) => g.className === templateText.value
+      )
     ) {
       toast.error(t('toast.entity.paragraph.generator.exists'))
       return
@@ -299,12 +252,10 @@
 
     isLoading.value = true
 
-    if (!paragraph.generator) return
-
-    PROJECT.templates.generator.push({
-      name: templateText.value,
-      paragraph: factory.entity().generator(),
-    })
+    PROJECT.templates.generators.push(
+      factory.entity().generator(templateText.value)
+    )
+    paragraph.value.class = templateText.value
 
     template.value = templateText.value
     templateText.value = ''
@@ -316,8 +267,8 @@
 
     isLoading.value = true
 
-    PROJECT.templates.generator = PROJECT.templates.generator.filter(
-      (g) => g.name !== template.value
+    PROJECT.templates.generators = PROJECT.templates.generators.filter(
+      (g) => g.className !== template.value
     )
 
     template.value = t('editor.entity.generator.template')

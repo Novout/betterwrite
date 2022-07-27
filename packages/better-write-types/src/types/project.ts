@@ -1,4 +1,4 @@
-import { ContextState, EntityExternalParagraphGenerator } from './context'
+import { ContextState } from './context'
 import { DOCXState } from './docx'
 import { EditorState } from './editor'
 import { LoggerState } from './logger'
@@ -15,6 +15,7 @@ export interface ProjectState {
   producer: string
   keywords: string
   subject: string
+  base: 'chapter' | 'timeline'
   type: ProjectType
   totalPagesCreated: number
   main: Record<any, any>
@@ -30,6 +31,30 @@ export interface ProjectState {
   shortcuts: ProjectStateShortcuts
 }
 
+export interface ProjectStateOptions {
+  name?: string
+  nameRaw?: string
+  version?: string
+  creator?: string
+  producer?: string
+  keywords?: string
+  subject?: string
+  base?: 'chapter' | 'timeline'
+  type: ProjectType
+  totalPagesCreated?: number
+  main?: Record<any, any>
+  summary?: Record<any, any>
+  pages?: Array<ContextState>
+  pageLoaded?: number
+  scrollLoaded?: number
+  offsetLoaded?: number
+  bw?: ProjectStateBetterWrite
+  pdf?: ProjectStatePDF
+  creative?: ProjectStateCreative
+  templates?: ProjectStateTemplates
+  shortcuts?: ProjectStateShortcuts
+}
+
 export interface ProjectStateShortcuts {
   inserts: ProjectStateShortcutsInserts[]
 }
@@ -40,8 +65,26 @@ export interface ProjectStateShortcutsInserts {
 }
 
 export interface ProjectStateTemplates {
-  generator: ProjectStateTemplatesGenerator[]
+  generators: ProjectStateTemplatesGenerator[]
   substitutions: ProjectStateTemplatesSubstitutions
+}
+
+export interface ProjectStateTemplatesGenerator {
+  className: string
+  font: string
+  fontSize: number
+  lineHeight: number
+  alignment: 'left' | 'center' | 'right' | 'justify'
+  indent: number
+  characterSpacing: number
+  color: string
+  background: string
+  italics: boolean
+  bold: boolean
+  margin: {
+    top: number
+    bottom: number
+  }
 }
 
 export interface ProjectStateTemplatesSubstitutions {
@@ -64,11 +107,6 @@ export interface ProjectStateTemplatesSubstitutionsText {
   active: boolean
   old: string
   new: string
-}
-
-export interface ProjectStateTemplatesGenerator {
-  name: string
-  paragraph: EntityExternalParagraphGenerator
 }
 
 export interface ProjectStateCreative {

@@ -14,7 +14,8 @@
         EDITOR.configuration.blocked && ABSOLUTE.project.blocked && env.isDev()
       "
     />
-    <EditorBaseRender v-else />
+    <EditorBaseRender v-else-if="PROJECT.base === 'chapter'" />
+    <EditorBaseTimeline v-else-if="PROJECT.base === 'timeline'" />
   </div>
 </template>
 
@@ -23,9 +24,11 @@
   import { useEditorStore } from '@/store/editor'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useEnv } from '@/use/env'
+  import { useProjectStore } from '@/store/project'
 
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
+  const PROJECT = useProjectStore()
 
   const env = useEnv()
 

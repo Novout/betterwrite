@@ -132,25 +132,25 @@ export const DOCXSet = (
         entities.push(entity)
       })
 
-      const chapters: ContextState[] = []
-      let chapter: ContextState | null = null
-      let pages = 0
+      const pages: ContextState[] = []
+      let page: ContextState | null = null
+      let totalPagesCreated = 0
 
       entities.forEach((entity: Entity) => {
-        if (entity.type === 'heading-one' || chapter === null) {
-          if (chapter) {
-            chapters.push(chapter)
+        if (entity.type === 'heading-one' || page === null) {
+          if (page) {
+            pages.push(page)
 
-            chapter = null
+            page = null
           }
 
           // for edge case
           entity.type = 'heading-one'
 
-          pages++
+          totalPagesCreated++
 
-          chapter = {
-            id: pages,
+          page = {
+            id: totalPagesCreated,
             title: entity.raw,
             entities: [entity],
             createdAt: hooks.format.actually(),
@@ -160,60 +160,16 @@ export const DOCXSet = (
           return
         }
 
-        if (chapter) chapter.entities.push(entity)
+        if (page) page.entities.push(entity)
       })
 
-      if (chapter) chapters.push(chapter)
+      if (page) pages.push(page)
 
-      stores.PROJECT.createExternal({
+      stores.PROJECT.new({
         name: hooks.utils.text().kebab(fileName),
         nameRaw: fileName,
-        version: '0.1.0',
-        creator: 'betterwrite',
-        producer: 'betterwrite',
-        keywords: 'docx,project',
-        subject: 'betterwrite',
-        type: 'creative',
-        totalPagesCreated: pages,
-        main: {},
-        summary: {},
-        pageLoaded: 1,
-        scrollLoaded: 0,
-        offsetLoaded: 0,
-        pages: chapters,
-        bw: {
-          platform: 'web',
-          version: hooks.env.packageVersion() as string,
-        },
-        pdf: {
-          encryption: {
-            userPassword: '',
-            ownerPassword: '',
-          },
-          permissions: {
-            printing: 'highResolution',
-            modifying: false,
-            copying: false,
-            annotating: true,
-            fillingForms: true,
-            contentAccessibility: true,
-            documentAssembly: true,
-          },
-        },
-        creative: {
-          drafts: [],
-        },
-        templates: {
-          generator: [],
-          substitutions: {
-            text: hooks.defines.generator().substitutions().text(),
-            italic: hooks.defines.generator().substitutions().italic(),
-            bold: hooks.defines.generator().substitutions().bold(),
-          },
-        },
-        shortcuts: {
-          inserts: [],
-        },
+        totalPagesCreated,
+        pages,
       })
 
       await nextTick

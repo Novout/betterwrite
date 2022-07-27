@@ -15,6 +15,7 @@ import {
   ContextState,
   Entity,
   Entities,
+  ProjectStateOptions,
 } from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { useEnv } from './env'
@@ -56,14 +57,14 @@ export const useProject = () => {
     const n = async (type: ProjectType, skipAlert: boolean = false) => {
       if (!skipAlert && !confirm(t('toast.project.createAlert'))) return
 
-      PROJECT.create(
+      PROJECT.new(
         {
           name: t('editor.aside.project.new.content.name'),
           version: t('editor.aside.project.new.content.version'),
           creator: t('editor.aside.project.new.content.creator'),
           subject: t('editor.aside.project.new.content.subject'),
           type,
-        } as any,
+        },
         t('editor.project.control.title', { suffix: 1 })
       )
 
@@ -91,9 +92,9 @@ export const useProject = () => {
     return { new: n }
   }
 
-  const create = (project: ProjectState) => {
+  const create = (project: ProjectStateOptions) => {
     storage.normalize().then(async () => {
-      PROJECT.create(project, t('editor.project.control.title', { suffix: 1 }))
+      PROJECT.new(project, t('editor.project.control.title', { suffix: 1 }))
 
       await nextTick
 
