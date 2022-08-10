@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-end w-full mt-10">
-    <div class="flex w-7/12 sm:w-8/12 md:w-9/12 bg-theme-background-3">
+    <div class="flex w-4/5 sm:w-9/12 md:w-10/13 bg-theme-background-3">
       <QuestionsGeneratorFile>
         <IconPDF class="w-9 h-9 md:(w-10 h-10)" />
         <p class="text-lg hidden md:inline">.PDF</p>
@@ -10,6 +10,12 @@
       >
         <IconDOCX class="w-9 h-9 md:(w-10 h-10)" />
         <p class="text-lg hidden md:inline">.DOCX</p>
+      </QuestionsGeneratorFile>
+      <QuestionsGeneratorFile
+        class="flex flex-1 items-center justify-center h-30"
+      >
+        <IconHTML class="w-9 h-9 md:(w-10 h-10)" />
+        <p class="text-lg hidden md:inline">.HTML</p>
       </QuestionsGeneratorFile>
       <QuestionsGeneratorFile
         class="flex flex-1 items-center justify-center h-30"
@@ -33,7 +39,12 @@
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
         >
-          <IconLine class="w-9 h-9" />
+          <IconYes class="w-9 h-9" />
+        </QuestionsGeneratorFile>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
+          <IconYes class="w-9 h-9" />
         </QuestionsGeneratorFile>
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
@@ -49,6 +60,11 @@
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.customParagraph') }}
         </p>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
+          <IconYes class="w-9 h-9" />
+        </QuestionsGeneratorFile>
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
         >
@@ -86,6 +102,11 @@
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
         >
+          <IconYes class="w-9 h-9" />
+        </QuestionsGeneratorFile>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
           <IconError class="w-9 h-9" />
         </QuestionsGeneratorFile>
       </div>
@@ -105,7 +126,12 @@
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
         >
-          <IconLine class="w-9 h-9" />
+          <IconYes class="w-9 h-9" />
+        </QuestionsGeneratorFile>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
+          <IconYes class="w-9 h-9" />
         </QuestionsGeneratorFile>
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
@@ -121,6 +147,11 @@
         <p class="flex-1 text-base md:text-lg px-4">
           {{ t('questions.generatorSupport.items.breakLine') }}
         </p>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
+          <IconYes class="w-9 h-9" />
+        </QuestionsGeneratorFile>
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
         >
@@ -158,6 +189,11 @@
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
         >
+          <IconYes class="w-9 h-9" />
+        </QuestionsGeneratorFile>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
           <IconError class="w-9 h-9" />
         </QuestionsGeneratorFile>
       </div>
@@ -178,6 +214,11 @@
           class="flex flex-1 items-center justify-center h-30"
         >
           <IconError class="w-9 h-9" />
+        </QuestionsGeneratorFile>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
+          <IconYes class="w-9 h-9" />
         </QuestionsGeneratorFile>
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
@@ -206,6 +247,11 @@
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
         >
+          <IconYes class="w-9 h-9" />
+        </QuestionsGeneratorFile>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
           <IconError class="w-9 h-9" />
         </QuestionsGeneratorFile>
       </div>
@@ -230,6 +276,11 @@
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
         >
+          <IconYes class="w-9 h-9" />
+        </QuestionsGeneratorFile>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
           <IconError class="w-9 h-9" />
         </QuestionsGeneratorFile>
       </div>
@@ -245,6 +296,11 @@
           class="flex flex-1 items-center justify-center h-30"
         >
           <IconYes class="w-9 h-9" />
+        </QuestionsGeneratorFile>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
+          <IconLine class="w-9 h-9" />
         </QuestionsGeneratorFile>
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
@@ -280,6 +336,11 @@
         >
           <IconError class="w-9 h-9" />
         </QuestionsGeneratorFile>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
+          <IconError class="w-9 h-9" />
+        </QuestionsGeneratorFile>
       </div>
     </div>
     <div
@@ -298,6 +359,11 @@
           class="flex flex-1 items-center justify-center h-30"
         >
           <IconLine class="w-9 h-9" />
+        </QuestionsGeneratorFile>
+        <QuestionsGeneratorFile
+          class="flex flex-1 items-center justify-center h-30"
+        >
+          <IconError class="w-9 h-9" />
         </QuestionsGeneratorFile>
         <QuestionsGeneratorFile
           class="flex flex-1 items-center justify-center h-30"
