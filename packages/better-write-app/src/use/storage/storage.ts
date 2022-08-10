@@ -3,7 +3,7 @@ import { useProjectStore } from '@/store/project'
 import { useEditorStore } from '@/store/editor'
 import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
-import { ProjectObject } from 'better-write-types'
+import { ProjectObject, ProjectState } from 'better-write-types'
 import { nextTick } from 'vue'
 import useEmitter from '../emitter'
 import { useContextStore } from '@/store/context'
@@ -24,19 +24,8 @@ export const useStorage = () => {
   const emitter = useEmitter()
   const defines = useDefines()
 
-  const support = (project: any) => {
-    if (!project) return
-
+  const support = (project: ProjectObject): ProjectObject => {
     let _ = project
-
-    if (!_.project.templates.substitutions) {
-      _.project.templates = {
-        ..._.project.templates,
-        substitutions: {
-          text: defines.generator().substitutions().text(),
-        },
-      }
-    }
 
     if (!_.project.templates.substitutions.italic) {
       _.project.templates.substitutions = {
@@ -106,6 +95,23 @@ export const useStorage = () => {
             },
           ],
         },
+      }
+    }
+
+    // @ts-ignore
+    if (_.project.templates.generator) {
+      // @ts-ignore
+      _.project.templates = {
+        ..._.project.templates,
+        // @ts-ignore
+        generators: [],
+      }
+    }
+
+    if (!_.project.image) {
+      _.project = {
+        ..._.project,
+        image: undefined,
       }
     }
 

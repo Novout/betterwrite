@@ -8,6 +8,7 @@ import { ID } from './utils'
 export type ProjectType = 'creative' | 'blank'
 
 export interface ProjectState {
+  image?: string
   name: string
   nameRaw: string
   version: string
@@ -32,6 +33,7 @@ export interface ProjectState {
 }
 
 export interface ProjectStateOptions {
+  image?: string
   name?: string
   nameRaw?: string
   version?: string

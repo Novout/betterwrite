@@ -126,16 +126,22 @@ export const useSupabase = () => {
     }
   }
 
-  const saveProject = async () => {
+  const saveProject = async (project?: ProjectObject) => {
     isLoading.value = true
     toast.info(t('toast.generics.load'))
 
     const { data, error } = await s.from('projects').upsert(
-      {
-        // @ts-ignore
-        id_user: AUTH.account.user.id,
-        ...storage.getProjectObject(),
-      },
+      project
+        ? {
+            // @ts-ignore
+            id_user: AUTH.account.user.id,
+            ...project,
+          }
+        : {
+            // @ts-ignore
+            id_user: AUTH.account.user.id,
+            ...storage.getProjectObject(),
+          },
       { onConflict: 'id' }
     )
 
@@ -155,11 +161,17 @@ export const useSupabase = () => {
       await storage.purge()
 
       const { error: err } = await s.from('projects').upsert(
-        {
-          // @ts-ignore
-          id_user: AUTH.account.user.id,
-          ...storage.getProjectObject(),
-        },
+        project
+          ? {
+              // @ts-ignore
+              id_user: AUTH.account.user.id,
+              ...project,
+            }
+          : {
+              // @ts-ignore
+              id_user: AUTH.account.user.id,
+              ...storage.getProjectObject(),
+            },
         { onConflict: 'id' }
       )
 
