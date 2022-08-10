@@ -28,7 +28,7 @@ A Modern Word Processor
 - ✅ Graph Control
 - ✅ Plugin Friendly
 - ✅ Mobile & Desktop (PWA)
-- ✅ PDF, DOCX, TXT Generator
+- ✅ PDF, DOCX, HTML and TXT Generator
 
 # Motivation
 

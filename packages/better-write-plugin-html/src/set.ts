@@ -4,7 +4,19 @@ import { On } from 'better-write-plugin-core'
 import { useNProgress } from '@vueuse/integrations'
 import { ContextState } from 'better-write-types'
 import { Entity } from 'better-write-types'
-import { HEADING_ONE, HTML, PARAGRAPH } from './tags'
+import {
+  CHECKBOX,
+  DRAU,
+  HEADING_ONE,
+  HEADING_THREE,
+  HEADING_TWO,
+  HTML,
+  IMAGE,
+  LINE_BREAK,
+  LIST,
+  PAGE_BREAK,
+  PARAGRAPH,
+} from './tags'
 
 export const PluginHtmlSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -35,8 +47,6 @@ export const PluginHtmlSet = (
       page.entities.forEach((entity: Entity) => {
         switch (entity.type) {
           case 'paragraph':
-          case 'list':
-          case 'checkbox':
             entities()
               .paragraph(entity)
               ?.forEach((paragraph: string) => {
@@ -47,22 +57,34 @@ export const PluginHtmlSet = (
             str += HEADING_ONE(entity.raw) + '\n'
             break
           case 'heading-two':
-            // arr.push(entities().headingTwo(entity.raw))
+            str += HEADING_TWO(entity.raw) + '\n'
             break
           case 'heading-three':
-            // arr.push(entities().headingThree(entity.raw))
+            str += HEADING_THREE(entity.raw) + '\n'
             break
           case 'page-break':
-            // arr.push(entities().pageBreak())
+            str += PAGE_BREAK() + '\n'
             break
           case 'line-break':
-            // arr.push(entities().lineBreak())
+            str += LINE_BREAK() + '\n'
+            break
+          case 'image':
+            str += IMAGE(entity.raw) + '\n'
+            break
+          case 'drau':
+            str += DRAU(entity.raw) + '\n'
+            break
+          case 'list':
+            str += hooks.substitution.purge(LIST(entity.raw)) + '\n'
+            break
+          case 'checkbox':
+            str += hooks.substitution.purge(CHECKBOX(entity)) + '\n'
             break
         }
       })
     })
 
-    return HTML(str)
+    return HTML(str, hooks.storage.getProjectObject())
   }
 
   On.externals().PluginHtmlGenerate(emitter, [
