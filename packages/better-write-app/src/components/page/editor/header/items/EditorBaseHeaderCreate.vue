@@ -62,6 +62,14 @@
           <IconTXT class="w-6 h-6" />
         </template>
       </EditorHeaderItem>
+      <EditorHeaderItem
+        :text="t('editor.bar.html.generate')"
+        @action="onHTMLGenerate"
+      >
+        <template #icon>
+          <IconHTML class="w-6 h-6" />
+        </template>
+      </EditorHeaderItem>
       <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.generator.substitutions')"
@@ -92,6 +100,12 @@
   const { t } = useI18n()
   const storage = useStorage()
   const project = useProject()
+
+  const onHTMLGenerate = async () => {
+    await storage.normalize()
+
+    plugin.emit('plugin-html-generate')
+  }
 
   const onPDFGenerate = async () => {
     if (PROJECT.type === 'creative') {

@@ -39,6 +39,9 @@ export default {
     txt: {
       generate: 'TXT Baixado com Sucesso!',
     },
+    html: {
+      generate: 'HTML Baixado com Sucesso!',
+    },
   },
   dropbox: {
     load: 'Conectado com o Dropbox!',

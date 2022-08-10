@@ -35,6 +35,7 @@
     "better-write-localisation": "^0.16.10",
     "better-write-plugin-core": "^0.16.10",
     "better-write-plugin-docx": "^0.16.10",
+    "better-write-plugin-html": "^0.16.10",
     "better-write-plugin-importer": "^0.16.10",
     "better-write-plugin-logger": "^0.16.10",
     "better-write-plugin-multiplayer": "^0.16.10",
