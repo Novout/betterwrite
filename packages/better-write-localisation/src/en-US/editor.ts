@@ -155,6 +155,9 @@ export default {
     txt: {
       generate: 'Generate (.TXT)',
     },
+    html: {
+      generate: 'Generate (.HTML)',
+    },
     docx: {
       configuration: 'Configure (.DOCX)',
       generate: 'Generate (.DOCX)',

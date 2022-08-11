@@ -36,6 +36,9 @@ export default {
     docx: {
       generate: 'Successfully Downloaded DOCX!',
     },
+    html: {
+      generate: 'Successfully Downloaded HTML!',
+    },
     txt: {
       generate: 'Successfully Downloaded TXT!',
     },

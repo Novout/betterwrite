@@ -28,6 +28,7 @@ export type PluginEmitterName =
   | 'plugin-pdf-init'
   | 'plugin-docx-generate'
   | 'plugin-txt-generate'
+  | 'plugin-html-generate'
   | 'plugin-importer-docx'
   | 'plugin-importer-txt'
   | 'plugin-importer-bw'

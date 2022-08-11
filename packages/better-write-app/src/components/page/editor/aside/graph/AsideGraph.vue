@@ -12,7 +12,7 @@
       />
     </div>
     <AsideGraphChapters />
-    <AsideGraphTimeline v-if="env.isDev()"/>
+    <AsideGraphTimeline v-if="env.isDev()" />
   </div>
 </template>
 

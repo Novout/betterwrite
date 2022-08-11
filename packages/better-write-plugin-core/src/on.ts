@@ -290,6 +290,17 @@ export const externals = () => {
     })
   }
 
+  const PluginHtmlGenerate = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-html-generate', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
   const PluginImporterDOCX = (
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
@@ -330,6 +341,7 @@ export const externals = () => {
     PluginPDFInit,
     PluginDocxGenerate,
     PluginTxtGenerate,
+    PluginHtmlGenerate,
     PluginImporterDOCX,
     PluginImporterTXT,
     PluginImporterBW,

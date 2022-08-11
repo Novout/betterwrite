@@ -106,6 +106,7 @@ export const useProjectStore = defineStore('project', {
         .kebab(options.name || '')
 
       this.$state = {
+        image: options.image || undefined,
         name: title,
         nameRaw: options.name || 'Project',
         version: options.version || '0.1.0',
