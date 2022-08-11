@@ -4,15 +4,21 @@
     class="flex justify-between items-center w-full"
   >
     <div
-      class="flex gap-1 items-center text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+      class="flex truncate gap-1 items-center text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
     >
-      <IconChapter class="w-7 h-7" />
+      <div>
+        <IconOpenBook class="w-7 h-7" />
+      </div>
       <p
         v-if="!env.isEmptyProject(PROJECT.name)"
         class="cursor-pointer truncate font-bold"
         @click="graph.base()"
       >
-        {{ t('editor.aside.graph.chapters') }}
+        {{
+          CONTEXT.entities[0].raw
+            ? CONTEXT.entities[0].raw
+            : t('editor.aside.graph.chapters')
+        }}
       </p>
     </div>
     <AsideGraphControl v-if="!env.isEmptyProject(PROJECT.name)" />
@@ -30,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+  import { useContextStore } from '@/store/context'
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useGraph } from '@/use/graph'
@@ -38,6 +45,7 @@
   import { useI18n } from 'vue-i18n'
 
   const PROJECT = useProjectStore()
+  const CONTEXT = useContextStore()
 
   const graph = useGraph()
   const env = useEnv()
