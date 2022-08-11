@@ -1,5 +1,5 @@
 {
-	"name": "better-write-plugin-html",
+	"name": "better-write-plugin-exporter-docx",
 	"version": "0.16.11",
 	"author": "Novout",
 	"license": "MIT",
@@ -19,10 +19,15 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@vueuse/integrations": "7.7.1",
+		"@vueuse/core": "8.5.0",
+		"@vueuse/head": "0.7.4",
+		"@vueuse/integrations": "7.5.5",
+		"@vueuse/motion": "2.0.0-beta.4",
 		"better-write-plugin-core": "^0.16.11",
 		"better-write-types": "^0.16.11",
+		"docx": "7.2.0",
 		"file-saver": "2.0.5",
+		"pinia": "2.0.6",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {

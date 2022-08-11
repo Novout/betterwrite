@@ -1,4 +1,4 @@
-import { setPDFI18n } from 'better-write-plugin-pdf'
+import { setPDFI18n } from 'better-write-plugin-exporter-pdf'
 
 export default {
   live: {
