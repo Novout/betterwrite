@@ -191,6 +191,7 @@ export const useFactory = () => {
     ) => {
       const _ = document.createElement('input')
       _.type = 'file'
+      _.accept = '.png, .svg, .jpg, .jpeg'
       _.addEventListener('change', function () {
         const file = (this.files as any)[0]
 

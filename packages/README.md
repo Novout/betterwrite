@@ -2,6 +2,7 @@
 
 ```
   ├── better-write-app                          # Website
+  ├── better-write-image-conversor              # Convert .svg to .png and other utils
   ├── better-write-languages                    # i18n
   ├── better-write-plugin-core                  # Plugin base core
   ├── better-write-plugin-exporter-docx         # DOCX Generator Plugin

@@ -479,52 +479,7 @@ export const PluginPDFSet = (
     }
 
     const image = async (entity: Entity) => {
-      const convert = (raw: string): Promise<string> => {
-        return new Promise((res) => {
-          if (!raw.startsWith('<svg') && !raw.endsWith('svg>')) {
-            res(raw)
-
-            return
-          }
-
-          const blob = new Blob([raw], { type: 'image/svg+xml;charset=utf-8' })
-
-          const URL = window.URL || window.webkitURL || window
-
-          const blobURL = URL.createObjectURL(blob)
-
-          const image = new Image()
-          image.setAttribute('crossOrigin', 'anonymous')
-          image.onload = () => {
-            const canvas = document.createElement('canvas')
-
-            canvas.width = entity.external?.image?.size.width as number
-            canvas.height = entity.external?.image?.size.height as number
-
-            const context = canvas.getContext('2d') as CanvasRenderingContext2D
-
-            context.drawImage(
-              image,
-              0,
-              0,
-              entity.external?.image?.size.width as number,
-              entity.external?.image?.size.height as number
-            )
-
-            const url = canvas.toDataURL('image/png')
-
-            res(url)
-          }
-          image.onerror = () => {
-            res('error')
-          }
-
-          // TODO: other blob performatic method
-          image.src = blobURL
-        })
-      }
-
-      const raw = await convert(entity.raw)
+      const raw = entity.raw
 
       if (entity.external?.image?.alignment === 'full') {
         return {

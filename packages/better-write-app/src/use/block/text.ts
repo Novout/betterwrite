@@ -2,6 +2,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useContextStore } from '@/store/context'
 import { useEditorStore } from '@/store/editor'
 import { Entity, EntityType, ID } from 'better-write-types'
+import { ImageToForcePNG } from 'better-write-image-conversor'
 import { nextTick, Ref, watch } from 'vue'
 import useEmitter from '../emitter'
 import { useEntity } from '../entity'
@@ -356,6 +357,12 @@ export const useBlockText = ({
         const value = index.value + 1
 
         factory.simulate().file(async (entity) => {
+          entity.raw = await ImageToForcePNG({
+            raw: entity.raw,
+            width: entity.external?.image?.size.width as number,
+            height: entity.external?.image?.size.height as number,
+          })
+
           CONTEXT.insert(entity, value)
 
           await nextTick
