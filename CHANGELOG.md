@@ -1,6 +1,14 @@
-# Changelog (27/07/2022)
+# Changelog (11/08/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.11
+
+* **chore(editor):** chapter icon [689304c8]
+* **feat(questions):** html support [aea26ea1]
+* **feat(html):** generator support all blocks [9a787e2c]
+* **feat(generator):** .html support extension [b9ceb35e]
+* **feat(dashboard):** image project [e6c426db]
 
 ### v0.16.10
 
