@@ -357,12 +357,6 @@ export const useBlockText = ({
         const value = index.value + 1
 
         factory.simulate().file(async (entity) => {
-          entity.raw = await ImageToForcePNG({
-            raw: entity.raw,
-            width: entity.external?.image?.size.width as number,
-            height: entity.external?.image?.size.height as number,
-          })
-
           CONTEXT.insert(entity, value)
 
           await nextTick

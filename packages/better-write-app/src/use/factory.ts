@@ -8,6 +8,7 @@ import { useFormat } from './format'
 import { useUtils } from './utils'
 import { usePDFStore } from '@/store/pdf'
 import i18n from '@/lang'
+import { ImageToForcePNG } from 'better-write-image-conversor'
 
 export const useFactory = () => {
   const PDF = usePDFStore()
@@ -205,13 +206,19 @@ export const useFactory = () => {
           reader.readAsDataURL(file)
         }
 
-        reader.onload = function () {
+        reader.onload = async () => {
           if (utils.support().images(reader)) {
             error && error('bad file')
             return
           }
 
-          const content = entity().create('image', reader.result as string)
+          const raw = await ImageToForcePNG({
+            raw: reader.result as string,
+            width: 2000 as number,
+            height: 2000 as number,
+          })
+
+          const content = entity().create('image', raw)
 
           load && load(content)
         }
