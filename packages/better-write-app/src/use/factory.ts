@@ -8,7 +8,7 @@ import { useFormat } from './format'
 import { useUtils } from './utils'
 import { usePDFStore } from '@/store/pdf'
 import i18n from '@/lang'
-import { ImageToForcePNG } from 'better-write-image-conversor'
+import { ImageToForcePNG } from 'better-write-image-converter'
 
 export const useFactory = () => {
   const PDF = usePDFStore()
