@@ -14,6 +14,7 @@ import { getPDFUtils } from 'better-write-plugin-theme'
 import { useOnline } from '@vueuse/core'
 import { getStandardVFS } from './vfs'
 import { Maybe } from 'better-write-types'
+import { getRows, parse } from 'better-write-contenteditable-ast'
 
 export const PluginPDFSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -233,7 +234,7 @@ export const PluginPDFSet = (
       __FIRST__HEADING__ONE__ = false
 
       return {
-        text: hooks.raw.v2().purge().pdf(entity.raw),
+        text: entity.raw,
         margin: [
           generate().base().pageMargins[0],
           stores.PDF.styles.headingOne.margin.top,
@@ -256,7 +257,7 @@ export const PluginPDFSet = (
 
     const headingTwo = (entity: Entity) => {
       return {
-        text: hooks.raw.v2().purge().pdf(entity.raw),
+        text: entity.raw,
         margin: [
           generate().base().pageMargins[0],
           stores.PDF.styles.headingTwo.margin.top,
@@ -274,7 +275,7 @@ export const PluginPDFSet = (
 
     const headingThree = (entity: Entity) => {
       return {
-        text: hooks.raw.v2().purge().pdf(entity.raw),
+        text: entity.raw,
         margin: [
           generate().base().pageMargins[0],
           stores.PDF.styles.headingThree.margin.top,
@@ -319,19 +320,32 @@ export const PluginPDFSet = (
       if (entity.type === 'checkbox') indent += '\t'
 
       const getParagraphs = () => {
-        return hooks.raw
-          .v2()
-          .block()
-          .text()
-          .parse(entity.raw)
-          .map((row: string) => {
-            return {
-              text: hooks.raw
-                .v2()
-                .purge()
-                .pdf(indent + (row ? row : ' ') + '\n'),
-            }
+        const rows = getRows(entity.raw)
+
+        return rows.map((row: string) => {
+          return {
+            text: getParagraph(indent + (row ? row : ' ') + '\n'),
+          }
+        })
+      }
+
+      const getParagraph = (text: string) => {
+        const arr: Array<any> = []
+
+        const ast = parse(text)
+
+        ast.forEach(({ text, italic, bold, underline }) => {
+          const und = underline ? { decoration: 'underline' } : {}
+
+          arr.push({
+            text,
+            italics: italic,
+            bold,
+            ...und,
           })
+        })
+
+        return arr
       }
 
       return {

@@ -1,6 +1,7 @@
 export * from './types/absolute'
 export * from './types/account'
 export * from './types/addons'
+export * from './types/ast'
 export * from './types/auth'
 export * from './types/context'
 export * from './types/editor'

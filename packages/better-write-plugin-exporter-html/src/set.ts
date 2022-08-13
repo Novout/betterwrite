@@ -17,6 +17,7 @@ import {
   PAGE_BREAK,
   PARAGRAPH,
 } from './tags'
+import { getRows } from 'better-write-contenteditable-ast'
 
 export const PluginHtmlSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -27,14 +28,9 @@ export const PluginHtmlSet = (
 
   const entities = () => {
     const paragraph = (entity: Entity) => {
-      return hooks.raw
-        .v2()
-        .block()
-        .text()
-        .parse(entity.raw)
-        .map((text: string) => {
-          return PARAGRAPH(text)
-        })
+      return getRows(entity.raw).map((text: string) => {
+        return text.trim() !== '' ? PARAGRAPH(text) : LINE_BREAK()
+      })
     }
 
     return { paragraph }

@@ -32,6 +32,7 @@
     "@vueuse/head": "0.7.5",
     "@vueuse/integrations": "8.2.5",
     "@vueuse/motion": "2.0.0-beta.12",
+    "better-write-contenteditable-ast": "^0.16.11",
     "better-write-image-converter": "^0.16.11",
     "better-write-languages": "^0.16.11",
     "better-write-plugin-core": "^0.16.11",

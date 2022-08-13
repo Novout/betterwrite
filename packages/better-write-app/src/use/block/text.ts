@@ -2,7 +2,6 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useContextStore } from '@/store/context'
 import { useEditorStore } from '@/store/editor'
 import { Entity, EntityType, ID } from 'better-write-types'
-import { ImageToForcePNG } from 'better-write-image-conversor'
 import { nextTick, Ref, watch } from 'vue'
 import useEmitter from '../emitter'
 import { useEntity } from '../entity'
@@ -191,46 +190,6 @@ export const useBlockText = ({
         e.stopPropagation()
 
         entity.base().onDelete(props.entity, index.value)
-      }
-
-      // italic entity
-      if (e.key === 'i' || e.key === 'I') {
-        if (!value || !entity.utils().isTextBlock(props.entity.type)) return
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        setData(
-          raw.v2().apply({
-            existent: input.value.innerHTML,
-            type: 'italic',
-            input: _input,
-          })
-        )
-
-        await nextTick
-
-        raw.v2().caret().set(_input, offset)
-      }
-
-      // bold entity
-      if (e.key === 'b' || e.key === 'B') {
-        if (!value || !entity.utils().isTextBlock(props.entity.type)) return
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        setData(
-          raw.v2().apply({
-            existent: input.value.innerHTML,
-            type: 'bold',
-            input: _input,
-          })
-        )
-
-        await nextTick
-
-        raw.v2().caret().set(_input, offset)
       }
 
       // to entity initial

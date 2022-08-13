@@ -23,6 +23,7 @@
 		"@vueuse/head": "0.7.4",
 		"@vueuse/integrations": "7.5.5",
 		"@vueuse/motion": "2.0.0-beta.4",
+    "better-write-contenteditable-ast": "^0.16.11",
 		"better-write-plugin-core": "^0.16.11",
 		"better-write-plugin-theme": "^0.16.11",
 		"better-write-types": "^0.16.11",

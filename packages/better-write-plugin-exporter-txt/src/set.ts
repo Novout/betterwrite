@@ -12,7 +12,8 @@ export const PluginTxtSet = (
 
   const purge = (texts: string[]): string => {
     return texts.reduce(
-      (conc, text) => hooks.substitution.purge(conc + text) + '\n',
+      (conc, text) =>
+        hooks.substitution.purge(conc + hooks.raw.v2().normalize(text, 'full')),
       ''
     )
   }
