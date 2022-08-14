@@ -2,6 +2,7 @@
 
 ```
   ├── better-write-app                          # Website
+  ├── better-write-contenteditable-ast          # AST of editor inserts (bold, italics, underline...)
   ├── better-write-image-conversor              # Convert .svg to .png and other utils
   ├── better-write-languages                    # i18n
   ├── better-write-plugin-core                  # Plugin base core
