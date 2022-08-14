@@ -1,6 +1,11 @@
 import { fromHtml } from 'hast-util-from-html'
 import { Content } from 'hast'
-import { TextAST, TextASTElement } from 'better-write-types'
+import {
+  TextAST,
+  TextASTElement,
+  TextASTTag,
+  TextASTTagArgument,
+} from 'better-write-types'
 
 export const getRows = (text: string): string[] => {
   return text
@@ -13,7 +18,8 @@ export const getRows = (text: string): string[] => {
 
 export const parse = (row: string) => {
   const nodes: TextAST[] = []
-  const _TAG_NAMES_ = {
+
+  const _TAG_NAMES_: TextASTTag = {
     bold: false,
     italic: false,
     underline: false,
@@ -32,15 +38,30 @@ export const parse = (row: string) => {
     })
   }
 
-  const textAST = (children: Content[]) => {
+  const wrapTag = (tag: TextASTTagArgument, value: boolean) => {
+    switch (tag) {
+      case 'b':
+        _TAG_NAMES_.bold = value
+        break
+      case 'i':
+        _TAG_NAMES_.italic = value
+        break
+      case 'u':
+        _TAG_NAMES_.underline = value
+        break
+      case 'a':
+        _TAG_NAMES_.link = value
+        break
+    }
+  }
+
+  const textAST = (children: Content[], prevTag: TextASTTagArgument) => {
     children.forEach((node: Content) => {
       if (node.type === 'element') {
-        if (node.tagName === 'b') _TAG_NAMES_.bold = true
-        if (node.tagName === 'i') _TAG_NAMES_.italic = true
-        if (node.tagName === 'u') _TAG_NAMES_.underline = true
-        if (node.tagName === 'a') _TAG_NAMES_.link = true
+        wrapTag(node.tagName as TextASTTagArgument, true)
 
-        if (node.children) textAST(node.children)
+        if (node.children)
+          textAST(node.children, node.tagName as TextASTTagArgument)
       }
 
       if (node.type === 'text') {
@@ -50,12 +71,10 @@ export const parse = (row: string) => {
       }
     })
 
-    _TAG_NAMES_.bold = false
-    _TAG_NAMES_.italic = false
-    _TAG_NAMES_.underline = false
+    wrapTag(prevTag, false)
   }
 
-  textAST(htmlNodes)
+  textAST(htmlNodes, 'root')
 
   return nodes
 }

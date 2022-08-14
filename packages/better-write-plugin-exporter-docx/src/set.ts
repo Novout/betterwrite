@@ -31,7 +31,7 @@ export const PluginDocxSet = (
           italics: node.italic,
           bold: node.bold,
           underline: custom.isUnderline(node.underline),
-          ...custom.textRun
+          ...custom.textRun,
         })
       )
     })

@@ -122,6 +122,7 @@
         "mitt",
         "node-fetch",
         "pinia",
+        "konva",
         "three",
         "three/examples/jsm/capabilities/WebGL.js",
         "three/examples/jsm/geometries/TextGeometry.js",
