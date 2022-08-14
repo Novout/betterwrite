@@ -29,7 +29,9 @@ export const PluginHtmlSet = (
   const entities = () => {
     const paragraph = (entity: Entity) => {
       return getRows(entity.raw).map((text: string) => {
-        return text.trim() !== '' ? PARAGRAPH(text) : LINE_BREAK()
+        return text.trim() !== ''
+          ? PARAGRAPH(hooks.substitution.purge(text))
+          : LINE_BREAK()
       })
     }
 
@@ -46,7 +48,7 @@ export const PluginHtmlSet = (
             entities()
               .paragraph(entity)
               ?.forEach((paragraph: string) => {
-                str += hooks.substitution.purge(paragraph) + '\n'
+                str += paragraph + '\n'
               })
             break
           case 'heading-one':
@@ -71,10 +73,12 @@ export const PluginHtmlSet = (
             str += DRAU(entity.raw) + '\n'
             break
           case 'list':
-            str += hooks.substitution.purge(LIST(entity.raw)) + '\n'
+            str += LIST(hooks.substitution.purge(entity.raw)) + '\n'
             break
           case 'checkbox':
-            str += hooks.substitution.purge(CHECKBOX(entity)) + '\n'
+            entity.raw = hooks.substitution.purge(entity.raw)
+
+            str += CHECKBOX(entity) + '\n'
             break
         }
       })
