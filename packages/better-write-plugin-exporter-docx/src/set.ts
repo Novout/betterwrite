@@ -6,6 +6,7 @@ import {
   ProjectStateTemplatesGenerator,
 } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
+import { getRows, parse } from 'better-write-contenteditable-ast'
 import { useNProgress } from '@vueuse/integrations'
 import { ContextState } from 'better-write-types'
 
@@ -19,91 +20,23 @@ export const PluginDocxSet = (
   const { isLoading } = useNProgress()
 
   const purge = (raw: string, custom: Record<string, any>): DocxPurge => {
-    const final: DocxPurge = []
-    let set: false | 'bold' | 'italic' = false
+    const arr: DocxPurge = []
 
-    const rest = hooks.substitution
-      .purge(raw)
-      .split(hooks.utils.regex().htmlTags())
+    const ast = parse(hooks.substitution.purge(raw))
 
-    rest.forEach((content: string) => {
-      // italic
-      if (set === 'italic') {
-        final.push(
-          new docx.TextRun({
-            text: content,
-            italics: true,
-            ...custom,
-          })
-        )
-        set = false
-        return
-      }
-
-      if (content === hooks.raw.v2().html().italic().open()) {
-        set = 'italic'
-        return
-      }
-
-      if (set === 'bold') {
-        final.push(
-          new docx.TextRun({
-            text: content,
-            bold: true,
-            ...custom,
-          })
-        )
-        set = false
-        return
-      }
-
-      // bold
-      if (content === hooks.raw.v2().html().bold().open()) {
-        set = 'bold'
-        return
-      }
-
-      if (
-        content === hooks.raw.v2().html().italic().close() ||
-        content === hooks.raw.v2().html().bold().close()
-      )
-        return
-
-      /*
-      // http
-      if (content.match(hooks.utils.regex().links())) {
-        const fin = raw.split(hooks.utils.regex().links())
-
-        fin.forEach((str: string) => {
-          if (str.match(hooks.utils.regex().links())) {
-            final.push(new docx.ExternalHyperlink({
-              children: [
-                new docx.TextRun({
-                  text: str.replace('http://', '').replace('https://', '')
-                }),
-              ],
-              link: str,
-            }))
-          } else {
-            final.push(new docx.TextRun({
-              text: str
-            }))
-          }
-        })
-
-        return
-      }
-      */
-
-      final.push(
+    ast.forEach((node) => {
+      arr.push(
         new docx.TextRun({
-          text: content,
-          ...custom,
+          text: node.text,
+          italics: node.italic,
+          bold: node.bold,
+          underline: custom.isUnderline(node.underline),
+          ...custom.textRun
         })
       )
     })
 
-    return final
+    return arr
   }
 
   const utils = () => {
@@ -221,14 +154,10 @@ export const PluginDocxSet = (
         entity.external?.paragraph?.active && generator
           ? {
               size: generator.fontSize * 1.5,
-              italics: generator.italics,
-              bold: generator.bold,
               color: generator.color.substring(1),
             }
           : {
               size: stores.DOCX.styles.paragraph.size * 1.5,
-              bold: stores.DOCX.styles.paragraph.bold,
-              italics: stores.DOCX.styles.paragraph.italics,
               color: stores.DOCX.styles.paragraph.color.substring(1),
             }
 
@@ -271,7 +200,19 @@ export const PluginDocxSet = (
             }
           : {}
 
-      return { textRun, paragraph, isList }
+      const isUnderline = (underline: boolean) => {
+        return underline
+          ? {
+              type: docx.UnderlineType.DOUBLE,
+              color:
+                entity.external?.paragraph?.active && generator
+                  ? generator.color.substring(1)
+                  : stores.DOCX.styles.paragraph.color.substring(1),
+            }
+          : undefined
+      }
+
+      return { textRun, paragraph, isList, isUnderline }
     }
 
     const entities = () => {
@@ -310,18 +251,13 @@ export const PluginDocxSet = (
 
         const custom = customStyles(entity)
 
-        return hooks.raw
-          .v2()
-          .block()
-          .text()
-          .parse(entity.raw)
-          .map((paragraph: string) => {
-            return new docx.Paragraph({
-              children: purge(paragraph, custom.textRun),
-              ...custom.paragraph,
-              ...custom.isList,
-            })
+        return getRows(entity.raw).map((row) => {
+          return new docx.Paragraph({
+            children: purge(row, custom),
+            ...custom.paragraph,
+            ...custom.isList,
           })
+        })
       }
 
       const pageBreak = () => {
@@ -391,11 +327,6 @@ export const PluginDocxSet = (
         switch (f.type) {
           case 'content':
             content(arr)
-            break
-          case 'annotation':
-            entities()
-              .paragraph(hooks.factory.entity().create('paragraph', f.raw))
-              ?.forEach((paragraph: docx.Paragraph) => arr.push(paragraph))
             break
           case 'break-page':
             arr.push(entities().pageBreak())

@@ -25,7 +25,7 @@ import { useProject } from './project'
 import { useRaw } from './raw'
 import { useScroll } from './scroll'
 import { useUtils } from './utils'
-import { VueI18nSEO } from 'better-write-localisation'
+import { VueI18nSEO } from 'better-write-languages'
 import { useI18n } from 'vue-i18n'
 import useEmitter from './emitter'
 import {

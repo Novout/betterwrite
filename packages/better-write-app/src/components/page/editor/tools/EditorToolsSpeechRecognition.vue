@@ -40,7 +40,7 @@
     useDevicesList,
     useSpeechRecognition,
   } from '@vueuse/core'
-  import { VueI18nAllISO } from 'better-write-localisation'
+  import { VueI18nAllISO } from 'better-write-languages'
   import { computed, onMounted, ref, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'

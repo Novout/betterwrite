@@ -1,5 +1,5 @@
 {
-	"name": "better-write-plugin-importer",
+	"name": "better-write-contenteditable-ast",
 	"version": "0.16.12",
 	"author": "Novout",
 	"license": "MIT",
@@ -25,25 +25,13 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@zip.js/zip.js": "2.4.12",
-		"better-write-plugin-core": "^0.16.12",
 		"better-write-types": "^0.16.12",
-		"destr": "1.1.1",
-		"vue-demi": "latest",
-		"xml-js": "1.6.11"
+		"hast": "1.0.0",
+		"hast-util-from-html": "1.0.0"
 	},
 	"devDependencies": {
 		"prettier": "2.5.1",
 		"rimraf": "3.0.2",
 		"unbuild": "0.7.0"
-	},
-	"peerDependencies": {
-		"@vue/composition-api": "^1.0.0-rc.1",
-		"vue": "^2.0.0 || >=3.0.0"
-	},
-	"peerDependenciesMeta": {
-		"@vue/composition-api": {
-			"optional": true
-		}
 	}
 }

@@ -374,16 +374,6 @@ export const useRaw = () => {
   const v2 = () => {
     const block = () => {
       const text = () => {
-        const parse = (text: string): string[] => {
-          return text
-            .split(utils.regex().divTag())
-            .map((text) => text.replaceAll('<br>', ' '))
-            .filter(
-              (text) =>
-                text && !text.includes('<div>') && !text.includes('</div>')
-            )
-        }
-
         const join = (texts: string[]): string => {
           return texts.reduce((acc, text, index) => {
             if (index === 0) return (acc += text)
@@ -400,7 +390,7 @@ export const useRaw = () => {
           }, '')
         }
 
-        return { parse, join }
+        return { join }
       }
 
       const drop = async (e: DragEvent, item: Entity) => {
@@ -776,81 +766,7 @@ export const useRaw = () => {
         return entity.raw
       }
 
-      const pdf = (raw: string): Array<any> => {
-        const final: Array<any> = []
-        let set: false | 'bold' | 'italic' = false
-
-        const _raw = substitution.purge(raw)
-
-        const rest = _raw.split(useUtils().regex().htmlTags())
-
-        rest.forEach((content: string) => {
-          // italic
-          if (set === 'italic') {
-            final.push({
-              text: content,
-              italics: true,
-            })
-            set = false
-            return
-          }
-
-          if (content === html().italic().open()) {
-            set = 'italic'
-            return
-          }
-
-          if (set === 'bold') {
-            final.push({
-              text: content,
-              bold: true,
-            })
-            set = false
-            return
-          }
-
-          // bold
-          if (content === html().bold().open()) {
-            set = 'bold'
-            return
-          }
-
-          if (
-            content === html().italic().close() ||
-            content === html().bold().close()
-          )
-            return
-
-          /*
-          // http
-          if (content.match(useUtils().regex().links())) {
-            const fin = raw.split(useUtils().regex().links())
-
-            fin.forEach((str: string) => {
-              if (str.match(useUtils().regex().links())) {
-                final.push({
-                  text: str.replace('http://', '').replace('https://', ''),
-                  link: str,
-                  decoration: 'underline',
-                })
-                set = false
-              } else {
-                final.push(str)
-                set = false
-              }
-            })
-            
-            return
-          }
-          */
-
-          final.push(content)
-        })
-
-        return final
-      }
-
-      return { apply, editor, pdf, switcher, finder }
+      return { apply, editor, switcher, finder }
     }
 
     const normalize = (
@@ -859,10 +775,12 @@ export const useRaw = () => {
     ) => {
       const BWTags = (str: string) => {
         return str
-          .replaceAll(html().bold().open(), '')
-          .replaceAll(html().bold().close(), '')
-          .replaceAll(html().italic().open(), '')
-          .replaceAll(html().italic().close(), '')
+          .replaceAll('<b>', '')
+          .replaceAll('</b>', '')
+          .replaceAll('<i>', '')
+          .replaceAll('</i>', '')
+          .replaceAll('<u>', '')
+          .replaceAll('</u>', '')
       }
 
       const EditorTags = (str: string) => {

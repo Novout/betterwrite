@@ -70,7 +70,7 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  import { Language, Languages } from 'better-write-localisation'
+  import { Language, Languages } from 'better-write-languages'
   import { useEditorStore } from '@/store/editor'
   import { useNProgress } from '@vueuse/integrations/useNProgress'
 

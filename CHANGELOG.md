@@ -1,6 +1,17 @@
-# Changelog (11/08/2022)
+# Changelog (14/08/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.12
+
+* **chore:** packages readme [0b7e0899]
+* **chore(package):** update monorepo tools [7ba6bcbc]
+* **refactor(editor):** contenteditable ast new implementation [ea6f27e1]
+* **chore(monorepo):** typo [6b8b5211]
+* **fix(image):** conversor svg in factory image creation [2bab439f]
+* **feat(generator):** image conversor [2ff10604]
+* **fix(build):** type errors in wrong package name [437fce08]
+* **chore(monorepo):** exporters plugin and languages rename [c0bcd663]
 
 ### v0.16.11
 

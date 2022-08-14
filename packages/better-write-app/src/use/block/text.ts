@@ -192,46 +192,6 @@ export const useBlockText = ({
         entity.base().onDelete(props.entity, index.value)
       }
 
-      // italic entity
-      if (e.key === 'i' || e.key === 'I') {
-        if (!value || !entity.utils().isTextBlock(props.entity.type)) return
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        setData(
-          raw.v2().apply({
-            existent: input.value.innerHTML,
-            type: 'italic',
-            input: _input,
-          })
-        )
-
-        await nextTick
-
-        raw.v2().caret().set(_input, offset)
-      }
-
-      // bold entity
-      if (e.key === 'b' || e.key === 'B') {
-        if (!value || !entity.utils().isTextBlock(props.entity.type)) return
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        setData(
-          raw.v2().apply({
-            existent: input.value.innerHTML,
-            type: 'bold',
-            input: _input,
-          })
-        )
-
-        await nextTick
-
-        raw.v2().caret().set(_input, offset)
-      }
-
       // to entity initial
       if (e.key === 'ArrowUp') {
         e.preventDefault()

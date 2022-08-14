@@ -8,10 +8,10 @@
   import { LoggerPlugin } from 'better-write-plugin-logger'
   import { ThemePlugin } from 'better-write-plugin-theme'
   import { ImporterPlugin } from 'better-write-plugin-importer'
-  import { PDFPlugin } from 'better-write-plugin-pdf'
-  import { DocxPlugin } from 'better-write-plugin-docx'
-  import { TxtPlugin } from 'better-write-plugin-txt'
-  import { HtmlPlugin } from 'better-write-plugin-html'
+  import { PDFPlugin } from 'better-write-plugin-exporter-pdf'
+  import { DocxPlugin } from 'better-write-plugin-exporter-docx'
+  import { TxtPlugin } from 'better-write-plugin-exporter-txt'
+  import { HtmlPlugin } from 'better-write-plugin-exporter-html'
   import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
 
   const start = useStart()

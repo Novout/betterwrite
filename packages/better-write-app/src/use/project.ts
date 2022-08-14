@@ -10,7 +10,6 @@ import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
 import {
   ProjectObject,
-  ProjectState,
   ProjectType,
   ContextState,
   Entity,
@@ -21,6 +20,7 @@ import { useStorage } from './storage/storage'
 import { useEnv } from './env'
 import { useEntity } from './entity'
 import { usePlugin } from 'better-write-plugin-core'
+import { getRows } from 'better-write-contenteditable-ast'
 import { useBreakpoint } from './breakpoint'
 import { useRaw } from './raw'
 import { useFileSystemAccess } from '@vueuse/core'
@@ -480,14 +480,9 @@ export const useProject = () => {
         const value = page.entities
           .filter((ent) => isValidType(ent))
           .reduce((conc, ent) => {
-            const nm = raw
-              .v2()
-              .block()
-              .text()
-              .parse(ent.raw)
-              .reduce((acc, value) => {
-                return (acc += value + '\n')
-              }, '')
+            const nm = getRows(ent.raw).reduce((acc, value) => {
+              return (acc += value + '\n')
+            }, '')
 
             return (
               conc +
