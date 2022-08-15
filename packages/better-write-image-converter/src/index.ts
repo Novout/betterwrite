@@ -1,5 +1,14 @@
 import { ImageToForcePNGOptions } from 'better-write-types'
 
+export const isImageExtension = (text: string) => {
+  return (
+    text.endsWith('.png') ||
+    text.endsWith('.jpg') ||
+    text.endsWith('.jpeg') ||
+    text.endsWith('.svg')
+  )
+}
+
 export const ImageToForcePNG = (
   options: ImageToForcePNGOptions
 ): Promise<string> => {

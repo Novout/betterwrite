@@ -220,6 +220,7 @@
   import { useFactory } from '@/use/factory'
   import { usePlugin } from 'better-write-plugin-core'
   import { useEntity } from '@/use/entity'
+  import { useStorage } from '@/use/storage/storage'
 
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
@@ -238,6 +239,7 @@
   const plugin = usePlugin()
   const factory = useFactory()
   const ent = useEntity()
+  const storage = useStorage()
 
   onClickOutside(options as any, () => onClose())
 
@@ -311,6 +313,8 @@
     if (type === 'image') {
       factory.simulate().file(async (content: Entity) => {
         CONTEXT.insert(content, EDITOR.actives.entity.index + 1)
+
+        await storage.normalize()
       })
 
       return

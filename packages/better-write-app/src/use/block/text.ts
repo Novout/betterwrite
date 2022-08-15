@@ -328,6 +328,8 @@ export const useBlockText = ({
             target: value + 1,
             position: 'auto',
           })
+
+          await storage.normalize()
         })
       }
 
