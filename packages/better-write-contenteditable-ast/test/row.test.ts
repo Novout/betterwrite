@@ -1,7 +1,7 @@
 import { getRows } from '../src'
 import { describe, expect, it } from 'vitest'
 
-describe('Contenteditable AST - Rows', () => {
+describe.concurrent('Contenteditable AST - Rows', () => {
   it('should return a simple row.', () => {
     expect(getRows('foo bar baz')).toStrictEqual(['foo bar baz'])
   })

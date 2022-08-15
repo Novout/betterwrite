@@ -10,9 +10,9 @@ import {
 export const getRows = (text: string): string[] => {
   return text
     .split(new RegExp(/<div>(.*?)<\/div>/))
-    .map((text) => text.replaceAll('<br>', ' '))
+    .map((t) => t.replaceAll('<br>', ' '))
     .filter(
-      (text) => text && !text.includes('<div>') && !text.includes('</div>')
+      (_) => _ && !_.includes('<div>') && !_.includes('</div>')
     )
 }
 
