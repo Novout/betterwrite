@@ -53,6 +53,7 @@
 
 <script setup lang="ts">
   import { useUtils } from '@/use/utils'
+  import { getImageFileRaw } from 'better-write-image-converter'
   import { ref } from 'vue'
 
   const utils = useUtils()
@@ -79,23 +80,11 @@
   })
 
   const onChange = () => {
-    const reader = new FileReader()
-    const file = (inp.value as any).files[0]
-
-    if (file.name.endsWith('.svg')) {
-      reader.readAsText(file)
-    } else {
-      reader.readAsDataURL(file)
-    }
-
-    reader.onload = function () {
-      if (utils.support().images(reader)) return
-
-      emit('load', reader.result)
-    }
-    reader.onerror = function (error) {
-      emit('error', error)
-    }
+    getImageFileRaw()
+      .then(({ raw }) => {
+        emit('load', raw)
+      })
+      .catch(() => {})
   }
 
   const onDeleteBase64 = () => {

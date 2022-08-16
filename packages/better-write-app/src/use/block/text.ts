@@ -2,6 +2,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useContextStore } from '@/store/context'
 import { useEditorStore } from '@/store/editor'
 import { Entity, EntityType, ID } from 'better-write-types'
+import { getImageFileRaw } from 'better-write-image-converter'
 import { nextTick, Ref, watch } from 'vue'
 import useEmitter from '../emitter'
 import { useEntity } from '../entity'
@@ -315,22 +316,27 @@ export const useBlockText = ({
 
         const value = index.value + 1
 
-        factory.simulate().file(async (entity) => {
-          CONTEXT.insert(entity, value)
+        getImageFileRaw()
+          .then(async ({ raw, fileName }) => {
+            const entity = factory.entity().create('image', raw)
+            entity.external!.image!.name = fileName
 
-          await nextTick
+            CONTEXT.insert(entity, value)
 
-          CONTEXT.insert(factory.entity().create('paragraph'), value + 1)
+            await nextTick
 
-          await nextTick
+            CONTEXT.insert(factory.entity().create('paragraph'), value + 1)
 
-          emitter.emit('entity-text-focus', {
-            target: value + 1,
-            position: 'auto',
+            await nextTick
+
+            emitter.emit('entity-text-focus', {
+              target: value + 1,
+              position: 'auto',
+            })
+
+            await storage.normalize()
           })
-
-          await storage.normalize()
-        })
+          .catch(() => {})
       }
 
       return

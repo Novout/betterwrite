@@ -5,7 +5,7 @@ export const useScroll = () => {
     setTimeout(() => {
       const scr = document.querySelector(tag)
 
-      if (!scr) return
+      if (!scr?.scrollTop) return
       ;(scr as HTMLElement).scrollTop = (scr as HTMLElement).scrollHeight
     }, 0)
   }
@@ -13,7 +13,7 @@ export const useScroll = () => {
   const to = (tag: string, display?: string) => {
     if (display === 'center') {
       const scr = document.querySelector(tag)
-      ;(scr as HTMLElement).scrollIntoView({
+      ;(scr as HTMLElement)?.scrollIntoView({
         behavior: 'auto',
         block: 'center',
         inline: 'center',
@@ -23,13 +23,13 @@ export const useScroll = () => {
     }
 
     const scr = document.querySelector(tag)
-    ;(scr as HTMLElement).scrollIntoView()
+    ;(scr as HTMLElement)?.scrollIntoView()
   }
 
   const entity = (id: ID<number>, display?: 'center' | 'top' | 'bottom') => {
     const scr = document.querySelector(`#entity-${id}`)
     if (display === 'center') {
-      ;(scr as HTMLElement).scrollIntoView({
+      ;(scr as HTMLElement)?.scrollIntoView({
         behavior: 'auto',
         block: 'center',
         inline: 'center',
@@ -39,7 +39,7 @@ export const useScroll = () => {
     }
 
     if (display === 'bottom') {
-      ;(scr as HTMLElement).scrollIntoView({
+      ;(scr as HTMLElement)?.scrollIntoView({
         behavior: 'auto',
         block: 'end',
         inline: 'end',
@@ -49,7 +49,7 @@ export const useScroll = () => {
     }
 
     if (display === 'top') {
-      ;(scr as HTMLElement).scrollIntoView({
+      ;(scr as HTMLElement)?.scrollIntoView({
         behavior: 'auto',
         block: 'start',
         inline: 'start',
@@ -58,7 +58,7 @@ export const useScroll = () => {
       return
     }
 
-    ;(scr as HTMLElement).scrollIntoView()
+    ;(scr as HTMLElement)?.scrollIntoView()
   }
 
   const editor = () => {

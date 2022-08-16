@@ -221,6 +221,7 @@
   import { usePlugin } from 'better-write-plugin-core'
   import { useEntity } from '@/use/entity'
   import { useStorage } from '@/use/storage/storage'
+  import { getImageFileRaw } from 'better-write-image-converter'
 
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
@@ -311,7 +312,10 @@
 
   const onNewEntity = (type: EntityType) => {
     if (type === 'image') {
-      factory.simulate().file(async (content: Entity) => {
+      getImageFileRaw().then(async ({ raw, fileName }) => {
+        const content = factory.entity().create('image', raw)
+        content.external!.image!.name = fileName
+
         CONTEXT.insert(content, EDITOR.actives.entity.index + 1)
 
         await storage.normalize()
@@ -346,8 +350,13 @@
 
   const onSwitchEntity = async (type: EntityType) => {
     if (type === 'image') {
-      factory.simulate().file((content: Entity) => {
+      getImageFileRaw().then(async ({ raw, fileName }) => {
+        const content = factory.entity().create('image', raw)
+        content.external!.image!.name = fileName
+
         CONTEXT.replace(content, EDITOR.actives.entity.index)
+
+        await storage.normalize()
       })
 
       return
