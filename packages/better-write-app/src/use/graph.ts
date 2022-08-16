@@ -82,18 +82,6 @@ export const useGraph = () => {
 
   const base = () => {
     PROJECT.base = 'chapter'
-
-    storage.normalize().then(async () => {
-      // get initial page
-      const start = PROJECT.pages[0]
-      if (!start) return
-      // load page target
-      CONTEXT.load(start)
-
-      PROJECT.pageLoaded = 0
-
-      utils().mobile()
-    })
   }
 
   return { to, load, normalize, base, utils }
