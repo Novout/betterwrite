@@ -6,6 +6,7 @@ import { PDFState } from './pdf'
 import { ID } from './utils'
 
 export type ProjectType = 'creative' | 'blank'
+export type ProjectBase = 'chapter' | 'timeline' | 'annotations'
 
 export interface ProjectState {
   image?: string
@@ -16,7 +17,7 @@ export interface ProjectState {
   producer: string
   keywords: string
   subject: string
-  base: 'chapter' | 'timeline'
+  base: ProjectBase
   type: ProjectType
   totalPagesCreated: number
   main: Record<any, any>
@@ -30,6 +31,7 @@ export interface ProjectState {
   creative: ProjectStateCreative
   templates: ProjectStateTemplates
   shortcuts: ProjectStateShortcuts
+  annotations: ProjectStateAnnotation[]
 }
 
 export interface ProjectStateOptions {
@@ -55,6 +57,12 @@ export interface ProjectStateOptions {
   creative?: ProjectStateCreative
   templates?: ProjectStateTemplates
   shortcuts?: ProjectStateShortcuts
+  annotations?: ProjectStateAnnotation[]
+}
+
+export interface ProjectStateAnnotation {
+  id: ID<string>
+  data: Record<any, any>
 }
 
 export interface ProjectStateShortcuts {

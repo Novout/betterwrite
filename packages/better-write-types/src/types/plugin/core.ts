@@ -48,6 +48,7 @@ export type PluginEmitterName =
   | 'plugin-multiplayer-leave'
   | 'plugin-multiplayer-room-id'
   | 'plugin-multiplayer-room-context-update'
+  | 'plugin-annotations-start'
 
 export interface PluginEmitter {
   on: (name: PluginEmitterName, callback: (...c: any) => any) => void

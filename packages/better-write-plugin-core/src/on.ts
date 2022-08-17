@@ -334,6 +334,17 @@ export const externals = () => {
     })
   }
 
+  const PluginAnnotationsStart = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-annotations-start', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -345,6 +356,7 @@ export const externals = () => {
     PluginImporterDOCX,
     PluginImporterTXT,
     PluginImporterBW,
+    PluginAnnotationsStart,
   }
 }
 

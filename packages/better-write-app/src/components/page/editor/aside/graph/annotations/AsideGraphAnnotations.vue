@@ -2,13 +2,15 @@
   <div
     class="flex justify-start items-center w-full mt-2.5 gap-1 text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
   >
-    <IconTimeline class="w-7 h-7" />
+    <div>
+      <IconTextWrite class="w-7 h-7" />
+    </div>
     <p
-      :class="[PROJECT.base === 'timeline' ? '' : 'opacity-70']"
+      :class="[PROJECT.base === 'annotations' ? '' : 'opacity-70']"
       class="cursor-pointer truncate font-bold"
-      @click="canvas.externals().load()"
+      @click="PROJECT.base = 'annotations'"
     >
-      {{ t('editor.aside.graph.timeline') }}
+      {{ t('editor.aside.graph.annotations') }}
     </p>
   </div>
 </template>

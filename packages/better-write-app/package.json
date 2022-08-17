@@ -35,6 +35,7 @@
     "better-write-contenteditable-ast": "^0.16.12",
     "better-write-image-converter": "^0.16.12",
     "better-write-languages": "^0.16.12",
+    "better-write-plugin-annotations": "^0.16.12",
     "better-write-plugin-core": "^0.16.12",
     "better-write-plugin-exporter-docx": "^0.16.12",
     "better-write-plugin-exporter-html": "^0.16.12",

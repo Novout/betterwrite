@@ -9,7 +9,7 @@
     :class="[
       'border-l border-theme-aside-graph-lines ml-1',
       activity && PROJECT.base === 'chapter' ? '' : 'opacity-70',
-      props.entity.type === 'heading-one' ? 'h-12' : '',
+      props.entity.type === 'heading-one' ? 'h-8' : '',
     ]"
   >
     <div
@@ -135,9 +135,7 @@
       "
       class="ml-2 truncate w-full"
       :class="[
-        props.entity.type === 'heading-one'
-          ? 'text-base py-2 font-poppins'
-          : '',
+        props.entity.type === 'heading-one' ? 'text-sm py-2 font-poppins' : '',
       ]"
     >
       {{ raw.v2().normalize(props.entity.raw, 'full') }}

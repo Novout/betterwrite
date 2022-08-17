@@ -12,6 +12,7 @@
       />
     </div>
     <AsideGraphChapters />
+    <AsideGraphAnnotations />
     <AsideGraphTimeline v-if="env.isDev()" />
   </div>
 </template>

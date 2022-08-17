@@ -13,6 +13,7 @@
   import { TxtPlugin } from 'better-write-plugin-exporter-txt'
   import { HtmlPlugin } from 'better-write-plugin-exporter-html'
   import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
+  import { AnnotationsPlugin } from 'better-write-plugin-annotations'
 
   const start = useStart()
 
@@ -25,5 +26,6 @@
     TxtPlugin(),
     HtmlPlugin(),
     MultiplayerPlugin(),
+    AnnotationsPlugin(),
   ])
 </script>
