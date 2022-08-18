@@ -53,6 +53,11 @@ export const PluginAnnotationsSet = (
     return folder
   }
 
+  const deleteFolder = (folder: ProjectStateAnnotationFolder) => {
+    stores.PROJECT.annotations.folders =
+      stores.PROJECT.annotations.folders.filter((f) => f.id !== folder.id)
+  }
+
   const createFile = (
     folder: ProjectStateAnnotationFolder
   ): ProjectStateAnnotationFile => {
@@ -68,6 +73,20 @@ export const PluginAnnotationsSet = (
     stores.PROJECT.annotations.activeId = file.id
 
     return file
+  }
+
+  const deleteFile = (
+    folder: ProjectStateAnnotationFolder,
+    file: ProjectStateAnnotationFile
+  ) => {
+    const targetId = stores.PROJECT.annotations.folders.indexOf(folder)
+
+    if (targetId === -1) return
+
+    stores.PROJECT.annotations.folders[targetId].files =
+      stores.PROJECT.annotations.folders[targetId].files.filter(
+        (f) => f.id !== file.id
+      )
   }
 
   const start = async (file: ProjectStateAnnotationFile) => {
@@ -124,6 +143,13 @@ export const PluginAnnotationsSet = (
     () => {},
   ])
 
+  On.externals().PluginAnnotationsDeleteFolder(emitter, [
+    (folder: ProjectStateAnnotationFolder) => {
+      deleteFolder(folder)
+    },
+    () => {},
+  ])
+
   On.externals().PluginAnnotationsCreateFile(emitter, [
     async (folder: ProjectStateAnnotationFolder) => {
       const file = await createFile(folder)
@@ -131,6 +157,19 @@ export const PluginAnnotationsSet = (
       await start(file)
 
       hooks.emitter.emit('annotations-folder-graph-open', folder)
+    },
+    () => {},
+  ])
+
+  On.externals().PluginAnnotationsDeleteFile(emitter, [
+    ({
+      folder,
+      file,
+    }: {
+      folder: ProjectStateAnnotationFolder
+      file: ProjectStateAnnotationFile
+    }) => {
+      deleteFile(folder, file)
     },
     () => {},
   ])

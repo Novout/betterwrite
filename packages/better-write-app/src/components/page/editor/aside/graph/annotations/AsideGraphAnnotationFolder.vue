@@ -10,6 +10,13 @@
     <div class="flex items-center">
       <div
         @click.prevent.stop="
+          plugin.emit('plugin-annotations-folder-delete', folder)
+        "
+      >
+        <IconDelete class="wb-icon w-6 h-6" />
+      </div>
+      <div
+        @click.prevent.stop="
           plugin.emit('plugin-annotations-file-create', folder)
         "
       >

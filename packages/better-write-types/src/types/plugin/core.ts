@@ -50,8 +50,10 @@ export type PluginEmitterName =
   | 'plugin-multiplayer-room-context-update'
   | 'plugin-annotations-start'
   | 'plugin-annotations-folder-create'
+  | 'plugin-annotations-folder-delete'
   | 'plugin-annotations-folder-graph-open'
   | 'plugin-annotations-file-create'
+  | 'plugin-annotations-file-delete'
 
 export interface PluginEmitter {
   on: (name: PluginEmitterName, callback: (...c: any) => any) => void

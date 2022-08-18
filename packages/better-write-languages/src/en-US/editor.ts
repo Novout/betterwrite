@@ -485,8 +485,8 @@ export default {
   },
   annotations: {
     items: {
-      file: 'Novo Arquivo',
-      folder: 'Nova Pasta',
+      file: 'New File',
+      folder: 'New Folder',
     },
     theme: {
       placeholder: 'Type / to open commands...',

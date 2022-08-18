@@ -361,6 +361,20 @@ export const externals = () => {
     })
   }
 
+  const PluginAnnotationsDeleteFolder = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on(
+      'plugin-annotations-folder-delete',
+      (folder: ProjectStateAnnotationFolder) => {
+        const created = content[0]
+
+        created && created(folder)
+      }
+    )
+  }
+
   const PluginAnnotationsCreateFile = (
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
@@ -371,6 +385,23 @@ export const externals = () => {
         const created = content[0]
 
         created && created(folder)
+      }
+    )
+  }
+
+  const PluginAnnotationsDeleteFile = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on(
+      'plugin-annotations-file-delete',
+      (obj: {
+        file: ProjectStateAnnotationFile
+        folder: ProjectStateAnnotationFolder
+      }) => {
+        const created = content[0]
+
+        created && created(obj)
       }
     )
   }
@@ -388,7 +419,9 @@ export const externals = () => {
     PluginImporterBW,
     PluginAnnotationsStart,
     PluginAnnotationsCreateFolder,
+    PluginAnnotationsDeleteFolder,
     PluginAnnotationsCreateFile,
+    PluginAnnotationsDeleteFile,
   }
 }
 
