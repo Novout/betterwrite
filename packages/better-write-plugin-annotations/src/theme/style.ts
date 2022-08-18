@@ -317,6 +317,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
             .material-icons-outlined {
                 font-size: 24px;
             }
+            box-sizing: border-box;
             position: relative;
             margin-left: auto;
             margin-right: auto;

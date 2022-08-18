@@ -2053,6 +2053,14 @@
     "@milkdown/utils" "6.3.2"
     tslib "^2.4.0"
 
+"@milkdown/plugin-cursor@6.3.2":
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/@milkdown/plugin-cursor/-/plugin-cursor-6.3.2.tgz#b35e1884a8e0a8777a4ce401557af3063559243b"
+  integrity sha512-7eGbNsoFB2uSRiSx/e0KBLrhVuZdUakjqqAi0eaAOjgn9a+tGdLar6JGw34s1okPv8CZg1G9aDBpDxRV7+61rg==
+  dependencies:
+    "@milkdown/utils" "6.3.2"
+    tslib "^2.4.0"
+
 "@milkdown/plugin-emoji@6.3.2":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@milkdown/plugin-emoji/-/plugin-emoji-6.3.2.tgz#b3910f6dd58f2f82e3dcbd8ceaff1d43b224b034"
@@ -2072,6 +2080,14 @@
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@milkdown/plugin-history/-/plugin-history-6.3.2.tgz#d8dd7a2d18e93dce7cc043b880f6fd46c51b1243"
   integrity sha512-2M2sR0oliSzld+LKGdf5k5aU0TKr82M/JFXnxU4s5VuubXTfayLNi608oR5mwAh8UKEs84UrBm4xbHq+WLUb+A==
+  dependencies:
+    "@milkdown/utils" "6.3.2"
+    tslib "^2.4.0"
+
+"@milkdown/plugin-indent@6.3.2":
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/@milkdown/plugin-indent/-/plugin-indent-6.3.2.tgz#84dfce6d4cf7bfa06aa0fbf7edf2b39d2e79191a"
+  integrity sha512-m9rk4Zerqk2H0YcSEfN1C01UWG2waRkxkWmeChmz4WK3aqoVKJFDoImfStr9DhVQ/U8cZFC1Qa4pUsqyC+R39g==
   dependencies:
     "@milkdown/utils" "6.3.2"
     tslib "^2.4.0"

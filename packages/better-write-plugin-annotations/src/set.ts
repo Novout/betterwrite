@@ -10,6 +10,9 @@ import { math } from '@milkdown/plugin-math'
 import { tooltip } from '@milkdown/plugin-tooltip'
 import { clipboard } from '@milkdown/plugin-clipboard'
 import { block } from '@milkdown/plugin-block'
+import { history } from '@milkdown/plugin-history'
+import { cursor } from '@milkdown/plugin-cursor'
+import { indent, indentPlugin } from '@milkdown/plugin-indent'
 import { bw } from './theme'
 import { cmk } from './plugin/commonmark'
 import { sls } from './plugin/slash'
@@ -129,7 +132,15 @@ export const PluginAnnotationsSet = (
       .use(tooltip)
       .use(clipboard)
       .use(block)
+      .use(history)
+      .use(cursor)
       .use(bw)
+      .use(
+        indent.configure(indentPlugin, {
+          type: 'space',
+          size: 2,
+        })
+      )
       .create()
   }
 

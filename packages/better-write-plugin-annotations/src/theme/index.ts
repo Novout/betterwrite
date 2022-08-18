@@ -27,7 +27,7 @@ export const createTheme = () => (emotion: Emotion, manager: ThemeManager) => {
   manager.set(ThemeColor, ([key]) => {
     switch (key) {
       case 'primary':
-        return 'var(--theme-background-1)'
+        return 'var(--theme-background-2)'
       case 'secondary':
         return 'var(--theme-background-4)'
       case 'neutral':

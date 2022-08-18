@@ -10,7 +10,6 @@ export const useUtils = () => {
       cl.start()
 
       await delay(delayValue)
-
       ;(await cb) && (await cb())
 
       cl.end()

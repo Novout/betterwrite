@@ -33,6 +33,8 @@
     "@milkdown/plugin-tooltip": "6.3.2",
     "@milkdown/plugin-clipboard": "6.3.2",
     "@milkdown/plugin-block": "6.3.2",
+    "@milkdown/plugin-indent": "6.3.2",
+    "@milkdown/plugin-cursor": "6.3.2",
 		"better-write-plugin-core": "^0.16.12",
 		"better-write-types": "^0.16.12",
 		"vue-demi": "latest"
