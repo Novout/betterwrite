@@ -21,8 +21,10 @@ export const PluginAnnotationsSet = (
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
 ) => {
-  const reset = () => {
+  const reset = (force: boolean = false) => {
     document.querySelector('.milkdown')?.remove()
+
+    if (force) stores.PROJECT.base = 'chapter'
   }
 
   const setFile = (id: ID<string>, value: any) => {
@@ -54,6 +56,8 @@ export const PluginAnnotationsSet = (
   }
 
   const deleteFolder = (folder: ProjectStateAnnotationFolder) => {
+    reset(true)
+
     stores.PROJECT.annotations.folders =
       stores.PROJECT.annotations.folders.filter((f) => f.id !== folder.id)
   }
@@ -79,6 +83,8 @@ export const PluginAnnotationsSet = (
     folder: ProjectStateAnnotationFolder,
     file: ProjectStateAnnotationFile
   ) => {
+    reset(true)
+
     const targetId = stores.PROJECT.annotations.folders.indexOf(folder)
 
     if (targetId === -1) return
@@ -135,10 +141,8 @@ export const PluginAnnotationsSet = (
   ])
 
   On.externals().PluginAnnotationsCreateFolder(emitter, [
-    async () => {
-      const folder = await createFolder()
-
-      hooks.emitter.emit('annotations-folder-graph-open', folder)
+    () => {
+      createFolder()
     },
     () => {},
   ])

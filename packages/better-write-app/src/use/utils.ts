@@ -1,6 +1,24 @@
 import destr from 'destr'
 
 export const useUtils = () => {
+  const fn = () => {
+    const promisedFn = async (
+      cb: () => any,
+      cl: { start: () => any; end: () => any },
+      delayValue: number = 10
+    ) => {
+      cl.start()
+
+      await delay(delayValue)
+
+      ;(await cb) && (await cb())
+
+      cl.end()
+    }
+
+    return { promisedFn }
+  }
+
   const delay = (time: number) => {
     return new Promise((resolve) => setTimeout(resolve, time))
   }
@@ -399,6 +417,7 @@ export const useUtils = () => {
   }
 
   return {
+    fn,
     id,
     position,
     delay,

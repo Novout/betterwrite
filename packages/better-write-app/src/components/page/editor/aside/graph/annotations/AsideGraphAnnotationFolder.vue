@@ -8,18 +8,10 @@
       />
     </div>
     <div class="flex items-center">
-      <div
-        @click.prevent.stop="
-          plugin.emit('plugin-annotations-folder-delete', folder)
-        "
-      >
+      <div @click.prevent.stop="annotations.onFolderDelete(folder)">
         <IconDelete class="wb-icon w-6 h-6" />
       </div>
-      <div
-        @click.prevent.stop="
-          plugin.emit('plugin-annotations-file-create', folder)
-        "
-      >
+      <div @click.prevent.stop="annotations.onFileCreate(folder)">
         <IconFileAdd class="wb-icon w-6 h-6" />
       </div>
       <div
@@ -34,6 +26,7 @@
 </template>
 
 <script setup lang="ts">
+  import { useAnnotations } from '@/use/annotations'
   import useEmitter from '@/use/emitter'
   import { useToggle } from '@vueuse/core'
   import { usePlugin } from 'better-write-plugin-core'
@@ -46,6 +39,7 @@
 
   const plugin = usePlugin()
   const emitter = useEmitter()
+  const annotations = useAnnotations()
   const [value, toggle] = useToggle(false)
 
   onMounted(() => {

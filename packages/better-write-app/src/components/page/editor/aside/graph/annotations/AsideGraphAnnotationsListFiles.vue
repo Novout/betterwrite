@@ -7,15 +7,11 @@
   >
     <div
       class="truncate cursor-pointer"
-      @click.prevent.stop="plugin.emit('plugin-annotations-start', file)"
+      @click.prevent.stop="annotations.onStart(file)"
     >
       {{ file.fileName }}
     </div>
-    <div
-      @click.prevent.stop="
-        plugin.emit('plugin-annotations-file-delete', { file, folder })
-      "
-    >
+    <div @click.prevent.stop="annotations.onFileDelete({ file, folder })">
       <IconDelete class="w-5 h-5 wb-icon" />
     </div>
   </div>
@@ -23,12 +19,12 @@
 </template>
 
 <script setup lang="ts">
-  import { usePlugin } from 'better-write-plugin-core'
   import { ProjectStateAnnotationFolder } from 'better-write-types'
+  import { useAnnotations } from '@/use/annotations'
 
   defineProps<{
     folder: ProjectStateAnnotationFolder
   }>()
 
-  const plugin = usePlugin()
+  const annotations = useAnnotations()
 </script>

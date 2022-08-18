@@ -14,7 +14,7 @@
     <div class="flex items-center gap-2">
       <div
         class="cursor-pointer"
-        @click="plugin.emit('plugin-annotations-folder-create')"
+        @click.prevent.stop="annotations.onFolderCreate()"
       >
         <IconFolderAdd class="w-6 h-6 wb-icon" />
       </div>
@@ -25,11 +25,11 @@
 
 <script setup lang="ts">
   import { useProjectStore } from '@/store/project'
-  import { usePlugin } from 'better-write-plugin-core'
+  import { useAnnotations } from '@/use/annotations'
   import { useI18n } from 'vue-i18n'
 
   const PROJECT = useProjectStore()
 
   const { t } = useI18n()
-  const plugin = usePlugin()
+  const annotations = useAnnotations()
 </script>
