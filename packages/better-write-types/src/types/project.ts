@@ -31,7 +31,7 @@ export interface ProjectState {
   creative: ProjectStateCreative
   templates: ProjectStateTemplates
   shortcuts: ProjectStateShortcuts
-  annotations: ProjectStateAnnotation[]
+  annotations: ProjectStateAnnotations
 }
 
 export interface ProjectStateOptions {
@@ -57,12 +57,24 @@ export interface ProjectStateOptions {
   creative?: ProjectStateCreative
   templates?: ProjectStateTemplates
   shortcuts?: ProjectStateShortcuts
-  annotations?: ProjectStateAnnotation[]
+  annotations?: ProjectStateAnnotations
 }
 
-export interface ProjectStateAnnotation {
+export interface ProjectStateAnnotations {
+  activeId: ID<string> | null
+  folders: ProjectStateAnnotationFolder[]
+}
+
+export interface ProjectStateAnnotationFolder {
   id: ID<string>
-  data: Record<any, any>
+  folderName: string
+  files: ProjectStateAnnotationFile[]
+}
+
+export interface ProjectStateAnnotationFile {
+  id: ID<string>
+  fileName: string
+  value: any
 }
 
 export interface ProjectStateShortcuts {

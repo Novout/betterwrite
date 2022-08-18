@@ -49,6 +49,8 @@ export type PluginEmitterName =
   | 'plugin-multiplayer-room-id'
   | 'plugin-multiplayer-room-context-update'
   | 'plugin-annotations-start'
+  | 'plugin-annotations-folder-create'
+  | 'plugin-annotations-file-create'
 
 export interface PluginEmitter {
   on: (name: PluginEmitterName, callback: (...c: any) => any) => void

@@ -1,27 +1,38 @@
 <template>
   <div
-    class="flex justify-start items-center w-full mt-2.5 gap-1 text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+    :class="[PROJECT.base === 'annotations' ? '' : 'opacity-70']"
+    class="flex justify-between items-center w-full mt-2.5 text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
   >
-    <div>
-      <IconTextWrite class="w-7 h-7" />
+    <div class="flex items-center gap-1">
+      <div>
+        <IconTextWrite class="w-7 h-7" />
+      </div>
+      <p
+        class="cursor-pointer truncate font-bold"
+        @click="PROJECT.base = 'annotations'"
+      >
+        {{ t('editor.aside.graph.annotations') }}
+      </p>
     </div>
-    <p
-      :class="[PROJECT.base === 'annotations' ? '' : 'opacity-70']"
-      class="cursor-pointer truncate font-bold"
-      @click="PROJECT.base = 'annotations'"
-    >
-      {{ t('editor.aside.graph.annotations') }}
-    </p>
+    <div class="flex items-center gap-2">
+      <div
+        class="cursor-pointer"
+        @click="plugin.emit('plugin-annotations-folder-create')"
+      >
+        <IconFolderAdd class="w-6 h-6 wb-icon" />
+      </div>
+    </div>
   </div>
+  <AsideGraphAnnotationsList />
 </template>
 
 <script setup lang="ts">
   import { useProjectStore } from '@/store/project'
-  import { useCanvasTimeline } from '@/use/canvas/timeline'
+  import { usePlugin } from 'better-write-plugin-core'
   import { useI18n } from 'vue-i18n'
 
   const PROJECT = useProjectStore()
 
   const { t } = useI18n()
-  const canvas = useCanvasTimeline()
+  const plugin = usePlugin()
 </script>

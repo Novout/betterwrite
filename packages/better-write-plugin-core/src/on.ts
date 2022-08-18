@@ -4,6 +4,8 @@ import {
   PDFDocOptions,
   PluginTypes,
   ImporterParams,
+  ProjectStateAnnotationFolder,
+  ProjectStateAnnotationFile,
 } from 'better-write-types'
 
 export const entity = () => {
@@ -338,11 +340,39 @@ export const externals = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
-    emitter.on('plugin-annotations-start', () => {
+    emitter.on(
+      'plugin-annotations-start',
+      (file: ProjectStateAnnotationFile) => {
+        const created = content[0]
+
+        created && created(file)
+      }
+    )
+  }
+
+  const PluginAnnotationsCreateFolder = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-annotations-folder-create', () => {
       const created = content[0]
 
       created && created()
     })
+  }
+
+  const PluginAnnotationsCreateFile = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on(
+      'plugin-annotations-file-create',
+      (folder: ProjectStateAnnotationFolder) => {
+        const created = content[0]
+
+        created && created(folder)
+      }
+    )
   }
 
   return {
@@ -357,6 +387,8 @@ export const externals = () => {
     PluginImporterTXT,
     PluginImporterBW,
     PluginAnnotationsStart,
+    PluginAnnotationsCreateFolder,
+    PluginAnnotationsCreateFile,
   }
 }
 

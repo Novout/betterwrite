@@ -11,7 +11,7 @@
       </div>
       <p
         v-if="!env.isEmptyProject(PROJECT.name)"
-        class="cursor-pointer truncate font-bold"
+        class="cursor-pointer ml-1 truncate font-bold"
         @click="graph.base()"
       >
         {{
