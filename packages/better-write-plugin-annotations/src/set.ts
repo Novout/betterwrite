@@ -37,9 +37,14 @@ export const PluginAnnotationsSet = (
           if (file.id === id) {
             file.value = value
 
+            let text = ''
+
+            try {
+              text = value!.content[0]!.content[0]!.text
+            } catch (e) {}
+
             // fileName reactivity
-            if (value?.content[0]?.content[0]?.text)
-              file.fileName = value.content[0].content[0].text
+            if (text) file.fileName = text
           }
         })
       }
