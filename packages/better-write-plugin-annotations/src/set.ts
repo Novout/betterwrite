@@ -26,17 +26,25 @@ export const PluginAnnotationsSet = (
   }
 
   const setFile = (id: ID<string>, value: any) => {
-    stores.PROJECT.annotations.folders.forEach((folder) => {
-      folder.files.forEach((file) => {
-        if (file.id === id) file.value = value
-      })
-    })
+    stores.PROJECT.annotations.folders.forEach(
+      (folder: ProjectStateAnnotationFolder) => {
+        folder.files.forEach((file: ProjectStateAnnotationFile) => {
+          if (file.id === id) {
+            file.value = value
+
+            // fileName reactivity
+            if (value?.content[0]?.content[0]?.text)
+              file.fileName = value.content[0].content[0].text
+          }
+        })
+      }
+    )
   }
 
   const createFolder = (): ProjectStateAnnotationFolder => {
     const folder = {
       id: `folder-${hooks.utils.id().uuidv4()}`,
-      folderName: 'test',
+      folderName: hooks.i18n.t('editor.annotations.items.folder'),
       files: [],
     }
 
@@ -50,7 +58,7 @@ export const PluginAnnotationsSet = (
   ): ProjectStateAnnotationFile => {
     const file = {
       id: `file-${hooks.utils.id().uuidv4()}`,
-      fileName: 'test',
+      fileName: hooks.i18n.t('editor.annotations.items.file'),
       value: {},
     }
 
@@ -79,7 +87,10 @@ export const PluginAnnotationsSet = (
             value: file.value,
           })
         } else {
-          ctx.set(defaultValueCtx, '# Test')
+          ctx.set(
+            defaultValueCtx,
+            `# ${hooks.i18n.t('editor.annotations.items.file')}`
+          )
         }
 
         ctx.get(listenerCtx).updated((ctx, doc, prevDoc) => {
@@ -105,15 +116,21 @@ export const PluginAnnotationsSet = (
   ])
 
   On.externals().PluginAnnotationsCreateFolder(emitter, [
-    () => {
-      createFolder()
+    async () => {
+      const folder = await createFolder()
+
+      hooks.emitter.emit('annotations-folder-graph-open', folder)
     },
     () => {},
   ])
 
   On.externals().PluginAnnotationsCreateFile(emitter, [
-    (folder: ProjectStateAnnotationFolder) => {
-      createFile(folder)
+    async (folder: ProjectStateAnnotationFolder) => {
+      const file = await createFile(folder)
+
+      await start(file)
+
+      hooks.emitter.emit('annotations-folder-graph-open', folder)
     },
     () => {},
   ])

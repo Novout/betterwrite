@@ -486,6 +486,10 @@ export default {
     },
   },
   annotations: {
+    items: {
+      file: 'Novo Arquivo',
+      folder: 'Nova Pasta',
+    },
     theme: {
       placeholder: 'Digite / para abrir comandos...',
       tags: {

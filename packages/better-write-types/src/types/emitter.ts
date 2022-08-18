@@ -1,4 +1,5 @@
 import { Entity } from './context'
+import { ProjectStateAnnotationFolder } from './project'
 import { ID } from './utils'
 
 export interface VueEmitterEntityClose {
@@ -28,4 +29,5 @@ export type Events = {
   'project-creative-drafts-set-info': any
   'project-save': any
   'pdf-preview-exists': any
+  'annotations-folder-graph-open': ProjectStateAnnotationFolder
 }

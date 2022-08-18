@@ -50,6 +50,7 @@ export type PluginEmitterName =
   | 'plugin-multiplayer-room-context-update'
   | 'plugin-annotations-start'
   | 'plugin-annotations-folder-create'
+  | 'plugin-annotations-folder-graph-open'
   | 'plugin-annotations-file-create'
 
 export interface PluginEmitter {

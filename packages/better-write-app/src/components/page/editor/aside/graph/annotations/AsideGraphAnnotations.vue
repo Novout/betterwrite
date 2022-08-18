@@ -3,14 +3,11 @@
     :class="[PROJECT.base === 'annotations' ? '' : 'opacity-70']"
     class="flex justify-between items-center w-full mt-2.5 text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
   >
-    <div class="flex items-center gap-1">
+    <div class="flex items-center gap-1 pointer-events-none">
       <div>
         <IconTextWrite class="w-7 h-7" />
       </div>
-      <p
-        class="cursor-pointer truncate font-bold"
-        @click="PROJECT.base = 'annotations'"
-      >
+      <p class="truncate font-bold">
         {{ t('editor.aside.graph.annotations') }}
       </p>
     </div>

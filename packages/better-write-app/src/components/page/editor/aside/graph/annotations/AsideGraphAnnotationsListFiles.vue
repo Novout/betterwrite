@@ -3,7 +3,7 @@
     v-for="(file, index) in folder.files"
     :key="index"
     class="cursor-pointer bg-theme-aside-graph-background hover:bg-theme-aside-graph-background-hover active:bg-theme-aside-graph-background-active text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active ml-5"
-    @click="plugin.emit('plugin-annotations-start', file)"
+    @click.prevent.stop="plugin.emit('plugin-annotations-start', file)"
   >
     {{ file.fileName }}
   </div>
