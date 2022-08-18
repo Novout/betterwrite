@@ -73,7 +73,6 @@ export const useProjectStore = defineStore('project', {
         ],
       },
       annotations: {
-        activeId: null,
         folders: [],
       },
     }
@@ -176,7 +175,6 @@ export const useProjectStore = defineStore('project', {
           ],
         },
         annotations: options.annotations || {
-          activeId: null,
           folders: [],
         },
       }

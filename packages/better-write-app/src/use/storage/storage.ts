@@ -115,6 +115,15 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.project.annotations) {
+      _.project = {
+        ..._.project,
+        annotations: {
+          folders: [],
+        },
+      }
+    }
+
     return _
   }
 

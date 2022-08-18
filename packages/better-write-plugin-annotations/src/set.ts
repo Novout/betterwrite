@@ -13,9 +13,9 @@ import { block } from '@milkdown/plugin-block'
 import { history } from '@milkdown/plugin-history'
 import { cursor } from '@milkdown/plugin-cursor'
 import { indent, indentPlugin } from '@milkdown/plugin-indent'
-import { trailing } from '@milkdown/plugin-trailing';
-import { upload } from '@milkdown/plugin-upload';
-import { emoji } from '@milkdown/plugin-emoji';
+import { trailing } from '@milkdown/plugin-trailing'
+import { upload } from '@milkdown/plugin-upload'
+import { emoji } from '@milkdown/plugin-emoji'
 import { bw } from './theme'
 import { cmk } from './plugin/commonmark'
 import { sls } from './plugin/slash'

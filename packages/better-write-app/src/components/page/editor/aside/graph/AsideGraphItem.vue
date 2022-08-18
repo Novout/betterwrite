@@ -5,7 +5,7 @@
         props.entity.external?.comment?.raw) &&
       props.entity.raw !== env.emptyLine()
     "
-    class="flex items-center cursor-pointer bg-theme-aside-graph-background hover:bg-theme-aside-graph-background-hover active:bg-theme-aside-graph-background-active text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+    class="flex overflow-x-hidden items-center cursor-pointer bg-theme-aside-graph-background hover:bg-theme-aside-graph-background-hover active:bg-theme-aside-graph-background-active text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
     :class="[
       'border-l border-theme-aside-graph-lines ml-1',
       activity && PROJECT.base === 'chapter' ? '' : 'opacity-70',
@@ -115,28 +115,52 @@
         {{ props.entity.external?.image?.name }}
       </p>
     </div>
+    <div
+      v-if="props.entity.type === 'heading-one'"
+      class="flex items-center justify-between w-full"
+    >
+      <p class="truncate ml-3 font-poppins">
+        {{ raw.v2().normalize(props.entity.raw, 'full') }}
+      </p>
+      <div class="flex items-center">
+        <div>
+          <IconUp
+            class="wb-icon w-5 h-5 ml-2"
+            @click.prevent.stop="page.onUpPage"
+          />
+        </div>
+        <div>
+          <IconDown
+            class="wb-icon w-5 h-5"
+            @click.prevent.stop="page.onDownPage"
+          />
+        </div>
+        <div>
+          <IconTrash
+            class="wb-icon w-5 h-5"
+            @click.prevent.stop="page.onDeletePage"
+          />
+        </div>
+      </div>
+    </div>
     <p
       v-if="
-        (props.entity.type !== 'image' &&
-          props.entity.type !== 'line-break' &&
-          props.entity.type !== 'page-break' &&
-          props.entity.type !== 'drau' &&
-          ((props.entity.type === 'heading-two' &&
-            EDITOR.configuration.commands.headingTwo.active) ||
-            (props.entity.type === 'heading-three' &&
-              EDITOR.configuration.commands.headingThree.active) ||
-            (props.entity.type === 'checkbox' &&
-              EDITOR.configuration.commands.checkbox.active) ||
-            (props.entity.type === 'list' &&
-              EDITOR.configuration.commands.list.active) ||
-            (props.entity.external?.comment?.raw &&
-              EDITOR.configuration.commands.paragraph.active))) ||
-        props.entity.type === 'heading-one'
+        props.entity.type !== 'image' &&
+        props.entity.type !== 'line-break' &&
+        props.entity.type !== 'page-break' &&
+        props.entity.type !== 'drau' &&
+        ((props.entity.type === 'heading-two' &&
+          EDITOR.configuration.commands.headingTwo.active) ||
+          (props.entity.type === 'heading-three' &&
+            EDITOR.configuration.commands.headingThree.active) ||
+          (props.entity.type === 'checkbox' &&
+            EDITOR.configuration.commands.checkbox.active) ||
+          (props.entity.type === 'list' &&
+            EDITOR.configuration.commands.list.active) ||
+          (props.entity.external?.comment?.raw &&
+            EDITOR.configuration.commands.paragraph.active))
       "
-      class="ml-2 truncate w-full"
-      :class="[
-        props.entity.type === 'heading-one' ? 'text-sm py-2 font-poppins' : '',
-      ]"
+      class="ml-2 text-xs font-raleway truncate w-full"
     >
       {{ raw.v2().normalize(props.entity.raw, 'full') }}
     </p>
@@ -148,6 +172,7 @@
   import { useEditorStore } from '@/store/editor'
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
+  import { usePage } from '@/use/page'
   import { useRaw } from '@/use/raw'
   import { ContextState, Entity } from 'better-write-types'
   import { computed } from 'vue'
@@ -169,6 +194,7 @@
 
   const env = useEnv()
   const raw = useRaw()
+  const page = usePage()
 
   const activity = computed<boolean>(() => props.page.id === CONTEXT.id)
 </script>

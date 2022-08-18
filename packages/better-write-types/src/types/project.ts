@@ -61,7 +61,6 @@ export interface ProjectStateOptions {
 }
 
 export interface ProjectStateAnnotations {
-  activeId: ID<string> | null
   folders: ProjectStateAnnotationFolder[]
 }
 
