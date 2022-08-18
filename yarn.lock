@@ -2140,6 +2140,23 @@
     "@milkdown/utils" "6.3.2"
     tslib "^2.4.0"
 
+"@milkdown/plugin-trailing@6.3.2":
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/@milkdown/plugin-trailing/-/plugin-trailing-6.3.2.tgz#e2ba9bb7943cc85a6b44c806067977a34ae33365"
+  integrity sha512-YochDbY8Fk1B+CvjKFGUAGtz9MvKVIV40gqv6/ji76kA/7g4c8s8aVYIjDKD7xFVcT+BEqvem7SiZKKDV2VheA==
+  dependencies:
+    "@milkdown/utils" "6.3.2"
+    tslib "^2.4.0"
+
+"@milkdown/plugin-upload@6.3.2":
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/@milkdown/plugin-upload/-/plugin-upload-6.3.2.tgz#128d30acbff6b6c6074a9d8dc68724a84ae84827"
+  integrity sha512-PzcJ0N9yDuZ5ShH+p1HqsEldvpQ926E0iU6ZddCeX0PHIOncyOP6jtOQXP760D4ODIbszTsCLtNAjAv1lkASzg==
+  dependencies:
+    "@milkdown/exception" "6.3.2"
+    "@milkdown/utils" "6.3.2"
+    tslib "^2.4.0"
+
 "@milkdown/preset-commonmark@6.3.2":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@milkdown/preset-commonmark/-/preset-commonmark-6.3.2.tgz#61d911712f93511a9b6ac521e7b28c41d564e361"

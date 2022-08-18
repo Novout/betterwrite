@@ -13,6 +13,9 @@ import { block } from '@milkdown/plugin-block'
 import { history } from '@milkdown/plugin-history'
 import { cursor } from '@milkdown/plugin-cursor'
 import { indent, indentPlugin } from '@milkdown/plugin-indent'
+import { trailing } from '@milkdown/plugin-trailing';
+import { upload } from '@milkdown/plugin-upload';
+import { emoji } from '@milkdown/plugin-emoji';
 import { bw } from './theme'
 import { cmk } from './plugin/commonmark'
 import { sls } from './plugin/slash'
@@ -139,13 +142,16 @@ export const PluginAnnotationsSet = (
       .use(block)
       .use(history)
       .use(cursor)
-      .use(bw)
+      .use(trailing)
+      .use(upload)
+      .use(emoji)
       .use(
         indent.configure(indentPlugin, {
           type: 'space',
           size: 2,
         })
       )
+      .use(bw)
       .create()
   }
 
