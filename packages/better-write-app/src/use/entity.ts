@@ -5,6 +5,7 @@ import { useContextStore } from '@/store/context'
 import useEmitter from './emitter'
 import { usePlugin } from 'better-write-plugin-core'
 import { useI18n } from 'vue-i18n'
+import { useStorage } from './storage/storage'
 
 export const useEntity = () => {
   const CONTEXT = useContextStore()
@@ -12,6 +13,7 @@ export const useEntity = () => {
   const env = useEnv()
   const emitter = useEmitter()
   const plugin = usePlugin()
+  const storage = useStorage()
   const { t } = useI18n()
 
   const utils = () => {
@@ -181,6 +183,10 @@ export const useEntity = () => {
       })
 
       plugin.emit('plugin-entity-delete', index)
+
+      await nextTick
+
+      await storage.normalize()
     }
 
     const onDeleteRaw = async (payload: any) => {

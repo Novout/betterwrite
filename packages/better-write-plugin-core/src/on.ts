@@ -4,6 +4,8 @@ import {
   PDFDocOptions,
   PluginTypes,
   ImporterParams,
+  ProjectStateAnnotationFolder,
+  ProjectStateAnnotationFile,
 } from 'better-write-types'
 
 export const entity = () => {
@@ -334,6 +336,76 @@ export const externals = () => {
     })
   }
 
+  const PluginAnnotationsStart = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on(
+      'plugin-annotations-start',
+      (file: ProjectStateAnnotationFile) => {
+        const created = content[0]
+
+        created && created(file)
+      }
+    )
+  }
+
+  const PluginAnnotationsCreateFolder = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-annotations-folder-create', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginAnnotationsDeleteFolder = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on(
+      'plugin-annotations-folder-delete',
+      (folder: ProjectStateAnnotationFolder) => {
+        const created = content[0]
+
+        created && created(folder)
+      }
+    )
+  }
+
+  const PluginAnnotationsCreateFile = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on(
+      'plugin-annotations-file-create',
+      (folder: ProjectStateAnnotationFolder) => {
+        const created = content[0]
+
+        created && created(folder)
+      }
+    )
+  }
+
+  const PluginAnnotationsDeleteFile = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on(
+      'plugin-annotations-file-delete',
+      (obj: {
+        file: ProjectStateAnnotationFile
+        folder: ProjectStateAnnotationFolder
+      }) => {
+        const created = content[0]
+
+        created && created(obj)
+      }
+    )
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -345,6 +417,11 @@ export const externals = () => {
     PluginImporterDOCX,
     PluginImporterTXT,
     PluginImporterBW,
+    PluginAnnotationsStart,
+    PluginAnnotationsCreateFolder,
+    PluginAnnotationsDeleteFolder,
+    PluginAnnotationsCreateFile,
+    PluginAnnotationsDeleteFile,
   }
 }
 

@@ -72,6 +72,9 @@ export const useProjectStore = defineStore('project', {
           },
         ],
       },
+      annotations: {
+        folders: [],
+      },
     }
   },
   actions: {
@@ -96,6 +99,8 @@ export const useProjectStore = defineStore('project', {
       this.bw.platform = payload.bw.platform
       this.bw.version = payload.bw.version
       this.shortcuts = payload.shortcuts
+      this.annotations = payload.annotations
+      this.creative = payload.creative
     },
     new(options: ProjectStateOptions, forceTitle?: string) {
       const global = useGlobalStore()
@@ -168,6 +173,9 @@ export const useProjectStore = defineStore('project', {
               value: '— ',
             },
           ],
+        },
+        annotations: options.annotations || {
+          folders: [],
         },
       }
 

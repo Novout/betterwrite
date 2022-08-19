@@ -3,3 +3,8 @@ export interface ImageToForcePNGOptions {
   width: number
   height: number
 }
+
+export interface ImageFileRawOptions {
+  raw: string
+  fileName: string
+}

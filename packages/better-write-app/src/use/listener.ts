@@ -2,6 +2,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useEventListener } from '@vueuse/core'
 import { usePlugin } from 'better-write-plugin-core'
 import { read } from 'better-write-plugin-importer'
+import { isImageExtension } from 'better-write-image-converter'
 import { ProjectObject } from 'better-write-types'
 import { useI18n } from 'vue-i18n'
 import { useToast } from 'vue-toastification'
@@ -119,7 +120,8 @@ export const useListener = () => {
             return
           }
 
-          toast.warning(t('toast.project.unsupportedExtension'))
+          if (!isImageExtension(file.name))
+            toast.warning(t('toast.project.unsupportedExtension'))
         }
       }
     }

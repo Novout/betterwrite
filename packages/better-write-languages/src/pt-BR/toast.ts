@@ -42,6 +42,10 @@ export default {
     html: {
       generate: 'HTML Baixado com Sucesso!',
     },
+    annotations: {
+      fileDelete: 'Você tem certeza que deseja deletar o arquivo?',
+      folderDelete: 'Você tem certeza que deseja deletar a pasta?',
+    },
   },
   dropbox: {
     load: 'Conectado com o Dropbox!',

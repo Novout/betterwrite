@@ -251,6 +251,7 @@ export default {
       actuallyPage: 'Página Atual',
       projectPages: 'Projeto',
       timeline: 'Linha do Tempo',
+      annotations: 'Anotações',
     },
     configuration: {
       title: 'Configuração',
@@ -482,6 +483,28 @@ export default {
       heading: 'Cabeçalhos',
       fixed: 'Itens Fixados',
       longest: 'Maior Conteúdo',
+    },
+  },
+  annotations: {
+    items: {
+      file: 'Novo Arquivo',
+      folder: 'Nova Pasta',
+    },
+    theme: {
+      placeholder: 'Digite / para abrir comandos...',
+      tags: {
+        h1: 'Título Primário',
+        h2: 'Título Secundário',
+        h3: 'Título Terciário',
+        bulletList: 'Lista Marcada',
+        orderedList: 'Lista Ordenada',
+        taskList: 'Lista de Tarefas',
+        image: 'Imagem',
+        quote: 'Citação',
+        table: 'Tabela',
+        code: 'Código',
+        divider: 'Divisor',
+      },
     },
   },
 }

@@ -42,6 +42,10 @@ export default {
     txt: {
       generate: 'Successfully Downloaded TXT!',
     },
+    annotations: {
+      fileDelete: 'Are you sure you want to delete the file?',
+      folderDelete: 'Are you sure you want to delete the folder?',
+    },
   },
   dropbox: {
     load: 'Connected with Dropbox!',

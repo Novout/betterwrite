@@ -1,6 +1,6 @@
 {
 	"name": "better-write-types",
-	"version": "0.16.12",
+	"version": "0.16.13",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -43,7 +43,6 @@
 		"prettier": "2.5.1",
 		"rimraf": "3.0.2",
 		"unbuild": "0.7.0",
-		"vitest": "0.0.100",
 		"vue": "3.2.29"
 	}
 }

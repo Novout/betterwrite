@@ -249,9 +249,10 @@ export default {
     graph: {
       title: 'Display List',
       chapters: 'Chapters',
-      actuallyPage: 'Página Atual',
-      projectPages: 'Projeto',
+      actuallyPage: 'Actually Page',
+      projectPages: 'Project Pages',
       timeline: 'Timeline',
+      annotations: 'Annotations',
     },
     configuration: {
       title: 'Settings',
@@ -480,6 +481,28 @@ export default {
       heading: "Heading's",
       fixed: 'Fixed Items',
       longest: 'Longest Content',
+    },
+  },
+  annotations: {
+    items: {
+      file: 'New File',
+      folder: 'New Folder',
+    },
+    theme: {
+      placeholder: 'Type / to open commands...',
+      tags: {
+        h1: 'Primary Title',
+        h2: 'Secondary Title',
+        h3: 'Tertiary Title',
+        bulletList: 'Bullet List',
+        orderedList: 'Ordered List',
+        taskList: 'Task List',
+        image: 'Image',
+        quote: 'Quote',
+        table: 'Table',
+        code: 'Code',
+        divider: 'Divider',
+      },
     },
   },
 }

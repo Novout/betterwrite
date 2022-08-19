@@ -5,7 +5,8 @@
   ├── better-write-contenteditable-ast          # AST of editor inserts (bold, italics, underline...)
   ├── better-write-image-conversor              # Convert .svg to .png and other utils
   ├── better-write-languages                    # i18n
-  ├── better-write-plugin-core                  # Plugin base core
+  ├── better-write-plugin-annotations                  # Annotations Plugin
+  ├── better-write-plugin-core                  # Plugin Core
   ├── better-write-plugin-exporter-docx         # DOCX Generator Plugin
   ├── better-write-plugin-exporter-html         # HTML Generator Plugin
   ├── better-write-plugin-exporter-pdf          # PDF Generator Plugin

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-start items-center w-full mt-5 gap-1 text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+    class="flex justify-start items-center w-full mt-2.5 gap-1 text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
   >
     <IconTimeline class="w-7 h-7" />
     <p

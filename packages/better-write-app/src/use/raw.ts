@@ -9,7 +9,7 @@ import { useClipboard } from '@vueuse/core'
 import { useUtils } from './utils'
 import { useExternalsStore } from '@/store/externals'
 import { useEnv } from './env'
-import { useSubstitution } from './tools/substitution'
+import { useStorage } from '@/use/storage/storage'
 import { nextTick } from 'vue'
 import { useContextStore } from '@/store/context'
 import { useFactory } from './factory'
@@ -18,6 +18,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useEditorStore } from '@/store/editor'
 import { useToast } from 'vue-toastification'
 import { useI18n } from 'vue-i18n'
+import { ImageToForcePNG } from 'better-write-image-converter'
 
 export const bold = () => {
   const open = () => {
@@ -200,7 +201,7 @@ export const useRaw = () => {
   const env = useEnv()
   const utils = useUtils()
   const plugin = usePlugin()
-  const substitution = useSubstitution()
+  const storage = useStorage()
   const factory = useFactory()
   const toast = useToast()
   const { t } = useI18n()
@@ -408,7 +409,13 @@ export const useRaw = () => {
               .convert()
               .read(file, 'image')
               .then(async (data) => {
-                const entity = factory.entity().create('image', data as string)
+                const raw = await ImageToForcePNG({
+                  raw: data as string,
+                  width: 2000,
+                  height: 2000,
+                })
+
+                const entity = factory.entity().create('image', raw)
 
                 entity.external!.image!.name = file.name
 
@@ -423,9 +430,11 @@ export const useRaw = () => {
                   data: item.raw,
                   index: CONTEXT.entities.indexOf(item),
                 })
+
+                await storage.normalize()
               })
               .catch(() => {
-                toast(t('toast.entity.image.errorLoad'))
+                toast.error(t('toast.entity.image.errorLoad'))
               })
           }
         }

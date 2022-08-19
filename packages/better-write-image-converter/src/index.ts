@@ -1,4 +1,13 @@
-import { ImageToForcePNGOptions } from 'better-write-types'
+import { ImageToForcePNGOptions, ImageFileRawOptions } from 'better-write-types'
+
+export const isImageExtension = (text: string) => {
+  return (
+    text.endsWith('.png') ||
+    text.endsWith('.jpg') ||
+    text.endsWith('.jpeg') ||
+    text.endsWith('.svg')
+  )
+}
 
 export const ImageToForcePNG = (
   options: ImageToForcePNGOptions
@@ -41,5 +50,48 @@ export const ImageToForcePNG = (
 
     // TODO: other blob performatic method
     image.src = blobURL
+  })
+}
+
+export const getImageFileRaw = (): Promise<ImageFileRawOptions> => {
+  return new Promise((res, rej) => {
+    const _ = document.createElement('input')
+    _.type = 'file'
+    _.accept = '.png, .svg, .jpg, .jpeg'
+    _.addEventListener('change', function () {
+      const file = (this.files as any)[0]
+
+      if (!file) return
+
+      const reader = new FileReader()
+
+      if (file.name.endsWith('svg')) {
+        reader.readAsText(file)
+      } else {
+        reader.readAsDataURL(file)
+      }
+
+      reader.onload = async () => {
+        if (!isImageExtension(file.name)) {
+          rej()
+          return
+        }
+
+        const raw = await ImageToForcePNG({
+          raw: reader.result as string,
+          width: 2000 as number,
+          height: 2000 as number,
+        })
+
+        res({
+          raw,
+          fileName: file.name,
+        })
+      }
+      reader.onerror = function () {
+        rej()
+      }
+    })
+    _.click()
   })
 }

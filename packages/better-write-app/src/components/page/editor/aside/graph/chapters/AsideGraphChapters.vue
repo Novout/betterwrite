@@ -11,7 +11,7 @@
       </div>
       <p
         v-if="!env.isEmptyProject(PROJECT.name)"
-        class="cursor-pointer truncate font-bold"
+        class="cursor-pointer ml-1 truncate font-bold"
         @click="graph.base()"
       >
         {{
@@ -21,9 +21,13 @@
         }}
       </p>
     </div>
-    <AsideGraphControl v-if="!env.isEmptyProject(PROJECT.name)" />
+    <AsideGraphControl
+      v-if="!env.isEmptyProject(PROJECT.name)"
+      :toggle="toggle"
+      :value="value"
+    />
   </div>
-  <div v-for="(page, index) in PROJECT.pages" :key="index">
+  <div v-for="(page, index) in PROJECT.pages" v-if="value" :key="index">
     <div
       v-for="(entity, ind) in page.entities"
       :id="graph.normalize().id(page, ind)"
@@ -41,6 +45,7 @@
   import { useEnv } from '@/use/env'
   import { useGraph } from '@/use/graph'
   import { useUtils } from '@/use/utils'
+  import { useToggle } from '@vueuse/core'
   import { computed, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
 
@@ -51,6 +56,7 @@
   const env = useEnv()
   const { t } = useI18n()
   const utils = useUtils()
+  const [value, toggle] = useToggle(true)
 
   const name = computed(() => PROJECT.nameRaw)
 

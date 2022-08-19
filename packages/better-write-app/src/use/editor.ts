@@ -4,7 +4,12 @@ import { useEntity } from '@/use/entity'
 import { useEnv } from '@/use/env'
 import { useProject } from '@/use/project'
 import { useLocalStorage } from '@/use/storage/local'
-import { useEventListener, useFullscreen, useNetwork } from '@vueuse/core'
+import {
+  useEventListener,
+  useFullscreen,
+  useIntervalFn,
+  useNetwork,
+} from '@vueuse/core'
 import { useHead } from '@vueuse/head'
 import { usePlugin } from 'better-write-plugin-core'
 import { computed, onBeforeMount, onMounted, watch } from 'vue'
@@ -52,14 +57,9 @@ export const useEditor = () => {
     })
 
     if (EDITOR.configuration.autosave) {
-      // tracking all mutate cases
-      watch(
-        [PROJECT.$state],
-        () => {
-          if (EDITOR.configuration.autosave) local.onSaveProject(false)
-        },
-        { deep: true }
-      )
+      useIntervalFn(() => {
+        local.onSaveProject(false)
+      }, 1000 * 60)
     }
 
     // tracking normalize project cases
