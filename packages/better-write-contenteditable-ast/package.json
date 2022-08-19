@@ -1,6 +1,6 @@
 {
 	"name": "better-write-contenteditable-ast",
-	"version": "0.16.12",
+	"version": "0.16.13",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -14,7 +14,7 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"serve": "rimraf ./dist && unbuild",
-    "test:dev": "vitest",
+		"test:dev": "vitest",
 		"test": "vitest run --coverage",
 		"build": "rimraf ./dist && unbuild",
 		"lint": "prettier --write src/"
@@ -26,16 +26,16 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-types": "^0.16.12",
+		"better-write-types": "^0.16.13",
 		"hast": "1.0.0",
 		"hast-util-from-html": "1.0.0"
 	},
 	"devDependencies": {
-    "c8": "7.12.0",
-    "happy-dom": "6.0.4",
+		"c8": "7.12.0",
+		"happy-dom": "6.0.4",
 		"prettier": "2.5.1",
 		"rimraf": "3.0.2",
 		"unbuild": "0.7.0",
-    "vitest": "0.21.1"
+		"vitest": "0.21.1"
 	}
 }

@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-exporter-html",
-	"version": "0.16.12",
+	"version": "0.16.13",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -20,9 +20,9 @@
 	],
 	"dependencies": {
 		"@vueuse/integrations": "7.7.1",
-		"better-write-contenteditable-ast": "^0.16.12",
-		"better-write-plugin-core": "^0.16.12",
-		"better-write-types": "^0.16.12",
+		"better-write-contenteditable-ast": "^0.16.13",
+		"better-write-plugin-core": "^0.16.13",
+		"better-write-types": "^0.16.13",
 		"file-saver": "2.0.5",
 		"vue-demi": "latest"
 	},

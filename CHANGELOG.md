@@ -1,6 +1,29 @@
-# Changelog (14/08/2022)
+# Changelog (18/08/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.13
+
+* **fix(editor):** overlap in save large scale projects [f74e028d]
+* **chore(package):** update packages [217cbbac]
+* **chore(graph):** icons and fonts positions [ba24789d]
+* **feat(annotations):** trailing, upload and emoji plugin [098bab8c]
+* **fix(annotations):** empty block in reactivity text save [c5e8934c]
+* **feat(annotations):** new milkdown plugins [6c9bddcf]
+* **feat(annotations):** promised nprogress tracking [add952e7]
+* **feat(annotations):** delete files and folder [c2ad51bc]
+* **feat(annotations):** reactivity in save object files and folders [56e41716]
+* **feat(annotations):** initial folders structure [1bf34330]
+* **feat(editor):** annotations plugin initial [1b5a203c]
+* **fix(graph):** load prev context in chapter name [e647aa6c]
+* **fix(editor):** image in set item [5b92469f]
+* **fix(editor):** image normalize and drop extension support [bfbfacf5]
+* **test(ast):** remove rows [c3ee5948]
+* **fix(ast):** possible string in row break [b6dd3864]
+* **test(ast):** rename default variable set [0ec7742a]
+* **chore(test):** vitest new setup [487feb1c]
+* **fix(html):** purge raw text before html tags creation [84d33881]
+* **fix(ast):** deep-recursive tags inside other text insert [0cba1dff]
 
 ### v0.16.12
 
