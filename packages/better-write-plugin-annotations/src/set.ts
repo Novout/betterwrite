@@ -85,7 +85,6 @@ export const PluginAnnotationsSet = (
     const index = stores.PROJECT.annotations.folders.indexOf(folder)
 
     stores.PROJECT.annotations.folders[index].files.push(file)
-    stores.PROJECT.annotations.activeId = file.id
 
     return file
   }
