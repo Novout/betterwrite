@@ -19,7 +19,6 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@vueuse/integrations": "7.7.1",
 		"better-write-contenteditable-ast": "^0.16.13",
 		"better-write-plugin-core": "^0.16.13",
 		"better-write-types": "^0.16.13",

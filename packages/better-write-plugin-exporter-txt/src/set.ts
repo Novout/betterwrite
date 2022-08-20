@@ -1,14 +1,13 @@
 import { saveAs } from 'file-saver'
 import { PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
-import { useNProgress } from '@vueuse/integrations'
 
 export const PluginTxtSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
 ) => {
-  const { isLoading } = useNProgress()
+  const { isLoading } = hooks.vueuse.integration.progress
 
   const purge = (texts: string[]): string => {
     return texts.reduce(

@@ -1,4 +1,3 @@
-import { useFavicon, usePreferredColorScheme } from '@vueuse/core'
 import { BetterWriteThemes, PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 import { setEditorLogo, Themes } from './external'
@@ -32,7 +31,7 @@ export const PluginThemeContent = (
   }
 
   const setDefaultColorTheme = (): BetterWriteThemes => {
-    const color = usePreferredColorScheme()
+    const color = hooks.vueuse.core.usePreferredColorScheme()
     const themes = Themes()
 
     let _color = themes[1][0] // for any case, dark theme
@@ -53,7 +52,7 @@ export const PluginThemeContent = (
   }
 
   const setContentTheme = (theme: string) => {
-    const favicon = useFavicon()
+    const favicon = hooks.vueuse.core.useFavicon()
 
     // custom favicon
     switch (theme) {
