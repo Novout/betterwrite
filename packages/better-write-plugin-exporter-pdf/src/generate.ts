@@ -8,10 +8,8 @@ import {
   ProjectStateTemplatesGenerator,
 } from 'better-write-types'
 import { nextTick, computed } from 'vue-demi'
-import { useNProgress } from '@vueuse/integrations'
 import { useToast } from 'vue-toastification'
 import { getPDFUtils } from 'better-write-plugin-theme'
-import { useOnline } from '@vueuse/core'
 import { getStandardVFS } from './vfs'
 import { Maybe } from 'better-write-types'
 import { getRows, parse } from 'better-write-contenteditable-ast'
@@ -27,9 +25,9 @@ export const PluginPDFSet = (
     exists: false,
   }
 
-  const { isLoading } = useNProgress()
+  const { isLoading } = hooks.vueuse.integration.progress
   const toast = useToast()
-  const online = useOnline()
+  const online = hooks.vueuse.core.useOnline()
   const pdfmake = usePDF().default
 
   const isTheme = computed(() => stores.PDF.styles.switcher.theme)

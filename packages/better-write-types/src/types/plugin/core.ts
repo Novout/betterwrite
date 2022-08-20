@@ -123,6 +123,12 @@ export interface PluginHooks {
   toast: PluginHook
   breakpoints: PluginHook
   transformer: PluginHook
+  vueuse: {
+    core: PluginHook
+    integration: {
+      progress: PluginHook
+    }
+  }
 }
 
 export type PluginContext = (

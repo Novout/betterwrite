@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-annotations",
-	"version": "0.16.13",
+	"version": "0.16.14",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -37,8 +37,8 @@
 		"@milkdown/preset-commonmark": "6.3.2",
 		"@milkdown/prose": "6.3.2",
 		"@milkdown/theme-pack-helper": "6.3.2",
-		"better-write-plugin-core": "^0.16.13",
-		"better-write-types": "^0.16.13",
+		"better-write-plugin-core": "^0.16.14",
+		"better-write-types": "^0.16.14",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {

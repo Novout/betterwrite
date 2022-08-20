@@ -7,7 +7,6 @@ import {
 } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 import { getRows, parse } from 'better-write-contenteditable-ast'
-import { useNProgress } from '@vueuse/integrations'
 import { ContextState } from 'better-write-types'
 
 type DocxPurge = Array<docx.ExternalHyperlink | docx.TextRun>
@@ -17,7 +16,7 @@ export const PluginDocxSet = (
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
 ) => {
-  const { isLoading } = useNProgress()
+  const { isLoading } = hooks.vueuse.integration.progress
 
   const purge = (raw: string, custom: Record<string, any>): DocxPurge => {
     const arr: DocxPurge = []

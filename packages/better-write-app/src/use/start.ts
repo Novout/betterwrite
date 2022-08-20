@@ -44,6 +44,8 @@ import { useToast } from 'vue-toastification'
 import { useBreakpoint } from './breakpoint'
 import { useDOCXStore } from '@/store/docx'
 import { useTransformer } from './generator/transformer'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
+import * as VUEUSE_CORE from '@vueuse/core'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -202,6 +204,12 @@ export const useStart = () => {
         toast: useToast(),
         breakpoints: useBreakpoint(),
         transformer: useTransformer(),
+        vueuse: {
+          core: VUEUSE_CORE,
+          integration: {
+            progress: useNProgress(),
+          },
+        },
       }
     )
     plugin.emit('plugin-pdf-init')

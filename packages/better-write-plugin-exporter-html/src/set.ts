@@ -1,7 +1,6 @@
 import { saveAs } from 'file-saver'
 import { PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
-import { useNProgress } from '@vueuse/integrations'
 import { ContextState } from 'better-write-types'
 import { Entity } from 'better-write-types'
 import {
@@ -24,7 +23,7 @@ export const PluginHtmlSet = (
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
 ) => {
-  const { isLoading } = useNProgress()
+  const { isLoading } = hooks.vueuse.integration.progress
 
   const entities = () => {
     const paragraph = (entity: Entity) => {
