@@ -1,6 +1,10 @@
-# Changelog (18/08/2022)
+# Changelog (20/08/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.14
+
+* **chore(vue):** @vueuse in build system propagation [e5c8214a]
 
 ### v0.16.13
 
