@@ -14,8 +14,6 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"serve": "rimraf ./dist && unbuild",
-		"test:dev": "vitest",
-		"test": "vitest run --coverage",
 		"build": "rimraf ./dist && unbuild",
 		"lint": "prettier --write src/"
 	},
