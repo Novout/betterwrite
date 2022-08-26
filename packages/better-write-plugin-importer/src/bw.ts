@@ -1,6 +1,6 @@
 import { On } from 'better-write-plugin-core'
 import { PluginTypes, ImporterParams } from 'better-write-types'
-import destr from 'destr'
+import { readBW } from 'better-write-extension'
 
 export const BWSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -9,7 +9,7 @@ export const BWSet = (
 ) => {
   On.externals().PluginImporterBW(emitter, [
     async ({ data }: ImporterParams) => {
-      const content = destr(data as string)
+      const content = await readBW(data as any)
 
       hooks.project.onLoadProject(content)
     },

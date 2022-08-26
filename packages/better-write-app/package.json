@@ -34,6 +34,7 @@
     "@vueuse/motion": "2.0.0-beta.12",
     "@vueuse/shared": "9.1.0",
     "better-write-contenteditable-ast": "^0.16.14",
+    "better-write-extension": "^0.16.14",
     "better-write-image-converter": "^0.16.14",
     "better-write-languages": "^0.16.14",
     "better-write-plugin-annotations": "^0.16.14",

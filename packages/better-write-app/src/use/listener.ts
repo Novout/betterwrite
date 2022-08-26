@@ -9,6 +9,7 @@ import { useToast } from 'vue-toastification'
 import { useProject } from './project'
 import { useUtils } from './utils'
 import { useHistoryStore } from '@/store/history'
+import { readBW } from 'better-write-extension'
 
 export const useListener = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -99,7 +100,7 @@ export const useListener = () => {
 
           if (file.name.endsWith('.bw')) {
             if (confirm(t('toast.project.import', { name: file.name }))) {
-              const data = (await utils.convert().read(file)) as ProjectObject
+              const data = await readBW(file)
 
               project.onLoadProject(data, false)
             }

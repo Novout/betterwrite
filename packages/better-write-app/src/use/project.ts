@@ -27,6 +27,7 @@ import { useFileSystemAccess } from '@vueuse/core'
 import { useI18n } from 'vue-i18n'
 import { read } from 'better-write-plugin-importer'
 import useEmitter from './emitter'
+import { writeBW } from 'better-write-extension'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useAuthStore } from '@/store/auth'
 import { useDOCXStore } from '@/store/docx'
@@ -169,12 +170,10 @@ export const useProject = () => {
     storage
       .normalize()
       .then(async () => {
-        await saveAs(
-          new Blob([JSON.stringify(storage.getProjectObject())], {
-            type: 'application/json',
-          }),
-          utils().exportName('bw')
-        )
+        const target = JSON.stringify(storage.getProjectObject())
+        const zip = await writeBW(target, utils().exportName('bw'))
+
+        await saveAs(zip, utils().exportName('bw'))
 
         toast.success(t('toast.project.export'))
       })
@@ -198,7 +197,7 @@ export const useProject = () => {
             {
               description: 'Better Write',
               accept: {
-                'application/json': ['.bw'],
+                'application/xml': ['.bw'],
               },
             },
           ],
@@ -207,12 +206,10 @@ export const useProject = () => {
 
         if (!res.isSupported) return
 
-        res.data.value = new Blob(
-          [JSON.stringify(storage.getProjectObject())],
-          {
-            type: 'application/json',
-          }
-        )
+        const target = JSON.stringify(storage.getProjectObject())
+        const zip = await writeBW(target, utils().exportName('bw'))
+
+        res.data.value = zip
         res.fileName.value = utils().exportName('bw')
 
         await res.saveAs()
@@ -240,10 +237,19 @@ export const useProject = () => {
       const isBW = file.name.endsWith('.bw')
       const isTXT = file.name.endsWith('.txt')
 
-      if (!isDoc && !isBW && !isTXT)
+      if (!isDoc && !isBW && !isTXT) {
         toast.warning(t('toast.project.unsupportedExtension'))
 
-      read(file, isDoc ? 'data' : 'text')
+        return
+      }
+
+      let type: 'data' | 'raw' | 'text' = 'text'
+
+      if (isDoc) type = 'data'
+      if (isBW) type = 'raw'
+      if (isTXT) type = 'text'
+
+      read(file, type)
         .then((data) => {
           const filename = file.name
             .replace('.bw', '')

@@ -1,5 +1,5 @@
 {
-	"name": "better-write-plugin-importer",
+	"name": "better-write-extension",
 	"version": "0.16.14",
 	"author": "Novout",
 	"license": "MIT",
@@ -14,7 +14,8 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"serve": "rimraf ./dist && unbuild",
-		"test": "echo \"Error: no test specified\"",
+		"test:dev": "vitest",
+		"test": "vitest run --coverage",
 		"build": "rimraf ./dist && unbuild",
 		"lint": "prettier --write src/"
 	},
@@ -26,25 +27,13 @@
 	],
 	"dependencies": {
 		"@zip.js/zip.js": "2.6.18",
-    	"better-write-extension": "^0.16.14",
-		"better-write-plugin-core": "^0.16.14",
 		"better-write-types": "^0.16.14",
 		"destr": "1.1.1",
-		"vue-demi": "latest",
 		"xml-js": "1.6.11"
 	},
 	"devDependencies": {
 		"prettier": "2.5.1",
 		"rimraf": "3.0.2",
 		"unbuild": "0.7.0"
-	},
-	"peerDependencies": {
-		"@vue/composition-api": "^1.0.0-rc.1",
-		"vue": "^2.0.0 || >=3.0.0"
-	},
-	"peerDependenciesMeta": {
-		"@vue/composition-api": {
-			"optional": true
-		}
 	}
 }

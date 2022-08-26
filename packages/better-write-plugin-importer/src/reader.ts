@@ -1,8 +1,11 @@
-export const read = (file: File, type: 'data' | 'text') => {
+export const read = (file: File, type: 'data' | 'raw' | 'text') => {
   return new Promise((res, rej) => {
     const reader = new FileReader()
 
     switch (type) {
+      case 'raw':
+        res(file)
+        break
       case 'data':
         reader.readAsDataURL(file)
         break
