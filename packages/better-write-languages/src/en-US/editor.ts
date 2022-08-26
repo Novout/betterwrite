@@ -218,7 +218,6 @@ export default {
   },
   window: {
     confirmConfiguration: 'Do you want to quit saving the settings?',
-    confirmClearLogger: 'Do you want to delete all data?',
     saveDropbox: 'Are you sure to save this file to Dropbox?',
     saveLocal: 'Are you sure to save this file?',
     deleteChapterPage: 'Are you sure to delete the current chapter?',
@@ -287,9 +286,6 @@ export default {
     project: {
       title: 'Project',
       addons: {
-        logger: {
-          title: 'Actions',
-        },
         textSwitcher: {
           title: 'Replace Text',
         },

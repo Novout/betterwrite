@@ -53,11 +53,6 @@
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
-        :text="t('editor.bar.assistants.actions')"
-        @action="onLogger"
-      />
-      <EditorHeaderItem
-        v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.statistics')"
         @action="ABSOLUTE.project.statistics = true"
       />
@@ -119,11 +114,5 @@
     if (!confirm(t('editor.window.saveLocal'))) return
 
     supabase.saveProject()
-  }
-
-  const onLogger = async () => {
-    await storage.normalize()
-
-    ABSOLUTE.logger = true
   }
 </script>

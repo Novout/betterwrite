@@ -20,7 +20,6 @@ export const useAbsoluteStore = defineStore('absolute', {
         switcher: false,
         finder: false,
       },
-      logger: false,
       pdf: {
         configuration: false,
         generate: false,

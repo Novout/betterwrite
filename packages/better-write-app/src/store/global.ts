@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { useLoggerStore } from './logger'
 import { useEditorStore } from './editor'
 import { usePDFStore } from './pdf'
 import { useAbsoluteStore } from './absolute'
@@ -15,7 +14,6 @@ export const useGlobalStore = defineStore('global', {
   actions: {
     reset() {
       const context = useContextStore()
-      const logger = useLoggerStore()
       const editor = useEditorStore()
       const pdf = usePDFStore()
       const docx = useDOCXStore()
@@ -27,7 +25,6 @@ export const useGlobalStore = defineStore('global', {
       editor.$reset()
       pdf.resetStyles()
       docx.$reset()
-      logger.reset()
       project.$reset()
     },
   },

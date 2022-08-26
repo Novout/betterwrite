@@ -1,6 +1,5 @@
 import { useFormat } from './format'
 import { useEnv } from './env'
-import { useLoggerStore } from '@/store/logger'
 import { useAuthStore } from '@/store/auth'
 import { useAbsoluteStore } from '@/store/absolute'
 import { useContextStore } from '@/store/context'
@@ -170,7 +169,6 @@ export const useStart = () => {
         AUTH: useAuthStore(),
         CONTEXT: useContextStore(),
         EDITOR: useEditorStore(),
-        LOGGER: useLoggerStore(),
         PDF: usePDFStore(),
         DOCX: useDOCXStore(),
         PROJECT: useProjectStore(),

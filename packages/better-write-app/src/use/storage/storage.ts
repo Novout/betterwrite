@@ -1,9 +1,8 @@
 import { useEnv } from '../env'
 import { useProjectStore } from '@/store/project'
 import { useEditorStore } from '@/store/editor'
-import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
-import { ProjectObject, ProjectState } from 'better-write-types'
+import { ProjectObject } from 'better-write-types'
 import { nextTick } from 'vue'
 import useEmitter from '../emitter'
 import { useContextStore } from '@/store/context'
@@ -15,7 +14,6 @@ export const useStorage = () => {
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
   const EDITOR = useEditorStore()
-  const LOGGER = useLoggerStore()
   const PDF = usePDFStore()
   const DOCX = useDOCXStore()
   const AUTH = useAuthStore()
@@ -132,7 +130,6 @@ export const useStorage = () => {
       id: AUTH.account.project_id_activity || undefined,
       project: PROJECT.$state,
       editor: EDITOR.$state,
-      logger: LOGGER.$state,
       pdf: {
         styles: PDF.styles,
         fonts: [],
@@ -143,8 +140,6 @@ export const useStorage = () => {
   }
 
   const purge = () => {
-    LOGGER.content = LOGGER.content.slice(-1 * 100)
-
     PROJECT.pages.forEach((page) => {
       page.entities.forEach((entity) => {
         if (

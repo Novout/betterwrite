@@ -1,7 +1,6 @@
 import { ContextState } from './context'
 import { DOCXState } from './docx'
 import { EditorState } from './editor'
-import { LoggerState } from './logger'
 import { PDFState } from './pdf'
 import { ID } from './utils'
 
@@ -158,7 +157,6 @@ export interface ProjectObject {
   id?: ID<number>
   project: ProjectState
   editor: EditorState
-  logger: LoggerState
   pdf: PDFState
   docx: DOCXState
 }

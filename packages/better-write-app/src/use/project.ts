@@ -5,7 +5,6 @@ import { useProjectStore } from '@/store/project'
 import { useContextStore } from '@/store/context'
 import { useLocalStorage } from './storage/local'
 import { useEditorStore } from '@/store/editor'
-import { useLoggerStore } from '@/store/logger'
 import { usePDFStore } from '@/store/pdf'
 import { useAbsoluteStore } from '@/store/absolute'
 import {
@@ -36,7 +35,6 @@ export const useProject = () => {
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
   const EDITOR = useEditorStore()
-  const LOGGER = useLoggerStore()
   const PDF = usePDFStore()
   const DOCX = useDOCXStore()
   const ABSOLUTE = useAbsoluteStore()
@@ -132,10 +130,6 @@ export const useProject = () => {
         (page: ContextState) => page.id === context?.project.pageLoaded
       )[0]
     )
-
-    await nextTick
-
-    LOGGER.load(context.logger)
 
     await nextTick
 
