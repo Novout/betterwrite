@@ -8,9 +8,11 @@ import { useI18n } from 'vue-i18n'
 import { useToast } from 'vue-toastification'
 import { useProject } from './project'
 import { useUtils } from './utils'
+import { useHistoryStore } from '@/store/history'
 
 export const useListener = () => {
   const ABSOLUTE = useAbsoluteStore()
+  const HISTORY = useHistoryStore()
 
   const project = useProject()
 
@@ -25,6 +27,17 @@ export const useListener = () => {
     }
 
     const cb = async (e: KeyboardEvent) => {
+      // undo
+      if (e.ctrlKey && e.shiftKey) {
+        if (e.key === 'z' || e.key === 'Z') {
+          e.preventDefault()
+          e.stopPropagation()
+
+          HISTORY.back()
+
+          return
+        }
+      }
       // finder
       if (e.ctrlKey && (e.key === 'f' || e.key === 'F')) {
         e.preventDefault()

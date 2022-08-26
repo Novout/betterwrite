@@ -115,7 +115,10 @@ export default {
       editor: {
         italic: 'Add Italic',
         bold: 'Add Bold',
+        underline: 'Add Underline',
         delete: 'Delete',
+        undo: 'Text Undo',
+        undoEvent: 'Action Undo',
         swap: 'Change Position',
         to: 'Go To Next Position',
         dragtitle: 'Drag Position',

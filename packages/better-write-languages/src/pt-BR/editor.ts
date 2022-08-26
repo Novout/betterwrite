@@ -117,7 +117,10 @@ export default {
       editor: {
         italic: 'Adicionar Itálico',
         bold: 'Adicionar Negrito',
+        underline: 'Adicionar Sublinhado',
         delete: 'Deletar',
+        undo: 'Desfazer Texto',
+        undoEvent: 'Desfazer Ação',
         swap: 'Trocar de Posição',
         to: 'Ir Para Posição Seguinte',
       },
