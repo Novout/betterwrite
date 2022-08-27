@@ -342,7 +342,7 @@ export const useBlockText = ({
               type: 'insert',
             },
             {
-              index: value + 1,
+              index: value,
               entity: paragraph,
               type: 'insert',
             },
@@ -487,6 +487,18 @@ export const useBlockText = ({
       emitter.emit('entity-text-focus', {
         target: index.value + 1,
         position: 'auto',
+      })
+
+      await nextTick
+
+      HISTORY.add({
+        items: [
+          {
+            index: index.value + 1,
+            entity: props.entity,
+            type: 'insert',
+          },
+        ],
       })
 
       return

@@ -6,6 +6,7 @@ import { GlobalState } from 'better-write-types'
 import { useProjectStore } from './project'
 import { useContextStore } from './context'
 import { useDOCXStore } from './docx'
+import { useHistoryStore } from './history'
 
 export const useGlobalStore = defineStore('global', {
   state: (): GlobalState => {
@@ -19,6 +20,7 @@ export const useGlobalStore = defineStore('global', {
       const docx = useDOCXStore()
       const absolute = useAbsoluteStore()
       const project = useProjectStore()
+      const history = useHistoryStore()
 
       context.$reset()
       absolute.$reset()
@@ -26,6 +28,7 @@ export const useGlobalStore = defineStore('global', {
       pdf.resetStyles()
       docx.$reset()
       project.$reset()
+      history.$reset()
     },
   },
 })
