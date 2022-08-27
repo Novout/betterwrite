@@ -8,7 +8,7 @@
     >
       <EditorProjectPreferencesHeader @hover="(v) => (isHoveredHeader = v)" />
       <div
-        class="flex flex-col sm:flex-row flex-1 w-full wb-scroll sm:overflow-hidden"
+        class="flex flex-col sm:flex-row flex-none sm:flex-1 w-full wb-scroll"
       >
         <EditorProjectPreferencesAside @section="(i) => (section = i)" />
         <EditorProjectPreferencesContainer :section="section" />
