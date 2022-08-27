@@ -25,9 +25,54 @@ export const PluginThemeContent = (
     const value = ThemeNormalize(theme)
 
     setContentTheme(value)
+    setStyleColorTheme(value)
     setEditorLogo(theme, hooks.utils)
 
     emitter.emit('plugin-theme-set-logo')
+  }
+
+  const setStyleColorTheme = (theme: string) => {
+    const setColor = (color: string) => {
+      document.head
+        .querySelector('[name~=msapplication-TileColor][content]')
+        ?.remove()
+      document.head.querySelector('[name~=theme-color][content]')?.remove()
+
+      const colorDef = document.createElement('meta')
+      colorDef.name = 'theme-color'
+      colorDef.content = color
+
+      const colorMs = document.createElement('meta')
+      colorMs.name = 'msapplication-TileColor'
+      colorMs.content = color
+
+      document.getElementsByTagName('head')[0].appendChild(colorDef)
+      document.getElementsByTagName('head')[0].appendChild(colorMs)
+    }
+    // custom favicon
+    switch (theme) {
+      case 'betterwrite-light':
+        setColor('#e9eaee')
+        break
+      case 'betterwrite-dark':
+        setColor('#1F2937')
+        break
+      case 'betterwrite-rise':
+        setColor('#373d66')
+        break
+      case 'betterwrite-harmonic':
+        setColor('#b6ceeb')
+        break
+      case 'betterwrite-ascend':
+        setColor('#fa8373')
+        break
+      case 'betterwrite-infinity':
+        setColor('#242424')
+        break
+      default:
+        setColor('#1F2937')
+        break
+    }
   }
 
   const setDefaultColorTheme = (): BetterWriteThemes => {
