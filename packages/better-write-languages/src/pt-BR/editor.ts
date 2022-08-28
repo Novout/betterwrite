@@ -117,7 +117,10 @@ export default {
       editor: {
         italic: 'Adicionar Itálico',
         bold: 'Adicionar Negrito',
+        underline: 'Adicionar Sublinhado',
         delete: 'Deletar',
+        undo: 'Desfazer Texto',
+        undoEvent: 'Desfazer Ação',
         swap: 'Trocar de Posição',
         to: 'Ir Para Posição Seguinte',
       },
@@ -214,7 +217,6 @@ export default {
   },
   window: {
     confirmConfiguration: 'Você quer sair salvando as configurações?',
-    confirmClearLogger: 'Você quer excluir todos os dados?',
     saveDropbox: 'Você tem certeza em salvar este arquivo no Dropbox?',
     saveLocal: 'Você tem certeza em salvar este arquivo?',
     deleteChapterPage: 'Você tem certeza em excluir o capítulo atual?',
@@ -284,9 +286,6 @@ export default {
     project: {
       title: 'Projeto',
       addons: {
-        logger: {
-          title: 'Ações',
-        },
         textSwitcher: {
           title: 'Substituir Texto',
         },

@@ -196,6 +196,17 @@ export const useContextStore = defineStore('context', {
 
       this.entities = useUtils().array().insert(this.entities, index, entity)
     },
+    delete(entity: Entity, index: number) {
+      if (!entity) return
+
+      const ABSOLUTE = useAbsoluteStore()
+
+      ABSOLUTE.entity.menu = false
+
+      this.entities = this.entities.filter(
+        (item: Entity) => this.entities.indexOf(item) !== index
+      )
+    },
     newInDropFile({ old, insert }: { old: Entity; insert: Entity }) {
       if (!old) return
 

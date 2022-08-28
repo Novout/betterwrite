@@ -5,7 +5,6 @@
     <EditorEntityDefaultComment v-else-if="ABSOLUTE.entity.comment" />
     <EditorEntityDefaultCustomize v-else-if="ABSOLUTE.entity.customize" />
     <EditorPagesDrafts v-else-if="ABSOLUTE.pages.drafts" />
-    <ProviderLogger v-else-if="ABSOLUTE.logger" />
     <ProviderProjectCreate v-else-if="ABSOLUTE.project.new" />
     <EditorProjectStatistics v-else-if="ABSOLUTE.project.statistics" />
     <EditorProjectCorrector v-else-if="ABSOLUTE.project.corrector" />

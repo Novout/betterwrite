@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="flex wb-text items-center justify-between flex-col w-full sm:w-40 shadow-xl h-full"
+    class="flex wb-text items-center justify-between flex-col w-full sm:w-40 shadow-xl sm:h-full h-50"
   >
     <div
       class="flex shadow transition-colors flex-1 gap-2 justify-between px-3 items-center w-full cursor-pointer hover:bg-theme-background-opacity-1"

@@ -6,8 +6,10 @@ import useEmitter from './emitter'
 import { usePlugin } from 'better-write-plugin-core'
 import { useI18n } from 'vue-i18n'
 import { useStorage } from './storage/storage'
+import { useHistoryStore } from '@/store/history'
 
 export const useEntity = () => {
+  const HISTORY = useHistoryStore()
   const CONTEXT = useContextStore()
 
   const env = useEnv()
@@ -182,7 +184,15 @@ export const useEntity = () => {
         target: index - 1,
       })
 
-      plugin.emit('plugin-entity-delete', index)
+      HISTORY.add({
+        items: [
+          {
+            index,
+            entity,
+            type: 'delete',
+          },
+        ],
+      })
 
       await nextTick
 

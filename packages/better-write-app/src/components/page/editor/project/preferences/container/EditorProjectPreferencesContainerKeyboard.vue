@@ -13,8 +13,20 @@
         shortcut="CTRL + B"
       />
       <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.shortcuts.editor.underline')"
+        shortcut="CTRL + U"
+      />
+      <EditorProjectPreferencesKeyboardItem
         :title="t('editor.preferences.shortcuts.editor.delete')"
         shortcut="CTRL + D"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.shortcuts.editor.undo')"
+        shortcut="CTRL + Z"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.preferences.shortcuts.editor.undoEvent')"
+        shortcut="CTRL + SHIFT + Z"
       />
       <EditorProjectPreferencesKeyboardItem
         :title="t('editor.preferences.shortcuts.editor.swap')"

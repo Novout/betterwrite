@@ -14,6 +14,7 @@ import { useStorage } from '../storage/storage'
 import { useUtils } from '../utils'
 import { html } from '../raw'
 import { useProjectStore } from '@/store/project'
+import { useHistoryStore } from '@/store/history'
 
 export const useBlockText = ({
   props,
@@ -28,6 +29,7 @@ export const useBlockText = ({
   isSalvageable: Ref<boolean>
   index: Ref<ID<number>>
 }) => {
+  const HISTORY = useHistoryStore()
   const CONTEXT = useContextStore()
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
@@ -140,11 +142,21 @@ export const useBlockText = ({
   const onKeyboard = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLDivElement
 
-    const value = raw.v2().caret().value(_input)
     const start = raw.v2().caret().start(_input)
     const offset = utils.cursor().getCurrentCursorPosition(_input)
 
     onDynamicInserts(e, offset)
+
+    if (e.ctrlKey && e.shiftKey) {
+      if (e.key === 'z' || e.key === 'Z') {
+        e.preventDefault()
+        e.stopPropagation()
+
+        HISTORY.back()
+
+        return
+      }
+    }
 
     if (e.shiftKey) {
       if (e.key === 'ArrowUp') {
@@ -256,13 +268,25 @@ export const useBlockText = ({
             break
         }
 
-        CONTEXT.insert(factory.entity().create(type), value)
+        const entity = factory.entity().create(type)
+
+        CONTEXT.insert(entity, value)
 
         await nextTick
 
         emitter.emit('entity-text-focus', {
           target: value,
           position: 'auto',
+        })
+
+        HISTORY.add({
+          items: [
+            {
+              index: value,
+              entity,
+              type: 'insert',
+            },
+          ],
         })
       }
 
@@ -291,17 +315,38 @@ export const useBlockText = ({
             break
         }
 
-        CONTEXT.insert(factory.entity().create(type), value)
+        const entity = factory.entity().create(type)
+
+        CONTEXT.insert(entity, value)
 
         await nextTick
 
-        CONTEXT.insert(factory.entity().create('paragraph'), value + 1)
+        const paragraph = factory.entity().create('paragraph')
+
+        CONTEXT.insert(paragraph, value + 1)
 
         await nextTick
 
         emitter.emit('entity-text-focus', {
           target: value + 1,
           position: 'auto',
+        })
+
+        await nextTick
+
+        HISTORY.add({
+          items: [
+            {
+              index: value,
+              entity,
+              type: 'insert',
+            },
+            {
+              index: value,
+              entity: paragraph,
+              type: 'insert',
+            },
+          ],
         })
       }
 
@@ -325,7 +370,9 @@ export const useBlockText = ({
 
             await nextTick
 
-            CONTEXT.insert(factory.entity().create('paragraph'), value + 1)
+            const paragraph = factory.entity().create('paragraph')
+
+            CONTEXT.insert(paragraph, value + 1)
 
             await nextTick
 
@@ -335,6 +382,21 @@ export const useBlockText = ({
             })
 
             await storage.normalize()
+
+            HISTORY.add({
+              items: [
+                {
+                  index: value,
+                  entity,
+                  type: 'insert',
+                },
+                {
+                  index: value + 1,
+                  entity: paragraph,
+                  type: 'insert',
+                },
+              ],
+            })
           })
           .catch(() => {})
       }
@@ -427,6 +489,18 @@ export const useBlockText = ({
         position: 'auto',
       })
 
+      await nextTick
+
+      HISTORY.add({
+        items: [
+          {
+            index: index.value + 1,
+            entity: props.entity,
+            type: 'insert',
+          },
+        ],
+      })
+
       return
     }
 
@@ -452,6 +526,18 @@ export const useBlockText = ({
       emitter.emit('entity-text-focus', {
         position: 'auto',
         target: index.value + 1,
+      })
+
+      await nextTick
+
+      HISTORY.add({
+        items: [
+          {
+            index: index.value + 1,
+            entity: item,
+            type: 'insert',
+          },
+        ],
       })
     }
   }

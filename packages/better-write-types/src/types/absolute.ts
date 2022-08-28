@@ -60,7 +60,6 @@ export interface AbsoluteState {
   aside: boolean
   modal: AbsoluteStateModal
   shortcuts: AbsoluteStateShortcuts
-  logger: boolean
   pdf: AbsoluteStatePDF
   docx: AbsoluteStateDOCX
   auth: AbsoluteStateAuth

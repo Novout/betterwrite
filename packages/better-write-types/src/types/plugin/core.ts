@@ -5,7 +5,6 @@ import {
   AuthState,
   ContextState,
   EditorState,
-  LoggerState,
   PDFState,
   DOCXState,
   ProjectState,
@@ -65,7 +64,6 @@ export type ExistingStores =
   | 'auth'
   | 'context'
   | 'editor'
-  | 'logger'
   | 'pdf'
   | 'docx'
   | 'project'
@@ -83,7 +81,6 @@ export interface PluginStores {
   AUTH: PluginStore<'auth', AuthState, any, any>
   CONTEXT: PluginStore<'context', ContextState, any, any>
   EDITOR: PluginStore<'editor', EditorState, any, any>
-  LOGGER: PluginStore<'logger', LoggerState, any, any>
   PDF: PluginStore<'pdf', PDFState, any, any>
   DOCX: PluginStore<'docx', DOCXState, any, any>
   PROJECT: PluginStore<'project', ProjectState, any, any>

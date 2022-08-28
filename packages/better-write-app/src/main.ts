@@ -36,11 +36,11 @@ app.config.globalProperties.emitter = emitter
 
 app.use(pdf)
 app.use(router)
-app.use(store as any)
+app.use(store)
 app.use(i18n)
-app.use(motion as any)
+app.use(motion)
 app.use(head)
-app.use(core as any)
+app.use(core)
 app.use(tooltip, {
   themes: {
     'better-write': {

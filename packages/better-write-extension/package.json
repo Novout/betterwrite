@@ -1,5 +1,5 @@
 {
-	"name": "better-write-plugin-theme",
+	"name": "better-write-extension",
 	"version": "0.16.15",
 	"author": "Novout",
 	"license": "MIT",
@@ -14,37 +14,24 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"serve": "rimraf ./dist && unbuild",
-		"test": "echo \"Error: no test specified\"",
 		"build": "rimraf ./dist && unbuild",
 		"lint": "prettier --write src/"
 	},
 	"files": [
 		"dist/**/*",
-		"css/**/*",
 		"package.json",
 		"LICENSE",
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-plugin-core": "^0.16.15",
+		"@zip.js/zip.js": "2.6.18",
 		"better-write-types": "^0.16.15",
-		"pinia": "2.0.6",
-		"vue-demi": "latest"
-	},
-	"peerDependencies": {
-		"@vue/composition-api": "^1.0.0-rc.1",
-		"vue": "^2.0.0 || >=3.0.0"
-	},
-	"peerDependenciesMeta": {
-		"@vue/composition-api": {
-			"optional": true
-		}
+		"destr": "1.1.1",
+		"xml-js": "1.6.11"
 	},
 	"devDependencies": {
-		"@vuedx/typescript-plugin-vue": "0.7.4",
 		"prettier": "2.5.1",
 		"rimraf": "3.0.2",
-		"unbuild": "0.7.0",
-		"vue": "3.2.29"
+		"unbuild": "0.7.0"
 	}
 }

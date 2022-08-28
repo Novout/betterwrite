@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="./.github/logo.png" height="220">
+  <a href="https://betterwrite.io/">
+    <img src="./.github/logo.png" height="220">
+  </a>
 </p>
 
 <h1 align="center">
@@ -30,6 +32,13 @@ A Modern Word Processor
 - ✅ Mobile & Desktop (PWA)
 - ✅ PDF, DOCX, HTML and TXT Generator
 
+# Setup
+
+- Node 16.x
+- Vue 3.x
+- Vite 2.9
+- WindiCSS 3.x
+
 # Motivation
 
 There are no word processors on the market that are not inextricable from the context itself. This approach makes it difficult to integrate other resources, limiting creative possibilities for writers and publishers. __Better Write__ offers an individual and reactive approach to any item that is entered in the editor.
@@ -44,7 +53,9 @@ There are no word processors on the market that are not inextricable from the co
 
 # Entity Model
 
-Better Write works with the Entity Model, where each item in the editor is unique and independent of other content. This model allows the creation of resources that do not necessarily function as texts, such as Lists, Checkboxes, Images and Drawings.
+Better Write works with the Entity Model, where each item in the editor is unique and independent of other content. This model allows the creation of resources that do not necessarily function as texts, such as Lists, Checkboxes, Images and Drawings. The generators do not need to extract data from the editor because with the Entity Model we can standardize the project data, allowing the extensions (.PDF, .DOCX, .HTML, .TXT) to work independently and a new external extensions support.
+
+<img src="./.github/entity.gif" />
 
 <br>
 
@@ -58,7 +69,33 @@ Better Write works with the Entity Model, where each item in the editor is uniqu
 
 <br>
 
-The generators do not need to extract data from the editor because with the Entity Model we can standardize the project data, allowing the extensions (.PDF, .DOCX, .TXT) to work independently.
+# Resources
+
+Better Writer brings features beyond what traditional word processors can offer, mainly because it has a much broader purpose.
+
+## Dynamic Customize Documents
+
+Write without worrying about customization, leaving the hard work only for the time to finish the project.
+
+<img src="./.github/pdf.png" />
+
+## Annotations
+
+Keep your notes in an exclusive space, without interfering with the main project.
+
+<img src="./.github/annotations.png" />
+
+## Drafts
+
+Don't worry about rewriting. Save your chapters as a draft in case you want to retrieve them in the future.
+
+<img src="./.github/drafts.png" />
+
+## Statistics
+
+Consult in depth the current state of your project with a range of tools at your disposal.
+
+<img src="./.github/statistics.png" />
 
 # Changelog
 
