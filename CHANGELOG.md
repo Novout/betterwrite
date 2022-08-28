@@ -1,6 +1,19 @@
-# Changelog (20/08/2022)
+# Changelog (28/08/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.15
+
+* **chore:** readme new features [5298b906]
+* **fix(preferences):** mobile overflow scroll [a41df8ff]
+* **feat(theme):** dynamic theme-color [987c186c]
+* **fix(history):** unshift in exact index value for instant tick [888c11af]
+* **test:** remove vitest in empty package tests [85839862]
+* **ci:** update tests to node 16.x [be8bbcf0]
+* **chore(package):** remove logger plugin [8ebb9a79]
+* **feat(extension):** .bw zip sets in json archives [5e506a85]
+* **feat(editor):** underline and undo commands [ed4ad60e]
+* **feat(editor):** history undo inserts and delete [ff23aad1]
 
 ### v0.16.14
 

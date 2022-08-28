@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-importer",
-	"version": "0.16.14",
+	"version": "0.16.15",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -26,9 +26,9 @@
 	],
 	"dependencies": {
 		"@zip.js/zip.js": "2.6.18",
-    	"better-write-extension": "^0.16.14",
-		"better-write-plugin-core": "^0.16.14",
-		"better-write-types": "^0.16.14",
+		"better-write-extension": "^0.16.15",
+		"better-write-plugin-core": "^0.16.15",
+		"better-write-types": "^0.16.15",
 		"destr": "1.1.1",
 		"vue-demi": "latest",
 		"xml-js": "1.6.11"
