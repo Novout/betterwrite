@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-exporter-pdf",
-	"version": "0.16.15",
+	"version": "0.16.16",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -19,10 +19,10 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-contenteditable-ast": "^0.16.15",
-		"better-write-plugin-core": "^0.16.15",
-		"better-write-plugin-theme": "^0.16.15",
-		"better-write-types": "^0.16.15",
+		"better-write-contenteditable-ast": "^0.16.16",
+		"better-write-plugin-core": "^0.16.16",
+		"better-write-plugin-theme": "^0.16.16",
+		"better-write-types": "^0.16.16",
 		"pinia": "2.0.6",
 		"vue-demi": "latest",
 		"vue-toastification": "2.0.0-rc.5",
