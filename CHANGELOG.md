@@ -1,6 +1,10 @@
-# Changelog (28/08/2022)
+# Changelog (29/08/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.16
+
+* **fix(storage):** logger object submit [19a4bc7c]
 
 ### v0.16.15
 
