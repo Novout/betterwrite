@@ -64,19 +64,55 @@ useRegisterSW({
   },
 })
 
-Sentry.init({
-  app,
-  dsn: env.getSentryDsn(),
-  integrations: [
-    new BrowserTracing({
-      routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-      tracingOrigins: ['localhost', env.getProdUrl(), /^\//],
-    }),
-  ],
-  logErrors: true,
-  tracesSampleRate: env.isDev() ? 0.0 : 0.25,
-  trackComponents: true,
-  hooks: ['activate', 'mount', 'update', 'destroy', 'create'],
-})
+// @ts-ignore
+const { t } = i18n.global
+
+if (!env.isDev()) {
+  Sentry.init({
+    app,
+    dsn: env.getSentryDsn(),
+    integrations: [
+      new BrowserTracing({
+        routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+        tracingOrigins: [env.getProdUrl(), /^\//],
+      }),
+    ],
+    beforeSend(event, _) {
+      if (event.exception) {
+        Sentry.showReportDialog({
+          eventId: event.event_id,
+          // @ts-ignore
+          title: t('plugin.sentry.errorWidget.title'),
+          // @ts-ignore
+          subtitle: t('plugin.sentry.errorWidget.subtitle'),
+          // @ts-ignore
+          subtitle2: t('plugin.sentry.errorWidget.subtitle2'),
+          // @ts-ignore
+          labelName: t('plugin.sentry.errorWidget.labelName'),
+          // @ts-ignore
+          labelEmail: t('plugin.sentry.errorWidget.labelEmail'),
+          // @ts-ignore
+          labelComments: t('plugin.sentry.errorWidget.labelComments'),
+          // @ts-ignore
+          labelClose: t('plugin.sentry.errorWidget.labelClose'),
+          // @ts-ignore
+          labelSubmit: t('plugin.sentry.errorWidget.labelSubmit'),
+          // @ts-ignore
+          errorGeneric: t('plugin.sentry.errorWidget.errorGeneric'),
+          // @ts-ignore
+          errorFormEntry: t('plugin.sentry.errorWidget.errorFormEntry'),
+          // @ts-ignore
+          successMessage: t('plugin.sentry.errorWidget.successMessage'),
+        })
+      }
+
+      return event
+    },
+    logErrors: true,
+    tracesSampleRate: 0.5,
+    trackComponents: true,
+    hooks: ['activate', 'mount', 'update', 'destroy', 'create'],
+  })
+}
 
 router.isReady().then(() => app.mount('#app'))

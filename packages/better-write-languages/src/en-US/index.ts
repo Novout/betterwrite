@@ -8,6 +8,7 @@ import dashboard from './dashboard'
 import questions from './questions'
 import plans from './plans'
 import logger from './plugin/logger'
+import sentry from './plugin/sentry'
 
 export default {
   editor,
@@ -21,6 +22,7 @@ export default {
   questions,
   plugin: {
     logger,
+    sentry,
   },
   generics: {
     input: {
