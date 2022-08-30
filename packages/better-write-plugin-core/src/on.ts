@@ -406,6 +406,17 @@ export const externals = () => {
     )
   }
 
+  const PluginAnnotationsReset = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-annotations-reset', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -422,6 +433,7 @@ export const externals = () => {
     PluginAnnotationsDeleteFolder,
     PluginAnnotationsCreateFile,
     PluginAnnotationsDeleteFile,
+    PluginAnnotationsReset,
   }
 }
 

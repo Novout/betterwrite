@@ -53,6 +53,7 @@ export type PluginEmitterName =
   | 'plugin-annotations-folder-graph-open'
   | 'plugin-annotations-file-create'
   | 'plugin-annotations-file-delete'
+  | 'plugin-annotations-reset'
 
 export interface PluginEmitter {
   on: (name: PluginEmitterName, callback: (...c: any) => any) => void

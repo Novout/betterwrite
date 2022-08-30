@@ -198,4 +198,11 @@ export const PluginAnnotationsSet = (
     },
     () => {},
   ])
+
+  On.externals().PluginAnnotationsReset(emitter, [
+    () => {
+      reset()
+    },
+    () => {},
+  ])
 }

@@ -1,6 +1,11 @@
-# Changelog (29/08/2022)
+# Changelog (30/08/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.17
+
+* **feat(sentry):** log tracking and prod mode [e423fc0d]
+* **fix(annotations):** unmount component in base setting [b575487a]
 
 ### v0.16.16
 
