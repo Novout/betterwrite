@@ -1,6 +1,16 @@
-# Changelog (30/08/2022)
+# Changelog (03/09/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.18
+
+* **test(ast):** occurrences in utils string target [fbf86b52]
+* **fix(ast):** correct search occurrences in a raw text [92e5a55a]
+* **fix(graph):** individual chapters approach [7eeba2a0]
+* **chore(theme):** infinity selection color [67eeb249]
+* **feat(editor):** globar bar loader [e6e6ee95]
+* **chore:** readme badges [7a2a922a]
+* **refactor(lang):** promise results in switch language [79f36167]
 
 ### v0.16.17
 

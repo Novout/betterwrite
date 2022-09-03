@@ -1,6 +1,6 @@
 {
 	"name": "better-write-languages",
-	"version": "0.16.17",
+	"version": "0.16.18",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -25,8 +25,8 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-plugin-exporter-pdf": "^0.16.17",
-    "better-write-types": "^0.16.17"
+		"better-write-plugin-exporter-pdf": "^0.16.18",
+		"better-write-types": "^0.16.18"
 	},
 	"devDependencies": {
 		"prettier": "2.5.1",
