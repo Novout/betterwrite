@@ -8,12 +8,13 @@
 betterwrite.io
 </h1>
 <h4 align="center">
-A Modern Word Processor
+A Modern Word Processor.
 <h4>
 <p align="center">
   <a href="https://better-write.vercel.app"><img src="https://img.shields.io/github/workflow/status/Novout/generi/Tests?style=for-the-badge&color=cbd5e1&"></a>
   <a href="https://better-write.vercel.app"><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
   <a href="https://better-write.vercel.app"><img src="https://img.shields.io/github/lerna-json/v/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
+  <a><img src="https://img.shields.io/badge/-BETA%20Phase-yellow?style=for-the-badge" /></a>
 <p>
 
 <br>

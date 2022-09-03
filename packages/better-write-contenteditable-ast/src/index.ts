@@ -76,3 +76,5 @@ export const parse = (row: string) => {
 
   return nodes
 }
+
+export * as ASTUtils from './utils'

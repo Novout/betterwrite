@@ -1,3 +1,5 @@
+import { LanguageRaw } from 'better-write-types'
+
 export const VueI18nLocales = [
   {
     name: 'Português',
@@ -26,6 +28,4 @@ export const VueI18nSEO = [
   },
 ]
 
-export type Language = 'Português do Brasil' | 'English'
-
-export const Languages: Language[] = ['Português do Brasil', 'English']
+export const LanguagesRaw: LanguageRaw[] = ['Português do Brasil', 'English']

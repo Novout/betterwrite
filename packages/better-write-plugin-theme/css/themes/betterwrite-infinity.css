@@ -206,6 +206,6 @@
   --scr-track: #222;
   --scr-thumb: #262626;
   --scr-thumb-hover: #333333;
-  --wb-selection: rgba(0, 255, 30, 0.12);
-  --wb-text-selection: #e5e7eb;
+  --wb-selection: #e5e7eb;
+  --wb-text-selection: #222;
 }

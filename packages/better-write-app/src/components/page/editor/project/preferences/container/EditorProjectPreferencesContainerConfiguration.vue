@@ -4,7 +4,7 @@
       <PreferencesContainerTitle> Idioma </PreferencesContainerTitle>
       <div>
         <div
-          v-for="(language, index) in Languages"
+          v-for="(language, index) in LanguagesRaw"
           :key="index"
           :class="[
             locale === localeToRaw(language)
@@ -12,7 +12,7 @@
               : '',
           ]"
           class="flex gap-2 items-center pl-2 cursor-pointer py-1 w-full"
-          @click.prevent.stop="onSwitchLanguage(language)"
+          @click.prevent.stop="onClickLanguage(language)"
         >
           <IconFlagBrazil
             v-if="language === 'Português do Brasil'"
@@ -70,44 +70,25 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  import { Language, Languages } from 'better-write-languages'
+  import {
+    LanguagesRaw,
+    localeToRaw,
+    onSwitchLanguage,
+  } from 'better-write-languages'
   import { useEditorStore } from '@/store/editor'
-  import { useNProgress } from '@vueuse/integrations/useNProgress'
+  import { useBar } from '@/use/global/bar'
+  import { LanguageRaw } from 'better-write-types'
 
   const EDITOR = useEditorStore()
 
   const { t, locale } = useI18n()
-  const { isLoading } = useNProgress()
+  const bar = useBar()
 
-  const localeToRaw = (lang: Language) => {
-    return (
-      {
-        'Português do Brasil': 'br',
-        English: 'en',
-      }[lang] || 'en'
-    )
-  }
-
-  const onSwitchLanguage = (lang: Language) => {
-    isLoading.value = true
-
-    const set =
-      {
-        'Português do Brasil': 'br',
-        English: 'en',
-      }[lang] || 'en'
-
-    localStorage.setItem('lang', set)
-    locale.value = set
-
-    const iso =
-      {
-        en: 'en-US',
-        br: 'pt-BR',
-      }[set] || 'en-US'
-
-    ;(document.querySelector('html') as HTMLElement).lang = iso
-
-    isLoading.value = false
+  const onClickLanguage = (lang: LanguageRaw) => {
+    bar.load(() => {
+      onSwitchLanguage(lang).then((set) => {
+        locale.value = set
+      })
+    })
   }
 </script>

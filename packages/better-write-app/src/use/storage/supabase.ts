@@ -1,7 +1,6 @@
 import { useAbsoluteStore } from '@/store/absolute'
 import { useAuthStore } from '@/store/auth'
 import { createClient } from '@supabase/supabase-js'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import {
   ProjectObject,
   Maybe,
@@ -13,6 +12,7 @@ import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
 import { useFormat } from '../format'
+import { useBar } from '../global/bar'
 import { useProject } from '../project'
 import { useUtils } from '../utils'
 import { useLocalStorage } from './local'
@@ -24,8 +24,8 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 export const s = createClient(supabaseUrl, supabaseAnonKey)
 
 export const useSupabase = () => {
-  const ABSOLUTE = useAbsoluteStore()
   const AUTH = useAuthStore()
+  const ABSOLUTE = useAbsoluteStore()
 
   const toast = useToast()
   const { t } = useI18n()
@@ -36,7 +36,7 @@ export const useSupabase = () => {
   const router = useRouter()
   const format = useFormat()
   const utils = useUtils()
-  const { isLoading } = useNProgress()
+  const bar = useBar()
 
   const loginWithEmailAndPassword = (
     { email, password }: { email: string; password: string },
@@ -71,36 +71,36 @@ export const useSupabase = () => {
     provider: SupabaseIntegrations,
     notification: boolean = true
   ) => {
-    isLoading.value = true
-
     toast.info(t('toast.generics.load'))
 
-    s.auth
-      .signIn({ provider }, { redirectTo: env.getCorrectLocalUrl() })
-      .then(async ({ error }) => {
-        if (error) throw error
+    bar.load(() => {
+      s.auth
+        .signIn({ provider }, { redirectTo: env.getCorrectLocalUrl() })
+        .then(async ({ error }) => {
+          if (error) throw error
 
-        // if (notification) toast(t('editor.auth.login.success'))
-      })
-      .catch(() => {
-        if (notification) toast(t('editor.auth.login.error'))
-      })
-      .finally(() => {
-        ABSOLUTE.auth.supabase = false
-
-        isLoading.value = false
-      })
+          // if (notification) toast(t('editor.auth.login.success'))
+        })
+        .catch(() => {
+          if (notification) toast(t('editor.auth.login.error'))
+        })
+        .finally(() => {
+          ABSOLUTE.auth.supabase = false
+        })
+    })
   }
 
   const out = () => {
-    s.auth
-      .signOut()
-      .then(() => {
-        AUTH.account.user = null
+    bar.load(() => {
+      s.auth
+        .signOut()
+        .then(() => {
+          AUTH.account.user = null
 
-        router.push('/')
-      })
-      .finally(() => {})
+          router.push('/')
+        })
+        .finally(() => {})
+    })
   }
 
   const getProjects = async (): Promise<Maybe<ProjectObject[]>> => {
@@ -127,40 +127,10 @@ export const useSupabase = () => {
   }
 
   const saveProject = async (project?: ProjectObject) => {
-    isLoading.value = true
     toast.info(t('toast.generics.load'))
 
-    const { data, error } = await s.from('projects').upsert(
-      project
-        ? {
-            // @ts-ignore
-            id_user: AUTH.account.user.id,
-            ...project,
-          }
-        : {
-            // @ts-ignore
-            id_user: AUTH.account.user.id,
-            ...storage.getProjectObject(),
-          },
-      { onConflict: 'id' }
-    )
-
-    if (error) {
-      toast.error(error.message)
-
-      isLoading.value = false
-
-      return
-    }
-
-    if (data[0]?.id) {
-      AUTH.account.project_id_activity = data[0].id
-
-      await storage.normalize()
-
-      await storage.purge()
-
-      const { error: err } = await s.from('projects').upsert(
+    bar.load(async () => {
+      const { data, error } = await s.from('projects').upsert(
         project
           ? {
               // @ts-ignore
@@ -175,18 +145,43 @@ export const useSupabase = () => {
         { onConflict: 'id' }
       )
 
-      if (err) {
-        toast.error(err.message)
-
-        isLoading.value = false
+      if (error) {
+        toast.error(error.message)
 
         return
       }
-    }
 
-    isLoading.value = false
+      if (data[0]?.id) {
+        AUTH.account.project_id_activity = data[0].id
 
-    toast.success(t('toast.project.save'))
+        await storage.normalize()
+
+        await storage.purge()
+
+        const { error: err } = await s.from('projects').upsert(
+          project
+            ? {
+                // @ts-ignore
+                id_user: AUTH.account.user.id,
+                ...project,
+              }
+            : {
+                // @ts-ignore
+                id_user: AUTH.account.user.id,
+                ...storage.getProjectObject(),
+              },
+          { onConflict: 'id' }
+        )
+
+        if (err) {
+          toast.error(err.message)
+
+          return
+        }
+      }
+
+      toast.success(t('toast.project.save'))
+    })
   }
 
   const deleteProject = async (context: ProjectObject) => {
@@ -209,15 +204,13 @@ export const useSupabase = () => {
   const loadProject = async (context: ProjectObject) => {
     AUTH.account.project_id_activity = context.id || null
 
-    isLoading.value = true
-
-    storage.normalize().then(() => {
-      project.onLoadProject(context, false).then(() => {
-        local.onSaveProject(false).then(() => {
-          router.push('/').finally(() => {
-            isLoading.value = false
-
-            toast.success(t('toast.project.load'))
+    bar.load(() => {
+      storage.normalize().then(() => {
+        project.onLoadProject(context, false).then(() => {
+          local.onSaveProject(false).then(() => {
+            router.push('/').finally(() => {
+              toast.success(t('toast.project.load'))
+            })
           })
         })
       })

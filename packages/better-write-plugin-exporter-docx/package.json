@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-exporter-docx",
-	"version": "0.16.17",
+	"version": "0.16.18",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -19,9 +19,9 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-contenteditable-ast": "^0.16.17",
-		"better-write-plugin-core": "^0.16.17",
-		"better-write-types": "^0.16.17",
+		"better-write-contenteditable-ast": "^0.16.18",
+		"better-write-plugin-core": "^0.16.18",
+		"better-write-types": "^0.16.18",
 		"docx": "7.2.0",
 		"file-saver": "2.0.5",
 		"pinia": "2.0.6",
