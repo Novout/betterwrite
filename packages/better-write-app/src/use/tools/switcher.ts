@@ -2,6 +2,7 @@ import { useAbsoluteStore } from '@/store/absolute'
 import { useContextStore } from '@/store/context'
 import { useExternalsStore } from '@/store/externals'
 import { useProjectStore } from '@/store/project'
+import { ASTUtils } from 'better-write-contenteditable-ast'
 import { ContextState, Entity } from 'better-write-types'
 import { nextTick, reactive } from 'vue'
 import { useScroll } from '../scroll'
@@ -62,19 +63,18 @@ export const useSwitcher = () => {
 
     EXTERNALS.switcher.value = state.entry
 
-    PROJECT.pages.forEach((context: ContextState) => {
-      context.entities.forEach((e: Entity) => {
-        const raw = e.raw.split(' ')
+    PROJECT.pages.forEach((page: ContextState) => {
+      page.entities.forEach((entity: Entity) => {
+        const occurrences = ASTUtils.occurrences(
+          entity.raw,
+          state.entry || '',
+          true
+        )
 
-        raw.forEach((word) => {
-          console.log(word)
-          if (!state.entry) return
-
-          if (word.includes(state.entry)) {
-            state.listOfLettersExists.push({ entity: e, page: context })
-            state.maxLetterCounter++
-          }
-        })
+        if (occurrences > 0 && state.entry) {
+          state.listOfLettersExists.push({ entity, page })
+          state.maxLetterCounter++
+        }
       })
     })
 
