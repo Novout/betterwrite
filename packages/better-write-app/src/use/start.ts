@@ -45,6 +45,7 @@ import { useDOCXStore } from '@/store/docx'
 import { useTransformer } from './generator/transformer'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import * as VUEUSE_CORE from '@vueuse/core'
+import { useBar } from './global/bar'
 
 export const useStart = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -202,6 +203,7 @@ export const useStart = () => {
         toast: useToast(),
         breakpoints: useBreakpoint(),
         transformer: useTransformer(),
+        bar: useBar(),
         vueuse: {
           core: VUEUSE_CORE,
           integration: {

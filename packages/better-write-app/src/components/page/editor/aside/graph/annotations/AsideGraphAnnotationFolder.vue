@@ -29,7 +29,6 @@
   import { useAnnotations } from '@/use/annotations'
   import useEmitter from '@/use/emitter'
   import { useToggle } from '@vueuse/core'
-  import { usePlugin } from 'better-write-plugin-core'
   import { ProjectStateAnnotationFolder } from 'better-write-types'
   import { onMounted } from 'vue'
 
@@ -37,7 +36,6 @@
     folder: ProjectStateAnnotationFolder
   }>()
 
-  const plugin = usePlugin()
   const emitter = useEmitter()
   const annotations = useAnnotations()
   const [value, toggle] = useToggle(false)

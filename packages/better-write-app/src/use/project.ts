@@ -27,9 +27,9 @@ import { useI18n } from 'vue-i18n'
 import { read } from 'better-write-plugin-importer'
 import useEmitter from './emitter'
 import { writeBW } from 'better-write-extension'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useAuthStore } from '@/store/auth'
 import { useDOCXStore } from '@/store/docx'
+import { useBar } from './global/bar'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -48,43 +48,45 @@ export const useProject = () => {
   const raw = useRaw()
   const plugin = usePlugin()
   const breakpoints = useBreakpoint()
-  const { isLoading } = useNProgress()
   const emitter = useEmitter()
+  const bar = useBar()
   const { t } = useI18n()
 
   const external = () => {
     const n = async (type: ProjectType, skipAlert: boolean = false) => {
       if (!skipAlert && !confirm(t('toast.project.createAlert'))) return
 
-      PROJECT.new(
-        {
-          name: t('editor.aside.project.new.content.name'),
-          version: t('editor.aside.project.new.content.version'),
-          creator: t('editor.aside.project.new.content.creator'),
-          subject: t('editor.aside.project.new.content.subject'),
-          type,
-        },
-        t('editor.project.control.title', { suffix: 1 })
-      )
+      bar.load(async () => {
+        PROJECT.new(
+          {
+            name: t('editor.aside.project.new.content.name'),
+            version: t('editor.aside.project.new.content.version'),
+            creator: t('editor.aside.project.new.content.creator'),
+            subject: t('editor.aside.project.new.content.subject'),
+            type,
+          },
+          t('editor.project.control.title', { suffix: 1 })
+        )
 
-      await nextTick
+        await nextTick
 
-      AUTH.account.project_id_activity = null
+        AUTH.account.project_id_activity = null
 
-      CONTEXT.load()
+        CONTEXT.load()
 
-      ABSOLUTE.project.blocked = false
+        ABSOLUTE.project.blocked = false
 
-      if (!breakpoints.isMobile().value && type === 'creative')
-        ABSOLUTE.aside = true
+        if (!breakpoints.isMobile().value && type === 'creative')
+          ABSOLUTE.aside = true
 
-      if (!skipAlert) toast.success(t('toast.project.create'))
+        if (!skipAlert) toast.success(t('toast.project.create'))
 
-      await nextTick
+        await nextTick
 
-      emitter.emit('entity-text-focus', {
-        target: type === 'creative' ? 1 : 0,
-        position: 'start',
+        emitter.emit('entity-text-focus', {
+          target: type === 'creative' ? 1 : 0,
+          position: 'start',
+        })
       })
     }
 
@@ -92,18 +94,20 @@ export const useProject = () => {
   }
 
   const create = (project: ProjectStateOptions) => {
-    storage.normalize().then(async () => {
-      PROJECT.new(project, t('editor.project.control.title', { suffix: 1 }))
+    bar.load(() => {
+      storage.normalize().then(async () => {
+        PROJECT.new(project, t('editor.project.control.title', { suffix: 1 }))
 
-      await nextTick
+        await nextTick
 
-      CONTEXT.load(PROJECT.pages[0])
+        CONTEXT.load(PROJECT.pages[0])
 
-      AUTH.account.project_id_activity = null
+        AUTH.account.project_id_activity = null
 
-      await nextTick
+        await nextTick
 
-      toast.success(t('toast.project.create'))
+        toast.success(t('toast.project.create'))
+      })
     })
   }
 
@@ -159,63 +163,57 @@ export const useProject = () => {
   }
 
   const onExportProject = () => {
-    isLoading.value = true
+    bar.load(() => {
+      storage
+        .normalize()
+        .then(async () => {
+          const target = JSON.stringify(storage.getProjectObject())
+          const zip = await writeBW(target, utils().exportName('bw'))
 
-    storage
-      .normalize()
-      .then(async () => {
-        const target = JSON.stringify(storage.getProjectObject())
-        const zip = await writeBW(target, utils().exportName('bw'))
+          await saveAs(zip, utils().exportName('bw'))
 
-        await saveAs(zip, utils().exportName('bw'))
-
-        toast.success(t('toast.project.export'))
-      })
-      .catch(() => {
-        toast.error(t('toast.generics.error'))
-      })
-      .finally(() => {
-        isLoading.value = false
-      })
+          toast.success(t('toast.project.export'))
+        })
+        .catch(() => {
+          toast.error(t('toast.generics.error'))
+        })
+    })
   }
 
   const onExportProjectAs = () => {
-    storage
-      .normalize()
-      .then(async () => {
-        isLoading.value = true
-
-        const res = useFileSystemAccess({
-          dataType: 'Blob',
-          types: [
-            {
-              description: 'Better Write',
-              accept: {
-                'application/xml': ['.bw'],
+    bar.load(() => {
+      storage
+        .normalize()
+        .then(async () => {
+          const res = useFileSystemAccess({
+            dataType: 'Blob',
+            types: [
+              {
+                description: 'Better Write',
+                accept: {
+                  'application/xml': ['.bw'],
+                },
               },
-            },
-          ],
-          excludeAcceptAllOption: true,
+            ],
+            excludeAcceptAllOption: true,
+          })
+
+          if (!res.isSupported.value) return
+
+          const target = JSON.stringify(storage.getProjectObject())
+          const zip = await writeBW(target, utils().exportName('bw'))
+
+          res.data.value = zip
+          res.fileName.value = utils().exportName('bw')
+
+          await res.saveAs()
+
+          toast.success(t('toast.project.export'))
         })
-
-        if (!res.isSupported) return
-
-        const target = JSON.stringify(storage.getProjectObject())
-        const zip = await writeBW(target, utils().exportName('bw'))
-
-        res.data.value = zip
-        res.fileName.value = utils().exportName('bw')
-
-        await res.saveAs()
-
-        toast.success(t('toast.project.export'))
-      })
-      .catch(() => {
-        toast.warning(t('toast.generics.cancel'))
-      })
-      .finally(() => {
-        isLoading.value = false
-      })
+        .catch(() => {
+          toast.warning(t('toast.generics.cancel'))
+        })
+    })
   }
 
   const onImportProject = () => {

@@ -1,4 +1,4 @@
-import { Store } from 'pinia'
+import { StateTree, Store } from 'pinia'
 import { App } from 'vue-demi'
 import {
   AbsoluteState,
@@ -72,7 +72,7 @@ export type ExistingStores =
 
 export type PluginStore<
   T extends ExistingStores,
-  B = {},
+  B extends StateTree,
   C = {},
   D = {}
 > = Store<T, B, C, D>
@@ -121,6 +121,7 @@ export interface PluginHooks {
   toast: PluginHook
   breakpoints: PluginHook
   transformer: PluginHook
+  bar: PluginHook
   vueuse: {
     core: PluginHook
     integration: {

@@ -4,15 +4,15 @@
     class="flex justify-between items-center w-full"
   >
     <div
-      class="flex truncate gap-1 items-center text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+      class="cursor-pointer flex truncate gap-1 items-center text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+      @click="graph.base()"
     >
       <div>
         <IconOpenBook class="w-7 h-7" />
       </div>
       <p
         v-if="!env.isEmptyProject(PROJECT.name)"
-        class="cursor-pointer ml-1 truncate font-bold"
-        @click="graph.base()"
+        class="ml-1 truncate font-bold"
       >
         {{
           CONTEXT.entities[0].raw
