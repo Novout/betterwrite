@@ -6,6 +6,10 @@ import {
 import { useDefines } from './defines'
 
 export const usePopulate = () => {
+  const cmd = () => {
+    return ['entity purge']
+  }
+
   const debug = () => {
     const names = () => {
       const paragraph = () => {
@@ -275,5 +279,5 @@ export const usePopulate = () => {
     return { styles }
   }
 
-  return { docx, pdf, debug }
+  return { cmd, docx, pdf, debug }
 }

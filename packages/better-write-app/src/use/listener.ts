@@ -9,6 +9,7 @@ import { useProject } from './project'
 import { useUtils } from './utils'
 import { useHistoryStore } from '@/store/history'
 import { readBW } from 'better-write-extension'
+import { useEnv } from './env'
 
 export const useListener = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -20,6 +21,7 @@ export const useListener = () => {
   const { t } = useI18n()
   const plugin = usePlugin()
   const toast = useToast()
+  const env = useEnv()
 
   const keyboard = () => {
     const start = () => {
@@ -27,6 +29,19 @@ export const useListener = () => {
     }
 
     const cb = async (e: KeyboardEvent) => {
+      // dev mode
+      if (env.isDev()) {
+        // cmd
+        if (e.ctrlKey && e.shiftKey && (e.key === 'a' || e.key === 'A')) {
+          e.preventDefault()
+          e.stopPropagation()
+
+          ABSOLUTE.cmd = !ABSOLUTE.cmd
+
+          return
+        }
+      }
+
       // undo
       if (e.ctrlKey && e.shiftKey) {
         if (e.key === 'z' || e.key === 'Z') {

@@ -54,6 +54,7 @@ export interface AbsoluteStateLive {
 }
 
 export interface AbsoluteState {
+  cmd: boolean
   commands: boolean
   project: AbsoluteStateProject
   load: boolean

@@ -1,5 +1,6 @@
 <template>
   <teleport to="body">
+    <EditorDevCMD v-if="ABSOLUTE.cmd" />
     <EditorAuthLogin v-if="ABSOLUTE.auth.supabase" />
     <EditorEntityDefaultOptions v-else-if="ABSOLUTE.entity.menu" />
     <EditorEntityDefaultComment v-else-if="ABSOLUTE.entity.comment" />

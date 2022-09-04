@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 export const useAbsoluteStore = defineStore('absolute', {
   state: (): AbsoluteState => {
     return {
+      cmd: false,
       project: {
         new: false,
         configuration: false,
