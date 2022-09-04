@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-theme",
-	"version": "0.16.18",
+	"version": "0.16.19",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -26,8 +26,8 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-plugin-core": "^0.16.18",
-		"better-write-types": "^0.16.18",
+		"better-write-plugin-core": "^0.16.19",
+		"better-write-types": "^0.16.19",
 		"pinia": "2.0.6",
 		"vue-demi": "latest"
 	},

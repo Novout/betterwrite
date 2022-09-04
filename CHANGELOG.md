@@ -1,6 +1,11 @@
-# Changelog (03/09/2022)
+# Changelog (04/09/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.16.19
+
+* **feat(editor):** dev mode commands [0fb379a1]
+* **fix(factory):** unused generator json [ec4d1559]
 
 ### v0.16.18
 

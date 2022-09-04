@@ -1,6 +1,6 @@
 {
 	"name": "better-write-extension",
-	"version": "0.16.18",
+	"version": "0.16.19",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -25,7 +25,7 @@
 	],
 	"dependencies": {
 		"@zip.js/zip.js": "2.6.18",
-		"better-write-types": "^0.16.18",
+		"better-write-types": "^0.16.19",
 		"destr": "1.1.1",
 		"xml-js": "1.6.11"
 	},
