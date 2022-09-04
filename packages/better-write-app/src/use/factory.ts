@@ -5,7 +5,6 @@ import {
   ProjectStateTemplatesGenerator,
 } from 'better-write-types'
 import { useFormat } from './format'
-import { useUtils } from './utils'
 import { usePDFStore } from '@/store/pdf'
 import i18n from '@/lang'
 
@@ -14,7 +13,7 @@ export const useFactory = () => {
 
   const env = useEnv()
   const format = useFormat()
-  const utils = useUtils()
+  // @ts-ignore
   const { t } = i18n.global
 
   const entity = () => {
@@ -53,7 +52,6 @@ export const useFactory = () => {
         paragraph: {
           active: false,
           class: null,
-          generator: generator(),
         },
       }
     }
