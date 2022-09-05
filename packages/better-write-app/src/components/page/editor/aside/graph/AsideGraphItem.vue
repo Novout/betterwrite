@@ -125,19 +125,19 @@
       <div class="flex items-center">
         <div>
           <IconUp
-            class="wb-icon w-5 h-5 ml-2"
+            class="wb-aside-icon ml-2"
             @click.prevent.stop="page.onUpPage(props.page)"
           />
         </div>
         <div>
           <IconDown
-            class="wb-icon w-5 h-5"
+            class="wb-aside-icon"
             @click.prevent.stop="page.onDownPage(props.page)"
           />
         </div>
         <div>
           <IconTrash
-            class="wb-icon w-5 h-5"
+            class="wb-aside-icon"
             @click.prevent.stop="page.onDeletePage(props.page)"
           />
         </div>

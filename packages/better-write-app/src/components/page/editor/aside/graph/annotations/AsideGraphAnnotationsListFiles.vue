@@ -12,7 +12,7 @@
       {{ file.fileName }}
     </div>
     <div @click.prevent.stop="annotations.onFileDelete({ file, folder })">
-      <IconDelete class="w-5 h-5 wb-icon" />
+      <IconDelete class="wb-aside-icon" />
     </div>
   </div>
   <div class="pb-2" />

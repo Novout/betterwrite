@@ -9,16 +9,16 @@
     </div>
     <div class="flex items-center">
       <div @click.prevent.stop="annotations.onFolderDelete(folder)">
-        <IconDelete class="wb-icon w-6 h-6" />
+        <IconDelete class="wb-aside-icon" />
       </div>
       <div @click.prevent.stop="annotations.onFileCreate(folder)">
-        <IconFileAdd class="wb-icon w-6 h-6" />
+        <IconFileAdd class="wb-aside-icon" />
       </div>
       <div
         :class="[value ? 'transform rotate-90' : '']"
         @click.prevent.stop="toggle()"
       >
-        <IconArrowRight class="wb-icon w-7 h-7" />
+        <IconArrowRight class="wb-aside-icon" />
       </div>
     </div>
   </div>
