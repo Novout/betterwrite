@@ -1,14 +1,14 @@
-# Changelog (04/09/2022)
+# Changelog (9/5/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
-### v0.16.19
+### v0.16.20
 
+* **feat(annotations):** create file and load in a folder create [c0dd61a1]
+* **chore(mobile):** size graph icons [4e5b80bb]
+* **fix(storage):** null typing in destr object [eb8cc97b]
 * **feat(editor):** dev mode commands [0fb379a1]
 * **fix(factory):** unused generator json [ec4d1559]
-
-### v0.16.18
-
 * **test(ast):** occurrences in utils string target [fbf86b52]
 * **fix(ast):** correct search occurrences in a raw text [92e5a55a]
 * **fix(graph):** individual chapters approach [7eeba2a0]
@@ -16,18 +16,9 @@ Changelog was created by [Generi](https://github.com/Novout/generi). Any questio
 * **feat(editor):** globar bar loader [e6e6ee95]
 * **chore:** readme badges [7a2a922a]
 * **refactor(lang):** promise results in switch language [79f36167]
-
-### v0.16.17
-
 * **feat(sentry):** log tracking and prod mode [e423fc0d]
 * **fix(annotations):** unmount component in base setting [b575487a]
-
-### v0.16.16
-
 * **fix(storage):** logger object submit [19a4bc7c]
-
-### v0.16.15
-
 * **chore:** readme new features [5298b906]
 * **fix(preferences):** mobile overflow scroll [a41df8ff]
 * **feat(theme):** dynamic theme-color [987c186c]
@@ -38,13 +29,7 @@ Changelog was created by [Generi](https://github.com/Novout/generi). Any questio
 * **feat(extension):** .bw zip sets in json archives [5e506a85]
 * **feat(editor):** underline and undo commands [ed4ad60e]
 * **feat(editor):** history undo inserts and delete [ff23aad1]
-
-### v0.16.14
-
 * **chore(vue):** @vueuse in build system propagation [e5c8214a]
-
-### v0.16.13
-
 * **fix(editor):** overlap in save large scale projects [f74e028d]
 * **chore(package):** update packages [217cbbac]
 * **chore(graph):** icons and fonts positions [ba24789d]
@@ -65,9 +50,6 @@ Changelog was created by [Generi](https://github.com/Novout/generi). Any questio
 * **chore(test):** vitest new setup [487feb1c]
 * **fix(html):** purge raw text before html tags creation [84d33881]
 * **fix(ast):** deep-recursive tags inside other text insert [0cba1dff]
-
-### v0.16.12
-
 * **chore:** packages readme [0b7e0899]
 * **chore(package):** update monorepo tools [7ba6bcbc]
 * **refactor(editor):** contenteditable ast new implementation [ea6f27e1]
@@ -76,25 +58,16 @@ Changelog was created by [Generi](https://github.com/Novout/generi). Any questio
 * **feat(generator):** image conversor [2ff10604]
 * **fix(build):** type errors in wrong package name [437fce08]
 * **chore(monorepo):** exporters plugin and languages rename [c0bcd663]
-
-### v0.16.11
-
 * **chore(editor):** chapter icon [689304c8]
 * **feat(questions):** html support [aea26ea1]
 * **feat(html):** generator support all blocks [9a787e2c]
 * **feat(generator):** .html support extension [b9ceb35e]
 * **feat(dashboard):** image project [e6c426db]
-
-### v0.16.10
-
 * **chore(vite):** update for v3 [feb11b0e]
 * **feat(graph):** icons in title bar [d5a53fb3]
 * **refactor(editor):** custom entity in only generator template [a476fb6c]
 * **chore(project):** padronize creation in importer and normal context [dc913d6e]
 * **feat(timeline):** initial scope [5da8d39e]
-
-### v0.16.9
-
 * **chore(pdf):** blank project in generate instant [84282fca]
 * **chore(pdf):** import definitions alerts [fd5358d6]
 * **fix(preferences):** container scroll [3c286c15]
@@ -133,9 +106,6 @@ Changelog was created by [Generi](https://github.com/Novout/generi). Any questio
 * **fix:** typo [eadc55b5]
 * **fix(editor):** text block values in custom block [fb0bee9b]
 * **chore(editor):** app version in bar [d9712297]
-
-### v0.16.5
-
 * **chore(app):** upgrade deps [ce56a18b]
 * **feat(editor):** correct and actions triggers [fb480d7e]
 * **chore(editor):** statistics impact animation [655bac4a]
@@ -156,17 +126,11 @@ Changelog was created by [Generi](https://github.com/Novout/generi). Any questio
 * **fix(editor):** finder and switcher tools in scrolldown and opening normalizes [356dabb3]
 * **refactor(editor):** preferences modal [0de78c23]
 * **refactor(app):** toast colors and appear logic [44f2c6df]
-
-### v0.16.4
-
 * **fix(editor):** entity heading in full click size [ac453651]
 * **fix(editor):** entity blank line in remove env keys [14ea14e8]
 * **fix(editor):** create new project in focus entity [e18732e3]
 * **fix:** typo [7d958e43]
 * **feat(about):** finalize route [b85495f5]
-
-### v0.16.3
-
 * **fix(editor):** paragraph insert in factory create [688c8c2f]
 * **fix:** typos [b093fe8f]
 * **feat(about):** correct resize in mobile [cc55998c]
@@ -182,9 +146,6 @@ Changelog was created by [Generi](https://github.com/Novout/generi). Any questio
 * **feat(importer):** accept docx [0ae772db]
 * **feat(importer):** initial implementation [67a073eb]
 * **feat(pdf):** note and summary settings [5e5aa1e0]
-
-### v0.16.2
-
 * **fix(generator):** accept line breaking in inline paragraph entity [1f9d4afa]
 * **fix(editor):** paste remove innerHTML [82431bee]
 * **fix(editor):** last entity appear [a5dfa737]
@@ -192,9 +153,6 @@ Changelog was created by [Generi](https://github.com/Novout/generi). Any questio
 * **feat(live):** set initial instances [4ce25e87]
 * **fix(live):** control key input [55f1708e]
 * **feat(live):** room initial implementation [59cd8829]
-
-### v0.16.1
-
 * **fix(graph):** open and close in blocked div [a64dfd9c]
 * **chore:** logic in auth redirect to editor [c235a463]
 * **chore:** typo [1a880b2d]
