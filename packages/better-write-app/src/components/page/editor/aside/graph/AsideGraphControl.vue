@@ -1,7 +1,7 @@
 <template>
   <div v-if="project.isCreativeProject()" class="flex items-center">
     <IconAdd
-      class="wb-icon w-6 h-6"
+      class="wb-icon w-9 h-9 md:(w-6 h-6)"
       @click.prevent.stop="
         page.onCreatePage(
           t('editor.project.control.title', {
@@ -12,7 +12,7 @@
     />
     <IconArrowRight
       :class="[value ? 'transform rotate-90' : '']"
-      class="wb-icon w-7 h-7"
+      class="wb-icon w-9 h-9 md:(w-7 h-7)"
       @click.prevent.stop="toggle()"
     />
   </div>

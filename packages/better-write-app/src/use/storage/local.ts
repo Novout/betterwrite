@@ -1,5 +1,5 @@
 import destr from 'destr'
-import { ProjectObject } from 'better-write-types'
+import { Maybe, ProjectObject } from 'better-write-types'
 import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
 import i18n from '@/lang'
@@ -22,8 +22,10 @@ export const useLocalStorage = () => {
     localStorage.setItem(name, JSON.stringify(obj))
   }
 
-  const get = (name: string) => {
-    return destr((localStorage as any).getItem(name))
+  const get = (name: string): Maybe<ProjectObject> => {
+    const item = localStorage.getItem(name)
+
+    return item ? destr(item) : undefined
   }
 
   const setProject = (obj: ProjectObject) => {
@@ -32,8 +34,10 @@ export const useLocalStorage = () => {
     } catch (e) {}
   }
 
-  const getProject = (): ProjectObject => {
-    return storage.support(get(env.projectLocalStorage()))
+  const getProject = (): Maybe<ProjectObject> => {
+    const project = get(env.projectLocalStorage())
+
+    return project ? storage.support(project) : undefined
   }
 
   const onSaveProject = async (event: boolean = true) => {

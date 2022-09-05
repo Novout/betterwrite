@@ -16,7 +16,7 @@
         class="cursor-pointer"
         @click.prevent.stop="annotations.onFolderCreate()"
       >
-        <IconFolderAdd class="w-6 h-6 wb-icon" />
+        <IconFolderAdd class="wb-aside-icon" />
       </div>
     </div>
   </div>

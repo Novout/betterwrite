@@ -440,7 +440,7 @@ export const useRaw = () => {
         }
       }
 
-      const menu = async (e: MouseEvent, index: number) => {
+      const menu = async (e: MouseEvent | TouchEvent, index: number) => {
         ABSOLUTE.entity.menu = false
 
         EDITOR.actives.entity.index = index
@@ -450,7 +450,7 @@ export const useRaw = () => {
           return
         }
 
-        e?.preventDefault()
+        if (e) e?.preventDefault()
 
         await nextTick
 
