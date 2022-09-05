@@ -165,8 +165,14 @@ export const PluginAnnotationsSet = (
 
   On.externals().PluginAnnotationsCreateFolder(emitter, [
     () => {
-      hooks.bar.load(() => {
-        createFolder()
+      hooks.bar.load(async () => {
+        const folder = createFolder()
+
+        const file = await createFile(folder)
+
+        await start(file)
+
+        hooks.emitter.emit('annotations-folder-graph-open', folder)
       })
     },
     () => {},
