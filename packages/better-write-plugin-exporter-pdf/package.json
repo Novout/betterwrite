@@ -20,6 +20,7 @@
 	],
 	"dependencies": {
 		"better-write-contenteditable-ast": "^0.16.20",
+		"better-write-google-fonts-api": "^0.16.20",
 		"better-write-plugin-core": "^0.16.20",
 		"better-write-plugin-theme": "^0.16.20",
 		"better-write-types": "^0.16.20",

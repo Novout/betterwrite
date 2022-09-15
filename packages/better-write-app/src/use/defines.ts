@@ -29,10 +29,6 @@ export const useDefines = () => {
   }
 
   const pdf = () => {
-    const fixFonts = () => {
-      return ['EB Garamond', 'Cormorant Garamond']
-    }
-
     const fontFamily = (): Array<string> => {
       return ['Roboto', 'EB Garamond']
     }
@@ -222,7 +218,6 @@ export const useDefines = () => {
       decoration,
       decorationStyle,
       base,
-      fixFonts,
     }
   }
 
