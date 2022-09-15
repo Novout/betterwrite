@@ -29,6 +29,44 @@
       </template>
       <QuestionsGeneratorSupport />
     </QuestionsBlock>
+    <QuestionsBlock :hidden-toggle="true">
+      <template #title>
+        {{ t('questions.generatorRecommendations.title') }}
+      </template>
+      <template #description>
+        {{ t('questions.generatorRecommendations.description') }}
+      </template>
+    </QuestionsBlock>
+    <QuestionsBlock :hidden-toggle="true">
+      <template #title>
+        {{ t('questions.importProjects.title') }}
+      </template>
+      <template #description>
+        {{ t('questions.importProjects.description') }}
+      </template>
+    </QuestionsBlock>
+    <QuestionsBlock :hidden-toggle="true">
+      <template #title>
+        {{ t('questions.releasePlanning.title') }}
+      </template>
+      <template #description>
+        {{ t('questions.releasePlanning.description') }}
+      </template>
+    </QuestionsBlock>
+    <QuestionsBlock :hidden-toggle="true">
+      <template #title>
+        {{ t('questions.futureFeatures.title') }}
+      </template>
+      <template #description>
+        {{ t('questions.futureFeatures.description') }}
+        <a
+          target="_blank"
+          href="https://github.com/Novout/betterwrite"
+          class="underline cursor-pointer"
+          >{{ t('questions.futureFeatures.clickHere') }}</a
+        >
+      </template>
+    </QuestionsBlock>
   </main>
 </template>
 
