@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://www.betterwrite.io/</loc>
+    <loc>https://betterwrite.io/</loc>
     <lastmod>2022-03-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.betterwrite.io/dashboard</loc>
+    <loc>https://betterwrite.io/dashboard</loc>
     <lastmod>2022-03-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.1</priority>
   </url>
   <url>
-    <loc>https://www.betterwrite.io/plans</loc>
+    <loc>https://betterwrite.io/plans</loc>
     <lastmod>2022-03-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.1</priority>
   </url>
   <url>
-    <loc>https://www.betterwrite.io/editor</loc>
+    <loc>https://betterwrite.io/editor</loc>
     <lastmod>2022-03-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.1</priority>
