@@ -94,7 +94,7 @@ export const get = async (options: GoogleFontsGetOption) => {
         if (options.globalStyle) setGlobal(normalize)
       },
     }
-  )
+  ).catch(() => {})
 
   return { normalize, names }
 }
