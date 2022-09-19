@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { installSchemaOrg } from '@vueuse/schema-org-vite/vite'
 import * as Sentry from '@sentry/vue'
 import { BrowserTracing } from '@sentry/tracing'
 import { useRegisterSW } from 'virtual:pwa-register/vue'
@@ -114,5 +115,10 @@ if (!env.isDev()) {
     hooks: ['activate', 'mount', 'update', 'destroy', 'create'],
   })
 }
+
+installSchemaOrg({ app, router }, {
+  canonicalHost: env.getProdUrl() as `https://${string}`,
+  defaultLanguage: 'pt-BR'
+})
 
 router.isReady().then(() => app.mount('#app'))

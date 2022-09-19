@@ -5,6 +5,8 @@ import { HeadlessUiResolver } from "unplugin-vue-components/resolvers"
 import vueI18n from "@intlify/vite-plugin-vue-i18n"
 import vuePages from 'vite-plugin-pages'
 import { VitePWA as vitePWA } from 'vite-plugin-pwa'
+import viteAutoImport from 'unplugin-auto-import/vite'
+import { SchemaOrg as viteSchemaOrg, SchemaOrgResolver, schemaOrgAutoImports } from '@vueuse/schema-org-vite'
 import vitePersist from 'vite-plugin-optimize-persist'
 import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
@@ -49,7 +51,7 @@ export default defineConfig({
     }),
     vueGlobalComponent({
       dts: true,
-      resolvers: [HeadlessUiResolver()],
+      resolvers: [HeadlessUiResolver(), SchemaOrgResolver()]
     }),
     windiCSS(),
     viteFonts({
@@ -65,10 +67,20 @@ export default defineConfig({
         }]
       },
     }),
+    viteSchemaOrg({
+      mock: false,
+      full: false,
+      dts: true,
+    }),
     vitePersist(),
     vitePackageAccess(),
     vitePackageVersion(),
     viteStdlib(),
+    viteAutoImport({
+      imports: [
+        schemaOrgAutoImports,
+      ],
+    }),
     vitePWA({
       base: '/',
       registerType: 'prompt',

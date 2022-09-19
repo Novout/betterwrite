@@ -26,4 +26,18 @@
     MultiplayerPlugin(),
     AnnotationsPlugin(),
   ])
+
+  useSchemaOrg([
+    defineOrganization({
+      name: 'betterwrite.io',
+      logo: '/logo.png',
+      sameAs: [
+        'https://twitter.com/betterwriteio'
+      ]
+    }),
+    defineWebSite({
+      name: 'betterwrite.io',
+    }),
+    defineWebPage(),
+  ])
 </script>
