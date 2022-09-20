@@ -24,7 +24,7 @@
               src="/logo_default.svg"
             />
             <h1
-              class="font-poppins ml-5 relative top-3 sm:top-4 lg:top-6 md:ml-10 text-3xl sm:text-4xl lg:text-5xl font-bold"
+              class="font-poppins font-bold ml-5 relative top-3 sm:top-4 lg:top-6 md:ml-10 text-3xl sm:text-4xl lg:text-5xl"
             >
               Better Write.
             </h1>
@@ -33,7 +33,7 @@
             v-motion
             :initial="{ opacity: 0, y: 50 }"
             :enter="{ opacity: 1, y: 0, transition: { delay: 200 } }"
-            class="mt-8 font-poppins leading-relaxed text-lg blink max-w-11/12"
+            class="mt-8 font-raleway leading-relaxed text-lg blink max-w-11/12"
             :steps="[
               t('landing.first.typical.1'),
               2000,
