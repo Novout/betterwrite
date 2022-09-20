@@ -2,6 +2,10 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.16.24
+
+* **fix(path):** workaround vite problem in assets handling fonts .ttf [83c0fba8]
+
 ### v0.16.23
 
 * **fix(local):** intermediate request in public folder glob patterns [2eb6933d]
