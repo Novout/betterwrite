@@ -33,7 +33,7 @@
             v-motion
             :initial="{ opacity: 0, y: 50 }"
             :enter="{ opacity: 1, y: 0, transition: { delay: 200 } }"
-            class="mt-8 leading-relaxed text-lg blink max-w-11/12"
+            class="mt-8 font-poppins leading-relaxed text-lg blink max-w-11/12"
             :steps="[
               t('landing.first.typical.1'),
               2000,

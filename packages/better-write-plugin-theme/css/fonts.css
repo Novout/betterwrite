@@ -1,41 +1,41 @@
 @font-face {
   font-family: Poppins;
-  src: url(fonts/Poppins-Thin.ttf);
+  src: url(/Poppins-Thin.ttf);
   font-weight: 200;
 }
 @font-face {
   font-family: Poppins;
-  src: url(fonts/Poppins-Light.ttf);
+  src: url(/Poppins-Light.ttf);
   font-weight: 300;
 }
 @font-face {
   font-family: Poppins;
-  src: url(fonts/Poppins-Regular.ttf);
+  src: url(/Poppins-Regular.ttf);
   font-weight: normal;
 }
 @font-face {
   font-family: Poppins;
-  src: url(fonts/Poppins-Bold.ttf);
+  src: url(/Poppins-Bold.ttf);
   font-weight: bold;
 }
 
 @font-face {
   font-family: Raleway;
-  src: url(fonts/Raleway-Thin.ttf);
+  src: url(/Raleway-Thin.ttf);
   font-weight: 200;
 }
 @font-face {
   font-family: Raleway;
-  src: url(fonts/Raleway-Light.ttf);
+  src: url(/Raleway-Light.ttf);
   font-weight: 300;
 }
 @font-face {
   font-family: Raleway;
-  src: url(fonts/Raleway-Regular.ttf);
+  src: url(/Raleway-Regular.ttf);
   font-weight: normal;
 }
 @font-face {
   font-family: Raleway;
-  src: url(fonts/Raleway-Bold.ttf);
+  src: url(/Raleway-Bold.ttf);
   font-weight: bold;
 }
