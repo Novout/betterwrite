@@ -1,6 +1,6 @@
 {
 	"name": "better-write-google-fonts-api",
-	"version": "0.16.21",
+	"version": "0.16.22",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -24,7 +24,7 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-types": "^0.16.21",
+		"better-write-types": "^0.16.22",
 		"ohmyfetch": "0.4.18"
 	},
 	"devDependencies": {

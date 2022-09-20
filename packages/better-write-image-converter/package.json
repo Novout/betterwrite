@@ -1,6 +1,6 @@
 {
 	"name": "better-write-image-converter",
-	"version": "0.16.21",
+	"version": "0.16.22",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -25,7 +25,7 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-types": "^0.16.21"
+		"better-write-types": "^0.16.22"
 	},
 	"devDependencies": {
 		"prettier": "2.5.1",
