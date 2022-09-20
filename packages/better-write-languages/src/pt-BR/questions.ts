@@ -27,4 +27,25 @@ export default {
       footer: 'Rodapé',
     },
   },
+  generatorRecommendations: {
+    title: 'Qual configuração devo exportar os meus documentos?',
+    description:
+      'Por padrão, o aplicativo exporta nas configurações recomendadas de formado em todas as extensões que disponibiliza. Por exemplo, a extensão PDF exporta documentos em CYMK / 300dpi, ou seja, já pronto para a impressão. Recomendamos que pesquise sobre a extensão em específico caso queira alterar alguma das opções padrões.',
+  },
+  futureFeatures: {
+    title: 'A onde posso encontrar ou sugerir futuros recursos e modificações?',
+    description:
+      'betterwrite.io é um projeto de código aberto, onde sugestões, criticas e a denúncia de problemas podem serem encontradas ',
+    clickHere: 'clicando aqui.',
+  },
+  releasePlanning: {
+    title: 'Quando o aplicativo será lançado oficialmente?',
+    description:
+      'betterwrite.io pretende oficializar a versão 1.0 no primeiro semestre de 2023.',
+  },
+  importProjects: {
+    title: 'Quais projetos posso trazer para aqui?',
+    description:
+      'O aplicativo suporta a importação de projetos com a extensão .bw, .doc, .docx e .txt. Até o momento, não possui nenhum planejamento para oferecer o suporte direto de importação de projetos do Google Docs, Microsoft Word, Overleaf ou qualquer outra ferramenta similar.',
+  },
 }

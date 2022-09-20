@@ -2,7 +2,7 @@
   <div class="flex">
     <div class="flex w-full justify-center items-center flex-col">
       <div v-if="exists" class="flex items-center justify-between w-full">
-        <p class="wb-text font-bold text-lg">
+        <p class="font-poppins wb-text font-bold text-lg">
           {{ t('editor.pdf.externals.preview.title') }}
         </p>
         <IconReload class="wb-icon w-7 h-7" @click="onReverse" />
@@ -15,7 +15,7 @@
     >
       <Spinner v-if="inPreview" :width="100" :height="100" />
       <div class="flex items-center gap-2">
-        <p class="wb-text font-bold text-lg">
+        <p class="font-poppins wb-text font-bold text-lg">
           {{ t('editor.pdf.externals.preview.title') }}
         </p>
         <Button @click.prevent.stop="onPreview">

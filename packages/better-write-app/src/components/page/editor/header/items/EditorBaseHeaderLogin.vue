@@ -6,8 +6,9 @@
     >
       <button class="flex items-center truncate">
         <img
-          v-if="user && user.user_metadata?.avatar_url"
-          class="rounded-full mr-2"
+          v-if="user && user?.user_metadata.avatar_url"
+          onerror="this.onerror=null;this.style.display = 'none';"
+          class="rounded-full mr-0 sm:mr-2"
           :width="28"
           :src="user?.user_metadata?.avatar_url"
           alt="Profile Logo"

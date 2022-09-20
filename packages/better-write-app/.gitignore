@@ -12,3 +12,4 @@ coverage
 .yarnrc
 .yarn
 components.d.ts
+auto-imports.d.ts

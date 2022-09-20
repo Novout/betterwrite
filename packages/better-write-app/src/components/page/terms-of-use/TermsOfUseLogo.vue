@@ -11,7 +11,7 @@
       alt="Better Write Logo"
       src="/logo_default.svg"
     />
-    <h1 class="wb-h1">Better Write.</h1>
+    <h1 class="font-poppins wb-h1">Better Write.</h1>
   </div>
 </template>
 

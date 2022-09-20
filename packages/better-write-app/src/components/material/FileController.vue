@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center gap-2">
-    <p class="font-bold text-lg wb-text">
+    <p class="font-poppins font-bold text-lg wb-text">
       {{ t('generator.generics.settings') }}
     </p>
     <Button @click.prevent.stop="importer()">

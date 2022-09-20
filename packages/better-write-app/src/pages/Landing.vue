@@ -24,7 +24,7 @@
               src="/logo_default.svg"
             />
             <h1
-              class="ml-5 relative top-3 sm:top-4 lg:top-6 md:ml-10 text-3xl sm:text-4xl lg:text-5xl font-bold"
+              class="font-poppins ml-5 relative top-3 sm:top-4 lg:top-6 md:ml-10 text-3xl sm:text-4xl lg:text-5xl font-bold"
             >
               Better Write.
             </h1>

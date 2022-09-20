@@ -95,7 +95,6 @@ export interface PluginDefines {
 export type PluginHook = any
 
 export interface PluginHooks {
-  googleFonts: PluginHook
   local: PluginHook
   storage: PluginHook
   creative: PluginHook

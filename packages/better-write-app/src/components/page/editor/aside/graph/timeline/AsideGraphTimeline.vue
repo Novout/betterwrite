@@ -5,7 +5,7 @@
     <IconTimeline class="w-7 h-7" />
     <p
       :class="[PROJECT.base === 'timeline' ? '' : 'opacity-70']"
-      class="cursor-pointer truncate font-bold"
+      class="cursor-pointer truncate font-bold font-poppins"
       @click="canvas.externals().load()"
     >
       {{ t('editor.aside.graph.timeline') }}

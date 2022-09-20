@@ -1,4 +1,3 @@
-import { resolve } from "path"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
 import vueGlobalComponent  from "unplugin-vue-components/vite"
@@ -6,14 +5,17 @@ import { HeadlessUiResolver } from "unplugin-vue-components/resolvers"
 import vueI18n from "@intlify/vite-plugin-vue-i18n"
 import vuePages from 'vite-plugin-pages'
 import { VitePWA as vitePWA } from 'vite-plugin-pwa'
+import viteAutoImport from 'unplugin-auto-import/vite'
+import { SchemaOrg as viteSchemaOrg, SchemaOrgResolver, schemaOrgAutoImports } from '@vueuse/schema-org-vite'
 import vitePersist from 'vite-plugin-optimize-persist'
 import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
-import viteFonts from 'vite-plugin-fonts'
 import viteSitemap from 'vite-plugin-pages-sitemap'
 import { viteStdlib } from "./scripts/vite"
 import windiCSS from 'vite-plugin-windicss'
 import stdLibBrowser from 'node-stdlib-browser'
+import { resolve } from 'pathe'
+import fg from 'fast-glob'
 
 export default defineConfig({
   base: './',
@@ -48,50 +50,27 @@ export default defineConfig({
     }),
     vueGlobalComponent({
       dts: true,
-      resolvers: [HeadlessUiResolver()],
+      resolvers: [HeadlessUiResolver(), SchemaOrgResolver()]
     }),
     windiCSS(),
-    viteFonts({
-      google: {
-        families: [{
-          name: 'Raleway',
-          styles: 'wght@200;400;700',
-          defer: true
-        }, {
-          name: 'Poppins',
-          styles: 'wght@200;400;700',
-          defer: true
-        }]
-      },
+    viteSchemaOrg({
+      mock: false,
+      full: false,
+      dts: true,
     }),
     vitePersist(),
     vitePackageAccess(),
     vitePackageVersion(),
     viteStdlib(),
+    viteAutoImport({
+      imports: [
+        schemaOrgAutoImports,
+      ],
+    }),
     vitePWA({
       base: '/',
       registerType: 'prompt',
-      includeAssets: [
-        'favicon.svg', 
-        'favicon.ico', 
-        'robots.txt', 
-        'sitemap.xml', 
-        'browserconfig.xml', 
-        'apple-touch-icon.png', 
-        'three/*.png', 
-        'three/fonts/*.json',
-        'three/fonts/*.ttf',
-        'logo_ascend.svg', 
-        'logo_default.svg', 
-        'logo_harmonic.svg', 
-        'logo_rise.svg', 
-        'logo_infinity.svg', 
-        'logo_desktop.png', 
-        'logo.png',
-        'logo.svg',
-        'icon_x192.png',
-        'icon_x512.png'
-      ],  
+      includeAssets: fg.sync('**/*.{png,svg,json,ico,txt,xml,ttf}', { cwd: resolve(__dirname, 'public') }), 
       manifest: {
         name: 'Better Write',
         short_name: 'Better Write',
@@ -116,6 +95,7 @@ export default defineConfig({
       workbox: {
         maximumFileSizeToCacheInBytes: 3145728000,
         sourcemap: false,
+        globPatterns: ['**/*.{css,js,html,ico,txt,woff2,ttf,png,svg,json}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,

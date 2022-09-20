@@ -8,7 +8,6 @@ import { usePDFStore } from '@/store/pdf'
 import { useProjectStore } from '@/store/project'
 import { useCore, usePlugin } from 'better-write-plugin-core'
 import { PluginTypes } from 'better-write-types'
-import { useFonts } from './google/fonts'
 import { useLocalStorage } from './storage/local'
 import { useStorage } from './storage/storage'
 import { useCreativeType } from './type/creative'
@@ -177,7 +176,6 @@ export const useStart = () => {
       } as any,
       plugins,
       {
-        googleFonts: useFonts(),
         local: useLocalStorage(),
         storage: useStorage(),
         creative: useCreativeType(),

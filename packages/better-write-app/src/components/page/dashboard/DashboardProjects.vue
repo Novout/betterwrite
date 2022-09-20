@@ -6,7 +6,7 @@
     :delay="500"
     class="flex flex-col w-full p-5"
   >
-    <h2 class="text-2xl font-bold wb-text my-5">
+    <h2 class="text-2xl font-poppins font-bold wb-text my-5">
       {{ t('dashboard.projects.title') }}
     </h2>
     <div

@@ -13,12 +13,36 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
-    "types": ["vite/client", "vite-plugin-pwa/client"],
+    "types": [
+      "vite/client",
+      "vite-plugin-pwa/client"
+    ],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@vueuse/schema-org/runtime": [
+        "./../../node_modules/@vueuse/schema-org/dist/runtime-simple/index"
+      ]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "desktop/**/*.ts"],
-  "exclude": ["node_modules", "/pdfmake.js$/", "**/*.test.ts", "src/use/pdf.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "desktop/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "/pdfmake.js$/",
+    "**/*.test.ts",
+    "src/use/pdf.ts"
+  ]
 }

@@ -6,6 +6,7 @@
     >
       <h2 class="font-bold text-xl font-poppins"><slot name="title" /></h2>
       <IconArrowRight
+        v-if="!hiddenToggle"
         class="transform h-9 w-9 wb-icon"
         :class="[value ? 'rotate-90' : '']"
       />
@@ -19,6 +20,10 @@
 
 <script setup lang="ts">
   import { useToggle } from '@vueuse/core'
+
+  defineProps<{
+    hiddenToggle?: boolean
+  }>()
 
   const [value, toggle] = useToggle()
 </script>

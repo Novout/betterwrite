@@ -8,6 +8,13 @@ export interface GoogleFont {
   files: GoogleFontFiles
 }
 
-interface GoogleFontFiles {
+export interface GoogleFontFiles {
   [key: string]: string
+}
+
+export interface GoogleFontsGetOption {
+  key: string
+  maxFonts: number
+  requiredFonts: string[]
+  globalStyle: boolean
 }

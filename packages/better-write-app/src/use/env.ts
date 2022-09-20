@@ -25,12 +25,12 @@ export const useEnv = () => {
     return name === useEnv().projectEmpty()
   }
 
-  const dropboxKey = () => {
-    return import.meta.env.VITE_DROPBOX_APP_KEY
+  const googleMaxFonts = () => {
+    return import.meta.env.VITE_GOOGLE_FONTS_MAX_FONTS
   }
 
-  const maxFonts = () => {
-    return import.meta.env.VITE_GOOGLE_FONTS_MAX_FONTS
+  const googleFontsKey = () => {
+    return import.meta.env.VITE_GOOGLE_FONTS_KEY
   }
 
   const production = () => {
@@ -85,11 +85,11 @@ export const useEnv = () => {
   }
 
   return {
-    dropboxKey,
     projectEmpty,
     projectLocalStorage,
     isEmptyProject,
-    maxFonts,
+    googleMaxFonts,
+    googleFontsKey,
     production,
     getSentryDsn,
     getProdUrl,
