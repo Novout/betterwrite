@@ -116,9 +116,12 @@ if (!env.isDev()) {
   })
 }
 
-installSchemaOrg({ app, router }, {
-  canonicalHost: env.getProdUrl() as `https://${string}`,
-  defaultLanguage: 'pt-BR'
-})
+installSchemaOrg(
+  { app, router },
+  {
+    canonicalHost: env.getProdUrl() as `https://${string}`,
+    defaultLanguage: 'pt-BR',
+  }
+)
 
 router.isReady().then(() => app.mount('#app'))

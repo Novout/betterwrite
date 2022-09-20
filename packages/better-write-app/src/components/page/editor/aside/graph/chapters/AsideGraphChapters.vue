@@ -12,7 +12,7 @@
       </div>
       <p
         v-if="!env.isEmptyProject(PROJECT.name)"
-        class="ml-1 truncate font-bold"
+        class="ml-1 truncate font-bold font-poppins"
       >
         {{
           CONTEXT.entities[0].raw

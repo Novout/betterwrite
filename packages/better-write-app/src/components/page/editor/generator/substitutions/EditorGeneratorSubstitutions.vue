@@ -12,10 +12,10 @@
     <div class="flex flex-col w-full mt-5">
       <EditorGeneratorSubstitutionsAdd />
       <div class="flex justify-around items-center w-full">
-        <p class="text-lg font-bold">
+        <p class="font-poppins text-lg font-bold">
           {{ t('editor.addons.substitutions.from') }}
         </p>
-        <p class="text-lg font-bold">
+        <p class="font-poppins text-lg font-bold">
           {{ t('editor.addons.substitutions.to') }}
         </p>
       </div>
@@ -28,7 +28,7 @@
         </template>
       </draggable>
       <div class="flex flex-col my-4">
-        <h2 class="font-bold text-xl">
+        <h2 class="font-poppins font-bold text-xl">
           {{ t('editor.addons.substitutions.italic') }}
         </h2>
         <EditorGeneratorSubstitutionsItalicAdd />
@@ -42,7 +42,7 @@
         </draggable>
       </div>
       <div class="flex flex-col my-4">
-        <h2 class="font-bold text-xl">
+        <h2 class="font-poppins font-bold text-xl">
           {{ t('editor.addons.substitutions.bold') }}
         </h2>
         <EditorGeneratorSubstitutionsBoldAdd />

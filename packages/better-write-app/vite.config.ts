@@ -10,7 +10,6 @@ import { SchemaOrg as viteSchemaOrg, SchemaOrgResolver, schemaOrgAutoImports } f
 import vitePersist from 'vite-plugin-optimize-persist'
 import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
-import viteFonts from 'vite-plugin-fonts'
 import viteSitemap from 'vite-plugin-pages-sitemap'
 import { viteStdlib } from "./scripts/vite"
 import windiCSS from 'vite-plugin-windicss'
@@ -54,19 +53,6 @@ export default defineConfig({
       resolvers: [HeadlessUiResolver(), SchemaOrgResolver()]
     }),
     windiCSS(),
-    viteFonts({
-      google: {
-        families: [{
-          name: 'Raleway',
-          styles: 'wght@200;400;700',
-          defer: true
-        }, {
-          name: 'Poppins',
-          styles: 'wght@200;400;700',
-          defer: true
-        }]
-      },
-    }),
     viteSchemaOrg({
       mock: false,
       full: false,
@@ -84,7 +70,7 @@ export default defineConfig({
     vitePWA({
       base: '/',
       registerType: 'prompt',
-      includeAssets: fg.sync('**/*.{png,svg,json,ico,txt,xml}', { cwd: resolve(__dirname, 'public') }), 
+      includeAssets: fg.sync('**/*.{png,svg,json,ico,txt,xml,ttf}', { cwd: resolve(__dirname, 'public') }), 
       manifest: {
         name: 'Better Write',
         short_name: 'Better Write',
@@ -109,7 +95,7 @@ export default defineConfig({
       workbox: {
         maximumFileSizeToCacheInBytes: 3145728000,
         sourcemap: false,
-        globPatterns: ['**/*.{css,js,html,ico,txt,woff2,png,svg,json}'],
+        globPatterns: ['**/*.{css,js,html,ico,txt,woff2,ttf,png,svg,json}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,

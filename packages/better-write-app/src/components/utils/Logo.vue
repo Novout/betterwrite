@@ -14,10 +14,10 @@
     <h1
       v-if="!props.hidden"
       :class="[!back ? 'hidden md:flex text-lg' : 'text-xl']"
-      class="font-raleway text-theme-editor-betterwrite ml-3"
+      class="font-raleway font-normal text-theme-editor-betterwrite ml-3"
     >
       betterwrite<span
-        class="text-theme-background-3 font-bold text-theme-editor-io"
+        class="text-theme-background-3 font-poppins font-bold text-theme-editor-io"
         >.io</span
       >
     </h1>

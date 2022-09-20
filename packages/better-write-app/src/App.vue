@@ -31,9 +31,7 @@
     defineOrganization({
       name: 'betterwrite.io',
       logo: '/logo.png',
-      sameAs: [
-        'https://twitter.com/betterwriteio'
-      ]
+      sameAs: ['https://twitter.com/betterwriteio'],
     }),
     defineWebSite({
       name: 'betterwrite.io',

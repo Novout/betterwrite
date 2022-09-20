@@ -8,7 +8,7 @@
       />
       <InputText
         v-model="PROJECT.nameRaw"
-        class="wb-text bg-transparent py-0.5 rounded hover:bg-theme-background-opacity-1 focus:bg-theme-background-opacity-1 font-bold font-raleway w-2/3 text-left truncate"
+        class="wb-text bg-transparent py-0.5 rounded hover:bg-theme-background-opacity-1 focus:bg-theme-background-opacity-1 font-bold font-poppins w-2/3 text-left truncate"
       />
     </div>
     <AsideGraphChapters />

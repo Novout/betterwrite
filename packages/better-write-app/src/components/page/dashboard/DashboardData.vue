@@ -23,7 +23,7 @@
         v-if="AUTH?.account.user?.user_metadata.name"
         class="flex p-10 flex-col items-center justify-center"
       >
-        <p class="font-bold text-lg lg:text-xl">
+        <p class="font-poppins font-bold text-lg lg:text-xl">
           {{ AUTH?.account.user?.user_metadata.name }}
         </p>
       </div>
