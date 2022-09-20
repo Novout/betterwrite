@@ -2,6 +2,10 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.16.23
+
+* **fix(local):** intermediate request in public folder glob patterns [2eb6933d]
+
 ### v0.16.22
 
 * **fix(css):** font family default fonts source [5c09bd27]
