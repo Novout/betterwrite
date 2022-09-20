@@ -2,6 +2,10 @@
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
 
+### v0.16.22
+
+* **fix(css):** font family default fonts source [5c09bd27]
+
 ### v0.16.21
 
 * **feat(css):** cache fonts .ttf for general use [16185d45]
