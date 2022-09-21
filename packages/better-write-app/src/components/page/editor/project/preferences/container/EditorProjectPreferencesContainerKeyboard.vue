@@ -73,21 +73,6 @@
         shortcut="CTRL + 9"
       />
     </div>
-    <PreferencesContainerTitle>
-      {{ t('editor.preferences.shortcuts.inserts.title') }}
-    </PreferencesContainerTitle>
-    <p>{{ t('editor.preferences.shortcuts.inserts.description') }}</p>
-    <div class="flex flex-col gap-2 w-full px-2">
-      <EditorProjectPreferencesKeyboardInsertAdd />
-      <draggable :list="PROJECT.shortcuts.inserts" item-key="id">
-        <template #item="{ element, index }">
-          <EditorProjectPreferencesKeyboardInsertItem
-            :key="index"
-            :insert="element"
-          />
-        </template>
-      </draggable>
-    </div>
   </EditorProjectPreferencesContainerSlot>
 </template>
 

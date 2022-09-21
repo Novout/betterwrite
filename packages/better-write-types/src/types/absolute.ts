@@ -2,6 +2,8 @@ export interface AbsoluteStateProject {
   new: boolean
   statistics: boolean
   configuration: boolean
+  insertions: boolean
+  characters: boolean
   preferences: boolean
   corrector: boolean
   blocked: boolean

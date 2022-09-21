@@ -8,6 +8,7 @@
     <EditorPagesDrafts v-else-if="ABSOLUTE.pages.drafts" />
     <ProviderProjectCreate v-else-if="ABSOLUTE.project.new" />
     <EditorProjectStatistics v-else-if="ABSOLUTE.project.statistics" />
+    <EditorProjectInsertions v-else-if="ABSOLUTE.project.insertions" />
     <EditorProjectCorrector v-else-if="ABSOLUTE.project.corrector" />
     <ProviderProjectPreferences v-else-if="ABSOLUTE.project.preferences" />
     <ProviderDOCXConfiguration v-else-if="ABSOLUTE.docx.configuration" />

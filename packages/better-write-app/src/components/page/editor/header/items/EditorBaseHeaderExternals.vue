@@ -29,6 +29,10 @@
         @action="ABSOLUTE.project.corrector = true"
       />
       <EditorHeaderItem
+        :text="t('editor.preferences.shortcuts.inserts.title')"
+        @action="ABSOLUTE.project.insertions = true"
+      />
+      <EditorHeaderItem
         :text="t('editor.bar.assistants.speechRecognition')"
         @action="
           ABSOLUTE.tools.speechRecognition = !ABSOLUTE.tools.speechRecognition
