@@ -504,4 +504,8 @@ export default {
       },
     },
   },
+  characters: {
+    title: 'Characters',
+    description: 'Get control of specific words as you write.',
+  },
 }

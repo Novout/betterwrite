@@ -104,6 +104,7 @@ export interface EntityVisual {
   info: boolean
   error: boolean
   warning: boolean
+  custom: string | undefined
 }
 
 export type Entity = {

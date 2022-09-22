@@ -96,6 +96,15 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.project.characters) {
+      _.project = {
+        ..._.project,
+        characters: {
+          list: [],
+        },
+      }
+    }
+
     // @ts-ignore
     if (_.project.templates.generator) {
       // @ts-ignore

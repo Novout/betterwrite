@@ -31,6 +31,7 @@ export interface ProjectState {
   templates: ProjectStateTemplates
   shortcuts: ProjectStateShortcuts
   annotations: ProjectStateAnnotations
+  characters: ProjectStateCharacters
 }
 
 export interface ProjectStateOptions {
@@ -57,6 +58,18 @@ export interface ProjectStateOptions {
   templates?: ProjectStateTemplates
   shortcuts?: ProjectStateShortcuts
   annotations?: ProjectStateAnnotations
+  characters?: ProjectStateCharacters
+}
+
+export interface ProjectStateCharacters {
+  list: ProjectStateCharacter[]
+}
+
+export interface ProjectStateCharacter {
+  name: string
+  nameCase: 'strict' | 'default' | 'all'
+  color: string
+  important: boolean
 }
 
 export interface ProjectStateAnnotations {

@@ -33,6 +33,10 @@
         @action="ABSOLUTE.project.insertions = true"
       />
       <EditorHeaderItem
+        :text="t('editor.characters.title')"
+        @action="ABSOLUTE.project.characters = true"
+      />
+      <EditorHeaderItem
         :text="t('editor.bar.assistants.speechRecognition')"
         @action="
           ABSOLUTE.tools.speechRecognition = !ABSOLUTE.tools.speechRecognition

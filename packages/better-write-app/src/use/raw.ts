@@ -457,24 +457,32 @@ export const useRaw = () => {
         ABSOLUTE.entity.menu = true
       }
 
-      const style = (entity: Entity, type: 'main' | 'input' = 'input') => {
-        switch (type) {
-          case 'main':
-            return [
-              entity.visual.info
-                ? 'bg-theme-editor-entity-info hover:bg-theme-editor-entity-info-hover active:bg-theme-editor-entity-info-active'
-                : '',
-              entity.visual.warning
-                ? 'bg-theme-editor-entity-warning hover:bg-theme-editor-entity-warning-hover active:bg-theme-editor-entity-warning-active'
-                : '',
-              entity.visual.error
-                ? 'bg-theme-editor-entity-error hover:bg-theme-editor-entity-error-hover active:bg-theme-editor-entity-error-active'
-                : '',
-            ]
-        }
+      const style = (entity: Entity) => {
+        return [
+          entity.visual.custom &&
+          (!entity.visual.info ||
+            !entity.visual.warning ||
+            !entity.visual.error)
+            ? { backgroundColor: entity.visual.custom }
+            : {},
+        ]
       }
 
-      return { text, drop, menu, style }
+      const c = (entity: Entity) => {
+        return [
+          entity.visual.info
+            ? 'bg-theme-editor-entity-info hover:bg-theme-editor-entity-info-hover active:bg-theme-editor-entity-info-active'
+            : '',
+          entity.visual.warning
+            ? 'bg-theme-editor-entity-warning hover:bg-theme-editor-entity-warning-hover active:bg-theme-editor-entity-warning-active'
+            : '',
+          entity.visual.error
+            ? 'bg-theme-editor-entity-error hover:bg-theme-editor-entity-error-hover active:bg-theme-editor-entity-error-active'
+            : '',
+        ]
+      }
+
+      return { text, drop, menu, style, class: c }
     }
 
     const make = () => {

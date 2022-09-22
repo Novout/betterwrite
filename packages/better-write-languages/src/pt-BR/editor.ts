@@ -506,4 +506,9 @@ export default {
       },
     },
   },
+  characters: {
+    title: 'Personagens',
+    description:
+      'Obtenha o controle de palavras específicas no decorrer da escrita.',
+  },
 }

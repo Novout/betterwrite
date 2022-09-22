@@ -1,7 +1,8 @@
 <template>
   <div
     ref="container"
-    :class="raw.v2().block().style(props.entity, 'main')"
+    :style="raw.v2().block().style(props.entity)"
+    :class="raw.v2().block().class(props.entity)"
     class="w-full relative px-4 md:px-14"
     @contextmenu="raw.v2().block().menu($event, _index)"
     @drop="raw.v2().block().drop($event, props.entity)"

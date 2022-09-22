@@ -43,6 +43,7 @@ export const useFactory = () => {
           error: false,
           info: false,
           warning: false,
+          custom: undefined,
         },
       }
     }

@@ -14,6 +14,7 @@ import {
   Entity,
   Entities,
   ProjectStateOptions,
+  Maybe,
 } from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { useEnv } from './env'
@@ -112,7 +113,7 @@ export const useProject = () => {
   }
 
   const onLoadProject = async (
-    context?: ProjectObject,
+    context: Maybe<ProjectObject>,
     notification: boolean = true
   ) => {
     if (!context) context = local.getProject()
