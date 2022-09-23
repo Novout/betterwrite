@@ -15,8 +15,11 @@
 
 <script setup lang="ts">
   import { useEditor } from '@/use/editor'
+  import { onMounted } from 'vue'
 
   const editor = useEditor()
 
-  editor.init()
+  onMounted(() => {
+    editor.init()
+  })
 </script>

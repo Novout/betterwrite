@@ -129,11 +129,7 @@ export const useFactory = () => {
           raw: raw || env.emptyLine(),
           createdAt: format.actually(),
           updatedAt: format.actually(),
-          visual: {
-            error: false,
-            info: false,
-            warning: false,
-          },
+          ...defaults(),
           external: {
             image: {
               name: 'draw.svg',
@@ -153,11 +149,7 @@ export const useFactory = () => {
           raw: raw || env.emptyLine(),
           createdAt: format.actually(),
           updatedAt: format.actually(),
-          visual: {
-            error: false,
-            info: false,
-            warning: false,
-          },
+          ...defaults(),
           external: {
             image: {
               name: '__DEFAULT__.png',

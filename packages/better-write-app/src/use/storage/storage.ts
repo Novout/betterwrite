@@ -104,7 +104,6 @@ export const useStorage = () => {
         },
       }
     }
-
     // @ts-ignore
     if (_.project.templates.generator) {
       // @ts-ignore

@@ -66,9 +66,11 @@ export interface ProjectStateCharacters {
 }
 
 export interface ProjectStateCharacter {
+  id: ID<number>
   name: string
   nameCase: 'strict' | 'default' | 'all'
   color: string
+  colorAlpha?: number | string
   important: boolean
 }
 

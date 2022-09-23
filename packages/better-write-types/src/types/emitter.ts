@@ -30,4 +30,5 @@ export type Events = {
   'project-save': any
   'pdf-preview-exists': any
   'annotations-folder-graph-open': ProjectStateAnnotationFolder
+  'characters-handler': any
 }

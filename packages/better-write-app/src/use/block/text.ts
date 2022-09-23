@@ -140,26 +140,9 @@ export const useBlockText = ({
   }
 
   const onCharactersHandler = () => {
-    const entity = CONTEXT.entities[index.value]
-    const text = utils.text().defaultWhitespace(input.value.innerHTML)
+    const inner = utils.text().defaultWhitespace(input.value.innerHTML)
 
-    PROJECT.characters.list.forEach((c) => {
-      switch (c.nameCase) {
-        case 'strict':
-          if (text.split(' ').find((t) => t === c.name))
-            entity.visual.custom = c.color
-          break
-        case 'default':
-          if (text.split(' ').find((t) => t.includes(c.name)))
-            entity.visual.custom = c.color
-          break
-        case 'all':
-          if (text.includes(c.name)) entity.visual.custom = c.color
-          break
-        default:
-          break
-      }
-    })
+    emitter.emit('characters-handler', { index: index.value, inner })
   }
 
   const onKeyboard = async (e: KeyboardEvent) => {

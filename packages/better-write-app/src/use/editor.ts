@@ -49,7 +49,7 @@ export const useEditor = () => {
     })
 
     onMounted(() => {
-      project.onLoadProject(undefined, false)
+      project.onLoadProject(undefined, false).then(() => {})
     })
 
     useEventListener('beforeunload', () => {
@@ -76,6 +76,9 @@ export const useEditor = () => {
 
     // window events
     listener.window().start()
+
+    // editor emitter and events
+    listener.editor().start()
 
     // theme loader
     plugin.emit('plugin-theme-set')

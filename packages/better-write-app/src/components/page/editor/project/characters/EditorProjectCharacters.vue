@@ -8,7 +8,16 @@
     <h2 class="mt-10 break-words text-base sm:text-lg">
       {{ t('editor.characters.description') }}
     </h2>
-    <div class="flex flex-col gap-2 w-full px-2"></div>
+    <div class="flex flex-col gap-2 w-full px-2">
+      <EditorProjectCharactersAdd />
+      <div class="flex gap-10 flex-col mt-10">
+        <EditorProjectCharactersListContainer
+          v-for="(character, index) in PROJECT.characters.list"
+          :key="index"
+          :character="character"
+        />
+      </div>
+    </div>
   </FullModal>
 </template>
 

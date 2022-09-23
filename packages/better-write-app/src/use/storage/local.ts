@@ -6,7 +6,6 @@ import i18n from '@/lang'
 import { useProjectStore } from '@/store/project'
 import { useStorage } from './storage'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
-import { usePlugin } from 'better-write-plugin-core'
 
 export const useLocalStorage = () => {
   const PROJECT = useProjectStore()
@@ -14,7 +13,6 @@ export const useLocalStorage = () => {
   const toast = useToast()
   const env = useEnv()
   const storage = useStorage()
-  const plugin = usePlugin()
   const { isLoading } = useNProgress()
   const { t } = i18n.global
 

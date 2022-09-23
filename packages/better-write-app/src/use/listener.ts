@@ -10,6 +10,8 @@ import { useUtils } from './utils'
 import { useHistoryStore } from '@/store/history'
 import { readBW } from 'better-write-extension'
 import { useEnv } from './env'
+import useEmitter from './emitter'
+import { useCharacters } from './characters'
 
 export const useListener = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -22,6 +24,8 @@ export const useListener = () => {
   const plugin = usePlugin()
   const toast = useToast()
   const env = useEnv()
+  const emitter = useEmitter()
+  const characters = useCharacters()
 
   const keyboard = () => {
     const start = () => {
@@ -157,5 +161,21 @@ export const useListener = () => {
     return { start }
   }
 
-  return { keyboard, window }
+  const editor = () => {
+    const start = () => {
+      // for set color in all entities with character exists
+      characters.handler()
+
+      emitter.on(
+        'characters-handler',
+        ({ index, inner }: { index: number; inner: string }) => {
+          characters.handler(index, inner)
+        }
+      )
+    }
+
+    return { start }
+  }
+
+  return { keyboard, window, editor }
 }

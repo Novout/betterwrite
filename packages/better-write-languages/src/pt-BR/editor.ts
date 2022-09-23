@@ -510,5 +510,17 @@ export default {
     title: 'Personagens',
     description:
       'Obtenha o controle de palavras específicas no decorrer da escrita.',
+    item: {
+      addCharacter: 'Adicionar Personagem',
+      name: 'Nome',
+      nameCase: 'Tipo de Nome',
+      color: 'Cor',
+      colorAlpha: 'Opacidade',
+      important: 'Sobrescrever',
+    },
+    data: {
+      occurrences: 'Ocorrências',
+      averageOccurrences: 'Média de Ocorrências',
+    },
   },
 }

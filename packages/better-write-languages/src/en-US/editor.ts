@@ -507,5 +507,17 @@ export default {
   characters: {
     title: 'Characters',
     description: 'Get control of specific words as you write.',
+    item: {
+      addCharacter: 'Add Character',
+      name: 'Name',
+      nameCase: 'Type',
+      color: 'Color',
+      colorAlpha: 'Opacity',
+      important: 'Important',
+    },
+    data: {
+      occurrences: 'Occurrences',
+      averageOccurrences: 'Average of Occurrences',
+    },
   },
 }
