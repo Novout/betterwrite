@@ -13,7 +13,6 @@ export const useAbsoluteStore = defineStore('absolute', {
         preferences: false,
         statistics: false,
         corrector: false,
-        blocked: true,
       },
       modal: {
         newProject: false,
@@ -31,7 +30,6 @@ export const useAbsoluteStore = defineStore('absolute', {
         configuration: false,
       },
       auth: {
-        dropbox: false,
         supabase: false,
       },
       commands: false,

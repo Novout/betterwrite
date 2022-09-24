@@ -6,7 +6,6 @@ export interface AbsoluteStateProject {
   characters: boolean
   preferences: boolean
   corrector: boolean
-  blocked: boolean
 }
 
 export interface AbsoluteStateModal {
@@ -28,7 +27,6 @@ export interface AbsoluteStateDOCX {
 }
 
 export interface AbsoluteStateAuth {
-  dropbox: boolean
   supabase: boolean
 }
 
