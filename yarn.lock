@@ -3654,6 +3654,15 @@
   dependencies:
     vue-demi "^0.13.4"
 
+"@vueuse/components@9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/components/-/components-9.2.0.tgz#606e926c3ac0291f0fd7e58b29d4023afcfd0578"
+  integrity sha512-NgQRhq5v1LRZsQq21rJlY8VjEqYg5xWiGErBftY+HaBhHsLAn4PxJxtvbe9uZNdOQlRdWM3UPUF6NO/sWfnyWw==
+  dependencies:
+    "@vueuse/core" "9.2.0"
+    "@vueuse/shared" "9.2.0"
+    vue-demi "*"
+
 "@vueuse/core@9.2.0":
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-9.2.0.tgz#58e3588b9bc5a69010aa9104b00056ee9ebff738"
