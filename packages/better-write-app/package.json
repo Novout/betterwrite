@@ -15,7 +15,7 @@
     "dev": "vite --port 3000",
     "build": "vite build",
     "serve": "rimraf ./dist && yarn build && vite --port 5000 preview",
-    "format": "prettier test/**/*.ts src/**/*.{vue,ts} --write",
+    "format": "prettier src/**/*.{vue,ts} --write",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format"
   },
   "dependencies": {

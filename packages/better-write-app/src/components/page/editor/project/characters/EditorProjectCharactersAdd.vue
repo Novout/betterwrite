@@ -63,7 +63,9 @@
 
   const state = reactive({
     name: '',
-    nameCase: t('editor.characters.item.nameCaseStrict') as ProjectStateCharacterNameCase,
+    nameCase: t(
+      'editor.characters.item.nameCaseStrict'
+    ) as ProjectStateCharacterNameCase,
     color: '#FFFFFF',
     colorAlpha: 0.1,
     important: false,

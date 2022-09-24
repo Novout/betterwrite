@@ -81,7 +81,7 @@
   const EDITOR = useEditorStore()
 
   const { t, locale } = useI18n()
-  
+
   const onClickLanguage = (lang: LanguageRaw) => {
     onSwitchLanguage(lang).then((set) => {
       locale.value = set

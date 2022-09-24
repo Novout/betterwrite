@@ -81,6 +81,8 @@ export const useProject = () => {
 
       await nextTick
 
+      plugin.emit('plugin-theme-set')
+
       emitter.emit('entity-text-focus', {
         target: type === 'creative' ? 1 : 0,
         position: 'start',
@@ -175,36 +177,36 @@ export const useProject = () => {
 
   const onExportProjectAs = () => {
     storage
-        .normalize()
-        .then(async () => {
-          const res = useFileSystemAccess({
-            dataType: 'Blob',
-            types: [
-              {
-                description: 'Better Write',
-                accept: {
-                  'application/xml': ['.bw'],
-                },
+      .normalize()
+      .then(async () => {
+        const res = useFileSystemAccess({
+          dataType: 'Blob',
+          types: [
+            {
+              description: 'Better Write',
+              accept: {
+                'application/xml': ['.bw'],
               },
-            ],
-            excludeAcceptAllOption: true,
-          })
-
-          if (!res.isSupported.value) return
-
-          const target = JSON.stringify(storage.getProjectObject())
-          const zip = await writeBW(target, utils().exportName('bw'))
-
-          res.data.value = zip
-          res.fileName.value = utils().exportName('bw')
-
-          await res.saveAs()
-
-          toast.success(t('toast.project.export'))
+            },
+          ],
+          excludeAcceptAllOption: true,
         })
-        .catch(() => {
-          toast.warning(t('toast.generics.cancel'))
-        })
+
+        if (!res.isSupported.value) return
+
+        const target = JSON.stringify(storage.getProjectObject())
+        const zip = await writeBW(target, utils().exportName('bw'))
+
+        res.data.value = zip
+        res.fileName.value = utils().exportName('bw')
+
+        await res.saveAs()
+
+        toast.success(t('toast.project.export'))
+      })
+      .catch(() => {
+        toast.warning(t('toast.generics.cancel'))
+      })
   }
 
   const onImportProject = () => {

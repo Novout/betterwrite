@@ -72,29 +72,29 @@ export const useSupabase = () => {
     toast.info(t('toast.generics.load'))
 
     s.auth
-        .signIn({ provider }, { redirectTo: env.getCorrectLocalUrl() })
-        .then(async ({ error }) => {
-          if (error) throw error
+      .signIn({ provider }, { redirectTo: env.getCorrectLocalUrl() })
+      .then(async ({ error }) => {
+        if (error) throw error
 
-          // if (notification) toast(t('editor.auth.login.success'))
-        })
-        .catch(() => {
-          if (notification) toast(t('editor.auth.login.error'))
-        })
-        .finally(() => {
-          ABSOLUTE.auth.supabase = false
-        })
+        // if (notification) toast(t('editor.auth.login.success'))
+      })
+      .catch(() => {
+        if (notification) toast(t('editor.auth.login.error'))
+      })
+      .finally(() => {
+        ABSOLUTE.auth.supabase = false
+      })
   }
 
   const out = () => {
     s.auth
-        .signOut()
-        .then(() => {
-          AUTH.account.user = null
+      .signOut()
+      .then(() => {
+        AUTH.account.user = null
 
-          router.push('/')
-        })
-        .finally(() => {})
+        router.push('/')
+      })
+      .finally(() => {})
   }
 
   const getProjects = async (): Promise<Maybe<ProjectObject[]>> => {
