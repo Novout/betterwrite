@@ -10141,7 +10141,7 @@ rollup@^2.43.1, rollup@^2.70.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-rollup@^2.79.0:
+rollup@^2.75.7:
   version "2.79.1"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.79.1.tgz#bedee8faef7c9f93a2647ac0108748f497f081c7"
   integrity sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==
@@ -11660,17 +11660,17 @@ vite-plugin-pages@0.26.0:
     picocolors "^1.0.0"
     yaml "^2.1.1"
 
-vite-plugin-pwa@0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.13.1.tgz#345133f947d4fc8252a1fd96f2fcb0e17c4201ae"
-  integrity sha512-NR3dIa+o2hzlzo4lF4Gu0cYvoMjSw2DdRc6Epw1yjmCqWaGuN86WK9JqZie4arNlE1ZuWT3CLiMdiX5wcmmUmg==
+vite-plugin-pwa@0.12.8:
+  version "0.12.8"
+  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.12.8.tgz#9eee41771fd9b84bdd5fb548cf6e19ed09bfc2ae"
+  integrity sha512-pSiFHmnJGMQJJL8aJzQ8SaraZBSBPMGvGUkCNzheIq9UQCEk/eP3UmANNmS9eupuhIpTK8AdxTOHcaMcAqAbCA==
   dependencies:
     debug "^4.3.4"
     fast-glob "^3.2.11"
     pretty-bytes "^6.0.0"
-    rollup "^2.79.0"
-    workbox-build "^6.5.4"
-    workbox-window "^6.5.4"
+    rollup "^2.75.7"
+    workbox-build "^6.5.3"
+    workbox-window "^6.5.3"
 
 vite-plugin-windicss@1.8.8:
   version "1.8.8"
@@ -12059,7 +12059,7 @@ workbox-broadcast-update@6.5.4:
   dependencies:
     workbox-core "6.5.4"
 
-workbox-build@^6.5.4:
+workbox-build@^6.5.3:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/workbox-build/-/workbox-build-6.5.4.tgz#7d06d31eb28a878817e1c991c05c5b93409f0389"
   integrity sha512-kgRevLXEYvUW9WS4XoziYqZ8Q9j/2ziJYEtTrjdz5/L/cTUa2XfyMP2i7c3p34lgqJ03+mTiz13SdFef2POwbA==
@@ -12194,7 +12194,7 @@ workbox-sw@6.5.4:
   resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-6.5.4.tgz#d93e9c67924dd153a61367a4656ff4d2ae2ed736"
   integrity sha512-vo2RQo7DILVRoH5LjGqw3nphavEjK4Qk+FenXeUsknKn14eCNedHOXWbmnvP4ipKhlE35pvJ4yl4YYf6YsJArA==
 
-workbox-window@6.5.4, workbox-window@^6.5.4:
+workbox-window@6.5.4, workbox-window@^6.5.3:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/workbox-window/-/workbox-window-6.5.4.tgz#d991bc0a94dff3c2dbb6b84558cff155ca878e91"
   integrity sha512-HnLZJDwYBE+hpG25AQBO8RUWBJRaCsI9ksQJEp3aCOFCaG5kqaToAYXFRAHxzRluM2cQbGzdQF5rjKPWPA1fug==

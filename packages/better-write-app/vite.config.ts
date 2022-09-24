@@ -74,11 +74,11 @@ export default ({ mode }) => {
         include: [
           /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
           /\.vue$/, /\.vue\?vue/, // .vue
-          /\.md$/, // .md
+          /\.md$/ // .md
         ],
         imports: [
           'vue',
-          'vue-router',
+          'vue-router'
         ]
       }),
       vitePWA({
