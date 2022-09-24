@@ -1,4 +1,7 @@
 import { defineConfig, loadEnv } from "vite"
+import { resolve, dirname } from 'pathe'
+import { fileURLToPath } from 'url'
+import fg from 'fast-glob'
 import vue from "@vitejs/plugin-vue"
 import vueGlobalComponent  from "unplugin-vue-components/vite"
 import { HeadlessUiResolver } from "unplugin-vue-components/resolvers"
@@ -6,7 +9,7 @@ import vueI18n from "@intlify/vite-plugin-vue-i18n"
 import vuePages from 'vite-plugin-pages'
 import { VitePWA as vitePWA } from 'vite-plugin-pwa'
 import viteAutoImport from 'unplugin-auto-import/vite'
-import { SchemaOrg as viteSchemaOrg, SchemaOrgResolver, schemaOrgAutoImports } from '@vueuse/schema-org-vite'
+import { SchemaOrg as viteSchemaOrg } from '@vueuse/schema-org-vite'
 import vitePersist from 'vite-plugin-optimize-persist'
 import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
@@ -15,8 +18,6 @@ import viteChecker from 'vite-plugin-checker'
 import { viteStdlib } from "./scripts/vite"
 import windiCSS from 'vite-plugin-windicss'
 import stdLibBrowser from 'node-stdlib-browser'
-import { resolve } from 'pathe'
-import fg from 'fast-glob'
 
 export default ({ mode }) => {
   process.env = {...process.env, ...loadEnv(mode, process.cwd())};
@@ -25,7 +26,7 @@ export default ({ mode }) => {
     base: './',
     resolve: {
       alias: {
-        "@": resolve(__dirname, "./src"),
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
         ...stdLibBrowser
       },
     },
@@ -43,22 +44,22 @@ export default ({ mode }) => {
       vuePages({
         dirs: 'src/pages',
         onRoutesGenerated: routes => (viteSitemap({ 
-          hostname: 'https://www.betterwrite.io/', 
+          hostname: process.env.VITE_BASE_URL as string, 
           filename: 'sitemap',
           routes 
         })),
       }),
       vueI18n({
-        include: resolve(__dirname, "./src/lang/**"),
-        runtimeOnly: false
+        include: resolve(dirname(fileURLToPath(import.meta.url)), "./src/lang/**"),
+        runtimeOnly: false,
+        compositionOnly: false
       }),
       vueGlobalComponent({
         dts: true,
-        resolvers: [HeadlessUiResolver(), SchemaOrgResolver()]
+        resolvers: [HeadlessUiResolver()]
       }),
       windiCSS(),
       viteSchemaOrg({
-        mock: false,
         full: false,
         dts: true,
       }),
@@ -69,10 +70,16 @@ export default ({ mode }) => {
       // @ts-ignore
       viteChecker({ typescript: process.env.DEV, vueTsc: process.env.DEV }),
       viteAutoImport({
-        dts: true,
-        imports: [
-          schemaOrgAutoImports,
+        dts: './imports.d.ts',
+        include: [
+          /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+          /\.vue$/, /\.vue\?vue/, // .vue
+          /\.md$/, // .md
         ],
+        imports: [
+          'vue',
+          'vue-router',
+        ]
       }),
       vitePWA({
         base: '/',
