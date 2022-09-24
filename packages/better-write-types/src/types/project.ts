@@ -65,7 +65,7 @@ export interface ProjectStateCharacters {
   list: ProjectStateCharacter[]
 }
 
-type ProjectStateCharacterNameCase = 'strict' | 'default' | 'all'
+export type ProjectStateCharacterNameCase = 'strict' | 'default' | 'all'
 
 export interface ProjectStateCharacter {
   id: ID<string>

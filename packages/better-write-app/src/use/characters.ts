@@ -4,6 +4,7 @@ import { ASTUtils } from 'better-write-contenteditable-ast'
 import { Entities, Entity, ID, ProjectStateCharacter } from 'better-write-types'
 import { useProject } from './project'
 import { useUtils } from './utils'
+import { useTransformer } from './generator/transformer'
 
 export const useCharacters = () => {
   const CONTEXT = useContextStore()
@@ -11,6 +12,7 @@ export const useCharacters = () => {
 
   const utils = useUtils()
   const project = useProject()
+  const transformer = useTransformer()
 
   const handler = (index?: ID<number>, inner?: string) => {
     const getEntities = (index?: ID<number>): Entities => {
@@ -27,21 +29,30 @@ export const useCharacters = () => {
       const text = utils.text().defaultWhitespace(str)
       const color = utils.convert().hexToRgbA(c.color, c.colorAlpha)
 
-      switch (c.nameCase) {
+      const isValidImportant =
+        !entity.visual.custom || (entity.visual.custom && c.important)
+
+      const nameCase = transformer.characters().nameCase(c.nameCase, 'setter')
+
+      switch (nameCase) {
         case 'strict':
-          if (text.split(' ').find((t) => t === c.name))
+          if (text.split(' ').find((t) => t === c.name) && isValidImportant)
             entity.visual.custom = color
           break
         case 'default':
           if (
             text
               .split(' ')
-              .find((t) => t.toLowerCase().includes(c.name.toLowerCase()))
+              .find((t) => t.toLowerCase().includes(c.name.toLowerCase())) &&
+            isValidImportant
           )
             entity.visual.custom = color
           break
         case 'all':
-          if (text.toLowerCase().includes(c.name.toLowerCase()))
+          if (
+            text.toLowerCase().includes(c.name.toLowerCase()) &&
+            isValidImportant
+          )
             entity.visual.custom = color
           break
         default:

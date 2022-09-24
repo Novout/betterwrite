@@ -1,5 +1,11 @@
 <template>
   <div
+    v-motion
+    :initial="{ opacity: 0, y: 30 }"
+    :enter="{
+      opacity: 1,
+      y: 0,
+    }"
     class="flex bg-theme-background-opacity-1 gap-5 flex-col w-full p-10 border hover:border-2 rounded-xl shadow-xl"
     :style="{ borderColor: character.color }"
   >
@@ -11,6 +17,12 @@
       <div class="flex flex-wrap gap-4 items-center">
         <div
           v-if="value"
+          v-motion
+          :initial="{ opacity: 0, x: 30 }"
+          :enter="{
+            opacity: 1,
+            x: 0,
+          }"
           class="flex flex-wrap gap-5 items-center bg-theme-background-2 rounded-lg p-2 shadow-xl"
         >
           <div class="flex flex-col">
@@ -22,8 +34,9 @@
           </div>
           <div class="flex flex-col">
             <p>{{ t('editor.characters.item.nameCase') }}</p>
-            <InputText
+            <InputSelect
               v-model="character.nameCase"
+              :arr="defines.characters().nameCase()"
               class="bg-theme-background-opacity-1"
             />
           </div>
@@ -82,12 +95,14 @@
   import { useCharacters } from '@/use/characters'
   import { useI18n } from 'vue-i18n'
   import { useToggle } from '@vueuse/core'
+  import { useDefines } from '@/use/defines'
 
   defineProps<{
     character: ProjectStateCharacter
   }>()
 
   const characters = useCharacters()
+  const defines = useDefines()
   const { t } = useI18n()
   const [value, toggle] = useToggle()
 </script>

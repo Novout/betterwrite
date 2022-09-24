@@ -1,5 +1,11 @@
 <template>
   <div
+    v-motion
+    :initial="{ opacity: 0, y: 30 }"
+    :enter="{
+      opacity: 1,
+      y: 0,
+    }"
     class="flex flex-col p-10 bg-theme-background-opacity-1 shadow-lg gap-5 items-start w-full my-5"
   >
     <h2 class="text-xl font-bold">
@@ -67,19 +73,22 @@
       'editor.characters.item.nameCaseStrict'
     ) as ProjectStateCharacterNameCase,
     color: '#FFFFFF',
-    colorAlpha: 0.1,
+    colorAlpha: 0.2,
     important: false,
   })
 
   const onAdd = async () => {
-    if (!state.name) {
+    if (
+      !state.name ||
+      PROJECT.characters.list.find((n) => n.name === state.name)
+    ) {
       return
     }
 
     PROJECT.characters.list.unshift({
       id: utils.id().uuidv4(),
       name: state.name,
-      nameCase: transformer.characters().nameCase(state.nameCase, 'getter'),
+      nameCase: state.nameCase,
       color: state.color,
       colorAlpha: state.colorAlpha,
       important: state.important,
@@ -90,7 +99,7 @@
     state.name = ''
     state.nameCase = t('editor.characters.item.nameCaseStrict')
     state.color = '#FFFFFF'
-    state.colorAlpha = 0.1
+    state.colorAlpha = 0.2
     state.important = false
 
     characters.handler()
