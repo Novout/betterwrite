@@ -28,7 +28,6 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useDev } from '@/use/dev'
-  import { useBar } from '@/use/global/bar'
   import { usePopulate } from '@/use/populate'
   import { ref } from 'vue'
 
@@ -36,15 +35,12 @@
 
   const dev = useDev()
   const populate = usePopulate()
-  const bar = useBar()
 
   const entry = ref('')
 
   const onEmit = () => {
-    bar.load(() => {
-      if (entry.value) dev.cmd(entry.value)
+    if (entry.value) dev.cmd(entry.value)
 
-      entry.value = ''
-    })
+    entry.value = ''
   }
 </script>

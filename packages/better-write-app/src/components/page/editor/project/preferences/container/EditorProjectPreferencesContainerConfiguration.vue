@@ -76,19 +76,15 @@
     onSwitchLanguage,
   } from 'better-write-languages'
   import { useEditorStore } from '@/store/editor'
-  import { useBar } from '@/use/global/bar'
   import { LanguageRaw } from 'better-write-types'
 
   const EDITOR = useEditorStore()
 
   const { t, locale } = useI18n()
-  const bar = useBar()
-
+  
   const onClickLanguage = (lang: LanguageRaw) => {
-    bar.load(() => {
-      onSwitchLanguage(lang).then((set) => {
-        locale.value = set
-      })
+    onSwitchLanguage(lang).then((set) => {
+      locale.value = set
     })
   }
 </script>

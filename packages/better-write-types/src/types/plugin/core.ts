@@ -120,7 +120,6 @@ export interface PluginHooks {
   toast: PluginHook
   breakpoints: PluginHook
   transformer: PluginHook
-  bar: PluginHook
   vueuse: {
     core: PluginHook
     integration: {

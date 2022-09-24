@@ -25,7 +25,6 @@ export const PluginPDFSet = (
     exists: false,
   }
 
-  const { isLoading } = hooks.vueuse.integration.progress
   const toast = useToast()
   const online = hooks.vueuse.core.useOnline()
   const pdfmake = usePDF().default
@@ -1293,7 +1292,6 @@ export const PluginPDFSet = (
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
-        isLoading.value = false
       })
   }
 
@@ -1342,7 +1340,6 @@ export const PluginPDFSet = (
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
-        isLoading.value = false
       })
   }
 
@@ -1353,7 +1350,6 @@ export const PluginPDFSet = (
       toast.info(hooks.i18n.t('toast.generics.load'))
 
       stores.ABSOLUTE.load = true
-      isLoading.value = true
 
       await nextTick
 
@@ -1371,7 +1367,6 @@ export const PluginPDFSet = (
       toast.info(hooks.i18n.t('toast.generics.load'))
 
       stores.ABSOLUTE.load = true
-      isLoading.value = true
 
       await nextTick
       await nextTick
