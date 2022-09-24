@@ -8,6 +8,7 @@ import { ID, ContextState, Entity } from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
 import { useCycle } from './cycle'
+import { useCharacters } from './characters'
 
 export const useGraph = () => {
   const CONTEXT = useContextStore()
@@ -19,6 +20,7 @@ export const useGraph = () => {
   const storage = useStorage()
   const breakpoints = useBreakpoints(breakpointsTailwind)
   const cycle = useCycle()
+  const characters = useCharacters()
 
   const utils = () => {
     const mobile = () => {
@@ -53,6 +55,8 @@ export const useGraph = () => {
 
           ABSOLUTE.entity.comment = true
         }
+
+        characters.handler()
       })
   }
 

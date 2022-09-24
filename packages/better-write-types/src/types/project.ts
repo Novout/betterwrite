@@ -65,10 +65,12 @@ export interface ProjectStateCharacters {
   list: ProjectStateCharacter[]
 }
 
+type ProjectStateCharacterNameCase = 'strict' | 'default' | 'all'
+
 export interface ProjectStateCharacter {
   id: ID<string>
   name: string
-  nameCase: 'strict' | 'default' | 'all'
+  nameCase: ProjectStateCharacterNameCase
   color: string
   colorAlpha?: number | string
   important: boolean

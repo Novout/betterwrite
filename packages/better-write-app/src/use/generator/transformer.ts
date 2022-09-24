@@ -2,6 +2,7 @@ import {
   DOCXAlignmentType,
   DOCXStateFlowItemType,
   Maybe,
+  ProjectStateCharacterNameCase
 } from 'better-write-types'
 import { useI18n } from 'vue-i18n'
 
@@ -106,5 +107,50 @@ export const useTransformer = () => {
     return { entityAlignment, flowItem }
   }
 
-  return { docx }
+  const characters = () => {
+    const nameCase = (target: string, focus: 'setter' | 'getter'): ProjectStateCharacterNameCase => {
+      let value: Maybe<'strict' | 'default' | 'all'> = null
+      let __STOP__: boolean = false
+
+      if (focus === 'getter') {
+        switch (target) {
+          case 'strict':
+            return t('editor.characters.item.nameCaseStrict')
+          case 'default':
+            return t('editor.characters.item.nameCaseDefault')
+          case 'all':
+            return t('editor.characters.item.nameCaseAll')
+        }
+      }
+
+      availableLocales.forEach((locale: string) => {
+        if (__STOP__) return
+
+        const { editor } = getLocaleMessage(locale) as any
+
+        switch (target) {
+          case editor.characters.item.nameCaseStrict:
+            __STOP__ = true
+            value = 'strict'
+            break
+          case editor.characters.item.nameCaseDefault:
+            __STOP__ = true
+            value = 'default'
+            break
+          case editor.characters.item.nameCaseAll:
+            __STOP__ = true
+            value = 'all'
+            break
+          default:
+            __STOP__ = false
+        }
+      })
+
+      return value || 'strict'
+    }
+
+    return { nameCase }
+  }
+
+  return { docx, characters }
 }

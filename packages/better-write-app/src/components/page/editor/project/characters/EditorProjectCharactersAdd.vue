@@ -16,8 +16,9 @@
       </EditorProjectCharactersItem>
       <EditorProjectCharactersItem>
         <p>{{ t('editor.characters.item.nameCase') }}</p>
-        <InputText
+        <InputSelect
           v-model="state.nameCase"
+          :arr="defines.characters().nameCase()"
           class="bg-theme-background-opacity-1"
         />
       </EditorProjectCharactersItem>
@@ -34,7 +35,7 @@
         <InputBoolean v-model="state.important" />
       </EditorProjectCharactersItem>
       <EditorProjectCharactersItem>
-        <div>
+        <div class="p-3 bg-theme-background-opacity-1 rounded-full">
           <IconAdd class="w-7 h-7 wb-icon" @click="onAdd" />
         </div>
       </EditorProjectCharactersItem>
@@ -46,18 +47,23 @@
   import { useProjectStore } from '@/store/project'
   import { useCharacters } from '@/use/characters'
   import { useUtils } from '@/use/utils'
+  import { useDefines } from '@/use/defines'
   import { nextTick, reactive } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import { useTransformer } from '@/use/generator/transformer'
+  import { ProjectStateCharacterNameCase } from 'better-write-types'
 
   const PROJECT = useProjectStore()
 
   const utils = useUtils()
   const { t } = useI18n()
+  const defines = useDefines()
   const characters = useCharacters()
+  const transformer = useTransformer()
 
   const state = reactive({
     name: '',
-    nameCase: 'strict' as any,
+    nameCase: t('editor.characters.item.nameCaseStrict') as ProjectStateCharacterNameCase,
     color: '#FFFFFF',
     colorAlpha: 0.1,
     important: false,
@@ -71,7 +77,7 @@
     PROJECT.characters.list.unshift({
       id: utils.id().uuidv4(),
       name: state.name,
-      nameCase: state.nameCase,
+      nameCase: transformer.characters().nameCase(state.nameCase, 'getter'),
       color: state.color,
       colorAlpha: state.colorAlpha,
       important: state.important,
@@ -80,7 +86,7 @@
     await nextTick
 
     state.name = ''
-    state.nameCase = 'strict'
+    state.nameCase = t('editor.characters.item.nameCaseStrict')
     state.color = '#FFFFFF'
     state.colorAlpha = 0.1
     state.important = false

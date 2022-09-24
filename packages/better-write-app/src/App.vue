@@ -27,19 +27,15 @@
     AnnotationsPlugin(),
   ])
 
-  // @ts-ignore
   useSchemaOrg([
-    // @ts-ignore
     defineOrganization({
       name: 'betterwrite.io',
       logo: '/logo.png',
       sameAs: ['https://twitter.com/betterwriteio'],
     }),
-    // @ts-ignore
     defineWebSite({
       name: 'betterwrite.io',
     }),
-    // @ts-ignore
     defineWebPage(),
   ])
 </script>
