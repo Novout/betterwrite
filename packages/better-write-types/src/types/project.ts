@@ -70,7 +70,7 @@ export type ProjectStateCharacterNameCase = 'strict' | 'default' | 'all'
 export interface ProjectStateCharacter {
   id: ID<string>
   name: string
-  nameCase: ProjectStateCharacterNameCase
+  nameCase: ProjectStateCharacterNameCase | string
   color: string
   colorAlpha?: number | string
   important: boolean

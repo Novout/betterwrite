@@ -16,24 +16,25 @@
 </template>
 
 <script setup lang="ts">
+  import { useLocalStorage } from '@/use/storage/local'
   import { useMagicKeys } from '@vueuse/core'
   import { ref, watch } from 'vue'
 
-  const props = defineProps({
-    title: {
-      required: false,
-      default: '',
-      type: String,
-    },
-  })
+  const props = defineProps<{
+    title?: string
+    forceSave?: boolean
+  }>()
 
   const absolute = ref<HTMLElement | null>(null)
 
   const { escape } = useMagicKeys()
+  const local = useLocalStorage()
 
   const emit = defineEmits(['close'])
 
   watch(escape, (v) => {
     if (v) emit('close')
   })
+
+  if (props.forceSave) local.onSaveProject(false)
 </script>

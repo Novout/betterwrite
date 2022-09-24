@@ -56,8 +56,7 @@
   import { useDefines } from '@/use/defines'
   import { nextTick, reactive } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useTransformer } from '@/use/generator/transformer'
-  import { ProjectStateCharacterNameCase } from 'better-write-types'
+  import { useToast } from 'vue-toastification'
 
   const PROJECT = useProjectStore()
 
@@ -65,13 +64,11 @@
   const { t } = useI18n()
   const defines = useDefines()
   const characters = useCharacters()
-  const transformer = useTransformer()
+  const toast = useToast()
 
   const state = reactive({
     name: '',
-    nameCase: t(
-      'editor.characters.item.nameCaseStrict'
-    ) as ProjectStateCharacterNameCase,
+    nameCase: t('editor.characters.item.nameCaseStrict'),
     color: '#FFFFFF',
     colorAlpha: 0.2,
     important: false,
@@ -82,6 +79,7 @@
       !state.name ||
       PROJECT.characters.list.find((n) => n.name === state.name)
     ) {
+      toast.error(t('toast.generics.invalidName'))
       return
     }
 
@@ -103,5 +101,7 @@
     state.important = false
 
     characters.handler()
+
+    toast.success(t('toast.generics.successAdded'))
   }
 </script>

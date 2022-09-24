@@ -5,6 +5,9 @@ import { Entities, Entity, ID, ProjectStateCharacter } from 'better-write-types'
 import { useProject } from './project'
 import { useUtils } from './utils'
 import { useTransformer } from './generator/transformer'
+import { useToast } from 'vue-toastification'
+import { useI18n } from 'vue-i18n'
+import { useStorage } from './storage/storage'
 
 export const useCharacters = () => {
   const CONTEXT = useContextStore()
@@ -13,6 +16,9 @@ export const useCharacters = () => {
   const utils = useUtils()
   const project = useProject()
   const transformer = useTransformer()
+  const toast = useToast()
+  const { t } = useI18n()
+  const storage = useStorage()
 
   const handler = (index?: ID<number>, inner?: string) => {
     const getEntities = (index?: ID<number>): Entities => {
@@ -75,13 +81,17 @@ export const useCharacters = () => {
       PROJECT.characters.list = PROJECT.characters.list.filter(
         ({ id }) => id !== character.id
       )
+
+      toast.success(t('toast.generics.successRemoved'))
     }
 
     return { onDelete }
   }
 
   const data = () => {
-    const totalOccurrences = (name: string): number => {
+    const totalOccurrences = async (name: string) => {
+      await storage.normalize()
+
       let v = 0
 
       project.utils().getParagraphEntities((entity) => {
@@ -91,15 +101,17 @@ export const useCharacters = () => {
       return v
     }
 
-    const averageTotalOccurrences = (name: string): string => {
-      const total = totalOccurrences(name)
+    const averageTotalOccurrences = async (name: string): Promise<string> => {
+      const total = await totalOccurrences(name)
 
       const paragraphs = PROJECT.pages.reduce(
         (sum, val) => sum + project.utils().getChapterParagraphs(val),
         0
       )
 
-      return (total / paragraphs).toFixed(2)
+      const result = total / paragraphs
+
+      return isNaN(result) ? '0.0' : result.toFixed(1)
     }
 
     return { totalOccurrences, averageTotalOccurrences }

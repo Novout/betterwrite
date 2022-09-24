@@ -75,7 +75,7 @@
           {{ t('editor.characters.data.occurrences') }}
         </h2>
         <p class="font-bold text-lg underline">
-          {{ characters.data().totalOccurrences(character.name) }}
+          {{ totalOccurrences }}
         </p>
       </EditorProjectCharactersItem>
       <EditorProjectCharactersItem>
@@ -83,7 +83,7 @@
           {{ t('editor.characters.data.averageOccurrences') }}
         </h2>
         <p class="font-bold text-lg underline">
-          {{ characters.data().averageTotalOccurrences(character.name) }}
+          {{ averageTotalOccurrences }}
         </p>
       </EditorProjectCharactersItem>
     </div>
@@ -94,10 +94,10 @@
   import { ProjectStateCharacter } from 'better-write-types'
   import { useCharacters } from '@/use/characters'
   import { useI18n } from 'vue-i18n'
-  import { useToggle } from '@vueuse/core'
+  import { computedAsync, useToggle } from '@vueuse/core'
   import { useDefines } from '@/use/defines'
 
-  defineProps<{
+  const props = defineProps<{
     character: ProjectStateCharacter
   }>()
 
@@ -105,4 +105,11 @@
   const defines = useDefines()
   const { t } = useI18n()
   const [value, toggle] = useToggle()
+
+  const totalOccurrences = computedAsync(async () => {
+    return await characters.data().totalOccurrences(props.character.name)
+  }, 0)
+  const averageTotalOccurrences = computedAsync(async () => {
+    return await characters.data().averageTotalOccurrences(props.character.name)
+  }, '0.0')
 </script>

@@ -5,6 +5,9 @@ export default {
     supported: 'O seu navegador não suporta este recurso :(',
     cancel: 'A ação foi cancelada!',
     configurationFail: 'A configuração importada nao é válida!',
+    invalidName: 'O nome está vazio ou já existe!',
+    successAdded: 'Adicionado com Sucesso!',
+    successRemoved: 'Removido com Sucesso!',
   },
   pdf: {
     error:
