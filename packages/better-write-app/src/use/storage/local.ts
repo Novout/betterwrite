@@ -32,8 +32,8 @@ export const useLocalStorage = () => {
     } catch (e) {}
   }
 
-  const getProject = (): Maybe<ProjectObject> => {
-    const project = get(env.projectLocalStorage())
+  const getProject = (project?: Maybe<ProjectObject>): Maybe<ProjectObject> => {
+    if (!project) project = get(env.projectLocalStorage())
 
     return project ? storage.support(project) : undefined
   }

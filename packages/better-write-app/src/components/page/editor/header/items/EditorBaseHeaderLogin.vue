@@ -39,7 +39,7 @@
             </HeroIcon>
           </template>
         </UseImage>
-        <p v-if="mobile && user" class="truncate">
+        <p v-if="mobile && user" class="truncate font-raleway">
           {{ user?.user_metadata?.name || user?.email || '' }}
         </p>
         <HeroIcon

@@ -110,6 +110,9 @@ export const useProject = () => {
     context: Maybe<ProjectObject>,
     notification: boolean = true
   ) => {
+    // support old features interceptor
+    if (context) context = local.getProject(context)
+
     if (!context) context = local.getProject()
 
     if (!context) {

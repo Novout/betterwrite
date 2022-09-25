@@ -193,15 +193,15 @@ export const useSupabase = () => {
     toast.success(t('toast.project.delete'))
   }
 
-  const loadProject = async (context: ProjectObject) => {
+  const loadProject = (context: ProjectObject) => {
+    if (!confirm(t('toast.project.deleteProject'))) return
+
     AUTH.account.project_id_activity = context.id || null
 
-    storage.normalize().then(() => {
-      project.onLoadProject(context, false).then(() => {
-        local.onSaveProject(false).then(() => {
-          router.push('/').finally(() => {
-            toast.success(t('toast.project.load'))
-          })
+    project.onLoadProject(context, false).then(() => {
+      local.onSaveProject(false).then(() => {
+        router.push('/').finally(() => {
+          toast.success(t('toast.project.load'))
         })
       })
     })

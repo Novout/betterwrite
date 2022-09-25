@@ -28,6 +28,8 @@ export default {
       'Você tem certeza que deseja criar um novo projeto? Você perderá todos os dados que não forem salvos na nuvem.',
     deleteAlert:
       'Você tem certeza que deseja deletar o projeto? Esta ação é irreversível!',
+    deleteProject:
+      'Você tem certeza que deseja carregar um novo projeto? Todos os dados locais serão perdidos.',
     import: 'Deseja carregar o projeto {name}?',
     create: 'Projeto criado com sucesso!',
     load: 'Projeto carregado com sucesso!',
