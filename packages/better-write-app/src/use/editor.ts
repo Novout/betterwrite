@@ -52,14 +52,17 @@ export const useEditor = () => {
       project.onLoadProject(undefined, false).then(() => {})
     })
 
-    useEventListener('beforeunload', () => {
-      if (EDITOR.configuration.autosave) storage.normalize()
+    useEventListener('beforeunload', async () => {
+      if (EDITOR.configuration.autosave) {
+        await storage.normalize()
+        await local.onSaveProject(false)
+      }
     })
 
     if (EDITOR.configuration.autosave) {
       useIntervalFn(() => {
         local.onSaveProject(false)
-      }, 1000 * 60)
+      }, 1000 * 30)
     }
 
     // tracking normalize project cases
