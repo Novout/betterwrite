@@ -80,6 +80,12 @@ Write without worrying about customization, leaving the hard work only for the t
 
 <img src="./.github/pdf.png" />
 
+## Relevant Characters
+
+Get control of specific words as you write. Highlight characters in paragraphs by color and more easily find the word that matters most to you.
+
+<img src="./.github/characters1.png" />
+
 ## Annotations
 
 Keep your notes in an exclusive space, without interfering with the main project.
