@@ -1,3 +1,6 @@
+.Vue-Toastification__toast {
+  font-family: 'Raleway' !important;
+}
 .Vue-Toastification__container {
   z-index: 999999999999999 !important;
 }

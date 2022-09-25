@@ -76,7 +76,11 @@
           <p class="text-sm">
             {{ t('editor.preferences.configuration.editor.fontSize') }}
           </p>
-          <InputNumber v-model="EDITOR.styles.text.fontSize" :step="2" />
+          <InputNumber
+            v-model="EDITOR.styles.text.fontSize"
+            :step="2"
+            :min="8"
+          />
         </div>
       </div>
       <div class="flex flex-col gap-2">

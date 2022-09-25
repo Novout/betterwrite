@@ -1,6 +1,7 @@
 /* v-tooltip */
 
 .v-popper--theme-better-write {
+  font-family: 'Raleway' !important;
   color: var(--theme-editor-tooltip-text);
   background: var(--theme-editor-tooltip-background);
   border: 1px solid var(--theme-editor-tooltip-border);

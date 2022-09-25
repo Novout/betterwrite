@@ -139,7 +139,7 @@ export const useStorage = () => {
         },
         text: {
           fontFamily: 'Raleway',
-          fontWeight: 300,
+          fontWeight: 400,
           fontSize: 16,
         },
       }
