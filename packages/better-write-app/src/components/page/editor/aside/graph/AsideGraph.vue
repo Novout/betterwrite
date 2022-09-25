@@ -1,5 +1,5 @@
 <template>
-  <div class="flex px-2 flex-col w-full">
+  <div class="flex font-raleway px-2 flex-col w-full">
     <div class="flex flex-row-reverse items-center justify-between mb-5 mt-2">
       <IconGraphClose
         v-if="PROJECT.type === 'creative'"

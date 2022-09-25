@@ -6,6 +6,9 @@
       :style="{
         whiteSpace: 'pre-line',
         textIndent: '2rem',
+        fontFamily: EDITOR.styles.text.fontFamily,
+        fontWeight: EDITOR.styles.text.fontWeight,
+        fontSize: `${EDITOR.styles.text.fontSize}px`,
       }"
       v-html="raw.v2().purge().finder(entity)"
     />
@@ -13,10 +16,13 @@
 </template>
 
 <script setup lang="ts">
+  import { useEditorStore } from '@/store/editor'
   import { useRaw } from '@/use/raw'
   import { Entity } from 'better-write-types'
 
-  const { entity } = defineProps<{
+  const EDITOR = useEditorStore()
+
+  defineProps<{
     entity: Entity
   }>()
 

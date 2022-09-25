@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[PROJECT.base === 'chapter' ? '' : 'opacity-70']"
-    class="flex justify-between items-center w-full"
+    class="flex font-raleway justify-between items-center w-full"
   >
     <div
       class="cursor-pointer flex truncate gap-1 items-center text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"

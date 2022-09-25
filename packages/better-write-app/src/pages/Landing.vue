@@ -77,7 +77,7 @@
             target="_blank"
             rel="noopener noreferrer"
             href="https://github.com/Novout/betterwrite"
-            class="flex items-center gap-3 absolute bottom-0 right-0 p-5 cursor-pointer"
+            class="flex font-raleway items-center gap-3 absolute bottom-0 right-0 p-5 cursor-pointer"
           >
             <IconGithub class="text-gray-200 w-6 h-6" />
             <v-typical

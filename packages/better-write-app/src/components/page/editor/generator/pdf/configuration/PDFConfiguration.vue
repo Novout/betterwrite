@@ -4,7 +4,7 @@
     :initial="{ opacity: 0, y: 10 }"
     :enter="{ opacity: 1, y: 0 }"
     :delay="0"
-    class="flex wb-scroll overflow-x-hidden flex-col justify-start items-start p-5 gap-5"
+    class="flex font-raleway wb-scroll overflow-x-hidden flex-col justify-start items-start p-5 gap-5"
   >
     <div class="w-full">
       <EditorAbsoluteHeader
