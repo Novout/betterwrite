@@ -10,7 +10,7 @@ import { useUtils } from './utils'
 import { useExternalsStore } from '@/store/externals'
 import { useEnv } from './env'
 import { useStorage } from '@/use/storage/storage'
-import { nextTick } from 'vue'
+import { ComputedRef, nextTick } from 'vue'
 import { useContextStore } from '@/store/context'
 import { useFactory } from './factory'
 import { usePlugin } from 'better-write-plugin-core'
@@ -457,13 +457,13 @@ export const useRaw = () => {
         ABSOLUTE.entity.menu = true
       }
 
-      const style = (entity: Entity) => {
+      const style = (entity: ComputedRef<Entity>) => {
         return [
-          entity.visual.custom &&
-          (!entity.visual.info ||
-            !entity.visual.warning ||
-            !entity.visual.error)
-            ? { backgroundColor: entity.visual.custom }
+          entity.value.visual.custom &&
+          (!entity.value.visual.info ||
+            !entity.value.visual.warning ||
+            !entity.value.visual.error)
+            ? { backgroundColor: entity.value.visual.custom }
             : {},
         ]
       }

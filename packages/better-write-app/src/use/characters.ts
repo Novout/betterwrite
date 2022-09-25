@@ -20,6 +20,16 @@ export const useCharacters = () => {
   const { t } = useI18n()
   const storage = useStorage()
 
+  const reset = () => {
+    project.utils().getParagraphEntities((entity: Entity) => {
+      entity.visual.custom = undefined
+    })
+
+    CONTEXT.entities.forEach((entity) => {
+      entity.visual.custom = undefined
+    })
+  }
+
   const handler = (index?: ID<number>, inner?: string) => {
     const getEntities = (index?: ID<number>): Entities => {
       return index ? [CONTEXT.entities[index]] : CONTEXT.entities
@@ -70,8 +80,8 @@ export const useCharacters = () => {
     }
 
     entities.forEach((e) => {
-      PROJECT.characters?.list?.forEach(async (character, i) => {
-        await onSetter(e, i === 0 && inner ? inner : e.raw, character)
+      PROJECT.characters?.list?.forEach((character, i) => {
+        onSetter(e, i === 0 && inner ? inner : e.raw, character)
       })
     })
   }
@@ -111,11 +121,11 @@ export const useCharacters = () => {
 
       const result = total / paragraphs
 
-      return isNaN(result) ? '0.0' : result.toFixed(1)
+      return isNaN(result) ? '0.0' : result.toFixed(2)
     }
 
     return { totalOccurrences, averageTotalOccurrences }
   }
 
-  return { handler, controller, data }
+  return { reset, handler, controller, data }
 }

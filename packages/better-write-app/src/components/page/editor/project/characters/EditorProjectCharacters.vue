@@ -8,7 +8,7 @@
     <h2 class="mt-10 break-words text-base sm:text-lg">
       {{ t('editor.characters.description') }}
     </h2>
-    <div class="flex flex-col gap-2 w-full px-2">
+    <div class="flex flex-col gap-2 w-full">
       <EditorProjectCharactersAdd />
       <div class="flex gap-10 flex-col mt-10">
         <EditorProjectCharactersListContainer
@@ -24,14 +24,16 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useProjectStore } from '@/store/project'
+  import { useCharacters } from '@/use/characters'
   import { onClickOutside } from '@vueuse/core'
-  import { ref } from 'vue'
+  import { nextTick, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
 
   const { t } = useI18n()
+  const characters = useCharacters()
 
   const rf = ref<HTMLElement | null>(null)
 
@@ -39,7 +41,15 @@
     onClose()
   })
 
-  const onClose = () => {
+  const onClose = async () => {
+    characters.reset()
+
+    await nextTick
+
+    characters.handler()
+
+    await nextTick
+
     ABSOLUTE.project.characters = false
   }
 </script>
