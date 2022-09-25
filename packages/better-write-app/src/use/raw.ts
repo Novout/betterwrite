@@ -471,13 +471,13 @@ export const useRaw = () => {
       const c = (entity: Entity) => {
         return [
           entity.visual.info
-            ? 'bg-theme-editor-entity-info hover:bg-theme-editor-entity-info-hover active:bg-theme-editor-entity-info-active'
+            ? '!bg-theme-editor-entity-info hover:!bg-theme-editor-entity-info-hover active:!bg-theme-editor-entity-info-active'
             : '',
           entity.visual.warning
-            ? 'bg-theme-editor-entity-warning hover:bg-theme-editor-entity-warning-hover active:bg-theme-editor-entity-warning-active'
+            ? '!bg-theme-editor-entity-warning hover:!bg-theme-editor-entity-warning-hover active:!bg-theme-editor-entity-warning-active'
             : '',
           entity.visual.error
-            ? 'bg-theme-editor-entity-error hover:bg-theme-editor-entity-error-hover active:bg-theme-editor-entity-error-active'
+            ? '!bg-theme-editor-entity-error hover:!bg-theme-editor-entity-error-hover active:!bg-theme-editor-entity-error-active'
             : '',
         ]
       }
