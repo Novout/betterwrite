@@ -114,7 +114,7 @@
   import { Themes } from 'better-write-plugin-theme'
   import { BetterWriteThemes } from 'better-write-types'
   import { useEditorStore } from '@/store/editor'
-  import { nextTick, computed } from 'vue'
+  import { nextTick, computed, watch } from 'vue'
   import { usePlugin } from 'better-write-plugin-core'
   import { useStorage } from '@/use/storage/storage'
   import { useNProgress } from '@vueuse/integrations/useNProgress'
@@ -148,4 +148,14 @@
 
     isLoading.value = false
   }
+
+  watch(
+    computed(() => EDITOR.styles.googleFontsInjection),
+    (b) => {
+      if (!b) {
+        EDITOR.styles.heading.fontFamily = 'Poppins'
+        EDITOR.styles.text.fontFamily = 'Raleway'
+      }
+    }
+  )
 </script>
