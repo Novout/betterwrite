@@ -77,11 +77,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useProjectStore } from '@/store/project'
   import { useI18n } from 'vue-i18n'
-  import draggable from 'vuedraggable'
-
-  const PROJECT = useProjectStore()
 
   const { t } = useI18n()
 </script>

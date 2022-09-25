@@ -21,107 +21,11 @@
         </div>
       </div>
     </div>
-    <div>
-      <PreferencesContainerTitle>
-        {{ t('editor.aside.graph.title') }}
-      </PreferencesContainerTitle>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[0].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.paragraph.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[1].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.headingTwo.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[2].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.headingThree.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[3].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.pageBreak.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[4].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.lineBreak.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[5].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.image.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[6].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.dialogue.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[7].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.checkbox.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[8].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.list.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[9].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.drau.active"
-          :specific="true"
-        />
-      </div>
-    </div>
   </EditorProjectPreferencesContainerSlot>
 </template>
 
 <script setup lang="ts">
   import { Themes } from 'better-write-plugin-theme'
-  import { useI18n } from 'vue-i18n'
   import { BetterWriteThemes } from 'better-write-types'
   import { useEditorStore } from '@/store/editor'
   import { nextTick } from 'vue'
@@ -131,7 +35,6 @@
 
   const EDITOR = useEditorStore()
 
-  const { t } = useI18n()
   const { isLoading } = useNProgress()
   const plugin = usePlugin()
   const storage = useStorage()
