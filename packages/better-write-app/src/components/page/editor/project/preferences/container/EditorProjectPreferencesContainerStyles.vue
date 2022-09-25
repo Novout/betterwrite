@@ -1,7 +1,9 @@
 <template>
   <EditorProjectPreferencesContainerSlot>
     <div class="flex flex-col gap-2">
-      <PreferencesContainerTitle> Tema </PreferencesContainerTitle>
+      <PreferencesContainerTitle>{{
+        t('editor.preferences.configuration.theme')
+      }}</PreferencesContainerTitle>
       <div>
         <div
           v-for="([theme, logo], index) in Themes()"
@@ -21,6 +23,90 @@
         </div>
       </div>
     </div>
+    <div class="flex flex-col gap-5">
+      <PreferencesContainerTitle>{{
+        t('editor.preferences.configuration.editor.title')
+      }}</PreferencesContainerTitle>
+      <DescriptionContainer
+        color="#AA0000"
+        :description="
+          t(
+            'editor.preferences.configuration.editor.options.googleFonts.description'
+          )
+        "
+      >
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.options.googleFonts.title'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.googleFontsInjection" />
+        </div>
+      </DescriptionContainer>
+      <div class="flex flex-col gap-2">
+        <p class="font-bold text-lg mt-5">
+          {{ t('editor.preferences.configuration.editor.text') }}
+        </p>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontFamily') }}
+          </p>
+          <InputSelect
+            v-model="EDITOR.styles.text.fontFamily"
+            :specific="true"
+            :arr="fonts"
+            :font="true"
+            :width-items="90"
+          />
+        </div>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontWeight') }}
+          </p>
+          <InputSelect
+            v-model="EDITOR.styles.text.fontWeight"
+            :specific="true"
+            :arr="[200, 300, 400, 500, 700, 900]"
+          />
+        </div>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontSize') }}
+          </p>
+          <InputNumber v-model="EDITOR.styles.text.fontSize" :step="2" />
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="font-bold text-lg mt-5">
+          {{ t('editor.preferences.configuration.editor.heading') }}
+        </p>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontFamily') }}
+          </p>
+          <InputSelect
+            v-model="EDITOR.styles.heading.fontFamily"
+            :specific="true"
+            :arr="fonts"
+            :font="true"
+            :width-items="90"
+          />
+        </div>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontWeight') }}
+          </p>
+          <InputSelect
+            v-model="EDITOR.styles.heading.fontWeight"
+            :specific="true"
+            :arr="[200, 300, 400, 500, 700, 900]"
+          />
+        </div>
+      </div>
+    </div>
   </EditorProjectPreferencesContainerSlot>
 </template>
 
@@ -28,16 +114,26 @@
   import { Themes } from 'better-write-plugin-theme'
   import { BetterWriteThemes } from 'better-write-types'
   import { useEditorStore } from '@/store/editor'
-  import { nextTick } from 'vue'
+  import { nextTick, computed } from 'vue'
   import { usePlugin } from 'better-write-plugin-core'
   import { useStorage } from '@/use/storage/storage'
   import { useNProgress } from '@vueuse/integrations/useNProgress'
+  import { useI18n } from 'vue-i18n'
+  import { usePDFStore } from '@/store/pdf'
 
   const EDITOR = useEditorStore()
+  const PDF = usePDFStore()
 
   const { isLoading } = useNProgress()
   const plugin = usePlugin()
   const storage = useStorage()
+  const { t } = useI18n()
+
+  const fonts = computed(() =>
+    EDITOR.styles.googleFontsInjection
+      ? ['Poppins', 'Raleway', ...PDF.fonts]
+      : ['Poppins', 'Raleway']
+  )
 
   const onSwitchTheme = async (theme: BetterWriteThemes) => {
     EDITOR.configuration.theme = theme

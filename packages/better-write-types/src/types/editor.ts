@@ -84,58 +84,24 @@ export interface EditorStateConfiguration {
 }
 
 export interface EditorStateStyles {
-  input: EditorStateInput
-  show: EditorStateShow
+  googleFontsInjection: boolean
+  heading: EditorStateHeading
+  text: EditorStateText
 }
+
 export interface EditorStateInput {
   fontFamily: string
   fontSize: string
   fontColor: string
 }
 
-export interface EditorStateShow {
-  entity: EditorStateShowEntity
+export interface EditorStateHeading {
   fontFamily: string
-  fontColor: string
-  paragraph: EditorStateShowParagraph
-  heading: EditorStateShowHeading
+  fontWeight: number
 }
 
-export interface EditorStateShowEntity {
-  shadow: boolean
-}
-
-export interface EditorStateShowParagraph {
-  indent: string
+export interface EditorStateText {
   fontFamily: string
-  fontColor: string
-  fontSize: string
-  fontWeight: string
-}
-
-export interface EditorStateShowHeading {
-  one: EditorStateShowHeadingOne
-  two: EditorStateShowHeadingTwo
-  three: EditorStateShowHeadingThree
-}
-
-export interface EditorStateShowHeadingOne {
-  fontFamily: string
-  fontColor: string
-  fontSize: string
-  fontWeight: string
-}
-
-export interface EditorStateShowHeadingTwo {
-  fontFamily: string
-  fontColor: string
-  fontSize: string
-  fontWeight: string
-}
-
-export interface EditorStateShowHeadingThree {
-  fontFamily: string
-  fontColor: string
-  fontSize: string
-  fontWeight: string
+  fontWeight: number
+  fontSize: number
 }

@@ -130,6 +130,21 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.editor.styles.text) {
+      _.editor.styles = {
+        googleFontsInjection: false,
+        heading: {
+          fontFamily: 'Poppins',
+          fontWeight: 700,
+        },
+        text: {
+          fontFamily: 'Raleway',
+          fontWeight: 300,
+          fontSize: 16,
+        },
+      }
+    }
+
     return _
   }
 

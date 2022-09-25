@@ -20,7 +20,7 @@
         >
           <ListboxOption
             v-for="(it, index) in props.arr"
-            v-slot="{ active, selected }"
+            v-slot="{ selected }"
             :key="index"
             :value="it"
             as="template"
@@ -37,7 +37,7 @@
                   aside ? 'w-24' : '',
                   'block truncate',
                 ]"
-                :style="{ fontFamily: font ? it as string : '' }"
+                :style="{ fontFamily: font ? it as string : '', width: widthItems ? `${widthItems}px` : '' }"
                 >{{ it }}</span
               >
               <span
@@ -90,6 +90,10 @@
       required: false,
       type: Boolean,
       default: false,
+    },
+    widthItems: {
+      required: false,
+      type: Number,
     },
   })
 

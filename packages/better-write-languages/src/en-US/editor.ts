@@ -92,6 +92,22 @@ export default {
     },
     configuration: {
       title: 'Configuration',
+      theme: 'Theme',
+      editor: {
+        options: {
+          googleFonts: {
+            title: 'Google API Fonts',
+            description:
+              'Enable the use of external fonts in the editor. Depends on internet connection.',
+          },
+        },
+        title: 'Editor',
+        heading: 'Heading',
+        text: 'Text',
+        fontFamily: 'Font Family',
+        fontWeight: 'Font Weight',
+        fontSize: 'Font Size',
+      },
     },
     styles: {
       title: 'Styles',

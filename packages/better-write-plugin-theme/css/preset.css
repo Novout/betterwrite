@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   outline: 0;
-  font-family: 'Raleway';
+  font-family: 'Raleway', 'sans-serif';
   font-feature-settings: 'ss02' on, 'ss01' on;
   -webkit-font-smoothing: antialiased;
 }

@@ -94,6 +94,22 @@ export default {
     },
     configuration: {
       title: 'Configurações',
+      theme: 'Tema',
+      editor: {
+        options: {
+          googleFonts: {
+            title: 'Fontes do Google API',
+            description:
+              'Habilitar a utilização de fontes externas no editor. Depende da conexão com a internet.',
+          },
+        },
+        title: 'Editor',
+        heading: 'Cabeçalho',
+        text: 'Texto',
+        fontFamily: 'Fonte Padrão',
+        fontWeight: 'Estilo da Fonte',
+        fontSize: 'Tamanho da Fonte',
+      },
     },
     styles: {
       title: 'Aparência',
