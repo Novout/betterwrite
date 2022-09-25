@@ -11,7 +11,7 @@
           :src="user?.user_metadata.avatar_url"
         >
           <template #loading>
-            <Spinner class="rounded-full mr-0 sm:mr-2" :width="32" />
+            <Spinner class="rounded-full mr-0 sm:mr-2" :height="32" :width="32" />
           </template>
           <template #error>
             <HeroIcon class="rounded-full mr-0 sm:mr-2 w-8">
