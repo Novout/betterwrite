@@ -72,8 +72,6 @@ export const useProject = () => {
 
       CONTEXT.load()
 
-      ABSOLUTE.project.blocked = false
-
       if (!breakpoints.isMobile().value && type === 'creative')
         ABSOLUTE.aside = true
 
@@ -147,8 +145,6 @@ export const useProject = () => {
     await nextTick
 
     if (!breakpoints.isMobile().value) ABSOLUTE.aside = true
-
-    ABSOLUTE.project.blocked = false
 
     const editor = document.querySelector('#edit')
 

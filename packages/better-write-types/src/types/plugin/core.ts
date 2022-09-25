@@ -111,7 +111,6 @@ export interface PluginHooks {
   project: PluginHook
   raw: PluginHook
   scroll: PluginHook
-  start: PluginHook
   utils: PluginHook
   i18n: PluginHook
   emitter: PluginHook

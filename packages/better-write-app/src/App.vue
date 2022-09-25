@@ -14,9 +14,7 @@
   import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
   import { AnnotationsPlugin } from 'better-write-plugin-annotations'
 
-  const start = useStart()
-
-  start.init([
+  useStart([
     ThemePlugin(),
     ImporterPlugin(),
     PDFPlugin(),
@@ -25,5 +23,5 @@
     HtmlPlugin(),
     MultiplayerPlugin(),
     AnnotationsPlugin(),
-  ])
+  ]).init()
 </script>
