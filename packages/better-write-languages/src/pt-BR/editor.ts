@@ -103,6 +103,10 @@ export default {
               'Habilitar a utilização de fontes externas no editor. Depende da conexão com a internet.',
           },
         },
+        background: {
+          title: 'Fundo',
+          image: 'Imagem',
+        },
         title: 'Editor',
         heading: 'Cabeçalho',
         text: 'Texto',

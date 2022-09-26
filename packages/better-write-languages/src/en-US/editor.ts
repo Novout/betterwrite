@@ -101,6 +101,10 @@ export default {
               'Enable the use of external fonts in the editor. Depends on internet connection.',
           },
         },
+        background: {
+          title: 'Background',
+          image: 'Image',
+        },
         title: 'Editor',
         heading: 'Heading',
         text: 'Text',

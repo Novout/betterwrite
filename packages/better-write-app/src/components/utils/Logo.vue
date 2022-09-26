@@ -49,12 +49,30 @@
   const theme = computed(() => EDITOR.configuration.theme)
 
   Cycle.onAfterMounted(() => {
-    path.value = setEditorLogo(theme.value, useUtils())
+    path.value = setEditorLogo(
+      EDITOR.styles.base.backgroundData ? 'BetterWrite - Custom' : theme.value,
+      useUtils()
+    )
   })
 
   watch(theme, (_theme) => {
-    path.value = setEditorLogo(_theme, useUtils())
+    path.value = setEditorLogo(
+      EDITOR.styles.base.backgroundData ? 'BetterWrite - Custom' : _theme,
+      useUtils()
+    )
   })
+
+  watch(
+    computed(() => EDITOR.styles.base.backgroundData),
+    () => {
+      path.value = setEditorLogo(
+        EDITOR.styles.base.backgroundData
+          ? 'BetterWrite - Custom'
+          : theme.value,
+        useUtils()
+      )
+    }
+  )
 
   const onClick = () => {
     if (props.hidden) return

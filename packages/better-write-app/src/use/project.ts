@@ -143,7 +143,10 @@ export const useProject = () => {
 
     await nextTick
 
-    plugin.emit('plugin-theme-set')
+    plugin.emit(
+      'plugin-theme-set',
+      EDITOR.styles.base.backgroundData ? 'BetterWrite - Custom' : undefined
+    )
 
     await nextTick
 

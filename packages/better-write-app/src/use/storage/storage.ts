@@ -142,6 +142,9 @@ export const useStorage = () => {
           fontWeight: 400,
           fontSize: 16,
         },
+        base: {
+          backgroundData: undefined,
+        },
       }
     }
 

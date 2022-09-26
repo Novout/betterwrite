@@ -16,6 +16,9 @@ export const useEditorStore = defineStore('editor', {
           fontWeight: 400,
           fontSize: 16,
         },
+        base: {
+          backgroundData: '',
+        },
       },
       configuration: {
         theme: Themes()[1][0],

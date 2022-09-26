@@ -4,7 +4,7 @@
     id="editor-aside"
     ref="aside"
     v-motion="'aside'"
-    class="fixed wb-edit md:relative overflow-y-auto wb-scroll w-full md:w-60 lg:w-72 xl:w-80 bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active z-20 shadow-lg"
+    class="fixed wb-edit md:relative overflow-y-auto wb-scroll w-full md:w-60 lg:w-72 xl:w-80 z-20 shadow-lg bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active"
     :style="{ left, opacity }"
     :initial="{
       x: -240,

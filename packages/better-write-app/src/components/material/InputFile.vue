@@ -52,11 +52,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useUtils } from '@/use/utils'
   import { getImageFileRaw } from 'better-write-image-converter'
   import { ref } from 'vue'
-
-  const utils = useUtils()
 
   const inp = ref<HTMLElement | null>(null as any)
 

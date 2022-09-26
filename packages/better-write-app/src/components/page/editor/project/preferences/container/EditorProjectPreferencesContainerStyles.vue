@@ -48,6 +48,20 @@
       </DescriptionContainer>
       <div class="flex flex-col gap-2">
         <p class="font-bold text-lg mt-5">
+          {{ t('editor.preferences.configuration.editor.background.title') }}
+        </p>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.background.image') }}
+          </p>
+          <InputFileNext
+            @load="onCoverImageLoad"
+            @exclude="onDeleteCoverImage"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="font-bold text-lg mt-5">
           {{ t('editor.preferences.configuration.editor.text') }}
         </p>
         <div class="wb-preferences">
@@ -162,4 +176,20 @@
       }
     }
   )
+
+  const onCoverImageLoad = async (e: any) => {
+    EDITOR.styles.base.backgroundData = e
+
+    await nextTick
+
+    plugin.emit('plugin-theme-set', 'BetterWrite - Custom')
+  }
+
+  const onDeleteCoverImage = async () => {
+    EDITOR.styles.base.backgroundData = ''
+
+    await nextTick
+
+    plugin.emit('plugin-theme-set')
+  }
 </script>

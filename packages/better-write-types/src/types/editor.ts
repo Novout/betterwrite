@@ -5,6 +5,7 @@ export type BetterWriteThemes =
   | 'BetterWrite - Ascend'
   | 'BetterWrite - Harmonic'
   | 'BetterWrite - Infinity'
+  | 'BetterWrite - Custom'
 
 export interface EditorState {
   styles: EditorStateStyles
@@ -87,12 +88,11 @@ export interface EditorStateStyles {
   googleFontsInjection: boolean
   heading: EditorStateHeading
   text: EditorStateText
+  base: EditorStateBase
 }
 
-export interface EditorStateInput {
-  fontFamily: string
-  fontSize: string
-  fontColor: string
+export interface EditorStateBase {
+  backgroundData: string
 }
 
 export interface EditorStateHeading {
