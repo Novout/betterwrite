@@ -162,7 +162,7 @@
   --theme-editor-nprogress-height: 2px;
   --theme-editor-creative-drafts-background: rgba(0, 0, 0, 0.5);
   --theme-editor-creative-drafts-container-background: none;
-  --theme-editor-creative-drafts-container-borders: none;
+  --theme-editor-creative-drafts-container-borders: rgba(0, 0, 0, 0.1);
   --theme-editor-creative-drafts-container-list-background: none;
   --theme-editor-creative-drafts-container-list-background-hover: none;
   --theme-editor-creative-drafts-container-list-background-active: none;
