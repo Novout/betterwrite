@@ -48,13 +48,13 @@ There are no word processors on the market that are not inextricable from the co
 
 With **betterwrite.io**, transform your editor's appearance in a way that showcases your creativity even more. The editor offers a number of customization tools, allowing the user greater flexibility and contentment with the tool.
 
-- Modify the editor's size and font
+- Modify the editor's size and font;
 
-- Choose a background image (.gif supported)
+- Choose a background image (.gif supported);
 
-- Transparency items for better use of the image.
+- Transparency items for better use of the image;
 
-- Default color themes
+- Default color themes.
 
 <p align="center">
   <img src="./.github/example.png" width="100%" />
