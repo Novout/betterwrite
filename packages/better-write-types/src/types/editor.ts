@@ -93,6 +93,10 @@ export interface EditorStateStyles {
 
 export interface EditorStateBase {
   backgroundData: string
+  backgroundBlur: boolean
+  backgroundGrayscale: boolean
+  backgroundSaturate: boolean
+  backgroundSepia: boolean
 }
 
 export interface EditorStateHeading {

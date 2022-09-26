@@ -13,7 +13,7 @@
         duration: 200,
       },
     }"
-    class="flex flex-col fixed bg-theme-editor-entity-popover-background wb-text shadow-lg z-max rounded"
+    class="flex font-raleway flex-col fixed bg-theme-editor-entity-popover-background wb-text shadow-lg z-max rounded"
     @contextmenu.prevent.stop="() => {}"
   >
     <EditorEntityDefaultOptionsItem @action="onDeleteEntity">

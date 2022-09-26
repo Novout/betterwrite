@@ -1,7 +1,7 @@
 <template>
   <div
     ref="main"
-    class="flex flex-col overflow-hidden bg-theme-editor-background hover:bg-theme-editor-background-hover active:bg-theme-editor-background-active"
+    class="flex flex-col overflow-hidden z-20 bg-theme-editor-background hover:bg-theme-editor-background-hover active:bg-theme-editor-background-active"
     :class="[
       EDITOR.configuration.draggable ? 'fixed' : 'inline-block',
       EDITOR.configuration.bars

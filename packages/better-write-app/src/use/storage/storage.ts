@@ -144,6 +144,10 @@ export const useStorage = () => {
         },
         base: {
           backgroundData: undefined,
+          backgroundBlur: false,
+          backgroundGrayscale: false,
+          backgroundSaturate: false,
+          backgroundSepia: false,
         },
       }
     }

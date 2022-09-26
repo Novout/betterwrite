@@ -104,6 +104,10 @@ export default {
         background: {
           title: 'Background',
           image: 'Image',
+          imageBlur: 'Blur',
+          imageGrayscale: 'Grayscale',
+          imageSaturate: 'Saturate',
+          imageSepia: 'Sepia',
         },
         title: 'Editor',
         heading: 'Heading',

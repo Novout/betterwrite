@@ -52,6 +52,19 @@ There are no word processors on the market that are not inextricable from the co
 
 <br>
 
+# A Different Way
+
+
+With **betterwrite.io**, transform your editor's appearance in a way that showcases your creativity even more. The editor offers a number of customization tools, allowing the user greater flexibility and contentment with the tool.
+
+- Modify the editor's size and font
+
+- Choose a background image (.gif supported)
+
+- Transparency items for better use of the image.
+
+<img src="./.github/customtheme.png" />
+
 # Entity Model
 
 Better Write works with the Entity Model, where each item in the editor is unique and independent of other content. This model allows the creation of resources that do not necessarily function as texts, such as Lists, Checkboxes, Images and Drawings. The generators do not need to extract data from the editor because with the Entity Model we can standardize the project data, allowing the extensions (.PDF, .DOCX, .HTML, .TXT) to work independently and a new external extensions support.

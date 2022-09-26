@@ -18,6 +18,10 @@ export const useEditorStore = defineStore('editor', {
         },
         base: {
           backgroundData: '',
+          backgroundBlur: false,
+          backgroundGrayscale: false,
+          backgroundSaturate: false,
+          backgroundSepia: false,
         },
       },
       configuration: {

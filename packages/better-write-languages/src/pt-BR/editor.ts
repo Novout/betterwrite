@@ -106,6 +106,10 @@ export default {
         background: {
           title: 'Fundo',
           image: 'Imagem',
+          imageBlur: 'Borrão',
+          imageGrayscale: 'Cinza',
+          imageSaturate: 'Saturação',
+          imageSepia: 'Sépia',
         },
         title: 'Editor',
         heading: 'Cabeçalho',

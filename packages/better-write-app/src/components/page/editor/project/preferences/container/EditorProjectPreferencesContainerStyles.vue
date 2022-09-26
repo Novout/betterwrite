@@ -126,6 +126,42 @@
             @exclude="onDeleteCoverImage"
           />
         </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t('editor.preferences.configuration.editor.background.imageBlur')
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundBlur" />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.background.imageGrayscale'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundGrayscale" />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.background.imageSaturate'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundSaturate" />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t('editor.preferences.configuration.editor.background.imageSepia')
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundSepia" />
+        </div>
       </div>
     </div>
   </EditorProjectPreferencesContainerSlot>

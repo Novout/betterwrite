@@ -19,7 +19,7 @@ export default defineConfig({
     'wb-text': 'text-theme-text-1',
     'wb-background-color': 'bg-theme-background-1',
     'wb-aside-button': 'text-2xs pl-2 transition w-full font-bold text-theme-text-2 rounded-none flex',
-    'wb-input-container': 'flex flex-1 h-auto w-auto items-center justify-between p-5 border rounded-lg border-theme-editor-material-border bg-theme-editor-material-background hover:bg-theme-editor-material-background-hover active:bg-theme-editor-material-background-active text-theme-editor-material-text hover:text-theme-editor-material-text-hover active:text-theme-editor-material-text-active shadow-lg',
+    'wb-input-container': 'flex font-raleway flex-1 h-auto w-auto items-center justify-between p-5 border rounded-lg border-theme-editor-material-border bg-theme-editor-material-background hover:bg-theme-editor-material-background-hover active:bg-theme-editor-material-background-active text-theme-editor-material-text hover:text-theme-editor-material-text-hover active:text-theme-editor-material-text-active shadow-lg',
     'wb-pdf-container': 'flex flex-row gap-5 flex-wrap justify-between items-center my-3 overflow-x-hidden',
     'wb-disabled': 'opacity-50 pointer-events-none',
     'wb-configuration-absolute': 'absolute top-0 left-0 bg-theme-background-1 flex flex-col h-screen w-full z-max px-2 py-5 md:px-20 overflow-y-auto overflow-x-hidden wb-scroll',

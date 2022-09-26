@@ -3,7 +3,7 @@
     <div
       ref="corrector"
       :style="style"
-      class="fixed flex flex-col w-3/4 md:w-1/2 h-3/4 bg-theme-background-1 wb-text rounded shadow-2xl p-5 overflow-y-auto wb-scroll"
+      class="fixed !font-raleway flex flex-col w-3/4 md:w-1/2 h-3/4 bg-theme-background-1 wb-text rounded shadow-2xl p-5 overflow-y-auto wb-scroll"
     >
       <EditorAbsoluteHeader class="pl-5" :title="'Corretor'" @close="onClose" />
       <div class="flex flex-wrap flex-1 flex-col lg:flex-row mt-5">
