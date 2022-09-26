@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-end px-2 py-1 w-full hover:bg-theme-background-3"
+    class="flex bg-rgba-blur items-end px-2 py-1 w-full hover:bg-theme-background-3"
     :class="[!props.off ? 'cursor-pointer' : 'cursor-default']"
     @mouseenter="hover = true"
     @mouseleave="hover = false"

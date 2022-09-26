@@ -3,7 +3,7 @@
     <div
       ref="comment"
       v-motion
-      class="flex flex-col fixed w-96 bg-theme-editor-external-comment-background hover:bg-theme-editor-external-comment-background-hover active:bg-theme-editor-external-comment-background-active px-5 py-2 h-40 rounded shadow-2xl"
+      class="flex flex-col bg-rgba-blur fixed w-96 bg-theme-editor-external-comment-background hover:bg-theme-editor-external-comment-background-hover active:bg-theme-editor-external-comment-background-active px-5 py-2 h-40 rounded shadow-2xl"
       :style="style"
       :initial="{ opacity: 0, x: 40 }"
       :enter="{

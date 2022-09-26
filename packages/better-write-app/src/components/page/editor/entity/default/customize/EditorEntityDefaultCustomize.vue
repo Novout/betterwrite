@@ -2,41 +2,45 @@
   <Modal @close="onClose">
     <div
       ref="custom"
-      class="fixed font-raleway px-2 md:px-10 w-full h-screen overflow-y-auto text-theme-editor-extras-finder-text hover:text-theme-editor-extras-finder-text-hover active:text-theme-editor-extras-finder-text-active bg-theme-editor-extras-finder-background hover:bg-theme-editor-extras-finder-background-hover active:bg-theme-editor-extras-finder-background-active p-2 rounded shadow-2xl"
+      class="fixed bg-rgba-blur font-raleway px-2 md:px-10 w-full h-screen overflow-y-auto wb-text bg-theme-background-1 p-2 rounded shadow-2xl"
     >
       <div class="flex py-3 items-center justify-between w-full">
         <div class="flex">
-          <h3 class="mr-2">{{ t('editor.aside.entity.optionsOn') }}</h3>
+          <h3 class="mr-2 font-bold">
+            {{ t('editor.aside.entity.optionsOn') }}
+          </h3>
           <InputBoolean v-model="paragraph.active" :specific="true" />
         </div>
         <IconClose class="wb-icon h-7 w-7" @click.prevent="onClose" />
       </div>
       <div
-        :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
+        :class="[!paragraph.active ? 'pointer-events-none' : '']"
         class="flex items-center justify-start w-full my-5"
       >
-        <InputSelect v-model="template" class="w-52" :arr="templates" />
-        <div
-          class="flex flex-wrap ml-2 px-2 items-center bg-theme-background-2"
-        >
+        <InputSelect
+          v-model="template"
+          class="w-52 bg-rgba-blur"
+          :arr="templates"
+        />
+        <div class="flex flex-wrap ml-2 px-2 items-center">
           <InputText
             v-model="templateText"
-            class="mx-2 bg-transparent shadow shadow-xl rounded"
+            class="mx-2 p-2 shadow shadow-xl bg-rgba-blur bg-theme-editor-material-background rounded"
             @keyup.enter="onCreateParagraphTemplate()"
           />
           <IconAdd
-            class="wb-icon w-10 h-10"
+            class="wb-icon w-8 h-8"
             @click.prevent.stop="onCreateParagraphTemplate"
           />
           <IconDelete
-            class="wb-icon w-10 h-10"
+            class="wb-icon w-8 h-8"
             @click.prevent.stop="onDeleteParagraphTemplate"
           />
         </div>
       </div>
       <div
         class="flex h-60 max-h-60 items-center justify-center w-full overflow-hidden p-1 md:p-5 bg-theme-background-opacity-1"
-        :class="[!paragraph.active ? 'opacity-50 pointer-events-none' : '']"
+        :class="[!paragraph.active ? 'pointer-events-none' : '']"
       >
         <p
           :style="{
@@ -58,7 +62,7 @@
         :class="[
           !paragraph.active ||
           paragraph.class === t('editor.entity.generator.template')
-            ? 'opacity-50 pointer-events-none'
+            ? 'pointer-events-none'
             : '',
         ]"
       >

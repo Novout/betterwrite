@@ -33,17 +33,15 @@ A Modern Word Processor.
 - ✅ Mobile & Desktop (PWA)
 - ✅ PDF, DOCX, HTML and TXT Generator
 
+<br>
+
+<img src="./.github/customtheme.png" />
+
+<br>
+
 # Motivation
 
 There are no word processors on the market that are not inextricable from the context itself. This approach makes it difficult to integrate other resources, limiting creative possibilities for writers and publishers. __Better Write__ offers an individual and reactive approach to any item that is entered in the editor.
-
-<br>
-
-<p align="center">
-  <img src="./.github/example.png" width="100%" />
-<p>
-
-<br>
 
 # A Different Way
 
@@ -58,7 +56,10 @@ With **betterwrite.io**, transform your editor's appearance in a way that showca
 
 - Default color themes
 
-<img src="./.github/customtheme.png" />
+<p align="center">
+  <img src="./.github/example.png" width="100%" />
+<p>
+
 
 # Entity Model
 
