@@ -5,7 +5,7 @@
     ref="aside"
     v-motion="'aside'"
     :class="[!mobile ? 'bg-rgba-blur' : '']"
-    class="fixed wb-edit z-100 md:relative overflow-y-auto wb-scroll w-full md:w-60 lg:w-72 xl:w-80 z-20 shadow-lg bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active"
+    class="fixed wb-edit md:relative overflow-y-auto z-50 wb-scroll w-full md:w-60 lg:w-72 xl:w-80 shadow-lg bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active"
     :style="{ left, opacity }"
     :initial="{
       x: -240,
@@ -21,7 +21,7 @@
   </aside>
   <IconAsideGraph
     v-else-if="PROJECT.type === 'creative'"
-    class="absolute z-100 left-0 transform right-1 wb-icon w-12 h-12 md:(w-9 h-9) bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active rounded-br shadow-xl"
+    class="absolute z-50 left-0 transform right-1 wb-icon w-12 h-12 md:(w-9 h-9) bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active rounded-br shadow-xl"
     @click.prevent.stop="ABSOLUTE.aside = true"
   />
 </template>
