@@ -121,7 +121,7 @@
           <p class="text-sm">
             {{ t('editor.preferences.configuration.editor.background.image') }}
           </p>
-          <InputFileNext
+          <InputFileImage
             @load="onCoverImageLoad"
             @exclude="onDeleteCoverImage"
           />

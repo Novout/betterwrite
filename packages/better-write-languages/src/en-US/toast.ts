@@ -78,4 +78,7 @@ export default {
   corrector: {
     apply: 'Effects applied successfully!',
   },
+  image: {
+    limitFileSize: 'The maximum supported file size limit is 8MB!',
+  },
 }

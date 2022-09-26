@@ -28,10 +28,15 @@
   import { useEditorStore } from '@/store/editor'
   import { useFileSystemAccess } from '@vueuse/core'
   import { watch } from 'vue'
+  import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vue-toastification'
 
   const EDITOR = useEditorStore()
 
-  const { open, data } = useFileSystemAccess({
+  const { t } = useI18n()
+  const toast = useToast()
+
+  const { open, data, fileSize } = useFileSystemAccess({
     dataType: 'Blob',
     types: [
       {
@@ -56,6 +61,12 @@
     reader.readAsDataURL(d)
 
     reader.onload = () => {
+      if (fileSize.value > 8000000) {
+        toast.warning(t('toast.image.limitFileSize'))
+
+        return
+      }
+
       emit('load', reader.result)
     }
     reader.onerror = function () {}

@@ -84,4 +84,7 @@ export default {
       negative: 'Não é permitido números menores que {number}!',
     },
   },
+  image: {
+    limitFileSize: 'O limite máximo de tamanho de arquivo suportado é de 8MB!',
+  },
 }
