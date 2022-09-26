@@ -25,11 +25,11 @@
   --theme-aside-logo-text: #d1d5db;
   --theme-aside-graph-lines: #414141;
   --theme-aside-graph-text: #d1d5db;
-  --theme-aside-graph-text-hover: #414141;
-  --theme-aside-graph-text-active: #333;
+  --theme-aside-graph-text-hover: #d1d5db;
+  --theme-aside-graph-text-active: #d1d5db;
   --theme-aside-graph-background: none;
-  --theme-aside-graph-background-hover: #242424;
-  --theme-aside-graph-background-active: #202020;
+  --theme-aside-graph-background-hover: rgb(0, 0, 0, 0.2);
+  --theme-aside-graph-background-active: rgb(0, 0, 0, 0.2);
   --theme-editor-scrollbar-track: transparent;
   --theme-editor-scrollbar-thumb:  rgb(0, 0, 0, 0.5);
   --theme-editor-betterwrite: #e5e7eb;

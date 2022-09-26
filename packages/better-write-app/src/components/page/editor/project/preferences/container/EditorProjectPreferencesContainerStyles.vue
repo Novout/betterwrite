@@ -13,6 +13,9 @@
             EDITOR.configuration.theme === theme
               ? 'bg-theme-background-opacity-1'
               : '',
+            EDITOR.styles.base.backgroundData
+              ? 'pointer-events-none opacity-40'
+              : '',
           ]"
           @click.prevent.stop="onSwitchTheme(theme)"
         >
@@ -138,6 +141,7 @@
   import { useNProgress } from '@vueuse/integrations/useNProgress'
   import { useI18n } from 'vue-i18n'
   import { usePDFStore } from '@/store/pdf'
+  import { useToast } from 'vue-toastification'
 
   const EDITOR = useEditorStore()
   const PDF = usePDFStore()
@@ -146,6 +150,7 @@
   const plugin = usePlugin()
   const storage = useStorage()
   const { t } = useI18n()
+  const toast = useToast()
 
   const fonts = computed(() =>
     EDITOR.styles.googleFontsInjection
@@ -182,6 +187,8 @@
 
     await nextTick
 
+    toast.success(t('toast.generics.successAdded'))
+
     plugin.emit('plugin-theme-set', 'BetterWrite - Custom')
   }
 
@@ -189,6 +196,8 @@
     EDITOR.styles.base.backgroundData = ''
 
     await nextTick
+
+    toast.success(t('toast.generics.successRemoved'))
 
     plugin.emit('plugin-theme-set')
   }
