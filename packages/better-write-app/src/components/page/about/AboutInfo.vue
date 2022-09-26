@@ -64,9 +64,9 @@
           },
         }"
         :delay="700"
-        class="bg-cover w-10/11 sm:w-3/4"
+        class="bg-cover shadow-xl w-10/11 sm:w-full"
         alt="betterwrite.io landing image"
-        src="@/assets/png/about1.png"
+        src="@/assets/png/customtheme.png"
       />
     </div>
   </div>
