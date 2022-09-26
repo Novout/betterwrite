@@ -36,12 +36,6 @@
         :text="t('editor.characters.title')"
         @action="ABSOLUTE.project.characters = true"
       />
-      <EditorHeaderItem
-        :text="t('editor.bar.assistants.speechRecognition')"
-        @action="
-          ABSOLUTE.tools.speechRecognition = !ABSOLUTE.tools.speechRecognition
-        "
-      />
       <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.assistants.finder')"
@@ -50,6 +44,12 @@
       <EditorHeaderItem
         :text="t('editor.bar.assistants.swapper')"
         @action="ABSOLUTE.shortcuts.switcher = true"
+      />
+      <EditorHeaderItem
+        :text="t('editor.bar.assistants.speechRecognition')"
+        @action="
+          ABSOLUTE.tools.speechRecognition = !ABSOLUTE.tools.speechRecognition
+        "
       />
     </template>
   </EditorHeaderButton>

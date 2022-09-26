@@ -5,7 +5,7 @@
     :initial="{ opacity: 0, y: 10 }"
     :enter="{ opacity: 1, y: 0 }"
     :delay="100"
-    class="overflow-y-auto font-raleway wb-scroll wb-text p-4 fixed top-0 left-0 h-screen w-full bg-theme-editor-creative-drafts-background text-theme-editor-creative-drafts-container-list-text z-max"
+    class="overflow-y-auto bg-rgba-blur font-raleway wb-scroll wb-text p-4 fixed top-0 left-0 h-screen w-full bg-theme-editor-creative-drafts-background text-theme-editor-creative-drafts-container-list-text z-max"
   >
     <EditorAbsoluteHeader
       :title="t('editor.bar.chapter.drafts')"

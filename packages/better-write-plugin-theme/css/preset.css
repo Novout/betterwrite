@@ -159,3 +159,7 @@ input[type='number'] {
   -ms-filter: sepia(100%);
   filter: sepia(100%);
 }
+
+.bg-rgba-blur {
+  backdrop-filter: blur(10px);
+}

@@ -6,7 +6,7 @@
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1 }"
     :delay="0"
-    class="flex bg-theme-background-3 items-center justify-center absolute z-50 right-0 transform m-5 p-2 shadow-lg w-60 absolute transform -translate-y-1/2 top-1/2"
+    class="flex z-50 bg-theme-background-3 items-center justify-center absolute z-50 right-0 transform m-5 p-2 shadow-lg w-60 absolute transform -translate-y-1/2 top-1/2"
   >
     <div
       :class="[isListening ? 'bg-theme-background-3' : 'bg-theme-text-1']"
