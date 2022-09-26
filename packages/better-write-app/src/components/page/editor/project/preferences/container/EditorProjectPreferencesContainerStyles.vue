@@ -48,20 +48,6 @@
       </DescriptionContainer>
       <div class="flex flex-col gap-2">
         <p class="font-bold text-lg mt-5">
-          {{ t('editor.preferences.configuration.editor.background.title') }}
-        </p>
-        <div class="wb-preferences">
-          <p class="text-sm">
-            {{ t('editor.preferences.configuration.editor.background.image') }}
-          </p>
-          <InputFileNext
-            @load="onCoverImageLoad"
-            @exclude="onDeleteCoverImage"
-          />
-        </div>
-      </div>
-      <div class="flex flex-col gap-2">
-        <p class="font-bold text-lg mt-5">
           {{ t('editor.preferences.configuration.editor.text') }}
         </p>
         <div class="wb-preferences">
@@ -121,6 +107,20 @@
             v-model="EDITOR.styles.heading.fontWeight"
             :specific="true"
             :arr="[200, 300, 400, 500, 700, 900]"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="font-bold text-lg mt-5">
+          {{ t('editor.preferences.configuration.editor.background.title') }}
+        </p>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.background.image') }}
+          </p>
+          <InputFileNext
+            @load="onCoverImageLoad"
+            @exclude="onDeleteCoverImage"
           />
         </div>
       </div>
