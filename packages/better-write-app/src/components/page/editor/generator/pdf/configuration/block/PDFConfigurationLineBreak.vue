@@ -5,10 +5,17 @@
     </GeneratorItem>
     <GeneratorItem :title="t('editor.pdf.cover.image')">
       <InputBoolean v-model="pdf.lineBreak.image.active" />
-      <InputFile
+      <InputFileImage
         v-if="pdf.lineBreak.image.active"
-        id="main-background"
-        :title="t('generics.input.image')"
+        :types="[
+          {
+            description: '.png .jpeg .jpg',
+            accept: {
+              'image/png': ['.png'],
+              'image/jpeg': ['.jpeg', '.jpg'],
+            },
+          },
+        ]"
         :src="pdf.lineBreak.image.data"
         @load="onMainImageLoad"
         @exclude="onDeleteMainImage"

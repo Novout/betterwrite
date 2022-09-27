@@ -7,9 +7,17 @@
       v-if="PDF.styles.switcher.cover"
       :title="t('editor.pdf.cover.image')"
     >
-      <InputFile
-        id="cover-background"
-        :src="pdf.base.background.data"
+      <InputFileImage
+        :types="[
+          {
+            description: '.png .jpeg .jpg',
+            accept: {
+              'image/png': ['.png'],
+              'image/jpeg': ['.jpeg', '.jpg'],
+            },
+          },
+        ]"
+        :src="PDF.styles.base.background.data"
         @load="onCoverImageLoad"
         @exclude="onDeleteCoverImage"
       />
@@ -19,16 +27,11 @@
 
 <script setup lang="ts">
   import { usePDFStore } from '@/store/pdf'
-  import { useDefines } from '@/use/defines'
-  import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const { t } = useI18n()
-  const defines = useDefines()
 
   const PDF = usePDFStore()
-
-  const pdf = computed(() => PDF.styles)
 
   const onCoverImageLoad = (e: any) => {
     PDF.setCoverBackground(e)

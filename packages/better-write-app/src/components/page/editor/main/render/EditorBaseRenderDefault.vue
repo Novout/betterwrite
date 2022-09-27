@@ -32,7 +32,7 @@
   import { useScroll } from '@/use/scroll'
   import { useExternalsStore } from '@/store/externals'
   import { useEditorStore } from '@/store/editor'
-import { useCharacters } from '@/use/characters'
+  import { useCharacters } from '@/use/characters'
 
   const EXTERNALS = useExternalsStore()
   const CONTEXT = useContextStore()
