@@ -1,6 +1,6 @@
 <template>
   <EditorProjectPreferencesContainerSlot>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <PreferencesContainerTitle> Idioma </PreferencesContainerTitle>
       <div>
         <div
@@ -26,44 +26,147 @@
         </div>
       </div>
     </div>
-    <PreferencesContainerTitle>
-      {{ t('editor.aside.configuration.entity.title') }}
-    </PreferencesContainerTitle>
-    <div class="wb-configuration">
-      <p class="text-sm">{{ t('editor.aside.configuration.bars') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.bars" :specific="true" />
+    <div>
+      <PreferencesContainerTitle>
+        {{ t('editor.aside.configuration.entity.title') }}
+      </PreferencesContainerTitle>
+      <div class="wb-preferences">
+        <p class="text-sm">{{ t('editor.aside.configuration.bars') }}</p>
+        <InputBoolean v-model="EDITOR.configuration.bars" :specific="true" />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">{{ t('editor.aside.configuration.bottomBar') }}</p>
+        <InputBoolean
+          v-model="EDITOR.configuration.bottomBar"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">{{ t('editor.aside.configuration.transition') }}</p>
+        <InputBoolean
+          v-model="EDITOR.configuration.transition"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">{{ t('editor.aside.configuration.autosave') }}</p>
+        <InputBoolean
+          v-model="EDITOR.configuration.autosave"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">{{ t('editor.aside.configuration.blocked') }}</p>
+        <InputBoolean v-model="EDITOR.configuration.blocked" :specific="true" />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{
+            t(
+              'editor.aside.configuration.entity.insertEntityInParagraphBreakLine'
+            )
+          }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.entity.insertEntityInParagraphBreakLine"
+          :specific="true"
+        />
+      </div>
     </div>
-    <div class="wb-configuration">
-      <p class="text-sm">{{ t('editor.aside.configuration.bottomBar') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.bottomBar" :specific="true" />
-    </div>
-    <div class="wb-configuration">
-      <p class="text-sm">{{ t('editor.aside.configuration.transition') }}</p>
-      <InputBoolean
-        v-model="EDITOR.configuration.transition"
-        :specific="true"
-      />
-    </div>
-    <div class="wb-configuration">
-      <p class="text-sm">{{ t('editor.aside.configuration.autosave') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.autosave" :specific="true" />
-    </div>
-    <div class="wb-configuration">
-      <p class="text-sm">{{ t('editor.aside.configuration.blocked') }}</p>
-      <InputBoolean v-model="EDITOR.configuration.blocked" :specific="true" />
-    </div>
-    <div class="wb-configuration">
-      <p class="text-sm">
-        {{
-          t(
-            'editor.aside.configuration.entity.insertEntityInParagraphBreakLine'
-          )
-        }}
-      </p>
-      <InputBoolean
-        v-model="EDITOR.configuration.entity.insertEntityInParagraphBreakLine"
-        :specific="true"
-      />
+    <div>
+      <PreferencesContainerTitle>
+        {{ t('editor.aside.graph.title') }}
+      </PreferencesContainerTitle>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.commands.contents[0].title') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.commands.paragraph.active"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.commands.contents[1].title') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.commands.headingTwo.active"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.commands.contents[2].title') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.commands.headingThree.active"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.commands.contents[3].title') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.commands.pageBreak.active"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.commands.contents[4].title') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.commands.lineBreak.active"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.commands.contents[5].title') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.commands.image.active"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.commands.contents[6].title') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.commands.dialogue.active"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.commands.contents[7].title') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.commands.checkbox.active"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.commands.contents[8].title') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.commands.list.active"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.commands.contents[9].title') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.commands.drau.active"
+          :specific="true"
+        />
+      </div>
     </div>
   </EditorProjectPreferencesContainerSlot>
 </template>
@@ -76,19 +179,15 @@
     onSwitchLanguage,
   } from 'better-write-languages'
   import { useEditorStore } from '@/store/editor'
-  import { useBar } from '@/use/global/bar'
   import { LanguageRaw } from 'better-write-types'
 
   const EDITOR = useEditorStore()
 
   const { t, locale } = useI18n()
-  const bar = useBar()
 
   const onClickLanguage = (lang: LanguageRaw) => {
-    bar.load(() => {
-      onSwitchLanguage(lang).then((set) => {
-        locale.value = set
-      })
+    onSwitchLanguage(lang).then((set) => {
+      locale.value = set
     })
   }
 </script>

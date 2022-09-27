@@ -1,36 +1,48 @@
 <template>
-  <div
-    ref="f"
-    class="fixed w-60 text-theme-editor-extras-finder-text hover:text-theme-editor-extras-finder-text-hover active:text-theme-editor-extras-finder-text-active bg-theme-editor-extras-finder-background hover:bg-theme-editor-extras-finder-background-hover active:bg-theme-editor-extras-finder-background-active p-2 rounded shadow-2xl"
-    :style="style"
-  >
-    <div class="flex flex-col w-full">
-      <div class="flex items-center justify-between w-full mb-1 cursor-pointer">
-        <div class="flex items-center">
-          <div class="font-poppins">
-            {{ finder.state.actuallyLetterCounter }} /
-            {{ finder.state.maxLetterCounter }}
+  <ProviderSupportClose @close="onClose">
+    <ProviderSupportArrows @up="finder.onUp" @down="finder.onDown">
+      <div
+        ref="f"
+        class="fixed bg-rgba-blur z-50 w-60 text-theme-editor-extras-finder-text hover:text-theme-editor-extras-finder-text-hover active:text-theme-editor-extras-finder-text-active bg-theme-editor-extras-finder-background hover:bg-theme-editor-extras-finder-background-hover active:bg-theme-editor-extras-finder-background-active p-2 rounded shadow-2xl"
+        :style="style"
+      >
+        <div class="flex flex-col w-full">
+          <div
+            class="flex items-center justify-between w-full mb-1 cursor-pointer"
+          >
+            <div class="flex items-center">
+              <div class="font-poppins">
+                {{ finder.state.actuallyLetterCounter }} /
+                {{ finder.state.maxLetterCounter }}
+              </div>
+              <IconUp
+                class="text-2xs ml-2 wb-icon h-5 w-5"
+                @click="finder.onUp"
+              />
+              <IconDown
+                class="text-2xs wb-icon h-5 w-5"
+                @click="finder.onDown"
+              />
+            </div>
+            <div>
+              <IconClose
+                class="text-2xs wb-icon h-5 w-5"
+                @click.prevent="onClose"
+              />
+            </div>
           </div>
-          <IconUp class="text-2xs ml-2 wb-icon h-5 w-5" @click="finder.onUp" />
-          <IconDown class="text-2xs wb-icon h-5 w-5" @click="finder.onDown" />
-        </div>
-        <div>
-          <IconClose
-            class="text-2xs wb-icon h-5 w-5"
-            @click.prevent="onClose"
+          <input
+            ref="search"
+            v-model="finder.state.entry"
+            class="bg-transparent border border-theme-editor-extras-finder-border px-1 mb-1 placeholder-theme-editor-extras-finder-text"
+            :placeholder="t('editor.text.placeholder.shortcuts.finderEntry')"
+            @input="finder.onFinder"
+            @keypress.enter.prevent="finder.onUp"
           />
         </div>
       </div>
-      <input
-        ref="search"
-        v-model="finder.state.entry"
-        class="bg-transparent border border-theme-editor-extras-finder-border px-1 mb-1 placeholder-theme-editor-extras-finder-text"
-        :placeholder="t('editor.text.placeholder.shortcuts.finderEntry')"
-        @input="finder.onFinder"
-        @keypress.enter.prevent="finder.onUp"
-      />
-    </div>
-  </div>
+    </ProviderSupportArrows>
+  </ProviderSupportClose>
 </template>
 
 <script setup lang="ts">

@@ -3,8 +3,8 @@ import { ptBR, enUS, VueI18nLocales } from 'better-write-languages'
 
 export default createI18n({
   legacy: false,
-  locale: 'en',
-  fallbackLocale: 'en',
+  locale: 'br',
+  fallbackLocale: 'br',
   locales: VueI18nLocales,
   messages: {
     br: ptBR.default,

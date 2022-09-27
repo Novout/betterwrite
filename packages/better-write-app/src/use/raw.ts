@@ -10,7 +10,7 @@ import { useUtils } from './utils'
 import { useExternalsStore } from '@/store/externals'
 import { useEnv } from './env'
 import { useStorage } from '@/use/storage/storage'
-import { nextTick } from 'vue'
+import { ComputedRef, nextTick } from 'vue'
 import { useContextStore } from '@/store/context'
 import { useFactory } from './factory'
 import { usePlugin } from 'better-write-plugin-core'
@@ -457,24 +457,32 @@ export const useRaw = () => {
         ABSOLUTE.entity.menu = true
       }
 
-      const style = (entity: Entity, type: 'main' | 'input' = 'input') => {
-        switch (type) {
-          case 'main':
-            return [
-              entity.visual.info
-                ? 'bg-theme-editor-entity-info hover:bg-theme-editor-entity-info-hover active:bg-theme-editor-entity-info-active'
-                : '',
-              entity.visual.warning
-                ? 'bg-theme-editor-entity-warning hover:bg-theme-editor-entity-warning-hover active:bg-theme-editor-entity-warning-active'
-                : '',
-              entity.visual.error
-                ? 'bg-theme-editor-entity-error hover:bg-theme-editor-entity-error-hover active:bg-theme-editor-entity-error-active'
-                : '',
-            ]
-        }
+      const style = (entity: ComputedRef<Entity>) => {
+        return [
+          entity.value.visual.custom &&
+          (!entity.value.visual.info ||
+            !entity.value.visual.warning ||
+            !entity.value.visual.error)
+            ? { backgroundColor: entity.value.visual.custom }
+            : {},
+        ]
       }
 
-      return { text, drop, menu, style }
+      const c = (entity: Entity) => {
+        return [
+          entity.visual.info
+            ? '!bg-theme-editor-entity-info hover:!bg-theme-editor-entity-info-hover active:!bg-theme-editor-entity-info-active'
+            : '',
+          entity.visual.warning
+            ? '!bg-theme-editor-entity-warning hover:!bg-theme-editor-entity-warning-hover active:!bg-theme-editor-entity-warning-active'
+            : '',
+          entity.visual.error
+            ? '!bg-theme-editor-entity-error hover:!bg-theme-editor-entity-error-hover active:!bg-theme-editor-entity-error-active'
+            : '',
+        ]
+      }
+
+      return { text, drop, menu, style, class: c }
     }
 
     const make = () => {

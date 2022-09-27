@@ -6,44 +6,22 @@ export const useEditorStore = defineStore('editor', {
   state: (): EditorState => {
     return {
       styles: {
-        input: {
-          fontFamily: 'font-raleway',
-          fontSize: 'text-sm',
-          fontColor: 'text-black dark:text-gray-100',
+        googleFontsInjection: false,
+        heading: {
+          fontFamily: 'Poppins',
+          fontWeight: 700,
         },
-        show: {
-          entity: {
-            shadow: false,
-          },
-          fontFamily: 'font-raleway',
-          fontColor: 'text-black dark:text-gray-100',
-          paragraph: {
-            indent: 'wb-indent',
-            fontFamily: 'font-raleway',
-            fontColor: 'text-black dark:text-gray-100',
-            fontSize: 'text-sm',
-            fontWeight: 'font-normal',
-          },
-          heading: {
-            one: {
-              fontFamily: 'font-raleway',
-              fontColor: 'text-black dark:text-gray-100',
-              fontSize: 'text-2xl',
-              fontWeight: 'font-bold',
-            },
-            two: {
-              fontFamily: 'font-raleway',
-              fontColor: 'text-black dark:text-gray-100',
-              fontSize: 'text-xl',
-              fontWeight: 'font-bold',
-            },
-            three: {
-              fontFamily: 'font-raleway',
-              fontColor: 'text-black dark:text-gray-100',
-              fontSize: 'text-lg',
-              fontWeight: 'font-semibold',
-            },
-          },
+        text: {
+          fontFamily: 'Raleway',
+          fontWeight: 400,
+          fontSize: 16,
+        },
+        base: {
+          backgroundData: '',
+          backgroundBlur: false,
+          backgroundGrayscale: false,
+          backgroundSaturate: false,
+          backgroundSepia: false,
         },
       },
       configuration: {

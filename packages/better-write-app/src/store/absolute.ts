@@ -8,10 +8,11 @@ export const useAbsoluteStore = defineStore('absolute', {
       project: {
         new: false,
         configuration: false,
+        insertions: false,
+        characters: false,
         preferences: false,
         statistics: false,
         corrector: false,
-        blocked: true,
       },
       modal: {
         newProject: false,
@@ -29,7 +30,6 @@ export const useAbsoluteStore = defineStore('absolute', {
         configuration: false,
       },
       auth: {
-        dropbox: false,
         supabase: false,
       },
       commands: false,
@@ -47,10 +47,6 @@ export const useAbsoluteStore = defineStore('absolute', {
       },
       generator: {
         substitutions: false,
-      },
-      live: {
-        create: false,
-        enter: false,
       },
       spinner: false,
     }

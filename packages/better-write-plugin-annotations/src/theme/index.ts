@@ -39,7 +39,7 @@ export const createTheme = () => (emotion: Emotion, manager: ThemeManager) => {
       case 'line':
         return 'var(--theme-background-3)'
       case 'surface':
-        return 'var(--theme-background-1)'
+        return 'var(--theme-editor-background)'
       case 'background':
         return 'var(--theme-background-2)'
       default:

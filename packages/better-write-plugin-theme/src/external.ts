@@ -31,6 +31,9 @@ export const setEditorLogo = (theme: BetterWriteThemes, utils: any) => {
     case 'BetterWrite - Infinity':
       logo = utils.path().resolve('logo_infinity.svg')
       break
+    case 'BetterWrite - Custom':
+      logo = utils.path().resolve('logo_custom.svg')
+      break
     default:
       logo = utils.path().resolve('logo_default.svg')
       break

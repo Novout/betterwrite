@@ -2,9 +2,9 @@
   margin: 0;
   padding: 0;
   outline: 0;
-  font-family: 'Raleway';
   font-feature-settings: 'ss02' on, 'ss01' on;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -127,3 +127,39 @@ input[type='number'] {
   overflow-y: auto;
 }
 
+.bg-custom-blur {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  transform: scale(1.05); 
+}
+
+.bg-custom-grayscale {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.bg-custom-saturate {
+  -webkit-filter: saturate(2);
+  -moz-filter: saturate(2);
+  -o-filter: saturate(2);
+  -ms-filter: saturate(2);
+  filter: saturate(2);
+}
+
+.bg-custom-sepia {
+  -webkit-filter: sepia(100%);
+  -moz-filter: sepia(100%);
+  -o-filter: sepia(100%);
+  -ms-filter: sepia(100%);
+  filter: sepia(100%);
+}
+
+.bg-rgba-blur {
+  backdrop-filter: blur(10px);
+}

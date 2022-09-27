@@ -1,6 +1,6 @@
 <template>
   <FullModal :title="t('editor.bar.project.statistics')" @close="onClose">
-    <div class="flex justify-start flex-col flex-wrap gap-5">
+    <div class="flex font-raleway justify-start flex-col flex-wrap gap-5">
       <div class="flex flex-wrap flex-col md:flex-row w-full">
         <EditortProjectStatisticsBase />
         <EditortProjectStatisticsImpact v-if="project.isCreativeProject()" />

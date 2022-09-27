@@ -1,12 +1,5 @@
 <template>
-  <div
-    id="pdf-absolute"
-    v-motion
-    :initial="{ opacity: 0, y: 10 }"
-    :enter="{ opacity: 1, y: 0 }"
-    :delay="100"
-    class="overflow-y-auto wb-scroll wb-text p-4 fixed top-0 left-0 h-screen w-full bg-theme-editor-creative-drafts-background text-theme-editor-creative-drafts-container-list-text z-max"
-  >
+  <FullModal @close="onClose">
     <EditorAbsoluteHeader
       :title="t('editor.bar.chapter.drafts')"
       @close="onClose"
@@ -56,21 +49,7 @@
               })
             "
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              aria-hidden="true"
-              role="img"
-              width="24"
-              height="24"
-              preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M4 6H2v16h16v-2H4V6zm18-4H6v16h16V2zm-3 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"
-                fill="currentColor"
-              ></path>
-            </svg>
+            <IconAdd2 class="w-6 h-6" />
           </HeroIcon>
         </div>
         <EditorPagesDraftsItem
@@ -104,7 +83,7 @@
         />
       </div>
     </div>
-  </div>
+  </FullModal>
 </template>
 
 <script setup lang="ts">

@@ -33,24 +33,33 @@ A Modern Word Processor.
 - ✅ Mobile & Desktop (PWA)
 - ✅ PDF, DOCX, HTML and TXT Generator
 
-# Setup
+<br>
 
-- Node 16.x
-- Vue 3.x
-- Vite 2.9
-- WindiCSS 3.x
+<img src="./.github/customtheme.png" />
+
+<br>
 
 # Motivation
 
 There are no word processors on the market that are not inextricable from the context itself. This approach makes it difficult to integrate other resources, limiting creative possibilities for writers and publishers. __Better Write__ offers an individual and reactive approach to any item that is entered in the editor.
 
-<br>
+# A Different Way
+
+
+With **betterwrite.io**, transform your editor's appearance in a way that showcases your creativity even more. The editor offers a number of customization tools, allowing the user greater flexibility and contentment with the tool.
+
+- Modify the editor's size and font;
+
+- Choose a background image (.gif supported);
+
+- Transparency items for better use of the image;
+
+- Default color themes.
 
 <p align="center">
   <img src="./.github/example.png" width="100%" />
 <p>
 
-<br>
 
 # Entity Model
 
@@ -79,6 +88,12 @@ Better Writer brings features beyond what traditional word processors can offer,
 Write without worrying about customization, leaving the hard work only for the time to finish the project.
 
 <img src="./.github/pdf.png" />
+
+## Relevant Characters
+
+Get control of specific words as you write. Highlight characters in paragraphs by color and more easily find the word that matters most to you.
+
+<img src="./.github/characters1.png" />
 
 ## Annotations
 

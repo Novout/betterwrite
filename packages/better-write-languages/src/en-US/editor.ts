@@ -92,6 +92,30 @@ export default {
     },
     configuration: {
       title: 'Configuration',
+      theme: 'Theme',
+      editor: {
+        options: {
+          googleFonts: {
+            title: 'Google API Fonts',
+            description:
+              'Enable the use of external fonts in the editor. Depends on internet connection.',
+          },
+        },
+        background: {
+          title: 'Background',
+          image: 'Image',
+          imageBlur: 'Blur',
+          imageGrayscale: 'Grayscale',
+          imageSaturate: 'Saturate',
+          imageSepia: 'Sepia',
+        },
+        title: 'Editor',
+        heading: 'Heading',
+        text: 'Text',
+        fontFamily: 'Font Family',
+        fontWeight: 'Font Weight',
+        fontSize: 'Font Size',
+      },
     },
     styles: {
       title: 'Styles',
@@ -502,6 +526,25 @@ export default {
         code: 'Code',
         divider: 'Divider',
       },
+    },
+  },
+  characters: {
+    title: 'Characters',
+    description: 'Get control of specific words as you write.',
+    item: {
+      addCharacter: 'Add Character',
+      name: 'Name',
+      nameCase: 'Type',
+      nameCaseStrict: 'Strict',
+      nameCaseDefault: 'Default',
+      nameCaseAll: 'All',
+      color: 'Color',
+      colorAlpha: 'Opacity',
+      important: 'Important',
+    },
+    data: {
+      occurrences: 'Occurrences',
+      averageOccurrences: 'Average of Occurrences',
     },
   },
 }

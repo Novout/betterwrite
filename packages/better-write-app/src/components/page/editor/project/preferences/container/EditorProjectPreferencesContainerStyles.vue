@@ -1,7 +1,9 @@
 <template>
   <EditorProjectPreferencesContainerSlot>
     <div class="flex flex-col gap-2">
-      <PreferencesContainerTitle> Tema </PreferencesContainerTitle>
+      <PreferencesContainerTitle>{{
+        t('editor.preferences.configuration.theme')
+      }}</PreferencesContainerTitle>
       <div>
         <div
           v-for="([theme, logo], index) in Themes()"
@@ -10,6 +12,9 @@
           :class="[
             EDITOR.configuration.theme === theme
               ? 'bg-theme-background-opacity-1'
+              : '',
+            EDITOR.styles.base.backgroundData
+              ? 'pointer-events-none opacity-40'
               : '',
           ]"
           @click.prevent.stop="onSwitchTheme(theme)"
@@ -21,99 +26,153 @@
         </div>
       </div>
     </div>
-    <div>
-      <PreferencesContainerTitle>
-        {{ t('editor.aside.graph.title') }}
-      </PreferencesContainerTitle>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[0].title') }}
+    <div class="flex flex-col gap-5">
+      <PreferencesContainerTitle>{{
+        t('editor.preferences.configuration.editor.title')
+      }}</PreferencesContainerTitle>
+      <DescriptionContainer
+        color="#AA0000"
+        :description="
+          t(
+            'editor.preferences.configuration.editor.options.googleFonts.description'
+          )
+        "
+      >
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.options.googleFonts.title'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.googleFontsInjection" />
+        </div>
+      </DescriptionContainer>
+      <div class="flex flex-col gap-2">
+        <p class="font-bold text-lg mt-5">
+          {{ t('editor.preferences.configuration.editor.text') }}
         </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.paragraph.active"
-          :specific="true"
-        />
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontFamily') }}
+          </p>
+          <InputSelect
+            v-model="EDITOR.styles.text.fontFamily"
+            :specific="true"
+            :arr="fonts"
+            :font="true"
+            :width-items="90"
+          />
+        </div>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontWeight') }}
+          </p>
+          <InputSelect
+            v-model="EDITOR.styles.text.fontWeight"
+            :specific="true"
+            :arr="[200, 300, 400, 500, 700, 900]"
+          />
+        </div>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontSize') }}
+          </p>
+          <InputNumber
+            v-model="EDITOR.styles.text.fontSize"
+            :step="2"
+            :min="8"
+          />
+        </div>
       </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[1].title') }}
+      <div class="flex flex-col gap-2">
+        <p class="font-bold text-lg mt-5">
+          {{ t('editor.preferences.configuration.editor.heading') }}
         </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.headingTwo.active"
-          :specific="true"
-        />
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontFamily') }}
+          </p>
+          <InputSelect
+            v-model="EDITOR.styles.heading.fontFamily"
+            :specific="true"
+            :arr="fonts"
+            :font="true"
+            :width-items="90"
+          />
+        </div>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontWeight') }}
+          </p>
+          <InputSelect
+            v-model="EDITOR.styles.heading.fontWeight"
+            :specific="true"
+            :arr="[200, 300, 400, 500, 700, 900]"
+          />
+        </div>
       </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[2].title') }}
+      <div class="flex flex-col gap-2">
+        <p class="font-bold text-lg mt-5">
+          {{ t('editor.preferences.configuration.editor.background.title') }}
         </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.headingThree.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[3].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.pageBreak.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[4].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.lineBreak.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[5].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.image.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[6].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.dialogue.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[7].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.checkbox.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[8].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.list.active"
-          :specific="true"
-        />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">
-          {{ t('editor.aside.commands.contents[9].title') }}
-        </p>
-        <InputBoolean
-          v-model="EDITOR.configuration.commands.drau.active"
-          :specific="true"
-        />
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.background.image') }}
+          </p>
+          <InputFileImage
+            :types="[
+              {
+                description: '.png .jpeg .jpg .gif',
+                accept: {
+                  'image/png': ['.png'],
+                  'image/jpeg': ['.jpeg', '.jpg'],
+                  'image/gif': ['.gif'],
+                },
+              },
+            ]"
+            :src="EDITOR.styles.base.backgroundData"
+            @load="onCoverImageLoad"
+            @exclude="onDeleteCoverImage"
+          />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t('editor.preferences.configuration.editor.background.imageBlur')
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundBlur" />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.background.imageGrayscale'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundGrayscale" />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.background.imageSaturate'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundSaturate" />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t('editor.preferences.configuration.editor.background.imageSepia')
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundSepia" />
+        </div>
       </div>
     </div>
   </EditorProjectPreferencesContainerSlot>
@@ -121,20 +180,30 @@
 
 <script setup lang="ts">
   import { Themes } from 'better-write-plugin-theme'
-  import { useI18n } from 'vue-i18n'
   import { BetterWriteThemes } from 'better-write-types'
   import { useEditorStore } from '@/store/editor'
-  import { nextTick } from 'vue'
+  import { nextTick, computed, watch } from 'vue'
   import { usePlugin } from 'better-write-plugin-core'
   import { useStorage } from '@/use/storage/storage'
   import { useNProgress } from '@vueuse/integrations/useNProgress'
+  import { useI18n } from 'vue-i18n'
+  import { usePDFStore } from '@/store/pdf'
+  import { useToast } from 'vue-toastification'
 
   const EDITOR = useEditorStore()
+  const PDF = usePDFStore()
 
-  const { t } = useI18n()
   const { isLoading } = useNProgress()
   const plugin = usePlugin()
   const storage = useStorage()
+  const { t } = useI18n()
+  const toast = useToast()
+
+  const fonts = computed(() =>
+    EDITOR.styles.googleFontsInjection
+      ? ['Poppins', 'Raleway', ...PDF.fonts]
+      : ['Poppins', 'Raleway']
+  )
 
   const onSwitchTheme = async (theme: BetterWriteThemes) => {
     EDITOR.configuration.theme = theme
@@ -148,5 +217,35 @@
     plugin.emit('plugin-theme-set')
 
     isLoading.value = false
+  }
+
+  watch(
+    computed(() => EDITOR.styles.googleFontsInjection),
+    (b) => {
+      if (!b) {
+        EDITOR.styles.heading.fontFamily = 'Poppins'
+        EDITOR.styles.text.fontFamily = 'Raleway'
+      }
+    }
+  )
+
+  const onCoverImageLoad = async (e: any) => {
+    EDITOR.styles.base.backgroundData = e
+
+    await nextTick
+
+    toast.success(t('toast.generics.successAdded'))
+
+    plugin.emit('plugin-theme-set', 'BetterWrite - Custom')
+  }
+
+  const onDeleteCoverImage = async () => {
+    EDITOR.styles.base.backgroundData = ''
+
+    await nextTick
+
+    toast.success(t('toast.generics.successRemoved'))
+
+    plugin.emit('plugin-theme-set')
   }
 </script>

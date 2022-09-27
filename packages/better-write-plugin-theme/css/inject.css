@@ -2,6 +2,7 @@
 @import url('./fonts.css');
 @import url('./themes/default.css');
 
+@import url('./themes/betterwrite-custom.css');
 @import url('./themes/betterwrite-light.css');
 @import url('./themes/betterwrite-dark.css');
 @import url('./themes/betterwrite-rise.css');

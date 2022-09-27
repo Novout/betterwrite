@@ -14,10 +14,17 @@
     </GeneratorItem>
     <GeneratorItem :title="t('editor.pdf.cover.image')">
       <InputBoolean v-model="PDF.styles.switcher.main" />
-      <InputFile
+      <InputFileImage
         v-if="PDF.styles.switcher.main"
-        id="main-background"
-        :title="t('generics.input.image')"
+        :types="[
+          {
+            description: '.png .jpeg .jpg',
+            accept: {
+              'image/png': ['.png'],
+              'image/jpeg': ['.jpeg', '.jpg'],
+            },
+          },
+        ]"
         :src="pdf.base.background.main"
         @load="onMainImageLoad"
         @exclude="onDeleteMainImage"

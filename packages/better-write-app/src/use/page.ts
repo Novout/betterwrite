@@ -6,14 +6,12 @@ import { ContextState } from 'better-write-types'
 import { useScroll } from './scroll'
 import { useI18n } from 'vue-i18n'
 import useEmitter from './emitter'
-import { useBar } from './global/bar'
 
 export const usePage = () => {
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
 
   const env = useEnv()
-  const bar = useBar()
   const scroll = useScroll()
   const { t } = useI18n()
   const emitter = useEmitter()
@@ -21,28 +19,26 @@ export const usePage = () => {
   const onCreatePage = async (title: string) => {
     if (PROJECT.name === env.projectEmpty()) return
 
-    bar.load(async () => {
-      PROJECT.newPage(title)
+    PROJECT.newPage(title)
 
-      await nextTick
+    await nextTick
 
-      const arr = PROJECT.pages
-      const obj = arr[arr.length - 1]
+    const arr = PROJECT.pages
+    const obj = arr[arr.length - 1]
 
-      await nextTick
+    await nextTick
 
-      CONTEXT.load(obj)
+    CONTEXT.load(obj)
 
-      await nextTick
+    await nextTick
 
-      scroll.force('#editor-aside')
+    scroll.force('#editor-aside')
 
-      await nextTick
+    await nextTick
 
-      emitter.emit('entity-text-focus', {
-        target: 1,
-        position: 'start',
-      })
+    emitter.emit('entity-text-focus', {
+      target: 1,
+      position: 'start',
     })
   }
 
@@ -53,30 +49,24 @@ export const usePage = () => {
 
     if (PROJECT.pages.length <= 1) return
 
-    bar.load(async () => {
-      PROJECT.deletePage(page)
+    PROJECT.deletePage(page)
 
-      await nextTick
+    await nextTick
 
-      CONTEXT.load(PROJECT.pages[PROJECT.pages.length - 1])
-    })
+    CONTEXT.load(PROJECT.pages[PROJECT.pages.length - 1])
   }
 
   const onUpPage = (page: ContextState) => {
-    bar.load(() => {
-      PROJECT.switchPage({
-        page,
-        direction: 'up',
-      })
+    PROJECT.switchPage({
+      page,
+      direction: 'up',
     })
   }
 
   const onDownPage = (page: ContextState) => {
-    bar.load(() => {
-      PROJECT.switchPage({
-        page,
-        direction: 'down',
-      })
+    PROJECT.switchPage({
+      page,
+      direction: 'down',
     })
   }
 

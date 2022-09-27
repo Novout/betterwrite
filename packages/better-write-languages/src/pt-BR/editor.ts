@@ -94,6 +94,30 @@ export default {
     },
     configuration: {
       title: 'Configurações',
+      theme: 'Tema',
+      editor: {
+        options: {
+          googleFonts: {
+            title: 'Fontes do Google API',
+            description:
+              'Habilitar a utilização de fontes externas no editor. Depende da conexão com a internet.',
+          },
+        },
+        background: {
+          title: 'Fundo',
+          image: 'Imagem',
+          imageBlur: 'Borrão',
+          imageGrayscale: 'Cinza',
+          imageSaturate: 'Saturação',
+          imageSepia: 'Sépia',
+        },
+        title: 'Editor',
+        heading: 'Cabeçalho',
+        text: 'Texto',
+        fontFamily: 'Fonte Padrão',
+        fontWeight: 'Estilo da Fonte',
+        fontSize: 'Tamanho da Fonte',
+      },
     },
     styles: {
       title: 'Aparência',
@@ -504,6 +528,26 @@ export default {
         code: 'Código',
         divider: 'Divisor',
       },
+    },
+  },
+  characters: {
+    title: 'Personagens',
+    description:
+      'Obtenha o controle de palavras específicas no decorrer da escrita.',
+    item: {
+      addCharacter: 'Adicionar Personagem',
+      name: 'Nome',
+      nameCase: 'Tipo de Nome',
+      nameCaseStrict: 'Estrito',
+      nameCaseDefault: 'Padrão',
+      nameCaseAll: 'Livre',
+      color: 'Cor',
+      colorAlpha: 'Opacidade',
+      important: 'Sobrescrever',
+    },
+    data: {
+      occurrences: 'Ocorrências',
+      averageOccurrences: 'Média de Ocorrências',
     },
   },
 }

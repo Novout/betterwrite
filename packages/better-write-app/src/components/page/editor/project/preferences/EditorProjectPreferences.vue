@@ -4,11 +4,11 @@
       ref="main"
       :style="style"
       :class="[!mobile ? 'fixed' : '']"
-      class="flex z-20 flex-col w-full lg:w-1/2 h-full lg:h-3/4 bg-theme-background-1 wb-text overflow-x-auto rounded shadow-2xl wb-scroll"
+      class="flex z-20 flex-col w-full bg-rgba-blur lg:w-1/2 h-full lg:h-3/4 bg-theme-background-1 wb-text overflow-x-auto rounded shadow-2xl wb-scroll"
     >
       <EditorProjectPreferencesHeader @hover="(v) => (isHoveredHeader = v)" />
       <div
-        class="flex flex-col sm:flex-row flex-none sm:flex-1 w-full wb-scroll"
+        class="flex font-raleway flex-col sm:flex-row flex-none sm:flex-1 w-full wb-scroll"
       >
         <EditorProjectPreferencesAside @section="(i) => (section = i)" />
         <EditorProjectPreferencesContainer :section="section" />

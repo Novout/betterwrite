@@ -111,7 +111,6 @@ export interface PluginHooks {
   project: PluginHook
   raw: PluginHook
   scroll: PluginHook
-  start: PluginHook
   utils: PluginHook
   i18n: PluginHook
   emitter: PluginHook
@@ -120,7 +119,6 @@ export interface PluginHooks {
   toast: PluginHook
   breakpoints: PluginHook
   transformer: PluginHook
-  bar: PluginHook
   vueuse: {
     core: PluginHook
     integration: {

@@ -5,6 +5,7 @@ export type BetterWriteThemes =
   | 'BetterWrite - Ascend'
   | 'BetterWrite - Harmonic'
   | 'BetterWrite - Infinity'
+  | 'BetterWrite - Custom'
 
 export interface EditorState {
   styles: EditorStateStyles
@@ -84,58 +85,27 @@ export interface EditorStateConfiguration {
 }
 
 export interface EditorStateStyles {
-  input: EditorStateInput
-  show: EditorStateShow
+  googleFontsInjection: boolean
+  heading: EditorStateHeading
+  text: EditorStateText
+  base: EditorStateBase
 }
-export interface EditorStateInput {
+
+export interface EditorStateBase {
+  backgroundData: string
+  backgroundBlur: boolean
+  backgroundGrayscale: boolean
+  backgroundSaturate: boolean
+  backgroundSepia: boolean
+}
+
+export interface EditorStateHeading {
   fontFamily: string
-  fontSize: string
-  fontColor: string
+  fontWeight: number
 }
 
-export interface EditorStateShow {
-  entity: EditorStateShowEntity
+export interface EditorStateText {
   fontFamily: string
-  fontColor: string
-  paragraph: EditorStateShowParagraph
-  heading: EditorStateShowHeading
-}
-
-export interface EditorStateShowEntity {
-  shadow: boolean
-}
-
-export interface EditorStateShowParagraph {
-  indent: string
-  fontFamily: string
-  fontColor: string
-  fontSize: string
-  fontWeight: string
-}
-
-export interface EditorStateShowHeading {
-  one: EditorStateShowHeadingOne
-  two: EditorStateShowHeadingTwo
-  three: EditorStateShowHeadingThree
-}
-
-export interface EditorStateShowHeadingOne {
-  fontFamily: string
-  fontColor: string
-  fontSize: string
-  fontWeight: string
-}
-
-export interface EditorStateShowHeadingTwo {
-  fontFamily: string
-  fontColor: string
-  fontSize: string
-  fontWeight: string
-}
-
-export interface EditorStateShowHeadingThree {
-  fontFamily: string
-  fontColor: string
-  fontSize: string
-  fontWeight: string
+  fontWeight: number
+  fontSize: number
 }

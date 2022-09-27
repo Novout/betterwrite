@@ -2,9 +2,10 @@ export interface AbsoluteStateProject {
   new: boolean
   statistics: boolean
   configuration: boolean
+  insertions: boolean
+  characters: boolean
   preferences: boolean
   corrector: boolean
-  blocked: boolean
 }
 
 export interface AbsoluteStateModal {
@@ -26,7 +27,6 @@ export interface AbsoluteStateDOCX {
 }
 
 export interface AbsoluteStateAuth {
-  dropbox: boolean
   supabase: boolean
 }
 
@@ -48,11 +48,6 @@ export interface AbsoluteStateGenerator {
   substitutions: boolean
 }
 
-export interface AbsoluteStateLive {
-  create: boolean
-  enter: boolean
-}
-
 export interface AbsoluteState {
   cmd: boolean
   commands: boolean
@@ -68,6 +63,5 @@ export interface AbsoluteState {
   pages: AbsoluteStatePages
   tools: AbsoluteStateTools
   generator: AbsoluteStateGenerator
-  live: AbsoluteStateLive
   spinner: boolean
 }

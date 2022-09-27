@@ -8,16 +8,16 @@ export const PluginThemeContent = (
   hooks: PluginTypes.PluginHooks
 ) => {
   On.externals().PluginThemeSet(emitter, [
-    () => {
+    (theme?: BetterWriteThemes) => {
       setTimeout(() => {
-        setThemeInvokate()
+        setThemeInvokate(theme)
       }, 0)
     },
     () => {},
   ])
 
-  const setThemeInvokate = () => {
-    let theme = stores.EDITOR.configuration.theme
+  const setThemeInvokate = (theme?: BetterWriteThemes) => {
+    if (!theme) theme = stores.EDITOR.configuration.theme
 
     if (stores.PROJECT.name === hooks.env.projectEmpty())
       theme = setDefaultColorTheme()
@@ -69,6 +69,9 @@ export const PluginThemeContent = (
       case 'betterwrite-infinity':
         setColor('#242424')
         break
+      case 'betterwrite-custom':
+        setColor('rgba(255, 255, 255, 0.2)')
+        break
       default:
         setColor('#1F2937')
         break
@@ -117,6 +120,9 @@ export const PluginThemeContent = (
       case 'betterwrite-infinity':
         favicon.value = hooks.utils.path().resolve('logo_infinity.svg')
         break
+      case 'betterwrite-custom':
+        favicon.value = hooks.utils.path().resolve('logo_custom.svg')
+        break
       default:
         favicon.value = hooks.utils.path().resolve('logo_default.svg')
         break
@@ -136,6 +142,7 @@ export const PluginThemeContent = (
         'BetterWrite - Ascend': 'betterwrite-ascend',
         'BetterWrite - Harmonic': 'betterwrite-harmonic',
         'BetterWrite - Infinity': 'betterwrite-infinity',
+        'BetterWrite - Custom': 'betterwrite-custom',
       }[theme] || setDefaultColorTheme()
     )
   }

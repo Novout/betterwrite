@@ -156,46 +156,38 @@ export const PluginAnnotationsSet = (
 
   On.externals().PluginAnnotationsStart(emitter, [
     (file: ProjectStateAnnotationFile) => {
-      hooks.bar.load(() => {
-        start(file)
-      })
+      start(file)
     },
     () => {},
   ])
 
   On.externals().PluginAnnotationsCreateFolder(emitter, [
-    () => {
-      hooks.bar.load(async () => {
-        const folder = createFolder()
+    async () => {
+      const folder = createFolder()
 
-        const file = await createFile(folder)
+      const file = await createFile(folder)
 
-        await start(file)
+      await start(file)
 
-        hooks.emitter.emit('annotations-folder-graph-open', folder)
-      })
+      hooks.emitter.emit('annotations-folder-graph-open', folder)
     },
     () => {},
   ])
 
   On.externals().PluginAnnotationsDeleteFolder(emitter, [
     (folder: ProjectStateAnnotationFolder) => {
-      hooks.bar.load(() => {
-        deleteFolder(folder)
-      })
+      deleteFolder(folder)
     },
     () => {},
   ])
 
   On.externals().PluginAnnotationsCreateFile(emitter, [
     async (folder: ProjectStateAnnotationFolder) => {
-      hooks.bar.load(async () => {
-        const file = await createFile(folder)
+      const file = await createFile(folder)
 
-        await start(file)
+      await start(file)
 
-        hooks.emitter.emit('annotations-folder-graph-open', folder)
-      })
+      hooks.emitter.emit('annotations-folder-graph-open', folder)
     },
     () => {},
   ])
@@ -208,9 +200,7 @@ export const PluginAnnotationsSet = (
       folder: ProjectStateAnnotationFolder
       file: ProjectStateAnnotationFile
     }) => {
-      hooks.bar.load(() => {
-        deleteFile(folder, file)
-      })
+      deleteFile(folder, file)
     },
     () => {},
   ])

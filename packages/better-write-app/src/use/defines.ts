@@ -221,6 +221,18 @@ export const useDefines = () => {
     }
   }
 
+  const characters = () => {
+    const nameCase = () => {
+      return [
+        t('editor.characters.item.nameCaseStrict'),
+        t('editor.characters.item.nameCaseDefault'),
+        t('editor.characters.item.nameCaseAll'),
+      ]
+    }
+
+    return { nameCase }
+  }
+
   const generator = () => {
     const substitutions = () => {
       const text = (): ProjectStateTemplatesSubstitutionsText[] => {
@@ -281,5 +293,6 @@ export const useDefines = () => {
     docx,
     pdf,
     generator,
+    characters,
   }
 }

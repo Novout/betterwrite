@@ -96,6 +96,14 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.project.characters) {
+      _.project = {
+        ..._.project,
+        characters: {
+          list: [],
+        },
+      }
+    }
     // @ts-ignore
     if (_.project.templates.generator) {
       // @ts-ignore
@@ -118,6 +126,28 @@ export const useStorage = () => {
         ..._.project,
         annotations: {
           folders: [],
+        },
+      }
+    }
+
+    if (!_.editor.styles.text) {
+      _.editor.styles = {
+        googleFontsInjection: false,
+        heading: {
+          fontFamily: 'Poppins',
+          fontWeight: 700,
+        },
+        text: {
+          fontFamily: 'Raleway',
+          fontWeight: 400,
+          fontSize: 16,
+        },
+        base: {
+          backgroundData: undefined,
+          backgroundBlur: false,
+          backgroundGrayscale: false,
+          backgroundSaturate: false,
+          backgroundSepia: false,
         },
       }
     }

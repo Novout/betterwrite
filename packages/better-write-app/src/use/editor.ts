@@ -49,17 +49,20 @@ export const useEditor = () => {
     })
 
     onMounted(() => {
-      project.onLoadProject(undefined, false)
+      project.onLoadProject(undefined, false).then(() => {})
     })
 
-    useEventListener('beforeunload', () => {
-      if (EDITOR.configuration.autosave) storage.normalize()
+    useEventListener('beforeunload', async () => {
+      if (EDITOR.configuration.autosave) {
+        await storage.normalize()
+        await local.onSaveProject(false)
+      }
     })
 
     if (EDITOR.configuration.autosave) {
       useIntervalFn(() => {
         local.onSaveProject(false)
-      }, 1000 * 60)
+      }, 1000 * 30)
     }
 
     // tracking normalize project cases
@@ -76,6 +79,9 @@ export const useEditor = () => {
 
     // window events
     listener.window().start()
+
+    // editor emitter and events
+    listener.editor().start()
 
     // theme loader
     plugin.emit('plugin-theme-set')

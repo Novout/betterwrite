@@ -11,31 +11,15 @@
   import { DocxPlugin } from 'better-write-plugin-exporter-docx'
   import { TxtPlugin } from 'better-write-plugin-exporter-txt'
   import { HtmlPlugin } from 'better-write-plugin-exporter-html'
-  import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
   import { AnnotationsPlugin } from 'better-write-plugin-annotations'
 
-  const start = useStart()
-
-  start.init([
+  useStart([
     ThemePlugin(),
     ImporterPlugin(),
     PDFPlugin(),
     DocxPlugin(),
     TxtPlugin(),
     HtmlPlugin(),
-    MultiplayerPlugin(),
     AnnotationsPlugin(),
-  ])
-
-  useSchemaOrg([
-    defineOrganization({
-      name: 'betterwrite.io',
-      logo: '/logo.png',
-      sameAs: ['https://twitter.com/betterwriteio'],
-    }),
-    defineWebSite({
-      name: 'betterwrite.io',
-    }),
-    defineWebPage(),
-  ])
+  ]).init()
 </script>

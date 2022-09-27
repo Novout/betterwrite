@@ -5,6 +5,9 @@ export default {
     supported: 'Your browser does not support this feature :(',
     cancel: 'The action has been cancelled!',
     configurationFail: 'The imported configuration is not valid!',
+    invalidName: 'The name is empty or already exists!',
+    successAdded: 'Successfully Added!',
+    successRemoved: 'Successfully Removed!',
   },
   pdf: {
     error:
@@ -25,6 +28,8 @@ export default {
       'Are you sure you want to create a new project? You will lose any data that was not saved in the cloud.',
     deleteAlert:
       'Are you sure you want to delete the project? This action is irreversible',
+    deleteProject:
+      'Are you sure you want to load a new project? All local data will be lost.',
     import: 'Do you want to load {name}?',
     create: 'Successfully created project!',
     load: 'Successfully loaded project!',
@@ -72,5 +77,8 @@ export default {
   },
   corrector: {
     apply: 'Effects applied successfully!',
+  },
+  image: {
+    limitFileSize: 'The maximum supported file size limit is 8MB!',
   },
 }

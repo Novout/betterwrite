@@ -1,8 +1,0 @@
-{
-  "baseUrl": "http://localhost:3000",
-  "fixturesFolder": "packages/better-write-app/e2e/fixtures",
-  "integrationFolder": "packages/better-write-app/e2e/integration",
-  "pluginsFile": "packages/better-write-app/e2e/plugins/index.ts",
-  "supportFile": "packages/better-write-app/e2e/support/index.ts",
-  "pageLoadTimeout": 100000
-}

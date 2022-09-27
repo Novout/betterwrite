@@ -1,3 +1,0 @@
-<template>
-  <EditorProjectCreate />
-</template>

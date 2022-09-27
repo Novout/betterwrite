@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-exporter-html",
-	"version": "0.16.24",
+	"version": "0.17.0",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -19,9 +19,9 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-contenteditable-ast": "^0.16.24",
-		"better-write-plugin-core": "^0.16.24",
-		"better-write-types": "^0.16.24",
+		"better-write-contenteditable-ast": "^0.17.0",
+		"better-write-plugin-core": "^0.17.0",
+		"better-write-types": "^0.17.0",
 		"file-saver": "2.0.5",
 		"vue-demi": "latest"
 	},
@@ -38,7 +38,6 @@
 		"@vuedx/typescript-plugin-vue": "0.7.4",
 		"prettier": "2.5.1",
 		"rimraf": "3.0.2",
-		"unbuild": "0.7.0",
 		"vue": "3.2.29"
 	}
 }

@@ -12,7 +12,6 @@ import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
 import { useFormat } from '../format'
-import { useBar } from '../global/bar'
 import { useProject } from '../project'
 import { useUtils } from '../utils'
 import { useLocalStorage } from './local'
@@ -36,7 +35,6 @@ export const useSupabase = () => {
   const router = useRouter()
   const format = useFormat()
   const utils = useUtils()
-  const bar = useBar()
 
   const loginWithEmailAndPassword = (
     { email, password }: { email: string; password: string },
@@ -73,34 +71,30 @@ export const useSupabase = () => {
   ) => {
     toast.info(t('toast.generics.load'))
 
-    bar.load(() => {
-      s.auth
-        .signIn({ provider }, { redirectTo: env.getCorrectLocalUrl() })
-        .then(async ({ error }) => {
-          if (error) throw error
+    s.auth
+      .signIn({ provider }, { redirectTo: env.getCorrectLocalUrl() })
+      .then(async ({ error }) => {
+        if (error) throw error
 
-          // if (notification) toast(t('editor.auth.login.success'))
-        })
-        .catch(() => {
-          if (notification) toast(t('editor.auth.login.error'))
-        })
-        .finally(() => {
-          ABSOLUTE.auth.supabase = false
-        })
-    })
+        // if (notification) toast(t('editor.auth.login.success'))
+      })
+      .catch(() => {
+        if (notification) toast(t('editor.auth.login.error'))
+      })
+      .finally(() => {
+        ABSOLUTE.auth.supabase = false
+      })
   }
 
   const out = () => {
-    bar.load(() => {
-      s.auth
-        .signOut()
-        .then(() => {
-          AUTH.account.user = null
+    s.auth
+      .signOut()
+      .then(() => {
+        AUTH.account.user = null
 
-          router.push('/')
-        })
-        .finally(() => {})
-    })
+        router.push('/')
+      })
+      .finally(() => {})
   }
 
   const getProjects = async (): Promise<Maybe<ProjectObject[]>> => {
@@ -129,8 +123,35 @@ export const useSupabase = () => {
   const saveProject = async (project?: ProjectObject) => {
     toast.info(t('toast.generics.load'))
 
-    bar.load(async () => {
-      const { data, error } = await s.from('projects').upsert(
+    const { data, error } = await s.from('projects').upsert(
+      project
+        ? {
+            // @ts-ignore
+            id_user: AUTH.account.user.id,
+            ...project,
+          }
+        : {
+            // @ts-ignore
+            id_user: AUTH.account.user.id,
+            ...storage.getProjectObject(),
+          },
+      { onConflict: 'id' }
+    )
+
+    if (error) {
+      toast.error(error.message)
+
+      return
+    }
+
+    if (data[0]?.id) {
+      AUTH.account.project_id_activity = data[0].id
+
+      await storage.normalize()
+
+      await storage.purge()
+
+      const { error: err } = await s.from('projects').upsert(
         project
           ? {
               // @ts-ignore
@@ -145,43 +166,14 @@ export const useSupabase = () => {
         { onConflict: 'id' }
       )
 
-      if (error) {
-        toast.error(error.message)
+      if (err) {
+        toast.error(err.message)
 
         return
       }
+    }
 
-      if (data[0]?.id) {
-        AUTH.account.project_id_activity = data[0].id
-
-        await storage.normalize()
-
-        await storage.purge()
-
-        const { error: err } = await s.from('projects').upsert(
-          project
-            ? {
-                // @ts-ignore
-                id_user: AUTH.account.user.id,
-                ...project,
-              }
-            : {
-                // @ts-ignore
-                id_user: AUTH.account.user.id,
-                ...storage.getProjectObject(),
-              },
-          { onConflict: 'id' }
-        )
-
-        if (err) {
-          toast.error(err.message)
-
-          return
-        }
-      }
-
-      toast.success(t('toast.project.save'))
-    })
+    toast.success(t('toast.project.save'))
   }
 
   const deleteProject = async (context: ProjectObject) => {
@@ -201,17 +193,15 @@ export const useSupabase = () => {
     toast.success(t('toast.project.delete'))
   }
 
-  const loadProject = async (context: ProjectObject) => {
+  const loadProject = (context: ProjectObject) => {
+    if (!confirm(t('toast.project.deleteProject'))) return
+
     AUTH.account.project_id_activity = context.id || null
 
-    bar.load(() => {
-      storage.normalize().then(() => {
-        project.onLoadProject(context, false).then(() => {
-          local.onSaveProject(false).then(() => {
-            router.push('/').finally(() => {
-              toast.success(t('toast.project.load'))
-            })
-          })
+    project.onLoadProject(context, false).then(() => {
+      local.onSaveProject(false).then(() => {
+        router.push('/').finally(() => {
+          toast.success(t('toast.project.load'))
         })
       })
     })

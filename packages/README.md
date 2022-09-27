@@ -14,7 +14,6 @@
   ├── better-write-plugin-exporter-pdf          # PDF Generator Plugin
   ├── better-write-plugin-exporter-txt          # TXT Generator Plugin
   |── better-write-plugin-importer              # Importer external files
-  ├── better-write-plugin-multiplayer           # liveblocks.io Plugin
   ├── better-write-plugin-theme                 # Multi-Theme Plugin
   ├── better-write-types                        # Typescript All Types
 ```

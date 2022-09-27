@@ -6,6 +6,7 @@ import {
   ImporterParams,
   ProjectStateAnnotationFolder,
   ProjectStateAnnotationFile,
+  BetterWriteThemes,
 } from 'better-write-types'
 
 export const entity = () => {
@@ -230,10 +231,10 @@ export const externals = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
-    emitter.on('plugin-theme-set', () => {
+    emitter.on('plugin-theme-set', (theme: BetterWriteThemes) => {
       const created = content[0]
 
-      created && created()
+      created && created(theme)
     })
   }
 

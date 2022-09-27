@@ -10,7 +10,7 @@
         duration: 150,
       },
     }"
-    class="absolute shadow-xl rounded top-10 md:top-9 flex flex-col w-48 md:w-52 lg:w-72 z-40 bg-theme-editor-header-list-background"
+    class="absolute bg-rgba-blur font-raleway shadow-xl rounded top-10 md:top-9 flex flex-col w-48 md:w-52 lg:w-72 bg-theme-editor-header-list-background"
   >
     <slot />
   </div>

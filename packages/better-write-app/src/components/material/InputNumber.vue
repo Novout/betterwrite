@@ -22,6 +22,7 @@
       v-model="cmp"
       type="number"
       :min="props.min"
+      :max="props.max"
       class="w-6 bg-transparent"
     />
     <HeroIcon
@@ -60,7 +61,7 @@
     },
     step: {
       required: false,
-      type: Number,
+      type: Number || String,
       default: 1,
     },
     min: {

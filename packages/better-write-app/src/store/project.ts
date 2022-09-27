@@ -8,7 +8,6 @@ import {
 } from 'better-write-types'
 import { useFormat } from '@/use/format'
 import { useGlobalStore } from './global'
-import { usePopulate } from '../use/populate'
 import { useProject } from '@/use/project'
 import { useFactory } from '../use/factory'
 import { useUtils } from '@/use/utils'
@@ -75,6 +74,9 @@ export const useProjectStore = defineStore('project', {
       annotations: {
         folders: [],
       },
+      characters: {
+        list: [],
+      },
     }
   },
   actions: {
@@ -101,6 +103,7 @@ export const useProjectStore = defineStore('project', {
       this.shortcuts = payload.shortcuts
       this.annotations = payload.annotations
       this.creative = payload.creative
+      this.characters = payload.characters
     },
     new(options: ProjectStateOptions, forceTitle?: string) {
       const global = useGlobalStore()
@@ -176,6 +179,9 @@ export const useProjectStore = defineStore('project', {
         },
         annotations: options.annotations || {
           folders: [],
+        },
+        characters: options.characters || {
+          list: [],
         },
       }
 

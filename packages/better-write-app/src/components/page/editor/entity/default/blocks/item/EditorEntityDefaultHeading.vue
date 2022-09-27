@@ -7,7 +7,11 @@
         ref="__INPUT__"
         :contenteditable="true"
         :spellcheck="true"
-        class="font-bold font-poppins w-full"
+        :style="{
+          fontFamily: EDITOR.styles.heading.fontFamily,
+          fontWeight: EDITOR.styles.heading.fontWeight,
+        }"
+        class="w-full"
         :class="[
           props.entity.type === 'heading-one'
             ? 'text-2xl pb-10 pt-10 text-theme-editor-entity-heading-one hover:text-theme-editor-entity-heading-one-hover active:text-theme-editor-entity-heading-one-active'
@@ -31,6 +35,7 @@
 
 <script setup lang="ts">
   import { useContextStore } from '@/store/context'
+  import { useEditorStore } from '@/store/editor'
   import { useBlockText } from '@/use/block/text'
   import { useFocus } from '@vueuse/core'
   import { Entity } from 'better-write-types'
@@ -41,6 +46,7 @@
   }>()
 
   const CONTEXT = useContextStore()
+  const EDITOR = useEditorStore()
 
   const __INPUT__ = ref()
   const isSalvageable = ref(false)

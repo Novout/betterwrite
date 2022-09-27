@@ -139,6 +139,12 @@ export const useBlockText = ({
     })
   }
 
+  const onCharactersHandler = () => {
+    const inner = utils.text().defaultWhitespace(input.value.innerHTML)
+
+    emitter.emit('characters-handler', { index: index.value, inner })
+  }
+
   const onKeyboard = async (e: KeyboardEvent) => {
     const _input = input.value as HTMLDivElement
 
@@ -146,6 +152,7 @@ export const useBlockText = ({
     const offset = utils.cursor().getCurrentCursorPosition(_input)
 
     onDynamicInserts(e, offset)
+    onCharactersHandler()
 
     if (e.ctrlKey && e.shiftKey) {
       if (e.key === 'z' || e.key === 'Z') {
