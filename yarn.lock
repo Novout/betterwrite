@@ -2040,11 +2040,6 @@
     npmlog "^6.0.2"
     write-file-atomic "^4.0.1"
 
-"@liveblocks/client@0.16.4":
-  version "0.16.4"
-  resolved "https://registry.yarnpkg.com/@liveblocks/client/-/client-0.16.4.tgz#6bda08289db13ba4b2bb3e0dcf7f33bd6033dffc"
-  integrity sha512-qkNtMyVrIw960qcanP4EF08U+5CGGlCC+xsxy946/hh9oB9rgsr2VBiWmzofXfO9jLz1cKpoe6l6UZzxV2gSXQ==
-
 "@milkdown/core@6.3.2":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@milkdown/core/-/core-6.3.2.tgz#d05c92b1558309ce2b7609cf74d5d770d2b946a5"

@@ -13,7 +13,6 @@
         <EditorBaseHeaderCreate />
         <EditorBaseHeaderExternals />
         <EditorBaseHeaderHelp />
-        <EditorBaseHeaderConnect v-if="env.isDev()" />
       </div>
     </div>
     <div v-if="AUTH.account.user" class="flex items-center gap-2">
@@ -24,9 +23,6 @@
 
 <script setup lang="ts">
   import { useAuthStore } from '@/store/auth'
-  import { useEnv } from '@/use/env'
 
   const AUTH = useAuthStore()
-
-  const env = useEnv()
 </script>

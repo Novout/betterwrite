@@ -48,11 +48,6 @@ export interface AbsoluteStateGenerator {
   substitutions: boolean
 }
 
-export interface AbsoluteStateLive {
-  create: boolean
-  enter: boolean
-}
-
 export interface AbsoluteState {
   cmd: boolean
   commands: boolean
@@ -68,6 +63,5 @@ export interface AbsoluteState {
   pages: AbsoluteStatePages
   tools: AbsoluteStateTools
   generator: AbsoluteStateGenerator
-  live: AbsoluteStateLive
   spinner: boolean
 }

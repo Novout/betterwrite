@@ -11,7 +11,6 @@
   import { DocxPlugin } from 'better-write-plugin-exporter-docx'
   import { TxtPlugin } from 'better-write-plugin-exporter-txt'
   import { HtmlPlugin } from 'better-write-plugin-exporter-html'
-  import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
   import { AnnotationsPlugin } from 'better-write-plugin-annotations'
 
   useStart([
@@ -21,7 +20,6 @@
     DocxPlugin(),
     TxtPlugin(),
     HtmlPlugin(),
-    MultiplayerPlugin(),
     AnnotationsPlugin(),
   ]).init()
 </script>
