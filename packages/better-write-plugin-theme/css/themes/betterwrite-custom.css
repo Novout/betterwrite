@@ -169,9 +169,9 @@
   --theme-editor-creative-drafts-container-list-text: #e5e7eb;
   --theme-editor-creative-drafts-container-list-text-hover: #e5e7eb;
   --theme-editor-creative-drafts-container-list-text-active: #e5e7eb;
-  --theme-editor-creative-drafts-container-item-background: none;
-  --theme-editor-creative-drafts-container-item-background-hover: none;
-  --theme-editor-creative-drafts-container-item-background-active: none;
+  --theme-editor-creative-drafts-container-item-background: rgba(0, 0, 0, 0.2);
+  --theme-editor-creative-drafts-container-item-background-hover: rgba(0, 0, 0, 0.2);
+  --theme-editor-creative-drafts-container-item-background-active: rgba(0, 0, 0, 0.2);
   --theme-editor-creative-drafts-container-item-text: #e5e7eb;
   --theme-editor-dashboard-background-main: rgba(0, 0, 0, 0.5);
   --theme-editor-dashboard-background-item: rgba(0, 0, 0, 0.5);
@@ -206,6 +206,6 @@
   --scr-track: #222;
   --scr-thumb: #262626;
   --scr-thumb-hover: #333333;
-  --wb-selection: black;
-  --wb-text-selection: rgba(255, 255, 255, 0.5);;
+  --wb-selection: rgba(0, 0, 0, 0.5);
+  --wb-text-selection: rgba(255, 255, 255, 0.75);
 }

@@ -103,7 +103,7 @@
     const motion = useMotion(container, variants)
 
     useIntersectionObserver(container, ([{ isIntersecting }]) => {
-      if(!EDITOR.configuration.transition) return
+      if (!EDITOR.configuration.transition) return
 
       isIntersecting
         ? (motion.variant.value = 'enter')
