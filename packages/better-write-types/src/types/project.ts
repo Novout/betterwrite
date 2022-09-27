@@ -72,7 +72,7 @@ export interface ProjectStateCharacter {
   name: string
   nameCase: ProjectStateCharacterNameCase | string
   color: string
-  colorAlpha?: number | string
+  colorAlpha?: number
   important: boolean
 }
 

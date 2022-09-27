@@ -32,6 +32,7 @@
   import { useScroll } from '@/use/scroll'
   import { useExternalsStore } from '@/store/externals'
   import { useEditorStore } from '@/store/editor'
+import { useCharacters } from '@/use/characters'
 
   const EXTERNALS = useExternalsStore()
   const CONTEXT = useContextStore()
@@ -39,6 +40,7 @@
   const EDITOR = useEditorStore()
 
   const project = useProject()
+  const characters = useCharacters()
 
   const editor = ref<HTMLElement | null>(null)
 
@@ -63,5 +65,7 @@
 
       EXTERNALS.finder.close = false
     }
+
+    characters.handler()
   })
 </script>

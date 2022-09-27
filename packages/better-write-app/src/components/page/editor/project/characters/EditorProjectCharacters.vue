@@ -42,10 +42,6 @@
   })
 
   const onClose = async () => {
-    characters.reset()
-
-    await nextTick
-
     characters.handler()
 
     await nextTick

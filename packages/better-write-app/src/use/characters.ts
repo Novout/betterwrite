@@ -20,16 +20,6 @@ export const useCharacters = () => {
   const { t } = useI18n()
   const storage = useStorage()
 
-  const reset = () => {
-    project.utils().getParagraphEntities((entity: Entity) => {
-      entity.visual.custom = undefined
-    })
-
-    CONTEXT.entities.forEach((entity) => {
-      entity.visual.custom = undefined
-    })
-  }
-
   const handler = (index?: ID<number>, inner?: string) => {
     const getEntities = (index?: ID<number>): Entities => {
       return index ? [CONTEXT.entities[index]] : CONTEXT.entities
@@ -75,11 +65,15 @@ export const useCharacters = () => {
           break
       }
 
+      /*
       if (!text.toLowerCase().includes(c.name.toLowerCase()))
         entity.visual.custom = undefined
+      */
     }
 
     entities.forEach((e) => {
+      e.visual.custom = undefined
+
       PROJECT.characters?.list?.forEach((character, i) => {
         onSetter(e, i === 0 && inner ? inner : e.raw, character)
       })
@@ -127,5 +121,5 @@ export const useCharacters = () => {
     return { totalOccurrences, averageTotalOccurrences }
   }
 
-  return { reset, handler, controller, data }
+  return { handler, controller, data }
 }
