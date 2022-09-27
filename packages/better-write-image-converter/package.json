@@ -29,7 +29,6 @@
 	},
 	"devDependencies": {
 		"prettier": "2.5.1",
-		"rimraf": "3.0.2",
-		"unbuild": "0.7.0"
+		"rimraf": "3.0.2"
 	}
 }

@@ -35,7 +35,6 @@
 		"happy-dom": "6.0.4",
 		"prettier": "2.5.1",
 		"rimraf": "3.0.2",
-		"unbuild": "0.7.0",
 		"vitest": "0.21.1"
 	}
 }

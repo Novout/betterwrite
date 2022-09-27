@@ -44,7 +44,6 @@
 		"@vuedx/typescript-plugin-vue": "0.7.4",
 		"prettier": "2.5.1",
 		"rimraf": "3.0.2",
-		"unbuild": "0.7.0",
 		"vue": "3.2.29"
 	}
 }
