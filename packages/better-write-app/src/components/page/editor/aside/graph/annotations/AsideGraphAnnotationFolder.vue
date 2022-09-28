@@ -4,7 +4,7 @@
       <IconFolderOpen class="wb-icon w-5 h-5" @click.prevent.stop="toggle()" />
       <InputText
         v-model="folder.folderName"
-        class="wb-text bg-transparent py-0.5 rounded hover:bg-theme-background-opacity-1 focus:bg-theme-background-opacity-1 ml-2 font-bold font-raleway w-2/3 text-left truncate"
+        class="wb-text bg-transparent py-0.5 rounded hover:bg-theme-background-opacity-1 focus:bg-theme-background-opacity-1 ml-2 font-bold w-2/3 text-left truncate"
       />
     </div>
     <div class="flex items-center">

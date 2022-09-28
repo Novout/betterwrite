@@ -119,7 +119,7 @@
       v-if="props.entity.type === 'heading-one'"
       class="flex items-center justify-between w-full"
     >
-      <p class="truncate ml-3 font-poppins">
+      <p class="truncate ml-3">
         {{ raw.v2().normalize(props.entity.raw, 'full') }}
       </p>
       <div class="flex items-center">
@@ -160,7 +160,7 @@
           (props.entity.external?.comment?.raw &&
             EDITOR.configuration.commands.paragraph.active))
       "
-      class="ml-2 text-xs font-raleway truncate w-full"
+      class="ml-2 text-xs truncate w-full"
     >
       {{ raw.v2().normalize(props.entity.raw, 'full') }}
     </p>

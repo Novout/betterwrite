@@ -7,7 +7,7 @@
       <div>
         <IconTextWrite class="w-7 h-7" />
       </div>
-      <p class="truncate font-bold font-poppins">
+      <p class="truncate font-bold">
         {{ t('editor.aside.graph.annotations') }}
       </p>
     </div>

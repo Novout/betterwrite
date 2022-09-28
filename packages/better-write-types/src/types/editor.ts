@@ -89,6 +89,8 @@ export interface EditorStateStyles {
   heading: EditorStateHeading
   text: EditorStateText
   base: EditorStateBase
+  header: EditorStateHeader
+  graph: EditorStateGraph
 }
 
 export interface EditorStateBase {
@@ -99,13 +101,16 @@ export interface EditorStateBase {
   backgroundSepia: boolean
 }
 
-export interface EditorStateHeading {
-  fontFamily: string
-  fontWeight: number
-}
-
 export interface EditorStateText {
   fontFamily: string
   fontWeight: number
   fontSize: number
 }
+
+export interface EditorStateHeading {
+  fontFamily: string
+  fontWeight: number
+}
+
+export interface EditorStateHeader extends EditorStateText {}
+export interface EditorStateGraph extends EditorStateText {}

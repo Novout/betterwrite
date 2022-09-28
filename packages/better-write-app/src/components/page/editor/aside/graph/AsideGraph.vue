@@ -1,5 +1,5 @@
 <template>
-  <div class="flex z-30 font-raleway px-2 flex-col w-full">
+  <div class="flex z-30 px-2 flex-col w-full">
     <div class="flex flex-row-reverse items-center justify-between mb-5 mt-2">
       <IconGraphClose
         v-if="PROJECT.type === 'creative'"
@@ -8,7 +8,7 @@
       />
       <InputText
         v-model="PROJECT.nameRaw"
-        class="wb-text bg-transparent py-0.5 rounded hover:bg-theme-background-opacity-1 focus:bg-theme-background-opacity-1 font-bold font-poppins w-2/3 text-left truncate"
+        class="wb-text bg-transparent py-0.5 rounded hover:bg-theme-background-opacity-1 focus:bg-theme-background-opacity-1 font-bold w-2/3 text-left truncate"
       />
     </div>
     <AsideGraphChapters />
