@@ -34,7 +34,12 @@
       </EditorProjectCharactersItem>
       <EditorProjectCharactersItem>
         <p>{{ t('editor.characters.item.colorAlpha') }}</p>
-        <InputNumber v-model="state.colorAlpha" :min="0" :max="1" :step="0.1" />
+        <InputNumber
+          v-model="state.colorAlpha"
+          :min="0"
+          :max="1"
+          :step="0.05"
+        />
       </EditorProjectCharactersItem>
       <EditorProjectCharactersItem>
         <p>{{ t('editor.characters.item.important') }}</p>

@@ -50,7 +50,7 @@
               v-model="character.colorAlpha"
               :min="0"
               :max="1"
-              :step="0.1"
+              :step="0.05"
             />
           </div>
           <div class="flex flex-col">
@@ -67,9 +67,18 @@
         >
           <IconDelete class="wb-icon w-6 h-6" />
         </div>
+        <div
+          class="bg-theme-background-2 rounded-lg p-2 shadow-xl"
+          @click="toggle2()"
+        >
+          <IconArrowRight
+            class="wb-icon w-6 h-6 transform transition-transform"
+            :class="[value2 ? 'rotate-90' : '']"
+          />
+        </div>
       </div>
     </div>
-    <div class="flex flex-wrap w-full gap-10">
+    <div v-if="value2" class="flex flex-wrap w-full gap-10">
       <EditorProjectCharactersItem>
         <h2 class="text-lg underline">
           {{ t('editor.characters.data.occurrences') }}
@@ -105,6 +114,7 @@
   const defines = useDefines()
   const { t } = useI18n()
   const [value, toggle] = useToggle()
+  const [value2, toggle2] = useToggle()
 
   const totalOccurrences = computedAsync(async () => {
     return await characters.data().totalOccurrences(props.character.name)

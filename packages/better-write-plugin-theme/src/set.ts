@@ -70,7 +70,7 @@ export const PluginThemeContent = (
         setColor('#242424')
         break
       case 'betterwrite-custom':
-        setColor('rgba(255, 255, 255, 0.2)')
+        setColor('#080808')
         break
       default:
         setColor('#1F2937')

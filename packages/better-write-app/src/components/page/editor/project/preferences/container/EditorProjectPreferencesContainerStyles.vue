@@ -51,6 +51,58 @@
       </DescriptionContainer>
       <div class="flex flex-col gap-2">
         <p class="font-bold text-lg mt-5">
+          {{ t('editor.preferences.configuration.editor.background.title') }}
+        </p>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.background.image') }}
+          </p>
+          <InputFileImage
+            accept=".png, .gif, .jpg, .jpeg"
+            :src="EDITOR.styles.base.backgroundData"
+            @load="onCoverImageLoad"
+            @exclude="onDeleteCoverImage"
+          />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t('editor.preferences.configuration.editor.background.imageBlur')
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundBlur" />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.background.imageGrayscale'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundGrayscale" />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.background.imageSaturate'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundSaturate" />
+        </div>
+        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t('editor.preferences.configuration.editor.background.imageSepia')
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.base.backgroundSepia" />
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="font-bold text-lg mt-5">
           {{ t('editor.preferences.configuration.editor.text') }}
         </p>
         <div class="wb-preferences">
@@ -115,63 +167,76 @@
       </div>
       <div class="flex flex-col gap-2">
         <p class="font-bold text-lg mt-5">
-          {{ t('editor.preferences.configuration.editor.background.title') }}
+          {{ t('editor.preferences.configuration.editor.header') }}
         </p>
         <div class="wb-preferences">
           <p class="text-sm">
-            {{ t('editor.preferences.configuration.editor.background.image') }}
+            {{ t('editor.preferences.configuration.editor.fontFamily') }}
           </p>
-          <InputFileImage
-            :types="[
-              {
-                description: '.png .jpeg .jpg .gif',
-                accept: {
-                  'image/png': ['.png'],
-                  'image/jpeg': ['.jpeg', '.jpg'],
-                  'image/gif': ['.gif'],
-                },
-              },
-            ]"
-            :src="EDITOR.styles.base.backgroundData"
-            @load="onCoverImageLoad"
-            @exclude="onDeleteCoverImage"
+          <InputSelect
+            v-model="EDITOR.styles.header.fontFamily"
+            :specific="true"
+            :arr="fonts"
+            :font="true"
+            :width-items="90"
           />
         </div>
-        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+        <div class="wb-preferences">
           <p class="text-sm">
-            {{
-              t('editor.preferences.configuration.editor.background.imageBlur')
-            }}
+            {{ t('editor.preferences.configuration.editor.fontWeight') }}
           </p>
-          <InputBoolean v-model="EDITOR.styles.base.backgroundBlur" />
+          <InputSelect
+            v-model="EDITOR.styles.header.fontWeight"
+            :specific="true"
+            :arr="[200, 300, 400, 500, 700, 900]"
+          />
         </div>
-        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+        <div class="wb-preferences">
           <p class="text-sm">
-            {{
-              t(
-                'editor.preferences.configuration.editor.background.imageGrayscale'
-              )
-            }}
+            {{ t('editor.preferences.configuration.editor.fontSize') }}
           </p>
-          <InputBoolean v-model="EDITOR.styles.base.backgroundGrayscale" />
+          <InputNumber
+            v-model="EDITOR.styles.header.fontSize"
+            :step="2"
+            :min="8"
+          />
         </div>
-        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="font-bold text-lg mt-5">
+          {{ t('editor.preferences.configuration.editor.graph') }}
+        </p>
+        <div class="wb-preferences">
           <p class="text-sm">
-            {{
-              t(
-                'editor.preferences.configuration.editor.background.imageSaturate'
-              )
-            }}
+            {{ t('editor.preferences.configuration.editor.fontFamily') }}
           </p>
-          <InputBoolean v-model="EDITOR.styles.base.backgroundSaturate" />
+          <InputSelect
+            v-model="EDITOR.styles.graph.fontFamily"
+            :specific="true"
+            :arr="fonts"
+            :font="true"
+            :width-items="90"
+          />
         </div>
-        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
+        <div class="wb-preferences">
           <p class="text-sm">
-            {{
-              t('editor.preferences.configuration.editor.background.imageSepia')
-            }}
+            {{ t('editor.preferences.configuration.editor.fontWeight') }}
           </p>
-          <InputBoolean v-model="EDITOR.styles.base.backgroundSepia" />
+          <InputSelect
+            v-model="EDITOR.styles.graph.fontWeight"
+            :specific="true"
+            :arr="[200, 300, 400, 500, 700, 900]"
+          />
+        </div>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.fontSize') }}
+          </p>
+          <InputNumber
+            v-model="EDITOR.styles.graph.fontSize"
+            :step="2"
+            :min="8"
+          />
         </div>
       </div>
     </div>

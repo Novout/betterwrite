@@ -16,6 +16,16 @@ export const useEditorStore = defineStore('editor', {
           fontWeight: 400,
           fontSize: 16,
         },
+        header: {
+          fontFamily: 'Raleway',
+          fontWeight: 400,
+          fontSize: 16,
+        },
+        graph: {
+          fontFamily: 'Raleway',
+          fontWeight: 400,
+          fontSize: 16,
+        },
         base: {
           backgroundData: '',
           backgroundBlur: false,

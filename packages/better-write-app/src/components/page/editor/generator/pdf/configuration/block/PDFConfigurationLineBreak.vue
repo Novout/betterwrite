@@ -7,15 +7,6 @@
       <InputBoolean v-model="pdf.lineBreak.image.active" />
       <InputFileImage
         v-if="pdf.lineBreak.image.active"
-        :types="[
-          {
-            description: '.png .jpeg .jpg',
-            accept: {
-              'image/png': ['.png'],
-              'image/jpeg': ['.jpeg', '.jpg'],
-            },
-          },
-        ]"
         :src="pdf.lineBreak.image.data"
         @load="onMainImageLoad"
         @exclude="onDeleteMainImage"

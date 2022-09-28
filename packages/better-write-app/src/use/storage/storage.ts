@@ -143,11 +143,27 @@ export const useStorage = () => {
           fontSize: 16,
         },
         base: {
-          backgroundData: undefined,
+          backgroundData: '',
           backgroundBlur: false,
           backgroundGrayscale: false,
           backgroundSaturate: false,
           backgroundSepia: false,
+        },
+      }
+    }
+
+    if (!_.editor.styles.header) {
+      _.editor.styles = {
+        ..._.editor.styles,
+        header: {
+          fontFamily: 'Raleway',
+          fontWeight: 400,
+          fontSize: 16,
+        },
+        graph: {
+          fontFamily: 'Raleway',
+          fontWeight: 400,
+          fontSize: 16,
         },
       }
     }

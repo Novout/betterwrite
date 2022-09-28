@@ -23,19 +23,35 @@
       <EditorHeaderItem
         :text="t('editor.bar.chapter.drafts')"
         @action="ABSOLUTE.pages.drafts = true"
-      />
+      >
+        <template #icon>
+          <IconDrafts class="w-5 h-5" />
+        </template>
+      </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.bar.project.corrector')"
         @action="ABSOLUTE.project.corrector = true"
-      />
+      >
+        <template #icon>
+          <IconEraser class="w-5 h-5" />
+        </template>
+      </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.preferences.shortcuts.inserts.title')"
         @action="ABSOLUTE.project.insertions = true"
-      />
+      >
+        <template #icon>
+          <IconInsertion class="w-5 h-5" />
+        </template>
+      </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.characters.title')"
         @action="ABSOLUTE.project.characters = true"
-      />
+      >
+        <template #icon>
+          <IconWolf class="w-5 h-5" />
+        </template>
+      </EditorHeaderItem>
       <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.assistants.finder')"

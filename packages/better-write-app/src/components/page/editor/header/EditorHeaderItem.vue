@@ -4,7 +4,9 @@
     @click.prevent.stop="emit('action')"
   >
     <div class="flex items-center ml-2 gap-2 py-0.5">
-      <slot name="icon"></slot>
+      <div>
+        <slot name="icon" />
+      </div>
       <p class="text-sm">{{ props.text }}</p>
     </div>
     <slot name="shortcut" />

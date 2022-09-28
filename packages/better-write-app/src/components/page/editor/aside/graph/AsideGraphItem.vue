@@ -5,7 +5,7 @@
         props.entity.external?.comment?.raw) &&
       props.entity.raw !== env.emptyLine()
     "
-    class="flex overflow-x-hidden items-center cursor-pointer bg-theme-aside-graph-background hover:bg-theme-aside-graph-background-hover active:bg-theme-aside-graph-background-active text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+    class="flex overflow-hidden items-center cursor-pointer bg-theme-aside-graph-background hover:bg-theme-aside-graph-background-hover active:bg-theme-aside-graph-background-active text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
     :class="[
       'border-l border-theme-aside-graph-lines ml-1',
       activity && PROJECT.base === 'chapter' ? '' : 'opacity-70',
@@ -119,7 +119,7 @@
       v-if="props.entity.type === 'heading-one'"
       class="flex items-center justify-between w-full"
     >
-      <p class="truncate ml-3 font-poppins">
+      <p class="truncate ml-3">
         {{ raw.v2().normalize(props.entity.raw, 'full') }}
       </p>
       <div class="flex items-center">
@@ -160,7 +160,7 @@
           (props.entity.external?.comment?.raw &&
             EDITOR.configuration.commands.paragraph.active))
       "
-      class="ml-2 text-xs font-raleway truncate w-full"
+      class="ml-2 text-xs truncate w-full"
     >
       {{ raw.v2().normalize(props.entity.raw, 'full') }}
     </p>

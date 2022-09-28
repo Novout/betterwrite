@@ -89,7 +89,9 @@ export const useEntity = () => {
         type === 'paragraph' ||
         type === 'heading-one' ||
         type === 'heading-two' ||
-        type === 'heading-three'
+        type === 'heading-three' ||
+        type === 'list' ||
+        type === 'checkbox'
       )
     }
 

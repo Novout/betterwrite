@@ -8,6 +8,7 @@ import { useTransformer } from './generator/transformer'
 import { useToast } from 'vue-toastification'
 import { useI18n } from 'vue-i18n'
 import { useStorage } from './storage/storage'
+import { useEntity } from './entity'
 
 export const useCharacters = () => {
   const CONTEXT = useContextStore()
@@ -19,6 +20,7 @@ export const useCharacters = () => {
   const toast = useToast()
   const { t } = useI18n()
   const storage = useStorage()
+  const ent = useEntity()
 
   const handler = (index?: ID<number>, inner?: string) => {
     const getEntities = (index?: ID<number>): Entities => {
@@ -32,7 +34,12 @@ export const useCharacters = () => {
       str: string,
       c: ProjectStateCharacter
     ) => {
-      const text = utils.text().defaultWhitespace(str)
+      if (!ent.utils().isTextBlock(entity.type)) return
+
+      const text = ASTUtils.normalize(str, { type: 'all', whitespace: true })
+
+      if (!text) return
+
       const color = utils.convert().hexToRgbA(c.color, c.colorAlpha)
 
       const isValidImportant =
@@ -64,17 +71,12 @@ export const useCharacters = () => {
         default:
           break
       }
-
-      /*
-      if (!text.toLowerCase().includes(c.name.toLowerCase()))
-        entity.visual.custom = undefined
-      */
     }
 
-    entities.forEach((e) => {
+    entities.forEach((e, i) => {
       e.visual.custom = undefined
 
-      PROJECT.characters?.list?.forEach((character, i) => {
+      PROJECT.characters?.list?.forEach((character) => {
         onSetter(e, i === 0 && inner ? inner : e.raw, character)
       })
     })

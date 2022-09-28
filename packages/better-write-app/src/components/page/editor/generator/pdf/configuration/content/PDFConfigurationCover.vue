@@ -8,15 +8,6 @@
       :title="t('editor.pdf.cover.image')"
     >
       <InputFileImage
-        :types="[
-          {
-            description: '.png .jpeg .jpg',
-            accept: {
-              'image/png': ['.png'],
-              'image/jpeg': ['.jpeg', '.jpg'],
-            },
-          },
-        ]"
         :src="PDF.styles.base.background.data"
         @load="onCoverImageLoad"
         @exclude="onDeleteCoverImage"

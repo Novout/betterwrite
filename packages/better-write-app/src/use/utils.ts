@@ -349,7 +349,7 @@ export const useUtils = () => {
     }
 
     const hexToRgbA = (hex: string, alpha?: number): string => {
-      alpha = alpha ? Number(alpha?.toFixed(1)) : alpha
+      alpha = alpha ? Number(alpha?.toFixed(2)) : alpha
 
       let c
       if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {

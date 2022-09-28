@@ -30,6 +30,7 @@
   background: linear-gradient(90deg, rgba(121,74,9,0.7) 0%, rgba(106,106,13,0.7) 100%) !important;
 }
 .Vue-Toastification__close-button {
+  font-family: 'Poppins' !important;
   font-weight: bold;
   font-size: 24px;
   line-height: 24px;
