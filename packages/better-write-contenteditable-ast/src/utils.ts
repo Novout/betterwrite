@@ -21,3 +21,27 @@ export const occurrences = (
   }
   return n
 }
+
+export const normalize = (
+  str: string,
+  options: {
+    type: 'all' | 'inserts'
+    whitespace?: boolean
+  }
+) => {
+  if (options?.whitespace)
+    str = str.replaceAll('&nbsp;', ' ').replaceAll('&#160', ' ')
+
+  switch (options.type) {
+    case 'all':
+      return str.replaceAll(/<(?!\/?span(?=>|\s?.*>))\/?.*?>/g, '')
+    case 'inserts':
+      return str
+        .replaceAll('<b>', '')
+        .replaceAll('</b>', '')
+        .replaceAll('<i>', '')
+        .replaceAll('</i>', '')
+        .replaceAll('<u>', '')
+        .replaceAll('</u>', '')
+  }
+}
