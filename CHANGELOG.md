@@ -1,6 +1,15 @@
-# Changelog (27/09/2022)
+# Changelog (28/09/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.1
+
+* **feat(editor):** icons in tools header bar [ef49cf1b]
+* **feat(editor):** customize sidebar and topbar [e9bbb315]
+* **feat(characters):** dropdown and icons [8034416a]
+* **fix(loader):** image default reader images in mobile and desktop [d67cba79]
+* **fix(characters):** entity index in wrap innerHTML [4dc07123]
+* **chore(theme):** betterwrite-custom color bar [8ad2af20]
 
 ### v0.17.0
 
