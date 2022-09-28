@@ -5,7 +5,7 @@
         props.entity.external?.comment?.raw) &&
       props.entity.raw !== env.emptyLine()
     "
-    class="flex overflow-x-hidden items-center cursor-pointer bg-theme-aside-graph-background hover:bg-theme-aside-graph-background-hover active:bg-theme-aside-graph-background-active text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
+    class="flex overflow-hidden items-center cursor-pointer bg-theme-aside-graph-background hover:bg-theme-aside-graph-background-hover active:bg-theme-aside-graph-background-active text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
     :class="[
       'border-l border-theme-aside-graph-lines ml-1',
       activity && PROJECT.base === 'chapter' ? '' : 'opacity-70',

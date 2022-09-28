@@ -16,7 +16,7 @@
       class="w-6 bg-transparent"
     />
     <HeroIcon
-      class="bg-theme-background-4 active:bg-theme-background-2 transform rotate-270"
+      class="bg-theme-background-4 active:bg-theme-background-2"
       @click.prevent="onPositive"
     >
       <IconArrowSetRight class="wb-icon h-6 w-6" />
