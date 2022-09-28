@@ -86,11 +86,13 @@ export const getImageFileRaw = (
           return
         }
 
-        const raw = isSvg ? await ImageToForcePNG({
-          raw: reader.result as string,
-          width: 2000 as number,
-          height: 2000 as number,
-        }) : reader.result as string
+        const raw = isSvg
+          ? await ImageToForcePNG({
+              raw: reader.result as string,
+              width: 2000 as number,
+              height: 2000 as number,
+            })
+          : (reader.result as string)
 
         res({
           raw,
