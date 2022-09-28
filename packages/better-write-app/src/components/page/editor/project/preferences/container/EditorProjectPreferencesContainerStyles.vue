@@ -122,16 +122,7 @@
             {{ t('editor.preferences.configuration.editor.background.image') }}
           </p>
           <InputFileImage
-            :types="[
-              {
-                description: '.png .jpeg .jpg .gif',
-                accept: {
-                  'image/png': ['.png'],
-                  'image/jpeg': ['.jpeg', '.jpg'],
-                  'image/gif': ['.gif'],
-                },
-              },
-            ]"
+            accept=".png, .gif, .jpg, .jpeg"
             :src="EDITOR.styles.base.backgroundData"
             @load="onCoverImageLoad"
             @exclude="onDeleteCoverImage"

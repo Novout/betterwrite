@@ -5,6 +5,11 @@ export interface ImageToForcePNGOptions {
 }
 
 export interface ImageFileRawOptions {
+  accept?: string
+}
+
+export interface ImageFileRawReturn {
   raw: string
   fileName: string
+  fileSize: number
 }

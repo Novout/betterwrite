@@ -1,11 +1,16 @@
-import { ImageToForcePNGOptions, ImageFileRawOptions } from 'better-write-types'
+import {
+  ImageToForcePNGOptions,
+  ImageFileRawOptions,
+  ImageFileRawReturn,
+} from 'better-write-types'
 
 export const isImageExtension = (text: string) => {
   return (
     text.endsWith('.png') ||
     text.endsWith('.jpg') ||
     text.endsWith('.jpeg') ||
-    text.endsWith('.svg')
+    text.endsWith('.svg') ||
+    text.endsWith('.gif')
   )
 }
 
@@ -53,11 +58,13 @@ export const ImageToForcePNG = (
   })
 }
 
-export const getImageFileRaw = (): Promise<ImageFileRawOptions> => {
+export const getImageFileRaw = (
+  options?: ImageFileRawOptions
+): Promise<ImageFileRawReturn> => {
   return new Promise((res, rej) => {
     const _ = document.createElement('input')
     _.type = 'file'
-    _.accept = '.png, .svg, .jpg, .jpeg'
+    _.accept = options?.accept || '.png, .svg, .jpg, .jpeg'
     _.addEventListener('change', function () {
       const file = (this.files as any)[0]
 
@@ -65,27 +72,30 @@ export const getImageFileRaw = (): Promise<ImageFileRawOptions> => {
 
       const reader = new FileReader()
 
-      if (file.name.endsWith('svg')) {
+      const isSvg = file.name.endsWith('.svg')
+
+      if (isSvg) {
         reader.readAsText(file)
       } else {
         reader.readAsDataURL(file)
       }
 
       reader.onload = async () => {
-        if (!isImageExtension(file.name)) {
+        if (!isImageExtension(file.name) || !reader.result) {
           rej()
           return
         }
 
-        const raw = await ImageToForcePNG({
+        const raw = isSvg ? await ImageToForcePNG({
           raw: reader.result as string,
           width: 2000 as number,
           height: 2000 as number,
-        })
+        }) : reader.result as string
 
         res({
           raw,
           fileName: file.name,
+          fileSize: file.size,
         })
       }
       reader.onerror = function () {
