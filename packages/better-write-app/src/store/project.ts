@@ -13,6 +13,7 @@ import { useFactory } from '../use/factory'
 import { useUtils } from '@/use/utils'
 import { useEnv } from '@/use/env'
 import { useDefines } from '@/use/defines'
+import { useContextStore } from './context'
 
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
@@ -30,7 +31,7 @@ export const useProjectStore = defineStore('project', {
       main: {},
       summary: {},
       pages: [],
-      pageLoaded: 1,
+      pageLoaded: useUtils().id().uuidv4(),
       scrollLoaded: 0,
       offsetLoaded: 0,
       pdf: {
@@ -127,14 +128,18 @@ export const useProjectStore = defineStore('project', {
         totalPagesCreated: options.totalPagesCreated || 1,
         main: options.main || {},
         summary: options.summary || {},
-        pageLoaded: options.pageLoaded || 1,
+        pageLoaded: options.pageLoaded || useUtils().id().uuidv4(),
         scrollLoaded: options.scrollLoaded || 0,
         offsetLoaded: options.offsetLoaded || 0,
         pages: options.pages || [
           {
-            id: 1,
-            title: forceTitle || title,
-            entities: [],
+            id: useUtils().id().uuidv4(),
+            title: `${forceTitle || title}  | ${useFormat().actually()}`,
+            entities: [
+              useFactory()
+                .entity()
+                .create('heading-one', forceTitle || title),
+            ],
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
           },
@@ -207,8 +212,8 @@ export const useProjectStore = defineStore('project', {
       this.totalPagesCreated++
 
       const context: ContextState = {
-        id: this.totalPagesCreated,
-        title,
+        id: useUtils().id().uuidv4(),
+        title: `${title} | ${useFormat().actually()}`,
         entities: [
           useFactory().entity().create('heading-one', title),
           useFactory().entity().create('paragraph', ''),
@@ -293,8 +298,13 @@ export const useProjectStore = defineStore('project', {
   },
   getters: {
     getCreativeDrafts: (state) => {
-      return (id: ID<number>) =>
-        state.creative.drafts.filter((draft) => draft.id === id)
+      return () => state.creative.drafts
+    },
+    getActuallyDrafts: (state) => {
+      const CONTEXT = useContextStore()
+
+      return () =>
+        state.creative.drafts.filter((draft) => draft.id === CONTEXT.id)
     },
     getAllCharacters: (state) => {
       return () =>

@@ -48,7 +48,7 @@ export type EntityType =
   | 'drau'
 
 export type ContextState = {
-  id: number
+  id: string
   title: string
   entities: Array<Entity>
   createdAt: string

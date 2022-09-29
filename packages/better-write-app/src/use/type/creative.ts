@@ -1,152 +1,112 @@
 import { useProjectStore } from '@/store/project'
-import { ProjectTypeID, ContextState } from 'better-write-types'
-import useEmitter from '../emitter'
+import { ContextState } from 'better-write-types'
 import { useFormat } from '../format'
 import { useStorage } from '../storage/storage'
 import { useContextStore } from '@/store/context'
-import { nextTick } from 'vue'
-import { usePlugin } from 'better-write-plugin-core'
 import { useFactory } from '../factory'
+import { nextTick } from 'vue'
+import { useToast } from 'vue-toastification'
+import { useI18n } from 'vue-i18n'
 
 export const useCreativeType = () => {
   const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
 
   const format = useFormat()
-  const emitter = useEmitter()
-  const plugin = usePlugin()
   const storage = useStorage()
   const factory = useFactory()
+  const toast = useToast()
+  const { t } = useI18n()
 
   const draft = () => {
-    const getActivePage = (id: ProjectTypeID) => {
-      return PROJECT.pages.filter((page) => page.id === id.active)[0]
+    const get = (page: ContextState) => {
+      return PROJECT.creative.drafts.find((p) => page === p) as ContextState
     }
 
-    const getDraftPage = (id: ProjectTypeID) => {
-      return PROJECT.creative.drafts.filter(
-        (page) => PROJECT.creative.drafts.indexOf(page) === id.draft
-      )[0]
-    }
+    const add = () => {
+      const pageActive = CONTEXT.$state
 
-    const setInfo = (page: ContextState) => {
-      emitter.emit('project-creative-drafts-set-info', page)
-    }
+      const title = `${CONTEXT.$state.title} | ${format.actually()}`
 
-    const add = (id: ProjectTypeID) => {
-      const target = getActivePage(id)
+      if (PROJECT.creative.drafts.find((i) => i.title === title)) return
 
-      if (!target) return
-
-      const title = `${target.entities[0].raw} | ${format.actually()}`
-
-      const exists = PROJECT.creative.drafts.filter(
-        (page) => page.title === title
-      )[0]
-
-      if (exists) return
-
-      const page = {
-        id: id.active,
+      PROJECT.creative.drafts.unshift({
+        id: CONTEXT.$state.id,
         title,
-        entities: target.entities,
+        entities: pageActive.entities,
         createdAt: format.actually(),
         updatedAt: format.actually(),
-      } as ContextState
+      })
 
-      PROJECT.creative.drafts.push(page)
-
-      plugin.emit('plugin-project-creative-drafts-create-draft', page)
+      toast.success(t('toast.generics.successAdded'))
     }
 
-    const remove = async (id: ProjectTypeID) => {
-      const set = getDraftPage(id)
-
+    const remove = (page: ContextState) => {
       PROJECT.creative.drafts = PROJECT.creative.drafts.filter(
-        (page) => PROJECT.creative.drafts.indexOf(page) !== id.draft
+        (p) => p !== page
       )
 
-      const target = getActivePage(id)
+      toast.success(t('toast.generics.successRemoved'))
+    }
 
-      setInfo(target)
+    const reset = (page: ContextState) => {
+      const pos = PROJECT.creative.drafts.indexOf(page)
+
+      page.entities = [
+        factory
+          .entity()
+          .create('heading-one', page.entities[0].raw || 'Untitled'),
+      ]
+
+      PROJECT.creative.drafts.splice(pos, 1, page)
+
+      toast.success(t('toast.generics.successRestarted'))
+    }
+
+    const set = async (page: ContextState) => {
+      await storage.normalize()
+
+      const old = CONTEXT.$state
+
+      remove(page)
+
+      PROJECT.creative.drafts.unshift({
+        ...old,
+      })
 
       await nextTick
 
-      plugin.emit('plugin-project-creative-drafts-delete-draft', set)
+      PROJECT.pages = PROJECT.pages.map((p) => {
+        if (p.id === page.id) return page
+
+        return p
+      })
+
+      await nextTick
+
+      CONTEXT.load(page)
+
+      toast.success(t('toast.generics.successSet'))
     }
 
-    const reset = (id: ProjectTypeID) => {
-      const target = getDraftPage(id)
-
-      const pos = PROJECT.creative.drafts.indexOf(target)
-
-      target.entities = [
-        factory
-          .entity()
-          .create('heading-one', target.entities[0].raw || 'Untitled'),
-      ]
-
-      PROJECT.creative.drafts.splice(pos, 1, target)
-
-      setInfo(target)
-
-      plugin.emit('plugin-project-creative-drafts-reset-draft', target)
-    }
-
-    const setActive = (page: ContextState) => {
-      const get = PROJECT.pages.filter((p) => p.id === page.id)[0]
-
-      const index = PROJECT.pages.indexOf(get)
-
-      PROJECT.pages.splice(index, 1, page)
-
-      setInfo(page)
-    }
-
-    const set = (id: ProjectTypeID) => {
-      const target = getDraftPage(id)
-      let actually = getActivePage(id)
-
-      if (!target) return
-
-      setActive(target)
-
-      remove(id)
-
-      PROJECT.creative.drafts.push(actually)
-
-      actually = getActivePage(id)
-
-      setInfo(actually)
-
-      storage
-        .normalize()
-        .then(() => {
-          CONTEXT.load(actually)
-        })
-        .finally(() => {})
-
-      plugin.emit('plugin-project-creative-drafts-set-draft', actually)
-    }
-
-    const updateTitle = (id: ProjectTypeID, main: boolean, title: string) => {
+    const updateTitle = (page: ContextState, main: boolean, title: string) => {
       if (main) {
-        const target = getActivePage(id)
+        CONTEXT.$state.title = title
+        CONTEXT.$state.updatedAt = format.actually()
 
-        const index = PROJECT.pages.indexOf(target)
-
-        PROJECT.pages[index].title = title
-        PROJECT.pages[index].updatedAt = format.actually()
+        toast.success(t('toast.generics.successUpdated'))
 
         return
       }
 
-      const target = getDraftPage(id)
+      const target = get(page)
 
       const index = PROJECT.creative.drafts.indexOf(target)
 
       PROJECT.creative.drafts[index].title = title
       PROJECT.creative.drafts[index].updatedAt = format.actually()
+
+      toast.success(t('toast.generics.successUpdated'))
     }
 
     return { new: add, delete: remove, set, reset, updateTitle }

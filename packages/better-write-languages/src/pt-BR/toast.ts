@@ -7,6 +7,11 @@ export default {
     configurationFail: 'A configuração importada nao é válida!',
     invalidName: 'O nome está vazio ou já existe!',
     successAdded: 'Adicionado com Sucesso!',
+    successUpdated: 'Atualizado com Sucesso!',
+    successCreated: 'Criado com Sucesso!',
+    successSet: 'Definido com Sucesso!',
+    successChanged: 'Alterado com Sucesso!',
+    successRestarted: 'Reiniciado com Sucesso!',
     successRemoved: 'Removido com Sucesso!',
   },
   pdf: {

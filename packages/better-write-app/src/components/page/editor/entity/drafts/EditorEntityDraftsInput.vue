@@ -4,7 +4,7 @@
   >
     <EntityTypeShow :type="entity.type" />
     <div
-      class="w-full px-1 md:px-5 relative text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active"
+      class="w-full px-1 md:px-5 relative text-justify break-all text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active"
       :style="{
         whiteSpace: 'pre-line',
         textIndent: '2rem',

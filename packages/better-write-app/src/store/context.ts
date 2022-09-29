@@ -25,7 +25,7 @@ import i18n from '@/lang'
 export const useContextStore = defineStore('context', {
   state: (): ContextState => {
     return {
-      id: 0,
+      id: useUtils().id().uuidv4(),
       title: 'Untitled',
       entities: [],
       createdAt: useFormat().actually(),
@@ -46,10 +46,7 @@ export const useContextStore = defineStore('context', {
         return
       }
 
-      this.id = context.id
-      project.pageLoaded = context.id
-
-      this.entities = context.entities
+      this.$state = context
     },
     addInPage(entity: Entity) {
       if (!entity) return

@@ -22,7 +22,7 @@ export interface ProjectState {
   main: Record<any, any>
   summary: Record<any, any>
   pages: Array<ContextState>
-  pageLoaded: number
+  pageLoaded: ID<string>
   scrollLoaded: number
   offsetLoaded: number
   bw: ProjectStateBetterWrite
@@ -49,7 +49,7 @@ export interface ProjectStateOptions {
   main?: Record<any, any>
   summary?: Record<any, any>
   pages?: Array<ContextState>
-  pageLoaded?: number
+  pageLoaded?: ID<string>
   scrollLoaded?: number
   offsetLoaded?: number
   bw?: ProjectStateBetterWrite

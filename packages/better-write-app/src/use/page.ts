@@ -16,10 +16,14 @@ export const usePage = () => {
   const { t } = useI18n()
   const emitter = useEmitter()
 
-  const onCreatePage = async (title: string) => {
+  const onCreatePage = async () => {
     if (PROJECT.name === env.projectEmpty()) return
 
-    PROJECT.newPage(title)
+    PROJECT.newPage(
+      t('editor.project.control.title', {
+        suffix: 1 + PROJECT.totalPagesCreated,
+      })
+    )
 
     await nextTick
 
@@ -71,7 +75,7 @@ export const usePage = () => {
   }
 
   const utils = () => {
-    const getPageIndex = (id: number): number => {
+    const getPageIndex = (id: string): number => {
       const page = PROJECT.pages.filter(
         (page: ContextState) => id === page.id
       )[0]

@@ -7,6 +7,11 @@ export default {
     configurationFail: 'The imported configuration is not valid!',
     invalidName: 'The name is empty or already exists!',
     successAdded: 'Successfully Added!',
+    successUpdated: 'Successfully Updated!',
+    successCreated: 'Successfully Created!',
+    successSet: 'Successfully Set!',
+    successChanged: 'Changed Successfully!',
+    successRestarted: 'Successfully Restarted!',
     successRemoved: 'Successfully Removed!',
   },
   pdf: {

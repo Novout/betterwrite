@@ -8,24 +8,24 @@
     <div
       ref="input"
       :contenteditable="edit"
-      class="cursor-pointer text-theme-editor-creative-drafts-container-item-text"
+      class="cursor-pointer truncate text-theme-editor-creative-drafts-container-item-text"
       @keydown.enter="edit = false"
       @focusout="edit = false"
       @click="emit('info')"
     >
-      {{ props.page.entities[0]?.raw }}
+      {{ props.page.title }}
     </div>
     <div class="flex gap-2 items-center">
-      <ButtonSet v-if="!props.active" @click="creative.draft().set(id)">
+      <ButtonSet v-if="!main" @click="creative.draft().set(props.page)">
         <IconYes class="w-5 h-5" />
       </ButtonSet>
-      <ButtonSet v-if="!props.active" @click="creative.draft().reset(id)">
+      <ButtonSet v-if="!main" @click="creative.draft().reset(props.page)">
         <IconReload class="w-5 h-5" />
       </ButtonSet>
       <ButtonSet @click="edit = !edit">
         <IconEdit class="w-5 h-5" />
       </ButtonSet>
-      <ButtonSet v-if="!props.active" @click="creative.draft().delete(id)">
+      <ButtonSet v-if="!main" @click="creative.draft().delete(props.page)">
         <IconDelete class="w-5 h-5" />
       </ButtonSet>
     </div>
@@ -33,14 +33,12 @@
 </template>
 
 <script setup lang="ts">
-  import { ProjectTypeID, ContextState } from 'better-write-types'
+  import { ContextState } from 'better-write-types'
   import { useRaw } from '@/use/raw'
   import { useCreativeType } from '@/use/type/creative'
-  import { usePlugin } from 'better-write-plugin-core'
   import { ref, watch, nextTick } from 'vue'
 
   const creative = useCreativeType()
-  const plugin = usePlugin()
 
   const emit = defineEmits(['info'])
   const input = ref<HTMLDivElement | null>(null)
@@ -61,25 +59,13 @@
 
     creative
       .draft()
-      .updateTitle(props.id, props.main, input.value?.innerText as string)
-
-    await nextTick
-
-    plugin.emit('plugin-project-creative-drafts-update', props.page)
+      .updateTitle(props.page, props.main, input.value?.innerText as string)
   })
 
   const props = defineProps({
     page: {
       required: true,
       type: Object as () => ContextState,
-    },
-    id: {
-      required: true,
-      type: Object as () => ProjectTypeID,
-    },
-    active: {
-      required: true,
-      type: Boolean,
     },
     main: {
       required: true,
