@@ -1,4 +1,5 @@
 import destr from 'destr'
+import LZString from 'lz-string'
 import { Maybe, ProjectObject } from 'better-write-types'
 import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
@@ -17,13 +18,13 @@ export const useLocalStorage = () => {
   const { t } = i18n.global
 
   const set = (obj: any, name: string) => {
-    localStorage.setItem(name, JSON.stringify(obj))
+    localStorage.setItem(name, LZString.compress(JSON.stringify(obj)))
   }
 
   const get = (name: string): Maybe<ProjectObject> => {
     const item = localStorage.getItem(name)
 
-    return item ? destr(item) : undefined
+    return item ? destr(LZString.decompress(item)) : undefined
   }
 
   const setProject = (obj: ProjectObject) => {
