@@ -37,6 +37,8 @@ export const normalize = (
       return str.replaceAll(/<(?!\/?span(?=>|\s?.*>))\/?.*?>/g, '')
     case 'inserts':
       return str
+        .replaceAll('<span>', '')
+        .replaceAll('</span>', '')
         .replaceAll('<b>', '')
         .replaceAll('</b>', '')
         .replaceAll('<i>', '')

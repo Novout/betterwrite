@@ -1,27 +1,19 @@
 import { useAddonsStore } from '@/store/addons'
 import { useContextStore } from '@/store/context'
-import { useProjectStore } from '@/store/project'
 import { useStorage } from './storage/storage'
 import { nextTick } from 'vue'
 import { useProject } from './project'
 import { Entity } from 'better-write-types'
-import { useEditorStore } from '../store/editor'
-import { useRaw } from './raw'
-import { useEnv } from './env'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useToast } from 'vue-toastification'
 import { useI18n } from 'vue-i18n'
+import { ASTUtils } from 'better-write-contenteditable-ast'
 
 export const useCorrector = () => {
-  const PROJECT = useProjectStore()
   const CONTEXT = useContextStore()
   const ADDONS = useAddonsStore()
 
   const storage = useStorage()
   const project = useProject()
-  const raw = useRaw()
-  const env = useEnv()
-  const { isLoading } = useNProgress()
   const toast = useToast()
   const { t } = useI18n()
 
@@ -47,7 +39,8 @@ export const useCorrector = () => {
         project.utils().getParagraphEntities((entity: Entity) => {
           const last = entity.raw.charAt(entity.raw.length - 1)
 
-          if (last !== '.' && last !== ':' && last !== '/') entity.raw += '.'
+          if (!last?.match(/^[.,;:`"'!?]/) && last && last !== ' ')
+            entity.raw += '.'
         })
       }
     }
@@ -63,7 +56,8 @@ export const useCorrector = () => {
     const resetEntityRaw = () => {
       if (ADDONS.corrector.options[4].option) {
         project.utils().getParagraphEntities((entity: Entity) => {
-          entity.raw = raw.v2().normalize(entity.raw, 'full') || env.emptyLine()
+          entity.raw =
+            ASTUtils.normalize(entity.raw, { type: 'inserts' }) || ' '
         })
       }
     }
@@ -78,13 +72,9 @@ export const useCorrector = () => {
   }
 
   const apply = () => {
-    isLoading.value = true
-
     storage
       .normalize()
       .then(async () => {
-        PROJECT.updateContext(CONTEXT.$state)
-
         await nextTick
 
         await options().removeStartWhitespace()
@@ -93,15 +83,12 @@ export const useCorrector = () => {
         await options().removeExtraWhitespace()
         await options().resetEntityRaw()
 
-        CONTEXT.load(PROJECT.pages[0])
+        CONTEXT.load()
 
         toast.success(t('toast.corrector.apply'))
       })
-      .finally(() => {
-        isLoading.value = false
-      })
+      .finally(() => {})
       .catch((e) => {
-        console.log('here?', e)
         toast.error(t('toast.generics.error'))
       })
   }
