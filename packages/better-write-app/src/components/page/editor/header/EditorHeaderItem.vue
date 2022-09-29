@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex px-2 justify-between items-center w-full cursor-pointer text-theme-editor-header-list-text hover:text-theme-editor-header-list-text-hover active:text-theme-editor-header-list-text-active hover:bg-theme-editor-header-list-background-hover active:bg-theme-editor-header-list-background-active"
+    class="flex px-4 py-0.5 justify-between items-center w-full cursor-pointer text-theme-editor-header-list-text hover:text-theme-editor-header-list-text-hover active:text-theme-editor-header-list-text-active hover:bg-theme-editor-header-list-background-hover active:bg-theme-editor-header-list-background-active"
     @click.prevent.stop="emit('action')"
   >
-    <div class="flex items-center ml-2 gap-2 py-0.5">
+    <div class="flex items-center w-full">
       <div>
         <slot name="icon" />
       </div>

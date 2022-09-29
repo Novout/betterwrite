@@ -25,7 +25,7 @@
         @action="ABSOLUTE.pages.drafts = true"
       >
         <template #icon>
-          <IconDrafts class="w-5 h-5" />
+          <IconDrafts class="mr-2 w-5 h-5" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
@@ -33,7 +33,7 @@
         @action="ABSOLUTE.project.corrector = true"
       >
         <template #icon>
-          <IconEraser class="w-5 h-5" />
+          <IconEraser class="mr-2 w-5 h-5" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
@@ -41,7 +41,7 @@
         @action="ABSOLUTE.project.insertions = true"
       >
         <template #icon>
-          <IconInsertion class="w-5 h-5" />
+          <IconInsertion class="mr-2 w-5 h-5" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
@@ -49,7 +49,7 @@
         @action="ABSOLUTE.project.characters = true"
       >
         <template #icon>
-          <IconWolf class="w-5 h-5" />
+          <IconWolf class="mr-2 w-5 h-5" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItemDiv />

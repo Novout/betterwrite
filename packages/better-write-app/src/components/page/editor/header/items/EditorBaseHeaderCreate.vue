@@ -25,7 +25,7 @@
         @action="ABSOLUTE.pdf.configuration = true"
       >
         <template #icon>
-          <IconPDF class="w-6 h-6" />
+          <IconPDF class="mr-2 w-6 h-6" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
@@ -33,7 +33,7 @@
         @action="onPDFGenerate"
       >
         <template #icon>
-          <IconPDF class="w-6 h-6" />
+          <IconPDF class="mr-2 w-6 h-6" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItemDiv />
@@ -42,7 +42,7 @@
         @action="ABSOLUTE.docx.configuration = true"
       >
         <template #icon>
-          <IconDOCX class="w-6 h-6" />
+          <IconDOCX class="mr-2 w-6 h-6" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
@@ -50,7 +50,7 @@
         @action="plugin.emit('plugin-docx-generate')"
       >
         <template #icon>
-          <IconDOCX class="w-6 h-6" />
+          <IconDOCX class="mr-2 w-6 h-6" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItemDiv />
@@ -59,7 +59,7 @@
         @action="plugin.emit('plugin-txt-generate')"
       >
         <template #icon>
-          <IconTXT class="w-6 h-6" />
+          <IconTXT class="mr-2 w-6 h-6" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
@@ -67,7 +67,7 @@
         @action="onHTMLGenerate"
       >
         <template #icon>
-          <IconHTML class="w-6 h-6" />
+          <IconHTML class="mr-2 w-6 h-6" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItemDiv />
@@ -76,7 +76,7 @@
         @action="ABSOLUTE.generator.substitutions = true"
       >
         <template #icon>
-          <IconArrowTo class="w-6 h-6 transform -rotate-90" />
+          <IconArrowTo class="mr-2 w-6 h-6 transform -rotate-90" />
         </template>
       </EditorHeaderItem>
     </template>
