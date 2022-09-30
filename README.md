@@ -35,15 +35,16 @@ A Modern Word Processor.
 
 <br>
 
-<img src="./.github/customtheme.png" />
+<img src="./.github/1.gif" width="100%" />
 
 <br>
+
 
 # Motivation
 
 There are no word processors on the market that are not inextricable from the context itself. This approach makes it difficult to integrate other resources, limiting creative possibilities for writers and publishers. __Better Write__ offers an individual and reactive approach to any item that is entered in the editor.
 
-# A Different Way
+## A Different Way
 
 
 With **betterwrite.io**, transform your editor's appearance in a way that showcases your creativity even more. The editor offers a number of customization tools, allowing the user greater flexibility and contentment with the tool.
@@ -55,11 +56,6 @@ With **betterwrite.io**, transform your editor's appearance in a way that showca
 - Transparency items for better use of the image;
 
 - Default color themes.
-
-<p align="center">
-  <img src="./.github/example.png" width="100%" />
-<p>
-
 
 # Entity Model
 
