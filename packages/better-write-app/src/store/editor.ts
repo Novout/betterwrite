@@ -24,7 +24,7 @@ export const useEditorStore = defineStore('editor', {
         graph: {
           fontFamily: 'Raleway',
           fontWeight: 400,
-          fontSize: 16,
+          fontSize: 18,
         },
         base: {
           backgroundData: '',

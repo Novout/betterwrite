@@ -7,13 +7,17 @@
       <template #icon>
         <IconImport class="w-5 h-5 wb-text" />
       </template>
-      <p>Importar</p>
+      <p class="font-raleway">
+        {{ t('editor.material.fileController.import') }}
+      </p>
     </Button>
     <Button @click.prevent.stop="exporter()">
       <template #icon>
         <IconExport class="w-5 h-5 wb-text" />
       </template>
-      <p>Exportar</p>
+      <p class="font-raleway">
+        {{ t('editor.material.fileController.import') }}
+      </p>
     </Button>
   </div>
 </template>

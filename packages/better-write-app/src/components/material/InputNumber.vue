@@ -13,7 +13,7 @@
       :min="props.min"
       :max="props.max"
       :step="props.step"
-      class="w-6 bg-transparent"
+      class="w-6 bg-transparent font-raleway"
     />
     <HeroIcon
       class="bg-theme-background-4 active:bg-theme-background-2"

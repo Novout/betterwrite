@@ -1,17 +1,10 @@
 import { setPDFI18n } from 'better-write-plugin-exporter-pdf'
 
 export default {
-  live: {
-    enter: {
-      title: 'Entrar na Sala',
-      description: 'Insira o código de acesso no campo abaixo:',
-    },
-    create: {
-      title: 'Criar Sala',
-      description:
-        'Compartilhe o seu projeto com até 10 usuários em tempo real!',
-      button: 'Gerar Sala',
-      code: 'O código de acesso é:',
+  material: {
+    fileController: {
+      import: 'Importar',
+      export: 'Exportar',
     },
   },
   blocked: {

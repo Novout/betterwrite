@@ -16,6 +16,7 @@ import vitePackageVersion from 'vite-plugin-package-version'
 import viteSitemap from 'vite-plugin-pages-sitemap'
 import viteChecker from 'vite-plugin-checker'
 import { viteStdlib } from "./scripts/vite"
+import { FontaineTransform as CSSFontaine } from 'fontaine'
 import windiCSS from 'vite-plugin-windicss'
 import stdLibBrowser from 'node-stdlib-browser'
 
@@ -59,6 +60,10 @@ export default ({ mode }) => {
         resolvers: [HeadlessUiResolver()]
       }),
       windiCSS(),
+      CSSFontaine.vite({
+        fallbacks: ['Raleway', 'Poppins', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans'],
+        resolvePath: id => new URL('.' + id, import.meta.url),
+      }),
       viteSchemaOrg({
         full: false,
         dts: true,

@@ -1,17 +1,10 @@
 import { setPDFI18n } from 'better-write-plugin-exporter-pdf'
 
 export default {
-  live: {
-    enter: {
-      title: 'Enter the Room',
-      description: 'Enter the access code below:',
-    },
-    create: {
-      title: 'Create Room',
-      description:
-        'Create a room for others to access and interact with your project!',
-      button: 'Generate Room',
-      code: 'The access code is:',
+  material: {
+    fileController: {
+      import: 'Import',
+      export: 'Export',
     },
   },
   blocked: {
