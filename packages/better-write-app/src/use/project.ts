@@ -30,6 +30,7 @@ import useEmitter from './emitter'
 import { writeBW } from 'better-write-extension'
 import { useAuthStore } from '@/store/auth'
 import { useDOCXStore } from '@/store/docx'
+import { useGlobalStore } from '@/store/global'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -49,6 +50,7 @@ export const useProject = () => {
   const plugin = usePlugin()
   const breakpoints = useBreakpoint()
   const emitter = useEmitter()
+  const global = useGlobalStore()
   const { t } = useI18n()
 
   const external = () => {
@@ -108,9 +110,11 @@ export const useProject = () => {
 
   const onLoadProject = async (
     context: Maybe<ProjectObject>,
-    notification: boolean = true
+    notification: boolean = true,
+    reset?: boolean
   ) => {
-    // support old features interceptor
+    if (reset) global.reset()
+
     if (context) context = local.getProject(context)
 
     if (!context) context = local.getProject()

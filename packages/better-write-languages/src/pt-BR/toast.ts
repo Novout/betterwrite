@@ -90,6 +90,7 @@ export default {
     },
   },
   image: {
-    limitFileSize: 'O limite máximo de tamanho de arquivo suportado é de 8MB!',
+    warningLimitFileSize: 'Não é recomendado usar imagens acima de {limit}MB!',
+    limitFileSize: 'Excedeu o limite máximo de tamanho do arquivo ({limit}MB)!',
   },
 }

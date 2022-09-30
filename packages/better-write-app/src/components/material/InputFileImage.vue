@@ -43,10 +43,12 @@
     getImageFileRaw({ accept: props.accept })
       .then(async ({ raw, fileSize }) => {
         if (fileSize > 8000000) {
-          toast.warning(t('toast.image.limitFileSize'))
+          toast.error(t('toast.image.limitFileSize', { limit: '8' }))
+          emit('error')
 
           return
-        }
+        } else if (fileSize > 2000000)
+          toast.warning(t('toast.image.warningLimitFileSize', { limit: '2' }))
 
         emit('load', raw)
       })

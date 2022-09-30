@@ -7,14 +7,14 @@ import { useLocalStorage } from '@/use/storage/local'
 import {
   useEventListener,
   useFullscreen,
-  useIntervalFn,
   useNetwork,
+  useUrlSearchParams,
 } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
 import { usePlugin } from 'better-write-plugin-core'
 import { computed, onBeforeMount, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
+import { onBeforeRouteLeave, useRouter } from 'vue-router'
 import { useListener } from './listener'
 import { useAuthStore } from '@/store/auth'
 import { useStorage } from './storage/storage'
@@ -41,6 +41,7 @@ export const useEditor = () => {
   const storage = useStorage()
   const network = useNetwork()
   const emitter = useEmitter()
+  const params = useUrlSearchParams()
 
   const init = () => {
     onBeforeMount(() => {
@@ -49,21 +50,28 @@ export const useEditor = () => {
     })
 
     onMounted(() => {
-      project.onLoadProject(undefined, false).then(() => {})
+      if (params.context !== 'force')
+        project.onLoadProject(undefined, false).then(() => {})
+      else params.context = 'default'
+
+      if (params.theme === 'custom' && EDITOR.styles.base.backgroundData)
+        plugin.emit('plugin-theme-set', 'BetterWrite - Custom')
     })
 
-    useEventListener('beforeunload', async () => {
+    const inForceSave = async () => {
       if (EDITOR.configuration.autosave) {
         await storage.normalize()
         await local.onSaveProject(false)
       }
+    }
+
+    useEventListener('beforeunload', async () => {
+      await inForceSave()
     })
 
-    if (EDITOR.configuration.autosave) {
-      useIntervalFn(() => {
-        local.onSaveProject(false)
-      }, 1000 * 30)
-    }
+    onBeforeRouteLeave(async () => {
+      await inForceSave()
+    })
 
     // tracking normalize project cases
     watch(

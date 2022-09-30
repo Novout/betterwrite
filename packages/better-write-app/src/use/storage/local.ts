@@ -7,6 +7,7 @@ import i18n from '@/lang'
 import { useProjectStore } from '@/store/project'
 import { useStorage } from './storage'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
+import { nextTick } from 'vue'
 
 export const useLocalStorage = () => {
   const PROJECT = useProjectStore()
@@ -48,6 +49,7 @@ export const useLocalStorage = () => {
 
     if (event) {
       isLoading.value = true
+
       storage
         .normalize()
         .then(async () => {

@@ -84,6 +84,7 @@ export default {
     apply: 'Effects applied successfully!',
   },
   image: {
-    limitFileSize: 'The maximum supported file size limit is 8MB!',
+    warningLimitFileSize: 'Not recommended to use images above {limit}MB!',
+    limitFileSize: 'Exceeded maximum file size limit ({limit}MB)!',
   },
 }

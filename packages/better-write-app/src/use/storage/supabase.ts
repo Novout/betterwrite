@@ -31,7 +31,7 @@ export const useSupabase = () => {
   const env = useEnv()
   const storage = useStorage()
   const project = useProject()
-  const local = useLocalStorage()
+  const plugin = useLocalStorage()
   const router = useRouter()
   const format = useFormat()
   const utils = useUtils()
@@ -123,6 +123,10 @@ export const useSupabase = () => {
   const saveProject = async (project?: ProjectObject) => {
     toast.info(t('toast.generics.load'))
 
+    await storage.normalize()
+
+    await storage.purge()
+
     const { data, error } = await s.from('projects').upsert(
       project
         ? {
@@ -198,11 +202,9 @@ export const useSupabase = () => {
 
     AUTH.account.project_id_activity = context.id || null
 
-    project.onLoadProject(context, false).then(() => {
-      local.onSaveProject(false).then(() => {
-        router.push('/').finally(() => {
-          toast.success(t('toast.project.load'))
-        })
+    project.onLoadProject(context, false, true).then(() => {
+      router.push('/?context=force&theme=custom').finally(() => {
+        toast.success(t('toast.project.load'))
       })
     })
   }
