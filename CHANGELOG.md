@@ -1,6 +1,18 @@
-# Changelog (28/09/2022)
+# Changelog (30/09/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.2
+
+* **chore(assets):** remove unused gif [786ddc70]
+* **chore(editor):** preferences advanced in configuration [ed3b18b4]
+* **chore:** readme [cfae13c1]
+* **feat(build):** css transforms for better letter appearance [2c06c094]
+* **fix(storage):** loader external projects [ac953d68]
+* **feat(storage):** compress json project [4b17e0af]
+* **refactor(tools):** corrector total rework" [68af1b6e]
+* **refactor(tools):** drafts complete rework [2d95deda]
+* **chore(editor):** header margins in items [16bf13d5]
 
 ### v0.17.1
 
