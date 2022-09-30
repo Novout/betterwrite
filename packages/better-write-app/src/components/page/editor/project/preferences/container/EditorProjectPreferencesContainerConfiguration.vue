@@ -1,7 +1,7 @@
 <template>
   <EditorProjectPreferencesContainerSlot>
     <div class="flex flex-col gap-1">
-      <PreferencesContainerTitle> Idioma </PreferencesContainerTitle>
+      <PreferencesContainerTitle>{{ t('editor.aside.configuration.language') }}</PreferencesContainerTitle>
       <div>
         <div
           v-for="(language, index) in LanguagesRaw"
@@ -167,6 +167,30 @@
           :specific="true"
         />
       </div>
+    </div>
+    <div class="flex flex-col gap-5">
+      <PreferencesContainerTitle>
+        {{ t('editor.aside.configuration.advanced') }}
+      </PreferencesContainerTitle>
+      <DescriptionContainer
+        color="#AA0000"
+        :description="
+          t(
+            'editor.preferences.configuration.editor.options.googleFonts.description'
+          )
+        "
+      >
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.options.googleFonts.title'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.styles.googleFontsInjection" />
+        </div>
+      </DescriptionContainer>
     </div>
   </EditorProjectPreferencesContainerSlot>
 </template>

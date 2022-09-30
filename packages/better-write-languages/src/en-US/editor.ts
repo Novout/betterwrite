@@ -91,7 +91,7 @@ export default {
           googleFonts: {
             title: 'Google API Fonts',
             description:
-              'Enable the use of external fonts in the editor. Depends on internet connection.',
+              'Enable the use of external fonts in the editor. It depends on the internet connection. Does not affect requests from file generators.',
           },
         },
         background: {
@@ -285,6 +285,8 @@ export default {
       autosave: 'Auto-Save',
       blocked: 'Initial Tutorial',
       bottomBar: 'Bottom Bar',
+      language: 'Language',
+      advanced: 'Advanced',
       entity: {
         title: 'Editor',
         insertEntityInParagraphBreakLine: 'Insert Paragraph at line breaks',

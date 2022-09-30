@@ -27,28 +27,6 @@
       </div>
     </div>
     <div class="flex flex-col gap-5">
-      <PreferencesContainerTitle>{{
-        t('editor.preferences.configuration.editor.title')
-      }}</PreferencesContainerTitle>
-      <DescriptionContainer
-        color="#AA0000"
-        :description="
-          t(
-            'editor.preferences.configuration.editor.options.googleFonts.description'
-          )
-        "
-      >
-        <div class="wb-preferences">
-          <p class="text-sm">
-            {{
-              t(
-                'editor.preferences.configuration.editor.options.googleFonts.title'
-              )
-            }}
-          </p>
-          <InputBoolean v-model="EDITOR.styles.googleFontsInjection" />
-        </div>
-      </DescriptionContainer>
       <div class="flex flex-col gap-2">
         <p class="font-bold text-lg mt-5">
           {{ t('editor.preferences.configuration.editor.background.title') }}

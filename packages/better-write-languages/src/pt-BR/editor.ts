@@ -93,7 +93,7 @@ export default {
           googleFonts: {
             title: 'Fontes do Google API',
             description:
-              'Habilitar a utilização de fontes externas no editor. Depende da conexão com a internet.',
+              'Habilitar a utilização de fontes externas no editor. Depende da conexão com a internet. Não afeta as requisições dos geradores de arquivo.',
           },
         },
         background: {
@@ -284,6 +284,8 @@ export default {
       autosave: 'Salvamento Automático',
       blocked: 'Tutorial Inicial',
       bottomBar: 'Barra Inferior',
+      advanced: 'Avançado',
+      language: 'Idioma',
       entity: {
         title: 'Editor',
         insertEntityInParagraphBreakLine:
