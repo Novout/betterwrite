@@ -5,10 +5,6 @@
     <section
       id="edit"
       ref="editor"
-      v-motion
-      :initial="{ opacity: 0, y: 100 }"
-      :enter="{ opacity: 1, y: 0 }"
-      :delay="100"
       :class="[project.isBlankProject() ? 'pt-28' : '']"
       class="flex flex-col w-full wb-scroll overflow-x-hidden"
     >
