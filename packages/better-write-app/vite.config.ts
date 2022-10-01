@@ -6,19 +6,19 @@ import vue from "@vitejs/plugin-vue"
 import vueGlobalComponent  from "unplugin-vue-components/vite"
 import { HeadlessUiResolver } from "unplugin-vue-components/resolvers"
 import vueI18n from "@intlify/vite-plugin-vue-i18n"
-import vuePages from 'vite-plugin-pages'
 import { VitePWA as vitePWA } from 'vite-plugin-pwa'
 import viteAutoImport from 'unplugin-auto-import/vite'
 import { SchemaOrg as viteSchemaOrg } from '@vueuse/schema-org-vite'
 import vitePersist from 'vite-plugin-optimize-persist'
 import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
-import viteSitemap from 'vite-plugin-pages-sitemap'
+import viteSitemap from 'vite-plugin-sitemap'
 import viteChecker from 'vite-plugin-checker'
 import { viteStdlib } from "./scripts/vite"
 import { FontaineTransform as CSSFontaine } from 'fontaine'
 import windiCSS from 'vite-plugin-windicss'
 import stdLibBrowser from 'node-stdlib-browser'
+import { routes } from './src/routes'
 
 export default ({ mode }) => {
   process.env = {...process.env, ...loadEnv(mode, process.cwd())};
@@ -42,14 +42,6 @@ export default ({ mode }) => {
     },
     plugins: [
       vue(),
-      vuePages({
-        dirs: 'src/pages',
-        onRoutesGenerated: routes => (viteSitemap({ 
-          hostname: process.env.VITE_BASE_URL as string, 
-          filename: 'sitemap',
-          routes 
-        })),
-      }),
       vueI18n({
         include: resolve(dirname(fileURLToPath(import.meta.url)), "./src/lang/**"),
         runtimeOnly: false,
@@ -63,6 +55,13 @@ export default ({ mode }) => {
       CSSFontaine.vite({
         fallbacks: ['Raleway', 'Poppins', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans'],
         resolvePath: id => new URL('.' + id, import.meta.url),
+      }),
+      viteSitemap({
+        hostname: process.env.VITE_BASE_URL,
+        outDir: 'dist/render',
+        dynamicRoutes: routes.map((r => r.path)),
+        exclude: ['/404', '/loading', '/dashboard', '/plans'],
+        robots: [{ userAgent: '*', allow: '/' }]
       }),
       viteSchemaOrg({
         full: false,
