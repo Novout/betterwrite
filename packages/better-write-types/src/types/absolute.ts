@@ -6,6 +6,7 @@ export interface AbsoluteStateProject {
   characters: boolean
   preferences: boolean
   corrector: boolean
+  tutorial: boolean
 }
 
 export interface AbsoluteStateModal {

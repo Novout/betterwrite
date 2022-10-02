@@ -163,6 +163,8 @@ export const useProject = () => {
     if (notification) toast.success(t('toast.project.load'))
 
     utils().resetAllVisual()
+
+    ABSOLUTE.project.tutorial = !localStorage.getItem('tutorial')
   }
 
   const onExportProject = () => {

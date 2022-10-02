@@ -1,7 +1,8 @@
 <template>
   <teleport to="body">
-    <EditorDevCMD v-if="ABSOLUTE.cmd" />
-    <EditorAuthLogin v-if="ABSOLUTE.auth.supabase" />
+    <EditorTutorial v-if="ABSOLUTE.project.tutorial" />
+    <EditorDevCMD v-else-if="ABSOLUTE.cmd" />
+    <EditorAuthLogin v-else-if="ABSOLUTE.auth.supabase" />
     <EditorEntityDefaultOptions v-else-if="ABSOLUTE.entity.menu" />
     <EditorEntityDefaultComment v-else-if="ABSOLUTE.entity.comment" />
     <EditorEntityDefaultCustomize v-else-if="ABSOLUTE.entity.customize" />
@@ -14,10 +15,14 @@
     <DOCXConfiguration v-else-if="ABSOLUTE.docx.configuration" />
     <PDFConfiguration v-else-if="ABSOLUTE.pdf.configuration" />
     <PDFGenerate v-else-if="ABSOLUTE.pdf.generate" />
-    <EditorGeneratorSubstitutions v-if="ABSOLUTE.generator.substitutions" />
+    <EditorGeneratorSubstitutions
+      v-else-if="ABSOLUTE.generator.substitutions"
+    />
     <EditorToolsSwitcher v-else-if="ABSOLUTE.shortcuts.switcher" />
     <EditorToolsFinder v-else-if="ABSOLUTE.shortcuts.finder" />
-    <EditorToolsSpeechRecognition v-if="ABSOLUTE.tools.speechRecognition" />
+    <EditorToolsSpeechRecognition
+      v-else-if="ABSOLUTE.tools.speechRecognition"
+    />
     <EditorAbsoluteLoader v-else-if="ABSOLUTE.spinner" />
   </teleport>
 </template>

@@ -13,6 +13,7 @@ export const useAbsoluteStore = defineStore('absolute', {
         preferences: false,
         statistics: false,
         corrector: false,
+        tutorial: false,
       },
       modal: {
         newProject: false,

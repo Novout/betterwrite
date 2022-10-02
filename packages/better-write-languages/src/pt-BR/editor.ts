@@ -547,4 +547,56 @@ export default {
       averageOccurrences: 'Média de Ocorrências',
     },
   },
+  tutorial: {
+    buttons: {
+      prev: 'Anterior',
+      next: 'Próximo',
+    },
+    pages: {
+      1: {
+        title: 'Criatividade.',
+        description1:
+          'Seja bem-vindo(a) ao processador de texto voltado para os entusiastas da escrita.',
+        description2:
+          'A seguir, confira um tour exclusivo para descobrir e aprender as diversas ferramentas do betterwrite.io!',
+        alert: 'Não exibir o tutorial novamente.',
+      },
+      2: {
+        title: 'Modelo Entidade',
+        description1:
+          'O editor principal foi projetado para possibilitar uma interação individual sobre qualquer elemento, onde cada item inserido não afeta outros elementos no mesmo editor.',
+        description2:
+          'A grande vantagem desta abordagem é o surgimento de recursos únicos e totalmente personalizáveis.',
+        description3:
+          'Para interagir com cada item (entidade) pressione ou clique com o botão direito no item em questão ou utilize o atalho de teclado CTRL + (1-9).',
+      },
+      3: {
+        title: 'Grafo Lateral',
+        description1:
+          'Visualize em tempo real tudo o que acontece no projeto a todo momento.',
+        high2: 'Capítulos: ',
+        high3: 'Anotações: ',
+        description2:
+          'Divida seus manuscritos em capítulos sem se preocupar com mudar algo futuramente.',
+        description3:
+          'Tenha suas anotações em um único lugar e sem interferir no fluxo de exportação do projeto.',
+      },
+      4: {
+        title: 'Barra Superior',
+        description1:
+          'Acesse com facilidade qualquer ferramenta desejada sem a necessidade de muitos passos desnecessários.',
+        high2: 'Arquivo: ',
+        high3: 'Exportar: ',
+        high4: 'Ferramentas: ',
+        high5: 'Ajuda: ',
+        description2:
+          'Confira as principais formas de manipulação do projeto, como criar, salvar, alterar, carregar e consultar.',
+        description3:
+          'Geradores de arquivo e suas devidas definições. Cada extensão funciona com configurações distintas uma das outras.',
+        description4:
+          'Recursos de cunho adicional que só tentem a adicionar a sua experiência.',
+        description5: 'Documentação para consultas.',
+      },
+    },
+  },
 }

@@ -1,7 +1,9 @@
 <template>
   <EditorProjectPreferencesContainerSlot>
     <div class="flex flex-col gap-1">
-      <PreferencesContainerTitle>{{ t('editor.aside.configuration.language') }}</PreferencesContainerTitle>
+      <PreferencesContainerTitle>{{
+        t('editor.aside.configuration.language')
+      }}</PreferencesContainerTitle>
       <div>
         <div
           v-for="(language, index) in LanguagesRaw"
@@ -54,10 +56,6 @@
           v-model="EDITOR.configuration.autosave"
           :specific="true"
         />
-      </div>
-      <div class="wb-preferences">
-        <p class="text-sm">{{ t('editor.aside.configuration.blocked') }}</p>
-        <InputBoolean v-model="EDITOR.configuration.blocked" :specific="true" />
       </div>
       <div class="wb-preferences">
         <p class="text-sm">

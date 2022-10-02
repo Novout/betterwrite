@@ -544,4 +544,54 @@ export default {
       averageOccurrences: 'Average of Occurrences',
     },
   },
+  tutorial: {
+    buttons: {
+      prev: 'Previous',
+      next: 'Next',
+    },
+    pages: {
+      1: {
+        title: 'Creativity.',
+        description1:
+          'Welcome to the word processor aimed at writing enthusiasts.',
+        description2: `Here's an exclusive tour to discover and learn about betterwrite.io many tools!`,
+        alert: 'Do not display the tutorial again.',
+      },
+      2: {
+        title: 'Entity Model',
+        description1:
+          'The main editor is designed to allow individual interaction on any element, where each item entered does not affect other elements in the same editor.',
+        description2:
+          'The great advantage of this approach is the emergence of unique and fully customizable features.',
+        description3:
+          'To interact with each item (entity) press or right-click on the item in question or use the keyboard shortcut CTRL + (1-9).',
+      },
+      3: {
+        title: 'Side Graph',
+        description1:
+          'Visualize in real time everything that happens in the project at all times.',
+        high2: 'Chapters:',
+        high3: 'Annotations: ',
+        description2:
+          'Divide your manuscripts into chapters without worrying about changing anything in the future.',
+        description3: `Have your notes in one place and without interfering with the project's export flow.`,
+      },
+      4: {
+        title: 'Top Bar',
+        description1:
+          'Easily access any tool you want without the need for many unnecessary steps.',
+        high2: 'File: ',
+        high3: 'Export: ',
+        high4: 'Tools: ',
+        high5: 'Help: ',
+        description2:
+          'Check out the main ways of manipulating the project, such as creating, saving, changing, loading and querying.',
+        description3:
+          'File generators and their definitions. Each extension works with different settings from each other.',
+        description4:
+          'Additional features that only tend to add to your experience.',
+        description5: 'Documentation for inquiries.',
+      },
+    },
+  },
 }

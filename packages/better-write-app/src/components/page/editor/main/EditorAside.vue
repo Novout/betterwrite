@@ -4,8 +4,11 @@
     id="editor-aside"
     ref="aside"
     v-motion="'aside'"
-    :class="[!mobile ? 'bg-rgba-blur' : '']"
-    class="fixed wb-edit md:relative overflow-y-auto z-50 wb-scroll w-full md:w-60 lg:w-72 xl:w-80 shadow-lg bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active"
+    :class="[
+      !mobile ? 'bg-rgba-blur' : '',
+      TUTORIAL.counter === 3 ? 'z-umax' : 'z-50',
+    ]"
+    class="fixed wb-edit md:relative overflow-y-auto wb-scroll w-full md:w-60 lg:w-72 xl:w-80 shadow-lg bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active"
     :style="{
       left,
       opacity,
@@ -27,7 +30,8 @@
   </aside>
   <IconAsideGraph
     v-else-if="PROJECT.type === 'creative'"
-    class="absolute z-50 left-0 transform right-1 wb-icon w-12 h-12 md:(w-9 h-9) bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active rounded-br shadow-xl"
+    :class="[TUTORIAL.counter === 3 ? 'z-umax' : 'z-50']"
+    class="absolute left-0 transform right-1 wb-icon w-12 h-12 md:(w-9 h-9) bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active rounded-br shadow-xl"
     @click.prevent.stop="ABSOLUTE.aside = true"
   />
 </template>
@@ -36,6 +40,7 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useEditorStore } from '@/store/editor'
   import { useProjectStore } from '@/store/project'
+  import { useTutorialStore } from '@/store/tutorial'
   import {
     breakpointsTailwind,
     useBreakpoints,
@@ -47,6 +52,7 @@
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
+  const TUTORIAL = useTutorialStore()
 
   const aside = ref<HTMLElement | null>(null)
   const left = ref('0')

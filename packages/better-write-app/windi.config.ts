@@ -95,6 +95,7 @@ export default defineConfig({
         "wp-shadow": 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;'
       }),
       zIndex: theme => ({
+        "tutorial": "9999999",
         "umax": "999999",
         "max": "9999",
         "preview": "200",
