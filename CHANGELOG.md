@@ -1,6 +1,17 @@
-# Changelog (30/09/2022)
+# Changelog (03/10/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.3
+
+* **fix(monorepo):** vite preview correct work [8e40f05e]
+* **feat(editor):** icons in paragraph block [c3b1129c]
+* **fix(pdf):** convert svg to png in draw case [08d98ecc]
+* **chore:** readme [1e68d2a1]
+* **chore(app):** vue-directive-providers implements [71130c58]
+* **feat(editor):** tutorial implementation [3f47cc3a]
+* **chore(editor):** remove v-motion in base render [9e6beb71]
+* **feat(build):** dynamic sitemap.xml and robots.txt [f652c38e]
 
 ### v0.17.2
 

@@ -1,6 +1,6 @@
 {
 	"name": "better-write-contenteditable-ast",
-	"version": "0.17.2",
+	"version": "0.17.3",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -25,7 +25,7 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-types": "^0.17.2",
+		"better-write-types": "^0.17.3",
 		"hast": "1.0.0",
 		"hast-util-from-html": "1.0.0"
 	},
