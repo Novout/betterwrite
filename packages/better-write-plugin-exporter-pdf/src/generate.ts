@@ -11,6 +11,7 @@ import { nextTick, computed } from 'vue-demi'
 import { useToast } from 'vue-toastification'
 import { getPDFUtils } from 'better-write-plugin-theme'
 import { getStandardVFS } from './vfs'
+import { ImageToForcePNG } from 'better-write-image-converter'
 import { Maybe } from 'better-write-types'
 import { getRows, parse } from 'better-write-contenteditable-ast'
 
@@ -490,7 +491,15 @@ export const PluginPDFSet = (
     }
 
     const image = async (entity: Entity) => {
-      const raw = entity.raw
+      const isSvg = entity.raw.startsWith('<svg') && entity.raw.endsWith('svg>')
+
+      const raw = !isSvg
+        ? entity.raw
+        : await ImageToForcePNG({
+            raw: entity.raw,
+            width: 2000,
+            height: 2000,
+          })
 
       if (entity.external?.image?.alignment === 'full') {
         return {
