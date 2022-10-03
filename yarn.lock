@@ -3875,6 +3875,16 @@
     "@vueuse/shared" "8.2.5"
     vue-demi "*"
 
+"@vueuse/core@^9.3.0":
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-9.3.0.tgz#74d855bd19cb5eadd2edb30c871918fac881e8b8"
+  integrity sha512-64Rna8IQDWpdrJxgitDg7yv1yTp41ZmvV8zlLEylK4QQLWAhz1OFGZDPZ8bU4lwcGgbEJ2sGi2jrdNh4LttUSQ==
+  dependencies:
+    "@types/web-bluetooth" "^0.0.15"
+    "@vueuse/metadata" "9.3.0"
+    "@vueuse/shared" "9.3.0"
+    vue-demi "*"
+
 "@vueuse/head@0.7.12":
   version "0.7.12"
   resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.12.tgz#bdb2185654399d10b10c4e94b52f6129e9ca4f67"
@@ -3900,6 +3910,11 @@
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-9.2.0.tgz#6bf7c9c44b9f5ece405837226a0e04a997994458"
   integrity sha512-exN4KE6iquxDCdt72BgEhb3tlOpECtD61AUdXnUqBTIUCl70x1Ar/QXo3bYcvxmdMS2/peQyfeTzBjRTpvL5xw==
+
+"@vueuse/metadata@9.3.0":
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-9.3.0.tgz#c107fe77a577e1f221536cd1b291039c0c7c4bce"
+  integrity sha512-GnnfjbzIPJIh9ngL9s9oGU1+Hx/h5/KFqTfJykzh/1xjaHkedV9g0MASpdmPZIP+ynNhKAcEfA6g5i8KXwtoMA==
 
 "@vueuse/motion@2.0.0-beta.12":
   version "2.0.0-beta.12"
@@ -3947,6 +3962,13 @@
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-9.2.0.tgz#7831051b2c1d01c3413c749468ee53a86024510e"
   integrity sha512-NnRp/noSWuXW0dKhZK5D0YLrDi0nmZ18UeEgwXQq7Ul5TTP93lcNnKjrHtd68j2xFB/l59yPGFlCryL692bnrA==
+  dependencies:
+    vue-demi "*"
+
+"@vueuse/shared@9.3.0":
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-9.3.0.tgz#40fc138ba4e379c894075830aa2e15404aaa8a5b"
+  integrity sha512-caGUWLY0DpPC6l31KxeUy6vPVNA0yKxx81jFYLoMpyP6cF84FG5Dkf69DfSUqL57wX8JcUkJDMnQaQIZPWFEQQ==
   dependencies:
     vue-demi "*"
 
@@ -11958,6 +11980,14 @@ vue-demi@^0.13.4:
   version "0.13.11"
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.11.tgz#7d90369bdae8974d87b1973564ad390182410d99"
   integrity sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==
+
+vue-directive-providers@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vue-directive-providers/-/vue-directive-providers-0.1.0.tgz#6aa1282f8472a86e5f050b0e127b46f8a84c3152"
+  integrity sha512-a4/HKBoNw8Cekcz+u2ojTQo458LNHZOwqlFJ0vvWj33MAOPH45cZ1d4VcjzMK31BTGK5jzxk5/hQH8ZtWne0GA==
+  dependencies:
+    "@vueuse/core" "^9.3.0"
+    vue-demi latest
 
 vue-eslint-parser@^9.0.0, vue-eslint-parser@^9.0.1:
   version "9.1.0"

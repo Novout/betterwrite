@@ -8,6 +8,7 @@ import { createPinia } from 'pinia'
 import { createPluginCore } from 'better-write-plugin-core'
 import { Events } from 'better-write-types'
 import pdf from 'vue3-pdfmake'
+import { ProviderPlugin as provider } from 'vue-directive-providers'
 import { MotionPlugin as motion } from '@vueuse/motion'
 import tooltip from 'floating-vue'
 import toast, { POSITION } from 'vue-toastification'
@@ -42,6 +43,7 @@ app.use(i18n)
 app.use(motion)
 app.use(head)
 app.use(core)
+app.use(provider)
 app.use(tooltip, {
   themes: {
     'better-write': {
