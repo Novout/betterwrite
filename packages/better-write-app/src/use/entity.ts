@@ -7,15 +7,21 @@ import { usePlugin } from 'better-write-plugin-core'
 import { useI18n } from 'vue-i18n'
 import { useStorage } from './storage/storage'
 import { useHistoryStore } from '@/store/history'
+import { useAbsoluteStore } from '@/store/absolute'
+import { useFactory } from './factory'
+import { useEditorStore } from '@/store/editor'
 
 export const useEntity = () => {
   const HISTORY = useHistoryStore()
   const CONTEXT = useContextStore()
+  const ABSOLUTE = useAbsoluteStore()
+  const EDITOR = useEditorStore()
 
   const env = useEnv()
   const emitter = useEmitter()
   const plugin = usePlugin()
   const storage = useStorage()
+  const factory = useFactory()
   const { t } = useI18n()
 
   const utils = () => {
@@ -134,6 +140,31 @@ export const useEntity = () => {
   }
 
   const base = () => {
+    const onParagraphCustomize = async (entity: Entity) => {
+      const _index: number = CONTEXT.entities.indexOf(entity)
+
+      EDITOR.actives.entity.index = _index
+
+      if (!entity.external?.paragraph) {
+        CONTEXT.entities[_index].external = {
+          ...CONTEXT.entities[_index].external,
+          ...factory.entity().setText(),
+        }
+      }
+
+      await nextTick
+
+      ABSOLUTE.entity.customize = true
+    }
+
+    const onParagraphComment = async (entity: Entity) => {
+      EDITOR.actives.entity.index = CONTEXT.entities.indexOf(entity)
+
+      await nextTick
+
+      ABSOLUTE.entity.comment = true
+    }
+
     const onUp = async (entity: Entity, index: number) => {
       CONTEXT.switchInPage({
         entity,
@@ -226,6 +257,8 @@ export const useEntity = () => {
     }
 
     return {
+      onParagraphCustomize,
+      onParagraphComment,
       onUp,
       onDown,
       onDelete,

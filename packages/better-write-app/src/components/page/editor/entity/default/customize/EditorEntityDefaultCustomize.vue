@@ -2,7 +2,7 @@
   <Modal @close="onClose">
     <div
       ref="custom"
-      class="fixed bg-rgba-blur font-raleway px-2 md:px-10 w-full h-screen overflow-y-auto wb-text bg-theme-background-1 p-2 rounded shadow-2xl"
+      class="fixed bg-rgba-blur font-raleway px-2 md:px-10 w-full h-screen wb-scroll wb-text bg-theme-background-1 p-2 rounded shadow-2xl"
     >
       <div class="flex py-3 items-center justify-between w-full">
         <div class="flex">

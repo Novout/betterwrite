@@ -8,11 +8,22 @@
         .style(computed(() => props.entity))
     "
     :class="raw.v2().block().class(props.entity)"
-    class="w-full relative px-4 md:px-14"
+    class="w-full relative"
     @contextmenu="raw.v2().block().menu($event, _index)"
     @drop="raw.v2().block().drop($event, props.entity)"
   >
-    <slot />
+    <div
+      v-if="isHovered"
+      v-motion
+      :initial="{ opacity: 0, x: 20 }"
+      :enter="{ opacity: 1, x: 0 }"
+      class="absolute z-10 flex gap-1 items-center px-0.5"
+    >
+      <slot name="left" />
+    </div>
+    <div class="md:px-10 px-4">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -22,6 +33,7 @@
   import { useEditorStore } from '@/store/editor'
   import { useRaw } from '@/use/raw'
   import {
+    useElementHover,
     useIntersectionObserver,
     useMousePressed,
     watchDebounced,
@@ -40,7 +52,7 @@
 
   const raw = useRaw()
   const container = ref()
-
+  const isHovered = useElementHover(container)
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
 
   const { pressed, sourceType: mouseType } = useMousePressed({

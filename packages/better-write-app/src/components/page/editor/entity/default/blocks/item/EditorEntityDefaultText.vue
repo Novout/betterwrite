@@ -2,7 +2,7 @@
   <div class="relative w-full">
     <div
       ref="__INPUT__"
-      :class="!isAttached ? 'indent-lg' : ''"
+      :class="!isAttached ? 'indent-xl sm:indent-lg' : ''"
       :style="{
         fontFamily: EDITOR.styles.text.fontFamily,
         fontWeight: EDITOR.styles.text.fontWeight,

@@ -159,7 +159,7 @@
         entity.type === 'list' ||
         entity.type === 'checkbox'
       "
-      @action="onText"
+      @action="ent.base().onParagraphCustomize(entity)"
     >
       <template #icon>
         <IconText class="h-5 w-5" />
@@ -402,19 +402,4 @@
     ;(CONTEXT.entities[_index] as any).external.image.size.width =
       image.width as any
   })
-
-  const onText = async () => {
-    const _index: number = CONTEXT.entities.indexOf(entity.value)
-
-    if (!entity.value.external?.paragraph) {
-      CONTEXT.entities[_index].external = {
-        ...CONTEXT.entities[_index].external,
-        ...factory.entity().setText(),
-      }
-    }
-
-    await nextTick
-
-    ABSOLUTE.entity.customize = true
-  }
 </script>
