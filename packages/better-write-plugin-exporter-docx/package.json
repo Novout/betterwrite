@@ -7,7 +7,6 @@
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"serve": "rimraf ./dist && unbuild",
 		"test": "echo \"Error: no test specified\"",
 		"build": "rimraf ./dist && unbuild",
 		"lint": "prettier --write src/"
