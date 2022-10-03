@@ -35,10 +35,9 @@ A Modern Word Processor.
 
 <br>
 
-<img src="./.github/1.gif" width="100%" />
+<img src="./.github/customtheme.png" width="100%" />
 
 <br>
-
 
 # Motivation
 
