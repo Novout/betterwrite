@@ -1,5 +1,5 @@
 <template>
-  <main class="wb-screen w-full">
+  <main class="wb-screen font-raleway w-full">
     <section
       id="landing-base"
       class="flex flex-col bg-theme-background-2 z-max text-white items-center justify-between min-h-screen w-full overflow-x-hidden"
