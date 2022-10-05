@@ -592,6 +592,26 @@ export default {
           'Additional features that only tend to add to your experience.',
         description5: 'Documentation for inquiries.',
       },
+      5: {
+        title: 'Tooling',
+        description1: 'Discover new ways to handle your project.',
+        high2: 'Drafts: ',
+        high3: 'Corrector: ',
+        high4: 'Insert Shortcuts: ',
+        high5: 'Characters: ',
+        description2:
+          'Write multiple versions of your text without any worries.',
+        description3: 'Handle specific cases on all items.',
+        description4:
+          'Create shortcuts to insert recurring words or sentences.',
+        description5:
+          'Easily discover how much a character appears in the text or its impact on context.',
+      },
+      final: {
+        title: 'Explore.',
+        description1:
+          'Now enjoy it the way you like and configure it the way you want.',
+      },
     },
   },
 }

@@ -597,6 +597,26 @@ export default {
           'Recursos de cunho adicional que só tentem a adicionar a sua experiência.',
         description5: 'Documentação para consultas.',
       },
+      5: {
+        title: 'Ferramental',
+        description1: 'Descubra novas maneiras de manusear seu projeto.',
+        high2: 'Rascunhos: ',
+        high3: 'Corretor: ',
+        high4: 'Atalhos de Inserção: ',
+        high5: 'Personagens: ',
+        description2:
+          'Escreva diversas versões de seu texto sem nenhuma preocupação',
+        description3: 'Trate casos específicos em todos os itens.',
+        description4:
+          'Crie atalhos para inserir palavras ou sentenças recorrentes.',
+        description5:
+          'Descubra com facilidade o quanto um personagem aparece no texto ou seu impacto no contexto.',
+      },
+      final: {
+        title: 'Explore.',
+        description1:
+          'Agora desfrute da maneira como preferir e configure da maneira que desejar.',
+      },
     },
   },
 }

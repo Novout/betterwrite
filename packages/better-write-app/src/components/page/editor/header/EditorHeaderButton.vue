@@ -35,28 +35,28 @@
     switch (props.type) {
       case 'create': On.editor().PluginEditorHeaderCreateOpen(emitter, [
           () => {
-            n.value = true
+            n.value = !n.value
           },
           () => {}
         ]) 
         break;
       case 'externals': On.editor().PluginEditorHeaderExternalsOpen(emitter, [
         () => {
-          n.value = true
+          n.value = !n.value
         },
         () => {}
       ]) 
       break;
       case 'help': On.editor().PluginEditorHeaderHelpOpen(emitter, [
         () => {
-          n.value = true
+          n.value = !n.value
         },
         () => {}
       ])
       break;
       case 'project': On.editor().PluginEditorHeaderProjectOpen(emitter, [
         () => {
-          n.value = true
+          n.value = !n.value
         },
         () => {}
       ])

@@ -62,6 +62,36 @@
         >{{ t('editor.tutorial.pages.4.description5') }}
       </div>
     </EditorTutorialContainer>
+    <EditorTutorialContainer
+      :data="{ target: 5, position: 'lg:left-10 lg:top-70' }"
+      :title="t('editor.tutorial.pages.5.title')"
+      emit-on-open="plugin-editor-header-externals-open"
+    >
+      <div>{{ t('editor.tutorial.pages.5.description1') }}</div>
+      <div>
+        <b>{{ t('editor.tutorial.pages.5.high2') }}</b
+        >{{ t('editor.tutorial.pages.5.description2') }}
+      </div>
+      <div>
+        <b>{{ t('editor.tutorial.pages.5.high3') }}</b
+        >{{ t('editor.tutorial.pages.5.description3') }}
+      </div>
+      <div>
+        <b>{{ t('editor.tutorial.pages.5.high4') }}</b
+        >{{ t('editor.tutorial.pages.5.description4') }}
+      </div>
+      <div>
+        <b>{{ t('editor.tutorial.pages.5.high5') }}</b
+        >{{ t('editor.tutorial.pages.5.description5') }}
+      </div>
+    </EditorTutorialContainer>
+    <EditorTutorialContainer
+      :data="{ target: 6, position: 'lg:left-150 lg:top-80' }"
+      :title="t('editor.tutorial.pages.final.title')"
+      emit-on-open="plugin-editor-header-externals-open"
+    >
+      <div>{{ t('editor.tutorial.pages.final.description1') }}</div>
+    </EditorTutorialContainer>
   </div>
 </template>
 

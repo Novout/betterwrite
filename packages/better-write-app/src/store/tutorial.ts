@@ -4,7 +4,7 @@ export const useTutorialStore = defineStore('tutorial', {
   state: () => {
     return {
       counter: 1,
-      maxCounter: 4,
+      maxCounter: 6,
     }
   },
   actions: {

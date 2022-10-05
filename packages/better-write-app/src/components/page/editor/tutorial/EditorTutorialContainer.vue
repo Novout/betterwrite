@@ -21,15 +21,13 @@
       <slot name="bottom" />
     </div>
     <div class="flex items-center justify-between w-full">
-      <EditorTutorialButton
-        v-if="TUTORIAL.counter !== 1"
-        @click="TUTORIAL.prev()"
-        >{{ t('editor.tutorial.buttons.prev') }}</EditorTutorialButton
-      >
+      <EditorTutorialButton v-if="TUTORIAL.counter !== 1" @click="onPrev">{{
+        t('editor.tutorial.buttons.prev')
+      }}</EditorTutorialButton>
       <p>{{ TUTORIAL.counter }} / {{ TUTORIAL.maxCounter }}</p>
       <EditorTutorialButton
         v-if="TUTORIAL.maxCounter > TUTORIAL.counter"
-        @click="TUTORIAL.next()"
+        @click="onNext"
         >{{ t('editor.tutorial.buttons.next') }}</EditorTutorialButton
       >
     </div>
@@ -39,23 +37,50 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useTutorialStore } from '@/store/tutorial'
+  import { usePlugin } from 'better-write-plugin-core'
+  import { PluginTypes } from 'better-write-types'
+  import { computed, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const ABSOLUTE = useAbsoluteStore()
   const TUTORIAL = useTutorialStore()
 
-  defineProps<{
+  const props = defineProps<{
     title: string
     data: {
       target: number
       position: string
     }
+    emitOnOpen?: PluginTypes.PluginEmitterName
+    emitOnClose?: PluginTypes.PluginEmitterName
   }>()
 
   const { t } = useI18n()
+  const plugin = usePlugin()
 
   const onClose = () => {
     ABSOLUTE.project.tutorial = false
     TUTORIAL.$reset()
   }
+
+  const onPrev = () => {
+    TUTORIAL.prev()
+  }
+
+  const onNext = () => {
+    if (props.emitOnClose) plugin.emit(props.emitOnClose)
+
+    TUTORIAL.next()
+  }
+
+  watch(
+    computed(() => TUTORIAL.counter),
+    (value) => {
+      if (value === props.data.target) {
+        if (props.emitOnOpen) plugin.emit(props.emitOnOpen)
+
+        return
+      }
+    }
+  )
 </script>
