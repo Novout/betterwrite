@@ -11,8 +11,8 @@ import {
   useUrlSearchParams,
 } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
-import { usePlugin } from 'better-write-plugin-core'
-import { computed, onBeforeMount, onMounted, watch } from 'vue'
+import { Calls, usePlugin } from 'better-write-plugin-core'
+import { computed, onBeforeMount, onBeforeUnmount, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { onBeforeRouteLeave, useRouter } from 'vue-router'
 import { useListener } from './listener'
@@ -44,18 +44,28 @@ export const useEditor = () => {
   const params = useUrlSearchParams()
 
   const init = () => {
+    Calls.EditorCreated(plugin)
+
     onBeforeMount(() => {
       if (!AUTH.account.user && network.isOnline.value)
         router.push({ path: '/landing' })
     })
 
     onMounted(() => {
+      Calls.EditorMounted(plugin)
+
+      plugin.emit('plugin-editor-header-create-open')
+
       if (params.context !== 'force')
         project.onLoadProject(undefined, false).then(() => {})
       else params.context = 'default'
 
       if (params.theme === 'custom' && EDITOR.styles.base.backgroundData)
         plugin.emit('plugin-theme-set', 'BetterWrite - Custom')
+    })
+
+    onBeforeUnmount(() => {
+      Calls.EditorUnmounted(plugin)
     })
 
     const inForceSave = async () => {

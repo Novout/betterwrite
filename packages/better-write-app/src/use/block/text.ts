@@ -15,6 +15,7 @@ import { useUtils } from '../utils'
 import { html } from '../raw'
 import { useProjectStore } from '@/store/project'
 import { useHistoryStore } from '@/store/history'
+import { Calls, usePlugin } from 'better-write-plugin-core'
 
 export const useBlockText = ({
   props,
@@ -38,6 +39,7 @@ export const useBlockText = ({
   const emitter = useEmitter()
   const entity = useEntity()
   const project = useProject()
+  const plugin = usePlugin()
   const raw = useRaw()
   const env = useEnv()
   const utils = useUtils()
@@ -48,6 +50,8 @@ export const useBlockText = ({
     if (raw === null) return
 
     CONTEXT.entities[target].raw = raw
+
+    Calls.EditorEntityTextSaved(plugin)
   }
 
   const setData = (val: string) => {

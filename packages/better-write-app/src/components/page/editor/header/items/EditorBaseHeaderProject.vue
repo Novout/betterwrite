@@ -1,6 +1,6 @@
 <template>
   <!-- Project -->
-  <EditorHeaderButton>
+  <EditorHeaderButton type="project">
     <template #text>
       {{ t('editor.header.project') }}
     </template>

@@ -1,9 +1,6 @@
 <template>
   <div @mouseleave="n = false" @mouseenter="n = true">
     <p
-      :style="{
-        backgroundColor: props.color !== 'none' ? props.color : 'none',
-      }"
       class="wb-header-button"
       :class="[n ? 'text-theme-icon-active' : '']"
     >
@@ -23,15 +20,47 @@
 </template>
 
 <script setup lang="ts">
-import { useToggle } from '@vueuse/core'
+  import { useToggle } from '@vueuse/core'
+  import { On, usePlugin } from 'better-write-plugin-core';
+  import { onMounted } from 'vue';
+
+  const props = defineProps<{
+    type: string
+  }>()
 
   const [n] = useToggle()
+  const emitter = usePlugin()
 
-  const props = defineProps({
-    color: {
-      required: false,
-      type: String,
-      default: 'none',
-    },
+  onMounted(() => {
+    switch (props.type) {
+      case 'create': On.editor().PluginEditorHeaderCreateOpen(emitter, [
+          () => {
+            n.value = true
+          },
+          () => {}
+        ]) 
+        break;
+      case 'externals': On.editor().PluginEditorHeaderExternalsOpen(emitter, [
+        () => {
+          n.value = true
+        },
+        () => {}
+      ]) 
+      break;
+      case 'help': On.editor().PluginEditorHeaderHelpOpen(emitter, [
+        () => {
+          n.value = true
+        },
+        () => {}
+      ])
+      break;
+      case 'project': On.editor().PluginEditorHeaderProjectOpen(emitter, [
+        () => {
+          n.value = true
+        },
+        () => {}
+      ])
+      break;
+    }
   })
 </script>

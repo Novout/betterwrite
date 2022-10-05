@@ -39,8 +39,10 @@
     watchDebounced,
   } from '@vueuse/core'
   import { useMotion, MotionVariants } from '@vueuse/motion'
+  import { Calls } from 'better-write-plugin-core'
+  import { usePlugin } from 'better-write-plugin-core'
   import { Entity } from 'better-write-types'
-  import { computed, ref, watch } from 'vue'
+  import { computed, ref, watch, watchEffect } from 'vue'
 
   const props = defineProps<{
     entity: Entity
@@ -52,6 +54,7 @@
 
   const raw = useRaw()
   const container = ref()
+  const plugin = usePlugin()
   const isHovered = useElementHover(container)
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
 
@@ -122,4 +125,8 @@
         : (motion.variant.value = 'initial')
     })
   }
+
+  watchEffect(() => {
+    Calls.EditorEntityUpdated(plugin)
+  })
 </script>

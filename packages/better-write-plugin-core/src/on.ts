@@ -210,18 +210,56 @@ export const project = () => {
 }
 
 export const editor = () => {
-  const PluginEditorMounted = (
+  const PluginEditorHeaderCreateOpen = (
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
-    emitter.on('plugin-editor-mounted', () => {
+    emitter.on('plugin-editor-header-create-open', () => {
       const created = content[0]
 
       created && created()
     })
   }
 
-  return { PluginEditorMounted }
+  const PluginEditorHeaderExternalsOpen = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-editor-header-externals-open', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginEditorHeaderHelpOpen = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-editor-header-help-open', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginEditorHeaderProjectOpen = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-editor-header-project-open', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  return {
+    PluginEditorHeaderCreateOpen,
+    PluginEditorHeaderExternalsOpen,
+    PluginEditorHeaderHelpOpen,
+    PluginEditorHeaderProjectOpen,
+  }
 }
 
 export const externals = () => {

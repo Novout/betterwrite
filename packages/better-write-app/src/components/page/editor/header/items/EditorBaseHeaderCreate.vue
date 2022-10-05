@@ -1,6 +1,6 @@
 <template>
   <!-- Create -->
-  <EditorHeaderButton v-if="PROJECT.name !== env.projectEmpty()">
+  <EditorHeaderButton v-if="PROJECT.name !== env.projectEmpty()" type="create">
     <template #text>
       {{ t('editor.header.export') }}
     </template>

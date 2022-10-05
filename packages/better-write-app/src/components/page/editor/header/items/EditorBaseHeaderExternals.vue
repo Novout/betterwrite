@@ -1,6 +1,9 @@
 <template>
   <!-- Externals -->
-  <EditorHeaderButton v-if="PROJECT.name !== env.projectEmpty()">
+  <EditorHeaderButton
+    v-if="PROJECT.name !== env.projectEmpty()"
+    type="externals"
+  >
     <template #text>
       {{ t('editor.header.tools') }}
     </template>

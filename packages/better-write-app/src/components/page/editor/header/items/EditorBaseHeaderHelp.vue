@@ -5,6 +5,7 @@
   ></div>
   <EditorHeaderButton
     v-if="project.isCreativeProject() && PROJECT.name !== env.projectEmpty()"
+    type="help"
   >
     <template #text>
       {{ t('editor.header.help') }}

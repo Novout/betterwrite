@@ -43,6 +43,17 @@ export type PluginEmitterName =
   | 'plugin-annotations-file-create'
   | 'plugin-annotations-file-delete'
   | 'plugin-annotations-reset'
+  | 'plugin-editor-header-project-open'
+  | 'plugin-editor-header-create-open'
+  | 'plugin-editor-header-help-open'
+  | 'plugin-editor-header-externals-open'
+  | 'plugin-editor-mounted'
+  | 'plugin-editor-unmounted'
+  | 'call-editor-created'
+  | 'call-editor-mounted'
+  | 'call-editor-unmounted'
+  | 'call-editor-entity-updated'
+  | 'call-editor-entity-text-saved'
 
 export interface PluginEmitter {
   on: (name: PluginEmitterName, callback: (...c: any) => any) => void
