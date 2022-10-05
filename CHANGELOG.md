@@ -1,6 +1,14 @@
-# Changelog (03/10/2022)
+# Changelog (05/10/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.4
+
+* **feat(tutorial):** new sections and template resources [4d4aa607]
+* **refactor(plugin):** calls system [4f907781]
+* **fix:** readme typos [10dd1deb]
+* **fix(landing):** font typo [e1c523bd]
+* **chore:** typos [4a5d7c3b]
 
 ### v0.17.3
 
