@@ -54,8 +54,6 @@ export const useFinder = () => {
   }
 
   const onSearchGo = (object: Record<string, any>) => {
-    if (!object?.letter) return
-
     state.actuallyLetterRaw = object.letter
     state.actuallyLetterCounter = state.listOfLettersExists.indexOf(object) + 1
 
