@@ -297,56 +297,47 @@ export const useProjectStore = defineStore('project', {
     },
   },
   getters: {
-    getCreativeDrafts: (state) => {
-      return () => state.creative.drafts
-    },
+    getCreativeDrafts: (state) => state.creative.drafts,
     getActuallyDrafts: (state) => {
       const CONTEXT = useContextStore()
 
-      return () =>
-        state.creative.drafts.filter((draft) => draft.id === CONTEXT.id)
+      return state.creative.drafts.filter((draft) => draft.id === CONTEXT.id)
     },
     getAllCharacters: (state) => {
-      return () =>
-        state.pages.reduce(
-          (sum, val) => sum + useProject().utils().getChapterAllCharacters(val),
-          0
-        )
+      return state.pages.reduce(
+        (sum, val) => sum + useProject().utils().getChapterAllCharacters(val),
+        0
+      )
     },
     getAllLetters: (state) => {
-      return () =>
-        state.pages.reduce(
-          (sum, val) => sum + useProject().utils().getChapterLetters(val),
-          0
-        )
+      return state.pages.reduce(
+        (sum, val) => sum + useProject().utils().getChapterLetters(val),
+        0
+      )
     },
     getAllWords: (state) => {
-      return () =>
-        state.pages.reduce(
-          (sum, val) => sum + useProject().utils().getChapterWords(val),
-          0
-        )
+      return state.pages.reduce(
+        (sum, val) => sum + useProject().utils().getChapterWords(val),
+        0
+      )
     },
     getAllParagraphs: (state) => {
-      return () =>
-        state.pages.reduce(
-          (sum, val) => sum + useProject().utils().getChapterParagraphs(val),
-          0
-        )
+      return state.pages.reduce(
+        (sum, val) => sum + useProject().utils().getChapterParagraphs(val),
+        0
+      )
     },
     getAllHeadings: (state) => {
-      return () =>
-        state.pages.reduce(
-          (sum, val) => sum + useProject().utils().getChapterHeadings(val),
-          0
-        )
+      return state.pages.reduce(
+        (sum, val) => sum + useProject().utils().getChapterHeadings(val),
+        0
+      )
     },
     getAllFixeds: (state) => {
-      return () =>
-        state.pages.reduce(
-          (sum, val) => sum + useProject().utils().getChapterFixed(val),
-          0
-        )
+      return state.pages.reduce(
+        (sum, val) => sum + useProject().utils().getChapterFixed(val),
+        0
+      )
     },
   },
 })

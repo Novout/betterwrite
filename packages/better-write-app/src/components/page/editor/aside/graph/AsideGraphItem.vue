@@ -120,7 +120,12 @@
       class="flex items-center justify-between w-full"
     >
       <p class="truncate ml-3">
-        {{ raw.v2().normalize(props.entity.raw, 'full') }}
+        {{
+          ASTUtils.normalize(props.entity.raw, {
+            type: 'all',
+            whitespace: true,
+          })
+        }}
       </p>
       <div class="flex items-center">
         <div>
@@ -162,7 +167,9 @@
       "
       class="ml-2 text-xs truncate w-full"
     >
-      {{ raw.v2().normalize(props.entity.raw, 'full') }}
+      {{
+        ASTUtils.normalize(props.entity.raw, { type: 'all', whitespace: true })
+      }}
     </p>
   </div>
 </template>
@@ -173,7 +180,7 @@
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { usePage } from '@/use/page'
-  import { useRaw } from '@/use/raw'
+  import { ASTUtils } from 'better-write-contenteditable-ast'
   import { ContextState, Entity } from 'better-write-types'
   import { computed } from 'vue'
 
@@ -193,7 +200,6 @@
   const PROJECT = useProjectStore()
 
   const env = useEnv()
-  const raw = useRaw()
   const page = usePage()
 
   const activity = computed<boolean>(() => props.page.id === CONTEXT.id)

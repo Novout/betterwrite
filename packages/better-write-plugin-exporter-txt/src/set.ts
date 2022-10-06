@@ -1,6 +1,7 @@
 import { saveAs } from 'file-saver'
 import { PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
+import { ASTUtils } from 'better-write-contenteditable-ast'
 
 export const PluginTxtSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -12,7 +13,9 @@ export const PluginTxtSet = (
   const purge = (texts: string[]): string => {
     return texts.reduce(
       (conc, text) =>
-        hooks.substitution.purge(conc + hooks.raw.v2().normalize(text, 'full')),
+        hooks.substitution.purge(
+          conc + ASTUtils.normalize(text, { type: 'all', whitespace: true })
+        ),
       ''
     )
   }

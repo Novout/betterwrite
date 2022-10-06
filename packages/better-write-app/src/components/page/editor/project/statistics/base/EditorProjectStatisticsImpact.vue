@@ -9,7 +9,7 @@
     <h2 class="font-bold font-poppins text-lg mb-5">
       {{ t('editor.addons.statistics.impact') }}
     </h2>
-    <EditortProjectStatisticsImpactRow
+    <EditorProjectStatisticsImpactRow
       v-for="(chapter, index) in PROJECT.pages"
       :key="index"
       :title="chapter.entities[0]?.raw || chapter.title"

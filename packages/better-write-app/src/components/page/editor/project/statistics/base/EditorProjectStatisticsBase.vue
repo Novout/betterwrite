@@ -11,27 +11,27 @@
     </h2>
     <EditorProjectStatisticsBaseRow
       :title="t('editor.addons.statistics.characters')"
-      :result="PROJECT.getAllCharacters()"
+      :result="PROJECT.getAllCharacters"
     />
     <EditorProjectStatisticsBaseRow
       :title="t('editor.addons.statistics.letters')"
-      :result="PROJECT.getAllLetters()"
+      :result="PROJECT.getAllLetters"
     />
     <EditorProjectStatisticsBaseRow
       :title="t('editor.addons.statistics.words')"
-      :result="PROJECT.getAllWords()"
+      :result="PROJECT.getAllWords"
     />
     <EditorProjectStatisticsBaseRow
       :title="t('editor.addons.statistics.paragraph')"
-      :result="PROJECT.getAllParagraphs()"
+      :result="PROJECT.getAllParagraphs"
     />
     <EditorProjectStatisticsBaseRow
       :title="t('editor.addons.statistics.heading')"
-      :result="PROJECT.getAllHeadings()"
+      :result="PROJECT.getAllHeadings"
     />
     <EditorProjectStatisticsBaseRow
       :title="t('editor.addons.statistics.fixed')"
-      :result="PROJECT.getAllFixeds()"
+      :result="PROJECT.getAllFixeds"
     />
   </div>
 </template>

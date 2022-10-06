@@ -23,7 +23,7 @@
       class="bg-theme-pwa-prompt-button-background text-theme-pwa-prompt-button-text px-2 py-1 mt-3"
       @click="updateServiceWorker()"
     >
-      {{ t('editor.pwa.prompt.reload') }}k
+      {{ t('editor.pwa.prompt.reload') }}
     </button>
   </div>
 </template>

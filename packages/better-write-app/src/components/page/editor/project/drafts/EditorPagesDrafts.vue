@@ -36,7 +36,7 @@
           </HeroIcon>
         </div>
         <EditorPagesDraftsItem
-          v-for="(p, index) in PROJECT.getActuallyDrafts()"
+          v-for="(p, index) in PROJECT.getActuallyDrafts"
           :key="index"
           :page="p"
           :main="false"

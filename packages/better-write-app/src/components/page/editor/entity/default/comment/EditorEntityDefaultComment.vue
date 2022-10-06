@@ -20,22 +20,13 @@
           v-if="entity.raw !== env.emptyLine()"
           class="w-3/4 truncate font-bold text-lg text-theme-editor-external-comment-title hover:text-theme-editor-external-comment-title-hover active:text-theme-editor-external-comment-title-active"
         >
-          {{ raw.v2().normalize(entity.raw) }}
+          {{
+            ASTUtils.normalize(entity.raw, { type: 'all', whitespace: true })
+          }}
         </h2>
-        <HeroIcon class="text-2xs wb-icon" @click.prevent="onClose">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </HeroIcon>
+        <Icon @click.prevent="onClose">
+          <IconClose class="h-6 w-6" />
+        </Icon>
       </div>
       <div
         ref="search"
@@ -60,7 +51,7 @@
   import { useEnv } from '@/use/env'
   import { useProjectStore } from '@/store/project'
   import useEmitter from '@/use/emitter'
-  import { useRaw } from '@/use/raw'
+  import { ASTUtils } from 'better-write-contenteditable-ast'
 
   const ABSOLUTE = useAbsoluteStore()
   const CONTEXT = useContextStore()
@@ -69,7 +60,6 @@
 
   const env = useEnv()
   const emitter = useEmitter()
-  const raw = useRaw()
 
   const onTextArea = ref<boolean>(false)
 

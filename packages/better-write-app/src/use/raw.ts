@@ -1,7 +1,6 @@
 import {
   OnFocusOptions,
   V2RawApply,
-  V2RawNormalizeType,
   V2RawSet,
   Entity,
 } from 'better-write-types'
@@ -19,6 +18,7 @@ import { useEditorStore } from '@/store/editor'
 import { useToast } from 'vue-toastification'
 import { useI18n } from 'vue-i18n'
 import { ImageToForcePNG } from 'better-write-image-converter'
+import { ASTUtils } from 'better-write-contenteditable-ast'
 
 export const bold = () => {
   const open = () => {
@@ -745,7 +745,10 @@ export const useRaw = () => {
           html()
             .finder()
             .replacer(
-              normalize(entity.raw, 'full') || '',
+              ASTUtils.normalize(entity.raw, {
+                type: 'all',
+                whitespace: true,
+              }) || '',
               EXTERNALS.finder.value
             ) || ''
         )
@@ -766,7 +769,10 @@ export const useRaw = () => {
           html()
             .switcher()
             .replacer(
-              normalize(entity.raw, 'full') || '',
+              ASTUtils.normalize(entity.raw, {
+                type: 'all',
+                whitespace: true,
+              }) || '',
               EXTERNALS.switcher.value
             ) || ''
         )
@@ -784,39 +790,6 @@ export const useRaw = () => {
       }
 
       return { apply, editor, switcher, finder }
-    }
-
-    const normalize = (
-      content: string,
-      type: V2RawNormalizeType = 'simple'
-    ) => {
-      const BWTags = (str: string) => {
-        return str
-          .replaceAll('<b>', '')
-          .replaceAll('</b>', '')
-          .replaceAll('<i>', '')
-          .replaceAll('</i>', '')
-          .replaceAll('<u>', '')
-          .replaceAll('</u>', '')
-      }
-
-      const EditorTags = (str: string) => {
-        return str.replaceAll(/<(?!\/?span(?=>|\s?.*>))\/?.*?>/g, '')
-      }
-
-      const All = (str: string) => {
-        return str
-          .replaceAll(/<\/?[^>]+(>|$)/g, '')
-          .replaceAll(env.emptyLine(), '')
-      }
-
-      if (type === 'simple') {
-        return BWTags(content)
-      } else if (type === 'editor') {
-        return EditorTags(content)
-      } else if (type === 'full') {
-        return All(content)
-      }
     }
 
     const copy = () => {
@@ -846,7 +819,6 @@ export const useRaw = () => {
       validate,
       purge,
       make,
-      normalize,
       copy,
       support,
     }

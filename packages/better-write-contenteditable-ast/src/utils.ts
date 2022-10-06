@@ -34,7 +34,7 @@ export const normalize = (
 
   switch (options.type) {
     case 'all':
-      return str.replaceAll(/<(?!\/?span(?=>|\s?.*>))\/?.*?>/g, '')
+      return str.replace(/(<([^>]+)>)/gi, '')
     case 'inserts':
       return str
         .replaceAll('<span>', '')

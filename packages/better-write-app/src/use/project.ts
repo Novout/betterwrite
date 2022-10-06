@@ -31,6 +31,7 @@ import { writeBW } from 'better-write-extension'
 import { useAuthStore } from '@/store/auth'
 import { useDOCXStore } from '@/store/docx'
 import { useGlobalStore } from '@/store/global'
+import { ASTUtils } from 'better-write-contenteditable-ast'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -345,8 +346,8 @@ export const useProject = () => {
       return page.entities.reduce(
         (sum, val) =>
           sum +
-          (isValidType(val) && raw.v2().normalize(val.raw)
-            ? raw.v2().normalize(val.raw)!.length
+          (isValidType(val) && ASTUtils.normalize(val.raw, { type: 'inserts' })
+            ? ASTUtils.normalize(val.raw, { type: 'inserts' })!.length
             : 0),
         0
       )
@@ -437,7 +438,10 @@ export const useProject = () => {
       const map = page.entities
         .filter((entity) => isValidType(entity))
         .reduce((map: any, value: any) => {
-          const normalize = raw.v2().normalize(value.raw, 'full')
+          const normalize = ASTUtils.normalize(value.raw, {
+            type: 'all',
+            whitespace: true,
+          })
 
           if (!normalize) return map
 
@@ -485,7 +489,7 @@ export const useProject = () => {
 
             return (
               conc +
-              raw.v2().normalize(nm) +
+              ASTUtils.normalize(nm, { type: 'inserts' }) +
               (entity.utils().isHeading(ent.type) ? '\n\n' : '\n')
             )
           }, '')
