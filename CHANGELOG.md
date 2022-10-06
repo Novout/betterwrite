@@ -1,6 +1,12 @@
-# Changelog (05/10/2022)
+# Changelog (06/10/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.5
+
+* **refactor(ast):** v2 normalize to astutils normalize [fe8dc400]
+* **fix(tools):** revert finder ignore empty cases [8f570fbf]
+* **fix(editor):** pwa prompt background [252122aa]
 
 ### v0.17.4
 
