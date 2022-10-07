@@ -358,6 +358,15 @@ export const setTailwindCssVariables = () => {
     'theme-pwa-prompt-button-text': 'var(--theme-pwa-prompt-button-text)',
     'theme-pwa-prompt-button-background':
       'var(--theme-pwa-prompt-button-background)',
+    'theme-milkdown-primary': 'var(--theme-milkdown-primary)',
+    'theme-milkdown-secondary': 'var(--theme-milkdown-secondary)',
+    'theme-milkdown-neutral': 'var(--theme-milkdown-neutral)',
+    'theme-milkdown-solid': 'var(--theme-milkdown-solid)',
+    'theme-milkdown-shadow': 'var(--theme-milkdown-shadow)',
+    'theme-milkdown-line': 'var(--theme-milkdown-line)',
+    'theme-milkdown-surface': 'var(--theme-milkdown-surface)',
+    'theme-milkdown-background': 'var(--theme-milkdown-background)',
+    'theme-milkdown-default': 'var(--theme-milkdown-default)',
   }
 }
 

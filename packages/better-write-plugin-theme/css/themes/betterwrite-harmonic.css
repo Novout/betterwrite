@@ -203,6 +203,15 @@
   --theme-pwa-prompt-background: rgba(222, 237, 255, 0.5);
   --theme-pwa-prompt-button-text: #111111;
   --theme-pwa-prompt-button-background: #b6ceeb;
+  --theme-milkdown-primary: #111111;
+  --theme-milkdown-secondary: rgba(0, 0, 0, 0.5);
+  --theme-milkdown-neutral: #111111;
+  --theme-milkdown-solid: rgba(0, 0, 0, 0.3);
+  --theme-milkdown-shadow: rgba(0, 0, 0, 0.3);
+  --theme-milkdown-line: rgba(0, 0, 0, 0.3);
+  --theme-milkdown-surface: rgba(0, 0, 0, 0.1);
+  --theme-milkdown-background: rgba(0, 0, 0, 0.1);
+  --theme-milkdown-default: #111111;
   --scr-track: #222;
   --scr-thumb: #ccdbee;
   --scr-thumb-hover: #d9e3ee;

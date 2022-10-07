@@ -202,6 +202,15 @@
   --theme-pwa-prompt-background: #242222;
   --theme-pwa-prompt-button-text: #fa8373;
   --theme-pwa-prompt-button-background: #514646;
+  --theme-milkdown-primary: #faa59e;
+  --theme-milkdown-secondary: #725656;
+  --theme-milkdown-neutral: #faa59e;
+  --theme-milkdown-solid: #514646;
+  --theme-milkdown-shadow: #514646;
+  --theme-milkdown-line: #514646;
+  --theme-milkdown-surface: #242222;
+  --theme-milkdown-background: #242222;
+  --theme-milkdown-default: #faa59e;
   --scr-track: #222;
   --scr-thumb: #3b3737;
   --scr-thumb-hover: #504b4b;

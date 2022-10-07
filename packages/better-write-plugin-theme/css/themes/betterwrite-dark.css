@@ -203,6 +203,15 @@
   --theme-pwa-prompt-background: #1f2937;
   --theme-pwa-prompt-button-text: #e1e1e1;
   --theme-pwa-prompt-button-background: #6b7280;
+  --theme-milkdown-primary: #e5e7eb;
+  --theme-milkdown-secondary: rgba(0, 0, 0, 0.5);
+  --theme-milkdown-neutral: #e5e7eb;
+  --theme-milkdown-solid: rgba(0, 0, 0, 0.3);
+  --theme-milkdown-shadow: rgba(0, 0, 0, 0.3);
+  --theme-milkdown-line: rgba(0, 0, 0, 0.3);
+  --theme-milkdown-surface: rgba(0, 0, 0, 0.1);
+  --theme-milkdown-background: rgba(0, 0, 0, 0.1);
+  --theme-milkdown-default: #e5e7eb;
   --scr-track: #222;
   --scr-thumb: #444e5e;
   --scr-thumb-hover: #555e6d;

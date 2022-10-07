@@ -27,23 +27,23 @@ export const createTheme = () => (emotion: Emotion, manager: ThemeManager) => {
   manager.set(ThemeColor, ([key]) => {
     switch (key) {
       case 'primary':
-        return 'var(--theme-background-2)'
+        return 'var(--theme-milkdown-primary)'
       case 'secondary':
-        return 'var(--theme-background-4)'
+        return 'var(--theme-milkdown-secondary)'
       case 'neutral':
-        return 'var(--theme-text-1)'
+        return 'var(--theme-milkdown-neutral)'
       case 'solid':
-        return 'var(--theme-background-3)'
+        return 'var(--theme-milkdown-solid)'
       case 'shadow':
-        return 'var(--theme-background-3)'
+        return 'var(--theme-milkdown-shadow)'
       case 'line':
-        return 'var(--theme-background-3)'
+        return 'var(--theme-milkdown-line)'
       case 'surface':
-        return 'var(--theme-editor-background)'
+        return 'var(--theme-milkdown-surface)'
       case 'background':
-        return 'var(--theme-background-2)'
+        return 'var(--theme-milkdown-background)'
       default:
-        return 'var(--theme-text-1)'
+        return 'var(--theme-milkdown-default)'
     }
   })
 

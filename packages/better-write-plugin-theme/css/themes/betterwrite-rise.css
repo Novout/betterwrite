@@ -204,6 +204,15 @@
   --theme-pwa-prompt-background: #2f3357;
   --theme-pwa-prompt-button-text: #8ab6ff;
   --theme-pwa-prompt-button-background: #373d66;
+  --theme-milkdown-primary: #e1e1e1;
+  --theme-milkdown-secondary: rgba(0, 0, 0, 0.5);
+  --theme-milkdown-neutral: #e1e1e1;
+  --theme-milkdown-solid: rgba(0, 0, 0, 0.3);
+  --theme-milkdown-shadow: rgba(0, 0, 0, 0.3);
+  --theme-milkdown-line: rgba(0, 0, 0, 0.3);
+  --theme-milkdown-surface: rgba(0, 0, 0, 0.1);
+  --theme-milkdown-background: rgba(0, 0, 0, 0.1);
+  --theme-milkdown-default: #e1e1e1;
   --scr-track: #222;
   --scr-thumb: #414770;
   --scr-thumb-hover: #545a7e;

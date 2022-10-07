@@ -24,8 +24,6 @@ export default defineBuildConfig({
     '@milkdown/plugin-upload',
     '@milkdown/preset-commonmark', 
     '@milkdown/prose', 
-    '@milkdown/theme-pack-helper',
-    'better-write-plugin-core',
-    'better-write-types'
+    '@milkdown/theme-pack-helper'
   ],
 });
