@@ -34,7 +34,7 @@
       <InputSelect
         v-model="pdf.headingTwo.alignment"
         class="flex-1"
-        :arr="useDefines().pdf().alignment()"
+        :arr="defines.pdf().alignment()"
       />
     </GeneratorItem>
     <GeneratorItem :title="t('editor.pdf.custom.generics.characterSpacing')">

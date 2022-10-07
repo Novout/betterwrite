@@ -3,7 +3,8 @@
     <div
       ref="corrector"
       :style="style"
-      class="fixed bg-rgba-blur !font-raleway flex flex-col w-3/4 md:w-1/2 h-3/4 bg-theme-background-1 wb-text rounded shadow-2xl p-5 overflow-y-auto wb-scroll"
+      :class="[!mobile ? 'fixed' : '']"
+      class="bg-rgba-blur !font-raleway flex flex-col w-full md:w-1/2 h-screen md:h-3/4 bg-theme-background-1 wb-text rounded shadow-2xl p-5 overflow-y-auto wb-scroll"
     >
       <EditorAbsoluteHeader
         class="pl-5"
@@ -95,7 +96,12 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useAddonsStore } from '@/store/addons'
-  import { onClickOutside, useDraggable } from '@vueuse/core'
+  import {
+    onClickOutside,
+    useDraggable,
+    breakpointsTailwind,
+    useBreakpoints,
+  } from '@vueuse/core'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { AddonsCorrectorOption } from 'better-write-types'
@@ -106,6 +112,8 @@
 
   const convertor = useCorrector()
   const { t } = useI18n()
+  const breakpoints = useBreakpoints(breakpointsTailwind)
+  const mobile = breakpoints.isSmaller('lg')
 
   const corrector = ref<HTMLElement | null>(null)
   const set = ref<AddonsCorrectorOption>(ADDONS.corrector.options[0])

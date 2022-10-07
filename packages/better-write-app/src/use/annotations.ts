@@ -4,12 +4,16 @@ import {
   ProjectStateAnnotationFolder,
 } from 'better-write-types'
 import { useI18n } from 'vue-i18n'
+import { useGraph } from '@/use/graph'
 
 export const useAnnotations = () => {
   const plugin = usePlugin()
   const { t } = useI18n()
+  const graph = useGraph()
 
   const onStart = (file: ProjectStateAnnotationFile) => {
+    graph.utils().mobile()
+
     plugin.emit('plugin-annotations-start', file)
   }
 

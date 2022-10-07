@@ -1,6 +1,7 @@
 import { useAbsoluteStore } from '@/store/absolute'
 import { useAuthStore } from '@/store/auth'
 import { createClient } from '@supabase/supabase-js'
+import { useOnline } from '@vueuse/core'
 import {
   ProjectObject,
   Maybe,
@@ -14,7 +15,6 @@ import { useEnv } from '../env'
 import { useFormat } from '../format'
 import { useProject } from '../project'
 import { useUtils } from '../utils'
-import { useLocalStorage } from './local'
 import { useStorage } from './storage'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
@@ -26,15 +26,25 @@ export const useSupabase = () => {
   const AUTH = useAuthStore()
   const ABSOLUTE = useAbsoluteStore()
 
+  const online = useOnline()
   const toast = useToast()
   const { t } = useI18n()
   const env = useEnv()
   const storage = useStorage()
   const project = useProject()
-  const plugin = useLocalStorage()
   const router = useRouter()
   const format = useFormat()
   const utils = useUtils()
+
+  const toDashboard = () => {
+    if (!online.value) {
+      toast.error(t('toast.generics.onlyOnline'))
+
+      return
+    }
+
+    router.push('/dashboard')
+  }
 
   const loginWithEmailAndPassword = (
     { email, password }: { email: string; password: string },
@@ -288,6 +298,7 @@ export const useSupabase = () => {
   }
 
   return {
+    toDashboard,
     loginWithEmailAndPassword,
     login,
     out,

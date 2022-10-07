@@ -4,12 +4,12 @@
       ref="main"
       :style="style"
       :class="[!mobile ? 'fixed' : '']"
-      class="flex z-20 flex-col p-10 bg-rgba-blur bg-theme-background-1 wb-text overflow-x-auto rounded shadow-2xl wb-scroll"
+      class="flex w-full sm:w-auto sm:h-auto h-screen z-100 flex-col p-10 bg-rgba-blur bg-theme-background-1 wb-text overflow-x-auto rounded shadow-2xl wb-scroll"
     >
       <div class="flex justify-between w-full">
         <p class="text-2xl font-bold">PDF</p>
         <div @click="onClose">
-          <IconClose class="wb-icon w-6 h-6" />
+          <IconClose class="wb-icon w-7 h-7" />
         </div>
       </div>
       <div id="pdf-preview-div" ref="preview"></div>

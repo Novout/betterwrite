@@ -1,5 +1,5 @@
 <template>
-  <div class="cursor-pointer" @click.prevent.stop="onDashboard">
+  <div class="cursor-pointer" @click.prevent.stop="supabase.toDashboard()">
     <div
       :class="[mobile ? 'w-40' : 'w-auto']"
       class="flex items-center px-3 font-poppins py-2 sm:py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full"
@@ -61,19 +61,13 @@
   import { UseImage } from '@vueuse/components'
   import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
   import { computed } from 'vue'
-  import { useRouter } from 'vue-router'
 
   const AUTH = useAuthStore()
   const user = computed(() => AUTH.account.user)
 
   const env = useEnv()
-  const router = useRouter()
   const supabase = useSupabase()
 
   const breakpoints = useBreakpoints(breakpointsTailwind)
   const mobile = breakpoints.greater('sm')
-
-  const onDashboard = () => {
-    router.push('/dashboard')
-  }
 </script>

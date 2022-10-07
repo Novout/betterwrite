@@ -57,17 +57,12 @@
 </template>
 
 <script setup lang="ts">
-  import { useProjectStore } from '@/store/project'
   import { useSupabase } from '@/use/storage/supabase'
-  import { useUtils } from '@/use/utils'
   import { ProjectObject } from 'better-write-types'
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
-  const PROJECT = useProjectStore()
-
   const supabase = useSupabase()
-  const utils = useUtils()
   const { t } = useI18n()
 
   const projects = ref<ProjectObject[]>([])

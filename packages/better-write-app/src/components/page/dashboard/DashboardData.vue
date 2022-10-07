@@ -12,16 +12,16 @@
         AUTH?.account?.user?.user_metadata?.avatar_url ||
         AUTH?.account.user?.user_metadata.name
       "
-      class="flex items-center flex-1 px-5"
+      class="flex gap-5 flex-wrap items-center flex-1 px-5"
     >
       <img
-        class="rounded-full w-60"
+        class="rounded-full w-20 md:w-60"
         alt="Avatar"
         :src="AUTH?.account?.user?.user_metadata?.avatar_url"
       />
       <div
         v-if="AUTH?.account.user?.user_metadata.name"
-        class="flex p-10 flex-col items-center justify-center"
+        class="flex flex-col items-center justify-center"
       >
         <p class="font-poppins font-bold text-lg lg:text-xl">
           {{ AUTH?.account.user?.user_metadata.name }}

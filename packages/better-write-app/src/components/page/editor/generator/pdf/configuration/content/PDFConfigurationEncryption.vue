@@ -81,15 +81,10 @@
 <script setup lang="ts">
   import { usePDFStore } from '@/store/pdf'
   import { useProjectStore } from '@/store/project'
-  import { useDefines } from '@/use/defines'
-  import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const { t } = useI18n()
-  const defines = useDefines()
 
   const PDF = usePDFStore()
   const PROJECT = useProjectStore()
-
-  const pdf = computed(() => PDF.styles)
 </script>

@@ -30,17 +30,14 @@
 
 <script setup lang="ts">
   import { usePDFStore } from '@/store/pdf'
-  import { useDefines } from '@/use/defines'
   import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const { t } = useI18n()
-  const defines = useDefines()
 
   const PDF = usePDFStore()
 
   const pdf = computed(() => PDF.styles)
-  const fontFamily = computed(() => PDF.fonts)
 
   const onMainImageLoad = (e: any) => {
     PDF.styles.lineBreak.image.data = e

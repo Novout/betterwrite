@@ -13,10 +13,10 @@ export default {
     successChanged: 'Changed Successfully!',
     successRestarted: 'Successfully Restarted!',
     successRemoved: 'Successfully Removed!',
+    onlyOnline: 'You are without internet access to access this feature!',
   },
   pdf: {
-    error:
-      'Could not generate the pdf. As of now, Better Write does not support PDF generation without internet access.',
+    error: 'Could not generate the pdf.',
     configuration: {
       save: 'Configurações salvas com sucesso!',
     },

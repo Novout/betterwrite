@@ -42,7 +42,7 @@
   import { ref, onMounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useAbsoluteStore } from '@/store/absolute'
-  import { onClickOutside, useDraggable } from '@vueuse/core'
+  import { useDraggable } from '@vueuse/core'
   import { useExternalsStore } from '@/store/externals'
   import { useFinder } from '@/use/tools/finder'
 

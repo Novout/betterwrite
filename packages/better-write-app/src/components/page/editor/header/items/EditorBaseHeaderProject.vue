@@ -90,7 +90,6 @@
   import { useSupabase } from '@/use/storage/supabase'
   import { useAuthStore } from '@/store/auth'
   import { useRouter } from 'vue-router'
-  import { useStorage } from '@/use/storage/storage'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
@@ -101,7 +100,6 @@
   const env = useEnv()
   const local = useLocalStorage()
   const { t } = useI18n()
-  const storage = useStorage()
   const router = useRouter()
 
   const onSaveProject = () => {
