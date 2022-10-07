@@ -6,5 +6,5 @@ export default defineBuildConfig({
 	},
 	declaration: true,
 	entries: [{ input: 'src/index.ts', outDir: 'dist', name: 'index' }],
-	externals: [],
+	externals: ['vue3-pdfmake', 'ohmyfetch',  'destr'],
 });

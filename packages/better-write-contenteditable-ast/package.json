@@ -23,17 +23,5 @@
 		"package.json",
 		"LICENSE",
 		"README.md"
-	],
-	"dependencies": {
-		"better-write-types": "^0.17.5",
-		"hast": "1.0.0",
-		"hast-util-from-html": "1.0.0"
-	},
-	"devDependencies": {
-		"c8": "7.12.0",
-		"happy-dom": "6.0.4",
-		"prettier": "2.5.1",
-		"rimraf": "3.0.2",
-		"vitest": "0.21.1"
-	}
+	]
 }

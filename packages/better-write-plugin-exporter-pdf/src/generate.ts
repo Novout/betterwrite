@@ -8,7 +8,6 @@ import {
   ProjectStateTemplatesGenerator,
 } from 'better-write-types'
 import { nextTick, computed } from 'vue-demi'
-import { useToast } from 'vue-toastification'
 import { getPDFUtils } from 'better-write-plugin-theme'
 import { getStandardVFS } from './vfs'
 import { ImageToForcePNG } from 'better-write-image-converter'
@@ -26,7 +25,6 @@ export const PluginPDFSet = (
     exists: false,
   }
 
-  const toast = useToast()
   const online = hooks.vueuse.core.useOnline()
   const pdfmake = usePDF().default
 
@@ -1261,7 +1259,7 @@ export const PluginPDFSet = (
     if (!utils().isOnline()) {
       // now online, reload google fonts
       if (online.value && stores.PDF.normalize.length === 0) {
-        toast.info(hooks.i18n.t('editor.pdf.inserts.nowOnline'))
+        hooks.toast.info(hooks.i18n.t('editor.pdf.inserts.nowOnline'))
 
         return
       }
@@ -1292,12 +1290,12 @@ export const PluginPDFSet = (
     pdf
       .download(hooks.project.utils().exportFullName('pdf'))
       .then(() => {
-        toast.success(hooks.i18n.t('toast.pdf.create'))
+        hooks.toast.success(hooks.i18n.t('toast.pdf.create'))
 
         hooks.emitter.emit('pdf-preview-exists')
       })
       .catch(() => {
-        toast.error(hooks.i18n.t('toast.pdf.error'))
+        hooks.toast.error(hooks.i18n.t('toast.pdf.error'))
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
@@ -1334,18 +1332,18 @@ export const PluginPDFSet = (
 
           input?.appendChild(iframe)
 
-          toast.success(hooks.i18n.t('toast.pdf.preview'))
+          hooks.toast.success(hooks.i18n.t('toast.pdf.preview'))
         },
         (err: any) => {
           if (hooks.env.isDev()) console.log(err)
 
-          toast.error(hooks.i18n.t('toast.pdf.error'))
+          hooks.toast.error(hooks.i18n.t('toast.pdf.error'))
         }
       )
       .catch((err: any) => {
         if (hooks.env.isDev()) console.log(err)
 
-        toast.error(hooks.i18n.t('toast.pdf.error'))
+        hooks.toast.error(hooks.i18n.t('toast.pdf.error'))
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
@@ -1356,7 +1354,7 @@ export const PluginPDFSet = (
     async (options: PDFDocOptions) => {
       if (hooks.env.isEmptyProject(stores.PROJECT.name)) return
 
-      toast.info(hooks.i18n.t('toast.generics.load'))
+      hooks.toast.info(hooks.i18n.t('toast.generics.load'))
 
       stores.ABSOLUTE.load = true
 
@@ -1373,7 +1371,7 @@ export const PluginPDFSet = (
     async (options: PDFDocOptions) => {
       if (hooks.env.isEmptyProject(stores.PROJECT.name)) return
 
-      toast.info(hooks.i18n.t('toast.generics.load'))
+      hooks.toast.info(hooks.i18n.t('toast.generics.load'))
 
       stores.ABSOLUTE.load = true
 

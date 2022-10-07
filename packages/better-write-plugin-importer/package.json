@@ -24,13 +24,10 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@zip.js/zip.js": "2.6.18",
-		"better-write-extension": "^0.17.5",
-		"better-write-plugin-core": "^0.17.5",
+    "better-write-extension": "^0.17.5",
+    "better-write-plugin-core": "^0.17.5",
 		"better-write-types": "^0.17.5",
-		"destr": "1.1.1",
-		"vue-demi": "latest",
-		"xml-js": "1.6.11"
+		"vue-demi": "latest"
 	},
 	"devDependencies": {
 		"prettier": "2.5.1",

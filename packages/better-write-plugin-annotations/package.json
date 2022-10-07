@@ -18,26 +18,6 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@milkdown/core": "6.3.2",
-		"@milkdown/design-system": "6.3.2",
-		"@milkdown/plugin-block": "6.3.2",
-		"@milkdown/plugin-clipboard": "6.3.2",
-		"@milkdown/plugin-cursor": "6.3.2",
-		"@milkdown/plugin-emoji": "6.3.2",
-		"@milkdown/plugin-history": "6.3.2",
-		"@milkdown/plugin-indent": "6.3.2",
-		"@milkdown/plugin-listener": "6.3.2",
-		"@milkdown/plugin-math": "6.3.2",
-		"@milkdown/plugin-menu": "6.3.2",
-		"@milkdown/plugin-slash": "6.3.2",
-		"@milkdown/plugin-tooltip": "6.3.2",
-		"@milkdown/plugin-trailing": "6.3.2",
-		"@milkdown/plugin-upload": "6.3.2",
-		"@milkdown/preset-commonmark": "6.3.2",
-		"@milkdown/prose": "6.3.2",
-		"@milkdown/theme-pack-helper": "6.3.2",
-		"better-write-plugin-core": "^0.17.5",
-		"better-write-types": "^0.17.5",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {
@@ -48,11 +28,5 @@
 		"@vue/composition-api": {
 			"optional": true
 		}
-	},
-	"devDependencies": {
-		"@vuedx/typescript-plugin-vue": "0.7.4",
-		"prettier": "2.5.1",
-		"rimraf": "3.0.2",
-		"vue": "3.2.29"
 	}
 }

@@ -25,9 +25,8 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-plugin-core": "^0.17.5",
+    "better-write-plugin-core": "^0.17.5",
 		"better-write-types": "^0.17.5",
-		"pinia": "2.0.6",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {
@@ -38,11 +37,5 @@
 		"@vue/composition-api": {
 			"optional": true
 		}
-	},
-	"devDependencies": {
-		"@vuedx/typescript-plugin-vue": "0.7.4",
-		"prettier": "2.5.1",
-		"rimraf": "3.0.2",
-		"vue": "3.2.29"
 	}
 }

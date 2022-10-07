@@ -18,16 +18,13 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-contenteditable-ast": "^0.17.5",
-		"better-write-google-fonts-api": "^0.17.5",
-		"better-write-image-converter": "^0.17.5",
-		"better-write-plugin-core": "^0.17.5",
-		"better-write-plugin-theme": "^0.17.5",
+    "better-write-image-converter": "^0.17.5",
+    "better-write-plugin-theme": "^0.17.5",
+    "better-write-google-fonts-api": "^0.17.5",
+    "better-write-plugin-core": "^0.17.5",
 		"better-write-types": "^0.17.5",
-		"pinia": "2.0.6",
-		"vue-demi": "latest",
-		"vue-toastification": "2.0.0-rc.5",
-		"vue3-pdfmake": "1.2.0"
+    "better-write-contenteditable-ast": "^0.17.5",
+		"vue-demi": "latest"
 	},
 	"peerDependencies": {
 		"@vue/composition-api": "^1.0.0-rc.1",
@@ -37,12 +34,5 @@
 		"@vue/composition-api": {
 			"optional": true
 		}
-	},
-	"devDependencies": {
-		"@types/jsdom": "16.2.14",
-		"@vuedx/typescript-plugin-vue": "0.7.4",
-		"prettier": "2.5.1",
-		"rimraf": "3.0.2",
-		"vue": "3.2.29"
 	}
 }

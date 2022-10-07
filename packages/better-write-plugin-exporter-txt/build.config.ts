@@ -6,5 +6,5 @@ export default defineBuildConfig({
 	},
 	declaration: true,
 	entries: [{ input: 'src/index.ts', outDir: 'dist', name: 'index' }],
-	externals: [],
+	externals: ['file-saver', 'better-write-types', 'better-write-plugin-core', 'better-write-contenteditable-ast'],
 });
