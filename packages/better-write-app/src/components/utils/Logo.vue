@@ -1,6 +1,5 @@
 <template>
   <div
-    v-cloak
     :class="[!props.hidden ? 'w-full cursor-pointer' : 'w-auto']"
     class="flex bg-theme-aside-logo-background justify-around md:justify-between items-center mr-5 md:mr-0"
     @click.stop.prevent="onClick"
