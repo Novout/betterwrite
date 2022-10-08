@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-exporter-docx",
-	"version": "0.17.5",
+	"version": "0.17.6",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -18,9 +18,9 @@
 		"README.md"
 	],
 	"dependencies": {
-    "better-write-plugin-core": "^0.17.5",
-    "better-write-types": "^0.17.5",
-    "better-write-contenteditable-ast": "^0.17.5",
+		"better-write-contenteditable-ast": "^0.17.6",
+		"better-write-plugin-core": "^0.17.6",
+		"better-write-types": "^0.17.6",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {

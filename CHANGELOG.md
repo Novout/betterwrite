@@ -1,6 +1,16 @@
-# Changelog (06/10/2022)
+# Changelog (07/10/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.6
+
+* **chore:** update deps [98fbe88a]
+* **feat(annotations):** draggable files [1448cfc6]
+* **fix(editor):** interceptor typo [1df2a5d6]
+* **fix(milkdown):** paragraph break in multiple rows [3e902f68]
+* **chore(milkdown):** theme css variables [52bc184b]
+* **chore(monorepo):** dependencies centralized in better-write-app [f1c15311]
+* **refactor(app):** general improvements [fcab1a26]
 
 ### v0.17.5
 
