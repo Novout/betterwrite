@@ -44,8 +44,8 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 
   const paragraph = css`
     p {
-      font-size: 16px;
-      line-height: 0.25;
+      font-size: 1rem;
+      line-height: 1.25rem;
       letter-spacing: 0.5px;
     }
   `
@@ -66,27 +66,27 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 
   const heading = css`
     h1 {
-      font-size: 48px;
+      font-size: 3rem;
       line-height: 1.167;
     }
     h2 {
-      font-size: 40px;
+      font-size: 2.25rem;
       line-height: 1.2;
     }
     h3 {
-      font-size: 34px;
+      font-size: 1.8rem;
       line-height: 1.05;
     }
     h4 {
-      font-size: 28px;
+      font-size: 1.65rem;
       line-height: 1.14;
     }
     h5 {
-      font-size: 24px;
+      font-size: 1.4rem;
       line-height: 1;
     }
     h6 {
-      font-size: 20px;
+      font-size: 1.2rem;
       line-height: 1;
     }
     .heading {
