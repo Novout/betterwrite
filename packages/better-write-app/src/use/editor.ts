@@ -54,8 +54,6 @@ export const useEditor = () => {
     onMounted(() => {
       Calls.EditorMounted(plugin)
 
-      plugin.emit('plugin-editor-header-create-open')
-
       if (params.context !== 'force')
         project.onLoadProject(undefined, false).then(() => {})
       else params.context = 'default'
