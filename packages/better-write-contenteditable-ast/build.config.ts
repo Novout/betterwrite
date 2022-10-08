@@ -6,5 +6,5 @@ export default defineBuildConfig({
 	},
 	declaration: true,
 	entries: [{ input: 'src/index.ts', outDir: 'dist', name: 'index' }],
-	externals: ['hast', 'hast-util-from-html', 'better-write-types'],
+	externals: ['hast', 'hast-util-from-html'],
 });

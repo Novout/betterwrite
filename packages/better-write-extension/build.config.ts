@@ -6,5 +6,5 @@ export default defineBuildConfig({
 	},
 	declaration: true,
 	entries: [{ input: 'src/index.ts', outDir: 'dist', name: 'index' }],
-	externals: ['@zip.js/zip.js', 'better-write-types', 'destr', 'xml-js'],
+	externals: ['@zip.js/zip.js', 'destr', 'xml-js'],
 });

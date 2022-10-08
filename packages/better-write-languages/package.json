@@ -17,6 +17,10 @@
 		"build": "rimraf ./dist && unbuild",
 		"lint": "prettier --write src/"
 	},
+  "dependencies": {
+    "better-write-plugin-exporter-pdf": "^0.17.6",
+    "better-write-types": "^0.17.6"
+  },
 	"files": [
 		"dist/**/*",
 		"package.json",

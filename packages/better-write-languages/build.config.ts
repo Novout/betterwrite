@@ -6,5 +6,5 @@ export default defineBuildConfig({
 	},
 	declaration: true,
 	entries: [{ input: 'src/index.ts', outDir: 'dist', name: 'index' }],
-	externals: ['better-write-plugin-exporter-pdf', 'better-write-types'],
+	externals: [],
 });

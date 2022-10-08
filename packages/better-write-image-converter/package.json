@@ -17,6 +17,9 @@
 		"build": "rimraf ./dist && unbuild",
 		"lint": "prettier --write src/"
 	},
+  "dependencies": {
+    "better-write-types": "^0.17.6"
+  },
 	"files": [
 		"dist/**/*",
 		"package.json",
