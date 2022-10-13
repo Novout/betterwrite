@@ -1,6 +1,6 @@
 {
 	"name": "better-write-image-converter",
-	"version": "0.17.6",
+	"version": "0.17.7",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -17,9 +17,9 @@
 		"build": "rimraf ./dist && unbuild",
 		"lint": "prettier --write src/"
 	},
-  "dependencies": {
-    "better-write-types": "^0.17.6"
-  },
+	"dependencies": {
+		"better-write-types": "^0.17.7"
+	},
 	"files": [
 		"dist/**/*",
 		"package.json",
