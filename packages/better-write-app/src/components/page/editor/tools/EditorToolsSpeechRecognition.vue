@@ -113,7 +113,8 @@
   }
 
   tryOnMounted(() => {
-    CONTEXT.entities[id.value].visual.warning = true
+    if (CONTEXT.entities[id.value])
+      CONTEXT.entities[id.value].visual.warning = true
   })
 
   tryOnUnmounted(() => {

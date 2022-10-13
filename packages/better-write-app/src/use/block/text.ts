@@ -111,6 +111,10 @@ export const useBlockText = ({
       }
     )
 
+    emitter.on('entity-speech-recognition', ({ id, result }) => {
+      if (id === index.value) CONTEXT.entities[id].raw = result
+    })
+
     emitter.on('entity-text-force-save', () => {
       if (isSalvageable.value && input.value && input.value.innerHTML) {
         save(index.value, input.value.innerHTML)

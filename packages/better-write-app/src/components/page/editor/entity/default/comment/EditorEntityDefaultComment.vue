@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed left-0 top-0 w-full h-screen bg-modal z-max">
+  <div class="fixed left-0 top-0 w-full h-screen bg-modal z-max font-raleway">
     <div
       ref="comment"
       v-motion
@@ -32,7 +32,7 @@
         ref="search"
         contenteditable="true"
         spellcheck="true"
-        class="flex-1 bg-theme-editor-external-comment-textarea-background hover:bg-theme-editor-external-comment-background-textarea-hover active:bg-theme-editor-external-comment-background-textarea-active w-full rounded-sm p-2 overflow-y-auto overflow-x-hidden border-theme-editor-external-comment-border text-theme-editor-external-comment-text hover:text-theme-editor-external-comment-text-hover active:text-theme-editor-external-comment-text-active"
+        class="flex-1 bg-theme-editor-external-comment-textarea-background hover:bg-theme-editor-external-comment-background-textarea-hover active:bg-theme-editor-external-comment-background-textarea-active w-full rounded-sm p-2 wb-scroll overflow-x-hidden border-theme-editor-external-comment-border text-theme-editor-external-comment-text hover:text-theme-editor-external-comment-text-hover active:text-theme-editor-external-comment-text-active"
         @input="onInput"
         @mouseenter="onTextArea = true"
         @mouseleave="onTextArea = false"

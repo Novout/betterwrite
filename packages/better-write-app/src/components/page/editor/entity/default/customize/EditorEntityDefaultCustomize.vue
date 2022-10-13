@@ -39,115 +39,124 @@
         </div>
       </div>
       <div
-        class="flex h-60 max-h-60 items-center justify-center w-full overflow-hidden p-1 md:p-5 bg-theme-background-opacity-1"
-        :class="[!paragraph.active ? 'pointer-events-none' : '']"
-      >
-        <p
-          :style="{
-            fontFamily: generator.font,
-            fontSize: `${generator.fontSize}px`,
-            fontStyle: generator.italics ? 'italic' : 'normal',
-            fontWeight: generator.bold ? 'bolder' : 'normal',
-            letterSpacing: `${generator.characterSpacing}px`,
-            color: generator.color,
-            backgroundColor: generator.background,
-            padding: '2rem',
-          }"
-        >
-          Lorem
-        </p>
-      </div>
-      <div
-        class="flex gap-5 flex-row flex-wrap items-center overflow-auto"
         :class="[
-          !paragraph.active ||
-          paragraph.class === t('editor.entity.generator.template')
-            ? 'pointer-events-none'
+          !paragraph.active ? 'pointer-events-none' : '',
+          !EDITOR.styles.base.backgroundData && !paragraph.active
+            ? 'opacity-50'
             : '',
         ]"
       >
-        <div class="wb-input-container">
-          <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.font')
-          }}</label>
-          <InputSelect
-            v-model="generator.font"
-            class="flex-1"
-            :min="true"
-            :arr="PDF.fonts"
-            :font="true"
-          />
+        <div
+          class="flex h-60 max-h-60 items-center justify-center w-full overflow-hidden p-1 md:p-5 bg-theme-background-opacity-1"
+          :class="[!paragraph.active ? 'pointer-events-none' : '']"
+        >
+          <p
+            :style="{
+              fontFamily: generator.font,
+              fontSize: `${generator.fontSize}px`,
+              fontStyle: generator.italics ? 'italic' : 'normal',
+              fontWeight: generator.bold ? 'bolder' : 'normal',
+              letterSpacing: `${generator.characterSpacing}px`,
+              color: generator.color,
+              backgroundColor: generator.background,
+              padding: '2rem',
+            }"
+          >
+            Lorem
+          </p>
         </div>
-        <div class="wb-input-container">
-          <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.fontSize')
-          }}</label>
-          <InputNumber v-model="generator.fontSize" />
-        </div>
-        <div class="wb-input-container">
-          <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.bold')
-          }}</label>
-          <InputBoolean v-model="generator.bold" />
-        </div>
-        <div class="wb-input-container">
-          <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.italics')
-          }}</label>
-          <InputBoolean v-model="generator.italics" />
-        </div>
-        <div class="wb-input-container">
-          <label class="mx-2 text-xs">{{
-            t('editor.pdf.base.pageMargins.title')
-          }}</label>
-          <section>
-            <label>{{ t('editor.pdf.base.pageMargins.top') }}</label>
-            <InputNumber v-model="generator.margin.top" />
-          </section>
-          <section>
-            <label>{{ t('editor.pdf.base.pageMargins.bottom') }}</label>
-            <InputNumber v-model="generator.margin.bottom" />
-          </section>
-        </div>
-        <div class="wb-input-container">
-          <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.lineHeight')
-          }}</label>
-          <InputNumber v-model="generator.lineHeight" />
-        </div>
-        <div class="wb-input-container">
-          <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.alignment')
-          }}</label>
-          <InputCarousel
-            v-model="generator.alignment"
-            class="flex-1"
-            :arr="defines.pdf().alignment()"
-          />
-        </div>
-        <div class="wb-input-container">
-          <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.indent')
-          }}</label>
-          <InputNumber v-model="generator.indent" />
-        </div>
-        <div class="wb-input-container">
-          <label class="mx-2 text-xs">{{
-            t('editor.pdf.custom.generics.characterSpacing')
-          }}</label>
-          <InputNumber v-model="generator.characterSpacing" />
-        </div>
-        <div class="wb-input-container">
-          <label class="mx-1 text-xs">{{
-            t('editor.pdf.custom.generics.color')
-          }}</label>
-          <InputColorPicker v-model="generator.color" />
-        </div>
-        <div class="wb-input-container">
-          <label class="mx-1 text-xs">{{
-            t('editor.pdf.custom.generics.background')
-          }}</label>
-          <InputColorPicker v-model="generator.background" />
+        <div
+          class="flex gap-5 flex-row flex-wrap items-center overflow-auto"
+          :class="[
+            !paragraph.active ||
+            paragraph.class === t('editor.entity.generator.template')
+              ? 'pointer-events-none'
+              : '',
+          ]"
+        >
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.font')
+            }}</label>
+            <InputSelect
+              v-model="generator.font"
+              class="flex-1"
+              :min="true"
+              :arr="PDF.fonts"
+              :font="true"
+            />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.fontSize')
+            }}</label>
+            <InputNumber v-model="generator.fontSize" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.bold')
+            }}</label>
+            <InputBoolean v-model="generator.bold" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.italics')
+            }}</label>
+            <InputBoolean v-model="generator.italics" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.base.pageMargins.title')
+            }}</label>
+            <section>
+              <label>{{ t('editor.pdf.base.pageMargins.top') }}</label>
+              <InputNumber v-model="generator.margin.top" />
+            </section>
+            <section>
+              <label>{{ t('editor.pdf.base.pageMargins.bottom') }}</label>
+              <InputNumber v-model="generator.margin.bottom" />
+            </section>
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.lineHeight')
+            }}</label>
+            <InputNumber v-model="generator.lineHeight" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.alignment')
+            }}</label>
+            <InputCarousel
+              v-model="generator.alignment"
+              class="flex-1"
+              :arr="defines.pdf().alignment()"
+            />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.indent')
+            }}</label>
+            <InputNumber v-model="generator.indent" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-2 text-xs">{{
+              t('editor.pdf.custom.generics.characterSpacing')
+            }}</label>
+            <InputNumber v-model="generator.characterSpacing" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-1 text-xs">{{
+              t('editor.pdf.custom.generics.color')
+            }}</label>
+            <InputColorPicker v-model="generator.color" />
+          </div>
+          <div class="wb-input-container">
+            <label class="mx-1 text-xs">{{
+              t('editor.pdf.custom.generics.background')
+            }}</label>
+            <InputColorPicker v-model="generator.background" />
+          </div>
         </div>
       </div>
     </div>
