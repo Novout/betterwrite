@@ -1,6 +1,12 @@
-# Changelog (13/10/2022)
+# Changelog (06/11/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.8
+
+* **chore:** update deps [ecfdd166]
+* **chore:** rename new projects [9fe21c82]
+* **chore:** threejs typo [b28e1555]
 
 ### v0.17.7
 
