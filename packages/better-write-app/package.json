@@ -78,7 +78,7 @@
     "nprogress": "0.2.0",
     "ohmyfetch": "0.4.19",
     "pinia": "2.0.22",
-    "three": "0.144.0",
+    "three": "0.146.0",
     "vue": "3.2.39",
     "vue-directive-providers": "0.1.0",
     "vue-i18n": "9.2.2",

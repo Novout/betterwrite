@@ -66,7 +66,7 @@ export const useWebGL = () => {
       const loaderSmoke = () => {
         loader = new THREE.TextureLoader()
         loader.load('three/smoke.png', (texture) => {
-          _cloud = new THREE.PlaneBufferGeometry(800, 800)
+          _cloud = new THREE.PlaneGeometry(800, 800)
           _cloudMaterial = new THREE.MeshLambertMaterial({
             map: texture,
             transparent: true,
