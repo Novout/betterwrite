@@ -185,8 +185,8 @@ export default {
       generate: 'Gerar (.DOCX)',
     },
     project: {
-      new: 'Novo',
-      blank: 'Anotação Rápida',
+      new: 'Novo Projeto',
+      blank: 'Novo Projeto Simples',
       configuration: 'Configurar',
       statistics: 'Estatísticas',
       preferences: 'Preferências',

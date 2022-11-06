@@ -185,8 +185,8 @@ export default {
       generate: 'Generate (.DOCX)',
     },
     project: {
-      new: 'New',
-      blank: 'Annotation',
+      new: 'New Project',
+      blank: 'New Simple Project',
       configuration: 'Configure',
       load: 'Load',
       save: 'Save',
