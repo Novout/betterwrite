@@ -84,8 +84,8 @@ export const useEditor = () => {
     // tracking normalize project cases
     watch(
       ABSOLUTE.$state,
-      () => {
-        emitter.emit('entity-text-force-save')
+      async () => {
+        await storage.normalize()
       },
       { deep: true }
     )
