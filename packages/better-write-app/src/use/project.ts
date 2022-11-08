@@ -173,7 +173,7 @@ export const useProject = () => {
       .normalize()
       .then(async () => {
         const target = JSON.stringify(storage.getProjectObject())
-        const zip = await writeBW(target, utils().exportName('bw'))
+        const zip = await writeBW(target)
 
         await saveAs(zip, utils().exportName('bw'))
 
@@ -204,7 +204,7 @@ export const useProject = () => {
         if (!res.isSupported.value) return
 
         const target = JSON.stringify(storage.getProjectObject())
-        const zip = await writeBW(target, utils().exportName('bw'))
+        const zip = await writeBW(target)
 
         res.data.value = zip
         res.fileName.value = utils().exportName('bw')
