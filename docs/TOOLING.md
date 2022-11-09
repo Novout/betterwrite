@@ -67,6 +67,19 @@ const onOpen = () => {
 
 > Without much frills, the application uses as a rule the `tsconfig.json` recommended by the scaffolding of the template of `Vite + TS`.
 
+### Components .vue Structure
+
+```txt
+  ├── components     #  .vue Default Components
+  ├──── icons
+  ├──── material
+  ├──── page
+  ├──── utils
+  ├── pages          #  .vue Route Components
+```
+
+> Components are already globally imported into the application context.
+
 ## Vite and Ecosystem
 
 [Vite](https://vitejs.dev/) is the big core of the application. Most of the tools and libraries implemented are in the vite plugins (not to be confused with the application's internal plugin system).
