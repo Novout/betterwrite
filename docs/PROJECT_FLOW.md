@@ -26,7 +26,7 @@ The `.json` consists of:
 
 The project flow was implemented to facilitate interaction with external files while being able to offer alternatives with all the available tools. Below is the project flow.
 
-![Project Flow](./.github/projectflux.png)
+![Project Flow](../.github/projectflux.png)
 
 ### Local Storage Problem
 
@@ -38,7 +38,7 @@ For this problem, two options are currently available: save the project in the c
 
 As can be seen in the top image for flow, all projects go through a support interceptor when they are loaded. It was implemented to be able to provide possible field faults in old projects, bringing security to the user of always having the possibility to load, use and save an old project.
 
-![Project Flow](./.github/supportinterceptor.png)
+![Project Flow](../.github/supportinterceptor.png)
 
 > Even in `major` updates (v1.0.0, v2.0.0, v3.0.0), projects will always be able to be used regardless of the application version or project version.
 

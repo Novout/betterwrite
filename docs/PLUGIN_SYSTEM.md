@@ -12,9 +12,9 @@ The system consists of:
 
 - Listening system to perform a specific action or provide a direct interaction between packets (used mainly for emitting button events).
 
-![Plugin System](./.github/plugincontext.png)
+![Plugin System](../.github/plugincontext.png)
 
-![Calls System](./.github/callspluginsystem.png)
+![Calls System](../.github/callspluginsystem.png)
 
 > For convenience, packages that depend on the plugin system are defined with prefix `better-write-plugin`
 
