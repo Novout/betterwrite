@@ -8,7 +8,7 @@ The multi-theme plugin was built given the choice of architecture focused on cus
 
 Migrating from [Tailwind](https://tailwindcss.com/) to [WindiCSS](https://windicss.org/), this choice was essential to facilitate the relationship between the values ​​inserted by the theme with the semantics of the inserted classes, where each `.vue` component (or at least most of them) has its own keys for each coloring item.
 
-> The configuration file can be found in the root of the `better-write-app` package as `windi.config.ts`
+> The configuration file can be found in the root of the `better-write-app` package as `windi.config.ts`.
 
 ### CSS Variables
 
