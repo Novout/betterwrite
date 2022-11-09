@@ -35,7 +35,9 @@ A Open Source Word Processor
 
 <br>
 
-<img src="./.github/customtheme.png" width="100%" />
+<a href="https://betterwrite.io/">
+  <img src="./.github/customtheme.png" width="100%" />
+</a>
 
 <br>
 
