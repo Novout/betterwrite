@@ -48,6 +48,8 @@ Cloud saving is very simple: after defining an identifier for the project and th
 
 > As it is a 100% Client-Side application, most of the manipulations are done on the client itself, leaving to the server the responsibility of controlling ONLY what it says about the SAVED IN THE CLOUD projects, never the locations and extensions.
 
+> [Supabase](https://supabase.com/) was a choice to meet the needs of cloud saving, delivering ease and agility in implementation and bringing with it other additional features, such as native oAuth 2.0 authentication. Between `Firebase` and `Supabase`, the choice that weighed was the fact that `Supabase` is open-source.
+
 ### Extension (.bw)
 
 The extension consists of a main .zip file, and inside it a `data.json` which is loaded together with the application.
