@@ -1,6 +1,24 @@
-# Changelog (06/11/2022)
+# Changelog (09/11/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.9
+
+* **chore:** readme [b7aafa1d]
+* **docs(tooling):** vue components structure [4cc61da6]
+* **docs:** entity model [46b7cd2d]
+* **docs:** application flow [7936cbe4]
+* **docs(project):** supabase choice [f7b43633]
+* **docs:** tooling section [1222c46c]
+* **chore:** typos [f621b824]
+* **fix:** typo [df24d4dc]
+* **docs:** generator flow section [0a7a3a3b]
+* **docs:** multitheme section [a48bec56]
+* **chore(docs):** move .md section to docs [e7f8f183]
+* **docs:** plugin system docs [b24823d1]
+* **fix(editor):** normalize in open other windows because a new project loader [ef0cbaa5]
+* **docs:** project flow [104e1c6f]
+* **chore(extension):** rename to data.json base data [e1f346fa]
 
 ### v0.17.8
 
