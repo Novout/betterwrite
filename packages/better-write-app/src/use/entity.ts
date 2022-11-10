@@ -1,4 +1,4 @@
-import { Entity, EntityType } from 'better-write-types'
+import { Entity, EntityType, ID } from 'better-write-types'
 import { nextTick } from 'vue'
 import { useEnv } from './env'
 import { useContextStore } from '@/store/context'
@@ -256,6 +256,56 @@ export const useEntity = () => {
       return '*' + selection + '*'
     }
 
+    const onSwitch = async (type: EntityType, index: ID<number>) => {
+      CONTEXT.alterInPage({
+        entity: CONTEXT.entities[index],
+        type,
+      })
+
+      await nextTick
+
+      emitter.emit('entity-text-focus', {
+        position: 'end',
+        target: index,
+      })
+
+      plugin.emit('plugin-entity-alter-in-page', {
+        data: t(`editor.entity.${type}`).toUpperCase(),
+        index,
+      })
+
+      await nextTick
+
+      await storage.normalize()
+    }
+
+    const onNew = async (
+      entity: Entity,
+      index: ID<number>,
+      type: EntityType
+    ) => {
+      CONTEXT.newInPageByOption({
+        entity,
+        type,
+      })
+
+      await nextTick
+
+      emitter.emit('entity-text-focus', {
+        position: 'end',
+        target: index + 1,
+      })
+
+      plugin.emit('plugin-entity-create', {
+        data: entity.raw,
+        index: CONTEXT.entities.indexOf(entity),
+      })
+
+      await nextTick
+
+      await storage.normalize()
+    }
+
     return {
       onParagraphCustomize,
       onParagraphComment,
@@ -265,6 +315,8 @@ export const useEntity = () => {
       onDeleteRaw,
       onBoldRaw,
       onItalicRaw,
+      onSwitch,
+      onNew,
     }
   }
   return { base, utils }

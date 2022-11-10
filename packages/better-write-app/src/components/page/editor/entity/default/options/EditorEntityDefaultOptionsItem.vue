@@ -8,7 +8,7 @@
     @touchcancel="hover = true"
     @click="onAction"
   >
-    <div class="flex items-center justify-between w-full">
+    <div class="flex items-center justify-start w-full">
       <HeroIcon class="mr-3">
         <slot name="icon" />
       </HeroIcon>

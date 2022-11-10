@@ -13,10 +13,10 @@
         duration: 200,
       },
     }"
-    class="flex bg-rgba-blur font-raleway flex-col fixed bg-theme-editor-entity-popover-background wb-text shadow-lg z-max rounded"
+    class="flex bg-rgba-blur select-none font-raleway flex-col fixed bg-theme-editor-entity-popover-background wb-text shadow-lg z-max"
     @contextmenu.prevent.stop="() => {}"
   >
-    <EditorEntityDefaultOptionsItem @action="onDeleteEntity">
+    <EditorEntityDefaultOptionsItem @action="base().onDelete(entity, _index)">
       <template #icon>
         <IconDelete class="h-5 w-5" />
       </template>
@@ -24,80 +24,17 @@
         {{ t('editor.aside.entity.delete') }}
       </template>
     </EditorEntityDefaultOptionsItem>
-    <EditorEntityDefaultOptionsItem @action="onUpEntity">
+    <EditorEntityDefaultOptionsItem @action="base().onUp(entity, _index)">
       <template #icon>
         <IconUp class="h-5 w-5" />
       </template>
       <template #title>{{ t('editor.aside.entity.up') }}</template>
     </EditorEntityDefaultOptionsItem>
-    <EditorEntityDefaultOptionsItem @action="onDownEntity">
+    <EditorEntityDefaultOptionsItem @action="base().onDown(entity, _index)">
       <template #icon>
         <IconDown class="h-5 w-5" />
       </template>
       <template #title>{{ t('editor.aside.entity.down') }}</template>
-    </EditorEntityDefaultOptionsItem>
-    <EditorEntityDefaultOptionsItem
-      v-if="entity.type === 'paragraph'"
-      @action="ABSOLUTE.entity.comment = true"
-    >
-      <template #icon>
-        <IconComment class="h-5 w-5" />
-      </template>
-      <template #title>{{ t('editor.aside.entity.comments') }}</template>
-    </EditorEntityDefaultOptionsItem>
-    <EditorEntityDefaultOptionsItem :off="true">
-      <template #icon>
-        <IconSwap class="h-5 w-5" />
-      </template>
-      <template #title>{{ t('editor.aside.entity.switch') }}</template>
-
-      <template #overflow>
-        <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onSwitchEntity('paragraph')"
-        >
-          <IconParagraph width="24" height="24" />
-        </EditorEntityDefaultOptionsOverflow>
-        <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onSwitchEntity('heading-two')"
-        >
-          <IconHeadingTwo width="24" height="24" />
-        </EditorEntityDefaultOptionsOverflow>
-        <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onSwitchEntity('heading-three')"
-        >
-          <IconHeadingThree width="24" height="24" />
-        </EditorEntityDefaultOptionsOverflow>
-        <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onSwitchEntity('page-break')"
-        >
-          <IconPageBreak width="24" height="24" />
-        </EditorEntityDefaultOptionsOverflow>
-        <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onSwitchEntity('line-break')"
-        >
-          <IconLineBreak width="24" height="24" />
-        </EditorEntityDefaultOptionsOverflow>
-        <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onSwitchEntity('checkbox')"
-        >
-          <IconCheckbox width="24" height="24" />
-        </EditorEntityDefaultOptionsOverflow>
-        <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onSwitchEntity('list')"
-        >
-          <IconList width="24" height="24" />
-        </EditorEntityDefaultOptionsOverflow>
-        <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onSwitchEntity('image')"
-        >
-          <IconImage width="24" height="24" />
-        </EditorEntityDefaultOptionsOverflow>
-        <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onSwitchEntity('drau')"
-        >
-          <IconDrawing width="24" height="24" />
-        </EditorEntityDefaultOptionsOverflow>
-      </template>
     </EditorEntityDefaultOptionsItem>
     <EditorEntityDefaultOptionsItem :off="true">
       <template #icon>
@@ -107,99 +44,94 @@
 
       <template #overflow>
         <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onNewEntity('paragraph')"
+          @click.prevent.stop="base().onNew(entity, _index, 'paragraph')"
         >
           <IconParagraph width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
         <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onNewEntity('heading-two')"
+          @click.prevent.stop="base().onNew(entity, _index, 'heading-two')"
         >
           <IconHeadingTwo width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
         <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onNewEntity('heading-three')"
+          @click.prevent.stop="base().onNew(entity, _index, 'heading-three')"
         >
           <IconHeadingThree width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
         <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onNewEntity('page-break')"
+          @click.prevent.stop="base().onNew(entity, _index, 'page-break')"
         >
           <IconPageBreak width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
         <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onNewEntity('line-break')"
+          @click.prevent.stop="base().onNew(entity, _index, 'line-break')"
         >
           <IconLineBreak width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
         <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onNewEntity('checkbox')"
+          @click.prevent.stop="base().onNew(entity, _index, 'checkbox')"
         >
           <IconCheckbox width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
         <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onNewEntity('list')"
+          @click.prevent.stop="base().onNew(entity, _index, 'list')"
         >
           <IconList width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
         <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onNewEntity('image')"
-        >
-          <IconImage width="24" height="24" />
-        </EditorEntityDefaultOptionsOverflow>
-        <EditorEntityDefaultOptionsOverflow
-          @click.prevent.stop="onNewEntity('drau')"
+          @click.prevent.stop="base().onNew(entity, _index, 'drau')"
         >
           <IconDrawing width="24" height="24" />
         </EditorEntityDefaultOptionsOverflow>
       </template>
     </EditorEntityDefaultOptionsItem>
-    <EditorEntityDefaultOptionsItem
-      v-if="
-        entity.type === 'paragraph' ||
-        entity.type === 'list' ||
-        entity.type === 'checkbox'
-      "
-      @action="ent.base().onParagraphCustomize(entity)"
-    >
+    <EditorEntityDefaultOptionsItem :off="true">
       <template #icon>
-        <IconText class="h-5 w-5" />
+        <IconSwap class="h-5 w-5" />
       </template>
-      <template #title>
-        {{ t('editor.aside.entity.customize') }}
-      </template>
-    </EditorEntityDefaultOptionsItem>
-    <EditorEntityDefaultOptionsItem v-if="entity.type === 'image'" :off="true">
-      <template #icon>
-        <IconImage class="h-5 w-5" />
-      </template>
-      <template #title>{{ t('editor.aside.entity.image') }}</template>
+      <template #title>{{ t('editor.aside.entity.switch') }}</template>
 
       <template #overflow>
-        <div
-          class="mx-2 flex flex-col justify-center"
-          :class="[
-            image.alignment === 'full' ? 'opacity-50 pointer-events-none' : '',
-          ]"
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="base().onSwitch('paragraph', _index)"
         >
-          <label>{{ t('editor.pdf.custom.image.width') }}</label>
-          <InputNumber v-model="image.width" :step="25" />
-        </div>
-        <div
-          class="mx-2 flex flex-col justify-center"
-          :class="[
-            image.alignment === 'full' ? 'opacity-50 pointer-events-none' : '',
-          ]"
+          <IconParagraph width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="base().onSwitch('heading-two', _index)"
         >
-          <label>{{ t('editor.pdf.custom.image.height') }}</label>
-          <InputNumber v-model="image.height" :step="25" />
-        </div>
-        <div class="mx-2 flex flex-col justify-center">
-          <label>{{ t('editor.pdf.custom.image.alignment') }}</label>
-          <InputCarousel
-            v-model="image.alignment"
-            :arr="['full', 'left', 'center', 'right']"
-          />
-        </div>
+          <IconHeadingTwo width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="base().onSwitch('heading-three', _index)"
+        >
+          <IconHeadingThree width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="base().onSwitch('page-break', _index)"
+        >
+          <IconPageBreak width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="base().onSwitch('line-break', _index)"
+        >
+          <IconLineBreak width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="base().onSwitch('checkbox', _index)"
+        >
+          <IconCheckbox width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="base().onSwitch('list', _index)"
+        >
+          <IconList width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
+        <EditorEntityDefaultOptionsOverflow
+          @click.prevent.stop="base().onSwitch('drau', _index)"
+        >
+          <IconDrawing width="24" height="24" />
+        </EditorEntityDefaultOptionsOverflow>
       </template>
     </EditorEntityDefaultOptionsItem>
   </div>
@@ -208,20 +140,15 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, watch, ref, nextTick, reactive } from 'vue'
-  import { Entity, EntityType } from 'better-write-types'
+  import { computed, ref } from 'vue'
+  import { Entity } from 'better-write-types'
   import { useEditorStore } from '@/store/editor'
   import { useContextStore } from '@/store/context'
   import { tryOnMounted, useIntersectionObserver } from '@vueuse/core'
   import { onClickOutside } from '@vueuse/core'
   import { useAbsoluteStore } from '@/store/absolute'
   import { useI18n } from 'vue-i18n'
-  import useEmitter from '@/use/emitter'
-  import { useFactory } from '@/use/factory'
-  import { usePlugin } from 'better-write-plugin-core'
   import { useEntity } from '@/use/entity'
-  import { useStorage } from '@/use/storage/storage'
-  import { getImageFileRaw } from 'better-write-image-converter'
 
   const EDITOR = useEditorStore()
   const ABSOLUTE = useAbsoluteStore()
@@ -236,11 +163,7 @@
   const block = ref<boolean>(false)
 
   const { t } = useI18n()
-  const emitter = useEmitter()
-  const plugin = usePlugin()
-  const factory = useFactory()
-  const ent = useEntity()
-  const storage = useStorage()
+  const { base } = useEntity()
 
   onClickOutside(options as any, () => onClose())
 
@@ -287,119 +210,4 @@
   const onClose = () => {
     ABSOLUTE.entity.menu = false
   }
-
-  const onDeleteEntity = async () => {
-    ent.base().onDelete(entity.value, _index.value)
-  }
-
-  const onUpEntity = () => {
-    CONTEXT.switchInPage({
-      entity: entity.value,
-      direction: 'up',
-    })
-
-    onClose()
-  }
-
-  const onDownEntity = () => {
-    CONTEXT.switchInPage({
-      entity: entity.value,
-      direction: 'down',
-    })
-
-    onClose()
-  }
-
-  const onNewEntity = (type: EntityType) => {
-    if (type === 'image') {
-      getImageFileRaw().then(async ({ raw, fileName }) => {
-        const content = factory.entity().create('image', raw)
-        content.external!.image!.name = fileName
-
-        CONTEXT.insert(content, EDITOR.actives.entity.index + 1)
-
-        await storage.normalize()
-      })
-
-      return
-    }
-
-    onNew(entity.value, type)
-  }
-
-  const onNew = async (content: Entity, type: EntityType) => {
-    CONTEXT.newInPageByOption({
-      entity: content,
-      type,
-    })
-
-    await nextTick
-
-    emitter.emit('entity-text-focus', {
-      position: 'end',
-      target: _index.value + 1,
-    })
-
-    plugin.emit('plugin-entity-create', {
-      data: entity.value.raw,
-      index: CONTEXT.entities.indexOf(entity.value),
-    })
-
-    onClose()
-  }
-
-  const onSwitchEntity = async (type: EntityType) => {
-    if (type === 'image') {
-      getImageFileRaw().then(async ({ raw, fileName }) => {
-        const content = factory.entity().create('image', raw)
-        content.external!.image!.name = fileName
-
-        CONTEXT.replace(content, EDITOR.actives.entity.index)
-
-        await storage.normalize()
-      })
-
-      return
-    }
-
-    onSwitch(entity.value, type)
-  }
-
-  const onSwitch = async (content: Entity, type: EntityType) => {
-    CONTEXT.alterInPage({
-      entity: content,
-      type,
-    })
-
-    await nextTick
-
-    emitter.emit('entity-text-focus', {
-      position: 'end',
-      target: _index.value,
-    })
-
-    plugin.emit('plugin-entity-alter-in-page', {
-      data: t(`editor.entity.${type}`).toUpperCase(),
-      index: CONTEXT.entities.indexOf(content),
-    })
-
-    onClose()
-  }
-
-  const image = reactive({
-    height: entity.value.external?.image?.size.height,
-    width: entity.value.external?.image?.size.width,
-    alignment: entity.value.external?.image?.alignment,
-  })
-
-  watch(image, () => {
-    const _index: number = CONTEXT.entities.indexOf(entity.value)
-
-    ;(CONTEXT.entities[_index] as any).external.image.alignment =
-      image.alignment as any
-    ;(CONTEXT.entities[_index] as any).external.image.size.height =
-      image.height as any
-    ;(CONTEXT.entities[_index] as any).external.image.size.width =
-      image.width as any
-  })
 </script>
