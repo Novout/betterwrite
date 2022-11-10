@@ -1,3 +1,5 @@
+import { ASTNormalizeOptions } from 'better-write-types'
+
 export const occurrences = (
   str: string,
   target: string,
@@ -22,15 +24,11 @@ export const occurrences = (
   return n
 }
 
-export const normalize = (
-  str: string,
-  options: {
-    type: 'all' | 'inserts'
-    whitespace?: boolean
-  }
-) => {
+export const normalize = (str: string, options: ASTNormalizeOptions) => {
   if (options?.whitespace)
     str = str.replaceAll('&nbsp;', ' ').replaceAll('&#160', ' ')
+
+  if (options?.trim) str = str.trim()
 
   switch (options.type) {
     case 'all':
@@ -45,5 +43,7 @@ export const normalize = (
         .replaceAll('</i>', '')
         .replaceAll('<u>', '')
         .replaceAll('</u>', '')
+    default:
+      return str
   }
 }

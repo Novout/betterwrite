@@ -21,3 +21,9 @@ export interface TextASTTag {
   underline: boolean
   link: boolean
 }
+
+export interface ASTNormalizeOptions {
+  type: 'all' | 'inserts'
+  whitespace?: boolean
+  trim?: boolean
+}
