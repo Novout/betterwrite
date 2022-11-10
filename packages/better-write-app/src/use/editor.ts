@@ -7,20 +7,18 @@ import { useLocalStorage } from '@/use/storage/local'
 import {
   useEventListener,
   useFullscreen,
-  useNetwork,
   useUrlSearchParams,
 } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
 import { Calls, usePlugin } from 'better-write-plugin-core'
-import { computed, onBeforeMount, onBeforeUnmount, onMounted, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { onBeforeRouteLeave, useRouter } from 'vue-router'
+import { onBeforeRouteLeave } from 'vue-router'
 import { useListener } from './listener'
 import { useAuthStore } from '@/store/auth'
 import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
 import { useAbsoluteStore } from '@/store/absolute'
-import useEmitter from './emitter'
 
 export const useEditor = () => {
   const ABSOLUTE = useAbsoluteStore()
@@ -37,19 +35,11 @@ export const useEditor = () => {
   const listener = useListener()
   const { t } = useI18n()
   const { toggle } = useFullscreen()
-  const router = useRouter()
   const storage = useStorage()
-  const network = useNetwork()
-  const emitter = useEmitter()
   const params = useUrlSearchParams()
 
   const init = () => {
     Calls.EditorCreated(plugin)
-
-    onBeforeMount(() => {
-      if (!AUTH.account.user && network.isOnline.value)
-        router.push({ path: '/landing' })
-    })
 
     onMounted(() => {
       Calls.EditorMounted(plugin)

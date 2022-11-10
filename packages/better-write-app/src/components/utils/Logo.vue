@@ -24,7 +24,6 @@
 </template>
 
 <script setup lang="ts">
-  import { useLocalStorage } from '@/use/storage/local'
   import { useRouter } from 'vue-router'
   import { useEditorStore } from '@/store/editor'
   import { computed, watch, ref } from 'vue'
@@ -41,7 +40,6 @@
   const EDITOR = useEditorStore()
 
   const router = useRouter()
-  const local = useLocalStorage()
   const utils = useUtils()
 
   const path = ref(utils.path().resolve('logo_default.svg'))
@@ -76,8 +74,6 @@
   const onClick = () => {
     if (props.hidden) return
 
-    local.onSaveProject(false).then(() => {
-      props.back ? router.back() : router.push('/landing')
-    })
+    router.push('/about')
   }
 </script>
