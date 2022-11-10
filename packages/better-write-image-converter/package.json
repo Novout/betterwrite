@@ -1,6 +1,6 @@
 {
 	"name": "better-write-image-converter",
-	"version": "0.17.9",
+	"version": "0.17.10",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -18,7 +18,7 @@
 		"lint": "prettier --write src/"
 	},
 	"dependencies": {
-		"better-write-types": "^0.17.9"
+		"better-write-types": "^0.17.10"
 	},
 	"files": [
 		"dist/**/*",

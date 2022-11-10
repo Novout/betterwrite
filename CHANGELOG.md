@@ -1,6 +1,14 @@
-# Changelog (09/11/2022)
+# Changelog (10/11/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.10
+
+* **chore(raw):** remove deprecated code [afa1cf08]
+* **feat(ast):** trim normalize option [80cf674e]
+* **refactor(editor):** preferences theme position [f036a253]
+* **fix(app):** oauth redirects with existent access token in url [9d81485e]
+* **refactor(editor):** options centralized hook [2f2a4930]
 
 ### v0.17.9
 
