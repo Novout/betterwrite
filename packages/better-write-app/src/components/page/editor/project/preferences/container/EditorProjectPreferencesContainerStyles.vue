@@ -2,8 +2,11 @@
   <EditorProjectPreferencesContainerSlot>
     <div class="flex flex-col gap-2">
       <PreferencesContainerTitle>{{
-        t('editor.preferences.configuration.theme')
+        t('editor.preferences.configuration.theme.title')
       }}</PreferencesContainerTitle>
+      <p class="font-bold text-sm font-raleway mt-2">
+        {{ t('editor.preferences.configuration.theme.define') }}
+      </p>
       <div>
         <div
           v-for="([theme, logo], index) in Themes()"
@@ -25,60 +28,67 @@
           </p>
         </div>
       </div>
-    </div>
-    <div class="flex flex-col gap-5">
-      <div class="flex flex-col gap-2">
-        <p class="font-bold text-lg mt-5">
-          {{ t('editor.preferences.configuration.editor.background.title') }}
+      <p class="font-bold text-sm font-raleway mt-2">
+        {{ t('editor.preferences.configuration.theme.or') }}
+      </p>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.preferences.configuration.editor.background.image') }}
         </p>
-        <div class="wb-preferences">
-          <p class="text-sm">
-            {{ t('editor.preferences.configuration.editor.background.image') }}
-          </p>
-          <InputFileImage
-            accept=".png, .gif, .jpg, .jpeg"
-            :src="EDITOR.styles.base.backgroundData"
-            @load="onCoverImageLoad"
-            @exclude="onDeleteCoverImage"
-          />
-        </div>
-        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
-          <p class="text-sm">
-            {{
-              t('editor.preferences.configuration.editor.background.imageBlur')
-            }}
-          </p>
-          <InputBoolean v-model="EDITOR.styles.base.backgroundBlur" />
-        </div>
-        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
-          <p class="text-sm">
-            {{
-              t(
-                'editor.preferences.configuration.editor.background.imageGrayscale'
-              )
-            }}
-          </p>
-          <InputBoolean v-model="EDITOR.styles.base.backgroundGrayscale" />
-        </div>
-        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
-          <p class="text-sm">
-            {{
-              t(
-                'editor.preferences.configuration.editor.background.imageSaturate'
-              )
-            }}
-          </p>
-          <InputBoolean v-model="EDITOR.styles.base.backgroundSaturate" />
-        </div>
-        <div v-if="EDITOR.styles.base.backgroundData" class="wb-preferences">
-          <p class="text-sm">
-            {{
-              t('editor.preferences.configuration.editor.background.imageSepia')
-            }}
-          </p>
-          <InputBoolean v-model="EDITOR.styles.base.backgroundSepia" />
+        <InputFileImage
+          accept=".png, .gif, .jpg, .jpeg"
+          :src="EDITOR.styles.base.backgroundData"
+          @load="onCoverImageLoad"
+          @exclude="onDeleteCoverImage"
+        />
+        <div
+          v-if="EDITOR.styles.base.backgroundData"
+          class="flex flex-col gap-2"
+        >
+          <div class="wb-preferences">
+            <p class="text-sm">
+              {{
+                t(
+                  'editor.preferences.configuration.editor.background.imageBlur'
+                )
+              }}
+            </p>
+            <InputBoolean v-model="EDITOR.styles.base.backgroundBlur" />
+          </div>
+          <div class="wb-preferences">
+            <p class="text-sm">
+              {{
+                t(
+                  'editor.preferences.configuration.editor.background.imageGrayscale'
+                )
+              }}
+            </p>
+            <InputBoolean v-model="EDITOR.styles.base.backgroundGrayscale" />
+          </div>
+          <div class="wb-preferences">
+            <p class="text-sm">
+              {{
+                t(
+                  'editor.preferences.configuration.editor.background.imageSaturate'
+                )
+              }}
+            </p>
+            <InputBoolean v-model="EDITOR.styles.base.backgroundSaturate" />
+          </div>
+          <div class="wb-preferences">
+            <p class="text-sm">
+              {{
+                t(
+                  'editor.preferences.configuration.editor.background.imageSepia'
+                )
+              }}
+            </p>
+            <InputBoolean v-model="EDITOR.styles.base.backgroundSepia" />
+          </div>
         </div>
       </div>
+    </div>
+    <div class="flex flex-col gap-5">
       <div class="flex flex-col gap-2">
         <p class="font-bold text-lg mt-5">
           {{ t('editor.preferences.configuration.editor.text') }}

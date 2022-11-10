@@ -85,7 +85,11 @@ export default {
     },
     configuration: {
       title: 'Configuration',
-      theme: 'Theme',
+      theme: {
+        title: 'Theme',
+        define: 'Pre-Defined',
+        or: 'OR',
+      },
       editor: {
         options: {
           googleFonts: {
