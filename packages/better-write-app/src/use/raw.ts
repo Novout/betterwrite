@@ -1,13 +1,7 @@
-import {
-  OnFocusOptions,
-  V2RawApply,
-  V2RawSet,
-  Entity,
-} from 'better-write-types'
+import { OnFocusOptions, Entity } from 'better-write-types'
 import { useClipboard } from '@vueuse/core'
 import { useUtils } from './utils'
 import { useExternalsStore } from '@/store/externals'
-import { useEnv } from './env'
 import { useStorage } from '@/use/storage/storage'
 import { ComputedRef, nextTick } from 'vue'
 import { useContextStore } from '@/store/context'
@@ -198,7 +192,6 @@ export const useRaw = () => {
   const ABSOLUTE = useAbsoluteStore()
   const EDITOR = useEditorStore()
 
-  const env = useEnv()
   const utils = useUtils()
   const plugin = usePlugin()
   const storage = useStorage()
@@ -206,194 +199,8 @@ export const useRaw = () => {
   const toast = useToast()
   const { t } = useI18n()
 
-  const v1 = () => {
-    const convert = (entity: Entity) => {
-      let final = ''
-      let _italic = false
-      let _bold = false
-
-      if (
-        entity.type === 'page-break' ||
-        entity.type === 'line-break' ||
-        entity.raw === '__EMPTY_LINE__'
-      )
-        return ''
-
-      if (entity.type === 'image') {
-        return `<div class="flex wb-text text-xl items-end w-full justify-center py-5">
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-7 w-7"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          <p class="ml-1">${entity.external?.image?.name}</p>
-        </div>`
-      }
-
-      if (entity.type !== 'paragraph') return entity.raw
-
-      const over: Array<string> = []
-
-      let _raw = entity.raw
-
-      entity.raw.split(/[ ]+/).forEach((word: string) => {
-        if (word.includes('http://') || word.includes('https://'))
-          over.push(word)
-      })
-
-      over.forEach((word: string) => {
-        _raw = _raw.replace(
-          word,
-          `${link().open(word)}${word}${link().close()}`
-        )
-      })
-
-      for (let i = 0; i < _raw.length; i++) {
-        const letter = _raw.charAt(i)
-
-        if (letter === '*' && !_italic) {
-          _italic = true
-          final += italic().open()
-        } else if (letter === '*' && _italic) {
-          final += italic().close()
-          _italic = false
-        } else if (letter === '&' && !_bold) {
-          _bold = true
-          final += bold().open()
-        } else if (letter === '&' && _bold) {
-          final += bold().close()
-          _bold = false
-        } else {
-          final += letter
-        }
-      }
-
-      return final
-    }
-
-    const pdfConvert = (raw: string): Array<any> => {
-      const final: Array<any> = []
-
-      let str = ''
-
-      let str_italic = ''
-      let str_bold = ''
-      let str_link = ''
-
-      let _italic = false
-      let _bold = false
-      let _link = false
-
-      let _raw = raw
-      const over: Array<string> = []
-
-      raw.split(/[ ,]+/).forEach((word: string) => {
-        if (word.includes('http://') || word.includes('https://'))
-          over.push(word)
-      })
-
-      over.forEach((word: string) => {
-        _raw = _raw.replace(word, `|${word}|`)
-      })
-
-      for (let i = 0; i < _raw.length; i++) {
-        const letter = _raw.charAt(i)
-
-        if (letter === '*' && !_italic) {
-          _italic = true
-          final.push(str)
-          str = ''
-        } else if (letter === '*' && _italic) {
-          const obj = {
-            text: str_italic,
-            italics: true,
-          }
-          final.push(obj)
-          str_italic = ''
-          _italic = false
-        } else if (_italic) {
-          str_italic += letter
-        } else if (letter === '|' && !_link) {
-          _link = true
-          final.push(str)
-          str = ''
-        } else if (letter === '|' && _link) {
-          const obj = {
-            text: str_link.replace('http://', '').replace('https://', ''),
-            link: str_link,
-            decoration: 'underline',
-          }
-          final.push(obj)
-          str_link = ''
-          _link = false
-        } else if (_link) {
-          str_link += letter
-        } else if (letter === '&' && !_bold) {
-          _bold = true
-          final.push(str)
-          str = ''
-        } else if (letter === '&' && _bold) {
-          const obj = {
-            text: str_bold,
-            bold: true,
-          }
-          final.push(obj)
-          str_bold = ''
-          _bold = false
-        } else if (_bold) {
-          str_bold += letter
-        }
-
-        if (
-          !_bold &&
-          !_italic &&
-          !_link &&
-          letter !== '*' &&
-          letter !== '&' &&
-          letter !== '|'
-        ) {
-          str += letter
-          if (i + 1 >= _raw.length) {
-            final.push(str)
-          }
-        }
-      }
-
-      return final
-    }
-
-    return { convert, pdfConvert }
-  }
-
   const v2 = () => {
     const block = () => {
-      const text = () => {
-        const join = (texts: string[]): string => {
-          return texts.reduce((acc, text, index) => {
-            if (index === 0) return (acc += text)
-
-            if (text === ' ') {
-              return (acc += '<br>')
-            }
-
-            const aux = '<div>' + text + '</div>'
-
-            acc += aux
-
-            return acc
-          }, '')
-        }
-
-        return { join }
-      }
-
       const drop = async (e: DragEvent, item: Entity) => {
         const target = e.dataTransfer?.items[0]
 
@@ -482,7 +289,7 @@ export const useRaw = () => {
         ]
       }
 
-      return { text, drop, menu, style, class: c }
+      return { drop, menu, style, class: c }
     }
 
     const make = () => {
@@ -619,116 +426,6 @@ export const useRaw = () => {
       }
     }
 
-    const validate = (arr: Array<string>): Array<V2RawSet> => {
-      const final: Array<V2RawSet> = []
-      let set: false | 'bold' | 'italic' = false
-
-      arr.forEach((raw: string) => {
-        if (set === 'italic') {
-          final.push({
-            content: raw,
-            type: 'italic',
-          })
-
-          set = false
-          return
-        }
-
-        if (raw === html().italic().open()) {
-          set = 'italic'
-          return
-        }
-
-        if (set === 'bold') {
-          final.push({
-            content: raw,
-            type: 'bold',
-          })
-
-          set = false
-          return
-        }
-
-        if (raw === html().bold().open()) {
-          set = 'bold'
-          return
-        }
-
-        if (raw === html().italic().close() || raw === html().bold().close())
-          return
-
-        final.push({
-          content: raw,
-          type: 'simple',
-        })
-      })
-
-      return final
-    }
-
-    const apply = ({ existent, type, input }: V2RawApply) => {
-      let _: string = ''
-      let letterCount: number = 0
-
-      const target = caret().object(input)
-
-      const vld = validate(existent.split(useUtils().regex().htmlTags()))
-
-      vld.forEach((set: V2RawSet) => {
-        const initial = target.position - letterCount
-        const finish = initial - target.value.length
-
-        const wrap = set.content.substring(initial, finish)
-
-        const not = () => {
-          switch (set.type) {
-            case 'italic':
-              _ += make().italic(set.content)
-              break
-            case 'bold':
-              _ += make().bold(set.content)
-              break
-            case 'simple':
-              _ += set.content
-              break
-          }
-
-          letterCount += set.content.length
-        }
-
-        if (!wrap || wrap !== target.value) {
-          not()
-
-          return
-        }
-
-        if (set.type !== 'simple') {
-          if (target.value === set.content) {
-            _ += set.content
-            return
-          }
-
-          not()
-
-          return
-        }
-
-        const mutate =
-          type === 'bold'
-            ? make().bold(target.value)
-            : make().italic(target.value)
-        const start = target.position - letterCount
-        const end = start - target.value.length
-
-        const reverse =
-          set.content.slice(0, end) + mutate + set.content.slice(start)
-
-        _ += reverse
-      })
-
-      return _
-    }
-
     const purge = () => {
       const finder = (entity: Entity): string => {
         if (
@@ -789,7 +486,7 @@ export const useRaw = () => {
         return entity.raw
       }
 
-      return { apply, editor, switcher, finder }
+      return { editor, switcher, finder }
     }
 
     const copy = () => {
@@ -815,8 +512,6 @@ export const useRaw = () => {
       block,
       html,
       caret,
-      apply,
-      validate,
       purge,
       make,
       copy,
@@ -824,5 +519,5 @@ export const useRaw = () => {
     }
   }
 
-  return { v1, v2 }
+  return { v2 }
 }
