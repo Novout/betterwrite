@@ -12,6 +12,38 @@ The main application is in its own vue flow: after the packages are compiled, th
 
 Below are listed some specific solutions for the application flow:
 
+### Stores-Based
+
+Each and every flow passes through the reactive stores. This dynamic allows the immediate response of actions (except the loading of projects) and the independence of a possible back-end.
+
+```txt
+├── src/store
+├──── absolute.ts   # Window's Controller
+├──── addons.ts     # Internal Tools
+├──── auth.ts       # Auth (Supabase)
+├──── context.ts    # Loaded Chapter
+├──── docx.ts       # DOCX Configuration
+├──── editor.ts     # Customization Settings
+├──── externals.ts  # External Tools
+├──── global.ts     # Global Controller
+├──── history.ts    # Redo-Undo AST Controller
+├──── pdf.ts        # PDF Configuration
+├──── project.ts    # Loaded Project
+├──── tutorial.ts   # Tutorial Settings
+```
+
+#### Context and Project
+
+Always what is being mutable and is part of the main editor will be loaded in the Context while Project will only update in specific cases (for better performance in large amounts of rendered blocks).
+
+![Context and Project](../.github/contextandproject.png)
+
+#### Absolute
+
+This store controls all interfaces that are not their own route and are attached to the edit route. So it is possible to load resources without having to destroy and reload the project at all costs.
+
+![Absolute Store Flux](../.github/absolutestore.png)
+
 ### PWA instead of Electron
 
 Better Write stopped using `Electron` (since v0.9.0-beta.6) for the `PWA` approach. Because of the proposal to have an application that is web, desktop and mobile, PWA can supply all three types of platforms with the same code.

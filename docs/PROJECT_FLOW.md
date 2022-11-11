@@ -57,3 +57,22 @@ The extension consists of a main .zip file, and inside it a `data.json` which is
 > The compressed save is discarded and the local object is loaded again to avoid unnecessary loading times and to facilitate script and derivative manipulations.
 
 > It is possible to access `data.json` without much difficulty given the simplistic nature of the extension, where the documentation of the items can be found in the typing code itself, by [clicking here](https://github.com/Novout/betterwrite/blob/main/packages/better-write-types/src/types/project.ts) and [here](https://github.com/Novout/betterwrite/blob/main/packages/better-write-types/src/types/context.ts).
+
+## Project Type
+
+Initially, the editor had the audience perspective for professional writers only. However, we now want to reach other audiences, such as casual users. To circumvent this dynamic, the project has a predetermined type that defines which tools will be available to the user.
+
+### Creative Type
+
+- Chapter Layout
+- External Notes
+- Standard Tools
+
+### Blank Type
+
+- Side Graph Removed
+- Standard Tools
+
+> A blank project is a single chapter and treated as such by the application.
+
+> Other project types are expected in the future as new features.

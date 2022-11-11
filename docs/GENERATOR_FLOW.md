@@ -18,9 +18,17 @@ The flow of generators in the text part consists of converting them to a new lis
 
 ![Generator Flow Text](../.github/generatorastflow.png)
 
+## Images
+
+All images go through a conversion process, whether used in documents or for use in the editor. Certain image extensions that are not supported by some tools (.svg, for example) are converted to .png via an html canvas trick. The main purpose of this balcony is to treat the images as a single item.
+
+> The drawing block type defaults to an svg-xml export, which is also converted to an image.
+
+![PNG Canvas](../.github/pngcanvas.png)
+
 ## Other Types
 
-Other types that are not directly related to text processing (images and drawings, for example), depend on how the extension handles that data and whether it is possible to convert the block into the document.
+Custom types that are not traditionally text or images depend on whether the document type could handle the item or not.
 
 > The TXT text generator fails to convert the vast majority of blocks, discarding all non-text entity types.
 
