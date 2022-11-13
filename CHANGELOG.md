@@ -1,6 +1,12 @@
-# Changelog (10/11/2022)
+# Changelog (12/11/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.11
+
+* **docs:** flow corrections [0bf2358d]
+* **docs:** improvement flux's [a1b705b3]
+* **docs:** typo [97f7a6c4]
 
 ### v0.17.10
 
