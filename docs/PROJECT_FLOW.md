@@ -2,12 +2,6 @@
 
 To provide a better experience with the projects and follow the Offline First precepts, the project is based on a `.json` divided into usage and access categories. With this, it is possible to adapt the entire context solely on the Client-Side and offer a range of tools that do not depend on internet access or an overloaded server.
 
-## Reactivity
-
-All context (both mutable and global file access) is handled directly by [pinia stores](https://pinia.vuejs.org/). Therefore, we were able to deliver a fully reactive and instant application to users' perception.
-
-For this, it was necessary to work around some limitations, such as saving changes only when the context is blurred ([not using vue's native `v-model`](https://github.com/Novout/betterwrite/blob/main/packages/better-write-app/src/use/block/text.ts#L49)) and basing modal changes only when they are closed.
-
 ## JSON Structure
 
 The `.json` consists of:

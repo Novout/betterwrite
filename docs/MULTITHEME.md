@@ -4,6 +4,8 @@ The multi-theme plugin was built given the choice of architecture focused on cus
 
 > By default, the chosen initial theme depends on the system presets (undefined, white or dark).
 
+![Theme Flow](../.github/themebase.png)
+
 ### WindiCSS
 
 Migrating from [Tailwind](https://tailwindcss.com/) to [WindiCSS](https://windicss.org/), this choice was essential to facilitate the relationship between the values ​​inserted by the theme with the semantics of the inserted classes, where each `.vue` component (or at least most of them) has its own keys for each coloring item.

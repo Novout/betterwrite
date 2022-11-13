@@ -8,6 +8,16 @@ To more easily deal with the issue of data entry (mainly keyboard related) it wa
 
 > The AST itself was built only in version v3, as the editor has already gone through other ways of working before arriving at this solution.
 
+### Reactivity
+
+All context (both mutable and global file access) is handled directly by [pinia stores](https://pinia.vuejs.org/). Therefore, we were able to deliver a fully reactive and instant application to users' perception.
+
+For this, it was necessary to work around some limitations, such as saving changes only when the context is blurred ([not using vue's native `v-model`](https://github.com/Novout/betterwrite/blob/main/packages/better-write-app/src/use/block/text.ts#L49)).
+
+![Reactivity Save](../.github/reactivitysave.png)
+
+> Because of this alternative, some items in the editor will not directly show the interface, being mutated only when the given emitter event is.
+
 ### Annotations Editor
 
 The annotations do not use the proprietary editor because its purpose is different from the primary focus, which made it necessary to integrate an editor that allows a different way of dealing with the necessary resources.
