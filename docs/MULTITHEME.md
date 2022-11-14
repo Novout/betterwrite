@@ -6,6 +6,16 @@ The multi-theme plugin was built given the choice of architecture focused on cus
 
 ![Theme Flow](../.github/themebase.png)
 
+### Customization
+
+- Modify the editor's size and font;
+
+- Choose a background image (.gif supported);
+
+- Transparency items for better use of the image;
+
+- Default color themes.
+
 ### WindiCSS
 
 Migrating from [Tailwind](https://tailwindcss.com/) to [WindiCSS](https://windicss.org/), this choice was essential to facilitate the relationship between the values ​​inserted by the theme with the semantics of the inserted classes, where each `.vue` component (or at least most of them) has its own keys for each coloring item.
