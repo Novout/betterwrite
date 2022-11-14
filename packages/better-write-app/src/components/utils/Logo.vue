@@ -74,6 +74,12 @@
   const onClick = () => {
     if (props.hidden) return
 
+    if (props.back) {
+      router.back()
+
+      return
+    }
+
     router.push('/about')
   }
 </script>
