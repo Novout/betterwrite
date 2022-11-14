@@ -11,7 +11,6 @@
     ]"
   >
     <EditorBaseRender v-if="PROJECT.base === 'chapter'" />
-    <EditorBaseTimeline v-else-if="PROJECT.base === 'timeline'" />
     <EditorBaseAnnotations v-else-if="PROJECT.base === 'annotations'" />
   </div>
 </template>

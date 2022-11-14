@@ -5,7 +5,7 @@ import { PDFState } from './pdf'
 import { ID } from './utils'
 
 export type ProjectType = 'creative' | 'blank'
-export type ProjectBase = 'chapter' | 'timeline' | 'annotations'
+export type ProjectBase = 'chapter' | 'annotations'
 
 export interface ProjectState {
   image?: string
@@ -43,7 +43,7 @@ export interface ProjectStateOptions {
   producer?: string
   keywords?: string
   subject?: string
-  base?: 'chapter' | 'timeline'
+  base?: ProjectBase
   type: ProjectType
   totalPagesCreated?: number
   main?: Record<any, any>
