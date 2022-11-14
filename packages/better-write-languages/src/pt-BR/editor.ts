@@ -1,5 +1,3 @@
-import { setPDFI18n } from 'better-write-plugin-exporter-pdf'
-
 export default {
   new: {
     title: 'Novo Projeto',
@@ -277,7 +275,180 @@ export default {
       },
     },
   },
-  pdf: setPDFI18n().br(),
+  pdf: {
+    note: {
+      title: 'Considerações',
+      description: 'Texto',
+      bw: 'Documento produzido por',
+    },
+    externals: {
+      generate: {
+        title: 'Gerar',
+        button: 'Criar',
+      },
+      preview: {
+        title: 'Simular',
+        button: 'Criar',
+        warning:
+          '* O modo Simular não suporta todos os recursos implementados no Better Write. Se não renderizar, opte por Gerar o PDF.',
+      },
+    },
+    inserts: {
+      nowOnline:
+        'Foi detectado que você tem conexão com a internet, mas as fontes não foram carregadas. Por favor, recarregue a página.',
+    },
+    theme: {
+      title: 'Usar Tema',
+      tooltip:
+        'Este recurso irá usar o tema atual do projeto e irá ignorar as outras opções do pdf que apliquem coloração.',
+    },
+    project: {
+      title: 'Documento',
+      encryption: {
+        title: 'Criptografia',
+        user: 'Senha do Usuário',
+        owner: 'Senha do Dono',
+      },
+      permissions: {
+        title: 'Permissões',
+        printing: 'Impressão',
+        modifying: 'Modificar',
+        copying: 'Copiar',
+        annotating: 'Anotar',
+        fillingForms: 'Assinar / Preencher',
+        contentAccessibility: 'Acessibilidade de Conteúdo',
+        documentAssembly: 'Montagem',
+      },
+      tooltip: {
+        title:
+          'As opções a seguir interferem no acesso do usuário ao PDF. Só interfira na configuração padrão se considerar necessário.',
+        permissions: {
+          printing: 'Impressão',
+          modifying: 'Modificar',
+          copying: 'Copiar',
+          annotating: 'Anotar',
+          fillingForms: 'Assinar / Preencher',
+          contentAccessibility: 'Acessibilidade de Conteúdo',
+          documentAssembly: 'Montagem',
+        },
+      },
+    },
+    cover: {
+      tooltip:
+        'Até o momento, a capa inserida com a imagem possui problemas com as margens superiores, definido na seção Página. Recomendamos deixar a margem superior em 0 caso deseja utilizar a capa com imagem.',
+      type: 'Habilitar',
+      image: 'Usar Imagem',
+    },
+    base: {
+      backgroundColor: {
+        title: 'Cor do Fundo',
+        tooltip:
+          'A Cor do Fundo só sera aplicada se a opção "Usar Tema" estiver desabilitada.',
+      },
+      tooltip:
+        'Os recursos da página podem mudar drasticamente até a versão v1.x do BetterWrite.',
+      title: 'Página',
+      pageSize: 'Tamanho',
+      pageOrientation: 'Orientação',
+      pageMargins: {
+        title: 'Margens',
+        left: 'Esquerda',
+        top: 'Cima',
+        right: 'Direita',
+        bottom: 'Baixo',
+      },
+      footer: {
+        title: 'Rodapé',
+        exists: 'Habilitar',
+        start: 'Início',
+        alignment: 'Alinhamento',
+        size: 'Tamanho',
+        type: 'Estilo',
+        fontFamily: 'Fonte',
+      },
+      header: {
+        title: 'Cabeçalho',
+        content: 'Conteúdo',
+        exists: 'Habilitar',
+        start: 'Início',
+        alignment: 'Alinhamento',
+        size: 'Tamanho',
+        type: 'Estilo',
+        fontFamily: 'Fonte',
+      },
+      summary: {
+        title: 'Sumário',
+        type: 'Estilo',
+        fontSize: 'Tamanho',
+        fontFamily: 'Fonte',
+      },
+    },
+    lineBreak: {
+      spacing: 'Espaçamento',
+      active: 'Usar Imagem',
+      size: 'Tamanho',
+    },
+    custom: {
+      image: {
+        height: 'Altura',
+        width: 'Largura',
+        alignment: 'Alinhamento',
+      },
+      title: {
+        cover: 'Capa',
+        paragraph: 'Parágrafo',
+        headingOne: 'Título Principal',
+        headingTwo: 'Título Secundário',
+        headingThree: 'Título Terciário',
+      },
+      generics: {
+        font: 'Fonte',
+        fontSize: 'Tamanho da Fonte',
+        lineHeight: 'Altura da Linha',
+        indent: 'Indentação',
+        bold: 'Negrito',
+        italics: 'Itálico',
+        alignment: 'Alinhamento',
+        characterSpacing: 'Espaço de Caracteres',
+        color: 'Cor do Texto',
+        background: 'Cor do Fundo',
+        markerColor: 'Cor da Marca',
+        decoration: 'Decoração',
+        decorationStyle: 'Estilo da Decoração',
+        decorationColor: 'Cor da Decoração',
+        breakPage: 'Quebra de Página',
+        lineBreak: 'Quebra de Linha',
+      },
+      save: 'Salvar',
+    },
+    configuration: {
+      header: {
+        content: 'Conteúdo Aqui',
+      },
+      footer: {
+        style: {
+          simple: 'Simples',
+          counter: 'Contador',
+        },
+      },
+      summary: {
+        style: {
+          default: 'Padrão',
+        },
+      },
+      alignment: {
+        default: 'Padrão',
+        justify: 'Justificado',
+        left: 'Esquerda',
+        center: 'Centro',
+        right: 'Direita',
+      },
+      orientation: {
+        portrait: 'Retrato',
+        landscape: 'Paisagem',
+      },
+    },
+  },
   aside: {
     resume: 'Resume',
     dropbox: {
