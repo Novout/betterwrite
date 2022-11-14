@@ -1,6 +1,25 @@
 import { setPDFI18n } from 'better-write-plugin-exporter-pdf'
 
 export default {
+  new: {
+    title: 'Novo Projeto',
+    description1: 'O ',
+    description2: 'betterwrite.io ',
+    description3:
+      'oferece estilos de projeto para que possa adaptar às suas necessidades como preferir.',
+    blank: {
+      title: 'Comum',
+      description:
+        'O editor padrão. Recomendado para projetos simples e que não requerem recursos específicos.',
+      button: 'Criar',
+    },
+    creative: {
+      title: 'Criativo',
+      description:
+        'Divida seu projeto em capítulos, anotações e rascunhos. Recomendado para a escritura de livros.',
+      button: 'Criar',
+    },
+  },
   material: {
     fileController: {
       import: 'Importar',

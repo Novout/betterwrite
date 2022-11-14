@@ -87,7 +87,7 @@ export default defineConfig({
       backgroundColor: theme => ({
         "black-opacity": 'rgba(0,0,0, 0.15)',
         "white-opacity": 'rgba(255,255,255, 0.1)',
-        "modal": 'rgba(0,0,0, 0.7)'
+        "modal": 'rgba(0,0,0, 0.5)'
       }),
       boxShadow: theme => ({
         "binset": `rgba(50, 50, 93, 0.4) 0px 2px 5px -1px, rgba(0, 0, 0, 0.65) 0px 1px 3px -1px;`,

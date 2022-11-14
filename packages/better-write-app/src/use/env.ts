@@ -90,6 +90,6 @@ export const useEnv = () => {
     initialLoad,
     packageVersion,
     isDev,
-    getAccountPlanLimit
+    getAccountPlanLimit,
   }
 }

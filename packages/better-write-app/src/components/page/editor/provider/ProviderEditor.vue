@@ -1,6 +1,7 @@
 <template>
   <teleport to="body">
-    <EditorTutorial v-if="ABSOLUTE.project.tutorial" />
+    <EditorProjectNew v-if="ABSOLUTE.project.new" />
+    <EditorTutorial v-else-if="ABSOLUTE.project.tutorial" />
     <EditorDevCMD v-else-if="ABSOLUTE.cmd" />
     <EditorAuthLogin v-else-if="ABSOLUTE.auth.supabase" />
     <EditorEntityDefaultOptions v-else-if="ABSOLUTE.entity.menu" />

@@ -56,7 +56,9 @@ export const useProject = () => {
 
   const external = () => {
     const n = async (type: ProjectType, skipAlert: boolean = false) => {
-      if (!skipAlert && !confirm(t('toast.project.createAlert'))) return
+      if (CONTEXT.entities.length > 0) {
+        if (!skipAlert && !confirm(t('toast.project.createAlert'))) return
+      }
 
       PROJECT.new(
         {
@@ -121,7 +123,7 @@ export const useProject = () => {
     if (!context) context = local.getProject()
 
     if (!context) {
-      await external().new('creative', true)
+      ABSOLUTE.project.new = true
 
       return
     }

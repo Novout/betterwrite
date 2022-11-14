@@ -22,16 +22,7 @@
     <template #bar>
       <EditorHeaderItem
         :text="t('editor.bar.project.new')"
-        @action="project.external().new('creative')"
-      />
-      <EditorHeaderItem
-        :text="t('editor.bar.project.blank')"
-        @action="project.external().new('blank')"
-      />
-      <EditorHeaderItem
-        :divider="true"
-        :text="t('editor.bar.project.load')"
-        @action="project.onLoadProject"
+        @action="ABSOLUTE.project.new = true"
       />
       <EditorHeaderItem
         v-if="AUTH.account.user"
