@@ -1,6 +1,17 @@
-# Changelog (12/11/2022)
+# Changelog (14/11/2022)
 
 Changelog was created by [Generi](https://github.com/Novout/generi). Any questions, consult the documentation.
+
+### v0.17.12
+
+* **refactor(editor):** header items [e60ed62f]
+* **feat(editor):** icons in generate new project [ad40c059]
+* **chore(app):** removed canvas-timeline features [8950e0e3]
+* **fix(router):** logo back in editor dependence [bc8f428e]
+* **chore(i18n):** strings only in languages repo [abbae25d]
+* **refactor(project):** new project ui [cadfbd11]
+* **chore(deps):** upgrade vite to v3 [7e3ecb74]
+* **docs:** replace readme content in docs [a3320f9e]
 
 ### v0.17.11
 

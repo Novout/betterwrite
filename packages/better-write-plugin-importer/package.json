@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-importer",
-	"version": "0.17.11",
+	"version": "0.17.12",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -24,9 +24,9 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-extension": "^0.17.11",
-		"better-write-plugin-core": "^0.17.11",
-		"better-write-types": "^0.17.11",
+		"better-write-extension": "^0.17.12",
+		"better-write-plugin-core": "^0.17.12",
+		"better-write-types": "^0.17.12",
 		"vue-demi": "latest"
 	},
 	"devDependencies": {
