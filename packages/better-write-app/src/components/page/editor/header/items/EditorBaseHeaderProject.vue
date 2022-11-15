@@ -24,6 +24,7 @@
         :text="t('editor.bar.project.new')"
         @action="ABSOLUTE.project.new = true"
       />
+      <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
         v-if="AUTH.account.user"
         :divider="true"
