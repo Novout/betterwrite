@@ -33,6 +33,9 @@
             <p class="text-lg text-center">
               {{ t('editor.new.blank.description') }}
             </p>
+            <EditorProjectNewList
+              :list="['single', 'export', 'tools', 'statistics']"
+            />
             <Button @click="project.external().new('blank')">{{
               t('editor.new.blank.button')
             }}</Button>
@@ -49,6 +52,15 @@
             <p class="text-lg text-center">
               {{ t('editor.new.creative.description') }}
             </p>
+            <EditorProjectNewList
+              :list="[
+                'multiple',
+                'annotation',
+                'export',
+                'tools',
+                'statistics',
+              ]"
+            />
             <Button @click="project.external().new('creative')">{{
               t('editor.new.creative.button')
             }}</Button>
