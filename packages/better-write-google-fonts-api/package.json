@@ -1,6 +1,6 @@
 {
 	"name": "better-write-google-fonts-api",
-	"version": "0.17.12",
+	"version": "0.17.13",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -17,7 +17,7 @@
 		"lint": "prettier --write src/"
 	},
 	"dependencies": {
-		"better-write-types": "^0.17.12"
+		"better-write-types": "^0.17.13"
 	},
 	"files": [
 		"dist/**/*",

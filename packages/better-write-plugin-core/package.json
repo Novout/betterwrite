@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-core",
-	"version": "0.17.12",
+	"version": "0.17.13",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.cjs",
@@ -18,7 +18,7 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-types": "^0.17.12",
+		"better-write-types": "^0.17.13",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {

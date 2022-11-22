@@ -1,6 +1,6 @@
 {
 	"name": "better-write-languages",
-	"version": "0.17.12",
+	"version": "0.17.13",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -18,8 +18,8 @@
 		"lint": "prettier --write src/"
 	},
 	"dependencies": {
-		"better-write-plugin-exporter-pdf": "^0.17.12",
-		"better-write-types": "^0.17.12"
+		"better-write-plugin-exporter-pdf": "^0.17.13",
+		"better-write-types": "^0.17.13"
 	},
 	"files": [
 		"dist/**/*",
