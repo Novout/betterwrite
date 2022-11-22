@@ -17,7 +17,7 @@
     "major": "generi log major"
   },
   "devDependencies": {
-    "generi": "0.3.0",
+    "generi": "0.4.0",
     "lerna": "5.4.1",
     "turbo": "1.6.3"
   },

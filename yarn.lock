@@ -6421,15 +6421,15 @@ gauge@^4.0.3:
     strip-ansi "^6.0.1"
     wide-align "^1.1.5"
 
-generi@0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/generi/-/generi-0.3.0.tgz#91f615f7eabadbe72694eb5cab477cf5b52524b1"
-  integrity sha512-RzdbrLvDzTwKdFlk9XmDqOzdOmGj1+gqQSyeDWYY2NjehvRHax9RaRoTWbqsjgJ0UVPoh6dMi7W6SRA5HDb+XQ==
+generi@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/generi/-/generi-0.4.0.tgz#4583aec8c103efad81d0320efbee2c7d62a77b45"
+  integrity sha512-qs+qzZYuDghqBgnPBMOQtgMEwoq3YeWTxNLGZjoxCO/c/7uKJIY5oA/HV1U8dAgotrn+snSc57JhQ7JkLyUPDw==
   dependencies:
     consola "^2.15.3"
     execa "^5.0.0"
-    gradient-string "^2.0.0"
-    sade "^1.7.4"
+    gradient-string "^2.0.2"
+    sade "^1.8.1"
 
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
@@ -6636,10 +6636,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
   integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
-gradient-string@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/gradient-string/-/gradient-string-2.0.0.tgz#0333846e88e6011bdd12fa73d0fa2a60dfd34f51"
-  integrity sha512-xa+FXy1bOfJWqA4xKlKTfVXxuOwNRwvsO7Tj8oi/6Rodfgo4ENKApVOU95KxTKb7eML9E9eA2Uqq3C9LtVPM5w==
+gradient-string@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/gradient-string/-/gradient-string-2.0.2.tgz#a90402618990ec993ecbb72a56bd7e6598f45c0e"
+  integrity sha512-rEDCuqUQ4tbD78TpzsMtt5OIf0cBCSDWSJtUDaF6JsAh+k0v9r++NzxNEG87oDZx9ZwGhD8DaezR2L/yrw0Jdw==
   dependencies:
     chalk "^4.1.2"
     tinygradient "^1.1.5"
@@ -9987,7 +9987,7 @@ rxjs@^7.5.5:
   dependencies:
     tslib "^2.1.0"
 
-sade@^1.7.3, sade@^1.7.4:
+sade@^1.7.3, sade@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/sade/-/sade-1.8.1.tgz#0a78e81d658d394887be57d2a409bf703a3b2701"
   integrity sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==
