@@ -41,7 +41,7 @@ A Open Source Word Processor
 
 # Development
 
-**Check development guide [clicking here.](./FOR_DEVELOPERS.md)**
+**Check development guide [clicking here.](./CONTRIBUTING.md)**
 
 # Changelog
 
