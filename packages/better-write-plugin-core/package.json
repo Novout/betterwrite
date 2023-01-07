@@ -3,11 +3,11 @@
 	"version": "0.17.14",
 	"author": "Novout",
 	"license": "MIT",
-	"main": "dist/index.cjs",
+	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "rimraf ./dist && unbuild",
+		"build": "tsup",
 		"test": "echo \"Error: no test specified\"",
 		"lint": "prettier --write src/"
 	},
