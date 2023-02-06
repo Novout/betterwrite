@@ -188,6 +188,8 @@ export const useWebGL = () => {
     })
 
     onBeforeUnmount(() => {
+      THREE.Cache.clear()
+
       isLoaded.value = false
     })
   }
