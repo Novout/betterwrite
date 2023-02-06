@@ -1,7 +1,7 @@
 import { parse } from '../src'
 import { describe, expect, it } from 'vitest'
 
-describe.concurrent('Contenteditable AST - Parser', () => {
+describe('Contenteditable AST - Parser', () => {
   it('should return a simple node.', () => {
     expect(parse('foo bar baz')).toStrictEqual([{
       bold: false,
