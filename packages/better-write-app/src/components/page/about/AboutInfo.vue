@@ -2,8 +2,6 @@
   <div
     id="about-0"
     class="flex min-h-screen flex-col justify-between items-center py-10 bg-cover"
-    alt="https://www.artstation.com/feshiar"
-    :style="{ backgroundImage: `url(${Image})` }"
   >
     <div
       class="flex gap-10 items-center justify-around flex-col justify-start h-full md:w-3/4 lg:w-3/5 w-full"
@@ -74,7 +72,6 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  import Image from '@/assets/png/aboutinfo.png'
   import VTypical from 'vue-typical'
 
   const { t } = useI18n()
