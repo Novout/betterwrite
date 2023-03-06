@@ -1,15 +1,18 @@
 import { useAuthStore } from '@/store/auth'
-import { Session } from '@supabase/supabase-js'
 import { s } from '../storage/supabase'
 
 export const useDBInitializer = () => {
   const AUTH = useAuthStore()
 
-  const init = () => {
-    AUTH.account.user = s.auth.user()
+  const init = async () => {
+    const { data } = await s.auth.getSession()
+
+    AUTH.account.user = data.session?.user ?? null
 
     s.auth.onAuthStateChange((_, session) => {
-      AUTH.account.user = (session as Session)?.user || null
+      if(!session) return
+
+      AUTH.account.user = session.user || null
     })
   }
 

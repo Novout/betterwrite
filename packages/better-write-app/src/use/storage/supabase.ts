@@ -22,6 +22,12 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 export const s = createClient(supabaseUrl, supabaseAnonKey)
 
+export const getUser = async () => {
+  const { data } = await s.auth.getSession()
+
+  return data.session?.user ?? null
+}
+
 export const useSupabase = () => {
   const AUTH = useAuthStore()
   const ABSOLUTE = useAbsoluteStore()
@@ -52,12 +58,11 @@ export const useSupabase = () => {
   ) => {
     return new Promise((res) => {
       s.auth
-        .signIn(
+        .signInWithPassword(
           {
             email,
             password,
           },
-          { redirectTo: env.getCorrectLocalUrl() }
         )
         .then(async ({ error }) => {
           if (error) {
@@ -82,7 +87,7 @@ export const useSupabase = () => {
     toast.info(t('toast.generics.load'))
 
     s.auth
-      .signIn({ provider }, { redirectTo: env.getCorrectLocalUrl() })
+      .signInWithOAuth({ provider, options: { redirectTo: env.getCorrectLocalUrl() } })
       .then(async ({ error }) => {
         if (error) throw error
 
@@ -150,7 +155,7 @@ export const useSupabase = () => {
             ...storage.getProjectObject(),
           },
       { onConflict: 'id' }
-    )
+    ).select()
 
     if (error) {
       toast.error(error.message)
@@ -195,7 +200,7 @@ export const useSupabase = () => {
 
     const { error } = await s
       .from('projects')
-      .delete({ returning: 'minimal' })
+      .delete()
       .match({ id: context.id })
 
     if (error) {
@@ -235,7 +240,7 @@ export const useSupabase = () => {
           created_at_day: format.actually(),
         },
         { onConflict: 'id' }
-      )
+      ).select()
       if (!d) return
 
       if (error) {
