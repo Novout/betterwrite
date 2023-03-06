@@ -3509,7 +3509,7 @@
     "@vue/compiler-dom" "3.2.47"
     "@vue/shared" "3.2.47"
 
-"@vue/devtools-api@^6.2.1", "@vue/devtools-api@^6.4.4", "@vue/devtools-api@^6.4.5":
+"@vue/devtools-api@^6.2.1", "@vue/devtools-api@^6.4.5", "@vue/devtools-api@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.5.0.tgz#98b99425edee70b4c992692628fa1ea2c1e57d07"
   integrity sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==
@@ -9094,10 +9094,10 @@ pbkdf2@^3.0.3:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-pdfmake@0.3.0-beta.2:
-  version "0.3.0-beta.2"
-  resolved "https://registry.yarnpkg.com/pdfmake/-/pdfmake-0.3.0-beta.2.tgz#85573da9a7258a488fc18d49549e01c6993bfe0c"
-  integrity sha512-uNgivW5gXkEuP7pzYYPat08FZDObyg2vHqNfFmCMrM7YKpugOjoKBcZd377K/y2PtCMjkOEPoDDLRCtUkGnPdA==
+pdfmake@0.3.0-beta.3:
+  version "0.3.0-beta.3"
+  resolved "https://registry.yarnpkg.com/pdfmake/-/pdfmake-0.3.0-beta.3.tgz#dd1e941b4b2057b07210b575bc6ee30f697a1849"
+  integrity sha512-sDztkn6az36JH8BeO2ZaBoKTwfiJwNK60+xxi/7mjhVQa8FjnOlE3CaXiHRhctb7oYwPm7cAPwLwQJnO1hssDA==
   dependencies:
     "@foliojs-fork/linebreak" "^1.1.1"
     "@foliojs-fork/pdfkit" "^0.13.0"
@@ -9139,12 +9139,12 @@ pify@^5.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-5.0.0.tgz#1f5eca3f5e87ebec28cc6d54a0e4aaf00acc127f"
   integrity sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==
 
-pinia@2.0.23:
-  version "2.0.23"
-  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.23.tgz#570f5f82160b656b412602789683faa95502d227"
-  integrity sha512-N15hFf4o5STrxpNrib1IEb1GOArvPYf1zPvQVRGOO1G1d74Ak0J0lVyalX/SmrzdT4Q0nlEFjbURsmBmIGUR5Q==
+pinia@2.0.32:
+  version "2.0.32"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.32.tgz#93a12df4416566c1bb49225a078fe20b982350be"
+  integrity sha512-8Tw4OrpCSJ028UUyp0gYPP/wyjigLoEceuO/x1G+FlHVf73337e5vLm4uDmrRIoBG1hvaed/eSHnrCFjOc4nkA==
   dependencies:
-    "@vue/devtools-api" "^6.4.4"
+    "@vue/devtools-api" "^6.5.0"
     vue-demi "*"
 
 pirates@^4.0.1:
@@ -11585,12 +11585,12 @@ vue-typical@2.1.0:
   resolved "https://registry.yarnpkg.com/vue-typical/-/vue-typical-2.1.0.tgz#68731300f8b747548e0f36da0364d03614ba3a15"
   integrity sha512-vqfN08VgfhV8zuvf/UwDs4/P3VtQxHWK9ZshDwc1cEqWDUXzgwJwLiEUqYtksIug5wkhgoedyTAeEG6kJao6WA==
 
-vue3-pdfmake@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/vue3-pdfmake/-/vue3-pdfmake-1.2.0.tgz#007f529ec30daa46fb9187a8300f61871d89d8dc"
-  integrity sha512-1ci8Fcj0dAzYha0CxEhb4ufH+h/mQaX7kkrF/BCC8W9DqvtRuVE84xSwmYt8X92tC1CyOxrpJhU+EjHPZ1OQpw==
+vue3-pdfmake@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vue3-pdfmake/-/vue3-pdfmake-2.0.0.tgz#776f78ee074f5374cea52110e426f8cd96d7eaa6"
+  integrity sha512-TMhj3Lw3iLPHppgaBht0fsh7CypDWltp+TjP3XBFAclFEJtjP832TkvvWASzZP+qOE6KuDQszwYHcQLc5hFSZw==
   dependencies:
-    pdfmake "0.3.0-beta.2"
+    pdfmake "0.3.0-beta.3"
     vue-demi latest
 
 vue@3.2.39:
