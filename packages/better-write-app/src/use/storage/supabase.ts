@@ -20,9 +20,11 @@ import { useStorage } from './storage'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-export const s = createClient(supabaseUrl, supabaseAnonKey)
+export const s = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: { storageKey: '__BW__' }
+})
 
-export const getUser = async () => {
+export const getSupabaseUser = async () => {
   const { data } = await s.auth.getSession()
 
   return data.session?.user ?? null

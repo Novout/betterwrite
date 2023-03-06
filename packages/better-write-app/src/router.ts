@@ -1,18 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { s } from './use/storage/supabase'
 import { routes } from './routes'
 import { useNetwork } from '@vueuse/core'
 import { useAuthStore } from './store/auth'
+import { getSupabaseUser } from './use/storage/supabase'
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
 })
 
-router.beforeResolve((to, from, next) => {
+router.beforeResolve(async (to, from, next) => {
   const AUTH = useAuthStore()
 
-  const user = AUTH.account.user
+  const user = await getSupabaseUser() ?? AUTH.account.user
   const url = window.location.href
   const token = url.includes('access_token')
   const isOnline = useNetwork().isOnline.value
