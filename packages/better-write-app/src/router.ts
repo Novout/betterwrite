@@ -12,7 +12,7 @@ const router = createRouter({
 router.beforeResolve(async (to, from, next) => {
   const AUTH = useAuthStore()
 
-  const user = await getSupabaseUser() ?? AUTH.account.user
+  const user =  AUTH.account.user ?? await getSupabaseUser() ?? null
   const url = window.location.href
   const token = url.includes('access_token')
   const isOnline = useNetwork().isOnline.value
