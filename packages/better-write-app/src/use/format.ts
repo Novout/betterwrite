@@ -14,7 +14,7 @@ export const useFormat = () => {
 
   const lastTime = (updatedAt: string) => {
     const newDate = updatedAt ?? actually()
-    
+
     return newDate
   }
 

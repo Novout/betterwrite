@@ -3,6 +3,7 @@
     id="about-0"
     class="flex min-h-screen flex-col justify-between items-center py-10 bg-cover"
   >
+    <div class="relative top-50 w-150 h-60 bg-gradient-to-br from-gray-900 to-gray-600 filter blur-2xl rounded-full" />
     <div
       class="flex gap-10 items-center justify-around flex-col justify-start h-full md:w-3/4 lg:w-3/5 w-full"
     >
