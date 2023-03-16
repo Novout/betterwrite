@@ -1,14 +1,11 @@
-import { format, formatRelative, parse } from 'date-fns'
-import { ptBR, enUS } from 'date-fns/locale'
-
 export const useFormat = () => {
   const simple = (
     date: Date,
     type: 'default' | 'resume' = 'default'
   ): string => {
     return type === 'default'
-      ? format(date, 'yyyy-MM-dd HH:mm:ss')
-      : format(date, 'HH:mm')
+      ? `${date.getFullYear()}-${date.getMonth()}-${date.getDay()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+      : `${date.getHours()}:${date.getMinutes()}`
   }
 
   const actually = (type: 'default' | 'resume' = 'default'): string => {
@@ -16,11 +13,9 @@ export const useFormat = () => {
   }
 
   const lastTime = (updatedAt: string) => {
-    const updatedDate = parse(updatedAt, 'yyyy-MM-dd HH:mm:ss', new Date())
-
-    return formatRelative(updatedDate, new Date(), {
-      locale: document.documentElement.lang === 'pt-BR' ? ptBR : enUS,
-    })
+    const newDate = updatedAt ?? actually()
+    
+    return newDate
   }
 
   return { simple, actually, lastTime }

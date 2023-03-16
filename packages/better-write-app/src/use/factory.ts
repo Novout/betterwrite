@@ -4,7 +4,6 @@ import {
   EntityType,
   ProjectStateTemplatesGenerator,
 } from 'better-write-types'
-import { useFormat } from './format'
 import { usePDFStore } from '@/store/pdf'
 import i18n from '@/lang'
 
@@ -12,7 +11,6 @@ export const useFactory = () => {
   const PDF = usePDFStore()
 
   const env = useEnv()
-  const format = useFormat()
   // @ts-ignore
   const { t } = i18n.global
 
@@ -62,8 +60,6 @@ export const useFactory = () => {
         return {
           type,
           raw: raw || '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
           ...defaults(),
         }
       }
@@ -72,8 +68,6 @@ export const useFactory = () => {
         return {
           type,
           raw: raw || '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
           ...defaults(),
         }
       }
@@ -82,8 +76,6 @@ export const useFactory = () => {
         return {
           type,
           raw: raw || '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
           ...defaults(),
           external: {
             ...setText(),
@@ -98,8 +90,6 @@ export const useFactory = () => {
         return {
           type,
           raw: raw || '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
           ...defaults(),
           external: {
             ...setText(),
@@ -114,8 +104,6 @@ export const useFactory = () => {
         return {
           type,
           raw: raw || '',
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
           ...defaults(),
           external: {
             ...setText(),
@@ -127,8 +115,6 @@ export const useFactory = () => {
         return {
           type,
           raw: raw || env.emptyLine(),
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
           ...defaults(),
           external: {
             image: {
@@ -147,8 +133,6 @@ export const useFactory = () => {
         return {
           type,
           raw: raw || env.emptyLine(),
-          createdAt: format.actually(),
-          updatedAt: format.actually(),
           ...defaults(),
           external: {
             image: {
@@ -166,8 +150,6 @@ export const useFactory = () => {
       return {
         type,
         raw: raw || '',
-        createdAt: format.actually(),
-        updatedAt: format.actually(),
         ...defaults(),
       }
     }
