@@ -1,4 +1,5 @@
 {
+  "repository": "https://github.com/Novout/betterwrite",
   "silent": false,
   "commits": "conventional-commits",
   "tag": true,

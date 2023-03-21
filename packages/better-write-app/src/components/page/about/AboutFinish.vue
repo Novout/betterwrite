@@ -1,8 +1,6 @@
 <template>
   <div
     id="about-3"
-    alt="https://www.artstation.com/rigdhi_gamernoob"
-    :style="{ backgroundImage: `url(${Image})` }"
     class="flex bg-cover text-white min-h-screen justify-around items-center flex-col w-full pt-10 py-30"
   >
     <div

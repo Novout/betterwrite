@@ -79,7 +79,7 @@
             href="https://github.com/Novout/betterwrite"
             class="flex font-raleway items-center gap-3 absolute bottom-0 right-0 p-5 cursor-pointer"
           >
-            <IconGithub class="text-gray-200 w-6 h-6" />
+            <IconGithub class="text-gray-200 w-5 h-5" />
             <v-typical
               class="tracking-wide text-center text-xs md:text-sm blink"
               :steps="[

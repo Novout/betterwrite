@@ -1,13 +1,13 @@
 {
 	"name": "better-write-plugin-core",
-	"version": "0.17.14",
+	"version": "1.0.0",
 	"author": "Novout",
 	"license": "MIT",
-	"main": "dist/index.cjs",
+	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "rimraf ./dist && unbuild",
+		"build": "tsup",
 		"test": "echo \"Error: no test specified\"",
 		"lint": "prettier --write src/"
 	},
@@ -18,7 +18,7 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-types": "^0.17.14",
+		"better-write-types": "^1.0.0",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {

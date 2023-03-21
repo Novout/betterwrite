@@ -1,12 +1,11 @@
-import { defineBuildConfig } from 'unbuild';
+import { defineConfig } from 'tsup';
 
-export default defineBuildConfig({
-	rollup: {
-		emitCJS: true,
-	},
-	declaration: true,
-	entries: [{ input: 'src/index.ts', outDir: 'dist', name: 'index' }],
-	externals: [
+export default defineConfig({
+  entry: ['src/index.ts'],
+  format: ['esm', 'cjs'],
+  clean: true,
+  dts: true,
+  external: [
     '@milkdown/core', 
     '@milkdown/design-system', 
     '@milkdown/plugin-block', 
@@ -25,5 +24,5 @@ export default defineBuildConfig({
     '@milkdown/preset-commonmark', 
     '@milkdown/prose', 
     '@milkdown/theme-pack-helper'
-  ],
-});
+  ]
+})

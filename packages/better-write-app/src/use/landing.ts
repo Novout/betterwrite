@@ -4,9 +4,11 @@ import { computed, onMounted, nextTick, ref } from 'vue'
 import { useEnv } from '@/use/env'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useRoute, useRouter } from 'vue-router'
-import { s } from '@/use/storage/supabase'
+import { useAuthStore } from '@/store/auth'
 
 export const useLanding = () => {
+  const AUTH = useAuthStore()
+
   const { t } = useI18n()
   const env = useEnv()
   const router = useRouter()
@@ -15,7 +17,7 @@ export const useLanding = () => {
 
   const isNecessaryLogin = ref<boolean>(!!route.query.login)
 
-  if (s?.auth?.user()) {
+  if (AUTH.account.user) {
     isNecessaryLogin.value = false
 
     if (!!route.query.login) router.push('/')
@@ -40,7 +42,7 @@ export const useLanding = () => {
   const version = computed(() => `v${env.packageVersion()}`)
 
   const onClick = async () => {
-    if (!s.auth.user()) {
+    if (!AUTH.account.user) {
       isNecessaryLogin.value = true
 
       return

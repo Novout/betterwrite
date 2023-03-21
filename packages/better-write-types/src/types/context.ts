@@ -110,8 +110,8 @@ export interface EntityVisual {
 export type Entity = {
   type: EntityType
   raw: string
-  createdAt: string
-  updatedAt: string
+  createdAt?: string
+  updatedAt?: string
   visual: EntityVisual
   external?: EntityExternal
 }

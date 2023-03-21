@@ -1,6 +1,6 @@
 {
 	"name": "better-write-languages",
-	"version": "0.17.14",
+	"version": "1.0.0",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -9,17 +9,17 @@
 		"text",
 		"editor"
 	],
-	"main": "dist/index.cjs",
+	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"test": "echo \"Error: no test specified\"",
-		"build": "rimraf ./dist && unbuild",
+		"build": "tsup",
 		"lint": "prettier --write src/"
 	},
 	"dependencies": {
-		"better-write-plugin-exporter-pdf": "^0.17.14",
-		"better-write-types": "^0.17.14"
+		"better-write-plugin-exporter-pdf": "^1.0.0",
+		"better-write-types": "^1.0.0"
 	},
 	"files": [
 		"dist/**/*",
