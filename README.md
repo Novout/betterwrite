@@ -13,7 +13,6 @@ A Open Source Word Processor
 <p align="center">
   <a href="https://betterwrite.io"><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
   <a href="https://betterwrite.io"><img src="https://img.shields.io/github/lerna-json/v/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
-  <a><img src="https://img.shields.io/badge/-BETA%20Phase-yellow?style=for-the-badge" /></a>
 <p>
 
 <br>
