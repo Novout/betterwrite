@@ -36,10 +36,10 @@
 
   const DOCX = useDOCXStore()
 
-  const tranformer = useTransformer()
+  const transformer = useTransformer()
   const { t } = useI18n()
 
-  const type = computed(() => tranformer.docx().flowItem(item.type, 'getter'))
+  const type = computed(() => transformer.docx().flowItem(item.type, 'getter'))
 
   const remove = () => {
     DOCX.flow.splice(index, 1)
