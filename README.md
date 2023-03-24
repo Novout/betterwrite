@@ -29,7 +29,7 @@ A Open Source Word Processor
 - ✅ Graph Control
 - ✅ Plugin Friendly
 - ✅ Mobile & Desktop (PWA)
-- ✅ PDF, DOCX, HTML and TXT Generator
+- ✅ PDF, DOCX, HTML, EPUB and TXT Generator
 
 <br>
 

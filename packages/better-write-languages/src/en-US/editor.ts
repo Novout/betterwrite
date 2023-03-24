@@ -195,6 +195,10 @@ export default {
       generate: 'Generate (.PDF)',
       configuration: 'Configure (.PDF)',
     },
+    epub: {
+      generate: 'Generate (.EPUB)',
+      table: 'Table of Content',
+    },
     txt: {
       generate: 'Generate (.TXT)',
     },

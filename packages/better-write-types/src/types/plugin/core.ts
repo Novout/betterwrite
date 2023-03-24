@@ -26,6 +26,7 @@ export type PluginEmitterName =
   | 'plugin-pdf-preview'
   | 'plugin-pdf-init'
   | 'plugin-docx-generate'
+  | 'plugin-epub-generate'
   | 'plugin-txt-generate'
   | 'plugin-html-generate'
   | 'plugin-importer-docx'

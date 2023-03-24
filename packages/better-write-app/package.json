@@ -58,6 +58,7 @@
     "better-write-languages": "^1.0.0",
     "better-write-plugin-annotations": "^1.0.0",
     "better-write-plugin-core": "^1.0.0",
+    "better-write-plugin-exporter-epub": "^1.0.0",
     "better-write-plugin-exporter-docx": "^1.0.0",
     "better-write-plugin-exporter-html": "^1.0.0",
     "better-write-plugin-exporter-pdf": "^1.0.0",

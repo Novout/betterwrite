@@ -329,6 +329,17 @@ export const externals = () => {
     })
   }
 
+  const PluginEpubGenerate = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-epub-generate', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
   const PluginHtmlGenerate = (
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
@@ -459,6 +470,7 @@ export const externals = () => {
     PluginPDFPreview,
     PluginPDFGenerate,
     PluginPDFInit,
+    PluginEpubGenerate,
     PluginDocxGenerate,
     PluginTxtGenerate,
     PluginHtmlGenerate,
