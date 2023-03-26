@@ -162,7 +162,7 @@ export const PluginEpubSet = (
         tocTitle: hooks.i18n.t('editor.bar.epub.table') ?? undefined,
         date: new Date().toString(),
         css: getStyles(stores, hooks),
-        cover: stores.PDF.styles.base.background.data ?? undefined,
+        cover: undefined,
       },
       contents()
     ).then(
