@@ -14,7 +14,8 @@
     "deploy": "yarn bootstrap && yarn build",
     "patch": "generi log patch",
     "minor": "generi log minor",
-    "major": "generi log major"
+    "major": "generi log major",
+    "postinstall": "yarn bootstrap"
   },
   "devDependencies": {
     "generi": "0.5.2",
