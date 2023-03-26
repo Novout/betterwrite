@@ -14,7 +14,7 @@ export const getStyles = (
 
 p {
   font-size: 18px;
-  text-indent: 1.5rem;
+  text-indent: 1.75rem;
   color: black;
 }
 
@@ -25,6 +25,18 @@ p > a {
 
 h1, h2, h3 {
   text-align: center;
+}
+
+h1 {
+  padding: 3.5rem 0;
+}
+
+h2 {
+  padding: 1.85rem 0;
+}
+
+h3 {
+  padding: 1.35rem 0;
 }
 
 i {
