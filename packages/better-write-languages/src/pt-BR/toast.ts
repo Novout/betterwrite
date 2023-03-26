@@ -50,6 +50,9 @@ export default {
     txt: {
       generate: 'TXT Baixado com Sucesso!',
     },
+    epub: {
+      generate: 'EPUB Baixado com Sucesso!',
+    },
     html: {
       generate: 'HTML Baixado com Sucesso!',
     },

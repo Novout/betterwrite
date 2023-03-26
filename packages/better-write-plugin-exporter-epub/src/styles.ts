@@ -9,6 +9,7 @@ export const getStyles = (
   outline: 0;
   font-feature-settings: 'ss02' on, 'ss01' on;
   -webkit-font-smoothing: antialiased;
+  color: black;
 }
 
 p {
@@ -24,4 +25,12 @@ p > a {
 
 h1, h2, h3 {
   text-align: center;
+}
+
+i {
+  font-style: italic;
+}
+
+b {
+  font-weight: 700;
 }`

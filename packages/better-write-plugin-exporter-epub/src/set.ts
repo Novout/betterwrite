@@ -23,6 +23,31 @@ export const PluginEpubSet = (
       return `<h3>${hooks.substitution.purge(entity.raw)}</h3>`
     }
 
+    const image = (entity: Entity) => {
+      return `<div><img src="${entity.raw}" alt=""></div>`
+    }
+
+    const svg = (entity: Entity) => {
+      console.log(entity.raw)
+
+      return `<div>${entity.raw}</div>`
+    }
+
+    const checkbox = (entity: Entity) => {
+      const id = hooks.utils.id().uuidv4()
+
+      return `<div><input type="checkbox" name="${id}" id="${id}" ${
+        entity?.external?.checkbox?.select ? `checked` : ''
+      }>
+<label for="${id}">${hooks.substitution.purge(entity.raw)}</label></div>`
+    }
+
+    const list = (entity: Entity) => {
+      return `<ul><li style="list-style-type: square;">${hooks.substitution.purge(
+        entity.raw
+      )}</li></ul>`
+    }
+
     const paragraph = (entity: Entity): string[] => {
       if (
         hooks.env.emptyLine() === entity.raw ||
@@ -35,17 +60,30 @@ export const PluginEpubSet = (
         const target = parse(hooks.substitution.purge(row))
 
         return target.reduce((acc, item) => {
+          // boldItalics
+          if (item.italic && item.bold)
+            return (acc += item.text.trim() ? `<i><b>${item.text}</b></i>` : '')
+
+          // italics
+          if (item.italic)
+            return (acc += item.text.trim() ? `<i>${item.text}</i>` : '')
+
+          // bold
+          if (item.bold)
+            return (acc += item.text.trim() ? `<b>${item.text}</b>` : '')
+
+          // common case
           return (acc += item.text.trim() ? `<span>${item.text}</span>` : '')
         }, '')
       })
     }
 
     const pageBreak = () => {
-      return `<span style="page-break-after: always"></span>`
+      return `<span style="page-break-after: always;"></span>`
     }
 
     const lineBreak = () => {
-      return '<span style="width: 100%;padding-top: 1rem;border: none;"></span>'
+      return '<span style="width: 100%;height:16px;border: none;"></span>'
     }
 
     return {
@@ -53,6 +91,10 @@ export const PluginEpubSet = (
       headingOne,
       headingTwo,
       headingThree,
+      image,
+      svg,
+      checkbox,
+      list,
       pageBreak,
       lineBreak,
     }
@@ -67,11 +109,15 @@ export const PluginEpubSet = (
         content: '',
       }
 
-      page.entities.forEach((entity: Entity) => {
+      for (const entity of page.entities) {
         switch (entity.type) {
-          case 'paragraph':
-          case 'list':
           case 'checkbox':
+            chapter.content += entities().checkbox(entity)
+            break
+          case 'list':
+            chapter.content += entities().list(entity)
+            break
+          case 'paragraph':
             entities()
               .paragraph(entity)
               ?.forEach(
@@ -93,8 +139,14 @@ export const PluginEpubSet = (
           case 'line-break':
             chapter.content += entities().lineBreak()
             break
+          case 'image':
+            chapter.content += entities().image(entity)
+            break
+          case 'drau':
+            chapter.content += entities().svg(entity)
+            break
         }
-      })
+      }
 
       chapters.push(chapter)
     })

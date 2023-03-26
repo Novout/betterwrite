@@ -52,6 +52,9 @@ export default {
     txt: {
       generate: 'Successfully Downloaded TXT!',
     },
+    epub: {
+      generate: 'Successfully Downloaded EPUB!',
+    },
     annotations: {
       fileDelete: 'Are you sure you want to delete the file?',
       folderDelete: 'Are you sure you want to delete the folder?',
