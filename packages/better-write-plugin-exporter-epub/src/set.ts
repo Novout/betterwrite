@@ -28,8 +28,6 @@ export const PluginEpubSet = (
     }
 
     const svg = (entity: Entity) => {
-      console.log(entity.raw)
-
       return `<div>${entity.raw}</div>`
     }
 
@@ -79,11 +77,11 @@ export const PluginEpubSet = (
     }
 
     const pageBreak = () => {
-      return `<span style="page-break-after: always;"></span>`
+      return `<div style="page-break-after: always;"></div>`
     }
 
     const lineBreak = () => {
-      return '<span style="width: 100%;height:16px;border: none;"></span>'
+      return '<div style="width: 100%;height:16px;border: none;"></div>'
     }
 
     return {
