@@ -19,7 +19,7 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format"
   },
   "dependencies": {
-    "@headlessui/vue": "1.7.3",
+    "@headlessui/vue": "1.7.12",
     "@milkdown/core": "6.4.1",
     "@milkdown/design-system": "6.4.1",
     "@milkdown/plugin-block": "6.4.1",
