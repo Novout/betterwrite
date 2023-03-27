@@ -436,28 +436,32 @@ export const useProject = () => {
       return longest
     }
 
-    const getWordOccurrences = (page: ContextState, min: number = 0) => {
+    const getWordOccurrences = (
+      page: ContextState,
+      min: number = 0
+    ): Map<string, string> => {
       const map = page.entities
         .filter((entity) => isValidType(entity))
-        .reduce((map: any, value: any) => {
+        .reduce((map, value) => {
           const normalize = ASTUtils.normalize(value.raw, {
             type: 'all',
             whitespace: true,
-          })
+          }) as string
 
           if (!normalize) return map
 
-          normalize.split(' ').forEach((r) => {
-            const replaces = r
-              .trim()
-              .toLowerCase()
-              .replace(/[~`!\“\”@#$%^&*()+={}\[\];:\'\"<>.,\/\\\?-_]/g, '')
-              .replaceAll('...', '')
+          normalize
+            .trim()
+            .toLowerCase()
+            .replace(/[^\w\p{Letter}\s]/gu, '')
+            .split(/\s/)
+            .forEach((replaces) => {
+              if (!replaces) return
 
-            if (replaces.length <= min) return
+              if (replaces.length <= min) return
 
-            map.set(replaces, (map.get(replaces) || 0) + 1)
-          })
+              map.set(replaces, (map.get(replaces) || 0) + 1)
+            })
 
           return map
         }, new Map())
