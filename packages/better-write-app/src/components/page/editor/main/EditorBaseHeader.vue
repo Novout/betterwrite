@@ -20,7 +20,7 @@
         class="flex items-center justify-between"
       >
         <EditorBaseHeaderProject />
-        <EditorBaseHeaderCreate />
+        <EditorBaseHeaderCreate v-if="PROJECT.type !== 'only-annotations'" />
         <EditorBaseHeaderExternals />
         <EditorBaseHeaderVault />
         <EditorBaseHeaderHelp />
@@ -31,11 +31,11 @@
 </template>
 
 <script setup lang="ts">
-  import { useAuthStore } from '@/store/auth'
+  import { useProjectStore } from '@/store/project'
   import { useEditorStore } from '@/store/editor'
   import { useTutorialStore } from '@/store/tutorial'
 
-  const AUTH = useAuthStore()
+  const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
   const TUTORIAL = useTutorialStore()
 </script>

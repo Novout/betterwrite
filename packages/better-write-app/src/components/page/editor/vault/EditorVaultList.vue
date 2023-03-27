@@ -26,6 +26,14 @@
           {{ t('editor.new.creative.title') }}
         </h2>
       </div>
+      <div v-else-if="context.project.type === 'only-annotations'" class="flex gap-2 items-center">
+        <div>
+          <IconAnnotation class="w-7 h-7" />
+        </div>
+        <h2 class="text-sm font-bold">
+          {{ t('editor.new.annotation.title') }}
+        </h2>
+      </div>
       <p class="text-sm text-center">{{ supabase.getProjectSize(context) }}</p>
     </div>
     <div class="flex flex-col justify-between w-full p-2">

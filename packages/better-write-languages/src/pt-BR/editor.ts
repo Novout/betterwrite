@@ -14,7 +14,13 @@ export default {
     creative: {
       title: 'Criativo',
       description:
-        'Divida seu projeto em capítulos, anotações e rascunhos. Recomendado para a escritura de livros.',
+        'Divida seu projeto em capítulos, anotações e rascunhos. Recomendado para a escritura e projeção de livros.',
+      button: 'Criar',
+    },
+    annotations: {
+      title: 'Anotações',
+      description:
+        'Use somente os recursos para anotações. Recomendado para as tarefas do dia-a-dia.',
       button: 'Criar',
     },
   },
@@ -542,6 +548,11 @@ export default {
             title: 'Criativo',
             description:
               'Crie um projeto com toda a estrutura necessária para a criação de livros.',
+          },
+          annotations: {
+            title: 'Anotações',
+            description:
+              'Crie um projeto somente com recursos para anotações. Recomendado para as tarefas do dia-a-dia.',
           },
         },
         content: {

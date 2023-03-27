@@ -89,7 +89,9 @@ export const useProjectStore = defineStore('project', {
       this.nameRaw = payload.nameRaw
       this.version = payload.version
       this.creator = payload.creator
-      this.type = payload.type || 'creative'
+      this.type = payload.type
+      this.base =
+        payload.type === 'only-annotations' ? 'annotations' : 'chapter'
       this.subject = payload.subject
       this.pageLoaded = payload.pageLoaded
       this.scrollLoaded = payload.scrollLoaded
@@ -124,7 +126,10 @@ export const useProjectStore = defineStore('project', {
         keywords: options.keywords || 'docx,project',
         subject: options.subject || 'betterwrite',
         type: options.type,
-        base: options.base || 'chapter',
+        base:
+          options.base ?? options?.type === 'only-annotations'
+            ? 'annotations'
+            : 'chapter' || 'chapter',
         totalPagesCreated: options.totalPagesCreated || 1,
         main: options.main || {},
         summary: options.summary || {},

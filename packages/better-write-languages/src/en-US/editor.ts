@@ -17,6 +17,12 @@ export default {
         'Divide your project into chapters, notes and drafts. Recommended for writing books.',
       button: 'Create',
     },
+    annotations: {
+      title: 'Annotations',
+      description:
+        'Only use features for notes. Recommended for everyday tasks.',
+      button: 'Create',
+    },
   },
   material: {
     fileController: {
@@ -540,6 +546,11 @@ export default {
             title: 'Creative',
             description:
               'Create a project with all the structure needed to create books.',
+          },
+          annotations: {
+            title: 'Annotations',
+            description:
+              'Create a project with only features for annotations. Recommended for everyday tasks.',
           },
         },
         content: {

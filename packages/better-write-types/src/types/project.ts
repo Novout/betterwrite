@@ -4,7 +4,7 @@ import { EditorState } from './editor'
 import { PDFState } from './pdf'
 import { ID } from './utils'
 
-export type ProjectType = 'creative' | 'blank'
+export type ProjectType = 'creative' | 'blank' | 'only-annotations'
 export type ProjectBase = 'chapter' | 'annotations'
 
 export interface ProjectState {
