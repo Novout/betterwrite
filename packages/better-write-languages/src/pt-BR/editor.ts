@@ -57,8 +57,8 @@ export default {
     export: 'Exportar',
     chapters: 'Capítulos',
     tools: 'Ferramentas',
+    vault: 'Cofre',
     help: 'Ajuda',
-    live: 'Compartilhar',
   },
   auth: {
     login: {
@@ -253,10 +253,6 @@ export default {
     },
     generator: {
       substitutions: 'Substituições',
-    },
-    live: {
-      enter: 'Entrar',
-      create: 'Criar Sala',
     },
   },
   window: {

@@ -55,8 +55,8 @@ export default {
     export: 'Export',
     chapters: 'Chapters',
     tools: 'Tools',
+    vault: 'Vault',
     help: 'Help',
-    live: 'Live',
   },
   auth: {
     login: {
@@ -254,10 +254,6 @@ export default {
     },
     generator: {
       substitutions: 'Substitutions',
-    },
-    live: {
-      enter: 'Enter',
-      create: 'Create Room',
     },
   },
   window: {

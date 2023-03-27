@@ -11,7 +11,7 @@
       {{ t('editor.header.help') }}
     </template>
     <template #icon>
-      <IconHelp class="h-9 w-9 md:(w-7 h-7) mr-0 md:mr-1" />
+      <IconHelp class="h-9 w-9 lg:(w-7 h-7) mr-0 md:mr-1" />
     </template>
     <template #bar>
       <EditorHeaderItem

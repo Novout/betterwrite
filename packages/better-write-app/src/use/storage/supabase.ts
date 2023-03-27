@@ -8,6 +8,7 @@ import {
   AccountPlan,
   SupabaseIntegrations,
 } from 'better-write-types'
+import { nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
@@ -106,8 +107,10 @@ export const useSupabase = () => {
   const out = () => {
     s.auth
       .signOut()
-      .then(() => {
+      .then(async () => {
         AUTH.account.user = null
+
+        await nextTick
 
         router.push('/')
       })

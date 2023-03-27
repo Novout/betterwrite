@@ -1,10 +1,10 @@
 <template>
-  <div class="cursor-pointer" @click.prevent.stop="supabase.toDashboard()">
+  <div>
     <div
-      :class="[mobile ? 'w-40' : 'w-auto']"
-      class="flex items-center px-3 font-poppins py-2 sm:py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full"
+      :class="[mobile ? 'w-52' : 'w-auto']"
+      class="flex items-center px-3 font-poppins py-1 sm:py-1 mr-2 bg-black-opacity border-theme-border-1 wb-text rounded-full"
     >
-      <button class="flex items-center truncate">
+      <div class="flex items-center truncate">
         <UseImage
           alt="Profile Logo"
           class="rounded-full mr-0 sm:mr-2 w-8"
@@ -42,21 +42,19 @@
         <p v-if="mobile && user" class="truncate font-raleway">
           {{ user?.user_metadata?.name || user?.email || '' }}
         </p>
-        <HeroIcon
-          v-if="env.isDev()"
-          class="wb-icon"
+        <HeroIcon 
+          class="wb-icon ml-2"
           @click.prevent.stop="supabase.out"
         >
           <IconClose class="w-6 h-6" />
         </HeroIcon>
-      </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { useAuthStore } from '@/store/auth'
-  import { useEnv } from '@/use/env'
   import { useSupabase } from '@/use/storage/supabase'
   import { UseImage } from '@vueuse/components'
   import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
@@ -65,7 +63,6 @@
   const AUTH = useAuthStore()
   const user = computed(() => AUTH.account.user)
 
-  const env = useEnv()
   const supabase = useSupabase()
 
   const breakpoints = useBreakpoints(breakpointsTailwind)

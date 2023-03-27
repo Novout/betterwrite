@@ -15,16 +15,6 @@ export const routes = [
     component: () => import('@/pages/About.vue'),
   },
   {
-    name: 'Dashboard',
-    path: '/dashboard',
-    component: () => import('@/pages/Dashboard.vue'),
-  },
-  {
-    name: 'Plans',
-    path: '/plans',
-    component: () => import('@/pages/Plans.vue'),
-  },
-  {
     name: 'Terms of Use',
     path: '/terms-of-use',
     component: () => import('@/pages/TermsOfUse.vue'),

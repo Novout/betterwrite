@@ -22,12 +22,11 @@
         <EditorBaseHeaderProject />
         <EditorBaseHeaderCreate />
         <EditorBaseHeaderExternals />
+        <EditorBaseHeaderVault />
         <EditorBaseHeaderHelp />
       </div>
     </div>
-    <div v-if="AUTH.account.user" class="flex items-center gap-2">
-      <EditorBaseHeaderLogin />
-    </div>
+    <EditorBaseHeaderLogin />
   </header>
 </template>
 
