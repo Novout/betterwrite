@@ -775,14 +775,16 @@ export default {
         high2: 'File: ',
         high3: 'Export: ',
         high4: 'Tools: ',
-        high5: 'Help: ',
+        high5: 'Vault: ',
+        high6: 'Help: ',
         description2:
           'Check out the main ways of manipulating the project, such as creating, saving, changing, loading and querying.',
         description3:
           'File generators and their definitions. Each extension works with different settings from each other.',
         description4:
           'Additional features that only tend to add to your experience.',
-        description5: 'Documentation for inquiries.',
+        description5: 'Store your projects in one easy-to-access location.',
+        description6: 'Documentation for inquiries.',
       },
       5: {
         title: 'Tooling',

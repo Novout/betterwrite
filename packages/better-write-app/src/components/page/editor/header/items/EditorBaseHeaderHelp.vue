@@ -1,10 +1,6 @@
 <template>
-  <!-- Chapters -->
-  <div
-    v-if="project.isCreativeProject() && PROJECT.name !== env.projectEmpty()"
-  ></div>
   <EditorHeaderButton
-    v-if="project.isCreativeProject() && PROJECT.name !== env.projectEmpty()"
+    v-if="PROJECT.name !== env.projectEmpty()"
     type="help"
   >
     <template #text>

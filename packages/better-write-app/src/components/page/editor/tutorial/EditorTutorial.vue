@@ -84,6 +84,10 @@
         <b>{{ t('editor.tutorial.pages.5.high5') }}</b
         >{{ t('editor.tutorial.pages.5.description5') }}
       </div>
+      <div>
+        <b>{{ t('editor.tutorial.pages.6.high6') }}</b
+        >{{ t('editor.tutorial.pages.6.description6') }}
+      </div>
     </EditorTutorialContainer>
     <EditorTutorialContainer
       :data="{ target: 6, position: 'lg:left-150 lg:top-80' }"

@@ -782,14 +782,16 @@ export default {
         high2: 'Arquivo: ',
         high3: 'Exportar: ',
         high4: 'Ferramentas: ',
-        high5: 'Ajuda: ',
+        high5: 'Cofre: ',
+        high6: 'Ajuda: ',
         description2:
           'Confira as principais formas de manipulação do projeto, como criar, salvar, alterar, carregar e consultar.',
         description3:
           'Geradores de arquivo e suas devidas definições. Cada extensão funciona com configurações distintas uma das outras.',
         description4:
           'Recursos de cunho adicional que só tentem a adicionar a sua experiência.',
-        description5: 'Documentação para consultas.',
+        description5: 'Armazene seus projetos em um local de fácil acesso.',
+        description6: 'Documentação para consultas.',
       },
       5: {
         title: 'Ferramental',
