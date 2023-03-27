@@ -30,7 +30,7 @@ export const PluginAnnotationsSet = (
   const reset = (force: boolean = false) => {
     document.querySelector('.milkdown')?.remove()
 
-    if (force) stores.PROJECT.base = 'chapter'
+    if (force) stores.PROJECT.base = stores.PROJECT.type === 'only-annotations' ? 'annotations' : 'chapter'
   }
 
   const setFile = (id: ID<string>, value: any) => {
