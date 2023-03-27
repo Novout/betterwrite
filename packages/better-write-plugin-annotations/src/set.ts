@@ -4,21 +4,21 @@ import {
   ProjectStateAnnotationFolder,
 } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
-import { rootCtx, defaultValueCtx, Editor } from '@milkdown/core'
+import {
+  rootCtx,
+  defaultValueCtx,
+  Editor,
+  editorViewOptionsCtx,
+} from '@milkdown/core'
 import { listener, listenerCtx } from '@milkdown/plugin-listener'
 import { math } from '@milkdown/plugin-math'
-import { tooltip } from '@milkdown/plugin-tooltip'
 import { clipboard } from '@milkdown/plugin-clipboard'
 import { block } from '@milkdown/plugin-block'
 import { history } from '@milkdown/plugin-history'
 import { cursor } from '@milkdown/plugin-cursor'
-import { indent, indentPlugin } from '@milkdown/plugin-indent'
 import { trailing } from '@milkdown/plugin-trailing'
-import { upload } from '@milkdown/plugin-upload'
 import { emoji } from '@milkdown/plugin-emoji'
-import { bw } from './theme'
-import { cmk } from './plugin/commonmark'
-import { sls } from './plugin/slash'
+import { commonmark } from '@milkdown/preset-commonmark'
 import { ID } from 'better-write-types'
 import { nextTick } from 'vue-demi'
 
@@ -136,29 +136,24 @@ export const PluginAnnotationsSet = (
           )
         }
 
-        ctx.get(listenerCtx).updated((ctx, doc, prevDoc) => {
+        ctx.get(listenerCtx).updated((_, doc) => {
           setFile(file.id, doc.toJSON())
         })
+
+        ctx.update(editorViewOptionsCtx, (prev) => ({
+          ...prev,
+          attributes: { class: 'milkdown-betterwrite', spellcheck: 'true' },
+        }))
       })
       .use(listener)
-      .use(cmk)
+      .use(commonmark)
       .use(math)
-      .use(sls(hooks))
-      .use(tooltip)
       .use(clipboard)
       .use(block)
       .use(history)
       .use(cursor)
       .use(trailing)
-      .use(upload)
       .use(emoji)
-      .use(
-        indent.configure(indentPlugin, {
-          type: 'space',
-          size: 2,
-        })
-      )
-      .use(bw)
       .create()
   }
 

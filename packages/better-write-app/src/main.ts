@@ -21,9 +21,11 @@ import i18n from './lang'
 import App from './App.vue'
 
 import 'virtual:windi.css'
-import 'better-write-plugin-theme/css/inject.css'
+import '@milkdown/prose/view/style/prosemirror.css'
+import '@milkdown/prose/tables/style/tables.css'
 import 'floating-vue/dist/style.css'
 import 'vue-toastification/dist/index.css'
+import 'better-write-plugin-theme/css/inject.css'
 
 const env = useEnv()
 

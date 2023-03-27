@@ -1,0 +1,47 @@
+.milkdown-betterwrite {
+  padding: 2rem 1rem;
+  word-break: break-all;
+  color: var(--theme-milkdown-primary);
+  background-color: var(--theme-milkdown-background);
+  font-family: 'Raleway', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.milkdown-betterwrite h1 {
+  font-size: 2.75rem;
+  padding: 1.25rem 0;
+}
+
+.milkdown-betterwrite h2 {
+  font-size: 1.85rem;
+  padding: 0.85rem 0;
+}
+
+.milkdown-betterwrite h3 {
+  font-size: 1.65rem;
+  padding: 0.65rem 0;
+}
+
+.milkdown-betterwrite p, li {
+  font-size: 1.2rem;
+}
+
+.milkdown-betterwrite ul > li {
+  list-style-type: square;
+  margin-left: 1rem;
+}
+
+.milkdown-betterwrite ol > li {
+  margin-left: 1rem;
+}
+
+.milkdown-betterwrite code {
+  font-style: normal;
+}
+
+.milkdown-betterwrite pre code {
+  text-align: inherit;
+}
+
+.milkdown-betterwrite img {
+  max-width: 100%;
+}
