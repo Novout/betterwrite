@@ -30,7 +30,9 @@ export const PluginAnnotationsSet = (
   const reset = (force: boolean = false) => {
     document.querySelector('.milkdown')?.remove()
 
-    if (force) stores.PROJECT.base = stores.PROJECT.type === 'only-annotations' ? 'annotations' : 'chapter'
+    if (force)
+      stores.PROJECT.base =
+        stores.PROJECT.type === 'only-annotations' ? 'annotations' : 'chapter'
   }
 
   const setFile = (id: ID<string>, value: any) => {
@@ -67,6 +69,12 @@ export const PluginAnnotationsSet = (
   }
 
   const deleteFolder = (folder: ProjectStateAnnotationFolder) => {
+    if (
+      stores.PROJECT.type === 'only-annotations' &&
+      stores.PROJECT.annotations.folders.length === 1
+    )
+      return
+
     reset(true)
 
     stores.PROJECT.annotations.folders =
