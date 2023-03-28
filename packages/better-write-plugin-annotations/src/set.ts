@@ -18,6 +18,7 @@ import { history } from '@milkdown/plugin-history'
 import { cursor } from '@milkdown/plugin-cursor'
 import { trailing } from '@milkdown/plugin-trailing'
 import { emoji } from '@milkdown/plugin-emoji'
+import { upload } from '@milkdown/plugin-upload'
 import { commonmark } from '@milkdown/preset-commonmark'
 import { ID } from 'better-write-types'
 import { nextTick } from 'vue-demi'
@@ -174,6 +175,7 @@ export const PluginAnnotationsSet = (
       .use(cursor)
       .use(trailing)
       .use(emoji)
+      .use(upload)
       .create()
   }
 
