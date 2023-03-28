@@ -5,7 +5,7 @@
       {{ t('editor.header.vault') }}
     </template>
     <template #icon>
-      <IconVault class="h-9 w-9 lg:(w-7 h-7)" />
+      <IconVoid class="h-9 w-9 lg:(w-7 h-7)" />
     </template>
     <template #bar>
       <EditorVaultList />

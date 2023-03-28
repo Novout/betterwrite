@@ -63,7 +63,7 @@ export default {
     export: 'Exportar',
     chapters: 'Capítulos',
     tools: 'Ferramentas',
-    vault: 'Cofre',
+    vault: 'Vazio',
     help: 'Ajuda',
   },
   auth: {
@@ -793,7 +793,7 @@ export default {
         high2: 'Arquivo: ',
         high3: 'Exportar: ',
         high4: 'Ferramentas: ',
-        high5: 'Cofre: ',
+        high5: 'Vazio: ',
         high6: 'Ajuda: ',
         description2:
           'Confira as principais formas de manipulação do projeto, como criar, salvar, alterar, carregar e consultar.',
