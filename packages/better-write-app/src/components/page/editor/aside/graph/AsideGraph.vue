@@ -2,7 +2,7 @@
   <div class="flex z-30 px-2 flex-col w-full">
     <div class="flex flex-row-reverse items-center justify-between mb-5 mt-2">
       <IconGraphClose
-        v-if="PROJECT.type === 'creative'"
+        v-if="PROJECT.type !== 'blank'"
         class="wb-icon w-12 h-12 md:(w-9 h-9)"
         @click.prevent.stop="ABSOLUTE.aside = false"
       />
