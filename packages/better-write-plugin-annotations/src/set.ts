@@ -79,6 +79,8 @@ export const PluginAnnotationsSet = (
 
     stores.PROJECT.annotations.folders =
       stores.PROJECT.annotations.folders.filter((f) => f.id !== folder.id)
+
+    setActive()
   }
 
   const createFile = (
@@ -97,6 +99,18 @@ export const PluginAnnotationsSet = (
     return file
   }
 
+  const setActive = () => {
+    if (stores.PROJECT.type === 'only-annotations') {
+      const folder = stores.PROJECT.annotations.folders.find((f) =>
+        f.files.find((f) => f)
+      )
+
+      if (!folder || folder.files.length === 0)
+        createFile(stores.PROJECT.annotations.folders[0])
+      else start(folder.files[0])
+    }
+  }
+
   const deleteFile = (
     folder: ProjectStateAnnotationFolder,
     file: ProjectStateAnnotationFile
@@ -111,6 +125,8 @@ export const PluginAnnotationsSet = (
       stores.PROJECT.annotations.folders[targetId].files.filter(
         (f) => f.id !== file.id
       )
+
+    setActive()
   }
 
   const start = async (file: ProjectStateAnnotationFile) => {
@@ -120,7 +136,7 @@ export const PluginAnnotationsSet = (
 
     await nextTick
 
-    await Editor.make()
+    Editor.make()
       .config((ctx) => {
         ctx.set(rootCtx, document.querySelector('#bw-wysiwyg'))
 
