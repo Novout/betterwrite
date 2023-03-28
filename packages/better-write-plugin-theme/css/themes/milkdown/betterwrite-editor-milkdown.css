@@ -48,3 +48,25 @@
 .milkdown-betterwrite img {
   max-width: 100%;
 }
+
+.milkdown-betterwrite blockquote {
+  border-left: 1rem;
+  border-color: var(--theme-milkdown-secondary);
+  border-style: solid;
+  padding-left: 1rem;
+}
+
+.milkdown-betterwrite.prose :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *))::before,
+.milkdown-betterwrite.prose :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *))::after {
+  content: '';
+}
+
+.milkdown-betterwrite.prose :where(code):not(:where([class~="not-prose"] *))::before,
+.milkdown-betterwrite.prose :where(code):not(:where([class~="not-prose"] *))::after {
+  content: '';
+}
+
+.milkdown-betterwrite.prose br[data-is-inline="true"],
+.milkdown-betterwrite.prose br[data-is-inline="true"]::after {
+  content: ' '
+}
