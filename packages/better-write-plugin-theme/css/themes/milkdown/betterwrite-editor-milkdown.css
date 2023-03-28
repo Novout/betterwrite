@@ -37,8 +37,12 @@
   margin-left: 1rem;
 }
 
-.milkdown-betterwrite code {
-  font-style: normal;
+.milkdown-betterwrite pre {
+  padding: 0.5rem;
+  background-color: var(--theme-milkdown-secondary);
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem !important;
 }
 
 .milkdown-betterwrite pre code {
@@ -50,7 +54,7 @@
 }
 
 .milkdown-betterwrite blockquote {
-  border-left: 1rem;
+  border-left: 0.4rem;
   border-color: var(--theme-milkdown-secondary);
   border-style: solid;
   padding-left: 1rem;
