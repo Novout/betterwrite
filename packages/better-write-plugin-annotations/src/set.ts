@@ -136,8 +136,12 @@ export const PluginAnnotationsSet = (
           )
         }
 
-        ctx.get(listenerCtx).updated((_, doc) => {
+        const fn = hooks.vueuse.core.useDebounceFn((doc: any) => {
           setFile(file.id, doc.toJSON())
+        }, 500)
+
+        ctx.get(listenerCtx).updated((_, doc) => {
+          fn(doc)
         })
 
         ctx.update(editorViewOptionsCtx, (prev) => ({
