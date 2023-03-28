@@ -126,10 +126,7 @@ export const useProjectStore = defineStore('project', {
         keywords: options.keywords || 'docx,project',
         subject: options.subject || 'betterwrite',
         type: options.type,
-        base:
-          options.base ?? options?.type === 'only-annotations'
-            ? 'annotations'
-            : 'chapter' || 'chapter',
+        base: options.base || 'chapter',
         totalPagesCreated: options.totalPagesCreated || 1,
         main: options.main || {},
         summary: options.summary || {},
@@ -140,11 +137,7 @@ export const useProjectStore = defineStore('project', {
           {
             id: useUtils().id().uuidv4(),
             title: `${forceTitle || title}  | ${useFormat().actually()}`,
-            entities: [
-              useFactory()
-                .entity()
-                .create('heading-one', forceTitle || title),
-            ],
+            entities: [],
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
           },
