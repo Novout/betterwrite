@@ -6,27 +6,31 @@
 }
 
 .milkdown-betterwrite h1 {
-  font-size: 2.75rem;
+  font-size: 2rem;
+  font-weight: 700;
   padding: 1.25rem 0;
 }
 
 .milkdown-betterwrite h2 {
-  font-size: 1.85rem;
+  font-size: 1.65rem;
+  font-weight: 700;
   padding: 0.85rem 0;
 }
 
 .milkdown-betterwrite h3 {
-  font-size: 1.65rem;
+  font-size: 1.35rem;
+  font-weight: 700;
   padding: 0.65rem 0;
 }
 
 .milkdown-betterwrite p, li {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 500;
 }
 
 .milkdown-betterwrite ul > li {
-  list-style-type: square;
   margin-left: 1rem;
+  list-style-type: "→ ";
 }
 
 .milkdown-betterwrite ol > li {
