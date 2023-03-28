@@ -5,7 +5,7 @@
   >
     <div class="relative top-50 w-150 h-60 bg-gradient-to-br from-gray-900 to-gray-600 filter blur-2xl rounded-full" />
     <div
-      class="flex gap-10 items-center justify-around flex-col justify-start h-full md:w-3/4 lg:w-3/5 w-full"
+      class="flex gap-10 items-center flex-col justify-start h-full md:w-3/4 lg:w-3/5 w-full"
     >
       <div class="flex flex-col gap-5">
         <h1
@@ -49,24 +49,6 @@
           :wrapper="'p'"
         />
       </div>
-      <img
-        v-motion
-        :initial="{
-          opacity: 0,
-          x: 150,
-        }"
-        :enter="{
-          opacity: 1,
-          x: 0,
-          transition: {
-            duration: 1000,
-          },
-        }"
-        :delay="700"
-        class="bg-cover shadow-xl w-10/11 sm:w-full"
-        alt="betterwrite.io landing image"
-        src="@/assets/png/customtheme.png"
-      />
     </div>
   </div>
 </template>
