@@ -60,33 +60,46 @@
 </template>
 
 <script setup lang="ts">
+  import { useVaultStore } from '@/store/vault';
   import { useSupabase } from '@/use/storage/supabase'
   import { ProjectDocument, ID } from 'better-write-types'
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
+  const VAULT = useVaultStore()
+
   const supabase = useSupabase()
   const { t } = useI18n()
 
-  const projects = ref<ProjectDocument[]>([])
+  const projects = ref<ProjectDocument[]>(VAULT.documents || [])
   const isFetched = ref<boolean>(false)
 
-  const onSetProject = () => {
-    supabase.getDocuments().then((_projects) => {
-      projects.value = _projects || []
+  const onSetDocuments = (force = false) => {
+    if(VAULT.documents && !force) {
+      projects.value = VAULT.documents
+
+      isFetched.value = true
+
+      return
+    }
+
+    supabase.getDocuments().then((documents) => {
+      VAULT.documents = documents ?? undefined
+
+      projects.value = VAULT.documents || []
     })
     .finally(() => {
       isFetched.value = true
     })
   }
 
-  onMounted(async () => {
-    onSetProject()
+  onMounted(() => {
+    onSetDocuments()
   })
 
   const onDeleteProject = (id: ID<number>) => {
     supabase.deleteProject(id).then(() => {
-      onSetProject()
+      onSetDocuments(true)
     })
   }
 </script>

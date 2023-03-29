@@ -61,7 +61,7 @@ export default {
     export: 'Export',
     chapters: 'Chapters',
     tools: 'Tools',
-    vault: 'Vault',
+    vault: 'Void',
     help: 'Help',
   },
   auth: {
@@ -749,7 +749,7 @@ export default {
     },
   },
   vault: {
-    empty: 'The vault is empty.',
+    empty: 'The void is empty.',
   },
   tutorial: {
     buttons: {
@@ -790,7 +790,7 @@ export default {
         high2: 'File: ',
         high3: 'Export: ',
         high4: 'Tools: ',
-        high5: 'Vault: ',
+        high5: 'Void: ',
         high6: 'Help: ',
         description2:
           'Check out the main ways of manipulating the project, such as creating, saving, changing, loading and querying.',
