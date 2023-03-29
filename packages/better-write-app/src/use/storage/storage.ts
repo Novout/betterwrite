@@ -168,6 +168,14 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.editor.configuration.cloudAutosave) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        cloudAutosave: false
+      }
+    }
+
+
     return _
   }
 

@@ -79,6 +79,7 @@ export interface EditorStateConfiguration {
   bottomBar: boolean
   transition: boolean
   autosave: boolean
+  cloudAutosave: boolean
   blocked: boolean
   entity: EditorStateConfigurationEntity
   commands: EditorStateConfigurationCommands

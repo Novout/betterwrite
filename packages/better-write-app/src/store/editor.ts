@@ -40,6 +40,7 @@ export const useEditorStore = defineStore('editor', {
         bars: true,
         transition: true,
         autosave: true,
+        cloudAutosave: false,
         blocked: true,
         bottomBar: true,
         entity: {

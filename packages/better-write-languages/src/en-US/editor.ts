@@ -224,7 +224,8 @@ export default {
       preferences: 'Preferences',
       statistics: 'Statistics',
       corrector: 'Corrector',
-      autosave: 'Auto Save (in minutes)',
+      autosave: 'Local Auto Save',
+      cloudAutosave: 'Cloud Auto Save',
       language: 'Language',
       theme: 'Theme',
       import: 'Import',
@@ -748,7 +749,7 @@ export default {
     },
   },
   vault: {
-    empty: 'The vault is empty.'
+    empty: 'The vault is empty.',
   },
   tutorial: {
     buttons: {

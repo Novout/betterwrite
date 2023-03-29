@@ -58,6 +58,13 @@
         />
       </div>
       <div class="wb-preferences">
+        <p class="text-sm">{{ t('editor.aside.configuration.cloudAutosave') }}</p>
+        <InputBoolean
+          v-model="EDITOR.configuration.cloudAutosave"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
         <p class="text-sm">
           {{
             t(

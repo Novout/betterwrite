@@ -481,7 +481,8 @@ export default {
       draggable: 'Arrastável',
       bars: 'Barras Laterias',
       transition: 'Transições',
-      autosave: 'Salvamento Automático',
+      autosave: 'Salvamento Automático Local',
+      cloudAutosave: 'Salvamento Automático na Nuvem',
       blocked: 'Tutorial Inicial',
       bottomBar: 'Barra Inferior',
       advanced: 'Avançado',
@@ -753,7 +754,7 @@ export default {
     },
   },
   vault: {
-    empty: 'O vazio está... vazio.'
+    empty: 'O vazio está... vazio.',
   },
   tutorial: {
     buttons: {

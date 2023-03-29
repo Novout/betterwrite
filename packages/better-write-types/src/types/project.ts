@@ -189,9 +189,9 @@ export interface ProjectTypeID {
 }
 
 export interface ProjectDocument {
-  document: { 
-    id: ID<number>,
-    name: string,
+  document: {
+    id: ID<number>
+    name: string
     type: ProjectType
   }
 }
