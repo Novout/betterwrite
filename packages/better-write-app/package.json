@@ -48,7 +48,7 @@
     "@vueuse/motion": "2.0.0-beta.12",
     "@vueuse/schema-org-vite": "1.1.0-beta.6",
     "@vueuse/shared": "9.13.0",
-    "@zip.js/zip.js": "2.6.41",
+    "@zip.js/zip.js": "2.6.82",
     "better-write-contenteditable-ast": "^1.0.0",
     "better-write-extension": "^1.0.0",
     "better-write-google-fonts-api": "^1.0.0",
