@@ -4,13 +4,13 @@
   >
   <Spinner v-if="!isFetched" :width="80" :height="80" />
   <div
-    v-for="(context, index) in projects"
+    v-for="({ document }, index) in projects"
     v-else-if="projects.length !== 0"
     :key="index"
     class="flex flex-col w-full flex-wrap justify-start md:justify-between items-center bg-theme-editor-dashboard-background-main wb-text rounded my-1 shadow-binset transition-shadow hover:shadow-xl"
   >
-    <div class="flex items-center justify-between p-1 bg-black-opacity w-full">
-      <div v-if="context.project.type === 'blank'" class="flex gap-2 items-center">
+    <div class="flex items-center justify-start p-1 bg-black-opacity w-full">
+      <div v-if="document.type === 'blank'" class="flex gap-2 items-center">
         <div>
           <IconPaper class="w-7 h-7" />
         </div>
@@ -18,7 +18,7 @@
           {{ t('editor.new.blank.title') }}
         </h2>
       </div>
-      <div v-else-if="context.project.type === 'creative'" class="flex gap-2 items-center">
+      <div v-else-if="document.type === 'creative'" class="flex gap-2 items-center">
         <div>
           <IconBook class="w-7 h-7" />
         </div>
@@ -26,69 +26,66 @@
           {{ t('editor.new.creative.title') }}
         </h2>
       </div>
-      <div v-else-if="context.project.type === 'only-annotations'" class="flex gap-2 items-center">
+      <div v-else-if="document.type === 'only-annotations'" class="flex gap-2 items-center">
         <div>
           <IconAnnotation class="w-7 h-7" />
         </div>
         <h2 class="text-sm font-bold">
-          {{ t('editor.new.annotation.title') }}
+          {{ t('editor.new.annotations.title') }}
         </h2>
       </div>
-      <p class="text-sm text-center">{{ supabase.getProjectSize(context) }}</p>
     </div>
     <div class="flex flex-col justify-between w-full p-2">
-      <h2 class="text-sm font-bold text-center">{{ context.project.nameRaw }}</h2>
+      <h2 class="text-sm font-bold text-center">{{ document.name }}</h2>
       <div class="flex justify-end flex-1 mt-5 items-center w-full">
         <div>
           <IconDelete
             class="wb-icon w-8 h-8 lg:(w-6 h-6)"
-            @click.prevent.stop="onDeleteProject(context)"
+            @click.prevent.stop="onDeleteProject(document.id)"
           />
         </div>
         <div>
           <IconEnter
             class="wb-icon w-8 h-8 lg:(w-6 h-6)"
-            @click.prevent.stop="supabase.loadProject(context)"
+            @click.prevent.stop="supabase.loadProjectById(document.id)"
           />
         </div>
       </div>
     </div>
   </div>
-  <div v-else class="wb-text">
-    {{ t('dashboard.projects.empty') }}
+  <div v-else class="wb-text text-center font-bold">
+    {{ t('editor.vault.empty') }}
   </div>
 </div>
 </template>
 
 <script setup lang="ts">
   import { useSupabase } from '@/use/storage/supabase'
-  import { ProjectObject } from 'better-write-types'
+  import { ProjectDocument, ID } from 'better-write-types'
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const supabase = useSupabase()
   const { t } = useI18n()
 
-  const projects = ref<ProjectObject[]>([])
+  const projects = ref<ProjectDocument[]>([])
   const isFetched = ref<boolean>(false)
 
   const onSetProject = () => {
-    supabase
-      .getProjects()
-      .then((_projects) => {
-        projects.value = _projects as ProjectObject[]
-      })
-      .finally(() => {
-        isFetched.value = true
-      })
+    supabase.getDocuments().then((_projects) => {
+      projects.value = _projects || []
+    })
+    .finally(() => {
+      isFetched.value = true
+    })
   }
 
-  onMounted(() => {
+  onMounted(async () => {
     onSetProject()
   })
 
-  const onDeleteProject = (context: ProjectObject) => {
-    supabase.deleteProject(context).then(() => {
+  const onDeleteProject = (id: ID<number>) => {
+    supabase.deleteProject(id).then(() => {
       onSetProject()
     })
   }

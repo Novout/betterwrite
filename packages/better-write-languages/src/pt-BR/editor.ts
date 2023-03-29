@@ -752,6 +752,9 @@ export default {
       averageOccurrences: 'Média de Ocorrências',
     },
   },
+  vault: {
+    empty: 'O vazio está... vazio.'
+  },
   tutorial: {
     buttons: {
       prev: 'Anterior',

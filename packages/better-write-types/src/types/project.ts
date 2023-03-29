@@ -187,3 +187,11 @@ export interface ProjectTypeID {
   draft: ID<number>
   active: ID<number>
 }
+
+export interface ProjectDocument {
+  document: { 
+    id: ID<number>,
+    name: string,
+    type: ProjectType
+  }
+}

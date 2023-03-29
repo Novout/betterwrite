@@ -747,6 +747,9 @@ export default {
       averageOccurrences: 'Average of Occurrences',
     },
   },
+  vault: {
+    empty: 'The vault is empty.'
+  },
   tutorial: {
     buttons: {
       prev: 'Previous',

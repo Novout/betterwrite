@@ -38,7 +38,7 @@
     "@milkdown/prose": "7.1.1",
     "@sentry/tracing": "7.45.0",
     "@sentry/vue": "7.45.0",
-    "@supabase/supabase-js": "2.10.0",
+    "@supabase/supabase-js": "2.12.1",
     "@vuelidate/core": "2.0.1",
     "@vuelidate/validators": "2.0.1",
     "@vueuse/components": "9.13.0",
