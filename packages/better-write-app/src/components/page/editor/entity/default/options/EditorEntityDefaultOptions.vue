@@ -165,12 +165,12 @@
   const { t } = useI18n()
   const { base } = useEntity()
 
-  onClickOutside(options as any, () => onClose())
+  onClickOutside(options, (e) => onClose(e))
 
   const mouse = computed(() => EDITOR.actives.global.mouse)
 
   useIntersectionObserver(
-    options as any,
+    options,
     ([{ isIntersecting }]) => {
       if (block.value) return
 
@@ -207,7 +207,9 @@
     el.style.left = `${mouse.value.x + 10}px`
   }
 
-  const onClose = () => {
+  const onClose = (e: PointerEvent) => {
+    if(e.type !== 'click') return
+    
     ABSOLUTE.entity.menu = false
   }
 </script>

@@ -35,10 +35,9 @@
   import {
     useElementHover,
     useIntersectionObserver,
-    useMousePressed,
-    watchDebounced,
   } from '@vueuse/core'
   import { useMotion, MotionVariants } from '@vueuse/motion'
+  import { onLongPress } from '@vueuse/core'
   import { Calls } from 'better-write-plugin-core'
   import { usePlugin } from 'better-write-plugin-core'
   import { Entity } from 'better-write-types'
@@ -58,11 +57,6 @@
   const isHovered = useElementHover(container)
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
 
-  const { pressed, sourceType: mouseType } = useMousePressed({
-    touch: true,
-    target: container,
-  })
-
   const target = computed(
     () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu
   )
@@ -75,21 +69,17 @@
     CONTEXT.entities[_index.value].visual.info = _target
   })
 
-  // mobile contextmenu open
-  watchDebounced(
-    pressed,
-    (_presset) => {
-      if (
-        _presset &&
-        mouseType.value === 'touch' &&
-        props.entity.type !== 'drau'
-      )
-        raw
-          .v2()
-          .block()
-          .menu('' as any, _index.value)
+  onLongPress(
+    container,
+    (e) => {
+      if(props.entity.type === 'drau' || e.pointerType === 'mouse') return
+
+      raw
+        .v2()
+        .block()
+        .menu(e, _index.value)
     },
-    { debounce: 350 }
+    { delay: 300 }
   )
 
   // animations
