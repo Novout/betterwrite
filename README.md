@@ -8,7 +8,7 @@
 betterwrite.io
 </h1>
 <h4 align="center">
-An Open Source Word Processor
+A Creative Word Processor
 <h4>
 <p align="center">
   <a href="https://betterwrite.io"><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
@@ -21,7 +21,7 @@ An Open Source Word Processor
 
 - ✅ Entity-Model Editor
 - ✅ Offline First
-- ✅ Cloud Save
+- ✅ Cloud Save (Void)
 - ✅ Full Customization
 - ✅ Multipurpose
 - ✅ High Tracking
