@@ -41,6 +41,10 @@ export const useEditorStore = defineStore('editor', {
         transition: true,
         autosave: true,
         cloudAutosave: false,
+        compressFiles: {
+          value: false,
+          quality: 0.8,
+        },
         blocked: true,
         bottomBar: true,
         entity: {

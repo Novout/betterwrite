@@ -175,6 +175,15 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.editor.configuration.compressFiles) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        compressFiles: {
+          value: false,
+          quality: 0.8
+        }
+      }
+    }
 
     return _
   }

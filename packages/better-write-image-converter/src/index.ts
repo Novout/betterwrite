@@ -3,6 +3,7 @@ import {
   ImageFileRawOptions,
   ImageFileRawReturn,
 } from 'better-write-types'
+import Compressor from 'compressorjs'
 
 export const isImageExtension = (text: string) => {
   return (
@@ -58,6 +59,46 @@ export const ImageToForcePNG = (
   })
 }
 
+export const getFileOrBlobResult = (
+  file: File | Blob
+): Promise<ImageFileRawReturn> => {
+  return new Promise((res, rej) => {
+    const reader = new FileReader()
+
+    const isSvg = file.name.endsWith('.svg')
+
+    if (isSvg) {
+      reader.readAsText(file)
+    } else {
+      reader.readAsDataURL(file)
+    }
+
+    reader.onload = async () => {
+      if (!isImageExtension(file.name) || !reader.result) {
+        rej()
+        return
+      }
+
+      const raw = isSvg
+        ? await ImageToForcePNG({
+            raw: reader.result as string,
+            width: 2000 as number,
+            height: 2000 as number,
+          })
+        : (reader.result as string)
+
+      res({
+        raw,
+        fileName: file.name,
+        fileSize: file.size,
+      })
+    }
+    reader.onerror = function () {
+      rej()
+    }
+  })
+}
+
 export const getImageFileRaw = (
   options?: ImageFileRawOptions
 ): Promise<ImageFileRawReturn> => {
@@ -65,44 +106,30 @@ export const getImageFileRaw = (
     const _ = document.createElement('input')
     _.type = 'file'
     _.accept = options?.accept || '.png, .svg, .jpg, .jpeg'
-    _.addEventListener('change', function () {
+    _.addEventListener('change', async function () {
       const file = (this.files as any)[0]
 
       if (!file) return
 
-      const reader = new FileReader()
+      if (options?.compress?.value) {
+        new Compressor(file, {
+          quality: options?.compress?.quality ?? 1.0,
+          async success(compressed) {
+            const data = await getFileOrBlobResult(compressed)
 
-      const isSvg = file.name.endsWith('.svg')
-
-      if (isSvg) {
-        reader.readAsText(file)
-      } else {
-        reader.readAsDataURL(file)
-      }
-
-      reader.onload = async () => {
-        if (!isImageExtension(file.name) || !reader.result) {
-          rej()
-          return
-        }
-
-        const raw = isSvg
-          ? await ImageToForcePNG({
-              raw: reader.result as string,
-              width: 2000 as number,
-              height: 2000 as number,
-            })
-          : (reader.result as string)
-
-        res({
-          raw,
-          fileName: file.name,
-          fileSize: file.size,
+            data ? res(data) : rej(data)
+          },
+          error(err) {
+            rej(err)
+          },
         })
+
+        return
       }
-      reader.onerror = function () {
-        rej()
-      }
+
+      const data = await getFileOrBlobResult(file)
+
+      data ? res(data) : rej(data)
     })
     _.click()
   })

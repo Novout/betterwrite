@@ -120,6 +120,11 @@ export default {
             description:
               'Enable the use of external fonts in the editor. It depends on the internet connection. Does not affect requests from file generators.',
           },
+          compressFiles: {
+            title: 'Compress Images',
+            description:
+              'The lower the value, lower the image quality (1.0 is the default). Recommended to decrease project (.bw) size.',
+          },
         },
         background: {
           title: 'Background',

@@ -122,6 +122,11 @@ export default {
             description:
               'Habilitar a utilização de fontes externas no editor. Depende da conexão com a internet. Não afeta as requisições dos geradores de arquivo.',
           },
+          compressFiles: {
+            title: 'Comprimir Imagens',
+            description:
+              'Quanto menor o valor, menor a qualidade de imagem e o tamanho do arquivo (1.0 é o padrão). Recomendado para diminuir o tamanho geral do projeto (.bw).',
+          },
         },
         background: {
           title: 'Fundo',

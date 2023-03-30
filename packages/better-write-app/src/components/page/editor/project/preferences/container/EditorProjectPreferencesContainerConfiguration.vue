@@ -196,6 +196,28 @@
           <InputBoolean v-model="EDITOR.styles.googleFontsInjection" />
         </div>
       </DescriptionContainer>
+      <DescriptionContainer
+        color="#AA0000"
+        :description="
+          t(
+            'editor.preferences.configuration.editor.options.compressFiles.description'
+          )
+        "
+      >
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.options.compressFiles.title'
+              )
+            }}
+          </p>
+          <div class="flex gap-2 items-center">
+            <InputBoolean v-model="EDITOR.configuration.compressFiles.value" />
+            <InputNumber v-model="EDITOR.configuration.compressFiles.quality" :min="0" :max="1" :step="0.1" />
+          </div>
+        </div>
+      </DescriptionContainer>
     </div>
   </EditorProjectPreferencesContainerSlot>
 </template>

@@ -81,6 +81,10 @@ export interface EditorStateConfiguration {
   autosave: boolean
   cloudAutosave: boolean
   blocked: boolean
+  compressFiles: {
+    value: boolean
+    quality: number
+  }
   entity: EditorStateConfigurationEntity
   commands: EditorStateConfigurationCommands
 }

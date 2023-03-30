@@ -6,6 +6,10 @@ export interface ImageToForcePNGOptions {
 
 export interface ImageFileRawOptions {
   accept?: string
+  compress?: {
+    value?: boolean
+    quality?: number
+  }
 }
 
 export interface ImageFileRawReturn {

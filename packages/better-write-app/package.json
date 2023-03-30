@@ -61,6 +61,7 @@
     "better-write-plugin-importer": "^1.0.0",
     "better-write-plugin-theme": "^1.0.0",
     "better-write-types": "^1.0.0",
+    "compressorjs": "1.2.1",
     "destr": "1.2.2",
     "docx": "7.5.0",
     "drauu": "0.3.2",
