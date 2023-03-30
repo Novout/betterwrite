@@ -51,14 +51,16 @@
     max: {
       required: false,
       type: Number,
-    },
+    }
   })
 
   const toast = useToast()
   const { t } = useI18n()
 
   const onNegative = () => {
-    if (cmp.value <= props.min) {
+    const step = Number(props.step)
+
+    if (cmp.value - step < props.min) {
       toast.warning(t('toast.material.number.negative', { number: props.min }))
 
       return
@@ -69,23 +71,25 @@
   }
 
   const onPositive = () => {
+    const step = Number(props.step)
+
     if (props.max && cmp.value >= props.max) {
       toast.warning(t('toast.material.number.positive', { number: props.max }))
 
       return
     }
-    cmp.value += Number(props.step)
+    cmp.value += step
     emit('action')
   }
 
   const emit = defineEmits(['update:modelValue', 'action'])
-  const inp = ref<HTMLElement | null>(null as any)
+  const inp = ref<HTMLElement | null>(null)
   const cmp: WritableComputedRef<number> = computed({
     get() {
       return props.modelValue
     },
-    set(val: any) {
-      emit('update:modelValue', val)
+    set(val: number) {
+      emit('update:modelValue', Number(val.toFixed(2)) ?? val)
     },
   })
 </script>
