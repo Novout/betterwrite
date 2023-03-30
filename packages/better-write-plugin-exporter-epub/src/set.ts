@@ -160,6 +160,7 @@ export const PluginEpubSet = (
         description: stores.PROJECT.subject,
         publisher: stores.PROJECT.producer,
         tocTitle: hooks.i18n.t('editor.bar.epub.table') ?? undefined,
+        tocInTOC: stores.PROJECT.type === 'creative',
         date: new Date().toString(),
         css: getStyles(stores, hooks),
         cover: undefined,
