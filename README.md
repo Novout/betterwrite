@@ -8,7 +8,7 @@
 betterwrite.io
 </h1>
 <h4 align="center">
-A Open Source Word Processor
+An Open Source Word Processor
 <h4>
 <p align="center">
   <a href="https://betterwrite.io"><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>

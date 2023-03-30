@@ -7,10 +7,6 @@
     "email": "novout@hotmail.com",
     "url": "https://github.com/Novout"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "description": "A editor for creative writers.",
   "scripts": {
     "dev": "vite --port 3000",
     "build": "vite build",
