@@ -107,11 +107,17 @@ export const getImageFileRaw = (
     _.type = 'file'
     _.accept = options?.accept || '.png, .svg, .jpg, .jpeg'
     _.addEventListener('change', async function () {
-      const file = (this.files as any)[0]
+      const files = this.files
 
-      if (!file) return
+      if (!files || files.length === 0) {
+        rej()
 
-      if (options?.compress?.value) {
+        return
+      }
+
+      const file = files[0]
+
+      if (options?.compress?.value && file.type !== 'image/gif') {
         new Compressor(file, {
           quality: options?.compress?.quality ?? 1.0,
           async success(compressed) {
