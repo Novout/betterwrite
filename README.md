@@ -33,9 +33,46 @@ A Creative Word Processor
 
 <br>
 
+# An Editor for Creative Writing
+
+
+Unlike traditional text flows, *betterwrite* focuses on producing an out-of-the-curve experience for writers and writing derivatives, bringing with it several additional tools to increase the flow of use. By default, the editor always tends to maintain compatibility in offline mode, allowing users to continue their work without having their workflow interfered. Furthermore, the editor is fully customizable with the main focus on emphasizing the writer's creativity and adapting all the context at his disposal.
+
 <a href="https://betterwrite.io/">
-  <img src="./.github/customtheme.png" width="100%" />
+  <img src="./.github/1.png" width="100%" />
 </a>
+
+### Annotations 
+
+<div style="display: flex;">
+  <img src="./.github/2.png" width="20%" />
+  <img src="./.github/7.png" width="80%" />
+</div>
+
+### Characters
+
+**Characters** is a system for identifying specific words and offering some control over them, highlighting the paragraph with colors and their occurrence in the project. This system mainly allows fantasy or drama writers to have greater control of their paragraphs and handle character arcs with perfection.
+
+<div style="display: flex;">
+  <img src="./.github/3.png" width="40%" />
+  <img src="./.github/6.png" width="60%" />
+</div>
+
+### Statistics
+
+**Statistics**
+
+<img src="./.github/4.png" />
+
+### Drafts
+
+**Drafts**
+
+<img src="./.github/5.png" />
+
+### Other Project Types
+
+Besides the **creative** mode, the **common** mode is available for the production of simple documents and the **only-annotations** mode for annotating day-to-day tasks and other TODO's.
 
 # Development
 
