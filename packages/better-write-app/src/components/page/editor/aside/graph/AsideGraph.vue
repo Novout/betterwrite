@@ -20,14 +20,12 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useProjectStore } from '@/store/project'
   import { useUtils } from '@/use/utils'
-  import { useEnv } from '@/use/env'
   import { computed, watch } from 'vue'
 
   const PROJECT = useProjectStore()
   const ABSOLUTE = useAbsoluteStore()
 
   const utils = useUtils()
-  const env = useEnv()
 
   const name = computed(() => PROJECT.nameRaw)
 

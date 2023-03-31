@@ -28,7 +28,6 @@
 </template>
 
 <script setup lang="ts">
-  import { useProject } from '@/use/project'
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useI18n } from 'vue-i18n'
@@ -36,7 +35,6 @@
 
   const PROJECT = useProjectStore()
 
-  const project = useProject()
   const env = useEnv()
   const { t } = useI18n()
   const router = useRouter()

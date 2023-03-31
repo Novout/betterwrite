@@ -17,8 +17,11 @@
           ? 'bg-theme-editor-material-boolean-rounded-background'
           : 'bg-white',
       ]"
-      class="inline-block w-4 h-4 transition-transform transform rounded-full"
-    />
+      class="flex items-center justify-center inline-block w-4 h-4 transition-transform transform rounded-full"
+    >
+      <IconMaterialYes v-if="props.modelValue" class="filter invert w-3 h-3" />
+      <IconMaterialNo v-else class="filter invert w-3 h-3" />
+  </span>
   </Switch>
 </template>
 
