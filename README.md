@@ -36,7 +36,11 @@ A Creative Word Processor
 # An Editor for Creative Writing
 
 
-Unlike traditional text flows, *betterwrite* focuses on producing an out-of-the-curve experience for writers and writing derivatives, bringing with it several additional tools to increase the flow of use. By default, the editor always tends to maintain compatibility in offline mode, allowing users to continue their work without having their workflow interfered. Furthermore, the editor is fully customizable with the main focus on emphasizing the writer's creativity and adapting all the context at his disposal.
+Unlike traditional text flows, *betterwrite* focuses on producing an out-of-the-curve experience for writers and writing derivatives, bringing with it several additional tools to increase the flow of use. 
+
+By default, the editor always tends to maintain compatibility in offline mode, allowing users to continue their work without having their workflow interfered. 
+
+Furthermore, the editor is fully customizable with the main focus on emphasizing the writer's creativity and adapting all the context at his disposal.
 
 <a href="https://betterwrite.io/">
   <img src="./.github/1.png" width="100%" />
@@ -44,19 +48,17 @@ Unlike traditional text flows, *betterwrite* focuses on producing an out-of-the-
 
 ### Annotations 
 
-<div style="display: flex;">
-  <img src="./.github/2.png" width="20%" />
-  <img src="./.github/7.png" width="80%" />
-</div>
+**Annotations** have a different editor, based on markdown, offering a more instantaneous and familiar option than the main editor, fulfilling its main purpose: annotating. Annotations do not participate in the document production flow and serve as an aid to the writer.
+
+<img src="./.github/2.png" width="100%" />
 
 ### Characters
 
 **Characters** is a system for identifying specific words and offering some control over them, highlighting the paragraph with colors and their occurrence in the project. This system mainly allows fantasy or drama writers to have greater control of their paragraphs and handle character arcs with perfection.
 
-<div style="display: flex;">
-  <img src="./.github/3.png" width="40%" />
-  <img src="./.github/6.png" width="60%" />
-</div>
+<img src="./.github/3.png" width="100%" />
+
+<img src="./.github/6.png" width="100%" />
 
 ### Statistics
 
@@ -69,6 +71,18 @@ Unlike traditional text flows, *betterwrite* focuses on producing an out-of-the-
 **Drafts**
 
 <img src="./.github/5.png" />
+
+### Corrector
+
+**Corrector**
+
+<img src="./.github/8.png" />
+
+### Insert Shortcuts
+
+**Insert Shortcuts**
+
+<img src="./.github/9.png" />
 
 ### Other Project Types
 
