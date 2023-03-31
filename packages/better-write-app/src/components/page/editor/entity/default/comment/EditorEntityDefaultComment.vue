@@ -45,7 +45,7 @@
 <script setup lang="ts">
   import { ref, onMounted, nextTick, computed } from 'vue'
   import { useAbsoluteStore } from '@/store/absolute'
-  import { tryOnUnmounted, useDraggable } from '@vueuse/core'
+  import { useDraggable } from '@vueuse/core'
   import { useEditorStore } from '@/store/editor'
   import { useContextStore } from '@/store/context'
   import { useEnv } from '@/use/env'
@@ -93,12 +93,6 @@
 
   onMounted(() => {
     search.value?.focus()
-  })
-
-  tryOnUnmounted(() => {
-    emitter.on('entity-external-comment-save', () => {
-      
-    })
   })
 
   const onInput = (e: any) => {
