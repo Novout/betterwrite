@@ -49,13 +49,13 @@ export const useCharacters = () => {
 
       switch (nameCase) {
         case 'strict':
-          if (text.split(' ').find((t) => t === c.name) && isValidImportant)
+          if (text.split(/\s/).find((t) => t === c.name) && isValidImportant)
             entity.visual.custom = color
           break
         case 'default':
           if (
             text
-              .split(' ')
+              .split(/(\s|\s[&-._:])/)
               .find((t) => t.toLowerCase().includes(c.name.toLowerCase())) &&
             isValidImportant
           )
