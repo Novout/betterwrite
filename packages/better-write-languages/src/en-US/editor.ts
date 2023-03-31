@@ -488,6 +488,7 @@ export default {
       bars: 'Sidebars',
       transition: 'Transitions',
       autosave: 'Auto-Save',
+      cloudAutosave: 'Cloud Auto Save',
       blocked: 'Initial Tutorial',
       bottomBar: 'Bottom Bar',
       language: 'Language',

@@ -83,6 +83,12 @@ export default {
     contextWarning:
       'Chapter identifier not found! Make sure the uploaded file is valid!',
   },
+  material: {
+    number: {
+      positive: 'Numbers greater than {number} are not allowed!',
+      negative: 'Numbers smaller than {number} are not allowed!',
+    },
+  },
   corrector: {
     apply: 'Effects applied successfully!',
   },
