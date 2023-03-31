@@ -99,6 +99,7 @@ export interface EditorStateStyles {
 }
 
 export interface EditorStateBase {
+  backgroundCoverAttribute: boolean
   backgroundData: string
   backgroundBlur: boolean
   backgroundGrayscale: boolean

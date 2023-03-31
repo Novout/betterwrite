@@ -27,6 +27,7 @@ export const useEditorStore = defineStore('editor', {
           fontSize: 18,
         },
         base: {
+          backgroundCoverAttribute: true,
           backgroundData: '',
           backgroundBlur: false,
           backgroundGrayscale: false,

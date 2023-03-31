@@ -130,6 +130,7 @@ export default {
         },
         background: {
           title: 'Fundo',
+          cover: 'Cobrir',
           image: 'Imagem',
           imageBlur: 'Borrão',
           imageGrayscale: 'Cinza',

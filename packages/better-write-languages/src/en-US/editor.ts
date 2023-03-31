@@ -128,6 +128,7 @@ export default {
         },
         background: {
           title: 'Background',
+          cover: 'Cover',
           image: 'Image',
           imageBlur: 'Blur',
           imageGrayscale: 'Grayscale',
