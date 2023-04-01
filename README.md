@@ -41,7 +41,7 @@ A Creative Word Processor
 
 Unlike traditional word processors, *betterwrite* focuses on producing an out-of-the-curve experience for writers and writing derivatives, bringing with it several additional tools to increase the flow of use:
 
-- **Full Customization**: The editor is fully customizable with the main focus on emphasizing the writer's creativity and adapting all the context at his disposal. In addition to standard themes, *betterwrite* allows for custom backgrounds (including gifs) and the use of external fonts within the editor itself.
+- **Full Customization**: The editor is fully customizable with the main focus on emphasizing the writer's creativity and adapting all the context at his disposal. In addition to standard themes, *betterwrite* allows for custom backgrounds (including *gifs*) and the use of external fonts within the editor itself.
 
 - **Void** is a cloud save feature aiming to be more user friendly and easy to access among other projects saved in the void. Its structure was planned not to interfere with local saves (local storage or extension).
 
@@ -65,21 +65,21 @@ Unlike traditional word processors, *betterwrite* focuses on producing an out-of
 
 - **Individual Styling**: Using the brush icon on each paragraph entity, choose styles only for the designated group of paragraphs, overriding the ones chosen in the generator's default configuration tab.
 
-## Offline First
+- **Configuration Portability**: Export or import specific configurations and use them in other similar projects.
 
-By default, the editor always tends to maintain compatibility in offline mode, allowing users to continue their work without having their workflow interfered. This is possible thanks to the *100% Client-Side* concept, where all the logic and use by the user is on the client side, where the role of authentication and saving in the cloud (void) does not depend on the project, and vice versa.
+- **Project Types**: Besides the **creative** mode, the **common** mode is available for the production of simple documents and the **annotations-only** mode for day-to-day tasks and other TODO's.
 
-## Other Project Types
+# 100% Client-Side
 
-Besides the **creative** mode, the **common** mode is available for the production of simple documents and the **only-annotations** mode for annotating day-to-day tasks and other TODO's.
+By default, the editor always tends to maintain compatibility in offline mode, allowing users to continue their work without having their workflow interfered. This is possible thanks to the *100% Client-Side* concept, where all the logic and use by the user is on the client-side, where the role of authentication and saving in the cloud (void) does not depend on the project, and vice versa.
 
-# Generators
+### Generators
 
 The idea of ​​generators is simple: do whatever you need to, but only worry about your document at the end of the project. The styling of the editors (and the blocks) does not interfere with the generations as they are not based on HTML rendering, which allows the project to respect only the imposed settings.
 
 ### Browser Polyfills
 
-All generators were designed to work from the API's offered by browsers, not requiring serveless functions or external providers. Extra features like fonts and other utilities are built into the standard application flow (like some .ttf / typeface fonts).
+All generators were designed to work from the API's offered by browsers, not requiring serverless functions or external providers. Extra features like fonts and other utilities are built into the standard application flow (like some .ttf / typeface fonts).
 
 # Development
 

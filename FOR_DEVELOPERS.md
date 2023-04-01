@@ -15,6 +15,8 @@ To access the extension data is very simple:
 
 > If you want to use any json or tracing viewers, make sure to remove images (because they are base64 data) for a better experience.
 
+> Mimetype is `application/bw+zip`
+
 ## Types
 
 All types are centered in `packages/better-write-types`. If you want to access or change something specific, check the package.
