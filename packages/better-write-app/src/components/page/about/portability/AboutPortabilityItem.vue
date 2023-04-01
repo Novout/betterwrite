@@ -9,8 +9,11 @@
         ? 'from-gray-300 to-gray-400 shadow-lg shadow-gray-400'
         : '',
       color === 'orange'
-        ? 'from-orange-300 to-orange-400 shadow-xl shadow-orange-900'
-        : '',
+      ? 'from-orange-300 to-orange-400 shadow-xl shadow-orange-900'
+      : '',
+      color === 'green'
+      ? 'from-green-400 to-green-600 shadow-xl shadow-green-900'
+      : '',
     ]"
     class="flex font-bold items-center justify-center p-7 md:p-9 rounded-full w-5 h-5 bg-gradient-to-br"
   >
@@ -20,6 +23,6 @@
 
 <script setup lang="ts">
   defineProps<{
-    color: 'red' | 'blue' | 'white' | 'orange'
+    color: 'red' | 'blue' | 'white' | 'orange' | 'green'
   }>()
 </script>

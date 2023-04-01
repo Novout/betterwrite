@@ -33,7 +33,8 @@ export default defineConfig({
     'wb-drau-icon-active': 'text-theme-icon-hover cursor-pointer w-8 h-8 md:(w-6 h-6)',
     'wb-scroll': 'scrollbar-thin scrollbar-thumb-theme-editor-scrollbar-thumb scrollbar-track-theme-editor-scrollbar-track',
     'wb-screen': 'h-screen wb-scroll overflow-y-auto',
-    'wb-aside-icon': 'wb-icon w-7 h-7 md:(w-6 h-6)'
+    'wb-aside-icon': 'wb-icon w-7 h-7 md:(w-6 h-6)',
+    'wb-landing-list': 'text-white bg-black-opacity border border-black p-4 rounded shadow transition-all hover: shadow-xl'
   },
   theme: {
     fontFamily: {
