@@ -7,11 +7,13 @@
 <h1 align="center">
 betterwrite.io
 </h1>
+
 <h4 align="center">
-A Creative Word Processor
+<b>A Creative Word Processor.</b>
 <h4>
+
 <p align="center">
-  <a href="https://betterwrite.io"><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
+  <a href="https://betterwrite.io"><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=15203B&label="></a>
   <a href="https://betterwrite.io"><img src="https://img.shields.io/github/lerna-json/v/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
 <p>
 
@@ -25,11 +27,11 @@ A Creative Word Processor
 
 - ✅ Entity-Model Editor
 - ✅ PDF, DOCX, HTML, EPUB and TXT Generator
+- ✅ Full Customization
 - ✅ Mobile & Desktop (PWA)
 - ✅ Offline First
 - ✅ Cloud Save (Void)
 - ✅ Local Extension (.bw)
-- ✅ Full Customization
 - ✅ Multipurpose
 - ✅ High Tracking
 - ✅ Statistics in Real-Time
@@ -96,3 +98,9 @@ All generators were designed to work from the API's offered by browsers, not req
 # Changelog
 
 **Check git changelog [clicking here.](./CHANGELOG.md)**
+
+# Blog Post
+
+### If you want to know a little more about the tool, read: <blockquote>
+<p><a href="https://novout.com/articles/betterwrite"><strong>How I Built a 100% Client-Side Word Processor</strong></a>
+</blockquote>
