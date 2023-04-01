@@ -8,7 +8,7 @@ import {
   PDFState,
   DOCXState,
   ProjectState,
-} from '../../'
+} from '..'
 
 export type PluginEmitterName =
   | 'plugin-input-watch-initial'
