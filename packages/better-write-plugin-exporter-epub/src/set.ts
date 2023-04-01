@@ -32,7 +32,7 @@ export const PluginEpubSet = (
     }
 
     const checkbox = (entity: Entity) => {
-      const id = hooks.utils.id().uuidv4()
+      const id = String(hooks.utils.id().uuidv4())
 
       return `<div><input type="checkbox" name="${id}" id="${id}" ${
         entity?.external?.checkbox?.select ? `checked` : ''
