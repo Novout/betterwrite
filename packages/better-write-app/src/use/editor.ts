@@ -65,7 +65,6 @@ export const useEditor = () => {
       }
 
       if (EDITOR.configuration.cloudAutosave && online.value) {
-        await storage.normalize()
         await cloud.saveProject()
       }
     }
