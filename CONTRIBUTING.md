@@ -7,7 +7,7 @@ To contribute to the project, install the following dependencies:
 - [Node 16](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/)
 
-### Fork Repository
+## Fork Repository
 
 - Fork the repo.
 - Clone your repository:
@@ -37,6 +37,33 @@ yarn dev
 > For production build run, instead `yarn dev` uses `yarn preview`.
 
 
-## Contribute to Translation
+# Contributing to Translation
 
 All translation files are available in `packages/better-write-languages`. To contribute, just follow the same structure as the other translations.
+
+# Contributing to Plugin Monorepos
+
+Each plugin is a monorepo and called in `packages/better-write-app/src/App.vue`. Register [the events in PluginEmitterName](https://github.com/Novout/betterwrite/blob/main/packages/better-write-types/src/plugin/core.ts), [editor funcions here](https://github.com/Novout/betterwrite/blob/main/packages/better-write-plugin-core/src/on.ts) and insert functions with the following callback:
+
+```ts
+export const PluginExampleSet = (
+  emitter: PluginTypes.PluginEmitter,
+  stores: PluginTypes.PluginStores,
+  hooks: PluginTypes.PluginHooks
+) => {
+  // ...
+}
+```
+
+Initialize plugins with:
+
+```ts
+export const ExamplePlugin = (): PluginTypes.Plugin =>
+  createPlugin({ name: 'example' }, [PluginExampleSet])
+```
+
+- `better-write-plugin-` as necessary prefix in folder and named in *package.json*
+
+> ATTENTION! The plugin system is not finished yet and may undergo drastic changes in its structure.
+
+> Until this moment, it is not possible to register plugins outside the monorepo.
