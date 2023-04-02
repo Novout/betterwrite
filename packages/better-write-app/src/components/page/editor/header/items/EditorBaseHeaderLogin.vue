@@ -17,7 +17,7 @@
             />
           </template>
           <template #error>
-            <div class="rounded-full w-8">
+            <div class="rounded-full w-8 shadow-xl">
               <IconGoogle
                 v-if="user && user.app_metadata.provider === 'google'"
                 class="h-8 w-8"
