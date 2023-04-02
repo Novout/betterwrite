@@ -14,7 +14,13 @@ export default {
     creative: {
       title: 'Criativo',
       description:
-        'Divida seu projeto em capítulos, anotações e rascunhos. Recomendado para a escritura de livros.',
+        'Divida seu projeto em capítulos, anotações e rascunhos. Recomendado para a escritura e projeção de livros.',
+      button: 'Criar',
+    },
+    annotations: {
+      title: 'Anotações',
+      description:
+        'Use somente os recursos para anotações. Recomendado para as tarefas do dia-a-dia.',
       button: 'Criar',
     },
   },
@@ -57,8 +63,8 @@ export default {
     export: 'Exportar',
     chapters: 'Capítulos',
     tools: 'Ferramentas',
+    vault: 'Vazio',
     help: 'Ajuda',
-    live: 'Compartilhar',
   },
   auth: {
     login: {
@@ -116,9 +122,15 @@ export default {
             description:
               'Habilitar a utilização de fontes externas no editor. Depende da conexão com a internet. Não afeta as requisições dos geradores de arquivo.',
           },
+          compressFiles: {
+            title: 'Comprimir Imagens',
+            description:
+              'Quanto menor o valor, menor a qualidade de imagem e o tamanho do arquivo (1.0 é o padrão). Recomendado para diminuir o tamanho geral do projeto (.bw).',
+          },
         },
         background: {
           title: 'Fundo',
+          cover: 'Cobrir',
           image: 'Imagem',
           imageBlur: 'Borrão',
           imageGrayscale: 'Cinza',
@@ -195,6 +207,10 @@ export default {
       generate: 'Gerar (.PDF)',
       configuration: 'Configurar (.PDF)',
     },
+    epub: {
+      generate: 'Gerar (.EPUB)',
+      table: 'Tabela de Conteúdos',
+    },
     txt: {
       generate: 'Gerar (.TXT)',
     },
@@ -249,10 +265,6 @@ export default {
     },
     generator: {
       substitutions: 'Substituições',
-    },
-    live: {
-      enter: 'Entrar',
-      create: 'Criar Sala',
     },
   },
   window: {
@@ -475,7 +487,8 @@ export default {
       draggable: 'Arrastável',
       bars: 'Barras Laterias',
       transition: 'Transições',
-      autosave: 'Salvamento Automático',
+      autosave: 'Salvamento Automático Local',
+      cloudAutosave: 'Salvamento Automático na Nuvem',
       blocked: 'Tutorial Inicial',
       bottomBar: 'Barra Inferior',
       advanced: 'Avançado',
@@ -542,6 +555,11 @@ export default {
             title: 'Criativo',
             description:
               'Crie um projeto com toda a estrutura necessária para a criação de livros.',
+          },
+          annotations: {
+            title: 'Anotações',
+            description:
+              'Crie um projeto somente com recursos para anotações. Recomendado para as tarefas do dia-a-dia.',
           },
         },
         content: {
@@ -741,6 +759,9 @@ export default {
       averageOccurrences: 'Média de Ocorrências',
     },
   },
+  vault: {
+    empty: 'O vazio está... vazio.',
+  },
   tutorial: {
     buttons: {
       prev: 'Anterior',
@@ -782,14 +803,16 @@ export default {
         high2: 'Arquivo: ',
         high3: 'Exportar: ',
         high4: 'Ferramentas: ',
-        high5: 'Ajuda: ',
+        high5: 'Vazio: ',
+        high6: 'Ajuda: ',
         description2:
           'Confira as principais formas de manipulação do projeto, como criar, salvar, alterar, carregar e consultar.',
         description3:
           'Geradores de arquivo e suas devidas definições. Cada extensão funciona com configurações distintas uma das outras.',
         description4:
           'Recursos de cunho adicional que só tentem a adicionar a sua experiência.',
-        description5: 'Documentação para consultas.',
+        description5: 'Armazene seus projetos em um local de fácil acesso.',
+        description6: 'Documentação para consultas.',
       },
       5: {
         title: 'Ferramental',

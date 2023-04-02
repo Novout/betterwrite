@@ -14,12 +14,13 @@
     "deploy": "yarn bootstrap && yarn build",
     "patch": "generi log patch",
     "minor": "generi log minor",
-    "major": "generi log major"
+    "major": "generi log major",
+    "postinstall": "yarn bootstrap"
   },
   "devDependencies": {
     "generi": "0.5.2",
-    "lerna": "6.5.1",
-    "turbo": "1.8.3"
+    "lerna": "6.6.1",
+    "turbo": "1.8.8"
   },
   "packageManager": "yarn@1.22.19"
 }

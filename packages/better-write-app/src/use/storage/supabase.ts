@@ -7,7 +7,10 @@ import {
   Maybe,
   AccountPlan,
   SupabaseIntegrations,
+  ID,
+  ProjectDocument,
 } from 'better-write-types'
+import { nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
@@ -106,12 +109,37 @@ export const useSupabase = () => {
   const out = () => {
     s.auth
       .signOut()
-      .then(() => {
+      .then(async () => {
         AUTH.account.user = null
+
+        await nextTick
 
         router.push('/')
       })
       .finally(() => {})
+  }
+
+  const getDocuments = async (): Promise<Maybe<ProjectDocument[]>> => {
+    try {
+      const {
+        data: projects,
+        error,
+        status,
+      } = await s
+        .from('projects')
+        .select(`document`)
+        // @ts-ignore
+        .eq('id_user', AUTH.account.user.id)
+
+      if (error && status !== 406) throw error
+
+      if (projects) {
+        return projects
+      }
+    } catch (error: any) {
+      toast.error(error.message)
+    } finally {
+    }
   }
 
   const getProjects = async (): Promise<Maybe<ProjectObject[]>> => {
@@ -139,7 +167,7 @@ export const useSupabase = () => {
 
   const saveProject = async (project?: ProjectObject) => {
     toast.info(t('toast.generics.load'))
-
+    
     await storage.normalize()
 
     await storage.purge()
@@ -150,11 +178,21 @@ export const useSupabase = () => {
             // @ts-ignore
             id_user: AUTH.account.user.id,
             ...project,
+            document: {
+              id: project?.id,
+              name: project?.project.nameRaw,
+              type: project?.project.type
+            }
           }
         : {
             // @ts-ignore
             id_user: AUTH.account.user.id,
             ...storage.getProjectObject(),
+            document: {
+              id: storage.getProjectObject()?.id,
+              name: storage.getProjectObject()?.project.nameRaw,
+              type: storage.getProjectObject()?.project.type
+            }
           },
       { onConflict: 'id' }
     ).select()
@@ -178,11 +216,21 @@ export const useSupabase = () => {
               // @ts-ignore
               id_user: AUTH.account.user.id,
               ...project,
+              document: {
+                id: project?.id,
+                name: project?.project.nameRaw,
+                type: project?.project.type
+              }
             }
           : {
               // @ts-ignore
               id_user: AUTH.account.user.id,
               ...storage.getProjectObject(),
+              document: {
+                id: storage.getProjectObject()?.id,
+                name: storage.getProjectObject()?.project.nameRaw,
+                type: storage.getProjectObject()?.project.type
+              }
             },
         { onConflict: 'id' }
       )
@@ -197,13 +245,13 @@ export const useSupabase = () => {
     toast.success(t('toast.project.save'))
   }
 
-  const deleteProject = async (context: ProjectObject) => {
+  const deleteProject = async (id: ID<number>) => {
     if (!confirm(t('toast.project.deleteAlert'))) return
 
     const { error } = await s
       .from('projects')
       .delete()
-      .match({ id: context.id })
+      .match({ id })
 
     if (error) {
       toast.error(error.message)
@@ -224,6 +272,37 @@ export const useSupabase = () => {
         toast.success(t('toast.project.load'))
       })
     })
+  }
+
+  const loadProjectById = async (id: ID<number>) => {
+    if (!confirm(t('toast.project.deleteProject'))) return
+
+    AUTH.account.project_id_activity = id || null
+
+    try {
+      const {
+        data: context,
+        error,
+        status,
+      } = await s
+        .from('projects')
+        .select(`id, pdf, docx, project, editor`)
+        // @ts-ignore
+        .eq('id_user', AUTH.account.user.id)
+        .eq('id', id)
+        .limit(1)
+        .single()
+
+      if (error && status !== 406) throw error
+
+      if (context) {
+        project.onLoadProject(context, false, true).then(() => {
+          toast.success(t('toast.project.load'))
+        })
+      }
+    } catch (error: any) {
+      toast.error(error.message)
+    }
   }
 
   const getProfile = async () => {
@@ -309,8 +388,10 @@ export const useSupabase = () => {
     loginWithEmailAndPassword,
     login,
     out,
+    getDocuments,
     getProjects,
     saveProject,
+    loadProjectById,
     loadProject,
     deleteProject,
     getProfile,

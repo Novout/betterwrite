@@ -19,7 +19,7 @@
             y: 0,
           }"
           :delay="200"
-          class="mt-2 flex-1 flex flex-col lg:flex-row gap-10 items-center justify-between w-full"
+          class="mt-2 flex-1 flex flex-wrap flex-col lg:flex-row gap-10 items-center justify-between w-full"
         >
           <EditorProjectNewType>
             <div class="flex gap-2 items-center">
@@ -63,6 +63,28 @@
             />
             <Button @click="project.external().new('creative')">{{
               t('editor.new.creative.button')
+            }}</Button>
+          </EditorProjectNewType>
+          <EditorProjectNewType>
+            <div class="flex gap-2 items-center">
+              <div>
+                <IconAnnotation class="w-8 h-8" />
+              </div>
+              <h2 class="text-xl font-bold">
+                {{ t('editor.new.annotations.title') }}
+              </h2>
+            </div>
+            <p class="text-lg text-center">
+              {{ t('editor.new.annotations.description') }}
+            </p>
+            <EditorProjectNewList
+              :list="[
+                'annotation',
+                'tools',
+              ]"
+            />
+            <Button @click="project.external().new('only-annotations')">{{
+              t('editor.new.annotations.button')
             }}</Button>
           </EditorProjectNewType>
         </div>

@@ -93,10 +93,6 @@
 
   onMounted(() => {
     search.value?.focus()
-
-    emitter.on('entity-external-comment-save', () => {
-      onClose()
-    })
   })
 
   const onInput = (e: any) => {

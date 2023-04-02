@@ -33,7 +33,7 @@
           duration: 800,
         },
       }"
-      class="text-white font-thin mt-5 text-base lg:text-lg"
+      class="text-white font-bold mt-5 text-base lg:text-lg"
     >
       {{ t('about.portability.description') }}
     </p>
@@ -110,6 +110,7 @@
         class="flex flex-col gap-5"
       >
         <AboutPortabilityItem color="blue"> .DOCX </AboutPortabilityItem>
+        <AboutPortabilityItem color="green"> .EPUB </AboutPortabilityItem>
         <AboutPortabilityItem color="white"> .TXT </AboutPortabilityItem>
         <AboutPortabilityItem color="red"> .PDF </AboutPortabilityItem>
         <AboutPortabilityItem color="orange"> .BW </AboutPortabilityItem>

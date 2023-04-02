@@ -7,6 +7,7 @@ import { useLocalStorage } from '@/use/storage/local'
 import {
   useEventListener,
   useFullscreen,
+  useOnline,
   useUrlSearchParams,
 } from '@vueuse/core'
 import { useHead } from '@vueuse/head'
@@ -15,17 +16,16 @@ import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { onBeforeRouteLeave } from 'vue-router'
 import { useListener } from './listener'
-import { useAuthStore } from '@/store/auth'
 import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
 import { useAbsoluteStore } from '@/store/absolute'
+import { useSupabase } from './storage/supabase'
 
 export const useEditor = () => {
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
   const CONTEXT = useContextStore()
-  const AUTH = useAuthStore()
 
   const env = useEnv()
   const project = useProject()
@@ -37,6 +37,8 @@ export const useEditor = () => {
   const { toggle } = useFullscreen()
   const storage = useStorage()
   const params = useUrlSearchParams()
+  const cloud = useSupabase()
+  const online = useOnline()
 
   const init = () => {
     Calls.EditorCreated(plugin)
@@ -60,6 +62,10 @@ export const useEditor = () => {
       if (EDITOR.configuration.autosave) {
         await storage.normalize()
         await local.onSaveProject(false)
+      }
+
+      if (EDITOR.configuration.cloudAutosave && online.value) {
+        await cloud.saveProject()
       }
     }
 

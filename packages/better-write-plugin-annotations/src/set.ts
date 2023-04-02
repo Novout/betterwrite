@@ -4,21 +4,22 @@ import {
   ProjectStateAnnotationFolder,
 } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
-import { rootCtx, defaultValueCtx, Editor } from '@milkdown/core'
+import {
+  rootCtx,
+  defaultValueCtx,
+  Editor,
+  editorViewOptionsCtx,
+} from '@milkdown/core'
 import { listener, listenerCtx } from '@milkdown/plugin-listener'
 import { math } from '@milkdown/plugin-math'
-import { tooltip } from '@milkdown/plugin-tooltip'
 import { clipboard } from '@milkdown/plugin-clipboard'
 import { block } from '@milkdown/plugin-block'
 import { history } from '@milkdown/plugin-history'
 import { cursor } from '@milkdown/plugin-cursor'
-import { indent, indentPlugin } from '@milkdown/plugin-indent'
 import { trailing } from '@milkdown/plugin-trailing'
-import { upload } from '@milkdown/plugin-upload'
 import { emoji } from '@milkdown/plugin-emoji'
-import { bw } from './theme'
-import { cmk } from './plugin/commonmark'
-import { sls } from './plugin/slash'
+import { upload } from '@milkdown/plugin-upload'
+import { commonmark } from '@milkdown/preset-commonmark'
 import { ID } from 'better-write-types'
 import { nextTick } from 'vue-demi'
 
@@ -30,7 +31,9 @@ export const PluginAnnotationsSet = (
   const reset = (force: boolean = false) => {
     document.querySelector('.milkdown')?.remove()
 
-    if (force) stores.PROJECT.base = 'chapter'
+    if (force)
+      stores.PROJECT.base =
+        stores.PROJECT.type === 'only-annotations' ? 'annotations' : 'chapter'
   }
 
   const setFile = (id: ID<string>, value: any) => {
@@ -67,10 +70,18 @@ export const PluginAnnotationsSet = (
   }
 
   const deleteFolder = (folder: ProjectStateAnnotationFolder) => {
+    if (
+      stores.PROJECT.type === 'only-annotations' &&
+      stores.PROJECT.annotations.folders.length === 1
+    )
+      return
+
     reset(true)
 
     stores.PROJECT.annotations.folders =
       stores.PROJECT.annotations.folders.filter((f) => f.id !== folder.id)
+
+    setActive()
   }
 
   const createFile = (
@@ -89,6 +100,18 @@ export const PluginAnnotationsSet = (
     return file
   }
 
+  const setActive = () => {
+    if (stores.PROJECT.type === 'only-annotations') {
+      const folder = stores.PROJECT.annotations.folders.find((f) =>
+        f.files.find((f) => f)
+      )
+
+      if (!folder || folder.files.length === 0)
+        createFile(stores.PROJECT.annotations.folders[0])
+      else start(folder.files[0])
+    }
+  }
+
   const deleteFile = (
     folder: ProjectStateAnnotationFolder,
     file: ProjectStateAnnotationFile
@@ -103,6 +126,8 @@ export const PluginAnnotationsSet = (
       stores.PROJECT.annotations.folders[targetId].files.filter(
         (f) => f.id !== file.id
       )
+
+    setActive()
   }
 
   const start = async (file: ProjectStateAnnotationFile) => {
@@ -112,7 +137,7 @@ export const PluginAnnotationsSet = (
 
     await nextTick
 
-    await Editor.make()
+    Editor.make()
       .config((ctx) => {
         ctx.set(rootCtx, document.querySelector('#bw-wysiwyg'))
 
@@ -128,29 +153,29 @@ export const PluginAnnotationsSet = (
           )
         }
 
-        ctx.get(listenerCtx).updated((ctx, doc, prevDoc) => {
+        const fn = hooks.vueuse.core.useDebounceFn((doc: any) => {
           setFile(file.id, doc.toJSON())
+        }, 500)
+
+        ctx.get(listenerCtx).updated((_, doc) => {
+          fn(doc)
         })
+
+        ctx.update(editorViewOptionsCtx, (prev) => ({
+          ...prev,
+          attributes: { class: 'milkdown-betterwrite', spellcheck: 'true' },
+        }))
       })
       .use(listener)
-      .use(cmk)
+      .use(commonmark)
       .use(math)
-      .use(sls(hooks))
-      .use(tooltip)
       .use(clipboard)
       .use(block)
       .use(history)
       .use(cursor)
       .use(trailing)
-      .use(upload)
       .use(emoji)
-      .use(
-        indent.configure(indentPlugin, {
-          type: 'space',
-          size: 2,
-        })
-      )
-      .use(bw)
+      .use(upload)
       .create()
   }
 

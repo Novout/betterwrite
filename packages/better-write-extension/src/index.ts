@@ -9,13 +9,22 @@ import {
 import { ProjectObject } from 'better-write-types'
 import destr from 'destr'
 
+export const writeMimetype = (): TextReader => {
+  const reader = new TextReader('application/bw+zip')
+
+  return reader
+}
+
 export const writeBW = async (data: string) => {
   const writer = new BlobWriter()
-  const reader = new TextReader(data)
+  const json = new TextReader(data)
 
   const zipWriter = new ZipWriter(writer)
+  await zipWriter.add('data.json', json)
 
-  await zipWriter.add('data.json', reader)
+  const mimetype = writeMimetype()
+  await zipWriter.add('mimetype', mimetype)
+
   await zipWriter.close()
 
   const target = await writer.getData()

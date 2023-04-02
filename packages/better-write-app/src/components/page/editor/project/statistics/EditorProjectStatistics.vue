@@ -24,7 +24,7 @@
 
   const statistics = ref<HTMLElement | null>(null)
 
-  onClickOutside(statistics as any, () => {
+  onClickOutside(statistics, () => {
     onClose()
   })
 

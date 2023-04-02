@@ -44,7 +44,7 @@
       />
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
-        v-if="PROJECT.name !== env.projectEmpty()"
+        v-if="PROJECT.name !== env.projectEmpty() && PROJECT.type !== 'only-annotations'"
         :text="t('editor.bar.project.statistics')"
         @action="ABSOLUTE.project.statistics = true"
       />

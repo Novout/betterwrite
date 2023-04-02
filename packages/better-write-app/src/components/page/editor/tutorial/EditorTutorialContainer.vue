@@ -14,7 +14,7 @@
         <IconClose class="w-6 h-6" @click="onClose" />
       </HeroIcon>
     </div>
-    <div class="flex font-raleway flex-col gap-2 w-full max-h-60 wb-scroll">
+    <div class="flex font-raleway flex-col gap-2 w-full h-60 wb-scroll overflow-y-auto">
       <slot />
     </div>
     <div class="flex flex-col gap-2 mt-5 w-full mb-5">

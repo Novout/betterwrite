@@ -30,6 +30,7 @@ Each and every flow passes through the reactive stores. This dynamic allows the 
 ├──── pdf.ts        # PDF Configuration
 ├──── project.ts    # Loaded Project
 ├──── tutorial.ts   # Tutorial Settings
+├──── vault.ts      # Vault (Void) Documents and State
 ```
 
 #### Context and Project

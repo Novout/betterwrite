@@ -1,17 +1,13 @@
 <template>
-  <!-- Chapters -->
-  <div
-    v-if="project.isCreativeProject() && PROJECT.name !== env.projectEmpty()"
-  ></div>
   <EditorHeaderButton
-    v-if="project.isCreativeProject() && PROJECT.name !== env.projectEmpty()"
+    v-if="PROJECT.name !== env.projectEmpty()"
     type="help"
   >
     <template #text>
       {{ t('editor.header.help') }}
     </template>
     <template #icon>
-      <IconHelp class="h-9 w-9 md:(w-7 h-7) mr-0 md:mr-1" />
+      <IconHelp class="h-9 w-9 lg:(w-7 h-7) mr-0 md:mr-1" />
     </template>
     <template #bar>
       <EditorHeaderItem
@@ -32,7 +28,6 @@
 </template>
 
 <script setup lang="ts">
-  import { useProject } from '@/use/project'
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useI18n } from 'vue-i18n'
@@ -40,7 +35,6 @@
 
   const PROJECT = useProjectStore()
 
-  const project = useProject()
   const env = useEnv()
   const { t } = useI18n()
   const router = useRouter()

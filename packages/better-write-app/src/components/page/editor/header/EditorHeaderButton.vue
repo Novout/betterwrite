@@ -5,10 +5,10 @@
       :class="[n ? 'text-theme-icon-active' : '']"
     >
       <div class="flex items-center pointer-events-none">
-        <HeroIcon class="h-9 w-9 md:(w-7 h-7) mr-0 md:mr-1">
+        <HeroIcon class="h-9 w-9 lg:(w-7 h-7) mr-0 md:mr-1">
           <slot name="icon" />
         </HeroIcon>
-        <p class="hidden md:flex">
+        <p class="hidden lg:flex">
           <slot name="text" />
         </p>
       </div>
@@ -25,7 +25,7 @@
   import { onMounted } from 'vue';
 
   const props = defineProps<{
-    type: string
+    type: 'create' | 'externals' | 'help' | 'project' | 'vault'
   }>()
 
   const [n] = useToggle()
@@ -55,6 +55,13 @@
       ])
       break;
       case 'project': On.editor().PluginEditorHeaderProjectOpen(emitter, [
+        () => {
+          n.value = !n.value
+        },
+        () => {}
+      ])
+      break;
+      case 'vault': On.editor().PluginEditorHeaderProjectOpen(emitter, [
         () => {
           n.value = !n.value
         },

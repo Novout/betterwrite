@@ -3,6 +3,12 @@ export default {
     title: 'Expand your horizons.',
     description:
       'betterwrite.io is designed to extract as much creativity from writers and writing enthusiasts as possible.',
+    list: {
+      1: 'Customization: Make the editor your own without interfering with your documents.',
+      2: 'Tools: Explore a range of possibilities that will directly contribute to your project.',
+      3: 'The Void: Save your projects in the cloud and handle them with ease.',
+      4: 'Portability: Take your favorite editor anywhere.',
+    },
   },
   entity: {
     title: 'Control everything absolutely.',
@@ -10,6 +16,9 @@ export default {
       'Insert titles, paragraphs, line breaks, page breaks, lists, checkboxes, images and drawings separately.',
     bw: 'Better Write',
     canvas: 'Others',
+  },
+  powered: {
+    title: 'Powered by...',
   },
   portability: {
     title: 'Create how you want, for what you want.',

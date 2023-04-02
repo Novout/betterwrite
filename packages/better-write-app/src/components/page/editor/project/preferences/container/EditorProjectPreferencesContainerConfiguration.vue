@@ -58,6 +58,13 @@
         />
       </div>
       <div class="wb-preferences">
+        <p class="text-sm">{{ t('editor.aside.configuration.cloudAutosave') }}</p>
+        <InputBoolean
+          v-model="EDITOR.configuration.cloudAutosave"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
         <p class="text-sm">
           {{
             t(
@@ -71,7 +78,7 @@
         />
       </div>
     </div>
-    <div>
+    <div v-if="PROJECT.type === 'creative'">
       <PreferencesContainerTitle>
         {{ t('editor.aside.graph.title') }}
       </PreferencesContainerTitle>
@@ -189,6 +196,28 @@
           <InputBoolean v-model="EDITOR.styles.googleFontsInjection" />
         </div>
       </DescriptionContainer>
+      <DescriptionContainer
+        color="#AA0000"
+        :description="
+          t(
+            'editor.preferences.configuration.editor.options.compressFiles.description'
+          )
+        "
+      >
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.options.compressFiles.title'
+              )
+            }}
+          </p>
+          <div class="flex gap-2 items-center">
+            <InputBoolean v-model="EDITOR.configuration.compressFiles.value" />
+            <InputNumber v-model="EDITOR.configuration.compressFiles.quality" :min="0" :max="1" :step="0.1" />
+          </div>
+        </div>
+      </DescriptionContainer>
     </div>
   </EditorProjectPreferencesContainerSlot>
 </template>
@@ -202,8 +231,10 @@
   } from 'better-write-languages'
   import { useEditorStore } from '@/store/editor'
   import { LanguageRaw } from 'better-write-types'
+import { useProjectStore } from '@/store/project';
 
   const EDITOR = useEditorStore()
+  const PROJECT = useProjectStore()
 
   const { t, locale } = useI18n()
 

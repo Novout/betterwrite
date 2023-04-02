@@ -1,7 +1,7 @@
 <template>
   <div
     id="about-1"
-    class="flex min-h-screen justify-evenly p-5 flex-col items-center bg-cover w-full"
+    class="flex min-h-screen justify-evenly mt-50 md:mt-0 p-5 flex-col items-center bg-cover w-full"
   >
     <h2
       v-motion
@@ -33,7 +33,7 @@
           duration: 800,
         },
       }"
-      class="text-white font-thin my-2 text-base lg:text-lg text-center"
+      class="text-white font-bold my-2 text-base lg:text-lg text-center"
     >
       {{ t('about.entity.description') }}
     </p>

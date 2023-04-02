@@ -1,0 +1,26 @@
+{
+	"name": "better-write-plugin-exporter-epub",
+	"version": "1.0.0",
+	"author": "Novout",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\"",
+		"build": "tsup",
+		"lint": "prettier --write src/"
+	},
+	"files": [
+		"dist/**/*",
+		"package.json",
+		"LICENSE",
+		"README.md"
+	],
+	"dependencies": {
+		"better-write-plugin-core": "^1.0.0",
+		"better-write-types": "^1.0.0",
+    "better-write-contenteditable-ast": "^1.0.0",
+    "epub-gen-memory": "1.0.10"
+	}
+}

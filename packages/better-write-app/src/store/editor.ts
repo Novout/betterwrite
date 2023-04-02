@@ -27,6 +27,7 @@ export const useEditorStore = defineStore('editor', {
           fontSize: 18,
         },
         base: {
+          backgroundCoverAttribute: true,
           backgroundData: '',
           backgroundBlur: false,
           backgroundGrayscale: false,
@@ -40,6 +41,11 @@ export const useEditorStore = defineStore('editor', {
         bars: true,
         transition: true,
         autosave: true,
+        cloudAutosave: false,
+        compressFiles: {
+          value: false,
+          quality: 0.8,
+        },
         blocked: true,
         bottomBar: true,
         entity: {

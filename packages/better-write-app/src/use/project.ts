@@ -22,7 +22,6 @@ import { useEntity } from './entity'
 import { usePlugin } from 'better-write-plugin-core'
 import { getRows } from 'better-write-contenteditable-ast'
 import { useBreakpoint } from './breakpoint'
-import { useRaw } from './raw'
 import { useFileSystemAccess } from '@vueuse/core'
 import { useI18n } from 'vue-i18n'
 import { read } from 'better-write-plugin-importer'
@@ -47,7 +46,6 @@ export const useProject = () => {
   const local = useLocalStorage()
   const entity = useEntity()
   const env = useEnv()
-  const raw = useRaw()
   const plugin = usePlugin()
   const breakpoints = useBreakpoint()
   const emitter = useEmitter()
@@ -67,6 +65,7 @@ export const useProject = () => {
           creator: t('editor.aside.project.new.content.creator'),
           subject: t('editor.aside.project.new.content.subject'),
           type,
+          base: type === 'only-annotations' ? 'annotations' : 'chapter',
         },
         t('editor.project.control.title', { suffix: 1 })
       )
@@ -77,7 +76,7 @@ export const useProject = () => {
 
       CONTEXT.load()
 
-      if (!breakpoints.isMobile().value && type === 'creative')
+      if (!breakpoints.isMobile().value && type !== 'blank')
         ABSOLUTE.aside = true
 
       if (!skipAlert) toast.success(t('toast.project.create'))
@@ -85,6 +84,12 @@ export const useProject = () => {
       await nextTick
 
       plugin.emit('plugin-theme-set')
+
+      if (type === 'only-annotations') {
+        plugin.emit('plugin-annotations-folder-create')
+
+        return
+      }
 
       emitter.emit('entity-text-focus', {
         target: type === 'creative' ? 1 : 0,
@@ -166,6 +171,13 @@ export const useProject = () => {
     if (notification) toast.success(t('toast.project.load'))
 
     utils().resetAllVisual()
+
+    if (PROJECT.type === 'only-annotations') {
+      plugin.emit(
+        'plugin-annotations-start',
+        PROJECT.annotations.folders[0].files[0]
+      )
+    }
 
     ABSOLUTE.project.tutorial = !localStorage.getItem('tutorial')
   }
@@ -362,8 +374,6 @@ export const useProject = () => {
         }
 
         return r
-        {
-        }
       })
 
       const a2 = 100
@@ -436,28 +446,32 @@ export const useProject = () => {
       return longest
     }
 
-    const getWordOccurrences = (page: ContextState, min: number = 0) => {
+    const getWordOccurrences = (
+      page: ContextState,
+      min: number = 0
+    ): Map<string, string> => {
       const map = page.entities
         .filter((entity) => isValidType(entity))
-        .reduce((map: any, value: any) => {
+        .reduce((map, value) => {
           const normalize = ASTUtils.normalize(value.raw, {
             type: 'all',
             whitespace: true,
-          })
+          }) as string
 
           if (!normalize) return map
 
-          normalize.split(' ').forEach((r) => {
-            const replaces = r
-              .trim()
-              .toLowerCase()
-              .replace(/[~`!\“\”@#$%^&*()+={}\[\];:\'\"<>.,\/\\\?-_]/g, '')
-              .replaceAll('...', '')
+          normalize
+            .trim()
+            .toLowerCase()
+            .replace(/[^\w\p{Letter}\s]/gu, '')
+            .split(/\s/)
+            .forEach((replaces) => {
+              if (!replaces) return
 
-            if (replaces.length <= min) return
+              if (replaces.length <= min) return
 
-            map.set(replaces, (map.get(replaces) || 0) + 1)
-          })
+              map.set(replaces, (map.get(replaces) || 0) + 1)
+            })
 
           return map
         }, new Map())

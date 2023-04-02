@@ -3,7 +3,8 @@
     :class="[
       !EDITOR.styles.base.backgroundData
         ? 'bg-theme-editor-full-background hover:bg-theme-editor-full-background-hover active:bg-theme-editor-full-background-active'
-        : 'bg-cover',
+        : 'aspect-video',
+      EDITOR.styles.base.backgroundCoverAttribute ? 'bg-cover' : '',
       EDITOR.styles.base.backgroundBlur ? 'bg-custom-blur' : '',
       EDITOR.styles.base.backgroundGrayscale ? 'bg-custom-grayscale' : '',
       EDITOR.styles.base.backgroundSaturate ? 'bg-custom-saturate' : '',

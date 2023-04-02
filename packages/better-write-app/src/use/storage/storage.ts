@@ -130,28 +130,6 @@ export const useStorage = () => {
       }
     }
 
-    if (!_.editor.styles.text) {
-      _.editor.styles = {
-        googleFontsInjection: false,
-        heading: {
-          fontFamily: 'Poppins',
-          fontWeight: 700,
-        },
-        text: {
-          fontFamily: 'Raleway',
-          fontWeight: 400,
-          fontSize: 16,
-        },
-        base: {
-          backgroundData: '',
-          backgroundBlur: false,
-          backgroundGrayscale: false,
-          backgroundSaturate: false,
-          backgroundSepia: false,
-        },
-      }
-    }
-
     if (!_.editor.styles.header) {
       _.editor.styles = {
         ..._.editor.styles,
@@ -165,6 +143,30 @@ export const useStorage = () => {
           fontWeight: 400,
           fontSize: 16,
         },
+      }
+    }
+
+    if (!_.editor.configuration.cloudAutosave) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        cloudAutosave: false
+      }
+    }
+
+    if (!_.editor.configuration.compressFiles) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        compressFiles: {
+          value: false,
+          quality: 0.8
+        }
+      }
+    }
+
+    if (!_.editor.styles.base.backgroundCoverAttribute) {
+      _.editor.styles.base = {
+        ..._.editor.styles.base,
+        backgroundCoverAttribute: true
       }
     }
 

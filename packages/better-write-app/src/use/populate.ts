@@ -97,7 +97,7 @@ export const usePopulate = () => {
           },
           note: {
             text: '',
-            bw: true,
+            bw: false,
           },
           background: {
             color: '#FFFFFF' as string,

@@ -6,7 +6,7 @@
       opacity: 1,
       y: 0,
     }"
-    class="flex h-full flex-col w-full p-10 gap-5 wb-scroll"
+    class="flex overflow-y-auto flex-col w-full p-10 gap-5 wb-scroll"
   >
     <slot></slot>
   </div>

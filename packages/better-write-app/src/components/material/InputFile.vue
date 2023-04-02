@@ -52,8 +52,11 @@
 </template>
 
 <script setup lang="ts">
-  import { getImageFileRaw } from 'better-write-image-converter'
+  import { useEditorStore } from '@/store/editor';
+import { getImageFileRaw } from 'better-write-image-converter'
   import { ref } from 'vue'
+
+  const EDITOR = useEditorStore()
 
   const inp = ref<HTMLElement | null>(null as any)
 
@@ -77,7 +80,7 @@
   })
 
   const onChange = () => {
-    getImageFileRaw()
+    getImageFileRaw({ compress: EDITOR.configuration.compressFiles })
       .then(({ raw }) => {
         emit('load', raw)
       })

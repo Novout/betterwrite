@@ -55,6 +55,14 @@
       </EditorHeaderItem>
       <EditorHeaderItemDiv />
       <EditorHeaderItem
+        :text="t('editor.bar.epub.generate')"
+        @action="onEPUBGenerate"
+      >
+        <template #icon>
+          <IconEPUB class="mr-2 w-6 h-6" />
+        </template>
+      </EditorHeaderItem>
+      <EditorHeaderItem
         :text="t('editor.bar.txt.generate')"
         @action="plugin.emit('plugin-txt-generate')"
       >
@@ -105,6 +113,12 @@
     await storage.normalize()
 
     plugin.emit('plugin-html-generate')
+  }
+
+  const onEPUBGenerate = async () => {
+    await storage.normalize()
+
+    plugin.emit('plugin-epub-generate')
   }
 
   const onPDFGenerate = async () => {

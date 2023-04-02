@@ -29,7 +29,7 @@
     <AsideGraph />
   </aside>
   <IconAsideGraph
-    v-else-if="PROJECT.type === 'creative'"
+    v-else-if="PROJECT.type !== 'blank'"
     :class="[TUTORIAL.counter === 3 ? 'z-umax' : 'z-50']"
     class="absolute left-0 transform right-1 wb-icon w-12 h-12 md:(w-9 h-9) bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active rounded-br shadow-xl"
     @click.prevent.stop="ABSOLUTE.aside = true"

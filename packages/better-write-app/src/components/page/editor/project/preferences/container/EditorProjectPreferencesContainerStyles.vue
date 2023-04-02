@@ -49,6 +49,16 @@
             <p class="text-sm">
               {{
                 t(
+                  'editor.preferences.configuration.editor.background.cover'
+                )
+              }}
+            </p>
+            <InputBoolean v-model="EDITOR.styles.base.backgroundCoverAttribute" />
+          </div>
+          <div class="wb-preferences">
+            <p class="text-sm">
+              {{
+                t(
                   'editor.preferences.configuration.editor.background.imageBlur'
                 )
               }}

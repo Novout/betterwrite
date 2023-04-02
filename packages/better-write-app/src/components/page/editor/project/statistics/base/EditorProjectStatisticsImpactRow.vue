@@ -9,7 +9,7 @@
           width: `${value}%`,
           transition: { delay: 100, duration: 1200 },
         }"
-        class="h-4 bg-theme-background-opacity-1"
+        class="h-4 bg-theme-background-opacity-1 filter invert"
         :style="{ width: `${value}%` }"
       />
     </div>

@@ -17,6 +17,12 @@ export default {
         'Divide your project into chapters, notes and drafts. Recommended for writing books.',
       button: 'Create',
     },
+    annotations: {
+      title: 'Annotations',
+      description:
+        'Only use features for notes. Recommended for everyday tasks.',
+      button: 'Create',
+    },
   },
   material: {
     fileController: {
@@ -55,8 +61,8 @@ export default {
     export: 'Export',
     chapters: 'Chapters',
     tools: 'Tools',
+    vault: 'Void',
     help: 'Help',
-    live: 'Live',
   },
   auth: {
     login: {
@@ -114,9 +120,15 @@ export default {
             description:
               'Enable the use of external fonts in the editor. It depends on the internet connection. Does not affect requests from file generators.',
           },
+          compressFiles: {
+            title: 'Compress Images',
+            description:
+              'The lower the value, lower the image quality (1.0 is the default). Recommended to decrease project (.bw) size.',
+          },
         },
         background: {
           title: 'Background',
+          cover: 'Cover',
           image: 'Image',
           imageBlur: 'Blur',
           imageGrayscale: 'Grayscale',
@@ -195,6 +207,10 @@ export default {
       generate: 'Generate (.PDF)',
       configuration: 'Configure (.PDF)',
     },
+    epub: {
+      generate: 'Generate (.EPUB)',
+      table: 'Table of Content',
+    },
     txt: {
       generate: 'Generate (.TXT)',
     },
@@ -214,7 +230,8 @@ export default {
       preferences: 'Preferences',
       statistics: 'Statistics',
       corrector: 'Corrector',
-      autosave: 'Auto Save (in minutes)',
+      autosave: 'Local Auto Save',
+      cloudAutosave: 'Cloud Auto Save',
       language: 'Language',
       theme: 'Theme',
       import: 'Import',
@@ -250,10 +267,6 @@ export default {
     },
     generator: {
       substitutions: 'Substitutions',
-    },
-    live: {
-      enter: 'Enter',
-      create: 'Create Room',
     },
   },
   window: {
@@ -475,6 +488,7 @@ export default {
       bars: 'Sidebars',
       transition: 'Transitions',
       autosave: 'Auto-Save',
+      cloudAutosave: 'Cloud Auto Save',
       blocked: 'Initial Tutorial',
       bottomBar: 'Bottom Bar',
       language: 'Language',
@@ -540,6 +554,11 @@ export default {
             title: 'Creative',
             description:
               'Create a project with all the structure needed to create books.',
+          },
+          annotations: {
+            title: 'Annotations',
+            description:
+              'Create a project with only features for annotations. Recommended for everyday tasks.',
           },
         },
         content: {
@@ -736,6 +755,9 @@ export default {
       averageOccurrences: 'Average of Occurrences',
     },
   },
+  vault: {
+    empty: 'The void is empty.',
+  },
   tutorial: {
     buttons: {
       prev: 'Previous',
@@ -775,14 +797,16 @@ export default {
         high2: 'File: ',
         high3: 'Export: ',
         high4: 'Tools: ',
-        high5: 'Help: ',
+        high5: 'Void: ',
+        high6: 'Help: ',
         description2:
           'Check out the main ways of manipulating the project, such as creating, saving, changing, loading and querying.',
         description3:
           'File generators and their definitions. Each extension works with different settings from each other.',
         description4:
           'Additional features that only tend to add to your experience.',
-        description5: 'Documentation for inquiries.',
+        description5: 'Store your projects in one easy-to-access location.',
+        description6: 'Documentation for inquiries.',
       },
       5: {
         title: 'Tooling',

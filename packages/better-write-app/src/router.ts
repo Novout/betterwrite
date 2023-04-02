@@ -29,7 +29,7 @@ router.beforeResolve(async (to, from, next) => {
     return
   }
 
-  if ((to.name === 'Dashboard' || to.name === 'Plans') && !user) {
+  if ((to.name === 'Plans') && !user) {
     next({ name: 'Landing' })
 
     return

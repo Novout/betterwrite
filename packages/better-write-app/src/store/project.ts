@@ -89,7 +89,9 @@ export const useProjectStore = defineStore('project', {
       this.nameRaw = payload.nameRaw
       this.version = payload.version
       this.creator = payload.creator
-      this.type = payload.type || 'creative'
+      this.type = payload.type
+      this.base =
+        payload.type === 'only-annotations' ? 'annotations' : 'chapter'
       this.subject = payload.subject
       this.pageLoaded = payload.pageLoaded
       this.scrollLoaded = payload.scrollLoaded
@@ -135,11 +137,7 @@ export const useProjectStore = defineStore('project', {
           {
             id: useUtils().id().uuidv4(),
             title: `${forceTitle || title}  | ${useFormat().actually()}`,
-            entities: [
-              useFactory()
-                .entity()
-                .create('heading-one', forceTitle || title),
-            ],
+            entities: [],
             createdAt: useFormat().actually(),
             updatedAt: useFormat().actually(),
           },
