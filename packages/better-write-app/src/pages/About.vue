@@ -1,6 +1,6 @@
 <template>
   <img
-    class="absolute left-10 sm:left-40 lg:left-100 top-50 w-40 md:w-60 z-0 opacity-10 pointer-events-none"
+    class="absolute shadow-xl left-10 sm:left-40 lg:left-100 top-50 w-40 md:w-60 z-0 opacity-10 pointer-events-none"
     alt="Better Write Logo"
     src="/logo.png"
   />
@@ -10,6 +10,7 @@
     <AboutInfo />
     <AboutEntity />
     <AboutPortability />
+    <AboutPowered />
     <AboutFinish />
   </div>
 </template>

@@ -17,6 +17,9 @@ export default {
     bw: 'Better Write',
     canvas: 'Outros',
   },
+  powered: {
+    title: 'Construído com...',
+  },
   portability: {
     title: 'Crie como quiser, para o que quiser.',
     description:

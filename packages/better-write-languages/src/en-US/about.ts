@@ -17,6 +17,9 @@ export default {
     bw: 'Better Write',
     canvas: 'Others',
   },
+  powered: {
+    title: 'Powered by...',
+  },
   portability: {
     title: 'Create how you want, for what you want.',
     description:
