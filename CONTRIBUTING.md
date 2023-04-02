@@ -7,7 +7,7 @@ To contribute to the project, install the following dependencies:
 - [Node 16](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/)
 
-## Fork Repository
+### Fork Repository
 
 - Fork the repo.
 - Clone your repository:
@@ -35,3 +35,8 @@ yarn dev
 > Check **package.json** to other commands.
 
 > For production build run, instead `yarn dev` uses `yarn preview`.
+
+
+## Contribute to Translation
+
+All translation files are available in `packages/better-write-languages`. To contribute, just follow the same structure as the other translations.
