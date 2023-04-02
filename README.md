@@ -47,7 +47,7 @@ Unlike traditional word processors, *betterwrite* focuses on producing an out-of
 
 - **Void** is a cloud save feature aiming to be more user friendly and easy to access among other projects saved in the void. Its structure was planned not to interfere with local saves (local storage or extension).
 
-- **Annotations** have a different editor, based on markdown, offering a more instantaneous and familiar option than the main editor, fulfilling its main purpose: annotating. Annotations do not participate in the document production flow and serve as an aid to the writer.
+- **Annotations** have a different editor, powered by [Milkdown](https://milkdown.dev/), offering a more instantaneous and familiar option than the main editor, fulfilling its main purpose: annotating. Annotations do not participate in the document production flow and serve as an aid to the writer.
 
 - **Characters** is a system for identifying specific words and offering some control over them, highlighting the paragraph with colors and their occurrence in the project. This system mainly allows fantasy or drama writers to have greater control of their paragraphs and handle character arcs with perfection.
 

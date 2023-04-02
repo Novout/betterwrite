@@ -1,5 +1,5 @@
 <template>
-  <section class="pt-20 z-9999999 flex flex-col justify-around items-center w-full min-h-screen">
+  <section class="my-25 z-9999999 flex flex-col justify-around items-center w-full min-h-screen">
     <div class="flex flex-col items-center">
         <h2
         v-motion
@@ -31,7 +31,7 @@ v-motion
           transition: {
             duration: 800,
           },
-        }" :delay="500" class="flex flex-wrap bg-cover justify-evenly items-center flex-row w-full p-5 pointer-events-none">
+        }" :delay="500" class="flex gap-10 flex-wrap bg-cover justify-evenly items-center flex-row w-full p-5 pointer-events-none">
       
       <AboutPoweredItem bg="#6BD6A4" text="black" name="Vue" link="https://vuejs.org/">
         <IconVue class="w-9 h-9" />
@@ -50,6 +50,9 @@ v-motion
       </AboutPoweredItem>
       <AboutPoweredItem bg="#FBA7FF" text="black" name="Lerna" link="https://lerna.js.org/">
         <IconLerna class="w-10 h-10" />
+      </AboutPoweredItem>
+      <AboutPoweredItem bg="#333333" text="white" name="Milkdown" link="https://github.com/Milkdown">
+        <IconMilkdown class="w-10 h-10" />
       </AboutPoweredItem>
     </div>
   </section>
