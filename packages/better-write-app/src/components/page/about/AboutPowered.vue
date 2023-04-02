@@ -39,6 +39,9 @@ v-motion
       <AboutPoweredItem bg="#A0E58C" text="black" name="Vite" link="https://vitejs.dev/">
         <IconVite class="w-9 h-9" />
       </AboutPoweredItem>
+      <AboutPoweredItem bg="#111111" text="white" name="WindiCSS" link="https://windicss.org/">
+        <IconWindicss class="w-11 h-11" />
+      </AboutPoweredItem>
       <AboutPoweredItem bg="#DEDEDE" text="black" name="Vercel" link="https://vercel.com">
         <IconVercel class="w-9 h-9" />
       </AboutPoweredItem>
