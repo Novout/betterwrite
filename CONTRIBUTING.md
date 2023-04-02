@@ -36,6 +36,15 @@ yarn dev
 
 > For production build run, instead `yarn dev` uses `yarn preview`.
 
+## Conventions
+
+- Read [Code of Conduct](./CODE_OF_CONDUCT.md)
+
+- Strictly follow the commit pattern provided by [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+- Every branch must initialize with `<conventional-commits-prefix>/*` and its PR must be directed to the `develop` branch
+
+- Sync our branch.
 
 # Contributing to Translation
 
@@ -64,6 +73,14 @@ export const ExamplePlugin = (): PluginTypes.Plugin =>
 
 - `better-write-plugin-` as necessary prefix in folder and named in *package.json*
 
-> ATTENTION! The plugin system is not finished yet and may undergo drastic changes in its structure.
+> **ATTENTION! The plugin system is not finished yet and may undergo drastic changes in its structure.**
 
 > Until this moment, it is not possible to register plugins outside the monorepo.
+
+# Contributing to Custom Themes
+
+- All styles must be inserted into `better-write-plugin-theme`
+
+- Theme registration must be done by hand in the files in `better-write-plugin-theme/src`
+
+- If you register a copyrighted theme, give due credit.
