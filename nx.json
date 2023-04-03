@@ -8,6 +8,15 @@
     }
   },
   "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ],
+      "cache": true
+    },
     "dev": {
       "dependsOn": [
         "^build"
