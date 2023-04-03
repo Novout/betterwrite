@@ -14,8 +14,7 @@
       ],
       "outputs": [
         "dist/**"
-      ],
-      "cache": true
+      ]
     },
     "dev": {
       "dependsOn": [
