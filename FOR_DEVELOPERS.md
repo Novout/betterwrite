@@ -23,7 +23,7 @@ All types are centered in `packages/better-write-types`. If you want to access o
 
 ### Configurations
 
-Reactive settings will always be in `editor.*`, and [its reference is here](https://github.com/Novout/betterwrite/blob/main/packages/better-write-types/src/types/editor.ts).
+Reactive settings will always be in `editor.*`, and [its reference is here](https://github.com/Novout/betterwrite/blob/main/packages/better-write-types/src/editor.ts).
 
 ### Creative
 
@@ -41,7 +41,7 @@ export type ContextState = {
 }
 ```
 
-#### [Structure Entity](https://github.com/Novout/betterwrite/blob/main/packages/better-write-types/src/types/context.ts#L110)
+#### [Structure Entity](https://github.com/Novout/betterwrite/blob/main/packages/better-write-types/src/context.ts#L110)
 
 ```ts
 export type Entity = {
