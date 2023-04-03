@@ -150,7 +150,7 @@ export const DOCXSet = (
           totalPagesCreated++
 
           page = {
-            id: totalPagesCreated,
+            id: String(totalPagesCreated),
             title: entity.raw,
             entities: [entity],
             createdAt: hooks.format.actually(),
@@ -184,7 +184,7 @@ export const DOCXSet = (
       )
         stores.ABSOLUTE.aside = true
 
-      stores.ABSOLUTE.project.blocked = false
+      emitter.emit('plugin-theme-set')
 
       hooks.toast.success(hooks.i18n.t('toast.project.create'))
     },

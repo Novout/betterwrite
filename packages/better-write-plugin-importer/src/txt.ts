@@ -30,7 +30,7 @@ export const TXTSet = (
         entities.push(hooks.factory.entity().create('paragraph', row))
       })
 
-      stores.PROJECT.createExternal({
+      stores.PROJECT.new({
         name: hooks.utils.text().kebab(fileName),
         nameRaw: fileName,
         pages: [
@@ -56,7 +56,7 @@ export const TXTSet = (
       )
         stores.ABSOLUTE.aside = true
 
-      stores.ABSOLUTE.project.blocked = false
+      emitter.emit('plugin-theme-set')
 
       hooks.toast.success(hooks.i18n.t('toast.project.create'))
     },
