@@ -8,7 +8,7 @@
     "bootstrap": "lerna bootstrap --use-workspaces",
     "dev": "lerna run dev",
     "serve": "lerna run serve",
-    "build": "lerna run build",
+    "build": "lerna run build --verbose",
     "test": "lerna run test",
     "lint": "lerna run lint",
     "deploy": "yarn bootstrap && yarn build",
