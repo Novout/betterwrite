@@ -506,7 +506,7 @@ export const useProject = () => {
             return (
               conc +
               ASTUtils.normalize(nm, { type: 'inserts' }) +
-              (entity.utils().isHeading(ent.type) ? '\n\n' : '\n')
+              (entity.utils().isHeading(ent.type) ? '\n\n' : '')
             )
           }, '')
 
