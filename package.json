@@ -10,7 +10,7 @@
     "serve": "lerna run serve",
     "build": "lerna run build",
     "test": "lerna run test",
-    "lint": "lerna run lint --parallel --no-cache",
+    "lint": "lerna run lint",
     "deploy": "yarn bootstrap && yarn build",
     "patch": "generi log patch",
     "minor": "generi log minor",
