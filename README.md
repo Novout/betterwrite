@@ -102,5 +102,5 @@ All generators were designed to work from the API's offered by browsers, not req
 # Blog Post
 
 ### If you want to know a little more about the tool, read: <blockquote>
-<p><a href="https://novout.com/articles/betterwrite"><strong>How I Built a 100% Client-Side Word Processor</strong></a>
+<p><a href="https://medium.com/@Novout/how-i-built-a-100-client-side-word-processor-7d00001725f3"><strong>How I Built a 100% Client-Side Word Processor</strong></a>
 </blockquote>
