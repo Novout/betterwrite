@@ -12,14 +12,14 @@
   import { TxtPlugin } from 'better-write-plugin-exporter-txt'
   import { HtmlPlugin } from 'better-write-plugin-exporter-html'
   import { AnnotationsPlugin } from 'better-write-plugin-annotations'
-  import { EpubPlugin } from 'better-write-plugin-exporter-epub'
+  // import { EpubPlugin } from 'better-write-plugin-exporter-epub'
 
   useStart([
     ThemePlugin(),
     ImporterPlugin(),
     PDFPlugin(),
     DocxPlugin(),
-    EpubPlugin(),
+    // EpubPlugin(),
     TxtPlugin(),
     HtmlPlugin(),
     AnnotationsPlugin(),
