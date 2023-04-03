@@ -389,10 +389,10 @@ export default {
         fontFamily: 'Font',
       },
       summary: {
-        title: 'Sumário',
-        type: 'Estilo',
-        fontSize: 'Tamanho',
-        fontFamily: 'Fonte',
+        title: 'Summary',
+        type: 'Style',
+        fontSize: 'Font Size',
+        fontFamily: 'Font Family',
       },
     },
     lineBreak: {
