@@ -1,0 +1,22 @@
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build"]
+      }
+    }
+  },
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "serve": {
+      "dependsOn": [
+        "^build"
+      ]
+    }
+  }
+}

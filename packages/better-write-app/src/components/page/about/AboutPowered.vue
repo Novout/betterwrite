@@ -48,9 +48,6 @@ v-motion
       <AboutPoweredItem bg="#2C8526" text="white" name="Supabase" link="https://supabase.com/">
         <IconSupabase class="w-9 h-9" />
       </AboutPoweredItem>
-      <AboutPoweredItem bg="#7179E4" text="white" name="Turborepo" link="https://turbo.build/">
-        <IconTurborepo class="w-9 h-9" />
-      </AboutPoweredItem>
       <AboutPoweredItem bg="#FBA7FF" text="black" name="Lerna" link="https://lerna.js.org/">
         <IconLerna class="w-10 h-10" />
       </AboutPoweredItem>

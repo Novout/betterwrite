@@ -6,21 +6,19 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
-    "dev": "turbo run dev",
-    "serve": "turbo run serve",
-    "build": "turbo run build",
-    "test": "turbo run test",
-    "lint": "turbo run lint --parallel --no-cache",
+    "dev": "lerna run dev",
+    "serve": "lerna run serve",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "lint": "lerna run lint --parallel --no-cache",
     "deploy": "yarn bootstrap && yarn build",
     "patch": "generi log patch",
     "minor": "generi log minor",
-    "major": "generi log major",
-    "postinstall": "yarn bootstrap"
+    "major": "generi log major"
   },
   "devDependencies": {
     "generi": "0.5.2",
-    "lerna": "6.6.1",
-    "turbo": "1.8.8"
+    "lerna": "6.6.1"
   },
   "packageManager": "yarn@1.22.19"
 }
