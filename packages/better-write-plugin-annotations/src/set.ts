@@ -137,7 +137,7 @@ export const PluginAnnotationsSet = (
 
     await nextTick
 
-    Editor.make()
+    const editor = await Editor.make()
       .config((ctx) => {
         ctx.set(rootCtx, document.querySelector('#bw-wysiwyg'))
 
@@ -177,6 +177,8 @@ export const PluginAnnotationsSet = (
       .use(emoji)
       .use(upload)
       .create()
+
+    emitter.emit('plugin-annotations-get-instance', editor)
   }
 
   On.externals().PluginAnnotationsStart(emitter, [

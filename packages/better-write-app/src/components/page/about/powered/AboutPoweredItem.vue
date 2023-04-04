@@ -1,5 +1,6 @@
 <template>
-  <div v-motion
+  <div
+v-motion
         :initial="{
           y: 15,
         }"

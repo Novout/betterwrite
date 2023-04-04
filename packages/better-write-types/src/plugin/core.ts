@@ -37,6 +37,7 @@ export type PluginEmitterName =
   | 'plugin-project-page-swap'
   | 'plugin-auto-save'
   | 'plugin-editor-mounted'
+  | 'plugin-annotations-get-instance'
   | 'plugin-annotations-start'
   | 'plugin-annotations-folder-create'
   | 'plugin-annotations-folder-delete'
