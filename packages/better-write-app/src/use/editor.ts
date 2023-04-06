@@ -58,7 +58,7 @@ export const useEditor = () => {
       Calls.EditorUnmounted(plugin)
     })
 
-    const inForceSave = async () => {
+    const inForcedSave = async () => {
       if (EDITOR.configuration.autosave) {
         await storage.normalize()
         await local.onSaveProject(false)
@@ -70,11 +70,11 @@ export const useEditor = () => {
     }
 
     useEventListener('beforeunload', async () => {
-      await inForceSave()
+      await inForcedSave()
     })
 
     onBeforeRouteLeave(async () => {
-      await inForceSave()
+      await inForcedSave()
     })
 
     // tracking normalize project cases
