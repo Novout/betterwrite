@@ -170,6 +170,13 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.editor.configuration.purgeEntities) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        purgeEntities: false
+      }
+    }
+
     return _
   }
 
@@ -188,6 +195,8 @@ export const useStorage = () => {
   }
 
   const purge = () => {
+    if(!EDITOR.configuration.purgeEntities) return
+
     PROJECT.pages.forEach((page) => {
       page.entities.forEach((entity) => {
         if (

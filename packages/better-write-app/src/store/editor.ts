@@ -46,6 +46,7 @@ export const useEditorStore = defineStore('editor', {
           value: false,
           quality: 0.8,
         },
+        purgeEntities: false,
         blocked: true,
         bottomBar: true,
         entity: {

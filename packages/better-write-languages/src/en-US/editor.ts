@@ -125,6 +125,11 @@ export default {
             description:
               'The lower the value, lower the image quality (1.0 is the default). Recommended to decrease project (.bw) size.',
           },
+          purgeEntities: {
+            title: 'Purge Entities',
+            description:
+              'Every time when saving a file, a cleanup will be performed on each editor item to remove unwanted items to make the project lighter. If enabled, saves will be slower.',
+          },
         },
         background: {
           title: 'Background',

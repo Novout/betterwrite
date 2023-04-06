@@ -218,6 +218,25 @@
           </div>
         </div>
       </DescriptionContainer>
+      <DescriptionContainer
+        color="#AA0000"
+        :description="
+          t(
+            'editor.preferences.configuration.editor.options.purgeEntities.description'
+          )
+        "
+      >
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.options.purgeEntities.title'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.configuration.purgeEntities" />
+        </div>
+      </DescriptionContainer>
     </div>
   </EditorProjectPreferencesContainerSlot>
 </template>
@@ -230,8 +249,8 @@
     onSwitchLanguage,
   } from 'better-write-languages'
   import { useEditorStore } from '@/store/editor'
+  import { useProjectStore } from '@/store/project';
   import { LanguageRaw } from 'better-write-types'
-import { useProjectStore } from '@/store/project';
 
   const EDITOR = useEditorStore()
   const PROJECT = useProjectStore()

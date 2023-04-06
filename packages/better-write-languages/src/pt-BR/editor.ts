@@ -127,6 +127,11 @@ export default {
             description:
               'Quanto menor o valor, menor a qualidade de imagem e o tamanho do arquivo (1.0 é o padrão). Recomendado para diminuir o tamanho geral do projeto (.bw).',
           },
+          purgeEntities: {
+            title: 'Expurgar Entidades',
+            description:
+              'Sempre ao salvar um arquivo, um "pente limpo" será executado em cada item do editor para remover itens indesejados para deixar o projeto mais leve. Caso ativado, os salvamentos estarão mais lentos.',
+          },
         },
         background: {
           title: 'Fundo',
