@@ -9,8 +9,10 @@ export const InitSet = (
     const keys = hooks.vueuse.core.useMagicKeys({
       passive: false,
       onEventFired(e: KeyboardEvent) {
-        if (e.ctrlKey || e.altKey || e.key === 'F11') e?.preventDefault()
-        e?.stopPropagation()
+        if (e.ctrlKey || e.altKey || e.key === 'F11') {
+          e?.preventDefault()
+          e?.stopPropagation()
+        }
       },
     })
     const whenever = hooks.vueuse.core.whenever
