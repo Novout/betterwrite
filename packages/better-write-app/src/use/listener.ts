@@ -1,4 +1,3 @@
-import { useAbsoluteStore } from '@/store/absolute'
 import { useEventListener } from '@vueuse/core'
 import { usePlugin } from 'better-write-plugin-core'
 import { read } from 'better-write-plugin-importer'
@@ -6,88 +5,18 @@ import { isImageExtension } from 'better-write-image-converter'
 import { useI18n } from 'vue-i18n'
 import { useToast } from 'vue-toastification'
 import { useProject } from './project'
-import { useUtils } from './utils'
-import { useHistoryStore } from '@/store/history'
 import { readBW } from 'better-write-extension'
-import { useEnv } from './env'
-import useEmitter from './emitter'
 import { useCharacters } from './characters'
+import useEmitter from './emitter'
 
 export const useListener = () => {
-  const ABSOLUTE = useAbsoluteStore()
-  const HISTORY = useHistoryStore()
-
   const project = useProject()
 
-  const utils = useUtils()
   const { t } = useI18n()
   const plugin = usePlugin()
   const toast = useToast()
-  const env = useEnv()
   const emitter = useEmitter()
   const characters = useCharacters()
-
-  const keyboard = () => {
-    const start = () => {
-      useEventListener('keydown', cb)
-    }
-
-    const cb = async (e: KeyboardEvent) => {
-      // dev mode
-      if (env.isDev()) {
-        // cmd
-        if (e.ctrlKey && e.shiftKey && (e.key === 'a' || e.key === 'A')) {
-          e.preventDefault()
-          e.stopPropagation()
-
-          ABSOLUTE.cmd = !ABSOLUTE.cmd
-
-          return
-        }
-      }
-
-      // undo
-      if (e.ctrlKey && e.shiftKey) {
-        if (e.key === 'z' || e.key === 'Z') {
-          e.preventDefault()
-          e.stopPropagation()
-
-          HISTORY.back()
-
-          return
-        }
-      }
-      // finder
-      if (e.ctrlKey && (e.key === 'f' || e.key === 'F')) {
-        e.preventDefault()
-        e.stopPropagation()
-
-        ABSOLUTE.shortcuts.finder = !ABSOLUTE.shortcuts.finder
-
-        return
-      }
-
-      // switcher
-      if (e.ctrlKey && (e.key === 'h' || e.key === 'H')) {
-        e.preventDefault()
-        e.stopPropagation()
-
-        ABSOLUTE.shortcuts.switcher = !ABSOLUTE.shortcuts.switcher
-
-        return
-      }
-
-      // handle default fullscreen method
-      if (e.key === 'F11') {
-        e.preventDefault()
-        e.stopPropagation()
-
-        utils.context().fullscreen()
-      }
-    }
-
-    return { start }
-  }
 
   const window = () => {
     const start = () => {
@@ -177,5 +106,5 @@ export const useListener = () => {
     return { start }
   }
 
-  return { keyboard, window, editor }
+  return { window, editor }
 }

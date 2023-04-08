@@ -72,6 +72,30 @@
         :title="t('editor.preferences.commands.9')"
         shortcut="CTRL + 9"
       />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.aside.configuration.autosave')"
+        shortcut="CTRL + S"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.aside.configuration.cloudAutosave')"
+        shortcut="CTRL + SHIFT + S"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.bar.pdf.generate')"
+        shortcut="CTRL + SHIFT + P"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.bar.epub.generate')"
+        shortcut="CTRL + SHIFT + E"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.bar.html.generate')"
+        shortcut="CTRL + SHIFT + H"
+      />
+      <EditorProjectPreferencesKeyboardItem
+        :title="t('editor.bar.txt.generate')"
+        shortcut="CTRL + SHIFT + T"
+      />
     </div>
   </EditorProjectPreferencesContainerSlot>
 </template>

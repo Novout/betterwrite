@@ -86,9 +86,6 @@ export const useEditor = () => {
       { deep: true }
     )
 
-    // shortcuts
-    listener.keyboard().start()
-
     // window events
     listener.window().start()
 

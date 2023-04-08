@@ -12,6 +12,7 @@
   import { TxtPlugin } from 'better-write-plugin-exporter-txt'
   import { HtmlPlugin } from 'better-write-plugin-exporter-html'
   import { AnnotationsPlugin } from 'better-write-plugin-annotations'
+  import { ShortcutsPlugin } from 'better-write-plugin-shortcuts'
   // import { EpubPlugin } from 'better-write-plugin-exporter-epub'
 
   useStart([
@@ -23,5 +24,6 @@
     TxtPlugin(),
     HtmlPlugin(),
     AnnotationsPlugin(),
+    ShortcutsPlugin()
   ]).init()
 </script>

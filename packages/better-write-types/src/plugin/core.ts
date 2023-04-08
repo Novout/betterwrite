@@ -8,6 +8,7 @@ import {
   PDFState,
   DOCXState,
   ProjectState,
+  HistoryState,
 } from '..'
 
 export type PluginEmitterName =
@@ -88,6 +89,7 @@ export interface PluginStores {
   DOCX: PluginStore<'docx', DOCXState, any, any>
   PROJECT: PluginStore<'project', ProjectState, any, any>
   EXTERNALS: PluginStore<'externals', ProjectState, any, any>
+  HISTORY: PluginStore<'externals', HistoryState, any, any>
 }
 
 export interface PluginDefines {
@@ -98,6 +100,7 @@ export type PluginHook = any
 
 export interface PluginHooks {
   local: PluginHook
+  cloud: PluginHook
   storage: PluginHook
   creative: PluginHook
   defines: PluginHook

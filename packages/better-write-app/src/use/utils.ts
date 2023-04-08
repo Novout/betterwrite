@@ -380,7 +380,7 @@ export const useUtils = () => {
       window.document.exitFullscreen().catch(() => {
         const target = window.document.querySelector('body')
 
-        target?.requestFullscreen()
+        target?.requestFullscreen().catch(() => {})
       })
     }
 

@@ -31,8 +31,10 @@ import { useRaw } from '../raw'
 import { useScroll } from '../scroll'
 import { useUtils } from '../utils'
 import { useI18n } from 'vue-i18n'
+import { useHistoryStore } from '@/store/history'
 import * as VUEUSE_CORE from '@vueuse/core'
 import useEmitter from '../emitter'
+import { useSupabase } from '../storage/supabase'
 
 export const usePluginInitializer = () => {
   const core = useCore()
@@ -48,10 +50,12 @@ export const usePluginInitializer = () => {
         DOCX: useDOCXStore(),
         PROJECT: useProjectStore(),
         EXTERNALS: useExternalsStore(),
+        HISTORY: useHistoryStore(),
       } as any,
       plugins,
       {
         local: useLocalStorage(),
+        cloud: useSupabase(),
         storage: useStorage(),
         creative: useCreativeType(),
         defines: useDefines(),
