@@ -77,8 +77,8 @@ export const useUtils = () => {
       return characters.charAt(Math.floor(Math.random() * charactersLength))
     }
 
-    const defaultWhitespace = (value: string) => {
-      return value.replaceAll('&nbsp;', ' ').replaceAll('&#160', ' ')
+    const defaultWhitespace = (value: string): string => {
+      return value.replace(/(&nbsp;|&#160|&#x20;)/gi, ' ')
     }
 
     const randomColor = () => {

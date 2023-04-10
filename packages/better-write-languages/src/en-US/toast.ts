@@ -55,6 +55,9 @@ export default {
     epub: {
       generate: 'Successfully Downloaded EPUB!',
     },
+    md: {
+      generate: 'Successfully Downloaded Markdown!',
+    },
     annotations: {
       fileDelete: 'Are you sure you want to delete the file?',
       folderDelete: 'Are you sure you want to delete the folder?',

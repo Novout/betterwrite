@@ -56,6 +56,9 @@ export default {
     html: {
       generate: 'HTML Baixado com Sucesso!',
     },
+    md: {
+      generate: 'Markdown Baixado com Sucesso!',
+    },
     annotations: {
       fileDelete: 'Você tem certeza que deseja deletar o arquivo?',
       folderDelete: 'Você tem certeza que deseja deletar a pasta?',
