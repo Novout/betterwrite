@@ -1,6 +1,6 @@
 import { PluginTypes } from 'better-write-types'
 
-export const InitSet = (
+export const GlobalSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
@@ -51,10 +51,6 @@ export const InitSet = (
 
     whenever(keys.ctrl_h, () => {
       stores.ABSOLUTE.shortcuts.switcher = !stores.ABSOLUTE.shortcuts.switcher
-    })
-
-    whenever(keys.ctrl_z, () => {
-      stores.HISTORY.back()
     })
 
     whenever(keys.F11, () => {

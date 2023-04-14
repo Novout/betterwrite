@@ -12,5 +12,5 @@ export interface HistoryStateTarget {
 }
 
 export interface HistoryState {
-  array: HistoryStateTarget[]
+  stack: HistoryStateTarget[]
 }

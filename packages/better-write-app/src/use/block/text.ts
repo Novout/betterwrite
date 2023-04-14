@@ -167,7 +167,7 @@ export const useBlockText = ({
         e.preventDefault()
         e.stopPropagation()
 
-        HISTORY.back()
+        plugin.emit('plugin-entity-undo')
 
         return
       }
@@ -294,7 +294,7 @@ export const useBlockText = ({
           position: 'auto',
         })
 
-        HISTORY.add({
+        HISTORY.stack.push({
           items: [
             {
               index: value,
@@ -349,7 +349,7 @@ export const useBlockText = ({
 
         await nextTick
 
-        HISTORY.add({
+        HISTORY.stack.push({
           items: [
             {
               index: value,
@@ -398,7 +398,7 @@ export const useBlockText = ({
 
             await storage.normalize()
 
-            HISTORY.add({
+            HISTORY.stack.push({
               items: [
                 {
                   index: value,
@@ -506,7 +506,7 @@ export const useBlockText = ({
 
       await nextTick
 
-      HISTORY.add({
+      HISTORY.stack.push({
         items: [
           {
             index: index.value + 1,
@@ -545,7 +545,7 @@ export const useBlockText = ({
 
       await nextTick
 
-      HISTORY.add({
+      HISTORY.stack.push({
         items: [
           {
             index: index.value + 1,

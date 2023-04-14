@@ -487,6 +487,17 @@ export const externals = () => {
     })
   }
 
+  const PluginEntityUndo = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-entity-undo', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -507,6 +518,7 @@ export const externals = () => {
     PluginAnnotationsReset,
     PluginVoiceStart,
     PluginVoiceStop,
+    PluginEntityUndo,
   }
 }
 

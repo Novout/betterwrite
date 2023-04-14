@@ -9,12 +9,13 @@
   import { ImporterPlugin } from 'better-write-plugin-importer'
   import { PDFPlugin } from 'better-write-plugin-exporter-pdf'
   import { DocxPlugin } from 'better-write-plugin-exporter-docx'
+  // import { EpubPlugin } from 'better-write-plugin-exporter-epub'
   import { TxtPlugin } from 'better-write-plugin-exporter-txt'
   import { HtmlPlugin } from 'better-write-plugin-exporter-html'
   import { AnnotationsPlugin } from 'better-write-plugin-annotations'
   import { ShortcutsPlugin } from 'better-write-plugin-shortcuts'
   import { VoiceTypingPlugin } from 'better-write-plugin-voice-typing'
-  // import { EpubPlugin } from 'better-write-plugin-exporter-epub'
+  import { EntityHistoryPlugin } from 'better-write-plugin-entity-history'
 
   useStart([
     ThemePlugin(),
@@ -26,6 +27,7 @@
     HtmlPlugin(),
     AnnotationsPlugin(),
     ShortcutsPlugin(),
-    VoiceTypingPlugin()
+    VoiceTypingPlugin(),
+    EntityHistoryPlugin()
   ]).init()
 </script>

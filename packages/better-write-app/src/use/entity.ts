@@ -217,7 +217,7 @@ export const useEntity = () => {
         target: index - 1,
       })
 
-      HISTORY.add({
+      HISTORY.stack.push({
         items: [
           {
             index,

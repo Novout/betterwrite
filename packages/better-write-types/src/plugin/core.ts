@@ -21,6 +21,7 @@ export type PluginEmitterName =
   | 'plugin-entity-page-break'
   | 'plugin-entity-alter-in-page'
   | 'plugin-entity-paste-in-page'
+  | 'plugin-entity-undo'
   | 'plugin-theme-set'
   | 'plugin-theme-set-logo'
   | 'plugin-pdf-generate'

@@ -53,6 +53,7 @@
     "better-write-languages": "^1.1.5",
     "better-write-plugin-annotations": "^1.1.5",
     "better-write-plugin-core": "^1.1.5",
+    "better-write-plugin-entity-history": "^1.1.5",
     "better-write-plugin-exporter-docx": "^1.1.5",
     "better-write-plugin-exporter-epub": "^1.1.5",
     "better-write-plugin-exporter-html": "^1.1.5",
