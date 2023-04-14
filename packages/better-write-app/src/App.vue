@@ -13,6 +13,7 @@
   import { HtmlPlugin } from 'better-write-plugin-exporter-html'
   import { AnnotationsPlugin } from 'better-write-plugin-annotations'
   import { ShortcutsPlugin } from 'better-write-plugin-shortcuts'
+  import { VoiceTypingPlugin } from 'better-write-plugin-voice-typing'
   // import { EpubPlugin } from 'better-write-plugin-exporter-epub'
 
   useStart([
@@ -24,6 +25,7 @@
     TxtPlugin(),
     HtmlPlugin(),
     AnnotationsPlugin(),
-    ShortcutsPlugin()
+    ShortcutsPlugin(),
+    VoiceTypingPlugin()
   ]).init()
 </script>

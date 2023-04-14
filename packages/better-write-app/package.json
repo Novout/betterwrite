@@ -61,6 +61,7 @@
     "better-write-plugin-importer": "^1.1.5",
     "better-write-plugin-shortcuts": "^1.1.5",
     "better-write-plugin-theme": "^1.1.5",
+    "better-write-plugin-voice-typing": "^1.1.5",
     "better-write-types": "^1.1.5",
     "compressorjs": "1.2.1",
     "destr": "1.2.2",

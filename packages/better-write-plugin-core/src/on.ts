@@ -465,6 +465,28 @@ export const externals = () => {
     })
   }
 
+  const PluginVoiceStart = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-voice-start', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginVoiceStop = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-voice-stop', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -483,6 +505,8 @@ export const externals = () => {
     PluginAnnotationsCreateFile,
     PluginAnnotationsDeleteFile,
     PluginAnnotationsReset,
+    PluginVoiceStart,
+    PluginVoiceStop,
   }
 }
 
