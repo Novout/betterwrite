@@ -1,6 +1,8 @@
 import { usePDF } from 'vue3-pdfmake'
 import { On } from 'better-write-plugin-core'
 import {
+  ColorSchema,
+  ColorSchemaReturn,
   ContextState,
   Entity,
   PDFDocOptions,
@@ -13,6 +15,7 @@ import { getStandardVFS } from './vfs'
 import { ImageToForcePNG } from 'better-write-image-converter'
 import { Maybe } from 'better-write-types'
 import { getRows, parse } from 'better-write-contenteditable-ast'
+import { HEXToCMYK } from 'better-write-color-converter'
 
 export const PluginPDFSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -35,6 +38,13 @@ export const PluginPDFSet = (
       return online.value && stores.PDF.normalize.length !== 0
     }
 
+    const getColor = (
+      color: string,
+      setter: ColorSchema
+    ): ColorSchemaReturn => {
+      return setter === 'CMYK' ? HEXToCMYK(color, 'pdfmake') : color
+    }
+
     const correctFontInject = (font: string) => {
       return isOnline() ? font : 'Roboto'
     }
@@ -49,7 +59,7 @@ export const PluginPDFSet = (
       return generator
     }
 
-    return { isOnline, correctFontInject, getEntityGenerator }
+    return { isOnline, getColor, correctFontInject, getEntityGenerator }
   }
 
   const transform = () => {
@@ -223,7 +233,7 @@ export const PluginPDFSet = (
     return indent
   }
 
-  const generate = () => {
+  const generate = (options: PDFDocOptions) => {
     const { theme } = getPDFUtils()
 
     const headingOne = (entity: Entity) => {
@@ -232,9 +242,9 @@ export const PluginPDFSet = (
       return {
         text: entity.raw,
         margin: [
-          generate().base().pageMargins[0],
+          base().pageMargins[0],
           stores.PDF.styles.headingOne.margin.top,
-          generate().base().pageMargins[2],
+          base().pageMargins[2],
           stores.PDF.styles.headingOne.margin.bottom,
         ],
         pageBreak:
@@ -255,9 +265,9 @@ export const PluginPDFSet = (
       return {
         text: entity.raw,
         margin: [
-          generate().base().pageMargins[0],
+          base().pageMargins[0],
           stores.PDF.styles.headingTwo.margin.top,
-          generate().base().pageMargins[2],
+          base().pageMargins[2],
           stores.PDF.styles.headingTwo.margin.bottom,
         ],
         style: 'heading-two',
@@ -273,9 +283,9 @@ export const PluginPDFSet = (
       return {
         text: entity.raw,
         margin: [
-          generate().base().pageMargins[0],
+          base().pageMargins[0],
           stores.PDF.styles.headingThree.margin.top,
-          generate().base().pageMargins[2],
+          base().pageMargins[2],
           stores.PDF.styles.headingThree.margin.bottom,
         ],
         style: 'heading-three',
@@ -293,8 +303,8 @@ export const PluginPDFSet = (
               lineHeight: generator.lineHeight,
               alignment: transform().entityAlignment(generator.alignment),
               characterSpacing: generator.characterSpacing,
-              color: generator.color,
-              background: generator.background,
+              color: utils().getColor(generator.color, options.color),
+              background: utils().getColor(generator.background, options.color),
               italics: generator.italics,
               bold: generator.bold,
             }
@@ -349,11 +359,11 @@ export const PluginPDFSet = (
         style: entity.external?.paragraph?.active ? 'none' : 'paragraph',
         preserveLeadingSpaces: true,
         margin: [
-          generate().base().pageMargins[0],
+          base().pageMargins[0],
           entity.external?.paragraph?.active && generator
             ? generator.margin.top
             : stores.PDF.styles.paragraph.margin.top,
-          generate().base().pageMargins[2],
+          base().pageMargins[2],
           entity.external?.paragraph?.active && generator
             ? generator.margin.bottom
             : stores.PDF.styles.paragraph.margin.bottom,
@@ -375,11 +385,11 @@ export const PluginPDFSet = (
         fontSize: p.fontSize,
         characterSpacing: p.characterSpacing,
         margin: [
-          generate().base().pageMargins[0] + indent.length * 10,
+          base().pageMargins[0] + indent.length * 10,
           entity.external?.paragraph?.active && generator
             ? generator.margin.top
             : stores.PDF.styles.paragraph.margin.top,
-          generate().base().pageMargins[2],
+          base().pageMargins[2],
           entity.external?.paragraph?.active && generator
             ? generator.margin.bottom
             : stores.PDF.styles.paragraph.margin.bottom,
@@ -403,12 +413,12 @@ export const PluginPDFSet = (
               {
                 border: [false, false, false, false],
                 margin: [
-                  generate().base().pageMargins[0] + -4 + indent.length * 10,
+                  base().pageMargins[0] + -4 + indent.length * 10,
                   entity.external?.paragraph?.active && generator
                     ? generator.margin.top
                     : stores.PDF.styles.paragraph.margin.top,
                   ,
-                  generate().base().pageMargins[2],
+                  base().pageMargins[2],
                   entity.external?.paragraph?.active && generator
                     ? generator.margin.bottom
                     : stores.PDF.styles.paragraph.margin.bottom,
@@ -428,7 +438,7 @@ export const PluginPDFSet = (
                 margin: [
                   p.margin[0] + 7 + indent.length * 10,
                   0,
-                  generate().base().pageMargins[2],
+                  base().pageMargins[2],
                   0,
                 ],
               },
@@ -506,24 +516,14 @@ export const PluginPDFSet = (
             hooks.defines.pdf().base().pageSizeFixes()[
               stores.PDF.styles.base.pageSize
             ][0] -
-            generate().base().pageMargins[0] -
-            generate().base().pageMargins[2],
-          margin: [
-            generate().base().pageMargins[0],
-            10,
-            generate().base().pageMargins[2],
-            10,
-          ],
+            base().pageMargins[0] -
+            base().pageMargins[2],
+          margin: [base().pageMargins[0], 10, base().pageMargins[2], 10],
         }
       } else if (entity.external?.image?.alignment === 'auto') {
         return {
           image: raw,
-          margin: [
-            generate().base().pageMargins[0],
-            10,
-            generate().base().pageMargins[2],
-            10,
-          ],
+          margin: [base().pageMargins[0], 10, base().pageMargins[2], 10],
         }
       } else {
         return {
@@ -534,12 +534,12 @@ export const PluginPDFSet = (
           margin: [
             entity.external?.image?.alignment === 'center'
               ? 0
-              : generate().base().pageMargins[0],
+              : base().pageMargins[0],
             10,
             entity.external?.image?.alignment === 'right' ||
             entity.external?.image?.alignment === 'center'
               ? 0
-              : generate().base().pageMargins[2],
+              : base().pageMargins[2],
             10,
           ],
         }
@@ -548,13 +548,16 @@ export const PluginPDFSet = (
 
     const frontCover = (arr: Array<any>) => {
       if (!stores.PDF.styles.base.background.data) {
+        const defColor = utils().getColor(
+          stores.PDF.styles.paragraph.color,
+          options.color
+        )
+
         let _title = {
           text: stores.PROJECT.nameRaw,
           fontSize: 42,
           font: utils().correctFontInject(stores.PDF.styles.headingOne.font),
-          color: isTheme.value
-            ? theme.paragraph
-            : stores.PDF.styles.paragraph.color,
+          color: isTheme.value ? theme.paragraph : defColor,
           alignment: 'center',
           margin: [0, 50],
         }
@@ -563,15 +566,8 @@ export const PluginPDFSet = (
           text: stores.PROJECT.subject,
           fontSize: 11,
           font: utils().correctFontInject(stores.PDF.styles.paragraph.font),
-          margin: [
-            generate().base().pageMargins[0],
-            50,
-            generate().base().pageMargins[2],
-            0,
-          ],
-          color: isTheme.value
-            ? theme.paragraph
-            : stores.PDF.styles.paragraph.color,
+          margin: [base().pageMargins[0], 50, base().pageMargins[2], 0],
+          color: isTheme.value ? theme.paragraph : defColor,
           alignment: 'center',
         }
 
@@ -579,15 +575,8 @@ export const PluginPDFSet = (
           text: stores.PROJECT.creator,
           fontSize: 11,
           font: utils().correctFontInject(stores.PDF.styles.paragraph.font),
-          margin: [
-            generate().base().pageMargins[0],
-            250,
-            generate().base().pageMargins[2],
-            0,
-          ],
-          color: isTheme.value
-            ? theme.paragraph
-            : stores.PDF.styles.paragraph.color,
+          margin: [base().pageMargins[0], 250, base().pageMargins[2], 0],
+          color: isTheme.value ? theme.paragraph : defColor,
           alignment: 'left',
           pageBreak: 'after',
         }
@@ -628,49 +617,23 @@ export const PluginPDFSet = (
     }
 
     const note = (arr: Array<any>) => {
+      const defColor = utils().getColor(
+        isTheme.value ? theme.paragraph : stores.PDF.styles.paragraph.color,
+        options.color
+      )
+
       if (stores.PDF.styles.base.note.text) {
         let _text = {
           text: stores.PDF.styles.base.note.text,
           fontSize: 14,
           font: utils().correctFontInject(stores.PDF.styles.paragraph.font),
-          color: isTheme.value
-            ? theme.paragraph
-            : stores.PDF.styles.paragraph.color,
+          color: defColor,
           alignment: 'center',
-          margin: [
-            generate().base().pageMargins[0],
-            50,
-            generate().base().pageMargins[2],
-            50,
-          ],
+          margin: [base().pageMargins[0], 50, base().pageMargins[2], 50],
         }
 
         arr.push(_text)
       }
-
-      let _bwd = {
-        text: hooks.i18n.t('editor.pdf.note.bw'),
-        font: utils().correctFontInject(stores.PDF.styles.paragraph.font),
-        fontSize: 13,
-        color: isTheme.value
-          ? theme.paragraph
-          : stores.PDF.styles.paragraph.color,
-        alignment: 'center',
-        margin: [
-          generate().base().pageMargins[0],
-          stores.PDF.styles.base.note.text
-            ? 0
-            : (hooks.defines.pdf().base().pageSizeFixes()[
-                stores.PDF.styles.base.pageSize
-              ][1] -
-                130) /
-              2,
-          generate().base().pageMargins[2],
-          0,
-        ],
-      }
-
-      arr.push(_bwd)
     }
 
     const summary = (arr: Array<any>) => {
@@ -708,7 +671,7 @@ export const PluginPDFSet = (
       }
     }
 
-    const content = async (options: PDFDocOptions): Promise<Array<any>> => {
+    const content = async (): Promise<Array<any>> => {
       return new Promise(async (res) => {
         const pages: Array<ContextState> = []
         const arr: Array<any> = []
@@ -718,6 +681,7 @@ export const PluginPDFSet = (
 
           return
         }
+
         options.chapters.forEach((chapter: any) => {
           if (chapter.select) pages.push(chapter.page)
         })
@@ -818,6 +782,15 @@ export const PluginPDFSet = (
 
     const styles = () => {
       const paragraph = () => {
+        const defColor = utils().getColor(
+          isTheme.value ? theme.paragraph : stores.PDF.styles.paragraph.color,
+          options.color
+        )
+        const defDecorationColor = utils().getColor(
+          stores.PDF.styles.paragraph.decorationColor,
+          options.color
+        )
+
         return {
           font: utils().correctFontInject(stores.PDF.styles.paragraph.font),
           fontSize: stores.PDF.styles.paragraph.fontSize,
@@ -826,10 +799,8 @@ export const PluginPDFSet = (
             stores.PDF.styles.paragraph.alignment
           ),
           characterSpacing: stores.PDF.styles.paragraph.characterSpacing,
-          color: isTheme.value
-            ? theme.paragraph
-            : stores.PDF.styles.paragraph.color,
-          decorationColor: stores.PDF.styles.paragraph.decorationColor,
+          color: defColor,
+          decorationColor: defDecorationColor,
         }
       }
 
@@ -839,11 +810,25 @@ export const PluginPDFSet = (
           fontSize: stores.PDF.styles.paragraph.fontSize,
           color: isTheme.value
             ? theme.paragraph
-            : stores.PDF.styles.paragraph.color,
+            : utils().getColor(
+                stores.PDF.styles.paragraph.color,
+                options.color
+              ),
         }
       }
 
       const headingOne = () => {
+        const defColor = utils().getColor(
+          isTheme.value
+            ? theme['heading-one']
+            : stores.PDF.styles.headingOne.color,
+          options.color
+        )
+        const defDecorationColor = utils().getColor(
+          stores.PDF.styles.headingOne.decorationColor,
+          options.color
+        )
+
         return {
           font: utils().correctFontInject(stores.PDF.styles.headingOne.font),
           fontSize: stores.PDF.styles.headingOne.fontSize,
@@ -854,14 +839,23 @@ export const PluginPDFSet = (
             stores.PDF.styles.headingOne.alignment
           ),
           characterSpacing: stores.PDF.styles.headingOne.characterSpacing,
-          color: isTheme.value
-            ? theme['heading-one']
-            : stores.PDF.styles.headingOne.color,
-          decorationColor: stores.PDF.styles.headingOne.decorationColor,
+          color: defColor,
+          decorationColor: defDecorationColor,
         }
       }
 
       const headingTwo = () => {
+        const defColor = utils().getColor(
+          isTheme.value
+            ? theme['heading-two']
+            : stores.PDF.styles.headingTwo.color,
+          options.color
+        )
+        const defDecorationColor = utils().getColor(
+          stores.PDF.styles.headingTwo.decorationColor,
+          options.color
+        )
+
         return {
           font: utils().correctFontInject(stores.PDF.styles.headingTwo.font),
           fontSize: stores.PDF.styles.headingTwo.fontSize,
@@ -872,14 +866,23 @@ export const PluginPDFSet = (
             stores.PDF.styles.headingTwo.alignment
           ),
           characterSpacing: stores.PDF.styles.headingTwo.characterSpacing,
-          color: isTheme.value
-            ? theme['heading-two']
-            : stores.PDF.styles.headingTwo.color,
-          decorationColor: stores.PDF.styles.headingTwo.decorationColor,
+          color: defColor,
+          decorationColor: defDecorationColor,
         }
       }
 
       const headingThree = () => {
+        const defColor = utils().getColor(
+          isTheme.value
+            ? theme['heading-three']
+            : stores.PDF.styles.headingThree.color,
+          options.color
+        )
+        const defDecorationColor = utils().getColor(
+          stores.PDF.styles.headingThree.decorationColor,
+          options.color
+        )
+
         return {
           font: utils().correctFontInject(stores.PDF.styles.headingThree.font),
           fontSize: stores.PDF.styles.headingThree.fontSize,
@@ -890,32 +893,33 @@ export const PluginPDFSet = (
             stores.PDF.styles.headingThree.alignment
           ),
           characterSpacing: stores.PDF.styles.headingThree.characterSpacing,
-          color: isTheme.value
-            ? theme['heading-three']
-            : stores.PDF.styles.headingThree.color,
-          decorationColor: stores.PDF.styles.headingThree.decorationColor,
+          color: defColor,
+          decorationColor: defDecorationColor,
         }
       }
 
       const summaryDefault = () => {
+        const defColor = utils().getColor(
+          isTheme.value ? theme.paragraph : stores.PDF.styles.paragraph.color,
+          options.color
+        )
+
         return {
           font: utils().correctFontInject(
             stores.PDF.styles.base.summary.fontFamily
           ),
           fontSize: stores.PDF.styles.base.summary.fontSize,
-          margin: [
-            generate().base().pageMargins[0],
-            30,
-            generate().base().pageMargins[2],
-            30,
-          ],
-          color: isTheme.value
-            ? theme.paragraph
-            : stores.PDF.styles.paragraph.color,
+          margin: [base().pageMargins[0], 30, base().pageMargins[2], 30],
+          color: defColor,
         }
       }
 
       const background = () => {
+        const defColor = utils().getColor(
+          isTheme.value ? theme.page : stores.PDF.styles.base.background.color,
+          options.color
+        )
+
         return {
           type: 'rect',
           x: 0,
@@ -926,9 +930,7 @@ export const PluginPDFSet = (
           h: hooks.defines.pdf().base().pageSizeFixes()[
             stores.PDF.styles.base.pageSize
           ][1],
-          color: isTheme.value
-            ? theme.page
-            : stores.PDF.styles.base.background.color,
+          color: defColor,
         }
       }
 
@@ -966,14 +968,16 @@ export const PluginPDFSet = (
     }
 
     const page = () => {
+      const gen = generate(options)
+
       return {
-        pageSize: generate().base().pageSize,
-        pageOrientation: generate().base().pageOrientation,
+        pageSize: gen.base().pageSize,
+        pageOrientation: gen.base().pageOrientation,
         pageMargins: {
           left: 0,
-          top: generate().base().pageMargins[1],
+          top: gen.base().pageMargins[1],
           right: 0,
-          bottom: generate().base().pageMargins[3],
+          bottom: gen.base().pageMargins[3],
         },
       }
     }
@@ -1000,17 +1004,19 @@ export const PluginPDFSet = (
     }
 
     const content = async () => {
-      const data = await generate().content(options)
+      const gen = generate(options)
+
+      const data = await gen.content()
 
       return {
         content: data,
         styles: {
-          'heading-three': generate().styles().headingThree(),
-          'heading-two': generate().styles().headingTwo(),
-          'heading-one': generate().styles().headingOne(),
-          'summary-default': generate().styles().summaryDefault(),
-          paragraph: generate().styles().paragraph(),
-          text: generate().styles().text(),
+          'heading-three': gen.styles().headingThree(),
+          'heading-two': gen.styles().headingTwo(),
+          'heading-one': gen.styles().headingOne(),
+          'summary-default': gen.styles().summaryDefault(),
+          paragraph: gen.styles().paragraph(),
+          text: gen.styles().text(),
         },
         images: images(),
       }
@@ -1121,6 +1127,11 @@ export const PluginPDFSet = (
 
       return {
         background: function (currentPage: number) {
+          const defColor = utils().getColor(
+            stores.PDF.styles.base.background.color,
+            options.color
+          )
+
           return currentPage >= 3 &&
             stores.PDF.styles.base.background.main &&
             stores.PDF.styles.switcher.main
@@ -1139,12 +1150,11 @@ export const PluginPDFSet = (
               stores.PDF.styles.switcher.cover &&
               stores.PDF.styles.base.background.data
             ? undefined
-            : !isTheme.value &&
-              stores.PDF.styles.base.background.color === '#FFFFFF'
+            : !isTheme.value && defColor === '#FFFFFF'
             ? undefined
             : [
                 {
-                  canvas: [generate().styles().background()],
+                  canvas: [generate(options).styles().background()],
                 },
               ]
         },
@@ -1154,6 +1164,13 @@ export const PluginPDFSet = (
               pageCount: number,
               pageSize: number
             ) {
+              const defColor = utils().getColor(
+                isTheme.value
+                  ? theme.paragraph
+                  : stores.PDF.styles.paragraph.color,
+                options.color
+              )
+
               return [
                 {
                   text: footer().text(currentPage, pageCount, pageSize),
@@ -1167,15 +1184,20 @@ export const PluginPDFSet = (
                     pageCount,
                     pageSize
                   ),
-                  color: isTheme.value
-                    ? theme.paragraph
-                    : stores.PDF.styles.paragraph.color,
+                  color: defColor,
                 },
               ]
             }
           : undefined,
         header: stores.PDF.styles.switcher.header
           ? function (currentPage: number, pageCount: number, pageSize: any) {
+              const defColor = utils().getColor(
+                isTheme.value
+                  ? theme.paragraph
+                  : stores.PDF.styles.paragraph.color,
+                options.color
+              )
+
               return [
                 {
                   text: header().text(currentPage, pageCount, pageSize),
@@ -1189,9 +1211,7 @@ export const PluginPDFSet = (
                     pageCount,
                     pageSize
                   ),
-                  color: isTheme.value
-                    ? theme.paragraph
-                    : stores.PDF.styles.paragraph.color,
+                  color: defColor,
                 },
               ]
             }

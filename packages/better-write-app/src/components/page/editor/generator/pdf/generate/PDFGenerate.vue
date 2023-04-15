@@ -20,7 +20,15 @@
         <Spinner v-if="inGenerate" :width="100" :height="100" />
         <div v-else class="flex h-80 overflow-y-auto wb-scroll flex-col py-5">
           <h2 class="text-base wb-text font-bold mb-2 font-poppins">
-            {{ t('editor.aside.graph.chapters') }}
+            {{ t('editor.pdf.gen.color') }}
+          </h2>
+          <InputSelect
+            v-model="color"
+            class="w-30"
+            :arr="['RGB', 'CMYK']"
+          />
+          <h2 class="text-base wb-text font-bold mt-5 mb-2 font-poppins">
+            {{ t('editor.pdf.gen.chapters') }}
           </h2>
           <div
             v-for="(chapter, index) in chapters"
@@ -46,6 +54,7 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useI18n } from 'vue-i18n'
   import { usePlugin } from 'better-write-plugin-core'
+  import type { ColorSchema } from 'better-write-types'
   import { useProject } from '@/use/project'
   import { useToast } from 'vue-toastification'
   import useEmitter from '@/use/emitter'
@@ -79,6 +88,7 @@
   })
 
   const chapters = ref(project.utils().getChaptersSelection())
+  const color = ref<ColorSchema>('RGB')
 
   const inGenerate = ref<boolean>(false)
 
@@ -99,6 +109,7 @@
     setTimeout(() => {
       plugin.emit('plugin-pdf-generate', {
         chapters: chapters.value,
+        color: color.value
       })
     }, 100)
   }

@@ -27,6 +27,7 @@ export const GlobalSet = (
     whenever(keys.ctrl_shift_p, () => {
       emitter.emit('plugin-pdf-generate', {
         chapters: hooks.project.utils().getChaptersSelection(),
+        color: 'RGB',
       })
     })
 

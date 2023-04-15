@@ -295,6 +295,11 @@ export default {
     },
   },
   pdf: {
+    gen: {
+      chapters: 'Chapters',
+      color: 'Color Schema',
+      dpi: 'DPI',
+    },
     note: {
       title: 'Considerations',
       description: 'Text',

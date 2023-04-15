@@ -293,6 +293,11 @@ export default {
     },
   },
   pdf: {
+    gen: {
+      chapters: 'Capítulos',
+      color: 'Esquema de Cor',
+      dpi: 'DPI',
+    },
     note: {
       title: 'Considerações',
       description: 'Texto',

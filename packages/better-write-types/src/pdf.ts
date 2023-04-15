@@ -1,3 +1,4 @@
+import { ColorSchema } from './color-converter'
 import { ContextState } from './context'
 
 export interface PDFStateStyles {
@@ -129,6 +130,7 @@ export interface PDFDocOptions {
     page: ContextState
     select: boolean
   }[]
+  color: ColorSchema
 }
 
 export interface PDFState {

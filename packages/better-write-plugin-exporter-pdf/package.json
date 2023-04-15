@@ -18,6 +18,7 @@
 		"README.md"
 	],
 	"dependencies": {
+    "better-write-color-converter": "^1.1.8",
 		"better-write-contenteditable-ast": "^1.1.8",
 		"better-write-google-fonts-api": "^1.1.8",
 		"better-write-image-converter": "^1.1.8",
