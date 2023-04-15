@@ -1,9 +1,9 @@
-import { useEventListener } from '@vueuse/core'
+import { tryOnMounted, useEventListener } from '@vueuse/core'
 import * as THREE from 'three'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import WebGL from 'three/examples/jsm/capabilities/WebGL.js'
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 export const useWebGL = () => {
@@ -28,7 +28,7 @@ export const useWebGL = () => {
   }
 
   const init = () => {
-    onMounted(() => {
+    tryOnMounted(() => {
       if (!WebGL.isWebGLAvailable()) {
         isLoaded.value = true
 
