@@ -1,6 +1,6 @@
 @font-face {
   font-family: Poppins;
-  src: url(/public/fonts/Poppins-Thin.ttf);
+  src: url(/public/fonts/Poppins-Light.ttf);
   font-weight: 200;
 }
 @font-face {
@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: Raleway;
-  src: url(/public/fonts/Raleway-Thin.ttf);
+  src: url(/public/fonts/Raleway-Light.ttf);
   font-weight: 200;
 }
 @font-face {
