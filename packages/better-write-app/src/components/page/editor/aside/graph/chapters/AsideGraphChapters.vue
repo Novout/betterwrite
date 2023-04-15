@@ -27,14 +27,14 @@
       :value="value"
     />
   </div>
-  <div v-for="(page, index) in PROJECT.pages" v-if="value" :key="index">
+  <div v-for="(chapter, index) in chapters" v-if="value" :key="index">
     <div
-      v-for="(entity, ind) in page.entities"
-      :id="graph.normalize().id(page, ind)"
-      :key="graph.normalize().key(page, ind)"
-      @click="graph.to(ind, page, entity)"
+      v-for="(entity, ind) in chapter.entities"
+      :id="graph.normalize().id(chapter, ind)"
+      :key="graph.normalize().key(chapter, ind)"
+      @click="graph.to(ind, chapter, entity)"
     >
-      <AsideGraphItem :entity="entity" :page="page" />
+      <AsideGraphItem :entity="entity" :page="chapter" />
     </div>
   </div>
 </template>
@@ -59,6 +59,7 @@
   const [value, toggle] = useToggle(true)
 
   const name = computed(() => PROJECT.nameRaw)
+  const chapters = computed(() => PROJECT.pages)
 
   watch(name, () => {
     PROJECT.name = utils.text().kebab(PROJECT.nameRaw)
