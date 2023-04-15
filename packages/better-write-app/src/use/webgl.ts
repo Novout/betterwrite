@@ -5,6 +5,7 @@ import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import WebGL from 'three/examples/jsm/capabilities/WebGL.js'
 import { onBeforeUnmount, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { usePlugin } from 'better-write-plugin-core'
 
 export const useWebGL = () => {
   const isLoaded = ref(false)
@@ -20,6 +21,7 @@ export const useWebGL = () => {
   const meshArray: any = []
 
   const { getLocaleMessage, locale } = useI18n()
+  const plugin = usePlugin()
 
   const setCamera = () => {
     renderer.setSize(document.body.offsetWidth, document.body.offsetHeight)
@@ -165,6 +167,8 @@ export const useWebGL = () => {
 
       const l = new FontLoader()
 
+      plugin.emit('plugin-progress-start')
+
       l.load('three/fonts/poppins.typeface.json', function (font) {
         _font = font
 
@@ -179,6 +183,7 @@ export const useWebGL = () => {
         contextResize()
         render().then(() => {
           isLoaded.value = true
+          plugin.emit('plugin-progress-end')
 
           setTimeout(() => {
             setCamera()

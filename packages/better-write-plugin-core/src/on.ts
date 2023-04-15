@@ -509,6 +509,39 @@ export const externals = () => {
     })
   }
 
+  const PluginProgressStart = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-progress-start', (obj) => {
+      const created = content[0]
+
+      created && created(obj)
+    })
+  }
+
+  const PluginProgressChange = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-progress-change', (value: number) => {
+      const created = content[0]
+
+      created && created(value)
+    })
+  }
+
+  const PluginProgressEnd = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-progress-end', (obj) => {
+      const created = content[0]
+
+      created && created(obj)
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -531,6 +564,9 @@ export const externals = () => {
     PluginVoiceStop,
     PluginEntityUndo,
     PluginCharactersColorBackground,
+    PluginProgressStart,
+    PluginProgressChange,
+    PluginProgressEnd,
   }
 }
 

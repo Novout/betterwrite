@@ -1291,6 +1291,8 @@ export const PluginPDFSet = (
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
+
+        emitter.emit('plugin-progress-end')
       })
   }
 
@@ -1339,6 +1341,8 @@ export const PluginPDFSet = (
       })
       .finally(() => {
         stores.ABSOLUTE.load = false
+
+        emitter.emit('plugin-progress-end')
       })
   }
 
@@ -1348,12 +1352,14 @@ export const PluginPDFSet = (
 
       hooks.toast.info(hooks.i18n.t('toast.generics.load'))
 
+      emitter.emit('plugin-progress-start')
+
       stores.ABSOLUTE.load = true
 
       await nextTick
 
-      hooks.storage.normalize().then(() => {
-        create(options)
+      hooks.storage.normalize().then(async () => {
+        await create(options)
       })
     },
     () => {},
@@ -1365,13 +1371,18 @@ export const PluginPDFSet = (
 
       hooks.toast.info(hooks.i18n.t('toast.generics.load'))
 
+      emitter.emit('plugin-progress-start')
+
       stores.ABSOLUTE.load = true
 
       await nextTick
       await nextTick
 
-      hooks.storage.normalize().then(() => {
-        preview(document.querySelector('#pdf-preview-div') as any, options)
+      hooks.storage.normalize().then(async () => {
+        await preview(
+          document.querySelector('#pdf-preview-div') as any,
+          options
+        )
       })
     },
     () => {},

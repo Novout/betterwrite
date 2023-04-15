@@ -2,9 +2,9 @@ import { useHead } from '@vueuse/head'
 import { useI18n } from 'vue-i18n'
 import { computed, onMounted, nextTick, ref } from 'vue'
 import { useEnv } from '@/use/env'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/store/auth'
+import { usePlugin } from 'better-write-plugin-core'
 
 export const useLanding = () => {
   const AUTH = useAuthStore()
@@ -13,7 +13,7 @@ export const useLanding = () => {
   const env = useEnv()
   const router = useRouter()
   const route = useRoute()
-  const { isLoading } = useNProgress()
+  const plugin = usePlugin()
 
   const isNecessaryLogin = ref<boolean>(!!route.query.login)
 
@@ -48,7 +48,7 @@ export const useLanding = () => {
       return
     }
 
-    isLoading.value = true
+    plugin.emit('plugin-progress-start')
 
     await nextTick
 
@@ -56,7 +56,7 @@ export const useLanding = () => {
       // for common reactivity in other routes
       document.body.style.overflowX = 'auto'
 
-      isLoading.value = false
+      plugin.emit('plugin-progress-end')
     })
   }
 

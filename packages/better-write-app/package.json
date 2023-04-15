@@ -61,6 +61,7 @@
     "better-write-plugin-exporter-pdf": "^1.1.8",
     "better-write-plugin-exporter-txt": "^1.1.8",
     "better-write-plugin-importer": "^1.1.8",
+    "better-write-plugin-progress-bar": "^1.1.8",
     "better-write-plugin-shortcuts": "^1.1.8",
     "better-write-plugin-theme": "^1.1.8",
     "better-write-plugin-voice-typing": "^1.1.8",

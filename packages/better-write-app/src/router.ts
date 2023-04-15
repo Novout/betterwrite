@@ -3,6 +3,7 @@ import { routes } from './routes'
 import { useNetwork } from '@vueuse/core'
 import { useAuthStore } from './store/auth'
 import { getSupabaseUser } from './use/storage/supabase'
+import { useEnv } from './use/env'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -12,12 +13,13 @@ const router = createRouter({
 router.beforeResolve(async (to, from, next) => {
   const AUTH = useAuthStore()
 
+  const env = useEnv()
   const user =  AUTH.account.user ?? await getSupabaseUser() ?? null
   const url = window.location.href
   const token = url.includes('access_token')
   const isOnline = useNetwork().isOnline.value
 
-  if (to.name === 'Landing' && token) {
+  if (to.name === 'Landing' && token && !env.isDev()) {
     next({ name: 'Main' })
 
     return
@@ -35,7 +37,7 @@ router.beforeResolve(async (to, from, next) => {
     return
   }
 
-  if (to.name === 'Landing' && user) {
+  if (to.name === 'Landing' && user && !env.isDev()) {
     next({ name: 'Main' })
 
     return
