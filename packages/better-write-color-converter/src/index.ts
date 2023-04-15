@@ -5,9 +5,9 @@ export const HEXToCMYK = (
   provider: 'pdfmake' = 'pdfmake'
 ): ColorSchemaReturn => {
   let C = 0
-  var M = 0
-  var Y = 0
-  var K = 0
+  let M = 0
+  let Y = 0
+  let K = 0
 
   const hex = color.charAt(0) == '#' ? color.substring(1, 7) : color
 
@@ -15,9 +15,9 @@ export const HEXToCMYK = (
     return color
   }
 
-  var r = parseInt(hex.substring(0, 2), 16)
-  var g = parseInt(hex.substring(2, 4), 16)
-  var b = parseInt(hex.substring(4, 6), 16)
+  const r = parseInt(hex.substring(0, 2), 16)
+  const g = parseInt(hex.substring(2, 4), 16)
+  const b = parseInt(hex.substring(4, 6), 16)
 
   if (r === 0 && g === 0 && b === 0) {
     return [0, 0, 0, 100]
@@ -27,7 +27,7 @@ export const HEXToCMYK = (
   M = 1 - g / 255
   Y = 1 - b / 255
 
-  var minCMY = Math.min(C, Math.min(M, Y))
+  const minCMY = Math.min(C, Math.min(M, Y))
 
   C = (C - minCMY) / (1 - minCMY)
   M = (M - minCMY) / (1 - minCMY)
