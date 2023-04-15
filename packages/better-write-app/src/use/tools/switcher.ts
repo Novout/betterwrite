@@ -27,15 +27,12 @@ export const useSwitcher = () => {
     maxLetterCounter: 0 as number,
   })
 
-  const switcherText = ({ entry, output, equal }: Record<any, any>) => {
-    const arr = CONTEXT.entities
-
-    // TODO: Deletar em caso de output vazio
+  const switcherText = ({ entry, output }: Record<any, any>) => {
     if (!entry) return
 
-    arr.forEach((entity: Entity) => {
+    CONTEXT.entities.forEach((entity: Entity) => {
       // all cases
-      if (entry === entity.raw) {
+      if (entity.raw.includes(entry)) {
         storage.normalize().then(() => {
           CONTEXT.switchEntityRaw({
             entity,
