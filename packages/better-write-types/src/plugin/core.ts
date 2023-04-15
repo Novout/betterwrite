@@ -58,6 +58,7 @@ export type PluginEmitterName =
   | 'plugin-editor-header-externals-open'
   | 'plugin-editor-mounted'
   | 'plugin-editor-unmounted'
+  | 'plugin-characters-color-background'
   | 'call-editor-created'
   | 'call-editor-mounted'
   | 'call-editor-unmounted'

@@ -16,6 +16,7 @@
   import { ShortcutsPlugin } from 'better-write-plugin-shortcuts'
   import { VoiceTypingPlugin } from 'better-write-plugin-voice-typing'
   import { EntityHistoryPlugin } from 'better-write-plugin-entity-history'
+  import { CharactersPlugin } from 'better-write-plugin-characters'  
 
   useStart([
     ThemePlugin(),
@@ -28,6 +29,7 @@
     AnnotationsPlugin(),
     ShortcutsPlugin(),
     VoiceTypingPlugin(),
-    EntityHistoryPlugin()
+    EntityHistoryPlugin(),
+    CharactersPlugin()
   ]).init()
 </script>

@@ -52,6 +52,7 @@
     "better-write-image-converter": "^1.1.8",
     "better-write-languages": "^1.1.8",
     "better-write-plugin-annotations": "^1.1.8",
+    "better-write-plugin-characters": "^1.1.8",
     "better-write-plugin-core": "^1.1.8",
     "better-write-plugin-entity-history": "^1.1.8",
     "better-write-plugin-exporter-docx": "^1.1.8",

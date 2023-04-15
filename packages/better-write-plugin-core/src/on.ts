@@ -498,6 +498,17 @@ export const externals = () => {
     })
   }
 
+  const PluginCharactersColorBackground = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-characters-color-background', (obj) => {
+      const created = content[0]
+
+      created && created(obj)
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -519,6 +530,7 @@ export const externals = () => {
     PluginVoiceStart,
     PluginVoiceStop,
     PluginEntityUndo,
+    PluginCharactersColorBackground,
   }
 }
 
