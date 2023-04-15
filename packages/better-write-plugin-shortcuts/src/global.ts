@@ -6,7 +6,7 @@ export const GlobalSet = (
   hooks: PluginTypes.PluginHooks
 ) => {
   emitter.on('call-editor-mounted', () => {
-    const validKeys = ['F4', 'F11', 'a', 'c', 'v', 'b', 'i', 'z']
+    const validKeys = ['a', 'c', 'v', 'b', 'i', 'z']
 
     const keys = hooks.vueuse.core.useMagicKeys({
       passive: false,
