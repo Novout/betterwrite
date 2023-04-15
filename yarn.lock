@@ -4141,10 +4141,10 @@ config-chain@1.1.12:
     ini "^1.3.4"
     proto-list "~1.2.1"
 
-consola@^2.15.3:
-  version "2.15.3"
-  resolved "https://registry.yarnpkg.com/consola/-/consola-2.15.3.tgz#2e11f98d6a4be71ff72e0bdf07bd23e12cb61550"
-  integrity sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==
+consola@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/consola/-/consola-3.0.2.tgz#50ab836abe9507c2c9c7f0b4b9863380a0789a32"
+  integrity sha512-o/Wau2FmZKiQgyp3c3IULgN6J5yc0lwYMnoyiZdEpdGxKGBtt2ACbkulBZ6BUsHy1HlSJqoP4YOyPIJLgRJyKQ==
 
 console-browserify@^1.1.0:
   version "1.2.0"
@@ -5255,7 +5255,7 @@ execa@5.0.0:
     signal-exit "^3.0.3"
     strip-final-newline "^2.0.0"
 
-execa@^5.0.0:
+execa@^5.0.0, execa@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/execa/-/execa-5.1.1.tgz#f80ad9cbf4298f7bd1d4c9555c21e93741c411dd"
   integrity sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==
@@ -5614,13 +5614,13 @@ gauge@^5.0.0:
     strip-ansi "^6.0.1"
     wide-align "^1.1.5"
 
-generi@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/generi/-/generi-0.5.2.tgz#c29775bc07ea712c4e2d6df8d865b6c537706ade"
-  integrity sha512-4gsksjIMO0a/ZHgYEi/d+U5JFqSgjJSsaedOX+OZvrjJzpKvm7KTU1UakiRxP8uh7dwj0MHd0hjmPKSFuETu8Q==
+generi@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/generi/-/generi-0.6.2.tgz#80e83441543e79788bd9252f5199a58a9ec822e7"
+  integrity sha512-VMg+czN5EhO84EvfEKuaHeFRxzXm1rF2PS+L+6tkuQX+asGCMteHLUpKyMJJHFhqlFggzjhFM3iRQU6GBWkWLA==
   dependencies:
-    consola "^2.15.3"
-    execa "^5.0.0"
+    consola "^3.0.2"
+    execa "^5.1.1"
     gradient-string "^2.0.2"
     sade "^1.8.1"
 
