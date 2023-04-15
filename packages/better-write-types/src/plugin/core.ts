@@ -9,6 +9,7 @@ import {
   DOCXState,
   ProjectState,
   HistoryState,
+  ExternalsState,
 } from '..'
 
 export type PluginEmitterName =
@@ -77,6 +78,7 @@ export type ExistingStores =
   | 'docx'
   | 'project'
   | 'externals'
+  | 'history'
 
 export type PluginStore<
   T extends ExistingStores,
@@ -93,8 +95,8 @@ export interface PluginStores {
   PDF: PluginStore<'pdf', PDFState, any, any>
   DOCX: PluginStore<'docx', DOCXState, any, any>
   PROJECT: PluginStore<'project', ProjectState, any, any>
-  EXTERNALS: PluginStore<'externals', ProjectState, any, any>
-  HISTORY: PluginStore<'externals', HistoryState, any, any>
+  EXTERNALS: PluginStore<'externals', ExternalsState, any, any>
+  HISTORY: PluginStore<'history', HistoryState, any, any>
 }
 
 export interface PluginDefines {
