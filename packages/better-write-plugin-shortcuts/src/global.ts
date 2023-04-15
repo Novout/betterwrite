@@ -6,12 +6,17 @@ export const GlobalSet = (
   hooks: PluginTypes.PluginHooks
 ) => {
   emitter.on('call-editor-mounted', () => {
+    const validKeys = ['F4', 'F11', 'a', 'c', 'v', 'b', 'i', 'z']
+
     const keys = hooks.vueuse.core.useMagicKeys({
       passive: false,
       onEventFired(e: KeyboardEvent) {
-        if (e.ctrlKey || e.altKey || e.key === 'F11') {
+        if (
+          (e.ctrlKey || e.altKey) &&
+          !validKeys.some((key) => e.key === key)
+        ) {
           e?.preventDefault()
-          e?.stopPropagation()
+          e?.stopImmediatePropagation()
         }
       },
     })
