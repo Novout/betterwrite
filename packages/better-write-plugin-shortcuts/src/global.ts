@@ -13,7 +13,7 @@ export const GlobalSet = (
       onEventFired(e: KeyboardEvent) {
         if (
           (e.ctrlKey || e.altKey) &&
-          !validKeys.some((key) => e.key === key)
+          !validKeys.some((key) => e.key.toLowerCase() === key.toLowerCase())
         ) {
           e?.preventDefault()
           e?.stopImmediatePropagation()
