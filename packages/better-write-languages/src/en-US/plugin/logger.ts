@@ -1,4 +1,8 @@
 export default {
+  console: {
+    start:
+      'Hi! Look, if you know how to use this, I think I can ask for your help at',
+  },
   on: {
     dropbox: {
       save: {

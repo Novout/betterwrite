@@ -5,6 +5,8 @@ import { useDBInitializer } from './initializer/db'
 import { usePluginInitializer } from './initializer/plugin'
 import { useGlobalInitializer } from './initializer/global'
 import { usePDFInitializer } from './initializer/theme'
+import { useI18n } from 'vue-i18n'
+import { useEnv } from './env'
 
 export const useStart = (plugins: PluginTypes.Plugins) => {
   const language = useLanguageInitializer()
@@ -13,6 +15,8 @@ export const useStart = (plugins: PluginTypes.Plugins) => {
   const plugin = usePluginInitializer()
   const global = useGlobalInitializer()
   const pdf = usePDFInitializer()
+  const { t } = useI18n()
+  const env = useEnv()
 
   const init = () => {
     global.init()
@@ -21,6 +25,13 @@ export const useStart = (plugins: PluginTypes.Plugins) => {
     db.init()
     plugin.init(plugins)
     pdf.init()
+
+    if (!env.isDev()) {
+      console.log(
+        `%c ${t('plugin.logger.console.start')} github.com/Novout/betterwrite`,
+        'padding: 0.75rem; text-align: center; font-size: 0.9rem; font-weight: 600; border-radius: 0.5rem; background: #eeeeee; color: #374151'
+      )
+    }
   }
 
   return { init }

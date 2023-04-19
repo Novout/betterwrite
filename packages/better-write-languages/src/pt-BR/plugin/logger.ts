@@ -1,11 +1,9 @@
 export default {
+  console: {
+    start:
+      'Ola! Bem, se você sabe mexer nisso daqui, acredito que posso pedir a sua ajuda em',
+  },
   on: {
-    dropbox: {
-      save: {
-        success: 'SALVO NO DROPBOX COM SUCESSO!',
-        error: 'NÃO FOI POSSÍVEL SALVAR NO DROPBOX!',
-      },
-    },
     entity: {
       inputFirst: '<{arguments}> INSERIDO NA <{index}> POSIÇÃO.',
       createEmpty: 'NOVA LINHA FOI ADICIONADA EM <{index}>!',

@@ -117,11 +117,6 @@ export const useEditor = () => {
         },
       ],
     })
-
-    console.log(
-      '%c Hi! Look, if you know how to use this, I think I can ask for your help at github.com/Novout/betterwrite',
-      'padding: 0.75rem; text-align: center; font-size: 0.9rem; font-weight: 600; border-radius: 0.5rem; background: #eeeeee; color: #374151'
-    )
   }
 
   const fullScreen = (): void => {
