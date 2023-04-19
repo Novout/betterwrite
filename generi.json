@@ -5,5 +5,7 @@
   "tag": true,
   "version": true,
   "push": true,
-  "publish": false
+  "release": true,
+  "publish": false,
+  "prerelease": "beta"
 }

@@ -17,7 +17,7 @@
     "major": "generi log major"
   },
   "devDependencies": {
-    "generi": "0.6.2",
+    "generi": "1.1.0",
     "lerna": "6.6.1"
   },
   "packageManager": "yarn@1.22.19"

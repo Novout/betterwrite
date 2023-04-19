@@ -5614,10 +5614,10 @@ gauge@^5.0.0:
     strip-ansi "^6.0.1"
     wide-align "^1.1.5"
 
-generi@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/generi/-/generi-0.6.2.tgz#80e83441543e79788bd9252f5199a58a9ec822e7"
-  integrity sha512-VMg+czN5EhO84EvfEKuaHeFRxzXm1rF2PS+L+6tkuQX+asGCMteHLUpKyMJJHFhqlFggzjhFM3iRQU6GBWkWLA==
+generi@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/generi/-/generi-1.1.0.tgz#ab926fdc5c7e360a53eda099e0264ea5d611fefd"
+  integrity sha512-sWF/t3C+JvxwTr+2BBoLhTqoHvC4A7OK78c4BjL1MlGkTE1UaNVrlNT5m8I0yhEm4aqKVOh9inx01y8dSuktFA==
   dependencies:
     consola "^3.0.2"
     execa "^5.1.1"
