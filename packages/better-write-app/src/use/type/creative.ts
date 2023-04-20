@@ -76,7 +76,7 @@ export const useCreativeType = () => {
 
       await nextTick
 
-      PROJECT.pages = PROJECT.pages.map((p) => {
+      PROJECT.chapters = PROJECT.chapters.map((p) => {
         if (p.id === page.id) return page
 
         return p

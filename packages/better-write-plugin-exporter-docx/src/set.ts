@@ -289,8 +289,8 @@ export const PluginDocxSet = (
     const content = (
       arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents>
     ) => {
-      stores.PROJECT.pages.forEach((page: ContextState) => {
-        page.entities.forEach((entity: Entity) => {
+      stores.PROJECT.chapters.forEach(({ entities: list }: ContextState) => {
+        list.forEach((entity: Entity) => {
           switch (entity.type) {
             case 'paragraph':
             case 'list':

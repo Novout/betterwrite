@@ -16,7 +16,7 @@
           {{ t('editor.drafts.chapters') }}
         </h2>
         <p
-          v-for="(page, index) in PROJECT.pages"
+          v-for="(page, index) in PROJECT.chapters"
           :key="index"
           class="flex items-center justify-center py-10 w-full truncate shadow cursor-pointer hover:bg-black-opacity text-lg w-full font-bold"
           @click="CONTEXT.load(page)"

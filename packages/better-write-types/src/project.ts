@@ -21,7 +21,7 @@ export interface ProjectState {
   totalPagesCreated: number
   main: Record<any, any>
   summary: Record<any, any>
-  pages: Array<ContextState>
+  chapters: Array<ContextState>
   pageLoaded: ID<string>
   scrollLoaded: number
   offsetLoaded: number
@@ -48,7 +48,7 @@ export interface ProjectStateOptions {
   totalPagesCreated?: number
   main?: Record<any, any>
   summary?: Record<any, any>
-  pages?: Array<ContextState>
+  chapters?: Array<ContextState>
   pageLoaded?: ID<string>
   scrollLoaded?: number
   offsetLoaded?: number

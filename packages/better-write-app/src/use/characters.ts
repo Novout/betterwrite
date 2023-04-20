@@ -66,7 +66,7 @@ export const useCharacters = () => {
     const averageTotalOccurrences = async (name: string): Promise<string> => {
       const total = await totalOccurrences(name)
 
-      const paragraphs = PROJECT.pages.reduce(
+      const paragraphs = PROJECT.chapters.reduce(
         (sum, val) => sum + project.utils().getChapterParagraphs(val),
         0
       )

@@ -27,7 +27,7 @@ Reactive settings will always be in `editor.*`, and [its reference is here](http
 
 ### Creative
 
-Primary content is available at `project.pages[].entities[]` where each entity has the values ​​in **raw** and other extra information. Every block of information is treated as **entity** and handled by the index of its position in the list:
+Primary content is available at `project.chapters[].entities[]` where each entity has the values ​​in **raw** and other extra information. Every block of information is treated as **entity** and handled by the index of its position in the list:
 
 #### Structure ContextState (Chapter)
 
@@ -53,8 +53,6 @@ export type Entity = {
   external?: EntityExternal // for custom data (checkbox value, image size...)
 }
 ```
-
-> think of pages[] as something that sounds like chapters[]. The erroneous naming is derived from `0.3` version and has been kept for compatibility with older projects.
 
 ### Annotations
 

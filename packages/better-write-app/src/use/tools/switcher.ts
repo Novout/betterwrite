@@ -60,7 +60,7 @@ export const useSwitcher = () => {
 
     EXTERNALS.switcher.value = state.entry
 
-    PROJECT.pages.forEach((page: ContextState) => {
+    PROJECT.chapters.forEach((page: ContextState) => {
       page.entities.forEach((entity: Entity) => {
         const occurrences = ASTUtils.occurrences(
           entity.raw,
@@ -84,8 +84,8 @@ export const useSwitcher = () => {
     state.actuallyLetterRaw = object.letter
     state.actuallyLetterCounter = state.listOfLettersExists.indexOf(object) + 1
 
-    const pageIndex = PROJECT.pages.indexOf(object.page)
-    const entityIndex = PROJECT.pages[pageIndex].entities.indexOf(object.entity)
+    const pageIndex = PROJECT.chapters.indexOf(object.page)
+    const entityIndex = PROJECT.chapters[pageIndex].entities.indexOf(object.entity)
 
     EXTERNALS.switcher.entity = entityIndex
 

@@ -101,13 +101,13 @@ export const PluginEpubSet = (
   const contents = (): Chapter[] => {
     const chapters: Chapter[] = []
 
-    stores.PROJECT.pages.forEach((page: ContextState) => {
+    stores.PROJECT.chapters.forEach(({ entities: list }: ContextState) => {
       const chapter = {
         title: '',
         content: '',
       }
 
-      for (const entity of page.entities) {
+      for (const entity of list) {
         switch (entity.type) {
           case 'checkbox':
             chapter.content += entities().checkbox(entity)

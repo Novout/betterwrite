@@ -2,7 +2,6 @@ import {
   DOCXAlignmentType,
   DOCXStateFlowItemType,
   Maybe,
-  ProjectStateCharacterNameCase,
 } from 'better-write-types'
 import { useI18n } from 'vue-i18n'
 
@@ -111,7 +110,7 @@ export const useTransformer = () => {
     const nameCase = (
       target: string,
       focus: 'setter' | 'getter'
-    ): ProjectStateCharacterNameCase => {
+    ): string => {
       let value: Maybe<'strict' | 'default' | 'all'> = null
       let __STOP__: boolean = false
 

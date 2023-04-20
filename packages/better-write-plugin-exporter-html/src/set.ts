@@ -40,8 +40,8 @@ export const PluginHtmlSet = (
   const content = () => {
     let str: string = ''
 
-    stores.PROJECT.pages.forEach((page: ContextState) => {
-      page.entities.forEach((entity: Entity) => {
+    stores.PROJECT.chapters.forEach(({ entities: list }: ContextState) => {
+      list.forEach((entity: Entity) => {
         switch (entity.type) {
           case 'paragraph':
             entities()

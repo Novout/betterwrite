@@ -8,7 +8,7 @@ export const useDev = () => {
 
     // purge all unused features (for legacy projects debug)
     if (args[0] === 'entity' && args[1] === 'purge') {
-      PROJECT.pages.forEach((page) => {
+      PROJECT.chapters.forEach((page) => {
         page.entities.forEach((entity) => {
           // @ts-ignore
           if (entity.external?.paragraph?.generator) {

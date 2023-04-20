@@ -27,7 +27,7 @@ export const usePage = () => {
 
     await nextTick
 
-    const arr = PROJECT.pages
+    const arr = PROJECT.chapters
     const obj = arr[arr.length - 1]
 
     await nextTick
@@ -51,13 +51,13 @@ export const usePage = () => {
 
     if (PROJECT.name === env.projectEmpty()) return
 
-    if (PROJECT.pages.length <= 1) return
+    if (PROJECT.chapters.length <= 1) return
 
     PROJECT.deletePage(page)
 
     await nextTick
 
-    CONTEXT.load(PROJECT.pages[PROJECT.pages.length - 1])
+    CONTEXT.load(PROJECT.chapters[PROJECT.chapters.length - 1])
   }
 
   const onUpPage = (page: ContextState) => {
@@ -76,13 +76,13 @@ export const usePage = () => {
 
   const utils = () => {
     const getPageIndex = (id: string): number => {
-      const page = PROJECT.pages.filter(
+      const page = PROJECT.chapters.filter(
         (page: ContextState) => id === page.id
       )[0]
 
       if (!page) return -1
 
-      return PROJECT.pages.indexOf(page)
+      return PROJECT.chapters.indexOf(page)
     }
 
     return { getPageIndex }

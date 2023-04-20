@@ -1256,7 +1256,7 @@ export const PluginPDFSet = (
     _fonts.push(stores.PDF.styles.base.header.fontFamily)
     _fonts.push(stores.PDF.styles.base.footer.fontFamily)
     _fonts.push(stores.PDF.styles.base.summary.fontFamily)
-    stores.PROJECT.pages.forEach((page: ContextState) => {
+    stores.PROJECT.chapters.forEach((page: ContextState) => {
       page.entities.forEach((entity: Entity) => {
         const generator = utils().getEntityGenerator(entity)
 

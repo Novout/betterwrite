@@ -13,7 +13,7 @@
         </h2>
         <InputSelect
           v-model="chapter"
-          :arr="PROJECT.pages.map((page) => page.entities[0].raw)"
+          :arr="PROJECT.chapters.map((page) => page.entities[0].raw)"
         />
       </div>
       <div class="flex">
@@ -56,7 +56,7 @@
 
   const PROJECT = useProjectStore()
 
-  const chapter = ref<string>(PROJECT.pages[0].entities[0].raw)
+  const chapter = ref<string>(PROJECT.chapters[0].entities[0].raw)
   const project = useProject()
   const { t } = useI18n()
 
@@ -75,7 +75,7 @@
   })
 
   const onSet = () => {
-    const target = PROJECT.pages.filter(
+    const target = PROJECT.chapters.filter(
       (page) => page.entities[0].raw === chapter.value
     )[0]
 

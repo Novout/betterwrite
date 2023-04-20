@@ -37,7 +37,7 @@ export const useContextStore = defineStore('context', {
       const project = useProjectStore()
 
       if (!context) {
-        context = project.pages[0]
+        context = project.chapters[0]
       }
 
       if (!context || !context.id) {

@@ -177,6 +177,11 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.project.chapters) {
+      // @ts-expect-error
+      _.project.chapters = _.project.pages || []
+    }
+
     return _
   }
 
@@ -197,7 +202,7 @@ export const useStorage = () => {
   const purge = () => {
     if(!EDITOR.configuration.purgeEntities) return
 
-    PROJECT.pages.forEach((page) => {
+    PROJECT.chapters.forEach((page) => {
       page.entities.forEach((entity) => {
         if (
           (entity.type === 'paragraph' ||

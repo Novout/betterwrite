@@ -30,7 +30,7 @@ export const useProjectStore = defineStore('project', {
       totalPagesCreated: 0,
       main: {},
       summary: {},
-      pages: [],
+      chapters: [],
       pageLoaded: useUtils().id().uuidv4(),
       scrollLoaded: 0,
       offsetLoaded: 0,
@@ -99,7 +99,7 @@ export const useProjectStore = defineStore('project', {
       this.totalPagesCreated = payload.totalPagesCreated
       this.main = payload.main
       this.summary = payload.summary
-      this.pages = payload.pages
+      this.chapters = payload.chapters
       this.templates = payload.templates
       this.bw.platform = payload.bw.platform
       this.bw.version = payload.bw.version
@@ -133,7 +133,7 @@ export const useProjectStore = defineStore('project', {
         pageLoaded: options.pageLoaded || useUtils().id().uuidv4(),
         scrollLoaded: options.scrollLoaded || 0,
         offsetLoaded: options.offsetLoaded || 0,
-        pages: options.pages || [
+        chapters: options.chapters || [
           {
             id: useUtils().id().uuidv4(),
             title: `${forceTitle || title}  | ${useFormat().actually()}`,
@@ -188,18 +188,18 @@ export const useProjectStore = defineStore('project', {
         },
       }
 
-      if (this.pages[0].entities.length === 0) {
+      if (this.chapters[0].entities.length === 0) {
         switch (options.type) {
           case 'creative':
-            this.pages[0].entities.push(
+            this.chapters[0].entities.push(
               useFactory().entity().create('heading-one', options.name)
             )
-            this.pages[0].entities.push(
+            this.chapters[0].entities.push(
               useFactory().entity().create('paragraph', '')
             )
             break
           case 'blank':
-            this.pages[0].entities.push(
+            this.chapters[0].entities.push(
               useFactory().entity().create('paragraph', '')
             )
             break
@@ -221,41 +221,41 @@ export const useProjectStore = defineStore('project', {
       }
 
       this.pageLoaded = context.id
-      this.pages.push(context)
+      this.chapters.push(context)
     },
     deletePage(context: ContextState) {
-      const content = this.pages.find(
+      const content = this.chapters.find(
         (content: ContextState) => content.id === context.id
       )
 
       if (!content) return
 
-      const index = this.pages.indexOf(content)
+      const index = this.chapters.indexOf(content)
 
       this.creative.drafts = this.creative.drafts.filter(
         (draft) => draft.id !== content.id
       )
-      this.pages.splice(index, 1)
+      this.chapters.splice(index, 1)
     },
     updatePage(page: ContextState) {
-      const _page = this.pages.find(
+      const _page = this.chapters.find(
         (content: ContextState) => content.id === page.id
       )
 
       if (!_page) return
 
-      const index = this.pages.indexOf(_page)
+      const index = this.chapters.indexOf(_page)
 
-      this.pages.splice(index, 1, page)
+      this.chapters.splice(index, 1, page)
     },
     switchPage(obj: Record<any, any>) {
-      const page = this.pages.filter(
+      const page = this.chapters.filter(
         (page: ContextState) => obj.page.id === page.id
       )[0]
 
       if (!page) return
 
-      const index = this.pages.indexOf(page)
+      const index = this.chapters.indexOf(page)
 
       if (index === -1) return
 
@@ -264,18 +264,18 @@ export const useProjectStore = defineStore('project', {
 
       if (
         (sIndex < 0 && obj.direction === 'up') ||
-        (sIndex >= this.pages.length && obj.direction === 'down')
+        (sIndex >= this.chapters.length && obj.direction === 'down')
       )
         return
 
-      const target = this.pages[sIndex]
+      const target = this.chapters[sIndex]
 
-      const temp = this.pages[index]
-      this.pages[index] = target
-      this.pages[sIndex] = temp
+      const temp = this.chapters[index]
+      this.chapters[index] = target
+      this.chapters[sIndex] = temp
     },
     resetDates() {
-      this.pages.forEach((page: ContextState) => {
+      this.chapters.forEach((page: ContextState) => {
         page.entities.forEach((line: Entity) => {
           line.createdAt = useFormat().actually()
           line.updatedAt = useFormat().actually()
@@ -283,15 +283,15 @@ export const useProjectStore = defineStore('project', {
       })
     },
     updateContext(context: ContextState) {
-      const _context = this.pages.filter(
+      const _context = this.chapters.filter(
         (cont: ContextState) => cont.id === context.id
       )
-      const index = this.pages.indexOf(_context[0])
+      const index = this.chapters.indexOf(_context[0])
 
       if (index === -1) return
 
-      this.pages[index].entities = context.entities
-      this.pages[index].updatedAt = useFormat().actually()
+      this.chapters[index].entities = context.entities
+      this.chapters[index].updatedAt = useFormat().actually()
     },
   },
   getters: {
@@ -302,37 +302,37 @@ export const useProjectStore = defineStore('project', {
       return state.creative.drafts.filter((draft) => draft.id === CONTEXT.id)
     },
     getAllCharacters: (state) => {
-      return state.pages.reduce(
+      return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterAllCharacters(val),
         0
       )
     },
     getAllLetters: (state) => {
-      return state.pages.reduce(
+      return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterLetters(val),
         0
       )
     },
     getAllWords: (state) => {
-      return state.pages.reduce(
+      return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterWords(val),
         0
       )
     },
     getAllParagraphs: (state) => {
-      return state.pages.reduce(
+      return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterParagraphs(val),
         0
       )
     },
     getAllHeadings: (state) => {
-      return state.pages.reduce(
+      return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterHeadings(val),
         0
       )
     },
     getAllFixeds: (state) => {
-      return state.pages.reduce(
+      return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterFixed(val),
         0
       )

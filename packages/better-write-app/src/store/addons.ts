@@ -1,7 +1,6 @@
 import { bold, italic, useRaw } from '@/use/raw'
 import { defineStore } from 'pinia'
 import { AddonsState } from 'better-write-types'
-import { useEditorStore } from './editor'
 
 export const useAddonsStore = defineStore('addons', {
   state: (): AddonsState => {

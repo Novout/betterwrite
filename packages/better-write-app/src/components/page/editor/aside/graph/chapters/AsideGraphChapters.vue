@@ -59,7 +59,7 @@
   const [value, toggle] = useToggle(true)
 
   const name = computed(() => PROJECT.nameRaw)
-  const chapters = computed(() => PROJECT.pages)
+  const chapters = computed(() => PROJECT.chapters)
 
   watch(name, () => {
     PROJECT.name = utils.text().kebab(PROJECT.nameRaw)

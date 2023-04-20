@@ -106,7 +106,7 @@ export const useProject = () => {
 
       await nextTick
 
-      CONTEXT.load(PROJECT.pages[0])
+      CONTEXT.load(PROJECT.chapters[0])
 
       AUTH.account.project_id_activity = null
 
@@ -140,7 +140,7 @@ export const useProject = () => {
     await nextTick
 
     CONTEXT.load(
-      PROJECT.pages.filter(
+      PROJECT.chapters.filter(
         (page: ContextState) => page.id === context?.project.pageLoaded
       )[0]
     )
@@ -309,7 +309,7 @@ export const useProject = () => {
 
   const utils = () => {
     const getAllEntities = (cb: (...a: any) => void) => {
-      PROJECT.pages.forEach((page) => {
+      PROJECT.chapters.forEach((page) => {
         page.entities.forEach((entity) => {
           if (utils().isValidType(entity)) cb && cb(entity)
         })
@@ -317,7 +317,7 @@ export const useProject = () => {
     }
 
     const getParagraphEntities = (cb: (...a: any) => void) => {
-      PROJECT.pages.forEach((page) => {
+      PROJECT.chapters.forEach((page) => {
         page.entities.forEach((entity) => {
           if (utils().isValidType(entity) && entity.type === 'paragraph')
             cb && cb(entity)
@@ -342,7 +342,7 @@ export const useProject = () => {
     }
 
     const getEntities = () => {
-      return PROJECT.pages.reduce((sum, val) => {
+      return PROJECT.chapters.reduce((sum, val) => {
         sum.push(...val.entities)
 
         return sum
@@ -368,7 +368,7 @@ export const useProject = () => {
     }
 
     const getChapterImpact = (b1: ContextState) => {
-      const a1: ContextState = PROJECT.pages.reduce((r, val) => {
+      const a1: ContextState = PROJECT.chapters.reduce((r, val) => {
         if (!r || getChapterAllCharacters(val) > getChapterAllCharacters(r)) {
           return val
         }
@@ -495,7 +495,7 @@ export const useProject = () => {
     const getOnlyRaw = () => {
       const arr: string[] = []
 
-      PROJECT.pages.forEach((page) => {
+      PROJECT.chapters.forEach((page) => {
         const value = page.entities
           .filter((ent) => isValidType(ent))
           .reduce((conc, ent) => {
@@ -518,7 +518,7 @@ export const useProject = () => {
     }
 
     const getChaptersSelection = () => {
-      return PROJECT.pages.map((page) => {
+      return PROJECT.chapters.map((page) => {
         return {
           page,
           select: true,

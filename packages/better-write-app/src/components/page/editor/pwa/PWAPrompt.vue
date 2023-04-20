@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="offlineReady || needRefresh"
-    class="fixed bg-rgba-blur top-0 right-0 m-3 p-2 rounded-sm shadow-lg text-left bg-theme-pwa-prompt-background z-max w-full md:w-96 break-words"
+    class="fixed bg-rgba-blur font-poppins top-0 right-0 m-3 p-2 rounded-sm shadow-lg text-left bg-theme-pwa-prompt-background z-max w-full md:w-96 break-words"
     role="alert"
   >
     <HeroIcon

@@ -50,7 +50,6 @@
   import { useContextStore } from '@/store/context'
   import { useEnv } from '@/use/env'
   import { useProjectStore } from '@/store/project'
-  import useEmitter from '@/use/emitter'
   import { ASTUtils } from 'better-write-contenteditable-ast'
 
   const ABSOLUTE = useAbsoluteStore()
@@ -59,7 +58,6 @@
   const PROJECT = useProjectStore()
 
   const env = useEnv()
-  const emitter = useEmitter()
 
   const onTextArea = ref<boolean>(false)
 

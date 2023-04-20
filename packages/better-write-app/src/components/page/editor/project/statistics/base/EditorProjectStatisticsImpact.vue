@@ -10,7 +10,7 @@
       {{ t('editor.addons.statistics.impact') }}
     </h2>
     <EditorProjectStatisticsImpactRow
-      v-for="(chapter, index) in PROJECT.pages"
+      v-for="(chapter, index) in PROJECT.chapters"
       :key="index"
       :title="chapter.entities[0]?.raw || chapter.title"
       :value="project.utils().getChapterImpact(chapter)"
