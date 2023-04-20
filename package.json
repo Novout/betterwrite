@@ -15,7 +15,7 @@
     "prepatch": "generi log prepatch",
     "patch": "generi log patch",
     "preminor": "generi log preminor",
-    "minor": "generi log prepatch",
+    "minor": "generi log minor",
     "premajor": "generi log premajor",
     "major": "generi log major"
   },
