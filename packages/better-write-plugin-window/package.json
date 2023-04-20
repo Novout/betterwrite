@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-window",
-	"version": "1.1.9",
+	"version": "1.1.10-alpha.0",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.js",
@@ -18,11 +18,11 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-plugin-core": "^1.1.9",
-		"better-write-types": "^1.1.9",
-    "better-write-image-converter": "^1.1.9",
-    "better-write-plugin-importer": "^1.1.9",
-    "better-write-extension": "^1.1.9",
+		"better-write-extension": "^1.1.10-alpha.0",
+		"better-write-image-converter": "^1.1.10-alpha.0",
+		"better-write-plugin-core": "^1.1.10-alpha.0",
+		"better-write-plugin-importer": "^1.1.10-alpha.0",
+		"better-write-types": "^1.1.10-alpha.0",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {
