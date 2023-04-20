@@ -18,7 +18,7 @@ export const PluginDropSet = (
 
         const filename = file.name.replace(/\.(bw|doc(x)?|txt)$/, '')
 
-        if (file.name.endsWith('.bw')) {
+        if (file.name.match(/\.bw$/)) {
           if (
             confirm(hooks.i18n.t('toast.project.import', { name: file.name }))
           ) {
@@ -30,7 +30,7 @@ export const PluginDropSet = (
           return
         }
 
-        if (file.name.endsWith('.doc') || file.name.endsWith('.docx')) {
+        if (file.name.match(/\.doc(x)?$/)) {
           if (
             confirm(hooks.i18n.t('toast.project.import', { name: file.name }))
           ) {
@@ -45,7 +45,7 @@ export const PluginDropSet = (
           return
         }
 
-        if (file.name.endsWith('.txt')) {
+        if (file.name.match(/\.txt$/)) {
           if (
             confirm(hooks.i18n.t('toast.project.import', { name: file.name }))
           ) {
