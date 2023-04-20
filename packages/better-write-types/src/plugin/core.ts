@@ -62,6 +62,7 @@ export type PluginEmitterName =
   | 'plugin-progress-start'
   | 'plugin-progress-change'
   | 'plugin-progress-end'
+  | 'plugin-window-drop'
   | 'call-editor-created'
   | 'call-editor-mounted'
   | 'call-editor-unmounted'

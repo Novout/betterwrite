@@ -542,6 +542,17 @@ export const externals = () => {
     })
   }
 
+  const PluginWindowDrop = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-window-drop', (event: DragEvent) => {
+      const created = content[0]
+
+      created && created(event)
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -567,6 +578,7 @@ export const externals = () => {
     PluginProgressStart,
     PluginProgressChange,
     PluginProgressEnd,
+    PluginWindowDrop,
   }
 }
 

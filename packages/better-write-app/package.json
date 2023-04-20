@@ -66,6 +66,7 @@
     "better-write-plugin-shortcuts": "^1.1.9",
     "better-write-plugin-theme": "^1.1.9",
     "better-write-plugin-voice-typing": "^1.1.9",
+    "better-write-plugin-window": "^1.1.9",
     "better-write-types": "^1.1.9",
     "compressorjs": "1.2.1",
     "destr": "1.2.2",
