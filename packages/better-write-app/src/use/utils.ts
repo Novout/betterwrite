@@ -417,7 +417,19 @@ export const useUtils = () => {
       return os
     }
 
-    return { get }
+    const isDesktop = () => {
+      const os = get()
+
+      return os === 'Linux' || os === 'Windows' || os === 'Mac OS'
+    }
+
+    const isMobile = () => {
+      const os = get()
+
+      return os === 'iOS' || os === 'Android'
+    }
+
+    return { get, isDesktop, isMobile }
   }
 
   return {

@@ -1,5 +1,5 @@
 import { OnFocusOptions, Entity } from 'better-write-types'
-import { useClipboard } from '@vueuse/core'
+import { useClipboard, useTextSelection } from '@vueuse/core'
 import { useUtils } from './utils'
 import { useExternalsStore } from '@/store/externals'
 import { useStorage } from '@/use/storage/storage'
@@ -197,6 +197,7 @@ export const useRaw = () => {
   const storage = useStorage()
   const factory = useFactory()
   const toast = useToast()
+  const { text } = useTextSelection()
   const { t } = useI18n()
 
   const v2 = () => {
@@ -252,7 +253,7 @@ export const useRaw = () => {
 
         EDITOR.actives.entity.index = index
 
-        if (EDITOR.actives.global.mouse.validLastSelection) {
+        if (EDITOR.actives.global.mouse.validLastSelection && text.value) {
           EDITOR.actives.global.mouse.validLastSelection = false
           return
         }
