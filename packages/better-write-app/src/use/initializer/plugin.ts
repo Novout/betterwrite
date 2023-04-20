@@ -35,6 +35,7 @@ import { useHistoryStore } from '@/store/history'
 import * as VUEUSE_CORE from '@vueuse/core'
 import useEmitter from '../emitter'
 import { useSupabase } from '../storage/supabase'
+import { useCharacters } from '../characters'
 
 export const usePluginInitializer = () => {
   const core = useCore()
@@ -79,6 +80,7 @@ export const usePluginInitializer = () => {
         toast: useToast(),
         breakpoints: useBreakpoint(),
         transformer: useTransformer(),
+        characters: useCharacters(),
         vueuse: {
           core: VUEUSE_CORE,
           integration: {

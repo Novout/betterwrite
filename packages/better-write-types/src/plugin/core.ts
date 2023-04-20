@@ -136,6 +136,7 @@ export interface PluginHooks {
   toast: PluginHook
   breakpoints: PluginHook
   transformer: PluginHook
+  characters: PluginHook
   vueuse: {
     core: PluginHook
     integration: {

@@ -15,7 +15,6 @@ import { Calls, usePlugin } from 'better-write-plugin-core'
 import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { onBeforeRouteLeave } from 'vue-router'
-import { useListener } from './listener'
 import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
 import { useAbsoluteStore } from '@/store/absolute'
@@ -32,7 +31,6 @@ export const useEditor = () => {
   const entity = useEntity()
   const local = useLocalStorage()
   const plugin = usePlugin()
-  const listener = useListener()
   const { t } = useI18n()
   const { toggle } = useFullscreen()
   const storage = useStorage()
@@ -85,12 +83,6 @@ export const useEditor = () => {
       },
       { deep: true }
     )
-
-    // window events
-    listener.window().start()
-
-    // editor emitter and events
-    listener.editor().start()
 
     // theme loader
     plugin.emit('plugin-theme-set')

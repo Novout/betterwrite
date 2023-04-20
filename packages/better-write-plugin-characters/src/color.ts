@@ -7,7 +7,7 @@ import {
 } from 'better-write-types'
 import { ASTUtils } from 'better-write-contenteditable-ast'
 
-export const BackgroundColorSet = (
+export const PluginBackgroundColorSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
