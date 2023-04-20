@@ -6,6 +6,7 @@ import {
   ProjectStateCharacter,
 } from 'better-write-types'
 import { ASTUtils } from 'better-write-contenteditable-ast'
+import { HEXToRGBA } from 'better-write-color-converter'
 
 export const PluginBackgroundColorSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -31,9 +32,7 @@ export const PluginBackgroundColorSet = (
 
       if (!text) return
 
-      const color = hooks.utils
-        .convert()
-        .hexToRgbA(character.color, character.colorAlpha)
+      const color = HEXToRGBA(character.color, character.colorAlpha)
 
       const isValidImportant =
         !entity.visual.custom || (entity.visual.custom && character.important)

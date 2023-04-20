@@ -27,6 +27,7 @@
 		"better-write-contenteditable-ast": "^1.1.9",
 		"better-write-plugin-core": "^1.1.9",
 		"better-write-types": "^1.1.9",
+    "better-write-color-converter": "^1.1.9",
 		"vue-demi": "latest"
 	},
 	"devDependencies": {
