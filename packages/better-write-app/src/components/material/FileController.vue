@@ -16,7 +16,7 @@
         <IconExport class="w-5 h-5 wb-text" />
       </template>
       <p class="font-raleway">
-        {{ t('editor.material.fileController.import') }}
+        {{ t('editor.material.fileController.export') }}
       </p>
     </Button>
   </div>
