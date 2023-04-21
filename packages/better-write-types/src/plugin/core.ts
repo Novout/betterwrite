@@ -137,8 +137,10 @@ export interface PluginHooks {
   breakpoints: PluginHook
   transformer: PluginHook
   characters: PluginHook
+  vuerouter: PluginHook
   vueuse: {
     core: PluginHook
+    head: PluginHook
     integration: {
       progress: PluginHook
     }

@@ -1,12 +1,6 @@
 {
 	"include": [
-		"src/types/index.ts",
 		"src/**/*.ts",
-		"test/**/*.ts",
-		"demo/**/*.ts",
-		"demo/**/*.d.ts",
-		"demo/**/*.tsx",
-		"demo/**/*.vue"
 	],
 	"exclude": ["dist", "node_modules"],
 	"compilerOptions": {

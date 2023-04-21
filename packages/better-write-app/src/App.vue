@@ -18,7 +18,8 @@
   import { EntityHistoryPlugin } from 'better-write-plugin-entity-history'
   import { CharactersPlugin } from 'better-write-plugin-characters'  
   import { ProgressBarPlugin } from 'better-write-plugin-progress-bar'
-  import { WindowPlugin } from 'better-write-plugin-window'
+  import { EditorWindowPlugin } from 'better-write-plugin-editor-window'
+  import { TheVoidPlugin } from 'better-write-plugin-the-void'
 
   useStart([
     ThemePlugin(),
@@ -34,6 +35,7 @@
     EntityHistoryPlugin(),
     CharactersPlugin(),
     ProgressBarPlugin(),
-    WindowPlugin()
+    EditorWindowPlugin(),
+    TheVoidPlugin()
   ]).init()
 </script>

@@ -32,10 +32,12 @@ import { useScroll } from '../scroll'
 import { useUtils } from '../utils'
 import { useI18n } from 'vue-i18n'
 import { useHistoryStore } from '@/store/history'
-import * as VUEUSE_CORE from '@vueuse/core'
 import useEmitter from '../emitter'
 import { useSupabase } from '../storage/supabase'
 import { useCharacters } from '../characters'
+import * as VUEROUTER from 'vue-router'
+import * as VUEUSE_HEAD from '@vueuse/head'
+import * as VUEUSE_CORE from '@vueuse/core'
 
 export const usePluginInitializer = () => {
   const core = useCore()
@@ -81,8 +83,10 @@ export const usePluginInitializer = () => {
         breakpoints: useBreakpoint(),
         transformer: useTransformer(),
         characters: useCharacters(),
+        vuerouter: VUEROUTER,
         vueuse: {
           core: VUEUSE_CORE,
+          head: VUEUSE_HEAD,
           integration: {
             progress: useNProgress(),
           },
