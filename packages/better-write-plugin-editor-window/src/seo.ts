@@ -29,7 +29,5 @@ export const PluginSeoSet = (
         },
       ],
     })
-
-    console.log('here')
   })
 }
