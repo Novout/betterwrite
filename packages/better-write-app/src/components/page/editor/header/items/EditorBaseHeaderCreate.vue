@@ -96,6 +96,7 @@
   import { useProjectStore } from '@/store/project'
   import { useEnv } from '@/use/env'
   import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vue-toastification'
   import { usePlugin } from 'better-write-plugin-core'
   import { useStorage } from '@/use/storage/storage'
   import { useProject } from '@/use/project'
@@ -103,6 +104,7 @@
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
 
+  const toast = useToast()
   const env = useEnv()
   const plugin = usePlugin()
   const { t } = useI18n()
@@ -117,6 +119,8 @@
 
   const onEPUBGenerate = async () => {
     await storage.normalize()
+
+    toast.warning(t('toast.epub.disabled'))
 
     plugin.emit('plugin-epub-generate')
   }
