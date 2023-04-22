@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-theme",
-	"version": "1.1.13",
+	"version": "1.1.14",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -25,8 +25,8 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-plugin-core": "^1.1.13",
-		"better-write-types": "^1.1.13",
+		"better-write-plugin-core": "^1.1.14",
+		"better-write-types": "^1.1.14",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {

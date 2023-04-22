@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-exporter-epub",
-	"version": "1.1.13",
+	"version": "1.1.14",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.js",
@@ -18,9 +18,9 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-contenteditable-ast": "^1.1.13",
-		"better-write-plugin-core": "^1.1.13",
-		"better-write-types": "^1.1.13",
+		"better-write-contenteditable-ast": "^1.1.14",
+		"better-write-plugin-core": "^1.1.14",
+		"better-write-types": "^1.1.14",
 		"epub-gen-memory": "1.0.10"
 	}
 }
