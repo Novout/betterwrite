@@ -17,7 +17,7 @@ export default {
       'Voce está sem acesso à internet para conseguir acessar este recurso!',
   },
   epub: {
-    disabled: 'O gerador de .EPUB está temporariamente desabilitado :('
+    disabled: 'O gerador de .EPUB está temporariamente desabilitado :(',
   },
   pdf: {
     error: 'Não foi possível gerar o pdf.',

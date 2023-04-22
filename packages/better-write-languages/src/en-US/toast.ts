@@ -16,7 +16,7 @@ export default {
     onlyOnline: 'You are without internet access to access this feature!',
   },
   epub: {
-    disabled: 'The .EPUB generator is temporarily disabled :('
+    disabled: 'The .EPUB generator is temporarily disabled :(',
   },
   pdf: {
     error: 'Could not generate the pdf.',

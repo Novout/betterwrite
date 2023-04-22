@@ -19,6 +19,7 @@ import { useFormat } from '../format'
 import { useProject } from '../project'
 import { useUtils } from '../utils'
 import { useStorage } from './storage'
+import { usePlugin } from 'better-write-plugin-core'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -46,6 +47,7 @@ export const useSupabase = () => {
   const router = useRouter()
   const format = useFormat()
   const utils = useUtils()
+  const plugin = usePlugin()
 
   const toDashboard = () => {
     if (!online.value) {
@@ -57,10 +59,24 @@ export const useSupabase = () => {
     router.push('/dashboard')
   }
 
-  const loginWithEmailAndPassword = (
+  const createUserIfNecessary = async ({ email, password }: { email: string; password: string }) => {
+    try {      
+      await s.auth.signUp({
+      email,
+      password
+        }
+      ).catch(() => {
+        // ignore because exists account case
+      })
+    } catch(e) {}
+  }
+
+  const loginWithEmailAndPassword = async (
     { email, password }: { email: string; password: string },
     notification: boolean = true
   ) => {
+    await createUserIfNecessary({ email, password })
+
     return new Promise((res) => {
       s.auth
         .signInWithPassword(
@@ -76,12 +92,16 @@ export const useSupabase = () => {
             return
           }
 
-          res(200)
+          await nextTick
+
+          router.push('/')
         })
         .catch(() => {
           res(404)
         })
-        .finally(() => {})
+        .finally(() => {
+          plugin.emit('plugin-progress-end')
+        })
     })
   }
 

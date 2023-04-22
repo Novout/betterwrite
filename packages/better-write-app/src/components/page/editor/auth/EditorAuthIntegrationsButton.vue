@@ -1,8 +1,8 @@
 <template>
   <button
     class="flex h-12 flex-1 items-center justify-center px-3 py-1 rounded-sm mt-5"
-    :style="{ backgroundColor: color }"
-    @click.prevent.stop="onLogin(provider)"
+    :style="{ backgroundColor: props.color }"
+    @click.prevent.stop="onLogin(props.provider)"
   >
     <HeroIcon>
       <slot></slot>
@@ -13,10 +13,16 @@
 <script lang="ts" setup>
   import { SupabaseIntegrations } from 'better-write-types'
   import { useSupabase } from '@/use/storage/supabase'
+  import { useToast } from 'vue-toastification'
+  import { useI18n } from 'vue-i18n'
 
-  defineProps<{
+  const toast = useToast()
+  const { t } = useI18n()
+
+  const props = defineProps<{
     provider: SupabaseIntegrations
-    color: string
+    color: string,
+    termsOfUse
   }>()
 
   const supabase = useSupabase()

@@ -7,6 +7,7 @@
       v-if="env.isDev()"
       provider="google"
       color="#EEE"
+      :terms-of-use="termsOfUse"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -36,6 +37,7 @@
       </svg>
     </EditorAuthIntegrationsButton>
     <EditorAuthIntegrationsButton
+      :terms-of-use="termsOfUse"
       provider="notion"
       color="#FFF"
     >
@@ -52,7 +54,7 @@
         />
       </svg>
     </EditorAuthIntegrationsButton>
-    <EditorAuthIntegrationsButton provider="gitlab" color="#FF7646">
+    <EditorAuthIntegrationsButton :terms-of-use="termsOfUse" provider="gitlab" color="#FF7646">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -92,7 +94,7 @@
         ></path>
       </svg>
     </EditorAuthIntegrationsButton>
-    <EditorAuthIntegrationsButton provider="github" color="#111111">
+    <EditorAuthIntegrationsButton :terms-of-use="termsOfUse" provider="github" color="#111111">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -115,4 +117,8 @@
   import { useEnv } from '@/use/env'
 
   const env = useEnv()
+
+  defineProps<{
+    termsOfUse: boolean
+  }>()
 </script>

@@ -79,15 +79,7 @@
           }}
         </div>
       </div>
-      <div v-if="verification" class="flex items-center gap-2 font-bold">
-        <div
-          :style="{ backgroundColor: '#F0E501' }"
-          class="w-2 h-2 rounded-full"
-        ></div>
-        {{ t('landing.auth.verification') }}
-      </div>
       <button
-        v-if="!verification"
         v-motion
         :initial="{ opacity: 0 }"
         :enter="{ opacity: 1, transition: { delay: 360 } }"
@@ -126,6 +118,7 @@
       v-motion
       :initial="{ opacity: 0, y: 10 }"
       :enter="{ opacity: 1, y: 0, transition: { delay: 480 } }"
+      :terms-of-use="user.termsOfUse"
     />
   </div>
 </template>
@@ -147,7 +140,6 @@
   const toast = useToast()
   const { isLoading } = useNProgress()
 
-  const verification = ref<boolean>(false)
   const user = reactive({
     email: '' as string,
     password: '' as string,
@@ -160,7 +152,7 @@
     },
     password: {
       required,
-      minLength: minLength(7),
+      minLength: minLength(6),
     },
     termsOfUse: {
       checked: (checked) => checked === true,
@@ -176,18 +168,17 @@
       return
     }
 
-    user.password = ''
-
     isLoading.value = true
 
     toast.info(t('toast.generics.load'))
 
     supabase
       .loginWithEmailAndPassword(user)
-      .then(() => {
-        verification.value = true
-      })
+      .catch(() => {})
+      .then(() => {})
       .finally(() => {
+        user.password = ''
+
         isLoading.value = false
       })
   }
