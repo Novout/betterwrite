@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-exporter-html",
-	"version": "1.1.14",
+	"version": "1.1.15",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.js",
@@ -18,9 +18,9 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-contenteditable-ast": "^1.1.14",
-		"better-write-plugin-core": "^1.1.14",
-		"better-write-types": "^1.1.14",
+		"better-write-contenteditable-ast": "^1.1.15",
+		"better-write-plugin-core": "^1.1.15",
+		"better-write-types": "^1.1.15",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {
