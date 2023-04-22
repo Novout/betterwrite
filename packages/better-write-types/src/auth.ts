@@ -21,4 +21,4 @@ export interface AuthState {
   account: AuthStateAccount
 }
 
-export type SupabaseIntegrations = 'google' | 'github' | 'gitlab' | 'notion'
+export type SupabaseIntegrations = 'google' | 'github' | 'notion'
