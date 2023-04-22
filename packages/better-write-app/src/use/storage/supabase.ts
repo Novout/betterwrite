@@ -95,6 +95,8 @@ export const useSupabase = () => {
           await nextTick
 
           router.push('/')
+
+          res(200)
         })
         .catch(() => {
           res(404)
