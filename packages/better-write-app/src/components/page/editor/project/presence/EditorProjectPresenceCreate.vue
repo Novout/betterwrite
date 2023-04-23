@@ -7,19 +7,14 @@
       >
         <EditorAbsoluteHeader :title="t('editor.presence.create.title')" @close="onClose" />
         <p>{{ t('editor.presence.create.description') }}</p>
-        <div class="flex flex-col sm:flex-row gap-5 w-full items-center justify-between">
-          <button :class="[wizard === 'create' ? 'bg-theme-background-3' : 'bg-theme-background-2']" class="flex-1 py-2 w-full" @click="wizard = 'create'">Criar</button>
-          <button :class="[wizard === 'enter' ? 'bg-theme-background-3' : 'bg-theme-background-2']" class="flex-1 py-2 w-full" @click="wizard = 'enter'">Entrar</button>
+        <div v-if="!key" class="flex flex-col sm:flex-row gap-5 w-full items-center justify-between">
+          <Button :class="[wizard === 'create' ? 'bg-theme-background-3' : 'bg-theme-background-2']" class="flex-1 py-2 w-full" @click="wizard = 'create'">{{ t('editor.presence.info.create') }}</Button>
+          <Button :class="[wizard === 'enter' ? 'bg-theme-background-3' : 'bg-theme-background-2']" class="flex-1 py-2 w-full" @click="wizard = 'enter'">{{ t('editor.presence.info.enter') }}</Button>
         </div>
         <div v-if="wizard === 'create'" class="flex flex-col gap-2">
           <h2 class="text-lg font-bold font-poppins">{{ t('editor.presence.create.new') }}</h2>
-          <button v-if="!key" class="w-full p-2 bg-theme-background-2" @click.prevent.stop="onCreateRoom">{{ t('editor.presence.create.button') }}</button>
-          <div v-if="key" class="flex w-full items-center rounded-full p-1 justify-between">
-            <p class="font-bold text-lg">{{ key }}</p>
-            <button class="wb-icon" @click.prevent.stop="onCopy">
-              <IconCopyLink class="w-6 h-6" />
-            </button>
-          </div>
+          <Button v-if="!key" class="w-full p-2 bg-theme-background-2" @click.prevent.stop="onCreateRoom">{{ t('editor.presence.create.button') }}</Button>
+          <EditorProjectPresenceKey :id="key" />
         </div>
         <div v-if="wizard === 'enter'" class="flex flex-col gap-2">
           <h2 class="text-lg font-bold font-poppins">{{ t('editor.presence.create.enterInput') }}</h2>
@@ -32,11 +27,10 @@
 
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
-  import { useClipboard } from '@vueuse/core'
   import { usePlugin } from 'better-write-plugin-core'
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useToast } from 'vue-toastification'
+import { useToast } from 'vue-toastification'
 
   const ABSOLUTE = useAbsoluteStore()
 
@@ -47,7 +41,6 @@
   const { t } = useI18n()
   const plugin = usePlugin()
   const toast = useToast()
-  const { copy, isSupported } = useClipboard({ source: key })
 
   onMounted(() => {
     plugin.on('plugin-presence-room-create-key', (id: string) => {
@@ -62,7 +55,11 @@
   }
 
   const onJoinRoom = () => {
-    if(room.value.length !== 30 || room.value === key.value) return
+    if(room.value.length !== 30 || room.value === key.value) {
+      toast.error(t('toast.generics.error'))
+
+      return
+    }
 
     plugin.emit('plugin-presence-room-join', room.value)
 
@@ -71,13 +68,5 @@
 
   const onClose = () => {
     ABSOLUTE.modal.presence.createOrJoin = false
-  }
-
-  const onCopy = async () => {
-    if(isSupported.value) {
-      await copy()
-
-      toast.success(t('toast.generics.copy'))
-    }
   }
 </script>

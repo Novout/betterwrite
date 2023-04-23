@@ -53,7 +53,7 @@ export default ({ mode }) => {
       }),
       windiCSS(),
       CSSFontaine.vite({
-        fallbacks: ['Raleway', 'Poppins', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans'],
+        fallbacks: ['BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans'],
         resolvePath: id => new URL('.' + id, import.meta.url),
       }),
       viteSitemap({
@@ -76,9 +76,8 @@ export default ({ mode }) => {
       viteAutoImport({
         dts: './imports.d.ts',
         include: [
-          /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-          /\.vue$/, /\.vue\?vue/, // .vue
-          /\.md$/ // .md
+          /\.[tj]sx?$/,
+          /\.vue$/, /\.vue\?vue/
         ],
         imports: [
           'vue',
@@ -88,7 +87,7 @@ export default ({ mode }) => {
       vitePWA({
         base: '/',
         registerType: 'prompt',
-        includeAssets: fg.sync('**/*.{png,svg,json,ico,txt,xml,ttf}', { cwd: resolve(__dirname, 'public') }), 
+        includeAssets: fg.sync('**/*.{png,svg,json,mp3,ico,txt,xml,ttf}', { cwd: resolve(__dirname, 'public') }), 
         manifest: {
           name: 'Better Write',
           short_name: 'Better Write',

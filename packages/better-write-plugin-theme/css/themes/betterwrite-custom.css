@@ -3,10 +3,10 @@
   --theme-transparent: transparent;
   --theme-black: #000000;
   --theme-white: #ffffff;
-  --theme-background-1: rgba(0, 0, 0, 0.75);
-  --theme-background-2: rgba(0, 0, 0, 0.75);
-  --theme-background-3: rgba(0, 0, 0, 0.75);
-  --theme-background-4: rgba(0, 0, 0, 0.75);
+  --theme-background-1: rgba(0, 0, 0, 0.5);
+  --theme-background-2: rgba(0, 0, 0, 0.5);
+  --theme-background-3: rgba(0, 0, 0, 0.5);
+  --theme-background-4: rgba(0, 0, 0, 0.5);
   --theme-background-opacity-1: rgba(0, 0, 0, 0.15);
   --theme-background-absolute-1: rgba(0, 0, 0, 0.75);
   --theme-border-1: rgba(0, 0, 0, 0.75);

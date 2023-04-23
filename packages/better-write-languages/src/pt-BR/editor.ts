@@ -847,6 +847,13 @@ export default {
     },
   },
   presence: {
+    type: {
+      owner: 'Dono',
+      visit: 'Visitante',
+    },
+    bar: {
+      liveshare: 'Compartilhando...',
+    },
     create: {
       title: 'Compartilhamento',
       description:
@@ -856,6 +863,12 @@ export default {
       new: 'Crie uma sala:',
       enterInput: 'Entre em uma sala:',
       enterPlaceholder: 'vCAQe6FD3D...',
+    },
+    info: {
+      enter: 'Entrar',
+      create: 'Criar',
+      title: 'Sala Compartilhada',
+      leave: 'Sair da Sala',
     },
   },
 }

@@ -25,7 +25,12 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 export const s = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: { storageKey: '__BW__' }
+  auth: { storageKey: '__BW__' },
+  realtime: {
+    params: {
+      eventsPerSecond: 10
+    }
+  }
 })
 
 export const getSupabaseUser = async () => {

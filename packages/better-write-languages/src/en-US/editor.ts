@@ -840,4 +840,29 @@ export default {
       },
     },
   },
+  presence: {
+    type: {
+      owner: 'Owner',
+      visit: 'Visitant',
+    },
+    bar: {
+      liveshare: 'Sharing...',
+    },
+    create: {
+      title: 'Live Share',
+      description:
+        'Share your project with others in real time to build an experience together!',
+      button: 'Create Room',
+      or: 'Or',
+      new: 'Create Room:',
+      enterInput: 'Enter Room:',
+      enterPlaceholder: 'vCAQe6FD3D...',
+    },
+    info: {
+      enter: 'Enter',
+      create: 'Create',
+      title: 'Share Room',
+      leave: 'Leave Room',
+    },
+  },
 }
