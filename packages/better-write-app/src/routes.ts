@@ -30,6 +30,11 @@ export const routes = [
     component: () => import('@/pages/Questions.vue'),
   },
   {
+    name: 'Privacy',
+    path: '/privacy',
+    component: () => import('@/pages/Privacy.vue'),
+  },
+  {
     path: '/editor',
     redirect: '/',
   },

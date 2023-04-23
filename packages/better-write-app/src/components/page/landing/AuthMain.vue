@@ -47,6 +47,12 @@
             @click.prevent.stop="router.push('terms-of-use')"
             >{{ t('landing.auth.terms.link') }}</span
           >
+          <span>{{ t('landing.auth.privacy.and') }}</span>
+          <span
+            class="underline font-bold tracking-wide cursor-pointer"
+            @click.prevent.stop="router.push('privacy')"
+            >{{ t('landing.auth.privacy.text') }}</span
+          >
         </p>
       </div>
       <div

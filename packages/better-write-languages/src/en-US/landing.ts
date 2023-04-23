@@ -8,6 +8,10 @@ export default {
     verification: 'Access Code sent to your email!',
     integration: 'or log in with your account...',
     enter: 'Enter',
+    privacy: {
+      and: ' and I agree with ',
+      text: 'Privacy Policy',
+    },
     terms: {
       text: 'I agreed ',
       link: 'Terms of Use',

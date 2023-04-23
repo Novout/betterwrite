@@ -8,6 +8,10 @@ export default {
     verification: 'Código de Acesso enviado para o seu email!',
     integration: 'ou entre com sua conta do...',
     enter: 'Entrar',
+    privacy: {
+      and: ' e concordo com a ',
+      text: 'Política de Privacidade',
+    },
     terms: {
       text: 'Eu aceito os ',
       link: 'Termos de Uso',
