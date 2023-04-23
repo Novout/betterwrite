@@ -553,6 +553,39 @@ export const externals = () => {
     })
   }
 
+  const PluginPresenceRoomCreate = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-presence-room-create', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginPresenceRoomJoin = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-presence-room-join', (id: string) => {
+      const created = content[0]
+
+      created && created(id)
+    })
+  }
+
+  const PluginPresenceRoomLeave = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-presence-room-leave', (id: string) => {
+      const created = content[0]
+
+      created && created(id)
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -579,6 +612,9 @@ export const externals = () => {
     PluginProgressChange,
     PluginProgressEnd,
     PluginWindowDrop,
+    PluginPresenceRoomCreate,
+    PluginPresenceRoomJoin,
+    PluginPresenceRoomLeave,
   }
 }
 

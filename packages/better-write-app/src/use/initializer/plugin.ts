@@ -32,12 +32,14 @@ import { useScroll } from '../scroll'
 import { useUtils } from '../utils'
 import { useI18n } from 'vue-i18n'
 import { useHistoryStore } from '@/store/history'
+import { useLiveshareStore } from '@/store/liveshare'
 import useEmitter from '../emitter'
-import { useSupabase } from '../storage/supabase'
+import { s, useSupabase } from '../storage/supabase'
 import { useCharacters } from '../characters'
 import * as VUEROUTER from 'vue-router'
-import * as VUEUSE_HEAD from '@vueuse/head'
 import * as VUEUSE_CORE from '@vueuse/core'
+import * as VUEUSE_HEAD from '@vueuse/head'
+import * as VUEUSE_SOUND from '@vueuse/sound'
 
 export const usePluginInitializer = () => {
   const core = useCore()
@@ -54,7 +56,8 @@ export const usePluginInitializer = () => {
         PROJECT: useProjectStore(),
         EXTERNALS: useExternalsStore(),
         HISTORY: useHistoryStore(),
-      } as any,
+        LIVESHARE: useLiveshareStore()
+      },
       plugins,
       {
         local: useLocalStorage(),
@@ -83,10 +86,12 @@ export const usePluginInitializer = () => {
         breakpoints: useBreakpoint(),
         transformer: useTransformer(),
         characters: useCharacters(),
+        supabase: s,
         vuerouter: VUEROUTER,
         vueuse: {
           core: VUEUSE_CORE,
           head: VUEUSE_HEAD,
+          sound: VUEUSE_SOUND,
           integration: {
             progress: useNProgress(),
           },

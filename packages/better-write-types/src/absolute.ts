@@ -11,6 +11,10 @@ export interface AbsoluteStateProject {
 
 export interface AbsoluteStateModal {
   newProject: boolean
+  presence: {
+    createOrJoin: boolean
+    info: boolean
+  }
 }
 
 export interface AbsoluteStateShortcuts {

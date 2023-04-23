@@ -8,6 +8,7 @@ import { useContextStore } from './context'
 import { useDOCXStore } from './docx'
 import { useHistoryStore } from './history'
 import { useVaultStore } from './vault'
+import { useLiveshareStore } from './liveshare'
 
 export const useGlobalStore = defineStore('global', {
   state: (): GlobalState => {
@@ -23,6 +24,7 @@ export const useGlobalStore = defineStore('global', {
       const project = useProjectStore()
       const history = useHistoryStore()
       const vault = useVaultStore()
+      const liveshare = useLiveshareStore()
 
       context.$reset()
       absolute.$reset()
@@ -32,6 +34,7 @@ export const useGlobalStore = defineStore('global', {
       project.$reset()
       history.$reset()
       vault.$reset()
+      liveshare.$reset()
     },
   },
 })

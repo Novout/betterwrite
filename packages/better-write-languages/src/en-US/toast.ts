@@ -4,6 +4,8 @@ export default {
     error: 'An unexpected error occurred :(',
     supported: 'Your browser does not support this feature :(',
     cancel: 'The action has been cancelled!',
+    copy: 'Successfully copied!',
+    limit: 'The limit has been reached!',
     configurationFail: 'The imported configuration is not valid!',
     invalidName: 'The name is empty or already exists!',
     successAdded: 'Successfully Added!',

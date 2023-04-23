@@ -13,7 +13,7 @@ export default {
   entity: {
     title: 'Controle absolutamente tudo.',
     description:
-      'Insira títulos, paragráfos, quebras de linha, quebras de página, listas, caixas de seleção, imagens e desenhos separadamente.',
+      'Insira títulos, parágrafos, quebras de linha, quebras de página, listas, caixas de seleção, imagens e desenhos separadamente.',
     bw: 'Better Write',
     canvas: 'Outros',
   },

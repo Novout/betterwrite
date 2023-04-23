@@ -4,6 +4,8 @@ export default {
     error: 'Um erro inesperado ocorreu :(',
     supported: 'O seu navegador não suporta este recurso :(',
     cancel: 'A ação foi cancelada!',
+    copy: 'Copiado com sucesso!',
+    limit: 'O limite foi atingido!',
     configurationFail: 'A configuração importada nao é válida!',
     invalidName: 'O nome está vazio ou já existe!',
     successAdded: 'Adicionado com Sucesso!',

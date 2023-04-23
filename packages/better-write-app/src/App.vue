@@ -19,6 +19,7 @@
   import { CharactersPlugin } from 'better-write-plugin-characters'  
   import { ProgressBarPlugin } from 'better-write-plugin-progress-bar'
   import { EditorWindowPlugin } from 'better-write-plugin-editor-window'
+  import { LivesharePlugin } from 'better-write-plugin-liveshare'
 
   useStart([
     ThemePlugin(),
@@ -34,6 +35,7 @@
     EntityHistoryPlugin(),
     CharactersPlugin(),
     ProgressBarPlugin(),
-    EditorWindowPlugin()
+    EditorWindowPlugin(),
+    LivesharePlugin(),
   ]).init()
 </script>

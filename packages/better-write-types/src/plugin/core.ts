@@ -1,4 +1,5 @@
-import { StateTree, Store } from 'pinia'
+import type { StateTree, Store } from 'pinia'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { App } from 'vue-demi'
 import {
   AbsoluteState,
@@ -10,6 +11,7 @@ import {
   ProjectState,
   HistoryState,
   ExternalsState,
+  LiveshareState,
 } from '..'
 
 export type PluginEmitterName =
@@ -63,6 +65,10 @@ export type PluginEmitterName =
   | 'plugin-progress-change'
   | 'plugin-progress-end'
   | 'plugin-window-drop'
+  | 'plugin-presence-room-create'
+  | 'plugin-presence-room-create-key'
+  | 'plugin-presence-room-join'
+  | 'plugin-presence-room-leave'
   | 'call-editor-created'
   | 'call-editor-mounted'
   | 'call-editor-unmounted'
@@ -84,6 +90,7 @@ export type ExistingStores =
   | 'project'
   | 'externals'
   | 'history'
+  | 'liveshare'
 
 export type PluginStore<
   T extends ExistingStores,
@@ -102,12 +109,14 @@ export interface PluginStores {
   PROJECT: PluginStore<'project', ProjectState, any, any>
   EXTERNALS: PluginStore<'externals', ExternalsState, any, any>
   HISTORY: PluginStore<'history', HistoryState, any, any>
+  LIVESHARE: PluginStore<'liveshare', LiveshareState, any, any>
 }
 
 export interface PluginDefines {
   name: string
 }
 
+// TODO: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 export type PluginHook = any
 
 export interface PluginHooks {
@@ -138,9 +147,11 @@ export interface PluginHooks {
   transformer: PluginHook
   characters: PluginHook
   vuerouter: PluginHook
+  supabase: SupabaseClient
   vueuse: {
     core: PluginHook
     head: PluginHook
+    sound: PluginHook
     integration: {
       progress: PluginHook
     }
