@@ -19,8 +19,8 @@
   import { CharactersPlugin } from 'better-write-plugin-characters'  
   import { ProgressBarPlugin } from 'better-write-plugin-progress-bar'
   import { EditorWindowPlugin } from 'better-write-plugin-editor-window'
-  import { LivesharePlugin } from 'better-write-plugin-liveshare'
-  import { OAuthPlugin } from 'better-write-plugin-oauth'
+  import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
+  import { AuthPlugin } from 'better-write-plugin-auth'
 
   useStart([
     ThemePlugin(),
@@ -37,7 +37,7 @@
     CharactersPlugin(),
     ProgressBarPlugin(),
     EditorWindowPlugin(),
-    LivesharePlugin(),
-    OAuthPlugin()
+    MultiplayerPlugin(),
+    AuthPlugin()
   ]).init()
 </script>

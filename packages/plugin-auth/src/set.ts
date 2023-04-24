@@ -6,7 +6,7 @@ import {
 } from 'better-write-types'
 import { nextTick } from 'vue-demi'
 
-export const OAuthSet = (
+export const AuthSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
