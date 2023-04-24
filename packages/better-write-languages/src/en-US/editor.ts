@@ -853,6 +853,7 @@ export default {
       description:
         'Share your project with others in real time to build an experience together!',
       button: 'Create Room',
+      key: 'Key',
       or: 'Or',
       new: 'Create Room:',
       enterInput: 'Enter Room:',

@@ -173,6 +173,7 @@ export const RoomSet = (
 
       await channel.unsubscribe().catch(() => {})
 
+      stores.LIVESHARE.$reset()
       stores.ABSOLUTE.modal.presence.info = false
       stores.ABSOLUTE.modal.presence.createOrJoin = false
     },

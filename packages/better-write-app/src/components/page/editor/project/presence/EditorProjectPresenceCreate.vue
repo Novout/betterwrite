@@ -6,13 +6,14 @@
         class="left-0 font-raleway gap-10 top-0 p-5 flex z-max flex-col w-full bg-rgba-blur lg:w-1/2 h-full lg:h-3/4 bg-theme-background-1 wb-text wb-scroll overflow-y-auto rounded shadow-2xl wb-scroll"
       >
         <EditorAbsoluteHeader :title="t('editor.presence.create.title')" @close="onClose" />
-        <p>{{ t('editor.presence.create.description') }}</p>
+        <p v-if="!key">{{ t('editor.presence.create.description') }}</p>
         <div v-if="!key" class="flex flex-col sm:flex-row gap-5 w-full items-center justify-between">
           <Button :class="[wizard === 'create' ? 'bg-theme-background-3' : 'bg-theme-background-2']" class="flex-1 py-2 w-full" @click="wizard = 'create'">{{ t('editor.presence.info.create') }}</Button>
           <Button :class="[wizard === 'enter' ? 'bg-theme-background-3' : 'bg-theme-background-2']" class="flex-1 py-2 w-full" @click="wizard = 'enter'">{{ t('editor.presence.info.enter') }}</Button>
         </div>
         <div v-if="wizard === 'create'" class="flex flex-col gap-2">
-          <h2 class="text-lg font-bold font-poppins">{{ t('editor.presence.create.new') }}</h2>
+          <h2 v-if="!key" class="text-lg font-bold font-poppins">{{ t('editor.presence.create.new') }}</h2>
+          <p v-else class="text-lg font-bold font-poppins">{{ t('editor.presence.create.key') }}</p>
           <Button v-if="!key" class="w-full p-2 bg-theme-background-2" @click.prevent.stop="onCreateRoom">{{ t('editor.presence.create.button') }}</Button>
           <EditorProjectPresenceKey :id="key" />
         </div>

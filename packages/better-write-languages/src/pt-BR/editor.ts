@@ -859,6 +859,7 @@ export default {
       description:
         'Compartilhe o seu projeto com outras pessoas, em tempo real, para construírem uma experiência em conjunto!',
       button: 'Criar Sala',
+      key: 'Código Gerado:',
       or: 'Ou',
       new: 'Crie uma sala:',
       enterInput: 'Entre em uma sala:',
