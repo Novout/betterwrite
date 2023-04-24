@@ -42,7 +42,8 @@ v-motion
         delay: 0,
         duration: 300,
       },
-    }" class="absolute rounded font-raleway p-5 flex flex-col gap-5 right-0 w-40 bg-theme-background-3">
+    }" class="absolute rounded font-raleway p-5 flex flex-col gap-5 right-0 w-44 bg-theme-background-3">
+      <p class="truncate wb-text font-poppins" v-if="user?.email">{{ user?.email }}</p>
       <MenuItem @click="plugin.emit('plugin-oauth-logout')">
         <button class="flex wb-icon rounded shadow px-2 justify-between items-center bg-theme-background-1">
           <IconLogout class="w-7 h-7" />
