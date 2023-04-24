@@ -65,6 +65,10 @@ export default {
     tools: 'Ferramentas',
     vault: 'Vazio',
     help: 'Ajuda',
+    login: {
+      logout: 'Sair',
+      delete: 'Deletar',
+    },
   },
   auth: {
     login: {

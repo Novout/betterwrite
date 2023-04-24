@@ -1,6 +1,6 @@
 <template>
   <Menu as="div" class="relative">
-    <MenuButton class="rounded-full w-8"><UseImage
+    <MenuButton class="flex justify-center items-center rounded-full w-8"><UseImage
       :src="user?.user_metadata.avatar_url"
     >
       <template #loading>
@@ -46,13 +46,13 @@ v-motion
       <MenuItem @click="plugin.emit('plugin-oauth-logout')">
         <button class="flex wb-icon rounded shadow px-2 justify-between items-center bg-theme-background-1">
           <IconLogout class="w-7 h-7" />
-          <p class="font-bold">Logout</p>
+          <p class="font-bold">{{ t('editor.header.login.logout') }}</p>
         </button>
       </MenuItem>
       <MenuItem @click="plugin.emit('plugin-oauth-delete')">
         <button class="flex wb-icon rounded shadow px-2 justify-between items-center bg-theme-background-1">
           <IconDelete class="w-7 h-7" />
-          <p class="font-bold">Delete</p>
+          <p class="font-bold">{{ t('editor.header.login.delete') }}</p>
         </button>
       </MenuItem>
     </MenuItems>
@@ -64,8 +64,10 @@ v-motion
   import { UseImage } from '@vueuse/components'
   import { usePlugin } from 'better-write-plugin-core'
   import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
   const plugin = usePlugin()
+  const { t } = useI18n()
 
   const AUTH = useAuthStore()
   const user = computed(() => AUTH.account.user)

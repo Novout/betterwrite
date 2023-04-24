@@ -63,6 +63,10 @@ export default {
     tools: 'Tools',
     vault: 'Void',
     help: 'Help',
+    login: {
+      logout: 'Logout',
+      delete: 'Delete',
+    },
   },
   auth: {
     login: {
