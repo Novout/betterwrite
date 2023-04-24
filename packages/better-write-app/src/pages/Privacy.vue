@@ -451,34 +451,34 @@
 </template>
 
 <style scoped>
-  #terms > h1 {
+  #privacy > h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     font-weight: 700;
     padding: 2.5rem 0 1rem 0;
   }
 
-  #terms > h2 {
+  #privacy > h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     padding: 2.5rem 0 1rem 0;
   }
 
-  #terms > h3 {
+  #privacy > h3 {
     font-family: 'Poppins', sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     padding: 2.5rem 0 1rem 0;
   }
 
-  #terms > ul > li {
+  #privacy > ul > li {
     margin-left: 2rem;
     text-align: justify;
     list-style-type: disc;
   }
 
-  #terms > p {
+  #privacy > p {
     padding: 0.25rem 0;
     text-align: justify;
   }
