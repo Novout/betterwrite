@@ -14,7 +14,6 @@ import vitePackageAccess from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
 import viteSitemap from 'vite-plugin-sitemap'
 import viteChecker from 'vite-plugin-checker'
-import viteHTMLMinify from 'vite-plugin-minify'
 import { viteStdlib } from "./scripts/vite"
 import { FontaineTransform as CSSFontaine } from 'fontaine'
 import windiCSS from 'vite-plugin-windicss'
@@ -70,7 +69,6 @@ export default ({ mode }) => {
       vitePackageAccess(),
       vitePackageVersion(),
       viteStdlib(),
-      viteHTMLMinify(),
       // @ts-ignore
       viteChecker({ typescript: process.env.DEV, vueTsc: process.env.DEV }),
       viteAutoImport({

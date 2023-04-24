@@ -35,7 +35,7 @@
     "@milkdown/transformer": "7.1.1",
     "@sentry/tracing": "7.14.2",
     "@sentry/vue": "7.14.2",
-    "@supabase/supabase-js": "2.12.1",
+    "@supabase/supabase-js": "2.21.0",
     "@vuelidate/core": "2.0.1",
     "@vuelidate/validators": "2.0.1",
     "@vueuse/components": "9.13.0",
@@ -122,17 +122,16 @@
     "typescript": "5.0.2",
     "unplugin-auto-import": "0.15.2",
     "unplugin-vue-components": "0.24.1",
-    "vite": "4.2.1",
+    "vite": "4.3.1",
     "vite-plugin-checker": "0.5.6",
-    "vite-plugin-minify": "1.5.2",
     "vite-plugin-optimize-persist": "0.1.2",
     "vite-plugin-package-config": "0.1.1",
     "vite-plugin-package-version": "1.0.2",
-    "vite-plugin-pwa": "0.14.6",
+    "vite-plugin-pwa": "0.14.7",
     "vite-plugin-sitemap": "0.3.0",
     "vite-plugin-windicss": "1.8.10",
     "vitest": "0.29.8",
-    "vue-tsc": "1.2.0"
+    "vue-tsc": "1.4.4"
   },
   "vite": {
     "optimizeDeps": {
