@@ -23,6 +23,8 @@ export const RoomSet = (
     stores.EDITOR.$state = object.editor
     stores.PDF.$state = object.pdf
     stores.DOCX.$state = object.docx
+
+    emitter.emit('plugin-theme-set')
   }
 
   const getCTX = (): {
@@ -101,9 +103,13 @@ export const RoomSet = (
             color: hexColor,
           })
 
+          const target = getCTX()
+
           if (type === 'owner') {
-            channel.send(getCTX())
+            channel.send(target)
             stores.LIVESHARE.lastUpdatedColor = hexColor
+          } else {
+            setCTX(target.payload.object, target.payload.ctx)
           }
         }
       })
