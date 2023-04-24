@@ -69,6 +69,14 @@ export type PluginEmitterName =
   | 'plugin-presence-room-create-key'
   | 'plugin-presence-room-join'
   | 'plugin-presence-room-leave'
+  | 'plugin-oauth-register'
+  | 'plugin-oauth-register-success'
+  | 'plugin-oauth-register-error'
+  | 'plugin-oauth-register-wizard-reset'
+  | 'plugin-oauth-login'
+  | 'plugin-oauth-login-with-provider'
+  | 'plugin-oauth-logout'
+  | 'plugin-oauth-delete'
   | 'call-editor-created'
   | 'call-editor-mounted'
   | 'call-editor-unmounted'
@@ -146,6 +154,7 @@ export interface PluginHooks {
   breakpoints: PluginHook
   transformer: PluginHook
   characters: PluginHook
+  router: PluginHook
   vuerouter: PluginHook
   supabase: SupabaseClient
   vueuse: {

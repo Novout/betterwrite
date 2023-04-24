@@ -96,20 +96,18 @@
 </template>
 
 <script setup lang="ts">
-  import { useSupabase } from '@/use/storage/supabase'
-  import { computed, reactive } from 'vue'
+  import { computed, onMounted, reactive } from 'vue'
   import { useVuelidate } from '@vuelidate/core'
   import { minLength, required, email } from '@vuelidate/validators'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
-  import { useNProgress } from '@vueuse/integrations/useNProgress'
   import { useToast } from 'vue-toastification'
+  import { usePlugin } from 'better-write-plugin-core'
 
-  const supabase = useSupabase()
+  const plugin = usePlugin()
   const router = useRouter()
   const { t } = useI18n()
   const toast = useToast()
-  const { isLoading } = useNProgress()
 
   const emit = defineEmits(['reset'])
 
@@ -135,6 +133,12 @@
 
   const v = useVuelidate(rules, user)
 
+  onMounted(() => {
+    plugin.on('plugin-oauth-register-wizard-reset', () => {
+      emit('reset')
+    })
+  })
+
   const onSubmit = () => {
     if (v.value.$invalid) {
       v.value.$touch()
@@ -142,30 +146,8 @@
       return
     }
 
-    isLoading.value = true
-
     toast.info(t('toast.generics.load'))
 
-    supabase
-      .createUser(user)
-      .then((data) => {
-        if(data.error) {
-          toast.error(t('toast.generics.registerError'))
-
-          return
-        }
-
-        toast.success(t('toast.generics.success'))
-
-        emit('reset')
-      })
-      .catch(() => {
-        toast.error(t('toast.generics.registerError'))
-      })
-      .finally(() => {
-        user.password = ''
-
-        isLoading.value = false
-      })
+    plugin.emit('plugin-oauth-register', user)
   }
 </script>

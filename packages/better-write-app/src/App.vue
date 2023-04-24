@@ -20,6 +20,7 @@
   import { ProgressBarPlugin } from 'better-write-plugin-progress-bar'
   import { EditorWindowPlugin } from 'better-write-plugin-editor-window'
   import { LivesharePlugin } from 'better-write-plugin-liveshare'
+  import { OAuthPlugin } from 'better-write-plugin-oauth'
 
   useStart([
     ThemePlugin(),
@@ -37,5 +38,6 @@
     ProgressBarPlugin(),
     EditorWindowPlugin(),
     LivesharePlugin(),
+    OAuthPlugin()
   ]).init()
 </script>

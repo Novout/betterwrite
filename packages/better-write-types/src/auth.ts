@@ -22,3 +22,9 @@ export interface AuthState {
 }
 
 export type SupabaseIntegrations = 'google' | 'github' | 'notion'
+
+export interface AuthAccountPayloadRegister {
+  email: string
+  password: string
+  termsOfUse: boolean
+}

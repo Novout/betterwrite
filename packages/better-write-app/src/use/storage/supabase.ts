@@ -19,7 +19,6 @@ import { useFormat } from '../format'
 import { useProject } from '../project'
 import { useUtils } from '../utils'
 import { useStorage } from './storage'
-import { usePlugin } from 'better-write-plugin-core'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -52,7 +51,6 @@ export const useSupabase = () => {
   const router = useRouter()
   const format = useFormat()
   const utils = useUtils()
-  const plugin = usePlugin()
 
   const toDashboard = () => {
     if (!online.value) {
@@ -62,52 +60,6 @@ export const useSupabase = () => {
     }
 
     router.push('/dashboard')
-  }
-
-  const createUser = async ({ email, password }: { email: string; password: string }) => {
-    return s.auth.signUp({
-      email,
-      password
-      }
-    )
-  }
-
-  const loginWithEmailAndPassword = async (
-    { email, password }: { email: string; password: string },
-    notification: boolean = true
-  ) => {
-    return new Promise((res) => {
-      s.auth
-        .signInWithPassword(
-          {
-            email,
-            password,
-          },
-        )
-        .then(async ({ error }) => {
-          if (error) {
-            if (notification) toast.error(t('editor.auth.login.error'))
-
-            res(404)
-
-            return
-          }
-
-          await nextTick
-
-          router.push('/')
-
-          res(200)
-        })
-        .catch(() => {
-          if (notification) toast.error(t('editor.auth.login.error'))
-          
-          res(404)
-        })
-        .finally(() => {
-          plugin.emit('plugin-progress-end')
-        })
-    })
   }
 
   const login = (
@@ -409,9 +361,7 @@ export const useSupabase = () => {
   }
 
   return {
-    createUser,
     toDashboard,
-    loginWithEmailAndPassword,
     login,
     out,
     getDocuments,

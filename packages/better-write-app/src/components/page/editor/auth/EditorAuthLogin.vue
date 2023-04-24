@@ -99,12 +99,12 @@
   import { onClickOutside, useDraggable } from '@vueuse/core'
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useSupabase } from '@/use/storage/supabase'
   import { SupabaseIntegrations } from 'better-write-types'
+  import { usePlugin } from 'better-write-plugin-core'
 
   const ABSOLUTE = useAbsoluteStore()
 
-  const supabase = useSupabase()
+  const plugin = usePlugin()
   const { t } = useI18n()
 
   const login = ref<HTMLElement | null>(null)
@@ -122,6 +122,6 @@
   }
 
   const onLogin = (provider: SupabaseIntegrations) => {
-    supabase.login(provider)
+    plugin.emit('plugin-oauth-login-with-provider', provider)
   }
 </script>

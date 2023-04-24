@@ -1,3 +1,4 @@
+import { SupabaseIntegrations } from 'better-write-types'
 import {
   PDFDocOptions,
   PluginTypes,
@@ -586,6 +587,64 @@ export const externals = () => {
     })
   }
 
+  const PluginOAuthLogin = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-oauth-login', (payload) => {
+      const created = content[0]
+
+      created && created(payload)
+    })
+  }
+
+  const PluginOAuthLoginWithProvider = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on(
+      'plugin-oauth-login-with-provider',
+      (provider: SupabaseIntegrations) => {
+        const created = content[0]
+
+        created && created(provider)
+      }
+    )
+  }
+
+  const PluginOAuthRegister = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-oauth-register', (payload) => {
+      const created = content[0]
+
+      created && created(payload)
+    })
+  }
+
+  const PluginOAuthLogout = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-oauth-logout', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginOAuthDelete = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-oauth-delete', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -615,6 +674,11 @@ export const externals = () => {
     PluginPresenceRoomCreate,
     PluginPresenceRoomJoin,
     PluginPresenceRoomLeave,
+    PluginOAuthLogin,
+    PluginOAuthLoginWithProvider,
+    PluginOAuthRegister,
+    PluginOAuthLogout,
+    PluginOAuthDelete,
   }
 }
 

@@ -74,6 +74,12 @@ export default {
       google: 'Login with Google Account',
       github: 'Login with Github Account',
     },
+    logout: {
+      error: 'An unexpected error occurred in logout :(',
+    },
+    delete: {
+      error: 'An unexpected error occurred while deleting your data :(',
+    },
   },
   project: {
     control: {
@@ -841,6 +847,10 @@ export default {
     },
   },
   presence: {
+    alert: {
+      deleteAccount:
+        'Are you sure you want to delete your account and all its data in the cloud? This action is irreversible!',
+    },
     type: {
       owner: 'Owner',
       visit: 'Visitant',

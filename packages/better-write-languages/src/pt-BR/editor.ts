@@ -76,6 +76,12 @@ export default {
       google: 'Entrar com Conta Google',
       github: 'Entrar com Conta Github',
     },
+    logout: {
+      error: 'Ocorreu um erro inesperado para deslogar :(',
+    },
+    delete: {
+      error: 'Ocorreu um erro inesperado ao deletar os seus dados :(',
+    },
   },
   project: {
     control: {
@@ -847,6 +853,10 @@ export default {
     },
   },
   presence: {
+    alert: {
+      deleteAccount:
+        'Você tem certeza que deseja deletar sua conta e todos os seus dados na nuvem? Essa ação é irreversível!',
+    },
     type: {
       owner: 'Dono',
       visit: 'Visitante',

@@ -86,8 +86,9 @@
   import { useI18n } from 'vue-i18n'
   import { useNProgress } from '@vueuse/integrations/useNProgress'
   import { useToast } from 'vue-toastification'
+import { usePlugin } from 'better-write-plugin-core'
 
-  const supabase = useSupabase()
+  const plugin = usePlugin()
   const { t } = useI18n()
   const toast = useToast()
   const { isLoading } = useNProgress()
@@ -121,13 +122,6 @@
 
     toast.info(t('toast.generics.load'))
 
-    supabase
-      .loginWithEmailAndPassword(user)
-      .catch(() => {
-        user.password = ''
-      })
-      .finally(() => {
-        isLoading.value = false
-      })
+    plugin.emit('plugin-oauth-login', { email: user.email, password: user.password })
   }
 </script>

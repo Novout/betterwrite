@@ -87,6 +87,7 @@ export const usePluginInitializer = () => {
         transformer: useTransformer(),
         characters: useCharacters(),
         supabase: s,
+        router: VUEROUTER.useRouter(),
         vuerouter: VUEROUTER,
         vueuse: {
           core: VUEUSE_CORE,
