@@ -15,6 +15,8 @@ export default {
     successChanged: 'Alterado com Sucesso!',
     successRestarted: 'Reiniciado com Sucesso!',
     successRemoved: 'Removido com Sucesso!',
+    loginError: 'Ocorreu um erro ao entrar na conta!',
+    registerError: 'Ocorreu um erro ao criar uma conta nova!',
     onlyOnline:
       'Voce está sem acesso à internet para conseguir acessar este recurso!',
   },

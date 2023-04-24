@@ -3,8 +3,28 @@
     v-motion
     :initial="{ opacity: 0, y: 50 }"
     :enter="{ opacity: 1, y: 0, transition: { delay: 0 } }"
-    class="flex items-center flex-col w-full md:w-3/5 xl:w-1/3 bg-black-opacity shadow-lg p-5"
+    class="flex justify-between items-center flex-col w-full md:w-3/5 xl:w-1/3 h-150 bg-black-opacity shadow-lg p-5"
   >
+    <div class="absolute left-5">
+      <button
+      v-if="wizard === 'sign-up'"
+      class="flex text-gray-200 items-center text-base rounded-full gap-2 transition-colors bg-gradient-to-br from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-300 text-black px-4 py-2 shadow-xl transition-colors font-bold"
+      @click.prevent.stop="wizard = 'sign-in'"
+    >
+      <p class="w-20 text-center">
+        {{ t('landing.auth.enter') }}
+      </p>
+    </button>
+    <button
+      v-else
+      class="flex text-gray-200 items-center text-base rounded-full gap-2 transition-colors bg-gradient-to-br from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-900 px-4 py-2 shadow-xl transition-colors font-bold"
+      @click.prevent.stop="wizard = 'sign-up'"
+    >
+      <p class="w-20 text-center">
+        {{ t('landing.auth.register') }}
+      </p>
+    </button>
+    </div>
     <IconClose
       class="absolute wb-icon right-5 w-6 h-6"
       @click.prevent.stop="emit('close')"
@@ -18,100 +38,8 @@
       class="my-5"
       width="50"
     />
-    <form
-      v-motion
-      :initial="{ opacity: 0 }"
-      :enter="{ opacity: 1, transition: { delay: 240 } }"
-      class="flex flex-col w-full gap-5"
-      @submit.prevent.stop="onSubmit"
-    >
-      <input
-        v-model="user.email"
-        type="email"
-        :placeholder="t('landing.auth.emailPlaceholder')"
-        class="w-full p-3 rounded bg-gray-900 border-none"
-      />
-      <input
-        v-model="user.password"
-        type="password"
-        autocomplete="on"
-        :placeholder="t('landing.auth.passwordPlaceholder')"
-        class="w-full p-3 rounded bg-gray-900 border-none"
-      />
-      <div class="flex gap-2 items-center w-full">
-        <input v-model="user.termsOfUse" type="checkbox" />
-        <p>
-          {{ t('landing.auth.terms.text')
-          }}<span
-            class="underline font-bold tracking-wide cursor-pointer"
-            @click.prevent.stop="router.push('terms-of-use')"
-            >{{ t('landing.auth.terms.link') }}</span
-          >
-          <span>{{ t('landing.auth.privacy.and') }}</span>
-          <span
-            class="underline font-bold tracking-wide cursor-pointer"
-            @click.prevent.stop="router.push('privacy')"
-            >{{ t('landing.auth.privacy.text') }}</span
-          >
-        </p>
-      </div>
-      <div
-        v-for="error of v.$errors"
-        v-if="v.$errors"
-        :key="error.$uid"
-        class="flex flex-col"
-      >
-        <div
-          v-motion
-          :initial="{ opacity: 0, color: '#FF0000', y: 10 }"
-          :enter="{
-            opacity: 1,
-            y: 0,
-            color: '#FFF',
-            transition: { delay: 0, duration: 500 },
-          }"
-          class="flex items-center gap-2"
-        >
-          <div
-            :style="{ backgroundColor: 'red' }"
-            class="w-2 h-2 rounded-full"
-          ></div>
-          {{ error.$propertyPath === 'email' && ((error.$params as any).type === 'email' || (error.$params as any).type === 'required') ? t('landing.auth.email') : '' }}
-          {{ error.$propertyPath === 'password' && ((error.$params as any).type === 'minLength' || (error.$params as any).type === 'required') ? t('landing.auth.password', (error.$params as any).min) : '' }}
-          {{
-            error.$propertyPath === 'termsOfUse'
-              ? t('landing.auth.termsError')
-              : ''
-          }}
-        </div>
-      </div>
-      <button
-        v-motion
-        :initial="{ opacity: 0 }"
-        :enter="{ opacity: 1, transition: { delay: 360 } }"
-        class="flex gap-1 items-center justify-center w-full p-2 mt-5 rounded bg-gray-900"
-      >
-        <p>{{ t('landing.auth.enter') }}</p>
-        <HeroIcon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            aria-hidden="true"
-            role="img"
-            class="iconify iconify--ic"
-            width="32"
-            height="32"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="currentColor"
-              d="m12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-            ></path>
-          </svg>
-        </HeroIcon>
-      </button>
-    </form>
+    <AuthMainRegister v-if="wizard === 'sign-up'" @reset="wizard = 'sign-in'" />
+    <AuthMainLogin v-else-if="wizard === 'sign-in'" />
     <div
       v-motion
       :initial="{ opacity: 0, y: 10 }"
@@ -124,68 +52,17 @@
       v-motion
       :initial="{ opacity: 0, y: 10 }"
       :enter="{ opacity: 1, y: 0, transition: { delay: 480 } }"
-      :terms-of-use="user.termsOfUse"
+      :terms-of-use="true"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-  import { useSupabase } from '@/use/storage/supabase'
-  import { ref, computed, reactive } from 'vue'
-  import { useVuelidate } from '@vuelidate/core'
-  import { minLength, required, email } from '@vuelidate/validators'
+  import { ref} from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useRouter } from 'vue-router'
-  import { useNProgress } from '@vueuse/integrations/useNProgress'
-  import { useToast } from 'vue-toastification'
 
-  const supabase = useSupabase()
-  const router = useRouter()
   const { t } = useI18n()
   const emit = defineEmits(['close'])
-  const toast = useToast()
-  const { isLoading } = useNProgress()
 
-  const user = reactive({
-    email: '' as string,
-    password: '' as string,
-    termsOfUse: false as boolean,
-  })
-  const rules = computed(() => ({
-    email: {
-      required,
-      email,
-    },
-    password: {
-      required,
-      minLength: minLength(6),
-    },
-    termsOfUse: {
-      checked: (checked) => checked === true,
-    },
-  }))
-
-  const v = useVuelidate(rules, user)
-
-  const onSubmit = () => {
-    if (v.value.$invalid) {
-      v.value.$touch()
-
-      return
-    }
-
-    isLoading.value = true
-
-    toast.info(t('toast.generics.load'))
-
-    supabase
-      .loginWithEmailAndPassword(user)
-      .catch(() => {})
-      .then(() => {})
-      .finally(() => {
-        user.password = ''
-
-        isLoading.value = false
-      })
-  }
+  const wizard = ref<'sign-up' | 'sign-in'>('sign-in')
 </script>

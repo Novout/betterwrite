@@ -64,24 +64,18 @@ export const useSupabase = () => {
     router.push('/dashboard')
   }
 
-  const createUserIfNecessary = async ({ email, password }: { email: string; password: string }) => {
-    try {      
-      await s.auth.signUp({
+  const createUser = async ({ email, password }: { email: string; password: string }) => {
+    return s.auth.signUp({
       email,
       password
-        }
-      ).catch(() => {
-        // ignore because exists account case
-      })
-    } catch(e) {}
+      }
+    )
   }
 
   const loginWithEmailAndPassword = async (
     { email, password }: { email: string; password: string },
     notification: boolean = true
   ) => {
-    await createUserIfNecessary({ email, password })
-
     return new Promise((res) => {
       s.auth
         .signInWithPassword(
@@ -94,6 +88,8 @@ export const useSupabase = () => {
           if (error) {
             if (notification) toast.error(t('editor.auth.login.error'))
 
+            res(404)
+
             return
           }
 
@@ -104,6 +100,8 @@ export const useSupabase = () => {
           res(200)
         })
         .catch(() => {
+          if (notification) toast.error(t('editor.auth.login.error'))
+          
           res(404)
         })
         .finally(() => {
@@ -411,6 +409,7 @@ export const useSupabase = () => {
   }
 
   return {
+    createUser,
     toDashboard,
     loginWithEmailAndPassword,
     login,

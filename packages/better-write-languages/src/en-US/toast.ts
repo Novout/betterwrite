@@ -15,6 +15,8 @@ export default {
     successChanged: 'Changed Successfully!',
     successRestarted: 'Successfully Restarted!',
     successRemoved: 'Successfully Removed!',
+    loginError: 'There was an error logging into the account!',
+    registerError: 'There was an error creating a new account!',
     onlyOnline: 'You are without internet access to access this feature!',
   },
   epub: {

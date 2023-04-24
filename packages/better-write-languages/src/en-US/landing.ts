@@ -2,12 +2,14 @@ export default {
   auth: {
     email: 'Enter a valid email!',
     emailPlaceholder: 'Email...',
-    password: 'The password must be at least 7 (seven) characters long!',
+    password: 'The password must be at least 6 characters long!',
     passwordPlaceholder: 'Senha...',
     termsError: 'Accept the Terms of Use!',
     verification: 'Access Code sent to your email!',
     integration: 'or log in with your account...',
     enter: 'Enter',
+    register: 'Register',
+    createAccount: 'Create Account',
     privacy: {
       and: ' and I agree with ',
       text: 'Privacy Policy',
