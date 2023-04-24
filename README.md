@@ -37,6 +37,7 @@ betterwrite.io
 - ✅ Statistics in Real-Time
 - ✅ Graph Control
 - ✅ Plugin Friendly
+- ✅ Realtime Collaboration
 <br>
 
 # An Editor for Creative Writing
