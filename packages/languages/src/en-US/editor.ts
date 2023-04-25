@@ -851,6 +851,11 @@ export default {
     },
   },
   presence: {
+    key: {
+      code: 'Code:',
+      link: 'Access Link:',
+      qrcode: 'QR Code:',
+    },
     alert: {
       deleteAccount:
         'Are you sure you want to delete your account and all its data in the cloud? This action is irreversible!',

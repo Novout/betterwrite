@@ -13,7 +13,6 @@
         </div>
         <div v-if="wizard === 'create'" class="flex flex-col gap-2">
           <h2 v-if="!key" class="text-lg font-bold font-poppins">{{ t('editor.presence.create.new') }}</h2>
-          <p v-else class="text-lg font-bold font-poppins">{{ t('editor.presence.create.key') }}</p>
           <Button v-if="!key" class="w-full p-2 bg-theme-background-2" @click.prevent.stop="onCreateRoom">{{ t('editor.presence.create.button') }}</Button>
           <EditorProjectPresenceKey :id="key" />
         </div>
