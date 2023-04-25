@@ -80,7 +80,7 @@ export const RoomSet = (
           delete stores.LIVESHARE.presence[key]
         } catch (e) {}
 
-        if (key === stores.LIVESHARE.ownerKey) {
+        if (leftPresences.some((presence) => getOwner(presence))) {
           await removePresence(channel)
         }
       })
