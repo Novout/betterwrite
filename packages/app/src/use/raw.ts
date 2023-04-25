@@ -364,10 +364,11 @@ export const useRaw = () => {
 
       const end = (el: HTMLDivElement, force: boolean = false) => {
         if (force) {
-          return (
-            index(el) ===
-            el.innerHTML.replaceAll(utils.regex().htmlTags(), '').length
-          )
+          const item = el.innerHTML.replaceAll(utils.regex().htmlTags(), '')
+
+          const target = utils.text().defaultWhitespace(item)
+
+          return index(el) === target.length
         }
 
         return index(el) === el.innerText.length

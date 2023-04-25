@@ -284,7 +284,7 @@ export default {
       doubts: 'Doubts',
       support: 'Suporte',
       terms: 'Terms of Use',
-      privacy: 'Privacy Policy'
+      privacy: 'Privacy Policy',
     },
     generator: {
       substitutions: 'Substitutions',
