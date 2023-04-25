@@ -54,7 +54,6 @@ export const useBlockText = ({
     CONTEXT.entities[target].raw = raw
 
     if (EDITOR.configuration.trackEntities) {
-      CONTEXT.entities[target].createdAt = format.actually('iso')
       CONTEXT.entities[target].updatedAt = format.actually('iso')
     }
 
