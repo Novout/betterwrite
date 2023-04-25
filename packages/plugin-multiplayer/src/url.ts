@@ -1,4 +1,5 @@
 import { PluginTypes } from 'better-write-types'
+import { validadeKey } from './utils'
 
 export const UrlKeySet = (
   emitter: PluginTypes.PluginEmitter,
@@ -10,7 +11,7 @@ export const UrlKeySet = (
 
     const key = params?.liveshare
 
-    if (key) {
+    if (validadeKey(key)) {
       emitter.emit('plugin-presence-room-join', key)
     }
   })
