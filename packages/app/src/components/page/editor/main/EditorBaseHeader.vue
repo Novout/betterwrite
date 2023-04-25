@@ -26,7 +26,7 @@
         <EditorBaseHeaderHelp />
       </div>
     </div>
-    <EditorBaseHeaderLogin />
+    <EditorBaseHeaderUser />
   </header>
 </template>
 

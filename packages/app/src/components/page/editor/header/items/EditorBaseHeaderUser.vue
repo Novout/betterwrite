@@ -1,6 +1,7 @@
 <template>
   <Menu as="div" class="relative">
     <MenuButton class="flex justify-center items-center rounded-full w-8"><UseImage
+      class="rounded-full"
       :src="user?.user_metadata.avatar_url"
     >
       <template #loading>
@@ -42,7 +43,7 @@ v-motion
         delay: 0,
         duration: 300,
       },
-    }" class="absolute rounded font-raleway p-5 flex flex-col gap-5 right-0 w-44 bg-theme-background-3">
+    }" class="absolute rounded font-raleway p-4 flex flex-col gap-5 right-0 w-44 bg-theme-background-3">
       <p v-if="user?.email" class="truncate wb-text font-poppins">{{ user?.email }}</p>
       <MenuItem @click="plugin.emit('plugin-oauth-logout')">
         <button class="flex wb-icon rounded shadow px-2 justify-between items-center bg-theme-background-1">
@@ -55,6 +56,13 @@ v-motion
           <IconDelete class="w-7 h-7" />
           <p class="font-bold">{{ t('editor.header.login.delete') }}</p>
         </button>
+      </MenuItem>
+      <MenuItem>
+        <div class="wb-text w-full mt-5 text-xs flex flex-col text-center items-center justify-center">
+          <router-link to="/terms-of-use" class="font-bold cursor-pointer">{{ t('editor.bar.help.terms') }}</router-link>
+          <p>&</p>
+          <router-link to="/privacy" class="font-bold cursor-pointer">{{ t('editor.bar.help.privacy') }}</router-link>
+        </div>
       </MenuItem>
     </MenuItems>
   </Menu>

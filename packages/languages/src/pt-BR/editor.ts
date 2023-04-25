@@ -282,6 +282,7 @@ export default {
       doubts: 'Dúvidas',
       support: 'Suporte',
       terms: 'Termos de Uso',
+      privacy: 'Política de Privacidade'
     },
     generator: {
       substitutions: 'Substituições',

@@ -15,10 +15,6 @@
         @action="router.push('/questions')"
       />
       <EditorHeaderItem
-        :text="t('editor.bar.help.terms')"
-        @action="router.push('/terms-of-use')"
-      />
-      <EditorHeaderItem
         v-if="env.isDev()"
         :text="t('editor.bar.help.support')"
         @action="router.push('/support')"
