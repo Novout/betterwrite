@@ -10,7 +10,6 @@
     <AboutInfo />
     <AboutEntity />
     <AboutPortability />
-    <AboutPowered />
     <AboutFinish />
   </div>
 </template>
