@@ -16,6 +16,7 @@ import { html } from '../raw'
 import { useProjectStore } from '@/store/project'
 import { useHistoryStore } from '@/store/history'
 import { Calls, usePlugin } from 'better-write-plugin-core'
+import { useFormat } from '../format'
 
 export const useBlockText = ({
   props,
@@ -45,11 +46,17 @@ export const useBlockText = ({
   const utils = useUtils()
   const storage = useStorage()
   const factory = useFactory()
+  const format = useFormat()
 
   const save = (target: number, raw: string) => {
     if (raw === null) return
 
     CONTEXT.entities[target].raw = raw
+
+    if (EDITOR.configuration.trackEntities) {
+      CONTEXT.entities[target].createdAt = format.actually('iso')
+      CONTEXT.entities[target].updatedAt = format.actually('iso')
+    }
 
     Calls.EditorEntityTextSaved(plugin)
   }
