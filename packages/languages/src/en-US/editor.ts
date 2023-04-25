@@ -851,6 +851,7 @@ export default {
     },
   },
   presence: {
+    off: 'This room is not available!',
     key: {
       code: 'Code:',
       link: 'Access Link:',

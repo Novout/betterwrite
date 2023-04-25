@@ -9,12 +9,19 @@ import type {
 import type { RealtimeChannel, User } from '@supabase/supabase-js'
 import { nanoid } from 'nanoid'
 import { computed } from 'vue-demi'
+import { getOwner } from './utils'
 
 export const RoomSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
 ) => {
+  const removePresence = async (channel: RealtimeChannel) => {
+    await channel.unsubscribe().catch(() => {})
+
+    stores.LIVESHARE.$reset()
+  }
+
   const setCTX = (object: ProjectObject, ctx: ContextState) => {
     // TODO: better method for track changes
 
@@ -74,12 +81,10 @@ export const RoomSet = (
         } catch (e) {}
 
         if (key === stores.LIVESHARE.ownerKey) {
-          await channel.unsubscribe().catch(() => {})
-
-          stores.LIVESHARE.$reset()
+          await removePresence(channel)
         }
       })
-      .on('presence', { event: 'sync' }, () => {
+      .on('presence', { event: 'sync' }, async () => {
         const state = channel.presenceState<LivesharePresenceItem>()
 
         stores.LIVESHARE.presence = state
@@ -94,7 +99,7 @@ export const RoomSet = (
           // TODO: use's safe random color or predefined arr colors
           const hexColor = hooks.utils.text().randomColor()
 
-          await channel.track({
+          const tracked = await channel.track({
             id: stores.AUTH.account.user?.email ?? stores.AUTH.account.user?.id,
             type,
             avatar_url:
@@ -102,6 +107,14 @@ export const RoomSet = (
             online_at: new Date().toISOString(),
             color: hexColor,
           })
+
+          if (tracked !== 'ok') {
+            await removePresence(channel)
+
+            hooks.toast.error(hooks.i18n.t('toast.generics.error'))
+
+            return
+          }
 
           const target = getCTX()
 
@@ -141,11 +154,7 @@ export const RoomSet = (
 
       const channel = hooks.supabase.channel(id)
 
-      if (!channel) {
-        hooks.toast.error(hooks.i18n.t('toast.generics.error'))
-
-        return
-      }
+      if (!channel) return
 
       if (
         Object.entries(channel.presence.state).length >=

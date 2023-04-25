@@ -857,6 +857,7 @@ export default {
     },
   },
   presence: {
+    off: 'Esta sala não está disponível!',
     key: {
       code: 'Code:',
       link: 'Access Link:',
