@@ -1,4 +1,5 @@
 export default {
+  loading: 'Pode demorar alguns segundos...',
   auth: {
     email: 'Insira um email válido!',
     emailPlaceholder: 'Email...',
