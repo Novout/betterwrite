@@ -142,6 +142,11 @@ export default {
             description:
               'Sempre ao salvar um arquivo, um "pente limpo" será executado em cada item do editor para remover itens indesejados para deixar o projeto mais leve. Caso ativado, os salvamentos estarão mais lentos.',
           },
+          trackEntities: {
+            title: 'Escutar Entidades',
+            description:
+              'Toda a criação e alteração de cada entidade será computada, podendo consultar seu tempo de criação, alteração, entre outras funcionalidades. Aumenta levemente o tamanho do projeto.',
+          },
         },
         background: {
           title: 'Fundo',

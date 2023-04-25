@@ -136,10 +136,10 @@ export const useProjectStore = defineStore('project', {
         chapters: options.chapters || [
           {
             id: useUtils().id().uuidv4(),
-            title: `${forceTitle || title}  | ${useFormat().actually()}`,
+            title: `${forceTitle || title}  | ${useFormat().actually('iso')}`,
             entities: [],
-            createdAt: useFormat().actually(),
-            updatedAt: useFormat().actually(),
+            createdAt: useFormat().actually('iso'),
+            updatedAt: useFormat().actually('iso'),
           },
         ],
         bw: options.bw || {
@@ -211,13 +211,13 @@ export const useProjectStore = defineStore('project', {
 
       const context: ContextState = {
         id: useUtils().id().uuidv4(),
-        title: `${title} | ${useFormat().actually()}`,
+        title: `${title} | ${useFormat().actually('iso')}`,
         entities: [
           useFactory().entity().create('heading-one', title),
           useFactory().entity().create('paragraph', ''),
         ],
-        createdAt: useFormat().actually(),
-        updatedAt: useFormat().actually(),
+        createdAt: useFormat().actually('iso'),
+        updatedAt: useFormat().actually('iso'),
       }
 
       this.pageLoaded = context.id
@@ -277,8 +277,8 @@ export const useProjectStore = defineStore('project', {
     resetDates() {
       this.chapters.forEach((page: ContextState) => {
         page.entities.forEach((line: Entity) => {
-          line.createdAt = useFormat().actually()
-          line.updatedAt = useFormat().actually()
+          line.createdAt = useFormat().actually('iso')
+          line.updatedAt = useFormat().actually('iso')
         })
       })
     },
@@ -291,7 +291,7 @@ export const useProjectStore = defineStore('project', {
       if (index === -1) return
 
       this.chapters[index].entities = context.entities
-      this.chapters[index].updatedAt = useFormat().actually()
+      this.chapters[index].updatedAt = useFormat().actually('iso')
     },
   },
   getters: {

@@ -182,6 +182,13 @@ export const useStorage = () => {
       _.project.chapters = _.project.pages || []
     }
 
+    if (!_.editor.configuration.trackEntities) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        trackEntities: false
+      }
+    }
+
     return _
   }
 

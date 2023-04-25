@@ -86,6 +86,7 @@ export interface EditorStateConfiguration {
     quality: number
   }
   purgeEntities: boolean
+  trackEntities: boolean
   entity: EditorStateConfigurationEntity
   commands: EditorStateConfigurationCommands
 }

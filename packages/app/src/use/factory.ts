@@ -6,10 +6,14 @@ import {
 } from 'better-write-types'
 import { usePDFStore } from '@/store/pdf'
 import i18n from '@/lang'
+import { useEditorStore } from '@/store/editor'
+import { useFormat } from './format'
 
 export const useFactory = () => {
+  const EDITOR = useEditorStore()
   const PDF = usePDFStore()
 
+  const format = useFormat()
   const env = useEnv()
   // @ts-ignore
   const { t } = i18n.global
@@ -36,7 +40,14 @@ export const useFactory = () => {
     }
 
     const defaults = () => {
+      const date = format.actually('iso')
+
+      const track = EDITOR.configuration.trackEntities
+        ? { createdAt: date, updatedAt: date }
+        : {}
+
       return {
+        ...track,
         visual: {
           error: false,
           info: false,

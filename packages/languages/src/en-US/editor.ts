@@ -140,6 +140,11 @@ export default {
             description:
               'Every time when saving a file, a cleanup will be performed on each editor item to remove unwanted items to make the project lighter. If enabled, saves will be slower.',
           },
+          trackEntities: {
+            title: 'Track Entities',
+            description:
+              'All the creation and alteration of each entity will be computed, being able to consult its creation time, alteration, among other functionalities. Slightly increases the project size.',
+          },
         },
         background: {
           title: 'Background',

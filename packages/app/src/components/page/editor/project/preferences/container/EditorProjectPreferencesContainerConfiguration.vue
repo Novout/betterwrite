@@ -222,6 +222,25 @@
         color="#AA0000"
         :description="
           t(
+            'editor.preferences.configuration.editor.options.trackEntities.description'
+          )
+        "
+      >
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.editor.options.trackEntities.title'
+              )
+            }}
+          </p>
+          <InputBoolean v-model="EDITOR.configuration.trackEntities" />
+        </div>
+      </DescriptionContainer>
+      <DescriptionContainer
+        color="#AA0000"
+        :description="
+          t(
             'editor.preferences.configuration.editor.options.purgeEntities.description'
           )
         "

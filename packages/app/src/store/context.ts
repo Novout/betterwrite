@@ -28,8 +28,8 @@ export const useContextStore = defineStore('context', {
       id: useUtils().id().uuidv4(),
       title: 'Untitled',
       entities: [],
-      createdAt: useFormat().actually(),
-      updatedAt: useFormat().actually(),
+      createdAt: useFormat().actually('iso'),
+      updatedAt: useFormat().actually('iso'),
     }
   },
   actions: {
@@ -61,7 +61,7 @@ export const useContextStore = defineStore('context', {
       if (index === -1 || raw === this.entities[index].raw) return
 
       this.entities[index].raw = raw
-      this.entities[index].updatedAt = useFormat().actually()
+      this.entities[index].updatedAt = useFormat().actually('iso')
     },
     updateCommentInPage({ entity, raw }: ContextActionsUpdateInPage) {
       if (!entity) return
@@ -78,8 +78,8 @@ export const useContextStore = defineStore('context', {
         this.entities[index].external = {
           comment: {
             raw,
-            createdAt: useFormat().actually(),
-            updatedAt: useFormat().actually(),
+            createdAt: useFormat().actually('iso'),
+            updatedAt: useFormat().actually('iso'),
           },
         }
 
@@ -91,7 +91,8 @@ export const useContextStore = defineStore('context', {
         // @ts-ignore
         this.entities[index].external.comment.raw = raw
         // @ts-ignore
-        this.entities[index].external.comment.updatedAt = useFormat().actually()
+        this.entities[index].external.comment.updatedAt =
+          useFormat().actually('iso')
       }
     },
     removeInPage(entity: Entity) {
@@ -170,7 +171,7 @@ export const useContextStore = defineStore('context', {
 
       this.entities[index].type = payload.new.type
       this.entities[index].createdAt = payload.new.createdAt
-      this.entities[index].updatedAt = useFormat().actually()
+      this.entities[index].updatedAt = useFormat().actually('iso')
       this.entities[index].external = payload.new.external || {}
     },
     newInPage({ entity, type }: ContextActionNewInPage) {

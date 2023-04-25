@@ -47,6 +47,7 @@ export const useEditorStore = defineStore('editor', {
           quality: 0.8,
         },
         purgeEntities: false,
+        trackEntities: true,
         blocked: true,
         bottomBar: true,
         entity: {
