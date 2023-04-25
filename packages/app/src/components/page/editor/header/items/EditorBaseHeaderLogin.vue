@@ -51,7 +51,7 @@ v-motion
         </button>
       </MenuItem>
       <MenuItem @click="plugin.emit('plugin-oauth-delete')">
-        <button class="flex wb-icon rounded shadow px-2 justify-between items-center bg-theme-background-1">
+        <button :style="{ outline: '2px solid red' }" class="flex wb-icon rounded shadow px-2 justify-between items-center bg-theme-background-1">
           <IconDelete class="w-7 h-7" />
           <p class="font-bold">{{ t('editor.header.login.delete') }}</p>
         </button>
@@ -65,7 +65,7 @@ v-motion
   import { UseImage } from '@vueuse/components'
   import { usePlugin } from 'better-write-plugin-core'
   import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
+  import { useI18n } from 'vue-i18n'
 
   const plugin = usePlugin()
   const { t } = useI18n()
