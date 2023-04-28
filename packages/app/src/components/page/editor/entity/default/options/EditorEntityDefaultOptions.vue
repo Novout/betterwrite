@@ -208,8 +208,8 @@
   }
 
   const onClose = (e: PointerEvent) => {
-    if(e.type !== 'click') return
-    
+    if (e.type !== 'click') return
+
     ABSOLUTE.entity.menu = false
   }
 </script>

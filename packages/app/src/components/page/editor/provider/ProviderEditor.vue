@@ -13,8 +13,12 @@
     <EditorProjectCorrector v-else-if="ABSOLUTE.project.corrector" />
     <EditorProjectCharacters v-else-if="ABSOLUTE.project.characters" />
     <EditorProjectPreferences v-else-if="ABSOLUTE.project.preferences" />
-    <EditorProjectPresenceCreate v-else-if="ABSOLUTE.modal.presence.createOrJoin" />
-    <EditorProjectPresenceInformation v-else-if="ABSOLUTE.modal.presence.info" />
+    <EditorProjectPresenceCreate
+      v-else-if="ABSOLUTE.modal.presence.createOrJoin"
+    />
+    <EditorProjectPresenceInformation
+      v-else-if="ABSOLUTE.modal.presence.info"
+    />
     <DOCXConfiguration v-else-if="ABSOLUTE.docx.configuration" />
     <PDFConfiguration v-else-if="ABSOLUTE.pdf.configuration" />
     <PDFGenerate v-else-if="ABSOLUTE.pdf.generate" />

@@ -1,7 +1,7 @@
 <template>
   <div
     id="about-3"
-    class="flex bg-cover text-white min-h-screen justify-around items-center flex-col w-full pt-10 py-30"
+    class="flex bg-cover gap-40 text-white justify-around items-center flex-col w-full py-20"
   >
     <div
       v-motion
@@ -78,6 +78,6 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  
+
   const { t } = useI18n()
 </script>

@@ -22,11 +22,7 @@
           <h2 class="text-base wb-text font-bold mb-2 font-poppins">
             {{ t('editor.pdf.gen.color') }}
           </h2>
-          <InputSelect
-            v-model="color"
-            class="w-30"
-            :arr="['RGB', 'CMYK']"
-          />
+          <InputSelect v-model="color" class="w-30" :arr="['RGB', 'CMYK']" />
           <h2 class="text-base wb-text font-bold mt-5 mb-2 font-poppins">
             {{ t('editor.pdf.gen.chapters') }}
           </h2>
@@ -109,7 +105,7 @@
     setTimeout(() => {
       plugin.emit('plugin-pdf-generate', {
         chapters: chapters.value,
-        color: color.value
+        color: color.value,
       })
     }, 100)
   }

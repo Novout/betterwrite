@@ -16,7 +16,7 @@
   import { ShortcutsPlugin } from 'better-write-plugin-shortcuts'
   import { VoiceTypingPlugin } from 'better-write-plugin-voice-typing'
   import { EntityHistoryPlugin } from 'better-write-plugin-entity-history'
-  import { CharactersPlugin } from 'better-write-plugin-characters'  
+  import { CharactersPlugin } from 'better-write-plugin-characters'
   import { ProgressBarPlugin } from 'better-write-plugin-progress-bar'
   import { EditorWindowPlugin } from 'better-write-plugin-editor-window'
   import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
@@ -38,6 +38,6 @@
     ProgressBarPlugin(),
     EditorWindowPlugin(),
     MultiplayerPlugin(),
-    AuthPlugin()
+    AuthPlugin(),
   ]).init()
 </script>

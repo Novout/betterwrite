@@ -54,7 +54,11 @@
         />
       </svg>
     </EditorAuthIntegrationsButton>
-    <EditorAuthIntegrationsButton :terms-of-use="termsOfUse" provider="github" color="#111111">
+    <EditorAuthIntegrationsButton
+      :terms-of-use="termsOfUse"
+      provider="github"
+      color="#111111"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"

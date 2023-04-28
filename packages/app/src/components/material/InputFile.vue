@@ -52,8 +52,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useEditorStore } from '@/store/editor';
-import { getImageFileRaw } from 'better-write-image-converter'
+  import { useEditorStore } from '@/store/editor'
+  import { getImageFileRaw } from 'better-write-image-converter'
   import { ref } from 'vue'
 
   const EDITOR = useEditorStore()

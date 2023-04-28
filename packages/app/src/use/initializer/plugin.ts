@@ -56,7 +56,7 @@ export const usePluginInitializer = () => {
         PROJECT: useProjectStore(),
         EXTERNALS: useExternalsStore(),
         HISTORY: useHistoryStore(),
-        LIVESHARE: useLiveshareStore()
+        LIVESHARE: useLiveshareStore(),
       },
       plugins,
       {

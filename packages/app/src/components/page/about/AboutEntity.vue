@@ -1,7 +1,7 @@
 <template>
   <div
     id="about-1"
-    class="flex min-h-screen justify-evenly mt-50 md:mt-0 p-5 flex-col items-center bg-cover w-full"
+    class="flex justify-evenly py-20 md:mt-0 p-5 flex-col items-center bg-cover w-full"
   >
     <h2
       v-motion
@@ -16,7 +16,7 @@
           duration: 800,
         },
       }"
-      class="text-white text-center font-bold text-xl md:text-2xl lg:text-3xl font-poppins mt-5"
+      class="text-white text-center font-bold text-xl md:text-2xl lg:text-3xl font-poppins mt-10"
     >
       {{ t('about.entity.title') }}
     </h2>
@@ -33,7 +33,7 @@
           duration: 800,
         },
       }"
-      class="text-white font-bold my-2 text-base lg:text-lg text-center"
+      class="text-white font-bold mt-15 mb-30 text-base lg:text-lg text-center"
     >
       {{ t('about.entity.description') }}
     </p>

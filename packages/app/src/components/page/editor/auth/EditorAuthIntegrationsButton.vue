@@ -21,7 +21,7 @@
 
   const props = defineProps<{
     provider: SupabaseIntegrations
-    color: string,
+    color: string
     termsOfUse
   }>()
 

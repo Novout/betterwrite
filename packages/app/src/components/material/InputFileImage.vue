@@ -25,8 +25,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useEditorStore } from '@/store/editor';
-import { getImageFileRaw } from 'better-write-image-converter'
+  import { useEditorStore } from '@/store/editor'
+  import { getImageFileRaw } from 'better-write-image-converter'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
 
@@ -43,7 +43,10 @@ import { getImageFileRaw } from 'better-write-image-converter'
   const emit = defineEmits(['load', 'error', 'exclude'])
 
   const onOpen = () => {
-    getImageFileRaw({ accept: props.accept, compress: EDITOR.configuration.compressFiles })
+    getImageFileRaw({
+      accept: props.accept,
+      compress: EDITOR.configuration.compressFiles,
+    })
       .then(async ({ raw, fileSize }) => {
         if (fileSize > 8000000) {
           toast.error(t('toast.image.limitFileSize', { limit: '8' }))

@@ -27,9 +27,9 @@ export const s = createClient(supabaseUrl, supabaseAnonKey, {
   auth: { storageKey: '__BW__' },
   realtime: {
     params: {
-      eventsPerSecond: 10
-    }
-  }
+      eventsPerSecond: 10,
+    },
+  },
 })
 
 export const getSupabaseUser = async () => {
@@ -69,7 +69,10 @@ export const useSupabase = () => {
     toast.info(t('toast.generics.load'))
 
     s.auth
-      .signInWithOAuth({ provider, options: { redirectTo: env.getCorrectLocalUrl() } })
+      .signInWithOAuth({
+        provider,
+        options: { redirectTo: env.getCorrectLocalUrl() },
+      })
       .then(async ({ error }) => {
         if (error) throw error
 
@@ -144,35 +147,38 @@ export const useSupabase = () => {
 
   const saveProject = async (project?: ProjectObject) => {
     toast.info(t('toast.generics.load'))
-    
+
     await storage.normalize()
 
     await storage.purge()
 
-    const { data, error } = await s.from('projects').upsert(
-      project
-        ? {
-            // @ts-ignore
-            id_user: AUTH.account.user.id,
-            ...project,
-            document: {
-              id: project?.id,
-              name: project?.project.nameRaw,
-              type: project?.project.type
+    const { data, error } = await s
+      .from('projects')
+      .upsert(
+        project
+          ? {
+              // @ts-ignore
+              id_user: AUTH.account.user.id,
+              ...project,
+              document: {
+                id: project?.id,
+                name: project?.project.nameRaw,
+                type: project?.project.type,
+              },
             }
-          }
-        : {
-            // @ts-ignore
-            id_user: AUTH.account.user.id,
-            ...storage.getProjectObject(),
-            document: {
-              id: storage.getProjectObject()?.id,
-              name: storage.getProjectObject()?.project.nameRaw,
-              type: storage.getProjectObject()?.project.type
-            }
-          },
-      { onConflict: 'id' }
-    ).select()
+          : {
+              // @ts-ignore
+              id_user: AUTH.account.user.id,
+              ...storage.getProjectObject(),
+              document: {
+                id: storage.getProjectObject()?.id,
+                name: storage.getProjectObject()?.project.nameRaw,
+                type: storage.getProjectObject()?.project.type,
+              },
+            },
+        { onConflict: 'id' }
+      )
+      .select()
 
     if (error) {
       toast.error(error.message)
@@ -196,8 +202,8 @@ export const useSupabase = () => {
               document: {
                 id: project?.id,
                 name: project?.project.nameRaw,
-                type: project?.project.type
-              }
+                type: project?.project.type,
+              },
             }
           : {
               // @ts-ignore
@@ -206,8 +212,8 @@ export const useSupabase = () => {
               document: {
                 id: storage.getProjectObject()?.id,
                 name: storage.getProjectObject()?.project.nameRaw,
-                type: storage.getProjectObject()?.project.type
-              }
+                type: storage.getProjectObject()?.project.type,
+              },
             },
         { onConflict: 'id' }
       )
@@ -225,10 +231,7 @@ export const useSupabase = () => {
   const deleteProject = async (id: ID<number>) => {
     if (!confirm(t('toast.project.deleteAlert'))) return
 
-    const { error } = await s
-      .from('projects')
-      .delete()
-      .match({ id })
+    const { error } = await s.from('projects').delete().match({ id })
 
     if (error) {
       toast.error(error.message)
@@ -292,13 +295,16 @@ export const useSupabase = () => {
     const profile = exists[0]
 
     if (!profile) {
-      const { data: d, error } = await s.from('profiles').upsert(
-        {
-          id: AUTH.account.user!.id,
-          created_at_day: format.actually(),
-        },
-        { onConflict: 'id' }
-      ).select()
+      const { data: d, error } = await s
+        .from('profiles')
+        .upsert(
+          {
+            id: AUTH.account.user!.id,
+            created_at_day: format.actually(),
+          },
+          { onConflict: 'id' }
+        )
+        .select()
       if (!d) return
 
       if (error) {

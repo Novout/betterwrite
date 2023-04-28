@@ -4,7 +4,7 @@ export default {
     description:
       'betterwrite.io foi projetado para extrair o máximo possível da criatividade de escritores e dos entusiastas da escrita.',
     list: {
-      1: 'Customização: Deixe o editor com a sua cara sem que isso interfira em seus documentos.',
+      1: 'Customização: Deixe o editor com a sua cara, sem que isso interfira em seus documentos.',
       2: 'Ferramentas: Explore uma gama de possibilidades que contribuirão diretamente ao seu projeto.',
       3: 'O Vazio: Salve seus projetos na nuvem e os manuseie com facilidade.',
       4: 'Portabilidade: Leve o seu editor favorito para qualquer lugar.',

@@ -1,8 +1,5 @@
 <template>
-  <EditorHeaderButton
-    v-if="PROJECT.name !== env.projectEmpty()"
-    type="help"
-  >
+  <EditorHeaderButton v-if="PROJECT.name !== env.projectEmpty()" type="help">
     <template #text>
       {{ t('editor.header.help') }}
     </template>

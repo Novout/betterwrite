@@ -10,7 +10,7 @@ export const useDBInitializer = () => {
     AUTH.account.user = data.session?.user ?? null
 
     s.auth.onAuthStateChange((_, session) => {
-      if(!session) return
+      if (!session) return
 
       AUTH.account.user = session.user || null
     })

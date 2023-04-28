@@ -77,12 +77,7 @@
             <p class="text-lg text-center">
               {{ t('editor.new.annotations.description') }}
             </p>
-            <EditorProjectNewList
-              :list="[
-                'annotation',
-                'tools',
-              ]"
-            />
+            <EditorProjectNewList :list="['annotation', 'tools']" />
             <Button @click="project.external().new('only-annotations')">{{
               t('editor.new.annotations.button')
             }}</Button>

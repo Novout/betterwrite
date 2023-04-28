@@ -19,7 +19,10 @@
     </div>
     <div class="flex items-end justify-between flex-col ml-5">
       <div class="flex items-center justify-end w-full mb-1">
-        <IconClose class="wb-icon w-8 h-8" @click.prevent.stop="plugin.emit('plugin-voice-stop')" />
+        <IconClose
+          class="wb-icon w-8 h-8"
+          @click.prevent.stop="plugin.emit('plugin-voice-stop')"
+        />
       </div>
       <div class="flex w-full">
         <InputSelect v-model="lang" class="wb-text" :arr="VueI18nAllISO" />

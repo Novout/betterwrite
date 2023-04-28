@@ -51,7 +51,7 @@
     max: {
       required: false,
       type: Number,
-    }
+    },
   })
 
   const toast = useToast()

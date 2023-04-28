@@ -21,7 +21,7 @@
     >
       <IconMaterialYes v-if="props.modelValue" class="filter invert w-3 h-3" />
       <IconMaterialNo v-else class="filter invert w-3 h-3" />
-  </span>
+    </span>
   </Switch>
 </template>
 

@@ -7,23 +7,23 @@
   >
     <div class="absolute left-5">
       <button
-      v-if="wizard === 'sign-up'"
-      class="flex text-gray-200 items-center text-base rounded-full gap-2 transition-colors bg-gradient-to-br from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-300 text-black px-4 py-2 shadow-xl transition-colors font-bold"
-      @click.prevent.stop="wizard = 'sign-in'"
-    >
-      <p class="w-20 text-center">
-        {{ t('landing.auth.enter') }}
-      </p>
-    </button>
-    <button
-      v-else
-      class="flex text-gray-200 items-center text-base rounded-full gap-2 transition-colors bg-gradient-to-br from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-900 px-4 py-2 shadow-xl transition-colors font-bold"
-      @click.prevent.stop="wizard = 'sign-up'"
-    >
-      <p class="w-20 text-center">
-        {{ t('landing.auth.register') }}
-      </p>
-    </button>
+        v-if="wizard === 'sign-up'"
+        class="flex text-gray-200 items-center text-base rounded-full gap-2 transition-colors bg-gradient-to-br from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-300 text-black px-4 py-2 shadow-xl transition-colors font-bold"
+        @click.prevent.stop="wizard = 'sign-in'"
+      >
+        <p class="w-20 text-center">
+          {{ t('landing.auth.enter') }}
+        </p>
+      </button>
+      <button
+        v-else
+        class="flex text-gray-200 items-center text-base rounded-full gap-2 transition-colors bg-gradient-to-br from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-900 px-4 py-2 shadow-xl transition-colors font-bold"
+        @click.prevent.stop="wizard = 'sign-up'"
+      >
+        <p class="w-20 text-center">
+          {{ t('landing.auth.register') }}
+        </p>
+      </button>
     </div>
     <IconClose
       class="absolute wb-icon right-5 w-6 h-6"
@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref} from 'vue'
+  import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const { t } = useI18n()

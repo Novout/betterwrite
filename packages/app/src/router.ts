@@ -14,7 +14,7 @@ router.beforeResolve(async (to, from, next) => {
   const AUTH = useAuthStore()
 
   const env = useEnv()
-  const user =  AUTH.account.user ?? await getSupabaseUser() ?? null
+  const user = AUTH.account.user ?? (await getSupabaseUser()) ?? null
   const url = window.location.href
   const token = url.includes('access_token')
   const isOnline = useNetwork().isOnline.value
@@ -31,7 +31,7 @@ router.beforeResolve(async (to, from, next) => {
     return
   }
 
-  if ((to.name === 'Plans') && !user) {
+  if (to.name === 'Plans' && !user) {
     next({ name: 'Landing' })
 
     return

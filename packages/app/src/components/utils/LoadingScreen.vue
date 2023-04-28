@@ -8,13 +8,17 @@
       alt="Better Write Logo"
       src="/logo_default.svg"
     />
-    <p class="md:text-2xl text-lg font-raleway animate-pulse absolute top-1/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center">{{ t('landing.loading') }}</p>
+    <p
+      class="md:text-2xl text-lg font-raleway animate-pulse absolute top-1/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center"
+    >
+      {{ t('landing.loading') }}
+    </p>
     <Spinner :width="100" :height="100" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
+  import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
+  const { t } = useI18n()
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div
     id="about-2"
-    class="flex bg-cover min-h-screen justify-evenly items-center flex-col w-full px-5 pointer-events-none"
+    class="flex bg-cover py-20 gap-10 justify-evenly items-center flex-col w-full px-5 pointer-events-none"
   >
     <h2
       v-motion
@@ -121,6 +121,6 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
-  
+
   const { t } = useI18n()
 </script>

@@ -107,10 +107,7 @@ export const useTransformer = () => {
   }
 
   const characters = () => {
-    const nameCase = (
-      target: string,
-      focus: 'setter' | 'getter'
-    ): string => {
+    const nameCase = (target: string, focus: 'setter' | 'getter'): string => {
       let value: Maybe<'strict' | 'default' | 'all'> = null
       let __STOP__: boolean = false
 

@@ -32,10 +32,7 @@
   import { useContextStore } from '@/store/context'
   import { useEditorStore } from '@/store/editor'
   import { useRaw } from '@/use/raw'
-  import {
-    useElementHover,
-    useIntersectionObserver,
-  } from '@vueuse/core'
+  import { useElementHover, useIntersectionObserver } from '@vueuse/core'
   import { useMotion, MotionVariants } from '@vueuse/motion'
   import { onLongPress } from '@vueuse/core'
   import { Calls } from 'better-write-plugin-core'
@@ -72,12 +69,9 @@
   onLongPress(
     container,
     (e) => {
-      if(props.entity.type === 'drau' || e.pointerType === 'mouse') return
+      if (props.entity.type === 'drau' || e.pointerType === 'mouse') return
 
-      raw
-        .v2()
-        .block()
-        .menu(e, _index.value)
+      raw.v2().block().menu(e, _index.value)
     },
     { delay: 300 }
   )

@@ -62,7 +62,7 @@
               padding: '2rem',
             }"
           >
-            {{ entity.raw.substring(0, 10)  }}...
+            {{ entity.raw.substring(0, 10) }}...
           </p>
         </div>
         <div

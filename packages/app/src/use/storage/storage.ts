@@ -149,7 +149,7 @@ export const useStorage = () => {
     if (!_.editor.configuration.cloudAutosave) {
       _.editor.configuration = {
         ..._.editor.configuration,
-        cloudAutosave: false
+        cloudAutosave: false,
       }
     }
 
@@ -158,22 +158,22 @@ export const useStorage = () => {
         ..._.editor.configuration,
         compressFiles: {
           value: false,
-          quality: 0.8
-        }
+          quality: 0.8,
+        },
       }
     }
 
     if (!_.editor.styles.base.backgroundCoverAttribute) {
       _.editor.styles.base = {
         ..._.editor.styles.base,
-        backgroundCoverAttribute: true
+        backgroundCoverAttribute: true,
       }
     }
 
     if (!_.editor.configuration.purgeEntities) {
       _.editor.configuration = {
         ..._.editor.configuration,
-        purgeEntities: false
+        purgeEntities: false,
       }
     }
 
@@ -185,7 +185,7 @@ export const useStorage = () => {
     if (!_.editor.configuration.trackEntities) {
       _.editor.configuration = {
         ..._.editor.configuration,
-        trackEntities: false
+        trackEntities: false,
       }
     }
 
@@ -207,7 +207,7 @@ export const useStorage = () => {
   }
 
   const purge = () => {
-    if(!EDITOR.configuration.purgeEntities) return
+    if (!EDITOR.configuration.purgeEntities) return
 
     PROJECT.chapters.forEach((page) => {
       page.entities.forEach((entity) => {

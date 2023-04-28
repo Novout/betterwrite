@@ -58,7 +58,9 @@
         />
       </div>
       <div class="wb-preferences">
-        <p class="text-sm">{{ t('editor.aside.configuration.cloudAutosave') }}</p>
+        <p class="text-sm">
+          {{ t('editor.aside.configuration.cloudAutosave') }}
+        </p>
         <InputBoolean
           v-model="EDITOR.configuration.cloudAutosave"
           :specific="true"
@@ -214,7 +216,12 @@
           </p>
           <div class="flex gap-2 items-center">
             <InputBoolean v-model="EDITOR.configuration.compressFiles.value" />
-            <InputNumber v-model="EDITOR.configuration.compressFiles.quality" :min="0" :max="1" :step="0.1" />
+            <InputNumber
+              v-model="EDITOR.configuration.compressFiles.quality"
+              :min="0"
+              :max="1"
+              :step="0.1"
+            />
           </div>
         </div>
       </DescriptionContainer>
@@ -268,7 +275,7 @@
     onSwitchLanguage,
   } from 'better-write-languages'
   import { useEditorStore } from '@/store/editor'
-  import { useProjectStore } from '@/store/project';
+  import { useProjectStore } from '@/store/project'
   import { LanguageRaw } from 'better-write-types'
 
   const EDITOR = useEditorStore()

@@ -5,20 +5,58 @@
         ref="main"
         class="left-0 font-raleway gap-10 top-0 p-5 flex z-max flex-col w-full bg-rgba-blur lg:w-1/2 h-full lg:h-3/4 bg-theme-background-1 wb-text wb-scroll overflow-y-auto rounded shadow-2xl wb-scroll"
       >
-        <EditorAbsoluteHeader :title="t('editor.presence.create.title')" @close="onClose" />
+        <EditorAbsoluteHeader
+          :title="t('editor.presence.create.title')"
+          @close="onClose"
+        />
         <p v-if="!key">{{ t('editor.presence.create.description') }}</p>
-        <div v-if="!key" class="flex flex-col sm:flex-row gap-5 w-full items-center justify-between">
-          <Button :class="[wizard === 'create' ? 'bg-theme-background-3' : 'bg-theme-background-2']" class="flex-1 py-2 w-full" @click="wizard = 'create'">{{ t('editor.presence.info.create') }}</Button>
-          <Button :class="[wizard === 'enter' ? 'bg-theme-background-3' : 'bg-theme-background-2']" class="flex-1 py-2 w-full" @click="wizard = 'enter'">{{ t('editor.presence.info.enter') }}</Button>
+        <div
+          v-if="!key"
+          class="flex flex-col sm:flex-row gap-5 w-full items-center justify-between"
+        >
+          <Button
+            :class="[
+              wizard === 'create'
+                ? 'bg-theme-background-3'
+                : 'bg-theme-background-2',
+            ]"
+            class="flex-1 py-2 w-full"
+            @click="wizard = 'create'"
+            >{{ t('editor.presence.info.create') }}</Button
+          >
+          <Button
+            :class="[
+              wizard === 'enter'
+                ? 'bg-theme-background-3'
+                : 'bg-theme-background-2',
+            ]"
+            class="flex-1 py-2 w-full"
+            @click="wizard = 'enter'"
+            >{{ t('editor.presence.info.enter') }}</Button
+          >
         </div>
         <div v-if="wizard === 'create'" class="flex flex-col gap-2">
-          <h2 v-if="!key" class="text-lg font-bold font-poppins">{{ t('editor.presence.create.new') }}</h2>
-          <Button v-if="!key" class="w-full p-2 bg-theme-background-2" @click.prevent.stop="onCreateRoom">{{ t('editor.presence.create.button') }}</Button>
+          <h2 v-if="!key" class="text-lg font-bold font-poppins">
+            {{ t('editor.presence.create.new') }}
+          </h2>
+          <Button
+            v-if="!key"
+            class="w-full p-2 bg-theme-background-2"
+            @click.prevent.stop="onCreateRoom"
+            >{{ t('editor.presence.create.button') }}</Button
+          >
           <EditorProjectPresenceKey :id="key" />
         </div>
         <div v-if="wizard === 'enter'" class="flex flex-col gap-2">
-          <h2 class="text-lg font-bold font-poppins">{{ t('editor.presence.create.enterInput') }}</h2>
-          <InputText v-model="room" :placeholder="t('editor.presence.create.enterPlaceholder')" class="bg-transparent font-bold border-theme-border-1 border-2 w-full p-2 rounded" @keyup.enter="onJoinRoom" />
+          <h2 class="text-lg font-bold font-poppins">
+            {{ t('editor.presence.create.enterInput') }}
+          </h2>
+          <InputText
+            v-model="room"
+            :placeholder="t('editor.presence.create.enterPlaceholder')"
+            class="bg-transparent font-bold border-theme-border-1 border-2 w-full p-2 rounded"
+            @keyup.enter="onJoinRoom"
+          />
         </div>
       </div>
     </div>
@@ -30,7 +68,7 @@
   import { usePlugin } from 'better-write-plugin-core'
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
-import { useToast } from 'vue-toastification'
+  import { useToast } from 'vue-toastification'
 
   const ABSOLUTE = useAbsoluteStore()
 
@@ -49,13 +87,13 @@ import { useToast } from 'vue-toastification'
   })
 
   const onCreateRoom = () => {
-    if(key.value) return
+    if (key.value) return
 
     plugin.emit('plugin-presence-room-create')
   }
 
   const onJoinRoom = () => {
-    if(room.value.length !== 30 || room.value === key.value) {
+    if (room.value.length !== 30 || room.value === key.value) {
       toast.error(t('toast.generics.error'))
 
       return

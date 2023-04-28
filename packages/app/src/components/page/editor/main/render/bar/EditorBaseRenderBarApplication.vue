@@ -10,7 +10,5 @@
 
   const env = useEnv()
 
-  const version = computed(
-    () => `v${env.packageVersion()}`
-  )
+  const version = computed(() => `v${env.packageVersion()}`)
 </script>

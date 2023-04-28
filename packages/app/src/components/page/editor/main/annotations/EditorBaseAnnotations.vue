@@ -1,6 +1,8 @@
 <template>
   <div class="relative w-full wb-edit overflow-auto">
-    <div class="absolute right-10 top-2 bg-none z-9999 flex items-center justify-end w-full">
+    <div
+      class="absolute right-10 top-2 bg-none z-9999 flex items-center justify-end w-full"
+    >
       <div class="flex gap-2 sm:gap-6 items-center">
         <HeroIcon class="wb-icon" @click="call(redoCommand.key)">
           <IconRedo class="w-6 h-6 md:(w-7 h-7)" />
@@ -33,37 +35,35 @@
         </div>
       </div>
     </div>
-    <div id="bw-wysiwyg" class="h-full wb-scroll overflow-auto overscroll-none" />
+    <div
+      id="bw-wysiwyg"
+      class="h-full wb-scroll overflow-auto overscroll-none"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
   import { usePlugin } from 'better-write-plugin-core'
   import { onBeforeUnmount, onMounted, ref } from 'vue'
-  import { callCommand } from "@milkdown/utils";
-  import type {
-    CmdKey,
-    Editor,
-  } from '@milkdown/core'
-  import { redoCommand, undoCommand } from "@milkdown/plugin-history";
+  import { callCommand } from '@milkdown/utils'
+  import type { CmdKey, Editor } from '@milkdown/core'
+  import { redoCommand, undoCommand } from '@milkdown/plugin-history'
   import {
     toggleEmphasisCommand,
     toggleStrongCommand,
     wrapInBlockquoteCommand,
     wrapInBulletListCommand,
     wrapInOrderedListCommand,
-    insertImageCommand
-  } from "@milkdown/preset-commonmark";
-  import { useEditorStore } from '@/store/editor';
-  import { getImageFileRaw } from 'better-write-image-converter';
-  import {
-    getMarkdown
-  } from '@milkdown/utils'
-import { useProject } from '@/use/project';
-import { saveAs } from 'file-saver';
-import { useUtils } from '@/use/utils';
-import { useToast } from 'vue-toastification';
-import { useI18n } from 'vue-i18n';
+    insertImageCommand,
+  } from '@milkdown/preset-commonmark'
+  import { useEditorStore } from '@/store/editor'
+  import { getImageFileRaw } from 'better-write-image-converter'
+  import { getMarkdown } from '@milkdown/utils'
+  import { useProject } from '@/use/project'
+  import { saveAs } from 'file-saver'
+  import { useUtils } from '@/use/utils'
+  import { useToast } from 'vue-toastification'
+  import { useI18n } from 'vue-i18n'
 
   const EDITOR = useEditorStore()
 
@@ -86,7 +86,7 @@ import { useI18n } from 'vue-i18n';
   })
 
   function call<T>(command: CmdKey<T>, payload?: T) {
-    editor.value?.action(callCommand(command, payload));
+    editor.value?.action(callCommand(command, payload))
   }
 
   const onImageInput = () => {
@@ -100,10 +100,10 @@ import { useI18n } from 'vue-i18n';
   const onGetMarkdown = () => {
     const md = editor.value?.action(getMarkdown())
 
-    if(md) {
+    if (md) {
       const normalized = utils.text().defaultWhitespace(md)
 
-      if(!normalized) return
+      if (!normalized) return
 
       const data = new Blob([normalized], { type: 'text/markdown' })
 

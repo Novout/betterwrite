@@ -85,7 +85,9 @@ export const useSwitcher = () => {
     state.actuallyLetterCounter = state.listOfLettersExists.indexOf(object) + 1
 
     const pageIndex = PROJECT.chapters.indexOf(object.page)
-    const entityIndex = PROJECT.chapters[pageIndex].entities.indexOf(object.entity)
+    const entityIndex = PROJECT.chapters[pageIndex].entities.indexOf(
+      object.entity
+    )
 
     EXTERNALS.switcher.entity = entityIndex
 
