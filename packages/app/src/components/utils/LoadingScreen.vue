@@ -9,7 +9,7 @@
       src="/logo_default.svg"
     />
     <p
-      class="md:text-2xl text-lg font-raleway animate-pulse absolute top-1/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center"
+      class="md:text-2xl text-lg font-raleway animate-pulse absolute top-1/10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center"
     >
       {{ t('landing.loading') }}
     </p>
