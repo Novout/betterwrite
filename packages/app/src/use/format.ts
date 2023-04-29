@@ -9,7 +9,9 @@ export const useFormat = () => {
 
     return type === 'default'
       ? `${date.getFullYear()}-${date.getMonth()}-${date.getDay()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-      : `${date.getHours()}:${date.getMinutes()}`
+      : `${(date.getHours() < 10 ? '0' : '') + date.getHours()}:${
+          (date.getMinutes() < 10 ? '0' : '') + date.getMinutes()
+        }`
   }
 
   const actually = (type: 'default' | 'resume' | 'iso' = 'default'): string => {
