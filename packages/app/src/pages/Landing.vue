@@ -5,7 +5,7 @@
       class="flex flex-col bg-theme-background-2 z-max text-white items-center justify-between min-h-screen w-full overflow-x-hidden"
     >
       <div
-        v-if="webgl.isLoaded.value"
+        v-if="isLoaded"
         class="flex-1 bg-theme-background-2 container mx-auto flex px-5 py-24 flex-col justify-center items-center z-50"
       >
         <div
@@ -102,22 +102,36 @@
 <script setup lang="ts">
   import VTypical from 'vue-typical'
   import { useLanding } from '@/use/landing'
-  import { useWebGL } from '@/use/webgl'
   import { useI18n } from 'vue-i18n'
-  import { watch } from 'vue'
+  import { watch, ref } from 'vue'
   import { useRouter } from 'vue-router'
+  import { tryOnMounted, tryOnUnmounted } from '@vueuse/core'
+  import { usePlugin } from 'better-write-plugin-core'
 
+  const isLoaded = ref(false)
   const { onClick, isNecessaryLogin } = useLanding()
   const { t } = useI18n()
-  const webgl = useWebGL()
   const router = useRouter()
+  const plugin = usePlugin()
 
-  webgl.init()
+  plugin.emit('call-landing-created')
+
+  tryOnMounted(() => {
+    plugin.emit('call-landing-mounted')
+
+    plugin.on('plugin-webgl-loaded', (load: boolean) => {
+      isLoaded.value = load
+    })
+  })
+
+  tryOnUnmounted(() => {
+    plugin.emit('call-landing-unmounted')
+  })
 
   watch(isNecessaryLogin, (login) => {
     if (login) {
       setTimeout(() => {
-        webgl.setCamera()
+        plugin.emit('plugin-webgl-set-camera')
       }, 0)
     }
   })

@@ -21,6 +21,7 @@
   import { EditorWindowPlugin } from 'better-write-plugin-editor-window'
   import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
   import { AuthPlugin } from 'better-write-plugin-auth'
+  import { WebGLPlugin } from 'better-write-plugin-webgl'
 
   useStart([
     ThemePlugin(),
@@ -39,5 +40,6 @@
     EditorWindowPlugin(),
     MultiplayerPlugin(),
     AuthPlugin(),
+    WebGLPlugin(),
   ]).init()
 </script>

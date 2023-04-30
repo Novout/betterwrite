@@ -1,5 +1,17 @@
 import { PluginTypes } from 'better-write-types'
 
+export const LandingCreated = (emitter: PluginTypes.PluginEmitter) => {
+  emitter.emit('call-landing-created')
+}
+
+export const LandingMounted = (emitter: PluginTypes.PluginEmitter) => {
+  emitter.emit('call-landing-mounted')
+}
+
+export const LandingUnmounted = (emitter: PluginTypes.PluginEmitter) => {
+  emitter.emit('call-landing-unmounted')
+}
+
 export const EditorCreated = (emitter: PluginTypes.PluginEmitter) => {
   emitter.emit('call-editor-created')
 }
