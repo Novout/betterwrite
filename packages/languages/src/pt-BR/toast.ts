@@ -20,6 +20,10 @@ export default {
     onlyOnline:
       'Voce está sem acesso à internet para conseguir acessar este recurso!',
   },
+  storage: {
+    limitError:
+      'ATENÇÃO! O aplicativo suporta até 10MB de cada projeto armazenado localmente. Recomendamos que salve este projeto externamente (.bw) ou no vazio!',
+  },
   epub: {
     disabled: 'O gerador de .EPUB está temporariamente desabilitado :(',
   },

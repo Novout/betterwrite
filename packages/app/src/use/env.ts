@@ -21,6 +21,10 @@ export const useEnv = () => {
     return import.meta.env.VITE_LOCAL_STORAGE
   }
 
+  const storageLimitSaver = () => {
+    return '__BW_LIMIT_SAVER__'
+  }
+
   const isEmptyProject = (name: string) => {
     return name === useEnv().projectEmpty()
   }
@@ -84,6 +88,7 @@ export const useEnv = () => {
     getSentryDsn,
     getProdUrl,
     getCorrectLocalUrl,
+    storageLimitSaver,
     emptyLine,
     lineBreak,
     pageBreak,

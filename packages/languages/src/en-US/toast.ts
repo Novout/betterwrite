@@ -19,6 +19,10 @@ export default {
     registerError: 'There was an error creating a new account!',
     onlyOnline: 'You are without internet access to access this feature!',
   },
+  storage: {
+    limitError:
+      'ATTENTION! The app supports up to 10MB of each project stored locally. We recommend that you save this project externally (.bw) or in the void!',
+  },
   epub: {
     disabled: 'The .EPUB generator is temporarily disabled :(',
   },

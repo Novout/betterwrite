@@ -6,8 +6,7 @@ import { useEnv } from '../env'
 import i18n from '@/lang'
 import { useProjectStore } from '@/store/project'
 import { useStorage } from './storage'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
-import { nextTick } from 'vue'
+import { usePlugin } from 'better-write-plugin-core'
 
 export const useLocalStorage = () => {
   const PROJECT = useProjectStore()
@@ -15,14 +14,14 @@ export const useLocalStorage = () => {
   const toast = useToast()
   const env = useEnv()
   const storage = useStorage()
-  const { isLoading } = useNProgress()
+  const plugin = usePlugin()
   const { t } = i18n.global
 
   const set = (obj: any, name: string) => {
     localStorage.setItem(name, LZString.compress(JSON.stringify(obj)))
   }
 
-  const get = (name: string): Maybe<ProjectObject> => {
+  const get = (name: string): Maybe<any> => {
     const item = localStorage.getItem(name)
 
     return item ? destr(LZString.decompress(item)) : undefined
@@ -31,7 +30,15 @@ export const useLocalStorage = () => {
   const setProject = (obj: ProjectObject) => {
     try {
       set(obj, env.projectLocalStorage())
-    } catch (e) {}
+    } catch (e) {
+      const key = env.storageLimitSaver()
+
+      if (sessionStorage.getItem(key)) return
+
+      sessionStorage.setItem(key, key)
+
+      toast.error(t('toast.storage.limitError'), { timeout: 15000 })
+    }
   }
 
   const getProject = (project?: Maybe<ProjectObject>): Maybe<ProjectObject> => {
@@ -48,7 +55,7 @@ export const useLocalStorage = () => {
     if (editor) PROJECT.scrollLoaded = Math.floor(editor.scrollTop)
 
     if (event) {
-      isLoading.value = true
+      plugin.emit('plugin-progress-start')
 
       storage
         .normalize()
@@ -60,7 +67,7 @@ export const useLocalStorage = () => {
           toast.success(t('toast.project.save'))
         })
         .finally(() => {
-          isLoading.value = false
+          plugin.emit('plugin-progress-end')
         })
 
       return
