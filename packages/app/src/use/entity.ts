@@ -237,7 +237,7 @@ export const useEntity = () => {
 
       if (utils().isFixed(payload.index - 1)) return
 
-      if (payload.data !== '') {
+      if (payload.data) {
         CONTEXT.insertRawInExistentEntity(payload.entity)
       }
 

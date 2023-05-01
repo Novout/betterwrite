@@ -274,6 +274,8 @@ export const useContextStore = defineStore('context', {
 
       if (entity.raw === useEnv().emptyLine()) return
 
+      if (target.type === 'heading-one') return
+
       if (target.raw === useEnv().emptyLine()) {
         this.entities[index - 1].raw = entity.raw
       } else {

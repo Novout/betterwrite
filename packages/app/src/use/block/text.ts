@@ -429,6 +429,8 @@ export const useBlockText = ({
       e.preventDefault()
       e.stopPropagation()
 
+      await storage.normalize({ soft: true })
+
       entity.base().onDeleteRaw({
         index: index.value,
         data: input.value.innerHTML,

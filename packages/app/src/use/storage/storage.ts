@@ -2,7 +2,7 @@ import { useEnv } from '../env'
 import { useProjectStore } from '@/store/project'
 import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
-import { ProjectObject } from 'better-write-types'
+import { ProjectObject, StorageNormalizeOptions } from 'better-write-types'
 import { nextTick } from 'vue'
 import useEmitter from '../emitter'
 import { useContextStore } from '@/store/context'
@@ -242,13 +242,15 @@ export const useStorage = () => {
     })
   }
 
-  const normalize = async () => {
+  const normalize = async (options?: StorageNormalizeOptions) => {
     // text block saver
     emitter.emit('entity-text-force-save')
     // force entity paragraph comment a save / close comment modal
     emitter.emit('entity-external-comment-save')
 
     await nextTick
+
+    if(options?.soft) return
 
     // Generators render in only PROJECT contents, context is unique for editor show
     PROJECT.updateContext(CONTEXT.$state)
