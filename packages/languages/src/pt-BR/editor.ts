@@ -870,8 +870,10 @@ export default {
       qrcode: 'QR Code:',
     },
     alert: {
+      logoutAccount:
+        'Você tem certeza que deseja sair da sua conta? Os dados locais serão perdidos!',
       deleteAccount:
-        'Você tem certeza que deseja deletar sua conta e todos os seus dados na nuvem? Essa ação é irreversível!',
+        'Você tem certeza que deseja deletar a sua conta e todos os dados locais e na nuvem? Essa ação é irreversível!',
     },
     type: {
       owner: 'Dono',

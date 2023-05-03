@@ -41,6 +41,10 @@ export const useLocalStorage = () => {
     }
   }
 
+  const deleteProject = (): void => {
+    localStorage.removeItem(env.projectLocalStorage())
+  }
+
   const getProject = (project?: Maybe<ProjectObject>): Maybe<ProjectObject> => {
     if (!project) project = get(env.projectLocalStorage())
 
@@ -80,6 +84,7 @@ export const useLocalStorage = () => {
     set,
     get,
     setProject,
+    deleteProject,
     getProject,
     onSaveProject,
   }

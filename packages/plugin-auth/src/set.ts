@@ -96,6 +96,8 @@ export const AuthSet = (
 
   On.externals().PluginOAuthLogout(emitter, [
     () => {
+      if (!confirm(hooks.i18n.t('editor.presence.alert.logoutAccount'))) return
+
       emitter.emit('plugin-progress-start')
 
       hooks.supabase.auth
@@ -108,6 +110,7 @@ export const AuthSet = (
           }
 
           stores.AUTH.$reset()
+          hooks.local.deleteProject()
 
           await nextTick
 
@@ -148,6 +151,7 @@ export const AuthSet = (
       }
 
       stores.AUTH.$reset()
+      hooks.local.deleteProject()
 
       await nextTick
 

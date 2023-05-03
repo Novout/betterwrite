@@ -864,8 +864,10 @@ export default {
       qrcode: 'QR Code:',
     },
     alert: {
+      logoutAccount:
+        'Are you sure you want to logout of your account? Local data will be lost!',
       deleteAccount:
-        'Are you sure you want to delete your account and all its data in the cloud? This action is irreversible!',
+        'Are you sure you want to delete your account and all local and cloud data? This action is irreversible!',
     },
     type: {
       owner: 'Owner',
