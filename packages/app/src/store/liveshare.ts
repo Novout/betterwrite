@@ -6,7 +6,7 @@ export const useLiveshareStore = defineStore('liveshare', {
     return {
       presence: {},
       presenceLimit: 5,
-      ownerKey: undefined,
+      user: undefined,
       roomKey: undefined,
       lastUpdatedColor: undefined,
     }

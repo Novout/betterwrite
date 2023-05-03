@@ -9,7 +9,8 @@ import type {
 import type { RealtimeChannel, User } from '@supabase/supabase-js'
 import { nanoid } from 'nanoid'
 import { computed } from 'vue-demi'
-import { getOwner } from './utils'
+import { getOwner, isEmptyObject } from './utils'
+import { LiveshareState } from 'better-write-types'
 
 export const RoomSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -22,14 +23,19 @@ export const RoomSet = (
     stores.LIVESHARE.$reset()
   }
 
-  const setCTX = (object: ProjectObject, ctx: ContextState) => {
+  const setCTX = (
+    object: ProjectObject,
+    ctx: ContextState,
+    live: LiveshareState
+  ) => {
     // TODO: better method for track changes
-
     stores.CONTEXT.$state = ctx
     stores.PROJECT.$state = object.project
     stores.EDITOR.$state = object.editor
     stores.PDF.$state = object.pdf
     stores.DOCX.$state = object.docx
+
+    stores.LIVESHARE.lastUpdatedColor = live.lastUpdatedColor
 
     emitter.emit('plugin-theme-set')
   }
@@ -37,13 +43,19 @@ export const RoomSet = (
   const getCTX = (): {
     type: string
     event: string
-    payload: { object: ProjectObject; ctx: ContextState; user: Maybe<User> }
+    payload: {
+      object: ProjectObject
+      ctx: ContextState
+      liveshare: LiveshareState
+      user: Maybe<User>
+    }
   } => ({
     type: 'broadcast',
     event: 'ctx',
     payload: {
       object: hooks.storage.getProjectObject(),
       ctx: stores.CONTEXT.$state,
+      liveshare: stores.LIVESHARE.$state,
       user: stores.AUTH.account.user,
     },
   })
@@ -72,8 +84,6 @@ export const RoomSet = (
         stores.LIVESHARE.add({
           [key]: newPresences,
         })
-
-        if (type === 'owner') stores.LIVESHARE.ownerKey = key
       })
       .on('presence', { event: 'leave' }, async ({ key, leftPresences }) => {
         try {
@@ -87,26 +97,37 @@ export const RoomSet = (
       .on('presence', { event: 'sync' }, async () => {
         const state = channel.presenceState<LivesharePresenceItem>()
 
+        if (!isEmptyObject(state) && !getOwner(state)) {
+          hooks.toast.error(hooks.i18n.t('editor.presence.off'))
+
+          await removePresence(channel)
+
+          return
+        }
+
         stores.LIVESHARE.presence = state
       })
       .on('broadcast', { event: 'ctx' }, ({ payload }) => {
         if (type === 'owner') return
 
-        setCTX(payload.object, payload.ctx)
+        setCTX(payload.object, payload.ctx, payload.liveshare)
       })
       .subscribe(async (status) => {
         if (status === 'SUBSCRIBED') {
           // TODO: use's safe random color or predefined arr colors
           const hexColor = hooks.utils.text().randomColor()
 
-          const tracked = await channel.track({
+          const user = {
             id: stores.AUTH.account.user?.email ?? stores.AUTH.account.user?.id,
             type,
             avatar_url:
               stores.AUTH.account.user?.user_metadata?.avatar_url ?? undefined,
             online_at: new Date().toISOString(),
             color: hexColor,
-          })
+          }
+
+          const tracked = await channel.track(user)
+          stores.LIVESHARE.user = user
 
           if (tracked !== 'ok') {
             await removePresence(channel)
@@ -122,7 +143,11 @@ export const RoomSet = (
             channel.send(target)
             stores.LIVESHARE.lastUpdatedColor = hexColor
           } else {
-            setCTX(target.payload.object, target.payload.ctx)
+            setCTX(
+              target.payload.object,
+              target.payload.ctx,
+              target.payload.liveshare
+            )
           }
         }
       })

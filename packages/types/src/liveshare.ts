@@ -1,4 +1,4 @@
-export interface LivesharePresenceItem {
+export interface LivesharePresenceUser {
   id: string
   type: 'owner' | 'visit'
   avatar_url?: string
@@ -7,12 +7,14 @@ export interface LivesharePresenceItem {
   presence_ref: string
 }
 
+export type LivesharePresenceItem = LivesharePresenceUser
+
 export interface LiveshareState {
   presence: {
     [x: string]: LivesharePresenceItem[]
   }
+  user?: LivesharePresenceUser
   roomKey?: string
   presenceLimit: number
-  ownerKey?: string
   lastUpdatedColor?: string
 }
