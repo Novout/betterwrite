@@ -118,7 +118,7 @@ export const RoomSet = (
           const hexColor = hooks.utils.text().randomColor()
 
           const user = {
-            id: stores.AUTH.account.user?.email ?? stores.AUTH.account.user?.id,
+            id: stores.AUTH.account.user?.email ?? stores.AUTH.account.user?.id as string,
             type,
             avatar_url:
               stores.AUTH.account.user?.user_metadata?.avatar_url ?? undefined,
@@ -127,7 +127,7 @@ export const RoomSet = (
           }
 
           const tracked = await channel.track(user)
-          stores.LIVESHARE.user = user
+          stores.LIVESHARE.user = { presence_ref: '', ...user }
 
           if (tracked !== 'ok') {
             await removePresence(channel)
