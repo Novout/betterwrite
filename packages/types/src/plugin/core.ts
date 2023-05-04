@@ -12,6 +12,7 @@ import {
   HistoryState,
   ExternalsState,
   LiveshareState,
+  GlobalState,
 } from '..'
 
 export type PluginEmitterName =
@@ -104,6 +105,7 @@ export type ExistingStores =
   | 'externals'
   | 'history'
   | 'liveshare'
+  | 'global'
 
 export type PluginStore<
   T extends ExistingStores,
@@ -123,6 +125,7 @@ export interface PluginStores {
   EXTERNALS: PluginStore<'externals', ExternalsState, any, any>
   HISTORY: PluginStore<'history', HistoryState, any, any>
   LIVESHARE: PluginStore<'liveshare', LiveshareState, any, any>
+  GLOBAL: PluginStore<'global', GlobalState, any, any>
 }
 
 export interface PluginDefines {

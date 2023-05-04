@@ -11,6 +11,14 @@ export const AuthSet = (
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
 ) => {
+  const resetAndRedirect = () => {
+    stores.GLOBAL.reset()
+
+    hooks.local.deleteProject()
+
+    hooks.router.push('/landing')
+  }
+
   On.externals().PluginOAuthRegister(emitter, [
     (payload: Omit<AuthAccountPayloadRegister, 'termsOfUse'>) => {
       emitter.emit('plugin-progress-start')
@@ -111,12 +119,7 @@ export const AuthSet = (
             return
           }
 
-          stores.AUTH.$reset()
-          hooks.local.deleteProject()
-
-          await nextTick
-
-          hooks.router.push('/landing')
+          resetAndRedirect()
         })
         .catch(() => {
           hooks.toast(hooks.i18n.t('editor.auth.logout.error'))
@@ -152,12 +155,7 @@ export const AuthSet = (
         return
       }
 
-      stores.AUTH.$reset()
-      hooks.local.deleteProject()
-
-      await nextTick
-
-      hooks.router.push('/landing')
+      resetAndRedirect()
 
       emitter.emit('plugin-progress-end')
     },

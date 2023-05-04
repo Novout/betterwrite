@@ -40,6 +40,7 @@ import * as VUEROUTER from 'vue-router'
 import * as VUEUSE_CORE from '@vueuse/core'
 import * as VUEUSE_HEAD from '@vueuse/head'
 import * as VUEUSE_SOUND from '@vueuse/sound'
+import { useGlobalStore } from '@/store/global'
 
 export const usePluginInitializer = () => {
   const core = useCore()
@@ -57,6 +58,7 @@ export const usePluginInitializer = () => {
         EXTERNALS: useExternalsStore(),
         HISTORY: useHistoryStore(),
         LIVESHARE: useLiveshareStore(),
+        GLOBAL: useGlobalStore()
       },
       plugins,
       {
