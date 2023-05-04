@@ -24,6 +24,8 @@ export const AuthSet = (
             return
           }
 
+          hooks.toast.success(hooks.i18n.t('toast.generics.successCreated'))
+
           emitter.emit('plugin-oauth-register-success')
           emitter.emit('plugin-oauth-register-wizard-reset')
         })
