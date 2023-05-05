@@ -16,6 +16,7 @@ import { ImageToForcePNG } from 'better-write-image-converter'
 import { Maybe } from 'better-write-types'
 import { getRows, parse } from 'better-write-contenteditable-ast'
 import { HEXToCMYK } from 'better-write-color-converter'
+import { get } from 'better-write-google-fonts-api'
 
 export const PluginPDFSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -26,6 +27,20 @@ export const PluginPDFSet = (
   let __LIST__: any = {
     arr: [],
     exists: false,
+  }
+
+  const initGoogleFonts = async () => {
+    // don't force google fonts request
+    if (stores.PDF.normalize.length !== 0) return
+
+    const { normalize, names } = await get({
+      key: hooks.env.googleFontsKey(),
+      maxFonts: hooks.env.googleMaxFonts(),
+      requiredFonts: ['EB Garamond', 'Cormorant Garamond'],
+      globalStyle: true,
+    })
+
+    stores.PDF.loadFonts({ names, normalize })
   }
 
   const online = hooks.vueuse.core.useOnline()
@@ -1376,6 +1391,8 @@ export const PluginPDFSet = (
 
       stores.ABSOLUTE.load = true
 
+      await initGoogleFonts()
+
       await nextTick
 
       hooks.storage.normalize().then(async () => {
@@ -1395,6 +1412,8 @@ export const PluginPDFSet = (
 
       stores.ABSOLUTE.load = true
 
+      await initGoogleFonts()
+
       await nextTick
       await nextTick
 
@@ -1404,6 +1423,13 @@ export const PluginPDFSet = (
           options
         )
       })
+    },
+    () => {},
+  ])
+
+  On.externals().PluginPDFInit(emitter, [
+    async () => {
+      await initGoogleFonts()
     },
     () => {},
   ])

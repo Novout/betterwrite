@@ -4,7 +4,6 @@ import { useHeadInitializer } from './initializer/head'
 import { useDBInitializer } from './initializer/db'
 import { usePluginInitializer } from './initializer/plugin'
 import { useGlobalInitializer } from './initializer/global'
-import { usePDFInitializer } from './initializer/theme'
 import { useI18n } from 'vue-i18n'
 import { useEnv } from './env'
 
@@ -14,7 +13,6 @@ export const useStart = (plugins: PluginTypes.Plugins) => {
   const db = useDBInitializer()
   const plugin = usePluginInitializer()
   const global = useGlobalInitializer()
-  const pdf = usePDFInitializer()
   const { t } = useI18n()
   const env = useEnv()
 
@@ -24,7 +22,6 @@ export const useStart = (plugins: PluginTypes.Plugins) => {
     head.init()
     db.init()
     plugin.init(plugins)
-    pdf.init()
 
     if (!env.isDev()) {
       console.log(

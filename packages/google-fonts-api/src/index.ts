@@ -4,9 +4,7 @@ import { $fetch } from 'ohmyfetch'
 export const setGlobal = (vfs: Record<any, any>) => {
   const _style = document.createElement('style')
 
-  Object.entries(vfs).forEach((font: Array<any>) => {
-    const key = font[0]
-    const content = font[1]
+  Object.entries(vfs).forEach(([key, content]: Array<any>) => {
     _style.appendChild(
       document.createTextNode(
         '\
