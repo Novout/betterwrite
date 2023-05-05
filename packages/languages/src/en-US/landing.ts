@@ -4,7 +4,7 @@ export default {
     email: 'Enter a valid email!',
     emailPlaceholder: 'Email...',
     password: 'The password must be at least 6 characters long!',
-    passwordPlaceholder: 'Senha...',
+    passwordPlaceholder: 'Password...',
     termsError: 'Accept the Terms of Use!',
     verification: 'Access Code sent to your email!',
     integration: 'or log in with your account...',
