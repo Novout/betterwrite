@@ -2,9 +2,7 @@
   <div
     class="flex flex-wrap flex-row items-center justify-between w-full gap-5 mt-5"
   >
-    <!-- TODO: google production is... complicated.-->
     <EditorAuthIntegrationsButton
-      v-if="env.isDev()"
       provider="google"
       color="#EEE"
       :terms-of-use="termsOfUse"
@@ -78,10 +76,6 @@
 </template>
 
 <script setup lang="ts">
-  import { useEnv } from '@/use/env'
-
-  const env = useEnv()
-
   defineProps<{
     termsOfUse: boolean
   }>()
