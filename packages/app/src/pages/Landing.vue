@@ -79,17 +79,18 @@
             href="https://github.com/Novout/betterwrite"
             class="flex font-raleway items-center gap-3 absolute bottom-0 right-0 p-5 cursor-pointer"
           >
-            <IconGithub class="text-gray-200 w-5 h-5" />
-            <v-typical
-              class="tracking-wide text-center text-xs md:text-sm blink"
-              :steps="[
-                t('landing.first.support'),
-                10000,
-                t('landing.first.support'),
-              ]"
-              :loop="Infinity"
-              :wrapper="'p'"
-            ></v-typical>
+            <IconGithub class="text-gray-200 w-7 h-7" />
+          </a>
+          <a
+            v-motion
+            :initial="{ opacity: 0 }"
+            :enter="{ opacity: 1, transition: { delay: 500 } }"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/betterwriteio"
+            class="flex font-raleway items-center gap-3 absolute bottom-0 right-12 p-5 cursor-pointer"
+          >
+            <IconTwitter class="text-gray-200 w-7 h-7" />
           </a>
         </div>
         <AuthMain v-else @close="isNecessaryLogin = false" />
