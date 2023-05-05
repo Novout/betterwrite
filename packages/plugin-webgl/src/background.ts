@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
+// import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import WebGL from 'three/examples/jsm/capabilities/WebGL.js'
 import { usePlugin } from 'better-write-plugin-core'
 import { PluginTypes } from 'better-write-types'
@@ -21,7 +21,8 @@ export const BackgroundSet = (
   const _cloudParticles: any = []
   const meshArray: any = []
 
-  const { getLocaleMessage, locale } = hooks.i18n
+  // const { getLocaleMessage, locale } = hooks.i18n
+
   const plugin = usePlugin()
 
   const setCamera = () => {
@@ -108,6 +109,7 @@ export const BackgroundSet = (
     }
 
     const createNodes = () => {
+      /*
       const { landing }: any = getLocaleMessage(locale.value)
 
       const paragraphs = landing.first.paragraphs
@@ -130,6 +132,7 @@ export const BackgroundSet = (
         meshArray.push(mesh)
         scene.add(mesh)
       })
+      */
     }
 
     const render = () => {
@@ -173,7 +176,8 @@ export const BackgroundSet = (
       cameraCreate()
       rendererCreate()
       loaderSmoke()
-      createNodes()
+      // TODO: better perfomatic textgeometry cache. Actually is slow runtime.
+      // createNodes()
       contextResize()
       createLight()
       contextResize()

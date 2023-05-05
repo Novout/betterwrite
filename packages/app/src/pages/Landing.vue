@@ -79,7 +79,7 @@
             href="https://github.com/Novout/betterwrite"
             class="flex font-raleway items-center gap-3 absolute bottom-0 right-0 p-5 cursor-pointer"
           >
-            <IconGithub class="text-gray-200 w-7 h-7" />
+            <IconGithub class="text-gray-200 w-9 h-9" />
           </a>
           <a
             v-motion
@@ -88,9 +88,9 @@
             target="_blank"
             rel="noopener noreferrer"
             href="https://twitter.com/betterwriteio"
-            class="flex font-raleway items-center gap-3 absolute bottom-0 right-12 p-5 cursor-pointer"
+            class="flex font-raleway items-center gap-3 absolute bottom-0 right-15 p-5 cursor-pointer"
           >
-            <IconTwitter class="text-gray-200 w-7 h-7" />
+            <IconTwitter class="text-gray-200 w-9 h-9" />
           </a>
         </div>
         <AuthMain v-else @close="isNecessaryLogin = false" />
