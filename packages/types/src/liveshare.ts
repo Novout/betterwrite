@@ -1,6 +1,8 @@
+export type LiveshareType = 'owner' | 'visit' | 'collaborator'
+
 export interface LivesharePresenceUser {
   id: string
-  type: 'owner' | 'visit'
+  type: LiveshareType
   avatar_url?: string
   online_at: string
   color: string

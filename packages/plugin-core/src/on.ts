@@ -1,4 +1,4 @@
-import { SupabaseIntegrations } from 'better-write-types'
+import { LiveshareType, SupabaseIntegrations } from 'better-write-types'
 import {
   PDFDocOptions,
   PluginTypes,
@@ -558,10 +558,10 @@ export const externals = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
-    emitter.on('plugin-presence-room-create', () => {
+    emitter.on('plugin-presence-room-create', (type: LiveshareType) => {
       const created = content[0]
 
-      created && created()
+      created && created(type)
     })
   }
 

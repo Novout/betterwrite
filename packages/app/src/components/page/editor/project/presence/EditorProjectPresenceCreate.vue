@@ -10,6 +10,7 @@
           @close="onClose"
         />
         <p v-if="!key">{{ t('editor.presence.create.description') }}</p>
+        <p v-if="!key" class="text-red-600 font-bold">{{ t('editor.presence.beta') }} </p>
         <div
           v-if="!key"
           class="flex flex-col sm:flex-row gap-5 w-full items-center justify-between"
@@ -39,6 +40,13 @@
           <h2 v-if="!key" class="text-lg font-bold font-poppins">
             {{ t('editor.presence.create.new') }}
           </h2>
+          <div v-if="!key" class="flex gap-5 w-full">
+            <InputSelect v-model="type" class="flex-1" :arr="defines.presence().roomType()"/>
+            <div class="flex wb-text flex-1 text-justify flex-col gap-3 w-full">
+              <p>{{ t('editor.presence.type.description.visit')}}</p>
+              <p>{{ t('editor.presence.type.description.collaborator')}}</p>
+            </div>
+          </div>
           <Button
             v-if="!key"
             class="w-full p-2 bg-theme-background-2"
@@ -65,20 +73,27 @@
 
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useDefines } from '@/use/defines'
+  import { useTransformer } from '@/use/generator/transformer'
   import { usePlugin } from 'better-write-plugin-core'
+  import { LiveshareType } from 'better-write-types'
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
+  
+  const defines = useDefines()
 
   const ABSOLUTE = useAbsoluteStore()
 
   const room = ref<string>('')
   const key = ref<string>('')
   const wizard = ref<'create' | 'enter'>('create')
+  const type = ref(defines.presence().roomType()[0])
 
   const { t } = useI18n()
   const plugin = usePlugin()
   const toast = useToast()
+  const transformer = useTransformer()
 
   onMounted(() => {
     plugin.on('plugin-presence-room-create-key', (id: string) => {
@@ -89,7 +104,9 @@
   const onCreateRoom = () => {
     if (key.value) return
 
-    plugin.emit('plugin-presence-room-create')
+    const _type = transformer.presence().type(type.value, 'setter') as LiveshareType
+
+    plugin.emit('plugin-presence-room-create', _type)
   }
 
   const onJoinRoom = () => {

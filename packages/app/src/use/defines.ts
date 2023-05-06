@@ -289,10 +289,22 @@ export const useDefines = () => {
     return { substitutions }
   }
 
+  const presence = () => {
+    const roomType = () => {
+      return [
+        t('editor.presence.type.visit'),
+        t('editor.presence.type.collaborator'),
+      ]
+    }
+
+    return { roomType }
+  }
+
   return {
     docx,
     pdf,
     generator,
     characters,
+    presence,
   }
 }

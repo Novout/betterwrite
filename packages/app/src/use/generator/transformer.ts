@@ -1,6 +1,7 @@
 import {
   DOCXAlignmentType,
   DOCXStateFlowItemType,
+  LiveshareType,
   Maybe,
 } from 'better-write-types'
 import { useI18n } from 'vue-i18n'
@@ -151,5 +152,50 @@ export const useTransformer = () => {
     return { nameCase }
   }
 
-  return { docx, characters }
+  const presence = () => {
+    const type = (target: string, focus: 'setter' | 'getter'): string => {
+      let value: Maybe<LiveshareType> = null
+      let __STOP__: boolean = false
+
+      if (focus === 'getter') {
+        switch (target) {
+          case 'owner':
+            return t('editor.presence.type.owner')
+          case 'visit':
+            return t('editor.presence.type.visit')
+          case 'collaborator':
+            return t('editor.presence.type.collaborator')
+        }
+      }
+
+      availableLocales.forEach((locale: string) => {
+        if (__STOP__) return
+
+        const { editor } = getLocaleMessage(locale) as any
+
+        switch (target) {
+          case editor.presence.type.owner:
+            __STOP__ = true
+            value = 'owner'
+            break
+          case editor.presence.type.visit:
+            __STOP__ = true
+            value = 'visit'
+            break
+          case editor.presence.type.collaborator:
+            __STOP__ = true
+            value = 'collaborator'
+            break
+          default:
+            __STOP__ = false
+        }
+      })
+
+      return value || 'visit'
+    }
+
+    return { type }
+  }
+
+  return { docx, characters, presence }
 }

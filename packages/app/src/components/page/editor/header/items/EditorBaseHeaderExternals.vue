@@ -76,7 +76,7 @@
         @action="ABSOLUTE.modal.presence.createOrJoin = true"
       >
         <template #icon>
-          <IconLiveshare class="mr-2 w-5 h-5" />
+          <BETABagde />
         </template>
       </EditorHeaderItem>
     </template>

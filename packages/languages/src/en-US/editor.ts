@@ -857,6 +857,7 @@ export default {
     },
   },
   presence: {
+    beta: 'This tool is still under development, and unexpected results may occur. Remember to save the project before creating or joining a room.',
     off: 'This room is not available!',
     key: {
       code: 'Code:',
@@ -872,6 +873,13 @@ export default {
     type: {
       owner: 'Owner',
       visit: 'Visitant',
+      collaborator: 'Collaborator',
+      description: {
+        visit:
+          'Visitant: All users entering the room can only view the project.',
+        collaborator:
+          'Collaborator: All users who enter the room can change project data in real time, such as keeping a copy of the project for themselves.        ',
+      },
     },
     bar: {
       liveshare: 'Sharing...',

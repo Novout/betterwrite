@@ -2,15 +2,28 @@ import { On } from 'better-write-plugin-core'
 import type {
   ContextState,
   LivesharePresenceItem,
+  LiveshareType,
   Maybe,
   PluginTypes,
   ProjectObject,
 } from 'better-write-types'
 import type { RealtimeChannel, User } from '@supabase/supabase-js'
-import { nanoid } from 'nanoid'
 import { computed } from 'vue-demi'
-import { getOwner, isEmptyObject } from './utils'
+import {
+  genKey,
+  getKey,
+  getOwner,
+  isCollaborateRoom,
+  isEmptyObject,
+} from './utils'
 import { LiveshareState } from 'better-write-types'
+
+interface $CTX {
+  object: ProjectObject
+  ctx: ContextState
+  liveshare: LiveshareState
+  user: Maybe<User>
+}
 
 export const RoomSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -23,19 +36,15 @@ export const RoomSet = (
     stores.LIVESHARE.$reset()
   }
 
-  const setCTX = (
-    object: ProjectObject,
-    ctx: ContextState,
-    live: LiveshareState
-  ) => {
+  const setCTX = (ctx: $CTX): void => {
     // TODO: better method for track changes
-    stores.CONTEXT.$state = ctx
-    stores.PROJECT.$state = object.project
-    stores.EDITOR.$state = object.editor
-    stores.PDF.$state = object.pdf
-    stores.DOCX.$state = object.docx
+    stores.CONTEXT.$state = ctx.ctx
+    stores.PROJECT.$state = ctx.object.project
+    stores.EDITOR.$state = ctx.object.editor
+    stores.PDF.$state = ctx.object.pdf
+    stores.DOCX.$state = ctx.object.docx
 
-    stores.LIVESHARE.lastUpdatedColor = live.lastUpdatedColor
+    stores.LIVESHARE.lastUpdatedColor = ctx.liveshare.lastUpdatedColor
 
     emitter.emit('plugin-theme-set')
   }
@@ -77,7 +86,7 @@ export const RoomSet = (
 
   const setRoom = (
     channel: RealtimeChannel,
-    type: 'owner' | 'visit'
+    type: LiveshareType
   ): RealtimeChannel => {
     channel
       .on('presence', { event: 'join' }, ({ key, newPresences }) => {
@@ -92,6 +101,12 @@ export const RoomSet = (
 
         if (leftPresences.some((presence) => getOwner(presence))) {
           await removePresence(channel)
+
+          if (type === 'visit') {
+            hooks.local.deleteProject()
+            stores.CONTEXT.$reset()
+            stores.PROJECT.$reset()
+          }
         }
       })
       .on('presence', { event: 'sync' }, async () => {
@@ -110,7 +125,7 @@ export const RoomSet = (
       .on('broadcast', { event: 'ctx' }, ({ payload }) => {
         if (type === 'owner') return
 
-        setCTX(payload.object, payload.ctx, payload.liveshare)
+        setCTX(payload)
       })
       .subscribe(async (status) => {
         if (status === 'SUBSCRIBED') {
@@ -145,11 +160,7 @@ export const RoomSet = (
             channel.send(target)
             stores.LIVESHARE.lastUpdatedColor = hexColor
           } else {
-            setCTX(
-              target.payload.object,
-              target.payload.ctx,
-              target.payload.liveshare
-            )
+            setCTX(target.payload)
           }
         }
       })
@@ -158,8 +169,8 @@ export const RoomSet = (
   }
 
   On.externals().PluginPresenceRoomCreate(emitter, [
-    () => {
-      const id = nanoid(30)
+    (type: LiveshareType) => {
+      const id = genKey(type)
 
       const channel = hooks.supabase.channel(id)
 
@@ -192,7 +203,10 @@ export const RoomSet = (
         return
       }
 
-      setRoom(channel, 'visit')
+      const key = getKey(id)
+
+      setRoom(channel, key ?? 'visit')
+      if (isCollaborateRoom(id)) setWatcher(channel)
 
       stores.LIVESHARE.roomKey = id
       stores.ABSOLUTE.modal.presence.info = false

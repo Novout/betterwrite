@@ -863,6 +863,7 @@ export default {
     },
   },
   presence: {
+    beta: 'Esta ferramenta ainda está em fase de desenvolvimento, e resultados inesperados podem acontecer. Lembre-se de salvar o projeto antes de criar ou entrar em uma sala.',
     off: 'Esta sala não está disponível!',
     key: {
       code: 'Code:',
@@ -878,6 +879,13 @@ export default {
     type: {
       owner: 'Dono',
       visit: 'Visitante',
+      collaborator: 'Colaborador',
+      description: {
+        visit:
+          'Visitante: Todos os usuários que entrarem na sala podem apenas visualizar o projeto.',
+        collaborator:
+          'Colaborador: Todos os usuários que entrarem na sala podem alterar os dados do projeto em tempo real, como manter uma cópia do projeto para si.',
+      },
     },
     bar: {
       liveshare: 'Compartilhando...',
