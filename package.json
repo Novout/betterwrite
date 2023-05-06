@@ -1,24 +1,20 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "bootstrap": "lerna bootstrap --use-workspaces",
     "dev": "lerna run dev",
     "serve": "lerna run serve",
     "build": "lerna run build --verbose",
     "test": "lerna run test",
     "lint": "lerna run lint",
-    "deploy": "yarn bootstrap && yarn build",
+    "deploy": "pnpm run build",
     "patch": "generi log patch",
     "minor": "generi log minor",
     "major": "generi log major"
   },
   "devDependencies": {
-    "generi": "1.1.0",
+    "generi": "1.2.0",
     "lerna": "6.6.2"
   },
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "pnpm@8.4.0"
 }

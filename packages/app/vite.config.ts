@@ -152,10 +152,11 @@ export default ({ mode }) => {
       minify: 'esbuild',
       rollupOptions: {
         output:{
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              return id.toString().split('node_modules/')[1].split('/')[0].toString();
-            }
+          manualChunks: {
+            pdfmake: ['pdfmake'],
+            three: ['three'],
+            docx: ['docx'],
+            'xml-js': ['xml-js']
           }
         }
       }
