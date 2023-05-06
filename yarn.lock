@@ -11175,10 +11175,10 @@ vite-plugin-pwa@0.14.7:
     workbox-build "^6.5.4"
     workbox-window "^6.5.4"
 
-vite-plugin-sitemap@0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-sitemap/-/vite-plugin-sitemap-0.4.0.tgz#c91563f1f039d7cc49f85507dd8be57bf5414634"
-  integrity sha512-AgDIdvWNKttvAQoBm2dYaGXPlPlMwpfkkKXwsU1iFbEqReK001mvYt9feIn8IoVA8T/ElHZyYFeGSRieSQiitA==
+vite-plugin-sitemap@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-sitemap/-/vite-plugin-sitemap-0.3.0.tgz#c38c3a5c61b9bf3b0b64cb6b876be89736e1c76e"
+  integrity sha512-ZGKbJDAfj7KG75LSCYPLof92/4MJBmy5OPll8trGWYx1M1ewXonAmdautKzHcYQARPy5u73zhuETNvIRzyviAw==
 
 vite-plugin-windicss@1.8.10:
   version "1.8.10"

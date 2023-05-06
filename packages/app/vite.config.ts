@@ -18,6 +18,7 @@ import { viteStdlib } from "./scripts/vite"
 import { FontaineTransform as CSSFontaine } from 'fontaine'
 import windiCSS from 'vite-plugin-windicss'
 import stdLibBrowser from 'node-stdlib-browser'
+import { routes } from './src/routes'
 
 export default ({ mode }) => {
   process.env = {...process.env, ...loadEnv(mode, process.cwd())};
@@ -58,7 +59,7 @@ export default ({ mode }) => {
       viteSitemap({
         hostname: process.env.VITE_BASE_URL,
         outDir: 'dist/render',
-        dynamicRoutes: ['/'],
+        dynamicRoutes: routes.filter(m => !m.redirect && m.path !== '/:pathMatch(.*)*' && m.path !== '/').map(({ path }) => path),
         robots: [{ userAgent: '*', allow: '/' }]
       }),
       viteSchemaOrg({
