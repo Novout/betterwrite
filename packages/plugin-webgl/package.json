@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-webgl",
-	"version": "1.2.0-alpha.0",
+	"version": "1.2.0",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -24,9 +24,9 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-extension": "^1.2.0-alpha.0",
-		"better-write-plugin-core": "^1.2.0-alpha.0",
-		"better-write-types": "^1.2.0-alpha.0",
+		"better-write-extension": "^1.2.0",
+		"better-write-plugin-core": "^1.2.0",
+		"better-write-types": "^1.2.0",
 		"vue-demi": "latest"
 	},
 	"devDependencies": {
