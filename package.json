@@ -12,11 +12,8 @@
     "test": "lerna run test",
     "lint": "lerna run lint",
     "deploy": "yarn bootstrap && yarn build",
-    "prepatch": "generi log prepatch",
     "patch": "generi log patch",
-    "preminor": "generi log preminor",
     "minor": "generi log minor",
-    "premajor": "generi log premajor",
     "major": "generi log major"
   },
   "devDependencies": {
