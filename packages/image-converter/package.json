@@ -1,0 +1,29 @@
+{
+	"name": "better-write-image-converter",
+	"version": "1.2.0",
+	"author": "Novout",
+	"license": "MIT",
+	"keywords": [
+		"vue",
+		"hook",
+		"text",
+		"editor"
+	],
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\"",
+		"build": "tsup",
+		"lint": "prettier --write src/"
+	},
+	"dependencies": {
+		"better-write-types": "^1.2.0"
+	},
+	"files": [
+		"dist/**/*",
+		"package.json",
+		"LICENSE",
+		"README.md"
+	]
+}

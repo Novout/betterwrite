@@ -1,0 +1,28 @@
+{
+	"name": "better-write-google-fonts-api",
+	"version": "1.2.0",
+	"author": "Novout",
+	"license": "MIT",
+	"keywords": [
+		"vue",
+		"hook",
+		"text",
+		"editor"
+	],
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsup",
+		"lint": "prettier --write src/"
+	},
+	"dependencies": {
+		"better-write-types": "^1.2.0"
+	},
+	"files": [
+		"dist/**/*",
+		"package.json",
+		"LICENSE",
+		"README.md"
+	]
+}

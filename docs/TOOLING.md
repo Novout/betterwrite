@@ -6,27 +6,7 @@ When the project perspective began to expand, the need to bring a robust tooling
 
 This architecture was adopted halfway through the project's development, necessitated by new tools attached directly to the application and the lack of a plugin system for the internal application, limiting large amounts of code to the framework's hook.
 
-To create a satisfactory development and production sequence with [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/), [Lerna](https://lerna.js.org/) and [TurboRepo](https://turbo.build/) were chosen. The following is an example of the build sequence of the project as a whole.
-
-### Monorepo Structure
-
-```txt
-  ├── better-write-app                          # Application
-  ├── better-write-contenteditable-ast          # AST of editor inserts (bold, italics, underline...)
-  ├── better-write-extension                    # Project Extension .bw
-  ├── better-write-google-fonts-api             # Google Fonts API requests for PDF Generator.
-  ├── better-write-image-conversor              # Convert .svg to .png and other utils
-  ├── better-write-languages                    # i18n
-  ├── better-write-plugin-annotations           # Annotations Plugin
-  ├── better-write-plugin-core                  # Plugin Core
-  ├── better-write-plugin-exporter-docx         # DOCX Generator Plugin
-  ├── better-write-plugin-exporter-html         # HTML Generator Plugin
-  ├── better-write-plugin-exporter-pdf          # PDF Generator Plugin
-  ├── better-write-plugin-exporter-txt          # TXT Generator Plugin
-  |── better-write-plugin-importer              # Importer external files
-  ├── better-write-plugin-theme                 # Multi-Theme Plugin
-  ├── better-write-types                        # Typescript All Types
-```
+To create a satisfactory development and production sequence with [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) and [Lerna](https://lerna.js.org/) were chosen. The following is an example of the build sequence of the project as a whole.
 
 ### Monorepo Build Flow
 
