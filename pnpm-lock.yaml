@@ -245,8 +245,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       vue3-pdfmake:
-        specifier: 2.0.0
-        version: 2.0.0(vue@3.2.47)
+        specifier: 2.2.0
+        version: 2.2.0(vue@3.2.47)
       vuedraggable:
         specifier: 4.0.1
         version: 4.0.1(vue@3.2.47)
@@ -279,8 +279,8 @@ importers:
         specifier: 5.38.0
         version: 5.38.0(eslint@8.24.0)(typescript@5.0.4)
       '@vitejs/plugin-vue':
-        specifier: 4.1.0
-        version: 4.1.0(vite@4.3.5)(vue@3.2.47)
+        specifier: 4.2.1
+        version: 4.2.1(vite@4.3.5)(vue@3.2.47)
       '@vitest/coverage-c8':
         specifier: 0.29.8
         version: 0.29.8(vitest@0.29.8)
@@ -4032,8 +4032,8 @@ packages:
       vue: 3.2.47
     dev: false
 
-  /@vitejs/plugin-vue@4.1.0(vite@4.3.5)(vue@3.2.47):
-    resolution: {integrity: sha512-++9JOAFdcXI3lyer9UKUV4rfoQ3T1RN8yDqoCLar86s0xQct5yblxAE+yWgRnU5/0FOlVCpTZpYSBV/bGWrSrQ==}
+  /@vitejs/plugin-vue@4.2.1(vite@4.3.5)(vue@3.2.47):
+    resolution: {integrity: sha512-ZTZjzo7bmxTRTkb8GSTwkPOYDIP7pwuyV+RV53c9PYUouwcbkIZIvWvNWlX2b1dYZqtOv7D6iUAnJLVNGcLrSw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0
@@ -5893,7 +5893,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       globby: 11.1.0
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       is-glob: 4.0.3
       is-path-cwd: 2.2.0
       is-path-inside: 3.0.3
@@ -6895,7 +6895,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       at-least-node: 1.0.0
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       jsonfile: 6.1.0
       universalify: 2.0.0
     dev: true
@@ -8104,7 +8104,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
     dev: true
 
   /jsonparse@1.3.1:
@@ -8322,7 +8322,7 @@ packages:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
     engines: {node: '>=4'}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       parse-json: 4.0.0
       pify: 3.0.0
       strip-bom: 3.0.0
@@ -8332,7 +8332,7 @@ packages:
     resolution: {integrity: sha512-gUD/epcRms75Cw8RT1pUdHugZYM5ce64ucs2GEISABwkRsOQr0q2wm/MV2TKThycIe5e0ytRweW2RZxclogCdQ==}
     engines: {node: '>=8'}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       parse-json: 5.2.0
       strip-bom: 4.0.0
       type-fest: 0.6.0
@@ -9204,7 +9204,7 @@ packages:
     dependencies:
       env-paths: 2.2.1
       glob: 7.2.3
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       make-fetch-happen: 10.2.1
       nopt: 6.0.0
       npmlog: 6.0.2
@@ -9944,9 +9944,9 @@ packages:
       sha.js: 2.4.11
     dev: true
 
-  /pdfmake@0.3.0-beta.3:
-    resolution: {integrity: sha512-sDztkn6az36JH8BeO2ZaBoKTwfiJwNK60+xxi/7mjhVQa8FjnOlE3CaXiHRhctb7oYwPm7cAPwLwQJnO1hssDA==}
-    engines: {node: '>=12'}
+  /pdfmake@0.3.0-beta.5:
+    resolution: {integrity: sha512-Hcd0+niKZlH3S9LjrBYqIuBZeo2HtBYp6ApiMA1v4sXB1EqBcS794kwqp8Cs/oKqTHcpiEv/qS0AnDG6daU+Cg==}
+    engines: {node: '>=14'}
     dependencies:
       '@foliojs-fork/linebreak': 1.1.1
       '@foliojs-fork/pdfkit': 0.13.0
@@ -12559,8 +12559,8 @@ packages:
     resolution: {integrity: sha512-vqfN08VgfhV8zuvf/UwDs4/P3VtQxHWK9ZshDwc1cEqWDUXzgwJwLiEUqYtksIug5wkhgoedyTAeEG6kJao6WA==}
     dev: false
 
-  /vue3-pdfmake@2.0.0(vue@3.2.47):
-    resolution: {integrity: sha512-TMhj3Lw3iLPHppgaBht0fsh7CypDWltp+TjP3XBFAclFEJtjP832TkvvWASzZP+qOE6KuDQszwYHcQLc5hFSZw==}
+  /vue3-pdfmake@2.2.0(vue@3.2.47):
+    resolution: {integrity: sha512-BsYOnuQNL9wJQ5E9W6M5q5VHvII64lGC80FxQkar4uQpWYXydgUHjYwgnBAiBydbw9YQlUx3ilfYc0kSxQ589A==}
     engines: {node: '>= 14'}
     peerDependencies:
       '@vue/composition-api': ^1.0.0-rc.1
@@ -12569,7 +12569,7 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      pdfmake: 0.3.0-beta.3
+      pdfmake: 0.3.0-beta.5
       vue: 3.2.47
       vue-demi: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     dev: false
@@ -12910,7 +12910,7 @@ packages:
   /write-file-atomic@2.4.3:
     resolution: {integrity: sha512-GaETH5wwsX+GcnzhPgKcKjJ6M2Cq3/iZp1WyY/X1CSqrW+jVNM9Y7D8EC2sM4ZG/V8wZlSniJnCKWPmBYAucRQ==}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       imurmurhash: 0.1.4
       signal-exit: 3.0.7
     dev: true
@@ -12936,7 +12936,7 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       detect-indent: 5.0.0
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       make-dir: 2.1.0
       pify: 4.0.1
       sort-keys: 2.0.0
