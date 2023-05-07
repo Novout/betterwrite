@@ -44,7 +44,7 @@ export const PluginPDFSet = (
   }
 
   const online = hooks.vueuse.core.useOnline()
-  const pdfmake = usePDF().default
+  const pdfmake = usePDF()
 
   const isTheme = computed(() => stores.PDF.styles.switcher.theme)
 

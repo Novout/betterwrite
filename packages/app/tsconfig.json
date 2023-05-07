@@ -22,7 +22,7 @@
         "src/*"
       ],
       "@vueuse/schema-org/runtime": [
-        "./../../node_modules/@vueuse/schema-org/dist/runtime-simple/index"
+        "./../../node_modules/.pnpm/@vueuse+schema-org@1.1.0-beta.6_rollup@2.79.1_typescript@5.0.4_vue@3.2.47/node_modules/@vueuse/schema-org/dist/runtime-simple/index"
       ]
     },
     "lib": [
