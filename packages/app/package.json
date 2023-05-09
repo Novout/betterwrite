@@ -13,7 +13,7 @@
     "build": "vite build",
     "serve": "vite build && vite --port 5000 preview",
     "format": "prettier src/**/*.{vue,ts} --write",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && yarn format"
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src && pnpm run format"
   },
   "dependencies": {
     "@headlessui/vue": "1.7.13",
@@ -47,6 +47,7 @@
     "@vueuse/shared": "9.13.0",
     "@vueuse/sound": "2.0.1",
     "@zip.js/zip.js": "2.6.82",
+    "better-write-client-storage": "^1.2.1",
     "better-write-color-converter": "^1.2.1",
     "better-write-contenteditable-ast": "^1.2.1",
     "better-write-extension": "^1.2.1",
@@ -74,8 +75,8 @@
     "better-write-types": "^1.2.1",
     "compressorjs": "1.2.1",
     "destr": "1.2.2",
-    "docx": "7.5.0",
     "drauu": "0.3.2",
+    "docx": "7.5.0",
     "file-saver": "2.0.5",
     "floating-vue": "2.0.0-beta.20",
     "hast": "1.0.0",
@@ -116,6 +117,7 @@
     "fast-glob": "3.2.12",
     "fontaine": "0.3.1",
     "happy-dom": "6.0.4",
+    "idb-keyval": "6.2.1",
     "node-stdlib-browser": "1.2.0",
     "pathe": "0.3.9",
     "prettier": "2.6.2",

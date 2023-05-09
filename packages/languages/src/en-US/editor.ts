@@ -123,6 +123,11 @@ export default {
         define: 'Pre-Defined',
         or: 'OR',
       },
+      clientStorage: {
+        title: 'Client Storage',
+        indexeddb: 'IndexedDB',
+        local: 'Local Storage',
+      },
       editor: {
         options: {
           googleFonts: {

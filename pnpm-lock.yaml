@@ -90,7 +90,7 @@ importers:
         version: 1.1.23(vue@3.2.47)
       '@vueuse/integrations':
         specifier: 9.13.0
-        version: 9.13.0(drauu@0.3.2)(nprogress@0.2.0)(vue@3.2.47)
+        version: 9.13.0(drauu@0.3.2)(idb-keyval@6.2.1)(nprogress@0.2.0)(vue@3.2.47)
       '@vueuse/motion':
         specifier: 2.0.0-beta.12
         version: 2.0.0-beta.12(vue@3.2.47)
@@ -106,6 +106,9 @@ importers:
       '@zip.js/zip.js':
         specifier: 2.6.82
         version: 2.6.82
+      better-write-client-storage:
+        specifier: ^1.2.1
+        version: link:../client-storage
       better-write-color-converter:
         specifier: ^1.2.1
         version: link:../color-converter
@@ -308,6 +311,9 @@ importers:
       happy-dom:
         specifier: 6.0.4
         version: 6.0.4
+      idb-keyval:
+        specifier: 6.2.1
+        version: 6.2.1
       node-stdlib-browser:
         specifier: 1.2.0
         version: 1.2.0
@@ -359,6 +365,12 @@ importers:
       vue-tsc:
         specifier: 1.6.4
         version: 1.6.4(typescript@5.0.4)
+
+  packages/client-storage:
+    dependencies:
+      better-write-types:
+        specifier: ^1.2.1
+        version: link:../types
 
   packages/color-converter:
     dependencies:
@@ -4371,7 +4383,7 @@ packages:
       vue: 3.2.47
     dev: false
 
-  /@vueuse/integrations@9.13.0(drauu@0.3.2)(nprogress@0.2.0)(vue@3.2.47):
+  /@vueuse/integrations@9.13.0(drauu@0.3.2)(idb-keyval@6.2.1)(nprogress@0.2.0)(vue@3.2.47):
     resolution: {integrity: sha512-I1kX/tsfcvWWLZD7HZaP0LsSfchK13YxReLfharXhk72SFXp87doLbRaTfIF5w8m/gr/vPtcNyQPAXW7Ubpuww==}
     peerDependencies:
       async-validator: '*'
@@ -4412,6 +4424,7 @@ packages:
       '@vueuse/core': 9.13.0(vue@3.2.47)
       '@vueuse/shared': 9.13.0(vue@3.2.47)
       drauu: 0.3.2
+      idb-keyval: 6.2.1
       nprogress: 0.2.0
       vue-demi: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     transitivePeerDependencies:
@@ -7501,6 +7514,9 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
+
+  /idb-keyval@6.2.1:
+    resolution: {integrity: sha512-8Sb3veuYCyrZL+VBt9LJfZjLUPWVvqn8tG28VqYNFCo43KHcKuq+b4EiXGeuaLAQWL2YmyDgMp2aSpH9JHsEQg==}
 
   /idb@7.1.1:
     resolution: {integrity: sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==}

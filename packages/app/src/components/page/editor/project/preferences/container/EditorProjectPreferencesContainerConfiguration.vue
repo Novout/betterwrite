@@ -263,6 +263,25 @@
           <InputBoolean v-model="EDITOR.configuration.purgeEntities" />
         </div>
       </DescriptionContainer>
+      <DescriptionContainer
+        color="#AA0000"
+        :description="
+          t(
+            'editor.preferences.configuration.clientStorage.description'
+          )
+        "
+      >
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{
+              t(
+                'editor.preferences.configuration.clientStorage.title'
+              )
+            }}
+          </p>
+          <InputSelect v-model="EDITOR.configuration.clientStorage.schema" :arr="['local-storage', 'indexeddb']"/>
+        </div>
+      </DescriptionContainer>
     </div>
   </EditorProjectPreferencesContainerSlot>
 </template>

@@ -79,7 +79,6 @@
 </template>
 
 <script setup lang="ts">
-  import { useSupabase } from '@/use/storage/supabase'
   import { computed, reactive } from 'vue'
   import { useVuelidate } from '@vuelidate/core'
   import { minLength, required, email } from '@vuelidate/validators'

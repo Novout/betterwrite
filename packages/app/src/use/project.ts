@@ -123,9 +123,9 @@ export const useProject = () => {
   ) => {
     if (reset) global.reset()
 
-    if (context) context = local.getProject(context)
+    if (context) context = await local.getProject(context)
 
-    if (!context) context = local.getProject()
+    if (!context) context = await local.getProject()
 
     if (!context) {
       ABSOLUTE.project.new = true

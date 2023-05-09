@@ -1,3 +1,5 @@
+import { ClientStorageSchema } from './storage'
+
 export type BetterWriteThemes =
   | 'BetterWrite - Light'
   | 'BetterWrite - Dark'
@@ -84,6 +86,10 @@ export interface EditorStateConfiguration {
   compressFiles: {
     value: boolean
     quality: number
+  }
+  clientStorage: {
+    schema: Omit<ClientStorageSchema, 'session-storage'>
+    compress: boolean
   }
   purgeEntities: boolean
   trackEntities: boolean
