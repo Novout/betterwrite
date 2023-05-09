@@ -1,5 +1,5 @@
 import { get, set, exclude } from 'better-write-client-storage'
-import { ClientStorageOptions, ClientStorageSchema, Maybe, ProjectObject } from 'better-write-types'
+import { ClientStorageOptions, Maybe, ProjectObject } from 'better-write-types'
 import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
 import i18n from '@/lang'
@@ -33,7 +33,7 @@ export const useLocalStorage = () => {
   }
 
   const deleteProject = (): void => {
-    exclude(env.projectLocalStorage(), EDITOR.configuration.clientStorage.schema as ClientStorageSchema)
+    exclude(env.projectLocalStorage())
   }
 
   const getProject = async (project?: Maybe<ProjectObject>): Promise<Maybe<ProjectObject>> => {
