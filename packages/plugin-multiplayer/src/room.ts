@@ -83,7 +83,7 @@ export const RoomSet = (
 
         channel.send(ctx)
       },
-      { debounce: 1000, maxWait: 2000, immediate: true, deep: true }
+      { debounce: 1000, maxWait: 10000, immediate: true, deep: true }
     )
   }
 
