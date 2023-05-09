@@ -13,6 +13,8 @@ export function set<T extends unknown>(
     const strResolved = options.compress ? lz.compress(str) : str
 
     if (options.schema === 'indexeddb') {
+      localStorage.removeItem(key)
+
       indexeddb
         .set(key, strResolved)
         .then((value) => {
@@ -25,7 +27,10 @@ export function set<T extends unknown>(
       return
     }
 
+    indexeddb.del(key).catch(() => {})
     localStorage.setItem(key, strResolved)
+
+    res(key)
   })
 }
 
