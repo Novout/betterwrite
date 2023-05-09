@@ -104,8 +104,8 @@ importers:
         specifier: 2.0.1
         version: 2.0.1(vue@3.2.47)
       '@zip.js/zip.js':
-        specifier: 2.6.82
-        version: 2.6.82
+        specifier: 2.7.7
+        version: 2.7.7
       better-write-client-storage:
         specifier: ^1.2.1
         version: link:../client-storage
@@ -4571,8 +4571,8 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /@zip.js/zip.js@2.6.82:
-    resolution: {integrity: sha512-FHJrD8tvh2I9iyiVsTBTLK9k3J662CQRIFsy5/V7cDFGWnQFv3qz2iHUw77AqLuvP1DGKLN/0Hm2oNzIktG0rg==}
+  /@zip.js/zip.js@2.7.7:
+    resolution: {integrity: sha512-tRYvsYAQDXef4vKi8pgoFvHW3Th0QAvn2aJegEnEx8ZrU4NqXLIWQkm1Lbi94jYnqSbibmN2w5Um9y2jTDvrIA==}
     engines: {deno: '>=1.0.0', node: '>=16.5.0'}
     dev: false
 

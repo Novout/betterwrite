@@ -46,7 +46,7 @@
     "@vueuse/schema-org-vite": "1.1.0-beta.6",
     "@vueuse/shared": "9.13.0",
     "@vueuse/sound": "2.0.1",
-    "@zip.js/zip.js": "2.6.82",
+    "@zip.js/zip.js": "2.7.7",
     "better-write-client-storage": "^1.2.1",
     "better-write-color-converter": "^1.2.1",
     "better-write-contenteditable-ast": "^1.2.1",
