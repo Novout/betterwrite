@@ -46,6 +46,10 @@ export const useEditorStore = defineStore('editor', {
           value: false,
           quality: 0.8,
         },
+        clientStorage: {
+          schema: 'local-storage',
+          compress: true,
+        },
         purgeEntities: false,
         trackEntities: true,
         blocked: true,

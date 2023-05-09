@@ -125,6 +125,13 @@ export default {
         define: 'Pré-Definido',
         or: 'OU',
       },
+      clientStorage: {
+        title: 'Cliente de Armazenamento',
+        description:
+          'Choose a local storage client. It is recommended to use IndexedDB as it accepts a much larger project capacity than local-storage.',
+        indexeddb: 'IndexedDB',
+        local: 'Local',
+      },
       editor: {
         options: {
           googleFonts: {

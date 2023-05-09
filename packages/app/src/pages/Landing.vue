@@ -74,6 +74,18 @@
             v-motion
             :initial="{ opacity: 0 }"
             :enter="{ opacity: 1, transition: { delay: 500 } }"
+            class="absolute bottom-0 right-35"
+            href="https://play.google.com/store/apps/details?id=io.betterwrite.twa&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+            ><img
+              alt="Get it on Google Play"
+              width="200"
+              height="100"
+              src="/google-play-badge.png"
+          /></a>
+          <a
+            v-motion
+            :initial="{ opacity: 0 }"
+            :enter="{ opacity: 1, transition: { delay: 500 } }"
             target="_blank"
             rel="noopener noreferrer"
             href="https://github.com/Novout/betterwrite"
@@ -103,6 +115,7 @@
 <script setup lang="ts">
   import VTypical from 'vue-typical'
   import { useLanding } from '@/use/landing'
+  import { useUtils } from '@/use/utils'
   import { useI18n } from 'vue-i18n'
   import { watch, ref } from 'vue'
   import { useRouter } from 'vue-router'
@@ -114,6 +127,7 @@
   const { t } = useI18n()
   const router = useRouter()
   const plugin = usePlugin()
+  const utils = useUtils()
 
   plugin.emit('call-landing-created')
 

@@ -28,6 +28,8 @@ Local application saving is intrinsically dependent on natural browser support, 
 
 For this problem, two options are currently available: save the project in the cloud, where the size is limited by the user's plan, or save the project in extension and save it where you prefer without size limitation.
 
+> Since 1.2.1+, the default storage client uses indexeddb, solving this problem.
+
 ### Support Deprecated Project's
 
 As can be seen in the top image for flow, all projects go through a support interceptor when they are loaded. It was implemented to be able to provide possible field faults in old projects, bringing security to the user of always having the possibility to load, use and save an old project.

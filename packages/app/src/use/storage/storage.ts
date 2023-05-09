@@ -189,6 +189,16 @@ export const useStorage = () => {
       }
     }
 
+    if(!_.editor.configuration.clientStorage) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        clientStorage: {
+          schema: 'local-storage',
+          compress: true
+        }
+      }
+    }
+
     return _
   }
 

@@ -148,13 +148,15 @@ export default ({ mode }) => {
     build: {
       outDir: resolve(__dirname, 'dist/render'),
       emptyOutDir: true,
-      chunkSizeWarningLimit: 3000, // pdfmake
+      chunkSizeWarningLimit: 4000, // pdfmake
       minify: 'esbuild',
       rollupOptions: {
         output:{
           manualChunks(id) {
-            if (id.includes('node_modules')) {
-              return id.toString().split('node_modules/.pnpm/')[1].split('/')[0].toString();
+            const splitted = 'node_modules/.pnpm/'
+
+            if (id.includes(splitted)) {
+              return id.toString().split(splitted)[1].split('/')[0].toString();
             }
           }
         }

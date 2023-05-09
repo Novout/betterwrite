@@ -300,11 +300,23 @@ export const useDefines = () => {
     return { roomType }
   }
 
+  const configuration = () => {
+    const clientStorage = () => {
+      return [
+        t('editor.preferences.configuration.clientStorage.indexeddb'),
+        t('editor.preferences.configuration.clientStorage.local'),
+      ]
+    }
+
+    return { clientStorage }
+  }
+
   return {
     docx,
     pdf,
     generator,
     characters,
     presence,
+    configuration,
   }
 }

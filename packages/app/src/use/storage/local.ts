@@ -1,14 +1,15 @@
-import destr from 'destr'
-import LZString from 'lz-string'
-import { Maybe, ProjectObject } from 'better-write-types'
+import { get, set, exclude } from 'better-write-client-storage'
+import { ClientStorageOptions, Maybe, ProjectObject } from 'better-write-types'
 import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
 import i18n from '@/lang'
 import { useProjectStore } from '@/store/project'
 import { useStorage } from './storage'
 import { usePlugin } from 'better-write-plugin-core'
+import { useEditorStore } from '@/store/editor'
 
 export const useLocalStorage = () => {
+  const EDITOR = useEditorStore()
   const PROJECT = useProjectStore()
 
   const toast = useToast()
@@ -17,19 +18,9 @@ export const useLocalStorage = () => {
   const plugin = usePlugin()
   const { t } = i18n.global
 
-  const set = (obj: any, name: string) => {
-    localStorage.setItem(name, LZString.compress(JSON.stringify(obj)))
-  }
-
-  const get = (name: string): Maybe<any> => {
-    const item = localStorage.getItem(name)
-
-    return item ? destr(LZString.decompress(item)) : undefined
-  }
-
   const setProject = (obj: ProjectObject) => {
     try {
-      set(obj, env.projectLocalStorage())
+      set(env.projectLocalStorage(), obj, EDITOR.configuration.clientStorage as ClientStorageOptions)
     } catch (e) {
       const key = env.storageLimitSaver()
 
@@ -42,11 +33,11 @@ export const useLocalStorage = () => {
   }
 
   const deleteProject = (): void => {
-    localStorage.removeItem(env.projectLocalStorage())
+    exclude(env.projectLocalStorage())
   }
 
-  const getProject = (project?: Maybe<ProjectObject>): Maybe<ProjectObject> => {
-    if (!project) project = get(env.projectLocalStorage())
+  const getProject = async (project?: Maybe<ProjectObject>): Promise<Maybe<ProjectObject>> => {
+    if (!project) project = await get<ProjectObject>(env.projectLocalStorage(), EDITOR.configuration.clientStorage as ClientStorageOptions)
 
     return project ? storage.support(project) : undefined
   }
