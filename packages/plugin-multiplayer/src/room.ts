@@ -36,20 +36,23 @@ export const RoomSet = (
     stores.LIVESHARE.$reset()
   }
 
-  const setCTX = (ctx: $CTX): void => {
-    // TODO: better method for track changes
-    stores.CONTEXT.$state = ctx.ctx
-    stores.PROJECT.$state = ctx.object.project
-    stores.EDITOR.$state = ctx.object.editor
-    stores.PDF.$state = ctx.object.pdf
-    stores.DOCX.$state = ctx.object.docx
+  const setCTXPayload = (payload: $CTX): void => {
+    // ignore same user for avoid double payload
+    if (stores.LIVESHARE.yourColor === payload.liveshare.yourColor) return
 
-    stores.LIVESHARE.activeColor = ctx.liveshare.yourColor
+    // TODO: better method for track changes
+    stores.CONTEXT.$state = payload.ctx
+    stores.PROJECT.$state = payload.object.project
+    stores.EDITOR.$state = payload.object.editor
+    stores.PDF.$state = payload.object.pdf
+    stores.DOCX.$state = payload.object.docx
+
+    stores.LIVESHARE.activeColor = payload.liveshare.yourColor
 
     emitter.emit('plugin-theme-set')
   }
 
-  const getCTX = (): {
+  const getCTXPayload = (): {
     type: string
     event: string
     payload: {
@@ -76,7 +79,7 @@ export const RoomSet = (
         computed(() => stores.CONTEXT.$state),
       ],
       () => {
-        const ctx = getCTX()
+        const ctx = getCTXPayload()
 
         channel.send(ctx)
       },
@@ -123,7 +126,7 @@ export const RoomSet = (
         stores.LIVESHARE.presence = state
       })
       .on('broadcast', { event: 'ctx' }, ({ payload }) => {
-        setCTX(payload)
+        setCTXPayload(payload)
       })
       .subscribe(async (status) => {
         if (status === 'SUBSCRIBED') {
@@ -154,13 +157,13 @@ export const RoomSet = (
           stores.LIVESHARE.user = { presence_ref: '', ...user }
           stores.LIVESHARE.yourColor = hexColor
 
-          const target = getCTX()
+          const target = getCTXPayload()
 
           if (type === 'owner') {
             channel.send(target)
             stores.LIVESHARE.activeColor = hexColor
           } else {
-            setCTX(target.payload)
+            setCTXPayload(target.payload)
           }
         }
       })
