@@ -8,7 +8,8 @@ export const useLiveshareStore = defineStore('liveshare', {
       presenceLimit: 5,
       user: undefined,
       roomKey: undefined,
-      lastUpdatedColor: undefined,
+      yourColor: undefined,
+      activeColor: undefined,
     }
   },
   actions: {

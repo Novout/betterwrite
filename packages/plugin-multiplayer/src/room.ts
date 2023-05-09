@@ -44,7 +44,7 @@ export const RoomSet = (
     stores.PDF.$state = ctx.object.pdf
     stores.DOCX.$state = ctx.object.docx
 
-    stores.LIVESHARE.lastUpdatedColor = ctx.liveshare.lastUpdatedColor
+    stores.LIVESHARE.activeColor = ctx.liveshare.yourColor
 
     emitter.emit('plugin-theme-set')
   }
@@ -102,7 +102,7 @@ export const RoomSet = (
         if (leftPresences.some((presence) => getOwner(presence))) {
           await removePresence(channel)
 
-          if (type === 'visit') {
+          if (type !== 'owner') {
             hooks.local.deleteProject()
             stores.CONTEXT.$reset()
             stores.PROJECT.$reset()
@@ -123,8 +123,6 @@ export const RoomSet = (
         stores.LIVESHARE.presence = state
       })
       .on('broadcast', { event: 'ctx' }, ({ payload }) => {
-        if (type === 'owner') return
-
         setCTX(payload)
       })
       .subscribe(async (status) => {
@@ -144,7 +142,6 @@ export const RoomSet = (
           }
 
           const tracked = await channel.track(user)
-          stores.LIVESHARE.user = { presence_ref: '', ...user }
 
           if (tracked !== 'ok') {
             await removePresence(channel)
@@ -154,11 +151,14 @@ export const RoomSet = (
             return
           }
 
+          stores.LIVESHARE.user = { presence_ref: '', ...user }
+          stores.LIVESHARE.yourColor = hexColor
+
           const target = getCTX()
 
           if (type === 'owner') {
             channel.send(target)
-            stores.LIVESHARE.lastUpdatedColor = hexColor
+            stores.LIVESHARE.activeColor = hexColor
           } else {
             setCTX(target.payload)
           }
@@ -226,6 +226,8 @@ export const RoomSet = (
       stores.LIVESHARE.$reset()
       stores.ABSOLUTE.modal.presence.info = false
       stores.ABSOLUTE.modal.presence.createOrJoin = false
+
+      hooks.toast.warning(hooks.i18n.t('toast.generics.successRemoved'))
     },
     () => {},
   ])

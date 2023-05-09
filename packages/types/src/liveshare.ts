@@ -18,5 +18,6 @@ export interface LiveshareState {
   user?: LivesharePresenceUser
   roomKey?: string
   presenceLimit: number
-  lastUpdatedColor?: string
+  yourColor?: string
+  activeColor?: string
 }

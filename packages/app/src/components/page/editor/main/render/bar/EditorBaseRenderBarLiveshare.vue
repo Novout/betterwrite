@@ -2,8 +2,8 @@
   <div
     v-if="presence.length > 0"
     :style="[
-      LIVESHARE.lastUpdatedColor
-        ? { border: `1px solid ${LIVESHARE.lastUpdatedColor}` }
+      LIVESHARE.activeColor
+        ? { border: `1px solid ${LIVESHARE.activeColor}` }
         : {},
     ]"
     class="flex px-2 cursor-pointer items-center gap-2"
