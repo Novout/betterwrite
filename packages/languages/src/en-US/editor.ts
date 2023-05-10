@@ -125,6 +125,8 @@ export default {
       },
       clientStorage: {
         title: 'Client Storage',
+        description:
+          'Choose a local storage client. It is recommended to use IndexedDB as it accepts a much larger project capacity than local-storage.',
         indexeddb: 'IndexedDB',
         local: 'Local Storage',
       },
