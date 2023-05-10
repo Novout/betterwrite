@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-voice-typing",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -24,8 +24,8 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-plugin-core": "^1.2.2",
-		"better-write-types": "^1.2.2",
+		"better-write-plugin-core": "^1.2.3",
+		"better-write-types": "^1.2.3",
 		"vue-demi": "latest"
 	},
 	"devDependencies": {
