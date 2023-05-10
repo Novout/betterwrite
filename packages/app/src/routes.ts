@@ -35,11 +35,7 @@ export const routes = [
     component: () => import('@/pages/Privacy.vue'),
   },
   {
-    path: '/editor',
-    redirect: '/',
-  },
-  {
     path: '/:pathMatch(.*)*',
-    component: () => import('@/pages/generics/Generics404.vue'),
+    redirect: '/',
   },
 ]
