@@ -168,7 +168,9 @@
   onMounted(() => {
     if (props.entity.raw !== env.emptyLine()) {
       cycle.awaitedOnMounted(() => {
-        clear()
+        // TODO: improve local.onLoadProject deserialize for correct onMounted access ref's
+        // branch for workaround in async svg+xml render
+        if(drauu.value?.el?.innerHTML) clear()
 
         load(props.entity.raw)
       })
