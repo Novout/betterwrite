@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "io.betterwrite.twa",
       "sha256_cert_fingerprints": [
-        "60:9A:1D:86:27:E2:BD:DA:05:8E:68:51:47:B4:56:7E:6A:56:82:06:C9:67:D8:62:4A:6F:04:A8:D1:31:50:7A"
+        "60:9A:1D:86:27:E2:BD:DA:05:8E:68:51:47:B4:56:7E:6A:56:82:06:C9:67:D8:62:4A:6F:04:A8:D1:31:50:7A",
+        "2C:BC:AC:DE:8B:FC:21:F9:91:C4:07:C7:79:C8:D5:B5:87:8F:96:51:8E:FE:0B:DF:ED:4D:83:7F:4E:41:B4:95"
       ]
     }
   }
