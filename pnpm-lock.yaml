@@ -5,8 +5,8 @@ importers:
   .:
     devDependencies:
       generi:
-        specifier: 1.2.0
-        version: 1.2.0
+        specifier: 1.2.1
+        version: 1.2.1
       lerna:
         specifier: 6.6.2
         version: 6.6.2
@@ -427,7 +427,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
 
   packages/plugin-auth:
     dependencies:
@@ -445,7 +445,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -476,7 +476,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -498,7 +498,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
 
   packages/plugin-editor-window:
     dependencies:
@@ -525,7 +525,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
 
   packages/plugin-entity-history:
     dependencies:
@@ -543,7 +543,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -571,7 +571,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
 
   packages/plugin-exporter-epub:
     dependencies:
@@ -607,7 +607,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
 
   packages/plugin-exporter-pdf:
     dependencies:
@@ -640,7 +640,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
 
   packages/plugin-exporter-txt:
     dependencies:
@@ -661,7 +661,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
 
   packages/plugin-importer:
     dependencies:
@@ -682,7 +682,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -707,7 +707,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -735,7 +735,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -763,7 +763,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -788,7 +788,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
 
   packages/plugin-voice-typing:
     dependencies:
@@ -806,7 +806,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -834,7 +834,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -853,7 +853,7 @@ importers:
         version: 3.2.47
       vue-demi:
         specifier: latest
-        version: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+        version: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
 
 packages:
 
@@ -2508,7 +2508,7 @@ packages:
     engines: {node: ^14.17.0 || >=16.0.0}
     dependencies:
       chalk: 4.1.0
-      execa: 5.0.0
+      execa: 5.1.1
       strong-log-transformer: 2.1.0
     dev: true
 
@@ -4221,6 +4221,7 @@ packages:
     dependencies:
       tslib: 2.5.0
       vue: 3.2.47
+    dev: false
 
   /@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
@@ -4336,7 +4337,7 @@ packages:
     dependencies:
       '@vueuse/core': 9.13.0(vue@3.2.47)
       '@vueuse/shared': 9.13.0(vue@3.2.47)
-      vue-demi: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+      vue-demi: 0.14.0(vue@3.2.47)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4357,7 +4358,7 @@ packages:
       '@vueuse/metadata': 8.9.4
       '@vueuse/shared': 8.9.4(vue@3.2.47)
       vue: 3.2.47
-      vue-demi: 0.14.1(vue@3.2.47)
+      vue-demi: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     dev: false
 
   /@vueuse/core@9.13.0(vue@3.2.47):
@@ -4366,7 +4367,7 @@ packages:
       '@types/web-bluetooth': 0.0.16
       '@vueuse/metadata': 9.13.0
       '@vueuse/shared': 9.13.0(vue@3.2.47)
-      vue-demi: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+      vue-demi: 0.14.0(vue@3.2.47)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4426,7 +4427,7 @@ packages:
       drauu: 0.3.2
       idb-keyval: 6.2.1
       nprogress: 0.2.0
-      vue-demi: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+      vue-demi: 0.14.0(vue@3.2.47)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4454,7 +4455,7 @@ packages:
       popmotion: 11.0.5
       style-value-types: 5.1.2
       vue: 3.2.47
-      vue-demi: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+      vue-demi: 0.14.0(vue@3.2.47)
     dev: false
 
   /@vueuse/schema-org-vite@1.1.0-beta.6(@vueuse/head@1.1.23)(rollup@2.79.1)(typescript@5.0.4)(vite@4.3.5)(vue@3.2.47):
@@ -4506,13 +4507,13 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.47
-      vue-demi: 0.14.1(vue@3.2.47)
+      vue-demi: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     dev: false
 
   /@vueuse/shared@9.13.0(vue@3.2.47):
     resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
     dependencies:
-      vue-demi: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+      vue-demi: 0.14.0(vue@3.2.47)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4528,7 +4529,7 @@ packages:
     dependencies:
       howler: 2.2.3
       vue: 3.2.47
-      vue-demi: 0.14.1(vue@3.2.47)
+      vue-demi: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     dev: false
 
   /@windicss/config@1.8.10:
@@ -6617,9 +6618,9 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       cross-spawn: 7.0.3
-      get-stream: 6.0.0
+      get-stream: 6.0.1
       human-signals: 2.1.0
-      is-stream: 2.0.0
+      is-stream: 2.0.1
       merge-stream: 2.0.0
       npm-run-path: 4.0.1
       onetime: 5.1.2
@@ -6982,8 +6983,8 @@ packages:
       wide-align: 1.1.5
     dev: true
 
-  /generi@1.2.0:
-    resolution: {integrity: sha512-QW60Ex4/20X73VgIw97eWoo5FNQP/2guLbdiGRvH5DFPsp3roQ5gZ/3bGT0jOltJcB2+I2OpQ1t8oKEbUqcN2Q==}
+  /generi@1.2.1:
+    resolution: {integrity: sha512-vqchlskyDP783LqxJdacqdqqm9m+SLy3G8otM+vWKBZRnvjfkVmhAubP+NQalvdhc3fnkkbTMSNaBUb8AL4olg==}
     hasBin: true
     dependencies:
       consola: 3.1.0
@@ -10016,7 +10017,7 @@ packages:
       '@vue/devtools-api': 6.5.0
       typescript: 5.0.4
       vue: 3.2.47
-      vue-demi: 0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
+      vue-demi: 0.14.0(vue@3.2.47)
     dev: false
 
   /pirates@4.0.5:
@@ -11394,7 +11395,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       del: 6.1.1
-      is-stream: 2.0.0
+      is-stream: 2.0.1
       temp-dir: 2.0.0
       type-fest: 0.16.0
       unique-string: 2.0.0
@@ -12467,7 +12468,7 @@ packages:
       vue: 3.2.47
     dev: false
 
-  /vue-demi@0.14.0(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47):
+  /vue-demi@0.14.0(vue@3.2.47):
     resolution: {integrity: sha512-gt58r2ogsNQeVoQ3EhoUAvUsH9xviydl0dWJj7dabBC/2L4uBId7ujtCwDRD0JhkGsV1i0CtfLAeyYKBht9oWg==}
     engines: {node: '>=12'}
     hasBin: true
@@ -12479,10 +12480,9 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      '@vue/composition-api': 1.0.0-rc.1(vue@3.2.47)
       vue: 3.2.47
 
-  /vue-demi@0.14.1(vue@3.2.47):
+  /vue-demi@0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47):
     resolution: {integrity: sha512-rt+yuCtXvscYot9SQQj3WKZJVSriPNqVkpVBNEHPzSgBv7QIYzsS410VqVgvx8f9AAPgjg+XPKvmV3vOqqkJQQ==}
     engines: {node: '>=12'}
     hasBin: true
@@ -12494,6 +12494,7 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
+      '@vue/composition-api': 1.0.0-rc.1(vue@3.2.47)
       vue: 3.2.47
     dev: false
 
@@ -12509,7 +12510,7 @@ packages:
     dependencies:
       '@vueuse/core': 9.13.0(vue@3.2.47)
       vue: 3.2.47
-      vue-demi: 0.14.1(vue@3.2.47)
+      vue-demi: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     dev: false
 
   /vue-eslint-parser@9.2.0(eslint@8.24.0):
@@ -12602,7 +12603,7 @@ packages:
     dependencies:
       pdfmake: 0.3.0-beta.5
       vue: 3.2.47
-      vue-demi: 0.14.1(vue@3.2.47)
+      vue-demi: 0.14.1(@vue/composition-api@1.0.0-rc.1)(vue@3.2.47)
     dev: false
 
   /vue@3.2.47:

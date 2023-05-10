@@ -22,19 +22,18 @@
 </template>
 
 <script setup lang="ts">
-  import { useNProgress } from '@vueuse/integrations/useNProgress'
+  import { useAuthStore } from '@/store/auth'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
 
+  const AUTH = useAuthStore()
+
   const { t } = useI18n()
   const router = useRouter()
-  const { isLoading } = useNProgress()
 
   const onClick = () => {
-    isLoading.value = true
+    const options = !AUTH.account.user ? { path: '/landing', query: { login: 'auth' } } : { path: '/' }
 
-    router.push({ path: '/landing', query: { login: 'auth' } }).finally(() => {
-      isLoading.value = false
-    })
+    router.push(options)
   }
 </script>
