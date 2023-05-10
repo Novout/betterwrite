@@ -47,7 +47,7 @@ export const useEditorStore = defineStore('editor', {
           quality: 0.8,
         },
         clientStorage: {
-          schema: 'local-storage',
+          schema: 'indexeddb',
           compress: true,
         },
         purgeEntities: false,
