@@ -12,6 +12,7 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useLocalStorage } from '@/use/storage/local'
+  import { useStorage } from '@/use/storage/storage'
   import { useElementHover } from '@vueuse/core'
   import { ref, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
@@ -21,6 +22,7 @@
   const local = useLocalStorage()
   const { t } = useI18n()
   const header = ref()
+  const storage = useStorage()
   const isHovered = useElementHover(header)
   const emit = defineEmits(['hover'])
 
@@ -28,9 +30,12 @@
     emit('hover', v)
   })
 
-  const onClose = () => {
+  const onClose = async () => {
     if (confirm(t('editor.preferences.header.close'))) {
-      local.onSaveProject(false).finally(() => window.location.reload())
+      await storage.normalize()
+      await local.onSaveProject(false)
+
+      window.location.reload()
 
       return
     }
