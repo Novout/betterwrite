@@ -1,6 +1,6 @@
 {
 	"name": "better-write-color-converter",
-	"version": "1.2.5",
+	"version": "1.2.6",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -19,7 +19,7 @@
 		"lint": "prettier --write src/"
 	},
 	"dependencies": {
-		"better-write-types": "^1.2.5"
+		"better-write-types": "^1.2.6"
 	},
 	"files": [
 		"dist/**/*",
