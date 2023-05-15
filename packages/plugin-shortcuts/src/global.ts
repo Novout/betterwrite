@@ -1,4 +1,5 @@
 import { PluginTypes } from 'better-write-types'
+import { computed } from 'vue-demi'
 
 export const GlobalSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -6,6 +7,9 @@ export const GlobalSet = (
   hooks: PluginTypes.PluginHooks
 ) => {
   emitter.on('call-editor-mounted', () => {
+    const isThirdPartyShortcut = computed(
+      () => stores.PROJECT.base === 'annotations'
+    )
     const validKeys = ['a', 'c', 'v', 'b', 'i', 'z']
 
     const keys = hooks.vueuse.core.useMagicKeys({
@@ -13,7 +17,8 @@ export const GlobalSet = (
       onEventFired(e: KeyboardEvent) {
         if (
           (e.ctrlKey || e.altKey) &&
-          !validKeys.some((key) => e.key.toLowerCase() === key.toLowerCase())
+          !validKeys.some((key) => e.key.toLowerCase() === key.toLowerCase()) &&
+          !isThirdPartyShortcut
         ) {
           e?.preventDefault()
           e?.stopImmediatePropagation()
@@ -52,10 +57,14 @@ export const GlobalSet = (
     })
 
     whenever(keys.ctrl_f, () => {
+      if (isThirdPartyShortcut) return
+
       stores.ABSOLUTE.shortcuts.finder = !stores.ABSOLUTE.shortcuts.finder
     })
 
     whenever(keys.ctrl_h, () => {
+      if (isThirdPartyShortcut) return
+
       stores.ABSOLUTE.shortcuts.switcher = !stores.ABSOLUTE.shortcuts.switcher
     })
 
