@@ -75,12 +75,16 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useUtils } from '@/use/utils'
+  import { usePlugin } from 'better-write-plugin-core'
   import { useI18n } from 'vue-i18n'
 
   const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
   const utils = useUtils()
+  const plugin = usePlugin()
 
   const os = utils.system().get()
+
+  plugin.emit('plugin-pdf-init')
 </script>
