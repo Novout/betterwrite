@@ -76,11 +76,18 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useUtils } from '@/use/utils'
   import { useI18n } from 'vue-i18n'
+  import { usePlugin } from 'better-write-plugin-core'
+  import { onMounted } from 'vue'
 
   const ABSOLUTE = useAbsoluteStore()
 
   const { t } = useI18n()
   const utils = useUtils()
+  const plugin = usePlugin()
 
   const os = utils.system().get()
+
+  onMounted(() => {
+    plugin.emit('plugin-pdf-init')
+  })
 </script>
