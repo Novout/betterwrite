@@ -511,7 +511,7 @@ export default {
       actuallyPage: 'Actually Page',
       projectPages: 'Project Pages',
       timeline: 'Timeline',
-      annotations: 'Annotations',
+      schemas: 'Schemas',
     },
     configuration: {
       title: 'Settings',
@@ -747,7 +747,43 @@ export default {
       longest: 'Longest Content',
     },
   },
-  annotations: {
+  schemas: {
+    types: {
+      default: {
+        target: 'Default',
+        description: 'Write your notes however you like.',
+      },
+      characters: {
+        target: 'Characters',
+        description:
+          'Create a file for each character in your story and see the highlighted paragraphs they participate in each chapter.',
+      },
+    },
+    create: {
+      title: 'Workspace',
+      description:
+        'Additional resources that do not participate in the generation of documents, serving as an aid to the production flow and accompanying all your writing!',
+      name: 'Name',
+      prefix: 'Prefix',
+      prefixDescription:
+        'Choose a prefix that will allow you to reference files at any time.',
+      type: 'Schema Type',
+      typeDescription:
+        'Choose a style that is more related to what you are looking for.',
+      button: 'Create',
+      templates: {
+        simple: {
+          title: 'Simple',
+          description:
+            'Start with generic annotations and build your workspace however you like!',
+        },
+        enthusiast: {
+          title: 'Enthusiast',
+          description:
+            'Start your project with several files prepared to extract the maximum of your creativity!',
+        },
+      },
+    },
     items: {
       file: 'New File',
       folder: 'New Folder',

@@ -30,8 +30,7 @@ export interface ProjectState {
   creative: ProjectStateCreative
   templates: ProjectStateTemplates
   shortcuts: ProjectStateShortcuts
-  annotations: ProjectStateAnnotations
-  characters: ProjectStateCharacters
+  schemas: ProjectStateSchema[]
 }
 
 export interface ProjectStateOptions {
@@ -57,39 +56,65 @@ export interface ProjectStateOptions {
   creative?: ProjectStateCreative
   templates?: ProjectStateTemplates
   shortcuts?: ProjectStateShortcuts
-  annotations?: ProjectStateAnnotations
-  characters?: ProjectStateCharacters
-}
-
-export interface ProjectStateCharacters {
-  list: ProjectStateCharacter[]
+  schemas?: ProjectStateSchema[]
 }
 
 export type ProjectStateCharacterNameCase = 'strict' | 'default' | 'all'
 
-export interface ProjectStateCharacter {
+export type ProjectStateSchemaType = 'characters' | 'default'
+
+export type ProjectStateSchema =
+  | ProjectStateSchemaDefault
+  | ProjectStateSchemaCharacter
+
+export interface ProjectStateSchemaFolder<T extends object = any> {
+  id: ID<string>
+  parentId: ID<string>
+  folderName: string
+  files: ProjectStateSchemaFile<T>[]
+  customIcon?: string
+}
+
+export interface ProjectStateSchemaFile<T extends object = any> {
+  id: ID<string>
+  parentId: ID<string>
+  fileName: string
+  milkdownData: any
+  extra: T
+  customIcon?: string
+}
+
+export interface ProjectStateSchemaSet {
+  id: ID<string>
+  type: ProjectStateSchemaType
+  name: string
+  prefix: string
+  customIcon?: string
+}
+
+export interface ProjectStateSchemaDefault extends ProjectStateSchemaSet {
+  folders: ProjectStateSchemaFolder<any>[]
+}
+
+export interface ProjectStateSchemaCharacter extends ProjectStateSchemaSet {
+  folders: ProjectStateSchemaFolder<ProjectStateSchemaCharacterItem>[]
+}
+
+export interface ProjectStateSchemaCharacterItem {
   id: ID<string>
   name: string
   nameCase: ProjectStateCharacterNameCase | string
   color: string
   colorAlpha?: number
   important: boolean
+  configuration: boolean
+  disabled: boolean
 }
 
-export interface ProjectStateAnnotations {
-  folders: ProjectStateAnnotationFolder[]
-}
-
-export interface ProjectStateAnnotationFolder {
-  id: ID<string>
-  folderName: string
-  files: ProjectStateAnnotationFile[]
-}
-
-export interface ProjectStateAnnotationFile {
-  id: ID<string>
-  fileName: string
-  value: any
+export interface ProjectStateSchemaCreate {
+  name: string
+  type: ProjectStateSchemaType
+  prefix: string
 }
 
 export interface ProjectStateShortcuts {

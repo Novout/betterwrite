@@ -1,10 +1,8 @@
 import { useContextStore } from '@/store/context'
 import { useProjectStore } from '@/store/project'
 import { ASTUtils } from 'better-write-contenteditable-ast'
-import { Entities, ID, ProjectStateCharacter } from 'better-write-types'
+import { Entities, ID } from 'better-write-types'
 import { useProject } from './project'
-import { useToast } from 'vue-toastification'
-import { useI18n } from 'vue-i18n'
 import { useStorage } from './storage/storage'
 import { usePlugin } from 'better-write-plugin-core'
 
@@ -13,8 +11,6 @@ export const useCharacters = () => {
   const PROJECT = useProjectStore()
 
   const project = useProject()
-  const toast = useToast()
-  const { t } = useI18n()
   const storage = useStorage()
   const plugin = usePlugin()
 
@@ -28,26 +24,18 @@ export const useCharacters = () => {
     entities.forEach((entity, index) => {
       entity.visual.custom = undefined
 
-      PROJECT.characters?.list?.forEach((character) => {
-        plugin.emit('plugin-characters-color-background', {
-          entity,
-          str: index === 0 && inner ? inner : entity.raw,
-          character,
+      PROJECT.schemas.forEach((schema) => {
+        schema.folders.forEach((folder) => {
+          folder.files.forEach((file) => {
+            plugin.emit('plugin-characters-color-background', {
+              entity,
+              str: index === 0 && inner ? inner : entity.raw,
+              character: file.extra,
+            })
+          })
         })
       })
     })
-  }
-
-  const controller = () => {
-    const onDelete = async (character: ProjectStateCharacter) => {
-      PROJECT.characters.list = PROJECT.characters.list.filter(
-        ({ id }) => id !== character.id
-      )
-
-      toast.success(t('toast.generics.successRemoved'))
-    }
-
-    return { onDelete }
   }
 
   const data = () => {
@@ -79,5 +67,5 @@ export const useCharacters = () => {
     return { totalOccurrences, averageTotalOccurrences }
   }
 
-  return { handler, controller, data }
+  return { handler, data }
 }

@@ -62,7 +62,7 @@
   const mobile = breakpoints.greater('md')
 
   const { width } = useWindowSize()
-  const { lengthX } = useSwipe(aside as any, {
+  const { lengthX } = useSwipe(aside, {
     passive: true,
     onSwipe() {
       if (width.value) {

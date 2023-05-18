@@ -11,7 +11,7 @@
     ]"
   >
     <EditorBaseRender v-if="PROJECT.base === 'chapter'" />
-    <EditorBaseAnnotations v-else-if="PROJECT.base === 'annotations'" />
+    <EditorBaseSchemas v-else-if="PROJECT.base === 'annotations'" />
   </div>
 </template>
 

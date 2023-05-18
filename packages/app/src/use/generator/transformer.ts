@@ -3,6 +3,7 @@ import {
   DOCXStateFlowItemType,
   LiveshareType,
   Maybe,
+  ProjectStateSchemaType,
 } from 'better-write-types'
 import { useI18n } from 'vue-i18n'
 
@@ -197,5 +198,44 @@ export const useTransformer = () => {
     return { type }
   }
 
-  return { docx, characters, presence }
+  const schemas = () => {
+    const type = (target: string, focus: 'setter' | 'getter'): string => {
+      let value: Maybe<ProjectStateSchemaType> = null
+      let __STOP__: boolean = false
+
+      if (focus === 'getter') {
+        switch (target) {
+          case 'characters':
+            return t('editor.schemas.types.characters.target')
+          case 'default':
+            return t('editor.schemas.types.default.target')
+        }
+      }
+
+      availableLocales.forEach((locale: string) => {
+        if (__STOP__) return
+
+        const { editor } = getLocaleMessage(locale) as any
+
+        switch (target) {
+          case editor.schemas.types.characters.target:
+            __STOP__ = true
+            value = 'characters'
+            break
+          case editor.schemas.types.default.target:
+            __STOP__ = true
+            value = 'default'
+            break
+          default:
+            __STOP__ = false
+        }
+      })
+
+      return value || 'default'
+    }
+
+    return { type }
+  }
+
+  return { docx, characters, presence, schemas }
 }

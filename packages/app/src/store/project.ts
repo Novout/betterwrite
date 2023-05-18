@@ -2,7 +2,6 @@ import { defineStore } from 'pinia'
 import {
   ContextState,
   ProjectState,
-  ID,
   Entity,
   ProjectStateOptions,
 } from 'better-write-types'
@@ -72,12 +71,7 @@ export const useProjectStore = defineStore('project', {
           },
         ],
       },
-      annotations: {
-        folders: [],
-      },
-      characters: {
-        list: [],
-      },
+      schemas: [],
     }
   },
   actions: {
@@ -104,9 +98,8 @@ export const useProjectStore = defineStore('project', {
       this.bw.platform = payload.bw.platform
       this.bw.version = payload.bw.version
       this.shortcuts = payload.shortcuts
-      this.annotations = payload.annotations
+      this.schemas = payload.schemas
       this.creative = payload.creative
-      this.characters = payload.characters
     },
     new(options: ProjectStateOptions, forceTitle?: string) {
       const global = useGlobalStore()
@@ -180,12 +173,40 @@ export const useProjectStore = defineStore('project', {
             },
           ],
         },
-        annotations: options.annotations || {
-          folders: [],
-        },
-        characters: options.characters || {
-          list: [],
-        },
+        schemas: options.schemas || [
+          {
+            id: useUtils().id().nano({ prefix: 'schema' }),
+            type: 'default',
+            name: 'Lore',
+            prefix: '#',
+            customIcon: '📖',
+            folders: [],
+          },
+          {
+            id: useUtils().id().nano({ prefix: 'schema' }),
+            type: 'characters',
+            name: 'Personagem',
+            prefix: '@',
+            customIcon: '🐉',
+            folders: [],
+          },
+          {
+            id: useUtils().id().nano({ prefix: 'schema' }),
+            type: 'default',
+            name: 'Fio da História',
+            prefix: '/',
+            customIcon: '⛰️',
+            folders: [],
+          },
+          {
+            id: useUtils().id().nano({ prefix: 'schema' }),
+            type: 'default',
+            name: 'Anotações',
+            prefix: '*',
+            customIcon: '📂',
+            folders: [],
+          },
+        ],
       }
 
       if (this.chapters[0].entities.length === 0) {

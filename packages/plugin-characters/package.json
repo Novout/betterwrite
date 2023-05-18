@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-characters",
-	"version": "1.2.6",
+	"version": "1.2.7",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -24,10 +24,10 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-color-converter": "^1.2.6",
-		"better-write-contenteditable-ast": "^1.2.6",
-		"better-write-plugin-core": "^1.2.6",
-		"better-write-types": "^1.2.6",
+		"better-write-color-converter": "^1.2.7",
+		"better-write-contenteditable-ast": "^1.2.7",
+		"better-write-plugin-core": "^1.2.7",
+		"better-write-types": "^1.2.7",
 		"vue-demi": "latest"
 	},
 	"devDependencies": {

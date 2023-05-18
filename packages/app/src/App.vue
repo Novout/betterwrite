@@ -12,7 +12,7 @@
   // import { EpubPlugin } from 'better-write-plugin-exporter-epub'
   import { TxtPlugin } from 'better-write-plugin-exporter-txt'
   import { HtmlPlugin } from 'better-write-plugin-exporter-html'
-  import { AnnotationsPlugin } from 'better-write-plugin-annotations'
+  import { SchemasPlugin } from 'better-write-plugin-schemas'
   import { ShortcutsPlugin } from 'better-write-plugin-shortcuts'
   import { VoiceTypingPlugin } from 'better-write-plugin-voice-typing'
   import { EntityHistoryPlugin } from 'better-write-plugin-entity-history'
@@ -31,7 +31,7 @@
     // EpubPlugin(),
     TxtPlugin(),
     HtmlPlugin(),
-    AnnotationsPlugin(),
+    SchemasPlugin(),
     ShortcutsPlugin(),
     VoiceTypingPlugin(),
     EntityHistoryPlugin(),

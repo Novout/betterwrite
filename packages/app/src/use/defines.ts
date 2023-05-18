@@ -230,7 +230,23 @@ export const useDefines = () => {
       ]
     }
 
-    return { nameCase }
+    const names = () => {
+      return [
+        'Alice',
+        'Bob',
+        'Frodo',
+        'Verko',
+        'Tarrio',
+        'Sato',
+        'Ferrino',
+        'Amelho',
+        'Androllio',
+        'Tyrion',
+        'Haino',
+      ]
+    }
+
+    return { nameCase, names }
   }
 
   const generator = () => {

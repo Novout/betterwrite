@@ -11,7 +11,6 @@
     <EditorProjectStatistics v-else-if="ABSOLUTE.project.statistics" />
     <EditorProjectInsertions v-else-if="ABSOLUTE.project.insertions" />
     <EditorProjectCorrector v-else-if="ABSOLUTE.project.corrector" />
-    <EditorProjectCharacters v-else-if="ABSOLUTE.project.characters" />
     <EditorProjectPreferences v-else-if="ABSOLUTE.project.preferences" />
     <EditorProjectPresenceCreate
       v-else-if="ABSOLUTE.modal.presence.createOrJoin"
@@ -29,6 +28,9 @@
     <EditorToolsFinder v-else-if="ABSOLUTE.shortcuts.finder" />
     <EditorToolsSpeechRecognition
       v-else-if="ABSOLUTE.tools.speechRecognition"
+    />
+    <EditorSchemasCreate
+      v-else-if="ABSOLUTE.schemas.create"
     />
     <EditorAbsoluteLoader v-else-if="ABSOLUTE.spinner" />
   </teleport>

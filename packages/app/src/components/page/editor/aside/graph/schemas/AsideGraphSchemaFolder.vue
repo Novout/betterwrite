@@ -1,17 +1,19 @@
 <template>
   <div class="flex justify-between items-center w-full">
     <div class="flex items-center ml-2">
-      <IconFolderOpen class="wb-icon w-5 h-5" @click.prevent.stop="toggle()" />
+      <InputEmoji v-model="folder.customIcon">
+        <IconFolderOpen class="wb-icon w-5 h-5" />
+      </InputEmoji>
       <InputText
         v-model="folder.folderName"
         class="wb-text bg-transparent py-0.5 rounded hover:bg-theme-background-opacity-1 focus:bg-theme-background-opacity-1 ml-2 font-bold w-2/3 text-left truncate"
       />
     </div>
     <div class="flex items-center">
-      <div @click.prevent.stop="annotations.onFolderDelete(folder)">
+      <div @click.prevent.stop="schemas.onFolderDelete(folder)">
         <IconDelete class="wb-aside-icon" />
       </div>
-      <div @click.prevent.stop="annotations.onFileCreate(folder)">
+      <div @click.prevent.stop="schemas.onFileCreate(folder)">
         <IconFileAdd class="wb-aside-icon" />
       </div>
       <div
@@ -22,23 +24,23 @@
       </div>
     </div>
   </div>
-  <AsideGraphAnnotationsListFiles v-if="value" :folder="folder" />
+  <AsideGraphSchemaListFiles v-if="value" :folder="folder" />
 </template>
 
 <script setup lang="ts">
-  import { useAnnotations } from '@/use/annotations'
+  import { useSchemas } from '@/use/schemas'
   import useEmitter from '@/use/emitter'
   import { useToggle } from '@vueuse/core'
-  import { ProjectStateAnnotationFolder } from 'better-write-types'
+  import { ProjectStateSchemaFolder } from 'better-write-types'
   import { onMounted } from 'vue'
 
   const props = defineProps<{
-    folder: ProjectStateAnnotationFolder
+    folder: ProjectStateSchemaFolder
   }>()
 
   const emitter = useEmitter()
-  const annotations = useAnnotations()
-  const [value, toggle] = useToggle(false)
+  const schemas = useSchemas()
+  const [value, toggle] = useToggle(true)
 
   onMounted(() => {
     emitter.on('annotations-folder-graph-open', (folder) => {

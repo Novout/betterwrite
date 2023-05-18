@@ -69,7 +69,7 @@ export default {
     md: {
       generate: 'Successfully Downloaded Markdown!',
     },
-    annotations: {
+    schemas: {
       fileDelete: 'Are you sure you want to delete the file?',
       folderDelete: 'Are you sure you want to delete the folder?',
     },

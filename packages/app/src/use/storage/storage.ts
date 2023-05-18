@@ -199,6 +199,10 @@ export const useStorage = () => {
       }
     }
 
+    if(!_.project.schemas) {
+      _.project.schemas = []
+    }
+
     return _
   }
 

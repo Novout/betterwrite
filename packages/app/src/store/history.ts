@@ -1,4 +1,4 @@
-import { HistoryState, HistoryStateTarget } from 'better-write-types'
+import { HistoryState } from 'better-write-types'
 import { defineStore } from 'pinia'
 
 export const useHistoryStore = defineStore('history', {

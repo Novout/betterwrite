@@ -511,7 +511,7 @@ export default {
       actuallyPage: 'Página Atual',
       projectPages: 'Projeto',
       timeline: 'Linha do Tempo',
-      annotations: 'Anotações',
+      schemas: 'Esquemas',
     },
     configuration: {
       title: 'Configuração',
@@ -589,7 +589,7 @@ export default {
             description:
               'Crie um projeto com toda a estrutura necessária para a criação de livros.',
           },
-          annotations: {
+          schemas: {
             title: 'Anotações',
             description:
               'Crie um projeto somente com recursos para anotações. Recomendado para as tarefas do dia-a-dia.',
@@ -750,7 +750,44 @@ export default {
       longest: 'Maior Conteúdo',
     },
   },
-  annotations: {
+  schemas: {
+    types: {
+      default: {
+        target: 'Padrão',
+        description: 'Escreva suas anotações da forma que preferir.',
+      },
+      characters: {
+        target: 'Personagens',
+        description:
+          'Crie um arquivo para cada personagem de sua história e veja o destaque dos parágrafos que eles participam em cada capítulo.',
+      },
+    },
+    create: {
+      title: 'Área de Trabalho',
+      description:
+        'Recursos adicionais que não participam da geração de documentos, servindo como auxiliar para o fluxo de produção e que acompanham toda a sua escrita!',
+      name: 'Nome do Item',
+      nameItem: 'Anotações',
+      prefix: 'Prefixo',
+      prefixDescription:
+        'Escolha um prefixo que o permitirá referenciar arquivos a qualquer momento.',
+      type: 'Estilo de Esquema',
+      typeDescription:
+        'Escolha um estilo que mais esteja relacionado com o que você busca.',
+      button: 'Criar',
+      templates: {
+        simple: {
+          title: 'Simples',
+          description:
+            'Inicie com anotações genéricas e construa a sua área de trabalho da forma que preferir!',
+        },
+        enthusiast: {
+          title: 'Literato',
+          description:
+            'Inicie seu projeto com diversos arquivos preparados para extrair o máximo da sua criatividade!',
+        },
+      },
+    },
     items: {
       file: 'Novo Arquivo',
       folder: 'Nova Pasta',

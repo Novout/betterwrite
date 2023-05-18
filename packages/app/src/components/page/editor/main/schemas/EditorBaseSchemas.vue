@@ -1,7 +1,7 @@
 <template>
-  <div class="relative w-full wb-edit overflow-auto">
+  <div class="relative w-full wb-edit overflow-hidden">
     <div
-      class="absolute right-10 top-2 bg-none z-9999 flex items-center justify-end w-full"
+    class="absolute right-10 top-2 bg-none z-9999 flex items-center justify-end w-full"
     >
       <div class="flex gap-2 sm:gap-6 items-center">
         <HeroIcon class="wb-icon" @click="call(redoCommand.key)">
@@ -64,6 +64,8 @@
   import { useUtils } from '@/use/utils'
   import { useToast } from 'vue-toastification'
   import { useI18n } from 'vue-i18n'
+  import { ProjectStateSchemaFile } from 'better-write-types'
+  import { useDefines } from '@/use/defines'
 
   const EDITOR = useEditorStore()
 
@@ -71,18 +73,22 @@
   const project = useProject()
   const utils = useUtils()
   const toast = useToast()
+  const defines = useDefines()
   const { t } = useI18n()
+
   const editor = ref<Editor | null>(null)
+  const file = ref<ProjectStateSchemaFile | null>(null)
 
   onMounted(() => {
-    plugin.on('plugin-annotations-get-instance', (_editor: Editor) => {
-      editor.value = _editor
-    })
+    plugin.on('plugin-schemas-get-instance', (set) => {
+      editor.value = set.editor as Editor
+      file.value = set.file as ProjectStateSchemaFile
+    }) 
   })
 
   onBeforeUnmount(async () => {
     editor.value = null
-    await plugin.emit('plugin-annotations-reset')
+    await plugin.emit('plugin-schemas-reset')
   })
 
   function call<T>(command: CmdKey<T>, payload?: T) {
