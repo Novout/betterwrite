@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full wb-edit overflow-hidden">
+  <div class="flex-1 relative w-full wb-edit overflow-hidden">
     <div
     class="absolute right-10 top-2 bg-none z-9999 flex items-center justify-end w-full"
     >

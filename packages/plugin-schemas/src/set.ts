@@ -239,6 +239,14 @@ export const PluginSchemasSet = (
       .use(upload)
       .create()
 
+    stores.HISTORY.addBar({
+      id: file.id,
+      name: file.fileName,
+      type: 'annotations',
+      scrollHeight: 0,
+      createdAt: hooks.format.actually('iso'),
+    })
+
     emitter.emit('plugin-schemas-get-instance', { editor, file })
   }
 

@@ -199,6 +199,13 @@ export const useStorage = () => {
       }
     }
 
+    if(!_.editor.configuration.topBar) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        topBar: true
+      }
+    }
+
     if(!_.project.schemas) {
       _.project.schemas = []
     }
