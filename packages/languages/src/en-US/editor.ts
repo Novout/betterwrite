@@ -524,6 +524,7 @@ export default {
       cloudAutosave: 'Cloud Auto Save',
       blocked: 'Initial Tutorial',
       bottomBar: 'Bottom Bar',
+      topBar: 'Top Bar',
       language: 'Language',
       advanced: 'Advanced',
       entity: {

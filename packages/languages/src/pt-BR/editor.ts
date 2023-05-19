@@ -524,6 +524,7 @@ export default {
       cloudAutosave: 'Salvamento Automático na Nuvem',
       blocked: 'Tutorial Inicial',
       bottomBar: 'Barra Inferior',
+      topBar: 'Barra Superior',
       advanced: 'Avançado',
       language: 'Idioma',
       entity: {

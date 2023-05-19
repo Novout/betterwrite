@@ -100,7 +100,7 @@ export const PluginSchemasSet = (
               disabled: false,
             }
           : {},
-      customIcon: undefined,
+      customIcon: folder.customIcon,
     } as ProjectStateSchemaFile<T>
 
     const index = stores.PROJECT.schemas[schemaId].folders.indexOf(folder)
@@ -119,7 +119,7 @@ export const PluginSchemasSet = (
       parentId: schema.id,
       folderName: hooks.i18n.t('editor.schemas.items.folder'),
       files: [],
-      customIcon: undefined,
+      customIcon: schema.customIcon,
     } as ProjectStateSchemaFolder<T>
 
     const schemaId = getSchemaId(schema)
@@ -239,13 +239,7 @@ export const PluginSchemasSet = (
       .use(upload)
       .create()
 
-    stores.HISTORY.addBar({
-      id: file.id,
-      name: file.fileName,
-      type: 'annotations',
-      scrollHeight: 0,
-      createdAt: hooks.format.actually('iso'),
-    })
+    stores.HISTORY.addBar(hooks.factory.history().bar().schema(file))
 
     emitter.emit('plugin-schemas-get-instance', { editor, file })
   }

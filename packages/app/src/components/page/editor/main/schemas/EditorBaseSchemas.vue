@@ -5,28 +5,28 @@
     >
       <div class="flex gap-2 sm:gap-6 items-center">
         <HeroIcon class="wb-icon" @click="call(redoCommand.key)">
-          <IconRedo class="w-6 h-6 md:(w-7 h-7)" />
+          <IconRedo class="w-5.5 h-5.5 md:(w-6 h-6)" />
         </HeroIcon>
         <HeroIcon class="wb-icon mr-2 sm:mr-6" @click="call(undoCommand.key)">
-          <IconUndo class="w-6 h-6 md:(w-7 h-7)" />
+          <IconUndo class="w-5.5 h-5.5 md:(w-6 h-6)" />
         </HeroIcon>
         <HeroIcon class="wb-icon" @click="call(toggleStrongCommand.key)">
-          <IconBold class="w-6 h-6 md:(w-7 h-7)" />
+          <IconBold class="w-5.5 h-5.5 md:(w-6 h-6)" />
         </HeroIcon>
         <HeroIcon class="wb-icon" @click="call(toggleEmphasisCommand.key)">
-          <IconItalic class="w-6 h-6 md:(w-7 h-7)" />
+          <IconItalic class="w-5.5 h-5.5 md:(w-6 h-6)" />
         </HeroIcon>
         <HeroIcon class="wb-icon" @click="call(wrapInBulletListCommand.key)">
-          <IconBulletList class="w-6 h-6 md:(w-7 h-7)" />
+          <IconBulletList class="w-5.5 h-5.5 md:(w-6 h-6)" />
         </HeroIcon>
         <HeroIcon class="wb-icon" @click="call(wrapInOrderedListCommand.key)">
-          <IconOrderedList class="w-6 h-6 md:(w-7 h-7)" />
+          <IconOrderedList class="w-5.5 h-5.5 md:(w-6 h-6)" />
         </HeroIcon>
         <HeroIcon class="wb-icon" @click="call(wrapInBlockquoteCommand.key)">
           <IconBlockquote class="w-7 h-7 md:(w-9 h-9)" />
         </HeroIcon>
         <HeroIcon class="wb-icon" @click="onImageInput">
-          <IconImage class="w-6 h-6 md:(w-7 h-7)" />
+          <IconImage class="w-5.5 h-5.5 md:(w-6 h-6)" />
         </HeroIcon>
         <div class="flex items-center ml-5 md:(ml-10)">
           <HeroIcon class="wb-icon" @click="onGetMarkdown()">

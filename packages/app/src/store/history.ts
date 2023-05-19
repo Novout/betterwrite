@@ -6,6 +6,7 @@ export const useHistoryStore = defineStore('history', {
     return {
       stack: [],
       bar: [],
+      barActive: undefined,
     }
   },
   actions: {
@@ -14,12 +15,18 @@ export const useHistoryStore = defineStore('history', {
         ({ id, type }) => item.id === id && type === item.type
       )
 
+      this.barActive = item.id
+
       if (exists) return
 
       this.bar.unshift(item)
+
+      if (this.bar.length > 12) this.bar.pop()
     },
     deleteBar(item: HistoryStateBarItem) {
       this.bar = this.bar.filter(({ id }) => item.id !== id)
+
+      if (item.id === this.barActive) this.barActive = undefined
     },
   },
 })

@@ -65,7 +65,7 @@ export const useUtils = () => {
       length?: number
     }) => {
       return `${options?.prefix ? `${options?.prefix}-` : ''}${nanoid(
-        options?.length ?? 16
+        options?.length ?? 20
       )}${options?.suffix ? `-${options?.suffix}` : ''}`
     }
 

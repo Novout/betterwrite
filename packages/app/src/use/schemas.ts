@@ -1,5 +1,7 @@
 import { usePlugin } from 'better-write-plugin-core'
 import {
+  ID,
+  Maybe,
   ProjectStateSchema,
   ProjectStateSchemaCreate,
   ProjectStateSchemaFile,
@@ -7,11 +9,30 @@ import {
 } from 'better-write-types'
 import { useI18n } from 'vue-i18n'
 import { useGraph } from '@/use/graph'
+import { useProjectStore } from '@/store/project'
 
 export const useSchemas = () => {
+  const PROJECT = useProjectStore()
+
   const plugin = usePlugin()
   const { t } = useI18n()
   const graph = useGraph()
+
+  const findFile = (id: ID<any>): Maybe<ProjectStateSchemaFile> => {
+    let target: Maybe<ProjectStateSchemaFile> = undefined
+
+    PROJECT.schemas.forEach((schema) => {
+      schema.folders.forEach((folder) => {
+        folder.files.forEach((file) => {
+          if (file.id === id) {
+            target = file
+          }
+        })
+      })
+    })
+
+    return target
+  }
 
   const onStart = (file: ProjectStateSchemaFile) => {
     graph.utils().mobile()
@@ -50,6 +71,7 @@ export const useSchemas = () => {
   }
 
   return {
+    findFile,
     onStart,
     onFileCreate,
     onFileDelete,

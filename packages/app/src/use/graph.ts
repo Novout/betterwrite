@@ -9,21 +9,17 @@ import { useStorage } from './storage/storage'
 import { useEditorStore } from '@/store/editor'
 import { useCycle } from './cycle'
 import { useCharacters } from './characters'
-import { useHistoryStore } from '@/store/history'
-import { useFormat } from './format'
 
 export const useGraph = () => {
   const CONTEXT = useContextStore()
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
   const EDITOR = useEditorStore()
-  const HISTORY = useHistoryStore()
 
   const scroll = useScroll()
   const storage = useStorage()
   const breakpoints = useBreakpoints(breakpointsTailwind)
   const cycle = useCycle()
-  const format = useFormat()
   const characters = useCharacters()
 
   const utils = () => {
@@ -74,16 +70,6 @@ export const useGraph = () => {
     utils().mobile()
 
     ABSOLUTE.spinner = false
-
-    console.log(index)
-
-    HISTORY.addBar({
-      id: page.id,
-      name: page.entities ? page.entities[0].raw : page.title,
-      type: 'chapter',
-      scrollHeight: 0,
-      createdAt: format.actually('iso'),
-    })
   }
 
   const normalize = () => {

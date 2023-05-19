@@ -21,6 +21,7 @@ import { useFactory } from '@/use/factory'
 import { useAbsoluteStore } from './absolute'
 import { useToast } from 'vue-toastification'
 import i18n from '@/lang'
+import { useHistoryStore } from './history'
 
 export const useContextStore = defineStore('context', {
   state: (): ContextState => {
@@ -45,6 +46,8 @@ export const useContextStore = defineStore('context', {
 
         return
       }
+
+      useHistoryStore().addBar(useFactory().history().bar().chapter(context))
 
       this.$state = context
     },

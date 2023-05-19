@@ -1,6 +1,6 @@
 import { Entity } from './context'
 import { ProjectBase } from './project'
-import { ID } from './utils'
+import { ID, Maybe } from './utils'
 
 export interface HistoryStateData {
   index: ID<number>
@@ -18,9 +18,11 @@ export interface HistoryStateBarItem {
   type: ProjectBase
   scrollHeight: number
   createdAt: string
+  customIcon?: string
 }
 
 export interface HistoryState {
   stack: HistoryStateTarget[]
   bar: HistoryStateBarItem[]
+  barActive: Maybe<ID<any>>
 }
