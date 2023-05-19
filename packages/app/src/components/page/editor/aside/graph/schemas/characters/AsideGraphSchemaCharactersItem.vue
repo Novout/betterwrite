@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex gap-2 p-1 items-center bg-theme-background-2 wb-text text-sm justify-around shadow-lg rounded-lg"
+    class="flex gap-2 p-1 items-center bg-theme-background-2 wb-text text-sm justify-between shadow-lg rounded-lg"
   >
     <slot />
   </div>

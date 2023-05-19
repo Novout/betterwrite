@@ -95,6 +95,8 @@ export const useProject = () => {
         target: type === 'creative' ? 1 : 0,
         position: 'start',
       })
+
+      if (type === 'creative') ABSOLUTE.schemas.template = true
     }
 
     return { new: n }

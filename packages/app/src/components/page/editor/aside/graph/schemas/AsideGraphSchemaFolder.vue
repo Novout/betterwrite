@@ -20,7 +20,7 @@
         :class="[value ? 'transform rotate-90' : '']"
         @click.prevent.stop="toggle()"
       >
-        <IconArrowRight class="wb-aside-icon" />
+        <IconArrowRight class="wb-aside-toggle-icon" />
       </div>
     </div>
   </div>

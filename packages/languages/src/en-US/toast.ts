@@ -72,6 +72,7 @@ export default {
     schemas: {
       fileDelete: 'Are you sure you want to delete the file?',
       folderDelete: 'Are you sure you want to delete the folder?',
+      schemaDelete: 'Are you sure you want to delete this section?',
     },
   },
   dropbox: {

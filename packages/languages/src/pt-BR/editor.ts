@@ -776,6 +776,10 @@ export default {
         'Escolha um estilo que mais esteja relacionado com o que você busca.',
       button: 'Criar',
       templates: {
+        title: 'Um segundo...',
+        description:
+          'Opcionalmente, você pode escolher um template adicional para começar o seu projeto com o pé direito!',
+        button: 'Escolher',
         simple: {
           title: 'Simples',
           description:
@@ -787,6 +791,12 @@ export default {
             'Inicie seu projeto com diversos arquivos preparados para extrair o máximo da sua criatividade!',
         },
       },
+    },
+    defines: {
+      annotations: 'Anotações',
+      lore: 'História',
+      characters: 'Personagens',
+      timeline: 'Linha do Tempo',
     },
     items: {
       file: 'Novo Arquivo',
@@ -823,6 +833,7 @@ export default {
       color: 'Cor',
       colorAlpha: 'Opacidade',
       important: 'Sobrescrever',
+      disabled: 'Desabilitar',
     },
     data: {
       occurrences: 'Ocorrências',

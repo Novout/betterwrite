@@ -26,13 +26,6 @@
       />
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
-        v-if="AUTH.account.user"
-        :divider="true"
-        :text="t('editor.bar.supabase.load')"
-        @action="router.push('/dashboard')"
-      />
-      <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
-      <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty()"
         :text="t('editor.bar.project.save')"
         @action="onSaveProject"
@@ -84,7 +77,6 @@
   import { useLocalStorage } from '@/use/storage/local'
   import { useSupabase } from '@/use/storage/supabase'
   import { useAuthStore } from '@/store/auth'
-  import { useRouter } from 'vue-router'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
@@ -95,7 +87,6 @@
   const env = useEnv()
   const local = useLocalStorage()
   const { t } = useI18n()
-  const router = useRouter()
 
   const onSaveProject = () => {
     if (!confirm(t('editor.window.saveLocal'))) return

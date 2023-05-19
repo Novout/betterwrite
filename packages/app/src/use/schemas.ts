@@ -45,7 +45,8 @@ export const useSchemas = () => {
   }
 
   const onSchemaDelete = (schema: ProjectStateSchemaCreate) => {
-    plugin.emit('plugin-schemas-delete', schema)
+    if (confirm(t('toast.project.schemas.schemaDelete')))
+      plugin.emit('plugin-schemas-delete', schema)
   }
 
   return {

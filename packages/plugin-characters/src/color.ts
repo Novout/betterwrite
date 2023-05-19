@@ -23,7 +23,8 @@ export const PluginBackgroundColorSet = (
       str: string
       character: ProjectStateSchemaCharacterItem
     }) => {
-      if (!hooks.entity.utils().isTextBlock(entity.type)) return
+      if (!hooks.entity.utils().isTextBlock(entity.type) || character.disabled)
+        return
 
       const text: Maybe<string> = ASTUtils.normalize(str, {
         type: 'all',

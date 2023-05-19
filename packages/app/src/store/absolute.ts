@@ -56,6 +56,7 @@ export const useAbsoluteStore = defineStore('absolute', {
       spinner: false,
       schemas: {
         create: false,
+        template: false,
       },
     }
   },

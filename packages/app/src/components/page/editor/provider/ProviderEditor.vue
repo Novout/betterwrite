@@ -32,12 +32,17 @@
     <EditorSchemasCreate
       v-else-if="ABSOLUTE.schemas.create"
     />
+    <EditorSchemasTemplate
+      v-else-if="ABSOLUTE.schemas.template && PROJECT.schemas.length === 0"
+    />
     <EditorAbsoluteLoader v-else-if="ABSOLUTE.spinner" />
   </teleport>
 </template>
 
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useProjectStore } from '@/store/project'
 
   const ABSOLUTE = useAbsoluteStore()
+  const PROJECT = useProjectStore()
 </script>

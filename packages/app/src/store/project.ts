@@ -173,40 +173,7 @@ export const useProjectStore = defineStore('project', {
             },
           ],
         },
-        schemas: options.schemas || [
-          {
-            id: useUtils().id().nano({ prefix: 'schema' }),
-            type: 'default',
-            name: 'Lore',
-            prefix: '#',
-            customIcon: '📖',
-            folders: [],
-          },
-          {
-            id: useUtils().id().nano({ prefix: 'schema' }),
-            type: 'characters',
-            name: 'Personagem',
-            prefix: '@',
-            customIcon: '🐉',
-            folders: [],
-          },
-          {
-            id: useUtils().id().nano({ prefix: 'schema' }),
-            type: 'default',
-            name: 'Fio da História',
-            prefix: '/',
-            customIcon: '⛰️',
-            folders: [],
-          },
-          {
-            id: useUtils().id().nano({ prefix: 'schema' }),
-            type: 'default',
-            name: 'Anotações',
-            prefix: '*',
-            customIcon: '📂',
-            folders: [],
-          },
-        ],
+        schemas: options.schemas || [],
       }
 
       if (this.chapters[0].entities.length === 0) {

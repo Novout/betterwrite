@@ -2,11 +2,14 @@ import {
   ProjectStateTemplatesSubstitutionsText,
   ProjectStateTemplatesSubstitutionsItalic,
   ProjectStateTemplatesSubstitutionsBold,
+  ProjectStateSchema,
 } from 'better-write-types'
 import i18n from '@/lang'
+import { useUtils } from './utils'
 
 export const useDefines = () => {
   const { t } = i18n.global
+  const utils = useUtils()
 
   const docx = () => {
     const flowItemTypes = (): string[] => {
@@ -327,6 +330,104 @@ export const useDefines = () => {
     return { clientStorage }
   }
 
+  const schemas = () => {
+    const templatesType = () => {
+      return [
+        t('editor.schemas.create.templates.simple.title'),
+        t('editor.schemas.create.templates.enthusiast.title'),
+      ]
+    }
+
+    const template = (
+      target: 'simple' | 'enthusiast'
+    ): ProjectStateSchema[] => {
+      switch (target) {
+        case 'simple':
+          return [
+            {
+              id: utils.id().nano({ prefix: 'schema' }),
+              type: 'default',
+              name: t('editor.schemas.defines.annotations'),
+              prefix: '*',
+              customIcon: '📂',
+              folders: [],
+            },
+          ]
+        case 'enthusiast': {
+          const charactersSchemaId = utils.id().nano({ prefix: 'schema' })
+          const charactersFolderId = utils.id().nano({ prefix: 'folder' })
+          const charactersFileId = utils.id().nano({ prefix: 'file' })
+          const genNameArr = characters().names()
+          const genName =
+            genNameArr[Math.floor(Math.random() * genNameArr.length)]
+
+          return [
+            {
+              id: utils.id().nano({ prefix: 'schema' }),
+              type: 'default',
+              name: t('editor.schemas.defines.lore'),
+              prefix: '#',
+              customIcon: '📖',
+              folders: [],
+            },
+            {
+              id: charactersSchemaId,
+              type: 'characters',
+              name: t('editor.schemas.defines.characters'),
+              prefix: '@',
+              customIcon: '🐉',
+              folders: [
+                {
+                  id: charactersFolderId,
+                  parentId: charactersSchemaId,
+                  folderName: t('editor.schemas.items.folder'),
+                  files: [
+                    {
+                      id: charactersFileId,
+                      parentId: charactersSchemaId,
+                      fileName: genName,
+                      milkdownData: {},
+                      extra: {
+                        id: utils.id().nano({ prefix: 'character' }),
+                        name: genName,
+                        nameCase: 'default',
+                        color: utils.text().randomColor(),
+                        colorAlpha: 0.2,
+                        important: false,
+                        configuration: false,
+                        disabled: false,
+                      },
+                      customIcon: undefined,
+                    },
+                  ],
+                  customIcon: undefined,
+                },
+              ],
+            },
+            {
+              id: utils.id().nano({ prefix: 'schema' }),
+              type: 'default',
+              name: t('editor.schemas.defines.timeline'),
+              prefix: '/',
+              customIcon: '⛰️',
+              folders: [],
+            },
+            {
+              id: utils.id().nano({ prefix: 'schema' }),
+              type: 'default',
+              name: t('editor.schemas.defines.annotations'),
+              prefix: '*',
+              customIcon: '📂',
+              folders: [],
+            },
+          ]
+        }
+      }
+    }
+
+    return { templatesType, template }
+  }
+
   return {
     docx,
     pdf,
@@ -334,5 +435,6 @@ export const useDefines = () => {
     characters,
     presence,
     configuration,
+    schemas,
   }
 }

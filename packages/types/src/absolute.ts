@@ -55,6 +55,7 @@ export interface AbsoluteStateGenerator {
 
 export interface AbsoluteStateSchemas {
   create: boolean
+  template: boolean
 }
 
 export interface AbsoluteState {

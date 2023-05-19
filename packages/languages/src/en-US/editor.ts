@@ -772,6 +772,10 @@ export default {
         'Choose a style that is more related to what you are looking for.',
       button: 'Create',
       templates: {
+        title: 'One second...',
+        description:
+          'Optionally, you can choose an additional template to get your project off to a good start!',
+        button: 'Start',
         simple: {
           title: 'Simple',
           description:
@@ -783,6 +787,12 @@ export default {
             'Start your project with several files prepared to extract the maximum of your creativity!',
         },
       },
+    },
+    defines: {
+      annotations: 'Anotações',
+      lore: 'Lore',
+      characters: 'Characters',
+      timeline: 'Timeline',
     },
     items: {
       file: 'New File',
@@ -818,6 +828,7 @@ export default {
       color: 'Color',
       colorAlpha: 'Opacity',
       important: 'Important',
+      disabled: 'Disabled',
     },
     data: {
       occurrences: 'Occurrences',

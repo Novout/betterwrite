@@ -17,7 +17,7 @@
         >
           {{ element.fileName }}
         </div>
-        <div class="flex">
+        <div class="flex items-center">
           <div
           @click.prevent.stop="
           schemas.onFileDelete({ file: element, folder })
@@ -28,7 +28,7 @@
         <IconArrowRight
           v-if="element.extra?.id"
             :class="[element.extra.configuration ? 'transform rotate-90' : '']"
-            class="wb-aside-icon"
+            class="wb-aside-toggle-icon"
             @click.prevent.stop="element.extra.configuration = !element.extra.configuration"
           />
         </div>
@@ -58,6 +58,10 @@
             <AsideGraphSchemaCharactersItem>
               <p>{{ t('editor.characters.item.important') }}</p>
               <InputBoolean v-model="element.extra.important" />
+            </AsideGraphSchemaCharactersItem>
+            <AsideGraphSchemaCharactersItem>
+              <p>{{ t('editor.characters.item.disabled') }}</p>
+              <InputBoolean v-model="element.extra.disabled" />
             </AsideGraphSchemaCharactersItem>
           </div>
         </div>

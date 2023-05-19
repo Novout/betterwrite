@@ -234,7 +234,42 @@ export const useTransformer = () => {
       return value || 'default'
     }
 
-    return { type }
+    const template = (target: string, focus: 'setter' | 'getter'): string => {
+      let value: Maybe<'simple' | 'enthusiast'> = null
+      let __STOP__: boolean = false
+
+      if (focus === 'getter') {
+        switch (target) {
+          case 'simple':
+            return t('editor.schemas.create.templates.simple.title')
+          case 'enthusiast':
+            return t('editor.schemas.create.templates.enthusiast.title')
+        }
+      }
+
+      availableLocales.forEach((locale: string) => {
+        if (__STOP__) return
+
+        const { editor } = getLocaleMessage(locale) as any
+
+        switch (target) {
+          case editor.schemas.create.templates.simple.title:
+            __STOP__ = true
+            value = 'simple'
+            break
+          case editor.schemas.create.templates.enthusiast.title:
+            __STOP__ = true
+            value = 'enthusiast'
+            break
+          default:
+            __STOP__ = false
+        }
+      })
+
+      return value || 'simple'
+    }
+
+    return { type, template }
   }
 
   return { docx, characters, presence, schemas }

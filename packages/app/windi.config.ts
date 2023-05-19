@@ -34,6 +34,7 @@ export default defineConfig({
     'wb-scroll': 'scrollbar-thin scrollbar-thumb-theme-editor-scrollbar-thumb scrollbar-track-theme-editor-scrollbar-track',
     'wb-screen': 'h-screen wb-scroll overflow-y-auto',
     'wb-aside-icon': 'wb-icon w-7 h-7 md:(w-6 h-6) lg:(w-5 h-5)',
+    'wb-aside-toggle-icon': 'wb-icon w-8 h-8 md:(w-7 h-7)',
     'wb-landing-list': 'text-white font-bold bg-black-opacity border border-black p-4 rounded shadow transition-all hover:shadow-xl'
   },
   theme: {
