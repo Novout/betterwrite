@@ -1,8 +1,10 @@
 <template>
   <section v-if="HISTORY.bar.length !== 0" class="flex wb-text overflow-x-auto overflow-y-scroll wb-scroll items-center bg-theme-background-opacity-1 justify-between w-full">
     <button v-for="(item, index) in HISTORY.bar" :key="index" :class="[HISTORY.barActive === item.id ? 'bg-theme-background-2' : 'hover:bg-theme-background-opacity-1']" class="flex-1 font-bold flex justify-around items-center font-raleway w-14 h-9" @click.prevent.stop="onLoad(item)">
-      <CustomIcon v-if="item.customIcon" :icon="item.customIcon" />
-      <p class="truncate">{{ item.name || item.id }}</p>
+      <div class="flex gap-2">
+        <CustomIcon v-if="item.customIcon" :icon="item.customIcon" />
+        <p class="truncate">{{ item.name || item.id }}</p>
+      </div>
       <button @click.prevent.stop="onDeleteBar(item)">
         <IconClose class="w-6 h-6 wb-icon"/>
       </button>
