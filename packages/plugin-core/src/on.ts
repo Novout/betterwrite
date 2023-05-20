@@ -392,10 +392,10 @@ export const externals = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
-    emitter.on('plugin-schemas-start', (file: ProjectStateSchemaFile) => {
+    emitter.on('plugin-schemas-start', (obj) => {
       const created = content[0]
 
-      created && created(file)
+      created && created(obj)
     })
   }
 

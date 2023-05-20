@@ -1,6 +1,5 @@
 <template>
   <div
-    id="entity-main"
     ref="main"
     class="flex flex-col wb-edit bg-theme-editor-background hover:bg-theme-editor-background-hover active:bg-theme-editor-background-active"
     :class="[
@@ -12,7 +11,7 @@
     ]"
   >
     <EditorBaseRenderHistory v-if="EDITOR.configuration.topBar" />
-    <div class="flex flex-col mb-auto overflow-y-auto wb-scroll">
+    <div id="entity-main" class="flex flex-col mb-auto overflow-y-auto wb-scroll">
       <EditorBaseRender v-if="PROJECT.base === 'chapter'" />
       <EditorBaseSchemas v-else-if="PROJECT.base === 'annotations'" />
     </div>

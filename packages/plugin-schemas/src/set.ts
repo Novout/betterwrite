@@ -1,4 +1,5 @@
 import {
+  HistoryStateBarItem,
   PluginTypes,
   ProjectStateSchema,
   ProjectStateSchemaFile,
@@ -160,7 +161,7 @@ export const PluginSchemasSet = (
 
       if (!schema || schema?.folders?.length === 0)
         createFile(stores.PROJECT.schemas[0].folders[0])
-      else if (schema.folders) start(schema.folders[0].files[0])
+      else if (schema.folders) start({ target: schema.folders[0].files[0] })
     }
   }
 
@@ -189,7 +190,13 @@ export const PluginSchemasSet = (
     setActive()
   }
 
-  const start = async (file: ProjectStateSchemaFile) => {
+  const start = async ({
+    target: file,
+    item,
+  }: {
+    target: ProjectStateSchemaFile
+    item?: HistoryStateBarItem
+  }) => {
     reset()
 
     stores.PROJECT.base = 'annotations'
@@ -199,7 +206,9 @@ export const PluginSchemasSet = (
 
     const editor = await Editor.make()
       .config((ctx) => {
-        ctx.set(rootCtx, document.querySelector('#bw-wysiwyg'))
+        const el = document.querySelector('#bw-wysiwyg')
+
+        ctx.set(rootCtx, el)
 
         if (Object.keys(file.milkdownData).length !== 0) {
           ctx.set(defaultValueCtx, {
@@ -240,12 +249,26 @@ export const PluginSchemasSet = (
       .use(upload)
       .create()
 
+    const el = document.querySelector('#bw-wysiwyg')
+
+    if (!item) {
+      const active = stores.HISTORY.barActive
+
+      if (active) {
+        const set = stores.HISTORY.bar.find(({ id }) => id === active)
+
+        if (set) item = set
+      }
+    }
+
+    if (el && item) el.scrollTop = item.scrollHeight
+
     emitter.emit('plugin-schemas-get-instance', { editor, file })
   }
 
   On.externals().PluginSchemasStart(emitter, [
-    (file: ProjectStateSchemaFile) => {
-      start(file)
+    (obj: any) => {
+      start(obj)
     },
     () => {},
   ])
@@ -256,7 +279,7 @@ export const PluginSchemasSet = (
 
       const file = await createFile(folder)
 
-      await start(file)
+      await start({ target: file })
 
       hooks.emitter.emit('schemas-folder-graph-open', folder)
     },
@@ -274,7 +297,7 @@ export const PluginSchemasSet = (
     async (folder: ProjectStateSchemaFolder) => {
       const file = await createFile(folder)
 
-      await start(file)
+      await start({ target: file })
 
       hooks.emitter.emit('schemas-folder-graph-open', folder)
     },

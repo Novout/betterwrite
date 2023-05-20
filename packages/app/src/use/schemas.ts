@@ -37,7 +37,7 @@ export const useSchemas = () => {
   const onStart = (file: ProjectStateSchemaFile) => {
     graph.utils().mobile()
 
-    plugin.emit('plugin-schemas-start', file)
+    plugin.emit('plugin-schemas-start', { target: file })
   }
 
   const onFileCreate = (folder: ProjectStateSchemaFolder) => {

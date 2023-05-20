@@ -10,13 +10,11 @@ export const useHistoryStore = defineStore('history', {
     }
   },
   actions: {
-    addBar(item: HistoryStateBarItem) {
-      const exists = this.bar.some(
-        ({ id, type }) => item.id === id && type === item.type
-      )
+    updateScroll() {
+      const id = this.barActive
 
-      if (this.barActive) {
-        const prev = this.bar.find(({ id }) => id === this.barActive)
+      if (id) {
+        const prev = this.bar.find(({ id }) => id === id)
 
         if (prev) {
           const index = this.bar.indexOf(prev)
@@ -25,9 +23,18 @@ export const useHistoryStore = defineStore('history', {
             document.querySelector('#entity-main')?.scrollTop ||
             document.querySelector('#bw-wysiwyg')?.scrollTop
 
+          if (value === undefined) return
+
           this.bar[index].scrollHeight = value || 0
         }
       }
+    },
+    addBar(item: HistoryStateBarItem) {
+      const exists = this.bar.some(
+        ({ id, type }) => item.id === id && type === item.type
+      )
+
+      this.updateScroll()
 
       this.barActive = item.id
 

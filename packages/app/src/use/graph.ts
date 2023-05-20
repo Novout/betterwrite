@@ -48,7 +48,7 @@ export const useGraph = () => {
 
         await nextTick
 
-        if (scrollValue) {
+        if (scrollValue !== undefined) {
           let el = document.querySelector('#entity-main')
 
           if (!el) el = document.querySelector('#bw-wysiwyg')
@@ -73,12 +73,17 @@ export const useGraph = () => {
       })
   }
 
-  const to = async (index: ID<number>, page: ContextState, entity: Entity) => {
+  const to = async (
+    index: ID<number>,
+    page: ContextState,
+    entity: Entity,
+    scrollValue?: number
+  ) => {
     ABSOLUTE.spinner = true
 
     await cycle.forceNextTick()
 
-    await load(index, page, entity)
+    await load(index, page, entity, scrollValue)
 
     utils().mobile()
 
