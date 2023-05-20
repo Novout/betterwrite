@@ -755,6 +755,10 @@ export default {
       },
     },
     schemas: {
+      icon: {
+        import: 'Importe uma Imagem',
+        or: 'ou...',
+      },
       types: {
         default: {
           target: 'Padrão',

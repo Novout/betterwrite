@@ -751,6 +751,10 @@ export default {
       },
     },
     schemas: {
+      icon: {
+        import: 'Import Image',
+        or: 'or...',
+      },
       types: {
         default: {
           target: 'Default',

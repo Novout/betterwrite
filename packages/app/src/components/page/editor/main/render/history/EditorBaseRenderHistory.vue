@@ -1,7 +1,7 @@
 <template>
-  <section v-if="HISTORY.bar.length !== 0" class="flex wb-text overflow-x-auto overflow-y-scroll wb-scroll items-center bg-theme-background-opacity-1 justify-between w-full">
-    <button v-for="(item, index) in HISTORY.bar" :key="index" :class="[HISTORY.barActive === item.id ? 'bg-theme-background-2' : 'hover:bg-theme-background-opacity-1']" class="flex-1 font-bold flex justify-around items-center font-raleway w-14 h-9" @click.prevent.stop="onLoad(item)">
-      <div class="flex gap-2">
+  <section v-if="HISTORY.bar.length !== 0" class="flex z-50 wb-text items-center bg-theme-background-opacity-1 justify-between w-full">
+    <button v-for="(item, index) in HISTORY.bar" :key="index" :class="[HISTORY.barActive === item.id ? 'bg-theme-background-2' : 'hover:bg-theme-background-opacity-1']" class="flex-1 font-bold flex justify-around items-center font-raleway min-w-12 h-10 md:(h-9)" @click.prevent.stop="onLoad(item)">
+      <div class="flex gap-2 truncate pl-2">
         <CustomIcon v-if="item.customIcon" :icon="item.customIcon" />
         <p class="truncate">{{ item.name || item.id }}</p>
       </div>
@@ -63,7 +63,7 @@ const onLoad = async (item?: HistoryStateBarItem) => {
   }
 
   HISTORY.barActive = item.id
-  graph.load(item.id as number, page, page.entities[0])
+  graph.load(item.id as number, page, page.entities[0], item.scrollHeight)
 }
 
 const onDeleteBar = (item: HistoryStateBarItem) => {

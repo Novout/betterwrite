@@ -1,7 +1,7 @@
 <template>
   <div class="flex-1 relative w-full wb-edit overflow-hidden">
     <div
-    class="absolute right-10 top-2 bg-none z-9999 flex items-center justify-end w-full"
+    class="absolute right-10 top-2 bg-none z-50 flex items-center justify-end w-full"
     >
       <div class="flex gap-2 sm:gap-6 items-center">
         <HeroIcon class="wb-icon" @click="call(redoCommand.key)">

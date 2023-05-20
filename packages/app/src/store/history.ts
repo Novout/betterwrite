@@ -15,6 +15,20 @@ export const useHistoryStore = defineStore('history', {
         ({ id, type }) => item.id === id && type === item.type
       )
 
+      if (this.barActive) {
+        const prev = this.bar.find(({ id }) => id === this.barActive)
+
+        if (prev) {
+          const index = this.bar.indexOf(prev)
+
+          const value =
+            document.querySelector('#entity-main')?.scrollTop ||
+            document.querySelector('#bw-wysiwyg')?.scrollTop
+
+          this.bar[index].scrollHeight = value || 0
+        }
+      }
+
       this.barActive = item.id
 
       if (exists) return

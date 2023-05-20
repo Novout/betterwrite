@@ -193,6 +193,7 @@ export const PluginSchemasSet = (
     reset()
 
     stores.PROJECT.base = 'annotations'
+    stores.HISTORY.addBar(hooks.factory.history().bar().schema(file))
 
     await nextTick
 
@@ -238,8 +239,6 @@ export const PluginSchemasSet = (
       .use(emoji)
       .use(upload)
       .create()
-
-    stores.HISTORY.addBar(hooks.factory.history().bar().schema(file))
 
     emitter.emit('plugin-schemas-get-instance', { editor, file })
   }
