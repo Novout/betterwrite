@@ -1039,6 +1039,7 @@ export default {
       registerError: 'Ocorreu um erro ao criar uma conta nova!',
       onlyOnline:
         'Voce está sem acesso à internet para conseguir acessar este recurso!',
+      fileDelete: 'Você tem certeza que deseja deletar o arquivo?',
     },
     storage: {
       limitError:

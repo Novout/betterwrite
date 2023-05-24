@@ -136,6 +136,9 @@ importers:
       better-write-plugin-core:
         specifier: ^1.2.7
         version: link:../plugin-core
+      better-write-plugin-dropbox:
+        specifier: ^1.2.7
+        version: link:../plugin-dropbox
       better-write-plugin-editor-window:
         specifier: ^1.2.7
         version: link:../plugin-editor-window
@@ -487,6 +490,28 @@ importers:
       vue-demi:
         specifier: latest
         version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+
+  packages/plugin-dropbox:
+    dependencies:
+      better-write-client-storage:
+        specifier: ^1.2.7
+        version: link:../client-storage
+      better-write-plugin-core:
+        specifier: ^1.2.7
+        version: link:../plugin-core
+      better-write-types:
+        specifier: ^1.2.7
+        version: link:../types
+      vue:
+        specifier: ^2.0.0 || >=3.0.0
+        version: 3.3.4
+      vue-demi:
+        specifier: latest
+        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+    devDependencies:
+      prettier:
+        specifier: 2.5.1
+        version: 2.5.1
 
   packages/plugin-editor-window:
     dependencies:

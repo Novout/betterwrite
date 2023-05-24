@@ -152,6 +152,8 @@ export const useSupabase = () => {
   const saveProject = async (project?: ProjectObject) => {
     toast.info(t('toast.generics.load'))
 
+    if(project) project.project.externalProvider = undefined
+
     await storage.normalize()
 
     await storage.purge()

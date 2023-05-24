@@ -13,6 +13,7 @@ import {
   ExternalsState,
   LiveshareState,
   GlobalState,
+  VaultState,
 } from '..'
 
 export type PluginEmitterName =
@@ -82,6 +83,11 @@ export type PluginEmitterName =
   | 'plugin-oauth-delete'
   | 'plugin-webgl-set-camera'
   | 'plugin-webgl-loaded'
+  | 'plugin-dropbox-connect'
+  | 'plugin-dropbox-set'
+  | 'plugin-dropbox-save'
+  | 'plugin-dropbox-load'
+  | 'plugin-dropbox-delete'
   | 'call-landing-created'
   | 'call-landing-mounted'
   | 'call-landing-unmounted'
@@ -108,6 +114,7 @@ export type ExistingStores =
   | 'history'
   | 'liveshare'
   | 'global'
+  | 'vault'
 
 export type PluginStore<
   T extends ExistingStores,
@@ -128,6 +135,7 @@ export interface PluginStores {
   HISTORY: PluginStore<'history', HistoryState, any, any>
   LIVESHARE: PluginStore<'liveshare', LiveshareState, any, any>
   GLOBAL: PluginStore<'global', GlobalState, any, any>
+  VAULT: PluginStore<'vault', VaultState, any, any>
 }
 
 export interface PluginDefines {

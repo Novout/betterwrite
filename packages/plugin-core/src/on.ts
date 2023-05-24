@@ -667,6 +667,61 @@ export const externals = () => {
     })
   }
 
+  const PluginDropboxSet = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-dropbox-set', (item) => {
+      const created = content[0]
+
+      created && created(item)
+    })
+  }
+
+  const PluginDropboxSave = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-dropbox-save', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginDropboxLoad = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-dropbox-load', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginDropboxDelete = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-dropbox-delete', (item) => {
+      const created = content[0]
+
+      created && created(item)
+    })
+  }
+
+  const PluginDropboxConnect = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-dropbox-connect', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -703,6 +758,11 @@ export const externals = () => {
     PluginOAuthRegister,
     PluginOAuthLogout,
     PluginOAuthDelete,
+    PluginDropboxConnect,
+    PluginDropboxSet,
+    PluginDropboxSave,
+    PluginDropboxLoad,
+    PluginDropboxDelete,
   }
 }
 

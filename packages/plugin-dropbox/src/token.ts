@@ -1,7 +1,7 @@
 import { PluginTypes } from 'better-write-types'
 import { DropboxAuth } from 'dropbox'
 
-export const PluginDropboxTokenSet = (
+export const DropboxToken = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
@@ -23,8 +23,8 @@ export const PluginDropboxTokenSet = (
         code
       )
 
-      stores.AUTH.account.dropboxAccessToken = // @ts-expect-error
-        token?.result?.access_token as string
+      stores.AUTH.account.dropboxAccessToken = token?.result // @ts-expect-error
+        ?.access_token as string
 
       localStorage.removeItem('code_verifier')
 

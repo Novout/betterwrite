@@ -16,7 +16,7 @@ export const PluginAutosaveSet = (
 
       if (stores.EDITOR.configuration.cloudAutosave && online.value) {
         if (stores.PROJECT?.externalProvider === 'dropbox') {
-          hooks.dropbox.save()
+          await hooks.dropbox.save()
 
           return
         }

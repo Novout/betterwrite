@@ -2,7 +2,7 @@
   <div
     class="flex flex-col justify-start items-stretch gap-2 bg-black-opacity p-5 max-h-100 wb-scroll overflow-y-auto"
   >
-    <EditorVaultDropbox v-if="VAULT.dropboxFiles.length === 0" />
+    <EditorVaultDropbox v-if="VAULT.dropboxFiles.length === 0 && online" />
     <div
       v-for="(file, index) in VAULT.dropboxFiles"
       :key="index"
@@ -101,8 +101,9 @@
 
 <script setup lang="ts">
   import { useVaultStore } from '@/store/vault'
-import { useDropbox } from '@/use/storage/dropbox'
+  import { useDropbox } from '@/use/storage/dropbox'
   import { useSupabase } from '@/use/storage/supabase'
+  import { useOnline } from '@vueuse/core'
   import { ProjectDocument, ID } from 'better-write-types'
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
@@ -112,6 +113,7 @@ import { useDropbox } from '@/use/storage/dropbox'
   const dropbox = useDropbox()
   const supabase = useSupabase()
   const { t } = useI18n()
+  const online = useOnline()
 
   const projects = ref<ProjectDocument[]>(VAULT.documents || [])
   const isFetched = ref<boolean>(false)

@@ -22,6 +22,7 @@
   import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
   import { AuthPlugin } from 'better-write-plugin-auth'
   import { WebGLPlugin } from 'better-write-plugin-webgl'
+  import { DropboxPlugin } from 'better-write-plugin-dropbox'
 
   useStart([
     ThemePlugin(),
@@ -41,5 +42,6 @@
     MultiplayerPlugin(),
     AuthPlugin(),
     WebGLPlugin(),
+    DropboxPlugin()
   ]).init()
 </script>

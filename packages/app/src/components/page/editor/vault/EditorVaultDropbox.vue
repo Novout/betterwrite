@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!AUTH.account.dropboxAccessToken" class="flex px-2 py-1 mb-5 cursor-pointer bg-theme-background-2 justify-between items-center w-full wb-text" @click.prevent.stop="dropbox.connect">
+  <div v-if="!AUTH.account.dropboxAccessToken" class="flex rounded shadow px-2 py-1 mb-5 cursor-pointer bg-theme-background-2 justify-between items-center w-full wb-text" @click.prevent.stop="dropbox.connect">
     <button>
       <IconDropbox class="w-7 h-7" />
     </button>

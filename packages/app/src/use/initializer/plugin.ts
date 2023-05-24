@@ -42,6 +42,7 @@ import * as VUEUSE_HEAD from '@vueuse/head'
 import * as VUEUSE_SOUND from '@vueuse/sound'
 import { useGlobalStore } from '@/store/global'
 import { useDropbox } from '../storage/dropbox'
+import { useVaultStore } from '@/store/vault'
 
 export const usePluginInitializer = () => {
   const core = useCore()
@@ -59,7 +60,8 @@ export const usePluginInitializer = () => {
         EXTERNALS: useExternalsStore(),
         HISTORY: useHistoryStore(),
         LIVESHARE: useLiveshareStore(),
-        GLOBAL: useGlobalStore()
+        GLOBAL: useGlobalStore(),
+        VAULT: useVaultStore()
       },
       plugins,
       {

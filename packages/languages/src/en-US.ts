@@ -1030,6 +1030,7 @@ export default {
       loginError: 'There was an error logging into the account!',
       registerError: 'There was an error creating a new account!',
       onlyOnline: 'You are without internet access to access this feature!',
+      fileDelete: 'Are you sure you want to delete the file?',
     },
     storage: {
       limitError:

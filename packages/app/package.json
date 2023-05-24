@@ -58,6 +58,7 @@
     "better-write-plugin-auth": "^1.2.7",
     "better-write-plugin-characters": "^1.2.7",
     "better-write-plugin-core": "^1.2.7",
+    "better-write-plugin-dropbox": "^1.2.7",
     "better-write-plugin-editor-window": "^1.2.7",
     "better-write-plugin-entity-history": "^1.2.7",
     "better-write-plugin-exporter-docx": "^1.2.7",
