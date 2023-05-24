@@ -100,6 +100,10 @@ export const useSupabase = () => {
   }
 
   const getDocuments = async (): Promise<Maybe<ProjectDocument[]>> => {
+    if(!AUTH.account?.user) {
+      return
+    }
+
     try {
       const {
         data: projects,

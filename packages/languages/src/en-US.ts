@@ -275,8 +275,9 @@ export default {
         down: 'Down',
       },
       dropbox: {
+        title: 'Dropbox',
         connect: 'Connect',
-        save: 'Save',
+        save: 'Save in Dropbox',
         load: 'Load',
       },
       drive: {
@@ -1089,6 +1090,7 @@ export default {
     dropbox: {
       load: 'Connected with Dropbox!',
       save: 'Saved to Dropbox under Apps > Better Write',
+      empty: 'No valid project found :(',
     },
     entity: {
       paragraph: {

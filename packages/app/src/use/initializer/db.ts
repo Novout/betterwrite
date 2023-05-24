@@ -6,7 +6,7 @@ export const useDBInitializer = () => {
 
   const init = async () => {
     const { data } = await s.auth.getSession()
-
+    
     AUTH.account.user = data.session?.user ?? null
 
     s.auth.onAuthStateChange((_, session) => {

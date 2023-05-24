@@ -27,6 +27,7 @@ export const useProjectStore = defineStore('project', {
       base: 'chapter',
       type: 'creative',
       totalPagesCreated: 0,
+      externalProvider: undefined,
       main: {},
       summary: {},
       chapters: [],
@@ -88,6 +89,7 @@ export const useProjectStore = defineStore('project', {
         payload.type === 'only-annotations' ? 'annotations' : 'chapter'
       this.subject = payload.subject
       this.pageLoaded = payload.pageLoaded
+      this.externalProvider = payload.externalProvider
       this.scrollLoaded = payload.scrollLoaded
       this.offsetLoaded = payload.offsetLoaded
       this.totalPagesCreated = payload.totalPagesCreated

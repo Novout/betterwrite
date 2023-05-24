@@ -16,6 +16,7 @@ export interface ProjectState {
   producer: string
   keywords: string
   subject: string
+  externalProvider?: 'dropbox' | 'google-drive'
   base: ProjectBase
   type: ProjectType
   totalPagesCreated: number
@@ -42,6 +43,7 @@ export interface ProjectStateOptions {
   producer?: string
   keywords?: string
   subject?: string
+  externalProvider?: 'dropbox' | 'google-drive'
   base?: ProjectBase
   type: ProjectType
   totalPagesCreated?: number

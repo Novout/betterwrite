@@ -8,11 +8,13 @@ import { PluginThemeSet } from './theme'
 import { PluginSeoSet } from './seo'
 import { PluginAutosaveSet } from './autosave'
 import { PluginAPIAsyncRequest } from './api-async-request'
+import { PluginDropboxTokenSet } from './dropbox'
 
 export const EditorWindowPlugin = (): PluginTypes.Plugin =>
   createPlugin({ name: 'editor-window' }, [
     PluginHandlerSet,
     PluginDropSet,
+    PluginDropboxTokenSet,
     PluginScriptSet,
     PluginWatcherSet,
     PluginThemeSet,

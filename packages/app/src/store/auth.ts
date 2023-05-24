@@ -8,6 +8,7 @@ export const useAuthStore = defineStore('auth', {
         user: null,
         project_id_activity: null,
         multiplayer: { client: null, connect: null },
+        dropboxAccessToken: null,
       },
     }
   },

@@ -96,14 +96,6 @@ export const useStorage = () => {
       }
     }
 
-    if (!_.project.characters) {
-      _.project = {
-        ..._.project,
-        characters: {
-          list: [],
-        },
-      }
-    }
     // @ts-ignore
     if (_.project.templates.generator) {
       // @ts-ignore
@@ -118,15 +110,6 @@ export const useStorage = () => {
       _.project = {
         ..._.project,
         image: undefined,
-      }
-    }
-
-    if (!_.project.annotations) {
-      _.project = {
-        ..._.project,
-        annotations: {
-          folders: [],
-        },
       }
     }
 
@@ -208,6 +191,13 @@ export const useStorage = () => {
 
     if(!_.project.schemas) {
       _.project.schemas = []
+    }
+
+    if(!_.project.externalProvider) {
+      _.project = {
+        ..._.project,
+        externalProvider: undefined
+      }
     }
 
     return _

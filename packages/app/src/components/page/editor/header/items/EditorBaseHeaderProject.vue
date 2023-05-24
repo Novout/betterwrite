@@ -35,6 +35,15 @@
         :text="t('editor.bar.supabase.save')"
         @action="onSaveProjectSupabase"
       />
+      <EditorHeaderItem
+        v-if="PROJECT.name !== env.projectEmpty() && AUTH.account.dropboxAccessToken"
+        :text="t('editor.bar.dropbox.save')"
+        @action="dropbox.save"
+      >
+      <template #icon>
+        <IconDropbox class="w-6 h-6 mr-2" />
+      </template>
+      </EditorHeaderItem>
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
         v-if="
@@ -77,6 +86,7 @@
   import { useLocalStorage } from '@/use/storage/local'
   import { useSupabase } from '@/use/storage/supabase'
   import { useAuthStore } from '@/store/auth'
+  import { useDropbox } from '@/use/storage/dropbox'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
@@ -86,6 +96,7 @@
   const project = useProject()
   const env = useEnv()
   const local = useLocalStorage()
+  const dropbox = useDropbox()
   const { t } = useI18n()
 
   const onSaveProject = () => {
