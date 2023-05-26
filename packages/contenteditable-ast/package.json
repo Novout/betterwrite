@@ -1,6 +1,6 @@
 {
 	"name": "better-write-contenteditable-ast",
-	"version": "1.2.7",
+	"version": "1.3.0",
 	"author": "Novout",
 	"license": "MIT",
 	"keywords": [
@@ -19,7 +19,7 @@
 		"lint": "prettier --write src/"
 	},
 	"dependencies": {
-		"better-write-types": "^1.2.7"
+		"better-write-types": "^1.3.0"
 	},
 	"files": [
 		"dist/**/*",
