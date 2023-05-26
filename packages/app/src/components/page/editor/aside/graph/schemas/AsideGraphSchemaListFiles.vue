@@ -11,7 +11,7 @@
     <div
     class="flex justify-between items-center w-full bg-theme-aside-graph-background hover:bg-theme-aside-graph-background-hover active:bg-theme-aside-graph-background-active text-theme-aside-graph-text hover:text-theme-aside-graph-text-hover active:text-theme-aside-graph-text-active"
   >
-    <InputColorPicker class="w-2 h-2" v-if="element.extra?.color" v-model="element.extra.color" />
+    <InputColorPicker v-if="element.extra?.color" v-model="element.extra.color" class="w-2 h-2" />
     <div
     class="truncate cursor-pointer"
       @click.prevent.stop="schemas.onStart(element)"
