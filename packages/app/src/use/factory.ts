@@ -186,7 +186,7 @@ export const useFactory = () => {
       const chapter = (context: ContextState): HistoryStateBarItem => {
         return {
           id: context.id,
-          name: context.entities ? context.entities[0].raw : context.title,
+          name: context.entities[0] ? context.entities[0].raw : context.title,
           type: 'chapter',
           scrollHeight: 0,
           createdAt: format.actually('iso'),
