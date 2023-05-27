@@ -75,8 +75,8 @@
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
   import { useUtils } from '@/use/utils'
-  import { useI18n } from 'vue-i18n'
   import { usePlugin } from 'better-write-plugin-core'
+  import { useI18n } from 'vue-i18n'
   import { onMounted } from 'vue'
 
   const ABSOLUTE = useAbsoluteStore()
