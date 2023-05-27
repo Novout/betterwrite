@@ -3,17 +3,24 @@ import destr from 'destr'
 import lz from 'lz-string'
 import type { ClientStorageOptions, Maybe } from 'better-write-types'
 
+// used for force indexeddb use in FF4 browsers and in specific TWA android build's. Even though indexeddb is not supported in some older versions, local saving will work correctly in any modern browser or environment.
+const isLocalSupported = typeof Storage !== 'undefined'
+
 export function set<T extends unknown>(
   key: string,
   data: T,
   options: ClientStorageOptions
 ) {
+  if (!isLocalSupported) {
+    options.schema = 'indexeddb'
+  }
+
   return new Promise((res) => {
     const str = JSON.stringify(data)
     const strResolved = options.compress ? lz.compress(str) : str
 
     if (options.schema === 'indexeddb') {
-      localStorage.removeItem(key)
+      if(isLocalSupported) localStorage.removeItem(key)
 
       indexeddb
         .set(key, strResolved)
@@ -38,8 +45,12 @@ export function get<T extends unknown>(
   key: string,
   options: ClientStorageOptions
 ): Promise<Maybe<T>> {
+  if (!isLocalSupported) {
+    options.schema = 'indexeddb'
+  }
+
   return new Promise((res) => {
-    const item = localStorage.getItem(key)
+    const item = isLocalSupported ? localStorage.getItem(key) : false
 
     if (item)
       res(
@@ -63,5 +74,5 @@ export function get<T extends unknown>(
 
 export function exclude(key: string) {
   indexeddb.del(key).catch(() => {})
-  localStorage.removeItem(key)
+  if (isLocalSupported) localStorage.removeItem(key)
 }

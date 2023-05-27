@@ -1,9 +1,10 @@
-import { ProjectDocument } from 'better-write-types'
+import { VaultState } from 'better-write-types'
 import { defineStore } from 'pinia'
 
 export const useVaultStore = defineStore('vault', {
-  state: (): { documents?: ProjectDocument[] } => {
+  state: (): VaultState => {
     return {
+      dropboxFiles: [],
       documents: undefined,
     }
   },

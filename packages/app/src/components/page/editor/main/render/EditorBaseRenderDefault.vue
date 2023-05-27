@@ -1,12 +1,12 @@
 <template>
   <div
-    class="relative flex justify-between wb-edit flex-col w-full overflow-hidden"
+    class="relative flex justify-between flex-col w-full overflow-hidden"
   >
     <section
       id="edit"
       ref="editor"
       :class="[project.isBlankProject() ? 'pt-28' : '']"
-      class="flex flex-col w-full wb-scroll overflow-x-hidden"
+      class="flex flex-col w-full overflow-hidden"
     >
       <EditorEntityDefault
         v-for="(element, index) in CONTEXT.entities"
@@ -15,7 +15,6 @@
         :entity="element"
       />
     </section>
-    <EditorBaseRenderBar v-if="EDITOR.configuration.bottomBar" />
   </div>
 </template>
 
@@ -27,13 +26,11 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useScroll } from '@/use/scroll'
   import { useExternalsStore } from '@/store/externals'
-  import { useEditorStore } from '@/store/editor'
   import { useCharacters } from '@/use/characters'
 
   const EXTERNALS = useExternalsStore()
   const CONTEXT = useContextStore()
   const ABSOLUTE = useAbsoluteStore()
-  const EDITOR = useEditorStore()
 
   const project = useProject()
   const characters = useCharacters()

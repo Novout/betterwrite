@@ -2,13 +2,15 @@ import { useEnv } from '../env'
 import { useProjectStore } from '@/store/project'
 import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
-import { ProjectObject, StorageNormalizeOptions } from 'better-write-types'
+import { ProjectObject, ProjectStateSchema, ProjectStateSchemaCharacterItem, ProjectStateSchemaFolder, StorageNormalizeOptions } from 'better-write-types'
 import { nextTick } from 'vue'
 import useEmitter from '../emitter'
 import { useContextStore } from '@/store/context'
 import { useAuthStore } from '@/store/auth'
 import { useDefines } from '../defines'
 import { useDOCXStore } from '@/store/docx'
+import { useUtils } from '../utils'
+import { useI18n } from 'vue-i18n'
 
 export const useStorage = () => {
   const PROJECT = useProjectStore()
@@ -21,6 +23,7 @@ export const useStorage = () => {
   const env = useEnv()
   const emitter = useEmitter()
   const defines = useDefines()
+  const { t } = useI18n()
 
   const support = (project: ProjectObject): ProjectObject => {
     let _ = project
@@ -96,14 +99,6 @@ export const useStorage = () => {
       }
     }
 
-    if (!_.project.characters) {
-      _.project = {
-        ..._.project,
-        characters: {
-          list: [],
-        },
-      }
-    }
     // @ts-ignore
     if (_.project.templates.generator) {
       // @ts-ignore
@@ -118,15 +113,6 @@ export const useStorage = () => {
       _.project = {
         ..._.project,
         image: undefined,
-      }
-    }
-
-    if (!_.project.annotations) {
-      _.project = {
-        ..._.project,
-        annotations: {
-          folders: [],
-        },
       }
     }
 
@@ -196,6 +182,99 @@ export const useStorage = () => {
           schema: 'local-storage',
           compress: true
         }
+      }
+    }
+
+    if(!_.editor.configuration.topBar) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        topBar: true
+      }
+    }
+
+    if(!_.project.schemas) {
+      _.project.schemas = []
+      // @ts-expect-error
+      if(_.project.annotations) {
+        const schemaAnnotationsId = useUtils().id().nano({ prefix: 'schema' })
+        const schemaAnnotations = {
+          id: schemaAnnotationsId,
+          type: 'default',
+          name: t('editor.schemas.create.nameItem'),
+          prefix: '#',
+          customIcon: '📁',
+          folders: [] as ProjectStateSchemaFolder[],
+        } as ProjectStateSchema
+
+        _.project.annotations.folders.forEach(folder => {
+          const folderId = useUtils().id().nano({ prefix: 'folder' }) 
+  
+          schemaAnnotations.folders.push({
+            id: folderId,
+            parentId: schemaAnnotationsId,
+            folderName: folder.folderName,
+            customIcon: schemaAnnotations.customIcon,
+            files: [...folder.files.map(file => {
+              return {
+                id: useUtils().id().nano({ prefix: 'file' }),
+                parentId: folderId,
+                fileName: file.fileName,
+                milkdownData: file.value,
+                customIcon: schemaAnnotations.customIcon,
+                extra: {}
+              }
+            })]
+          })
+        })
+
+        _.project.schemas.push(schemaAnnotations)
+        
+        delete _.project['annotations']
+      }
+
+      if(_.project.characters) {
+        const schemaCharactersId = useUtils().id().nano({ prefix: 'schema' })
+        const schemaCharacters = {
+          id: schemaCharactersId,
+          type: 'characters',
+          name: t('editor.schemas.create.nameItem'),
+          prefix: '#',
+          customIcon: '🐉',
+          folders: [] as ProjectStateSchemaFolder[],
+        } as ProjectStateSchema
+
+        const folderId = useUtils().id().nano({ prefix: 'folder' }) 
+
+        schemaCharacters.folders.push({
+          id: folderId,
+          parentId: schemaCharactersId,
+          folderName: 'Personagens',
+          customIcon: schemaCharacters.customIcon,
+          files: [..._.project.characters.list.map(character => {
+            return {
+              id: useUtils().id().nano({ prefix: 'file' }),
+              parentId: folderId,
+              fileName: character.name,
+              milkdownData: {},
+              customIcon: schemaCharacters.customIcon,
+              extra: {
+                ...character,
+                disabled: false
+              } as ProjectStateSchemaCharacterItem
+            }
+          })]
+        })
+
+        _.project.schemas.push(schemaCharacters)
+
+        delete _.project['characters']
+      }
+    }
+
+    if(!_.project.externalProvider) {
+      _.project = {
+        ..._.project,
+        externalProvider: undefined
       }
     }
 

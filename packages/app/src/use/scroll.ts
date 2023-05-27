@@ -26,7 +26,10 @@ export const useScroll = () => {
     ;(scr as HTMLElement)?.scrollIntoView()
   }
 
-  const entity = (id: ID<number>, display?: 'center' | 'top' | 'bottom') => {
+  const entity = (
+    id: ID<number | string>,
+    display?: 'center' | 'top' | 'bottom'
+  ) => {
     const scr = document.querySelector(`#entity-${id}`)
     if (display === 'center') {
       ;(scr as HTMLElement)?.scrollIntoView({

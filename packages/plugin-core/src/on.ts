@@ -1,11 +1,14 @@
-import { LiveshareType, SupabaseIntegrations } from 'better-write-types'
-import {
+import type {
   PDFDocOptions,
   PluginTypes,
   ImporterParams,
-  ProjectStateAnnotationFolder,
-  ProjectStateAnnotationFile,
+  ProjectStateSchemaCreate,
+  ProjectStateSchemaFolder,
+  ProjectStateSchemaFile,
+  ProjectStateSchema,
   BetterWriteThemes,
+  LiveshareType,
+  SupabaseIntegrations,
 } from 'better-write-types'
 
 export const entity = () => {
@@ -385,38 +388,35 @@ export const externals = () => {
     })
   }
 
-  const PluginAnnotationsStart = (
+  const PluginSchemasStart = (
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
-    emitter.on(
-      'plugin-annotations-start',
-      (file: ProjectStateAnnotationFile) => {
-        const created = content[0]
-
-        created && created(file)
-      }
-    )
-  }
-
-  const PluginAnnotationsCreateFolder = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
-  ) => {
-    emitter.on('plugin-annotations-folder-create', () => {
+    emitter.on('plugin-schemas-start', (obj) => {
       const created = content[0]
 
-      created && created()
+      created && created(obj)
     })
   }
 
-  const PluginAnnotationsDeleteFolder = (
+  const PluginSchemasCreateFolder = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-schemas-folder-create', (schema: ProjectStateSchema) => {
+      const created = content[0]
+
+      created && created(schema)
+    })
+  }
+
+  const PluginSchemasDeleteFolder = (
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
     emitter.on(
-      'plugin-annotations-folder-delete',
-      (folder: ProjectStateAnnotationFolder) => {
+      'plugin-schemas-folder-delete',
+      (folder: ProjectStateSchemaFolder) => {
         const created = content[0]
 
         created && created(folder)
@@ -424,13 +424,13 @@ export const externals = () => {
     )
   }
 
-  const PluginAnnotationsCreateFile = (
+  const PluginSchemasCreateFile = (
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
     emitter.on(
-      'plugin-annotations-file-create',
-      (folder: ProjectStateAnnotationFolder) => {
+      'plugin-schemas-file-create',
+      (folder: ProjectStateSchemaFolder) => {
         const created = content[0]
 
         created && created(folder)
@@ -438,15 +438,15 @@ export const externals = () => {
     )
   }
 
-  const PluginAnnotationsDeleteFile = (
+  const PluginSchemasDeleteFile = (
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
     emitter.on(
-      'plugin-annotations-file-delete',
+      'plugin-schemas-file-delete',
       (obj: {
-        file: ProjectStateAnnotationFile
-        folder: ProjectStateAnnotationFolder
+        file: ProjectStateSchemaFile
+        folder: ProjectStateSchemaFolder
       }) => {
         const created = content[0]
 
@@ -455,14 +455,36 @@ export const externals = () => {
     )
   }
 
-  const PluginAnnotationsReset = (
+  const PluginSchemasReset = (
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn
   ) => {
-    emitter.on('plugin-annotations-reset', () => {
+    emitter.on('plugin-schemas-reset', () => {
       const created = content[0]
 
       created && created()
+    })
+  }
+
+  const PluginSchemasCreate = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-schemas-create', (options: ProjectStateSchemaCreate) => {
+      const created = content[0]
+
+      created && created(options)
+    })
+  }
+
+  const PluginSchemasDelete = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-schemas-delete', (schema: ProjectStateSchema) => {
+      const created = content[0]
+
+      created && created(schema)
     })
   }
 
@@ -645,6 +667,61 @@ export const externals = () => {
     })
   }
 
+  const PluginDropboxSet = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-dropbox-set', (item) => {
+      const created = content[0]
+
+      created && created(item)
+    })
+  }
+
+  const PluginDropboxSave = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-dropbox-save', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginDropboxLoad = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-dropbox-load', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
+  const PluginDropboxDelete = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-dropbox-delete', (item) => {
+      const created = content[0]
+
+      created && created(item)
+    })
+  }
+
+  const PluginDropboxConnect = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn
+  ) => {
+    emitter.on('plugin-dropbox-connect', () => {
+      const created = content[0]
+
+      created && created()
+    })
+  }
+
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -657,12 +734,14 @@ export const externals = () => {
     PluginImporterDOCX,
     PluginImporterTXT,
     PluginImporterBW,
-    PluginAnnotationsStart,
-    PluginAnnotationsCreateFolder,
-    PluginAnnotationsDeleteFolder,
-    PluginAnnotationsCreateFile,
-    PluginAnnotationsDeleteFile,
-    PluginAnnotationsReset,
+    PluginSchemasStart,
+    PluginSchemasCreate,
+    PluginSchemasDelete,
+    PluginSchemasCreateFolder,
+    PluginSchemasDeleteFolder,
+    PluginSchemasCreateFile,
+    PluginSchemasDeleteFile,
+    PluginSchemasReset,
     PluginVoiceStart,
     PluginVoiceStop,
     PluginEntityUndo,
@@ -679,6 +758,11 @@ export const externals = () => {
     PluginOAuthRegister,
     PluginOAuthLogout,
     PluginOAuthDelete,
+    PluginDropboxConnect,
+    PluginDropboxSet,
+    PluginDropboxSave,
+    PluginDropboxLoad,
+    PluginDropboxDelete,
   }
 }
 

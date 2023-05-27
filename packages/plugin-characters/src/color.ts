@@ -3,7 +3,7 @@ import {
   Entity,
   Maybe,
   PluginTypes,
-  ProjectStateCharacter,
+  ProjectStateSchemaCharacterItem,
 } from 'better-write-types'
 import { ASTUtils } from 'better-write-contenteditable-ast'
 import { HEXToRGBA } from 'better-write-color-converter'
@@ -21,9 +21,10 @@ export const PluginBackgroundColorSet = (
     }: {
       entity: Entity
       str: string
-      character: ProjectStateCharacter
+      character: ProjectStateSchemaCharacterItem
     }) => {
-      if (!hooks.entity.utils().isTextBlock(entity.type)) return
+      if (!hooks.entity.utils().isTextBlock(entity.type) || character.disabled)
+        return
 
       const text: Maybe<string> = ASTUtils.normalize(str, {
         type: 'all',

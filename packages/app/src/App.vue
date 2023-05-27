@@ -12,7 +12,7 @@
   // import { EpubPlugin } from 'better-write-plugin-exporter-epub'
   import { TxtPlugin } from 'better-write-plugin-exporter-txt'
   import { HtmlPlugin } from 'better-write-plugin-exporter-html'
-  import { AnnotationsPlugin } from 'better-write-plugin-annotations'
+  import { SchemasPlugin } from 'better-write-plugin-schemas'
   import { ShortcutsPlugin } from 'better-write-plugin-shortcuts'
   import { VoiceTypingPlugin } from 'better-write-plugin-voice-typing'
   import { EntityHistoryPlugin } from 'better-write-plugin-entity-history'
@@ -22,6 +22,7 @@
   import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
   import { AuthPlugin } from 'better-write-plugin-auth'
   import { WebGLPlugin } from 'better-write-plugin-webgl'
+  import { DropboxPlugin } from 'better-write-plugin-dropbox'
 
   useStart([
     ThemePlugin(),
@@ -31,7 +32,7 @@
     // EpubPlugin(),
     TxtPlugin(),
     HtmlPlugin(),
-    AnnotationsPlugin(),
+    SchemasPlugin(),
     ShortcutsPlugin(),
     VoiceTypingPlugin(),
     EntityHistoryPlugin(),
@@ -41,5 +42,6 @@
     MultiplayerPlugin(),
     AuthPlugin(),
     WebGLPlugin(),
+    DropboxPlugin()
   ]).init()
 </script>

@@ -1,7 +1,10 @@
 import { useEnv } from './env'
 import {
+  ContextState,
   Entity,
   EntityType,
+  HistoryStateBarItem,
+  ProjectStateSchemaFile,
   ProjectStateTemplatesGenerator,
 } from 'better-write-types'
 import { usePDFStore } from '@/store/pdf'
@@ -168,5 +171,45 @@ export const useFactory = () => {
     return { create, generator, setText }
   }
 
-  return { entity }
+  const schemas = () => {
+    const schema = () => {}
+
+    const file = () => {}
+
+    const folder = () => {}
+
+    return { schema, file, folder }
+  }
+
+  const history = () => {
+    const bar = () => {
+      const chapter = (context: ContextState): HistoryStateBarItem => {
+        return {
+          id: context.id,
+          name: context.entities ? context.entities[0].raw : context.title,
+          type: 'chapter',
+          scrollHeight: 0,
+          createdAt: format.actually('iso'),
+          customIcon: undefined,
+        }
+      }
+
+      const schema = (file: ProjectStateSchemaFile): HistoryStateBarItem => {
+        return {
+          id: file.id,
+          name: file.fileName,
+          type: 'annotations',
+          scrollHeight: 0,
+          createdAt: format.actually('iso'),
+          customIcon: file.customIcon,
+        }
+      }
+
+      return { chapter, schema }
+    }
+
+    return { bar }
+  }
+
+  return { entity, schemas, history }
 }

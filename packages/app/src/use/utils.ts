@@ -1,4 +1,5 @@
 import destr from 'destr'
+import { nanoid } from 'nanoid'
 
 export const useUtils = () => {
   const delay = (time: number) => {
@@ -58,7 +59,17 @@ export const useUtils = () => {
       )
     }
 
-    return { uuidv4 }
+    const nano = (options?: {
+      prefix?: string
+      suffix?: string
+      length?: number
+    }) => {
+      return `${options?.prefix ? `${options?.prefix}-` : ''}${nanoid(
+        options?.length ?? 20
+      )}${options?.suffix ? `-${options?.suffix}` : ''}`
+    }
+
+    return { uuidv4, nano }
   }
 
   const text = () => {

@@ -2,7 +2,6 @@ import { defineStore } from 'pinia'
 import {
   ContextState,
   ProjectState,
-  ID,
   Entity,
   ProjectStateOptions,
 } from 'better-write-types'
@@ -28,6 +27,7 @@ export const useProjectStore = defineStore('project', {
       base: 'chapter',
       type: 'creative',
       totalPagesCreated: 0,
+      externalProvider: undefined,
       main: {},
       summary: {},
       chapters: [],
@@ -72,12 +72,7 @@ export const useProjectStore = defineStore('project', {
           },
         ],
       },
-      annotations: {
-        folders: [],
-      },
-      characters: {
-        list: [],
-      },
+      schemas: [],
     }
   },
   actions: {
@@ -94,6 +89,7 @@ export const useProjectStore = defineStore('project', {
         payload.type === 'only-annotations' ? 'annotations' : 'chapter'
       this.subject = payload.subject
       this.pageLoaded = payload.pageLoaded
+      this.externalProvider = payload.externalProvider
       this.scrollLoaded = payload.scrollLoaded
       this.offsetLoaded = payload.offsetLoaded
       this.totalPagesCreated = payload.totalPagesCreated
@@ -104,9 +100,8 @@ export const useProjectStore = defineStore('project', {
       this.bw.platform = payload.bw.platform
       this.bw.version = payload.bw.version
       this.shortcuts = payload.shortcuts
-      this.annotations = payload.annotations
+      this.schemas = payload.schemas
       this.creative = payload.creative
-      this.characters = payload.characters
     },
     new(options: ProjectStateOptions, forceTitle?: string) {
       const global = useGlobalStore()
@@ -180,12 +175,7 @@ export const useProjectStore = defineStore('project', {
             },
           ],
         },
-        annotations: options.annotations || {
-          folders: [],
-        },
-        characters: options.characters || {
-          list: [],
-        },
+        schemas: options.schemas || [],
       }
 
       if (this.chapters[0].entities.length === 0) {

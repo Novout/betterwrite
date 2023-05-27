@@ -86,7 +86,7 @@ export const useProject = () => {
       plugin.emit('plugin-theme-set')
 
       if (type === 'only-annotations') {
-        plugin.emit('plugin-annotations-folder-create')
+        // plugin.emit('plugin-schemas-folder-create')
 
         return
       }
@@ -95,6 +95,8 @@ export const useProject = () => {
         target: type === 'creative' ? 1 : 0,
         position: 'start',
       })
+
+      if (type === 'creative') ABSOLUTE.schemas.template = true
     }
 
     return { new: n }
@@ -174,8 +176,8 @@ export const useProject = () => {
 
     if (PROJECT.type === 'only-annotations') {
       plugin.emit(
-        'plugin-annotations-start',
-        PROJECT.annotations.folders[0].files[0]
+        'plugin-schemas-start',
+        PROJECT.schemas[0].folders[0].files[0]
       )
     }
 

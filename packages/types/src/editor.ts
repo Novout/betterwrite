@@ -79,6 +79,7 @@ export interface EditorStateConfiguration {
   draggable: boolean
   bars: boolean
   bottomBar: boolean
+  topBar: boolean
   transition: boolean
   autosave: boolean
   cloudAutosave: boolean

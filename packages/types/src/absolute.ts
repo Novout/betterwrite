@@ -53,6 +53,11 @@ export interface AbsoluteStateGenerator {
   substitutions: boolean
 }
 
+export interface AbsoluteStateSchemas {
+  create: boolean
+  template: boolean
+}
+
 export interface AbsoluteState {
   cmd: boolean
   commands: boolean
@@ -69,4 +74,5 @@ export interface AbsoluteState {
   tools: AbsoluteStateTools
   generator: AbsoluteStateGenerator
   spinner: boolean
+  schemas: AbsoluteStateSchemas
 }

@@ -44,6 +44,13 @@
         />
       </div>
       <div class="wb-preferences">
+        <p class="text-sm">{{ t('editor.aside.configuration.topBar') }}</p>
+        <InputBoolean
+          v-model="EDITOR.configuration.topBar"
+          :specific="true"
+        />
+      </div>
+      <div class="wb-preferences">
         <p class="text-sm">{{ t('editor.aside.configuration.transition') }}</p>
         <InputBoolean
           v-model="EDITOR.configuration.transition"

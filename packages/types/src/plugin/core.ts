@@ -13,6 +13,7 @@ import {
   ExternalsState,
   LiveshareState,
   GlobalState,
+  VaultState,
 } from '..'
 
 export type PluginEmitterName =
@@ -43,14 +44,16 @@ export type PluginEmitterName =
   | 'plugin-project-page-swap'
   | 'plugin-auto-save'
   | 'plugin-editor-mounted'
-  | 'plugin-annotations-get-instance'
-  | 'plugin-annotations-start'
-  | 'plugin-annotations-folder-create'
-  | 'plugin-annotations-folder-delete'
-  | 'plugin-annotations-folder-graph-open'
-  | 'plugin-annotations-file-create'
-  | 'plugin-annotations-file-delete'
-  | 'plugin-annotations-reset'
+  | 'plugin-schemas-get-instance'
+  | 'plugin-schemas-start'
+  | 'plugin-schemas-create'
+  | 'plugin-schemas-delete'
+  | 'plugin-schemas-folder-create'
+  | 'plugin-schemas-folder-delete'
+  | 'plugin-schemas-folder-graph-open'
+  | 'plugin-schemas-file-create'
+  | 'plugin-schemas-file-delete'
+  | 'plugin-schemas-reset'
   | 'plugin-voice-start'
   | 'plugin-voice-stop'
   | 'plugin-voice-mutate'
@@ -80,6 +83,11 @@ export type PluginEmitterName =
   | 'plugin-oauth-delete'
   | 'plugin-webgl-set-camera'
   | 'plugin-webgl-loaded'
+  | 'plugin-dropbox-connect'
+  | 'plugin-dropbox-set'
+  | 'plugin-dropbox-save'
+  | 'plugin-dropbox-load'
+  | 'plugin-dropbox-delete'
   | 'call-landing-created'
   | 'call-landing-mounted'
   | 'call-landing-unmounted'
@@ -106,6 +114,7 @@ export type ExistingStores =
   | 'history'
   | 'liveshare'
   | 'global'
+  | 'vault'
 
 export type PluginStore<
   T extends ExistingStores,
@@ -126,6 +135,7 @@ export interface PluginStores {
   HISTORY: PluginStore<'history', HistoryState, any, any>
   LIVESHARE: PluginStore<'liveshare', LiveshareState, any, any>
   GLOBAL: PluginStore<'global', GlobalState, any, any>
+  VAULT: PluginStore<'vault', VaultState, any, any>
 }
 
 export interface PluginDefines {
@@ -164,6 +174,7 @@ export interface PluginHooks {
   characters: PluginHook
   router: PluginHook
   vuerouter: PluginHook
+  dropbox: PluginHook
   supabase: SupabaseClient
   vueuse: {
     core: PluginHook

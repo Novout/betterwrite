@@ -8,7 +8,7 @@
       !mobile ? 'bg-rgba-blur' : '',
       TUTORIAL.counter === 3 ? 'z-umax' : 'z-50',
     ]"
-    class="fixed wb-edit md:relative overflow-y-auto wb-scroll w-full md:w-60 lg:w-72 xl:w-80 shadow-lg bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active"
+    class="fixed wb-edit md:relative overflow-y-auto wb-scroll w-full md:(w-60 min-w-60) lg:(w-72 min-w-72) xl:(w-82 min-w-82) shadow-lg bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active"
     :style="{
       left,
       opacity,
@@ -31,7 +31,7 @@
   <IconAsideGraph
     v-else-if="PROJECT.type !== 'blank'"
     :class="[TUTORIAL.counter === 3 ? 'z-umax' : 'z-50']"
-    class="absolute left-0 transform right-1 wb-icon w-12 h-12 md:(w-9 h-9) bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active rounded-br shadow-xl"
+    class="absolute left-0 transform top-22 md:top-12 wb-icon w-12 h-12 md:(w-9 h-9) bg-theme-aside-background hover:bg-theme-aside-background-hover active:bg-theme-aside-background-active rounded-br shadow-xl"
     @click.prevent.stop="ABSOLUTE.aside = true"
   />
 </template>
@@ -62,7 +62,7 @@
   const mobile = breakpoints.greater('md')
 
   const { width } = useWindowSize()
-  const { lengthX } = useSwipe(aside as any, {
+  const { lengthX } = useSwipe(aside, {
     passive: true,
     onSwipe() {
       if (width.value) {

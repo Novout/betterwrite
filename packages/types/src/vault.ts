@@ -1,6 +1,7 @@
-import { ProjectObject } from './project'
-import { Maybe } from './utils'
+import { ProjectDocument } from './project'
+import type { files } from 'dropbox'
 
 export interface VaultState {
-  projects?: Maybe<ProjectObject[]>
+  dropboxFiles: files.FileMetadataReference[]
+  documents?: ProjectDocument[]
 }

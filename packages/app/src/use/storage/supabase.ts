@@ -100,6 +100,10 @@ export const useSupabase = () => {
   }
 
   const getDocuments = async (): Promise<Maybe<ProjectDocument[]>> => {
+    if(!AUTH.account?.user) {
+      return
+    }
+
     try {
       const {
         data: projects,
@@ -147,6 +151,8 @@ export const useSupabase = () => {
 
   const saveProject = async (project?: ProjectObject) => {
     toast.info(t('toast.generics.load'))
+
+    if(project) project.project.externalProvider = undefined
 
     await storage.normalize()
 

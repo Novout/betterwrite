@@ -12,7 +12,7 @@
       />
     </div>
     <AsideGraphChapters v-if="PROJECT.type !== 'only-annotations'" />
-    <AsideGraphAnnotations />
+    <AsideGraphSchemas />
   </div>
 </template>
 

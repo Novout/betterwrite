@@ -47,14 +47,6 @@
           <IconInsertion class="mr-2 w-5 h-5" />
         </template>
       </EditorHeaderItem>
-      <EditorHeaderItem
-        :text="t('editor.characters.title')"
-        @action="ABSOLUTE.project.characters = true"
-      >
-        <template #icon>
-          <IconWolf class="mr-2 w-5 h-5" />
-        </template>
-      </EditorHeaderItem>
       <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.assistants.finder')"

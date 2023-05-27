@@ -33,7 +33,8 @@ export const useGraph = () => {
   const load = async (
     index: ID<number>,
     page: ContextState,
-    entity: Entity
+    entity: Entity,
+    scrollValue?: number
   ) => {
     PROJECT.base = 'chapter'
 
@@ -44,7 +45,19 @@ export const useGraph = () => {
         CONTEXT.load(page)
 
         PROJECT.pageLoaded = page.id
+
         await nextTick
+
+        if (scrollValue !== undefined) {
+          let el = document.querySelector('#entity-main')
+
+          if (!el) el = document.querySelector('#bw-wysiwyg')
+
+          if (el) el.scrollTop = scrollValue
+
+          return
+        }
+
         // force scroll to element clicked in aside graph
         scroll.entity(index)
       })
@@ -60,12 +73,17 @@ export const useGraph = () => {
       })
   }
 
-  const to = async (index: ID<number>, page: ContextState, entity: Entity) => {
+  const to = async (
+    index: ID<number>,
+    page: ContextState,
+    entity: Entity,
+    scrollValue?: number
+  ) => {
     ABSOLUTE.spinner = true
 
     await cycle.forceNextTick()
 
-    await load(index, page, entity)
+    await load(index, page, entity, scrollValue)
 
     utils().mobile()
 

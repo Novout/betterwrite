@@ -54,6 +54,7 @@ export const useEditorStore = defineStore('editor', {
         trackEntities: true,
         blocked: true,
         bottomBar: true,
+        topBar: true,
         entity: {
           insertEntityInParagraphBreakLine: true,
         },

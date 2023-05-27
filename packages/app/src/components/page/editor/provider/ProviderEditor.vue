@@ -11,7 +11,6 @@
     <EditorProjectStatistics v-else-if="ABSOLUTE.project.statistics" />
     <EditorProjectInsertions v-else-if="ABSOLUTE.project.insertions" />
     <EditorProjectCorrector v-else-if="ABSOLUTE.project.corrector" />
-    <EditorProjectCharacters v-else-if="ABSOLUTE.project.characters" />
     <EditorProjectPreferences v-else-if="ABSOLUTE.project.preferences" />
     <EditorProjectPresenceCreate
       v-else-if="ABSOLUTE.modal.presence.createOrJoin"
@@ -30,12 +29,20 @@
     <EditorToolsSpeechRecognition
       v-else-if="ABSOLUTE.tools.speechRecognition"
     />
+    <EditorSchemasCreate
+      v-else-if="ABSOLUTE.schemas.create"
+    />
+    <EditorSchemasTemplate
+      v-else-if="ABSOLUTE.schemas.template && PROJECT.schemas.length === 0"
+    />
     <EditorAbsoluteLoader v-else-if="ABSOLUTE.spinner" />
   </teleport>
 </template>
 
 <script setup lang="ts">
   import { useAbsoluteStore } from '@/store/absolute'
+  import { useProjectStore } from '@/store/project'
 
   const ABSOLUTE = useAbsoluteStore()
+  const PROJECT = useProjectStore()
 </script>

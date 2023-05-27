@@ -1,0 +1,34 @@
+{
+	"name": "better-write-plugin-schemas",
+	"version": "1.3.0",
+	"author": "Novout",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\"",
+		"build": "tsup",
+		"lint": "prettier --write src/"
+	},
+	"files": [
+		"dist/**/*",
+		"package.json",
+		"LICENSE",
+		"README.md"
+	],
+	"dependencies": {
+		"better-write-plugin-core": "^1.3.0",
+		"better-write-types": "^1.3.0",
+		"vue-demi": "latest"
+	},
+	"peerDependencies": {
+		"@vue/composition-api": "^1.0.0-rc.1",
+		"vue": "^2.0.0 || >=3.0.0"
+	},
+	"peerDependenciesMeta": {
+		"@vue/composition-api": {
+			"optional": true
+		}
+	}
+}
