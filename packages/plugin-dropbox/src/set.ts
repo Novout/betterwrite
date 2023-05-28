@@ -6,8 +6,9 @@ import {
   files,
 } from 'dropbox'
 import { On } from 'better-write-plugin-core'
-import { PluginTypes } from 'better-write-types'
+import { ClientStorageOptions, PluginTypes } from 'better-write-types'
 import { readBW, writeBW } from 'better-write-extension'
+import { exclude, set } from 'better-write-client-storage'
 
 export const DropboxSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -15,7 +16,7 @@ export const DropboxSet = (
   hooks: PluginTypes.PluginHooks
 ) => {
   On.externals().PluginDropboxSave(emitter, [
-    async () => {
+    () => {
       if (!stores.AUTH.account.dropboxAccessToken) {
         return
       }
@@ -87,8 +88,8 @@ export const DropboxSet = (
         return
       }
 
-      // @ts-expect-error
       const targets = (files.result.entries.filter(
+        // @ts-expect-error
         (file) => file?.is_downloadable && file?.['.tag'] === 'file'
       ) ?? []) as files.FileMetadataReference[]
 
@@ -102,7 +103,7 @@ export const DropboxSet = (
   ])
 
   On.externals().PluginDropboxDelete(emitter, [
-    async (file: files.FileMetadataReference) => {
+    (file: files.FileMetadataReference) => {
       if (!stores.AUTH.account.dropboxAccessToken) return
 
       if (!confirm(hooks.i18n.t('toast.generics.fileDelete'))) return
@@ -131,7 +132,7 @@ export const DropboxSet = (
   ])
 
   On.externals().PluginDropboxSet(emitter, [
-    async (file: files.FileMetadataReference) => {
+    (file: files.FileMetadataReference) => {
       if (!stores.AUTH.account.dropboxAccessToken) return
 
       const dbx = new DBX({
@@ -181,8 +182,12 @@ export const DropboxSet = (
         true
       )
 
-      localStorage.removeItem('code_verifier')
-      localStorage.setItem('code_verifier', dbxAuth.getCodeVerifier())
+      exclude('code_verifier')
+      await set(
+        'code_verifier',
+        dbxAuth.getCodeVerifier(),
+        stores.EDITOR.configuration.clientStorage as ClientStorageOptions
+      )
 
       window.open(url as string, '_self')
     },

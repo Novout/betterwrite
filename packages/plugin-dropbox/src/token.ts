@@ -1,4 +1,5 @@
-import { PluginTypes } from 'better-write-types'
+import { exclude, get } from 'better-write-client-storage'
+import { ClientStorageOptions, PluginTypes } from 'better-write-types'
 import { DropboxAuth } from 'dropbox'
 
 export const DropboxToken = (
@@ -10,7 +11,10 @@ export const DropboxToken = (
     const params = hooks.vueuse.core.useUrlSearchParams()
     const code = params?.code
     const state = params?.state
-    const code_verifier = localStorage.getItem('code_verifier')
+    const code_verifier = await get<string>(
+      'code_verifier',
+      stores.EDITOR.configuration.clientStorage as ClientStorageOptions
+    )
 
     if (code && code_verifier && state === 'dropboxbw') {
       const dbxAuth = new DropboxAuth({
@@ -26,7 +30,7 @@ export const DropboxToken = (
       stores.AUTH.account.dropboxAccessToken = token?.result // @ts-expect-error
         ?.access_token as string
 
-      localStorage.removeItem('code_verifier')
+      await exclude('code_verifier')
 
       hooks.toast.success(hooks.i18n.t('toast.dropbox.load'))
     }
