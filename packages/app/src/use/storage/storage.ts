@@ -237,7 +237,7 @@ export const useStorage = () => {
         const schemaCharacters = {
           id: schemaCharactersId,
           type: 'characters',
-          name: t('editor.schemas.create.nameItem'),
+          name: t('editor.schemas.types.characters.target'),
           prefix: '#',
           customIcon: '🐉',
           folders: [] as ProjectStateSchemaFolder[],
@@ -248,7 +248,7 @@ export const useStorage = () => {
         schemaCharacters.folders.push({
           id: folderId,
           parentId: schemaCharactersId,
-          folderName: 'Personagens',
+          folderName: t('editor.schemas.types.characters.target'),
           customIcon: schemaCharacters.customIcon,
           files: [..._.project.characters.list.map(character => {
             return {
