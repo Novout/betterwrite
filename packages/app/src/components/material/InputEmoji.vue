@@ -5,7 +5,7 @@
     <button v-if="!props.modelValue" class="flex cursor-pointer items-center justify-center" @click="toggle(true)">
       <slot />
     </button>
-    <div v-if="value" class="flex relative left-10 bottom-50 items-center p-2 flex-col bg-theme-background-3 wb-text">
+    <div v-if="value" class="flex relative left-10 items-center p-2 flex-col bg-theme-background-3 wb-text">
       <button class="bg-theme-background-2 hover:bg-theme-background-4 transition-colors cursor-pointer rounded shadow p-2 font-raleway text-sm cursor-pointer" @click.prevent.stop="onImage">{{ t('editor.schemas.icon.import') }}</button>
       <p class="my-2">{{ t('editor.schemas.icon.or') }}</p>
       <EmojiPicker :native="true" :disable-sticky-group-names="true" :hide-search="true" :disable-skin-tones="true" :hide-group-names="true" :hide-group-items="true" :display-recent="false" @select="onEmoji" />
