@@ -16,6 +16,5 @@
     "generi": "1.2.1",
     "lerna": "6.6.2"
   },
-  "packageManager": "pnpm@8.5.1",
-  "version": "0.0.1"
+  "packageManager": "pnpm@8.5.1"
 }
