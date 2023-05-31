@@ -19,12 +19,13 @@ import { block } from '@milkdown/plugin-block'
 import { history } from '@milkdown/plugin-history'
 import { cursor } from '@milkdown/plugin-cursor'
 import { trailing } from '@milkdown/plugin-trailing'
-import { emoji } from '@milkdown/plugin-emoji'
 import { upload } from '@milkdown/plugin-upload'
 import { commonmark } from '@milkdown/preset-commonmark'
 import { ID } from 'better-write-types'
 import { nextTick } from 'vue-demi'
 import { ProjectStateSchemaCreate } from 'better-write-types'
+import { slashFactory } from './plugins/slash/slash-plugin'
+import { SlashProvider } from './plugins/slash/slash-provider'
 
 export const PluginSchemasSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -204,11 +205,56 @@ export const PluginSchemasSet = (
 
     await nextTick
 
+    const slash = slashFactory('prefix')
+    const marks: { prefix: string; links: { name: string; id: string }[] }[] =
+      []
+
+    stores.PROJECT.schemas.forEach((schema: ProjectStateSchema) => {
+      const mark = {
+        prefix: schema.prefix,
+        links: [],
+      } as { prefix: string; links: { name: string; id: string }[] }
+
+      schema.folders.forEach((folder) => {
+        folder.files.forEach((file) => {
+          mark.links.push({
+            id: file.id,
+            name: `${folder.folderName}/${file.fileName}`,
+          })
+        })
+      })
+
+      marks.push(mark)
+    })
+
     const editor = await Editor.make()
       .config((ctx) => {
         const el = document.querySelector('#bw-wysiwyg')
 
         ctx.set(rootCtx, el)
+
+        const slashPluginView = (view: any) => {
+          const content = document.createElement('div')
+
+          const provider = new SlashProvider({
+            content,
+            marks,
+          })
+
+          return {
+            update: (updatedView: any, prevState: any) => {
+              provider.update(updatedView, prevState)
+            },
+            destroy: () => {
+              provider.destroy()
+              content.remove()
+            },
+          }
+        }
+
+        ctx.set(slash.key, {
+          view: slashPluginView,
+        })
 
         if (Object.keys(file.milkdownData).length !== 0) {
           ctx.set(defaultValueCtx, {
@@ -224,12 +270,12 @@ export const PluginSchemasSet = (
           )
         }
 
-        const fn = hooks.vueuse.core.useDebounceFn((doc: any) => {
+        const saveContentFn = hooks.vueuse.core.useDebounceFn((doc: any) => {
           setFile(file.id, doc.toJSON())
         }, 300)
 
-        ctx.get(listenerCtx).updated((_, doc) => {
-          fn(doc)
+        ctx.get(listenerCtx).updated((ctx, doc) => {
+          saveContentFn(doc)
         })
 
         ctx.update(editorViewOptionsCtx, (prev) => ({
@@ -245,8 +291,8 @@ export const PluginSchemasSet = (
       .use(history)
       .use(cursor)
       .use(trailing)
-      .use(emoji)
       .use(upload)
+      //.use(slash)
       .create()
 
     const el = document.querySelector('#bw-wysiwyg')
@@ -267,7 +313,7 @@ export const PluginSchemasSet = (
   }
 
   On.externals().PluginSchemasStart(emitter, [
-    (obj: any) => {
+    (obj) => {
       start(obj)
     },
     () => {},

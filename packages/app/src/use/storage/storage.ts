@@ -201,7 +201,7 @@ export const useStorage = () => {
           id: schemaAnnotationsId,
           type: 'default',
           name: t('editor.schemas.create.nameItem'),
-          prefix: '#',
+          prefix: '/',
           customIcon: '📁',
           folders: [] as ProjectStateSchemaFolder[],
         } as ProjectStateSchema
@@ -238,7 +238,7 @@ export const useStorage = () => {
           id: schemaCharactersId,
           type: 'characters',
           name: t('editor.schemas.types.characters.target'),
-          prefix: '#',
+          prefix: '/',
           customIcon: '🐉',
           folders: [] as ProjectStateSchemaFolder[],
         } as ProjectStateSchema
