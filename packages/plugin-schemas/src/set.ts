@@ -292,7 +292,7 @@ export const PluginSchemasSet = (
       .use(cursor)
       .use(trailing)
       .use(upload)
-      //.use(slash)
+      .use(slash)
       .create()
 
     const el = document.querySelector('#bw-wysiwyg')

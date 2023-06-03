@@ -93,12 +93,15 @@ export class SlashProvider {
 
   /// @internal
   #_shouldShow(view: EditorView): boolean {
+    // don't show in prod at this time.
+    return false
+
     const currentTextBlockContent = this.getContent(view)
 
     if (!currentTextBlockContent) return false
 
     const mark = this.#marks.find(
-      (item) => currentTextBlockContent.at(-1) === item.prefix
+      (item) => currentTextBlockContent?.at(-1) === item.prefix
     )
 
     if (mark) {
@@ -164,6 +167,14 @@ export class SlashProvider {
     }
 
     this.#tippy?.show()
+
+    setTimeout(() => {
+      this.#markActive?.links.forEach(link => {
+        const el = document.querySelector(`#${link.id}`) as HTMLDivElement
+
+        el?.addEventListener('click', () => {})
+      })
+    }, 500)
   }
 
   /// Hide the slash.
