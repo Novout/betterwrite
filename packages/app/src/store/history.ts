@@ -55,10 +55,12 @@ export const useHistoryStore = defineStore('history', {
     updateItemName(name: string, id: ID<string>) {
       const index = this.bar.findIndex((item) => item.id === id)
 
-      this.bar[index].name = name
+      if (index === -1) return
+
+      if (this.bar && this.bar[index]) this.bar[index].name = name
     },
     deleteBar(item: HistoryStateBarItem) {
-      this.bar = this.bar.filter(({ id }) => item.id !== id)
+      this.bar = this.bar.filter(({ id }) => item.id !== id) ?? []
 
       if (item.id === this.barActive) this.barActive = undefined
     },
