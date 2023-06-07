@@ -33,6 +33,8 @@ export class SlashProvider {
   /// The root element of the slash.
   element: HTMLElement
 
+  lastChar: string
+
   /// @internal
   #tippy: Instance | undefined
 
@@ -53,6 +55,7 @@ export class SlashProvider {
 
   constructor(options: SlashProviderOptions) {
     this.element = options.content
+    this.lastChar = '__'
     this.#tippyOptions = options.tippyOptions ?? {}
     this.#debounce = options.debounce ?? 100
     this.#shouldShow = options.shouldShow ?? this.#_shouldShow
@@ -93,16 +96,16 @@ export class SlashProvider {
   }
 
   /// @internal
-  #_shouldShow(view: EditorView): boolean {
+  #_shouldShow(view: EditorView, _prevState?: EditorState): boolean {
     this.#markActive = undefined
 
     const currentTextBlockContent = this.getContent(view)
 
     if (!currentTextBlockContent) return false
 
-    const mark = this.#marks.find(
-      (item) => currentTextBlockContent?.at(-1) === item.prefix
-    )
+    if (this.lastChar.length !== 1) return false
+
+    const mark = this.#marks.find((item) => this.lastChar === item.prefix)
 
     if (mark) {
       this.#markActive = this.#marks.reduce(

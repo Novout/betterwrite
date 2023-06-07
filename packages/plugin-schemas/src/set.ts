@@ -255,14 +255,14 @@ export const PluginSchemasSet = (
 
         ctx.set(rootCtx, el)
 
+        const content = document.createElement('div')
+
+        const provider = new SlashProvider({
+          content,
+          marks,
+        })
+
         const slashPluginView = (view: any) => {
-          const content = document.createElement('div')
-
-          const provider = new SlashProvider({
-            content,
-            marks,
-          })
-
           return {
             update: (updatedView: any, prevState: any) => {
               provider.update(updatedView, prevState)
@@ -323,6 +323,11 @@ export const PluginSchemasSet = (
 
             if (file) hooks.schemas.onStart(file)
           }
+        })
+
+        // TODO: get key event in selection offset
+        el?.addEventListener('keydown', (e) => {
+          if (e.key) provider.lastChar = e.key
         })
       })
       .use(listener)
