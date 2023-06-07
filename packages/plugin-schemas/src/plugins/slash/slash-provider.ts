@@ -169,10 +169,10 @@ export class SlashProvider {
       this.#markActive?.links.reduce((acc, item) => {
         return (acc += `<div id=\"${
           item.id
-        }\" class=\"flex flex-col gap-2 bg-theme-background-3 p-2\">${
+        }\" class=\"flex flex-col gap-5 bg-theme-background-3 p-2\">${
           this.#markActive?.prefix ?? ''
         } ${item.fullName}</div>`)
-      }, '<div class="bg-theme-background-2 wb-text w-full p-2 cursor-pointer min-w-20">') ??
+      }, '<div class="bg-theme-background-2 rounded max-h-60 wb-scroll wb-text w-full p-2 cursor-pointer min-w-20 max-w-60">') ??
       '<div>'
     this.element.innerHTML = this.element.innerHTML += '</div>'
     this.element.onclick = (e) => {
