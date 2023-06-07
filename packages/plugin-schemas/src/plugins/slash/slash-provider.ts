@@ -117,6 +117,8 @@ export class SlashProvider {
         },
         { prefix: mark.prefix, links: [] }
       )
+
+      if (this.#markActive.links.length === 0) return false
     }
 
     return !!mark
@@ -187,17 +189,21 @@ export class SlashProvider {
         el?.addEventListener('click', () => {
           const attrs = { title: link.name, href: `nav-${link.id}` }
           const schema = view.state.schema
-          const node = schema.text(attrs.title, [
+          const node = schema.text(`${attrs.title}`, [
             schema.marks.link.create(attrs),
           ])
+          // because pos-node insert interaction
+          const fakeSpace = schema.text(` `)
 
           view.dispatch(
             view.state.tr.replaceWith(
               view.state.selection.from - 1,
               view.state.selection.to,
-              node
+              [node, fakeSpace]
             )
           )
+
+          view.focus()
         })
       })
     }, 500)

@@ -1,5 +1,6 @@
-import type { HistoryState, HistoryStateBarItem } from 'better-write-types'
+import type { HistoryState, HistoryStateBarItem, ID } from 'better-write-types'
 import { defineStore } from 'pinia'
+import { useProjectStore } from './project'
 
 export const useHistoryStore = defineStore('history', {
   state: (): HistoryState => {
@@ -30,6 +31,8 @@ export const useHistoryStore = defineStore('history', {
       }
     },
     addBar(item: HistoryStateBarItem) {
+      const PROJECT = useProjectStore()
+
       const exists = this.bar.some(
         ({ id, type }) => item.id === id && type === item.type
       )
@@ -40,9 +43,19 @@ export const useHistoryStore = defineStore('history', {
 
       if (exists) return
 
-      this.bar.unshift(item)
+      if (
+        (PROJECT.type === 'only-annotations' && item.type === 'annotations') ||
+        PROJECT.type === 'creative'
+      ) {
+        this.bar.unshift(item)
 
-      if (this.bar.length > 12) this.bar.pop()
+        if (this.bar.length > 12) this.bar.pop()
+      }
+    },
+    updateItemName(name: string, id: ID<string>) {
+      const index = this.bar.findIndex((item) => item.id === id)
+
+      this.bar[index].name = name
     },
     deleteBar(item: HistoryStateBarItem) {
       this.bar = this.bar.filter(({ id }) => item.id !== id)

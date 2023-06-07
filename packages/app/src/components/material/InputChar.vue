@@ -1,5 +1,5 @@
 <template>
-  <input ref="inp" v-model="cmp" class="p-2 bg-theme-background-2 font-bold rounded shadow wb-text w-10 text-center" :class="css" />
+  <input ref="inp" v-model="cmp" class="p-2 bg-theme-background-2 font-bold rounded shadow wb-text w-10 text-center" :class="css" @keydown="onInputKey" />
 </template>
 
 <script setup lang="ts">
@@ -20,4 +20,11 @@
       emit('update:modelValue', val.substring(1, val.length - 1))
     },
   })
+
+  const onInputKey = (e: KeyboardEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if(e.key.match(/[/$@%#&()+*-/:-?{-~!"^_`[\]]/)) emit('update:modelValue', e.key)
+  }
 </script>

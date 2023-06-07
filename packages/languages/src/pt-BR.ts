@@ -513,7 +513,7 @@ export default {
         actuallyPage: 'Página Atual',
         projectPages: 'Projeto',
         timeline: 'Linha do Tempo',
-        schemas: 'Esquemas',
+        schemas: 'Área de Trabalho',
       },
       configuration: {
         title: 'Configuração',

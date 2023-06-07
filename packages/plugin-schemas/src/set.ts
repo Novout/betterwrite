@@ -67,6 +67,8 @@ export const PluginSchemasSet = (
             if (text) {
               file.fileName = text
               if (file.extra?.id) file.extra.name = text
+
+              stores.HISTORY.updateItemName(text, id)
             }
           }
         })

@@ -514,7 +514,7 @@ export default {
         actuallyPage: 'Actually Page',
         projectPages: 'Project Pages',
         timeline: 'Timeline',
-        schemas: 'Schemas',
+        schemas: 'Workspace',
       },
       configuration: {
         title: 'Settings',

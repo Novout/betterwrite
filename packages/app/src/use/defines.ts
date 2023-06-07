@@ -366,7 +366,7 @@ export const useDefines = () => {
               id: utils.id().nano({ prefix: 'schema' }),
               type: 'default',
               name: t('editor.schemas.defines.lore'),
-              prefix: '#',
+              prefix: '&',
               customIcon: '📖',
               folders: [],
             },

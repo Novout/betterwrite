@@ -54,7 +54,7 @@
   const options = reactive<ProjectStateSchemaCreate>({ 
     type: transformer.schemas().type('default', 'getter') as any, 
     name: t('editor.schemas.create.nameItem'), 
-    prefix: '#' 
+    prefix: '/' 
   })
 
   const setter = computed(() => transformer.schemas().type(options.type, 'setter'))
@@ -80,14 +80,14 @@
   const main = ref<HTMLElement | null>(null)
   const isHoveredHeader = ref(false)
 
-  const { style } = useDraggable(main as any, {
+  const { style } = useDraggable(main, {
     initialValue: { x: window.innerWidth / 4, y: window.innerHeight / 6 },
     onStart: () => {
       if (!isHoveredHeader.value) return false
     },
   })
 
-  onClickOutside(main as any, () => {
+  onClickOutside(main, () => {
     onClose()
   })
 

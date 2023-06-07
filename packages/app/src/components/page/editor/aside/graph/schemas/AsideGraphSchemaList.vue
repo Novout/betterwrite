@@ -3,7 +3,16 @@
     <div class="flex w-full border-theme-aside-graph-lines border-l-1 border-t-1 border-r-1 rounded-t justify-between items-center truncate">
       <div class="flex px-2 wb-text justify-between items-center">
         <InputEmoji v-model="props.schema.customIcon" />
-        <p class="ml-5 font-bold w-auto md:w-12 lg:w-30 truncate">{{ props.schema.prefix }}  {{ props.schema.name }}</p>
+        <p class="font-bold w-full">
+          <InputChar
+            v-model="props.schema.prefix"
+            class="wb-text bg-transparent w-10 py-0.5 rounded hover:bg-theme-background-opacity-1 focus:bg-theme-background-opacity-1 ml-2 font-bold text-left"
+          />
+          <InputText
+            v-model="props.schema.name"
+            class="wb-text bg-transparent w-40 truncate py-0.5 rounded hover:bg-theme-background-opacity-1 focus:bg-theme-background-opacity-1 ml-2 font-bold text-left"
+          />
+        </p>
       </div>
       <div class="flex items-center gap-1">
         <div
@@ -24,7 +33,7 @@
       v-for="(folder, index) in props.schema.folders"
       :key="index"
       :class="[PROJECT.base === 'annotations' ? '' : 'opacity-70']"
-      class="border-l border-theme-aside-graph-lines"
+      class="border-l border-r border-theme-aside-graph-lines"
     >
       <AsideGraphSchemaFolder :folder="folder" />
     </div>

@@ -76,12 +76,32 @@
   import { useSchemas } from '@/use/schemas'
   import { useDefines } from '@/use/defines'
   import { useI18n } from 'vue-i18n'
+  import { computed, watch } from 'vue'
+  import { useProjectStore } from '@/store/project'
 
- defineProps<{
+  const props = defineProps<{
     folder: ProjectStateSchemaFolder
   }>()
+
+  const PROJECT = useProjectStore()
 
   const schemas = useSchemas()
   const defines = useDefines()
   const { t } = useI18n()
+
+  watch(computed(() => props.folder.customIcon), (icon) => {
+    if(icon) PROJECT.schemas.forEach(schema => {
+      schema.folders.forEach(folder => {
+        folder.files.forEach(file => {
+          if(folder.id === props.folder.id) {
+            file.customIcon = icon
+          }
+        })
+
+        if(folder.id === props.folder.id) {
+          return
+        }
+      })
+    })
+  })
 </script>
