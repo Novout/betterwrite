@@ -175,6 +175,8 @@ export interface PluginHooks {
   router: PluginHook
   vuerouter: PluginHook
   dropbox: PluginHook
+  history: PluginHook
+  schemas: PluginHook
   supabase: SupabaseClient
   vueuse: {
     core: PluginHook

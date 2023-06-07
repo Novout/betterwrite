@@ -23,6 +23,13 @@
   padding: 0.65rem 0;
 }
 
+.milkdown-betterwrite a {
+  color: var('--theme-background-4');
+  text-decoration-line: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
+
 .milkdown-betterwrite p, li {
   font-size: 1.15rem;
   font-weight: 500;

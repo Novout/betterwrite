@@ -1,9 +1,11 @@
 import {
   HistoryStateBarItem,
+  Maybe,
   PluginTypes,
   ProjectStateSchema,
   ProjectStateSchemaFile,
   ProjectStateSchemaFolder,
+  MilkdownSlashMark,
 } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 import {
@@ -70,6 +72,24 @@ export const PluginSchemasSet = (
         })
       })
     })
+  }
+
+  const getFile = (id: ID<string>): Maybe<ProjectStateSchemaFile> => {
+    let _file: Maybe<ProjectStateSchemaFile> = undefined
+
+    if (!id.startsWith('file-')) return _file
+
+    stores.PROJECT.schemas.forEach((schema) => {
+      schema.folders.forEach((folder) => {
+        folder.files.forEach((file) => {
+          if (file.id === id) {
+            _file = file
+          }
+        })
+      })
+    })
+
+    return _file
   }
 
   function createFile<T extends object = any>(
@@ -206,20 +226,20 @@ export const PluginSchemasSet = (
     await nextTick
 
     const slash = slashFactory('prefix')
-    const marks: { prefix: string; links: { name: string; id: string }[] }[] =
-      []
+    const marks: MilkdownSlashMark[] = []
 
     stores.PROJECT.schemas.forEach((schema: ProjectStateSchema) => {
       const mark = {
         prefix: schema.prefix,
         links: [],
-      } as { prefix: string; links: { name: string; id: string }[] }
+      } as MilkdownSlashMark
 
       schema.folders.forEach((folder) => {
         folder.files.forEach((file) => {
           mark.links.push({
             id: file.id,
-            name: `${folder.folderName}/${file.fileName}`,
+            fullName: `${folder.folderName}/${file.fileName}`,
+            name: file.fileName,
           })
         })
       })
@@ -229,7 +249,7 @@ export const PluginSchemasSet = (
 
     const editor = await Editor.make()
       .config((ctx) => {
-        const el = document.querySelector('#bw-wysiwyg')
+        const el = document.querySelector('#bw-wysiwyg') as HTMLDivElement
 
         ctx.set(rootCtx, el)
 
@@ -282,6 +302,26 @@ export const PluginSchemasSet = (
           ...prev,
           attributes: { class: 'milkdown-betterwrite', spellcheck: 'true' },
         }))
+
+        el?.addEventListener('click', (e: MouseEvent | TouchEvent) => {
+          const el = e.target as HTMLElement
+          const href = el.getAttribute('href')
+
+          // navigate to other schema file
+          if (
+            href?.startsWith('nav-file-') &&
+            el.nodeType === Node.ELEMENT_NODE
+          ) {
+            e.preventDefault()
+            e.stopPropagation()
+
+            const key = href.replace('nav-', '')
+
+            const file = getFile(key)
+
+            if (file) hooks.schemas.onStart(file)
+          }
+        })
       })
       .use(listener)
       .use(commonmark)

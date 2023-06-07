@@ -7,6 +7,7 @@ import { TextSelection } from '@milkdown/prose/state'
 import type { EditorView } from '@milkdown/prose/view'
 import debounce from 'lodash.debounce'
 import type { Instance, Props } from 'tippy.js'
+import type { MilkdownSlashMark } from 'better-write-types'
 import tippy from 'tippy.js'
 
 /// Options for slash provider.
@@ -22,9 +23,9 @@ export type SlashProviderOptions = {
 
   prefix?: string[]
 
-  marks?: { prefix: string; links: { name: string; id: string }[] }[]
+  marks?: MilkdownSlashMark[]
 
-  markActive?: { prefix: string; links: { name: string; id: string }[] }
+  markActive?: MilkdownSlashMark
 }
 
 /// A provider for creating slash.
@@ -42,10 +43,10 @@ export class SlashProvider {
   #debounce: number
 
   /// @internal
-  #marks: { prefix: string; links: { name: string; id: string }[] }[]
+  #marks: MilkdownSlashMark[]
 
   /// @internal
-  #markActive?: { prefix: string; links: { name: string; id: string }[] }
+  #markActive?: MilkdownSlashMark
 
   /// @internal
   #shouldShow: (view: EditorView, prevState?: EditorState) => boolean
@@ -88,13 +89,12 @@ export class SlashProvider {
       getReferenceClientRect: () => posToDOMRect(view, from, to),
     })
 
-    this.show()
+    this.show(view, prevState)
   }
 
   /// @internal
   #_shouldShow(view: EditorView): boolean {
-    // don't show in prod at this time.
-    return false
+    this.#markActive = undefined
 
     const currentTextBlockContent = this.getContent(view)
 
@@ -105,7 +105,18 @@ export class SlashProvider {
     )
 
     if (mark) {
-      this.#markActive = this.#marks.find((mark) => mark.prefix === mark.prefix)
+      this.#markActive = this.#marks.reduce(
+        (prev, current) => {
+          if (mark.prefix === current.prefix) {
+            prev.links.push(...current.links)
+
+            return prev
+          }
+
+          return prev
+        },
+        { prefix: mark.prefix, links: [] }
+      )
     }
 
     return !!mark
@@ -151,14 +162,14 @@ export class SlashProvider {
   }
 
   /// Show the slash.
-  show = () => {
+  show = (view: EditorView, prevState?: EditorState) => {
     this.element.innerHTML =
       this.#markActive?.links.reduce((acc, item) => {
         return (acc += `<div id=\"${
           item.id
         }\" class=\"flex flex-col gap-2 bg-theme-background-3 p-2\">${
           this.#markActive?.prefix ?? ''
-        } ${item.name}</div>`)
+        } ${item.fullName}</div>`)
       }, '<div class="bg-theme-background-2 wb-text w-full p-2 cursor-pointer min-w-20">') ??
       '<div>'
     this.element.innerHTML = this.element.innerHTML += '</div>'
@@ -168,11 +179,26 @@ export class SlashProvider {
 
     this.#tippy?.show()
 
+    // TODO: Replace timeout for dispatch transaction with native listener's or create milkdown schema for nav-linking
     setTimeout(() => {
-      this.#markActive?.links.forEach(link => {
-        const el = document.querySelector(`#${link.id}`) as HTMLDivElement
+      this.#markActive?.links.forEach((link) => {
+        const el = document.querySelector<HTMLElement>(`#${link.id}`)
 
-        el?.addEventListener('click', () => {})
+        el?.addEventListener('click', () => {
+          const attrs = { title: link.name, href: `nav-${link.id}` }
+          const schema = view.state.schema
+          const node = schema.text(attrs.title, [
+            schema.marks.link.create(attrs),
+          ])
+
+          view.dispatch(
+            view.state.tr.replaceWith(
+              view.state.selection.from - 1,
+              view.state.selection.to,
+              node
+            )
+          )
+        })
       })
     }, 500)
   }
