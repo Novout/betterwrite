@@ -76,6 +76,7 @@ export class SlashProvider {
     this.#tippy ??= tippy(view.dom, {
       trigger: 'manual',
       placement: 'bottom-start',
+      hideOnClick: true,
       interactive: true,
       ...this.#tippyOptions,
       content: this.element,
