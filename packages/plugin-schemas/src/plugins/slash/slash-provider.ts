@@ -207,6 +207,7 @@ export class SlashProvider {
           )
 
           view.focus()
+          this.lastChar = '__'
         })
       })
     }, 500)
