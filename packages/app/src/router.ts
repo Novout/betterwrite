@@ -25,7 +25,7 @@ router.beforeResolve(async (to, from, next) => {
     return
   }
 
-  if (to.name === 'Main' && !user && !token && isOnline) {
+  if (to.name === 'Main' && !user && isOnline) {
     next({ name: 'Landing' })
 
     return
