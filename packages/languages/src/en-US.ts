@@ -691,9 +691,10 @@ export default {
       chapters: 'Chapters',
       statistics: {
         characters: 'Characters',
+        sentences: 'Sentences',
         letters: 'Letters',
-        paragraph: "Paragraph's",
-        heading: "Heading's",
+        paragraph: "Paragraphs",
+        heading: "Headings",
         fixed: 'Fixed Items',
         longest: 'Longest Content',
       },

@@ -692,6 +692,7 @@ export default {
       chapters: 'Capítulos',
       statistics: {
         characters: 'Caracteres',
+        sentences: 'Sentenças',
         letters: 'Letras',
         paragraph: 'Parágrafos',
         heading: 'Cabeçalhos',
