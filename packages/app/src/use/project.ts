@@ -369,6 +369,19 @@ export const useProject = () => {
       )
     }
 
+    const getChapterAllSentences = (page: ContextState): number => {
+      return page.entities.reduce(
+        (sum, val) =>
+          sum +
+          (isValidType(val) && ASTUtils.normalize(val.raw, { type: 'inserts' })
+            ? ASTUtils.normalize(val.raw, { type: 'inserts' })?.match(
+                /[\w|\)][.?!](\s|$)/g
+              )?.length || 0
+            : 0),
+        0
+      )
+    }
+
     const getChapterImpact = (b1: ContextState) => {
       const a1: ContextState = PROJECT.chapters.reduce((r, val) => {
         if (!r || getChapterAllCharacters(val) > getChapterAllCharacters(r)) {
@@ -546,6 +559,7 @@ export const useProject = () => {
       getOnlyRaw,
       getChapterLetters,
       getChapterAllCharacters,
+      getChapterAllSentences,
       getChapterImpact,
       getChapterWords,
       getChapterParagraphs,

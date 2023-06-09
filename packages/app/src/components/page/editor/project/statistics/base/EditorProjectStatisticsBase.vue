@@ -22,6 +22,10 @@
       :result="PROJECT.getAllWords"
     />
     <EditorProjectStatisticsBaseRow
+      :title="t('editor.addons.statistics.sentences')"
+      :result="PROJECT.getAllSentences"
+    />
+    <EditorProjectStatisticsBaseRow
       :title="t('editor.addons.statistics.paragraph')"
       :result="PROJECT.getAllParagraphs"
     />

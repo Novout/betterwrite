@@ -747,6 +747,7 @@ export default {
         characters: 'Caracteres',
         impact: 'Tempo de Leitura Estimado',
         letters: 'Letras',
+        sentences: 'Sentenças',
         words: 'Palavras',
         repeated: 'Palavras Repetidas',
         min: 'Mínimo de Caracteres',

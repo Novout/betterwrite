@@ -297,6 +297,12 @@ export const useProjectStore = defineStore('project', {
         0
       )
     },
+    getAllSentences: (state) => {
+      return state.chapters.reduce(
+        (sum, val) => sum + useProject().utils().getChapterAllSentences(val),
+        0
+      )
+    },
     getAllLetters: (state) => {
       return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterLetters(val),
