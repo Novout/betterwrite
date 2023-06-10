@@ -1,6 +1,6 @@
 {
 	"name": "better-write-plugin-exporter-pdf",
-	"version": "1.3.6",
+	"version": "1.3.7",
 	"author": "Novout",
 	"license": "MIT",
 	"main": "dist/index.js",
@@ -18,13 +18,13 @@
 		"README.md"
 	],
 	"dependencies": {
-		"better-write-color-converter": "^1.3.6",
-		"better-write-contenteditable-ast": "^1.3.6",
-		"better-write-google-fonts-api": "^1.3.6",
-		"better-write-image-converter": "^1.3.6",
-		"better-write-plugin-core": "^1.3.6",
-		"better-write-plugin-theme": "^1.3.6",
-		"better-write-types": "^1.3.6",
+		"better-write-color-converter": "^1.3.7",
+		"better-write-contenteditable-ast": "^1.3.7",
+		"better-write-google-fonts-api": "^1.3.7",
+		"better-write-image-converter": "^1.3.7",
+		"better-write-plugin-core": "^1.3.7",
+		"better-write-plugin-theme": "^1.3.7",
+		"better-write-types": "^1.3.7",
 		"vue-demi": "latest"
 	},
 	"peerDependencies": {
