@@ -175,10 +175,9 @@ export const useProject = () => {
     utils().resetAllVisual()
 
     if (PROJECT.type === 'only-annotations') {
-      plugin.emit(
-        'plugin-schemas-start',
-        { target: PROJECT.schemas[0].folders[0].files[0] }
-      )
+      plugin.emit('plugin-schemas-start', {
+        target: PROJECT.schemas[0].folders[0].files[0],
+      })
     }
 
     ABSOLUTE.project.tutorial = !localStorage.getItem('tutorial')

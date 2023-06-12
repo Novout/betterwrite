@@ -14,18 +14,18 @@
     <InputColorPicker v-if="element.extra?.color" v-model="element.extra.color" class="w-2 h-2" />
     <div
     class="truncate cursor-pointer"
-      @click.prevent.stop="schemas.onStart(element)"
+    @click.prevent.stop="schemas.onStart(element)"
     >
-      {{ element.fileName }}
-    </div>
-    <div class="flex items-center">
-      <div
-      @click.prevent.stop="
-      schemas.onFileDelete({ file: element, folder })
-      "
-    >
-      <IconDelete class="wb-aside-icon" />
-    </div>
+    {{ element.fileName }}
+  </div>
+  <div class="flex items-center">
+    <div
+    @click.prevent.stop="
+    schemas.onFileDelete({ file: element, folder })
+    "
+  >
+    <IconDelete class="wb-aside-icon" />
+  </div>
     <IconArrowRight
       v-if="element.extra?.id"
         :class="[element.extra.configuration ? 'transform rotate-90' : '']"
