@@ -177,7 +177,7 @@ export const useProject = () => {
     if (PROJECT.type === 'only-annotations') {
       plugin.emit(
         'plugin-schemas-start',
-        PROJECT.schemas[0].folders[0].files[0]
+        { target: PROJECT.schemas[0].folders[0].files[0] }
       )
     }
 
