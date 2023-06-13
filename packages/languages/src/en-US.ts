@@ -778,6 +778,7 @@ export default {
         description:
           'Additional resources that do not participate in the generation of documents, serving as an aid to the production flow and accompanying all your writing!',
         name: 'Name',
+        nameItem: 'Annotations',
         prefix: 'Prefix',
         prefixDescription:
           'Choose a prefix that will allow you to reference files at any time.',
