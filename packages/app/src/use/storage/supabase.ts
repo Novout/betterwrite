@@ -19,6 +19,7 @@ import { useFormat } from '../format'
 import { useProject } from '../project'
 import { useUtils } from '../utils'
 import { useStorage } from './storage'
+import { usePlugin } from 'better-write-plugin-core'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -51,6 +52,7 @@ export const useSupabase = () => {
   const router = useRouter()
   const format = useFormat()
   const utils = useUtils()
+  const plugin = usePlugin()
 
   const toDashboard = () => {
     if (!online.value) {
@@ -158,28 +160,32 @@ export const useSupabase = () => {
 
     await storage.purge()
 
+    const target = project ?? storage.getProjectObject()
+
+    if(!target) {
+      return
+    }
+
+    plugin.emit('plugin-progress-start')
+
+    const [targetSize, targetNamed] = utils.object().getMemorySizeOfObject(target)
+
+    if((Number(targetSize) >= 5.0 && targetNamed === 'MB')  || targetNamed === 'GB') {
+      toast.error(t('editor.cloud.limitProjectSize', { limit: 5 }), { timeout: 10000 })
+      
+      return
+    }
+
     const { data, error } = await s
       .from('projects')
-      .upsert(
-        project
-          ? {
+      .upsert({
               // @ts-ignore
               id_user: AUTH.account.user.id,
-              ...project,
+              ...target,
               document: {
-                id: project?.id,
-                name: project?.project.nameRaw,
-                type: project?.project.type,
-              },
-            }
-          : {
-              // @ts-ignore
-              id_user: AUTH.account.user.id,
-              ...storage.getProjectObject(),
-              document: {
-                id: storage.getProjectObject()?.id,
-                name: storage.getProjectObject()?.project.nameRaw,
-                type: storage.getProjectObject()?.project.type,
+                id: target.id,
+                name: target.project.nameRaw,
+                type: target.project.type,
               },
             },
         { onConflict: 'id' }
@@ -199,36 +205,42 @@ export const useSupabase = () => {
 
       await storage.purge()
 
-      const { error: err } = await s.from('projects').upsert(
-        project
-          ? {
+      const set = project ?? storage.getProjectObject()
+
+      if(!set) return
+
+      const [setSize, setNamed] = utils.object().getMemorySizeOfObject(set)
+
+      if((Number(setSize) >= 5.0 && setNamed === 'MB')  || setNamed === 'GB') {
+        toast.error(t('editor.cloud.limitProjectSize', { limit: 5 }), { timeout: 10000 })
+        
+        return
+      }
+
+      plugin.emit('plugin-progress-start')
+
+      const { error: err } = await s.from('projects').upsert({
               // @ts-ignore
               id_user: AUTH.account.user.id,
-              ...project,
+              ...set,
               document: {
-                id: project?.id,
-                name: project?.project.nameRaw,
-                type: project?.project.type,
-              },
-            }
-          : {
-              // @ts-ignore
-              id_user: AUTH.account.user.id,
-              ...storage.getProjectObject(),
-              document: {
-                id: storage.getProjectObject()?.id,
-                name: storage.getProjectObject()?.project.nameRaw,
-                type: storage.getProjectObject()?.project.type,
+                id: set.id,
+                name: set.project.nameRaw,
+                type: set.project.type,
               },
             },
         { onConflict: 'id' }
       )
+
+      plugin.emit('plugin-progress-end')
 
       if (err) {
         toast.error(err.message)
 
         return
       }
+    } else {
+      plugin.emit('plugin-progress-end')
     }
 
     toast.success(t('toast.project.save'))

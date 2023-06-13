@@ -69,6 +69,10 @@ export default {
         delete: 'Delete',
       },
     },
+    cloud: {
+      limitProjectSize:
+        "You have exceeded the maximum cloud project limit ({limit}MB)! Choose to save locally (.bw) or to one of the supported providers (Dropbox) so you don't lose your project!",
+    },
     auth: {
       login: {
         show: 'Enter',
