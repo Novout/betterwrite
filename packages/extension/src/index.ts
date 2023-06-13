@@ -7,7 +7,7 @@ import {
   ZipWriter,
 } from '@zip.js/zip.js'
 import { ProjectObject } from 'better-write-types'
-import destr from 'destr'
+import { destr } from 'destr'
 
 export const writeMimetype = (): TextReader => {
   const reader = new TextReader('application/bw+zip')

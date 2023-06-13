@@ -1,6 +1,6 @@
 import { useProjectStore } from '@/store/project'
 import { useFileSystemAccess } from '@vueuse/core'
-import destr from 'destr'
+import { destr } from 'destr'
 import { saveAs } from 'file-saver'
 import { useStorage } from './storage/storage'
 

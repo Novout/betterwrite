@@ -1,5 +1,5 @@
 import * as indexeddb from 'idb-keyval'
-import destr from 'destr'
+import { destr } from 'destr'
 import lz from 'lz-string'
 import type { ClientStorageOptions, Maybe } from 'better-write-types'
 

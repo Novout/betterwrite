@@ -1,5 +1,5 @@
 import * as zip from '@zip.js/zip.js'
-import destr from 'destr'
+import { destr } from 'destr'
 import { xml2json } from 'xml-js'
 import {
   ContextState,
