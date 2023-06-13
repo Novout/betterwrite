@@ -35,7 +35,3 @@ Custom types that are not traditionally text or images depend on whether the doc
 > The TXT text generator fails to convert the vast majority of blocks, discarding all non-text entity types.
 
 > Which features the word processor supports by each extension can be found in the **Help -> Questions** section.
-
-## Customization
-
-<img src="../.github/pdf.png" />

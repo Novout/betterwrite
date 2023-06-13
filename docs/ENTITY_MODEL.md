@@ -2,18 +2,6 @@
 
 Better Write works with the Entity Model, where each item in the editor is unique and independent of other content. This model allows the creation of resources that do not necessarily function as texts, such as Lists, Checkboxes, Images and Drawings. The generators do not need to extract data from the editor because with the Entity Model we can standardize the project data, allowing the extensions (.PDF, .DOCX, .HTML, .TXT) to work independently and a new external extensions support.
 
-## Comparison
-
-<img src="../.github/entity.gif" />
-
-- Canvas Model (Common in other Word Processors)
-
-<img src="../.github/canvasmodel.png" width="50%" />
-
-- Entity Model
-
-<img src="../.github/entitymodel.png" width="50%" />
-
 ## Contenteditable
 
 To more easily deal with the issue of data entry (mainly keyboard related) it was necessary to create a specific package (better-write-contenteditable-ast) to deal only with the editor and provide what is necessary for the tools that depend on it (eg document exporters). The contenteditable is an html helper that allows you to treat a specific tag as editable (similar to input). The great advantage is its adaptability and the possibility of control that the tool provides, allowing you to browse the AST in a more coherent way (and without worrying about errors in italics, for example).

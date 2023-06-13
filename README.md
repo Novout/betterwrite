@@ -19,9 +19,11 @@ betterwrite.io
 
 <br>
 
-<a href="https://betterwrite.io/">
-  <img src="./.github/main.png" width="100%" />
-</a>
+<p align="center">
+  <a href="https://betterwrite.io/">
+    <img src="./.github/main.png" width="90%" />
+  </a>
+<p>
 
 # Features
 
@@ -42,7 +44,11 @@ betterwrite.io
 
 # An Editor for Creative Writing
 
-Unlike traditional word processors, *betterwrite* focuses on producing an out-of-the-curve experience for writers and writing derivatives, bringing with it several additional tools to increase the flow of use:
+Unlike traditional word processors, *betterwrite* focuses on producing an out-of-the-curve experience for writers and writing derivatives, bringing with it several additional tools to increase the flow of use.
+
+<p align="center">
+  <img src="./.github/main2.gif" width="90%" />
+<p>
 
 - **Full Customization**: The editor is fully customizable with the main focus on emphasizing the writer's creativity and adapting all the context at his disposal. In addition to standard themes, *betterwrite* allows for custom backgrounds (including *gifs*) and the use of external fonts within the editor itself.
 
