@@ -12,6 +12,7 @@
       <EditorBaseRenderBarWifi />
     </div>
     <div class="flex items-center gap-5">
+      <EditorBaseRenderBarSocials />
       <EditorBaseRenderBarLiveshare />
       <EditorBaseRenderBarDate />
       <EditorBaseRenderBarFullscreen />

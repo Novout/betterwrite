@@ -12,9 +12,8 @@
         @action="router.push('/questions')"
       />
       <EditorHeaderItem
-        v-if="env.isDev()"
         :text="t('editor.bar.help.support')"
-        @action="router.push('/support')"
+        @action="onClickToIssues"
       />
     </template>
   </EditorHeaderButton>
@@ -31,4 +30,8 @@
   const env = useEnv()
   const { t } = useI18n()
   const router = useRouter()
+
+  const onClickToIssues = () => {
+    window.open('https://github.com/Novout/betterwrite/issues/new', '_blank', 'noopener,noreferrer')
+  }
 </script>
