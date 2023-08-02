@@ -21,7 +21,7 @@ import { getRows } from 'better-write-contenteditable-ast'
 export const PluginHtmlSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   const { isLoading } = hooks.vueuse.integration.progress
 

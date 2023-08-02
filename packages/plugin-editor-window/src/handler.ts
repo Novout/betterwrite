@@ -3,7 +3,7 @@ import { PluginTypes } from 'better-write-types'
 export const PluginHandlerSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   emitter.on('call-editor-mounted', () => {
     hooks.vueuse.core.useEventListener('dragover', (e: DragEvent) => {

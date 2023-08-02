@@ -119,7 +119,7 @@ export class SlashProvider {
 
           return prev
         },
-        { prefix: mark.prefix, links: [] }
+        { prefix: mark.prefix, links: [] },
       )
 
       if (this.#markActive.links.length === 0) return false
@@ -140,7 +140,7 @@ export class SlashProvider {
   getContent = (
     view: EditorView,
     matchNode: (node: Node) => boolean = (node) =>
-      node.type.name === 'paragraph'
+      node.type.name === 'paragraph',
   ): string | undefined => {
     const { selection } = view.state
     const { empty } = selection
@@ -203,8 +203,8 @@ export class SlashProvider {
             view.state.tr.replaceWith(
               view.state.selection.from - 1,
               view.state.selection.to,
-              [node, fakeSpace]
-            )
+              [node, fakeSpace],
+            ),
           )
 
           view.focus()

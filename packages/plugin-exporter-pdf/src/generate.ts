@@ -21,7 +21,7 @@ import { get } from 'better-write-google-fonts-api'
 export const PluginPDFSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   let __FIRST__HEADING__ONE__ = true
   let __LIST__: any = {
@@ -55,7 +55,7 @@ export const PluginPDFSet = (
 
     const getColor = (
       color: string,
-      setter: ColorSchema
+      setter: ColorSchema,
     ): ColorSchemaReturn => {
       return setter === 'CMYK' ? HEXToCMYK(color, 'pdfmake') : color
     }
@@ -65,10 +65,10 @@ export const PluginPDFSet = (
     }
 
     const getEntityGenerator = (
-      entity: Entity
+      entity: Entity,
     ): ProjectStateTemplatesGenerator | undefined => {
       const [generator] = stores.PROJECT.templates.generators.filter(
-        (g) => g.className === entity.external?.paragraph?.class
+        (g) => g.className === entity.external?.paragraph?.class,
       )
 
       return generator
@@ -565,7 +565,7 @@ export const PluginPDFSet = (
       if (!stores.PDF.styles.base.background.data) {
         const defColor = utils().getColor(
           stores.PDF.styles.paragraph.color,
-          options.color
+          options.color,
         )
 
         let _title = {
@@ -634,7 +634,7 @@ export const PluginPDFSet = (
     const note = (arr: Array<any>) => {
       const defColor = utils().getColor(
         isTheme.value ? theme.paragraph : stores.PDF.styles.paragraph.color,
-        options.color
+        options.color,
       )
 
       if (stores.PDF.styles.base.note.text) {
@@ -667,7 +667,7 @@ export const PluginPDFSet = (
             title: {
               text: stores.PROJECT.nameRaw,
               font: utils().correctFontInject(
-                stores.PDF.styles.base.summary.fontFamily
+                stores.PDF.styles.base.summary.fontFamily,
               ),
               fontSize: 28,
             },
@@ -675,7 +675,7 @@ export const PluginPDFSet = (
           pageBreak: 'after',
           alignment: 'center',
           font: utils().correctFontInject(
-            stores.PDF.styles.base.summary.fontFamily
+            stores.PDF.styles.base.summary.fontFamily,
           ),
           style: 'summary-default',
         }
@@ -784,7 +784,7 @@ export const PluginPDFSet = (
       return {
         pageSize: stores.PDF.styles.base.pageSize,
         pageOrientation: transform().pageOrientation(
-          stores.PDF.styles.base.pageOrientation
+          stores.PDF.styles.base.pageOrientation,
         ),
         pageMargins: [
           stores.PDF.styles.base.pageMargins.left,
@@ -799,11 +799,11 @@ export const PluginPDFSet = (
       const paragraph = () => {
         const defColor = utils().getColor(
           isTheme.value ? theme.paragraph : stores.PDF.styles.paragraph.color,
-          options.color
+          options.color,
         )
         const defDecorationColor = utils().getColor(
           stores.PDF.styles.paragraph.decorationColor,
-          options.color
+          options.color,
         )
 
         return {
@@ -811,7 +811,7 @@ export const PluginPDFSet = (
           fontSize: stores.PDF.styles.paragraph.fontSize,
           lineHeight: stores.PDF.styles.paragraph.lineHeight,
           alignment: transform().entityAlignment(
-            stores.PDF.styles.paragraph.alignment
+            stores.PDF.styles.paragraph.alignment,
           ),
           characterSpacing: stores.PDF.styles.paragraph.characterSpacing,
           color: defColor,
@@ -827,7 +827,7 @@ export const PluginPDFSet = (
             ? theme.paragraph
             : utils().getColor(
                 stores.PDF.styles.paragraph.color,
-                options.color
+                options.color,
               ),
         }
       }
@@ -837,11 +837,11 @@ export const PluginPDFSet = (
           isTheme.value
             ? theme['heading-one']
             : stores.PDF.styles.headingOne.color,
-          options.color
+          options.color,
         )
         const defDecorationColor = utils().getColor(
           stores.PDF.styles.headingOne.decorationColor,
-          options.color
+          options.color,
         )
 
         return {
@@ -851,7 +851,7 @@ export const PluginPDFSet = (
           bold: stores.PDF.styles.headingOne.bold,
           italics: stores.PDF.styles.headingOne.italics,
           alignment: transform().entityAlignment(
-            stores.PDF.styles.headingOne.alignment
+            stores.PDF.styles.headingOne.alignment,
           ),
           characterSpacing: stores.PDF.styles.headingOne.characterSpacing,
           color: defColor,
@@ -864,11 +864,11 @@ export const PluginPDFSet = (
           isTheme.value
             ? theme['heading-two']
             : stores.PDF.styles.headingTwo.color,
-          options.color
+          options.color,
         )
         const defDecorationColor = utils().getColor(
           stores.PDF.styles.headingTwo.decorationColor,
-          options.color
+          options.color,
         )
 
         return {
@@ -878,7 +878,7 @@ export const PluginPDFSet = (
           bold: stores.PDF.styles.headingTwo.bold,
           italics: stores.PDF.styles.headingTwo.italics,
           alignment: transform().entityAlignment(
-            stores.PDF.styles.headingTwo.alignment
+            stores.PDF.styles.headingTwo.alignment,
           ),
           characterSpacing: stores.PDF.styles.headingTwo.characterSpacing,
           color: defColor,
@@ -891,11 +891,11 @@ export const PluginPDFSet = (
           isTheme.value
             ? theme['heading-three']
             : stores.PDF.styles.headingThree.color,
-          options.color
+          options.color,
         )
         const defDecorationColor = utils().getColor(
           stores.PDF.styles.headingThree.decorationColor,
-          options.color
+          options.color,
         )
 
         return {
@@ -905,7 +905,7 @@ export const PluginPDFSet = (
           bold: stores.PDF.styles.headingThree.bold,
           italics: stores.PDF.styles.headingThree.italics,
           alignment: transform().entityAlignment(
-            stores.PDF.styles.headingThree.alignment
+            stores.PDF.styles.headingThree.alignment,
           ),
           characterSpacing: stores.PDF.styles.headingThree.characterSpacing,
           color: defColor,
@@ -916,12 +916,12 @@ export const PluginPDFSet = (
       const summaryDefault = () => {
         const defColor = utils().getColor(
           isTheme.value ? theme.paragraph : stores.PDF.styles.paragraph.color,
-          options.color
+          options.color,
         )
 
         return {
           font: utils().correctFontInject(
-            stores.PDF.styles.base.summary.fontFamily
+            stores.PDF.styles.base.summary.fontFamily,
           ),
           fontSize: stores.PDF.styles.base.summary.fontSize,
           margin: [base().pageMargins[0], 30, base().pageMargins[2], 30],
@@ -932,7 +932,7 @@ export const PluginPDFSet = (
       const background = () => {
         const defColor = utils().getColor(
           isTheme.value ? theme.page : stores.PDF.styles.base.background.color,
-          options.color
+          options.color,
         )
 
         return {
@@ -1041,7 +1041,7 @@ export const PluginPDFSet = (
       const text = (
         currentPage: number,
         pageCount: number,
-        pageSize: number
+        pageSize: number,
       ) => {
         return currentPage >= stores.PDF.styles.base.footer.start
           ? transform().footerStyle(stores.PDF.styles.base.footer.textType) ===
@@ -1054,7 +1054,7 @@ export const PluginPDFSet = (
       const alignment = (
         currentPage: number,
         pageCount: number,
-        pageSize: number
+        pageSize: number,
       ): any => {
         if (
           transform().alignment(stores.PDF.styles.base.footer.alignment) ===
@@ -1093,7 +1093,7 @@ export const PluginPDFSet = (
       const text = (
         currentPage: number,
         pageCount: number,
-        pageSize: number
+        pageSize: number,
       ) => {
         return currentPage >= stores.PDF.styles.base.header.start
           ? stores.PDF.styles.base.header.content
@@ -1103,7 +1103,7 @@ export const PluginPDFSet = (
       const alignment = (
         currentPage: number,
         pageCount: number,
-        pageSize: number
+        pageSize: number,
       ): any => {
         if (
           transform().alignment(stores.PDF.styles.base.header.alignment) ===
@@ -1144,7 +1144,7 @@ export const PluginPDFSet = (
         background: function (currentPage: number) {
           const defColor = utils().getColor(
             stores.PDF.styles.base.background.color,
-            options.color
+            options.color,
           )
 
           return currentPage >= 3 &&
@@ -1177,13 +1177,13 @@ export const PluginPDFSet = (
           ? function (
               currentPage: number,
               pageCount: number,
-              pageSize: number
+              pageSize: number,
             ) {
               const defColor = utils().getColor(
                 isTheme.value
                   ? theme.paragraph
                   : stores.PDF.styles.paragraph.color,
-                options.color
+                options.color,
               )
 
               return [
@@ -1192,12 +1192,12 @@ export const PluginPDFSet = (
                   margin: [15, 0],
                   fontSize: stores.PDF.styles.base.footer.textSize,
                   font: utils().correctFontInject(
-                    stores.PDF.styles.base.footer.fontFamily
+                    stores.PDF.styles.base.footer.fontFamily,
                   ),
                   alignment: footer().alignment(
                     currentPage,
                     pageCount,
-                    pageSize
+                    pageSize,
                   ),
                   color: defColor,
                 },
@@ -1210,7 +1210,7 @@ export const PluginPDFSet = (
                 isTheme.value
                   ? theme.paragraph
                   : stores.PDF.styles.paragraph.color,
-                options.color
+                options.color,
               )
 
               return [
@@ -1218,13 +1218,13 @@ export const PluginPDFSet = (
                   text: header().text(currentPage, pageCount, pageSize),
                   fontSize: stores.PDF.styles.base.header.textSize,
                   font: utils().correctFontInject(
-                    stores.PDF.styles.base.header.fontFamily
+                    stores.PDF.styles.base.header.fontFamily,
                   ),
                   decoration: 'underline',
                   alignment: header().alignment(
                     currentPage,
                     pageCount,
-                    pageSize
+                    pageSize,
                   ),
                   color: defColor,
                 },
@@ -1367,7 +1367,7 @@ export const PluginPDFSet = (
           if (hooks.env.isDev()) console.log(err)
 
           hooks.toast.error(hooks.i18n.t('toast.pdf.error'))
-        }
+        },
       )
       .catch((err: any) => {
         if (hooks.env.isDev()) console.log(err)
@@ -1420,7 +1420,7 @@ export const PluginPDFSet = (
       hooks.storage.normalize().then(async () => {
         await preview(
           document.querySelector('#pdf-preview-div') as any,
-          options
+          options,
         )
       })
     },

@@ -28,7 +28,7 @@ export const useScroll = () => {
 
   const entity = (
     id: ID<number | string>,
-    display?: 'center' | 'top' | 'bottom'
+    display?: 'center' | 'top' | 'bottom',
   ) => {
     const scr = document.querySelector(`#entity-${id}`)
     if (display === 'center') {

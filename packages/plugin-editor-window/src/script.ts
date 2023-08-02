@@ -3,7 +3,7 @@ import { PluginTypes } from 'better-write-types'
 export const PluginScriptSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   emitter.on('call-editor-mounted', () => {
     // google ads
@@ -13,7 +13,7 @@ export const PluginScriptSet = (
       {
         async: true,
         crossOrigin: 'anonymous',
-      }
+      },
     )
   })
 }

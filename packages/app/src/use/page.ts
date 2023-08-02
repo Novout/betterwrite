@@ -22,7 +22,7 @@ export const usePage = () => {
     PROJECT.newPage(
       t('editor.project.control.title', {
         suffix: 1 + PROJECT.totalPagesCreated,
-      })
+      }),
     )
 
     await nextTick
@@ -77,7 +77,7 @@ export const usePage = () => {
   const utils = () => {
     const getPageIndex = (id: string): number => {
       const page = PROJECT.chapters.filter(
-        (page: ContextState) => id === page.id
+        (page: ContextState) => id === page.id,
       )[0]
 
       if (!page) return -1

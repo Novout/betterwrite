@@ -14,7 +14,7 @@ import type {
 export const entity = () => {
   const PluginEntityInputInitial = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-input-watch-initial',
@@ -24,13 +24,13 @@ export const entity = () => {
         const created = content[0]
 
         created && created(item)
-      }
+      },
     )
   }
 
   const PluginEntityInputLast = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-input-watch-last',
@@ -40,13 +40,13 @@ export const entity = () => {
         const created = content[0]
 
         created && created(item)
-      }
+      },
     )
   }
 
   const PluginEntityDelete = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-entity-delete', (index: number) => {
       if (!index) return
@@ -59,7 +59,7 @@ export const entity = () => {
 
   const PluginEntitySwapper = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-entity-swap',
@@ -69,13 +69,13 @@ export const entity = () => {
         const created = content[0]
 
         created && created(index)
-      }
+      },
     )
   }
 
   const PluginEntityCreate = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-entity-create',
@@ -85,13 +85,13 @@ export const entity = () => {
         const created = content[0]
 
         created && created(obj)
-      }
+      },
     )
   }
 
   const PluginEntityCreateEmpty = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-entity-create-empty', (index: number) => {
       if (!index) return
@@ -104,7 +104,7 @@ export const entity = () => {
 
   const PluginEntityPageBreak = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-entity-page-break',
@@ -114,13 +114,13 @@ export const entity = () => {
         const created = content[0]
 
         created && created(obj)
-      }
+      },
     )
   }
 
   const PluginAlterInPage = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-entity-alter-in-page',
@@ -130,13 +130,13 @@ export const entity = () => {
         const created = content[0]
 
         created && created(obj)
-      }
+      },
     )
   }
 
   const PluginPasteInPage = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-entity-paste-in-page',
@@ -146,7 +146,7 @@ export const entity = () => {
         const created = content[0]
 
         created && created(obj)
-      }
+      },
     )
   }
 
@@ -166,7 +166,7 @@ export const entity = () => {
 export const project = () => {
   const PluginProjectPageNew = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-project-page-new', (index: number) => {
       if (!index) return
@@ -179,7 +179,7 @@ export const project = () => {
 
   const PluginProjectPageDelete = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-project-page-delete', (name: string) => {
       if (!name) return
@@ -192,7 +192,7 @@ export const project = () => {
 
   const PluginProjectPageSwap = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-project-page-swap',
@@ -202,7 +202,7 @@ export const project = () => {
         const created = content[0]
 
         created && created(item)
-      }
+      },
     )
   }
 
@@ -216,7 +216,7 @@ export const project = () => {
 export const editor = () => {
   const PluginEditorHeaderCreateOpen = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-editor-header-create-open', () => {
       const created = content[0]
@@ -227,7 +227,7 @@ export const editor = () => {
 
   const PluginEditorHeaderExternalsOpen = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-editor-header-externals-open', () => {
       const created = content[0]
@@ -238,7 +238,7 @@ export const editor = () => {
 
   const PluginEditorHeaderHelpOpen = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-editor-header-help-open', () => {
       const created = content[0]
@@ -249,7 +249,7 @@ export const editor = () => {
 
   const PluginEditorHeaderProjectOpen = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-editor-header-project-open', () => {
       const created = content[0]
@@ -269,7 +269,7 @@ export const editor = () => {
 export const externals = () => {
   const PluginThemeSet = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-theme-set', (theme: BetterWriteThemes) => {
       const created = content[0]
@@ -280,7 +280,7 @@ export const externals = () => {
 
   const PluginPDFGenerate = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-pdf-generate', (options: PDFDocOptions) => {
       const created = content[0]
@@ -291,7 +291,7 @@ export const externals = () => {
 
   const PluginPDFPreview = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-pdf-preview', (options: PDFDocOptions) => {
       const created = content[0]
@@ -302,7 +302,7 @@ export const externals = () => {
 
   const PluginPDFInit = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-pdf-init', () => {
       const created = content[0]
@@ -313,7 +313,7 @@ export const externals = () => {
 
   const PluginDocxGenerate = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-docx-generate', () => {
       const created = content[0]
@@ -324,7 +324,7 @@ export const externals = () => {
 
   const PluginTxtGenerate = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-txt-generate', () => {
       const created = content[0]
@@ -335,7 +335,7 @@ export const externals = () => {
 
   const PluginEpubGenerate = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-epub-generate', () => {
       const created = content[0]
@@ -346,7 +346,7 @@ export const externals = () => {
 
   const PluginHtmlGenerate = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-html-generate', () => {
       const created = content[0]
@@ -357,7 +357,7 @@ export const externals = () => {
 
   const PluginImporterDOCX = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-importer-docx', (obj: ImporterParams) => {
       const created = content[0]
@@ -368,7 +368,7 @@ export const externals = () => {
 
   const PluginImporterTXT = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-importer-txt', (obj: ImporterParams) => {
       const created = content[0]
@@ -379,7 +379,7 @@ export const externals = () => {
 
   const PluginImporterBW = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-importer-bw', (obj: ImporterParams) => {
       const created = content[0]
@@ -390,7 +390,7 @@ export const externals = () => {
 
   const PluginSchemasStart = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-schemas-start', (obj) => {
       const created = content[0]
@@ -401,7 +401,7 @@ export const externals = () => {
 
   const PluginSchemasCreateFolder = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-schemas-folder-create', (schema: ProjectStateSchema) => {
       const created = content[0]
@@ -412,7 +412,7 @@ export const externals = () => {
 
   const PluginSchemasDeleteFolder = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-schemas-folder-delete',
@@ -420,13 +420,13 @@ export const externals = () => {
         const created = content[0]
 
         created && created(folder)
-      }
+      },
     )
   }
 
   const PluginSchemasCreateFile = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-schemas-file-create',
@@ -434,13 +434,13 @@ export const externals = () => {
         const created = content[0]
 
         created && created(folder)
-      }
+      },
     )
   }
 
   const PluginSchemasDeleteFile = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-schemas-file-delete',
@@ -451,13 +451,13 @@ export const externals = () => {
         const created = content[0]
 
         created && created(obj)
-      }
+      },
     )
   }
 
   const PluginSchemasReset = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-schemas-reset', () => {
       const created = content[0]
@@ -468,7 +468,7 @@ export const externals = () => {
 
   const PluginSchemasCreate = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-schemas-create', (options: ProjectStateSchemaCreate) => {
       const created = content[0]
@@ -479,7 +479,7 @@ export const externals = () => {
 
   const PluginSchemasDelete = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-schemas-delete', (schema: ProjectStateSchema) => {
       const created = content[0]
@@ -490,7 +490,7 @@ export const externals = () => {
 
   const PluginVoiceStart = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-voice-start', () => {
       const created = content[0]
@@ -501,7 +501,7 @@ export const externals = () => {
 
   const PluginVoiceStop = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-voice-stop', () => {
       const created = content[0]
@@ -512,7 +512,7 @@ export const externals = () => {
 
   const PluginEntityUndo = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-entity-undo', () => {
       const created = content[0]
@@ -523,7 +523,7 @@ export const externals = () => {
 
   const PluginCharactersColorBackground = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-characters-color-background', (obj) => {
       const created = content[0]
@@ -534,7 +534,7 @@ export const externals = () => {
 
   const PluginProgressStart = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-progress-start', (obj) => {
       const created = content[0]
@@ -545,7 +545,7 @@ export const externals = () => {
 
   const PluginProgressChange = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-progress-change', (value: number) => {
       const created = content[0]
@@ -556,7 +556,7 @@ export const externals = () => {
 
   const PluginProgressEnd = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-progress-end', (obj) => {
       const created = content[0]
@@ -567,7 +567,7 @@ export const externals = () => {
 
   const PluginWindowDrop = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-window-drop', (event: DragEvent) => {
       const created = content[0]
@@ -578,7 +578,7 @@ export const externals = () => {
 
   const PluginPresenceRoomCreate = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-presence-room-create', (type: LiveshareType) => {
       const created = content[0]
@@ -589,7 +589,7 @@ export const externals = () => {
 
   const PluginPresenceRoomJoin = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-presence-room-join', (id: string) => {
       const created = content[0]
@@ -600,7 +600,7 @@ export const externals = () => {
 
   const PluginPresenceRoomLeave = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-presence-room-leave', (id: string) => {
       const created = content[0]
@@ -611,7 +611,7 @@ export const externals = () => {
 
   const PluginOAuthLogin = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-oauth-login', (payload) => {
       const created = content[0]
@@ -622,7 +622,7 @@ export const externals = () => {
 
   const PluginOAuthLoginWithProvider = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on(
       'plugin-oauth-login-with-provider',
@@ -630,13 +630,13 @@ export const externals = () => {
         const created = content[0]
 
         created && created(provider)
-      }
+      },
     )
   }
 
   const PluginOAuthRegister = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-oauth-register', (payload) => {
       const created = content[0]
@@ -647,7 +647,7 @@ export const externals = () => {
 
   const PluginOAuthLogout = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-oauth-logout', () => {
       const created = content[0]
@@ -658,7 +658,7 @@ export const externals = () => {
 
   const PluginOAuthDelete = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-oauth-delete', () => {
       const created = content[0]
@@ -669,7 +669,7 @@ export const externals = () => {
 
   const PluginDropboxSet = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-dropbox-set', (item) => {
       const created = content[0]
@@ -680,7 +680,7 @@ export const externals = () => {
 
   const PluginDropboxSave = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-dropbox-save', () => {
       const created = content[0]
@@ -691,7 +691,7 @@ export const externals = () => {
 
   const PluginDropboxLoad = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-dropbox-load', () => {
       const created = content[0]
@@ -702,7 +702,7 @@ export const externals = () => {
 
   const PluginDropboxDelete = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-dropbox-delete', (item) => {
       const created = content[0]
@@ -713,7 +713,7 @@ export const externals = () => {
 
   const PluginDropboxConnect = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-dropbox-connect', () => {
       const created = content[0]
@@ -769,7 +769,7 @@ export const externals = () => {
 export const save = () => {
   const PluginAutoSave = (
     emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn
+    content: PluginTypes.PluginContentOn,
   ) => {
     emitter.on('plugin-auto-save', () => {
       const created = content[0]

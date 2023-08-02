@@ -67,7 +67,7 @@ export const useProject = () => {
           type,
           base: type === 'only-annotations' ? 'annotations' : 'chapter',
         },
-        t('editor.project.control.title', { suffix: 1 })
+        t('editor.project.control.title', { suffix: 1 }),
       )
 
       await nextTick
@@ -121,7 +121,7 @@ export const useProject = () => {
   const onLoadProject = async (
     context: Maybe<ProjectObject>,
     notification: boolean = true,
-    reset?: boolean
+    reset?: boolean,
   ) => {
     if (reset) global.reset()
 
@@ -143,8 +143,8 @@ export const useProject = () => {
 
     CONTEXT.load(
       PROJECT.chapters.filter(
-        (page: ContextState) => page.id === context?.project.pageLoaded
-      )[0]
+        (page: ContextState) => page.id === context?.project.pageLoaded,
+      )[0],
     )
 
     await nextTick
@@ -159,7 +159,7 @@ export const useProject = () => {
 
     plugin.emit(
       'plugin-theme-set',
-      EDITOR.styles.base.backgroundData ? 'BetterWrite - Custom' : undefined
+      EDITOR.styles.base.backgroundData ? 'BetterWrite - Custom' : undefined,
     )
 
     await nextTick
@@ -364,7 +364,7 @@ export const useProject = () => {
           (isValidType(val) && ASTUtils.normalize(val.raw, { type: 'inserts' })
             ? ASTUtils.normalize(val.raw, { type: 'inserts' })!.length
             : 0),
-        0
+        0,
       )
     }
 
@@ -374,10 +374,10 @@ export const useProject = () => {
           sum +
           (isValidType(val) && ASTUtils.normalize(val.raw, { type: 'inserts' })
             ? ASTUtils.normalize(val.raw, { type: 'inserts' })?.match(
-                /[\w|\)][.?!](\s|$)/g
+                /[\w|\)][.?!](\s|$)/g,
               )?.length || 0
             : 0),
-        0
+        0,
       )
     }
 
@@ -408,7 +408,7 @@ export const useProject = () => {
         (sum, val) =>
           sum +
           (isValidType(val) ? getWords(val).reduce((sum) => sum + 1, 0) : 0),
-        0
+        0,
       )
     }
 
@@ -462,7 +462,7 @@ export const useProject = () => {
 
     const getWordOccurrences = (
       page: ContextState,
-      min: number = 0
+      min: number = 0,
     ): Map<string, string> => {
       const map = page.entities
         .filter((entity) => isValidType(entity))
@@ -502,7 +502,7 @@ export const useProject = () => {
           }
 
           return 0
-        })
+        }),
       )
     }
 

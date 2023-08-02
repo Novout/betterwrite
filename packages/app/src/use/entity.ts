@@ -282,7 +282,7 @@ export const useEntity = () => {
     const onNew = async (
       entity: Entity,
       index: ID<number>,
-      type: EntityType
+      type: EntityType,
     ) => {
       CONTEXT.newInPageByOption({
         entity,

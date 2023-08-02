@@ -34,7 +34,7 @@ export const useHistoryStore = defineStore('history', {
       const PROJECT = useProjectStore()
 
       const exists = this.bar.some(
-        ({ id, type }) => item.id === id && type === item.type
+        ({ id, type }) => item.id === id && type === item.type,
       )
 
       this.updateScroll()

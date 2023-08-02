@@ -3,7 +3,7 @@ import { PluginTypes } from 'better-write-types'
 export const PluginAPIAsyncRequest = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   emitter.on('call-editor-mounted', () => {
     setTimeout(() => {

@@ -7,7 +7,7 @@ import { isImageExtension } from 'better-write-image-converter'
 export const PluginDropSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   On.externals().PluginWindowDrop(emitter, [
     async ({ dataTransfer }: DragEvent) => {
@@ -62,7 +62,7 @@ export const PluginDropSet = (
 
         if (!isImageExtension(file.name))
           hooks.toast.warning(
-            hooks.i18n.t('toast.project.unsupportedExtension')
+            hooks.i18n.t('toast.project.unsupportedExtension'),
           )
       }
     },

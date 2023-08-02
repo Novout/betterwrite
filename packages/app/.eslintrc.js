@@ -20,9 +20,11 @@ module.exports = {
     "vue/multi-word-component-names": 0,
     "vue/no-use-v-if-with-v-for": 0,
     "vue/no-setup-props-destructure": 0, // vue >= 3.2.20
+    "vue/no-dupe-keys": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-non-null-assertion": 0, // MaybeRefElement
+    "@typescript-eslint/no-unused-vars": 0,
     "no-irregular-whitespace": 0, // TermsOfUse.vue
     "no-undef": 0,
     "no-constant-condition": 0,

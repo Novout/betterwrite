@@ -448,7 +448,7 @@ export const useRaw = () => {
                 type: 'all',
                 whitespace: true,
               }) || '',
-              EXTERNALS.finder.value
+              EXTERNALS.finder.value,
             ) || ''
         )
       }
@@ -472,7 +472,7 @@ export const useRaw = () => {
                 type: 'all',
                 whitespace: true,
               }) || '',
-              EXTERNALS.switcher.value
+              EXTERNALS.switcher.value,
             ) || ''
         )
       }

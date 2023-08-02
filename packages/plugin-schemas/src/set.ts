@@ -32,7 +32,7 @@ import { SlashProvider } from './plugins/slash/slash-provider'
 export const PluginSchemasSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   function getSchema<T extends ProjectStateSchema>(id: ID<string>) {
     return stores.PROJECT.schemas.find((schema) => schema.id === id) as T
@@ -95,7 +95,7 @@ export const PluginSchemasSet = (
   }
 
   function createFile<T extends object = any>(
-    folder: ProjectStateSchemaFolder
+    folder: ProjectStateSchemaFolder,
   ): ProjectStateSchemaFile<T> {
     const schema = getSchema(folder.parentId)
     const schemaId = getSchemaId(schema)
@@ -136,7 +136,7 @@ export const PluginSchemasSet = (
   }
 
   function createFolder<T extends object = any>(
-    schema: ProjectStateSchema
+    schema: ProjectStateSchema,
   ): ProjectStateSchemaFolder<T> {
     const folder = {
       id: hooks.utils.id().nano({ prefix: 'folder' }),
@@ -155,7 +155,7 @@ export const PluginSchemasSet = (
   }
 
   function deleteFolder<T extends object = any>(
-    folder: ProjectStateSchemaFolder<T>
+    folder: ProjectStateSchemaFolder<T>,
   ) {
     const schema = getSchema(folder.parentId)
 
@@ -190,7 +190,7 @@ export const PluginSchemasSet = (
 
   function deleteFile<T extends object = any>(
     folder: ProjectStateSchemaFolder<T>,
-    file: ProjectStateSchemaFile
+    file: ProjectStateSchemaFile,
   ) {
     reset(true)
 
@@ -207,7 +207,7 @@ export const PluginSchemasSet = (
 
     stores.PROJECT.schemas[schemaId].folders[folderId].files =
       stores.PROJECT.schemas[schemaId].folders[folderId].files.filter(
-        (f) => f.id !== file.id
+        (f) => f.id !== file.id,
       )
 
     setActive()
@@ -288,7 +288,7 @@ export const PluginSchemasSet = (
             defaultValueCtx,
             `# ${
               file?.extra?.name || hooks.i18n.t('editor.schemas.items.file')
-            }`
+            }`,
           )
         }
 
@@ -436,7 +436,7 @@ export const PluginSchemasSet = (
   On.externals().PluginSchemasDelete(emitter, [
     (schema: ProjectStateSchema) => {
       stores.PROJECT.schemas = stores.PROJECT.schemas.filter(
-        ({ id }) => id !== schema.id
+        ({ id }) => id !== schema.id,
       )
     },
     () => {},

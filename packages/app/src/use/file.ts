@@ -48,7 +48,7 @@ export const useFile = () => {
       new Blob([JSON.stringify(target, null, 2)], {
         type: 'application/json;charset=utf-8',
       }),
-      PROJECT.name + name
+      PROJECT.name + name,
     )
   }
 

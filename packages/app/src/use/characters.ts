@@ -56,7 +56,7 @@ export const useCharacters = () => {
 
       const paragraphs = PROJECT.chapters.reduce(
         (sum, val) => sum + project.utils().getChapterParagraphs(val),
-        0
+        0,
       )
 
       const result = total / paragraphs

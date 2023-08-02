@@ -4,7 +4,7 @@ import { watch } from 'vue-demi'
 export const PluginWatcherSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   emitter.on('call-editor-created', () => {
     // tracking normalize project cases
@@ -13,7 +13,7 @@ export const PluginWatcherSet = (
       async () => {
         await hooks.storage.normalize()
       },
-      { deep: true }
+      { deep: true },
     )
   })
 }

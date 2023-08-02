@@ -9,7 +9,7 @@ const isLocalSupported = typeof Storage !== 'undefined'
 export function set<T extends unknown>(
   key: string,
   data: T,
-  options: ClientStorageOptions
+  options: ClientStorageOptions,
 ) {
   if (!isLocalSupported) {
     options.schema = 'indexeddb'
@@ -43,7 +43,7 @@ export function set<T extends unknown>(
 
 export function get<T extends unknown>(
   key: string,
-  options: ClientStorageOptions
+  options: ClientStorageOptions,
 ): Promise<Maybe<T>> {
   if (!isLocalSupported) {
     options.schema = 'indexeddb'
@@ -54,7 +54,7 @@ export function get<T extends unknown>(
 
     if (item)
       res(
-        item ? destr(options.compress ? lz.decompress(item) : item) : undefined
+        item ? destr(options.compress ? lz.decompress(item) : item) : undefined,
       )
 
     indexeddb
@@ -63,7 +63,7 @@ export function get<T extends unknown>(
         res(
           value
             ? destr(options.compress ? lz.decompress(value) : value)
-            : undefined
+            : undefined,
         )
       })
       .catch(() => {

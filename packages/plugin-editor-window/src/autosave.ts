@@ -3,7 +3,7 @@ import { PluginTypes } from 'better-write-types'
 export const PluginAutosaveSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   emitter.on('call-editor-created', () => {
     const online = hooks.vueuse.core.useOnline()

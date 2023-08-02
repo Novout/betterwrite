@@ -2,7 +2,7 @@ import { ColorSchemaReturn } from 'better-write-types'
 
 export const HEXToCMYK = (
   color: string,
-  provider: 'pdfmake' = 'pdfmake'
+  provider: 'pdfmake' = 'pdfmake',
 ): ColorSchemaReturn => {
   let C = 0
   let M = 0

@@ -4,7 +4,7 @@ import { computed } from 'vue-demi'
 export const PluginSeoSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   emitter.on('call-editor-created', () => {
     // dynamic head title
@@ -18,7 +18,7 @@ export const PluginSeoSet = (
         ? title.value
         : stores.PROJECT.nameRaw +
           (stores.CONTEXT.entities[0]?.raw ? ' - ' : '') +
-          stores.CONTEXT.entities[0]?.raw
+          stores.CONTEXT.entities[0]?.raw,
     )
     hooks.vueuse.head.useHead({
       title: _title,

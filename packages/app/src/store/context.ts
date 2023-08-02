@@ -115,7 +115,7 @@ export const useContextStore = defineStore('context', {
       ABSOLUTE.entity.menu = false
 
       this.entities = this.entities.filter(
-        (item: Entity) => this.entities.indexOf(item) !== index
+        (item: Entity) => this.entities.indexOf(item) !== index,
       )
     },
     switchInPage({ entity, direction }: ContextActionSwitchInPage) {
@@ -153,7 +153,7 @@ export const useContextStore = defineStore('context', {
     },
     newInExistentEntity(
       this: ContextState,
-      payload: ContextActionNewInExistentEntity
+      payload: ContextActionNewInExistentEntity,
     ) {
       if (!payload.new) return
 
@@ -205,7 +205,7 @@ export const useContextStore = defineStore('context', {
       ABSOLUTE.entity.menu = false
 
       this.entities = this.entities.filter(
-        (item: Entity) => this.entities.indexOf(item) !== index
+        (item: Entity) => this.entities.indexOf(item) !== index,
       )
     },
     newInDropFile({ old, insert }: { old: Entity; insert: Entity }) {

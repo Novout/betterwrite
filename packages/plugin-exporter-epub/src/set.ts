@@ -8,7 +8,7 @@ import { getStyles } from './styles'
 export const PluginEpubSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   const entities = () => {
     const headingOne = (entity: Entity) => {
@@ -42,7 +42,7 @@ export const PluginEpubSet = (
 
     const list = (entity: Entity) => {
       return `<ul><li style="list-style-type: square;">${hooks.substitution.purge(
-        entity.raw
+        entity.raw,
       )}</li></ul>`
     }
 
@@ -119,7 +119,7 @@ export const PluginEpubSet = (
             entities()
               .paragraph(entity)
               ?.forEach(
-                (paragraph) => (chapter.content += `<p>${paragraph}</p>`)
+                (paragraph) => (chapter.content += `<p>${paragraph}</p>`),
               )
             break
           case 'heading-one':
@@ -165,10 +165,10 @@ export const PluginEpubSet = (
         css: getStyles(stores, hooks),
         cover: undefined,
       },
-      contents()
+      contents(),
     ).then(
       (content) => download(content),
-      (_) => hooks.toast.error(hooks.i18n.t('toast.generics.error'))
+      (_) => hooks.toast.error(hooks.i18n.t('toast.generics.error')),
     )
   }
 

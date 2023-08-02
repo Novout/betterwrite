@@ -14,7 +14,7 @@ type DocxPurge = Array<docx.ExternalHyperlink | docx.TextRun>
 export const PluginDocxSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   const { isLoading } = hooks.vueuse.integration.progress
 
@@ -31,7 +31,7 @@ export const PluginDocxSet = (
           bold: node.bold,
           underline: custom.isUnderline(node.underline),
           ...custom.textRun,
-        })
+        }),
       )
     })
 
@@ -40,10 +40,10 @@ export const PluginDocxSet = (
 
   const utils = () => {
     const getEntityGenerator = (
-      entity: Entity
+      entity: Entity,
     ): ProjectStateTemplatesGenerator | undefined => {
       const [generator] = stores.PROJECT.templates.generators.filter(
-        (g) => g.className === entity.external?.paragraph?.class
+        (g) => g.className === entity.external?.paragraph?.class,
       )
 
       return generator
@@ -54,13 +54,13 @@ export const PluginDocxSet = (
 
   const addons = () => {
     const bw = (
-      arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents>
+      arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents>,
     ) => {
       arr.push(create().entities().pageBreak())
       arr.push(
         create()
           .entities()
-          .headingThree('Documento produzido por betterwrite.io')
+          .headingThree('Documento produzido por betterwrite.io'),
       )
     }
 
@@ -183,7 +183,7 @@ export const PluginDocxSet = (
                 .docx()
                 .entityAlignment(
                   stores.DOCX.styles.paragraph.alignment,
-                  'setter'
+                  'setter',
                 ),
               indent: {
                 firstLine: stores.DOCX.styles.paragraph.indent * 125,
@@ -287,7 +287,7 @@ export const PluginDocxSet = (
     }
 
     const content = (
-      arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents>
+      arr: Array<docx.Paragraph | docx.Table | docx.TableOfContents>,
     ) => {
       stores.PROJECT.chapters.forEach(({ entities: list }: ContextState) => {
         list.forEach((entity: Entity) => {

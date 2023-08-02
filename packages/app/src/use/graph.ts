@@ -34,7 +34,7 @@ export const useGraph = () => {
     index: ID<number>,
     page: ContextState,
     entity: Entity,
-    scrollValue?: number
+    scrollValue?: number,
   ) => {
     PROJECT.base = 'chapter'
 
@@ -77,7 +77,7 @@ export const useGraph = () => {
     index: ID<number>,
     page: ContextState,
     entity: Entity,
-    scrollValue?: number
+    scrollValue?: number,
   ) => {
     ABSOLUTE.spinner = true
 

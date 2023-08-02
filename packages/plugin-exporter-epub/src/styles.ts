@@ -2,7 +2,7 @@ import { PluginTypes } from 'better-write-types'
 
 export const getStyles = (
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ): string => `* {
   margin: 0;
   padding: 0;

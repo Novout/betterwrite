@@ -16,8 +16,8 @@ export const setGlobal = (vfs: Record<any, any>) => {
           content.normal +
           "');\
     }\
-    "
-      )
+    ",
+      ),
     )
   })
 
@@ -39,22 +39,22 @@ export const get = async (options: GoogleFontsGetOption) => {
           if (item.files['regular'])
             item.files['regular'] = item.files['regular'].replace(
               /^http:\/\//i,
-              'https://'
+              'https://',
             )
           if (item.files['italic'])
             item.files['italic'] = item.files['italic'].replace(
               /^http:\/\//i,
-              'https://'
+              'https://',
             )
           if (item.files['700'])
             item.files['700'] = item.files['700'].replace(
               /^http:\/\//i,
-              'https://'
+              'https://',
             )
           if (item.files['700italic'])
             item.files['700italic'] = item.files['700italic'].replace(
               /^http:\/\//i,
-              'https://'
+              'https://',
             )
 
           if (Object.keys(normalize).length < options.maxFonts) {
@@ -91,7 +91,7 @@ export const get = async (options: GoogleFontsGetOption) => {
 
         if (options.globalStyle) setGlobal(normalize)
       },
-    }
+    },
   ).catch(() => {})
 
   return { normalize, names }

@@ -182,15 +182,15 @@ export const useProjectStore = defineStore('project', {
         switch (options.type) {
           case 'creative':
             this.chapters[0].entities.push(
-              useFactory().entity().create('heading-one', options.name)
+              useFactory().entity().create('heading-one', options.name),
             )
             this.chapters[0].entities.push(
-              useFactory().entity().create('paragraph', '')
+              useFactory().entity().create('paragraph', ''),
             )
             break
           case 'blank':
             this.chapters[0].entities.push(
-              useFactory().entity().create('paragraph', '')
+              useFactory().entity().create('paragraph', ''),
             )
             break
         }
@@ -215,7 +215,7 @@ export const useProjectStore = defineStore('project', {
     },
     deletePage(context: ContextState) {
       const content = this.chapters.find(
-        (content: ContextState) => content.id === context.id
+        (content: ContextState) => content.id === context.id,
       )
 
       if (!content) return
@@ -223,13 +223,13 @@ export const useProjectStore = defineStore('project', {
       const index = this.chapters.indexOf(content)
 
       this.creative.drafts = this.creative.drafts.filter(
-        (draft) => draft.id !== content.id
+        (draft) => draft.id !== content.id,
       )
       this.chapters.splice(index, 1)
     },
     updatePage(page: ContextState) {
       const _page = this.chapters.find(
-        (content: ContextState) => content.id === page.id
+        (content: ContextState) => content.id === page.id,
       )
 
       if (!_page) return
@@ -240,7 +240,7 @@ export const useProjectStore = defineStore('project', {
     },
     switchPage(obj: Record<any, any>) {
       const page = this.chapters.filter(
-        (page: ContextState) => obj.page.id === page.id
+        (page: ContextState) => obj.page.id === page.id,
       )[0]
 
       if (!page) return
@@ -274,7 +274,7 @@ export const useProjectStore = defineStore('project', {
     },
     updateContext(context: ContextState) {
       const _context = this.chapters.filter(
-        (cont: ContextState) => cont.id === context.id
+        (cont: ContextState) => cont.id === context.id,
       )
       const index = this.chapters.indexOf(_context[0])
 
@@ -294,43 +294,43 @@ export const useProjectStore = defineStore('project', {
     getAllCharacters: (state) => {
       return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterAllCharacters(val),
-        0
+        0,
       )
     },
     getAllSentences: (state) => {
       return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterAllSentences(val),
-        0
+        0,
       )
     },
     getAllLetters: (state) => {
       return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterLetters(val),
-        0
+        0,
       )
     },
     getAllWords: (state) => {
       return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterWords(val),
-        0
+        0,
       )
     },
     getAllParagraphs: (state) => {
       return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterParagraphs(val),
-        0
+        0,
       )
     },
     getAllHeadings: (state) => {
       return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterHeadings(val),
-        0
+        0,
       )
     },
     getAllFixeds: (state) => {
       return state.chapters.reduce(
         (sum, val) => sum + useProject().utils().getChapterFixed(val),
-        0
+        0,
       )
     },
   },

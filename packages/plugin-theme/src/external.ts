@@ -375,16 +375,16 @@ export const getPDFUtils = () => {
 
   const theme = {
     paragraph: _.getPropertyValue(
-      '--theme-editor-pdf-generator-paragraph'
+      '--theme-editor-pdf-generator-paragraph',
     ).trim(),
     'heading-one': _.getPropertyValue(
-      '--theme-editor-pdf-generator-heading-one'
+      '--theme-editor-pdf-generator-heading-one',
     ).trim(),
     'heading-two': _.getPropertyValue(
-      '--theme-editor-pdf-generator-heading-two'
+      '--theme-editor-pdf-generator-heading-two',
     ).trim(),
     'heading-three': _.getPropertyValue(
-      '--theme-editor-pdf-generator-heading-three'
+      '--theme-editor-pdf-generator-heading-three',
     ).trim(),
     page: _.getPropertyValue('--theme-editor-pdf-generator-page').trim(),
   }

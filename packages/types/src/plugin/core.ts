@@ -120,7 +120,7 @@ export type PluginStore<
   T extends ExistingStores,
   B extends StateTree,
   C = {},
-  D = {}
+  D = {},
 > = Store<T, B, C, D>
 
 export interface PluginStores {
@@ -191,7 +191,7 @@ export interface PluginHooks {
 export type PluginContext = (
   emitter: PluginEmitter,
   stores: PluginStores,
-  hooks: PluginHooks
+  hooks: PluginHooks,
 ) => void
 
 export interface Plugin {

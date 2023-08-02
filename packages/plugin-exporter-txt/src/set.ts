@@ -6,7 +6,7 @@ import { ASTUtils } from 'better-write-contenteditable-ast'
 export const PluginTxtSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   const { isLoading } = hooks.vueuse.integration.progress
 
@@ -14,9 +14,9 @@ export const PluginTxtSet = (
     return texts.reduce(
       (conc, text) =>
         hooks.substitution.purge(
-          conc + ASTUtils.normalize(text, { type: 'all', whitespace: true })
+          conc + ASTUtils.normalize(text, { type: 'all', whitespace: true }),
         ),
-      ''
+      '',
     )
   }
 

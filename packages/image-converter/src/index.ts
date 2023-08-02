@@ -16,7 +16,7 @@ export const isImageExtension = (text: string) => {
 }
 
 export const ImageToForcePNG = (
-  options: ImageToForcePNGOptions
+  options: ImageToForcePNGOptions,
 ): Promise<string> => {
   return new Promise((res, rej) => {
     if (!options.raw.startsWith('<svg') && !options.raw.endsWith('svg>')) {
@@ -60,7 +60,7 @@ export const ImageToForcePNG = (
 }
 
 export const getFileOrBlobResult = (
-  file: File | Blob
+  file: File | Blob,
 ): Promise<ImageFileRawReturn> => {
   return new Promise((res, rej) => {
     const reader = new FileReader()
@@ -100,7 +100,7 @@ export const getFileOrBlobResult = (
 }
 
 export const getImageFileRaw = (
-  options?: ImageFileRawOptions
+  options?: ImageFileRawOptions,
 ): Promise<ImageFileRawReturn> => {
   return new Promise((res, rej) => {
     const _ = document.createElement('input')

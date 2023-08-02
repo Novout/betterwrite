@@ -55,7 +55,7 @@ export const useUtils = () => {
             d2 = Math.floor(d2 / 16)
           }
           return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
-        }
+        },
       )
     }
 
@@ -65,7 +65,7 @@ export const useUtils = () => {
       length?: number
     }) => {
       return `${options?.prefix ? `${options?.prefix}-` : ''}${nanoid(
-        options?.length ?? 25
+        options?.length ?? 25,
       )}${options?.suffix ? `-${options?.suffix}` : ''}`
     }
 
@@ -102,7 +102,7 @@ export const useUtils = () => {
   const regex = () => {
     const links = () => {
       return new RegExp(
-        /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi
+        /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi,
       )
     }
 
@@ -249,7 +249,7 @@ export const useUtils = () => {
               ? obj[e]
               : {}),
           prop,
-          value
+          value,
         )
       } else obj[prop[0]] = value
     }

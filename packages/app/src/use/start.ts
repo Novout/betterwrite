@@ -26,7 +26,7 @@ export const useStart = (plugins: PluginTypes.Plugins) => {
     if (!env.isDev()) {
       console.log(
         `%c ${t('plugin.logger.console.start')} github.com/Novout/betterwrite`,
-        'padding: 0.75rem; text-align: center; font-size: 0.9rem; font-weight: 600; border-radius: 0.5rem; background: #eeeeee; color: #374151'
+        'padding: 0.75rem; text-align: center; font-size: 0.9rem; font-weight: 600; border-radius: 0.5rem; background: #eeeeee; color: #374151',
       )
     }
   }

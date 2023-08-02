@@ -5,7 +5,7 @@ import { setEditorLogo, Themes } from './external'
 export const PluginThemeContent = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   On.externals().PluginThemeSet(emitter, [
     (theme?: BetterWriteThemes) => {

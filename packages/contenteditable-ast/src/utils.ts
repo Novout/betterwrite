@@ -3,7 +3,7 @@ import { ASTNormalizeOptions } from 'better-write-types'
 export const occurrences = (
   str: string,
   target: string,
-  allowOverlapping?: boolean
+  allowOverlapping?: boolean,
 ) => {
   str += ''
   target += ''

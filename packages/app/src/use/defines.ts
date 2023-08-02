@@ -339,7 +339,7 @@ export const useDefines = () => {
     }
 
     const template = (
-      target: 'simple' | 'enthusiast'
+      target: 'simple' | 'enthusiast',
     ): ProjectStateSchema[] => {
       switch (target) {
         case 'simple':

@@ -85,7 +85,7 @@ export const useAddonsStore = defineStore('addons', {
                 .html()
                 .error()
                 .item(
-                  italic().insert('dictum')
+                  italic().insert('dictum'),
                 )} at porttitor eu. Curabitur sollicitudin suscipit ${useRaw()
                 .v2()
                 .html()
@@ -96,7 +96,7 @@ export const useAddonsStore = defineStore('addons', {
                 .html()
                 .correct()
                 .item(
-                  'dictum'
+                  'dictum',
                 )} at porttitor eu. Curabitur luctus sollicitudin suscipit ${useRaw()
                 .v2()
                 .html()

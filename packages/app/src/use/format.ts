@@ -1,7 +1,7 @@
 export const useFormat = () => {
   const simple = (
     date: Date,
-    type: 'default' | 'resume' | 'iso' = 'default'
+    type: 'default' | 'resume' | 'iso' = 'default',
   ): string => {
     if (type === 'iso') {
       return date.toISOString()
