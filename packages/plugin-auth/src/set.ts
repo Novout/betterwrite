@@ -12,10 +12,6 @@ export const AuthSet = (
   hooks: PluginTypes.PluginHooks
 ) => {
   const resetAndRedirect = () => {
-    stores.GLOBAL.reset()
-
-    hooks.local.deleteProject()
-
     hooks.router.push('/landing')
   }
 
@@ -106,58 +102,14 @@ export const AuthSet = (
 
   On.externals().PluginOAuthLogout(emitter, [
     () => {
-      if (!confirm(hooks.i18n.t('editor.presence.alert.logoutAccount'))) return
-
-      emitter.emit('plugin-progress-start')
-
-      hooks.supabase.auth
-        .signOut()
-        .then(async (data) => {
-          if (data?.error) {
-            hooks.toast(hooks.i18n.t('editor.auth.logout.error'))
-
-            return
-          }
-
-          resetAndRedirect()
-        })
-        .catch(() => {
-          hooks.toast(hooks.i18n.t('editor.auth.logout.error'))
-        })
-        .finally(() => {
-          emitter.emit('plugin-progress-end')
-        })
+      resetAndRedirect()
     },
     () => {},
   ])
 
   On.externals().PluginOAuthDelete(emitter, [
     async () => {
-      if (!stores.AUTH.account.user) return
-
-      if (!confirm(hooks.i18n.t('editor.presence.alert.deleteAccount'))) return
-
-      emitter.emit('plugin-progress-start')
-
-      const id = stores.AUTH.account.user.id
-
-      try {
-        await hooks.supabase.from('projects').delete().match({ id_user: id })
-
-        await hooks.supabase.from('profiles').delete().match({ id })
-
-        await hooks.supabase.auth.signOut()
-      } catch (e) {
-        hooks.toast(hooks.i18n.t('editor.auth.delete.error'))
-
-        emitter.emit('plugin-progress-end')
-
-        return
-      }
-
       resetAndRedirect()
-
-      emitter.emit('plugin-progress-end')
     },
     () => {},
   ])

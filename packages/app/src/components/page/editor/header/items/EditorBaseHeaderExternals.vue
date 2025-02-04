@@ -62,15 +62,6 @@
           ABSOLUTE.tools.speechRecognition = !ABSOLUTE.tools.speechRecognition
         "
       />
-      <EditorHeaderItemDiv />
-      <EditorHeaderItem
-        :text="t('editor.presence.create.title')"
-        @action="ABSOLUTE.modal.presence.createOrJoin = true"
-      >
-        <template #icon>
-          <BETABagde />
-        </template>
-      </EditorHeaderItem>
     </template>
   </EditorHeaderButton>
 </template>

@@ -910,6 +910,7 @@ export default {
           high3: 'Corrector: ',
           high4: 'Insert Shortcuts: ',
           high5: 'Characters: ',
+          high6: '',
           description2:
             'Write multiple versions of your text without any worries.',
           description3: 'Handle specific cases on all items.',
@@ -917,6 +918,7 @@ export default {
             'Create shortcuts to insert recurring words or sentences.',
           description5:
             'Easily discover how much a character appears in the text or its impact on context.',
+          description6: ''
         },
         final: {
           title: 'Explore.',

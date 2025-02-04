@@ -31,11 +31,6 @@
         @action="onSaveProject"
       />
       <EditorHeaderItem
-        v-if="PROJECT.name !== env.projectEmpty() && AUTH.account.user"
-        :text="t('editor.bar.supabase.save')"
-        @action="onSaveProjectSupabase"
-      />
-      <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty() && AUTH.account.dropboxAccessToken"
         :text="t('editor.bar.dropbox.save')"
         @action="dropbox.save"

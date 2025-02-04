@@ -1,5 +1,4 @@
 import type { StateTree, Store } from 'pinia'
-import type { SupabaseClient } from '@supabase/supabase-js'
 import { App } from 'vue-demi'
 import {
   AbsoluteState,
@@ -147,7 +146,6 @@ export type PluginHook = any
 
 export interface PluginHooks {
   local: PluginHook
-  cloud: PluginHook
   storage: PluginHook
   creative: PluginHook
   defines: PluginHook
@@ -177,7 +175,6 @@ export interface PluginHooks {
   dropbox: PluginHook
   history: PluginHook
   schemas: PluginHook
-  supabase: SupabaseClient
   vueuse: {
     core: PluginHook
     head: PluginHook

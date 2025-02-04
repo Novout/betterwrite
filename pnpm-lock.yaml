@@ -70,9 +70,6 @@ importers:
       '@sentry/vue':
         specifier: 7.14.2
         version: 7.14.2(vue@3.3.4)
-      '@supabase/supabase-js':
-        specifier: 2.26.0
-        version: 2.26.0
       '@vuelidate/core':
         specifier: 2.0.1
         version: 2.0.1(vue@3.3.4)
@@ -107,85 +104,85 @@ importers:
         specifier: 2.7.20
         version: 2.7.20
       better-write-client-storage:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../client-storage
       better-write-color-converter:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../color-converter
       better-write-contenteditable-ast:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../contenteditable-ast
       better-write-extension:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../extension
       better-write-google-fonts-api:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../google-fonts-api
       better-write-image-converter:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../image-converter
       better-write-languages:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../languages
       better-write-plugin-auth:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-auth
       better-write-plugin-characters:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-characters
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-plugin-dropbox:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-dropbox
       better-write-plugin-editor-window:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-editor-window
       better-write-plugin-entity-history:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-entity-history
       better-write-plugin-exporter-docx:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-exporter-docx
       better-write-plugin-exporter-epub:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-exporter-epub
       better-write-plugin-exporter-html:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-exporter-html
       better-write-plugin-exporter-pdf:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-exporter-pdf
       better-write-plugin-exporter-txt:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-exporter-txt
       better-write-plugin-importer:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-importer
       better-write-plugin-multiplayer:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-multiplayer
       better-write-plugin-progress-bar:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-progress-bar
       better-write-plugin-schemas:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-schemas
       better-write-plugin-shortcuts:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-shortcuts
       better-write-plugin-theme:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-theme
       better-write-plugin-voice-typing:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-voice-typing
       better-write-plugin-webgl:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-webgl
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       compressorjs:
         specifier: 1.2.1
@@ -378,46 +375,46 @@ importers:
   packages/client-storage:
     dependencies:
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
 
   packages/color-converter:
     dependencies:
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
 
   packages/contenteditable-ast:
     dependencies:
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
 
   packages/extension:
     dependencies:
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
 
   packages/google-fonts-api:
     dependencies:
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
 
   packages/image-converter:
     dependencies:
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
 
   packages/languages:
     dependencies:
       better-write-plugin-exporter-pdf:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-exporter-pdf
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
 
   packages/plugin-auth:
@@ -426,17 +423,17 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -451,23 +448,23 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-color-converter:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../color-converter
       better-write-contenteditable-ast:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -482,35 +479,35 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
 
   packages/plugin-dropbox:
     dependencies:
       better-write-client-storage:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../client-storage
       better-write-extension:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -522,26 +519,26 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-extension:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../extension
       better-write-image-converter:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../image-converter
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-plugin-importer:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-importer
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
 
   packages/plugin-entity-history:
     dependencies:
@@ -549,17 +546,17 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -574,31 +571,31 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-contenteditable-ast:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
 
   packages/plugin-exporter-epub:
     dependencies:
       better-write-contenteditable-ast:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       epub-gen-memory:
         specifier: 1.0.10
@@ -610,20 +607,20 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-contenteditable-ast:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
 
   packages/plugin-exporter-pdf:
     dependencies:
@@ -631,32 +628,32 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-color-converter:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../color-converter
       better-write-contenteditable-ast:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../contenteditable-ast
       better-write-google-fonts-api:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../google-fonts-api
       better-write-image-converter:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../image-converter
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-plugin-theme:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-theme
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
 
   packages/plugin-exporter-txt:
     dependencies:
@@ -664,20 +661,20 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-contenteditable-ast:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
 
   packages/plugin-importer:
     dependencies:
@@ -685,20 +682,20 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-extension:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -713,17 +710,17 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -738,20 +735,20 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-extension:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -766,17 +763,17 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
 
   packages/plugin-shortcuts:
     dependencies:
@@ -784,20 +781,20 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-extension:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -812,17 +809,17 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
 
   packages/plugin-voice-typing:
     dependencies:
@@ -830,17 +827,17 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -855,20 +852,20 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-extension:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.12
+        specifier: ^1.3.13
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -887,7 +884,7 @@ importers:
         version: 3.3.4
       vue-demi:
         specifier: latest
-        version: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
 
 packages:
 
@@ -1268,6 +1265,7 @@ packages:
   /@babel/plugin-proposal-unicode-property-regex@7.18.6(@babel/core@7.22.9):
     resolution: {integrity: sha512-2BShG/d5yoZyXZfVePH91urL5wTG6ASZU9M4o03lKK8u8UW1y08OMttBSOADTcJrnPMpvDXRG3G8fyLh4ovs8w==}
     engines: {node: '>=4'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-unicode-property-regex instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -2868,8 +2866,8 @@ packages:
       vue-i18n:
         optional: true
     dependencies:
-      '@intlify/message-compiler': 9.3.0-beta.25
-      '@intlify/shared': 9.3.0-beta.25
+      '@intlify/message-compiler': 11.0.0-rc.1
+      '@intlify/shared': 11.0.0-rc.1
       jsonc-eslint-parser: 1.4.1
       source-map: 0.6.1
       vue-i18n: 9.2.2(vue@3.3.4)
@@ -2891,6 +2889,14 @@ packages:
     dependencies:
       '@intlify/shared': 9.2.2
 
+  /@intlify/message-compiler@11.0.0-rc.1:
+    resolution: {integrity: sha512-TGw2uBfuTFTegZf/BHtUQBEKxl7Q/dVGLoqRIdw8lFsp9g/53sYn5iD+0HxIzdYjbWL6BTJMXCPUHp9PxDTRPw==}
+    engines: {node: '>= 16'}
+    dependencies:
+      '@intlify/shared': 11.0.0-rc.1
+      source-map-js: 1.0.2
+    dev: true
+
   /@intlify/message-compiler@9.2.2:
     resolution: {integrity: sha512-IUrQW7byAKN2fMBe8z6sK6riG1pue95e5jfokn8hA5Q3Bqy4MBJ5lJAofUsawQJYHeoPJ7svMDyBaVJ4d0GTtA==}
     engines: {node: '>= 14'}
@@ -2898,22 +2904,14 @@ packages:
       '@intlify/shared': 9.2.2
       source-map: 0.6.1
 
-  /@intlify/message-compiler@9.3.0-beta.25:
-    resolution: {integrity: sha512-uT7ybqKoDEw1XITQYnTYjWgZnpCDmHv9e3D4MmJDqHl2qCm6anzdUXWKHUhqR87Ha9Z8Rl44v40iSI/4NUbppQ==}
+  /@intlify/shared@11.0.0-rc.1:
+    resolution: {integrity: sha512-8tR1xe7ZEbkabTuE/tNhzpolygUn9OaYp9yuYAF4MgDNZg06C3Qny80bes2/e9/Wm3aVkPUlCw6WgU7mQd0yEg==}
     engines: {node: '>= 16'}
-    dependencies:
-      '@intlify/shared': 9.3.0-beta.25
-      source-map-js: 1.0.2
     dev: true
 
   /@intlify/shared@9.2.2:
     resolution: {integrity: sha512-wRwTpsslgZS5HNyM7uDQYZtxnbI12aGiBZURX3BTR9RFIKKRWpllTsgzHWvj3HKm3Y2Sh5LPC1r0PDCKEhVn9Q==}
     engines: {node: '>= 14'}
-
-  /@intlify/shared@9.3.0-beta.25:
-    resolution: {integrity: sha512-Zg+ECV9RPdp227tCJOgvPb+S3i651nf4kKHsMojSyWCppVK/4NFuDrBG2lIQSQL6Iq5LKVr5MkezHCW2NBTQRg==}
-    engines: {node: '>= 16'}
-    dev: true
 
   /@intlify/vite-plugin-vue-i18n@7.0.0(vite@4.4.8)(vue-i18n@9.2.2):
     resolution: {integrity: sha512-2TbDOQ8XD+vkc0s5OFmr+IY/k4mYMC7pzvx0xGQn+cU/ev314+yi7Z7N7rWcBgiYk1WOUalbGSo3d4nJDxOOyw==}
@@ -2932,7 +2930,7 @@ packages:
         optional: true
     dependencies:
       '@intlify/bundle-utils': 3.4.0(vue-i18n@9.2.2)
-      '@intlify/shared': 9.3.0-beta.25
+      '@intlify/shared': 11.0.0-rc.1
       '@rollup/pluginutils': 4.2.1
       debug: 4.3.4
       fast-glob: 3.3.1
@@ -4118,62 +4116,6 @@ packages:
       escape-string-regexp: 5.0.0
     dev: false
 
-  /@supabase/functions-js@2.1.1:
-    resolution: {integrity: sha512-bIR1Puae6W+1/MzPfYBWOG/SCWGo4B5CB7c0ZZksvliNEAzhxNBJ0UFKYINcGdGtxG8ZC+1xr3utWpNZNwnoRw==}
-    dependencies:
-      cross-fetch: 3.1.6
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /@supabase/gotrue-js@2.31.0:
-    resolution: {integrity: sha512-YcwlbbNfedlue/HVIXtYBb4fuOrs29gNOTl6AmyxPp4zryRxzFvslVN9kmLDBRUAVU9fnPJh2bgOR3chRjJX5w==}
-    dependencies:
-      cross-fetch: 3.1.6
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /@supabase/postgrest-js@1.7.1:
-    resolution: {integrity: sha512-xPRYLaZrkLbXNlzmHW6Wtf9hmcBLjjI5xUz2zj8oE2hgXGaYoZBBkpN9bmW9i17Z1f6Ujxa942AqK439XOA36A==}
-    dependencies:
-      cross-fetch: 3.1.6
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /@supabase/realtime-js@2.7.3:
-    resolution: {integrity: sha512-c7TzL81sx2kqyxsxcDduJcHL9KJdCOoKimGP6lQSqiZKX42ATlBZpWbyy9KFGFBjAP4nyopMf5JhPi2ZH9jyNw==}
-    dependencies:
-      '@types/phoenix': 1.5.6
-      '@types/websocket': 1.0.5
-      websocket: 1.0.34
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@supabase/storage-js@2.5.1:
-    resolution: {integrity: sha512-nkR0fQA9ScAtIKA3vNoPEqbZv1k5B5HVRYEvRWdlP6mUpFphM9TwPL2jZ/ztNGMTG5xT6SrHr+H7Ykz8qzbhjw==}
-    dependencies:
-      cross-fetch: 3.1.6
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /@supabase/supabase-js@2.26.0:
-    resolution: {integrity: sha512-RXmTPTobaYAwkSobadHZmEVLmzX3SGrtRZIGfLWnLv92VzBRrjuXn0a+bJqKl50GUzsyqPA+j5pod7EwMkcH5A==}
-    dependencies:
-      '@supabase/functions-js': 2.1.1
-      '@supabase/gotrue-js': 2.31.0
-      '@supabase/postgrest-js': 1.7.1
-      '@supabase/realtime-js': 2.7.3
-      '@supabase/storage-js': 2.5.1
-      cross-fetch: 3.1.6
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-    dev: false
-
   /@surma/rollup-plugin-off-main-thread@2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
     dependencies:
@@ -4318,10 +4260,6 @@ packages:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: true
 
-  /@types/phoenix@1.5.6:
-    resolution: {integrity: sha512-e7jZ6I9uyRGsg7MNwQcarmBvRlbGb9DibbocE9crVnxqsy6C23RMxLWbJ2CQ3vgCW7taoL1L+F02EcjA6ld7XA==}
-    dev: false
-
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
@@ -4369,12 +4307,6 @@ packages:
 
   /@types/web-bluetooth@0.0.16:
     resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
-
-  /@types/websocket@1.0.5:
-    resolution: {integrity: sha512-NbsqiNX9CnEfC1Z0Vf4mE1SgAJ07JnRYcNex7AJ9zAVzmiGHmjKFEk7O4TJIsgv2B1sLEb6owKFZrACwdYngsQ==}
-    dependencies:
-      '@types/node': 20.4.5
-    dev: false
 
   /@types/webxr@0.5.2:
     resolution: {integrity: sha512-szL74BnIcok9m7QwYtVmQ+EdIKwbjPANudfuvDrAF8Cljg9MKUlIoc1w5tjj9PMpeSH3U1Xnx//czQybJ0EfSw==}
@@ -4803,6 +4735,7 @@ packages:
     dependencies:
       tslib: 2.5.2
       vue: 3.3.4
+    dev: false
 
   /@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
@@ -4926,7 +4859,7 @@ packages:
     dependencies:
       '@vueuse/core': 9.13.0(vue@3.3.4)
       '@vueuse/shared': 9.13.0(vue@3.3.4)
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4947,7 +4880,7 @@ packages:
       '@vueuse/metadata': 8.9.4
       '@vueuse/shared': 8.9.4(vue@3.3.4)
       vue: 3.3.4
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     dev: false
 
   /@vueuse/core@9.13.0(vue@3.3.4):
@@ -4956,7 +4889,7 @@ packages:
       '@types/web-bluetooth': 0.0.16
       '@vueuse/metadata': 9.13.0
       '@vueuse/shared': 9.13.0(vue@3.3.4)
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -5016,7 +4949,7 @@ packages:
       drauu: 0.3.3
       idb-keyval: 6.2.1
       nprogress: 0.2.0
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -5044,7 +4977,7 @@ packages:
       popmotion: 11.0.5
       style-value-types: 5.1.2
       vue: 3.3.4
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     dev: false
 
   /@vueuse/schema-org-vite@1.1.0-beta.6(@vueuse/head@1.1.23)(rollup@2.79.1)(typescript@5.1.3)(vite@4.4.8)(vue@3.3.4):
@@ -5096,13 +5029,13 @@ packages:
         optional: true
     dependencies:
       vue: 3.3.4
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     dev: false
 
   /@vueuse/shared@9.13.0(vue@3.3.4):
     resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
     dependencies:
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -5118,7 +5051,7 @@ packages:
     dependencies:
       howler: 2.2.3
       vue: 3.3.4
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     dev: false
 
   /@windicss/config@1.9.0:
@@ -5741,14 +5674,6 @@ packages:
       ieee754: 1.2.1
     dev: true
 
-  /bufferutil@4.0.7:
-    resolution: {integrity: sha512-kukuqc39WOHtdxtw4UScxF/WVnMFVSQVKhtx3AjZJzhd0RGZZldcrfSEbVsWWe6KNH253574cq5F+wpv0G9pJw==}
-    engines: {node: '>=6.14.2'}
-    requiresBuild: true
-    dependencies:
-      node-gyp-build: 4.6.0
-    dev: false
-
   /builtin-modules@3.3.0:
     resolution: {integrity: sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw==}
     engines: {node: '>=6'}
@@ -6328,6 +6253,7 @@ packages:
       node-fetch: 2.6.11
     transitivePeerDependencies:
       - encoding
+    dev: true
 
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -6413,17 +6339,6 @@ packages:
   /de-indent@1.0.2:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
     dev: true
-
-  /debug@2.6.9:
-    resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-    dependencies:
-      ms: 2.0.0
-    dev: false
 
   /debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -8550,10 +8465,6 @@ packages:
       which-typed-array: 1.1.11
     dev: true
 
-  /is-typedarray@1.0.0:
-    resolution: {integrity: sha512-cyA56iCMHAh5CdzjJIa4aohJyeO1YbwLi3Jc35MmRU6poroFjIGZzUzupGiRPOjgHg9TLu43xbpwXk523fMxKA==}
-    dev: false
-
   /is-unicode-supported@0.1.0:
     resolution: {integrity: sha512-knxG2q4UC3u8stRGyAVJCOdxFmv5DZiRcdlIaAQXAbSfJya+OhopNotLQrstBhququ4ZpuKbDc/8S6mgXgPFPw==}
     engines: {node: '>=10'}
@@ -9760,10 +9671,6 @@ packages:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
 
-  /ms@2.0.0:
-    resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
-    dev: false
-
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
@@ -9885,6 +9792,7 @@ packages:
   /node-gyp-build@4.6.0:
     resolution: {integrity: sha512-NTZVKn9IylLwUzaKjkas1e4u2DLNcV4rdYagA4PWdPwW87Bi7z+BznyKSRwS/761tV/lzCGXplWsiaMjLqP2zQ==}
     hasBin: true
+    dev: true
 
   /node-gyp@9.4.0:
     resolution: {integrity: sha512-dMXsYP6gc9rRbejLXmTbVRYjAHw7ppswsKyMxuxJxxOHzluIO1rGp9TOQgjFJ+2MCqcOcQTOPB/8Xwhr+7s4Eg==}
@@ -10676,7 +10584,7 @@ packages:
       '@vue/devtools-api': 6.5.0
       typescript: 5.1.3
       vue: 3.3.4
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     dev: false
 
   /pirates@4.0.5:
@@ -12246,6 +12154,7 @@ packages:
 
   /tslib@2.5.2:
     resolution: {integrity: sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==}
+    dev: false
 
   /tslib@2.6.1:
     resolution: {integrity: sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig==}
@@ -12464,12 +12373,6 @@ packages:
       for-each: 0.3.3
       is-typed-array: 1.1.12
     dev: true
-
-  /typedarray-to-buffer@3.1.5:
-    resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
-    dependencies:
-      is-typedarray: 1.0.0
-    dev: false
 
   /typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
@@ -12785,14 +12688,6 @@ packages:
       punycode: 1.3.2
       querystring: 0.2.0
     dev: true
-
-  /utf-8-validate@5.0.10:
-    resolution: {integrity: sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ==}
-    engines: {node: '>=6.14.2'}
-    requiresBuild: true
-    dependencies:
-      node-gyp-build: 4.6.0
-    dev: false
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -13201,8 +13096,8 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /vue-demi@0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4):
-    resolution: {integrity: sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==}
+  /vue-demi@0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4):
+    resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
@@ -13214,6 +13109,21 @@ packages:
         optional: true
     dependencies:
       '@vue/composition-api': 1.0.0-rc.1(vue@3.3.4)
+      vue: 3.3.4
+    dev: false
+
+  /vue-demi@0.14.5(vue@3.3.4):
+    resolution: {integrity: sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
       vue: 3.3.4
 
   /vue-directive-providers@0.1.0(vue@3.3.4):
@@ -13228,7 +13138,7 @@ packages:
     dependencies:
       '@vueuse/core': 9.13.0(vue@3.3.4)
       vue: 3.3.4
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     dev: false
 
   /vue-eslint-parser@9.3.0(eslint@8.46.0):
@@ -13347,7 +13257,7 @@ packages:
     dependencies:
       pdfmake: 0.3.0-beta.5
       vue: 3.3.4
-      vue-demi: 0.14.5(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.3.4)
     dev: false
 
   /vue@3.3.4:
@@ -13407,20 +13317,6 @@ packages:
 
   /webpack-virtual-modules@0.5.0:
     resolution: {integrity: sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==}
-
-  /websocket@1.0.34:
-    resolution: {integrity: sha512-PRDso2sGwF6kM75QykIesBijKSVceR6jL2G8NGYyq2XrItNC2P5/qL5XeR056GhA+Ly7JMFvJb9I312mJfmqnQ==}
-    engines: {node: '>=4.0.0'}
-    dependencies:
-      bufferutil: 4.0.7
-      debug: 2.6.9
-      es5-ext: 0.10.62
-      typedarray-to-buffer: 3.1.5
-      utf-8-validate: 5.0.10
-      yaeti: 0.0.6
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
 
   /whatwg-encoding@2.0.0:
     resolution: {integrity: sha512-p41ogyeMUrw3jWclHWTQg1k05DSVXPLcVxRTYsXUk+ZooOCZLcoYgPZ/HL/D/N+uQPOtcp1me1WhBEaX02mhWg==}
@@ -13602,6 +13498,7 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
+    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
@@ -13766,11 +13663,6 @@ packages:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
     engines: {node: '>=10'}
     dev: true
-
-  /yaeti@0.0.6:
-    resolution: {integrity: sha512-MvQa//+KcZCUkBTIC9blM+CU9J2GzuTytsOUwf2lidtvkx/6gnEp1QvJv34t9vdjhFmha/mUiNDbN0D0mJWdug==}
-    engines: {node: '>=0.10.32'}
-    dev: false
 
   /yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}

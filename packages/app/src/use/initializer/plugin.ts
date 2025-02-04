@@ -34,7 +34,6 @@ import { useI18n } from 'vue-i18n'
 import { useHistoryStore } from '@/store/history'
 import { useLiveshareStore } from '@/store/liveshare'
 import useEmitter from '../emitter'
-import { s, useSupabase } from '../storage/supabase'
 import { useCharacters } from '../characters'
 import * as VUEROUTER from 'vue-router'
 import * as VUEUSE_CORE from '@vueuse/core'
@@ -68,7 +67,6 @@ export const usePluginInitializer = () => {
       plugins,
       {
         local: useLocalStorage(),
-        cloud: useSupabase(),
         storage: useStorage(),
         creative: useCreativeType(),
         defines: useDefines(),
@@ -93,7 +91,6 @@ export const usePluginInitializer = () => {
         breakpoints: useBreakpoint(),
         transformer: useTransformer(),
         characters: useCharacters(),
-        supabase: s,
         router: VUEROUTER.useRouter(),
         dropbox: useDropbox(),
         vuerouter: VUEROUTER,

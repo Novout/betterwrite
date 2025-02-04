@@ -5,5 +5,5 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   clean: true,
   dts: true,
-  external: ['pinia', '@supabase/supabase-js']
+  external: ['pinia']
 })

@@ -917,6 +917,7 @@ export default {
           high3: 'Corretor: ',
           high4: 'Atalhos de Inserção: ',
           high5: 'Personagens: ',
+          high6: '',
           description2:
             'Escreva diversas versões de seu texto sem nenhuma preocupação',
           description3: 'Trate casos específicos em todos os itens.',
@@ -924,6 +925,7 @@ export default {
             'Crie atalhos para inserir palavras ou sentenças recorrentes.',
           description5:
             'Descubra com facilidade o quanto um personagem aparece no texto ou seu impacto no contexto.',
+          description6: ''
         },
         final: {
           title: 'Explore.',

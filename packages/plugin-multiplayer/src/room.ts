@@ -7,7 +7,6 @@ import type {
   PluginTypes,
   ProjectObject,
 } from 'better-write-types'
-import type { RealtimeChannel, User } from '@supabase/supabase-js'
 import { computed } from 'vue-demi'
 import {
   genKey,
@@ -22,7 +21,7 @@ interface $CTX {
   object: ProjectObject
   ctx: ContextState
   liveshare: LiveshareState
-  user: Maybe<User>
+  user: Maybe<{}>
 }
 
 export const RoomSet = (
@@ -30,7 +29,7 @@ export const RoomSet = (
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks
 ) => {
-  const removePresence = async (channel: RealtimeChannel) => {
+  const removePresence = async (channel: any) => {
     await channel.unsubscribe().catch(() => {})
 
     stores.LIVESHARE.$reset()
@@ -59,7 +58,7 @@ export const RoomSet = (
       object: ProjectObject
       ctx: ContextState
       liveshare: LiveshareState
-      user: Maybe<User>
+      user: Maybe<{}>
     }
   } => ({
     type: 'broadcast',
@@ -72,7 +71,7 @@ export const RoomSet = (
     },
   })
 
-  const setWatcher = (channel: RealtimeChannel) => {
+  const setWatcher = (channel) => {
     hooks.vueuse.core.watchDebounced(
       [
         computed(() => stores.PROJECT.$state),
@@ -88,9 +87,9 @@ export const RoomSet = (
   }
 
   const setRoom = (
-    channel: RealtimeChannel,
+    channel: any,
     type: LiveshareType
-  ): RealtimeChannel => {
+  )  => {
     channel
       .on('presence', { event: 'join' }, ({ key, newPresences }) => {
         stores.LIVESHARE.add({
@@ -113,7 +112,7 @@ export const RoomSet = (
         }
       })
       .on('presence', { event: 'sync' }, async () => {
-        const state = channel.presenceState<LivesharePresenceItem>()
+        const state = channel.presenceState()
 
         if (!isEmptyObject(state) && !getOwner(state)) {
           hooks.toast.error(hooks.i18n.t('editor.presence.off'))

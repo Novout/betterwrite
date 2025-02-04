@@ -1,4 +1,3 @@
-import { User } from '@supabase/supabase-js'
 import { ID, Maybe } from './utils'
 
 export interface AuthStateAccountMultiplayerConnect {
@@ -12,7 +11,7 @@ export interface AuthStateAccountMultiplayer {
 }
 
 export interface AuthStateAccount {
-  user: User | null
+  user: true | null
   project_id_activity: ID<number> | null
   multiplayer: AuthStateAccountMultiplayer
   dropboxAccessToken?: Maybe<string>

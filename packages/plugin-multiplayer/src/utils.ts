@@ -1,9 +1,7 @@
 import type {
-  LivesharePresenceItem,
   LiveshareType,
   Maybe,
 } from 'better-write-types'
-import type { RealtimePresenceState } from '@supabase/supabase-js'
 import { nanoid } from 'nanoid'
 
 const SEPARATOR = '_'
@@ -16,11 +14,11 @@ export const validadeKey = (key?: string) =>
 export const getKey = (key?: string): Maybe<LiveshareType> =>
   key?.split(SEPARATOR)?.shift() as LiveshareType
 
-export const entries = (state: RealtimePresenceState<LivesharePresenceItem>) =>
+export const entries = (state: any) =>
   Object.entries(state)
 
 export const getOwner = (
-  presence: RealtimePresenceState<LivesharePresenceItem>
+  presence: any
 ) =>
   entries(presence).find(([_, userPresence]) =>
     userPresence.find(({ type }) => type === 'owner')

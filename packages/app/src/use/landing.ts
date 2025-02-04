@@ -42,12 +42,6 @@ export const useLanding = () => {
   const version = computed(() => `v${env.packageVersion()}`)
 
   const onClick = async () => {
-    if (!AUTH.account.user) {
-      isNecessaryLogin.value = true
-
-      return
-    }
-
     plugin.emit('plugin-progress-start')
 
     await nextTick
