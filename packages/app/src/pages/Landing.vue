@@ -115,7 +115,6 @@
 <script setup lang="ts">
   import VTypical from 'vue-typical'
   import { useLanding } from '@/use/landing'
-  import { useUtils } from '@/use/utils'
   import { useI18n } from 'vue-i18n'
   import { watch, ref } from 'vue'
   import { useRouter } from 'vue-router'
@@ -127,7 +126,6 @@
   const { t } = useI18n()
   const router = useRouter()
   const plugin = usePlugin()
-  const utils = useUtils()
 
   plugin.emit('call-landing-created')
 

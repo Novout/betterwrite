@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { routes } from './routes'
 import { useNetwork } from '@vueuse/core'
 import { useAuthStore } from './store/auth'
-import { getSupabaseUser } from './use/storage/supabase'
 import { useEnv } from './use/env'
 
 const router = createRouter({
@@ -14,7 +13,7 @@ router.beforeResolve(async (to, from, next) => {
   const AUTH = useAuthStore()
 
   const env = useEnv()
-  const user = true
+  const user = localStorage?.getItem('visited') || false
   const url = window.location.href
   const token = url.includes('access_token')
   const isOnline = useNetwork().isOnline.value

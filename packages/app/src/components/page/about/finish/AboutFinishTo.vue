@@ -22,18 +22,13 @@
 </template>
 
 <script setup lang="ts">
-  import { useAuthStore } from '@/store/auth'
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
-
-  const AUTH = useAuthStore()
 
   const { t } = useI18n()
   const router = useRouter()
 
   const onClick = () => {
-    const options = !AUTH.account.user ? { path: '/landing', query: { login: 'auth' } } : { path: '/' }
-
-    router.push(options)
+    router.push('/landing')
   }
 </script>

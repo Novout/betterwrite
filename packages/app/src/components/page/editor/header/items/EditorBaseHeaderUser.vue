@@ -18,14 +18,6 @@
       }"
       class="absolute rounded font-raleway p-4 flex flex-col gap-5 right-0 w-44 bg-theme-background-3"
     >
-      <MenuItem @click="plugin.emit('plugin-oauth-logout')">
-        <button
-          class="flex wb-icon rounded shadow px-2 justify-between items-center bg-theme-background-1"
-        >
-          <IconLogout class="w-7 h-7" />
-          <p class="font-bold">{{ t('editor.header.login.logout') }}</p>
-        </button>
-      </MenuItem>
       <MenuItem>
         <div
           class="wb-text w-full mt-5 text-xs flex flex-col text-center items-center justify-center"

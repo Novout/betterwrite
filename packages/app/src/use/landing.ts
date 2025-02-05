@@ -46,6 +46,8 @@ export const useLanding = () => {
 
     await nextTick
 
+    localStorage.setItem('visited', 'visited')
+
     router.push('/').finally(() => {
       // for common reactivity in other routes
       document.body.style.overflowX = 'auto'
