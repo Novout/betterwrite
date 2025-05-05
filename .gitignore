@@ -4,7 +4,9 @@
 
 node_modules
 dist
+
 .turbo
+.nx
 
 yarn-error.log
 lerna-debug.log

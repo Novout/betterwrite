@@ -1,5 +1,5 @@
 <template>
-  <main class="wb-screen font-raleway w-full">
+  <main class="wb-screen font-raleway w-full" :style="{ backgroundColor: '#1c2434'}">
     <section
       id="landing-base"
       class="flex flex-col bg-theme-background-2 z-max text-white items-center justify-between min-h-screen w-full overflow-x-hidden"
@@ -116,12 +116,12 @@
   import VTypical from 'vue-typical'
   import { useLanding } from '@/use/landing'
   import { useI18n } from 'vue-i18n'
-  import { watch, ref } from 'vue'
+  import { ref } from 'vue'
   import { useRouter } from 'vue-router'
   import { tryOnMounted, tryOnUnmounted } from '@vueuse/core'
   import { usePlugin } from 'better-write-plugin-core'
 
-  const isLoaded = ref(false)
+  const isLoaded = ref(true)
   const { onClick, isNecessaryLogin } = useLanding()
   const { t } = useI18n()
   const router = useRouter()
@@ -131,21 +131,9 @@
 
   tryOnMounted(() => {
     plugin.emit('call-landing-mounted')
-
-    plugin.on('plugin-webgl-loaded', (load: boolean) => {
-      isLoaded.value = load
-    })
   })
 
   tryOnUnmounted(() => {
     plugin.emit('call-landing-unmounted')
-  })
-
-  watch(isNecessaryLogin, (login) => {
-    if (login) {
-      setTimeout(() => {
-        plugin.emit('plugin-webgl-set-camera')
-      }, 0)
-    }
   })
 </script>
