@@ -3,13 +3,13 @@
     <div
       class="flex items-center justify-center text-center w-full cursor-text"
     >
-      <div
+      <span
         ref="__INPUT__"
         :contenteditable="true"
         :spellcheck="true"
         :style="{
           fontFamily: EDITOR.styles.heading.fontFamily,
-          fontWeight: EDITOR.styles.heading.fontWeight,
+          fontWeight: EDITOR.styles.heading.fontWeight
         }"
         class="w-full"
         :class="[
@@ -27,8 +27,8 @@
         @keydown="block.onKeyboard"
         @input="block.onInput"
       >
-        {{ props.entity.raw }}
-      </div>
+        {{ props.entity.raw === '<br>' ? '' : props.entity.raw }}
+      </span>
     </div>
   </EditorEntityDefaultContainer>
 </template>
