@@ -8,12 +8,12 @@ import {
   PDFDocOptions,
   PluginTypes,
   ProjectStateTemplatesGenerator,
+  Maybe
 } from 'better-write-types'
 import { nextTick, computed } from 'vue-demi'
 import { getPDFUtils } from 'better-write-plugin-theme'
 import { getStandardVFS } from './vfs'
 import { ImageToForcePNG } from 'better-write-image-converter'
-import { Maybe } from 'better-write-types'
 import { getRows, parse } from 'better-write-contenteditable-ast'
 import { HEXToCMYK } from 'better-write-color-converter'
 import { get } from 'better-write-google-fonts-api'
@@ -1336,9 +1336,7 @@ export const PluginPDFSet = (
 
     const data = await doc(options)
 
-    const generator = pdfmake.createPdf(data)
-
-    generator
+    pdfmake.createPdf(data)
       .getDataUrl()
       .then(
         async (data: any) => {

@@ -94,7 +94,7 @@
     "vue-toastification": "2.0.0-rc.5",
     "vue-typical": "2.1.0",
     "vue3-emoji-picker": "1.1.7",
-    "vue3-pdfmake": "2.2.0",
+    "vue3-pdfmake": "2.3.0",
     "vuedraggable": "4.0.1",
     "windicss": "3.5.6",
     "xml-js": "1.6.11"
@@ -152,7 +152,6 @@
         "@milkdown/utils",
         "docx",
         "dropbox",
-        "es5-ext/global",
         "file-saver",
         "jiti",
         "mitt",
