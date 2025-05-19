@@ -19,7 +19,6 @@
   import { CharactersPlugin } from 'better-write-plugin-characters'
   import { ProgressBarPlugin } from 'better-write-plugin-progress-bar'
   import { EditorWindowPlugin } from 'better-write-plugin-editor-window'
-  import { MultiplayerPlugin } from 'better-write-plugin-multiplayer'
   import { AuthPlugin } from 'better-write-plugin-auth'
   import { DropboxPlugin } from 'better-write-plugin-dropbox'
 
@@ -38,7 +37,6 @@
     CharactersPlugin(),
     ProgressBarPlugin(),
     EditorWindowPlugin(),
-    MultiplayerPlugin(),
     AuthPlugin(),
     DropboxPlugin()
   ]).init()
