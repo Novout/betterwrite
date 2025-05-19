@@ -15,6 +15,7 @@ import {
   Entities,
   ProjectStateOptions,
   Maybe,
+  ProjectStateSchema,
 } from 'better-write-types'
 import { useStorage } from './storage/storage'
 import { useEnv } from './env'
@@ -31,6 +32,7 @@ import { useAuthStore } from '@/store/auth'
 import { useDOCXStore } from '@/store/docx'
 import { useGlobalStore } from '@/store/global'
 import { ASTUtils } from 'better-write-contenteditable-ast'
+import { useUtils } from './utils'
 
 export const useProject = () => {
   const PROJECT = useProjectStore()
@@ -50,6 +52,7 @@ export const useProject = () => {
   const breakpoints = useBreakpoint()
   const emitter = useEmitter()
   const global = useGlobalStore()
+  const utl = useUtils()
   const { t } = useI18n()
 
   const external = () => {
@@ -86,7 +89,18 @@ export const useProject = () => {
       plugin.emit('plugin-theme-set')
 
       if (type === 'only-annotations') {
-        // plugin.emit('plugin-schemas-folder-create')
+        const schema = {
+          id: utl.id().nano({ prefix: 'schema' }),
+          type: 'default',
+          name: 'Annotations',
+          prefix: '/',
+          customIcon: '📁',
+          folders: [],
+        } as ProjectStateSchema
+
+        PROJECT.schemas.unshift(schema)
+
+        plugin.emit('plugin-schemas-folder-create', schema)
 
         return
       }
