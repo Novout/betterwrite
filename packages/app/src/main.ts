@@ -116,7 +116,7 @@ if (!env.isDev()) {
     logErrors: true,
     tracesSampleRate: 0.5,
     trackComponents: true,
-    hooks: ['activate', 'mount', 'update', 'destroy', 'create'],
+    hooks: ['mount'],
   })
 }
 
