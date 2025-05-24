@@ -63,6 +63,7 @@
   const onClose = () => {
     ABSOLUTE.project.tutorial = false
     TUTORIAL.$reset()
+    localStorage.setItem('tutorial', 'clear')
   }
 
   const onPrev = () => {
