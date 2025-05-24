@@ -26,6 +26,9 @@ export const PluginBackgroundColorSet = (
       if (!hooks.entity.utils().isTextBlock(entity.type) || character.disabled)
         return
 
+      if (!character?.name)
+        return
+
       const text: Maybe<string> = ASTUtils.normalize(str, {
         type: 'all',
         whitespace: true,
