@@ -85,8 +85,8 @@
         >{{ t('editor.tutorial.pages.5.description5') }}
       </div>
       <div>
-        <b>{{ t('editor.tutorial.pages.6.high6') }}</b
-        >{{ t('editor.tutorial.pages.6.description6') }}
+        <b>{{ t('editor.tutorial.pages.5.high6') }}</b
+        >{{ t('editor.tutorial.pages.5.description6') }}
       </div>
     </EditorTutorialContainer>
     <EditorTutorialContainer
