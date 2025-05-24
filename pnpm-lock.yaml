@@ -104,79 +104,79 @@ importers:
         specifier: 2.7.20
         version: 2.7.20
       better-write-client-storage:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../client-storage
       better-write-color-converter:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../color-converter
       better-write-contenteditable-ast:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../contenteditable-ast
       better-write-extension:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../extension
       better-write-google-fonts-api:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../google-fonts-api
       better-write-image-converter:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../image-converter
       better-write-languages:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../languages
       better-write-plugin-auth:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-auth
       better-write-plugin-characters:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-characters
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-plugin-dropbox:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-dropbox
       better-write-plugin-editor-window:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-editor-window
       better-write-plugin-entity-history:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-entity-history
       better-write-plugin-exporter-docx:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-exporter-docx
       better-write-plugin-exporter-epub:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-exporter-epub
       better-write-plugin-exporter-html:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-exporter-html
       better-write-plugin-exporter-pdf:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-exporter-pdf
       better-write-plugin-exporter-txt:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-exporter-txt
       better-write-plugin-importer:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-importer
       better-write-plugin-progress-bar:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-progress-bar
       better-write-plugin-schemas:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-schemas
       better-write-plugin-shortcuts:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-shortcuts
       better-write-plugin-theme:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-theme
       better-write-plugin-voice-typing:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-voice-typing
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       compressorjs:
         specifier: 1.2.1
@@ -360,46 +360,46 @@ importers:
   packages/client-storage:
     dependencies:
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
 
   packages/color-converter:
     dependencies:
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
 
   packages/contenteditable-ast:
     dependencies:
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
 
   packages/extension:
     dependencies:
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
 
   packages/google-fonts-api:
     dependencies:
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
 
   packages/image-converter:
     dependencies:
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
 
   packages/languages:
     dependencies:
       better-write-plugin-exporter-pdf:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-exporter-pdf
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
 
   packages/plugin-auth:
@@ -408,10 +408,10 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -433,16 +433,16 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-color-converter:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../color-converter
       better-write-contenteditable-ast:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -464,7 +464,7 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -476,16 +476,16 @@ importers:
   packages/plugin-dropbox:
     dependencies:
       better-write-client-storage:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../client-storage
       better-write-extension:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -504,19 +504,19 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-extension:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../extension
       better-write-image-converter:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../image-converter
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-plugin-importer:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-importer
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -531,10 +531,10 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -556,13 +556,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-contenteditable-ast:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -574,13 +574,13 @@ importers:
   packages/plugin-exporter-epub:
     dependencies:
       better-write-contenteditable-ast:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       epub-gen-memory:
         specifier: 1.0.10
@@ -592,13 +592,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-contenteditable-ast:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -613,25 +613,25 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-color-converter:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../color-converter
       better-write-contenteditable-ast:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../contenteditable-ast
       better-write-google-fonts-api:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../google-fonts-api
       better-write-image-converter:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../image-converter
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-plugin-theme:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-theme
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -646,13 +646,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-contenteditable-ast:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -667,13 +667,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-extension:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -695,13 +695,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-extension:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -723,10 +723,10 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -741,13 +741,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-extension:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -769,10 +769,10 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -787,10 +787,10 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.3.4)
       better-write-plugin-core:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.21
+        specifier: ^1.3.22
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
