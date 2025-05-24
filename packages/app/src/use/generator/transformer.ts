@@ -147,7 +147,7 @@ export const useTransformer = () => {
         }
       })
 
-      return value || 'strict'
+      return value || 'default'
     }
 
     return { nameCase }
