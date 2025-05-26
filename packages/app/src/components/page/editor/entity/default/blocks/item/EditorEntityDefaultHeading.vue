@@ -8,8 +8,8 @@
         :contenteditable="true"
         :spellcheck="true"
         :style="{
-          fontFamily: EDITOR.styles.heading.fontFamily,
-          fontWeight: EDITOR.styles.heading.fontWeight
+          fontFamily: EDITOR.styles.heading?.fontFamily || 'Raleway',
+          fontWeight: EDITOR.styles.heading?.fontWeight || 700
         }"
         class="w-full"
         :class="[

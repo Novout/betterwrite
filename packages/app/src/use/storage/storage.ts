@@ -149,7 +149,7 @@ export const useStorage = () => {
       }
     }
 
-    if (!_.editor.styles.base.backgroundCoverAttribute) {
+    if (!_.editor.styles.base?.backgroundCoverAttribute) {
       _.editor.styles.base = {
         ..._.editor.styles.base,
         backgroundCoverAttribute: true,

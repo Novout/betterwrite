@@ -4,9 +4,9 @@
       ref="__INPUT__"
       :class="!isAttached ? 'indent-xl sm:indent-lg' : ''"
       :style="{
-        fontFamily: EDITOR.styles.text.fontFamily,
-        fontWeight: EDITOR.styles.text.fontWeight,
-        fontSize: `${EDITOR.styles.text.fontSize}px`,
+        fontFamily: EDITOR.styles.text?.fontFamily || 'Raleway',
+        fontWeight: EDITOR.styles.text?.fontWeight || 500,
+        fontSize: `${EDITOR.styles.text?.fontSize || 16}px`,
       }"
       class="editable whitespace-pre-line text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active"
       :spellcheck="true"
