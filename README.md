@@ -28,11 +28,10 @@ betterwrite.io
 # Features
 
 - ✅ Entity-Model Editor
-- ✅ PDF, DOCX, HTML, EPUB and TXT Generator
+- ✅ PDF, DOCX, HTML and TXT Generator
 - ✅ Full Customization
 - ✅ Mobile & Desktop (PWA)
 - ✅ Offline First
-- ✅ Cloud Save (Void)
 - ✅ Local Extension (.bw)
 - ✅ Multipurpose
 - ✅ High Tracking
@@ -50,8 +49,6 @@ Unlike traditional word processors, *betterwrite* focuses on producing an out-of
 <p>
 
 - **Full Customization**: The editor is fully customizable with the main focus on emphasizing the writer's creativity and adapting all the context at his disposal. In addition to standard themes, *betterwrite* allows for custom backgrounds (including *gifs*) and the use of external fonts within the editor itself.
-
-- **Void** is a cloud save feature aiming to be more user friendly and easy to access among other projects saved in the void. Its structure was planned not to interfere with local saves (local storage or extension).
 
 - **Annotations** have a different editor, powered by [Milkdown](https://milkdown.dev/), offering a more instantaneous and familiar option than the main editor, fulfilling its main purpose: annotating. Annotations do not participate in the document production flow and serve as an aid to the writer.
 
