@@ -42,7 +42,6 @@
     "@vueuse/head": "1.1.23",
     "@vueuse/integrations": "9.13.0",
     "@vueuse/motion": "2.0.0-beta.12",
-    "@vueuse/schema-org-vite": "1.1.0-beta.6",
     "@vueuse/shared": "9.13.0",
     "@vueuse/sound": "2.0.1",
     "@zip.js/zip.js": "2.7.20",
