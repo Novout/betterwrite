@@ -1,5 +1,4 @@
 import { GoogleFont, GoogleFontsGetOption } from 'better-write-types'
-import { $fetch } from 'ohmyfetch'
 
 export const setGlobal = (vfs: Record<any, any>) => {
   const _style = document.createElement('style')
@@ -24,17 +23,18 @@ export const setGlobal = (vfs: Record<any, any>) => {
   document.head.appendChild(_style)
 }
 
-export const get = async (options: GoogleFontsGetOption) => {
+export const get = async (
+  options: GoogleFontsGetOption,
+): Promise<{ normalize: Record<string, any>; names: string[] }> => {
   let normalize: Record<string, any> = {}
   const names: Array<string> = []
 
-  await $fetch(
-    `https://www.googleapis.com/webfonts/v1/webfonts?key=${options.key}&sort=popularity`,
-    {
-      retry: 3,
-      async onResponse({ response }) {
-        const data = await response._data
-
+  return new Promise((res, rej) => {
+    fetch(
+      `https://www.googleapis.com/webfonts/v1/webfonts?key=${options.key}&sort=popularity`,
+    )
+      .then((res) => res.json())
+      .then((data) => {
         data.items.forEach((item: GoogleFont) => {
           if (item.files['regular'])
             item.files['regular'] = item.files['regular'].replace(
@@ -90,9 +90,12 @@ export const get = async (options: GoogleFontsGetOption) => {
         names.sort()
 
         if (options.globalStyle) setGlobal(normalize)
-      },
-    },
-  ).catch(() => {})
 
-  return { normalize, names }
+        res({ normalize, names })
+      })
+      .catch((err) => {
+        // console.error(err)
+        rej(err)
+      })
+  })
 }

@@ -83,7 +83,6 @@
     "mitt": "3.0.0",
     "nanoid": "4.0.2",
     "nprogress": "0.2.0",
-    "ohmyfetch": "0.4.21",
     "pinia": "3.0.3",
     "vue": "3.5.22",
     "vue-directive-providers": "0.1.0",
