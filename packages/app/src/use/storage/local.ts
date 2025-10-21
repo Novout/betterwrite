@@ -20,7 +20,11 @@ export const useLocalStorage = () => {
 
   const setProject = (obj: ProjectObject) => {
     try {
-      set(env.projectLocalStorage(), obj, EDITOR.configuration.clientStorage as ClientStorageOptions)
+      set(
+        env.projectLocalStorage(),
+        obj,
+        EDITOR.configuration.clientStorage as ClientStorageOptions,
+      )
     } catch (e) {
       const key = env.storageLimitSaver()
 
@@ -36,8 +40,14 @@ export const useLocalStorage = () => {
     exclude(env.projectLocalStorage())
   }
 
-  const getProject = async (project?: Maybe<ProjectObject>): Promise<Maybe<ProjectObject>> => {
-    if (!project) project = await get<ProjectObject>(env.projectLocalStorage(), EDITOR.configuration.clientStorage as ClientStorageOptions)
+  const getProject = async (
+    project?: Maybe<ProjectObject>,
+  ): Promise<Maybe<ProjectObject>> => {
+    if (!project)
+      project = await get<ProjectObject>(
+        env.projectLocalStorage(),
+        EDITOR.configuration.clientStorage as ClientStorageOptions,
+      )
 
     return project ? storage.support(project) : undefined
   }

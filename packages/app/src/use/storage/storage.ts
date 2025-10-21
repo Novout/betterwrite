@@ -2,7 +2,13 @@ import { useEnv } from '../env'
 import { useProjectStore } from '@/store/project'
 import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
-import { ProjectObject, ProjectStateSchema, ProjectStateSchemaCharacterItem, ProjectStateSchemaFolder, StorageNormalizeOptions } from 'better-write-types'
+import {
+  ProjectObject,
+  ProjectStateSchema,
+  ProjectStateSchemaCharacterItem,
+  ProjectStateSchemaFolder,
+  StorageNormalizeOptions,
+} from 'better-write-types'
 import { nextTick } from 'vue'
 import useEmitter from '../emitter'
 import { useContextStore } from '@/store/context'
@@ -66,7 +72,7 @@ export const useStorage = () => {
 
     if (
       !_.editor.configuration.entity.hasOwnProperty(
-        'insertEntityInParagraphBreakLine'
+        'insertEntityInParagraphBreakLine',
       )
     ) {
       _.editor.configuration.entity = {
@@ -175,27 +181,27 @@ export const useStorage = () => {
       }
     }
 
-    if(!_.editor.configuration.clientStorage) {
+    if (!_.editor.configuration.clientStorage) {
       _.editor.configuration = {
         ..._.editor.configuration,
         clientStorage: {
           schema: 'local-storage',
-          compress: true
-        }
+          compress: true,
+        },
       }
     }
 
-    if(!_.editor.configuration.topBar) {
+    if (!_.editor.configuration.topBar) {
       _.editor.configuration = {
         ..._.editor.configuration,
-        topBar: true
+        topBar: true,
       }
     }
 
-    if(!_.project.schemas) {
+    if (!_.project.schemas) {
       _.project.schemas = []
       // @ts-expect-error
-      if(_.project.annotations) {
+      if (_.project.annotations) {
         const schemaAnnotationsId = useUtils().id().nano({ prefix: 'schema' })
         const schemaAnnotations = {
           id: schemaAnnotationsId,
@@ -206,33 +212,35 @@ export const useStorage = () => {
           folders: [] as ProjectStateSchemaFolder[],
         } as ProjectStateSchema
 
-        _.project.annotations.folders.forEach(folder => {
-          const folderId = useUtils().id().nano({ prefix: 'folder' }) 
-  
+        _.project.annotations.folders.forEach((folder) => {
+          const folderId = useUtils().id().nano({ prefix: 'folder' })
+
           schemaAnnotations.folders.push({
             id: folderId,
             parentId: schemaAnnotationsId,
             folderName: folder.folderName,
             customIcon: schemaAnnotations.customIcon,
-            files: [...folder.files.map(file => {
-              return {
-                id: useUtils().id().nano({ prefix: 'file' }),
-                parentId: folderId,
-                fileName: file.fileName,
-                milkdownData: file.value,
-                customIcon: schemaAnnotations.customIcon,
-                extra: {}
-              }
-            })]
+            files: [
+              ...folder.files.map((file) => {
+                return {
+                  id: useUtils().id().nano({ prefix: 'file' }),
+                  parentId: folderId,
+                  fileName: file.fileName,
+                  milkdownData: file.value,
+                  customIcon: schemaAnnotations.customIcon,
+                  extra: {},
+                }
+              }),
+            ],
           })
         })
 
         _.project.schemas.push(schemaAnnotations)
-        
+
         delete _.project['annotations']
       }
 
-      if(_.project.characters) {
+      if (_.project.characters) {
         const schemaCharactersId = useUtils().id().nano({ prefix: 'schema' })
         const schemaCharacters = {
           id: schemaCharactersId,
@@ -243,26 +251,28 @@ export const useStorage = () => {
           folders: [] as ProjectStateSchemaFolder[],
         } as ProjectStateSchema
 
-        const folderId = useUtils().id().nano({ prefix: 'folder' }) 
+        const folderId = useUtils().id().nano({ prefix: 'folder' })
 
         schemaCharacters.folders.push({
           id: folderId,
           parentId: schemaCharactersId,
           folderName: t('editor.schemas.types.characters.target'),
           customIcon: schemaCharacters.customIcon,
-          files: [..._.project.characters.list.map(character => {
-            return {
-              id: useUtils().id().nano({ prefix: 'file' }),
-              parentId: folderId,
-              fileName: character.name,
-              milkdownData: {},
-              customIcon: schemaCharacters.customIcon,
-              extra: {
-                ...character,
-                disabled: false
-              } as ProjectStateSchemaCharacterItem
-            }
-          })]
+          files: [
+            ..._.project.characters.list.map((character) => {
+              return {
+                id: useUtils().id().nano({ prefix: 'file' }),
+                parentId: folderId,
+                fileName: character.name,
+                milkdownData: {},
+                customIcon: schemaCharacters.customIcon,
+                extra: {
+                  ...character,
+                  disabled: false,
+                } as ProjectStateSchemaCharacterItem,
+              }
+            }),
+          ],
         })
 
         _.project.schemas.push(schemaCharacters)
@@ -271,10 +281,10 @@ export const useStorage = () => {
       }
     }
 
-    if(!_.project.externalProvider) {
+    if (!_.project.externalProvider) {
       _.project = {
         ..._.project,
-        externalProvider: undefined
+        externalProvider: undefined,
       }
     }
 
@@ -339,7 +349,7 @@ export const useStorage = () => {
 
     await nextTick
 
-    if(options?.soft) return
+    if (options?.soft) return
 
     // Generators render in only PROJECT contents, context is unique for editor show
     PROJECT.updateContext(CONTEXT.$state)

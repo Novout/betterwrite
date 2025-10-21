@@ -155,7 +155,7 @@
   const CONTEXT = useContextStore()
 
   const entity = computed<Entity>(
-    () => CONTEXT.entities[EDITOR.actives.entity.index]
+    () => CONTEXT.entities[EDITOR.actives.entity.index],
   )
   const _index = computed(() => CONTEXT.entities.indexOf(entity.value))
   const options = ref<HTMLElement | null>(null)
@@ -181,7 +181,7 @@
     },
     {
       threshold: 1,
-    }
+    },
   )
 
   tryOnMounted(() => {

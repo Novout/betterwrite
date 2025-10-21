@@ -48,14 +48,14 @@
   Cycle.onAfterMounted(() => {
     path.value = setEditorLogo(
       EDITOR.styles.base.backgroundData ? 'BetterWrite - Custom' : theme.value,
-      useUtils()
+      useUtils(),
     )
   })
 
   watch(theme, (_theme) => {
     path.value = setEditorLogo(
       EDITOR.styles.base.backgroundData ? 'BetterWrite - Custom' : _theme,
-      useUtils()
+      useUtils(),
     )
   })
 
@@ -66,9 +66,9 @@
         EDITOR.styles.base.backgroundData
           ? 'BetterWrite - Custom'
           : theme.value,
-        useUtils()
+        useUtils(),
       )
-    }
+    },
   )
 
   const onClick = () => {

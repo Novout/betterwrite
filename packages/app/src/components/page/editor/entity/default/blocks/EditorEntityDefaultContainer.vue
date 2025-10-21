@@ -55,7 +55,7 @@
   const _index = computed(() => CONTEXT.entities.indexOf(props.entity))
 
   const target = computed(
-    () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu
+    () => EDITOR.actives.entity.index === _index.value && ABSOLUTE.entity.menu,
   )
 
   /* info */
@@ -73,7 +73,7 @@
 
       raw.v2().block().menu(e, _index.value)
     },
-    { delay: 300 }
+    { delay: 300 },
   )
 
   // animations

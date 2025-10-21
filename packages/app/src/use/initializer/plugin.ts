@@ -62,7 +62,7 @@ export const usePluginInitializer = () => {
         HISTORY: useHistoryStore(),
         LIVESHARE: useLiveshareStore(),
         GLOBAL: useGlobalStore(),
-        VAULT: useVaultStore()
+        VAULT: useVaultStore(),
       },
       plugins,
       {
@@ -104,7 +104,7 @@ export const usePluginInitializer = () => {
             progress: useNProgress(),
           },
         },
-      }
+      },
     )
   }
 

@@ -6,19 +6,38 @@
       :class="[!mobile ? 'fixed' : '']"
       class="flex z-20 p-10 flex-col w-full bg-rgba-blur lg:w-1/2 h-full lg:h-3/4 bg-theme-background-1 wb-text overflow-x-hidden overflow-y-auto rounded shadow-2xl wb-scroll"
     >
-      <EditorAbsoluteHeader :title="t('editor.schemas.create.templates.title')" @close="onClose" />
-      <p class="mb-10 font-raleway text-lg">{{ t('editor.schemas.create.templates.description')}}</p>
+      <EditorAbsoluteHeader
+        :title="t('editor.schemas.create.templates.title')"
+        @close="onClose"
+      />
+      <p class="mb-10 font-raleway text-lg">
+        {{ t('editor.schemas.create.templates.description') }}
+      </p>
       <form class="flex flex-col gap-10 w-full" @submit.prevent.stop="">
         <div class="flex flex-col gap-2">
-          <label class="text-lg font-bold font-poppins">{{ t('editor.schemas.create.type')}}</label>
-          <p class="text-md mb-5 font-raleway">{{ t('editor.schemas.create.typeDescription')}}</p>
+          <label class="text-lg font-bold font-poppins">{{
+            t('editor.schemas.create.type')
+          }}</label>
+          <p class="text-md mb-5 font-raleway">
+            {{ t('editor.schemas.create.typeDescription') }}
+          </p>
           <div class="flex items-center gap-2">
-            <InputSelect v-model="type" class="w-36" :arr="defines.schemas().templatesType()" />
-            <p v-if="setter === 'simple'" class="font-bold">{{ t('editor.schemas.create.templates.simple.description')}}</p>
-            <p v-else-if="setter === 'enthusiast'" class="font-bold">{{ t('editor.schemas.create.templates.enthusiast.description')}}</p>
+            <InputSelect
+              v-model="type"
+              class="w-36"
+              :arr="defines.schemas().templatesType()"
+            />
+            <p v-if="setter === 'simple'" class="font-bold">
+              {{ t('editor.schemas.create.templates.simple.description') }}
+            </p>
+            <p v-else-if="setter === 'enthusiast'" class="font-bold">
+              {{ t('editor.schemas.create.templates.enthusiast.description') }}
+            </p>
           </div>
         </div>
-        <Button @click.prevent.stop="onCreate">{{ t('editor.schemas.create.templates.button')}}</Button>
+        <Button @click.prevent.stop="onCreate">{{
+          t('editor.schemas.create.templates.button')
+        }}</Button>
       </form>
     </div>
   </Modal>
@@ -43,7 +62,9 @@
 
   const type = ref<string>(transformer.schemas().template('simple', 'getter'))
 
-  const setter = computed(() => transformer.schemas().template(type.value, 'setter'))
+  const setter = computed(() =>
+    transformer.schemas().template(type.value, 'setter'),
+  )
 
   const breakpoints = useBreakpoints(breakpointsTailwind)
   const mobile = breakpoints.isSmaller('lg')

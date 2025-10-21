@@ -31,13 +31,15 @@
         @action="onSaveProject"
       />
       <EditorHeaderItem
-        v-if="PROJECT.name !== env.projectEmpty() && AUTH.account.dropboxAccessToken"
+        v-if="
+          PROJECT.name !== env.projectEmpty() && AUTH.account.dropboxAccessToken
+        "
         :text="t('editor.bar.dropbox.save')"
         @action="dropbox.save"
       >
-      <template #icon>
-        <IconDropbox class="w-6 h-6 mr-2" />
-      </template>
+        <template #icon>
+          <IconDropbox class="w-6 h-6 mr-2" />
+        </template>
       </EditorHeaderItem>
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem

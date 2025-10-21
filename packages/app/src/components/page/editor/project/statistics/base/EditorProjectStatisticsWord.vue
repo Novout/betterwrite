@@ -76,7 +76,7 @@
 
   const onSet = () => {
     const target = PROJECT.chapters.filter(
-      (page) => page.entities[0].raw === chapter.value
+      (page) => page.entities[0].raw === chapter.value,
     )[0]
 
     const result = project.utils().getWordOccurrences(target, state.min)

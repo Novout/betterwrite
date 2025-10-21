@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="relative flex justify-between flex-col w-full overflow-hidden"
-  >
+  <div class="relative flex justify-between flex-col w-full overflow-hidden">
     <section
       id="edit"
       ref="editor"

@@ -30,12 +30,12 @@
   const transformer = useTransformer()
 
   const type = ref<DOCXStateFlowItemType>(
-    populate.docx().flowItemTypes()[0] as any
+    populate.docx().flowItemTypes()[0] as any,
   )
   const raw = ref<string>('')
 
   const typeForText = computed(
-    () => transformer.docx().flowItem(type.value, 'setter') === 'annotation'
+    () => transformer.docx().flowItem(type.value, 'setter') === 'annotation',
   )
 
   const onAdd = () => {

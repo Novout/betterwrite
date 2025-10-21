@@ -29,9 +29,7 @@
     <EditorToolsSpeechRecognition
       v-else-if="ABSOLUTE.tools.speechRecognition"
     />
-    <EditorSchemasCreate
-      v-else-if="ABSOLUTE.schemas.create"
-    />
+    <EditorSchemasCreate v-else-if="ABSOLUTE.schemas.create" />
     <EditorSchemasTemplate
       v-else-if="ABSOLUTE.schemas.template && PROJECT.schemas.length === 0"
     />

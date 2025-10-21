@@ -8,7 +8,7 @@ import {
   PDFDocOptions,
   PluginTypes,
   ProjectStateTemplatesGenerator,
-  Maybe
+  Maybe,
 } from 'better-write-types'
 import { nextTick, computed } from 'vue-demi'
 import { getPDFUtils } from 'better-write-plugin-theme'
@@ -1336,7 +1336,8 @@ export const PluginPDFSet = (
 
     const data = await doc(options)
 
-    pdfmake.createPdf(data)
+    pdfmake
+      .createPdf(data)
       .getDataUrl()
       .then(
         async (data: any) => {

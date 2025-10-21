@@ -1,6 +1,8 @@
 <template>
   <div class="flex mb-5 shadow-lg flex-col gap-2 w-full">
-    <div class="flex w-full border-theme-aside-graph-lines border-l-1 border-t-1 border-r-1 rounded-t justify-between items-center truncate">
+    <div
+      class="flex w-full border-theme-aside-graph-lines border-l-1 border-t-1 border-r-1 rounded-t justify-between items-center truncate"
+    >
       <div class="flex px-2 wb-text justify-between items-center">
         <InputEmoji v-model="props.schema.customIcon" />
         <p class="font-bold">
@@ -56,7 +58,7 @@
 
   const props = defineProps<{
     schema: ProjectStateSchema
-  }>() 
+  }>()
 
   const PROJECT = useProjectStore()
 

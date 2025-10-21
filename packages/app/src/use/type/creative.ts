@@ -43,7 +43,7 @@ export const useCreativeType = () => {
 
     const remove = (page: ContextState) => {
       PROJECT.creative.drafts = PROJECT.creative.drafts.filter(
-        (p) => p !== page
+        (p) => p !== page,
       )
 
       toast.success(t('toast.generics.successRemoved'))

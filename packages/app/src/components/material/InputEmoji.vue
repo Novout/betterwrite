@@ -1,26 +1,54 @@
 <template>
   <div ref="icon">
-    <img v-if="props.modelValue?.startsWith('data:image/')" class="cursor-pointer w-5 h-5" :src="props.modelValue" @click="toggle(true)"/>
-    <p v-else class="cursor-pointer"  @click="toggle(true)">{{ props.modelValue }}</p>
-    <button v-if="!props.modelValue" class="flex cursor-pointer items-center justify-center" @click="toggle(true)">
+    <img
+      v-if="props.modelValue?.startsWith('data:image/')"
+      class="cursor-pointer w-5 h-5"
+      :src="props.modelValue"
+      @click="toggle(true)"
+    />
+    <p v-else class="cursor-pointer" @click="toggle(true)">
+      {{ props.modelValue }}
+    </p>
+    <button
+      v-if="!props.modelValue"
+      class="flex cursor-pointer items-center justify-center"
+      @click="toggle(true)"
+    >
       <slot />
     </button>
-    <div v-if="value" class="flex relative left-10 items-center p-2 flex-col bg-theme-background-3 wb-text">
-      <button class="bg-theme-background-2 hover:bg-theme-background-4 transition-colors cursor-pointer rounded shadow p-2 font-raleway text-sm cursor-pointer" @click.prevent.stop="onImage">{{ t('editor.schemas.icon.import') }}</button>
+    <div
+      v-if="value"
+      class="flex relative left-10 items-center p-2 flex-col bg-theme-background-3 wb-text"
+    >
+      <button
+        class="bg-theme-background-2 hover:bg-theme-background-4 transition-colors cursor-pointer rounded shadow p-2 font-raleway text-sm cursor-pointer"
+        @click.prevent.stop="onImage"
+      >
+        {{ t('editor.schemas.icon.import') }}
+      </button>
       <p class="my-2">{{ t('editor.schemas.icon.or') }}</p>
-      <EmojiPicker :native="true" :disable-sticky-group-names="true" :hide-search="true" :disable-skin-tones="true" :hide-group-names="true" :hide-group-items="true" :display-recent="false" @select="onEmoji" />
+      <EmojiPicker
+        :native="true"
+        :disable-sticky-group-names="true"
+        :hide-search="true"
+        :disable-skin-tones="true"
+        :hide-group-names="true"
+        :hide-group-items="true"
+        :display-recent="false"
+        @select="onEmoji"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { useEditorStore } from '@/store/editor';
+  import { useEditorStore } from '@/store/editor'
   import { onClickOutside, useToggle } from '@vueuse/core'
-  import { getImageFileRaw } from 'better-write-image-converter';
+  import { getImageFileRaw } from 'better-write-image-converter'
   import { Maybe } from 'better-write-types'
-  import { ref } from 'vue';
-  import { useI18n } from 'vue-i18n';
-  import { useToast } from 'vue-toastification';
+  import { ref } from 'vue'
+  import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vue-toastification'
   import EmojiPicker from 'vue3-emoji-picker'
 
   const EDITOR = useEditorStore()

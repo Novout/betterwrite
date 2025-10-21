@@ -918,7 +918,7 @@ export default {
             'Create shortcuts to insert recurring words or sentences.',
           description5:
             'Easily discover how much a character appears in the text or its impact on context.',
-          description6: ''
+          description6: '',
         },
         final: {
           title: 'Explore.',

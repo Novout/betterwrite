@@ -170,7 +170,7 @@
       cycle.awaitedOnMounted(() => {
         // TODO: improve local.onLoadProject deserialize for correct onMounted access ref's
         // branch for workaround in async svg+xml render
-        if(drauu.value?.el?.innerHTML) clear()
+        if (drauu.value?.el?.innerHTML) clear()
 
         load(props.entity.raw)
       })
@@ -186,7 +186,7 @@
 
     const normalize = drauu.value!.el!.outerHTML.replace(
       utils.regex().classTag(),
-      ''
+      '',
     )
 
     props.entity.external!.image!.size!.width = width

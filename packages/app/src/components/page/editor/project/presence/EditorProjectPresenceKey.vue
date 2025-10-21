@@ -48,7 +48,7 @@
   const blurLink = ref<boolean>(true)
 
   const pathLink = computed(
-    () => `${env.getCorrectLocalUrl()}/?liveshare=${props.id}`
+    () => `${env.getCorrectLocalUrl()}/?liveshare=${props.id}`,
   )
 
   const onCopy = async (isLink = false) => {

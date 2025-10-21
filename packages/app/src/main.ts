@@ -62,9 +62,12 @@ app.use(toast, {
 useRegisterSW({
   onRegistered(r) {
     r &&
-      setInterval(() => {
-        r.update()
-      }, 60 * 30 * 1000)
+      setInterval(
+        () => {
+          r.update()
+        },
+        60 * 30 * 1000,
+      )
   },
 })
 

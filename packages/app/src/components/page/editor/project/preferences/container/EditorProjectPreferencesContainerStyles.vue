@@ -59,7 +59,7 @@
             <p class="text-sm">
               {{
                 t(
-                  'editor.preferences.configuration.editor.background.imageBlur'
+                  'editor.preferences.configuration.editor.background.imageBlur',
                 )
               }}
             </p>
@@ -69,7 +69,7 @@
             <p class="text-sm">
               {{
                 t(
-                  'editor.preferences.configuration.editor.background.imageGrayscale'
+                  'editor.preferences.configuration.editor.background.imageGrayscale',
                 )
               }}
             </p>
@@ -79,7 +79,7 @@
             <p class="text-sm">
               {{
                 t(
-                  'editor.preferences.configuration.editor.background.imageSaturate'
+                  'editor.preferences.configuration.editor.background.imageSaturate',
                 )
               }}
             </p>
@@ -89,7 +89,7 @@
             <p class="text-sm">
               {{
                 t(
-                  'editor.preferences.configuration.editor.background.imageSepia'
+                  'editor.preferences.configuration.editor.background.imageSepia',
                 )
               }}
             </p>
@@ -265,7 +265,7 @@
   const fonts = computed(() =>
     EDITOR.styles.googleFontsInjection
       ? ['Poppins', 'Raleway', ...PDF.fonts]
-      : ['Poppins', 'Raleway']
+      : ['Poppins', 'Raleway'],
   )
 
   const onSwitchTheme = async (theme: BetterWriteThemes) => {
@@ -289,7 +289,7 @@
         EDITOR.styles.heading.fontFamily = 'Poppins'
         EDITOR.styles.text.fontFamily = 'Raleway'
       }
-    }
+    },
   )
 
   const onCoverImageLoad = async (e: any) => {

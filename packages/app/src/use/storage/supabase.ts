@@ -17,47 +17,30 @@ export const useSupabase = () => {
   const { t } = useI18n()
   const utils = useUtils()
 
-  const toDashboard = () => {
-
-  }
+  const toDashboard = () => {}
 
   const login = (
     provider: SupabaseIntegrations,
-    notification: boolean = true
+    notification: boolean = true,
   ) => {
     toast.info(t('toast.generics.load'))
   }
 
-  const out = () => {
-  }
+  const out = () => {}
 
-  const getDocuments = async () => {
+  const getDocuments = async () => {}
 
-  }
+  const getProjects = async () => {}
 
-  const getProjects = async () => {
+  const saveProject = async (project?: ProjectObject) => {}
 
-  }
+  const deleteProject = async (id: ID<number>) => {}
 
-  const saveProject = async (project?: ProjectObject) => {
+  const loadProject = (context: ProjectObject) => {}
 
-  }
+  const loadProjectById = async (id: ID<number>) => {}
 
-  const deleteProject = async (id: ID<number>) => {
-
-  }
-
-  const loadProject = (context: ProjectObject) => {
-   
-  }
-
-  const loadProjectById = async (id: ID<number>) => {
-    
-  }
-
-  const getProfile = async () => {
-
-  }
+  const getProfile = async () => {}
 
   const getProjectSize = (context: ProjectObject) => {
     return (
@@ -67,13 +50,9 @@ export const useSupabase = () => {
     )
   }
 
-  const getAllProjectSize = async () => {
- 
-  }
+  const getAllProjectSize = async () => {}
 
-  const getPlanBar = async (plan: AccountPlan) => {
-
-  }
+  const getPlanBar = async (plan: AccountPlan) => {}
 
   const getCorrectPlan = (plan: AccountPlan) => {
     switch (plan) {

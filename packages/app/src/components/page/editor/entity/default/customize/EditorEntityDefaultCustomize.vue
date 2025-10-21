@@ -201,31 +201,31 @@
   const { isLoading } = useNProgress()
 
   const entity = computed<Entity>(
-    () => CONTEXT.entities[EDITOR.actives.entity.index]
+    () => CONTEXT.entities[EDITOR.actives.entity.index],
   )
   const paragraph = computed(
-    () => entity.value.external!.paragraph as EntityExternalParagraph
+    () => entity.value.external!.paragraph as EntityExternalParagraph,
   )
 
   const options = ref<HTMLElement | null>(null)
 
   const templates = computed(() =>
-    PROJECT.templates.generators.map((g) => g.className)
+    PROJECT.templates.generators.map((g) => g.className),
   )
   const template = ref<string>(
     entity.value?.external?.paragraph?.class &&
       templates.value.find(
-        (template) => template === entity.value?.external?.paragraph?.class
+        (template) => template === entity.value?.external?.paragraph?.class,
       )
       ? entity.value?.external?.paragraph?.class
-      : PROJECT.templates.generators[0].className
+      : PROJECT.templates.generators[0].className,
   )
   const templateText = ref<string>('')
   const generator = computed<ProjectStateTemplatesGenerator>(
     () =>
       PROJECT.templates.generators.find(
-        (g) => g.className === template.value
-      ) as any
+        (g) => g.className === template.value,
+      ) as any,
   )
 
   onClickOutside(options as any, () => onClose())
@@ -256,7 +256,7 @@
 
     if (
       PROJECT.templates.generators.find(
-        (g) => g.className === templateText.value
+        (g) => g.className === templateText.value,
       )
     ) {
       toast.error(t('toast.entity.paragraph.generator.exists'))
@@ -266,7 +266,7 @@
     isLoading.value = true
 
     PROJECT.templates.generators.push(
-      factory.entity().generator(templateText.value)
+      factory.entity().generator(templateText.value),
     )
     paragraph.value.class = templateText.value
 
@@ -281,7 +281,7 @@
     isLoading.value = true
 
     PROJECT.templates.generators = PROJECT.templates.generators.filter(
-      (g) => g.className !== template.value
+      (g) => g.className !== template.value,
     )
 
     template.value = t('editor.entity.generator.template')

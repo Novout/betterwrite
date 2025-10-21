@@ -11,7 +11,10 @@
     ]"
   >
     <EditorBaseRenderHistory v-if="EDITOR.configuration.topBar" />
-    <div id="entity-main" class="flex flex-col mb-auto overflow-y-auto wb-scroll">
+    <div
+      id="entity-main"
+      class="flex flex-col mb-auto overflow-y-auto wb-scroll"
+    >
       <EditorBaseRender v-if="PROJECT.base === 'chapter'" />
       <EditorBaseSchemas v-else-if="PROJECT.base === 'annotations'" />
     </div>

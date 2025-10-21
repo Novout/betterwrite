@@ -925,7 +925,7 @@ export default {
             'Crie atalhos para inserir palavras ou sentenças recorrentes.',
           description5:
             'Descubra com facilidade o quanto um personagem aparece no texto ou seu impacto no contexto.',
-          description6: ''
+          description6: '',
         },
         final: {
           title: 'Explore.',

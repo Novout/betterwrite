@@ -57,8 +57,20 @@
           :style="{ backgroundColor: 'red' }"
           class="w-2 h-2 rounded-full"
         ></div>
-        {{ error.$propertyPath === 'email' && ((error.$params as any).type === 'email' || (error.$params as any).type === 'required') ? t('landing.auth.email') : '' }}
-        {{ error.$propertyPath === 'password' && ((error.$params as any).type === 'minLength' || (error.$params as any).type === 'required') ? t('landing.auth.password', (error.$params as any).min) : '' }}
+        {{
+          error.$propertyPath === 'email' &&
+          ((error.$params as any).type === 'email' ||
+            (error.$params as any).type === 'required')
+            ? t('landing.auth.email')
+            : ''
+        }}
+        {{
+          error.$propertyPath === 'password' &&
+          ((error.$params as any).type === 'minLength' ||
+            (error.$params as any).type === 'required')
+            ? t('landing.auth.password', (error.$params as any).min)
+            : ''
+        }}
         {{
           error.$propertyPath === 'termsOfUse'
             ? t('landing.auth.termsError')

@@ -21,7 +21,7 @@
   const checkbox = ref<any>()
 
   const select = ref<boolean>(
-    props.entity.external?.checkbox?.select as boolean
+    props.entity.external?.checkbox?.select as boolean,
   )
 
   watch(select, (_select) => {

@@ -9,7 +9,7 @@
         :spellcheck="true"
         :style="{
           fontFamily: EDITOR.styles.heading?.fontFamily || 'Raleway',
-          fontWeight: EDITOR.styles.heading?.fontWeight || 700
+          fontWeight: EDITOR.styles.heading?.fontWeight || 700,
         }"
         class="w-full"
         :class="[
@@ -27,7 +27,7 @@
         @keydown="block.onKeyboard"
         @input="block.onInput"
       >
-        {{ props.entity.raw === '<br>' ? '' : props.entity.raw }}
+        {{ props.entity.raw === '<br />' ? '' : props.entity.raw }}
       </span>
     </div>
   </EditorEntityDefaultContainer>

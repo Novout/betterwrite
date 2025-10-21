@@ -32,6 +32,10 @@
   const router = useRouter()
 
   const onClickToIssues = () => {
-    window.open('https://github.com/Novout/betterwrite/issues/new', '_blank', 'noopener,noreferrer')
+    window.open(
+      'https://github.com/Novout/betterwrite/issues/new',
+      '_blank',
+      'noopener,noreferrer',
+    )
   }
 </script>

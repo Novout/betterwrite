@@ -1,7 +1,5 @@
 export const useDBInitializer = () => {
-  const init = async () => {
-
-  }
+  const init = async () => {}
 
   return { init }
 }

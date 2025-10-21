@@ -46,7 +46,7 @@
 
   const remove = () => {
     PROJECT.shortcuts.inserts = PROJECT.shortcuts.inserts.filter(
-      (t) => t !== props.insert
+      (t) => t !== props.insert,
     )
   }
 

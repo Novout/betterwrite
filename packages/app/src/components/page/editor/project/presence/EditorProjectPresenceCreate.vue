@@ -10,7 +10,9 @@
           @close="onClose"
         />
         <p v-if="!key">{{ t('editor.presence.create.description') }}</p>
-        <p v-if="!key" class="text-red-600 font-bold">{{ t('editor.presence.beta') }} </p>
+        <p v-if="!key" class="text-red-600 font-bold">
+          {{ t('editor.presence.beta') }}
+        </p>
         <div
           v-if="!key"
           class="flex flex-col sm:flex-row gap-5 w-full items-center justify-between"
@@ -41,10 +43,14 @@
             {{ t('editor.presence.create.new') }}
           </h2>
           <div v-if="!key" class="flex gap-5 w-full">
-            <InputSelect v-model="type" class="flex-1" :arr="defines.presence().roomType()"/>
+            <InputSelect
+              v-model="type"
+              class="flex-1"
+              :arr="defines.presence().roomType()"
+            />
             <div class="flex wb-text flex-1 text-justify flex-col gap-3 w-full">
-              <p>{{ t('editor.presence.type.description.visit')}}</p>
-              <p>{{ t('editor.presence.type.description.collaborator')}}</p>
+              <p>{{ t('editor.presence.type.description.visit') }}</p>
+              <p>{{ t('editor.presence.type.description.collaborator') }}</p>
             </div>
           </div>
           <Button
@@ -80,7 +86,7 @@
   import { onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
-  
+
   const defines = useDefines()
 
   const ABSOLUTE = useAbsoluteStore()
@@ -104,7 +110,9 @@
   const onCreateRoom = () => {
     if (key.value) return
 
-    const _type = transformer.presence().type(type.value, 'setter') as LiveshareType
+    const _type = transformer
+      .presence()
+      .type(type.value, 'setter') as LiveshareType
 
     plugin.emit('plugin-presence-room-create', _type)
   }

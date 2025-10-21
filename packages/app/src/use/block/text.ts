@@ -114,7 +114,7 @@ export const useBlockText = ({
               break
           }
         }
-      }
+      },
     )
 
     emitter.on('entity-speech-recognition', ({ id, result }) => {

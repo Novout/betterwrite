@@ -38,7 +38,7 @@ export const useFinder = () => {
         const occurrences = ASTUtils.occurrences(
           entity.raw,
           state.entry || '',
-          true
+          true,
         )
 
         if (occurrences > 0 && state.entry) {
@@ -59,7 +59,7 @@ export const useFinder = () => {
 
     const pageIndex = PROJECT.chapters.indexOf(object.page)
     const entityIndex = PROJECT.chapters[pageIndex].entities.indexOf(
-      object.entity
+      object.entity,
     )
 
     EXTERNALS.finder.entity = entityIndex
@@ -96,7 +96,7 @@ export const useFinder = () => {
 
     if (state.actuallyLetterCounter <= 1) {
       onSearchGo(
-        state.listOfLettersExists[state.listOfLettersExists.length - 1]
+        state.listOfLettersExists[state.listOfLettersExists.length - 1],
       )
     } else {
       const object = state.listOfLettersExists[state.actuallyLetterCounter - 2]

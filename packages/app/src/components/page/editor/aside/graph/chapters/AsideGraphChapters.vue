@@ -14,9 +14,9 @@
         v-if="!env.isEmptyProject(PROJECT.name)"
         class="ml-1 truncate font-bold"
       >
-        {{
-          CONTEXT.entities[0]?.raw === '<br>' ? t('editor.aside.graph.chapters') : CONTEXT.entities[0]?.raw || t('editor.aside.graph.chapters')
-        }}
+        {{ CONTEXT.entities[0]?.raw === '<br />' ?
+        t('editor.aside.graph.chapters') : CONTEXT.entities[0]?.raw ||
+        t('editor.aside.graph.chapters') }}
       </p>
     </div>
     <AsideGraphControl

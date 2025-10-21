@@ -20,7 +20,11 @@
       </div>
     </div>
   </div>
-  <AsideGraphSchemaList v-for="(schema, index) in PROJECT.schemas" :key="index" :schema="schema" />
+  <AsideGraphSchemaList
+    v-for="(schema, index) in PROJECT.schemas"
+    :key="index"
+    :schema="schema"
+  />
 </template>
 
 <script setup lang="ts">

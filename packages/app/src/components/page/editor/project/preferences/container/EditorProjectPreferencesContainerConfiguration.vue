@@ -45,10 +45,7 @@
       </div>
       <div class="wb-preferences">
         <p class="text-sm">{{ t('editor.aside.configuration.topBar') }}</p>
-        <InputBoolean
-          v-model="EDITOR.configuration.topBar"
-          :specific="true"
-        />
+        <InputBoolean v-model="EDITOR.configuration.topBar" :specific="true" />
       </div>
       <div class="wb-preferences">
         <p class="text-sm">{{ t('editor.aside.configuration.transition') }}</p>
@@ -77,7 +74,7 @@
         <p class="text-sm">
           {{
             t(
-              'editor.aside.configuration.entity.insertEntityInParagraphBreakLine'
+              'editor.aside.configuration.entity.insertEntityInParagraphBreakLine',
             )
           }}
         </p>
@@ -190,7 +187,7 @@
         color="#AA0000"
         :description="
           t(
-            'editor.preferences.configuration.editor.options.googleFonts.description'
+            'editor.preferences.configuration.editor.options.googleFonts.description',
           )
         "
       >
@@ -198,7 +195,7 @@
           <p class="text-sm">
             {{
               t(
-                'editor.preferences.configuration.editor.options.googleFonts.title'
+                'editor.preferences.configuration.editor.options.googleFonts.title',
               )
             }}
           </p>
@@ -209,7 +206,7 @@
         color="#AA0000"
         :description="
           t(
-            'editor.preferences.configuration.editor.options.compressFiles.description'
+            'editor.preferences.configuration.editor.options.compressFiles.description',
           )
         "
       >
@@ -217,7 +214,7 @@
           <p class="text-sm">
             {{
               t(
-                'editor.preferences.configuration.editor.options.compressFiles.title'
+                'editor.preferences.configuration.editor.options.compressFiles.title',
               )
             }}
           </p>
@@ -236,7 +233,7 @@
         color="#AA0000"
         :description="
           t(
-            'editor.preferences.configuration.editor.options.trackEntities.description'
+            'editor.preferences.configuration.editor.options.trackEntities.description',
           )
         "
       >
@@ -244,7 +241,7 @@
           <p class="text-sm">
             {{
               t(
-                'editor.preferences.configuration.editor.options.trackEntities.title'
+                'editor.preferences.configuration.editor.options.trackEntities.title',
               )
             }}
           </p>
@@ -255,7 +252,7 @@
         color="#AA0000"
         :description="
           t(
-            'editor.preferences.configuration.editor.options.purgeEntities.description'
+            'editor.preferences.configuration.editor.options.purgeEntities.description',
           )
         "
       >
@@ -263,7 +260,7 @@
           <p class="text-sm">
             {{
               t(
-                'editor.preferences.configuration.editor.options.purgeEntities.title'
+                'editor.preferences.configuration.editor.options.purgeEntities.title',
               )
             }}
           </p>
@@ -273,20 +270,17 @@
       <DescriptionContainer
         color="#AA0000"
         :description="
-          t(
-            'editor.preferences.configuration.clientStorage.description'
-          )
+          t('editor.preferences.configuration.clientStorage.description')
         "
       >
         <div class="wb-preferences">
           <p class="text-sm">
-            {{
-              t(
-                'editor.preferences.configuration.clientStorage.title'
-              )
-            }}
+            {{ t('editor.preferences.configuration.clientStorage.title') }}
           </p>
-          <InputSelect v-model="EDITOR.configuration.clientStorage.schema" :arr="['local-storage', 'indexeddb']"/>
+          <InputSelect
+            v-model="EDITOR.configuration.clientStorage.schema"
+            :arr="['local-storage', 'indexeddb']"
+          />
         </div>
       </DescriptionContainer>
     </div>

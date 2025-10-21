@@ -65,7 +65,7 @@ export const useSwitcher = () => {
         const occurrences = ASTUtils.occurrences(
           entity.raw,
           state.entry || '',
-          true
+          true,
         )
 
         if (occurrences > 0 && state.entry) {
@@ -86,7 +86,7 @@ export const useSwitcher = () => {
 
     const pageIndex = PROJECT.chapters.indexOf(object.page)
     const entityIndex = PROJECT.chapters[pageIndex].entities.indexOf(
-      object.entity
+      object.entity,
     )
 
     EXTERNALS.switcher.entity = entityIndex
@@ -123,7 +123,7 @@ export const useSwitcher = () => {
 
     if (state.actuallyLetterCounter <= 1) {
       onSearchGo(
-        state.listOfLettersExists[state.listOfLettersExists.length - 1]
+        state.listOfLettersExists[state.listOfLettersExists.length - 1],
       )
     } else {
       const object = state.listOfLettersExists[state.actuallyLetterCounter - 2]

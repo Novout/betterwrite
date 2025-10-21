@@ -37,7 +37,10 @@
                   aside ? 'w-24' : '',
                   'block truncate',
                 ]"
-                :style="{ fontFamily: font ? it as string : '', width: widthItems ? `${widthItems}px` : '' }"
+                :style="{
+                  fontFamily: font ? (it as string) : '',
+                  width: widthItems ? `${widthItems}px` : '',
+                }"
                 >{{ it }}</span
               >
               <span
