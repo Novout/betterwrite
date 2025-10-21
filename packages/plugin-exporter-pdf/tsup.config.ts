@@ -5,5 +5,5 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   clean: true,
   dts: true,
-  external: ['vue3-pdfmake', 'ohmyfetch',  'destr']
+  external: ['vue3-pdfmake', 'destr']
 })
