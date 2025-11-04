@@ -1,8 +1,7 @@
 import { createApp } from 'vue'
 import * as Sentry from '@sentry/vue'
-import { BrowserTracing } from '@sentry/tracing'
 import { useRegisterSW } from 'virtual:pwa-register/vue'
-import { createHead } from '@vueuse/head'
+import { createHead } from '@unhead/vue/client'
 import { createPinia } from 'pinia'
 import { createPluginCore } from 'better-write-plugin-core'
 import { Events } from 'better-write-types'
@@ -78,12 +77,7 @@ if (!env.isDev()) {
   Sentry.init({
     app,
     dsn: env.getSentryDsn(),
-    integrations: [
-      new BrowserTracing({
-        routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-        tracingOrigins: [env.getProdUrl(), /^\//],
-      }),
-    ],
+    sendDefaultPii: true,
     beforeSend(event, _) {
       if (event.exception) {
         Sentry.showReportDialog({
@@ -115,10 +109,6 @@ if (!env.isDev()) {
 
       return event
     },
-    logErrors: true,
-    tracesSampleRate: 0.5,
-    trackComponents: true,
-    hooks: ['mount'],
   })
 }
 

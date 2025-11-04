@@ -1,4 +1,4 @@
-import { useHead } from '@vueuse/head'
+import { useHead } from '@unhead/vue'
 import { VueI18nSEO } from 'better-write-languages'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'

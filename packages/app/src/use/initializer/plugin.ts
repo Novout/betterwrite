@@ -33,11 +33,11 @@ import { useUtils } from '../utils'
 import { useI18n } from 'vue-i18n'
 import { useHistoryStore } from '@/store/history'
 import { useLiveshareStore } from '@/store/liveshare'
+import { useHead } from '@unhead/vue'
 import useEmitter from '../emitter'
 import { useCharacters } from '../characters'
 import * as VUEROUTER from 'vue-router'
 import * as VUEUSE_CORE from '@vueuse/core'
-import * as VUEUSE_HEAD from '@vueuse/head'
 import * as VUEUSE_SOUND from '@vueuse/sound'
 import { useGlobalStore } from '@/store/global'
 import { useDropbox } from '../storage/dropbox'
@@ -98,7 +98,7 @@ export const usePluginInitializer = () => {
         schemas: useSchemas(),
         vueuse: {
           core: VUEUSE_CORE,
-          head: VUEUSE_HEAD,
+          head: useHead,
           sound: VUEUSE_SOUND,
           integration: {
             progress: useNProgress(),

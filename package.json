@@ -13,7 +13,7 @@
     "major": "generi log major"
   },
   "devDependencies": {
-    "generi": "1.2.1",
+    "generi": "2.0.1",
     "lerna": "6.6.2"
   },
   "packageManager": "pnpm@8.5.1"

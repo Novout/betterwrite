@@ -1,2 +1,8 @@
 packages:
   - "packages/*"
+
+shamefullyHoist: true
+ignoreWorkspaceRootCheck: true
+strictPeerDependencies: false
+autoInstallPeers: true
+resolutionMode: highest

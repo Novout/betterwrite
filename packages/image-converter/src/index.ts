@@ -60,7 +60,7 @@ export const ImageToForcePNG = (
 }
 
 export const getFileOrBlobResult = (
-  file: File | Blob,
+  file: File,
 ): Promise<ImageFileRawReturn> => {
   return new Promise((res, rej) => {
     const reader = new FileReader()
@@ -121,7 +121,7 @@ export const getImageFileRaw = (
         new Compressor(file, {
           quality: options?.compress?.quality ?? 1.0,
           async success(compressed) {
-            const data = await getFileOrBlobResult(compressed)
+            const data = await getFileOrBlobResult(compressed as File)
 
             data ? res(data) : rej(data)
           },
