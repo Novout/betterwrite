@@ -1,6 +1,6 @@
 {
   "name": "better-write-extension",
-  "version": "1.3.26",
+  "version": "1.3.27",
   "author": "Novout",
   "license": "MIT",
   "keywords": [
@@ -16,7 +16,7 @@
     "build": "tsup"
   },
   "dependencies": {
-    "better-write-types": "^1.3.26"
+    "better-write-types": "^1.3.27"
   },
   "files": [
     "dist/**/*",
