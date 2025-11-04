@@ -13,7 +13,7 @@
     "major": "generi log major"
   },
   "devDependencies": {
-    "generi": "2.0.1",
+    "generi": "2.0.4",
     "happy-dom": "20.0.10",
     "prettier": "3.6.2",
     "lerna": "6.6.2",

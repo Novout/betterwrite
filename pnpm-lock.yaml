@@ -5,8 +5,8 @@ importers:
   .:
     devDependencies:
       generi:
-        specifier: 2.0.1
-        version: 2.0.1
+        specifier: 2.0.4
+        version: 2.0.4
       happy-dom:
         specifier: 20.0.10
         version: 20.0.10
@@ -6729,8 +6729,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /generi@2.0.1:
-    resolution: {integrity: sha512-xUtE+Uf0RQl5lxhDBLFPxrWCvdCCV0oXYjLBuYoHoNd+PvXbiZ2SPWuIfN7PMxJJp0pl0RlSjMCcf1XbRrQelA==}
+  /generi@2.0.4:
+    resolution: {integrity: sha512-5I5NDsOR2vB1MEVrkT/nLXqo29fismAtvQQvSIfXdKqlCCWYY9hQhHNY/uU2Boi3kpFcE07TPZFU8TK/gF8nEQ==}
     engines: {node: '>=20.0.0'}
     hasBin: true
     dependencies:
