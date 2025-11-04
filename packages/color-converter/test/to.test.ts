@@ -1,4 +1,4 @@
-import { HEXToCMYK } from 'src'
+import { HEXToCMYK } from '../src'
 import { describe, expect, it } from 'vitest'
 
 describe('Color Converter - PDFMake Provider', () => {
@@ -11,7 +11,7 @@ describe('Color Converter - PDFMake Provider', () => {
   })
 
   it('should not converter hex to cmyk', () => {
-    expect(HEXToCMYK('#333', 'pdfmake')).toEqual("#333")
+    expect(HEXToCMYK('#333', 'pdfmake')).toEqual('#333')
   })
 
   it('should converter correct black #', () => {

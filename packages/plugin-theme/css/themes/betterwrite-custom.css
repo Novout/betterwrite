@@ -31,7 +31,7 @@
   --theme-aside-graph-background-hover: rgb(0, 0, 0, 0.2);
   --theme-aside-graph-background-active: rgb(0, 0, 0, 0.2);
   --theme-editor-scrollbar-track: transparent;
-  --theme-editor-scrollbar-thumb:  rgb(0, 0, 0, 0.5);
+  --theme-editor-scrollbar-thumb: rgb(0, 0, 0, 0.5);
   --theme-editor-betterwrite: #e5e7eb;
   --theme-editor-io: #e5e7eb;
   --theme-editor-full-background: rgba(0, 0, 0, 0.75);
@@ -109,8 +109,18 @@
   --theme-editor-pdf-configuration-container-text-hover: #e5e7eb;
   --theme-editor-pdf-configuration-container-text-active: #e5e7eb;
   --theme-editor-pdf-configuration-container-background: rgba(0, 0, 0, 0.75);
-  --theme-editor-pdf-configuration-container-background-hover: rgba(0, 0, 0, 0.75);
-  --theme-editor-pdf-configuration-container-background-active: rgba(0, 0, 0, 0.75);
+  --theme-editor-pdf-configuration-container-background-hover: rgba(
+    0,
+    0,
+    0,
+    0.75
+  );
+  --theme-editor-pdf-configuration-container-background-active: rgba(
+    0,
+    0,
+    0,
+    0.75
+  );
   --theme-editor-pdf-generator-paragraph: #e5e7eb;
   --theme-editor-pdf-generator-heading-one: #e5e7eb;
   --theme-editor-pdf-generator-heading-two: #e5e7eb;
@@ -150,8 +160,18 @@
   --theme-editor-external-comment-title-active: #e5e7eb;
   --theme-editor-external-comment-border: none;
   --theme-editor-external-comment-textarea-background: rgba(0, 0, 0, 0.75);
-  --theme-editor-external-comment-textarea-background-hover: rgba(0, 0, 0, 0.75);
-  --theme-editor-external-comment-textarea-background-active: rgba(0, 0, 0, 0.75);
+  --theme-editor-external-comment-textarea-background-hover: rgba(
+    0,
+    0,
+    0,
+    0.75
+  );
+  --theme-editor-external-comment-textarea-background-active: rgba(
+    0,
+    0,
+    0,
+    0.75
+  );
   --theme-editor-tooltip-background: rgba(0, 0, 0, 0.75);
   --theme-editor-tooltip-text: #e5e7eb;
   --theme-editor-tooltip-border: none;
@@ -170,8 +190,18 @@
   --theme-editor-creative-drafts-container-list-text-hover: #e5e7eb;
   --theme-editor-creative-drafts-container-list-text-active: #e5e7eb;
   --theme-editor-creative-drafts-container-item-background: rgba(0, 0, 0, 0.2);
-  --theme-editor-creative-drafts-container-item-background-hover: rgba(0, 0, 0, 0.2);
-  --theme-editor-creative-drafts-container-item-background-active: rgba(0, 0, 0, 0.2);
+  --theme-editor-creative-drafts-container-item-background-hover: rgba(
+    0,
+    0,
+    0,
+    0.2
+  );
+  --theme-editor-creative-drafts-container-item-background-active: rgba(
+    0,
+    0,
+    0,
+    0.2
+  );
   --theme-editor-creative-drafts-container-item-text: #e5e7eb;
   --theme-editor-dashboard-background-main: rgba(0, 0, 0, 0.75);
   --theme-editor-dashboard-background-item: rgba(0, 0, 0, 0.75);

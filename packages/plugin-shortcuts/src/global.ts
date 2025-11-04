@@ -4,11 +4,11 @@ import { computed } from 'vue-demi'
 export const GlobalSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   emitter.on('call-editor-mounted', () => {
     const isThirdPartyShortcut = computed(
-      () => stores.PROJECT.base === 'annotations'
+      () => stores.PROJECT.base === 'annotations',
     )
     const validKeys = ['a', 'c', 'v', 'b', 'i', 'z']
 

@@ -82,8 +82,8 @@
   import { useI18n } from 'vue-i18n'
   import { useLocalStorage } from '@/use/storage/local'
   import { useSupabase } from '@/use/storage/supabase'
-  import { useAuthStore } from '@/store/auth'
   import { useDropbox } from '@/use/storage/dropbox'
+  import { useAuthStore } from '@/store/auth'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()

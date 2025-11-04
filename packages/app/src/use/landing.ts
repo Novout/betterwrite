@@ -3,12 +3,9 @@ import { useI18n } from 'vue-i18n'
 import { computed, onMounted, nextTick, ref } from 'vue'
 import { useEnv } from '@/use/env'
 import { useRoute, useRouter } from 'vue-router'
-import { useAuthStore } from '@/store/auth'
 import { usePlugin } from 'better-write-plugin-core'
 
 export const useLanding = () => {
-  const AUTH = useAuthStore()
-
   const { t } = useI18n()
   const env = useEnv()
   const router = useRouter()
@@ -16,12 +13,6 @@ export const useLanding = () => {
   const plugin = usePlugin()
 
   const isNecessaryLogin = ref<boolean>(!!route.query.login)
-
-  if (AUTH.account.user) {
-    isNecessaryLogin.value = false
-
-    if (!!route.query.login) router.push('/')
-  }
 
   onMounted(() => {
     document.body.removeAttribute('class')

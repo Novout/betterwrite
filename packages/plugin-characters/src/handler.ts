@@ -3,7 +3,7 @@ import { PluginTypes } from 'better-write-types'
 export const PluginHandlerSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   emitter.on('call-editor-mounted', () => {
     // for set color in all entities with character exists
@@ -13,7 +13,7 @@ export const PluginHandlerSet = (
       'characters-handler',
       ({ index, inner }: { index: number; inner: string }) => {
         hooks.characters.handler(index, inner)
-      }
+      },
     )
   })
 }

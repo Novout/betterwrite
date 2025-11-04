@@ -1,9 +1,9 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from 'tsup'
 
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
   clean: true,
   dts: true,
-  external: ['file-saver', 'docx']
+  external: ['file-saver', 'docx'],
 })

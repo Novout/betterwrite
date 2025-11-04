@@ -5,7 +5,7 @@ import { computed, ref, watch } from 'vue-demi'
 export const CollectorSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   const instance = ref<any>(null)
 

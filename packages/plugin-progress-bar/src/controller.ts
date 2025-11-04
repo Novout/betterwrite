@@ -5,7 +5,7 @@ import { useNProgress } from '@vueuse/integrations/useNProgress'
 export const ControllerSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   const { isLoading, done, progress, start } = useNProgress(null, {
     minimum: 0.2,

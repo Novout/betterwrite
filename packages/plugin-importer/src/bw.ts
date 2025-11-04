@@ -5,7 +5,7 @@ import { readBW } from 'better-write-extension'
 export const BWSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   On.externals().PluginImporterBW(emitter, [
     async ({ data }: ImporterParams) => {

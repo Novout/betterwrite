@@ -4,7 +4,7 @@ import { PluginTypes } from 'better-write-types'
 export const UndoSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   On.externals().PluginEntityUndo(emitter, [
     async () => {

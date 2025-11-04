@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { routes } from './routes'
 import { useNetwork } from '@vueuse/core'
-import { useAuthStore } from './store/auth'
 import { useEnv } from './use/env'
 
 const router = createRouter({
@@ -10,8 +9,6 @@ const router = createRouter({
 })
 
 router.beforeResolve(async (to, from, next) => {
-  const AUTH = useAuthStore()
-
   const env = useEnv()
   const user = localStorage?.getItem('visited') || false
   const url = window.location.href

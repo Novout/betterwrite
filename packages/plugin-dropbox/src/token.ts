@@ -5,7 +5,7 @@ import { DropboxAuth } from 'dropbox'
 export const DropboxToken = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   emitter.on('call-editor-mounted', async () => {
     const params = hooks.vueuse.core.useUrlSearchParams()
@@ -13,7 +13,7 @@ export const DropboxToken = (
     const state = params?.state
     const code_verifier = await get<string>(
       'code_verifier',
-      stores.EDITOR.configuration.clientStorage as ClientStorageOptions
+      stores.EDITOR.configuration.clientStorage as ClientStorageOptions,
     )
 
     if (code && code_verifier && state === 'dropboxbw') {
@@ -24,7 +24,7 @@ export const DropboxToken = (
 
       const token = await dbxAuth.getAccessTokenFromCode(
         hooks.env.getCorrectLocalUrl(),
-        code
+        code,
       )
 
       stores.AUTH.account.dropboxAccessToken = token?.result // @ts-expect-error

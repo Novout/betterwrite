@@ -13,7 +13,7 @@ import { exclude, set } from 'better-write-client-storage'
 export const DropboxSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   On.externals().PluginDropboxSave(emitter, [
     () => {
@@ -50,7 +50,7 @@ export const DropboxSet = (
           .then(({ result }) => {
             if (!stores.VAULT.dropboxFiles.some(({ id }) => id === result.id))
               stores.VAULT.dropboxFiles.unshift(
-                result as files.FileMetadataReference
+                result as files.FileMetadataReference,
               )
 
             hooks.toast.success(hooks.i18n.t('toast.dropbox.save'))
@@ -90,7 +90,7 @@ export const DropboxSet = (
 
       const targets = (files.result.entries.filter(
         // @ts-expect-error
-        (file) => file?.is_downloadable && file?.['.tag'] === 'file'
+        (file) => file?.is_downloadable && file?.['.tag'] === 'file',
       ) ?? []) as files.FileMetadataReference[]
 
       stores.VAULT.dropboxFiles.unshift(...targets)
@@ -118,7 +118,7 @@ export const DropboxSet = (
         .filesDeleteV2({ path: file.id })
         .then(() => {
           stores.VAULT.dropboxFiles = stores.VAULT.dropboxFiles.filter(
-            ({ id }) => id !== file.id
+            ({ id }) => id !== file.id,
           )
         })
         .catch((err: DropboxResponseError<any>) => {
@@ -179,14 +179,14 @@ export const DropboxSet = (
           'file_requests.read',
         ],
         undefined,
-        true
+        true,
       )
 
       exclude('code_verifier')
       await set(
         'code_verifier',
         dbxAuth.getCodeVerifier(),
-        stores.EDITOR.configuration.clientStorage as ClientStorageOptions
+        stores.EDITOR.configuration.clientStorage as ClientStorageOptions,
       )
 
       window.open(url as string, '_self')

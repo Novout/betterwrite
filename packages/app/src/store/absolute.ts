@@ -34,6 +34,7 @@ export const useAbsoluteStore = defineStore('absolute', {
       docx: {
         configuration: false,
       },
+      // deprecated
       auth: {
         supabase: false,
       },

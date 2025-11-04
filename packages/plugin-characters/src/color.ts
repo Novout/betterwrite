@@ -11,7 +11,7 @@ import { HEXToRGBA } from 'better-write-color-converter'
 export const PluginBackgroundColorSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   On.externals().PluginCharactersColorBackground(emitter, [
     ({
@@ -57,7 +57,7 @@ export const PluginBackgroundColorSet = (
             text
               .split(/(\s|\s[&-._:])/)
               .find((t) =>
-                t.toLowerCase().includes(character.name.toLowerCase())
+                t.toLowerCase().includes(character.name.toLowerCase()),
               ) &&
             isValidImportant
           )

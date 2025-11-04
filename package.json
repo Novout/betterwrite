@@ -5,8 +5,8 @@
     "dev": "lerna run dev",
     "serve": "lerna run serve",
     "build": "lerna run build --verbose",
-    "test": "lerna run test",
-    "lint": "lerna run lint",
+    "test": "vitest run",
+    "lint": "prettier --write packages/",
     "deploy": "pnpm run build",
     "patch": "generi log patch",
     "minor": "generi log minor",
@@ -14,7 +14,10 @@
   },
   "devDependencies": {
     "generi": "2.0.1",
-    "lerna": "6.6.2"
+    "happy-dom": "20.0.10",
+    "prettier": "3.6.2",
+    "lerna": "6.6.2",
+    "vitest": "4.0.6"
   },
   "packageManager": "pnpm@8.5.1"
 }

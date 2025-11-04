@@ -15,7 +15,7 @@ import { On } from 'better-write-plugin-core'
 import { Entity } from 'better-write-types'
 
 const extractFilter = async (
-  entries: zip.Entry[]
+  entries: zip.Entry[],
 ): Promise<any[] | undefined> => {
   const arr: any = []
 
@@ -118,7 +118,7 @@ export const DocxToJson = async (data: string): Promise<ImporterData> => {
 export const DOCXSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   On.externals().PluginImporterDOCX(emitter, [
     async ({ data, fileName }: ImporterParams) => {

@@ -6,8 +6,8 @@
       props.specific
         ? 'bg-theme-editor-material-boolean-background'
         : cmp
-        ? 'bg-theme-background-1'
-        : 'bg-theme-background-4',
+          ? 'bg-theme-background-1'
+          : 'bg-theme-background-4',
     ]"
     class="relative inline-flex items-center h-6 transition-colors rounded-full min-w-11 focus:outline-none shadow-xl"
   >
@@ -16,10 +16,10 @@
         isHovered && cmp
           ? 'translate-x-5'
           : isHovered && !cmp
-          ? 'translate-x-2'
-          : cmp
-          ? 'translate-x-6'
-          : 'translate-x-1',
+            ? 'translate-x-2'
+            : cmp
+              ? 'translate-x-6'
+              : 'translate-x-1',
         props.specific
           ? 'bg-theme-editor-material-boolean-rounded-background'
           : 'bg-white',

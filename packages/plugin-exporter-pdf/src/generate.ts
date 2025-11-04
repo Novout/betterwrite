@@ -1162,16 +1162,16 @@ export const PluginPDFSet = (
                 },
               ]
             : currentPage <= 1 &&
-              stores.PDF.styles.switcher.cover &&
-              stores.PDF.styles.base.background.data
-            ? undefined
-            : !isTheme.value && defColor === '#FFFFFF'
-            ? undefined
-            : [
-                {
-                  canvas: [generate(options).styles().background()],
-                },
-              ]
+                stores.PDF.styles.switcher.cover &&
+                stores.PDF.styles.base.background.data
+              ? undefined
+              : !isTheme.value && defColor === '#FFFFFF'
+                ? undefined
+                : [
+                    {
+                      canvas: [generate(options).styles().background()],
+                    },
+                  ]
         },
         footer: stores.PDF.styles.switcher.footer
           ? function (

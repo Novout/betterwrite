@@ -132,7 +132,7 @@ input[type='number'] {
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
   filter: blur(5px);
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 .bg-custom-grayscale {

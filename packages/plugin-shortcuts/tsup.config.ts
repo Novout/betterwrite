@@ -5,5 +5,5 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   clean: true,
   dts: true,
-  external: ['@zip.js/zip.js', 'destr', 'xml-js']
+  external: ['@zip.js/zip.js', 'destr', 'xml-js'],
 })

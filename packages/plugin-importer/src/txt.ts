@@ -5,7 +5,7 @@ import { nextTick } from 'vue-demi'
 export const TXTSet = (
   emitter: PluginTypes.PluginEmitter,
   stores: PluginTypes.PluginStores,
-  hooks: PluginTypes.PluginHooks
+  hooks: PluginTypes.PluginHooks,
 ) => {
   On.externals().PluginImporterTXT(emitter, [
     async ({ data, fileName }: ImporterParams) => {

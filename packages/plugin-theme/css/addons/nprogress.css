@@ -22,7 +22,8 @@
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px var(--theme-editor-nprogress-background),
+  box-shadow:
+    0 0 10px var(--theme-editor-nprogress-background),
     0 0 5px var(--theme-editor-nprogress-background);
   opacity: 1;
 

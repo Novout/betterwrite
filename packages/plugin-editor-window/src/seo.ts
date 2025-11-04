@@ -20,7 +20,7 @@ export const PluginSeoSet = (
           (stores.CONTEXT.entities[0]?.raw ? ' - ' : '') +
           stores.CONTEXT.entities[0]?.raw,
     )
-    
+
     hooks.vueuse.head({
       title: _title,
       meta: [

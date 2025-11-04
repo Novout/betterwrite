@@ -170,7 +170,6 @@ export const useStorage = () => {
     }
 
     if (!_.project.chapters) {
-      // @ts-expect-error
       _.project.chapters = _.project.pages || []
     }
 
@@ -200,7 +199,6 @@ export const useStorage = () => {
 
     if (!_.project.schemas) {
       _.project.schemas = []
-      // @ts-expect-error
       if (_.project.annotations) {
         const schemaAnnotationsId = useUtils().id().nano({ prefix: 'schema' })
         const schemaAnnotations = {

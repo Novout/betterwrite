@@ -13,21 +13,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
-    "types": [
-      "vite/client",
-      "vite-plugin-pwa/client"
-    ],
+    "types": ["vite/client", "vite-plugin-pwa/client"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": [
     "src/**/*.ts",
@@ -36,10 +26,5 @@
     "src/**/*.vue",
     "desktop/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "/pdfmake.js$/",
-    "**/*.test.ts",
-    "src/use/pdf.ts"
-  ]
+  "exclude": ["node_modules", "/pdfmake.js$/", "**/*.test.ts", "src/use/pdf.ts"]
 }
