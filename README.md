@@ -15,6 +15,7 @@ betterwrite.io
 <p align="center">
   <a href="https://betterwrite.io"><img src="https://img.shields.io/github/license/Novout/better-write?style=for-the-badge&color=15203B&label="></a>
   <a href="https://betterwrite.io"><img src="https://img.shields.io/github/lerna-json/v/Novout/better-write?style=for-the-badge&color=0f172a&label="></a>
+  <a href="https://discord.gg/mEGyZUXKYc" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg?style=for-the-badge&color=0f172a&label=Discord" alt="Discord"/></a>
 <p>
 
 <br>
