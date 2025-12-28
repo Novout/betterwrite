@@ -38,6 +38,6 @@
     ProgressBarPlugin(),
     EditorWindowPlugin(),
     DropboxPlugin(),
-    BackendPlugin()
+    BackendPlugin(),
   ]).init()
 </script>
