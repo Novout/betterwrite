@@ -7,7 +7,7 @@ export const useAuthStore = defineStore('auth', {
       user: null,
       account: {
         // TODO: remove id use
-        project_id_activity: null,
+        project_id_activity: undefined,
       },
     }
   },
