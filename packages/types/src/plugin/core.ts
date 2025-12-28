@@ -87,6 +87,8 @@ export type PluginEmitterName =
   | 'plugin-dropbox-save'
   | 'plugin-dropbox-load'
   | 'plugin-dropbox-delete'
+  | 'plugin-backend-register-user'
+  | 'plugin-backend-load-user'
   | 'call-landing-created'
   | 'call-landing-mounted'
   | 'call-landing-unmounted'

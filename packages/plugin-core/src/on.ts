@@ -163,6 +163,36 @@ export const entity = () => {
   }
 }
 
+export const backend = () => {
+  const PluginRegisterUser = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn,
+  ) => {
+    emitter.on('plugin-backend-register-user', (index: number) => {
+      if (!index) return
+
+      const created = content[0]
+
+      created && created(index)
+    })
+  }
+
+  const PluginLoadUser = (
+    emitter: PluginTypes.PluginEmitter,
+    content: PluginTypes.PluginContentOn,
+  ) => {
+    emitter.on('plugin-backend-load-user', (index: number) => {
+      if (!index) return
+
+      const created = content[0]
+
+      created && created(index)
+    })
+  }
+
+  return { PluginRegisterUser, PluginLoadUser }
+}
+
 export const project = () => {
   const PluginProjectPageNew = (
     emitter: PluginTypes.PluginEmitter,
