@@ -236,6 +236,8 @@ export const useProject = () => {
         const zip = await writeBW(target)
 
         res.data.value = zip
+        // TODO: resolve export name
+        // @ts-ignore
         res.fileName.value = utils().exportName('bw')
 
         await res.saveAs()
