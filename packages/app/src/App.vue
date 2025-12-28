@@ -19,8 +19,7 @@
   import { CharactersPlugin } from 'better-write-plugin-characters'
   import { ProgressBarPlugin } from 'better-write-plugin-progress-bar'
   import { EditorWindowPlugin } from 'better-write-plugin-editor-window'
-  import { DropboxPlugin } from 'better-write-plugin-dropbox'
-  import { BackendPlugin } from 'better-write-plugin-backend'
+  // import { BackendPlugin } from 'better-write-plugin-backend'
 
   useStart([
     ThemePlugin(),
@@ -37,7 +36,6 @@
     CharactersPlugin(),
     ProgressBarPlugin(),
     EditorWindowPlugin(),
-    DropboxPlugin(),
     // BackendPlugin(),
   ]).init()
 </script>

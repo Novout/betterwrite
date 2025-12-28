@@ -12,7 +12,6 @@ import {
 import { nextTick } from 'vue'
 import useEmitter from '../emitter'
 import { useContextStore } from '@/store/context'
-import { useAuthStore } from '@/store/auth'
 import { useDefines } from '../defines'
 import { useDOCXStore } from '@/store/docx'
 import { useUtils } from '../utils'
@@ -24,7 +23,6 @@ export const useStorage = () => {
   const EDITOR = useEditorStore()
   const PDF = usePDFStore()
   const DOCX = useDOCXStore()
-  const AUTH = useAuthStore()
 
   const env = useEnv()
   const emitter = useEmitter()
@@ -291,7 +289,7 @@ export const useStorage = () => {
 
   const getProjectObject = (): ProjectObject => {
     return {
-      id: AUTH.account.project_id_activity || undefined,
+      id: undefined,
       project: PROJECT.$state,
       editor: EDITOR.$state,
       pdf: {

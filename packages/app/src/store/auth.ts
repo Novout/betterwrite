@@ -4,11 +4,10 @@ import { defineStore } from 'pinia'
 export const useAuthStore = defineStore('auth', {
   state: (): AuthState => {
     return {
+      user: null,
       account: {
-        user: null,
+        // TODO: remove id use
         project_id_activity: null,
-        multiplayer: { client: null, connect: null },
-        dropboxAccessToken: null,
       },
     }
   },

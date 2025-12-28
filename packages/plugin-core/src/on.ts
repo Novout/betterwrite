@@ -7,8 +7,6 @@ import type {
   ProjectStateSchemaFile,
   ProjectStateSchema,
   BetterWriteThemes,
-  LiveshareType,
-  SupabaseIntegrations,
 } from 'better-write-types'
 
 export const entity = () => {
@@ -606,152 +604,6 @@ export const externals = () => {
     })
   }
 
-  const PluginPresenceRoomCreate = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-presence-room-create', (type: LiveshareType) => {
-      const created = content[0]
-
-      created && created(type)
-    })
-  }
-
-  const PluginPresenceRoomJoin = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-presence-room-join', (id: string) => {
-      const created = content[0]
-
-      created && created(id)
-    })
-  }
-
-  const PluginPresenceRoomLeave = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-presence-room-leave', (id: string) => {
-      const created = content[0]
-
-      created && created(id)
-    })
-  }
-
-  const PluginOAuthLogin = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-oauth-login', (payload) => {
-      const created = content[0]
-
-      created && created(payload)
-    })
-  }
-
-  const PluginOAuthLoginWithProvider = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on(
-      'plugin-oauth-login-with-provider',
-      (provider: SupabaseIntegrations) => {
-        const created = content[0]
-
-        created && created(provider)
-      },
-    )
-  }
-
-  const PluginOAuthRegister = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-oauth-register', (payload) => {
-      const created = content[0]
-
-      created && created(payload)
-    })
-  }
-
-  const PluginOAuthLogout = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-oauth-logout', () => {
-      const created = content[0]
-
-      created && created()
-    })
-  }
-
-  const PluginOAuthDelete = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-oauth-delete', () => {
-      const created = content[0]
-
-      created && created()
-    })
-  }
-
-  const PluginDropboxSet = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-dropbox-set', (item) => {
-      const created = content[0]
-
-      created && created(item)
-    })
-  }
-
-  const PluginDropboxSave = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-dropbox-save', () => {
-      const created = content[0]
-
-      created && created()
-    })
-  }
-
-  const PluginDropboxLoad = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-dropbox-load', () => {
-      const created = content[0]
-
-      created && created()
-    })
-  }
-
-  const PluginDropboxDelete = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-dropbox-delete', (item) => {
-      const created = content[0]
-
-      created && created(item)
-    })
-  }
-
-  const PluginDropboxConnect = (
-    emitter: PluginTypes.PluginEmitter,
-    content: PluginTypes.PluginContentOn,
-  ) => {
-    emitter.on('plugin-dropbox-connect', () => {
-      const created = content[0]
-
-      created && created()
-    })
-  }
-
   return {
     PluginThemeSet,
     PluginPDFPreview,
@@ -780,19 +632,6 @@ export const externals = () => {
     PluginProgressChange,
     PluginProgressEnd,
     PluginWindowDrop,
-    PluginPresenceRoomCreate,
-    PluginPresenceRoomJoin,
-    PluginPresenceRoomLeave,
-    PluginOAuthLogin,
-    PluginOAuthLoginWithProvider,
-    PluginOAuthRegister,
-    PluginOAuthLogout,
-    PluginOAuthDelete,
-    PluginDropboxConnect,
-    PluginDropboxSet,
-    PluginDropboxSave,
-    PluginDropboxLoad,
-    PluginDropboxDelete,
   }
 }
 
