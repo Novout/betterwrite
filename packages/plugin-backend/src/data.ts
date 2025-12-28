@@ -15,7 +15,7 @@ export const DataSet = (
         body: { some: 'json' },
       })
 
-      stores.AUTH.account = payload
+      stores.AUTH.user = payload
 
       hooks.toast.success(hooks.i18n.t('toast.user.success'))
     },
