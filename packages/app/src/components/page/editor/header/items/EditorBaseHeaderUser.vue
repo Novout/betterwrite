@@ -16,13 +16,19 @@
           duration: 300,
         },
       }"
-      class="absolute rounded font-raleway p-4 flex flex-col gap-5 right-0 w-44 bg-theme-background-3"
+      class="absolute rounded font-raleway p-4 flex flex-col gap-5 right-0 w-64 bg-theme-background-3"
     >
       <MenuItem>
         <div
-          class="wb-text w-full mt-5 text-xs flex flex-col text-center items-center justify-center"
+          class="wb-text w-full mt-5 gap-5 text-xs flex flex-col text-center items-center justify-center"
         >
-          <router-link to="/terms-of-use" class="font-bold cursor-pointer">{{
+          <div v-if="!AUTH.user" class="flex flex-col gap-5 w-full">
+            <h4 class="font-poppins">{{ t('backend.title') }}</h4>
+            <InputText :placeholder="t('backend.email')" class="bg-theme-background-2 hover:bg-theme-background-1 px-3 py-1 rounded-full" v-model="setter.email" />
+            <InputText :placeholder="t('backend.password')" class="bg-theme-background-2 hover:bg-theme-background-1 px-3 py-1 rounded-full" v-model="setter.password" />
+            <Button class="bg-theme-background-2 text-md hover:bg-theme-background-1">{{ t('backend.start') }}</Button>
+         </div>
+          <router-link to="/terms-of-use" class="font-bold pt-10 cursor-pointer">{{
             t('editor.bar.help.terms')
           }}</router-link>
           <p>&</p>
@@ -37,13 +43,15 @@
 
 <script setup lang="ts">
   import { useAuthStore } from '@/store/auth'
-  import { usePlugin } from 'better-write-plugin-core'
-  import { computed } from 'vue'
+  import { reactive } from 'vue'
   import { useI18n } from 'vue-i18n'
 
-  const plugin = usePlugin()
   const { t } = useI18n()
 
   const AUTH = useAuthStore()
-  const user = computed(() => AUTH.account.user)
+
+  const setter = reactive({
+    email: '',
+    password: ''
+  })
 </script>

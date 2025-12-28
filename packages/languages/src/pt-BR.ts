@@ -1,5 +1,11 @@
 export default {
   editor: {
+    backend: {
+      title: 'Entre ou crie sua conta!',
+      email: 'Email...',
+      password: 'Senha...',
+      start: 'Entrar'
+    },
     new: {
       title: 'Novo Projeto',
       description1: 'O ',

@@ -1,4 +1,10 @@
 export default {
+  backend: {
+    title: 'Log in or lose your account!',
+    email: 'Email...',
+    password: 'Password...',
+    start: 'Log in'
+  },
   editor: {
     new: {
       title: 'New Project',
