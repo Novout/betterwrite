@@ -10,7 +10,6 @@ import {
   ProjectState,
   HistoryState,
   ExternalsState,
-  LiveshareState,
   GlobalState,
   VaultState,
 } from '..'
@@ -113,7 +112,6 @@ export type ExistingStores =
   | 'project'
   | 'externals'
   | 'history'
-  | 'liveshare'
   | 'global'
   | 'vault'
 
@@ -134,7 +132,6 @@ export interface PluginStores {
   PROJECT: PluginStore<'project', ProjectState, any, any>
   EXTERNALS: PluginStore<'externals', ExternalsState, any, any>
   HISTORY: PluginStore<'history', HistoryState, any, any>
-  LIVESHARE: PluginStore<'liveshare', LiveshareState, any, any>
   GLOBAL: PluginStore<'global', GlobalState, any, any>
   VAULT: PluginStore<'vault', VaultState, any, any>
 }

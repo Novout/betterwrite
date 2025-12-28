@@ -965,9 +965,6 @@ export default {
             'Colaborador: Todos os usuários que entrarem na sala podem alterar os dados do projeto em tempo real, como manter uma cópia do projeto para si.',
         },
       },
-      bar: {
-        liveshare: 'Compartilhando...',
-      },
       create: {
         title: 'Compartilhamento',
         description:

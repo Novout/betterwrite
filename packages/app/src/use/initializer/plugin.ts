@@ -31,7 +31,6 @@ import { useScroll } from '../scroll'
 import { useUtils } from '../utils'
 import { useI18n } from 'vue-i18n'
 import { useHistoryStore } from '@/store/history'
-import { useLiveshareStore } from '@/store/liveshare'
 import { useHead } from '@unhead/vue'
 import useEmitter from '../emitter'
 import { useCharacters } from '../characters'
@@ -60,7 +59,6 @@ export const usePluginInitializer = () => {
         PROJECT: useProjectStore(),
         EXTERNALS: useExternalsStore(),
         HISTORY: useHistoryStore(),
-        LIVESHARE: useLiveshareStore(),
         GLOBAL: useGlobalStore(),
         VAULT: useVaultStore(),
       },

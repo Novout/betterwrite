@@ -958,9 +958,6 @@ export default {
             'Collaborator: All users who enter the room can change project data in real time, such as keeping a copy of the project for themselves.        ',
         },
       },
-      bar: {
-        liveshare: 'Sharing...',
-      },
       create: {
         title: 'Live Share',
         description:
