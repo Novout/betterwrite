@@ -16,6 +16,8 @@ export const DataSet = (
       })
 
       stores.AUTH.account = payload
+
+      hooks.toast.success(hooks.i18n.t('toast.user.success'))
     },
     () => {},
   ])
@@ -26,9 +28,8 @@ export const DataSet = (
       await ofetch(`/api/user/${id}`, {
         method: 'POST',
         body: { some: 'json' },
-        async onRequestError({ request, options, error }) {
-          // TODO: toast
-          console.log('[fetch request error]', request, error)
+        async onRequestError() {
+          hooks.toast.error(hooks.i18n.t('toast.user.fail'))
         },
       })
     },

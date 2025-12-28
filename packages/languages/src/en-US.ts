@@ -1020,6 +1020,10 @@ export default {
     },
   },
   toast: {
+    user: {
+      success: 'Log in to your account successfully!',
+      fail: 'Unable to log into your account!'
+    },
     generics: {
       load: 'Wait a moment...',
       error: 'An unexpected error occurred :(',

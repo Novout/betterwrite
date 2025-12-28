@@ -1027,6 +1027,10 @@ export default {
     },
   },
   toast: {
+    user: {
+      success: 'Entrou na sua conta com successo!',
+      fail: 'Não foi possível entrar na sua conta!'
+    },
     generics: {
       load: 'Aguarde um momento...',
       error: 'Um erro inesperado ocorreu :(',
