@@ -178,7 +178,6 @@
   import { usePDFStore } from '@/store/pdf'
   import { useDefines } from '@/use/defines'
   import { useProjectStore } from '@/store/project'
-  import { useNProgress } from '@vueuse/integrations/useNProgress'
   import { useToast } from 'vue-toastification'
   import { useFactory } from '@/use/factory'
 
@@ -198,7 +197,6 @@
   const toast = useToast()
   const defines = useDefines()
   const factory = useFactory()
-  const { isLoading } = useNProgress()
 
   const entity = computed<Entity>(
     () => CONTEXT.entities[EDITOR.actives.entity.index],
@@ -263,8 +261,6 @@
       return
     }
 
-    isLoading.value = true
-
     PROJECT.templates.generators.push(
       factory.entity().generator(templateText.value),
     )
@@ -272,13 +268,10 @@
 
     template.value = templateText.value
     templateText.value = ''
-    isLoading.value = false
   }
 
   const onDeleteParagraphTemplate = () => {
     if (template.value === t('editor.entity.generator.template')) return
-
-    isLoading.value = true
 
     PROJECT.templates.generators = PROJECT.templates.generators.filter(
       (g) => g.className !== template.value,
@@ -286,6 +279,5 @@
 
     template.value = t('editor.entity.generator.template')
     templateText.value = ''
-    isLoading.value = false
   }
 </script>

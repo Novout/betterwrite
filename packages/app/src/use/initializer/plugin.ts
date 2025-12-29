@@ -5,8 +5,6 @@ import { useToast } from 'vue-toastification'
 import { useBreakpoint } from '../breakpoint'
 import { useDOCXStore } from '@/store/docx'
 import { useTransformer } from '../generator/transformer'
-// @ts-ignore
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useFormat } from '../format'
 import { useEnv } from '../env'
 import { useAbsoluteStore } from '@/store/absolute'
@@ -100,8 +98,8 @@ export const usePluginInitializer = () => {
           head: useHead,
           sound: VUEUSE_SOUND,
           integration: {
-            progress: useNProgress(),
-          },
+            progress: undefined
+          }
         },
       },
     )

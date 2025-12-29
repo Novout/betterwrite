@@ -8,8 +8,6 @@ export const PluginTxtSet = (
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks,
 ) => {
-  const { isLoading } = hooks.vueuse.integration.progress
-
   const purge = (texts: string[]): string => {
     return texts.reduce(
       (conc, text) =>
@@ -21,13 +19,9 @@ export const PluginTxtSet = (
   }
 
   const download = (texts: string[]) => {
-    isLoading.value = true
-
     const data = new Blob([purge(texts)], { type: 'text/plain' })
 
     saveAs(data, hooks.project.utils().exportFullName('txt'))
-
-    isLoading.value = false
 
     hooks.toast.success(hooks.i18n.t('toast.project.txt.generate'))
   }

@@ -16,8 +16,6 @@ export const PluginDocxSet = (
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks,
 ) => {
-  const { isLoading } = hooks.vueuse.integration.progress
-
   const purge = (raw: string, custom: Record<string, any>): DocxPurge => {
     const arr: DocxPurge = []
 
@@ -361,8 +359,6 @@ export const PluginDocxSet = (
   }
 
   const download = (doc: docx.File) => {
-    isLoading.value = true
-
     hooks.toast.info(hooks.i18n.t('toast.generics.load'))
 
     hooks.storage.normalize().then(() => {
@@ -373,7 +369,7 @@ export const PluginDocxSet = (
           hooks.toast.success(hooks.i18n.t('toast.project.docx.generate'))
         })
         .finally(() => {
-          isLoading.value = false
+
         })
         .catch(() => {
           hooks.toast.error(hooks.i18n.t('toast.generics.error'))

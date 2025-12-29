@@ -23,8 +23,6 @@ export const PluginHtmlSet = (
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks,
 ) => {
-  const { isLoading } = hooks.vueuse.integration.progress
-
   const entities = () => {
     const paragraph = (entity: Entity) => {
       return getRows(entity.raw).map((text: string) => {
@@ -88,13 +86,9 @@ export const PluginHtmlSet = (
 
   On.externals().PluginHtmlGenerate(emitter, [
     () => {
-      isLoading.value = true
-
       const data = new Blob([content()], { type: 'text/html' })
 
       saveAs(data, hooks.project.utils().exportFullName('html'))
-
-      isLoading.value = false
 
       hooks.toast.success(hooks.i18n.t('toast.project.html.generate'))
     },

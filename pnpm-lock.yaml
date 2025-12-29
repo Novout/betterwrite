@@ -93,7 +93,7 @@ importers:
         version: 14.1.0(vue@3.5.14)
       '@vueuse/integrations':
         specifier: 14.1.0
-        version: 14.1.0(drauu@0.4.3)(idb-keyval@6.2.2)(nprogress@0.2.0)(vue@3.5.14)
+        version: 14.1.0(drauu@0.4.3)(idb-keyval@6.2.2)(vue@3.5.14)
       '@vueuse/motion':
         specifier: 2.0.0-beta.12
         version: 2.0.0-beta.12(vue@3.5.14)
@@ -214,9 +214,6 @@ importers:
       nanoid:
         specifier: 5.1.6
         version: 5.1.6
-      nprogress:
-        specifier: 0.2.0
-        version: 0.2.0
       ofetch:
         specifier: 1.5.1
         version: 1.5.1
@@ -4546,7 +4543,7 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/integrations@14.1.0(drauu@0.4.3)(idb-keyval@6.2.2)(nprogress@0.2.0)(vue@3.5.14):
+  /@vueuse/integrations@14.1.0(drauu@0.4.3)(idb-keyval@6.2.2)(vue@3.5.14):
     resolution: {integrity: sha512-eNQPdisnO9SvdydTIXnTE7c29yOsJBD/xkwEyQLdhDC/LKbqrFpXHb3uS//7NcIrQO3fWVuvMGp8dbK6mNEMCA==}
     peerDependencies:
       async-validator: ^4
@@ -4592,7 +4589,6 @@ packages:
       '@vueuse/shared': 14.1.0(vue@3.5.14)
       drauu: 0.4.3
       idb-keyval: 6.2.2
-      nprogress: 0.2.0
       vue: 3.5.14(typescript@5.9.3)
     dev: false
 
@@ -9560,10 +9556,6 @@ packages:
       gauge: 5.0.2
       set-blocking: 2.0.0
     dev: true
-
-  /nprogress@0.2.0:
-    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
-    dev: false
 
   /nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}

@@ -248,7 +248,6 @@
   import { nextTick, computed, watch } from 'vue'
   import { usePlugin } from 'better-write-plugin-core'
   import { useStorage } from '@/use/storage/storage'
-  import { useNProgress } from '@vueuse/integrations/useNProgress'
   import { useI18n } from 'vue-i18n'
   import { usePDFStore } from '@/store/pdf'
   import { useToast } from 'vue-toastification'
@@ -256,7 +255,6 @@
   const EDITOR = useEditorStore()
   const PDF = usePDFStore()
 
-  const { isLoading } = useNProgress()
   const plugin = usePlugin()
   const storage = useStorage()
   const { t } = useI18n()
@@ -271,15 +269,11 @@
   const onSwitchTheme = async (theme: BetterWriteThemes) => {
     EDITOR.configuration.theme = theme
 
-    isLoading.value = true
-
     await nextTick
 
     await storage.normalize()
 
     plugin.emit('plugin-theme-set')
-
-    isLoading.value = false
   }
 
   watch(
