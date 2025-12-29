@@ -17,10 +17,6 @@ export const useEnv = () => {
     return import.meta.env.VITE_PROJECT_EMPTY
   }
 
-  const dropboxKey = (): string => {
-    return import.meta.env.VITE_DROPBOX_APP_KEY
-  }
-
   const projectLocalStorage = () => {
     return import.meta.env.VITE_LOCAL_STORAGE
   }
@@ -91,7 +87,6 @@ export const useEnv = () => {
     production,
     getSentryDsn,
     getProdUrl,
-    dropboxKey,
     getCorrectLocalUrl,
     storageLimitSaver,
     emptyLine,

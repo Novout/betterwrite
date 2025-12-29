@@ -284,12 +284,6 @@ export default {
         up: 'Up',
         down: 'Down',
       },
-      dropbox: {
-        title: 'Dropbox',
-        connect: 'Connect',
-        save: 'Save in Dropbox',
-        load: 'Load',
-      },
       drive: {
         save: 'Google Drive Save',
         load: 'Google Drive Load',
@@ -312,7 +306,6 @@ export default {
     },
     window: {
       confirmConfiguration: 'Do you want to quit saving the settings?',
-      saveDropbox: 'Are you sure to save this file to Dropbox?',
       saveLocal: 'Are you sure to save this file?',
       deleteChapterPage: 'Are you sure to delete the current chapter?',
     },
@@ -509,11 +502,6 @@ export default {
     },
     aside: {
       resume: 'Resumo',
-      dropbox: {
-        connect: 'Connect',
-        save: 'Save',
-        load: 'Load',
-      },
       drive: {
         save: 'Google Drive Save',
         load: 'Google Drive Load',
@@ -1104,11 +1092,6 @@ export default {
         schemaDelete: 'Are you sure you want to delete this section?',
       },
     },
-    dropbox: {
-      load: 'Connected with Dropbox!',
-      save: 'Saved to Dropbox under Apps > Better Write',
-      empty: 'No valid project found :(',
-    },
     entity: {
       paragraph: {
         generator: {
@@ -1280,10 +1263,6 @@ export default {
           description: 'Generator (PDF / DOCX / TXT)',
         },
         {
-          status: 'meh',
-          description: 'Dropbox and Google Drive',
-        },
-        {
           status: 'no',
           description: 'Support',
         },
@@ -1311,10 +1290,6 @@ export default {
           description: 'Generator (PDF / DOCX / TXT)',
         },
         {
-          status: 'yes',
-          description: 'Dropbox and Google Drive',
-        },
-        {
           status: 'no',
           description: 'Support',
         },
@@ -1340,10 +1315,6 @@ export default {
         {
           status: 'yes',
           description: 'Generator (PDF / DOCX / TXT)',
-        },
-        {
-          status: 'yes',
-          description: 'Dropbox and Google Drive',
         },
         {
           status: 'yes',
@@ -1410,12 +1381,6 @@ export default {
           'Hi! Look, if you know how to use this, I think I can ask for your help at',
       },
       on: {
-        dropbox: {
-          save: {
-            success: 'SUCCESSFULLY SAVED IN DROPBOX!',
-            error: 'UNABLE TO SAVE TO DROPBOX!',
-          },
-        },
         entity: {
           inputFirst: '<{arguments}> INSERTED IN <{index}>  POSITION.',
           create: '<{data}> HAS BEEN INSERTED IN THE <{index}> POSITION.',

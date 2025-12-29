@@ -21,8 +21,6 @@ interface ImportMetaEnv {
   readonly VITE_GOOGLE_FONTS_KEY: string
   readonly VITE_GOOGLE_FONTS_MAX_FONTS: number
 
-  readonly VITE_DROPBOX_APP_KEY: string
-
   readonly VITE_SUPABASE_URL: string
   readonly VITE_SUPABASE_ANON_KEY: string
 

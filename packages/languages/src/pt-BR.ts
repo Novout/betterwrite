@@ -281,12 +281,6 @@ export default {
         up: 'Cima',
         down: 'Baixo',
       },
-      dropbox: {
-        title: 'Dropbox',
-        connect: 'Conectar',
-        save: 'Salvar no Dropbox',
-        load: 'Carregar',
-      },
       drive: {
         save: 'Salvar Google Drive',
         load: 'Carregar Google Drive',
@@ -309,7 +303,6 @@ export default {
     },
     window: {
       confirmConfiguration: 'Você quer sair salvando as configurações?',
-      saveDropbox: 'Você tem certeza em salvar este arquivo no Dropbox?',
       saveLocal: 'Você tem certeza em salvar este arquivo?',
       deleteChapterPage: 'Você tem certeza em excluir o capítulo atual?',
     },
@@ -508,11 +501,6 @@ export default {
     },
     aside: {
       resume: 'Resume',
-      dropbox: {
-        connect: 'Conectar',
-        save: 'Salvar',
-        load: 'Carregar',
-      },
       drive: {
         save: 'Salvar Google Drive',
         load: 'Carregar Google Drive',
@@ -1112,11 +1100,6 @@ export default {
         schemaDelete: 'Você tem certeza que deseja deletar esta seção?',
       },
     },
-    dropbox: {
-      load: 'Conectado com o Dropbox!',
-      save: 'Salvo no Dropbox em Aplicativos > Better Write',
-      empty: 'Não foi encontrado nenhum projeto válido :(',
-    },
     entity: {
       paragraph: {
         generator: {
@@ -1315,10 +1298,6 @@ export default {
           description: 'Gerador (PDF / DOCX / TXT)',
         },
         {
-          status: 'meh',
-          description: 'Dropbox e Google Drive',
-        },
-        {
           status: 'no',
           description: 'Suporte',
         },
@@ -1346,10 +1325,6 @@ export default {
           description: 'Gerador (PDF / DOCX / TXT)',
         },
         {
-          status: 'yes',
-          description: 'Dropbox e Google Drive',
-        },
-        {
           status: 'no',
           description: 'Suporte',
         },
@@ -1375,10 +1350,6 @@ export default {
         {
           status: 'yes',
           description: 'Gerador (PDF / DOCX / TXT)',
-        },
-        {
-          status: 'yes',
-          description: 'Dropbox e Google Drive',
         },
         {
           status: 'yes',

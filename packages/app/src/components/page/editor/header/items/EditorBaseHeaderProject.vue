@@ -30,17 +30,6 @@
         :text="t('editor.bar.project.save')"
         @action="onSaveProject"
       />
-      <EditorHeaderItem
-        v-if="
-          PROJECT.name !== env.projectEmpty()
-        "
-        :text="t('editor.bar.dropbox.save')"
-        @action="dropbox.save"
-      >
-        <template #icon>
-          <IconDropbox class="w-6 h-6 mr-2" />
-        </template>
-      </EditorHeaderItem>
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
         v-if="
@@ -82,18 +71,14 @@
   import { useI18n } from 'vue-i18n'
   import { useLocalStorage } from '@/use/storage/local'
   import { useSupabase } from '@/use/storage/supabase'
-  import { useDropbox } from '@/use/storage/dropbox'
-  import { useAuthStore } from '@/store/auth'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
-  const AUTH = useAuthStore()
 
   const supabase = useSupabase()
   const project = useProject()
   const env = useEnv()
   const local = useLocalStorage()
-  const dropbox = useDropbox()
   const { t } = useI18n()
 
   const onSaveProject = () => {

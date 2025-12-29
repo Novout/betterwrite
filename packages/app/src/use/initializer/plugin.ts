@@ -38,7 +38,6 @@ import * as VUEUSE_CORE from '@vueuse/core'
 import * as VUEUSE_SOUND from '@vueuse/sound'
 import { useGlobalStore } from '@/store/global'
 import { useAuthStore } from '@/store/auth'
-import { useDropbox } from '../storage/dropbox'
 import { useVaultStore } from '@/store/vault'
 import { useHistory } from '../history'
 import { useSchemas } from '../schemas'
@@ -89,7 +88,6 @@ export const usePluginInitializer = () => {
         transformer: useTransformer(),
         characters: useCharacters(),
         router: VUEROUTER.useRouter(),
-        dropbox: useDropbox(),
         vuerouter: VUEROUTER,
         history: useHistory(),
         schemas: useSchemas(),

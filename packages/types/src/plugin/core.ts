@@ -6,7 +6,6 @@ import {
   ContextState,
   EditorState,
   PDFState,
-  DOCXState,
   ProjectState,
   HistoryState,
   ExternalsState,
@@ -81,11 +80,6 @@ export type PluginEmitterName =
   | 'plugin-oauth-delete'
   | 'plugin-webgl-set-camera'
   | 'plugin-webgl-loaded'
-  | 'plugin-dropbox-connect'
-  | 'plugin-dropbox-set'
-  | 'plugin-dropbox-save'
-  | 'plugin-dropbox-load'
-  | 'plugin-dropbox-delete'
   | 'plugin-backend-register-user'
   | 'plugin-backend-load-user'
   | 'call-landing-created'
@@ -108,7 +102,6 @@ export type ExistingStores =
   | 'context'
   | 'editor'
   | 'pdf'
-  | 'docx'
   | 'project'
   | 'externals'
   | 'history'
@@ -128,7 +121,6 @@ export interface PluginStores {
   CONTEXT: PluginStore<'context', ContextState, any, any>
   EDITOR: PluginStore<'editor', EditorState, any, any>
   PDF: PluginStore<'pdf', PDFState, any, any>
-  DOCX: PluginStore<'docx', DOCXState, any, any>
   PROJECT: PluginStore<'project', ProjectState, any, any>
   EXTERNALS: PluginStore<'externals', ExternalsState, any, any>
   HISTORY: PluginStore<'history', HistoryState, any, any>
@@ -171,7 +163,6 @@ export interface PluginHooks {
   characters: PluginHook
   router: PluginHook
   vuerouter: PluginHook
-  dropbox: PluginHook
   history: PluginHook
   schemas: PluginHook
   vueuse: {
