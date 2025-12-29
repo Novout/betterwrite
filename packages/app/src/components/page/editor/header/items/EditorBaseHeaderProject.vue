@@ -32,7 +32,7 @@
       />
       <EditorHeaderItem
         v-if="
-          PROJECT.name !== env.projectEmpty() && AUTH.account.dropboxAccessToken
+          PROJECT.name !== env.projectEmpty()
         "
         :text="t('editor.bar.dropbox.save')"
         @action="dropbox.save"

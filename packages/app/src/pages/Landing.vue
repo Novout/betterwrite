@@ -8,11 +8,9 @@
       class="flex flex-col bg-theme-background-2 z-max text-white items-center justify-between min-h-screen w-full overflow-x-hidden"
     >
       <div
-        v-if="isLoaded"
         class="flex-1 bg-theme-background-2 container mx-auto flex px-5 py-24 flex-col justify-center items-center z-50"
       >
         <div
-          v-if="!isNecessaryLogin"
           class="lg:flex-grow w-full flex flex-col items-center text-center"
         >
           <div
@@ -108,9 +106,7 @@
             <IconTwitter class="text-gray-200 w-9 h-9" />
           </a>
         </div>
-        <AuthMain v-else @close="isNecessaryLogin = false" />
       </div>
-      <LoadingScreen v-else />
     </section>
   </main>
 </template>
@@ -119,13 +115,11 @@
   import VTypical from 'vue-typical'
   import { useLanding } from '@/use/landing'
   import { useI18n } from 'vue-i18n'
-  import { ref } from 'vue'
   import { useRouter } from 'vue-router'
   import { tryOnMounted, tryOnUnmounted } from '@vueuse/core'
   import { usePlugin } from 'better-write-plugin-core'
 
-  const isLoaded = ref(true)
-  const { onClick, isNecessaryLogin } = useLanding()
+  const { onClick } = useLanding()
   const { t } = useI18n()
   const router = useRouter()
   const plugin = usePlugin()
