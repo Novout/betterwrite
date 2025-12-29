@@ -17,7 +17,7 @@
   import { VoiceTypingPlugin } from 'better-write-plugin-voice-typing'
   import { EntityHistoryPlugin } from 'better-write-plugin-entity-history'
   import { CharactersPlugin } from 'better-write-plugin-characters'
-  import { ProgressBarPlugin } from 'better-write-plugin-progress-bar'
+  // import { ProgressBarPlugin } from 'better-write-plugin-progress-bar'
   import { EditorWindowPlugin } from 'better-write-plugin-editor-window'
   // import { BackendPlugin } from 'better-write-plugin-backend'
 
@@ -34,7 +34,7 @@
     VoiceTypingPlugin(),
     EntityHistoryPlugin(),
     CharactersPlugin(),
-    ProgressBarPlugin(),
+    // ProgressBarPlugin(),
     EditorWindowPlugin(),
     // BackendPlugin(),
   ]).init()
