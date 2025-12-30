@@ -1,13 +1,13 @@
 <template>
-  <section class="flex flex-col gap-3 w-60">
-    <div v-for="(project, key) in projects" :key="key" class="flex-col w-full gap-2">
-      <div class="flex gap-2 w-full">
-        <p>${{ project.title }}</p>
-        <p>${{ project.type }}</p>
+  <section class="flex font-poppins flex-col gap-3 w-60 overflow-y-auto">
+    <div v-for="(project, key) in projects" :key="key" class="flex-col p-2 text-white w-full transition-colors gap-5 hover:bg-theme-background-3">
+      <div class="flex gap-5 w-full">
+        <p class="truncate">{{ project.title }}</p>
+        <p class="truncate">{{ project.size }}</p>
       </div>
       <div class="flex justify-between w-full">
-        <p>${{ project.level }}</p>
-        <IconVaultOpen class="wb-icon">${{ t('editor.vault.load') }}</IconVaultOpen>
+        <p>Level {{ project.level }}</p>
+        <IconVaultOpen class="wb-icon w-5 h-5">{{ t('editor.vault.load') }}</IconVaultOpen>
       </div>
     </div>
   </section>
@@ -24,5 +24,18 @@ const AUTH = useAuthStore()
 const backend = useBackend()
 const { t } = useI18n()
 
-const projects = ref<any[]>([])
+// TODO: Backend here
+const projects = ref<any[]>([{
+  title: 'A Test',
+  // Maybe background
+  background: 'base64',
+  size: '8.12KiB',
+  level: 2
+}, {
+  title: 'A Test',
+  // Maybe background
+  background: 'base64',
+  size: '8.12KiB',
+  level: 2
+}])
 </script>
