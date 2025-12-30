@@ -70,12 +70,10 @@
   import { useEnv } from '@/use/env'
   import { useI18n } from 'vue-i18n'
   import { useLocalStorage } from '@/use/storage/local'
-  import { useSupabase } from '@/use/storage/supabase'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
 
-  const supabase = useSupabase()
   const project = useProject()
   const env = useEnv()
   const local = useLocalStorage()
@@ -85,11 +83,5 @@
     if (!confirm(t('editor.window.saveLocal'))) return
 
     local.onSaveProject()
-  }
-
-  const onSaveProjectSupabase = () => {
-    if (!confirm(t('editor.window.saveLocal'))) return
-
-    supabase.saveProject()
   }
 </script>

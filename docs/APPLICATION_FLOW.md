@@ -20,7 +20,7 @@ Each and every flow passes through the reactive stores. This dynamic allows the 
 ├── src/store
 ├──── absolute.ts   # Window's Controller
 ├──── addons.ts     # Internal Tools
-├──── auth.ts       # Auth (Supabase)
+├──── auth.ts       # Auth
 ├──── context.ts    # Loaded Chapter
 ├──── docx.ts       # DOCX Configuration
 ├──── editor.ts     # Customization Settings

@@ -32,7 +32,7 @@ export interface AbsoluteStateDOCX {
 }
 
 export interface AbsoluteStateAuth {
-  supabase: boolean
+  user: boolean
 }
 
 export interface AbsoluteStateEntity {
