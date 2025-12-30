@@ -67,7 +67,7 @@ export const useProjectStore = defineStore('project', {
       shortcuts: {
         inserts: [
           {
-            key: 'D',
+            key: 'A',
             value: '— ',
           },
         ],
