@@ -16,6 +16,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/store/auth';
 import { useBackend } from '@/use/backend';
+import type { AuthItem } from 'better-write-types';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -25,7 +26,7 @@ const backend = useBackend()
 const { t } = useI18n()
 
 // TODO: Backend here
-const projects = ref<any[]>([{
+const projects = ref<AuthItem[]>([{
   title: 'A Test',
   // Maybe background
   background: 'base64',
