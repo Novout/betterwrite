@@ -28,6 +28,10 @@ export const useProjectStore = defineStore('project', {
       type: 'creative',
       totalPagesCreated: 0,
       externalProvider: undefined,
+      xp: {
+        level: 1,
+        acc: 0
+      },
       main: {},
       summary: {},
       chapters: [],
@@ -90,6 +94,7 @@ export const useProjectStore = defineStore('project', {
       this.subject = payload.subject
       this.pageLoaded = payload.pageLoaded
       this.externalProvider = payload.externalProvider
+      this.xp = payload.xp
       this.scrollLoaded = payload.scrollLoaded
       this.offsetLoaded = payload.offsetLoaded
       this.totalPagesCreated = payload.totalPagesCreated
@@ -121,6 +126,10 @@ export const useProjectStore = defineStore('project', {
         keywords: options.keywords || 'docx,project',
         subject: options.subject || 'betterwrite',
         type: options.type,
+        xp: {
+          level: 1,
+          acc: 0
+        },
         base: options.base || 'chapter',
         totalPagesCreated: options.totalPagesCreated || 1,
         main: options.main || {},

@@ -168,6 +168,7 @@ export const useStorage = () => {
     }
 
     if (!_.project.chapters) {
+      // @ts-ignore
       _.project.chapters = _.project.pages || []
     }
 
@@ -197,6 +198,7 @@ export const useStorage = () => {
 
     if (!_.project.schemas) {
       _.project.schemas = []
+      // @ts-ignore
       if (_.project.annotations) {
         const schemaAnnotationsId = useUtils().id().nano({ prefix: 'schema' })
         const schemaAnnotations = {
@@ -208,6 +210,7 @@ export const useStorage = () => {
           folders: [] as ProjectStateSchemaFolder[],
         } as ProjectStateSchema
 
+        // @ts-ignore
         _.project.annotations.folders.forEach((folder) => {
           const folderId = useUtils().id().nano({ prefix: 'folder' })
 
@@ -236,6 +239,7 @@ export const useStorage = () => {
         delete _.project['annotations']
       }
 
+      // @ts-ignore
       if (_.project.characters) {
         const schemaCharactersId = useUtils().id().nano({ prefix: 'schema' })
         const schemaCharacters = {
@@ -255,6 +259,7 @@ export const useStorage = () => {
           folderName: t('editor.schemas.types.characters.target'),
           customIcon: schemaCharacters.customIcon,
           files: [
+            // @ts-ignore
             ..._.project.characters.list.map((character) => {
               return {
                 id: useUtils().id().nano({ prefix: 'file' }),
@@ -281,6 +286,16 @@ export const useStorage = () => {
       _.project = {
         ..._.project,
         externalProvider: undefined,
+      }
+    }
+
+    if (!_.project.xp) {
+      _.project = {
+        ..._.project,
+        xp: {
+          level: 1,
+          acc: 0
+        },
       }
     }
 

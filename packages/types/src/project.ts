@@ -16,6 +16,10 @@ export interface ProjectState {
   producer: string
   keywords: string
   subject: string
+  xp: {
+    level: number,
+    acc: number
+  },
   // @deprecated
   externalProvider?: 'dropbox' | 'google-drive'
   base: ProjectBase
