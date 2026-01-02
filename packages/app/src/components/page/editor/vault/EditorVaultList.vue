@@ -26,17 +26,5 @@ const backend = useBackend()
 const { t } = useI18n()
 
 // TODO: Backend here
-const projects = ref<AuthItem[]>([{
-  title: 'A Test',
-  // Maybe background
-  background: 'base64',
-  size: '8.12KiB',
-  level: 2
-}, {
-  title: 'A Test',
-  // Maybe background
-  background: 'base64',
-  size: '8.12KiB',
-  level: 2
-}])
+const projects = ref<AuthItem[]>([])
 </script>
