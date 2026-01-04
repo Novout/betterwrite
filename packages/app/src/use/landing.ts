@@ -39,7 +39,7 @@ export const useLanding = () => {
 
     localStorage.setItem('visited', 'visited')
 
-    router.push('/').finally(() => {
+    router.push('/account').finally(() => {
       // for common reactivity in other routes
       document.body.style.overflowX = 'auto'
 

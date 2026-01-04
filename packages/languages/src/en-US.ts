@@ -5,6 +5,26 @@ export default {
     password: 'Password...',
     start: 'Log in'
   },
+  account: {
+    common: {
+      title: 'Common',
+      price: 'Free',
+      description: 'Use the default application.',
+      enter: 'Enter',
+    },
+    adventure: {
+      title: 'Adventure',
+      price: '5 / Mes',
+      description: 'Venturing into a larger storage capacity.',
+      enter: 'Enter',
+    },
+    force: {
+      title: 'Force',
+      price: '20/Mes',
+      description: 'Extensive cloud saving capabilities and direct support!',
+      enter: 'Enter',
+    },
+  },
   editor: {
     new: {
       title: 'New Project',

@@ -1,11 +1,31 @@
 export default {
-  editor: {
-    backend: {
-      title: 'Entre ou crie sua conta!',
-      email: 'Email...',
-      password: 'Senha...',
-      start: 'Entrar'
+  account: {
+    common: {
+      title: 'Simples',
+      price: 'Gratuito',
+      description: 'Use a aplicação padrão.',
+      enter: 'Escolher',
     },
+    adventure: {
+      title: 'Aventureiro',
+      price: '5 / Mes',
+      description: 'Se aventure em uma capacidade maior de armazenamento.',
+      enter: 'Escolher',
+    },
+    force: {
+      title: 'Força Maior',
+      price: '20/Mes',
+      description: 'Uma vasta capacidade de salvamento na nuvem e suporte direto!',
+      enter: 'Escolher',
+    },
+  },
+  backend: {
+    title: 'Entre ou crie sua conta!',
+    email: 'Email...',
+    password: 'Senha...',
+    start: 'Entrar'
+  },
+  editor: {
     new: {
       title: 'Novo Projeto',
       description1: 'O ',

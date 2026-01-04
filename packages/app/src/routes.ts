@@ -10,6 +10,11 @@ export const routes = [
     component: () => import('@/pages/Landing.vue'),
   },
   {
+    name: 'Account',
+    path: '/account',
+    component: () => import('@/pages/Account.vue'),
+  },
+  {
     name: 'About',
     path: '/about',
     component: () => import('@/pages/About.vue'),
