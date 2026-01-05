@@ -9,10 +9,10 @@ export const DataSet = (
 ) => {
   On.backend().PluginRegisterUser(emitter, [
     // TODO: backend types
-    async (data: unknown) => {
+    async (data: Record<string, any>) => {
       const { payload } = await ofetch('/api/users', {
         method: 'POST',
-        body: { some: 'json' },
+        body: data,
       })
 
       stores.AUTH.user = payload

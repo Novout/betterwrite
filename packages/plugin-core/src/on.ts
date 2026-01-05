@@ -166,12 +166,12 @@ export const backend = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn,
   ) => {
-    emitter.on('plugin-backend-register-user', (index: number) => {
-      if (!index) return
+    emitter.on('plugin-backend-register-user', (type: 'common' | 'adventure' | 'force') => {
+      if (!type) return
 
       const created = content[0]
 
-      created && created(index)
+      created && created(type)
     })
   }
 
