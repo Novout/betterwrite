@@ -1,5 +1,5 @@
 <template>
-  <main class="wb-screen w-full flex flex-row justify-center flex-wrap gap-20 items-center bg-theme-background-2">
+  <main :style="{ background: 'linear-gradient(1448deg,rgba(61, 58, 58, 1) 0%, rgba(55, 65, 81, 1) 100%)' }" class="wb-screen w-full flex flex-row justify-center flex-wrap gap-20 items-center">
     <section class="relative left-25 flex text-white justify-around items-center flex-col gap-5 w-80 h-140 rounded-xl bg-theme-background-4">
       <h2 class="font-bold text-3xl">{{ t('account.common.title') }}</h2>
       <h3 class="font-bold text-3xl">{{ t('account.common.price') }}</h3>
@@ -18,6 +18,11 @@
       <p class="font-raleway text-lg text-center">{{ t('account.force.description') }}</p>
       <Button @click="onCreateAccount('force')">{{ t('account.force.enter') }}</Button>
     </section>
+    <img
+      class="absolute right-20 bottom-20 opacity-20 shadow-lg rounded-xs w-80 md:w-80"
+      alt="Better Write Logo"
+      src="/logo_default.svg"
+    />
   </main>
 </template>
 

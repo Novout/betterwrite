@@ -27,7 +27,6 @@ export const DataSet = (
       // TODO: backend types
       await ofetch(`/api/user/${id}`, {
         method: 'POST',
-        body: { some: 'json' },
         async onRequestError() {
           hooks.toast.error(hooks.i18n.t('toast.user.fail'))
         },
