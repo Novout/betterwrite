@@ -19,5 +19,13 @@ export const useBackend = () => {
     await nextTick
   }
 
-  return { registerUser, getUser }
+  const getProject = (id: string) => {
+
+  }
+
+  const deleteProject = (id: string) => {
+
+  }
+
+  return { registerUser, getUser, getProject, deleteProject }
 }

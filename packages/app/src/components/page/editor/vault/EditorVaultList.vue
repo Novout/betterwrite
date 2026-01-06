@@ -7,7 +7,10 @@
       </div>
       <div class="flex justify-between w-full">
         <p>Level {{ project.level }}</p>
-        <IconVaultOpen class="wb-icon w-5 h-5">{{ t('editor.vault.load') }}</IconVaultOpen>
+        <div class="flex gap-3">
+          <IconDelete @click="backend.deleteProject(project.title)" class="wb-icon w-5 h-5"></IconDelete>
+          <IconVaultOpen @click="backend.getProject(project.title)" class="wb-icon w-5 h-5"></IconVaultOpen>
+        </div>
       </div>
     </div>
   </section>
@@ -26,5 +29,9 @@ const backend = useBackend()
 const { t } = useI18n()
 
 // TODO: Backend here
-const projects = ref<AuthItem[]>([])
+const projects = ref<AuthItem[]>([{
+  title: 'Test',
+  size: '1.6',
+  level: 2,
+}])
 </script>
