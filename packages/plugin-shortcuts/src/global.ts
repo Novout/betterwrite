@@ -30,46 +30,44 @@ export const GlobalSet = (
     if (!keys || !whenever) return
 
     whenever(keys.ctrl_shift_p, () => {
-      emitter.emit('plugin-pdf-generate', {
-        chapters: hooks.project.utils().getChaptersSelection(),
-        color: 'RGB',
-      })
+      if(stores.SHORTCUTS.ctrlShiftP) { 
+        emitter.emit('plugin-pdf-generate', {
+          chapters: hooks.project.utils().getChaptersSelection(),
+          color: 'RGB',
+        }) 
+      }
     })
 
     whenever(keys.ctrl_shift_e, () => {
-      emitter.emit('plugin-epub-generate')
+      if(stores.SHORTCUTS.ctrlShiftE) emitter.emit('plugin-epub-generate')
     })
 
     whenever(keys.ctrl_shift_h, () => {
-      emitter.emit('plugin-html-generate')
+      if(stores.SHORTCUTS.ctrlShiftH) emitter.emit('plugin-html-generate')
     })
 
     whenever(keys.ctrl_shift_t, () => {
-      emitter.emit('plugin-txt-generate')
+      if(stores.SHORTCUTS.ctrlShiftT) emitter.emit('plugin-txt-generate')
     })
 
     whenever(keys.ctrl_s, async () => {
-      await hooks.local.onSaveProject()
-    })
-
-    whenever(keys.ctrl_shift_s, async () => {
-      await hooks.cloud.saveProject(undefined)
+      if(stores.SHORTCUTS.ctrlS) await hooks.local.onSaveProject()
     })
 
     whenever(keys.ctrl_f, () => {
       if (isThirdPartyShortcut) return
 
-      stores.ABSOLUTE.shortcuts.finder = !stores.ABSOLUTE.shortcuts.finder
+      if(stores.SHORTCUTS.ctrlF) stores.ABSOLUTE.shortcuts.finder = !stores.ABSOLUTE.shortcuts.finder
     })
 
     whenever(keys.ctrl_h, () => {
       if (isThirdPartyShortcut) return
 
-      stores.ABSOLUTE.shortcuts.switcher = !stores.ABSOLUTE.shortcuts.switcher
+      if(stores.SHORTCUTS.ctrlH) stores.ABSOLUTE.shortcuts.switcher = !stores.ABSOLUTE.shortcuts.switcher
     })
 
     whenever(keys.F11, () => {
-      hooks.utils.context().fullscreen()
+      if(stores.SHORTCUTS.F11) hooks.utils.context().fullscreen()
     })
 
     if (hooks.env.isDev()) {

@@ -11,6 +11,8 @@ import {
   ExternalsState,
   GlobalState,
   VaultState,
+  ShortcutsState,
+  DOCXState
 } from '..'
 
 export type PluginEmitterName =
@@ -100,6 +102,7 @@ export type ExistingStores =
   | 'absolute'
   | 'auth'
   | 'context'
+  | 'docx'
   | 'editor'
   | 'pdf'
   | 'project'
@@ -107,6 +110,7 @@ export type ExistingStores =
   | 'history'
   | 'global'
   | 'vault'
+  | 'shortcuts'
 
 export type PluginStore<
   T extends ExistingStores,
@@ -121,11 +125,13 @@ export interface PluginStores {
   CONTEXT: PluginStore<'context', ContextState, any, any>
   EDITOR: PluginStore<'editor', EditorState, any, any>
   PDF: PluginStore<'pdf', PDFState, any, any>
+  DOCX: PluginStore<'docx', DOCXState, any, any>
   PROJECT: PluginStore<'project', ProjectState, any, any>
   EXTERNALS: PluginStore<'externals', ExternalsState, any, any>
   HISTORY: PluginStore<'history', HistoryState, any, any>
   GLOBAL: PluginStore<'global', GlobalState, any, any>
   VAULT: PluginStore<'vault', VaultState, any, any>
+  SHORTCUTS: PluginStore<'shortcuts', ShortcutsState, any, any>
 }
 
 export interface PluginDefines {

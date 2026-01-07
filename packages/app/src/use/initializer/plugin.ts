@@ -41,6 +41,7 @@ import { useAuthStore } from '@/store/auth'
 import { useVaultStore } from '@/store/vault'
 import { useHistory } from '../history'
 import { useSchemas } from '../schemas'
+import { useShortcutsStore } from '@/store/shortcuts'
 
 export const usePluginInitializer = () => {
   const core = useCore()
@@ -59,6 +60,7 @@ export const usePluginInitializer = () => {
         HISTORY: useHistoryStore(),
         GLOBAL: useGlobalStore(),
         VAULT: useVaultStore(),
+        SHORTCUTS: useShortcutsStore()
       },
       plugins,
       {
