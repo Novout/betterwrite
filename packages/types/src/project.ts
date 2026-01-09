@@ -2,6 +2,7 @@ import { ContextState } from './context'
 import { DOCXState } from './docx'
 import { EditorState } from './editor'
 import { PDFState } from './pdf'
+import { ShortcutsState } from './shortcuts'
 import { ID } from './utils'
 
 export type ProjectType = 'creative' | 'blank' | 'only-annotations'
@@ -208,6 +209,7 @@ export interface ProjectObject {
   editor: EditorState
   pdf: PDFState
   docx: DOCXState
+  shortcuts: ShortcutsState
 }
 
 export interface ProjectStateBetterWrite {

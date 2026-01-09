@@ -16,6 +16,7 @@ import { useDefines } from '../defines'
 import { useDOCXStore } from '@/store/docx'
 import { useUtils } from '../utils'
 import { useI18n } from 'vue-i18n'
+import { useShortcutsStore } from '@/store/shortcuts'
 
 export const useStorage = () => {
   const PROJECT = useProjectStore()
@@ -23,6 +24,7 @@ export const useStorage = () => {
   const EDITOR = useEditorStore()
   const PDF = usePDFStore()
   const DOCX = useDOCXStore()
+  const SHORTCUTS = useShortcutsStore()
 
   const env = useEnv()
   const emitter = useEmitter()
@@ -313,6 +315,7 @@ export const useStorage = () => {
         normalize: {},
       },
       docx: DOCX.$state,
+      shortcuts: SHORTCUTS.$state
     }
   }
 

@@ -75,7 +75,9 @@
       <EditorProjectPreferencesKeyboardItem
         :title="t('editor.aside.configuration.autosave')"
         shortcut="CTRL + S"
-      />
+      >
+        <InputBoolean v-model="SHORTCUTS.ctrlS"  />
+      </EditorProjectPreferencesKeyboardItem>
       <EditorProjectPreferencesKeyboardItem
         :title="t('editor.aside.configuration.cloudAutosave')"
         shortcut="CTRL + SHIFT + S"
@@ -83,25 +85,36 @@
       <EditorProjectPreferencesKeyboardItem
         :title="t('editor.bar.pdf.generate')"
         shortcut="CTRL + SHIFT + P"
-      />
+      >
+      <InputBoolean v-model="SHORTCUTS.ctrlShiftP"  />
+    </EditorProjectPreferencesKeyboardItem>
       <EditorProjectPreferencesKeyboardItem
         :title="t('editor.bar.epub.generate')"
         shortcut="CTRL + SHIFT + E"
-      />
+      >
+      <InputBoolean v-model="SHORTCUTS.ctrlShiftE"  />
+      </EditorProjectPreferencesKeyboardItem>
       <EditorProjectPreferencesKeyboardItem
         :title="t('editor.bar.html.generate')"
         shortcut="CTRL + SHIFT + H"
-      />
+      >
+        <InputBoolean v-model="SHORTCUTS.ctrlShiftH"  />
+      </EditorProjectPreferencesKeyboardItem>
       <EditorProjectPreferencesKeyboardItem
         :title="t('editor.bar.txt.generate')"
         shortcut="CTRL + SHIFT + T"
-      />
+      >
+        <InputBoolean v-model="SHORTCUTS.ctrlShiftT"  />
+      </EditorProjectPreferencesKeyboardItem>
     </div>
   </EditorProjectPreferencesContainerSlot>
 </template>
 
 <script setup lang="ts">
+  import { useShortcutsStore } from '@/store/shortcuts'
   import { useI18n } from 'vue-i18n'
+
+  const SHORTCUTS = useShortcutsStore()
 
   const { t } = useI18n()
 </script>
