@@ -25,12 +25,18 @@ export const DataSet = (
   On.backend().PluginLoadUser(emitter, [
     async (id: string) => {
       // TODO: backend types
-      await ofetch(`/api/user/${id}`, {
-        method: 'POST',
+      const { payload } = await ofetch(`/api/user/${id}`, {
+        method: 'GET',
         async onRequestError() {
           hooks.toast.error(hooks.i18n.t('toast.user.fail'))
         },
       })
+
+      if (payload) { 
+        stores.AUTH.user = payload
+
+        hooks.toast.success(hooks.i18n.t('toast.user.success'))
+      }
     },
     () => {},
   ])
