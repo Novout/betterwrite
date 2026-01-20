@@ -11,11 +11,9 @@ const router = createRouter({
 router.beforeResolve(async (to, from, next) => {
   const env = useEnv()
   const user = localStorage?.getItem('visited') || false
-  const url = window.location.href
-  const token = url.includes('access_token')
   const isOnline = useNetwork().isOnline.value
 
-  if (to.name === 'Landing' && token && !env.isDev()) {
+  if (to.name === 'Landing' && !env.isDev()) {
     next({ name: 'Main' })
 
     return
