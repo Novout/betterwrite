@@ -301,6 +301,19 @@ export const useStorage = () => {
       }
     }
 
+    if(!_.shortcuts) {
+      _.shortcuts = {
+        ctrlShiftP: true,
+        ctrlShiftE: true,
+        ctrlShiftH: true,
+        ctrlShiftT: true,
+        ctrlS: true,
+        ctrlF: true,
+        ctrlH: true,
+        F11: true,
+      }
+    }
+
     return _
   }
 
