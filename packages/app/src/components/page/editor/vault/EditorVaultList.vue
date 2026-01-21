@@ -9,7 +9,7 @@
         <p>Level {{ project.level }}</p>
         <div class="flex gap-3">
           <IconDelete @click="backend.deleteProject(project.title)" class="wb-icon w-5 h-5"></IconDelete>
-          <IconVaultOpen @click="backend.getProject(project.title)" class="wb-icon w-5 h-5"></IconVaultOpen>
+          <IconEnter @click="backend.getProject(project.title)" class="wb-icon w-5 h-5"></IconEnter>
         </div>
       </div>
     </div>
@@ -17,10 +17,11 @@
 </template>
 
 <script setup lang="ts">
+import IconOpenBook from '@/components/icons/IconOpenBook.vue';
 import { useAuthStore } from '@/store/auth';
 import { useBackend } from '@/use/backend';
 import type { AuthItem } from 'better-write-types';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const AUTH = useAuthStore()
@@ -31,7 +32,11 @@ const { t } = useI18n()
 // TODO: Backend here
 const projects = ref<AuthItem[]>([{
   title: 'Test',
-  size: '1.6',
+  size: '1.6KiB',
   level: 2,
 }])
+
+onMounted(() => {
+  //projects.value = backend.getLibraries('0')
+})
 </script>

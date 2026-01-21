@@ -23,9 +23,13 @@ export const useBackend = () => {
 
   }
 
+  const getLibraries = (id: string) => {
+    return []
+  }
+
   const deleteProject = (id: string) => {
 
   }
 
-  return { registerUser, getUser, getProject, deleteProject }
+  return { registerUser, getUser, getProject, getLibraries, deleteProject }
 }
