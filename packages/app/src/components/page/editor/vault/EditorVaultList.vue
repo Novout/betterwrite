@@ -17,7 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import IconOpenBook from '@/components/icons/IconOpenBook.vue';
 import { useAuthStore } from '@/store/auth';
 import { useBackend } from '@/use/backend';
 import type { AuthItem } from 'better-write-types';
