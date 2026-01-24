@@ -26,6 +26,8 @@ interface ImportMetaEnv {
   readonly VITE_ADVANCED_LIMIT: number
   readonly VITE_CUSTOM_LIMIT: number
   readonly VITE_UNLIMITED_LIMIT: number
+
+  readonly VITE_API: string
 }
 
 interface ImportMeta {

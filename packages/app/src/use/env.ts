@@ -65,6 +65,10 @@ export const useEnv = () => {
     return import.meta.env.DEV
   }
 
+  const api = () => {
+    return import.meta.env.VITE_API
+  }
+
   const getAccountPlanLimit = (plan: AccountPlan) => {
     switch (plan) {
       case 'beginner':
@@ -95,6 +99,7 @@ export const useEnv = () => {
     initialLoad,
     packageVersion,
     isDev,
+    api,
     getAccountPlanLimit,
   }
 }

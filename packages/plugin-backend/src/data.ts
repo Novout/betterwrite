@@ -10,7 +10,7 @@ export const DataSet = (
   On.backend().PluginRegisterUser(emitter, [
     // TODO: backend types
     async (data: Record<string, any>) => {
-      const { payload } = await ofetch('/api/users', {
+      const { payload } = await ofetch(`${hooks.env.api()}/user`, {
         method: 'POST',
         body: data,
       })
@@ -25,7 +25,7 @@ export const DataSet = (
   On.backend().PluginLoadUser(emitter, [
     async (id: string) => {
       // TODO: backend types
-      const { payload } = await ofetch(`/api/user/${id}`, {
+      const { payload } = await ofetch(`${hooks.env.api()}/user/${id}`, {
         method: 'GET',
         async onRequestError() {
           hooks.toast.error(hooks.i18n.t('toast.user.fail'))
