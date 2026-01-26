@@ -23,7 +23,16 @@ export default {
     title: 'Entre ou crie sua conta!',
     email: 'Email...',
     password: 'Senha...',
-    start: 'Entrar'
+    start: 'Entrar',
+    loadSuccess: 'Carregado com ucesso!',
+    loadError: 'Erro ao carregar!',
+    deleteSuccess: 'Deletado com successo!',
+    deleteError: 'Erro ao deletar!',
+    loadVaultError: 'Erro ao carregar o conteúdo!',
+    vaultLoadSuccess: 'Sucesso ao carregar o conteúdo!',
+    vaultloadError: 'Erro ao carregar o conteudo!',
+    getUserSuccess: 'Sucesso ao carregar sua conta!',
+    getUserError: 'Erro ao carregar sua conta!'
   },
   editor: {
     new: {

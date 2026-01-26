@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 export const useVaultStore = defineStore('vault', {
   state: (): VaultState => {
     return {
-      documents: undefined,
+      libraries: []
     }
   },
 })

@@ -3,7 +3,16 @@ export default {
     title: 'Log in or lose your account!',
     email: 'Email...',
     password: 'Password...',
-    start: 'Log in'
+    start: 'Log in',
+    loadSuccess: 'Loaded successfully!',
+    loadError: 'Error loading!',
+    deleteSuccess: 'Deleted successfully!',
+    deleteError: 'Error deleting!',
+    loadVaultError: 'Error loading content!',
+    vaultLoadSuccess: 'Successfully loading the content!',
+    vaultloadError: 'Error loading content!!',
+    getUserSuccess: 'Successfully loading your account!',
+    getUserError: 'Error loading your account!'
   },
   account: {
     common: {

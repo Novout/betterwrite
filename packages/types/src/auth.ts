@@ -7,9 +7,3 @@ export interface AuthState {
     project_id_activity: Maybe<number>,
   },
 }
-
-export interface AuthItem {
-  title: string,
-  size: string,
-  level: number
-}

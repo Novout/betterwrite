@@ -1,15 +1,13 @@
 <template>
   <section class="flex font-poppins flex-col gap-3 w-60 overflow-y-auto">
-    <div v-for="(project, key) in projects" :key="key" class="flex-col p-2 text-white w-full transition-colors gap-5 hover:bg-theme-background-3">
+    <div v-if="AUTH.user" v-for="(project, key) in VAULT.libraries" :key="key" class="flex-col p-2 text-white w-full transition-colors gap-5 hover:bg-theme-background-3">
       <div class="flex gap-5 w-full">
         <p class="truncate">{{ project.title }}</p>
-        <p class="truncate">{{ project.size }}</p>
       </div>
-      <div class="flex justify-between w-full">
-        <p>Level {{ project.level }}</p>
+      <div class="flex justify-end w-full">
         <div class="flex gap-3">
-          <IconDelete @click="backend.deleteProject(project.title)" class="wb-icon w-5 h-5"></IconDelete>
-          <IconEnter @click="backend.getProject(project.title)" class="wb-icon w-5 h-5"></IconEnter>
+          <IconDelete @click="onDeleteProject(project.user_id)" class="wb-icon w-5 h-5"></IconDelete>
+          <IconEnter @click="onLoadProject(project.user_id)" class="wb-icon w-5 h-5"></IconEnter>
         </div>
       </div>
     </div>
@@ -18,24 +16,58 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '@/store/auth';
-import { useBackend } from '@/use/backend';
-import type { AuthItem } from 'better-write-types';
-import { onMounted, ref } from 'vue';
+import { useVaultStore } from '@/store/vault';
+import { useEnv } from '@/use/env';
+import { useProject } from '@/use/project';
+import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useToast } from 'vue-toastification';
 
 const AUTH = useAuthStore()
+const VAULT = useVaultStore()
 
-const backend = useBackend()
+const project = useProject()
+const toast = useToast()
 const { t } = useI18n()
+const env = useEnv()
 
-// TODO: Backend here
-const projects = ref<AuthItem[]>([{
-  title: 'Test',
-  size: '1.6KiB',
-  level: 2,
-}])
 
 onMounted(() => {
-  //projects.value = backend.getLibraries('0')
+  if(VAULT.libraries.length === 0) {
+    fetch(`${env.api()}/libraries/${AUTH.user.id}`, { method: 'GET' })
+      .then(res => res.json())
+      .then((libraries) => {
+        VAULT.libraries = libraries
+
+        toast.success(t('backend.vaultLoadSuccess'))
+      })
+      .catch(() => {
+        toast.error(t('backend.vaultloadError'))
+      })
+  }
 })
+
+const onDeleteProject = (id:number) => {
+  fetch(`${env.api()}/library/${id}`, { method: 'DELETE' })
+      .then(res => res.json())
+      .then(({ library }) => {
+        VAULT.libraries = VAULT.libraries.filter(({ id }) => id !== library.id)
+        toast.error(t('backend.vault.deleteSuccess'))
+      })
+      .catch(() => {
+        toast.error(t('backend.vault.deleteError'))
+      })
+}
+
+const onLoadProject = (id:number) => {
+  fetch(`${env.api()}/library/${id}`, { method: 'GET' })
+    .then(res => res.json())
+    .then(({ vault }) => {
+      console.log(vault)
+      project.onLoadProject(vault.content, true).then(() => {})
+    })
+    .catch(() => {
+      toast.error(t('backend.vault.loadVaultError'))
+    })
+}
 </script>

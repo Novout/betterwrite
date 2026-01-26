@@ -30,6 +30,11 @@
         :text="t('editor.bar.project.save')"
         @action="onSaveProject"
       />
+      <EditorHeaderItem
+        v-if="PROJECT.name !== env.projectEmpty() && AUTH.user"
+        :text="t('editor.bar.project.save')"
+        @action="onSaveProjectInCloud"
+      />
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
       <EditorHeaderItem
         v-if="
@@ -70,18 +75,46 @@
   import { useEnv } from '@/use/env'
   import { useI18n } from 'vue-i18n'
   import { useLocalStorage } from '@/use/storage/local'
+  import { useAuthStore } from '@/store/auth'
+  import { useContextStore } from '@/store/context'
+  import { useContent } from '@/use/content'
+  import { useVaultStore } from '@/store/vault'
+import { useToast } from 'vue-toastification'
+import { nextTick } from 'vue'
 
   const ABSOLUTE = useAbsoluteStore()
   const PROJECT = useProjectStore()
+  const CONTEXT = useContextStore()
+  const VAULT = useVaultStore()
+  const AUTH = useAuthStore()
 
   const project = useProject()
   const env = useEnv()
   const local = useLocalStorage()
+  const content = useContent()
+  const toast = useToast()
   const { t } = useI18n()
 
   const onSaveProject = () => {
     if (!confirm(t('editor.window.saveLocal'))) return
 
     local.onSaveProject()
+  }
+
+   const onSaveProjectInCloud = () => {
+    local.onSaveProject().then(async () => {
+      await nextTick
+
+      fetch(`${env.api()}/library/${AUTH.user.id}`, {
+        body: new URLSearchParams({ title: CONTEXT.title, content: JSON.stringify(content.get()) })
+      }).then((res) => res.json())
+        .then(( { library }) => {
+          VAULT.libraries.push(library)
+
+          toast.success(t('backend.save.successSave'))
+        }).catch(() => {
+          toast.error(t('backend.save.successError'))
+        })
+    })
   }
 </script>
