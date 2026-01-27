@@ -13,3 +13,5 @@ lerna-debug.log
 
 packages/better-write-app/e2e/videos
 packages/better-write-app/e2e/screenshots
+
+TODO.md
