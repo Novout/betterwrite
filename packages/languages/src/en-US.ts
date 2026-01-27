@@ -22,7 +22,9 @@ export default {
       deleteSuccess: 'Library successfully deleted!',
       deleteError: 'The library could not be deleted!',
       loadVaultError: 'The library could not be loaded!'
-    }
+    },
+    deleteProject: 'Are you sure you want to delete this project?',
+    loadProject: 'Are you sure you want to take on this new project? Remember to save your project first!'
   },
   account: {
     common: {

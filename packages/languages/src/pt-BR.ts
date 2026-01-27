@@ -42,7 +42,9 @@ export default {
       deleteSuccess: 'Bibliotca deletada com sucesso!',
       deleteError: 'Não foi possíve deletar a biblioteca!',
       loadVaultError: 'Não foi possível carregar a biblioteca!'
-    }
+    },
+    deleteProject: 'Tem certeza que quer deletar esse projeto?',
+    loadProject: 'Tem certeza que deseja carregar esse novo projeto? Lembre-se de salar seu projeto atua primeiro!'
   },
   editor: {
     new: {

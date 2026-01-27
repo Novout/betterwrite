@@ -1,5 +1,5 @@
 <template>
-  <section class="flex font-poppins flex-col gap-3 w-60 overflow-y-auto">
+  <section class="flex font-poppins flex-col gap-3 w-60 wb-scroll max-h-80 overflow-y-auto">
     <div v-if="AUTH.user" v-for="(project, key) in VAULT.libraries" :key="key" class="flex-col p-2 text-white w-full transition-colors gap-5 hover:bg-theme-background-3">
       <div class="flex gap-5 w-full">
         <p class="truncate">{{ project.title }}</p>
@@ -49,6 +49,8 @@ onMounted(() => {
 })
 
 const onDeleteProject = (id:number) => {
+  if(!confirm(t('backend.deleteProject'))) return
+
   fetch(`${env.api()}/library/${id}`, { method: 'DELETE' })
       .then(res => res.json())
       .then(({ library }) => {
@@ -62,6 +64,8 @@ const onDeleteProject = (id:number) => {
 }
 
 const onLoadProject = (id:number) => {
+  if(!confirm(t('backend.loadProject'))) return
+
   fetch(`${env.api()}/library/${id}`, { method: 'GET' })
     .then(res => res.json())
     .then(({ vault }) => {
