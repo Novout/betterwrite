@@ -21,7 +21,7 @@ export default {
   },
   backend: {
     title: 'Entre ou crie sua conta!',
-    name: 'Nome...',
+    name: 'Nome ou Nickname...',
     email: 'Email...',
     password: 'Senha...',
     start: 'Entrar',

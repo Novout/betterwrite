@@ -3,7 +3,7 @@ export default {
     title: 'Log in or lose your account!',
     email: 'Email...',
     password: 'Password...',
-    name: 'Name...',
+    name: 'Name or Nickname...',
     start: 'Log in',
     loadSuccess: 'Loaded successfully!',
     loadError: 'Error loading!',
