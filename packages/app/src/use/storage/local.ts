@@ -52,7 +52,7 @@ export const useLocalStorage = () => {
     return project ? storage.support(project) : undefined
   }
 
-  const onSaveProject = async (event: boolean = true) => {
+  const onSaveProject = async (event: boolean = true, notify: boolean = true) => {
     if (PROJECT.name === env.projectEmpty()) return
 
     const editor = document.querySelector('#edit')
@@ -69,7 +69,7 @@ export const useLocalStorage = () => {
 
           setProject(storage.getProjectObject())
 
-          toast.success(t('toast.project.save'))
+          if(notify) toast.success(t('toast.project.save'))
         })
         .finally(() => {
           plugin.emit('plugin-progress-end')
