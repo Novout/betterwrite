@@ -14,7 +14,7 @@ export default {
     vaultloadError: 'Error loading content!!',
     getUserSuccess: 'Successfully loading your account!',
     getUserError: 'Error loading your account!',
-    loadingUser: 'Carregando o usuário...',
+    loadingUser: 'Loading the user...',
     save: {
       successSave: 'Success in save project!',
       errorSave: 'Error in save project!'

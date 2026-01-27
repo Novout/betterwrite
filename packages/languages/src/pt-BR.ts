@@ -34,7 +34,7 @@ export default {
     vaultloadError: 'Erro ao carregar o conteudo!',
     getUserSuccess: 'Sucesso ao carregar sua conta!',
     getUserError: 'Erro ao carregar sua conta!',
-    loadingUser: 'Loading user...',
+    loadingUser: 'Carregando o usuário...',
     save: {
       successSave: 'Projeto salvo com sucesso!',
       errorSave: 'Erro ao salvar o projeto!'
