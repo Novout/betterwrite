@@ -4,10 +4,10 @@
       <div class="flex gap-5 w-full">
         <p class="truncate">{{ project.title }}</p>
       </div>
-      <div class="flex justify-end w-full">
+      <div class="flex justify-end mt-2 w-full">
         <div class="flex gap-3">
-          <IconDelete @click="onDeleteProject(project.user_id)" class="wb-icon w-5 h-5"></IconDelete>
-          <IconEnter @click="onLoadProject(project.user_id)" class="wb-icon w-5 h-5"></IconEnter>
+          <IconDelete @click="onDeleteProject(project.id)" class="wb-icon w-5 h-5"></IconDelete>
+          <IconEnter @click="onLoadProject(project.id)" class="wb-icon w-5 h-5"></IconEnter>
         </div>
       </div>
     </div>
@@ -19,6 +19,8 @@ import { useAuthStore } from '@/store/auth';
 import { useVaultStore } from '@/store/vault';
 import { useEnv } from '@/use/env';
 import { useProject } from '@/use/project';
+import { ProjectObject } from 'better-write-types';
+import { destr } from 'destr';
 import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useToast } from 'vue-toastification';
@@ -31,15 +33,14 @@ const toast = useToast()
 const { t } = useI18n()
 const env = useEnv()
 
-
 onMounted(() => {
-  if(VAULT.libraries.length === 0) {
+  if(VAULT.libraries.length === 0 && AUTH.user) {
     fetch(`${env.api()}/libraries/${AUTH.user.id}`, { method: 'GET' })
       .then(res => res.json())
       .then((libraries) => {
-        VAULT.libraries = libraries
+        VAULT.libraries = libraries || []
 
-        toast.success(t('backend.vaultLoadSuccess'))
+        if(VAULT.libraries.length > 0) toast.success(t('backend.vaultLoadSuccess'))
       })
       .catch(() => {
         toast.error(t('backend.vaultloadError'))
@@ -52,7 +53,8 @@ const onDeleteProject = (id:number) => {
       .then(res => res.json())
       .then(({ library }) => {
         VAULT.libraries = VAULT.libraries.filter(({ id }) => id !== library.id)
-        toast.error(t('backend.vault.deleteSuccess'))
+
+        toast.success(t('backend.vault.deleteSuccess'))
       })
       .catch(() => {
         toast.error(t('backend.vault.deleteError'))
@@ -63,8 +65,9 @@ const onLoadProject = (id:number) => {
   fetch(`${env.api()}/library/${id}`, { method: 'GET' })
     .then(res => res.json())
     .then(({ vault }) => {
-      console.log(vault)
-      project.onLoadProject(vault.content, true).then(() => {})
+      const content = destr<ProjectObject>(vault.content)
+
+      project.onLoadProject(content, true).then(() => {})
     })
     .catch(() => {
       toast.error(t('backend.vault.loadVaultError'))

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="rounded-full" ref="container">
     <Button @click="onOpen" class="flex justify-center items-center rounded-full w-8">
       <div class="rounded-full wb-icon w-8 shadow-xl">
         <IconUser class="h-8 w-8" />
@@ -52,12 +52,14 @@
 <script setup lang="ts">
   import { useAuthStore } from '@/store/auth'
   import { useEnv } from '@/use/env'
-  import { reactive, ref } from 'vue'
+  import { onClickOutside } from '@vueuse/core'
+  import { reactive, ref, useTemplateRef } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
 
   const { t } = useI18n()
   const toast = useToast()
+  const container = useTemplateRef('container')
 
   const AUTH = useAuthStore()
 
@@ -71,6 +73,11 @@
   const open = ref(false)
   const all = ref(true)
 
+  onClickOutside(container, () => {
+    open.value = false
+    all.value = false
+  })
+
   const onClose = () => {
     open.value = false
     all.value = false
@@ -82,18 +89,20 @@
   }
 
   const onLoad = () => {
+    toast.warning(t('backend.loadingUser'))
+
     fetch(`${env.api()}/login`, { method: 'POST',  body: new URLSearchParams({ name: setter.name, email: setter.email, password: setter.password })})
       .then((res) => res.json())
       .then(({ user }) => {
         AUTH.user = user
-
         open.value = false
+
+        toast.success(t('backend.getUserSuccess'))
     }).catch(() => {
       fetch(`${env.api()}/user`, { method: 'GET',  body: new URLSearchParams({ email: setter.email, password: setter.password })})
         .then((res) => res.json())
         .then(({ user }) => {
            AUTH.user = user
-
            open.value = false
 
            toast.success(t('backend.getUserSuccess'))

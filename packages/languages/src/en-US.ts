@@ -12,7 +12,17 @@ export default {
     vaultLoadSuccess: 'Successfully loading the content!',
     vaultloadError: 'Error loading content!!',
     getUserSuccess: 'Successfully loading your account!',
-    getUserError: 'Error loading your account!'
+    getUserError: 'Error loading your account!',
+    loadingUser: 'Carregando o usuário...',
+    save: {
+      successSave: 'Success in save project!',
+      errorSave: 'Error in save project!'
+    },
+    vault: {
+      deleteSuccess: 'Library successfully deleted!',
+      deleteError: 'The library could not be deleted!',
+      loadVaultError: 'The library could not be loaded!'
+    }
   },
   account: {
     common: {
@@ -291,6 +301,7 @@ export default {
         configuration: 'Configure',
         load: 'Load',
         save: 'Save',
+        saveInCloud: 'Save in Cloud',
         preferences: 'Preferences',
         statistics: 'Statistics',
         corrector: 'Corrector',

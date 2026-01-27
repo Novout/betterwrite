@@ -32,7 +32,17 @@ export default {
     vaultLoadSuccess: 'Sucesso ao carregar o conteúdo!',
     vaultloadError: 'Erro ao carregar o conteudo!',
     getUserSuccess: 'Sucesso ao carregar sua conta!',
-    getUserError: 'Erro ao carregar sua conta!'
+    getUserError: 'Erro ao carregar sua conta!',
+    loadingUser: 'Loading user...',
+    save: {
+      successSave: 'Projeto salvo com sucesso!',
+      errorSave: 'Erro ao salvar o projeto!'
+    },
+    vault: {
+      deleteSuccess: 'Bibliotca deletada com sucesso!',
+      deleteError: 'Não foi possíve deletar a biblioteca!',
+      loadVaultError: 'Não foi possível carregar a biblioteca!'
+    }
   },
   editor: {
     new: {
@@ -293,6 +303,7 @@ export default {
         corrector: 'Corretor',
         load: 'Carregar',
         save: 'Salvar',
+        saveInCloud: 'Salvar na Nuvem',
         language: 'Idioma',
         theme: 'Tema',
         import: 'Importar',

@@ -32,7 +32,7 @@
       />
       <EditorHeaderItem
         v-if="PROJECT.name !== env.projectEmpty() && AUTH.user"
-        :text="t('editor.bar.project.save')"
+        :text="t('editor.bar.project.saveInCloud')"
         @action="onSaveProjectInCloud"
       />
       <EditorHeaderItemDiv v-if="PROJECT.name !== env.projectEmpty()" />
@@ -101,11 +101,12 @@ import { nextTick } from 'vue'
     local.onSaveProject()
   }
 
-   const onSaveProjectInCloud = () => {
-    local.onSaveProject().then(async () => {
+const onSaveProjectInCloud = () => {
+    local.onSaveProject(true, false).then(async () => {
       await nextTick
 
       fetch(`${env.api()}/library/${AUTH.user.id}`, {
+        method: 'POST',
         body: new URLSearchParams({ title: CONTEXT.title, content: JSON.stringify(content.get()) })
       }).then((res) => res.json())
         .then(( { library }) => {
