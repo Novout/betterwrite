@@ -13,7 +13,7 @@
         <div class="flex w-full justify-end">
            <Button @click="open = !open" class="flex justify-center items-center rounded-full w-8">
           <div class="rounded-full wb-icon w-8 shadow-xl">
-            <IconClose class="h-6 w-6" />
+            <IconClose class="h-6 sw-6" />
           </div>
         </Button>
         </div>
