@@ -5,7 +5,11 @@
         ref="main"
         class="left-0 top-0 p-5 flex z-max flex-col w-full bg-rgba-blur lg:w-1/2 h-full lg:h-3/4 bg-theme-background-1 wb-text wb-scroll overflow-y-auto rounded shadow-2xl wb-scroll"
       >
-        <EditorAbsoluteHeader :title="t('editor.new.title')" @close="onClose" />
+      <EditorAbsoluteHeader :title="t('editor.new.title')" @close="onClose" />
+        <div class="flex gap-5 text-center flex-col justify-center items-center rounded-lg">
+          <p class="pt-3 text-lg">{{ t('editor.new.name') }}</p>
+          <InputText ref="input" class="bg-theme-background-2 py-2 px-3 text-white" placeholder="" v-model="name" />
+        </div>
         <p class="my-10 text-lg font-raleway text-center">
           {{ t('editor.new.description1')
           }}<b>{{ t('editor.new.description2') }}</b
@@ -92,6 +96,7 @@
   import { useAbsoluteStore } from '@/store/absolute'
   import { useContextStore } from '@/store/context'
   import { useProject } from '@/use/project'
+  import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const ABSOLUTE = useAbsoluteStore()
@@ -100,7 +105,9 @@
   const { t } = useI18n()
   const project = useProject()
 
+  const name = ref('')
+
   const onClose = () => {
-    if (CONTEXT.entities.length > 0) ABSOLUTE.project.new = false
+    if (CONTEXT.entities.length > 0 && name.value.length >= 6) ABSOLUTE.project.new = false
   }
 </script>
