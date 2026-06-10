@@ -1166,7 +1166,7 @@ export default {
         4: 'Use creativity in the best way.',
       },
       editor: {
-        website: 'Login',
+        website: 'Enter',
         about: 'About',
       },
       support: 'Follow the project!',
