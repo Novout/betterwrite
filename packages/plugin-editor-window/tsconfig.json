@@ -3,6 +3,7 @@
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "rootDir": ".",
     "outDir": "dist",
     "sourceMap": false,
