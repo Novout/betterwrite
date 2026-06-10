@@ -19,7 +19,6 @@
   import { CharactersPlugin } from 'better-write-plugin-characters'
   import { ProgressBarPlugin } from 'better-write-plugin-progress-bar'
   import { EditorWindowPlugin } from 'better-write-plugin-editor-window'
-  import { DropboxPlugin } from 'better-write-plugin-dropbox'
 
   useStart([
     ThemePlugin(),
@@ -35,7 +34,6 @@
     EntityHistoryPlugin(),
     CharactersPlugin(),
     ProgressBarPlugin(),
-    EditorWindowPlugin(),
-    DropboxPlugin(),
+    EditorWindowPlugin()
   ]).init()
 </script>

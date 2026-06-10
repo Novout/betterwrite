@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",

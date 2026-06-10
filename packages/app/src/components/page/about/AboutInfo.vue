@@ -70,9 +70,6 @@
           </AboutInfoItem>
         </div>
         <div class="flex flex-col gap-10">
-          <AboutInfoItem :content="t('about.initial.list.3')">
-            <IconVoid class="w-11 h-11" />
-          </AboutInfoItem>
           <AboutInfoItem :content="t('about.initial.list.4')">
             <IconProjectTypeDocument class="w-11 h-11" />
           </AboutInfoItem>

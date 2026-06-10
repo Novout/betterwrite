@@ -22,7 +22,6 @@
         <EditorBaseHeaderProject />
         <EditorBaseHeaderCreate v-if="PROJECT.type !== 'only-annotations'" />
         <EditorBaseHeaderExternals v-if="PROJECT.type !== 'only-annotations'" />
-        <EditorBaseHeaderVault />
         <EditorBaseHeaderHelp />
       </div>
     </div>
