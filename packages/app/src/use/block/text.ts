@@ -51,7 +51,11 @@ export const useBlockText = ({
   const save = (target: number, raw: string) => {
     if (raw === null) return
 
-    CONTEXT.entities[target].raw = raw
+    const clean = raw
+      .replaceAll(/<br\s*\/?>/gi, '')
+      .replaceAll('&amp;', '&')
+
+    CONTEXT.entities[target].raw = clean
 
     if (EDITOR.configuration.trackEntities) {
       CONTEXT.entities[target].updatedAt = format.actually('iso')
