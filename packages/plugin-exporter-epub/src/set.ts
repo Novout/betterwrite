@@ -36,12 +36,8 @@ export const PluginEpubSet = (
         lang: 'en',
         fonts: [],
         version: 3,
-        // TODO: support CSS styles
-        // css: getStyles(stores, hooks),
       },
-      [
-        contents(),
-      ]
+      contents()
     )
 
     download(epub, stores.PROJECT.nameRaw)
