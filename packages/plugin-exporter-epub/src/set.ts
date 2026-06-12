@@ -32,7 +32,7 @@ export const PluginEpubSet = (
         author: stores.PROJECT.creator,
         description: stores.PROJECT.subject,
         publisher: stores.PROJECT.producer,
-        tocTitle: hooks.i18n.t('editor.bar.epub.table') ?? undefined,
+        tocTitle: stores.PROJECT.nameRaw ?? undefined,
         lang: 'en',
         fonts: [],
         version: 3,
