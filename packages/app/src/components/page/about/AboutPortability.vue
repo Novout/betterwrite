@@ -110,9 +110,7 @@
         class="flex flex-col gap-5"
       >
         <AboutPortabilityItem color="blue"> .DOCX </AboutPortabilityItem>
-        <!-- 
         <AboutPortabilityItem color="green"> .EPUB </AboutPortabilityItem>
-        -->
         <AboutPortabilityItem color="white"> .TXT </AboutPortabilityItem>
         <AboutPortabilityItem color="red"> .PDF </AboutPortabilityItem>
         <AboutPortabilityItem color="orange"> .BW </AboutPortabilityItem>

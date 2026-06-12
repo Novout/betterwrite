@@ -120,8 +120,6 @@
   const onEPUBGenerate = async () => {
     await storage.normalize()
 
-    toast.warning(t('toast.epub.disabled'))
-
     plugin.emit('plugin-epub-generate')
   }
 

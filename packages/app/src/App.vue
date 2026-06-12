@@ -9,7 +9,7 @@
   import { ImporterPlugin } from 'better-write-plugin-importer'
   import { PDFPlugin } from 'better-write-plugin-exporter-pdf'
   import { DocxPlugin } from 'better-write-plugin-exporter-docx'
-  // import { EpubPlugin } from 'better-write-plugin-exporter-epub'
+  import { EpubPlugin } from 'better-write-plugin-exporter-epub'
   import { TxtPlugin } from 'better-write-plugin-exporter-txt'
   import { HtmlPlugin } from 'better-write-plugin-exporter-html'
   import { SchemasPlugin } from 'better-write-plugin-schemas'
@@ -25,7 +25,7 @@
     ImporterPlugin(),
     PDFPlugin(),
     DocxPlugin(),
-    // EpubPlugin(),
+    EpubPlugin(),
     TxtPlugin(),
     HtmlPlugin(),
     SchemasPlugin(),
