@@ -1,7 +1,20 @@
-import { ContextState, Entity, PluginTypes } from 'better-write-types'
+import { ContextState, Entity, EPUBDocOptions, PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 // @ts-ignore
 import { Epub, ready } from 'epub-gen3/browser'
+
+const bionicWord = (word: string): string => {
+  const len = Math.ceil(word.length * 0.45)
+  return `<b>${word.slice(0, len)}</b>${word.slice(len)}`
+}
+
+const bionicHtml = (text: string): string => {
+  return text.replace(/(\S+)/g, (word) => {
+    // skip html tags
+    if (word.startsWith('<')) return word
+    return bionicWord(word)
+  })
+}
 
 export const PluginEpubSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -16,15 +29,16 @@ export const PluginEpubSet = (
     )
   }
 
-  const contents = (): string[][] => {
+  const contents = (options: EPUBDocOptions): string[][] => {
     const raw: string[][] = []
 
     stores.PROJECT.chapters.forEach(({ entities: list }: ContextState) => {
       let data = []
 
       for (const entity of list) {
-        if(isValidType(entity)) {
-          data.push(hooks.substitution.purge(entity.raw))
+        if (isValidType(entity)) {
+          const purged = hooks.substitution.purge(entity.raw)
+          data.push(options.bionicReading ? bionicHtml(purged) : purged)
         }
       }
 
@@ -34,7 +48,7 @@ export const PluginEpubSet = (
     return raw
   }
 
-  const generate = async () => {
+  const generate = async (options: EPUBDocOptions) => {
     await ready
 
     const epub = new Epub(
@@ -48,7 +62,7 @@ export const PluginEpubSet = (
         fonts: [],
         version: 3,
       },
-      contents()
+      contents(options)
     )
 
     download(epub, stores.PROJECT.nameRaw)
@@ -65,8 +79,8 @@ export const PluginEpubSet = (
   }
 
   On.externals().PluginEpubGenerate(emitter, [
-    () => {
-      generate()
+    (options: EPUBDocOptions) => {
+      generate(options ?? { bionicReading: false })
     },
     () => {},
   ])

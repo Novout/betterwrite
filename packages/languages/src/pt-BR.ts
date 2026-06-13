@@ -238,10 +238,12 @@ export default {
         preview: 'Simular (.PDF)',
         generate: 'Gerar (.PDF)',
         configuration: 'Configurar (.PDF)',
+        bionicReading: 'Bionic Reading',
       },
       epub: {
         generate: 'Gerar (.EPUB)',
         table: 'Tabela de Conteúdos',
+        bionicReading: 'Bionic Reading',
       },
       txt: {
         generate: 'Gerar (.TXT)',
@@ -252,6 +254,7 @@ export default {
       docx: {
         configuration: 'Configurar (.DOCX)',
         generate: 'Gerar (.DOCX)',
+        bionicReading: 'Bionic Reading',
       },
       project: {
         new: 'Novo Projeto',

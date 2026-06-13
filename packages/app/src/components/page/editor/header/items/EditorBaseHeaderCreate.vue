@@ -21,6 +21,14 @@
     </template>
     <template #bar>
       <EditorHeaderItem
+        :text="t('editor.bar.pdf.bionicReading')"
+        @action="ABSOLUTE.pdf.bionicReading = !ABSOLUTE.pdf.bionicReading"
+      >
+        <template #icon>
+          <IconPDF class="mr-2 w-6 h-6" :class="ABSOLUTE.pdf.bionicReading ? 'text-theme-editor-header-list-text-active' : 'opacity-40'" />
+        </template>
+      </EditorHeaderItem>
+      <EditorHeaderItem
         :text="t('editor.bar.pdf.configuration')"
         @action="ABSOLUTE.pdf.configuration = true"
       >
@@ -38,6 +46,14 @@
       </EditorHeaderItem>
       <EditorHeaderItemDiv />
       <EditorHeaderItem
+        :text="t('editor.bar.docx.bionicReading')"
+        @action="ABSOLUTE.docx.bionicReading = !ABSOLUTE.docx.bionicReading"
+      >
+        <template #icon>
+          <IconDOCX class="mr-2 w-6 h-6" :class="ABSOLUTE.docx.bionicReading ? 'text-theme-editor-header-list-text-active' : 'opacity-40'" />
+        </template>
+      </EditorHeaderItem>
+      <EditorHeaderItem
         :text="t('editor.bar.docx.configuration')"
         @action="ABSOLUTE.docx.configuration = true"
       >
@@ -47,13 +63,21 @@
       </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.bar.docx.generate')"
-        @action="plugin.emit('plugin-docx-generate')"
+        @action="plugin.emit('plugin-docx-generate', { bionicReading: ABSOLUTE.docx.bionicReading })"
       >
         <template #icon>
           <IconDOCX class="mr-2 w-6 h-6" />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItemDiv />
+      <EditorHeaderItem
+        :text="t('editor.bar.epub.bionicReading')"
+        @action="ABSOLUTE.epub.bionicReading = !ABSOLUTE.epub.bionicReading"
+      >
+        <template #icon>
+          <IconEPUB class="mr-2 w-6 h-6" :class="ABSOLUTE.epub.bionicReading ? 'text-theme-editor-header-list-text-active' : 'opacity-40'" />
+        </template>
+      </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.bar.epub.generate')"
         @action="onEPUBGenerate"
@@ -62,6 +86,7 @@
           <IconEPUB class="mr-2 w-6 h-6" />
         </template>
       </EditorHeaderItem>
+      <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.txt.generate')"
         @action="plugin.emit('plugin-txt-generate')"
@@ -120,7 +145,7 @@
   const onEPUBGenerate = async () => {
     await storage.normalize()
 
-    plugin.emit('plugin-epub-generate')
+    plugin.emit('plugin-epub-generate', { bionicReading: ABSOLUTE.epub.bionicReading })
   }
 
   const onPDFGenerate = async () => {
@@ -134,6 +159,8 @@
 
     plugin.emit('plugin-pdf-generate', {
       chapters: project.utils().getChaptersSelection(),
+      color: 'RGB',
+      bionicReading: ABSOLUTE.pdf.bionicReading,
     })
   }
 </script>

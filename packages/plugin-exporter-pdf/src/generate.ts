@@ -358,12 +358,19 @@ export const PluginPDFSet = (
         ast.forEach(({ text, italic, bold, underline }) => {
           const und = underline ? { decoration: 'underline' } : {}
 
-          arr.push({
-            text,
-            italics: italic,
-            bold,
-            ...und,
-          })
+          if (options.bionicReading) {
+            text.split(/(\s+)/).forEach((chunk) => {
+              if (/^\s+$/.test(chunk) || chunk === '') {
+                arr.push({ text: chunk, italics: italic, bold, ...und })
+              } else {
+                const len = Math.ceil(chunk.length * 0.45)
+                arr.push({ text: chunk.slice(0, len), italics: italic, bold: true, ...und })
+                arr.push({ text: chunk.slice(len), italics: italic, bold, ...und })
+              }
+            })
+          } else {
+            arr.push({ text, italics: italic, bold, ...und })
+          }
         })
 
         return arr

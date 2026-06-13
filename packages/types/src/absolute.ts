@@ -25,10 +25,16 @@ export interface AbsoluteStateShortcuts {
 export interface AbsoluteStatePDF {
   configuration: boolean
   generate: boolean
+  bionicReading: boolean
 }
 
 export interface AbsoluteStateDOCX {
   configuration: boolean
+  bionicReading: boolean
+}
+
+export interface AbsoluteStateEPUB {
+  bionicReading: boolean
 }
 
 export interface AbsoluteStateAuth {
@@ -67,6 +73,7 @@ export interface AbsoluteState {
   modal: AbsoluteStateModal
   shortcuts: AbsoluteStateShortcuts
   pdf: AbsoluteStatePDF
+  epub: AbsoluteStateEPUB
   docx: AbsoluteStateDOCX
   auth: AbsoluteStateAuth
   entity: AbsoluteStateEntity

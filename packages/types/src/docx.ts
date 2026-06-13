@@ -59,3 +59,8 @@ export interface DOCXState {
   flow: DOCXStateFlow
   styles: DOCXStateStyles
 }
+
+
+export interface DOCXDocOptions {
+  bionicReading: boolean
+}

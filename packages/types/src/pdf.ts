@@ -131,6 +131,7 @@ export interface PDFDocOptions {
     select: boolean
   }[]
   color: ColorSchema
+  bionicReading: boolean
 }
 
 export interface PDFState {
