@@ -1,5 +1,6 @@
-import { ContextState, PluginTypes } from 'better-write-types'
+import { ContextState, Entity, PluginTypes } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
+// @ts-ignore
 import { Epub, ready } from 'epub-gen3/browser'
 
 export const PluginEpubSet = (
@@ -7,6 +8,14 @@ export const PluginEpubSet = (
   stores: PluginTypes.PluginStores,
   hooks: PluginTypes.PluginHooks,
 ) => {
+  const isValidType = (val: Entity) => {
+    return (
+      !hooks.entity.utils().isFixedRaw(val.raw) &&
+      val.type !== 'image' &&
+      val.type !== 'drau'
+    )
+  }
+
   const contents = (): string[][] => {
     const raw: string[][] = []
 
@@ -14,7 +23,9 @@ export const PluginEpubSet = (
       let data = []
 
       for (const entity of list) {
-        data.push(hooks.substitution.purge(entity.raw))
+        if(isValidType(entity)) {
+          data.push(hooks.substitution.purge(entity.raw))
+        }
       }
 
       raw.push(data)
