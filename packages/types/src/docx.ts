@@ -60,7 +60,6 @@ export interface DOCXState {
   styles: DOCXStateStyles
 }
 
-
 export interface DOCXDocOptions {
   bionicReading: boolean
 }

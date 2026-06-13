@@ -1,4 +1,9 @@
-import { ContextState, Entity, EPUBDocOptions, PluginTypes } from 'better-write-types'
+import {
+  ContextState,
+  Entity,
+  EPUBDocOptions,
+  PluginTypes,
+} from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 // @ts-ignore
 import { Epub, ready } from 'epub-gen3/browser'
@@ -62,7 +67,7 @@ export const PluginEpubSet = (
         fonts: [],
         version: 3,
       },
-      contents(options)
+      contents(options),
     )
 
     download(epub, stores.PROJECT.nameRaw)
@@ -70,9 +75,12 @@ export const PluginEpubSet = (
 
   const download = (epub: Epub, title: string) => {
     const bytes = epub.archive()
-    const blob  = new Blob([bytes as any], { type: 'application/epub+zip' })
-    const url   = URL.createObjectURL(blob)
-    const a     = Object.assign(document.createElement('a'), { href: url, download: `${title}.epub` })
+    const blob = new Blob([bytes as any], { type: 'application/epub+zip' })
+    const url = URL.createObjectURL(blob)
+    const a = Object.assign(document.createElement('a'), {
+      href: url,
+      download: `${title}.epub`,
+    })
     a.click()
 
     hooks.toast.success(hooks.i18n.t('toast.project.epub.generate'))

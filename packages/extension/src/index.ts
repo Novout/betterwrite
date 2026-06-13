@@ -40,7 +40,10 @@ const PBKDF2_ITERATIONS = 200_000
 const SALT_LEN = 16
 const IV_LEN = 12
 
-const deriveKey = async (password: string, salt: Uint8Array): Promise<CryptoKey> => {
+const deriveKey = async (
+  password: string,
+  salt: Uint8Array,
+): Promise<CryptoKey> => {
   const keyMaterial = await crypto.subtle.importKey(
     'raw',
     new TextEncoder().encode(password),
@@ -50,7 +53,12 @@ const deriveKey = async (password: string, salt: Uint8Array): Promise<CryptoKey>
   )
 
   return crypto.subtle.deriveKey(
-    { name: 'PBKDF2', salt: salt.buffer as ArrayBuffer, iterations: PBKDF2_ITERATIONS, hash: 'SHA-256' },
+    {
+      name: 'PBKDF2',
+      salt: salt.buffer as ArrayBuffer,
+      iterations: PBKDF2_ITERATIONS,
+      hash: 'SHA-256',
+    },
     keyMaterial,
     { name: 'AES-GCM', length: 256 },
     false,
@@ -58,10 +66,13 @@ const deriveKey = async (password: string, salt: Uint8Array): Promise<CryptoKey>
   )
 }
 
-export const encryptBW = async (data: string, password: string): Promise<Blob> => {
+export const encryptBW = async (
+  data: string,
+  password: string,
+): Promise<Blob> => {
   const salt = crypto.getRandomValues(new Uint8Array(SALT_LEN))
-  const iv   = crypto.getRandomValues(new Uint8Array(IV_LEN))
-  const key  = await deriveKey(password, salt)
+  const iv = crypto.getRandomValues(new Uint8Array(IV_LEN))
+  const key = await deriveKey(password, salt)
 
   const ciphertext = new Uint8Array(
     await crypto.subtle.encrypt(
@@ -77,10 +88,13 @@ export const encryptBW = async (data: string, password: string): Promise<Blob> =
   payload.set(iv, SALT_LEN)
   payload.set(ciphertext, SALT_LEN + IV_LEN)
 
-  const blobWriter  = new BlobWriter()
-  const zipWriter   = new ZipWriter(blobWriter)
+  const blobWriter = new BlobWriter()
+  const zipWriter = new ZipWriter(blobWriter)
 
-  await zipWriter.add('meta.json', new TextReader(JSON.stringify({ encrypted: true, version: 1 })))
+  await zipWriter.add(
+    'meta.json',
+    new TextReader(JSON.stringify({ encrypted: true, version: 1 })),
+  )
   await zipWriter.add('encrypted.bin', new BlobReader(new Blob([payload])))
   await zipWriter.add('mimetype', writeMimetype())
   await zipWriter.close()
@@ -94,19 +108,22 @@ const isEncryptedZip = async (zipReader: ZipReader<Blob>): Promise<boolean> => {
   return entries.some((e: Entry) => e.filename === 'meta.json')
 }
 
-export const decryptBW = async (blob: Blob, password: string): Promise<ProjectObject> => {
+export const decryptBW = async (
+  blob: Blob,
+  password: string,
+): Promise<ProjectObject> => {
   const zipReader = new ZipReader(new BlobReader(blob))
-  const entries   = await zipReader.getEntries()
+  const entries = await zipReader.getEntries()
 
   const encEntry = entries.find((e) => e.filename === 'encrypted.bin')
 
   if (!encEntry) throw new Error('encrypted.bin not found')
 
   const payloadBlob = await (encEntry as FileEntry).getData(new BlobWriter())
-  const payload     = new Uint8Array(await payloadBlob.arrayBuffer())
+  const payload = new Uint8Array(await payloadBlob.arrayBuffer())
 
-  const salt       = payload.slice(0, SALT_LEN)
-  const iv         = payload.slice(SALT_LEN, SALT_LEN + IV_LEN)
+  const salt = payload.slice(0, SALT_LEN)
+  const iv = payload.slice(SALT_LEN, SALT_LEN + IV_LEN)
   const ciphertext = payload.slice(SALT_LEN + IV_LEN)
 
   const key = await deriveKey(password, salt)
@@ -114,7 +131,11 @@ export const decryptBW = async (blob: Blob, password: string): Promise<ProjectOb
   let plaintext: ArrayBuffer
 
   try {
-    plaintext = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ciphertext)
+    plaintext = await crypto.subtle.decrypt(
+      { name: 'AES-GCM', iv },
+      key,
+      ciphertext,
+    )
   } catch {
     throw new Error('wrong-password')
   }
@@ -124,14 +145,18 @@ export const decryptBW = async (blob: Blob, password: string): Promise<ProjectOb
   return destr(new TextDecoder().decode(plaintext))
 }
 
-export const readBW = async (blob: Blob, getPassword?: () => Promise<string | null>): Promise<ProjectObject> => {
+export const readBW = async (
+  blob: Blob,
+  getPassword?: () => Promise<string | null>,
+): Promise<ProjectObject> => {
   // peek at entries to decide the path
-  const peekReader  = new ZipReader(new BlobReader(blob))
-  const encrypted   = await isEncryptedZip(peekReader)
+  const peekReader = new ZipReader(new BlobReader(blob))
+  const encrypted = await isEncryptedZip(peekReader)
   await peekReader.close()
 
   if (encrypted) {
-    if (!getPassword) throw new Error('File is encrypted but no password provider was given')
+    if (!getPassword)
+      throw new Error('File is encrypted but no password provider was given')
 
     const password = await getPassword()
 
@@ -142,9 +167,9 @@ export const readBW = async (blob: Blob, getPassword?: () => Promise<string | nu
 
   // original unencrypted path
   const zipFileReader = new BlobReader(blob)
-  const writer        = new TextWriter()
-  const zipReader     = new ZipReader(zipFileReader)
-  const firstEntry    = (await zipReader.getEntries()).shift()
+  const writer = new TextWriter()
+  const zipReader = new ZipReader(zipFileReader)
+  const firstEntry = (await zipReader.getEntries()).shift()
 
   // @ts-expect-error
   const data = await firstEntry.getData(writer)

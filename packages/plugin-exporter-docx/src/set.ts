@@ -30,7 +30,11 @@ export const PluginDocxSet = (
 ) => {
   const { isLoading } = hooks.vueuse.integration.progress
 
-  const purge = (raw: string, custom: Record<string, any>, bionicReading = false): DocxPurge => {
+  const purge = (
+    raw: string,
+    custom: Record<string, any>,
+    bionicReading = false,
+  ): DocxPurge => {
     const arr: DocxPurge = []
 
     const ast = parse(hooks.substitution.purge(raw))

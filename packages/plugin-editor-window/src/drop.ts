@@ -31,7 +31,9 @@ export const PluginDropSet = (
               hooks.project.onLoadProject(data, false)
             } catch (e: any) {
               if (e?.message === 'wrong-password') {
-                hooks.toast.error(hooks.i18n.t('toast.project.bw.passwordWrong'))
+                hooks.toast.error(
+                  hooks.i18n.t('toast.project.bw.passwordWrong'),
+                )
               } else if (e?.message !== 'cancelled') {
                 hooks.toast.error(hooks.i18n.t('toast.generics.error'))
               }

@@ -34,6 +34,6 @@
     EntityHistoryPlugin(),
     CharactersPlugin(),
     ProgressBarPlugin(),
-    EditorWindowPlugin()
+    EditorWindowPlugin(),
   ]).init()
 </script>

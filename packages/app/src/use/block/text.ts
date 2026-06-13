@@ -51,9 +51,7 @@ export const useBlockText = ({
   const save = (target: number, raw: string) => {
     if (raw === null) return
 
-    const clean = raw
-      .replaceAll(/<br\s*\/?>/gi, '')
-      .replaceAll('&amp;', '&')
+    const clean = raw.replaceAll(/<br\s*\/?>/gi, '').replaceAll('&amp;', '&')
 
     CONTEXT.entities[target].raw = clean
 

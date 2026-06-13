@@ -25,7 +25,14 @@
         @action="ABSOLUTE.pdf.bionicReading = !ABSOLUTE.pdf.bionicReading"
       >
         <template #icon>
-          <IconPDF class="mr-2 w-6 h-6" :class="ABSOLUTE.pdf.bionicReading ? 'text-theme-editor-header-list-text-active' : 'opacity-40'" />
+          <IconPDF
+            class="mr-2 w-6 h-6"
+            :class="
+              ABSOLUTE.pdf.bionicReading
+                ? 'text-theme-editor-header-list-text-active'
+                : 'opacity-40'
+            "
+          />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
@@ -50,7 +57,14 @@
         @action="ABSOLUTE.docx.bionicReading = !ABSOLUTE.docx.bionicReading"
       >
         <template #icon>
-          <IconDOCX class="mr-2 w-6 h-6" :class="ABSOLUTE.docx.bionicReading ? 'text-theme-editor-header-list-text-active' : 'opacity-40'" />
+          <IconDOCX
+            class="mr-2 w-6 h-6"
+            :class="
+              ABSOLUTE.docx.bionicReading
+                ? 'text-theme-editor-header-list-text-active'
+                : 'opacity-40'
+            "
+          />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
@@ -63,7 +77,11 @@
       </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.bar.docx.generate')"
-        @action="plugin.emit('plugin-docx-generate', { bionicReading: ABSOLUTE.docx.bionicReading })"
+        @action="
+          plugin.emit('plugin-docx-generate', {
+            bionicReading: ABSOLUTE.docx.bionicReading,
+          })
+        "
       >
         <template #icon>
           <IconDOCX class="mr-2 w-6 h-6" />
@@ -75,7 +93,14 @@
         @action="ABSOLUTE.epub.bionicReading = !ABSOLUTE.epub.bionicReading"
       >
         <template #icon>
-          <IconEPUB class="mr-2 w-6 h-6" :class="ABSOLUTE.epub.bionicReading ? 'text-theme-editor-header-list-text-active' : 'opacity-40'" />
+          <IconEPUB
+            class="mr-2 w-6 h-6"
+            :class="
+              ABSOLUTE.epub.bionicReading
+                ? 'text-theme-editor-header-list-text-active'
+                : 'opacity-40'
+            "
+          />
         </template>
       </EditorHeaderItem>
       <EditorHeaderItem
@@ -145,7 +170,9 @@
   const onEPUBGenerate = async () => {
     await storage.normalize()
 
-    plugin.emit('plugin-epub-generate', { bionicReading: ABSOLUTE.epub.bionicReading })
+    plugin.emit('plugin-epub-generate', {
+      bionicReading: ABSOLUTE.epub.bionicReading,
+    })
   }
 
   const onPDFGenerate = async () => {
