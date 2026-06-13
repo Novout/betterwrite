@@ -1,6 +1,6 @@
 <template>
   <div @mouseleave="n = false" @mouseenter="n = true">
-    <p
+    <span
       class="wb-header-button"
       :class="[n ? 'text-theme-icon-active' : '']"
     >
@@ -8,11 +8,11 @@
         <HeroIcon class="h-9 w-9 lg:(w-7 h-7) mr-0 md:mr-1">
           <slot name="icon" />
         </HeroIcon>
-        <p class="hidden lg:flex">
+        <span class="hidden lg:flex">
           <slot name="text" />
-        </p>
+        </span>
       </div>
-    </p>
+    </span>
     <EditorHeaderBar v-if="n">
       <slot name="bar" />
     </EditorHeaderBar>
