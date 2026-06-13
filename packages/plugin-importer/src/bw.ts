@@ -9,9 +9,20 @@ export const BWSet = (
 ) => {
   On.externals().PluginImporterBW(emitter, [
     async ({ data }: ImporterParams) => {
-      const content = await readBW(data as any)
+      const getPassword = async () =>
+        window.prompt(hooks.i18n.t('toast.project.bw.passwordGet'))
 
-      hooks.project.onLoadProject(content)
+      try {
+        const content = await readBW(data as any, getPassword)
+
+        hooks.project.onLoadProject(content)
+      } catch (e: any) {
+        if (e?.message === 'wrong-password') {
+          hooks.toast.error(hooks.i18n.t('toast.project.bw.passwordWrong'))
+        } else if (e?.message !== 'cancelled') {
+          hooks.toast.error(hooks.i18n.t('toast.generics.error'))
+        }
+      }
     },
     () => {},
   ])

@@ -273,6 +273,7 @@ export default {
         import: 'Import',
         export: 'Export',
         exportAs: 'Export as...',
+        encryptBW: 'Encrypt .bw',
       },
       chapter: {
         drafts: 'Drafts',
@@ -1079,6 +1080,13 @@ export default {
       export: 'Project exported to extension (.bw) successfully!',
       delete: 'Project successfully deleted!',
       unsupportedExtension: 'This extension is not supported by Better Write!',
+      bw: {
+        passwordSet: 'Set a password to encrypt the file:',
+        passwordConfirm: 'Confirm the password:',
+        passwordMismatch: 'Passwords do not match. Export cancelled.',
+        passwordGet: 'This file is encrypted. Enter the password:',
+        passwordWrong: 'Wrong password. Could not open the file.',
+      },
       docx: {
         generate: 'Successfully Downloaded DOCX!',
       },

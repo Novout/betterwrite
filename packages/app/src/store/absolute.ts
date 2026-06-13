@@ -64,6 +64,9 @@ export const useAbsoluteStore = defineStore('absolute', {
         create: false,
         template: false,
       },
+      bw: {
+        encryptOnExport: false,
+      },
     }
   },
 })

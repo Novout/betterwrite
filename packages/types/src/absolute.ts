@@ -64,6 +64,10 @@ export interface AbsoluteStateSchemas {
   template: boolean
 }
 
+export interface AbsoluteStateBW {
+  encryptOnExport: boolean
+}
+
 export interface AbsoluteState {
   cmd: boolean
   commands: boolean
@@ -82,4 +86,5 @@ export interface AbsoluteState {
   generator: AbsoluteStateGenerator
   spinner: boolean
   schemas: AbsoluteStateSchemas
+  bw: AbsoluteStateBW
 }

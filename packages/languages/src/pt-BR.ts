@@ -270,6 +270,7 @@ export default {
         import: 'Importar',
         export: 'Exportar',
         exportAs: 'Exportar como...',
+        encryptBW: 'Criptografar .bw',
       },
       chapter: {
         drafts: 'Rascunhos',
@@ -1087,6 +1088,13 @@ export default {
       export: 'Projeto exportado para a extensão (.bw) com sucesso!',
       unsupportedExtension: 'Esta extensão não é suportada por Better Write!',
       delete: 'Projeto deletado com sucesso!',
+      bw: {
+        passwordSet: 'Defina uma senha para criptografar o arquivo:',
+        passwordConfirm: 'Confirme a senha:',
+        passwordMismatch: 'As senhas não coincidem. Exportação cancelada.',
+        passwordGet: 'Este arquivo está criptografado. Digite a senha:',
+        passwordWrong: 'Senha incorreta. Não foi possível abrir o arquivo.',
+      },
       docx: {
         generate: 'DOCX Baixado com Sucesso!',
       },

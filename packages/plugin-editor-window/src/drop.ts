@@ -22,9 +22,20 @@ export const PluginDropSet = (
           if (
             confirm(hooks.i18n.t('toast.project.import', { name: file.name }))
           ) {
-            const data = await readBW(file)
+            const getPassword = async () =>
+              window.prompt(hooks.i18n.t('toast.project.bw.passwordGet'))
 
-            hooks.project.onLoadProject(data, false)
+            try {
+              const data = await readBW(file, getPassword)
+
+              hooks.project.onLoadProject(data, false)
+            } catch (e: any) {
+              if (e?.message === 'wrong-password') {
+                hooks.toast.error(hooks.i18n.t('toast.project.bw.passwordWrong'))
+              } else if (e?.message !== 'cancelled') {
+                hooks.toast.error(hooks.i18n.t('toast.generics.error'))
+              }
+            }
           }
 
           return

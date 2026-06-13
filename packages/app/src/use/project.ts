@@ -27,7 +27,7 @@ import { useFileSystemAccess } from '@vueuse/core'
 import { useI18n } from 'vue-i18n'
 import { read } from 'better-write-plugin-importer'
 import useEmitter from './emitter'
-import { writeBW } from 'better-write-extension'
+import { writeBW, encryptBW } from 'better-write-extension'
 import { useAuthStore } from '@/store/auth'
 import { useDOCXStore } from '@/store/docx'
 import { useGlobalStore } from '@/store/global'
@@ -197,12 +197,29 @@ export const useProject = () => {
     ABSOLUTE.project.tutorial = !localStorage.getItem('tutorial')
   }
 
+  const getBWBlob = async (target: string): Promise<Blob> => {
+    if (!ABSOLUTE.bw.encryptOnExport) return writeBW(target)
+
+    const password = window.prompt(t('toast.project.bw.passwordSet'))
+
+    if (!password) throw new Error('cancelled')
+
+    const confirm = window.prompt(t('toast.project.bw.passwordConfirm'))
+
+    if (confirm !== password) {
+      toast.error(t('toast.project.bw.passwordMismatch'))
+      throw new Error('mismatch')
+    }
+
+    return encryptBW(target, password)
+  }
+
   const onExportProject = () => {
     storage
       .normalize()
       .then(async () => {
         const target = JSON.stringify(storage.getProjectObject())
-        const zip = await writeBW(target)
+        const zip = await getBWBlob(target)
 
         await saveAs(zip, utils().exportName('bw'))
 
@@ -233,7 +250,7 @@ export const useProject = () => {
         if (!res.isSupported.value) return
 
         const target = JSON.stringify(storage.getProjectObject())
-        const zip = await writeBW(target)
+        const zip = await getBWBlob(target)
 
         res.data.value = zip
         res.fileName.value = utils().exportName('bw')
