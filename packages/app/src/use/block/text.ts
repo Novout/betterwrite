@@ -123,6 +123,15 @@ export const useBlockText = ({
       if (id === index.value) CONTEXT.entities[id].raw = result
     })
 
+    emitter.on('entity-speech-interim', ({ id, base, interim }) => {
+      if (id !== index.value) return
+
+      // mostra o texto final acumulado + interim em itálico/opaco, sem salvar no store
+      input.value.innerHTML = base
+        ? `${base} <em style="opacity:0.45">${interim}</em>`
+        : `<em style="opacity:0.45">${interim}</em>`
+    })
+
     emitter.on('entity-text-force-save', () => {
       if (isSalvageable.value && input.value && input.value.innerHTML) {
         save(index.value, input.value.innerHTML)

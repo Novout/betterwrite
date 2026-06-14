@@ -57,6 +57,7 @@ export type PluginEmitterName =
   | 'plugin-voice-stop'
   | 'plugin-voice-mutate'
   | 'plugin-voice-is-listening'
+  | 'entity-speech-interim'
   | 'plugin-editor-header-project-open'
   | 'plugin-editor-header-create-open'
   | 'plugin-editor-header-help-open'
