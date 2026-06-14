@@ -83,6 +83,15 @@
           :specific="true"
         />
       </div>
+      <div class="wb-preferences">
+        <p class="text-sm">
+          {{ t('editor.aside.configuration.entity.spellcheck') }}
+        </p>
+        <InputBoolean
+          v-model="EDITOR.configuration.entity.spellcheck"
+          :specific="true"
+        />
+      </div>
     </div>
     <div v-if="PROJECT.type === 'creative'">
       <PreferencesContainerTitle>

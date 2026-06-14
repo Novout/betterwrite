@@ -174,9 +174,13 @@ export default {
           header: 'Barra Superior',
           graph: 'Barra Lateral',
           text: 'Texto do Editor',
+          layout: 'Layout',
+          editorWidth: 'Largura do Editor',
           fontFamily: 'Fonte Padrão',
           fontWeight: 'Estilo da Fonte',
           fontSize: 'Tamanho da Fonte',
+          lineHeight: 'Altura da Linha',
+          letterSpacing: 'Espaçamento entre Letras',
         },
       },
       styles: {
@@ -547,6 +551,7 @@ export default {
           title: 'Editor',
           insertEntityInParagraphBreakLine:
             'Inserir Parágrafo em quebras de linha',
+          spellcheck: 'Verificação Ortográfica',
         },
       },
       entity: {

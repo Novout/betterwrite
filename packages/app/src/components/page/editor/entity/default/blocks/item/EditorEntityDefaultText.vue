@@ -7,9 +7,11 @@
         fontFamily: EDITOR.styles.text?.fontFamily || 'Raleway',
         fontWeight: EDITOR.styles.text?.fontWeight || 500,
         fontSize: `${EDITOR.styles.text?.fontSize || 16}px`,
+        lineHeight: EDITOR.styles.text?.lineHeight ?? 1.5,
+        letterSpacing: `${EDITOR.styles.text?.letterSpacing ?? 0}px`,
       }"
       class="editable whitespace-pre-line text-justify text-theme-editor-entity-text hover:text-theme-editor-entity-text-hover active:text-theme-editor-entity-text-active"
-      :spellcheck="true"
+      :spellcheck="EDITOR.configuration.entity?.spellcheck ?? true"
       :contenteditable="true"
       :data-placeholder="focused ? t('editor.text.placeholder.base') : ''"
       @input="block.onInput"

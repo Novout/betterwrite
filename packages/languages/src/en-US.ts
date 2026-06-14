@@ -173,9 +173,13 @@ export default {
           header: 'Top Bar',
           graph: 'Sidebar',
           text: 'Editor Text',
+          layout: 'Layout',
+          editorWidth: 'Editor Width',
           fontFamily: 'Font Family',
           fontWeight: 'Font Weight',
           fontSize: 'Font Size',
+          lineHeight: 'Line Height',
+          letterSpacing: 'Letter Spacing',
         },
       },
       styles: {
@@ -547,6 +551,7 @@ export default {
         entity: {
           title: 'Editor',
           insertEntityInParagraphBreakLine: 'Insert Paragraph at line breaks',
+          spellcheck: 'Spell Check',
         },
       },
       entity: {
