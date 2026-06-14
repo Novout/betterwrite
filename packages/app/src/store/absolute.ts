@@ -30,14 +30,10 @@ export const useAbsoluteStore = defineStore('absolute', {
       pdf: {
         configuration: false,
         generate: false,
-        bionicReading: false,
       },
-      epub: {
-        bionicReading: false,
-      },
+      epub: {},
       docx: {
         configuration: false,
-        bionicReading: false,
       },
       // deprecated
       auth: {
@@ -67,6 +63,7 @@ export const useAbsoluteStore = defineStore('absolute', {
       bw: {
         encryptOnExport: false,
       },
+      bionicReading: false,
     }
   },
 })

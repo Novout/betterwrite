@@ -21,20 +21,28 @@
     </template>
     <template #bar>
       <EditorHeaderItem
-        :text="t('editor.bar.pdf.bionicReading')"
-        @action="ABSOLUTE.pdf.bionicReading = !ABSOLUTE.pdf.bionicReading"
+        :text="t('editor.bar.export.bionicReading')"
+        @action="ABSOLUTE.bionicReading = !ABSOLUTE.bionicReading"
       >
         <template #icon>
-          <IconPDF
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
             class="mr-2 w-6 h-6"
             :class="
-              ABSOLUTE.pdf.bionicReading
+              ABSOLUTE.bionicReading
                 ? 'text-theme-editor-header-list-text-active'
                 : 'opacity-40'
             "
-          />
+          >
+            <path
+              fill="currentColor"
+              d="M4 5h3v14H4zm5 7h3V5H9zm5-7v14h3V5zm5 0v14h-1V5z"
+            />
+          </svg>
         </template>
       </EditorHeaderItem>
+      <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.pdf.configuration')"
         @action="ABSOLUTE.pdf.configuration = true"
@@ -53,21 +61,6 @@
       </EditorHeaderItem>
       <EditorHeaderItemDiv />
       <EditorHeaderItem
-        :text="t('editor.bar.docx.bionicReading')"
-        @action="ABSOLUTE.docx.bionicReading = !ABSOLUTE.docx.bionicReading"
-      >
-        <template #icon>
-          <IconDOCX
-            class="mr-2 w-6 h-6"
-            :class="
-              ABSOLUTE.docx.bionicReading
-                ? 'text-theme-editor-header-list-text-active'
-                : 'opacity-40'
-            "
-          />
-        </template>
-      </EditorHeaderItem>
-      <EditorHeaderItem
         :text="t('editor.bar.docx.configuration')"
         @action="ABSOLUTE.docx.configuration = true"
       >
@@ -79,7 +72,7 @@
         :text="t('editor.bar.docx.generate')"
         @action="
           plugin.emit('plugin-docx-generate', {
-            bionicReading: ABSOLUTE.docx.bionicReading,
+            bionicReading: ABSOLUTE.bionicReading,
           })
         "
       >
@@ -88,21 +81,6 @@
         </template>
       </EditorHeaderItem>
       <EditorHeaderItemDiv />
-      <EditorHeaderItem
-        :text="t('editor.bar.epub.bionicReading')"
-        @action="ABSOLUTE.epub.bionicReading = !ABSOLUTE.epub.bionicReading"
-      >
-        <template #icon>
-          <IconEPUB
-            class="mr-2 w-6 h-6"
-            :class="
-              ABSOLUTE.epub.bionicReading
-                ? 'text-theme-editor-header-list-text-active'
-                : 'opacity-40'
-            "
-          />
-        </template>
-      </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.bar.epub.generate')"
         @action="onEPUBGenerate"
@@ -171,7 +149,7 @@
     await storage.normalize()
 
     plugin.emit('plugin-epub-generate', {
-      bionicReading: ABSOLUTE.epub.bionicReading,
+      bionicReading: ABSOLUTE.bionicReading,
     })
   }
 
@@ -187,7 +165,7 @@
     plugin.emit('plugin-pdf-generate', {
       chapters: project.utils().getChaptersSelection(),
       color: 'RGB',
-      bionicReading: ABSOLUTE.pdf.bionicReading,
+      bionicReading: ABSOLUTE.bionicReading,
     })
   }
 </script>

@@ -235,16 +235,17 @@ export default {
         load: 'Cloud Load',
         save: 'Cloud Save',
       },
+      export: {
+        bionicReading: 'Enable Bionic Reading',
+      },
       pdf: {
         preview: 'Preview (.PDF)',
         generate: 'Generate (.PDF)',
         configuration: 'Configure (.PDF)',
-        bionicReading: 'Enable Bionic Reading',
       },
       epub: {
         generate: 'Generate (.EPUB)',
         table: 'Table of Content',
-        bionicReading: 'Enable Bionic Reading',
       },
       txt: {
         generate: 'Generate (.TXT)',
@@ -255,7 +256,6 @@ export default {
       docx: {
         configuration: 'Configure (.DOCX)',
         generate: 'Generate (.DOCX)',
-        bionicReading: 'Enable Bionic Reading',
       },
       project: {
         new: 'New Project',

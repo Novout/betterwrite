@@ -25,16 +25,14 @@ export interface AbsoluteStateShortcuts {
 export interface AbsoluteStatePDF {
   configuration: boolean
   generate: boolean
-  bionicReading: boolean
 }
 
 export interface AbsoluteStateDOCX {
   configuration: boolean
-  bionicReading: boolean
 }
 
 export interface AbsoluteStateEPUB {
-  bionicReading: boolean
+  _placeholder?: never
 }
 
 export interface AbsoluteStateAuth {
@@ -87,4 +85,5 @@ export interface AbsoluteState {
   spinner: boolean
   schemas: AbsoluteStateSchemas
   bw: AbsoluteStateBW
+  bionicReading: boolean
 }

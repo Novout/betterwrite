@@ -106,7 +106,7 @@
       plugin.emit('plugin-pdf-generate', {
         chapters: chapters.value,
         color: color.value,
-        bionicReading: ABSOLUTE.pdf.bionicReading,
+        bionicReading: ABSOLUTE.bionicReading,
       })
     }, 100)
   }
