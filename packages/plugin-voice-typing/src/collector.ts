@@ -26,15 +26,18 @@ export const CollectorSet = (
   hooks: PluginTypes.PluginHooks,
 ) => {
   let recognition: SR | null = null
+  let activeStream: MediaStream | null = null
 
   const stop = () => {
     recognition?.stop()
     recognition = null
+    activeStream?.getTracks().forEach((t) => t.stop())
+    activeStream = null
     hooks.project.utils().resetAllVisual()
   }
 
   On.externals().PluginVoiceStart(emitter, [
-    (lang: string) => {
+    async (lang: string, deviceId?: string) => {
       const { isSupported } = hooks.vueuse.core.useSpeechRecognition({ lang, continuous: true })
       const { audioInputs: microphones } = hooks.vueuse.core.useDevicesList()
 
@@ -53,6 +56,18 @@ export const CollectorSet = (
         stop()
         emitter.emit('plugin-voice-is-listening', false)
         return
+      }
+
+      // force specific microphone via getUserMedia before starting SpeechRecognition
+      if (deviceId) {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            audio: { deviceId: { exact: deviceId } },
+          })
+          activeStream = stream
+        } catch {
+          // ignore — fall through to default mic
+        }
       }
 
       // melhoria 2: id reativo ao cursor

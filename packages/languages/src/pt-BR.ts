@@ -305,6 +305,12 @@ export default {
         substitutions: 'Substituições',
       },
     },
+    tools: {
+      speechRecognition: {
+        defaultMic: 'Microfone padrão',
+        unknownMic: 'Microfone desconhecido',
+      },
+    },
     window: {
       confirmConfiguration: 'Você quer sair salvando as configurações?',
       saveDropbox: 'Você tem certeza em salvar este arquivo no Dropbox?',

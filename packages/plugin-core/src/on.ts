@@ -494,10 +494,10 @@ export const externals = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn,
   ) => {
-    emitter.on('plugin-voice-start', () => {
+    emitter.on('plugin-voice-start', (...args: any[]) => {
       const created = content[0]
 
-      created && created()
+      created && created(...args)
     })
   }
 

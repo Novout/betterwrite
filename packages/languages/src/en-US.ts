@@ -308,6 +308,12 @@ export default {
         substitutions: 'Substitutions',
       },
     },
+    tools: {
+      speechRecognition: {
+        defaultMic: 'Default microphone',
+        unknownMic: 'Unknown microphone',
+      },
+    },
     window: {
       confirmConfiguration: 'Do you want to quit saving the settings?',
       saveDropbox: 'Are you sure to save this file to Dropbox?',
