@@ -19,8 +19,5 @@
     "prettier": "3.6.2",
     "vitest": "4.0.6"
   },
-  "packageManager": "pnpm@8.5.1",
-  "dependencies": {
-    "epub-gen3": "^0.2.0"
-  }
+  "packageManager": "pnpm@8.5.1"
 }
