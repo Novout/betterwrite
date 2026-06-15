@@ -191,8 +191,8 @@ importers:
         specifier: 10.34.0
         version: 10.34.0(@types/node-fetch@2.6.13)
       epub-gen3:
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.4.0
+        version: 0.4.0
       file-saver:
         specifier: 2.0.5
         version: 2.0.5
@@ -5906,6 +5906,10 @@ packages:
 
   /epub-gen3@0.3.0:
     resolution: {integrity: sha512-Vi14IzFEUF2OdwPybbJdiOXUzXJPv76aADvOrQ4FqfmSYanpqw08bw3WM0o4q55SPagGszo2y9GwOsRG+8xVQg==}
+    dev: false
+
+  /epub-gen3@0.4.0:
+    resolution: {integrity: sha512-tslbcUxHahPGLpm3ghhmAeeQtraoZU2Uhm3FifXVL2TqcM9RqFnfKlE2Tg2cnIu+v3wCSJfKbDnDbQSUxA7oSw==}
     dev: false
 
   /err-code@2.0.3:
