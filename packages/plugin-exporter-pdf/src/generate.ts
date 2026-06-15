@@ -607,7 +607,7 @@ export const PluginPDFSet = (
           text: stores.PROJECT.creator,
           fontSize: 11,
           font: utils().correctFontInject(stores.PDF.styles.paragraph.font),
-          margin: [base().pageMargins[0], 250, base().pageMargins[2], 0],
+          margin: [base().pageMargins[0], 180, base().pageMargins[2], 0],
           color: isTheme.value ? theme.paragraph : defColor,
           alignment: 'left',
           pageBreak: 'after',
