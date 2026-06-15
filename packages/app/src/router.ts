@@ -15,7 +15,13 @@ router.beforeResolve(async (to, from, next) => {
   const token = url.includes('access_token')
   const isOnline = useNetwork().isOnline.value
 
-  if (to.name === 'Landing' && token && !env.isDev()) {
+  if(env.isDev()) {
+    next()
+
+    return
+  }
+
+  if (to.name === 'Landing' && token) {
     next({ name: 'Main' })
 
     return
@@ -33,7 +39,7 @@ router.beforeResolve(async (to, from, next) => {
     return
   }
 
-  if (to.name === 'Landing' && user && !env.isDev()) {
+  if (to.name === 'Landing' && user) {
     next({ name: 'Main' })
 
     return

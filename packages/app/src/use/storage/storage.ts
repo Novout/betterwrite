@@ -197,6 +197,28 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.editor.styles.text.lineHeight) {
+      _.editor.styles.text = {
+        ..._.editor.styles.text,
+        lineHeight: 1.5,
+        letterSpacing: 0,
+      }
+    }
+
+    if (!_.editor.styles.base.editorWidth) {
+      _.editor.styles.base = {
+        ..._.editor.styles.base,
+        editorWidth: 'medium',
+      }
+    }
+
+    if (!_.editor.configuration.entity.hasOwnProperty('spellcheck')) {
+      _.editor.configuration.entity = {
+        ..._.editor.configuration.entity,
+        spellcheck: true,
+      }
+    }
+
     if (!_.project.schemas) {
       _.project.schemas = []
       if (_.project.annotations) {

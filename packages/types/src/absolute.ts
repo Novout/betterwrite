@@ -31,6 +31,10 @@ export interface AbsoluteStateDOCX {
   configuration: boolean
 }
 
+export interface AbsoluteStateEPUB {
+  _placeholder?: never
+}
+
 export interface AbsoluteStateAuth {
   supabase: boolean
 }
@@ -58,6 +62,10 @@ export interface AbsoluteStateSchemas {
   template: boolean
 }
 
+export interface AbsoluteStateBW {
+  encryptOnExport: boolean
+}
+
 export interface AbsoluteState {
   cmd: boolean
   commands: boolean
@@ -67,6 +75,7 @@ export interface AbsoluteState {
   modal: AbsoluteStateModal
   shortcuts: AbsoluteStateShortcuts
   pdf: AbsoluteStatePDF
+  epub: AbsoluteStateEPUB
   docx: AbsoluteStateDOCX
   auth: AbsoluteStateAuth
   entity: AbsoluteStateEntity
@@ -75,4 +84,6 @@ export interface AbsoluteState {
   generator: AbsoluteStateGenerator
   spinner: boolean
   schemas: AbsoluteStateSchemas
+  bw: AbsoluteStateBW
+  bionicReading: boolean
 }

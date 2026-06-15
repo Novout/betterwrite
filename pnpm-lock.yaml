@@ -17,8 +17,8 @@ importers:
         specifier: 3.6.2
         version: 3.6.2
       vitest:
-        specifier: 4.0.6
-        version: 4.0.6(happy-dom@20.0.10)
+        specifier: 4.1.8
+        version: 4.1.8(happy-dom@20.0.10)(vite@7.1.12)
 
   packages/app:
     dependencies:
@@ -107,76 +107,73 @@ importers:
         specifier: 2.8.8
         version: 2.8.8
       better-write-client-storage:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../client-storage
       better-write-color-converter:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../color-converter
       better-write-contenteditable-ast:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../contenteditable-ast
       better-write-extension:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../extension
       better-write-google-fonts-api:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../google-fonts-api
       better-write-image-converter:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../image-converter
       better-write-languages:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../languages
       better-write-plugin-characters:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-characters
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
-      better-write-plugin-dropbox:
-        specifier: ^1.3.27
-        version: link:../plugin-dropbox
       better-write-plugin-editor-window:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-editor-window
       better-write-plugin-entity-history:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-entity-history
       better-write-plugin-exporter-docx:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-exporter-docx
       better-write-plugin-exporter-epub:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-exporter-epub
       better-write-plugin-exporter-html:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-exporter-html
       better-write-plugin-exporter-pdf:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-exporter-pdf
       better-write-plugin-exporter-txt:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-exporter-txt
       better-write-plugin-importer:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-importer
       better-write-plugin-progress-bar:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-progress-bar
       better-write-plugin-schemas:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-schemas
       better-write-plugin-shortcuts:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-shortcuts
       better-write-plugin-theme:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-theme
       better-write-plugin-voice-typing:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-voice-typing
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       compressorjs:
         specifier: 1.2.1
@@ -193,6 +190,9 @@ importers:
       dropbox:
         specifier: 10.34.0
         version: 10.34.0(@types/node-fetch@2.6.13)
+      epub-gen3:
+        specifier: 0.4.0
+        version: 0.4.0
       file-saver:
         specifier: 2.0.5
         version: 2.0.5
@@ -345,46 +345,46 @@ importers:
   packages/client-storage:
     dependencies:
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
 
   packages/color-converter:
     dependencies:
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
 
   packages/contenteditable-ast:
     dependencies:
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
 
   packages/extension:
     dependencies:
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
 
   packages/google-fonts-api:
     dependencies:
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
 
   packages/image-converter:
     dependencies:
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
 
   packages/languages:
     dependencies:
       better-write-plugin-exporter-pdf:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-exporter-pdf
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
 
   packages/plugin-characters:
@@ -393,16 +393,16 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-color-converter:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../color-converter
       better-write-contenteditable-ast:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -424,7 +424,7 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -432,31 +432,6 @@ importers:
       vue-demi:
         specifier: latest
         version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
-
-  packages/plugin-dropbox:
-    dependencies:
-      better-write-client-storage:
-        specifier: ^1.3.27
-        version: link:../client-storage
-      better-write-extension:
-        specifier: ^1.3.27
-        version: link:../extension
-      better-write-plugin-core:
-        specifier: ^1.3.27
-        version: link:../plugin-core
-      better-write-types:
-        specifier: ^1.3.27
-        version: link:../types
-      vue:
-        specifier: ^2.0.0 || >=3.0.0
-        version: 3.5.14(typescript@5.9.3)
-      vue-demi:
-        specifier: latest
-        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
-    devDependencies:
-      prettier:
-        specifier: 2.5.1
-        version: 2.5.1
 
   packages/plugin-editor-window:
     dependencies:
@@ -464,19 +439,19 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-extension:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../extension
       better-write-image-converter:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../image-converter
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-plugin-importer:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-importer
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -491,10 +466,10 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -516,13 +491,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-contenteditable-ast:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -534,17 +509,17 @@ importers:
   packages/plugin-exporter-epub:
     dependencies:
       better-write-contenteditable-ast:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
-      epub-gen-memory:
-        specifier: 1.0.10
-        version: 1.0.10
+      epub-gen3:
+        specifier: 0.3.0
+        version: 0.3.0
 
   packages/plugin-exporter-html:
     dependencies:
@@ -552,13 +527,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-contenteditable-ast:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -573,25 +548,25 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-color-converter:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../color-converter
       better-write-contenteditable-ast:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../contenteditable-ast
       better-write-google-fonts-api:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../google-fonts-api
       better-write-image-converter:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../image-converter
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-plugin-theme:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-theme
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -606,13 +581,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-contenteditable-ast:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../contenteditable-ast
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -627,13 +602,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-extension:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -655,13 +630,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-extension:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -683,10 +658,10 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -701,13 +676,13 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-extension:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../extension
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -729,10 +704,10 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -747,10 +722,10 @@ importers:
         specifier: ^1.0.0-rc.1
         version: 1.0.0-rc.1(vue@3.5.14)
       better-write-plugin-core:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../plugin-core
       better-write-types:
-        specifier: ^1.3.27
+        specifier: ^1.4.0
         version: link:../types
       vue:
         specifier: ^2.0.0 || >=3.0.0
@@ -3622,8 +3597,8 @@ packages:
       escape-string-regexp: 5.0.0
     dev: false
 
-  /@standard-schema/spec@1.0.0:
-    resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
+  /@standard-schema/spec@1.1.0:
+    resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
     dev: true
 
   /@surma/rollup-plugin-off-main-thread@2.2.3:
@@ -3968,64 +3943,66 @@ packages:
       vue: 3.5.14(typescript@5.9.3)
     dev: true
 
-  /@vitest/expect@4.0.6:
-    resolution: {integrity: sha512-5j8UUlBVhOjhj4lR2Nt9sEV8b4WtbcYh8vnfhTNA2Kn5+smtevzjNq+xlBuVhnFGXiyPPNzGrOVvmyHWkS5QGg==}
+  /@vitest/expect@4.1.8:
+    resolution: {integrity: sha512-h3nDO677RDLEGlBxyQ5CW8RlMThSKSRLUePLOx09gNIWRL40edgA1GCZSZgf1W55MFAG6/Sw14KeaAnqv0NKdQ==}
     dependencies:
-      '@standard-schema/spec': 1.0.0
+      '@standard-schema/spec': 1.1.0
       '@types/chai': 5.2.3
-      '@vitest/spy': 4.0.6
-      '@vitest/utils': 4.0.6
-      chai: 6.2.0
-      tinyrainbow: 3.0.3
+      '@vitest/spy': 4.1.8
+      '@vitest/utils': 4.1.8
+      chai: 6.2.2
+      tinyrainbow: 3.1.0
     dev: true
 
-  /@vitest/mocker@4.0.6(vite@7.1.12):
-    resolution: {integrity: sha512-3COEIew5HqdzBFEYN9+u0dT3i/NCwppLnO1HkjGfAP1Vs3vti1Hxm/MvcbC4DAn3Szo1M7M3otiAaT83jvqIjA==}
+  /@vitest/mocker@4.1.8(vite@7.1.12):
+    resolution: {integrity: sha512-LEiN/xe4OSIbKe9HQIp5OC24agGD9J5CnmMgsLohVVoOPWL9a2sBoR6VBx43jQZb7Kr1l4RCuyCJzcAa0+dojw==}
     peerDependencies:
       msw: ^2.4.9
-      vite: ^6.0.0 || ^7.0.0-0
+      vite: ^6.0.0 || ^7.0.0 || ^8.0.0
     peerDependenciesMeta:
       msw:
         optional: true
       vite:
         optional: true
     dependencies:
-      '@vitest/spy': 4.0.6
+      '@vitest/spy': 4.1.8
       estree-walker: 3.0.3
       magic-string: 0.30.21
       vite: 7.1.12
     dev: true
 
-  /@vitest/pretty-format@4.0.6:
-    resolution: {integrity: sha512-4vptgNkLIA1W1Nn5X4x8rLJBzPiJwnPc+awKtfBE5hNMVsoAl/JCCPPzNrbf+L4NKgklsis5Yp2gYa+XAS442g==}
+  /@vitest/pretty-format@4.1.8:
+    resolution: {integrity: sha512-9GasEBxpZ1VYIpqHf/0+YGg121uSNwCKOJqIrTwWP/TB7DmFCiaBpNl3aPZzoLWfWkuqhbH8vJIVobZkvdo2cA==}
     dependencies:
-      tinyrainbow: 3.0.3
+      tinyrainbow: 3.1.0
     dev: true
 
-  /@vitest/runner@4.0.6:
-    resolution: {integrity: sha512-trPk5qpd7Jj+AiLZbV/e+KiiaGXZ8ECsRxtnPnCrJr9OW2mLB72Cb824IXgxVz/mVU3Aj4VebY+tDTPn++j1Og==}
+  /@vitest/runner@4.1.8:
+    resolution: {integrity: sha512-EmVxeBAfMJvycdjd6Hm+RbFBbA9fKvo0Kx37hNpBYoYeavH3RNsBXWDooR1mgD52dCrxIIuP7UotpfiwOikvcg==}
     dependencies:
-      '@vitest/utils': 4.0.6
+      '@vitest/utils': 4.1.8
       pathe: 2.0.3
     dev: true
 
-  /@vitest/snapshot@4.0.6:
-    resolution: {integrity: sha512-PaYLt7n2YzuvxhulDDu6c9EosiRuIE+FI2ECKs6yvHyhoga+2TBWI8dwBjs+IeuQaMtZTfioa9tj3uZb7nev1g==}
+  /@vitest/snapshot@4.1.8:
+    resolution: {integrity: sha512-acfZboRmAIf05DEKcBQy33VXojFJjtUdLyo7oOmV9kebb2xdU01UknNiPuPZoJZQyO7DF0gZdTGTpeAzET9QPQ==}
     dependencies:
-      '@vitest/pretty-format': 4.0.6
+      '@vitest/pretty-format': 4.1.8
+      '@vitest/utils': 4.1.8
       magic-string: 0.30.21
       pathe: 2.0.3
     dev: true
 
-  /@vitest/spy@4.0.6:
-    resolution: {integrity: sha512-g9jTUYPV1LtRPRCQfhbMintW7BTQz1n6WXYQYRQ25qkyffA4bjVXjkROokZnv7t07OqfaFKw1lPzqKGk1hmNuQ==}
+  /@vitest/spy@4.1.8:
+    resolution: {integrity: sha512-6EevtBp6OZOPF7bmz36HrGMeP3txgVSrgebWxHOafDXGkhIzfXK14f8KF6MuFfgXXUeHxmpD3BQxkV00/3s5mA==}
     dev: true
 
-  /@vitest/utils@4.0.6:
-    resolution: {integrity: sha512-bG43VS3iYKrMIZXBo+y8Pti0O7uNju3KvNn6DrQWhQQKcLavMB+0NZfO1/QBAEbq0MaQ3QjNsnnXlGQvsh0Z6A==}
+  /@vitest/utils@4.1.8:
+    resolution: {integrity: sha512-uOJamYALNhfJ6iolExyQM40yIQwDqYnkKtQ5VCiSe17E33H0aQ/u+1GlRuz4LZBk6Mm3sg90G9hEbmEt37C1Zg==}
     dependencies:
-      '@vitest/pretty-format': 4.0.6
-      tinyrainbow: 3.0.3
+      '@vitest/pretty-format': 4.1.8
+      convert-source-map: 2.0.0
+      tinyrainbow: 3.1.0
     dev: true
 
   /@volar/language-core@1.10.10:
@@ -4089,7 +4066,7 @@ packages:
       '@vue/shared': 3.5.14
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.6
+      postcss: 8.5.15
       source-map-js: 1.2.1
 
   /@vue/compiler-ssr@3.5.14:
@@ -4471,13 +4448,6 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: true
 
-  /abort-controller@3.0.0:
-    resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
-    engines: {node: '>=6.5'}
-    dependencies:
-      event-target-shim: 5.0.1
-    dev: false
-
   /acorn-jsx@5.3.2(acorn@8.15.0):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -4694,6 +4664,7 @@ packages:
 
   /async@3.2.6:
     resolution: {integrity: sha512-htCUDlxyyCLMgaM3xXg0C0LW2xqfuQ6p05pCEIsXuyQ+a1koYKTuBMzRNwmybfLgvJDMd0r1LTn4+E0Ti6C2AA==}
+    dev: true
 
   /asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
@@ -4762,6 +4733,7 @@ packages:
 
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
+    dev: true
 
   /base64-js@0.0.8:
     resolution: {integrity: sha512-3XSA2cR/h/73EzlXXdU6YNycmYI7+kicTxks4eJg2g39biHR84slg2+des+p7iHYhbRg/udIS4TD53WabcOUkw==}
@@ -4820,6 +4792,7 @@ packages:
 
   /boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
+    dev: true
 
   /brace-expansion@1.1.12:
     resolution: {integrity: sha512-9T9UjW3r0UW5c1Q7GTwllptXwhvYmEzFhzMfZ9H7FQWt+uZePjZPjBP/W1ZEyZ1twGWom5/56TF4lPcqjnDHcg==}
@@ -4832,6 +4805,7 @@ packages:
     resolution: {integrity: sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ==}
     dependencies:
       balanced-match: 1.0.2
+    dev: true
 
   /braces@3.0.3:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
@@ -4967,8 +4941,8 @@ packages:
       jsonc-parser: 3.3.1
       package-manager-detector: 1.5.0
       semver: 7.7.3
-      tinyexec: 1.0.1
-      tinyglobby: 0.2.15
+      tinyexec: 1.2.4
+      tinyglobby: 0.2.17
       yaml: 2.8.1
     transitivePeerDependencies:
       - magicast
@@ -5088,6 +5062,7 @@ packages:
   /callsites@3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
+    dev: true
 
   /camelcase-keys@6.2.2:
     resolution: {integrity: sha512-YrwaA0vEKazPBkn0ipTiMpSajYDSe+KjQfrjhcBMxJt/znbvlHd8Pw/Vamaz5EB4Wfhs3SUR3Z9mwRu/P3s3Yg==}
@@ -5107,8 +5082,8 @@ packages:
     resolution: {integrity: sha512-vKUk7beoukxE47P5gcVNKkDRzXdVofotshHwfR9vmpeFKxmI5PBpgOMC18LUJUA/DvJ70Y7RveasIBraqsyO/g==}
     dev: true
 
-  /chai@6.2.0:
-    resolution: {integrity: sha512-aUTnJc/JipRzJrNADXVvpVqi6CO0dn3nx4EVPxijri+fj3LUUDyZQOgVeW54Ob3Y1Xh9Iz8f+CgaCl8v0mn9bA==}
+  /chai@6.2.2:
+    resolution: {integrity: sha512-NUPRluOfOiTKBKvWPtSD4PhFvWCqOi0BGStNWs57X9js7XGTprSmFoz5F0tWhR4WPjNeR9jXqdC7/UpSJTnlRg==}
     engines: {node: '>=18'}
     dev: true
 
@@ -5569,16 +5544,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /css-select@4.3.0:
-    resolution: {integrity: sha512-wPpOYtnsVontu2mODhA19JrqWxNsfdatRKd64kmpRbQgh1KtItko5sTnEpPdpSaJszTOhEMlF/RPz28qj4HqhQ==}
-    dependencies:
-      boolbase: 1.0.0
-      css-what: 6.2.2
-      domhandler: 4.3.1
-      domutils: 2.8.0
-      nth-check: 2.1.1
-    dev: false
-
   /css-tree@3.1.0:
     resolution: {integrity: sha512-0eW44TGN5SQXU1mWSkKwFstI/22X2bG1nYzZTYMAWjylYURhse752YgbE4Cx46AC+bAvI+/dYTPRk1LqSUnu6w==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
@@ -5586,11 +5551,6 @@ packages:
       mdn-data: 2.12.2
       source-map-js: 1.2.1
     dev: true
-
-  /css-what@6.2.2:
-    resolution: {integrity: sha512-u/O3vwbptzhMs3L1fQE82ZSLHQQfto5gyZzwteVIEyeaY5Fc7R4dapF/BvRoSYFeqfBk4m0V1Vafq5Pjv25wvA==}
-    engines: {node: '>= 6'}
-    dev: false
 
   /cssesc@3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
@@ -5766,10 +5726,6 @@ packages:
   /dfa@1.2.0:
     resolution: {integrity: sha512-ED3jP8saaweFTjeGX8HQPjeC1YYyZs98jGNZx6IiBvxW7JG5v492kamAQB3m2wop07CvU/RQmzcKr6bgcC5D/Q==}
 
-  /diacritics@1.3.0:
-    resolution: {integrity: sha512-wlwEkqcsaxvPJML+rDh/2iS824jbREk6DUMUKkEaSlxdYHeS43cClJtsWglvw2RfeXGm6ohKDqsXteJ5sP5enA==}
-    dev: false
-
   /diff@5.2.0:
     resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
     engines: {node: '>=0.3.1'}
@@ -5801,37 +5757,10 @@ packages:
       xml-js: 1.6.11
     dev: false
 
-  /dom-serializer@1.4.1:
-    resolution: {integrity: sha512-VHwB3KfrcOOkelEG2ZOfxqLZdfkil8PtJi4P8N2MMXucZq2yLp75ClViUlOVwyoHEDjYU433Aq+5zWP61+RGag==}
-    dependencies:
-      domelementtype: 2.3.0
-      domhandler: 4.3.1
-      entities: 2.2.0
-    dev: false
-
   /domain-browser@4.22.0:
     resolution: {integrity: sha512-IGBwjF7tNk3cwypFNH/7bfzBcgSCbaMOD3GsaY1AU/JRrnHnYgEM0+9kQt52iZxjNsjBtJYtao146V+f8jFZNw==}
     engines: {node: '>=10'}
     dev: true
-
-  /domelementtype@2.3.0:
-    resolution: {integrity: sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==}
-    dev: false
-
-  /domhandler@4.3.1:
-    resolution: {integrity: sha512-GrwoxYN+uWlzO8uhUXRl0P+kHE4GtVPfYzVLcUxPL7KNdHKj66vvlhiweIHqYYXWlw+T8iLMp42Lm67ghw4WMQ==}
-    engines: {node: '>= 4'}
-    dependencies:
-      domelementtype: 2.3.0
-    dev: false
-
-  /domutils@2.8.0:
-    resolution: {integrity: sha512-w96Cjofp72M5IIhpjgobBimYEfoPjx1Vx0BSX9P30WBdZW2WIKU0T1Bd0kz2eNZ9ikjKgHbEyKx8BB6H1L3h3A==}
-    dependencies:
-      dom-serializer: 1.4.1
-      domelementtype: 2.3.0
-      domhandler: 4.3.1
-    dev: false
 
   /dot-prop@5.3.0:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
@@ -5845,6 +5774,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       is-obj: 2.0.0
+    dev: true
 
   /dotenv@10.0.0:
     resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
@@ -5896,6 +5826,7 @@ packages:
     hasBin: true
     dependencies:
       jake: 10.9.4
+    dev: true
 
   /electron-to-chromium@1.5.244:
     resolution: {integrity: sha512-OszpBN7xZX4vWMPJwB9illkN/znA8M36GQqQxi6MNy9axWxhOfJyZZJtSLQCpEFLHP2xK33BiWx9aIuIEXVCcw==}
@@ -5954,15 +5885,6 @@ packages:
       ansi-colors: 4.1.3
     dev: true
 
-  /entities@2.2.0:
-    resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
-    dev: false
-
-  /entities@3.0.1:
-    resolution: {integrity: sha512-WiyBqoomrwMdFG1e0kqvASYfnlb0lp8M5o5Fw2OFq1hNZxxcNk8Ik0Xm7LxzBhuidnZB/UtBqVCgUz3kBOP51Q==}
-    engines: {node: '>=0.12'}
-    dev: false
-
   /entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
@@ -5982,25 +5904,12 @@ packages:
     hasBin: true
     dev: true
 
-  /epub-gen-memory@1.0.10:
-    resolution: {integrity: sha512-QS4rEGCO/AUaaofhvAzXAxz0bJ/u23ZGdsdfjVBsWE6LHqM1Mi4R0rs+f6BbGDrHWBvASZkadvrfMc73TFpC6Q==}
-    engines: {node: '>=10.0.0'}
-    dependencies:
-      abort-controller: 3.0.0
-      css-select: 4.3.0
-      diacritics: 1.3.0
-      dom-serializer: 1.4.1
-      domhandler: 4.3.1
-      domutils: 2.8.0
-      ejs: 3.1.10
-      htmlparser2: 7.2.0
-      jszip: 3.10.1
-      mime: 2.6.0
-      node-fetch: 2.7.0
-      ow: 0.28.2
-      slugify: 1.6.6
-    transitivePeerDependencies:
-      - encoding
+  /epub-gen3@0.3.0:
+    resolution: {integrity: sha512-Vi14IzFEUF2OdwPybbJdiOXUzXJPv76aADvOrQ4FqfmSYanpqw08bw3WM0o4q55SPagGszo2y9GwOsRG+8xVQg==}
+    dev: false
+
+  /epub-gen3@0.4.0:
+    resolution: {integrity: sha512-tslbcUxHahPGLpm3ghhmAeeQtraoZU2Uhm3FifXVL2TqcM9RqFnfKlE2Tg2cnIu+v3wCSJfKbDnDbQSUxA7oSw==}
     dev: false
 
   /err-code@2.0.3:
@@ -6081,8 +5990,8 @@ packages:
     resolution: {integrity: sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==}
     engines: {node: '>= 0.4'}
 
-  /es-module-lexer@1.7.0:
-    resolution: {integrity: sha512-jEQoCwk8hyb2AZziIOLhDqpm5+2ww5uIE6lkO/6jcOCusfk6LhMHpXXfBLXTZ7Ydyt0j4VoUQv6uGNYbdW+kBA==}
+  /es-module-lexer@2.1.0:
+    resolution: {integrity: sha512-n27zTYMjYu1aj4MjCWzSP7G9r75utsaoc8m61weK+W8JMBGGQybd43GstCXZ3WNmSFtGT9wi59qQTW6mhTR5LQ==}
     dev: true
 
   /es-object-atoms@1.1.1:
@@ -6314,11 +6223,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /event-target-shim@5.0.1:
-    resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
-    engines: {node: '>=6'}
-    dev: false
-
   /eventemitter3@4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
     dev: true
@@ -6365,8 +6269,8 @@ packages:
       strip-final-newline: 2.0.0
     dev: true
 
-  /expect-type@1.2.2:
-    resolution: {integrity: sha512-JhFGDVJ7tmDJItKhYgJCGLOWjuK9vPxiXoUFLwLDc99NlmklilbiQJwoctZtt13+xMw91MCk/REan6MWHqDjyA==}
+  /expect-type@1.3.0:
+    resolution: {integrity: sha512-knvyeauYhqjOYvQ66MznSMs83wmHrCycNEN6Ao+2AeYEfxUIkuiVxdEa1qlGEPK+We3n0THiDciYSsCcgW/DoA==}
     engines: {node: '>=12.0.0'}
     dev: true
 
@@ -6434,7 +6338,7 @@ packages:
       reusify: 1.1.0
     dev: true
 
-  /fdir@6.5.0(picomatch@4.0.3):
+  /fdir@6.5.0(picomatch@4.0.4):
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -6443,7 +6347,7 @@ packages:
       picomatch:
         optional: true
     dependencies:
-      picomatch: 4.0.3
+      picomatch: 4.0.4
     dev: true
 
   /figures@3.2.0:
@@ -6473,6 +6377,7 @@ packages:
     resolution: {integrity: sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==}
     dependencies:
       minimatch: 5.1.6
+    dev: true
 
   /fill-range@7.1.1:
     resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
@@ -7194,15 +7099,6 @@ packages:
     resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
     dev: false
 
-  /htmlparser2@7.2.0:
-    resolution: {integrity: sha512-H7MImA4MS6cw7nbyURtLPO1Tms7C5H602LRETv95z1MxO/7CP7rDVROehUYeYBUYEON94NXXDEPmZuq+hX4sog==}
-    dependencies:
-      domelementtype: 2.3.0
-      domhandler: 4.3.1
-      domutils: 2.8.0
-      entities: 3.0.1
-    dev: false
-
   /http-cache-semantics@4.2.0:
     resolution: {integrity: sha512-dTxcvPXqPvXBQpq5dUr6mEMJX4oIEFv6bwom3FDwKRDsuIjjJGANqhBuoAn9c1RQJIdAKav33ED65E2ys+87QQ==}
     dev: true
@@ -7606,6 +7502,7 @@ packages:
   /is-obj@2.0.0:
     resolution: {integrity: sha512-drqDG3cbczxxEJRoOXcOjtdp1J/lyp1mNn0xaznRs8+muBhgQcrnbspox5X5fOw0HnMnbfDzvnEMEtqDEJEo8w==}
     engines: {node: '>=8'}
+    dev: true
 
   /is-path-cwd@2.2.0:
     resolution: {integrity: sha512-w942bTcih8fdJPJmQHFzkS76NEP8Kzzvmw92cXsazb8intwLqPibPPdXf4ANdKV3rYMuuQYGIWtvz9JilB3NFQ==}
@@ -7787,6 +7684,7 @@ packages:
       async: 3.2.6
       filelist: 1.0.4
       picocolors: 1.1.1
+    dev: true
 
   /jiti@1.21.7:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
@@ -8185,11 +8083,6 @@ packages:
 
   /lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
-
-  /lodash.isequal@4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
-    dev: false
 
   /lodash.ismatch@4.4.0:
     resolution: {integrity: sha512-fPMfXjGQEV9Xsq/8MTSgUf255gawYRbjwMyDbcvDhXgV7enSZA0hynz6vMPnpAb5iONEzBHBPsT+0zes5Z301g==}
@@ -8666,12 +8559,6 @@ packages:
     dependencies:
       mime-db: 1.52.0
 
-  /mime@2.6.0:
-    resolution: {integrity: sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==}
-    engines: {node: '>=4.0.0'}
-    hasBin: true
-    dev: false
-
   /mimic-fn@2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
@@ -8707,6 +8594,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.2
+    dev: true
 
   /minimatch@6.2.0:
     resolution: {integrity: sha512-sauLxniAmvnhhRjFwPNnJKaPFYyddAgbYdeUpHULtCT/GhzdCx/MDNy+Y40lBxTQUrMzDE8e0S43Z5uqfO0REg==}
@@ -8898,6 +8786,12 @@ packages:
 
   /nanoid@3.3.11:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+    dev: false
+
+  /nanoid@3.3.12:
+    resolution: {integrity: sha512-ZB9RH/39qpq5Vu6Y+NmUaFhQR6pp+M2Xt76XBnEwDaGcVAqhlvxrl3B2bKS5D3NH3QR76v3aSrKaF/Kiy7lEtQ==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -9268,6 +9162,7 @@ packages:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
     dependencies:
       boolbase: 1.0.0
+    dev: true
 
   /nx@15.9.7:
     resolution: {integrity: sha512-1qlEeDjX9OKZEryC8i4bA+twNg+lB5RKrozlNwWx/lLJHqWPUfvUTvxh+uxlPYL9KzVReQjUuxMLFMsHNqWUrA==}
@@ -9340,7 +9235,7 @@ packages:
       consola: 3.4.2
       pathe: 2.0.3
       pkg-types: 2.3.0
-      tinyexec: 1.0.1
+      tinyexec: 1.2.4
     dev: true
 
   /object-assign@4.1.1:
@@ -9376,6 +9271,11 @@ packages:
       es-object-atoms: 1.1.1
       has-symbols: 1.1.0
       object-keys: 1.1.1
+    dev: true
+
+  /obug@2.1.3:
+    resolution: {integrity: sha512-9miFgM2OFba7hB+pRgvtV84pYTBaoTHohvmIgiRt6dRIzbwEOIaNaP+dIlGs2fNFoB0SeISs0Jz5WFVRid6Xyg==}
+    engines: {node: '>=12.20.0'}
     dev: true
 
   /ohash@2.0.11:
@@ -9443,17 +9343,6 @@ packages:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /ow@0.28.2:
-    resolution: {integrity: sha512-dD4UpyBh/9m4X2NVjA+73/ZPBRF+uF4zIMFvvQsabMiEK8x41L3rQ8EENOi35kyyoaJwNxEeJcP6Fj1H4U409Q==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@sindresorhus/is': 4.6.0
-      callsites: 3.1.0
-      dot-prop: 6.0.1
-      lodash.isequal: 4.5.0
-      vali-date: 1.0.0
-    dev: false
 
   /own-keys@1.0.1:
     resolution: {integrity: sha512-qFOyK5PjiWZd+QQIh+1jhdb9LpxTF0qs7Pm8o5QHYZ0M3vKqSqzsZaEB6oWlxZ+q2sJBMI/Ktgd2N5ZwQoRHfg==}
@@ -9778,6 +9667,11 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
+  /picomatch@4.0.4:
+    resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
+    engines: {node: '>=12'}
+    dev: true
+
   /pify@2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
@@ -9894,11 +9788,11 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /postcss@8.5.6:
-    resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
+  /postcss@8.5.15:
+    resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
-      nanoid: 3.3.11
+      nanoid: 3.3.12
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -10810,11 +10704,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /slugify@1.6.6:
-    resolution: {integrity: sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw==}
-    engines: {node: '>=8.0.0'}
-    dev: false
-
   /smart-buffer@4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
@@ -10948,8 +10837,8 @@ packages:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
     dev: true
 
-  /std-env@3.10.0:
-    resolution: {integrity: sha512-5GS12FdOZNliM5mAOxFRg7Ir0pWz8MdpYm6AY6VPkGpbA7ZzmbzNcBJQ0GPvvyWgcY7QAhCgf9Uy89I03faLkg==}
+  /std-env@4.1.0:
+    resolution: {integrity: sha512-Rq7ybcX2RuC55r9oaPVEW7/xu3tj8u4GeBYHBWCychFtzMIr86A7e3PPEBPT37sHStKX3+TiX/Fr/ACmJLVlLQ==}
     dev: true
 
   /stop-iteration-iterator@1.1.0:
@@ -11293,16 +11182,25 @@ packages:
     resolution: {integrity: sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==}
     dev: true
 
-  /tinyexec@1.0.1:
-    resolution: {integrity: sha512-5uC6DDlmeqiOwCPmK9jMSdOuZTh8bU39Ys6yidB+UTt5hfZUPGAypSgFRiEp+jbi9qH40BLDvy85jIU88wKSqw==}
+  /tinyexec@1.2.4:
+    resolution: {integrity: sha512-SHf/r48b7vOrjve9PxJo3MN5v5yuyjHvdUcrQffT3WXMUfnGmHDVbC4k3sHJaJTgZCwpUplIaAo5ANtMyp3YHg==}
+    engines: {node: '>=18'}
     dev: true
 
   /tinyglobby@0.2.15:
     resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
+    dev: true
+
+  /tinyglobby@0.2.17:
+    resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
     dev: true
 
   /tinygradient@1.1.5:
@@ -11312,8 +11210,8 @@ packages:
       tinycolor2: 1.6.0
     dev: true
 
-  /tinyrainbow@3.0.3:
-    resolution: {integrity: sha512-PSkbLUoxOFRzJYjjxHJt9xro7D+iilgMX/C9lawzVuYiIdcihh9DXmVibBe8lmcFrRi/VzlPjBxbN7rH24q8/Q==}
+  /tinyrainbow@3.1.0:
+    resolution: {integrity: sha512-Bf+ILmBgretUrdJxzXM0SgXLZ3XfiaUuOj/IKQHuTXip+05Xn+uyEYdVg0kYDipTBcLrCVyUzAPz7QmArb0mmw==}
     engines: {node: '>=14.0.0'}
     dev: true
 
@@ -11705,11 +11603,11 @@ packages:
       magic-string: 0.30.21
       mlly: 1.8.0
       pathe: 2.0.3
-      picomatch: 4.0.3
+      picomatch: 4.0.4
       pkg-types: 2.3.0
       scule: 1.3.0
       strip-literal: 3.1.0
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
       unplugin: 2.3.10
       unplugin-utils: 0.3.1
     dev: true
@@ -11816,7 +11714,7 @@ packages:
     engines: {node: '>=20.19.0'}
     dependencies:
       pathe: 2.0.3
-      picomatch: 4.0.3
+      picomatch: 4.0.4
     dev: true
 
   /unplugin-vue-components@30.0.0(vue@3.5.14):
@@ -11851,7 +11749,7 @@ packages:
     dependencies:
       '@jridgewell/remapping': 2.3.5
       acorn: 8.15.0
-      picomatch: 4.0.3
+      picomatch: 4.0.4
       webpack-virtual-modules: 0.6.2
     dev: true
 
@@ -11922,11 +11820,6 @@ packages:
   /v8-compile-cache@2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
     dev: true
-
-  /vali-date@1.0.0:
-    resolution: {integrity: sha512-sgECfZthyaCKW10N0fm27cg8HYTFK5qMWgypqkXMQ4Wbl/zZKx7xZICgcoxIIE+WFAP/MBL2EFwC/YvLxw3Zeg==}
-    engines: {node: '>=0.10.0'}
-    dev: false
 
   /validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
@@ -12141,33 +12034,36 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.25.11
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
-      postcss: 8.5.6
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
+      postcss: 8.5.15
       rollup: 4.52.5
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@4.0.6(happy-dom@20.0.10):
-    resolution: {integrity: sha512-gR7INfiVRwnEOkCk47faros/9McCZMp5LM+OMNWGLaDBSvJxIzwjgNFufkuePBNaesGRnLmNfW+ddbUJRZn0nQ==}
+  /vitest@4.1.8(happy-dom@20.0.10)(vite@7.1.12):
+    resolution: {integrity: sha512-flY6ScbCIt9HThs+C5HS7jvGOB560DJtk/Z15IQROTA6zEy49Nh8T/dofWTQL+n3vswqn87sbJNiuqw1SDp5Ig==}
     engines: {node: ^20.0.0 || ^22.0.0 || >=24.0.0}
     hasBin: true
     peerDependencies:
       '@edge-runtime/vm': '*'
-      '@types/debug': ^4.1.12
+      '@opentelemetry/api': ^1.9.0
       '@types/node': ^20.0.0 || ^22.0.0 || >=24.0.0
-      '@vitest/browser-playwright': 4.0.6
-      '@vitest/browser-preview': 4.0.6
-      '@vitest/browser-webdriverio': 4.0.6
-      '@vitest/ui': 4.0.6
+      '@vitest/browser-playwright': 4.1.8
+      '@vitest/browser-preview': 4.1.8
+      '@vitest/browser-webdriverio': 4.1.8
+      '@vitest/coverage-istanbul': 4.1.8
+      '@vitest/coverage-v8': 4.1.8
+      '@vitest/ui': 4.1.8
       happy-dom: '*'
       jsdom: '*'
+      vite: ^6.0.0 || ^7.0.0 || ^8.0.0
     peerDependenciesMeta:
       '@edge-runtime/vm':
         optional: true
-      '@types/debug':
+      '@opentelemetry/api':
         optional: true
       '@types/node':
         optional: true
@@ -12177,6 +12073,10 @@ packages:
         optional: true
       '@vitest/browser-webdriverio':
         optional: true
+      '@vitest/coverage-istanbul':
+        optional: true
+      '@vitest/coverage-v8':
+        optional: true
       '@vitest/ui':
         optional: true
       happy-dom:
@@ -12184,40 +12084,29 @@ packages:
       jsdom:
         optional: true
     dependencies:
-      '@vitest/expect': 4.0.6
-      '@vitest/mocker': 4.0.6(vite@7.1.12)
-      '@vitest/pretty-format': 4.0.6
-      '@vitest/runner': 4.0.6
-      '@vitest/snapshot': 4.0.6
-      '@vitest/spy': 4.0.6
-      '@vitest/utils': 4.0.6
-      debug: 4.4.3
-      es-module-lexer: 1.7.0
-      expect-type: 1.2.2
+      '@vitest/expect': 4.1.8
+      '@vitest/mocker': 4.1.8(vite@7.1.12)
+      '@vitest/pretty-format': 4.1.8
+      '@vitest/runner': 4.1.8
+      '@vitest/snapshot': 4.1.8
+      '@vitest/spy': 4.1.8
+      '@vitest/utils': 4.1.8
+      es-module-lexer: 2.1.0
+      expect-type: 1.3.0
       happy-dom: 20.0.10
       magic-string: 0.30.21
+      obug: 2.1.3
       pathe: 2.0.3
-      picomatch: 4.0.3
-      std-env: 3.10.0
+      picomatch: 4.0.4
+      std-env: 4.1.0
       tinybench: 2.9.0
-      tinyexec: 0.3.2
-      tinyglobby: 0.2.15
-      tinyrainbow: 3.0.3
+      tinyexec: 1.2.4
+      tinyglobby: 0.2.17
+      tinyrainbow: 3.1.0
       vite: 7.1.12
       why-is-node-running: 2.3.0
     transitivePeerDependencies:
-      - jiti
-      - less
-      - lightningcss
       - msw
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-      - tsx
-      - yaml
     dev: true
 
   /vm-browserify@1.1.2:

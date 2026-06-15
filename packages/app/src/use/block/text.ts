@@ -51,7 +51,9 @@ export const useBlockText = ({
   const save = (target: number, raw: string) => {
     if (raw === null) return
 
-    CONTEXT.entities[target].raw = raw
+    const clean = raw.replaceAll(/<br\s*\/?>/gi, '').replaceAll('&amp;', '&')
+
+    CONTEXT.entities[target].raw = clean
 
     if (EDITOR.configuration.trackEntities) {
       CONTEXT.entities[target].updatedAt = format.actually('iso')
@@ -119,6 +121,15 @@ export const useBlockText = ({
 
     emitter.on('entity-speech-recognition', ({ id, result }) => {
       if (id === index.value) CONTEXT.entities[id].raw = result
+    })
+
+    emitter.on('entity-speech-interim', ({ id, base, interim }) => {
+      if (id !== index.value) return
+
+      // mostra o texto final acumulado + interim em itálico/opaco, sem salvar no store
+      input.value.innerHTML = base
+        ? `${base} <em style="opacity:0.45">${interim}</em>`
+        : `<em style="opacity:0.45">${interim}</em>`
     })
 
     emitter.on('entity-text-force-save', () => {

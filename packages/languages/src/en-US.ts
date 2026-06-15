@@ -173,9 +173,13 @@ export default {
           header: 'Top Bar',
           graph: 'Sidebar',
           text: 'Editor Text',
+          layout: 'Layout',
+          editorWidth: 'Editor Width',
           fontFamily: 'Font Family',
           fontWeight: 'Font Weight',
           fontSize: 'Font Size',
+          lineHeight: 'Line Height',
+          letterSpacing: 'Letter Spacing',
         },
       },
       styles: {
@@ -235,6 +239,9 @@ export default {
         load: 'Cloud Load',
         save: 'Cloud Save',
       },
+      export: {
+        bionicReading: 'Enable Bionic Reading',
+      },
       pdf: {
         preview: 'Preview (.PDF)',
         generate: 'Generate (.PDF)',
@@ -270,6 +277,7 @@ export default {
         import: 'Import',
         export: 'Export',
         exportAs: 'Export as...',
+        encryptBW: 'Encrypt .bw',
       },
       chapter: {
         drafts: 'Drafts',
@@ -302,6 +310,12 @@ export default {
       },
       generator: {
         substitutions: 'Substitutions',
+      },
+    },
+    tools: {
+      speechRecognition: {
+        defaultMic: 'Default microphone',
+        unknownMic: 'Unknown microphone',
       },
     },
     window: {
@@ -537,6 +551,7 @@ export default {
         entity: {
           title: 'Editor',
           insertEntityInParagraphBreakLine: 'Insert Paragraph at line breaks',
+          spellcheck: 'Spell Check',
         },
       },
       entity: {
@@ -1076,6 +1091,13 @@ export default {
       export: 'Project exported to extension (.bw) successfully!',
       delete: 'Project successfully deleted!',
       unsupportedExtension: 'This extension is not supported by Better Write!',
+      bw: {
+        passwordSet: 'Set a password to encrypt the file:',
+        passwordConfirm: 'Confirm the password:',
+        passwordMismatch: 'Passwords do not match. Export cancelled.',
+        passwordGet: 'This file is encrypted. Enter the password:',
+        passwordWrong: 'Wrong password. Could not open the file.',
+      },
       docx: {
         generate: 'Successfully Downloaded DOCX!',
       },
@@ -1166,7 +1188,7 @@ export default {
         4: 'Use creativity in the best way.',
       },
       editor: {
-        website: 'Login',
+        website: 'Enter',
         about: 'About',
       },
       support: 'Follow the project!',

@@ -4,12 +4,24 @@ import {
   Entity,
   PluginTypes,
   ProjectStateTemplatesGenerator,
+  DOCXDocOptions,
 } from 'better-write-types'
 import { On } from 'better-write-plugin-core'
 import { getRows, parse } from 'better-write-contenteditable-ast'
 import { ContextState } from 'better-write-types'
 
 type DocxPurge = Array<docx.ExternalHyperlink | docx.TextRun>
+
+const bionicRuns = (
+  word: string,
+  base: Record<string, any>,
+): docx.TextRun[] => {
+  const len = Math.ceil(word.length * 0.45)
+  return [
+    new docx.TextRun({ ...base, text: word.slice(0, len), bold: true }),
+    new docx.TextRun({ ...base, text: word.slice(len) }),
+  ]
+}
 
 export const PluginDocxSet = (
   emitter: PluginTypes.PluginEmitter,
@@ -18,21 +30,35 @@ export const PluginDocxSet = (
 ) => {
   const { isLoading } = hooks.vueuse.integration.progress
 
-  const purge = (raw: string, custom: Record<string, any>): DocxPurge => {
+  const purge = (
+    raw: string,
+    custom: Record<string, any>,
+    bionicReading = false,
+  ): DocxPurge => {
     const arr: DocxPurge = []
 
     const ast = parse(hooks.substitution.purge(raw))
 
     ast.forEach((node) => {
-      arr.push(
-        new docx.TextRun({
-          text: node.text,
-          italics: node.italic,
-          bold: node.bold,
-          underline: custom.isUnderline(node.underline),
-          ...custom.textRun,
-        }),
-      )
+      const base = {
+        italics: node.italic,
+        bold: node.bold,
+        underline: custom.isUnderline(node.underline),
+        ...custom.textRun,
+      }
+
+      if (bionicReading) {
+        const words = node.text.split(/(\s+)/)
+        words.forEach((chunk) => {
+          if (/^\s+$/.test(chunk) || chunk === '') {
+            arr.push(new docx.TextRun({ ...base, text: chunk }))
+          } else {
+            bionicRuns(chunk, base).forEach((r) => arr.push(r))
+          }
+        })
+      } else {
+        arr.push(new docx.TextRun({ ...base, text: node.text }))
+      }
     })
 
     return arr
@@ -67,7 +93,7 @@ export const PluginDocxSet = (
     return { bw }
   }
 
-  const create = () => {
+  const create = (bionicReading = false) => {
     const properties = (): docx.ISectionPropertiesOptions => {
       return {
         page: {
@@ -252,7 +278,7 @@ export const PluginDocxSet = (
 
         return getRows(entity.raw).map((row) => {
           return new docx.Paragraph({
-            children: purge(row, custom),
+            children: purge(row, custom, bionicReading),
             ...custom.paragraph,
             ...custom.isList,
           })
@@ -342,19 +368,21 @@ export const PluginDocxSet = (
     return { properties, footer, styles, entities, content, flow }
   }
 
-  const doc = (): docx.File => {
+  const doc = (options: DOCXDocOptions): docx.File => {
+    const c = create(options.bionicReading)
+
     return new docx.Document({
       creator: stores.PROJECT.creator,
       title: stores.PROJECT.nameRaw,
       description: stores.PROJECT.subject,
       subject: stores.PROJECT.subject,
       keywords: stores.PROJECT.keywords,
-      styles: create().styles(),
+      styles: c.styles(),
       sections: [
         {
-          properties: create().properties(),
-          children: create().flow(),
-          footers: create().footer(),
+          properties: c.properties(),
+          children: c.flow(),
+          footers: c.footer(),
         },
       ],
     })
@@ -382,8 +410,8 @@ export const PluginDocxSet = (
   }
 
   On.externals().PluginDocxGenerate(emitter, [
-    () => {
-      download(doc())
+    (options: DOCXDocOptions) => {
+      download(doc(options ?? { bionicReading: false }))
     },
     () => {},
   ])

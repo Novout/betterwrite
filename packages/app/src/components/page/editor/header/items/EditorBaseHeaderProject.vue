@@ -57,6 +57,29 @@
       />
       <EditorHeaderItemDiv />
       <EditorHeaderItem
+        v-if="PROJECT.name !== env.projectEmpty()"
+        :text="t('editor.bar.project.encryptBW')"
+        @action="ABSOLUTE.bw.encryptOnExport = !ABSOLUTE.bw.encryptOnExport"
+      >
+        <template #icon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="mr-2 w-6 h-6"
+            :class="
+              ABSOLUTE.bw.encryptOnExport
+                ? 'text-theme-editor-header-list-text-active'
+                : 'opacity-40'
+            "
+          >
+            <path
+              fill="currentColor"
+              d="M12 1a5 5 0 0 1 5 5v2h1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5zm0 11a2 2 0 0 0-1 3.732V18h2v-2.268A2 2 0 0 0 12 12zm0-9a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3z"
+            />
+          </svg>
+        </template>
+      </EditorHeaderItem>
+      <EditorHeaderItem
         :text="t('editor.bar.project.import')"
         @action="project.onImportProject"
       />

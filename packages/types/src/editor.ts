@@ -38,6 +38,7 @@ export interface EditorStateActives {
 
 export interface EditorStateConfigurationEntity {
   insertEntityInParagraphBreakLine: boolean
+  spellcheck: boolean
 }
 
 export interface EditorStateConfigurationCommands {
@@ -114,13 +115,18 @@ export interface EditorStateBase {
   backgroundGrayscale: boolean
   backgroundSaturate: boolean
   backgroundSepia: boolean
+  editorWidth: EditorStateEditorWidth
 }
 
 export interface EditorStateText {
   fontFamily: string
   fontWeight: number
   fontSize: number
+  lineHeight: number
+  letterSpacing: number
 }
+
+export type EditorStateEditorWidth = 'narrow' | 'medium' | 'wide' | 'full'
 
 export interface EditorStateHeading {
   fontFamily: string

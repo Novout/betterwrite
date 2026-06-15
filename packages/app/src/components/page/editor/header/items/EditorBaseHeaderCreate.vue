@@ -21,6 +21,29 @@
     </template>
     <template #bar>
       <EditorHeaderItem
+        :text="t('editor.bar.export.bionicReading')"
+        @action="ABSOLUTE.bionicReading = !ABSOLUTE.bionicReading"
+      >
+        <template #icon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="mr-2 w-6 h-6"
+            :class="
+              ABSOLUTE.bionicReading
+                ? 'text-theme-editor-header-list-text-active'
+                : 'opacity-40'
+            "
+          >
+            <path
+              fill="currentColor"
+              d="M4 5h3v14H4zm5 7h3V5H9zm5-7v14h3V5zm5 0v14h-1V5z"
+            />
+          </svg>
+        </template>
+      </EditorHeaderItem>
+      <EditorHeaderItemDiv />
+      <EditorHeaderItem
         :text="t('editor.bar.pdf.configuration')"
         @action="ABSOLUTE.pdf.configuration = true"
       >
@@ -47,7 +70,11 @@
       </EditorHeaderItem>
       <EditorHeaderItem
         :text="t('editor.bar.docx.generate')"
-        @action="plugin.emit('plugin-docx-generate')"
+        @action="
+          plugin.emit('plugin-docx-generate', {
+            bionicReading: ABSOLUTE.bionicReading,
+          })
+        "
       >
         <template #icon>
           <IconDOCX class="mr-2 w-6 h-6" />
@@ -62,6 +89,7 @@
           <IconEPUB class="mr-2 w-6 h-6" />
         </template>
       </EditorHeaderItem>
+      <EditorHeaderItemDiv />
       <EditorHeaderItem
         :text="t('editor.bar.txt.generate')"
         @action="plugin.emit('plugin-txt-generate')"
@@ -120,9 +148,9 @@
   const onEPUBGenerate = async () => {
     await storage.normalize()
 
-    toast.warning(t('toast.epub.disabled'))
-
-    plugin.emit('plugin-epub-generate')
+    plugin.emit('plugin-epub-generate', {
+      bionicReading: ABSOLUTE.bionicReading,
+    })
   }
 
   const onPDFGenerate = async () => {
@@ -136,6 +164,8 @@
 
     plugin.emit('plugin-pdf-generate', {
       chapters: project.utils().getChaptersSelection(),
+      color: 'RGB',
+      bionicReading: ABSOLUTE.bionicReading,
     })
   }
 </script>

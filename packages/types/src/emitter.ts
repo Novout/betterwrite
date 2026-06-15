@@ -24,6 +24,7 @@ export type EventsEntityTextFocus = {
 export type Events = {
   'entity-external-comment-save': any
   'entity-speech-recognition': any
+  'entity-speech-interim': { id: number; base: string; interim: string }
   'entity-text-focus': EventsEntityTextFocus
   'entity-text-force-save': void
   'project-creative-drafts-set-info': any

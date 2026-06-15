@@ -29,7 +29,7 @@ betterwrite.io
 # Features
 
 - ✅ Entity-Model Editor
-- ✅ PDF, DOCX, HTML and TXT Generator
+- ✅ PDF, DOCX, EPUB, HTML and TXT Generator
 - ✅ Full Customization
 - ✅ Mobile & Desktop (PWA)
 - ✅ Offline First

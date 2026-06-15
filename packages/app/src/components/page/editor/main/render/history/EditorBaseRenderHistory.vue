@@ -14,13 +14,13 @@
       class="flex-1 font-bold flex justify-around items-center font-raleway min-w-12 h-10 md:(h-9)"
       @click.prevent.stop="history.onLoad(item)"
     >
-      <div class="flex gap-2 truncate pl-2">
+      <span class="flex gap-2 truncate pl-2">
         <CustomIcon v-if="item.customIcon" :icon="item.customIcon" />
-        <p class="truncate">{{ item.name || item.id }}</p>
-      </div>
-      <button @click.prevent.stop="history.onDeleteBar(item)">
+        <span class="truncate">{{ item.name || item.id }}</span>
+      </span>
+      <span role="button" @click.prevent.stop="history.onDeleteBar(item)">
         <IconClose class="w-6 h-6 wb-icon" />
-      </button>
+      </span>
     </button>
     <button class="wb-icon ml-2" @click.prevent.stop="history.onCloseAll">
       <IconCloseAll class="w-6 h-6" />

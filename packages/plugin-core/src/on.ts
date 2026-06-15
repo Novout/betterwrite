@@ -1,5 +1,7 @@
 import type {
   PDFDocOptions,
+  EPUBDocOptions,
+  DOCXDocOptions,
   PluginTypes,
   ImporterParams,
   ProjectStateSchemaCreate,
@@ -315,10 +317,10 @@ export const externals = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn,
   ) => {
-    emitter.on('plugin-docx-generate', () => {
+    emitter.on('plugin-docx-generate', (options: DOCXDocOptions) => {
       const created = content[0]
 
-      created && created()
+      created && created(options)
     })
   }
 
@@ -337,10 +339,10 @@ export const externals = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn,
   ) => {
-    emitter.on('plugin-epub-generate', () => {
+    emitter.on('plugin-epub-generate', (options: EPUBDocOptions) => {
       const created = content[0]
 
-      created && created()
+      created && created(options)
     })
   }
 
@@ -492,10 +494,10 @@ export const externals = () => {
     emitter: PluginTypes.PluginEmitter,
     content: PluginTypes.PluginContentOn,
   ) => {
-    emitter.on('plugin-voice-start', () => {
+    emitter.on('plugin-voice-start', (...args: any[]) => {
       const created = content[0]
 
-      created && created()
+      created && created(...args)
     })
   }
 

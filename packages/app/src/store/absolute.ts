@@ -31,6 +31,7 @@ export const useAbsoluteStore = defineStore('absolute', {
         configuration: false,
         generate: false,
       },
+      epub: {},
       docx: {
         configuration: false,
       },
@@ -59,6 +60,10 @@ export const useAbsoluteStore = defineStore('absolute', {
         create: false,
         template: false,
       },
+      bw: {
+        encryptOnExport: false,
+      },
+      bionicReading: false,
     }
   },
 })

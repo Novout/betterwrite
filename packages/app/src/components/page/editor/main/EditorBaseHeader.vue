@@ -9,7 +9,7 @@
     ]"
     class="flex pr-2 sm:pr-5 h-12 justify-between items-center w-full shadow-lg bg-theme-editor-background hover:bg-theme-editor-background-hover active:bg-theme-editor-background-active"
   >
-    <div class="flex gap-1 sm:gap-2 lg:gap-5 items-center justify-start">
+    <div class="flex gap-1 sm:gap-2 lg:gap-10 items-center justify-start">
       <Logo class="ml-3" :back="false" :width="19" />
       <div
         :style="{
@@ -17,12 +17,11 @@
           fontWeight: EDITOR.styles.header.fontWeight,
           fontSize: `${EDITOR.styles.header.fontSize}px`,
         }"
-        class="flex items-center justify-between"
+        class="flex items-center justify-between gap-5"
       >
         <EditorBaseHeaderProject />
         <EditorBaseHeaderCreate v-if="PROJECT.type !== 'only-annotations'" />
         <EditorBaseHeaderExternals v-if="PROJECT.type !== 'only-annotations'" />
-        <EditorBaseHeaderVault />
         <EditorBaseHeaderHelp />
       </div>
     </div>

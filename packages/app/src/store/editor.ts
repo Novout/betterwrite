@@ -15,6 +15,8 @@ export const useEditorStore = defineStore('editor', {
           fontFamily: 'Raleway',
           fontWeight: 400,
           fontSize: 16,
+          lineHeight: 1.5,
+          letterSpacing: 0,
         },
         header: {
           fontFamily: 'Raleway',
@@ -33,6 +35,7 @@ export const useEditorStore = defineStore('editor', {
           backgroundGrayscale: false,
           backgroundSaturate: false,
           backgroundSepia: false,
+          editorWidth: 'medium',
         },
       },
       configuration: {
@@ -57,6 +60,7 @@ export const useEditorStore = defineStore('editor', {
         topBar: true,
         entity: {
           insertEntityInParagraphBreakLine: true,
+          spellcheck: true,
         },
         commands: {
           paragraph: {

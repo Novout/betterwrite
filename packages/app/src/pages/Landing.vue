@@ -5,11 +5,34 @@
   >
     <section
       id="landing-base"
-      class="flex flex-col bg-theme-background-2 z-max text-white items-center justify-between min-h-screen w-full overflow-x-hidden"
+      class="relative flex flex-col z-max text-white items-center justify-between min-h-screen w-full overflow-x-hidden"
     >
+      <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div
+          v-for="col in bookColumns"
+          :key="col.id"
+          :class="col.responsiveClass"
+          class="absolute top-0 flex-col justife- gap-3"
+          :style="col.style"
+        >
+          <div
+            v-for="(block, bi) in col.blocks"
+            :key="bi"
+            class="flex flex-col gap-1.5"
+            :style="block.style"
+          >
+            <div
+              v-for="(line, li) in block.lines"
+              :key="li"
+              class="rounded-full bg-white opacity-20"
+              :style="{ width: line.width, height: line.height }"
+            />
+          </div>
+        </div>
+      </div>
       <div
         v-if="isLoaded"
-        class="flex-1 bg-theme-background-2 container mx-auto flex px-5 py-24 flex-col justify-center items-center z-50"
+        class="relative flex-1 container mx-auto flex px-5 py-24 flex-col justify-center items-center z-10"
       >
         <div
           v-if="!isNecessaryLogin"
@@ -139,4 +162,83 @@
   tryOnUnmounted(() => {
     plugin.emit('call-landing-unmounted')
   })
+
+  const rand = (min: number, max: number) =>
+    Math.random() * (max - min) + min
+
+  interface BookBlock {
+    lines: { width: string; height: string }[]
+    style: string
+  }
+
+  interface BookColumn {
+    id: number
+    blocks: BookBlock[]
+    style: string
+    responsiveClass: string
+  }
+
+  const NUM_COLUMNS = 9
+
+  const bookColumns = Array.from({ length: NUM_COLUMNS }, (_, i): BookColumn => {
+    const leftPct = (i / NUM_COLUMNS) * 100 + rand(-2, 2)
+    const duration = rand(18, 32)
+    const delay = rand(-duration, 0)
+    const maxOpacity = rand(0.07, 0.16)
+
+    const blocks: BookBlock[] = Array.from({ length: rand(5, 15) | 0 }, () => {
+      const lineCount = (rand(2, 7) | 0)
+      const blockDelay = rand(0, 8)
+      const blockFadeDuration = rand(3, 6)
+
+      return {
+        lines: Array.from({ length: lineCount }, (_, li) => {
+          const isLast = li === lineCount - 1
+          return {
+            width: isLast ? `${rand(40, 75)}%` : `${rand(85, 100)}%`,
+            height: '2px',
+          }
+        }),
+        style: [
+          `animation: bookFadeInOut ${blockFadeDuration}s ${blockDelay}s ease-in-out infinite alternate`,
+          `--max-op: ${maxOpacity}`,
+        ].join(';'),
+      }
+    })
+
+    // mobile: 3 cols, sm: 5 cols, lg: all 9
+    const responsiveClass =
+      i < 3 ? 'flex' : i < 5 ? 'hidden sm:flex' : 'hidden lg:flex'
+
+    return {
+      id: i,
+      blocks,
+      responsiveClass,
+      style: [
+        `left: ${leftPct}%`,
+        `width: ${rand(60, 110)}px`,
+        `animation: bookDrift ${duration}s ${delay}s linear infinite`,
+      ].join(';'),
+    }
+  })
 </script>
+
+<style scoped>
+@keyframes bookDrift {
+  from {
+    transform: translateY(110vh) rotate(-1.5deg);
+  }
+  to {
+    transform: translateY(-20vh) rotate(1.5deg);
+  }
+}
+
+@keyframes bookFadeInOut {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: var(--max-op, 0.12);
+  }
+}
+</style>

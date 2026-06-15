@@ -101,6 +101,21 @@
     <div class="flex flex-col gap-5">
       <div class="flex flex-col gap-2">
         <p class="font-bold text-lg mt-5">
+          {{ t('editor.preferences.configuration.editor.layout') }}
+        </p>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.editorWidth') }}
+          </p>
+          <InputSelect
+            v-model="EDITOR.styles.base.editorWidth"
+            :specific="true"
+            :arr="['narrow', 'medium', 'wide', 'full']"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="font-bold text-lg mt-5">
           {{ t('editor.preferences.configuration.editor.text') }}
         </p>
         <div class="wb-preferences">
@@ -133,6 +148,28 @@
             v-model="EDITOR.styles.text.fontSize"
             :step="2"
             :min="8"
+          />
+        </div>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.lineHeight') }}
+          </p>
+          <InputNumber
+            v-model="EDITOR.styles.text.lineHeight"
+            :step="0.1"
+            :min="1"
+            :max="3"
+          />
+        </div>
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.preferences.configuration.editor.letterSpacing') }}
+          </p>
+          <InputNumber
+            v-model="EDITOR.styles.text.letterSpacing"
+            :step="0.5"
+            :min="-2"
+            :max="10"
           />
         </div>
       </div>
