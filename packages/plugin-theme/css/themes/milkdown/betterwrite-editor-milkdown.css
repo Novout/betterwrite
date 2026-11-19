@@ -41,7 +41,7 @@
 }
 
 .milkdown-betterwrite a {
-  color: var('--theme-background-4');
+  color: var(--theme-background-4);
   text-decoration-line: underline;
   cursor: pointer;
   font-weight: 600;
