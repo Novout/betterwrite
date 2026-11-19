@@ -3,7 +3,7 @@ import { useContextStore } from '@/store/context'
 import { useEditorStore } from '@/store/editor'
 import { Entity, EntityType, ID } from 'better-write-types'
 import { getImageFileRaw } from 'better-write-image-converter'
-import { nextTick, Ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, Ref, watch } from 'vue'
 import useEmitter from '../emitter'
 import { useEntity } from '../entity'
 import { useEnv } from '../env'
@@ -66,9 +66,46 @@ export const useBlockText = ({
     input.value.innerHTML = val
   }
 
+  /*
+   * When the window/tab loses focus, the block blurs and `save` updates
+   * `entity.raw`, which makes `v-html` re-render and drop the selection.
+   * Keep the caret offset so it can be restored when the user returns.
+   */
+  let lastCaretOffset: number | null = null
+
+  const restoreCaret = () => {
+    if (lastCaretOffset === null || !input.value) return
+
+    // only restore if this block is still the active element
+    // (switching window keeps activeElement; clicking another block changes it)
+    if (document.activeElement !== input.value) {
+      lastCaretOffset = null
+      return
+    }
+
+    raw.v2().caret().set(input.value, lastCaretOffset, false)
+  }
+
+  const onWindowFocus = () => {
+    setTimeout(() => {
+      restoreCaret()
+      lastCaretOffset = null
+    }, 0)
+  }
+
   const onWatcher = () => {
+    window.addEventListener('focus', onWindowFocus)
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('focus', onWindowFocus)
+    })
+
     /* speech API */
-    watch(focused, (_focused) => {
+    watch(focused, async (_focused) => {
+      if (!_focused && input.value) {
+        lastCaretOffset = raw.v2().caret().index(input.value)
+      }
+
       if (_focused && !entity.utils().isFixed(index.value)) {
         EDITOR.actives.entity.index = index.value
 
@@ -84,6 +121,10 @@ export const useBlockText = ({
         save(index.value, input.value.innerHTML)
 
         isSalvageable.value = false
+
+        // re-apply caret after v-html re-render (window/tab switch case)
+        await nextTick()
+        restoreCaret()
       }
     })
   }
