@@ -19,15 +19,35 @@
   "dependencies": {
     "better-write-plugin-core": "^1.4.0",
     "better-write-types": "^1.4.0",
-    "vue-demi": "latest"
+    "vue-demi": "latest",
+    "katex": "^0.16.25",
+    "remark-math": "^6.0.0",
+    "tippy.js": "^6.3.7",
+    "lodash.debounce": "^4.0.8"
   },
   "peerDependencies": {
     "@vue/composition-api": "^1.0.0-rc.1",
-    "vue": "^2.0.0 || >=3.0.0"
+    "vue": "^2.0.0 || >=3.0.0",
+    "@milkdown/core": "^7.23.0",
+    "@milkdown/ctx": "^7.23.0",
+    "@milkdown/prose": "^7.23.0",
+    "@milkdown/utils": "^7.23.0",
+    "@milkdown/plugin-block": "^7.23.0",
+    "@milkdown/plugin-clipboard": "^7.23.0",
+    "@milkdown/plugin-cursor": "^7.23.0",
+    "@milkdown/plugin-history": "^7.23.0",
+    "@milkdown/plugin-listener": "^7.23.0",
+    "@milkdown/plugin-trailing": "^7.23.0",
+    "@milkdown/plugin-upload": "^7.23.0",
+    "@milkdown/preset-commonmark": "^7.23.0"
   },
   "peerDependenciesMeta": {
     "@vue/composition-api": {
       "optional": true
     }
+  },
+  "devDependencies": {
+    "@types/katex": "^0.16.7",
+    "@types/lodash.debounce": "^4.0.9"
   }
 }

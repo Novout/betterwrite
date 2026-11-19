@@ -15,7 +15,7 @@ import {
   editorViewOptionsCtx,
 } from '@milkdown/core'
 import { listener, listenerCtx } from '@milkdown/plugin-listener'
-import { math } from '@milkdown/plugin-math'
+import { math } from './plugins/math/math-plugin'
 import { clipboard } from '@milkdown/plugin-clipboard'
 import { block } from '@milkdown/plugin-block'
 import { history } from '@milkdown/plugin-history'
