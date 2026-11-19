@@ -56,6 +56,7 @@ export const useEditorStore = defineStore('editor', {
         purgeEntities: false,
         trackEntities: true,
         discordPresence: true,
+        watermark: true,
         blocked: true,
         bottomBar: true,
         topBar: true,

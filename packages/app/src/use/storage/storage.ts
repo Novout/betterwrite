@@ -226,6 +226,13 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.editor.configuration.hasOwnProperty('watermark')) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        watermark: true,
+      }
+    }
+
     if (!_.project.schemas) {
       _.project.schemas = []
       if (_.project.annotations) {

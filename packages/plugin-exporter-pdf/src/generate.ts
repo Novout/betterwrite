@@ -1,5 +1,5 @@
 import { usePDF } from 'vue3-pdfmake'
-import { On } from 'better-write-plugin-core'
+import { On, getWatermark, Watermark } from 'better-write-plugin-core'
 import {
   ColorSchema,
   ColorSchemaReturn,
@@ -1154,41 +1154,82 @@ export const PluginPDFSet = (
       return { alignment, text }
     }
 
-    const addons = () => {
+    // app logo + "betterwrite.io" centered behind the content of the last page.
+    // `lastPage` is resolved by a layout-only pass (see `countPages`), since
+    // pdfmake calls `background` while pages are still being created.
+    let lastPage = 0
+
+    const watermark = (
+      mark: Watermark | null,
+      currentPage: number,
+      pageSize: { width: number; height: number },
+    ) => {
+      if (!mark || !lastPage || currentPage !== lastPage) return []
+
+      const height = pageSize.height * 0.5
+      const width = height * mark.ratio
+
+      return [
+        {
+          image: mark.dataUrl,
+          width,
+          height,
+          absolutePosition: {
+            x: (pageSize.width - width) / 2,
+            y: (pageSize.height - height) / 2,
+          },
+        },
+      ]
+    }
+
+    // original page background (cover image / main image / theme color)
+    const pageBackground = (currentPage: number): any[] | undefined => {
+      const defColor = utils().getColor(
+        stores.PDF.styles.base.background.color,
+        options.color,
+      )
+
+      return currentPage >= 3 &&
+        stores.PDF.styles.base.background.main &&
+        stores.PDF.styles.switcher.main
+        ? [
+            {
+              image: stores.PDF.styles.base.background.main,
+              width: hooks.defines.pdf().base().pageSizeFixes()[
+                stores.PDF.styles.base.pageSize
+              ][0],
+              height: hooks.defines.pdf().base().pageSizeFixes()[
+                stores.PDF.styles.base.pageSize
+              ][1],
+            },
+          ]
+        : currentPage <= 1 &&
+            stores.PDF.styles.switcher.cover &&
+            stores.PDF.styles.base.background.data
+          ? undefined
+          : !isTheme.value && defColor === '#FFFFFF'
+            ? undefined
+            : [
+                {
+                  canvas: [generate(options).styles().background()],
+                },
+              ]
+    }
+
+    const addons = (mark: Watermark | null) => {
       const { theme } = getPDFUtils()
 
       return {
-        background: function (currentPage: number) {
-          const defColor = utils().getColor(
-            stores.PDF.styles.base.background.color,
-            options.color,
-          )
+        background: function (
+          currentPage: number,
+          pageSize: { width: number; height: number },
+        ) {
+          const base = pageBackground(currentPage)
+          const logo = watermark(mark, currentPage, pageSize)
 
-          return currentPage >= 3 &&
-            stores.PDF.styles.base.background.main &&
-            stores.PDF.styles.switcher.main
-            ? [
-                {
-                  image: stores.PDF.styles.base.background.main,
-                  width: hooks.defines.pdf().base().pageSizeFixes()[
-                    stores.PDF.styles.base.pageSize
-                  ][0],
-                  height: hooks.defines.pdf().base().pageSizeFixes()[
-                    stores.PDF.styles.base.pageSize
-                  ][1],
-                },
-              ]
-            : currentPage <= 1 &&
-                stores.PDF.styles.switcher.cover &&
-                stores.PDF.styles.base.background.data
-              ? undefined
-              : !isTheme.value && defColor === '#FFFFFF'
-                ? undefined
-                : [
-                    {
-                      canvas: [generate(options).styles().background()],
-                    },
-                  ]
+          if (logo.length === 0) return base
+
+          return [...(base ?? []), ...logo]
         },
         footer: stores.PDF.styles.switcher.footer
           ? function (
@@ -1266,14 +1307,54 @@ export const PluginPDFSet = (
       }
     }
 
-    const getContent = await content()
+    const [getContent, mark] = await Promise.all([
+      content(),
+      stores.EDITOR.configuration.watermark !== false
+        ? getWatermark()
+        : Promise.resolve(null),
+    ])
 
-    return {
+    lastPage = 0
+
+    const definition = {
       ...encrypt(),
       ...page(),
       ...info(),
       ...getContent,
-      ...addons(),
+      ...addons(mark),
+    }
+
+    if (mark) lastPage = await countPages(definition)
+
+    return definition
+  }
+
+  /**
+   * Layout-only pass to find the total of pages: `getStream()` resolves right
+   * after pdfmake lays out the document (nothing is written). pdfmake mutates
+   * the definition while processing it, so the content is cloned.
+   * Background doesn't affect the layout, so the count matches the real pass.
+   */
+  const countPages = async (definition: Record<string, any>) => {
+    try {
+      let total = 0
+
+      await pdfmake
+        .createPdf({
+          ...definition,
+          content: structuredClone(definition.content),
+          background: undefined,
+          footer: (_: number, pageCount: number) => {
+            total = pageCount
+            return undefined
+          },
+        })
+        .getStream()
+
+      return total
+    } catch {
+      // without the count the watermark is skipped, the export still works
+      return 0
     }
   }
 

@@ -64,3 +64,4 @@ export const createPlugin = (
 export * as Cycle from './cycle'
 export * as On from './on'
 export * as Calls from './calls'
+export * from './watermark'

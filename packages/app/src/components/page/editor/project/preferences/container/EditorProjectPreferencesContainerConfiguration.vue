@@ -94,7 +94,9 @@
       </div>
       <DescriptionContainer
         color="#5865F2"
-        :description="t('editor.aside.configuration.discordPresence.description')"
+        :description="
+          t('editor.aside.configuration.discordPresence.description')
+        "
       >
         <div class="wb-preferences">
           <p class="text-sm">
@@ -102,6 +104,21 @@
           </p>
           <InputBoolean
             v-model="EDITOR.configuration.discordPresence"
+            :specific="true"
+          />
+        </div>
+      </DescriptionContainer>
+      <div class="py-2"/>
+      <DescriptionContainer
+        color="#EEEEEE"
+        :description="t('editor.aside.configuration.watermark.description')"
+      >
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.aside.configuration.watermark.title') }}
+          </p>
+          <InputBoolean
+            v-model="EDITOR.configuration.watermark"
             :specific="true"
           />
         </div>

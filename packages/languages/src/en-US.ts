@@ -553,6 +553,11 @@ export default {
           description:
             'Shows the chapter (or document) you are writing on your Discord profile. Requires the PreMiD browser extension.',
         },
+        watermark: {
+          title: 'Watermark',
+          description:
+            'Adds the Better Write logo and betterwrite.io text to the last page of PDF and DOCX exports.',
+        },
         entity: {
           title: 'Editor',
           insertEntityInParagraphBreakLine: 'Insert Paragraph at line breaks',

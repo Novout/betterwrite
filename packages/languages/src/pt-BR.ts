@@ -552,6 +552,11 @@ export default {
           description:
             'Mostra o capítulo (ou documento) que você está escrevendo no seu perfil do Discord. Requer a extensão PreMiD no navegador.',
         },
+        watermark: {
+          title: "Marca d'água",
+          description:
+            'Adiciona a logo do Better Write e o texto betterwrite.io na última página das exportações em PDF e DOCX.',
+        },
         entity: {
           title: 'Editor',
           insertEntityInParagraphBreakLine:

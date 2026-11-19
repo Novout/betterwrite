@@ -6,7 +6,7 @@ import {
   ProjectStateTemplatesGenerator,
   DOCXDocOptions,
 } from 'better-write-types'
-import { On } from 'better-write-plugin-core'
+import { On, getWatermark, Watermark } from 'better-write-plugin-core'
 import { getRows, parse } from 'better-write-contenteditable-ast'
 import { ContextState } from 'better-write-types'
 
@@ -104,6 +104,43 @@ export const PluginDocxSet = (
         },
         type: docx.SectionType.NEXT_PAGE,
       }
+    }
+
+    // App logo + "betterwrite.io" behind the text, centered on the LAST page.
+    // Word paginates the document itself, so the image is anchored to a
+    // paragraph appended at the very end: a floating image positioned
+    // relative to the page is drawn on the page of its anchor.
+    // (no exact line height: docx 7.5 emits the invalid `lineRule="exactly"`)
+    const watermark = (mark: Watermark | null): docx.Paragraph[] => {
+      if (!mark) return []
+
+      // A4 height ≈ 11.69in; logo takes half of it (pixels @96dpi)
+      const height = Math.round(11.69 * 96 * 0.5)
+      const width = Math.round(height * mark.ratio)
+
+      return [
+        new docx.Paragraph({
+          spacing: { before: 0, after: 0 },
+          children: [
+            new docx.ImageRun({
+              data: mark.data,
+              transformation: { width, height },
+              floating: {
+                horizontalPosition: {
+                  relative: docx.HorizontalPositionRelativeFrom.PAGE,
+                  align: docx.HorizontalPositionAlign.CENTER,
+                },
+                verticalPosition: {
+                  relative: docx.VerticalPositionRelativeFrom.PAGE,
+                  align: docx.VerticalPositionAlign.CENTER,
+                },
+                behindDocument: true,
+                allowOverlap: true,
+              },
+            }),
+          ],
+        }),
+      ]
     }
 
     const footer = () => {
@@ -365,11 +402,15 @@ export const PluginDocxSet = (
       return arr
     }
 
-    return { properties, footer, styles, entities, content, flow }
+    return { properties, watermark, footer, styles, entities, content, flow }
   }
 
-  const doc = (options: DOCXDocOptions): docx.File => {
+  const doc = async (options: DOCXDocOptions): Promise<docx.File> => {
     const c = create(options.bionicReading)
+    const mark =
+      stores.EDITOR.configuration.watermark !== false
+        ? await getWatermark()
+        : null
 
     return new docx.Document({
       creator: stores.PROJECT.creator,
@@ -381,7 +422,7 @@ export const PluginDocxSet = (
       sections: [
         {
           properties: c.properties(),
-          children: c.flow(),
+          children: [...c.flow(), ...c.watermark(mark)],
           footers: c.footer(),
         },
       ],
@@ -410,8 +451,8 @@ export const PluginDocxSet = (
   }
 
   On.externals().PluginDocxGenerate(emitter, [
-    (options: DOCXDocOptions) => {
-      download(doc(options ?? { bionicReading: false }))
+    async (options: DOCXDocOptions) => {
+      download(await doc(options ?? { bionicReading: false }))
     },
     () => {},
   ])
