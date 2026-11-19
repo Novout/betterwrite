@@ -7,15 +7,27 @@ import vueGlobalComponent from 'unplugin-vue-components/vite'
 import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
 import { VitePWA as vitePWA } from 'vite-plugin-pwa'
 import viteAutoImport from 'unplugin-auto-import/vite'
-import vitePersist from 'vite-plugin-optimize-persist'
-import vitePackageAccess from 'vite-plugin-package-config'
+import vitePersistModule from 'vite-plugin-optimize-persist'
+import vitePackageAccessModule from 'vite-plugin-package-config'
 import vitePackageVersion from 'vite-plugin-package-version'
 import viteSitemap from 'vite-plugin-sitemap'
 import viteChecker from 'vite-plugin-checker'
-import { viteStdlib } from './scripts/vite'
+import {
+  stdlibInject,
+  viteFixWindiPreflight,
+  viteStdlib,
+} from './scripts/vite.mts'
 import { FontaineTransform as CSSFontaine } from 'fontaine'
 import windiCSS from 'vite-plugin-windicss'
 import stdLibBrowser from 'node-stdlib-browser'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
+
+// legacy CJS plugins expose the factory under `.default` when loaded as ESM
+const cjs = <T,>(mod: T): T => (mod as any).default ?? mod
+const vitePersist = cjs(vitePersistModule)
+const vitePackageAccess = cjs(vitePackageAccessModule)
+
 const sitemapRoutes = [
   '/landing',
   '/about',
@@ -53,6 +65,7 @@ export default ({ mode }: any) => {
         dts: true,
         resolvers: [HeadlessUiResolver()],
       }),
+      viteFixWindiPreflight(),
       windiCSS(),
       CSSFontaine.vite({
         fallbacks: [
@@ -62,7 +75,8 @@ export default ({ mode }: any) => {
           'Arial',
           'Noto Sans',
         ],
-        resolvePath: (id) => new URL('.' + id, import.meta.url),
+        // fonts are referenced by their public URL (/fonts/x.ttf)
+        resolvePath: (id) => new URL('./public' + id, import.meta.url),
       }),
       viteSitemap({
         hostname: process.env.VITE_BASE_URL,
@@ -150,7 +164,14 @@ export default ({ mode }: any) => {
       emptyOutDir: true,
       chunkSizeWarningLimit: 4000, // pdfmake
       minify: 'esbuild',
-      rollupOptions: {
+      rolldownOptions: {
+        transform: {
+          inject: stdlibInject,
+        },
+        checks: {
+          // informational only: WindiCSS + PWA closeBundle dominate the timings
+          bundlerTimings: false,
+        },
         output: {
           manualChunks(id) {
             const splitted = 'node_modules/.pnpm/'
