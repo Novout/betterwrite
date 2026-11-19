@@ -548,7 +548,7 @@ export default {
         advanced: 'Avançado',
         language: 'Idioma',
         discordPresence: {
-          title: 'Discord Presence',
+          title: 'Discord Presence com PreMid',
           description:
             'Mostra o capítulo (ou documento) que você está escrevendo no seu perfil do Discord. Requer a extensão PreMiD no navegador.',
         },
