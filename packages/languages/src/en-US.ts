@@ -548,6 +548,11 @@ export default {
         topBar: 'Top Bar',
         language: 'Language',
         advanced: 'Advanced',
+        discordPresence: {
+          title: 'Discord Presence',
+          description:
+            'Shows the chapter (or document) you are writing on your Discord profile. Requires the PreMiD browser extension.',
+        },
         entity: {
           title: 'Editor',
           insertEntityInParagraphBreakLine: 'Insert Paragraph at line breaks',

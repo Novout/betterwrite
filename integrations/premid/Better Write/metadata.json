@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schemas.premid.app/metadata/1.16",
+  "apiVersion": 1,
+  "author": {
+    "id": "1135903953914179687",
+    "name": "novoutzx"
+  },
+  "service": "Better Write",
+  "description": {
+    "en": "Better Write is a free, client-side creative word processor focused on writing books and stories.",
+    "pt_BR": "Better Write é um processador de texto criativo, gratuito e 100% no navegador, focado na escrita de livros e histórias."
+  },
+  "url": "betterwrite.io",
+  "version": "1.0.0",
+  "logo": "https://betterwrite.io/icon_x512.png",
+  "thumbnail": "https://i.imgur.com/yvzMkqO.png",
+  "color": "#1F2937",
+  "category": "other",
+  "tags": ["writing", "editor", "books", "productivity"],
+  "settings": [
+    {
+      "id": "showTitle",
+      "title": "Show Chapter Title",
+      "icon": "fad fa-book",
+      "value": true
+    },
+    {
+      "id": "showProject",
+      "title": "Show Project Name",
+      "icon": "fad fa-folder",
+      "value": true
+    },
+    {
+      "id": "showWords",
+      "title": "Show Word Count",
+      "icon": "fad fa-font",
+      "value": true
+    },
+    {
+      "id": "showTimestamp",
+      "title": "Show Elapsed Time",
+      "icon": "fad fa-stopwatch",
+      "value": true
+    }
+  ]
+}

@@ -95,6 +95,7 @@ export interface EditorStateConfiguration {
   }
   purgeEntities: boolean
   trackEntities: boolean
+  discordPresence: boolean
   entity: EditorStateConfigurationEntity
   commands: EditorStateConfigurationCommands
 }

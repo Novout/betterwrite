@@ -219,6 +219,13 @@ export const useStorage = () => {
       }
     }
 
+    if (!_.editor.configuration.hasOwnProperty('discordPresence')) {
+      _.editor.configuration = {
+        ..._.editor.configuration,
+        discordPresence: true,
+      }
+    }
+
     if (!_.project.schemas) {
       _.project.schemas = []
       if (_.project.annotations) {

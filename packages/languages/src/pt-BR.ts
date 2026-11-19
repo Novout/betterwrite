@@ -547,6 +547,11 @@ export default {
         topBar: 'Barra Superior',
         advanced: 'Avançado',
         language: 'Idioma',
+        discordPresence: {
+          title: 'Discord Presence',
+          description:
+            'Mostra o capítulo (ou documento) que você está escrevendo no seu perfil do Discord. Requer a extensão PreMiD no navegador.',
+        },
         entity: {
           title: 'Editor',
           insertEntityInParagraphBreakLine:

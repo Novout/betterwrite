@@ -92,6 +92,20 @@
           :specific="true"
         />
       </div>
+      <DescriptionContainer
+        color="#5865F2"
+        :description="t('editor.aside.configuration.discordPresence.description')"
+      >
+        <div class="wb-preferences">
+          <p class="text-sm">
+            {{ t('editor.aside.configuration.discordPresence.title') }}
+          </p>
+          <InputBoolean
+            v-model="EDITOR.configuration.discordPresence"
+            :specific="true"
+          />
+        </div>
+      </DescriptionContainer>
     </div>
     <div v-if="PROJECT.type === 'creative'">
       <PreferencesContainerTitle>

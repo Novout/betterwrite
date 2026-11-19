@@ -32,10 +32,13 @@
 <script setup lang="ts">
   import { useEditorStore } from '@/store/editor'
   import { useEditor } from '@/use/editor'
+  import { usePresence } from '@/use/presence'
 
   const editor = useEditor()
+  const presence = usePresence()
 
   const EDITOR = useEditorStore()
 
   editor.init()
+  presence.init()
 </script>
