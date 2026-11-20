@@ -38,6 +38,7 @@ betterwrite.io
 - ✅ High Tracking
 - ✅ Statistics in Real-Time
 - ✅ Graph Control
+- ✅ Multiple LocalSave
 - ✅ Plugin Friendly
 <br>
 
