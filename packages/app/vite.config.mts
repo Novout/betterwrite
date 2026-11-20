@@ -50,7 +50,7 @@ export default ({ mode }: any) => {
     },
     optimizeDeps: {
       include: ['buffer', 'process'],
-      exclude: ['epub-gen3']
+      exclude: ['epub-gen3'],
     },
     define: {
       __VUE_I18N_FULL_INSTALL__: true,

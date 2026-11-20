@@ -17,6 +17,7 @@ import { useContextStore } from './context'
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => {
     return {
+      localId: undefined,
       name: '__NOT_CREATED__',
       nameRaw: '__NOT_CREATED__',
       version: '0.1.0',
@@ -80,6 +81,7 @@ export const useProjectStore = defineStore('project', {
       const global = useGlobalStore()
       global.reset()
 
+      this.localId = payload.localId
       this.name = payload.name
       this.nameRaw = payload.nameRaw
       this.version = payload.version
@@ -112,6 +114,8 @@ export const useProjectStore = defineStore('project', {
         .kebab(options.name || '')
 
       this.$state = {
+        // every new project gets its own slot in the local registry
+        localId: useUtils().id().uuidv4(),
         image: options.image || undefined,
         name: title,
         nameRaw: options.name || 'Project',

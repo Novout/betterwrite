@@ -14,7 +14,9 @@
     >
       <IconMicrophone
         class="text-theme-background-1 transition-colors w-7 h-7 md:(w-8 h-8)"
-        @click.prevent.stop="plugin.emit('plugin-voice-start', lang, selectedDeviceId || undefined)"
+        @click.prevent.stop="
+          plugin.emit('plugin-voice-start', lang, selectedDeviceId || undefined)
+        "
       />
     </div>
     <div class="flex items-end justify-between flex-col ml-5 flex-1 gap-1">
@@ -25,7 +27,14 @@
         />
       </div>
       <div class="flex w-full">
-        <InputSelect v-model="selectedDeviceId" class="wb-text" :arr="[t('editor.tools.speechRecognition.defaultMic'), ...microphones]" />
+        <InputSelect
+          v-model="selectedDeviceId"
+          class="wb-text"
+          :arr="[
+            t('editor.tools.speechRecognition.defaultMic'),
+            ...microphones,
+          ]"
+        />
       </div>
       <div class="flex w-full">
         <InputSelect v-model="lang" class="wb-text" :arr="VueI18nAllISO" />
@@ -52,7 +61,9 @@
   )
 
   const lang = ref<string>(VueI18nAllISO[0])
-  const selectedDeviceId = ref<string>(t('editor.tools.speechRecognition.defaultMic'))
+  const selectedDeviceId = ref<string>(
+    t('editor.tools.speechRecognition.defaultMic'),
+  )
   const listening = ref<boolean>(false)
 
   onMounted(() => {

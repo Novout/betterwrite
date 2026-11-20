@@ -76,3 +76,5 @@ export function exclude(key: string) {
   indexeddb.del(key).catch(() => {})
   if (isLocalSupported) localStorage.removeItem(key)
 }
+
+export * from './projects'

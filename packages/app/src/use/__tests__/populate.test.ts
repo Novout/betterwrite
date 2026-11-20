@@ -8,16 +8,59 @@ vi.mock('vue-i18n', () => ({
     availableLocales: ['en-US'],
     getLocaleMessage: () => ({
       generator: {
-        block: { alignment: { both: 'Justify', left: 'Left', right: 'Right', center: 'Center' } },
-        flow: { item: { annotation: 'Annotation', 'break-page': 'Break page', bw: 'BW', content: 'Content' } },
+        block: {
+          alignment: {
+            both: 'Justify',
+            left: 'Left',
+            right: 'Right',
+            center: 'Center',
+          },
+        },
+        flow: {
+          item: {
+            annotation: 'Annotation',
+            'break-page': 'Break page',
+            bw: 'BW',
+            content: 'Content',
+          },
+        },
       },
       editor: {
-        pdf: { configuration: { alignment: { justify: 'Justify', left: 'Left', center: 'Center', right: 'Right' } } },
-        characters: { item: { nameCaseStrict: 'Strict', nameCaseDefault: 'Default', nameCaseAll: 'All' } },
-        presence: { type: { owner: 'Owner', visit: 'Visit', collaborator: 'Collaborator' } },
+        pdf: {
+          configuration: {
+            alignment: {
+              justify: 'Justify',
+              left: 'Left',
+              center: 'Center',
+              right: 'Right',
+            },
+          },
+        },
+        characters: {
+          item: {
+            nameCaseStrict: 'Strict',
+            nameCaseDefault: 'Default',
+            nameCaseAll: 'All',
+          },
+        },
+        presence: {
+          type: {
+            owner: 'Owner',
+            visit: 'Visit',
+            collaborator: 'Collaborator',
+          },
+        },
         schemas: {
-          types: { characters: { target: 'Characters' }, default: { target: 'Default' } },
-          create: { templates: { simple: { title: 'Simple' }, enthusiast: { title: 'Enthusiast' } } },
+          types: {
+            characters: { target: 'Characters' },
+            default: { target: 'Default' },
+          },
+          create: {
+            templates: {
+              simple: { title: 'Simple' },
+              enthusiast: { title: 'Enthusiast' },
+            },
+          },
         },
       },
     }),

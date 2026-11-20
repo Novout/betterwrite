@@ -15,7 +15,7 @@ router.beforeResolve(async (to, from, next) => {
   const token = url.includes('access_token')
   const isOnline = useNetwork().isOnline.value
 
-  if(env.isDev()) {
+  if (env.isDev()) {
     next()
 
     return

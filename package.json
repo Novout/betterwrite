@@ -13,6 +13,7 @@
     "major": "generi log major"
   },
   "devDependencies": {
+    "fake-indexeddb": "6.2.8",
     "generi": "2.0.4",
     "happy-dom": "20.0.10",
     "lerna": "6.6.2",

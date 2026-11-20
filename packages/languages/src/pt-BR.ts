@@ -275,6 +275,8 @@ export default {
         export: 'Exportar',
         exportAs: 'Exportar como...',
         encryptBW: 'Criptografar .bw',
+        saved: 'Projetos salvos',
+        deleteSaved: 'Excluir projeto salvo',
       },
       chapter: {
         drafts: 'Rascunhos',
@@ -319,6 +321,8 @@ export default {
       confirmConfiguration: 'Você quer sair salvando as configurações?',
       saveDropbox: 'Você tem certeza em salvar este arquivo no Dropbox?',
       saveLocal: 'Você tem certeza em salvar este arquivo?',
+      deleteSavedProject:
+        'Excluir o projeto salvo "{name}"? Esta ação não pode ser desfeita.',
       deleteChapterPage: 'Você tem certeza em excluir o capítulo atual?',
     },
     text: {

@@ -28,7 +28,11 @@ describe('useScroll', () => {
       document.body.appendChild(div)
 
       scroll.to('#center-target', 'center')
-      expect(spy).toHaveBeenCalledWith({ behavior: 'auto', block: 'center', inline: 'center' })
+      expect(spy).toHaveBeenCalledWith({
+        behavior: 'auto',
+        block: 'center',
+        inline: 'center',
+      })
     })
 
     it('does not throw when element does not exist', () => {
@@ -56,7 +60,11 @@ describe('useScroll', () => {
       document.body.appendChild(div)
 
       scroll.entity(7, 'center')
-      expect(spy).toHaveBeenCalledWith({ behavior: 'auto', block: 'center', inline: 'center' })
+      expect(spy).toHaveBeenCalledWith({
+        behavior: 'auto',
+        block: 'center',
+        inline: 'center',
+      })
     })
 
     it('scrolls to top when display is top', () => {
@@ -67,7 +75,11 @@ describe('useScroll', () => {
       document.body.appendChild(div)
 
       scroll.entity(3, 'top')
-      expect(spy).toHaveBeenCalledWith({ behavior: 'auto', block: 'start', inline: 'start' })
+      expect(spy).toHaveBeenCalledWith({
+        behavior: 'auto',
+        block: 'start',
+        inline: 'start',
+      })
     })
 
     it('scrolls to bottom when display is bottom', () => {
@@ -78,7 +90,11 @@ describe('useScroll', () => {
       document.body.appendChild(div)
 
       scroll.entity(5, 'bottom')
-      expect(spy).toHaveBeenCalledWith({ behavior: 'auto', block: 'end', inline: 'end' })
+      expect(spy).toHaveBeenCalledWith({
+        behavior: 'auto',
+        block: 'end',
+        inline: 'end',
+      })
     })
 
     it('does not throw for missing entity', () => {

@@ -163,8 +163,7 @@
     plugin.emit('call-landing-unmounted')
   })
 
-  const rand = (min: number, max: number) =>
-    Math.random() * (max - min) + min
+  const rand = (min: number, max: number) => Math.random() * (max - min) + min
 
   interface BookBlock {
     lines: { width: string; height: string }[]
@@ -180,65 +179,71 @@
 
   const NUM_COLUMNS = 9
 
-  const bookColumns = Array.from({ length: NUM_COLUMNS }, (_, i): BookColumn => {
-    const leftPct = (i / NUM_COLUMNS) * 100 + rand(-2, 2)
-    const duration = rand(18, 32)
-    const delay = rand(-duration, 0)
-    const maxOpacity = rand(0.07, 0.16)
+  const bookColumns = Array.from(
+    { length: NUM_COLUMNS },
+    (_, i): BookColumn => {
+      const leftPct = (i / NUM_COLUMNS) * 100 + rand(-2, 2)
+      const duration = rand(18, 32)
+      const delay = rand(-duration, 0)
+      const maxOpacity = rand(0.07, 0.16)
 
-    const blocks: BookBlock[] = Array.from({ length: rand(5, 15) | 0 }, () => {
-      const lineCount = (rand(2, 7) | 0)
-      const blockDelay = rand(0, 8)
-      const blockFadeDuration = rand(3, 6)
+      const blocks: BookBlock[] = Array.from(
+        { length: rand(5, 15) | 0 },
+        () => {
+          const lineCount = rand(2, 7) | 0
+          const blockDelay = rand(0, 8)
+          const blockFadeDuration = rand(3, 6)
+
+          return {
+            lines: Array.from({ length: lineCount }, (_, li) => {
+              const isLast = li === lineCount - 1
+              return {
+                width: isLast ? `${rand(40, 75)}%` : `${rand(85, 100)}%`,
+                height: '2px',
+              }
+            }),
+            style: [
+              `animation: bookFadeInOut ${blockFadeDuration}s ${blockDelay}s ease-in-out infinite alternate`,
+              `--max-op: ${maxOpacity}`,
+            ].join(';'),
+          }
+        },
+      )
+
+      // mobile: 3 cols, sm: 5 cols, lg: all 9
+      const responsiveClass =
+        i < 3 ? 'flex' : i < 5 ? 'hidden sm:flex' : 'hidden lg:flex'
 
       return {
-        lines: Array.from({ length: lineCount }, (_, li) => {
-          const isLast = li === lineCount - 1
-          return {
-            width: isLast ? `${rand(40, 75)}%` : `${rand(85, 100)}%`,
-            height: '2px',
-          }
-        }),
+        id: i,
+        blocks,
+        responsiveClass,
         style: [
-          `animation: bookFadeInOut ${blockFadeDuration}s ${blockDelay}s ease-in-out infinite alternate`,
-          `--max-op: ${maxOpacity}`,
+          `left: ${leftPct}%`,
+          `width: ${rand(60, 110)}px`,
+          `animation: bookDrift ${duration}s ${delay}s linear infinite`,
         ].join(';'),
       }
-    })
-
-    // mobile: 3 cols, sm: 5 cols, lg: all 9
-    const responsiveClass =
-      i < 3 ? 'flex' : i < 5 ? 'hidden sm:flex' : 'hidden lg:flex'
-
-    return {
-      id: i,
-      blocks,
-      responsiveClass,
-      style: [
-        `left: ${leftPct}%`,
-        `width: ${rand(60, 110)}px`,
-        `animation: bookDrift ${duration}s ${delay}s linear infinite`,
-      ].join(';'),
-    }
-  })
+    },
+  )
 </script>
 
 <style scoped>
-@keyframes bookDrift {
-  from {
-    transform: translateY(110vh) rotate(-1.5deg);
+  @keyframes bookDrift {
+    from {
+      transform: translateY(110vh) rotate(-1.5deg);
+    }
+    to {
+      transform: translateY(-20vh) rotate(1.5deg);
+    }
   }
-  to {
-    transform: translateY(-20vh) rotate(1.5deg);
-  }
-}
 
-@keyframes bookFadeInOut {
-  from {
-    opacity: 0;
+  @keyframes bookFadeInOut {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: var(--max-op, 0.12);
+    }
   }
-  to {
-    opacity: var(--max-op, 0.12);
-  }
-}
 </style>

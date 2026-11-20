@@ -93,7 +93,9 @@ describe('math plugin (port of @milkdown/plugin-math 7.2.x)', () => {
     const editor = await create({ type: 'json', value: legacyDoc })
     const dom = editor.action((ctx) => ctx.get(editorViewCtx).dom)
 
-    const inline = dom.querySelector<HTMLElement>('span[data-type="math_inline"]')
+    const inline = dom.querySelector<HTMLElement>(
+      'span[data-type="math_inline"]',
+    )
     const block = dom.querySelector<HTMLElement>('div[data-type="math_block"]')
 
     expect(inline?.dataset.value).toBe('a^2 + b^2 = c^2')

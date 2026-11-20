@@ -1,4 +1,9 @@
-import { get, set, exclude } from 'better-write-client-storage'
+import {
+  get,
+  set,
+  createProjectsStorage,
+  StoredProjectMeta,
+} from 'better-write-client-storage'
 import { ClientStorageOptions, Maybe, ProjectObject } from 'better-write-types'
 import { useToast } from 'vue-toastification'
 import { useEnv } from '../env'
@@ -7,6 +12,16 @@ import { useProjectStore } from '@/store/project'
 import { useStorage } from './storage'
 import { usePlugin } from 'better-write-plugin-core'
 import { useEditorStore } from '@/store/editor'
+import { useUtils } from '../utils'
+import { ref } from 'vue'
+
+export type { StoredProjectMeta }
+
+/**
+ * Bumped after every save/delete in the local registry, so lists that are
+ * already open (e.g. the header menu) refresh when a write finishes.
+ */
+export const localProjectsVersion = ref(0)
 
 export const useLocalStorage = () => {
   const EDITOR = useEditorStore()
@@ -16,41 +31,92 @@ export const useLocalStorage = () => {
   const env = useEnv()
   const storage = useStorage()
   const plugin = usePlugin()
+  const utils = useUtils()
   const { t } = i18n.global
 
-  const setProject = (obj: ProjectObject) => {
+  const projects = createProjectsStorage({
+    prefix: `${env.projectLocalStorage()}:projects`,
+    options: () => EDITOR.configuration.clientStorage as ClientStorageOptions,
+    // projects saved before multi-project support live in a single key
+    legacyKey: env.projectLocalStorage(),
+    legacyMeta: (data: ProjectObject) => ({
+      name: data?.project?.nameRaw || 'Project',
+      type: data?.project?.type,
+    }),
+    createId: () => utils.id().uuidv4(),
+  })
+
+  const onStorageError = () => {
+    const key = env.storageLimitSaver()
+
+    if (sessionStorage.getItem(key)) return
+
+    sessionStorage.setItem(key, key)
+
+    toast.error(t('toast.storage.limitError'), { timeout: 15000 })
+  }
+
+  const setProject = async (obj: ProjectObject) => {
     try {
-      set(
-        env.projectLocalStorage(),
-        obj,
-        EDITOR.configuration.clientStorage as ClientStorageOptions,
-      )
+      // projects created before this version have no local id yet
+      if (!obj.project.localId) {
+        PROJECT.localId = utils.id().uuidv4()
+        obj.project.localId = PROJECT.localId
+      }
+
+      await projects.save(obj.project.localId, obj, {
+        name: obj.project.nameRaw,
+        type: obj.project.type,
+      })
+
+      localProjectsVersion.value++
     } catch (e) {
-      const key = env.storageLimitSaver()
-
-      if (sessionStorage.getItem(key)) return
-
-      sessionStorage.setItem(key, key)
-
-      toast.error(t('toast.storage.limitError'), { timeout: 15000 })
+      onStorageError()
     }
   }
 
-  const deleteProject = (): void => {
-    exclude(env.projectLocalStorage())
+  /** removes a saved project (defaults to the current one) */
+  const deleteProject = async (id?: string): Promise<void> => {
+    const target = id ?? PROJECT.localId
+
+    if (!target) return
+
+    await projects.remove(target)
+
+    localProjectsVersion.value++
   }
 
+  /**
+   * Normalizes a project object, or loads the active saved project
+   * (the last one opened/saved) when none is given.
+   */
   const getProject = async (
     project?: Maybe<ProjectObject>,
   ): Promise<Maybe<ProjectObject>> => {
-    if (!project)
-      project = await get<ProjectObject>(
-        env.projectLocalStorage(),
-        EDITOR.configuration.clientStorage as ClientStorageOptions,
-      )
+    if (!project) {
+      const id = await projects.getActive()
+
+      if (id) project = await projects.load<ProjectObject>(id)
+    }
 
     return project ? storage.support(project) : undefined
   }
+
+  /** loads a specific saved project by id */
+  const getProjectById = async (id: string): Promise<Maybe<ProjectObject>> => {
+    const project = await projects.load<ProjectObject>(id)
+
+    if (!project) return undefined
+
+    // the registry id is the source of truth for the local slot
+    project.project.localId = id
+
+    await projects.setActive(id)
+
+    return storage.support(project)
+  }
+
+  const listProjects = () => projects.list()
 
   const onSaveProject = async (event: boolean = true) => {
     if (PROJECT.name === env.projectEmpty()) return
@@ -62,12 +128,12 @@ export const useLocalStorage = () => {
     if (event) {
       plugin.emit('plugin-progress-start')
 
-      storage
+      await storage
         .normalize()
         .then(async () => {
           await storage.purge()
 
-          setProject(storage.getProjectObject())
+          await setProject(storage.getProjectObject())
 
           toast.success(t('toast.project.save'))
         })
@@ -78,7 +144,7 @@ export const useLocalStorage = () => {
       return
     }
 
-    setProject(storage.getProjectObject())
+    await setProject(storage.getProjectObject())
   }
 
   return {
@@ -87,6 +153,8 @@ export const useLocalStorage = () => {
     setProject,
     deleteProject,
     getProject,
+    getProjectById,
+    listProjects,
     onSaveProject,
   }
 }

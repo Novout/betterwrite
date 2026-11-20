@@ -8,6 +8,8 @@ export type ProjectType = 'creative' | 'blank' | 'only-annotations'
 export type ProjectBase = 'chapter' | 'annotations'
 
 export interface ProjectState {
+  /** id of the project in the local projects registry (client-storage) */
+  localId?: string
   image?: string
   name: string
   nameRaw: string

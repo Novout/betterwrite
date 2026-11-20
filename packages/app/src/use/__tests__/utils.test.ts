@@ -20,7 +20,10 @@ describe('useUtils', () => {
     })
 
     it('converts a Map to an object', () => {
-      const map = new Map([['a', 1], ['b', 2]])
+      const map = new Map([
+        ['a', 1],
+        ['b', 2],
+      ])
       expect(mapToObject(map)).toEqual({ a: 1, b: 2 })
     })
   })

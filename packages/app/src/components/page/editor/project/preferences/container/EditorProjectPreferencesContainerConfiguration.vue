@@ -108,7 +108,7 @@
           />
         </div>
       </DescriptionContainer>
-      <div class="py-2"/>
+      <div class="py-2" />
       <DescriptionContainer
         color="#EEEEEE"
         :description="t('editor.aside.configuration.watermark.description')"

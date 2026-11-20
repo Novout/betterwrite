@@ -27,16 +27,55 @@ const mockT = (k: string) => {
 
 const mockLocaleMessage = () => ({
   generator: {
-    block: { alignment: { justify: 'Justify', left: 'Left', center: 'Center', right: 'Right' } },
-    flow: { item: { annotation: 'Annotation', 'break-page': 'Break page', bw: 'BW', content: 'Content' } },
+    block: {
+      alignment: {
+        justify: 'Justify',
+        left: 'Left',
+        center: 'Center',
+        right: 'Right',
+      },
+    },
+    flow: {
+      item: {
+        annotation: 'Annotation',
+        'break-page': 'Break page',
+        bw: 'BW',
+        content: 'Content',
+      },
+    },
   },
   editor: {
-    pdf: { configuration: { alignment: { justify: 'Justify', left: 'Left', center: 'Center', right: 'Right' } } },
-    characters: { item: { nameCaseStrict: 'Strict', nameCaseDefault: 'Default', nameCaseAll: 'All' } },
-    presence: { type: { owner: 'Owner', visit: 'Visit', collaborator: 'Collaborator' } },
+    pdf: {
+      configuration: {
+        alignment: {
+          justify: 'Justify',
+          left: 'Left',
+          center: 'Center',
+          right: 'Right',
+        },
+      },
+    },
+    characters: {
+      item: {
+        nameCaseStrict: 'Strict',
+        nameCaseDefault: 'Default',
+        nameCaseAll: 'All',
+      },
+    },
+    presence: {
+      type: { owner: 'Owner', visit: 'Visit', collaborator: 'Collaborator' },
+    },
     schemas: {
-      types: { characters: { target: 'Characters' }, default: { target: 'Default' } },
-      create: { templates: { simple: { title: 'Simple' }, enthusiast: { title: 'Enthusiast' } } },
+      types: {
+        characters: { target: 'Characters' },
+        default: { target: 'Default' },
+      },
+      create: {
+        templates: {
+          simple: { title: 'Simple' },
+          enthusiast: { title: 'Enthusiast' },
+        },
+      },
     },
   },
 })
@@ -56,7 +95,9 @@ describe('useTransformer', () => {
 
   describe('docx().entityAlignment()', () => {
     it('getter: returns translated label for "both"', () => {
-      expect(transformer.docx().entityAlignment('both', 'getter')).toBe('Justify')
+      expect(transformer.docx().entityAlignment('both', 'getter')).toBe(
+        'Justify',
+      )
     })
 
     it('getter: returns translated label for "left"', () => {
@@ -64,11 +105,15 @@ describe('useTransformer', () => {
     })
 
     it('setter: translates label back to DOCX alignment type', () => {
-      expect(transformer.docx().entityAlignment('Justify', 'setter')).toBe(DOCXAlignmentType.JUSTIFIED)
+      expect(transformer.docx().entityAlignment('Justify', 'setter')).toBe(
+        DOCXAlignmentType.JUSTIFIED,
+      )
     })
 
     it('setter: falls back to JUSTIFIED for unknown value', () => {
-      expect(transformer.docx().entityAlignment('unknown', 'setter')).toBe(DOCXAlignmentType.JUSTIFIED)
+      expect(transformer.docx().entityAlignment('unknown', 'setter')).toBe(
+        DOCXAlignmentType.JUSTIFIED,
+      )
     })
   })
 
@@ -82,21 +127,29 @@ describe('useTransformer', () => {
     })
 
     it('setter: falls back to "annotation" for unknown value', () => {
-      expect(transformer.docx().flowItem('unknown', 'setter')).toBe('annotation')
+      expect(transformer.docx().flowItem('unknown', 'setter')).toBe(
+        'annotation',
+      )
     })
   })
 
   describe('characters().nameCase()', () => {
     it('getter: maps "strict" to locale string', () => {
-      expect(transformer.characters().nameCase('strict', 'getter')).toBe('Strict')
+      expect(transformer.characters().nameCase('strict', 'getter')).toBe(
+        'Strict',
+      )
     })
 
     it('setter: maps locale string back to "default"', () => {
-      expect(transformer.characters().nameCase('Default', 'setter')).toBe('default')
+      expect(transformer.characters().nameCase('Default', 'setter')).toBe(
+        'default',
+      )
     })
 
     it('setter: falls back to "default" for unknown value', () => {
-      expect(transformer.characters().nameCase('unknown', 'setter')).toBe('default')
+      expect(transformer.characters().nameCase('unknown', 'setter')).toBe(
+        'default',
+      )
     })
   })
 
@@ -116,7 +169,9 @@ describe('useTransformer', () => {
 
   describe('schemas().type()', () => {
     it('getter: maps "characters" to locale string', () => {
-      expect(transformer.schemas().type('characters', 'getter')).toBe('Characters')
+      expect(transformer.schemas().type('characters', 'getter')).toBe(
+        'Characters',
+      )
     })
 
     it('setter: maps locale string to "default"', () => {
@@ -130,7 +185,9 @@ describe('useTransformer', () => {
     })
 
     it('setter: maps locale string to "enthusiast"', () => {
-      expect(transformer.schemas().template('Enthusiast', 'setter')).toBe('enthusiast')
+      expect(transformer.schemas().template('Enthusiast', 'setter')).toBe(
+        'enthusiast',
+      )
     })
 
     it('setter: falls back to "simple" for unknown value', () => {

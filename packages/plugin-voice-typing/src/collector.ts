@@ -38,7 +38,10 @@ export const CollectorSet = (
 
   On.externals().PluginVoiceStart(emitter, [
     async (lang: string, deviceId?: string) => {
-      const { isSupported } = hooks.vueuse.core.useSpeechRecognition({ lang, continuous: true })
+      const { isSupported } = hooks.vueuse.core.useSpeechRecognition({
+        lang,
+        continuous: true,
+      })
       const { audioInputs: microphones } = hooks.vueuse.core.useDevicesList()
 
       if (!isSupported.value) {
@@ -113,7 +116,9 @@ export const CollectorSet = (
       }
 
       // usa Web Speech API diretamente para controle total sobre interim e isFinal
-      const SRCtor = (window as any).SpeechRecognition ?? (window as any).webkitSpeechRecognition
+      const SRCtor =
+        (window as any).SpeechRecognition ??
+        (window as any).webkitSpeechRecognition
       recognition = new SRCtor() as SR
       recognition.lang = lang
       recognition.continuous = true
@@ -155,7 +160,10 @@ export const CollectorSet = (
           : accumulatedFinal.trim()
 
         if (accumulatedFinal) {
-          emitter.emit('plugin-voice-mutate', { id: id.value, result: fullFinal })
+          emitter.emit('plugin-voice-mutate', {
+            id: id.value,
+            result: fullFinal,
+          })
         }
 
         // melhoria 5: exibe interim no DOM sem salvar no store

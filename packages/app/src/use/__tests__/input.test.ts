@@ -29,7 +29,10 @@ describe('useInput', () => {
   describe('expandTextArea()', () => {
     it('sets element height to scrollHeight', () => {
       const el = document.createElement('textarea')
-      Object.defineProperty(el, 'scrollHeight', { value: 120, configurable: true })
+      Object.defineProperty(el, 'scrollHeight', {
+        value: 120,
+        configurable: true,
+      })
       expandTextArea(el)
       expect(el.style.height).toBe('120px')
     })

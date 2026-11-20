@@ -4,6 +4,9 @@ importers:
 
   .:
     devDependencies:
+      fake-indexeddb:
+        specifier: 6.2.8
+        version: 6.2.8
       generi:
         specifier: 2.0.4
         version: 2.0.4
@@ -409,7 +412,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -431,7 +434,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
 
   packages/plugin-editor-window:
     dependencies:
@@ -458,7 +461,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
 
   packages/plugin-entity-history:
     dependencies:
@@ -476,7 +479,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -504,7 +507,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
 
   packages/plugin-exporter-epub:
     dependencies:
@@ -540,7 +543,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
 
   packages/plugin-exporter-pdf:
     dependencies:
@@ -573,7 +576,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
 
   packages/plugin-exporter-txt:
     dependencies:
@@ -594,7 +597,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
 
   packages/plugin-importer:
     dependencies:
@@ -615,7 +618,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -643,7 +646,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -716,7 +719,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     devDependencies:
       '@types/katex':
         specifier: ^0.16.7
@@ -744,7 +747,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -769,7 +772,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
 
   packages/plugin-voice-typing:
     dependencies:
@@ -787,7 +790,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     devDependencies:
       prettier:
         specifier: 2.5.1
@@ -806,7 +809,7 @@ importers:
         version: 3.5.14
       vue-demi:
         specifier: latest
-        version: 0.14.10(vue@3.5.14)
+        version: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
 
 packages:
 
@@ -4418,7 +4421,6 @@ packages:
       entities: 4.5.0
       estree-walker: 2.0.2
       source-map-js: 1.2.4
-    dev: false
 
   /@vue/compiler-core@3.5.45:
     resolution: {integrity: sha512-XGHJrM6ufZARAc/w+tyOswStw9tdKiqCKBScI4gGaNxD+aaGu/HQWgKJ+JItjRLPqenQ7iE7G8AJC7T5ew1p+g==}
@@ -4434,7 +4436,6 @@ packages:
     dependencies:
       '@vue/compiler-core': 3.5.14
       '@vue/shared': 3.5.14
-    dev: false
 
   /@vue/compiler-dom@3.5.45:
     resolution: {integrity: sha512-LbP2d19GSOYGPmvMBBCVJVlv7TKtjM1Cfeyu3cYia720pknZP+1cLX7H5MVatvruT6MuJhiPuNbQBW/MDn/EwA==}
@@ -4454,7 +4455,6 @@ packages:
       magic-string: 0.30.21
       postcss: 8.5.33
       source-map-js: 1.2.4
-    dev: false
 
   /@vue/compiler-sfc@3.5.45:
     resolution: {integrity: sha512-MKFjb2UX0M/l/jhfzqMLrI8VM4pfvFKG3pqFZkSZFHRLtNld/O4RtUPZFWSwhro/14qP88UQEkWzHxAZAQ0tsw==}
@@ -4474,7 +4474,6 @@ packages:
     dependencies:
       '@vue/compiler-dom': 3.5.14
       '@vue/shared': 3.5.14
-    dev: false
 
   /@vue/compiler-ssr@3.5.45:
     resolution: {integrity: sha512-RF5sbZOfYz5AK00tOJUn2PwFXR2fS1u2HVzI8D9VF9rGAFxuGBqg2bB1kJ3ZHMprqSltXnT9MZE1IsqjSM8oew==}
@@ -4489,7 +4488,6 @@ packages:
     dependencies:
       tslib: 2.8.1
       vue: 3.5.14
-    dev: false
 
   /@vue/devtools-api@6.6.4:
     resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
@@ -4564,7 +4562,6 @@ packages:
     resolution: {integrity: sha512-7cK1Hp343Fu/SUCCO52vCabjvsYu7ZkOqyYu7bXV9P2yyfjUMUXHZafEbq244sP7gf+EZEz+77QixBTuEqkQQw==}
     dependencies:
       '@vue/shared': 3.5.14
-    dev: false
 
   /@vue/reactivity@3.5.45:
     resolution: {integrity: sha512-WqkyubNWpI4OYBOipSrjIssMdJO8K1i9Zts/Wm8Er10/0msOEwCyWWWvZnAI7WW3kQsTong6DJp8Cbb+vd4cPA==}
@@ -4576,7 +4573,6 @@ packages:
     dependencies:
       '@vue/reactivity': 3.5.14
       '@vue/shared': 3.5.14
-    dev: false
 
   /@vue/runtime-core@3.5.45:
     resolution: {integrity: sha512-bzIO3+FABjpj85uIKSc+Qnj36/sxDNI3tcH9i6w6xKA1k6e0ejv0G0jMCfeJBvK3yGL5XbJ3DMZj+ClqyCHFYw==}
@@ -4591,7 +4587,6 @@ packages:
       '@vue/runtime-core': 3.5.14
       '@vue/shared': 3.5.14
       csstype: 3.2.4
-    dev: false
 
   /@vue/runtime-dom@3.5.45:
     resolution: {integrity: sha512-ZvRTFMDgfqTDYWvJfoVpQTJx1RN5M6l7Pyd6wfdY2NaXzbPQVh9ezeQYFbNPP6bIcRVn2SqSSR25N/jSW69BFw==}
@@ -4609,7 +4604,6 @@ packages:
       '@vue/compiler-ssr': 3.5.14
       '@vue/shared': 3.5.14
       vue: 3.5.14
-    dev: false
 
   /@vue/server-renderer@3.5.45:
     resolution: {integrity: sha512-1fNXUHhhsWf4EVL4XixbGBU5mKdiIXJAB82feHRTyPPo6ZUEYWIJuEeUl3mVV6QDBp50HJOX4obLhxYXlrjrzA==}
@@ -4620,7 +4614,6 @@ packages:
 
   /@vue/shared@3.5.14:
     resolution: {integrity: sha512-oXTwNxVfc9EtP1zzXAlSlgARLXNC84frFYkS0HHz0h3E4WZSP9sywqjqzGCP9Y34M8ipNmd380pVgmMuwELDyQ==}
-    dev: false
 
   /@vue/shared@3.5.45:
     resolution: {integrity: sha512-ue9fgHmVNPlP7iW3+cxoBX/Cnlw53dHlVSw0JKGY6z1lObg8pHoj928M2nzG4/yVsMZ3NaRZ2s2z61uC16NDwQ==}
@@ -4665,7 +4658,7 @@ packages:
     dependencies:
       '@vueuse/core': 9.13.0(vue@3.5.45)
       '@vueuse/shared': 9.13.0(vue@3.5.45)
-      vue-demi: 0.14.10(vue@3.5.45)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4686,7 +4679,7 @@ packages:
       '@vueuse/metadata': 8.9.4
       '@vueuse/shared': 8.9.4(vue@3.5.45)
       vue: 3.5.45(typescript@5.9.3)
-      vue-demi: 0.14.10(vue@3.5.45)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     dev: false
 
   /@vueuse/core@9.13.0(vue@3.5.45):
@@ -4695,7 +4688,7 @@ packages:
       '@types/web-bluetooth': 0.0.16
       '@vueuse/metadata': 9.13.0
       '@vueuse/shared': 9.13.0(vue@3.5.45)
-      vue-demi: 0.14.10(vue@3.5.45)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4743,7 +4736,7 @@ packages:
       drauu: 0.4.3
       idb-keyval: 6.2.2
       nprogress: 0.2.0
-      vue-demi: 0.14.10(vue@3.5.45)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4771,7 +4764,7 @@ packages:
       popmotion: 11.0.5
       style-value-types: 5.1.2
       vue: 3.5.45(typescript@5.9.3)
-      vue-demi: 0.14.10(vue@3.5.45)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     dev: false
 
   /@vueuse/shared@8.9.4(vue@3.5.45):
@@ -4786,13 +4779,13 @@ packages:
         optional: true
     dependencies:
       vue: 3.5.45(typescript@5.9.3)
-      vue-demi: 0.14.10(vue@3.5.45)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     dev: false
 
   /@vueuse/shared@9.13.0(vue@3.5.45):
     resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
     dependencies:
-      vue-demi: 0.14.10(vue@3.5.45)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4808,7 +4801,7 @@ packages:
     dependencies:
       howler: 2.2.4
       vue: 3.5.45(typescript@5.9.3)
-      vue-demi: 0.14.10(vue@3.5.45)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     dev: false
 
   /@windicss/config@1.9.4:
@@ -6152,7 +6145,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       globby: 11.1.0
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.12
       is-glob: 4.0.3
       is-path-cwd: 2.2.0
       is-path-inside: 3.0.3
@@ -6371,7 +6364,6 @@ packages:
   /entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
-    dev: false
 
   /entities@6.0.1:
     resolution: {integrity: sha512-aN97NXWF6AWBTahfVOIrB/NShkzi5H7F9r1s9mD3cDj4Ko5f2qhhVoYMibXF7GlLveb/D2ioWay8lxI97Ven3g==}
@@ -6835,6 +6827,11 @@ packages:
       tmp: 0.0.33
     dev: true
 
+  /fake-indexeddb@6.2.8:
+    resolution: {integrity: sha512-mpVW/HLUqwKXJ6F/s0hMgdK1eQfM4ncTHDioNGHWL0WKV3VcZCoZq1NKgboBbAge07aRCO7L48yziKssL59XEQ==}
+    engines: {node: '>=18'}
+    dev: true
+
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
@@ -7091,7 +7088,7 @@ packages:
     resolution: {integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==}
     engines: {node: '>=6 <7 || >=8'}
     dependencies:
-      graceful-fs: 4.2.11
+      graceful-fs: 4.2.12
       jsonfile: 4.0.0
       universalify: 0.1.2
     dev: false
@@ -7101,7 +7098,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       at-least-node: 1.0.0
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.12
       jsonfile: 6.2.0
       universalify: 2.0.1
     dev: true
@@ -7461,12 +7458,10 @@ packages:
 
   /graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+    dev: true
 
   /graceful-fs@4.2.12:
     resolution: {integrity: sha512-iuyGF2E4oafQfPsRrG2wtY2ILupMhvtdrhzrxB+0VcjsPpSPttpfYdjnGFGsTi5MaJFjI1jOKHPQ6UTbTj9TAw==}
-    requiresBuild: true
-    dev: false
-    optional: true
 
   /gradient-string@3.0.0:
     resolution: {integrity: sha512-frdKI4Qi8Ihp4C6wZNB565de/THpIaw3DjP5ku87M+N9rNSGmPTjfkq61SdRXB7eCaL8O1hkKDvf6CDMtOzIAg==}
@@ -8390,7 +8385,7 @@ packages:
   /jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
     optionalDependencies:
-      graceful-fs: 4.2.11
+      graceful-fs: 4.2.12
     dev: false
 
   /jsonfile@5.0.0:
@@ -8406,7 +8401,7 @@ packages:
     dependencies:
       universalify: 2.0.1
     optionalDependencies:
-      graceful-fs: 4.2.11
+      graceful-fs: 4.2.12
     dev: true
 
   /jsonparse@1.3.1:
@@ -8740,7 +8735,7 @@ packages:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
     engines: {node: '>=4'}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.12
       parse-json: 4.0.0
       pify: 3.0.0
       strip-bom: 3.0.0
@@ -8750,7 +8745,7 @@ packages:
     resolution: {integrity: sha512-gUD/epcRms75Cw8RT1pUdHugZYM5ce64ucs2GEISABwkRsOQr0q2wm/MV2TKThycIe5e0ytRweW2RZxclogCdQ==}
     engines: {node: '>=8'}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.12
       parse-json: 5.2.0
       strip-bom: 4.0.0
       type-fest: 0.6.0
@@ -9625,7 +9620,7 @@ packages:
       env-paths: 2.2.1
       exponential-backoff: 3.1.3
       glob: 7.2.3
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.12
       make-fetch-happen: 10.2.1
       nopt: 6.0.0
       npmlog: 6.0.2
@@ -12177,7 +12172,6 @@ packages:
 
   /tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
-    dev: false
 
   /tslib@2.9.1:
     resolution: {integrity: sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==}
@@ -13025,7 +13019,7 @@ packages:
       vue: 3.5.45(typescript@5.9.3)
     dev: false
 
-  /vue-demi@0.14.10(vue@3.5.14):
+  /vue-demi@0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14):
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
     engines: {node: '>=12'}
     hasBin: true
@@ -13037,22 +13031,8 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
+      '@vue/composition-api': 1.0.0-rc.1(vue@3.5.14)
       vue: 3.5.14
-    dev: false
-
-  /vue-demi@0.14.10(vue@3.5.45):
-    resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-    dependencies:
-      vue: 3.5.45(typescript@5.9.3)
 
   /vue-directive-providers@0.1.0(vue@3.5.45):
     resolution: {integrity: sha512-a4/HKBoNw8Cekcz+u2ojTQo458LNHZOwqlFJ0vvWj33MAOPH45cZ1d4VcjzMK31BTGK5jzxk5/hQH8ZtWne0GA==}
@@ -13066,7 +13046,7 @@ packages:
     dependencies:
       '@vueuse/core': 9.13.0(vue@3.5.45)
       vue: 3.5.45(typescript@5.9.3)
-      vue-demi: 0.14.10(vue@3.5.45)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     dev: false
 
   /vue-eslint-parser@10.2.0(eslint@9.39.1):
@@ -13186,7 +13166,7 @@ packages:
     dependencies:
       pdfmake: 0.3.0-beta.18
       vue: 3.5.45(typescript@5.9.3)
-      vue-demi: 0.14.10(vue@3.5.45)
+      vue-demi: 0.14.10(@vue/composition-api@1.0.0-rc.1)(vue@3.5.14)
     dev: false
 
   /vue@3.5.14:
@@ -13202,7 +13182,6 @@ packages:
       '@vue/runtime-dom': 3.5.14
       '@vue/server-renderer': 3.5.14(vue@3.5.14)
       '@vue/shared': 3.5.14
-    dev: false
 
   /vue@3.5.45(typescript@5.9.3):
     resolution: {integrity: sha512-3cvsib8m9c0vB24+MDKsgcW4+Da4xaBl9Z/5Tbm2pmSIsRPxcil4cdXjXlVsmJ2g64XJo5h+IRd7rsdGT9pZaw==}
@@ -13564,7 +13543,7 @@ packages:
   /write-file-atomic@2.4.3:
     resolution: {integrity: sha512-GaETH5wwsX+GcnzhPgKcKjJ6M2Cq3/iZp1WyY/X1CSqrW+jVNM9Y7D8EC2sM4ZG/V8wZlSniJnCKWPmBYAucRQ==}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.12
       imurmurhash: 0.1.4
       signal-exit: 3.0.7
     dev: true
@@ -13590,7 +13569,7 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       detect-indent: 5.0.0
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.12
       make-dir: 2.1.0
       pify: 4.0.1
       sort-keys: 2.0.0

@@ -278,6 +278,8 @@ export default {
         export: 'Export',
         exportAs: 'Export as...',
         encryptBW: 'Encrypt .bw',
+        saved: 'Saved projects',
+        deleteSaved: 'Delete saved project',
       },
       chapter: {
         drafts: 'Drafts',
@@ -322,6 +324,8 @@ export default {
       confirmConfiguration: 'Do you want to quit saving the settings?',
       saveDropbox: 'Are you sure to save this file to Dropbox?',
       saveLocal: 'Are you sure to save this file?',
+      deleteSavedProject:
+        'Delete the saved project "{name}"? This cannot be undone.',
       deleteChapterPage: 'Are you sure to delete the current chapter?',
     },
     text: {
