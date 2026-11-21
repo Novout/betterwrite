@@ -28,6 +28,7 @@ import { useI18n } from 'vue-i18n'
 import { read } from 'better-write-plugin-importer'
 import useEmitter from './emitter'
 import { writeBW, encryptBW } from 'better-write-extension'
+import { restoreEditorScroll } from './chapter-scroll'
 import { useAuthStore } from '@/store/auth'
 import { useDOCXStore } from '@/store/docx'
 import { useGlobalStore } from '@/store/global'
@@ -180,9 +181,12 @@ export const useProject = () => {
 
     if (!breakpoints.isMobile().value) ABSOLUTE.aside = true
 
-    const editor = document.querySelector('#edit')
+    // CONTEXT.load already restored the chapter scroll; projects saved
+    // before per-chapter positions only have the global `scrollLoaded`
+    const opened = PROJECT.chapters.find(({ id }) => id === CONTEXT.id)
 
-    if (editor) editor.scrollTop = PROJECT.scrollLoaded
+    if (opened && opened.scrollTop === undefined && PROJECT.scrollLoaded)
+      restoreEditorScroll(PROJECT.scrollLoaded)
 
     if (notification) toast.success(t('toast.project.load'))
 

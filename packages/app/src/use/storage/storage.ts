@@ -416,6 +416,9 @@ export const useStorage = () => {
     // Generators render in only PROJECT contents, context is unique for editor show
     PROJECT.updateContext(CONTEXT.$state)
 
+    // current chapter position goes with any save/export of the project
+    CONTEXT.rememberScroll()
+
     // for lose ticket ms
     await nextTick
   }

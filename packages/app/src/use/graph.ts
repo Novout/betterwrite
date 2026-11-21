@@ -1,5 +1,6 @@
 import { nextTick } from 'vue'
 import { useScroll } from './scroll'
+import { restoreEditorScroll } from './chapter-scroll'
 import { useContextStore } from '@/store/context'
 import { useBreakpoints, breakpointsTailwind } from '@vueuse/core'
 import { useAbsoluteStore } from '@/store/absolute'
@@ -36,24 +37,36 @@ export const useGraph = () => {
     entity: Entity,
     scrollValue?: number,
   ) => {
-    PROJECT.base = 'chapter'
+    // the chapter scroll can only be recorded while a chapter is on screen
+    // (coming from annotations, #entity-main shows the annotations view)
+    const fromChapter = PROJECT.base === 'chapter'
+
+    // clicking the title of another chapter opens it where the user left it;
+    // sub-items (headings, comments...) and the current chapter title jump
+    // to the clicked entity as before
+    const resume =
+      scrollValue === undefined && index === 0 && CONTEXT.id !== page.id
 
     storage
       .normalize()
       .then(async () => {
         // load page target
-        CONTEXT.load(page)
+        CONTEXT.load(page, {
+          restoreScroll: resume,
+          rememberScroll: fromChapter,
+        })
+
+        PROJECT.base = 'chapter'
 
         PROJECT.pageLoaded = page.id
 
         await nextTick
 
+        if (resume) return
+
         if (scrollValue !== undefined) {
-          let el = document.querySelector('#entity-main')
-
-          if (!el) el = document.querySelector('#bw-wysiwyg')
-
-          if (el) el.scrollTop = scrollValue
+          // waits for the chapter entities to render before scrolling
+          restoreEditorScroll(scrollValue)
 
           return
         }

@@ -15,7 +15,8 @@ export const useHistoryStore = defineStore('history', {
       const id = this.barActive
 
       if (id) {
-        const prev = this.bar.find(({ id }) => id === id)
+        // `id` was shadowed here before, so it always updated the first tab
+        const prev = this.bar.find((item) => item.id === id)
 
         if (prev) {
           const index = this.bar.indexOf(prev)

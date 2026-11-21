@@ -47,7 +47,13 @@ export const useHistory = () => {
     }
 
     HISTORY.updateScroll()
-    await graph.to(item.id as number, page, page.entities[0], item.scrollHeight)
+    // persisted per-chapter position first, then the tab's session value
+    await graph.to(
+      item.id as number,
+      page,
+      page.entities[0],
+      page.scrollTop ?? item.scrollHeight,
+    )
   }
 
   const onDeleteBar = (item: HistoryStateBarItem) => {

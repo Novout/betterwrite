@@ -12,7 +12,14 @@ import {
   ContextActionAlterInPage,
   Entities,
   ID,
+  ContextLoadOptions,
 } from 'better-write-types'
+import {
+  cancelEditorScrollRestore,
+  getEditorScroll,
+  isEditorScrollSettling,
+  restoreEditorScroll,
+} from '@/use/chapter-scroll'
 import { useEnv } from '../use/env'
 import { useFormat } from '../use/format'
 import { useUtils } from '../use/utils'
@@ -34,7 +41,7 @@ export const useContextStore = defineStore('context', {
     }
   },
   actions: {
-    load(context?: ContextState) {
+    load(context?: ContextState, options: ContextLoadOptions = {}) {
       const project = useProjectStore()
 
       if (!context) {
@@ -47,9 +54,34 @@ export const useContextStore = defineStore('context', {
         return
       }
 
+      // keep where the user was in the chapter being left
+      if (options.rememberScroll !== false) this.rememberScroll()
+
       useHistoryStore().addBar(useFactory().history().bar().chapter(context))
 
       this.$state = context
+
+      if (options.restoreScroll === false) cancelEditorScrollRestore()
+      else restoreEditorScroll(context.scrollTop ?? 0)
+    },
+    /**
+     * Stores the current editor scroll in the chapter of `PROJECT.chapters`
+     * (persisted with the project). Only while the chapter is on screen.
+     */
+    rememberScroll() {
+      const project = useProjectStore()
+
+      if (project.base !== 'chapter') return
+
+      // the editor may still show the previous chapter's offset
+      if (isEditorScrollSettling()) return
+
+      const top = getEditorScroll()
+      if (top === undefined) return
+
+      const chapter = project.chapters.find(({ id }) => id === this.id)
+
+      if (chapter) chapter.scrollTop = top
     },
     addInPage(entity: Entity) {
       if (!entity) return

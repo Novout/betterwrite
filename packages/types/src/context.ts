@@ -53,6 +53,21 @@ export type ContextState = {
   entities: Array<Entity>
   createdAt: string
   updatedAt: string
+  /** editor scroll position, restored when the chapter is opened again */
+  scrollTop?: number
+}
+
+export interface ContextLoadOptions {
+  /**
+   * restore the saved scroll position of the chapter (default true).
+   * Pass false when the caller scrolls to a specific target afterwards.
+   */
+  restoreScroll?: boolean
+  /**
+   * record the scroll of the chapter being left (default true).
+   * Pass false when the editor is not showing that chapter.
+   */
+  rememberScroll?: boolean
 }
 
 export interface EntityShowEditOptions {

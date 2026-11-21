@@ -13,6 +13,8 @@ import { useStorage } from './storage'
 import { usePlugin } from 'better-write-plugin-core'
 import { useEditorStore } from '@/store/editor'
 import { useUtils } from '../utils'
+import { useContextStore } from '@/store/context'
+import { getEditorScroll } from '../chapter-scroll'
 import { ref } from 'vue'
 
 export type { StoredProjectMeta }
@@ -26,6 +28,7 @@ export const localProjectsVersion = ref(0)
 export const useLocalStorage = () => {
   const EDITOR = useEditorStore()
   const PROJECT = useProjectStore()
+  const CONTEXT = useContextStore()
 
   const toast = useToast()
   const env = useEnv()
@@ -121,9 +124,12 @@ export const useLocalStorage = () => {
   const onSaveProject = async (event: boolean = true) => {
     if (PROJECT.name === env.projectEmpty()) return
 
-    const editor = document.querySelector('#edit')
+    // per-chapter scroll, persisted with the project (also on autosave)
+    CONTEXT.rememberScroll()
 
-    if (editor) PROJECT.scrollLoaded = Math.floor(editor.scrollTop)
+    const top = getEditorScroll()
+    if (top !== undefined && PROJECT.base === 'chapter')
+      PROJECT.scrollLoaded = top
 
     if (event) {
       plugin.emit('plugin-progress-start')

@@ -99,7 +99,7 @@ export const useSwitcher = () => {
   const onGo = async (go: string | symbol, page: ContextState) => {
     if (!ABSOLUTE.shortcuts.finder && !ABSOLUTE.shortcuts.switcher) return
 
-    if (CONTEXT.id !== page.id) CONTEXT.load(page)
+    if (CONTEXT.id !== page.id) CONTEXT.load(page, { restoreScroll: false })
 
     await nextTick
 
