@@ -144,5 +144,126 @@ describe.each<ClientStorageSchema>(['indexeddb', 'local-storage'])(
         expect(list[0].id).toBe('keep-me')
       })
     })
+
+    // page close: async writes are not awaited by the browser, so a
+    // synchronous snapshot is written and recovered on the next start
+    describe('emergency snapshot', () => {
+      beforeEach(async () => {
+        localStorage.clear()
+        await clear()
+        n = 0
+      })
+
+      it('is written synchronously', () => {
+        const ok = create().saveSnapshot('a', project('A'), { name: 'A' })
+
+        expect(ok).toBe(true)
+        expect(
+          Object.keys(localStorage).some((k) => k.includes(':snapshot:a')),
+        ).toBe(true)
+      })
+
+      it('recovers a snapshot newer than the last save (closed before saving)', async () => {
+        const store = create()
+        await store.save('a', project('Before'), { name: 'Before' })
+        await tick()
+
+        // page closes: only the synchronous snapshot lands
+        store.saveSnapshot('a', project('After close'), { name: 'After close' })
+
+        // next start
+        const next = create()
+        expect((await next.load<any>('a'))?.project.nameRaw).toBe('After close')
+        expect((await next.list())[0].name).toBe('After close')
+        expect(
+          Object.keys(localStorage).some((k) => k.includes(':snapshot:')),
+        ).toBe(false)
+      })
+
+      it('discards a snapshot older than a save that finished later', async () => {
+        const store = create()
+        store.saveSnapshot('a', project('Snapshot'), { name: 'Snapshot' })
+        await tick()
+        // the async save managed to finish after the snapshot
+        await store.save('a', project('Saved'), { name: 'Saved' })
+
+        const next = create()
+        expect((await next.load<any>('a'))?.project.nameRaw).toBe('Saved')
+        expect(
+          Object.keys(localStorage).some((k) => k.includes(':snapshot:')),
+        ).toBe(false)
+      })
+
+      it('adds a project that only exists in the snapshot', async () => {
+        create().saveSnapshot('new', project('Never saved'), {
+          name: 'Never saved',
+        })
+
+        const list = await create().list()
+
+        expect(list.map((p) => p.name)).toEqual(['Never saved'])
+      })
+
+      it('a save does not consume the snapshot written just before it', async () => {
+        const store = create()
+        await store.save('a', project('Old'), { name: 'Old' })
+        await tick()
+
+        // exit save: snapshot first, then the regular save starts
+        store.saveSnapshot('a', project('Exit'), { name: 'Exit' })
+        const pending = Object.keys(localStorage).filter((k) =>
+          k.includes(':snapshot:'),
+        )
+        await store.save('a', project('Exit'), { name: 'Exit' })
+
+        // still there: if the page had died before the commit, it is the
+        // only copy (it is dropped on the next start, being older)
+        expect(pending.every((k) => localStorage.getItem(k))).toBe(true)
+      })
+
+      // the failure can only be injected in IndexedDB: happy-dom's
+      // localStorage.setItem used by client-storage bypasses Storage.prototype
+      it.runIf(schema === 'indexeddb')(
+        'keeps the snapshot when writing it to storage fails',
+        async () => {
+          const store = create()
+          await store.save('a', project('Old'), { name: 'Old' })
+          await tick()
+          store.saveSnapshot('a', project('Rescued'), { name: 'Rescued' })
+
+          // storage broken on this start (`set` swallows the error, so only the
+          // read-back check can notice it)
+          const put = IDBObjectStore.prototype.put
+          IDBObjectStore.prototype.put = function () {
+            throw new Error('write failed')
+          } as any
+
+          try {
+            await create().list()
+          } finally {
+            IDBObjectStore.prototype.put = put
+          }
+
+          expect(
+            Object.keys(localStorage).some((k) => k.includes(':snapshot:a')),
+          ).toBe(true)
+
+          // next start with storage working: recovered
+          expect((await create().load<any>('a'))?.project.nameRaw).toBe(
+            'Rescued',
+          )
+        },
+      )
+
+      it('does not bring back a removed project', async () => {
+        const store = create()
+        await store.save('a', project('A'), { name: 'A' })
+        store.saveSnapshot('a', project('A2'), { name: 'A2' })
+
+        await store.remove('a')
+
+        expect(await create().list()).toEqual([])
+      })
+    })
   },
 )

@@ -1,4 +1,5 @@
 import type { ClientStorageOptions, Maybe } from 'better-write-types'
+import lz from 'lz-string'
 import { get, set, exclude } from './index'
 
 /**
@@ -8,6 +9,8 @@ import { get, set, exclude } from './index'
  *   `${prefix}:index`          → StoredProjectMeta[] (small, used for listing)
  *   `${prefix}:project:${id}`  → full project data
  *   `${prefix}:active`         → id of the last opened/saved project
+ *   `${prefix}:snapshot:${id}` → emergency copy written on page close
+ *                                (always localStorage, see `saveSnapshot`)
  *
  * Data goes through `set`/`get`, so it follows the same schema
  * (localStorage / IndexedDB) and compression as the rest of the app.
@@ -37,8 +40,22 @@ export interface ProjectsStorageOptions {
 const now = () => new Date().toISOString()
 
 // shared by every instance: the app creates one registry per composable call,
-// and concurrent migrations would duplicate the legacy project
-const migrations = new Map<string, Promise<void>>()
+// and concurrent migrations/recoveries would duplicate projects
+const preparations = new Map<string, Promise<void>>()
+
+const hasLocalStorage = () => {
+  try {
+    return typeof localStorage !== 'undefined'
+  } catch {
+    return false
+  }
+}
+
+interface Snapshot<T = unknown> {
+  savedAt: string
+  meta: Pick<StoredProjectMeta, 'name' | 'type'>
+  data: T
+}
 
 const defaultId = () =>
   typeof crypto !== 'undefined' && 'randomUUID' in crypto
@@ -55,6 +72,7 @@ export function createProjectsStorage({
   const indexKey = `${prefix}:index`
   const activeKey = `${prefix}:active`
   const projectKey = (id: string) => `${prefix}:project:${id}`
+  const snapshotPrefix = `${prefix}:snapshot:`
 
   const readIndex = async (): Promise<StoredProjectMeta[]> => {
     const index = await get<StoredProjectMeta[]>(indexKey, options())
@@ -64,14 +82,35 @@ export function createProjectsStorage({
   const writeIndex = (index: StoredProjectMeta[]) =>
     set(indexKey, index, options())
 
+  /** writes a project and its index entry (no preparation step) */
+  const write = async <T>(
+    id: string,
+    data: T,
+    meta: Pick<StoredProjectMeta, 'name' | 'type'>,
+  ) => {
+    const index = await readIndex()
+    const current = index.find((p) => p.id === id)
+    const date = now()
+
+    const entry: StoredProjectMeta = {
+      id,
+      ...meta,
+      createdAt: current?.createdAt ?? date,
+      updatedAt: date,
+    }
+
+    await set(projectKey(id), data, options())
+    await writeIndex([entry, ...index.filter((p) => p.id !== id)])
+    await set(activeKey, id, options())
+
+    return entry
+  }
+
   /** moves the old single saved project into the registry (runs once) */
-  const migrate = () => {
-    if (!legacyKey) return Promise.resolve()
+  const migrate = async () => {
+    if (!legacyKey) return
 
-    const running = migrations.get(legacyKey)
-    if (running) return running
-
-    const migration = (async () => {
+    try {
       const legacy = await get<any>(legacyKey, options())
       if (!legacy) return
 
@@ -96,21 +135,110 @@ export function createProjectsStorage({
 
       // only removed after the copy above succeeded
       exclude(legacyKey)
-    })()
-      // on failure the legacy key stays untouched and is retried next call
+    } catch {
+      // the legacy key stays untouched and is retried next call
+    }
+  }
+
+  /**
+   * Promotes emergency snapshots (written on page close) that are newer than
+   * the saved project. Snapshots older or equal to the save are discarded:
+   * the regular save already finished after them.
+   */
+  const recoverSnapshots = async () => {
+    if (!hasLocalStorage()) return
+
+    const keys = Object.keys(localStorage).filter((k) =>
+      k.startsWith(snapshotPrefix),
+    )
+    if (!keys.length) return
+
+    const index = await readIndex()
+
+    for (const key of keys) {
+      const id = key.slice(snapshotPrefix.length)
+
+      try {
+        const raw = localStorage.getItem(key)
+        const snapshot: Snapshot | null = raw
+          ? JSON.parse(lz.decompress(raw) || 'null')
+          : null
+
+        const saved = index.find((p) => p.id === id)
+
+        if (snapshot && (!saved || snapshot.savedAt > saved.updatedAt)) {
+          await write(id, snapshot.data, snapshot.meta)
+
+          // `set` swallows storage errors, so confirm the copy by reading it
+          // back before dropping the only other copy of the data
+          const stored = await get(projectKey(id), options())
+          if (JSON.stringify(stored) !== JSON.stringify(snapshot.data)) continue
+        }
+
+        localStorage.removeItem(key)
+      } catch {
+        // keep it, try again next time
+      }
+    }
+  }
+
+  // deduplicates concurrent calls across instances; later calls re-check,
+  // which is a couple of cheap reads once there is nothing left to do
+  const once = (key: string, task: () => Promise<void>) => {
+    const running = preparations.get(key)
+    if (running) return running
+
+    const promise = task()
       .catch(() => {})
-      // only deduplicates concurrent calls; later calls re-check the (now
-      // removed) legacy key, which is a single cheap read
-      .finally(() => migrations.delete(legacyKey))
+      .finally(() => preparations.delete(key))
 
-    migrations.set(legacyKey, migration)
+    preparations.set(key, promise)
 
-    return migration
+    return promise
+  }
+
+  const runMigration = () => once(`${prefix}:migrate`, migrate)
+
+  /**
+   * Reads (list/load/getActive) migrate and recover snapshots. Writes only
+   * migrate: recovering inside `save` would consume the snapshot that the
+   * exit save has just written, before its own IndexedDB write commits.
+   */
+  const prepare = async () => {
+    await runMigration()
+    await once(`${prefix}:recover`, recoverSnapshots)
+  }
+
+  /**
+   * Synchronous emergency copy for page close (`pagehide`/`beforeunload`).
+   * Browsers don't wait for async work (IndexedDB) while unloading, but a
+   * synchronous localStorage write always lands. It is promoted to the
+   * registry on the next start if it is newer than the regular save.
+   *
+   * Returns false when it can't be written (e.g. quota exceeded by images).
+   */
+  const saveSnapshot = <T>(
+    id: string,
+    data: T,
+    meta: Pick<StoredProjectMeta, 'name' | 'type'>,
+  ): boolean => {
+    if (!hasLocalStorage()) return false
+
+    try {
+      const snapshot: Snapshot<T> = { savedAt: now(), meta, data }
+      localStorage.setItem(
+        snapshotPrefix + id,
+        lz.compress(JSON.stringify(snapshot)),
+      )
+      return true
+    } catch {
+      return false
+    }
   }
 
   /** saved projects, most recently updated first */
   const list = async (): Promise<StoredProjectMeta[]> => {
-    await migrate()
+    await prepare()
 
     const index = await readIndex()
 
@@ -118,7 +246,7 @@ export function createProjectsStorage({
   }
 
   const load = async <T>(id: string): Promise<Maybe<T>> => {
-    await migrate()
+    await prepare()
 
     return get<T>(projectKey(id), options())
   }
@@ -128,28 +256,16 @@ export function createProjectsStorage({
     data: T,
     meta: Pick<StoredProjectMeta, 'name' | 'type'>,
   ) => {
-    await migrate()
+    await runMigration()
 
-    const index = await readIndex()
-    const current = index.find((p) => p.id === id)
-    const date = now()
-
-    const entry: StoredProjectMeta = {
-      id,
-      ...meta,
-      createdAt: current?.createdAt ?? date,
-      updatedAt: date,
-    }
-
-    await set(projectKey(id), data, options())
-    await writeIndex([entry, ...index.filter((p) => p.id !== id)])
-    await set(activeKey, id, options())
-
-    return entry
+    return write(id, data, meta)
   }
 
   const remove = async (id: string) => {
-    await migrate()
+    await prepare()
+
+    // a pending emergency copy must not bring the project back
+    if (hasLocalStorage()) localStorage.removeItem(snapshotPrefix + id)
 
     const index = await readIndex()
     await writeIndex(index.filter((p) => p.id !== id))
@@ -159,7 +275,7 @@ export function createProjectsStorage({
   }
 
   const getActive = async (): Promise<Maybe<string>> => {
-    await migrate()
+    await prepare()
 
     const id = await get<string>(activeKey, options())
     if (id) return id
@@ -170,7 +286,7 @@ export function createProjectsStorage({
 
   const setActive = (id: string) => set(activeKey, id, options())
 
-  return { list, load, save, remove, getActive, setActive }
+  return { list, load, save, saveSnapshot, remove, getActive, setActive }
 }
 
 export type ProjectsStorage = ReturnType<typeof createProjectsStorage>

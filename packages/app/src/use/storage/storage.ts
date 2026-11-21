@@ -472,5 +472,19 @@ export const useStorage = () => {
     await nextTick
   }
 
-  return { support, getProjectObject, normalize, purge }
+  /**
+   * Synchronous `normalize` for page close: no `nextTick` (the browser
+   * doesn't wait for it while unloading). Text blocks save into the store
+   * synchronously when `entity-text-force-save` is emitted.
+   */
+  const normalizeSync = () => {
+    emitter.emit('entity-text-force-save')
+    emitter.emit('entity-external-comment-save')
+
+    PROJECT.updateContext(CONTEXT.$state)
+
+    CONTEXT.rememberScroll()
+  }
+
+  return { support, getProjectObject, normalize, normalizeSync, purge }
 }

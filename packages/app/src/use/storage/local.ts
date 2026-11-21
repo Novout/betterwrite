@@ -78,6 +78,30 @@ export const useLocalStorage = () => {
     }
   }
 
+  /**
+   * Save for page close / tab hidden. Everything until the snapshot runs
+   * synchronously, because browsers don't wait for promises while unloading:
+   *  1. synchronous emergency copy in localStorage (always lands)
+   *  2. regular registry save (IndexedDB), which usually completes when the
+   *     tab is only hidden; if it does, the snapshot is discarded on next start
+   */
+  const saveOnExit = () => {
+    if (PROJECT.name === env.projectEmpty()) return
+
+    storage.normalizeSync()
+
+    if (!PROJECT.localId) PROJECT.localId = utils.id().uuidv4()
+
+    const obj = storage.getProjectObject()
+
+    projects.saveSnapshot(PROJECT.localId, obj, {
+      name: obj.project.nameRaw,
+      type: obj.project.type,
+    })
+
+    void setProject(obj)
+  }
+
   /** removes a saved project (defaults to the current one) */
   const deleteProject = async (id?: string): Promise<void> => {
     const target = id ?? PROJECT.localId
@@ -162,5 +186,6 @@ export const useLocalStorage = () => {
     getProjectById,
     listProjects,
     onSaveProject,
+    saveOnExit,
   }
 }
