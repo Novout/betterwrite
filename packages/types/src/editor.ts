@@ -135,5 +135,8 @@ export interface EditorStateHeading {
   fontWeight: number
 }
 
-export interface EditorStateHeader extends EditorStateText {}
-export interface EditorStateGraph extends EditorStateText {}
+// top bar / sidebar only use the font settings (no line/letter spacing)
+export interface EditorStateHeader
+  extends Pick<EditorStateText, 'fontFamily' | 'fontWeight' | 'fontSize'> {}
+export interface EditorStateGraph
+  extends Pick<EditorStateText, 'fontFamily' | 'fontWeight' | 'fontSize'> {}

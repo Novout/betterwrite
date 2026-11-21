@@ -35,7 +35,7 @@ export const useFile = () => {
         return
       }
 
-      const data = destr(system.data.value)
+      const data = destr<Record<any, any>>(system.data.value)
 
       res(data)
     })

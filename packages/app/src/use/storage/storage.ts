@@ -3,12 +3,39 @@ import { useProjectStore } from '@/store/project'
 import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
 import {
+  ContextState,
   ProjectObject,
   ProjectStateSchema,
   ProjectStateSchemaCharacterItem,
+  ProjectStateSchemaFile,
   ProjectStateSchemaFolder,
   StorageNormalizeOptions,
 } from 'better-write-types'
+
+/**
+ * Fields of projects saved by older versions. They no longer exist in
+ * `ProjectState` and are converted (then removed) by `support`.
+ */
+interface LegacyProjectFields {
+  pages?: ContextState[]
+  annotations?: {
+    folders: {
+      folderName: string
+      // becomes `milkdownData` of the migrated schema file
+      files: {
+        fileName: string
+        value: ProjectStateSchemaFile['milkdownData']
+      }[]
+    }[]
+  }
+  characters?: {
+    list: Omit<ProjectStateSchemaCharacterItem, 'disabled'>[]
+  }
+}
+
+type LegacyProjectObject = ProjectObject & {
+  project: ProjectObject['project'] & LegacyProjectFields
+}
 import { nextTick } from 'vue'
 import useEmitter from '../emitter'
 import { useContextStore } from '@/store/context'
@@ -32,7 +59,7 @@ export const useStorage = () => {
   const { t } = useI18n()
 
   const support = (project: ProjectObject): ProjectObject => {
-    let _ = project
+    let _ = project as LegacyProjectObject
 
     if (!_.project.templates.substitutions.italic) {
       _.project.templates.substitutions = {
@@ -249,7 +276,8 @@ export const useStorage = () => {
         _.project.annotations.folders.forEach((folder) => {
           const folderId = useUtils().id().nano({ prefix: 'folder' })
 
-          schemaAnnotations.folders.push({
+          // generic annotation folders (files with empty `extra`)
+          ;(schemaAnnotations.folders as ProjectStateSchemaFolder[]).push({
             id: folderId,
             parentId: schemaAnnotationsId,
             folderName: folder.folderName,

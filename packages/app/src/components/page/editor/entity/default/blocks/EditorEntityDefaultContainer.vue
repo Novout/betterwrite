@@ -78,7 +78,9 @@
 
   // animations
   if (EDITOR.configuration.transition) {
-    const variants = ref<MotionVariants>({
+    // static object: wrapping MotionVariants in ref() makes TS unwrap its
+    // deep generic types forever (TS2589)
+    const variants: MotionVariants = {
       initial: {
         opacity: 0,
         x: -25,
@@ -97,7 +99,7 @@
           damping: 15,
         },
       },
-    })
+    }
 
     const motion = useMotion(container, variants)
 
