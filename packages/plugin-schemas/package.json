@@ -1,6 +1,6 @@
 {
   "name": "better-write-plugin-schemas",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "Novout",
   "license": "MIT",
   "main": "dist/index.js",
@@ -17,21 +17,17 @@
     "README.md"
   ],
   "dependencies": {
-    "better-write-plugin-core": "^1.4.0",
-    "better-write-types": "^1.4.0",
-    "vue-demi": "latest",
+    "better-write-plugin-core": "^1.4.1",
+    "better-write-types": "^1.4.1",
     "katex": "^0.16.25",
+    "lodash.debounce": "^4.0.8",
     "remark-math": "^6.0.0",
     "tippy.js": "^6.3.7",
-    "lodash.debounce": "^4.0.8"
+    "vue-demi": "latest"
   },
   "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1",
-    "vue": "^2.0.0 || >=3.0.0",
     "@milkdown/core": "^7.23.0",
     "@milkdown/ctx": "^7.23.0",
-    "@milkdown/prose": "^7.23.0",
-    "@milkdown/utils": "^7.23.0",
     "@milkdown/plugin-block": "^7.23.0",
     "@milkdown/plugin-clipboard": "^7.23.0",
     "@milkdown/plugin-cursor": "^7.23.0",
@@ -39,7 +35,11 @@
     "@milkdown/plugin-listener": "^7.23.0",
     "@milkdown/plugin-trailing": "^7.23.0",
     "@milkdown/plugin-upload": "^7.23.0",
-    "@milkdown/preset-commonmark": "^7.23.0"
+    "@milkdown/preset-commonmark": "^7.23.0",
+    "@milkdown/prose": "^7.23.0",
+    "@milkdown/utils": "^7.23.0",
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
   },
   "peerDependenciesMeta": {
     "@vue/composition-api": {

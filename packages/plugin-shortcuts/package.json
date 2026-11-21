@@ -1,6 +1,6 @@
 {
   "name": "better-write-plugin-shortcuts",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "Novout",
   "license": "MIT",
   "keywords": [
@@ -23,9 +23,9 @@
     "README.md"
   ],
   "dependencies": {
-    "better-write-extension": "^1.4.0",
-    "better-write-plugin-core": "^1.4.0",
-    "better-write-types": "^1.4.0",
+    "better-write-extension": "^1.4.1",
+    "better-write-plugin-core": "^1.4.1",
+    "better-write-types": "^1.4.1",
     "vue-demi": "latest"
   },
   "devDependencies": {
