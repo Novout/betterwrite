@@ -4,6 +4,11 @@ import { useEditorStore } from '@/store/editor'
 import { usePDFStore } from '@/store/pdf'
 import {
   ContextState,
+  EditorStateBase,
+  EditorStateConfigurationEntity,
+  EditorStateHeading,
+  EditorStateStyles,
+  EditorStateText,
   ProjectObject,
   ProjectStateSchema,
   ProjectStateSchemaCharacterItem,
@@ -60,6 +65,50 @@ export const useStorage = () => {
 
   const support = (project: ProjectObject): ProjectObject => {
     let _ = project as LegacyProjectObject
+
+    // Older projects may miss whole sections of the editor state. Create them
+    // (same defaults as store/editor.ts) before the field migrations below,
+    // which assume the section exists. Existing values always win.
+    // (the types say these sections always exist; in old files they don't)
+    const styles: Partial<EditorStateStyles> = _.editor.styles ?? {}
+    const text: Partial<EditorStateText> = styles.text ?? {}
+    const heading: Partial<EditorStateHeading> = styles.heading ?? {}
+    const base: Partial<EditorStateBase> = styles.base ?? {}
+    const entity: Partial<EditorStateConfigurationEntity> =
+      _.editor.configuration.entity ?? {}
+
+    _.editor.styles = {
+      ...(styles as EditorStateStyles),
+      text: {
+        fontFamily: 'Raleway',
+        fontWeight: 400,
+        fontSize: 16,
+        lineHeight: 1.5,
+        letterSpacing: 0,
+        ...text,
+      },
+      heading: {
+        fontFamily: 'Poppins',
+        fontWeight: 700,
+        ...heading,
+      },
+      base: {
+        backgroundCoverAttribute: true,
+        backgroundData: '',
+        backgroundBlur: false,
+        backgroundGrayscale: false,
+        backgroundSaturate: false,
+        backgroundSepia: false,
+        editorWidth: 'medium',
+        ...base,
+      },
+    }
+
+    _.editor.configuration.entity = {
+      insertEntityInParagraphBreakLine: false,
+      spellcheck: true,
+      ...entity,
+    }
 
     if (!_.project.templates.substitutions.italic) {
       _.project.templates.substitutions = {
